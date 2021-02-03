@@ -1,0 +1,44 @@
+3571c95 ext/spl/spl_iterators.c 
+478e5d1 Zend/zend_builtin_functions.c
+b9b1fb1 ext/dom/document.c
+4756d7 ext/date/php_date.c
+1a8b87d ext/date/php_date.c
+5bb0a44 ext/date/php_date.c
+09273098521913a ext/phar/phar.c
+1f49902 main/streams/userspace.c
+f2329f1 ext/reflection/php_reflection.c
+109b8e9 ext/standard/url.c
+a888ee4 ext/standard/url.c
+b84967d Zend/zend_execute.c
+d1d61ce ext/fileinfo/fileinfo.c
+9bbc114 main/streams/userspace.c
+a3a5157 ext/standard/streamsfuncs.c
+2a6968 main/snprintf.c
+ecb9d80 ext/json/json.c
+1d984a7 ext/tokenizer/tokenizer.c
+ee83270 ext/standard/url.c
+8deb11c ext/spl/spl_directory.c
+7f29372 main/streams/streams.c
+3acdca ext/phar/phar_object.c
+c2fe893 ext/spl/php_spl.c ext/spl/spl_directory.c
+b83e24 ext/spl/spl_iterators.c
+f7b7b6aa9 ext/spl/php_spl.c ext/spl/spl_directory.c
+187eb23 ext/standard/array.c
+2e25ec9 Zend/zend_object_handlers.c
+77ed819 ext/spl/spl_array.c
+6f3148d Zend/zend_builtin_functions.c Zend/zend_exceptions.c ext/mysqlnd/mysqlnd_bt.c
+09b990f ext/libxml/libxml.c
+2e206e07 ext/standard/string.c
+821d716 Zend/zend_closures.c
+118695a ext/filter/filter.c
+93f65cd main/streams/streams.c
+453c954^1-453c954 Zend/zend_constants.c
+cebe2a213^1-cebe2a213 ext/pcre/php_pcre.c
+1056c57f ext/standard/url_scanner_ex.c
+8ba00176 Zend/zend_compile.c
+efcb9a71 Zend/zend_variables.c
+5a8c917 ext/standard/string.c
+2adf58 ext/date/php_date.c
+991ba131 ext/date/php_date.c
+1e91069 ext/date/php_date.c
+f455f8^1-f455f8 ext/dom/document.c

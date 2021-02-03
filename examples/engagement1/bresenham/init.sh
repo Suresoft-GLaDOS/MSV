@@ -1,0 +1,10 @@
+rm profile_localization.res
+rm __fixed_bresenham.cpp
+rm __fixed_bresenham.cpp-1
+rm test.cache
+cd profile
+rm prog
+cd ../src
+rm prog
+cd /tmp
+rm __index.loc

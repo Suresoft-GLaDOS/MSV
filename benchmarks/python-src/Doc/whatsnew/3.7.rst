@@ -1,0 +1,190 @@
+****************************
+  What's New In Python 3.7
+****************************
+
+:Release: |release|
+:Date: |today|
+
+.. Rules for maintenance:
+
+   * Anyone can add text to this document.  Do not spend very much time
+   on the wording of your changes, because your text will probably
+   get rewritten to some degree.
+
+   * The maintainer will go through Misc/NEWS periodically and add
+   changes; it's therefore more important to add your changes to
+   Misc/NEWS than to this file.
+
+   * This is not a complete list of every single change; completeness
+   is the purpose of Misc/NEWS.  Some changes I consider too small
+   or esoteric to include.  If such a change is added to the text,
+   I'll just remove it.  (This is another reason you shouldn't spend
+   too much time on writing your addition.)
+
+   * If you want to draw your new text to the attention of the
+   maintainer, add 'XXX' to the beginning of the paragraph or
+   section.
+
+   * It's OK to just add a fragmentary note about a change.  For
+   example: "XXX Describe the transmogrify() function added to the
+   socket module."  The maintainer will research the change and
+   write the necessary text.
+
+   * You can comment out your additions if you like, but it's not
+   necessary (especially when a final release is some months away).
+
+   * Credit the author of a patch or bugfix.   Just the name is
+   sufficient; the e-mail address isn't necessary.
+
+   * It's helpful to add the bug/patch number as a comment:
+
+   XXX Describe the transmogrify() function added to the socket
+   module.
+   (Contributed by P.Y. Developer in :issue:`12345`.)
+
+   This saves the maintainer the effort of going through the Mercurial log
+   when researching a change.
+
+This article explains the new features in Python 3.7, compared to 3.6.
+
+For full details, see the :ref:`changelog <changelog>`.
+
+.. note::
+
+   Prerelease users should be aware that this document is currently in draft
+   form. It will be updated substantially as Python 3.7 moves towards release,
+   so it's worth checking back even after reading earlier versions.
+
+
+Summary -- Release highlights
+=============================
+
+.. This section singles out the most important changes in Python 3.7.
+   Brevity is key.
+
+
+.. PEP-sized items next.
+
+
+
+New Features
+============
+
+
+
+Other Language Changes
+======================
+
+* More than 255 arguments can now be passed to a function, and a function can
+  now have more than 255 parameters.
+  (Contributed by Serhiy Storchaka in :issue:`12844` and :issue:`18896`.)
+
+* :meth:`bytes.fromhex` and :meth:`bytearray.fromhex` now ignore all ASCII
+  whitespace, not only spaces.
+  (Contributed by Robert Xiao in :issue:`28927`.)
+
+
+New Modules
+===========
+
+* None yet.
+
+
+Improved Modules
+================
+
+unittest.mock
+-------------
+
+The :const:`~unittest.mock.sentinel` attributes now preserve their identity
+when they are :mod:`copied <copy>` or :mod:`pickled <pickle>`.
+(Contributed by Serhiy Storchaka in :issue:`20804`.)
+
+
+Optimizations
+=============
+
+* Added two new opcodes: ``LOAD_METHOD`` and ``CALL_METHOD`` to avoid
+  instantiation of bound method objects for method calls, which results
+  in method calls being faster up to 20%.
+  (Contributed by Yury Selivanov and INADA Naoki in :issue:`26110`.)
+
+
+Build and C API Changes
+=======================
+
+* A full copy of libffi is no longer bundled for use when building the
+  :mod:`_ctypes <ctypes>` module on non-OSX UNIX platforms.  An installed copy
+  of libffi is now required when building ``_ctypes`` on such platforms.
+  Contributed by Zachary Ware in :issue:`27979`.
+
+* The fields :c:member:`name` and :c:member:`doc` of structures
+  :c:type:`PyMemberDef`, :c:type:`PyGetSetDef`,
+  :c:type:`PyStructSequence_Field`, :c:type:`PyStructSequence_Desc`,
+  and :c:type:`wrapperbase` are now of type ``const char *`` rather of
+  ``char *``.  (Contributed by Serhiy Storchaka in :issue:`28761`.)
+
+* The result of :c:func:`PyUnicode_AsUTF8AndSize` and :c:func:`PyUnicode_AsUTF8`
+  is now of type ``const char *`` rather of ``char *``.
+  (Contributed by Serhiy Storchaka in :issue:`28769`.)
+
+* Added functions :c:func:`PySlice_Unpack` and :c:func:`PySlice_AdjustIndices`.
+  (Contributed by Serhiy Storchaka in :issue:`27867`.)
+
+
+Deprecated
+==========
+
+- Function :c:func:`PySlice_GetIndicesEx` is deprecated and replaced with
+  a macro if ``Py_LIMITED_API`` is not set or set to the value between
+  ``0x03050400`` and ``0x03060000`` (not including) or ``0x03060100`` or
+  higher.  (Contributed by Serhiy Storchaka in :issue:`27867`.)
+
+
+Removed
+=======
+
+API and Feature Removals
+------------------------
+
+* Unknown escapes consisting of ``'\'`` and an ASCII letter in replacement
+  templates for :func:`re.sub` were deprecated in Python 3.5, and will now
+  cause an error.
+
+* Removed support of the *exclude* argument in :meth:`tarfile.TarFile.add`.
+  It was deprecated in Python 2.7 and 3.2.  Use the *filter* argument instead.
+
+* The ``splitunc()`` function in the :mod:`ntpath` module was deprecated in
+  Python 3.1, and has now been removed.  Use the :func:`~os.path.splitdrive`
+  function instead.
+
+
+Porting to Python 3.7
+=====================
+
+This section lists previously described changes and other bugfixes
+that may require changes to your code.
+
+
+Changes in the Python API
+-------------------------
+
+* A format string argument for :meth:`string.Formatter.format`
+  is now :ref:`positional-only <positional-only_parameter>`.
+  Passing it as a keyword argument was deprecated in Python 3.5.
+  (Contributed by Serhiy Storchaka in :issue:`29193`.)
+
+* Attributes :attr:`~http.cookies.Morsel.key`,
+  :attr:`~http.cookies.Morsel.value` and
+  :attr:`~http.cookies.Morsel.coded_value` of class
+  :class:`http.cookies.Morsel` are now read-only.
+  Assigning to them was deprecated in Python 3.5.
+  Use the :meth:`~http.cookies.Morsel.set` method for setting them.
+  (Contributed by Serhiy Storchaka in :issue:`29192`.)
+
+
+CPython bytecode changes
+------------------------
+
+* Added two new opcodes: :opcode:`LOAD_METHOD` and :opcode:`CALL_METHOD`.
+  (Contributed by Yury Selivanov and INADA Naoki in :issue:`26110`.)

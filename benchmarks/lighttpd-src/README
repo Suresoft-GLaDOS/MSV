@@ -1,0 +1,9 @@
+The stable series lives in the branch lighttpd-1.4.x, check it out:
+
+	svn checkout svn://svn.lighttpd.net/lighttpd/branches/lighttpd-1.4.x
+
+The current development version is lighttpd2 at http://git.lighttpd.net/lighttpd/lighttpd2.git, clone it:
+
+	git clone git://git.lighttpd.net/lighttpd/lighttpd2.git
+
+The previous trunk (aka "1.5") has been dead for some time, and is archived as svn://svn.lighttpd.net/lighttpd/branches/lighttpd-1.5-dead

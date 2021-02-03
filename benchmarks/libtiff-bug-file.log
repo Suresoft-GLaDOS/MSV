@@ -1,0 +1,24 @@
+tests-565eaa29 tools/thumbnail.c libtiff/tif_dirwrite.c
+tests2-3edb9cd libtiff/tif_dirread.c
+tests2-ccc10c7-ccc10c7^2 libtiff/tif_dirinfo.c libtiff/tif_fax3.c libtiff/tif_jpeg.c libtiff/tif_luv.c libtiff/tif_ojpeg.c libtiff/tif_pixarlog.c libtiff/tif_predict.c libtiff/tif_zip.c
+tests2-c766cb7^1-c766cb7 libtiff/tif_close.c libtiff/tif_dirinfo.c libtiff/tif_dirread.c libtiff/tif_dirwrite.c libtiff/tif_fax3.c libtiff/tif_jpeg.c libtiff/tif_luv.c libtiff/tif_ojpeg.c libtiff/tif_predict.c libtiff/tif_zip.c 
+tests2-207c78a4 libtiff/tif_dirwrite.c
+tests-1563270c^1-1563270c tools/tiff2pdf.c 
+tests2-e6d0c32 tools/ppm2tiff.c
+tests-bdba15c tools/tiffcrop.c
+tests-0d27dc0 libtiff/tif_dirinfo.c
+tests2-22da1d libtiff/tif_dirinfo.c
+tests-2e42d63f tools/tiffcrop.c
+tests2-ce4b7af^1-ce4b7af libtiff/tif_dirinfo.c
+tests2-0a36d7f libtiff/tif_dirread.c
+tests-5f42db tools/tiffsplit.c
+tests2-6746b87^1-6746b87 tools/tiffcp.c
+tests-6b6496 tools/tiffcrop.c
+tests2-eec4c06^1-eec4c06 libtiff/tif_dirread.c
+tests2-371336d^1-371336d libtiff/tif_dirwrite.c
+tests2-f2d989d libtiff/tif_read.c
+tests-e0b51f3e tools/tiffcp.c
+tests2-cf05a83-cf05a83^1^1^1 libtiff/tif_dirwrite.c
+tests2-6f76e766b^1^1^1^1^1^1^1^1^1-6f76e766b libtiff/tif_dir.c libtiff/tif_dirread.c libtiff/tif_aux.c libtiff/tif_print.c
+tests-eec7ec0 tools/tiff2pdf.c
+tests2-e8a47d4^1-e8a47d4 tools/tiffinfo.c

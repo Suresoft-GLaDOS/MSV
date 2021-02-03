@@ -1,0 +1,97 @@
+                                                     -*- coding: utf-8 -*-
+Changes for APR 2.0.0
+
+  *) build: Correctly use AC_(PATH|CHECK)_TOOL to support cross compilation.
+     PR: 56866.  [Timothy Gu <timothygu99 gmail.com>]
+
+  *) apr_queue: Add apr_queue_timedpush() and apr_queue_timedpop() to
+     support timedout operations. PR 56951. [Anthony Minessale <anthm
+     freeswitch org>, Travis Cross <tc+asf travislists com>, Yann Ylavic].
+
+  *) apr_allocator: Be less wasteful and don't return a memnode that is
+     much larger than what was requested. [Stefan Fuhrmann
+     <stefan fuhrmann wandisco com>]
+
+  *) Windows platform: Remove support for Windows 9x.
+
+  *) Added signed apr_intptr_t.  Changed ODBC dbd driver to use this.
+     [Tom Donovan]
+
+  *) Changes to apr_pollset_method_e enum value of APR_POLLSET_POLL and
+     APR_POLLSET_AIO_MSGQ.  Restore APR_POLLSET_POLL to its pre-r1308910 
+     (April 2012) value, and move APR_POLLSET_AIO_MSGQ ahead. This restores
+     ABI compat with released branches.  [Eric Covener]
+
+  *) Add apr_pbase64_encode() and apr_pbase64_decode() to encode to/from
+     the pool. [Graham Leggett]
+
+  *) Mark apr_dbd_freetds as unsupported, and remove it from all builds
+     [Nick Kew]
+
+  *) Fix pool integrity checks with threads. Add new apr_pool_owner_set()
+     function. PR 43375, 52785. [Stefan Fritsch]
+
+  *) Add support code to teach valgrind about APR pools, allocators, and
+     bucket allocators. [Stefan Fritsch]
+
+  *) apr_socket_accept_filter(): The 2nd and 3rd arguments are now 
+     const char * instead of char *.  [Jeff Trawick]
+
+  *) apr_brigades: add a check to prevent infinite while loop in case
+     of a corrupted brigade.  Problem evidenced in PR 51062.  Analysis by
+     Krzysztof Kostałkowicz <KKostalkowicz ivmx.pl>, patch [Nick Kew].
+
+  *) Support libxml2 as an alternative XML parser to expat [Nick Kew]
+
+  *) Hide apr_wait_for_io_or_timeout() from public view and add instead
+     apr_socket_wait() and apr_file_pipe_wait(). [Brian Havard]
+
+  *) Support connecttimeout, readtimeout and writetimeout MySQL options
+     PR 48251 [Marko Kevac <marko kevac.org>]
+
+  *) Transfer the apr-util spec file contents to apr.spec. [Graham
+     Leggett]
+
+  *) Added Unix domain socket support.  [Mladen Turk]
+
+  *) Merge APR-util into APR.  [various]
+
+Changes for APR and APR-util 1.6.x and later:
+
+  *) http://svn.apache.org/viewvc/apr/apr/branches/1.6.x/CHANGES?view=markup
+  *) http://svn.apache.org/viewvc/apr/apr-util/branches/1.6.x/CHANGES?view=markup
+
+Changes for APR and APR-util 1.5.x and later:
+
+  *) http://svn.apache.org/viewvc/apr/apr/branches/1.5.x/CHANGES?view=markup
+  *) http://svn.apache.org/viewvc/apr/apr-util/branches/1.5.x/CHANGES?view=markup
+
+Changes for APR and APR-util 1.4.x and later:
+
+  *) http://svn.apache.org/viewvc/apr/apr/branches/1.4.x/CHANGES?view=markup
+  *) http://svn.apache.org/viewvc/apr/apr-util/branches/1.4.x/CHANGES?view=markup
+
+Changes for APR and APR-util 1.3.x and later:
+
+  *) http://svn.apache.org/viewvc/apr/apr/branches/1.3.x/CHANGES?view=markup
+  *) http://svn.apache.org/viewvc/apr/apr-util/branches/1.3.x/CHANGES?view=markup
+
+Changes for APR and APR-util 1.2.x and later:
+
+  *) http://svn.apache.org/viewvc/apr/apr/branches/1.2.x/CHANGES?view=markup
+  *) http://svn.apache.org/viewvc/apr/apr-util/branches/1.2.x/CHANGES?view=markup
+
+Changes for APR and APR-util 1.1.x and later:
+
+  *) http://svn.apache.org/viewvc/apr/apr/branches/1.1.x/CHANGES?view=markup
+  *) http://svn.apache.org/viewvc/apr/apr-util/branches/1.1.x/CHANGES?view=markup
+
+Changes for APR and APR-util 1.0.x and later:
+
+  *) http://svn.apache.org/viewvc/apr/apr/branches/1.0.x/CHANGES?view=markup
+  *) http://svn.apache.org/viewvc/apr/apr-util/branches/1.0.x/CHANGES?view=markup
+
+Changes for APR and APR-util 0.9.x and later/earlier:
+
+  *) http://svn.apache.org/viewvc/apr/apr/branches/0.9.x/CHANGES?view=markup
+  *) http://svn.apache.org/viewvc/apr/apr-util/branches/0.9.x/CHANGES?view=markup

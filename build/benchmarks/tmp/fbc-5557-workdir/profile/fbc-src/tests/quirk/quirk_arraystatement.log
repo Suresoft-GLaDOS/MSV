@@ -1,0 +1,4 @@
+quirk/quirk_arraystatement.bas : TEST_MODE=COMPILE_AND_RUN_OK
+/home/fanl/Workspace/prophet/build/benchmarks/fbc-5557-workdir/profile/fbc-src/tests/../../fbc-root/bin/fbc  -lang fb -g -w 0  -m quirk/quirk_arraystatement -c quirk/quirk_arraystatement.bas -o quirk/quirk_arraystatement.o
+/home/fanl/Workspace/prophet/build/benchmarks/fbc-5557-workdir/profile/fbc-src/tests/../../fbc-root/bin/fbc  -g quirk/quirk_arraystatement.o -x quirk/quirk_arraystatement
+quirk/quirk_arraystatement.bas : RESULT=PASSED

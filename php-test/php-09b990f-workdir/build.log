@@ -1,0 +1,252 @@
+/bin/sh /home/ubuntu/Workspace/prophet/build/tests/php-case-09b990f/php-09b990f-workdir/src/libtool --silent --preserve-dup-deps --mode=link gcc -export-dynamic -I/usr/include -g -O2 -fvisibility=hidden  -L/home/ubuntu/Workspace/prophet/build/benchmarks/php-deps/libxml2-2.7.2-build/lib  -R /home/ubuntu/Workspace/prophet/build/benchmarks/php-deps/libxml2-2.7.2-build/lib ext/date/php_date.lo ext/date/lib/astro.lo ext/date/lib/dow.lo ext/date/lib/parse_date.lo ext/date/lib/parse_tz.lo ext/date/lib/timelib.lo ext/date/lib/tm2unixtime.lo ext/date/lib/unixtime2tm.lo ext/date/lib/parse_iso_intervals.lo ext/date/lib/interval.lo ext/ereg/ereg.lo ext/ereg/regex/regcomp.lo ext/ereg/regex/regexec.lo ext/ereg/regex/regerror.lo ext/ereg/regex/regfree.lo ext/libxml/libxml.lo ext/pcre/pcrelib/pcre_chartables.lo ext/pcre/pcrelib/pcre_ucd.lo ext/pcre/pcrelib/pcre_compile.lo ext/pcre/pcrelib/pcre_config.lo ext/pcre/pcrelib/pcre_exec.lo ext/pcre/pcrelib/pcre_fullinfo.lo ext/pcre/pcrelib/pcre_get.lo ext/pcre/pcrelib/pcre_globals.lo ext/pcre/pcrelib/pcre_info.lo ext/pcre/pcrelib/pcre_maketables.lo ext/pcre/pcrelib/pcre_newline.lo ext/pcre/pcrelib/pcre_ord2utf8.lo ext/pcre/pcrelib/pcre_refcount.lo ext/pcre/pcrelib/pcre_study.lo ext/pcre/pcrelib/pcre_tables.lo ext/pcre/pcrelib/pcre_try_flipped.lo ext/pcre/pcrelib/pcre_valid_utf8.lo ext/pcre/pcrelib/pcre_version.lo ext/pcre/pcrelib/pcre_xclass.lo ext/pcre/php_pcre.lo ext/sqlite3/sqlite3.lo ext/sqlite3/libsqlite/sqlite3.lo ext/ctype/ctype.lo ext/dom/php_dom.lo ext/dom/attr.lo ext/dom/document.lo ext/dom/domerrorhandler.lo ext/dom/domstringlist.lo ext/dom/domexception.lo ext/dom/namelist.lo ext/dom/processinginstruction.lo ext/dom/cdatasection.lo ext/dom/documentfragment.lo ext/dom/domimplementation.lo ext/dom/element.lo ext/dom/node.lo ext/dom/string_extend.lo ext/dom/characterdata.lo ext/dom/documenttype.lo ext/dom/domimplementationlist.lo ext/dom/entity.lo ext/dom/nodelist.lo ext/dom/text.lo ext/dom/comment.lo ext/dom/domconfiguration.lo ext/dom/domimplementationsource.lo ext/dom/entityreference.lo ext/dom/notation.lo ext/dom/xpath.lo ext/dom/dom_iterators.lo ext/dom/typeinfo.lo ext/dom/domerror.lo ext/dom/domlocator.lo ext/dom/namednodemap.lo ext/dom/userdatahandler.lo ext/fileinfo/fileinfo.lo ext/fileinfo/libmagic/apprentice.lo ext/fileinfo/libmagic/apptype.lo ext/fileinfo/libmagic/ascmagic.lo ext/fileinfo/libmagic/cdf.lo ext/fileinfo/libmagic/cdf_time.lo ext/fileinfo/libmagic/compress.lo ext/fileinfo/libmagic/encoding.lo ext/fileinfo/libmagic/fsmagic.lo ext/fileinfo/libmagic/funcs.lo ext/fileinfo/libmagic/is_tar.lo ext/fileinfo/libmagic/magic.lo ext/fileinfo/libmagic/print.lo ext/fileinfo/libmagic/readcdf.lo ext/fileinfo/libmagic/readelf.lo ext/fileinfo/libmagic/softmagic.lo ext/filter/filter.lo ext/filter/sanitizing_filters.lo ext/filter/logical_filters.lo ext/filter/callback_filter.lo ext/hash/hash.lo ext/hash/hash_md.lo ext/hash/hash_sha.lo ext/hash/hash_ripemd.lo ext/hash/hash_haval.lo ext/hash/hash_tiger.lo ext/hash/hash_gost.lo ext/hash/hash_snefru.lo ext/hash/hash_whirlpool.lo ext/hash/hash_adler32.lo ext/hash/hash_crc32.lo ext/hash/hash_salsa.lo ext/hash/hash_fnv.lo ext/hash/hash_joaat.lo ext/iconv/iconv.lo ext/json/json.lo ext/json/utf8_to_utf16.lo ext/json/utf8_decode.lo ext/json/JSON_parser.lo ext/pdo/pdo.lo ext/pdo/pdo_dbh.lo ext/pdo/pdo_stmt.lo ext/pdo/pdo_sql_parser.lo ext/pdo/pdo_sqlstate.lo ext/pdo_sqlite/pdo_sqlite.lo ext/pdo_sqlite/sqlite_driver.lo ext/pdo_sqlite/sqlite_statement.lo ext/phar/util.lo ext/phar/tar.lo ext/phar/zip.lo ext/phar/stream.lo ext/phar/func_interceptors.lo ext/phar/dirstream.lo ext/phar/phar.lo ext/phar/phar_object.lo ext/phar/phar_path_check.lo ext/posix/posix.lo ext/reflection/php_reflection.lo ext/session/session.lo ext/session/mod_files.lo ext/session/mod_mm.lo ext/session/mod_user.lo ext/simplexml/simplexml.lo ext/simplexml/sxe.lo ext/spl/php_spl.lo ext/spl/spl_functions.lo ext/spl/spl_engine.lo ext/spl/spl_iterators.lo ext/spl/spl_array.lo ext/spl/spl_directory.lo ext/spl/spl_exceptions.lo ext/spl/spl_observer.lo ext/spl/spl_dllist.lo ext/spl/spl_heap.lo ext/spl/spl_fixedarray.lo ext/standard/crypt_freesec.lo ext/standard/crypt_blowfish.lo ext/standard/crypt_sha512.lo ext/standard/crypt_sha256.lo ext/standard/php_crypt_r.lo ext/standard/array.lo ext/standard/base64.lo ext/standard/basic_functions.lo ext/standard/browscap.lo ext/standard/crc32.lo ext/standard/crypt.lo ext/standard/cyr_convert.lo ext/standard/datetime.lo ext/standard/dir.lo ext/standard/dl.lo ext/standard/dns.lo ext/standard/exec.lo ext/standard/file.lo ext/standard/filestat.lo ext/standard/flock_compat.lo ext/standard/formatted_print.lo ext/standard/fsock.lo ext/standard/head.lo ext/standard/html.lo ext/standard/image.lo ext/standard/info.lo ext/standard/iptc.lo ext/standard/lcg.lo ext/standard/link.lo ext/standard/mail.lo ext/standard/math.lo ext/standard/md5.lo ext/standard/metaphone.lo ext/standard/microtime.lo ext/standard/pack.lo ext/standard/pageinfo.lo ext/standard/quot_print.lo ext/standard/rand.lo ext/standard/soundex.lo ext/standard/string.lo ext/standard/scanf.lo ext/standard/syslog.lo ext/standard/type.lo ext/standard/uniqid.lo ext/standard/url.lo ext/standard/var.lo ext/standard/versioning.lo ext/standard/assert.lo ext/standard/strnatcmp.lo ext/standard/levenshtein.lo ext/standard/incomplete_class.lo ext/standard/url_scanner_ex.lo ext/standard/ftp_fopen_wrapper.lo ext/standard/http_fopen_wrapper.lo ext/standard/php_fopen_wrapper.lo ext/standard/credits.lo ext/standard/css.lo ext/standard/var_unserializer.lo ext/standard/ftok.lo ext/standard/sha1.lo ext/standard/user_filters.lo ext/standard/uuencode.lo ext/standard/filters.lo ext/standard/proc_open.lo ext/standard/streamsfuncs.lo ext/standard/http.lo ext/tokenizer/tokenizer.lo ext/tokenizer/tokenizer_data.lo ext/xml/xml.lo ext/xml/compat.lo ext/xmlreader/php_xmlreader.lo ext/xmlwriter/php_xmlwriter.lo TSRM/TSRM.lo TSRM/tsrm_strtok_r.lo TSRM/tsrm_virtual_cwd.lo main/main.lo main/snprintf.lo main/spprintf.lo main/php_sprintf.lo main/fopen_wrappers.lo main/alloca.lo main/php_scandir.lo main/php_ini.lo main/SAPI.lo main/rfc1867.lo main/php_content_types.lo main/strlcpy.lo main/strlcat.lo main/mergesort.lo main/reentrancy.lo main/php_variables.lo main/php_ticks.lo main/network.lo main/php_open_temporary_file.lo main/php_logos.lo main/output.lo main/getopt.lo main/streams/streams.lo main/streams/cast.lo main/streams/memory.lo main/streams/filter.lo main/streams/plain_wrapper.lo main/streams/userspace.lo main/streams/transports.lo main/streams/xp_socket.lo main/streams/mmap.lo main/streams/glob_wrapper.lo Zend/zend_language_parser.lo Zend/zend_language_scanner.lo Zend/zend_ini_parser.lo Zend/zend_ini_scanner.lo Zend/zend_alloc.lo Zend/zend_compile.lo Zend/zend_constants.lo Zend/zend_dynamic_array.lo Zend/zend_dtrace.lo Zend/zend_execute_API.lo Zend/zend_highlight.lo Zend/zend_llist.lo Zend/zend_opcode.lo Zend/zend_operators.lo Zend/zend_ptr_stack.lo Zend/zend_stack.lo Zend/zend_variables.lo Zend/zend.lo Zend/zend_API.lo Zend/zend_extensions.lo Zend/zend_hash.lo Zend/zend_list.lo Zend/zend_indent.lo Zend/zend_builtin_functions.lo Zend/zend_sprintf.lo Zend/zend_ini.lo Zend/zend_qsort.lo Zend/zend_multibyte.lo Zend/zend_ts_hash.lo Zend/zend_stream.lo Zend/zend_iterators.lo Zend/zend_interfaces.lo Zend/zend_exceptions.lo Zend/zend_strtod.lo Zend/zend_gc.lo Zend/zend_closures.lo Zend/zend_float.lo Zend/zend_string.lo Zend/zend_objects.lo Zend/zend_object_handlers.lo Zend/zend_objects_API.lo Zend/zend_default_classes.lo Zend/zend_execute.lo main/internal_functions_cli.lo sapi/cli/php_cli.lo -lcrypt -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt  -o sapi/cli/php
+/usr/bin/ld: ext/date/php_date.o: relocation R_X86_64_32 against `.text' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/date/lib/dow.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/date/lib/parse_date.o: relocation R_X86_64_32 against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/date/lib/parse_tz.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/date/lib/timelib.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/date/lib/tm2unixtime.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/date/lib/unixtime2tm.o: relocation R_X86_64_32 against `.data' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/date/lib/parse_iso_intervals.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/ereg/ereg.o: relocation R_X86_64_32 against `.text' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/ereg/regex/regcomp.o: relocation R_X86_64_32S against `.bss' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/ereg/regex/regerror.o: relocation R_X86_64_32 against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/libxml/libxml.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pcre/pcrelib/pcre_compile.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pcre/pcrelib/pcre_config.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pcre/pcrelib/pcre_exec.o: relocation R_X86_64_32S against hidden symbol `php__pcre_ucd_stage1' can not be used when making a PIE object
+/usr/bin/ld: ext/pcre/pcrelib/pcre_fullinfo.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pcre/pcrelib/pcre_maketables.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pcre/pcrelib/pcre_ord2utf8.o: relocation R_X86_64_32 against hidden symbol `php__pcre_utf8_table1' can not be used when making a PIE object
+/usr/bin/ld: ext/pcre/pcrelib/pcre_study.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pcre/pcrelib/pcre_valid_utf8.o: relocation R_X86_64_32S against hidden symbol `php__pcre_utf8_table4' can not be used when making a PIE object
+/usr/bin/ld: ext/pcre/pcrelib/pcre_version.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pcre/pcrelib/pcre_xclass.o: relocation R_X86_64_32S against hidden symbol `php__pcre_ucd_stage1' can not be used when making a PIE object
+/usr/bin/ld: ext/pcre/php_pcre.o: relocation R_X86_64_32 against `.text' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/sqlite3/sqlite3.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/sqlite3/libsqlite/sqlite3.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/ctype/ctype.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/php_dom.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/attr.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/document.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/domerrorhandler.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/domstringlist.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/domexception.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/namelist.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/processinginstruction.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/cdatasection.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/documentfragment.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/domimplementation.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/element.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/node.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/string_extend.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/characterdata.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/documenttype.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/domimplementationlist.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/nodelist.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/text.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/comment.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/domconfiguration.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/domimplementationsource.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/entityreference.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/notation.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/xpath.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/dom_iterators.o: relocation R_X86_64_32 against `.text' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/domerror.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/domlocator.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/namednodemap.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/dom/userdatahandler.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/fileinfo.o: relocation R_X86_64_32 against `.text' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/apprentice.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/ascmagic.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/cdf.o: relocation R_X86_64_32 against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/cdf_time.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/compress.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/encoding.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/fsmagic.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/funcs.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/is_tar.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/magic.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/print.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/readcdf.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/fileinfo/libmagic/softmagic.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/filter/filter.o: relocation R_X86_64_32 against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/filter/sanitizing_filters.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/filter/logical_filters.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/filter/callback_filter.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/hash/hash.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/hash/hash_md.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/hash/hash_sha.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/hash/hash_ripemd.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/hash/hash_haval.o: relocation R_X86_64_32S against `.text' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/hash/hash_tiger.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/hash/hash_gost.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/hash/hash_snefru.o: relocation R_X86_64_32 against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/hash/hash_whirlpool.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/hash/hash_crc32.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/hash/hash_salsa.o: relocation R_X86_64_32S against `.text' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/iconv/iconv.o: relocation R_X86_64_32 against `.text' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/json/json.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/json/JSON_parser.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pdo/pdo.o: relocation R_X86_64_32 against undefined hidden symbol `pdo_driver_hash' can not be used when making a PIE object
+/usr/bin/ld: ext/pdo/pdo_dbh.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pdo/pdo_stmt.o: relocation R_X86_64_32S against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pdo/pdo_sql_parser.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pdo/pdo_sqlstate.o: relocation R_X86_64_32 against `.bss' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pdo_sqlite/pdo_sqlite.o: relocation R_X86_64_32 against hidden symbol `pdo_sqlite_driver' can not be used when making a PIE object
+/usr/bin/ld: ext/pdo_sqlite/sqlite_driver.o: relocation R_X86_64_32 against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/pdo_sqlite/sqlite_statement.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/phar/util.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/phar/tar.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/phar/zip.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/phar/stream.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/phar/func_interceptors.o: relocation R_X86_64_32 against undefined hidden symbol `phar_globals' can not be used when making a PIE object
+/usr/bin/ld: ext/phar/dirstream.o: relocation R_X86_64_32 against symbol `zend_get_hash_value' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/phar/phar.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/phar/phar_object.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/phar/phar_path_check.o: relocation R_X86_64_32S against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/posix/posix.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/reflection/php_reflection.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/session/session.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/session/mod_files.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/session/mod_user.o: relocation R_X86_64_32S against `.bss' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/simplexml/simplexml.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/simplexml/sxe.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/spl/php_spl.o: relocation R_X86_64_32S against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/spl/spl_iterators.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/spl/spl_array.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/spl/spl_directory.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/spl/spl_exceptions.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/spl/spl_observer.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/spl/spl_dllist.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/spl/spl_heap.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/spl/spl_fixedarray.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/crypt_freesec.o: relocation R_X86_64_32S against `.bss' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/crypt_blowfish.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/crypt_sha512.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/crypt_sha256.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/php_crypt_r.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/array.o: relocation R_X86_64_32S against symbol `compare_function' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/base64.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/browscap.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/crc32.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/crypt.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/cyr_convert.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/datetime.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/dir.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/dl.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/dns.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/exec.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/file.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/filestat.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/formatted_print.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/fsock.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/head.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/html.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/image.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/iptc.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/link.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/mail.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/math.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/md5.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/metaphone.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/microtime.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/pack.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/pageinfo.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/quot_print.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/rand.o: relocation R_X86_64_32 against undefined symbol `basic_globals' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/soundex.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/string.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/scanf.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/syslog.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/type.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/uniqid.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/url.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/var.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/versioning.o: relocation R_X86_64_32 against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/assert.o: relocation R_X86_64_32 against undefined hidden symbol `assert_globals' can not be used when making a PIE object
+/usr/bin/ld: ext/standard/levenshtein.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/incomplete_class.o: relocation R_X86_64_32 against `.bss' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/url_scanner_ex.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/ftp_fopen_wrapper.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/http_fopen_wrapper.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/php_fopen_wrapper.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/credits.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/css.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/var_unserializer.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/ftok.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/sha1.o: relocation R_X86_64_32 against `.data' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/user_filters.o: relocation R_X86_64_32S against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/uuencode.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/filters.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/proc_open.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/streamsfuncs.o: relocation R_X86_64_32S against symbol `php_file_le_pstream' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/standard/http.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/tokenizer/tokenizer_data.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/xml/xml.o: relocation R_X86_64_32S against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/xml/compat.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/xmlreader/php_xmlreader.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: ext/xmlwriter/php_xmlwriter.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: TSRM/tsrm_virtual_cwd.o: relocation R_X86_64_32S against undefined hidden symbol `cwd_globals' can not be used when making a PIE object
+/usr/bin/ld: main/main.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/snprintf.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/spprintf.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/fopen_wrappers.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/php_ini.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/SAPI.o: relocation R_X86_64_32 against undefined symbol `sapi_globals' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/rfc1867.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/php_content_types.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/php_variables.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/php_ticks.o: relocation R_X86_64_32 against undefined symbol `core_globals' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/network.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/php_open_temporary_file.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/php_logos.o: relocation R_X86_64_32 against `.bss' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/output.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/getopt.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/streams/streams.o: relocation R_X86_64_32 against `.bss' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/streams/cast.o: relocation R_X86_64_32S against symbol `php_stream_stdio_ops' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/streams/memory.o: relocation R_X86_64_32 against symbol `zval_add_ref' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/streams/filter.o: relocation R_X86_64_32 against `.bss' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/streams/plain_wrapper.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/streams/userspace.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/streams/transports.o: relocation R_X86_64_32 against `.bss' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/streams/xp_socket.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/streams/glob_wrapper.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_ini_parser.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_ini_scanner.o: relocation R_X86_64_32 against undefined symbol `ini_scanner_globals' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_alloc.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_constants.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_execute_API.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_llist.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_opcode.o: relocation R_X86_64_32 against `.text' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_operators.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_ptr_stack.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_variables.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend.o: relocation R_X86_64_32S against undefined symbol `executor_globals' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_API.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_extensions.o: relocation R_X86_64_32 against `.text' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_hash.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_list.o: relocation R_X86_64_32 against `.bss' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_builtin_functions.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_ini.o: relocation R_X86_64_32 against `.text' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_multibyte.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_stream.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_iterators.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_interfaces.o: relocation R_X86_64_32S against symbol `zend_user_it_get_new_iterator' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_exceptions.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_strtod.o: relocation R_X86_64_32S against `.bss' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_gc.o: relocation R_X86_64_32S against undefined symbol `executor_globals' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_closures.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_float.o: relocation R_X86_64_32S against undefined symbol `executor_globals' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_string.o: relocation R_X86_64_32S against `.rodata' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_objects.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_object_handlers.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_objects_API.o: relocation R_X86_64_32 against `.rodata.str1.8' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: Zend/zend_execute.o: relocation R_X86_64_32 against undefined symbol `executor_globals' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: main/internal_functions_cli.o: relocation R_X86_64_32 against `.data' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: sapi/cli/php_cli.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a PIE object; recompile with -fPIC
+/usr/bin/ld: final link failed: Nonrepresentable section on output
+collect2: error: ld returned 1 exit status
+Makefile:234: recipe for target 'sapi/cli/php' failed
+make: *** [sapi/cli/php] Error 1
+Working with existing directory: /root/project/prophet-gpl/php-test/php-09b990f-workdir/src
+Failed to compile!

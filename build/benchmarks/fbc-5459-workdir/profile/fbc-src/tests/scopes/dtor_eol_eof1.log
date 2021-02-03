@@ -1,0 +1,5 @@
+scopes/dtor_eol_eof1.bas : TEST_MODE=COMPILE_AND_RUN_OK
+/home/fanl/Workspace/prophet/build/benchmarks/fbc-5459-workdir/profile/fbc-src/tests/../../fbc-root/bin/fbc  -lang fb -g -w 0  -m scopes/dtor_eol_eof1 -c scopes/dtor_eol_eof1.bas -o scopes/dtor_eol_eof1.o
+/home/fanl/Workspace/prophet/build/benchmarks/fbc-5459-workdir/profile/fbc-src/tests/../../fbc-root/bin/fbc  -g scopes/dtor_eol_eof1.o -x scopes/dtor_eol_eof1
+ 1              1
+scopes/dtor_eol_eof1.bas : RESULT=PASSED

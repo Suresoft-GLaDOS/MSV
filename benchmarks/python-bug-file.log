@@ -1,0 +1,11 @@
+69224 Modules/selectmodule.c
+69372-69368 Python/peephole.c
+69474-69470 Objects/bytesobject.c
+69710 Python/sysmodule.c
+69784 Modules/timemodule.c
+69833-69831 Python/pythonrun.c
+69935 Modules/signalmodule.c
+69946 Modules/mathmodule.c
+70023-70019 Modules/_json.c
+70059-70056 Modules/_io/bufferedio.c
+70101-70098 Modules/zlibmodule.c

@@ -1,0 +1,63 @@
+# Japanese message for GNU bison 2.4 (runtime)
+# Copyright (C) 2010 Free Software Foundation, Inc.
+# This file is distributed under the same license as the bison package.
+# Daisuke Yamashita <yamad@mb.infoweb.ne.jp>, 2001.
+# Yasuaki Taniguchi <yasuakit@gmail.com>, 2010
+msgid ""
+msgstr ""
+"Project-Id-Version: bison-runtime 2.4\n"
+"Report-Msgid-Bugs-To: bug-bison@gnu.org\n"
+"POT-Creation-Date: 2012-06-05 10:07+0200\n"
+"PO-Revision-Date: 2010-01-10 14:26+0900\n"
+"Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
+"Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/glr.c:929 data/yacc.c:731
+msgid "syntax error: cannot back up"
+msgstr "構文エラー: バックアップすることができません"
+
+#: data/glr.c:1803
+msgid "syntax is ambiguous"
+msgstr "構文が曖昧です"
+
+#: data/glr.c:2088 data/glr.c:2166 data/glr.c:2204 data/glr.c:2475
+#: data/lalr1.cc:949 data/lalr1.cc:969 data/yacc.c:1350 data/yacc.c:1874
+#: data/yacc.c:1880
+msgid "syntax error"
+msgstr "構文エラー"
+
+#: data/glr.c:2167 data/lalr1.cc:950 data/yacc.c:1351
+#, c-format
+msgid "syntax error, unexpected %s"
+msgstr "構文エラー、予期しない %s です"
+
+#: data/glr.c:2168 data/lalr1.cc:951 data/yacc.c:1352
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s"
+msgstr "構文エラー、予期しない %s です。予期されるのは %s です"
+
+#: data/glr.c:2169 data/lalr1.cc:952 data/yacc.c:1353
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s"
+msgstr "構文エラー、予期しない %s です。予期されるのは %s または %s です"
+
+#: data/glr.c:2170 data/lalr1.cc:953 data/yacc.c:1354
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s"
+msgstr "構文エラー、 予期しない %s です。予期されるのは %s、%s または %s です"
+
+#: data/glr.c:2171 data/lalr1.cc:954 data/yacc.c:1355
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
+msgstr ""
+"構文エラー、予期しない %s です。予期されるのは %s、%s、%s、または %s です。"
+
+#: data/glr.c:2535 data/yacc.c:1440 data/yacc.c:1442 data/yacc.c:1636
+#: data/yacc.c:2029
+msgid "memory exhausted"
+msgstr "メモリを使い果たしました"

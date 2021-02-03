@@ -1,0 +1,23 @@
+#!/bin/bash
+# example file for building with cmake
+# copy this file as "make" before modify
+# $ cp make.example make
+# $ ./make
+
+cd $(dirname $(readlink -f $0))
+buildtype=Release
+# comments out next line for Release build
+buildtype=Debug
+
+builddir=build-linux-$buildtype
+mkdir -p "$builddir"
+ln -sf "$builddir"/build ./
+cd "$builddir"
+cmake \
+				-D CMAKE_BUILD_TYPE:STRING=$buildtype \
+				-D WITH_LUA=ON \
+				-D WITH_OPENSSL=ON \
+				-D WITH_PCRE=ON \
+				-D WITH_ZLIB=ON \
+				.. \
+	&& /usr/bin/make "$@"

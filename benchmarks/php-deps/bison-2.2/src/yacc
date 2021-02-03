@@ -1,0 +1,2 @@
+#! /bin/sh
+exec /root/project/prophet-gpl/benchmarks/php-deps/bison-2.2-build/bin/bison -y "$@"

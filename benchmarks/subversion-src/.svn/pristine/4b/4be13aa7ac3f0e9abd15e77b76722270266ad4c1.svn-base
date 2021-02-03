@@ -1,0 +1,6 @@
+DEPRECATED
+
+The (deprecated) svncutter functionality is now part of "repocutter"
+in the reposurgeon distribution. Please see:
+
+    http://www.catb.org/esr/reposurgeon/

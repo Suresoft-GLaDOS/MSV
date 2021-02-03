@@ -1,0 +1,204 @@
+
+====
+NEWS
+====
+
+- 1.5.0 -
+  * fixed decoding of common headers in AJP13 (#1399)
+  * disable experimental linux-aio and posix-aio support, use gthread-aio instead
+  * fixed several crashes in log-request-handling with %s being NULL on solaris
+  * fixed network-backend-solaris-sendfilev (EINVAL in writev())
+  * fixed initgroups() called after chroot (#1384)
+  * execute fcgi app without /bin/sh if used as argument to spawn-fcgi (#1428)
+  * fix bug that rrdtool reports "0" for incoming data (#1514)
+  * ssl.cipher-list and ssl.use-sslv2 ported from 1.4.x (#1422)
+  * add IdleServers and Scoreboard directives in ?auto mode for mod_status (#1507)
+  * support letterhomes in mod_userdir (#1473)
+  * mod_auth ldap rework, most important change is being able to startup if ldap server is down (#1535)
+  * Add possibility to disable methods in mod_compress (#1773)
+  * fixed ECONNRESET handling in network-openssl
+  * fixed log_write() for log-files > 4kbyte
+  * fix sending source of cgi script instead of 500 error if fork fails
+  * fix min-procs handling in mod_scgi.c, just set to max-procs (patch from #623)
+  * mod_cgi: add a event-handler for STDERR_FILENO and log it with ERROR()
+  * fixed building/testing outside of the src dir
+  * fix many (64-bit) format warnings and unsigned/signed compare warnings
+  * fixed out of range access in fd array (#1562, #372, #1603) (CVE-2008-0983)
+  * fix auth-ldap configuration in tests
+  * fcgi-stat-accel: Fix unused var / indentation
+  * fix mod_compress bug (#1027)
+  * fix ssl error queue handling (#285) (CVE-2008-1531)
+  * fix dependencies of the parser files in the Makefile
+  * fix server.kbytes-per-second (#1102)
+  * let spawn-fcgi propagate exit code from spawned fcgi application
+  * fix in/out statistics for connections
+  * close connection after redirect in trigger_b4_dl
+  * remove scons build system
+  * fix memory leak on windows (#1371)
+  * do not add Accept-Ranges header if range-request is disabled (#1449)
+  * mod_compress: match mime-type additionaly against the part before ";" (i.e. without encoding)
+  * fix bug with IPv6 in mod_evasive (#1579)
+  * fix mod_magnet: enable "request.method" and "request.protocol" in lighty.env (#1308)
+  * mod_magnet: set con->mode if content was generated so lighty doesn't append error messages.
+  * fix #1574: check for symlinks after successful pathinfo matching
+  * fix #1396: req-method OPTIONS: do not insert default response if request was denied 
+  * fix server.max-keep-alive-requests handling
+  * reset physical.path after mod_magnet request restart
+  * fix mod-proxy-backend-http waiting for http body for 304 and 205 (#1178)
+  * fixed sock_addr reading in mod_cgi.c (#1672)
+  * fixed postgresql-vhost module to use all options (#1694)
+  * fixed #1565: mod_compress should check if the request is already handled, e.g. by fastcgi
+  * merged from @1874: add ETag configuration (#1442)
+  * case insensitive match for secdownload md5 token (#1710)
+  * handle only HEAD, GET and POST in mod_dirlisting (same as in staticfile) (#1687)
+  * fixed mod_webdav, litmus now passes everything except locks (#1738)
+  * fixed #1555: HTTP Request/Response only accept complete headers, i.e. ended with double CRLF
+  * fixed url encoding to encode more characters (#266)
+  * fixed dropping last character of evhost pattern (#161)
+  * Match headers case insensitive in response (removing of X-{Sendfile,LIGHTTPD-*}, catching Date/Server)
+  * fixed mem leak in ssi expression parser (#1753), thx Take5k
+  * decode url before matching in mod_rewrite (#1720)
+  * fixed bug with case-insensitive filenames in mod_userdir (#1589), spotted by "anders1"
+  * use decoded url for matching in mod_redirect (#1720)
+  * don't return HANDLER_ERROR from proxy-core content handling, produce 500 instead
+  * do not modify content-length in mod_chunked.c for HEAD requests (produced false Content-Length: 0 headers)
+  * fix sending content-length for static HEAD requests
+  * removed distribution specific stuff (was outdated anyway)
+  * use pipe-io instead of SIGUSR1 to wakeup main thread (fixes #1517)
+  * Fix ajp13 response header handling (fixes #1628)
+  * Enhance mod_uploadprogress to show uploaded size after upload is done (closes #1632) by icy
+  * Fix memory leak in stat-cache (closes #1693), patch by peto
+  * Fix shutdown leaks (fixes #1811), patch by peto
+  * Fix bogus send->bytes_in counter (problems with mod-deflate)
+  * Reformat log output (add timestamp to new log functions)
+  * Use void as return type for connection state machine - may fix some bugs
+  * Fix select() fdevent backend
+  * Fix DoS due to unhandled requests (results in hanging connections); return 403 instead of 200
+    without mod_deflate/compressed requests they will eventually time out
+  * Fix wrong format strings (fixes #1900, thx stepancheg)
+  * Port some mod_rrdtool fixes from 1.4.x (#604, #419 and more)
+  * New lighttpd man page (moved it to section 8) (fixes #1875)
+  * Fix leaving zombie process with include_shell (#1777)
+  * Finally removed spawn-fcgi
+  * Allow xattr to overwrite mime type (fixes #1929)
+  * Fix endless loop in ajp (fixes #1897)
+  * Fix segfault in mod_proxy_backend_http (fixes #1154)
+  * merge: Fix base64 decoding in mod_auth (#1757)
+  * merge: Compare address family in inet_ntop_cache
+  * Revert CVE-2008-4359 (#1720) fix "encoding+simplifying urls for rewrite/redirect": too many regressions.
+  * merge: Fix wrong malloc sizes in mod_accesslog (probably nothing bad happened...) (#1855, thx ycheng)
+  * merge: Some small buffer.c fixes (#1837)
+  * merge: Disable SSLv2 by default
+  * merge: Use/enforce sane max-connection values (#1803)
+  * merge: Fix max-connection limit handling/100% cpu usage (#1436)
+  * merge: Fix segfault if siginfo_t* is NULL in sigaction handler (#1926)
+  * merge: Create rrd file for empty rrdfile in mod_rrdtool (#1788)
+  * merge: Strip trailing dot from "Host:" header
+  * merge: Remove the optional port info from SERVER_NAME (thx Mr_Bond)
+  * merge: Rename configure.in to configure.ac, with small cleanups (#1932)
+  * merge: Add proper SUID bit detection (#416)
+  * merge: Check for regular file in mod_cgi, so we don't try to start directories
+  * merge: Include mmap.h from chunk.h to fix some problems with #define mmap mmap64 (#1923)
+  * merge: Fix segfault for appending matched parts if there was no regex matching (just give empty strings) (#1601)
+  * merge: fixed wrong result of buffer_caseless_compare("a", "ab") (#1287)
+  * Fix many warnings
+  * Fix SERVER_NAME port stripping (fixes #1968)
+  * Fix mod_cgi environment keys mangling (fixes #1969)
+  * Fix max-age value in mod_expire for 'modification' (fixes #1978)
+  * Allow using pcre with cross-compiling (pcre-config got fixed; fixes #1986)
+  * Fix segfault with openssl (DoS, fixes #2003)
+  * Improve chunkqueue cleanup (remove empty chunks after ssl failures)
+  * Add "lighty.req_env" table to mod_magnet for setting/getting environment values for cgi (fixes #1967, thx presbrey)
+  * Fix segfault in mod_expire after failed config parsing (fixes #1992)
+  * Add ssi.content-type option (default text/html, fixes #615)
+  * Fix distbuild (add mod-compress.conf to dist files)
+  * Add support for "real" entropy from /dev/[u]random (fixes #1977)
+  * Adding support for additional chars in LDAP usernames (fixes #1941)
+  * Ignore multiple "If-None-Match" headers (only use first one, fixes #753)
+  * Fix 100% cpu usage if time() < 0 (thx to gaspa and cate, fixes #1964)
+  * Free wakeup_iosocket (thx peto, fixes #1808)
+  * Free ssl cipher list (thx peto, fixes #1809)
+  * Add gthread-freebsd-sendfile (thx peto, fixes #1795)
+  * Send gthread dummy pointers to wake them up for faster exit (thx peto, fixes #1812)
+  * Fix race condition with joblist thread condition/mutex (thx peto, fixes #1823)
+  * Fix segfault if there is no mimetype for the error documents
+  * Use unsigned int for secdownload.timeout (fixes #1966)
+  * Add server.breakagelog, a "special" stderr (fixes #1863)
+  * Silenced the annoying "request timed out" warning, enable with the "debug.log-timeouts" option (fixes #2018)
+  * Hide some ssl errors per default, enable them with debug.log-ssl-noise (#397)
+  * Add "cgi.execute-x-only" to mod_cgi, requires +x for cgi scripts (fixes #2013)
+  * Fixed gthread-freebsd-sendfile (#1795)
+  * cmake: check for strtoll
+  * Fix FD_SETSIZE comparision warnings
+  * Add "lua-5.1" to searched pkg-config names for lua
+  * Set FD_CLOEXEC for bound sockets before pipe-logger forks (fixes #2026)
+  * Report non-fatal ssl errors as "connection close"
+  * Add '%_' pattern for complete hostname in mod_evhost (fixes #1737)
+  * Allow digits in hostnames in more places (fixes #1148)
+  * Allow all comparisons for $SERVER["socket"] - only bind for "=="
+  * Fix mod_deflate bzip2 compression level (thx peto, fixes #2035)
+  * Add proxy-core.disable-time (used for all disable-times), default value 1 sec (fixes #1038)
+  * Add proxy-core.max-backlog-size (set to 0 to disable backlog, thx e-razor)
+  * Enable linux-aio-sendfile for testing in cmake again, fix a small bug in it
+  * Set tm.tm_isdst = 0 before mktime() (fixes #2047)
+  * Allow chunkqueue_skip to skip all types of chunks
+  * Use linux-epoll by default if available (fixes #2021)
+  * Add TLS servername indication (SNI) support (fixes #386, thx Peter Colberg <peter@colberg.org>)
+  * Add SSL Client Certificate verification (#1288)
+  * mod_accesslog: escape special characters (fixes #1551, thx icy)
+  * Don't print ssl error if client didn't support TLS SNI
+  * Reopen out stream in X-Rewrite (fixes #1678)
+  * Remove joblist thread, don't use timed pops for async queues
+  * Fix mod_cgi hang on "crash-before-header-sent" bug
+  * Set content-length in mod_compress (fixes #2089, thx liming)
+  * Mark recv-queue closed if backend connection got closed in mod_proxy_core (fixes #2090, thx liming)
+  * mod_magnet: add traceback for printing lua errors
+  * export some SSL_CLIENT_* vars for client cert validation (fixes #1288, thx presbrey)
+  * reset tlsext_server_name in connection_reset - fixes random hostnames in the $HTTP["host"] conditional
+  * Accept ":" in the reason-phrase of a status-line
+  * mod_accesslog: support %e (fixes #2113, thx presbrey)
+  * Require at least glib 2.10.0 for g_atomic_int_set (fixes #2127)
+  * Fix select() backend under high load (off-by-one, noticed by Manuel Scharf in a forum thread)
+  * Append to previous buffer in con read (fixes #2147, found by liming, CVE-2010-0295)
+  * Fix handling return value of SSL_CTX_set_options (fixes #2157, thx mlcreech)
+  * Print double quotes properly when dumping config file (fixes #1806)
+  * Include IP addresses on error log on password failures (fixes #2191)
+  * Combine Cache-Control header value in mod_expire to existing HTTP header if header already added by other modules (fixes #2068)
+  * Fix conditional interpretation of core options
+  * proxy-backend-http: fix chunked encoding parser
+  * more strict check for server.stat-cache-engine
+  * Read hostname from absolute https:// uris in the request line (patch by Adrian Schröter <adrian@suse.de>)
+  * [ssl/md5] prefix our own md5 implementation with li_ so it doesn't conflict with the openssl one (fixes #2269)
+  * Enable linux-aio-sendfile for testing in autotools too
+  * [mod_auth] Fix signedness error in http_auth (fixes #2370, CVE-2011-4362)
+  * buffer_caseless_compare: always convert letters to lowercase to get transitive results, fixing array lookups (fixes #2405)
+  * fix :port handling in $HTTP["host"] checks (fixes #2135. thx liming)
+  * fix memleak in mod_auth (fixes #2457, thx brarcher)
+  * fix ipv6 disabling (fixes #2292, thx bert)
+
+- 1.5.0-r19.. -
+  * -F option added for spawn-fcgi
+  * replaced mod_fastcgi, mod_scgi, mod_proxy with mod_proxy_core + backends
+  * added query-string parsing for mod_uploadprogress
+  * added threaded stat()
+  * added threaded disk-read() support
+  * added dir-listing.set-footer in mod_dirlisting (#1277)
+  * added logging of the PID and UID of the sending process for SIGTERM and SIGINT
+  * added support for AJP13 to mod_proxy_core
+  * fixed the out-of-fd support
+  * fixed crash in mod_expire if 'modification' is used and stat() failed (#1063)
+  * fixed hardcoded font-sizes in mod_dirlisting (#1267)
+  * fixed different ETag length on 32/64 platforms (#1279)
+  * fixed conditional dir-listing.exclude (#930)
+  * fixed CONTENT_LENGTH = -1 in mod_cgi (#1276)
+  * fixed typecast of NULL on execl() (#1235)
+  * fixed extra Content-Length header on 1xx, 204 and 304 (#1002)
+  * fixed mysql server reconnects (#518)
+  * fixed prctl() usage (#1310, #1333)
+  * fixed FastCGI header overrun in mod_fastcgi (reported by mattias@secweb.se)
+  * fixed mem-leak in mod_auth (reported by Stefan Esser)
+  * fixed crash with md5-sess and cnonce not set in mod_auth (reported by Stefan Esser)
+  * fixed missing check for base64 encoded string in mod_auth and Basic auth
+    (reported by Stefan Esser)
+  * fixed possible crash in Auth-Digest header parser on trailing WS in
+    mod_auth (reported by Stefan Esser)
