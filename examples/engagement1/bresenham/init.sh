@@ -1,6 +1,5 @@
 rm profile_localization.res
-rm __fixed_bresenham.cpp
-rm __fixed_bresenham.cpp-1
+rm __fixed_bresenham.cpp*
 rm test.cache
 cd profile
 rm prog

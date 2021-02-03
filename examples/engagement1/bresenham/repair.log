@@ -5,71 +5,80 @@ Total 1864 different repair schemas!!!!
 Total 2422 different repair candidate templates for scoring!!!
 Total 625 different partial repair candidate templates!!
 Trying different candidates!
-BasicTester pointer: 0x564b2cea5bd0
-StringConstTester pointer: 0x564b2ce1a7a0
-CondTester pointer: 0x564b2cf6a050
+BasicTester pointer: 0x55a993789100
+StringConstTester pointer: 0x55a9938735e0
+CondTester pointer: 0x55a993739630
 Counter: 1
 Batcher Size:0
-[22] Preprocess the following candidate with StringConstTester:
+[5] Preprocess the following candidate with StringConstTester:
 Priority -4.41709
 At location bresenham.cpp:63
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 fscanf(f, (__abst_hole()), &x, &y);
+}
 
 
-[22] StringConstTester, a patch instance with id 0:
+[5] StringConstTester, a patch instance with id 0:
 Spawn 1 instances, now Total 1
 Counter: 2
 Batcher Size:1
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.01304
 At location bresenham.cpp:47
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg())
     var.first = x;
+}
 
 
-[22] CondTester, a patch instance with id 0:
+[5] CondTester, a patch instance with id 0:
 Spawn 1 instances, now Total 2
 Counter: 3
 Batcher Size:2
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.91202
 At location bresenham.cpp:33
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((y0 < y1) || __is_neg())
     ystep = 1;
 else
     ystep = -1;
+}
 
 
-[22] CondTester, a patch instance with id 1:
+[5] CondTester, a patch instance with id 1:
 Spawn 1 instances, now Total 3
 Counter: 4
 Batcher Size:3
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.91202
 At location bresenham.cpp:33
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((y0 < y1) && !__is_neg())
     ystep = 1;
 else
     ystep = -1;
+}
 
 
-[22] CondTester, a patch instance with id 2:
+[5] CondTester, a patch instance with id 2:
 Spawn 1 instances, now Total 4
 Counter: 5
 Batcher Size:4
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.91202
 At location bresenham.cpp:22
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((x0 > x1) && !__is_neg()) {
     a = x0;
     x0 = x1;
@@ -78,17 +87,19 @@ if ((x0 > x1) && !__is_neg()) {
     y0 = y1;
     y1 = a;
 }
+}
 
 
-[22] CondTester, a patch instance with id 3:
+[5] CondTester, a patch instance with id 3:
 Spawn 1 instances, now Total 5
 Counter: 6
 Batcher Size:5
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.91202
 At location bresenham.cpp:22
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((x0 > x1) || __is_neg()) {
     a = x0;
     x0 = x1;
@@ -97,30 +108,34 @@ if ((x0 > x1) || __is_neg()) {
     y0 = y1;
     y1 = a;
 }
+}
 
 
-[22] CondTester, a patch instance with id 4:
+[5] CondTester, a patch instance with id 4:
 Spawn 1 instances, now Total 6
 Counter: 7
 Batcher Size:6
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.97263
 At location bresenham.cpp:49
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 line.push_back(var);
 line.push_back(var);
+}
 
 
-[22] BasicTester, a patch instance with id 0:
+[5] BasicTester, a patch instance with id 0:
 Spawn 1 instances, now Total 7
 Counter: 8
 Batcher Size:7
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.91202
 At location bresenham.cpp:42
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((steep) && !__is_neg()) {
     var.first = y;
     var.second = x;
@@ -130,17 +145,19 @@ if ((steep) && !__is_neg()) {
     var.second = y;
     line.push_back(var);
 }
+}
 
 
-[22] CondTester, a patch instance with id 5:
+[5] CondTester, a patch instance with id 5:
 Spawn 1 instances, now Total 8
 Counter: 9
 Batcher Size:8
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.91202
 At location bresenham.cpp:42
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((steep) || __is_neg()) {
     var.first = y;
     var.second = x;
@@ -150,59 +167,67 @@ if ((steep) || __is_neg()) {
     var.second = y;
     line.push_back(var);
 }
+}
 
 
-[22] CondTester, a patch instance with id 6:
+[5] CondTester, a patch instance with id 6:
 Spawn 1 instances, now Total 9
 Counter: 10
 Batcher Size:9
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.71202
 At location bresenham.cpp:63
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (this->_M_offset++ == int(_S_word_bit) - 1) {
     this->_M_offset = 0;
     ++this->_M_p;
 }
 fscanf(f, "%d %d\n", &x, &y);
+}
 
 
-[22] BasicTester, a patch instance with id 1:
+[5] BasicTester, a patch instance with id 1:
 Spawn 1 instances, now Total 10
 Counter: 11
 Batcher Size:10
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.71202
 At location bresenham.cpp:63
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 this->_M_offset = 0;
 fscanf(f, "%d %d\n", &x, &y);
+}
 
 
-[22] BasicTester, a patch instance with id 2:
+[5] BasicTester, a patch instance with id 2:
 Spawn 1 instances, now Total 11
 Counter: 12
 Batcher Size:11
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.71202
 At location bresenham.cpp:63
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
 fscanf(f, "%d %d\n", &x, &y);
+}
 
 
-[22] BasicTester, a patch instance with id 3:
+[5] BasicTester, a patch instance with id 3:
 Spawn 1 instances, now Total 12
 Counter: 13
 Batcher Size:12
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.91202
 At location bresenham.cpp:17
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((steep) || __is_neg()) {
     a = x0;
     x0 = y0;
@@ -211,17 +236,19 @@ if ((steep) || __is_neg()) {
     x1 = y1;
     y1 = a;
 }
+}
 
 
-[22] CondTester, a patch instance with id 7:
+[5] CondTester, a patch instance with id 7:
 Spawn 1 instances, now Total 13
 Counter: 14
 Batcher Size:13
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.91202
 At location bresenham.cpp:17
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((steep) && !__is_neg()) {
     a = x0;
     x0 = y0;
@@ -230,124 +257,138 @@ if ((steep) && !__is_neg()) {
     x1 = y1;
     y1 = a;
 }
+}
 
 
-[22] CondTester, a patch instance with id 8:
+[5] CondTester, a patch instance with id 8:
 Spawn 1 instances, now Total 14
 Counter: 15
 Batcher Size:14
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.11405
 At location bresenham.cpp:34
 --Src File: bresenham.cpp
 Fragment 0:
-{
+if (count==true){
     if ((__abst_hole(ystep, y1, y0, deltax, deltay, x1, x0, steep, a)))
         return;
     ystep = 1;
 }
 
 
-[22] CondTester, a patch instance with id 9:
+[5] CondTester, a patch instance with id 9:
 Spawn 1 instances, now Total 15
 Counter: 16
 Batcher Size:15
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -4.31608
 At location bresenham.cpp:15
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 double steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
+}
 
 
-[22] BasicTester, a patch instance with id 4:
+[5] BasicTester, a patch instance with id 4:
 Spawn 1 instances, now Total 16
 Counter: 17
 Batcher Size:16
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.39689
 At location bresenham.cpp:64
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg())
     fclose(f);
+}
 
 
-[22] CondTester, a patch instance with id 10:
+[5] CondTester, a patch instance with id 10:
 Spawn 1 instances, now Total 17
 Counter: 18
 Batcher Size:17
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.11405
 At location bresenham.cpp:34
 --Src File: bresenham.cpp
 Fragment 0:
-{
+if (count==true){
     if (!__is_neg())
         ystep = 1;
 }
 
 
-[22] CondTester, a patch instance with id 11:
+[5] CondTester, a patch instance with id 11:
 Spawn 1 instances, now Total 18
 Counter: 19
 Batcher Size:18
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -4.21506
 At location bresenham.cpp:29
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 double deltay = abs((int)(y1 - y0));
+}
 
 
-[22] BasicTester, a patch instance with id 5:
+[5] BasicTester, a patch instance with id 5:
 Spawn 1 instances, now Total 19
 Counter: 20
 Batcher Size:19
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.99283
 At location bresenham.cpp:48
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg())
     var.second = y;
+}
 
 
-[22] CondTester, a patch instance with id 12:
+[5] CondTester, a patch instance with id 12:
 Spawn 1 instances, now Total 20
 Counter: 21
 Batcher Size:20
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.35648
 At location bresenham.cpp:66
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg())
     buggy(x, y, line);
+}
 
 
-[22] CondTester, a patch instance with id 13:
+[5] CondTester, a patch instance with id 13:
 Spawn 1 instances, now Total 21
 Counter: 22
 Batcher Size:21
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.41709
 At location bresenham.cpp:63
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg())
     fscanf(f, "%d %d\n", &x, &y);
+}
 
 
-[22] CondTester, a patch instance with id 14:
+[5] CondTester, a patch instance with id 14:
 Spawn 1 instances, now Total 22
 Counter: 23
 Batcher Size:22
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.99283
 At location bresenham.cpp:48
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (steep) {
     var.first = y;
     var.second = x;
@@ -358,158 +399,180 @@ if (steep) {
     line.push_back(var);
 }
 var.second = y;
+}
 
 
-[22] BasicTester, a patch instance with id 6:
+[5] BasicTester, a patch instance with id 6:
 Spawn 1 instances, now Total 23
 Counter: 24
 Batcher Size:23
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.91202
 At location bresenham.cpp:51
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((error >= 0.5) && !__is_neg()) {
     y += ystep;
     error = error - 1;
 }
+}
 
 
-[22] CondTester, a patch instance with id 15:
+[5] CondTester, a patch instance with id 15:
 Spawn 1 instances, now Total 24
 Counter: 25
 Batcher Size:24
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.91202
 At location bresenham.cpp:51
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((error >= 0.5) || __is_neg()) {
     y += ystep;
     error = error - 1;
 }
+}
 
 
-[22] CondTester, a patch instance with id 16:
+[5] CondTester, a patch instance with id 16:
 Spawn 1 instances, now Total 25
 Counter: 26
 Batcher Size:25
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -3.97263
 At location bresenham.cpp:49
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg())
     line.push_back(var);
+}
 
 
-[22] CondTester, a patch instance with id 17:
+[5] CondTester, a patch instance with id 17:
 Spawn 1 instances, now Total 26
 Counter: 27
 Batcher Size:26
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.13425
 At location bresenham.cpp:33
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg())
     if (y0 < y1)
         ystep = 1;
     else
         ystep = -1;
+}
 
 
-[22] CondTester, a patch instance with id 18:
+[5] CondTester, a patch instance with id 18:
 Spawn 1 instances, now Total 27
 Counter: 28
 Batcher Size:27
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.01304
 At location bresenham.cpp:47
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((__abst_hole(x, var.first, y, var.second, steep, ystep, x1, x0, y0, y1, deltax, deltay, a)))
     return;
 var.first = x;
+}
 
 
-[22] CondTester, a patch instance with id 19:
+[5] CondTester, a patch instance with id 19:
 Spawn 1 instances, now Total 28
 Counter: 29
 Batcher Size:28
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.01304
 At location bresenham.cpp:47
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((__abst_hole(x, var.first, y, var.second, steep, ystep, x1, x0, y0, y1, deltax, deltay, a)))
     break;
 var.first = x;
+}
 
 
-[22] CondTester, a patch instance with id 20:
+[5] CondTester, a patch instance with id 20:
 Spawn 1 instances, now Total 29
 Counter: 30
 Batcher Size:29
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -4.23527
 At location bresenham.cpp:28
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 double deltax = x1 - x0;
+}
 
 
-[22] BasicTester, a patch instance with id 7:
+[5] BasicTester, a patch instance with id 7:
 Spawn 1 instances, now Total 30
 Counter: 31
 Batcher Size:30
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.97263
 At location bresenham.cpp:49
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 this->_M_offset = 0;
 line.push_back(var);
+}
 
 
-[22] BasicTester, a patch instance with id 8:
+[5] BasicTester, a patch instance with id 8:
 Spawn 1 instances, now Total 31
 Counter: 32
 Batcher Size:31
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.97263
 At location bresenham.cpp:49
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (this->_M_offset++ == int(_S_word_bit) - 1) {
     this->_M_offset = 0;
     ++this->_M_p;
 }
 line.push_back(var);
+}
 
 
-[22] BasicTester, a patch instance with id 9:
+[5] BasicTester, a patch instance with id 9:
 Spawn 1 instances, now Total 32
 Counter: 33
 Batcher Size:32
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.97263
 At location bresenham.cpp:49
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
 line.push_back(var);
+}
 
 
-[22] BasicTester, a patch instance with id 10:
+[5] BasicTester, a patch instance with id 10:
 Spawn 1 instances, now Total 33
 Counter: 34
 Batcher Size:33
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.97263
 At location bresenham.cpp:49
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (steep) {
     var.first = y;
     var.second = x;
@@ -520,29 +583,33 @@ if (steep) {
     line.push_back(var);
 }
 line.push_back(var);
+}
 
 
-[22] BasicTester, a patch instance with id 11:
+[5] BasicTester, a patch instance with id 11:
 Spawn 1 instances, now Total 34
 Counter: 35
 Batcher Size:34
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -4.09385
 At location bresenham.cpp:38
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 double y = y0;
+}
 
 
-[22] BasicTester, a patch instance with id 12:
+[5] BasicTester, a patch instance with id 12:
 Spawn 1 instances, now Total 35
 Counter: 36
 Batcher Size:35
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.03324
 At location bresenham.cpp:42
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg() && (steep)) {
     var.first = y;
     var.second = x;
@@ -552,17 +619,19 @@ if (!__is_neg() && (steep)) {
     var.second = y;
     line.push_back(var);
 }
+}
 
 
-[22] CondTester, a patch instance with id 21:
+[5] CondTester, a patch instance with id 21:
 Spawn 1 instances, now Total 36
 Counter: 37
 Batcher Size:36
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.03324
 At location bresenham.cpp:42
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg())
     if (steep) {
         var.first = y;
@@ -573,17 +642,19 @@ if (!__is_neg())
         var.second = y;
         line.push_back(var);
     }
+}
 
 
-[22] CondTester, a patch instance with id 22:
+[5] CondTester, a patch instance with id 22:
 Spawn 1 instances, now Total 37
 Counter: 38
 Batcher Size:37
-[22] Preprocess the following candidate with CondTester:
+[5] Preprocess the following candidate with CondTester:
 Priority -4.05344
 At location bresenham.cpp:40
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if ((__abst_hole(x1, x0, y0, steep, y, ystep, y1, deltax, deltay, a)))
     return;
 for (int x = x0; x < x1; x++) {
@@ -602,63 +673,67 @@ for (int x = x0; x < x1; x++) {
         error = error - 1;
     }
 }
+}
 
 
-[22] CondTester, a patch instance with id 23:
+[5] CondTester, a patch instance with id 23:
 Spawn 1 instances, now Total 38
 Counter: 39
 Batcher Size:38
-[22] Preprocess the following candidate with BasicTester:
+[5] Preprocess the following candidate with BasicTester:
 Priority -4.43729
 At location bresenham.cpp:62
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 this->_M_offset = 0;
 int x, y;
+}
 
 
-[22] BasicTester, a patch instance with id 13:
+[5] BasicTester, a patch instance with id 13:
 Spawn 1 instances, now Total 39
-The number of explored templates: 1
-Single building for Tester 0x564b2cea5bd0 id 13 failed as well!
 Counter: 40
-Batcher Size:38
-[24] Preprocess the following candidate with BasicTester:
+Batcher Size:39
+[5] Preprocess the following candidate with BasicTester:
 Priority -4.43729
 At location bresenham.cpp:62
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (this->_M_offset++ == int(_S_word_bit) - 1) {
     this->_M_offset = 0;
     ++this->_M_p;
 }
 int x, y;
+}
 
 
-[24] BasicTester, a patch instance with id 14:
+[5] BasicTester, a patch instance with id 14:
 Spawn 1 instances, now Total 40
 Counter: 41
-Batcher Size:39
-[24] Preprocess the following candidate with BasicTester:
+Batcher Size:40
+[5] Preprocess the following candidate with BasicTester:
 Priority -4.43729
 At location bresenham.cpp:62
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
 int x, y;
+}
 
 
-[24] BasicTester, a patch instance with id 15:
+[5] BasicTester, a patch instance with id 15:
 Spawn 1 instances, now Total 41
-The number of explored templates: 2
-Single building for Tester 0x564b2cea5bd0 id 15 failed as well!
 Counter: 42
-Batcher Size:39
-[27] Preprocess the following candidate with CondTester:
+Batcher Size:41
+[5] Preprocess the following candidate with CondTester:
 Priority -4.27567
 At location bresenham.cpp:17
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg())
     if (steep) {
         a = x0;
@@ -668,43 +743,49 @@ if (!__is_neg())
         x1 = y1;
         y1 = a;
     }
+}
 
 
-[27] CondTester, a patch instance with id 24:
+[5] CondTester, a patch instance with id 24:
 Spawn 1 instances, now Total 42
 Counter: 43
-Batcher Size:40
-[27] Preprocess the following candidate with BasicTester:
+Batcher Size:42
+[5] Preprocess the following candidate with BasicTester:
 Priority -4.39689
 At location bresenham.cpp:64
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 fclose((f));
+}
 
 
-[27] BasicTester, a patch instance with id 16:
+[5] BasicTester, a patch instance with id 16:
 Spawn 1 instances, now Total 43
 Counter: 44
-Batcher Size:41
-[27] Preprocess the following candidate with CondTester:
+Batcher Size:43
+[5] Preprocess the following candidate with CondTester:
 Priority -3.91202
 At location bresenham.cpp:68
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg())
     for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
         printf("%d %d\n", line[i].first, line[i].second);
+}
 
 
-[27] CondTester, a patch instance with id 25:
+[5] CondTester, a patch instance with id 25:
 Spawn 1 instances, now Total 44
 Counter: 45
-Batcher Size:42
-[27] Preprocess the following candidate with BasicTester:
+Batcher Size:44
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.71202
 At location bresenham.cpp:17
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 this->_M_offset = 0;
 if (steep) {
     a = x0;
@@ -714,17 +795,19 @@ if (steep) {
     x1 = y1;
     y1 = a;
 }
+}
 
 
-[27] BasicTester, a patch instance with id 17:
+[5] BasicTester, a patch instance with id 17:
 Spawn 1 instances, now Total 45
 Counter: 46
-Batcher Size:43
-[27] Preprocess the following candidate with BasicTester:
+Batcher Size:45
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.71202
 At location bresenham.cpp:17
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (this->_M_offset++ == int(_S_word_bit) - 1) {
     this->_M_offset = 0;
     ++this->_M_p;
@@ -737,17 +820,19 @@ if (steep) {
     x1 = y1;
     y1 = a;
 }
+}
 
 
-[27] BasicTester, a patch instance with id 18:
+[5] BasicTester, a patch instance with id 18:
 Spawn 1 instances, now Total 46
 Counter: 47
-Batcher Size:44
-[27] Preprocess the following candidate with BasicTester:
+Batcher Size:46
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.71202
 At location bresenham.cpp:17
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
 if (steep) {
     a = x0;
@@ -757,17 +842,19 @@ if (steep) {
     x1 = y1;
     y1 = a;
 }
+}
 
 
-[27] BasicTester, a patch instance with id 19:
+[5] BasicTester, a patch instance with id 19:
 Spawn 1 instances, now Total 47
 Counter: 48
-Batcher Size:45
-[27] Preprocess the following candidate with CondTester:
+Batcher Size:47
+[5] Preprocess the following candidate with CondTester:
 Priority -4.05344
 At location bresenham.cpp:40
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 if (!__is_neg())
     for (int x = x0; x < x1; x++) {
         if (steep) {
@@ -785,2591 +872,98 @@ if (!__is_neg())
             error = error - 1;
         }
     }
+}
 
 
-[27] CondTester, a patch instance with id 26:
+[5] CondTester, a patch instance with id 26:
 Spawn 1 instances, now Total 48
 Counter: 49
-Batcher Size:46
-[27] Preprocess the following candidate with BasicTester:
+Batcher Size:48
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.71202
 At location bresenham.cpp:63
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 ++this->current;
 fscanf(f, "%d %d\n", &x, &y);
+}
 
 
-[27] BasicTester, a patch instance with id 20:
+[5] BasicTester, a patch instance with id 20:
 Spawn 1 instances, now Total 49
 Counter: 50
-Batcher Size:47
-[27] Preprocess the following candidate with BasicTester:
+Batcher Size:49
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.71202
 At location bresenham.cpp:63
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 --this->_M_p;
 fscanf(f, "%d %d\n", &x, &y);
+}
 
 
-[27] BasicTester, a patch instance with id 21:
+[5] BasicTester, a patch instance with id 21:
 Spawn 1 instances, now Total 50
 Counter: 51
-Batcher Size:48
-[27] Preprocess the following candidate with BasicTester:
+Batcher Size:50
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.71202
 At location bresenham.cpp:63
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 --this->current;
 fscanf(f, "%d %d\n", &x, &y);
+}
 
 
-[27] BasicTester, a patch instance with id 22:
+[5] BasicTester, a patch instance with id 22:
 Spawn 1 instances, now Total 51
 Counter: 52
-Batcher Size:49
-[27] Preprocess the following candidate with BasicTester:
+Batcher Size:51
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.71202
 At location bresenham.cpp:63
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 ++this->iter;
 fscanf(f, "%d %d\n", &x, &y);
+}
 
 
-[27] BasicTester, a patch instance with id 23:
+[5] BasicTester, a patch instance with id 23:
 Spawn 1 instances, now Total 52
 Counter: 53
-Batcher Size:50
-[27] Preprocess the following candidate with BasicTester:
+Batcher Size:52
+[5] Preprocess the following candidate with BasicTester:
 Priority -3.71202
 At location bresenham.cpp:63
 --Src File: bresenham.cpp
 Fragment 0:
+if (count==true){
 --this->_M_current;
 fscanf(f, "%d %d\n", &x, &y);
+}
 
 
-[27] BasicTester, a patch instance with id 24:
+[5] BasicTester, a patch instance with id 24:
 Spawn 1 instances, now Total 53
 a batched test job starts!
+The number of explored templates: 1
+The number of explored templates: 2
 The number of explored templates: 3
 The number of explored templates: 4
-The number of explored templates: 5
-The number of explored templates: 6
+The number of explored templates: 10
+The number of explored templates: 11
 The number of explored templates: 12
 The number of explored templates: 13
 The number of explored templates: 14
 The number of explored templates: 15
-The number of explored templates: 16
-The number of explored templates: 17
 Merged code building failed! Going to build saperately!
-[31] StringConstTester, Testing instance id 0:
-Single building for Tester 0x564b2cea5bd0 id 1 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 2 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 3 failed as well!
-Single building for Tester 0x564b2cf6a050 id 14 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 20 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 21 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 22 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 23 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 24 failed as well!
-Counter: 54
-Batcher Size:41
-[49] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-++this->_M_current;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[49] BasicTester, a patch instance with id 25:
-Spawn 1 instances, now Total 54
-Counter: 55
-Batcher Size:42
-[49] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-++this->_M_p;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[49] BasicTester, a patch instance with id 26:
-Spawn 1 instances, now Total 55
-Counter: 56
-Batcher Size:43
-[49] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-throw;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[49] BasicTester, a patch instance with id 27:
-Spawn 1 instances, now Total 56
-Counter: 57
-Batcher Size:44
-[49] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
---this->_M_impl._M_finish;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[49] BasicTester, a patch instance with id 28:
-Spawn 1 instances, now Total 57
-Counter: 58
-Batcher Size:45
-[49] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-++this->_M_impl._M_finish;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[49] BasicTester, a patch instance with id 29:
-Spawn 1 instances, now Total 58
-Counter: 59
-Batcher Size:46
-[49] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_deallocate(this->_M_impl._M_start, this->_M_impl._M_end_of_storage - this->_M_impl._M_start);
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[49] BasicTester, a patch instance with id 30:
-Spawn 1 instances, now Total 59
-Counter: 60
-Batcher Size:47
-[49] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->clear();
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[49] BasicTester, a patch instance with id 31:
-Spawn 1 instances, now Total 60
-Counter: 61
-Batcher Size:48
-[49] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-_M_deallocate(this->_M_impl._M_start, this->_M_impl._M_end_of_storage - this->_M_impl._M_start);
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[49] BasicTester, a patch instance with id 32:
-Spawn 1 instances, now Total 61
-Counter: 62
-Batcher Size:49
-[49] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish, _M_get_Tp_allocator());
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[49] BasicTester, a patch instance with id 33:
-Spawn 1 instances, now Total 62
-Counter: 63
-Batcher Size:50
-[49] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_deallocate();
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[49] BasicTester, a patch instance with id 34:
-Spawn 1 instances, now Total 63
-a batched test job starts!
-The number of explored templates: 18
-The number of explored templates: 19
-The number of explored templates: 20
-The number of explored templates: 21
-The number of explored templates: 22
-The number of explored templates: 23
-The number of explored templates: 24
-The number of explored templates: 25
-The number of explored templates: 26
-The number of explored templates: 27
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 25 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 26 failed as well!
-[58] BasicTester, Testing instance id 27:
-Single building for Tester 0x564b2cea5bd0 id 28 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 29 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 30 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 31 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 32 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 33 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 34 failed as well!
-Counter: 64
-Batcher Size:41
-[72] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-_Alloc_traits::destroy(this->_M_impl, this->_M_impl._M_finish);
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[72] BasicTester, a patch instance with id 35:
-Spawn 1 instances, now Total 64
-Counter: 65
-Batcher Size:42
-[72] Preprocess the following candidate with CondTester:
-Priority -3.99283
-At location bresenham.cpp:48
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(y, var.second, x, var.first, ystep, steep, x1, x0, y0, y1, deltax, deltay, a)))
-    return;
-var.second = y;
-
-
-[72] CondTester, a patch instance with id 27:
-Spawn 1 instances, now Total 65
-Counter: 66
-Batcher Size:43
-[72] Preprocess the following candidate with CondTester:
-Priority -3.99283
-At location bresenham.cpp:48
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(y, var.second, x, var.first, ystep, steep, x1, x0, y0, y1, deltax, deltay, a)))
-    break;
-var.second = y;
-
-
-[72] CondTester, a patch instance with id 28:
-Spawn 1 instances, now Total 66
-Counter: 67
-Batcher Size:44
-[72] Preprocess the following candidate with BasicTester:
-Priority -4.4575
-At location bresenham.cpp:61
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-FILE *f = fopen(argv[1], "r");
-
-
-[72] BasicTester, a patch instance with id 36:
-Spawn 1 instances, now Total 67
-Counter: 68
-Batcher Size:45
-[72] Preprocess the following candidate with BasicTester:
-Priority -4.4575
-At location bresenham.cpp:61
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-FILE *f = fopen(argv[1], "r");
-
-
-[72] BasicTester, a patch instance with id 37:
-Spawn 1 instances, now Total 68
-Counter: 69
-Batcher Size:46
-[72] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::_Bit_iterator();
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[72] BasicTester, a patch instance with id 38:
-Spawn 1 instances, now Total 69
-Counter: 70
-Batcher Size:47
-[72] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_end_of_storage = std::_Bvector_base::_Bit_pointer();
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[72] BasicTester, a patch instance with id 39:
-Spawn 1 instances, now Total 70
-Counter: 71
-Batcher Size:48
-[72] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::_Bit_iterator();
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[72] BasicTester, a patch instance with id 40:
-Spawn 1 instances, now Total 71
-Counter: 72
-Batcher Size:49
-[72] Preprocess the following candidate with BasicTester:
-Priority -4.4575
-At location bresenham.cpp:61
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-FILE *f = fopen(argv[1], "r");
-
-
-[72] BasicTester, a patch instance with id 41:
-Spawn 1 instances, now Total 72
-Counter: 73
-Batcher Size:50
-[72] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = nullptr;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[72] BasicTester, a patch instance with id 42:
-Spawn 1 instances, now Total 73
-Counter: 74
-Batcher Size:51
-[72] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = this->_M_impl._M_start;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[72] BasicTester, a patch instance with id 43:
-Spawn 1 instances, now Total 74
-Counter: 75
-Batcher Size:52
-[72] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_end_of_storage = __q + _S_nword(__n);
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[72] BasicTester, a patch instance with id 44:
-Spawn 1 instances, now Total 75
-Counter: 76
-Batcher Size:53
-[72] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_end_of_storage = this->_M_impl._M_finish;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[72] BasicTester, a patch instance with id 45:
-Spawn 1 instances, now Total 76
-Counter: 77
-Batcher Size:54
-[72] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = nullptr;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[72] BasicTester, a patch instance with id 46:
-Spawn 1 instances, now Total 77
-Counter: 78
-Batcher Size:55
-[72] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = __tmp + __old_size;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[72] BasicTester, a patch instance with id 47:
-Spawn 1 instances, now Total 78
-a batched test job starts!
-The number of explored templates: 28
-The number of explored templates: 29
-The number of explored templates: 30
-The number of explored templates: 31
-The number of explored templates: 32
-The number of explored templates: 33
-The number of explored templates: 34
-The number of explored templates: 35
-The number of explored templates: 36
-The number of explored templates: 37
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 35 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 38 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 39 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 40 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 42 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 43 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 44 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 45 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 46 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 47 failed as well!
-Counter: 79
-Batcher Size:46
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_end_of_storage = nullptr;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[94] BasicTester, a patch instance with id 48:
-Spawn 1 instances, now Total 79
-Counter: 80
-Batcher Size:47
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_end_of_storage = std::vector<bool, type-parameter-0-0>::_Bit_pointer();
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[94] BasicTester, a patch instance with id 49:
-Spawn 1 instances, now Total 80
-Counter: 81
-Batcher Size:48
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::__uninitialized_copy_a(__first, __last, this->_M_impl._M_start, _M_get_Tp_allocator());
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[94] BasicTester, a patch instance with id 50:
-Spawn 1 instances, now Total 81
-Counter: 82
-Batcher Size:49
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::__uninitialized_fill_n_a(this->_M_impl._M_start, __n, __value, _M_get_Tp_allocator());
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[94] BasicTester, a patch instance with id 51:
-Spawn 1 instances, now Total 82
-Counter: 83
-Batcher Size:50
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::__uninitialized_move_a(__rv.begin(), __rv.end(), this->_M_impl._M_start, _M_get_Tp_allocator());
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[94] BasicTester, a patch instance with id 52:
-Spawn 1 instances, now Total 83
-Counter: 84
-Batcher Size:51
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::__uninitialized_copy_a(__mid, __last, this->_M_impl._M_finish, _M_get_Tp_allocator());
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[94] BasicTester, a patch instance with id 53:
-Spawn 1 instances, now Total 84
-Counter: 85
-Batcher Size:52
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::__uninitialized_copy_a(__x.begin(), __x.end(), this->_M_impl._M_start, _M_get_Tp_allocator());
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[94] BasicTester, a patch instance with id 54:
-Spawn 1 instances, now Total 85
-Counter: 86
-Batcher Size:53
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.99283
-At location bresenham.cpp:48
---Src File: bresenham.cpp
-Fragment 0:
-line.push_back(var);
-var.second = y;
-
-
-[94] BasicTester, a patch instance with id 55:
-Spawn 1 instances, now Total 86
-Counter: 87
-Batcher Size:54
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.91202
-At location bresenham.cpp:68
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
-    printf("%d %d\n", line[i].first, line[i].second);
-
-
-[94] BasicTester, a patch instance with id 56:
-Spawn 1 instances, now Total 87
-Counter: 88
-Batcher Size:55
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.91202
-At location bresenham.cpp:68
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
-    printf("%d %d\n", line[i].first, line[i].second);
-
-
-[94] BasicTester, a patch instance with id 57:
-Spawn 1 instances, now Total 88
-Counter: 89
-Batcher Size:56
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.91202
-At location bresenham.cpp:68
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
-    printf("%d %d\n", line[i].first, line[i].second);
-
-
-[94] BasicTester, a patch instance with id 58:
-Spawn 1 instances, now Total 89
-Counter: 90
-Batcher Size:57
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.91202
-At location bresenham.cpp:68
---Src File: bresenham.cpp
-Fragment 0:
-buggy(x, y, line);
-for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
-    printf("%d %d\n", line[i].first, line[i].second);
-
-
-[94] BasicTester, a patch instance with id 59:
-Spawn 1 instances, now Total 90
-Counter: 91
-Batcher Size:58
-[94] Preprocess the following candidate with CondTester:
-Priority -4.25547
-At location bresenham.cpp:22
---Src File: bresenham.cpp
-Fragment 0:
-if (!__is_neg())
-    if (x0 > x1) {
-        a = x0;
-        x0 = x1;
-        x1 = a;
-        a = y0;
-        y0 = y1;
-        y1 = a;
-    }
-
-
-[94] CondTester, a patch instance with id 29:
-Spawn 1 instances, now Total 91
-Counter: 92
-Batcher Size:59
-[94] Preprocess the following candidate with CondTester:
-Priority -4.07364
-At location bresenham.cpp:39
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(x1, x0, y0, steep, ystep, y, y1, deltax, deltay, a)))
-    return;
-std::pair<int, int> var;
-
-
-[94] CondTester, a patch instance with id 30:
-Spawn 1 instances, now Total 92
-Counter: 93
-Batcher Size:60
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-_Alloc_traits::destroy(this->_M_this->_M_impl, this->_M_ptr());
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[94] BasicTester, a patch instance with id 60:
-Spawn 1 instances, now Total 93
-Counter: 94
-Batcher Size:61
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_reallocate(this->size());
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[94] BasicTester, a patch instance with id 61:
-Spawn 1 instances, now Total 94
-Counter: 95
-Batcher Size:62
-[94] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_shrink_to_fit();
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[94] BasicTester, a patch instance with id 62:
-Spawn 1 instances, now Total 95
-a batched test job starts!
-The number of explored templates: 38
-The number of explored templates: 39
-The number of explored templates: 40
-The number of explored templates: 41
-The number of explored templates: 42
-The number of explored templates: 43
-The number of explored templates: 44
-The number of explored templates: 45
-The number of explored templates: 46
-The number of explored templates: 47
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 48 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 49 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 50 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 51 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 52 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 53 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 54 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 60 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 61 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 62 failed as well!
-Counter: 96
-Batcher Size:53
-[115] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_erase_at_end(begin());
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[115] BasicTester, a patch instance with id 63:
-Spawn 1 instances, now Total 96
-Counter: 97
-Batcher Size:54
-[115] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_erase_at_end(this->_M_impl._M_start);
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[115] BasicTester, a patch instance with id 64:
-Spawn 1 instances, now Total 97
-Counter: 98
-Batcher Size:55
-[115] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_bump_down();
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[115] BasicTester, a patch instance with id 65:
-Spawn 1 instances, now Total 98
-Counter: 99
-Batcher Size:56
-[115] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_bump_up();
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[115] BasicTester, a patch instance with id 66:
-Spawn 1 instances, now Total 99
-Counter: 100
-Batcher Size:57
-[115] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-if (this->capacity() - this->size() < int(_S_word_bit))
-    return false;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[115] BasicTester, a patch instance with id 67:
-Spawn 1 instances, now Total 100
-Counter: 101
-Batcher Size:58
-[115] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-if (this->capacity() == this->size())
-    return false;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[115] BasicTester, a patch instance with id 68:
-Spawn 1 instances, now Total 101
-Counter: 102
-Batcher Size:59
-[115] Preprocess the following candidate with CondTester:
-Priority -4.09385
-At location bresenham.cpp:38
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(y0, x1, x0, ystep, steep, y1, deltax, deltay, a)))
-    return;
-int y = y0;
-
-
-[115] CondTester, a patch instance with id 31:
-Spawn 1 instances, now Total 102
-The number of explored templates: 57
-[118] CondTester, Testing instance id 31:
-Counter: 103
-Batcher Size:59
-[118] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = this->_M_copy_aligned(__x.begin(), __x.end(), begin());
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[118] BasicTester, a patch instance with id 69:
-Spawn 1 instances, now Total 103
-Counter: 104
-Batcher Size:60
-[118] Preprocess the following candidate with BasicTester:
-Priority -3.71202
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::__uninitialized_fill_n_a(this->_M_impl._M_finish, __n - this->size(), __val, _M_get_Tp_allocator());
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[118] BasicTester, a patch instance with id 70:
-Spawn 1 instances, now Total 104
-Counter: 105
-Batcher Size:61
-[118] Preprocess the following candidate with CondTester:
-Priority -4.41709
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(f, x, y, argv, argc)))
-    return 0;
-fscanf(f, "%d %d\n", &x, &y);
-
-
-[118] CondTester, a patch instance with id 32:
-Spawn 1 instances, now Total 105
-Counter: 106
-Batcher Size:62
-[118] Preprocess the following candidate with BasicTester:
-Priority -4.35648
-At location bresenham.cpp:66
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-buggy(x, y, line);
-
-
-[118] BasicTester, a patch instance with id 71:
-Spawn 1 instances, now Total 106
-Counter: 107
-Batcher Size:63
-[118] Preprocess the following candidate with BasicTester:
-Priority -4.35648
-At location bresenham.cpp:66
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-buggy(x, y, line);
-
-
-[118] BasicTester, a patch instance with id 72:
-Spawn 1 instances, now Total 107
-Counter: 108
-Batcher Size:64
-[118] Preprocess the following candidate with BasicTester:
-Priority -4.15446
-At location bresenham.cpp:32
---Src File: bresenham.cpp
-Fragment 0:
-double ystep;
-
-
-[118] BasicTester, a patch instance with id 73:
-Spawn 1 instances, now Total 108
-Counter: 109
-Batcher Size:65
-[118] Preprocess the following candidate with BasicTester:
-Priority -4.35648
-At location bresenham.cpp:66
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-buggy(x, y, line);
-
-
-[118] BasicTester, a patch instance with id 74:
-Spawn 1 instances, now Total 109
-Counter: 110
-Batcher Size:66
-[118] Preprocess the following candidate with BasicTester:
-Priority -4.15446
-At location bresenham.cpp:32
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-int ystep;
-
-
-[118] BasicTester, a patch instance with id 75:
-Spawn 1 instances, now Total 110
-The number of explored templates: 58
-Single building for Tester 0x564b2cea5bd0 id 75 failed as well!
-Counter: 111
-Batcher Size:66
-[120] Preprocess the following candidate with BasicTester:
-Priority -4.15446
-At location bresenham.cpp:32
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-int ystep;
-
-
-[120] BasicTester, a patch instance with id 76:
-Spawn 1 instances, now Total 111
-Counter: 112
-Batcher Size:67
-[120] Preprocess the following candidate with BasicTester:
-Priority -4.37669
-At location bresenham.cpp:65
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-DiscreteLine line;
-
-
-[120] BasicTester, a patch instance with id 77:
-Spawn 1 instances, now Total 112
-Counter: 113
-Batcher Size:68
-[120] Preprocess the following candidate with BasicTester:
-Priority -4.37669
-At location bresenham.cpp:65
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-DiscreteLine line;
-
-
-[120] BasicTester, a patch instance with id 78:
-Spawn 1 instances, now Total 113
-Counter: 114
-Batcher Size:69
-[120] Preprocess the following candidate with BasicTester:
-Priority -4.15446
-At location bresenham.cpp:32
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-int ystep;
-
-
-[120] BasicTester, a patch instance with id 79:
-Spawn 1 instances, now Total 114
-The number of explored templates: 59
-Single building for Tester 0x564b2cea5bd0 id 79 failed as well!
-Counter: 115
-Batcher Size:69
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.37669
-At location bresenham.cpp:65
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-DiscreteLine line;
-
-
-[122] BasicTester, a patch instance with id 80:
-Spawn 1 instances, now Total 115
-Counter: 116
-Batcher Size:70
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.17466
-At location bresenham.cpp:31
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-float deltaerr = deltay / deltax;
-
-
-[122] BasicTester, a patch instance with id 81:
-Spawn 1 instances, now Total 116
-Counter: 117
-Batcher Size:71
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.17466
-At location bresenham.cpp:31
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-float deltaerr = deltay / deltax;
-
-
-[122] BasicTester, a patch instance with id 82:
-Spawn 1 instances, now Total 117
-Counter: 118
-Batcher Size:72
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.39689
-At location bresenham.cpp:64
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-fclose(f);
-
-
-[122] BasicTester, a patch instance with id 83:
-Spawn 1 instances, now Total 118
-Counter: 119
-Batcher Size:73
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.39689
-At location bresenham.cpp:64
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-fclose(f);
-
-
-[122] BasicTester, a patch instance with id 84:
-Spawn 1 instances, now Total 119
-Counter: 120
-Batcher Size:74
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.17466
-At location bresenham.cpp:31
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-float deltaerr = deltay / deltax;
-
-
-[122] BasicTester, a patch instance with id 85:
-Spawn 1 instances, now Total 120
-Counter: 121
-Batcher Size:75
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.39689
-At location bresenham.cpp:64
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-fclose(f);
-
-
-[122] BasicTester, a patch instance with id 86:
-Spawn 1 instances, now Total 121
-Counter: 122
-Batcher Size:76
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.35648
-At location bresenham.cpp:66
---Src File: bresenham.cpp
-Fragment 0:
-buggy(x, y, line);
-buggy(x, y, line);
-
-
-[122] BasicTester, a patch instance with id 87:
-Spawn 1 instances, now Total 122
-Counter: 123
-Batcher Size:77
-[122] Preprocess the following candidate with CondTester:
-Priority -3.91202
-At location bresenham.cpp:68
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(x, y, f, argv, argc)))
-    return 0;
-for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
-    printf("%d %d\n", line[i].first, line[i].second);
-
-
-[122] CondTester, a patch instance with id 33:
-Spawn 1 instances, now Total 123
-Counter: 124
-Batcher Size:78
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.03324
-At location bresenham.cpp:42
---Src File: bresenham.cpp
-Fragment 0:
-if (steep) {
-    var.first = y;
-    var.second = x;
-    line.push_back(var);
-} else {
-    var.first = x;
-    var.second = y;
-    line.push_back(var);
-}
-if (steep) {
-    var.first = y;
-    var.second = x;
-    line.push_back(var);
-} else {
-    var.first = x;
-    var.second = y;
-    line.push_back(var);
-}
-
-
-[122] BasicTester, a patch instance with id 88:
-Spawn 1 instances, now Total 124
-Counter: 125
-Batcher Size:79
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.05344
-At location bresenham.cpp:40
---Src File: bresenham.cpp
-Fragment 0:
-line.push_back(var);
-for (int x = x0; x < x1; x++) {
-    if (steep) {
-        var.first = y;
-        var.second = x;
-        line.push_back(var);
-    } else {
-        var.first = x;
-        var.second = y;
-        line.push_back(var);
-    }
-    error = error + deltaerr;
-    if (error >= 0.5) {
-        y += ystep;
-        error = error - 1;
-    }
-}
-
-
-[122] BasicTester, a patch instance with id 89:
-Spawn 1 instances, now Total 125
-Counter: 126
-Batcher Size:80
-[122] Preprocess the following candidate with CondTester:
-Priority -4.39689
-At location bresenham.cpp:64
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(f, x, y, argv, argc)))
-    return 0;
-fclose(f);
-
-
-[122] CondTester, a patch instance with id 34:
-Spawn 1 instances, now Total 126
-Counter: 127
-Batcher Size:81
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.29587
-At location bresenham.cpp:16
---Src File: bresenham.cpp
-Fragment 0:
-double a;
-
-
-[122] BasicTester, a patch instance with id 90:
-Spawn 1 instances, now Total 127
-Counter: 128
-Batcher Size:82
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.29587
-At location bresenham.cpp:16
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-short a;
-
-
-[122] BasicTester, a patch instance with id 91:
-Spawn 1 instances, now Total 128
-Counter: 129
-Batcher Size:83
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.29587
-At location bresenham.cpp:16
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-short a;
-
-
-[122] BasicTester, a patch instance with id 92:
-Spawn 1 instances, now Total 129
-Counter: 130
-Batcher Size:84
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.29587
-At location bresenham.cpp:16
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-short a;
-
-
-[122] BasicTester, a patch instance with id 93:
-Spawn 1 instances, now Total 130
-Counter: 131
-Batcher Size:85
-[122] Preprocess the following candidate with CondTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(y, var.second, x, var.first, ystep, steep, x1, x0, y0, y1, deltax, deltay, a)))
-    return;
-line.push_back(var);
-
-
-[122] CondTester, a patch instance with id 35:
-Spawn 1 instances, now Total 131
-Counter: 132
-Batcher Size:86
-[122] Preprocess the following candidate with CondTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(y, var.second, x, var.first, ystep, steep, x1, x0, y0, y1, deltax, deltay, a)))
-    break;
-line.push_back(var);
-
-
-[122] CondTester, a patch instance with id 36:
-Spawn 1 instances, now Total 132
-Counter: 133
-Batcher Size:87
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.31608
-At location bresenham.cpp:15
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-bool steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
-
-
-[122] BasicTester, a patch instance with id 94:
-Spawn 1 instances, now Total 133
-Counter: 134
-Batcher Size:88
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.31608
-At location bresenham.cpp:15
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-bool steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
-
-
-[122] BasicTester, a patch instance with id 95:
-Spawn 1 instances, now Total 134
-Counter: 135
-Batcher Size:89
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.31608
-At location bresenham.cpp:15
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-bool steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
-
-
-[122] BasicTester, a patch instance with id 96:
-Spawn 1 instances, now Total 135
-Counter: 136
-Batcher Size:90
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.33628
-At location bresenham.cpp:13
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-short x0 = 0, y0 = 0;
-
-
-[122] BasicTester, a patch instance with id 97:
-Spawn 1 instances, now Total 136
-Counter: 137
-Batcher Size:91
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.33628
-At location bresenham.cpp:13
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-short x0 = 0, y0 = 0;
-
-
-[122] BasicTester, a patch instance with id 98:
-Spawn 1 instances, now Total 137
-Counter: 138
-Batcher Size:92
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.33628
-At location bresenham.cpp:13
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-short x0 = 0, y0 = 0;
-
-
-[122] BasicTester, a patch instance with id 99:
-Spawn 1 instances, now Total 138
-Counter: 139
-Batcher Size:93
-[122] Preprocess the following candidate with BasicTester:
-Priority -4.41709
-At location bresenham.cpp:63
---Src File: bresenham.cpp
-Fragment 0:
-fscanf((f), "%d %d\n", &x, &y);
-
-
-[122] BasicTester, a patch instance with id 100:
-Spawn 1 instances, now Total 139
-a batched test job starts!
-The number of explored templates: 60
-The number of explored templates: 61
-The number of explored templates: 62
-The number of explored templates: 63
-The number of explored templates: 64
-The number of explored templates: 65
-The number of explored templates: 66
-The number of explored templates: 67
-The number of explored templates: 73
-The number of explored templates: 74
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 63 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 64 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 65 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 66 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 67 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 68 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 69 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 70 failed as well!
-[142] CondTester, Testing instance id 32:
-[145] BasicTester, Testing instance id 100:
-Counter: 140
-Batcher Size:84
-[145] Preprocess the following candidate with CondTester:
-Priority -3.95243
-At location bresenham.cpp:50
---Src File: bresenham.cpp
-Fragment 0:
-if (!__is_neg())
-    error = error + deltaerr;
-
-
-[145] CondTester, a patch instance with id 37:
-Spawn 1 instances, now Total 140
-Counter: 141
-Batcher Size:85
-[145] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-++this->_M_p;
-line.push_back(var);
-
-
-[145] BasicTester, a patch instance with id 101:
-Spawn 1 instances, now Total 141
-Counter: 142
-Batcher Size:86
-[145] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
---this->_M_p;
-line.push_back(var);
-
-
-[145] BasicTester, a patch instance with id 102:
-Spawn 1 instances, now Total 142
-a batched test job starts!
-The number of explored templates: 75
-The number of explored templates: 89
-The number of explored templates: 90
-The number of explored templates: 91
-The number of explored templates: 92
-The number of explored templates: 93
-The number of explored templates: 107
-The number of explored templates: 121
-The number of explored templates: 122
-The number of explored templates: 123
-Merged code building failed! Going to build saperately!
-[150] BasicTester, Testing instance id 0:
-Single building for Tester 0x564b2cf6a050 id 17 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 8 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 9 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 10 failed as well!
-[160] BasicTester, Testing instance id 11:
-[163] CondTester, Testing instance id 35:
-[166] CondTester, Testing instance id 36:
-Single building for Tester 0x564b2cea5bd0 id 101 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 102 failed as well!
-Counter: 143
-Batcher Size:77
-[170] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
---this->current;
-line.push_back(var);
-
-
-[170] BasicTester, a patch instance with id 103:
-Spawn 1 instances, now Total 143
-Counter: 144
-Batcher Size:78
-[170] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-++this->current;
-line.push_back(var);
-
-
-[170] BasicTester, a patch instance with id 104:
-Spawn 1 instances, now Total 144
-Counter: 145
-Batcher Size:79
-[170] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-++this->iter;
-line.push_back(var);
-
-
-[170] BasicTester, a patch instance with id 105:
-Spawn 1 instances, now Total 145
-Counter: 146
-Batcher Size:80
-[170] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
---this->_M_current;
-line.push_back(var);
-
-
-[170] BasicTester, a patch instance with id 106:
-Spawn 1 instances, now Total 146
-Counter: 147
-Batcher Size:81
-[170] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-++this->_M_current;
-line.push_back(var);
-
-
-[170] BasicTester, a patch instance with id 107:
-Spawn 1 instances, now Total 147
-Counter: 148
-Batcher Size:82
-[170] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-throw;
-line.push_back(var);
-
-
-[170] BasicTester, a patch instance with id 108:
-Spawn 1 instances, now Total 148
-Counter: 149
-Batcher Size:83
-[170] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
---this->_M_impl._M_finish;
-line.push_back(var);
-
-
-[170] BasicTester, a patch instance with id 109:
-Spawn 1 instances, now Total 149
-Counter: 150
-Batcher Size:84
-[170] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-++this->_M_impl._M_finish;
-line.push_back(var);
-
-
-[170] BasicTester, a patch instance with id 110:
-Spawn 1 instances, now Total 150
-Counter: 151
-Batcher Size:85
-[170] Preprocess the following candidate with BasicTester:
-Priority -4.01304
-At location bresenham.cpp:47
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-var.first = x;
-
-
-[170] BasicTester, a patch instance with id 111:
-Spawn 1 instances, now Total 151
-Counter: 152
-Batcher Size:86
-[170] Preprocess the following candidate with BasicTester:
-Priority -4.01304
-At location bresenham.cpp:47
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-var.first = x;
-
-
-[170] BasicTester, a patch instance with id 112:
-Spawn 1 instances, now Total 152
-Counter: 153
-Batcher Size:87
-[170] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_deallocate(this->_M_impl._M_start, this->_M_impl._M_end_of_storage - this->_M_impl._M_start);
-line.push_back(var);
-
-
-[170] BasicTester, a patch instance with id 113:
-Spawn 1 instances, now Total 153
-Counter: 154
-Batcher Size:88
-[170] Preprocess the following candidate with BasicTester:
-Priority -4.01304
-At location bresenham.cpp:47
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-var.first = x;
-
-
-[170] BasicTester, a patch instance with id 114:
-Spawn 1 instances, now Total 154
-Counter: 155
-Batcher Size:89
-[170] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->clear();
-line.push_back(var);
-
-
-[170] BasicTester, a patch instance with id 115:
-Spawn 1 instances, now Total 155
-a batched test job starts!
-The number of explored templates: 124
-The number of explored templates: 125
-The number of explored templates: 126
-The number of explored templates: 127
-The number of explored templates: 128
-The number of explored templates: 129
-The number of explored templates: 130
-The number of explored templates: 131
-The number of explored templates: 132
-The number of explored templates: 133
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 103 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 104 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 105 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 106 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 107 failed as well!
-[185] BasicTester, Testing instance id 108:
-Single building for Tester 0x564b2cea5bd0 id 109 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 110 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 113 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 115 failed as well!
-Counter: 156
-Batcher Size:80
-[193] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_deallocate();
-line.push_back(var);
-
-
-[193] BasicTester, a patch instance with id 116:
-Spawn 1 instances, now Total 156
-Counter: 157
-Batcher Size:81
-[193] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish, _M_get_Tp_allocator());
-line.push_back(var);
-
-
-[193] BasicTester, a patch instance with id 117:
-Spawn 1 instances, now Total 157
-Counter: 158
-Batcher Size:82
-[193] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-_Alloc_traits::destroy(this->_M_impl, this->_M_impl._M_finish);
-line.push_back(var);
-
-
-[193] BasicTester, a patch instance with id 118:
-Spawn 1 instances, now Total 158
-Counter: 159
-Batcher Size:83
-[193] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-_M_deallocate(this->_M_impl._M_start, this->_M_impl._M_end_of_storage - this->_M_impl._M_start);
-line.push_back(var);
-
-
-[193] BasicTester, a patch instance with id 119:
-Spawn 1 instances, now Total 159
-Counter: 160
-Batcher Size:84
-[193] Preprocess the following candidate with CondTester:
-Priority -4.35648
-At location bresenham.cpp:66
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(x, y, f, argv, argc)))
-    return 0;
-buggy(x, y, line);
-
-
-[193] CondTester, a patch instance with id 38:
-Spawn 1 instances, now Total 160
-Counter: 161
-Batcher Size:85
-[193] Preprocess the following candidate with CondTester:
-Priority -4.13425
-At location bresenham.cpp:33
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(y1, y0, ystep, deltax, deltay, x1, x0, a, steep)))
-    return;
-if (y0 < y1)
-    ystep = 1;
-else
-    ystep = -1;
-
-
-[193] CondTester, a patch instance with id 39:
-Spawn 1 instances, now Total 161
-Counter: 162
-Batcher Size:86
-[193] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::_Bit_iterator();
-line.push_back(var);
-
-
-[193] BasicTester, a patch instance with id 120:
-Spawn 1 instances, now Total 162
-Counter: 163
-Batcher Size:87
-[193] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::_Bit_iterator();
-line.push_back(var);
-
-
-[193] BasicTester, a patch instance with id 121:
-Spawn 1 instances, now Total 163
-Counter: 164
-Batcher Size:88
-[193] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_end_of_storage = std::_Bvector_base::_Bit_pointer();
-line.push_back(var);
-
-
-[193] BasicTester, a patch instance with id 122:
-Spawn 1 instances, now Total 164
-Counter: 165
-Batcher Size:89
-[193] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_end_of_storage = this->_M_impl._M_finish;
-line.push_back(var);
-
-
-[193] BasicTester, a patch instance with id 123:
-Spawn 1 instances, now Total 165
-Counter: 166
-Batcher Size:90
-[193] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = __tmp + __old_size;
-line.push_back(var);
-
-
-[193] BasicTester, a patch instance with id 124:
-Spawn 1 instances, now Total 166
-Counter: 167
-Batcher Size:91
-[193] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = this->_M_impl._M_start;
-line.push_back(var);
-
-
-[193] BasicTester, a patch instance with id 125:
-Spawn 1 instances, now Total 167
-a batched test job starts!
-The number of explored templates: 134
-The number of explored templates: 135
-The number of explored templates: 136
-The number of explored templates: 137
-The number of explored templates: 138
-The number of explored templates: 139
-The number of explored templates: 140
-The number of explored templates: 141
-The number of explored templates: 142
-The number of explored templates: 143
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 116 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 117 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 118 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 119 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 120 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 121 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 122 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 123 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 124 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 125 failed as well!
-Counter: 168
-Batcher Size:82
-[215] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = nullptr;
-line.push_back(var);
-
-
-[215] BasicTester, a patch instance with id 126:
-Spawn 1 instances, now Total 168
-Counter: 169
-Batcher Size:83
-[215] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = nullptr;
-line.push_back(var);
-
-
-[215] BasicTester, a patch instance with id 127:
-Spawn 1 instances, now Total 169
-Counter: 170
-Batcher Size:84
-[215] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_end_of_storage = __q + _S_nword(__n);
-line.push_back(var);
-
-
-[215] BasicTester, a patch instance with id 128:
-Spawn 1 instances, now Total 170
-Counter: 171
-Batcher Size:85
-[215] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_end_of_storage = nullptr;
-line.push_back(var);
-
-
-[215] BasicTester, a patch instance with id 129:
-Spawn 1 instances, now Total 171
-Counter: 172
-Batcher Size:86
-[215] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_end_of_storage = std::vector<bool, type-parameter-0-0>::_Bit_pointer();
-line.push_back(var);
-
-
-[215] BasicTester, a patch instance with id 130:
-Spawn 1 instances, now Total 172
-Counter: 173
-Batcher Size:87
-[215] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::__uninitialized_fill_n_a(this->_M_impl._M_start, __n, __value, _M_get_Tp_allocator());
-line.push_back(var);
-
-
-[215] BasicTester, a patch instance with id 131:
-Spawn 1 instances, now Total 173
-Counter: 174
-Batcher Size:88
-[215] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::__uninitialized_move_a(__rv.begin(), __rv.end(), this->_M_impl._M_start, _M_get_Tp_allocator());
-line.push_back(var);
-
-
-[215] BasicTester, a patch instance with id 132:
-Spawn 1 instances, now Total 174
-Counter: 175
-Batcher Size:89
-[215] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::__uninitialized_copy_a(__first, __last, this->_M_impl._M_start, _M_get_Tp_allocator());
-line.push_back(var);
-
-
-[215] BasicTester, a patch instance with id 133:
-Spawn 1 instances, now Total 175
-Counter: 176
-Batcher Size:90
-[215] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::__uninitialized_copy_a(__x.begin(), __x.end(), this->_M_impl._M_start, _M_get_Tp_allocator());
-line.push_back(var);
-
-
-[215] BasicTester, a patch instance with id 134:
-Spawn 1 instances, now Total 176
-Counter: 177
-Batcher Size:91
-[215] Preprocess the following candidate with BasicTester:
-Priority -3.97263
-At location bresenham.cpp:49
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_finish = std::__uninitialized_copy_a(__mid, __last, this->_M_impl._M_finish, _M_get_Tp_allocator());
-line.push_back(var);
-
-
-[215] BasicTester, a patch instance with id 135:
-Spawn 1 instances, now Total 177
-a batched test job starts!
-The number of explored templates: 144
-The number of explored templates: 145
-The number of explored templates: 146
-The number of explored templates: 147
-The number of explored templates: 148
-The number of explored templates: 149
-The number of explored templates: 150
-The number of explored templates: 151
-The number of explored templates: 152
-The number of explored templates: 153
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 126 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 127 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 128 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 129 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 130 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 131 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 132 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 133 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 134 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 135 failed as well!
-Counter: 178
-Batcher Size:82
-[236] Preprocess the following candidate with BasicTester:
-Priority -3.99283
-At location bresenham.cpp:48
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_offset = 0;
-var.second = y;
-
-
-[236] BasicTester, a patch instance with id 136:
-Spawn 1 instances, now Total 178
-Counter: 179
-Batcher Size:83
-[236] Preprocess the following candidate with BasicTester:
-Priority -3.99283
-At location bresenham.cpp:48
---Src File: bresenham.cpp
-Fragment 0:
-if (this->_M_offset++ == int(_S_word_bit) - 1) {
-    this->_M_offset = 0;
-    ++this->_M_p;
-}
-var.second = y;
-
-
-[236] BasicTester, a patch instance with id 137:
-Spawn 1 instances, now Total 179
-Counter: 180
-Batcher Size:84
-[236] Preprocess the following candidate with BasicTester:
-Priority -3.99283
-At location bresenham.cpp:48
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-var.second = y;
-
-
-[236] BasicTester, a patch instance with id 138:
-Spawn 1 instances, now Total 180
-Counter: 181
-Batcher Size:85
-[236] Preprocess the following candidate with BasicTester:
-Priority -4.03324
-At location bresenham.cpp:42
---Src File: bresenham.cpp
-Fragment 0:
-line.push_back(var);
-if (steep) {
-    var.first = y;
-    var.second = x;
-    line.push_back(var);
-} else {
-    var.first = x;
-    var.second = y;
-    line.push_back(var);
-}
-
-
-[236] BasicTester, a patch instance with id 139:
-Spawn 1 instances, now Total 181
-Counter: 182
-Batcher Size:86
-[236] Preprocess the following candidate with BasicTester:
-Priority -4.01304
-At location bresenham.cpp:47
---Src File: bresenham.cpp
-Fragment 0:
-if (steep) {
-    var.first = y;
-    var.second = x;
-    line.push_back(var);
-} else {
-    var.first = x;
-    var.second = y;
-    line.push_back(var);
-}
-var.first = x;
-
-
-[236] BasicTester, a patch instance with id 140:
-Spawn 1 instances, now Total 182
-Counter: 183
-Batcher Size:87
-[236] Preprocess the following candidate with CondTester:
-Priority -4.03324
-At location bresenham.cpp:42
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(steep, y, var.first, x1, x0, x, var.second, y0, ystep, y1, deltax, deltay, a)))
-    return;
-if (steep) {
-    var.first = y;
-    var.second = x;
-    line.push_back(var);
-} else {
-    var.first = x;
-    var.second = y;
-    line.push_back(var);
-}
-
-
-[236] CondTester, a patch instance with id 40:
-Spawn 1 instances, now Total 183
-Counter: 184
-Batcher Size:88
-[236] Preprocess the following candidate with CondTester:
-Priority -4.03324
-At location bresenham.cpp:42
---Src File: bresenham.cpp
-Fragment 0:
-if ((__abst_hole(steep, y, var.first, x1, x0, x, var.second, y0, ystep, y1, deltax, deltay, a)))
-    break;
-if (steep) {
-    var.first = y;
-    var.second = x;
-    line.push_back(var);
-} else {
-    var.first = x;
-    var.second = y;
-    line.push_back(var);
-}
-
-
-[236] CondTester, a patch instance with id 41:
-Spawn 1 instances, now Total 184
-Counter: 185
-Batcher Size:89
-[236] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
-++this->iter;
-int x, y;
-
-
-[236] BasicTester, a patch instance with id 141:
-Spawn 1 instances, now Total 185
-The number of explored templates: 154
-Single building for Tester 0x564b2cea5bd0 id 141 failed as well!
-Counter: 186
-Batcher Size:89
-[238] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
---this->_M_current;
-int x, y;
-
-
-[238] BasicTester, a patch instance with id 142:
-Spawn 1 instances, now Total 186
-The number of explored templates: 155
-Single building for Tester 0x564b2cea5bd0 id 142 failed as well!
-Counter: 187
-Batcher Size:89
-[240] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
---this->current;
-int x, y;
-
-
-[240] BasicTester, a patch instance with id 143:
-Spawn 1 instances, now Total 187
-The number of explored templates: 156
-Single building for Tester 0x564b2cea5bd0 id 143 failed as well!
-Counter: 188
-Batcher Size:89
-[242] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
---this->_M_p;
-int x, y;
-
-
-[242] BasicTester, a patch instance with id 144:
-Spawn 1 instances, now Total 188
-The number of explored templates: 157
-Single building for Tester 0x564b2cea5bd0 id 144 failed as well!
-Counter: 189
-Batcher Size:89
-[244] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
-++this->_M_current;
-int x, y;
-
-
-[244] BasicTester, a patch instance with id 145:
-Spawn 1 instances, now Total 189
-The number of explored templates: 158
-Single building for Tester 0x564b2cea5bd0 id 145 failed as well!
-Counter: 190
-Batcher Size:89
-[246] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
-++this->_M_p;
-int x, y;
-
-
-[246] BasicTester, a patch instance with id 146:
-Spawn 1 instances, now Total 190
-The number of explored templates: 159
-Single building for Tester 0x564b2cea5bd0 id 146 failed as well!
-Counter: 191
-Batcher Size:89
-[248] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
-++this->current;
-int x, y;
-
-
-[248] BasicTester, a patch instance with id 147:
-Spawn 1 instances, now Total 191
-The number of explored templates: 160
-Single building for Tester 0x564b2cea5bd0 id 147 failed as well!
-Counter: 192
-Batcher Size:89
-[250] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
-throw;
-int x, y;
-
-
-[250] BasicTester, a patch instance with id 148:
-Spawn 1 instances, now Total 192
-The number of explored templates: 161
-[253] BasicTester, Testing instance id 148:
-Counter: 193
-Batcher Size:89
-[253] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
---this->_M_impl._M_finish;
-int x, y;
-
-
-[253] BasicTester, a patch instance with id 149:
-Spawn 1 instances, now Total 193
-The number of explored templates: 162
-Single building for Tester 0x564b2cea5bd0 id 149 failed as well!
-Counter: 194
-Batcher Size:89
-[255] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
-++this->_M_impl._M_finish;
-int x, y;
-
-
-[255] BasicTester, a patch instance with id 150:
-Spawn 1 instances, now Total 194
-The number of explored templates: 163
-Single building for Tester 0x564b2cea5bd0 id 150 failed as well!
-Counter: 195
-Batcher Size:89
-[257] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_deallocate(this->_M_impl._M_start, this->_M_impl._M_end_of_storage - this->_M_impl._M_start);
-int x, y;
-
-
-[257] BasicTester, a patch instance with id 151:
-Spawn 1 instances, now Total 195
-The number of explored templates: 164
-Single building for Tester 0x564b2cea5bd0 id 151 failed as well!
-Counter: 196
-Batcher Size:89
-[259] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
-this->clear();
-int x, y;
-
-
-[259] BasicTester, a patch instance with id 152:
-Spawn 1 instances, now Total 196
-The number of explored templates: 165
-Single building for Tester 0x564b2cea5bd0 id 152 failed as well!
-Counter: 197
-Batcher Size:89
-[261] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
-this->_M_deallocate();
-int x, y;
-
-
-[261] BasicTester, a patch instance with id 153:
-Spawn 1 instances, now Total 197
-The number of explored templates: 166
-Single building for Tester 0x564b2cea5bd0 id 153 failed as well!
-Counter: 198
-Batcher Size:89
-[263] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
-std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish, _M_get_Tp_allocator());
-int x, y;
-
-
-[263] BasicTester, a patch instance with id 154:
-Spawn 1 instances, now Total 198
-The number of explored templates: 167
-Single building for Tester 0x564b2cea5bd0 id 154 failed as well!
-Counter: 199
-Batcher Size:89
-[265] Preprocess the following candidate with BasicTester:
-Priority -4.43729
-At location bresenham.cpp:62
---Src File: bresenham.cpp
-Fragment 0:
-_M_deallocate(this->_M_impl._M_start, this->_M_impl._M_end_of_storage - this->_M_impl._M_start);
-int x, y;
-
-
-[265] BasicTester, a patch instance with id 155:
-Spawn 1 instances, now Total 199
-The number of explored templates: 168
-Single building for Tester 0x564b2cea5bd0 id 155 failed as well!
-Going to sync the batch tester, clear all existing tasks!
-a batched test job starts!
-The number of explored templates: 169
-The number of explored templates: 170
-The number of explored templates: 171
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 97 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 98 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 99 failed as well!
-a batched test job starts!
-The number of explored templates: 172
-The number of explored templates: 173
-The number of explored templates: 174
-The number of explored templates: 175
-Merged code building failed! Going to build saperately!
-[279] BasicTester, Testing instance id 4:
-Single building for Tester 0x564b2cea5bd0 id 94 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 95 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 96 failed as well!
-a batched test job starts!
-The number of explored templates: 176
-The number of explored templates: 177
-The number of explored templates: 178
-The number of explored templates: 179
-Merged code building failed! Going to build saperately!
-[290] BasicTester, Testing instance id 90:
-Single building for Tester 0x564b2cea5bd0 id 91 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 92 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 93 failed as well!
-a batched test job starts!
-The number of explored templates: 186
-The number of explored templates: 193
-The number of explored templates: 200
-The number of explored templates: 201
-The number of explored templates: 202
-The number of explored templates: 203
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cf6a050 id 7 failed as well!
-Single building for Tester 0x564b2cf6a050 id 8 failed as well!
-Single building for Tester 0x564b2cf6a050 id 24 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 17 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 18 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 19 failed as well!
-a batched test job starts!
-The number of explored templates: 210
-The number of explored templates: 217
-The number of explored templates: 224
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cf6a050 id 3 failed as well!
-Single building for Tester 0x564b2cf6a050 id 4 failed as well!
-Single building for Tester 0x564b2cf6a050 id 29 failed as well!
-a batched test job starts!
-The number of explored templates: 225
-Merged code building failed! Going to build saperately!
-[322] BasicTester, Testing instance id 7:
-Passed Negative Cases
-Passed Positive Cases
-[322] Passed!
-Update best score -3.591447
-a batched test job starts!
-The number of explored templates: 226
-Merged code building failed! Going to build saperately!
-[327] BasicTester, Testing instance id 5:
-Passed Negative Cases
-Passed Positive Cases
-[327] Passed!
-Update best score -3.342468
-a batched test job starts!
-The number of explored templates: 227
-The number of explored templates: 228
-The number of explored templates: 229
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 81 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 82 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 85 failed as well!
-a batched test job starts!
-The number of explored templates: 230
-The number of explored templates: 231
-Merged code building failed! Going to build saperately!
-[339] BasicTester, Testing instance id 73:
-Single building for Tester 0x564b2cea5bd0 id 76 failed as well!
-a batched test job starts!
-The number of explored templates: 241
-The number of explored templates: 251
-The number of explored templates: 261
-The number of explored templates: 271
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cf6a050 id 1 failed as well!
-Single building for Tester 0x564b2cf6a050 id 2 failed as well!
-Single building for Tester 0x564b2cf6a050 id 18 failed as well!
-[352] CondTester, Testing instance id 39:
-a batched test job starts!
-The number of explored templates: 281
-The number of explored templates: 291
-Merged code building failed! Going to build saperately!
-[356] CondTester, Testing instance id 9:
-Single building for Tester 0x564b2cf6a050 id 11 failed as well!
-a batched test job starts!
-The number of explored templates: 292
-Merged code building failed! Going to build saperately!
-[363] BasicTester, Testing instance id 12:
-a batched test job starts!
-The number of explored templates: 303
-Merged code building failed! Going to build saperately!
-[367] CondTester, Testing instance id 30:
-a batched test job starts!
-The number of explored templates: 314
-The number of explored templates: 325
-The number of explored templates: 326
-Merged code building failed! Going to build saperately!
-[372] CondTester, Testing instance id 23:
-Single building for Tester 0x564b2cf6a050 id 26 failed as well!
-[377] BasicTester, Testing instance id 89:
-a batched test job starts!
-The number of explored templates: 340
-The number of explored templates: 354
-The number of explored templates: 368
-The number of explored templates: 382
-The number of explored templates: 383
-The number of explored templates: 384
-The number of explored templates: 398
-The number of explored templates: 412
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cf6a050 id 5 failed as well!
-Single building for Tester 0x564b2cf6a050 id 6 failed as well!
-Single building for Tester 0x564b2cf6a050 id 21 failed as well!
-Single building for Tester 0x564b2cf6a050 id 22 failed as well!
-[389] BasicTester, Testing instance id 88:
-[392] BasicTester, Testing instance id 139:
-[395] CondTester, Testing instance id 40:
-[398] CondTester, Testing instance id 41:
-a batched test job starts!
-The number of explored templates: 426
-The number of explored templates: 440
-The number of explored templates: 454
-The number of explored templates: 455
-The number of explored templates: 456
-The number of explored templates: 457
-The number of explored templates: 458
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cf6a050 id 0 failed as well!
-[405] CondTester, Testing instance id 19:
-[408] CondTester, Testing instance id 20:
-Single building for Tester 0x564b2cea5bd0 id 111 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 112 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 114 failed as well!
-[417] BasicTester, Testing instance id 140:
-a batched test job starts!
-The number of explored templates: 472
-The number of explored templates: 473
-The number of explored templates: 487
-The number of explored templates: 501
-The number of explored templates: 502
-The number of explored templates: 503
-The number of explored templates: 504
-The number of explored templates: 505
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cf6a050 id 12 failed as well!
-[423] BasicTester, Testing instance id 6:
-[426] CondTester, Testing instance id 27:
-[429] CondTester, Testing instance id 28:
-[432] BasicTester, Testing instance id 55:
-Single building for Tester 0x564b2cea5bd0 id 136 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 137 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 138 failed as well!
-a batched test job starts!
-The number of explored templates: 519
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cf6a050 id 37 failed as well!
-a batched test job starts!
-The number of explored templates: 531
-The number of explored templates: 543
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cf6a050 id 15 failed as well!
-Single building for Tester 0x564b2cf6a050 id 16 failed as well!
-a batched test job starts!
-The number of explored templates: 544
-The number of explored templates: 545
-The number of explored templates: 546
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 36 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 37 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 41 failed as well!
-a batched test job starts!
-The number of explored templates: 547
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 14 failed as well!
-a batched test job starts!
-The number of explored templates: 553
-The number of explored templates: 554
-The number of explored templates: 555
-The number of explored templates: 556
-The number of explored templates: 557
-The number of explored templates: 563
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cf6a050 id 10 failed as well!
-[466] BasicTester, Testing instance id 16:
-Single building for Tester 0x564b2cea5bd0 id 83 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 84 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 86 failed as well!
-[475] CondTester, Testing instance id 34:
-a batched test job starts!
-The number of explored templates: 564
-The number of explored templates: 565
-The number of explored templates: 566
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cea5bd0 id 77 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 78 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 80 failed as well!
-a batched test job starts!
-The number of explored templates: 572
-The number of explored templates: 573
-The number of explored templates: 574
-The number of explored templates: 575
-The number of explored templates: 576
-The number of explored templates: 582
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cf6a050 id 13 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 71 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 72 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 74 failed as well!
-[495] BasicTester, Testing instance id 87:
-[498] CondTester, Testing instance id 38:
-a batched test job starts!
-The number of explored templates: 588
-The number of explored templates: 589
-The number of explored templates: 590
-The number of explored templates: 591
-The number of explored templates: 592
-The number of explored templates: 598
-Merged code building failed! Going to build saperately!
-Single building for Tester 0x564b2cf6a050 id 25 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 56 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 57 failed as well!
-Single building for Tester 0x564b2cea5bd0 id 58 failed as well!
-[510] BasicTester, Testing instance id 59:
-[513] CondTester, Testing instance id 33:
-Generate a candidate with schema id: 30
-Generate a candidate with schema id: 19
-Total cnt of passed cond schemas: 0
-Total cnt of cond schemas: 42
-Counter: 200
-Batcher Size:0
-The found score -3.342468 is greater than current score -4.839189!
-Terminate current session!
-Generate a candidate with schema id: 30
-Generate a candidate with schema id: 19
-Total cnt of passed cond schemas: 0
-Total cnt of cond schemas: 42
-The first schema id that generates patch: 19
-The total number of synthesis runs: 0
-The total number of concrete conds: 0
-The total number of explored concrete patches: 598
-Found a fix! Store to: __fixed_bresenham.cpp
-Found a fix! Store to: __fixed_bresenham.cpp-1
-Repair process ends successfully!
-Total 1864 different repair schemas!!!!
-Total 2422 different repair candidate templates for scoring!!!
-Total 625 different partial repair candidate templates!!
-Total number of compiles: 233
-Total number of test eval: 120
+[9] StringConstTester, Testing instance id 0:
+Single building for Tester 0x55a993789100 id 1 failed as well!
+Single building for Tester 0x55a993789100 id 2 failed 

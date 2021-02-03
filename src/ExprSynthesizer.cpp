@@ -2075,6 +2075,7 @@ public:
 
     // This is a lazy test routine, we are only going to decode it without
     // actually doing the test in the most of the time
+    // 모든 후보에 한번에 동작할 수 있도록 개조
     void test(const RepairCandidate &candidate, BasicTester* T) {
         std::vector<unsigned long> ids = T->preprocess(candidate);
         total_cnt += ids.size();

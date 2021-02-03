@@ -329,26 +329,33 @@ std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceConte
     return ret;
 }
 
-CodeRewriter::CodeRewriter(SourceContextManager &M, const RepairCandidate &rc, ExprFillInfo *pefi) {
-    ExprFillInfo efi;
-    if (pefi != NULL)
-        efi = *pefi;
-    else {
-        efi.clear();
-        // We are going to replace it with all unknown expressions
-        for (size_t i = 0; i < rc.actions.size(); i++)
-            if (rc.actions[i].kind == RepairAction::ExprMutationKind) {
-                ASTContext *ctxt = M.getSourceContext(rc.actions[i].loc.filename);
-                efi[i] = M.getUnknownExpr(ctxt, rc.actions[i].candidate_atoms);
-            }
+CodeRewriter::CodeRewriter(SourceContextManager &M, std::list<RepairCandidate> &rc, std::list<ExprFillInfo *> pefi) {
+    std::list<ExprFillInfo> efi;
+    std::map<ASTLocTy, std::pair<std::string, bool> > res1;
+    res1.clear();
+
+    for (int i=0;i<rc.size();i++){
+        if (pefi[i] != NULL)
+            efi[i] = *(pefi[i]);
+        else {
+            efi[i].clear();
+            // We are going to replace it with all unknown expressions
+            for (size_t j = 0; j < rc[i].actions.size(); j++)
+                if (rc[i].actions[j].kind == RepairAction::ExprMutationKind) {
+                    ASTContext *ctxt = M.getSourceContext(rc[i].actions[j].loc.filename);
+                    efi[i][j] = M.getUnknownExpr(ctxt, rc[i].actions[j].candidate_atoms);
+                }
+        }
+
+        //rc.dump();
+        // We first the rid of all ExprMutationKind in rc
+        RepairCandidate rc1 = replaceExprInCandidate(M, rc[i], efi[i]);
+        //rc1.dump();
+        // We then eliminate ASTLocTy with new statements, and replace them with
+        // strings
+        res1.insert(eliminateAllNewLoc(M, rc1));
     }
-    //rc.dump();
-    // We first the rid of all ExprMutationKind in rc
-    RepairCandidate rc1 = replaceExprInCandidate(M, rc, efi);
-    //rc1.dump();
-    // We then eliminate ASTLocTy with new statements, and replace them with
-    // strings
-    std::map<ASTLocTy, std::pair<std::string, bool> > res1 = eliminateAllNewLoc(M, rc1);
+
     // We then categorize location based on the src_file and their offset
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > res2;
     res2.clear();
@@ -391,7 +398,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const RepairCandidate &rc, E
                 cur_end = end;
                 cur_patch = res1[it2->second].first;
                 if (res1[it2->second].second)
-                    cur_patch = std::string("{\n") + "    " + indentPatch(cur_patch, "    ") + "}\n";
+                    cur_patch = "    " + indentPatch(cur_patch, "    ");
+                cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
             }
             else if (start<=cur_start && cur_end <= end) {
                 // We need to merge these two, we first need to decide in the bigger one,
@@ -410,7 +418,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const RepairCandidate &rc, E
                         + cur_patch + bottom_part;
                 }
                 if (res1[it2->second].second)
-                    cur_patch = std::string("{\n") + "    " + indentPatch(cur_patch, "    ") + "}\n";
+                    cur_patch = "    " + indentPatch(cur_patch, "    ");
+                cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
                 cur_start = start;
                 cur_end = end;
             }
@@ -423,8 +432,10 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const RepairCandidate &rc, E
                 cur_end = end;
                 cur_patch = res1[it2->second].first;
                 if (res1[it2->second].second)
-                    cur_patch = std::string("{\n") + "    " + indentPatch(cur_patch, "    ") + "}\n";
+                    cur_patch = "    " + indentPatch(cur_patch, "    ");
+                cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
             }
+            printf("current patch: %s\n",cur_patch.c_str());
         }
         if (cur_start != -1) {
             resCodeSegs[src_file].push_back(code.substr(last_end, cur_start - last_end));
