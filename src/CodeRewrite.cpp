@@ -167,8 +167,9 @@ NewCodeMapTy combineCode(const CodeSegTy &codeSegs, const CodeSegTy &patch) {
         std::string indent_str = "";
         for (size_t i = 0; i < patch_vec.size(); i++) {
             getTrailingIndent(seg_vec[i], indent_str);
+            ret[src_file] += std::string("bool count=true;\nif (count==true){\n");
             ret[src_file] += indentPatch(std::string("//prophet generated patch\n") +
-                    patch_vec[i], indent_str) + seg_vec[i+1];
+                    patch_vec[i], indent_str) +std::string("}\n") +seg_vec[i+1];
         }
     }
     return ret;
