@@ -264,9 +264,9 @@ Expr* createUniqueStringToken(SourceContextManager &M, const RepairAction &actio
 }
 
 void enumerateExprImpl(SourceContextManager &M, const RepairCandidate &rc, long long mutate_idx, size_t i,
-        std::set<ExprFillInfo> &ret, ExprFillInfo &cur_info) {
+        std::set<ExprFillInfo> *ret, ExprFillInfo &cur_info) {
     if (i == rc.actions.size()) {
-        ret.insert(cur_info);
+        ret->insert(cur_info);
         return;
     }
     if (rc.actions[i].kind != RepairAction::ExprMutationKind)
@@ -290,7 +290,7 @@ void enumerateExprImpl(SourceContextManager &M, const RepairCandidate &rc, long 
             }
         }
         else
-            assert(0);
+            ret=nullptr;
         /*
         Expr* E = (Expr*)rc.actions[i].ast_node;
         RepairAction::ExprTagTy tag = rc.actions[i].tag;
@@ -354,11 +354,11 @@ inline void out_codes(const CodeSegTy &a_code, const CodeSegTy &a_patch) {
     }
 }
 
-std::set<ExprFillInfo> enumerateExprBindings(SourceContextManager &M,
+std::set<ExprFillInfo>* enumerateExprBindings(SourceContextManager &M,
         const RepairCandidate &rc, long long mutate_idx) {
-    std::set<ExprFillInfo> ret;
+    std::set<ExprFillInfo> *ret=new std::set<ExprFillInfo>;
     ExprFillInfo tmp;
-    ret.clear();
+    ret->clear();
     enumerateExprImpl(M, rc, mutate_idx, 0, ret, tmp);
     return ret;
 }
@@ -483,45 +483,49 @@ public:
         return patches[id];
     }
 
-    virtual std::vector<unsigned long> preprocess(const RepairCandidate &candidate) {
-        outlog_printf(2, "[%llu] Preprocess the following candidate with BasicTester:\n%s\n", get_timer(),
-                candidate.toString(M).c_str());
-        // We are going to create a set of binding ExprFillInfos
-        std::set<ExprFillInfo> infos = enumerateExprBindings(M, candidate, -1);
+    virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
+        std::vector<std::set<ExprFillInfo> *> infos;
+        infos.clear();
+        for (int i=0;i<candidate.size();i++){
+            outlog_printf(2, "[%llu] Preprocess the following candidate with BasicTester:\n%s\n", get_timer(),
+                    candidate[i].toString(M).c_str());
+            // We are going to create a set of binding ExprFillInfos
+            infos.push_back(enumerateExprBindings(M, candidate[i], -1));
+        }
+
         std::vector<unsigned long> res;
         res.clear();
-        for (std::set<ExprFillInfo>::iterator it = infos.begin(); it != infos.end();
-                ++it) {
-            ExprFillInfo efi = *it;
-            CodeRewriter R(M, candidate, &efi);
-            CodeSegTy a_code = R.getCodeSegments();
-            CodeSegTy a_patch = R.getPatches();
-            {
-                outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu:\n", get_timer(),
-                        codes.size());
-                out_codes(a_code, a_patch);
-            }
-            res.push_back((unsigned long)codes.size());
-            candidates.push_back(candidate);
-            codes.push_back(a_code);
-            patches.push_back(a_patch);
-            // OK, this is hacky, we are going to propagate this change to other place,
-            // only here
-            if (!naive) {
-                DuplicateDetector D(M, a_code, a_patch);
-                if (D.hasDuplicateCodeToPatch()) {
-                    CodeSegTy a_new_code = D.getNewCodeSegments();
-                    CodeSegTy a_new_patch = D.getNewPatches();
-                    {
-                        outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu (duplicate):\n", get_timer(),
-                                codes.size());
-                        out_codes(a_new_code, a_new_patch);
-                    }
-                    res.push_back(codes.size());
-                    candidates.push_back(candidate);
-                    codes.push_back(a_new_code);
-                    patches.push_back(a_new_patch);
+        CodeRewriter R(M, candidate, &infos);
+        CodeSegTy a_code = R.getCodeSegments();
+        CodeSegTy a_patch = R.getPatches();
+        {
+            outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu:\n", get_timer(),
+                    codes.size());
+            out_codes(a_code, a_patch);
+        }
+        for (int i=0;i<candidate.size();i++)
+            candidates.push_back(candidate[i]);
+        codes.push_back(a_code);
+        patches.push_back(a_patch);
+        res.push_back((unsigned long)codes.size());
+        // OK, this is hacky, we are going to propagate this change to other place,
+        // only here
+        //if (!naive) {
+        if (false){
+            DuplicateDetector D(M, a_code, a_patch);
+            if (D.hasDuplicateCodeToPatch()) {
+                CodeSegTy a_new_code = D.getNewCodeSegments();
+                CodeSegTy a_new_patch = D.getNewPatches();
+                {
+                    outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu (duplicate):\n", get_timer(),
+                            codes.size());
+                    out_codes(a_new_code, a_new_patch);
                 }
+                for (int i=0;i<candidate.size();i++)
+                    candidates.push_back(candidate[i]);
+                codes.push_back(a_new_code);
+                patches.push_back(a_new_patch);
+                res.push_back(codes.size());
             }
         }
         return res;
@@ -571,6 +575,7 @@ public:
 class StringConstTester : public BasicTester {
     std::map<unsigned long, std::set<std::string> > candidate_strs;
     std::vector<ExprFillInfo> infos;
+    std::vector<std::set<ExprFillInfo> *> infos_set;
 
     bool parseFile(std::vector<std::string> &res, const std::string &fname) {
         res.clear();
@@ -703,7 +708,7 @@ class StringConstTester : public BasicTester {
 
 public:
     StringConstTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive):
-        BasicTester(P, learning, M, naive), candidate_strs(), infos() { }
+        BasicTester(P, learning, M, naive), candidate_strs(), infos(),infos_set() { }
 
     virtual ~StringConstTester() { }
 
@@ -729,46 +734,57 @@ public:
         return patches[id];
     }
 
-    virtual std::vector<unsigned long> preprocess(const RepairCandidate &candidate) {
-        outlog_printf(2, "[%llu] Preprocess the following candidate with StringConstTester:\n%s\n", get_timer(),
-                candidate.toString(M).c_str());
-        // We are going to create a set of binding ExprFillInfos
-        std::set<ExprFillInfo> the_infos = enumerateExprBindings(M, candidate, getMutateId(candidate));
+    virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
+        std::vector<std::set<ExprFillInfo> *> the_infos;
+        the_infos.clear();
+        for (int i=0;i<candidate.size();i++){
+            outlog_printf(2, "[%llu] Preprocess the following candidate with StringConstTester:\n%s\n", get_timer(),
+                    candidate[i].toString(M).c_str());
+            // We are going to create a set of binding ExprFillInfos
+            the_infos.push_back(enumerateExprBindings(M, candidate[i], getMutateId(candidate[i])));
+        }
         std::vector<unsigned long> res;
         res.clear();
-        for (std::set<ExprFillInfo>::iterator it = the_infos.begin(); it != the_infos.end();
-                ++it) {
-            ExprFillInfo efi = *it;
-            CodeRewriter R(M, candidate, &efi);
-            CodeSegTy a_code = R.getCodeSegments();
-            CodeSegTy a_patch = R.getPatches();
-            {
-                outlog_printf(2, "[%llu] StringConstTester, a patch instance with id %lu:\n", get_timer(),
-                        codes.size());
-                out_codes(a_code, a_patch);
-            }
-            res.push_back((unsigned long)codes.size());
-            candidates.push_back(candidate);
-            codes.push_back(a_code);
-            patches.push_back(a_patch);
-            infos.push_back(*it);
-            // OK, this is hacky, we are going to propagate this change to other place,
-            // only here
-            if (!naive) {
-                DuplicateDetector D(M, a_code, a_patch);
-                if (D.hasDuplicateCodeToPatch()) {
-                    CodeSegTy a_new_code = D.getNewCodeSegments();
-                    CodeSegTy a_new_patch = D.getNewPatches();
-                    {
-                        outlog_printf(2, "[%llu] StringConstTester, a patch instance with id %lu (duplicate):\n", get_timer(),
-                                codes.size());
-                        out_codes(a_new_code, a_new_patch);
-                    }
-                    res.push_back(codes.size());
-                    candidates.push_back(candidate);
-                    codes.push_back(a_new_code);
-                    patches.push_back(a_new_patch);
-                    infos.push_back(*it);
+        CodeRewriter R(M, candidate, &the_infos);
+        CodeSegTy a_code = R.getCodeSegments();
+        CodeSegTy a_patch = R.getPatches();
+        {
+            outlog_printf(2, "[%llu] StringConstTester, a patch instance with id %lu:\n", get_timer(),
+                    codes.size());
+            out_codes(a_code, a_patch);
+        }
+        res.push_back((unsigned long)codes.size());
+        for (int i=0;i<candidate.size();i++)
+            candidates.push_back(candidate[i]);
+        codes.push_back(a_code);
+        patches.push_back(a_patch);
+        for (int i=0;i<the_infos.size();i++){
+            infos_set.push_back(the_infos[i]);
+            for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
+                infos.push_back(*it);
+        }
+        // OK, this is hacky, we are going to propagate this change to other place,
+        // only here
+        //if (!naive) {
+        if (false){
+            DuplicateDetector D(M, a_code, a_patch);
+            if (D.hasDuplicateCodeToPatch()) {
+                CodeSegTy a_new_code = D.getNewCodeSegments();
+                CodeSegTy a_new_patch = D.getNewPatches();
+                {
+                    outlog_printf(2, "[%llu] StringConstTester, a patch instance with id %lu (duplicate):\n", get_timer(),
+                            codes.size());
+                    out_codes(a_new_code, a_new_patch);
+                }
+                res.push_back(codes.size());
+                for (int i=0;i<candidate.size();i++)
+                    candidates.push_back(candidate[i]);
+                codes.push_back(a_new_code);
+                patches.push_back(a_new_patch);
+                for (int i=0;i<the_infos.size();i++){
+                    infos_set.push_back(the_infos[i]);
+                    for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
+                        infos.push_back(*it);
                 }
             }
         }
@@ -870,7 +886,7 @@ public:
         ASTContext *ctxt = M.getSourceContext(candidate.actions[mutate_id].loc.filename);
         efi[mutate_id] = createNewStringExpr(ctxt, efi[mutate_id], *candidate_strs[id].begin());
 
-        CodeRewriter R(M, candidate, &efi);
+        CodeRewriter R(M, candidates, &infos_set);
         NewCodeMapTy code = R.getCodes();
         BenchProgram::EnvMapTy buildEnv;
         buildEnv.clear();
@@ -1417,6 +1433,7 @@ class ConditionSynthesisTester : public BasicTester {
     typedef std::map<unsigned long, std::vector<unsigned long> > BranchRecordTy;
     typedef std::map<unsigned long, std::vector<std::vector<long long> > > ValueRecordTy;
     std::vector<ExprFillInfo> infos;
+    std::vector<std::set<ExprFillInfo> *> infos_set;
     std::map<unsigned long, ValueRecordTy> valueRecords;
     std::map<unsigned long, BranchRecordTy> branchRecords;
     bool full_synthesis;
@@ -1648,40 +1665,53 @@ class ConditionSynthesisTester : public BasicTester {
 public:
     ConditionSynthesisTester(BenchProgram &P, bool learning, SourceContextManager &M, bool full_synthesis):
         BasicTester(P, learning, M, false),
-        infos(), full_synthesis(full_synthesis) { post_cnt = 0; }
+        infos(), infos_set(),full_synthesis(full_synthesis) { post_cnt = 0; }
 
     virtual bool canHandle(const RepairCandidate &candidate) {
         return getConditionIndex(candidate) != -1;
     }
 
-    virtual std::vector<unsigned long> preprocess(const RepairCandidate &candidate) {
-        outlog_printf(2, "[%llu] Preprocess the following candidate with CondTester:\n%s\n", get_timer(),
-                candidate.toString(M).c_str());
-        // We identify the part we can use condition synthesizer, for the rest
-        // we just brute search.
-        long long condition_idx = getConditionIndex(candidate);
-        assert(condition_idx != -1);
-        // We are going to create a set of binding ExprFillInfos
-        std::set<ExprFillInfo> the_infos = enumerateExprBindings(M, candidate, condition_idx);
+    virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
+        std::vector<std::set<ExprFillInfo> *> the_infos;
+        the_infos.clear();
+
+        outlog_printf(2, "[%llu] Preprocess the following candidate with CondTester:\n%d Candidates\n", get_timer(),
+            candidate.size());
+
+        for (int i=0;i<candidate.size();i++){
+            // We identify the part we can use condition synthesizer, for the rest
+            // we just brute search.
+            long long condition_idx = getConditionIndex(candidate[i]);
+            //if (condition_idx==-1) continue;
+            // We are going to create a set of binding ExprFillInfos
+            the_infos.push_back(enumerateExprBindings(M, candidate[i], condition_idx));
+        }
+
         std::vector<unsigned long> res;
         res.clear();
-        for (std::set<ExprFillInfo>::iterator it = the_infos.begin(); it != the_infos.end();
-                ++it) {
-            ExprFillInfo efi = *it;
-            CodeRewriter R(M, candidate, &efi);
-            std::map<std::string, std::vector<std::string> > a_code = R.getCodeSegments();
-            std::map<std::string, std::vector<std::string> > a_patch = R.getPatches();
-            {
-                outlog_printf(2, "[%llu] CondTester, a patch instance with id %lu:\n", get_timer(),
-                        codes.size());
-                out_codes(a_code, a_patch);
-            }
-            candidates.push_back(candidate);
-            codes.push_back(a_code);
-            patches.push_back(a_patch);
-            infos.push_back(*it);
-            res.push_back((unsigned long)candidates.size() - 1);
+        outlog_printf(2,"Generating patches with CondTester...\n");
+        CodeRewriter R(M, candidate, &the_infos);
+        outlog_printf(2,"Patch Generated!\n");
+        std::map<std::string, std::vector<std::string> > a_code = R.getCodeSegments();
+        std::map<std::string, std::vector<std::string> > a_patch = R.getPatches();
+        {
+            outlog_printf(2, "[%llu] CondTester, a patch instance with id %lu:\n", get_timer(),
+                    codes.size());
+            out_codes(a_code, a_patch);
         }
+        for (int i=0;i<candidate.size();i++)
+            candidates.push_back(candidate[i]);
+        codes.push_back(a_code);
+        outlog_printf(2,"codes size: %d\n",codes.size());
+        patches.push_back(a_patch);
+        for (int i=0;i<the_infos.size();i++){
+            infos_set.push_back(the_infos[i]);
+            for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
+                infos.push_back(*it);
+        }
+        res.push_back((unsigned long)candidates.size() - 1);
+        outlog_printf(2,"res size: %d\n",res.size());
+        outlog_printf(2,"result size: %d\n",res[0]);
         return res;
     }
 
@@ -1797,7 +1827,7 @@ public:
                 else if (found_score >= score)
                     continue;
             }
-            CodeRewriter R(M, candidate, &cur_info);
+            CodeRewriter R(M, candidates, &infos_set);
             NewCodeMapTy code = R.getCodes();
             BenchProgram::EnvMapTy buildEnv;
             buildEnv.clear();
@@ -2076,25 +2106,29 @@ public:
     // This is a lazy test routine, we are only going to decode it without
     // actually doing the test in the most of the time
     // 모든 후보에 한번에 동작할 수 있도록 개조
-    void test(const RepairCandidate &candidate, BasicTester* T) {
+    void test(const std::vector<RepairCandidate> &candidate, BasicTester* T) {
         std::vector<unsigned long> ids = T->preprocess(candidate);
         total_cnt += ids.size();
         outlog_printf(2, "Spawn %lu instances, now Total %lu\n", (unsigned long)ids.size(), total_cnt);
         for (size_t i = 0; i < ids.size(); i++) {
-            CodeSegTy codeSegs = T->getCodeSegs(ids[i]);
-            PatchListTy patches = T->getPatches(ids[i]);
-            if (canMerge(codeSegs, patches) && (!naive)) {
+            CodeSegTy codeSegs = T->getCodeSegs(i);
+            PatchListTy patches = T->getPatches(i);
+            //if (canMerge(codeSegs, patches) && (!naive)) {
+            if (false){
                 if (candidateMap.count(codeSegs) == 0)
                     candidateMap[codeSegs].clear();
-                candidateMap[codeSegs].push_back(CandidateEntry(candidate, T, ids[i]));
+                for (int j=0;j<candidate.size();j++)
+                    candidateMap[codeSegs].push_back(CandidateEntry(candidate[j], T, ids[i]));
                 cur_size ++;
                 if (candidateMap[codeSegs].size() >= BATCH_CAP)
                     doTest(codeSegs);
             }
             else {
-                tot_explored_templates += candidate.getCandidateAtoms().size();
-                patch_explored += candidate.getCandidateAtoms().size();
-                outlog_printf(0, "The number of explored templates: %lu\n", tot_explored_templates);
+                for (int j=0;j<candidate.size();j++){
+                    tot_explored_templates += candidate[j].getCandidateAtoms().size();
+                    patch_explored += candidate[j].getCandidateAtoms().size();
+                    outlog_printf(0, "The number of explored templates: %lu\n", tot_explored_templates);
+                }
                 std::map<NewCodeMapTy, double> code_set = singleTest(codeSegs, patches, T, ids[i]);
                 for (std::map<NewCodeMapTy, double>::iterator it = code_set.begin();
                         it != code_set.end(); it++) {
@@ -2104,7 +2138,8 @@ public:
                         res.insert(std::make_pair(code, res_score));
                     else if (res[code] < res_score)
                         res[code] = res_score;
-                    succCandidates.push_back(candidate);
+                    for (int j=0;j<candidate.size();j++)
+                        succCandidates.push_back(candidate[j]);
                 }
             }
         }
@@ -2172,74 +2207,90 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     collected_res.clear();
     unsigned long generate_min_id = 100000000;
     found_score = -1e20;
-    // FIXME: we ignore time limit now, we will add back later
-    while (q.size() > 0 && ((tested_cnt < candidate_limit) || (candidate_limit == 0))) {
-        if (timeout_limit != 0)
-            if (get_timer() > timeout_limit) {
-                outlog_printf(1, "[%llu] Timeout! Limit is %llu\n", get_timer(), timeout_limit);
-                break;
-            }
-        cnt ++;
-        time_t now_t = Timer.getSeconds();
-        if ((cnt % SYNC_CAP == 0) || (now_t - last_sync > SYNC_TIME_CAP)) {
-            last_sync = now_t;
-            outlog_printf(2, "Going to sync the batch tester, clear all existing tasks!\n");
-            TB.sync();
-        }
-        if (TB.hasResult()) {
-            TB.sync();
-            std::vector<std::pair<NewCodeMapTy, double> > tmp = TB.getResults();
-            if (tmp.size() > 0)
-                if (found_score < tmp[0].second) {
-                    found_score = tmp[0].second;
-                    outlog_printf(1, "Updated best score result: %lf\n", found_score);
-                }
-            //collected_res.insert(collected_res.end(), tmp.begin(), tmp.end());
-            std::vector<RepairCandidate> succs = TB.getSuccCandidates();
-            for (size_t i = 0; i < succs.size(); i++) {
-                cache->markSucc(succs[i].toString(M));
-                unsigned long schema_id = candidate_to_id[succs[i].toString(M)];
-                outlog_printf(1, "Generate a candidate with schema id: %lu\n", schema_id);
-                if (generate_min_id > schema_id)
-                    generate_min_id = schema_id;
-            }
-            ((ConditionSynthesisTester*)testers[0])->dumpStat();
-            if (quit_with_any) {
-                outlog_printf(1, "Quit-with-any flag on, just going to get out.");
-                break;
-            }
-        }
-        outlog_printf(2, "Counter: %lu\nBatcher Size:%lu\n", cnt, TB.size());
+
+    std::vector<RepairCandidate> candidate;
+    candidate.clear();
+    outlog_printf(2,"Generating Candidates...\nCandidates size: %d\n",q.size());
+    while(q.size()>0){
         RepairCandidateWithScore candidate_a_score = q.top();
-        RepairCandidate candidate = candidate_a_score.first;
-        if (candidate_a_score.second <= found_score) {
-            outlog_printf(1, "The found score %lf is greater than current score %lf!\n", found_score, candidate_a_score.second);
-            outlog_printf(1, "Terminate current session!\n");
-            break;
-        }
+        candidate.push_back(candidate_a_score.first);
         q.pop();
-        //FIXME: Diable cache for now, need to find a better way
-        if (0)
-            if (cache->isNotSucc(candidate.toString(M))) {
-                outlog_printf(2, "Skip the following candidate based on cache:\n%s",
-                        candidate.toString(M).c_str());
-                continue;
-            }
-        cache->addCandidate(candidate.toString(M));
-        tested_cnt ++;
-        bool found = false;
-        candidate_to_id[candidate.toString(M)] = cnt;
-        for (size_t i = 0; i < testers.size(); i++)
-            if (testers[i]->canHandle(candidate)) {
-                TB.test(candidate, testers[i]);
-                found = true;
-                break;
-            }
-        if (!found) {
-            outlog_printf(0, "Unable to handle a candidate:\n%s\n", candidate.toString(M).c_str());
-            continue;
-        }
     }
+
+    outlog_printf(2,"Generating Codes...\n");
+    for (int i=0;i<testers.size();i++)
+        TB.test(candidate, testers[i]);
+
+    // FIXME: we ignore time limit now, we will add back later
+    // while (q.size() > 0 && ((tested_cnt < candidate_limit) || (candidate_limit == 0))) {
+    //     if (timeout_limit != 0)
+    //         if (get_timer() > timeout_limit) {
+    //             outlog_printf(1, "[%llu] Timeout! Limit is %llu\n", get_timer(), timeout_limit);
+    //             break;
+    //         }
+    //     cnt ++;
+    //     time_t now_t = Timer.getSeconds();
+    //     if ((cnt % SYNC_CAP == 0) || (now_t - last_sync > SYNC_TIME_CAP)) {
+    //         last_sync = now_t;
+    //         outlog_printf(2, "Going to sync the batch tester, clear all existing tasks!\n");
+    //         TB.sync();
+    //     }
+    //     if (TB.hasResult()) {
+    //         TB.sync();
+    //         std::vector<std::pair<NewCodeMapTy, double> > tmp = TB.getResults();
+    //         if (tmp.size() > 0)
+    //             if (found_score < tmp[0].second) {
+    //                 found_score = tmp[0].second;
+    //                 outlog_printf(1, "Updated best score result: %lf\n", found_score);
+    //             }
+    //         //collected_res.insert(collected_res.end(), tmp.begin(), tmp.end());
+    //         std::vector<RepairCandidate> succs = TB.getSuccCandidates();
+    //         for (size_t i = 0; i < succs.size(); i++) {
+    //             cache->markSucc(succs[i].toString(M));
+    //             unsigned long schema_id = candidate_to_id[succs[i].toString(M)];
+    //             outlog_printf(1, "Generate a candidate with schema id: %lu\n", schema_id);
+    //             if (generate_min_id > schema_id)
+    //                 generate_min_id = schema_id;
+    //         }
+    //         ((ConditionSynthesisTester*)testers[0])->dumpStat();
+    //         if (quit_with_any) {
+    //             outlog_printf(1, "Quit-with-any flag on, just going to get out.");
+    //             break;
+    //         }
+    //     }
+    //     outlog_printf(2, "Counter: %lu\nBatcher Size:%lu\n", cnt, TB.size());
+    //     RepairCandidateWithScore candidate_a_score = q.top();
+    //     RepairCandidate candidate = candidate_a_score.first;
+    //     if (candidate_a_score.second <= found_score) {
+    //         outlog_printf(1, "The found score %lf is greater than current score %lf!\n", found_score, candidate_a_score.second);
+    //         outlog_printf(1, "Terminate current session!\n");
+    //         break;
+    //     }
+    //     q.pop();
+    //     //FIXME: Diable cache for now, need to find a better way
+    //     if (0)
+    //         if (cache->isNotSucc(candidate.toString(M))) {
+    //             outlog_printf(2, "Skip the following candidate based on cache:\n%s",
+    //                     candidate.toString(M).c_str());
+    //             continue;
+    //         }
+    //     cache->addCandidate(candidate.toString(M));
+    //     tested_cnt ++;
+    //     bool found = false;
+    //     candidate_to_id[candidate.toString(M)] = cnt;
+    //     for (size_t i = 0; i < testers.size(); i++)
+    //         if (testers[i]->canHandle(candidate)) {
+    //             TB.test(candidate, testers[i]);
+    //             found = true;
+    //             break;
+    //         }
+    //     if (!found) {
+    //         outlog_printf(0, "Unable to handle a candidate:\n%s\n", candidate.toString(M).c_str());
+    //         continue;
+    //     }
+    // }
+    outlog_printf(2,"Generating Result...");
+
     TB.sync();
     if (TB.hasResult()) {
         std::vector<std::pair<NewCodeMapTy, double> > tmp = TB.getResults();

@@ -301,7 +301,7 @@ std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceConte
             *pos = S;
         else if (rc.actions[i].kind == RepairAction::InsertMutationKind)
             tmp_vec.insert(pos, S);
-        else {
+        else if (rc.actions[i].kind == RepairAction::InsertAfterMutationKind){
             assert(rc.actions[i].kind == RepairAction::InsertAfterMutationKind);
             pos ++;
             if (pos == tmp_vec.end())
@@ -329,31 +329,35 @@ std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceConte
     return ret;
 }
 
-CodeRewriter::CodeRewriter(SourceContextManager &M, std::list<RepairCandidate> &rc, std::list<ExprFillInfo *> pefi) {
-    std::list<ExprFillInfo> efi;
+#include <optional>
+CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi) {
     std::map<ASTLocTy, std::pair<std::string, bool> > res1;
     res1.clear();
-
     for (int i=0;i<rc.size();i++){
-        if (pefi[i] != NULL)
-            efi[i] = *(pefi[i]);
-        else {
-            efi[i].clear();
-            // We are going to replace it with all unknown expressions
-            for (size_t j = 0; j < rc[i].actions.size(); j++)
-                if (rc[i].actions[j].kind == RepairAction::ExprMutationKind) {
-                    ASTContext *ctxt = M.getSourceContext(rc[i].actions[j].loc.filename);
-                    efi[i][j] = M.getUnknownExpr(ctxt, rc[i].actions[j].candidate_atoms);
-                }
+        std::vector<ExprFillInfo> temp((*pefi)[i]->begin(),(*pefi)[i]->end());
+        for(int k=0;k<temp.size();k++){
+            ExprFillInfo efi;
+            if (pefi !=nullptr){
+                efi = temp[k];
+            }
+            else {
+                efi.clear();
+                // We are going to replace it with all unknown expressions
+                for (size_t j = 0; j < rc[i].actions.size(); j++)
+                    if (rc[i].actions[j].kind == RepairAction::ExprMutationKind) {
+                        ASTContext *ctxt = M.getSourceContext(rc[i].actions[j].loc.filename);
+                        efi[j] = M.getUnknownExpr(ctxt, rc[i].actions[j].candidate_atoms);
+                    }
+            }
+            //rc.dump();
+            // We first the rid of all ExprMutationKind in rc
+            RepairCandidate rc1 = replaceExprInCandidate(M, rc[i], efi);
+            //rc1.dump();
+            // We then eliminate ASTLocTy with new statements, and replace them with
+            // strings
+            std::map<ASTLocTy, std::pair<std::string, bool> > tmp=eliminateAllNewLoc(M, rc[i]);
+            res1.insert(tmp.begin(),tmp.end());
         }
-
-        //rc.dump();
-        // We first the rid of all ExprMutationKind in rc
-        RepairCandidate rc1 = replaceExprInCandidate(M, rc[i], efi[i]);
-        //rc1.dump();
-        // We then eliminate ASTLocTy with new statements, and replace them with
-        // strings
-        res1.insert(eliminateAllNewLoc(M, rc1));
     }
 
     // We then categorize location based on the src_file and their offset
@@ -374,6 +378,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, std::list<RepairCandidate> &
         res2[src_file].insert(std::make_pair(std::make_pair(offset_pair.second,
                         offset_pair.first), loc));
     }
+    outlog_printf(2,"Generating patches...\n");
     // Then we handle each source file saperately
     resCodeSegs.clear();
     resPatches.clear();
@@ -383,6 +388,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, std::list<RepairCandidate> &
         resCodeSegs[src_file].clear();
         resPatches[src_file].clear();
         std::string code = M.getSourceCode(src_file);
+        resCodeSegs[src_file].push_back(code);
         std::string cur_patch = "";
         long long cur_start = -1;
         long long cur_end = -1;
@@ -392,7 +398,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, std::list<RepairCandidate> &
             // NOTE: The start and the end are reversed
             long long start = it2->first.second;
             long long end = it2->first.first;
-            assert( start >= last_end);
+            //assert( start >= last_end);
+            if (start<last_end) continue;
             if (cur_start == -1) {
                 cur_start = start;
                 cur_end = end;
@@ -405,16 +412,17 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, std::list<RepairCandidate> &
                 // We need to merge these two, we first need to decide in the bigger one,
                 // which part is not changed
                 std::string top_part = code.substr(start, cur_start - start);
-                std::string mid_part = code.substr(cur_start, cur_end);
+                std::string mid_part = code.substr(cur_start, cur_end-cur_start);
                 std::string bottom_part = code.substr(cur_end, end - cur_end);
                 std::string big_patch = res1[it2->second].first;
                 if (top_part + mid_part == big_patch.substr(0, cur_end - start)) {
                     cur_patch = top_part + cur_patch + big_patch.substr(cur_end - start);
                 }
                 else {
-                    assert( mid_part + bottom_part ==
-                            big_patch.substr(big_patch.size() - (end - cur_end)));
-                    cur_patch = big_patch.substr(0, big_patch.size() - (end - cur_start))
+                    // assert( mid_part + bottom_part ==
+                    //         big_patch.substr(cur_start,big_patch.size() - (end - cur_start)));
+                    assert(big_patch.find(mid_part)!=std::string::npos);
+                    cur_patch = big_patch.substr(0, big_patch.find(mid_part))
                         + cur_patch + bottom_part;
                 }
                 if (res1[it2->second].second)
@@ -425,8 +433,17 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, std::list<RepairCandidate> &
             }
             else {
                 assert(start >= cur_end);
-                resCodeSegs[src_file].push_back(code.substr(last_end, cur_start - last_end));
+                std::string last_code=resCodeSegs[src_file][resCodeSegs[src_file].size()-1];
+                resCodeSegs[src_file].pop_back();
+                assert(code.find(last_code)!=std::string::npos);
+                size_t seg_start=code.find(last_code);
+
+
+                resCodeSegs[src_file].push_back(code.substr(seg_start,cur_start-seg_start));
                 resPatches[src_file].push_back(cur_patch);
+                resCodeSegs[src_file].push_back(code.substr(cur_end,code.size()-cur_end));
+
+                //resCodeSegs[src_file].push_back(code.substr(last_end, cur_start - last_end));
                 last_end = cur_end;
                 cur_start = start;
                 cur_end = end;
@@ -437,10 +454,10 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, std::list<RepairCandidate> &
             }
             printf("current patch: %s\n",cur_patch.c_str());
         }
-        if (cur_start != -1) {
-            resCodeSegs[src_file].push_back(code.substr(last_end, cur_start - last_end));
-            resPatches[src_file].push_back(cur_patch);
-            resCodeSegs[src_file].push_back(code.substr(cur_end));
-        }
+        // if (cur_start != -1) {
+        //     resCodeSegs[src_file].push_back(code.substr(last_end, cur_start - last_end));
+        //     resPatches[src_file].push_back(cur_patch);
+        //     resCodeSegs[src_file].push_back(code.substr(cur_end));
+        // }
     }
 }

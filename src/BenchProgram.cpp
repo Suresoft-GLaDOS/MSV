@@ -29,6 +29,8 @@
 
 #include <dirent.h>
 #include <libexplain/system.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define LOCALIZATION_RESULT "profile_localization.res"
 #define CONFIG_FILE_PATH "repair.conf"
@@ -452,6 +454,12 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         std::ofstream fout(target_file.c_str(), std::ofstream::out);
         fout << it->second;
         fout.close();
+
+        // Backup fixed file
+        srand(time(NULL));
+        std::ofstream fout_bak(std::string(target_file+"_bak_"+std::to_string(rand())).c_str(),std::ofstream::out);
+        fout_bak<<it->second;
+        fout_bak.close();
         // remove the .o and .lo files to recompile
         {
             std::string tmp = replace_ext(target_file, ".o");

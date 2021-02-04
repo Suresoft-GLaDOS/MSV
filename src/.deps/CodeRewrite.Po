@@ -416,7 +416,7 @@ CodeRewrite.o: CodeRewrite.cpp /usr/include/stdc-predef.h CodeRewrite.h \
  /usr/local/include/clang/AST/AttrVisitor.inc SourceContextManager.h \
  /usr/include/c++/7/queue /usr/include/c++/7/deque \
  /usr/include/c++/7/bits/stl_deque.h /usr/include/c++/7/bits/deque.tcc \
- /usr/include/c++/7/bits/stl_queue.h
+ /usr/include/c++/7/bits/stl_queue.h /usr/include/c++/7/optional
 
 /usr/include/stdc-predef.h:
 
@@ -1393,3 +1393,5 @@ SourceContextManager.h:
 /usr/include/c++/7/bits/deque.tcc:
 
 /usr/include/c++/7/bits/stl_queue.h:
+
+/usr/include/c++/7/optional:

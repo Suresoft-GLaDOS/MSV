@@ -1,0 +1,1252 @@
+CodeRewrite.cpp: In constructor ‘CodeRewriter::CodeRewriter(SourceContextManager&, const std::vector<RepairCandidate>&, std::vector<std::set<std::map<long unsigned int, clang::Expr*> > >*)’:
+CodeRewrite.cpp:337:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i=0;i<rc.size();i++){
+                  ~^~~~~~~~~~
+CodeRewrite.cpp:340:20: error: no match for ‘operator!=’ (operand types are ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ and ‘long int’)
+             if (it != NULL)
+                    ^
+In file included from /usr/include/c++/7/set:60:0,
+                 from Utils.h:22,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_tree.h:398:7: note: candidate: bool std::_Rb_tree_const_iterator<_Tp>::operator!=(const _Self&) const [with _Tp = std::map<long unsigned int, clang::Expr*>; std::_Rb_tree_const_iterator<_Tp>::_Self = std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >]
+       operator!=(const _Self& __x) const _GLIBCXX_NOEXCEPT
+       ^~~~~~~~
+/usr/include/c++/7/bits/stl_tree.h:398:7: note:   no known conversion for argument 1 from ‘long int’ to ‘const _Self& {aka const std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >&}’
+In file included from /usr/local/include/clang/AST/ASTContext.h:19:0,
+                 from /usr/local/include/clang/Frontend/ASTUnit.h:17,
+                 from ASTUtils.h:20,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/local/include/clang/AST/CanonicalType.h:207:13: note: candidate: template<class T, class U> bool clang::operator!=(clang::CanQual<T>, clang::CanQual<U>)
+ inline bool operator!=(CanQual<T> x, CanQual<U> y) {
+             ^~~~~~~~
+/usr/local/include/clang/AST/CanonicalType.h:207:13: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >’ is not derived from ‘clang::CanQual<T>’
+             if (it != NULL)
+                       ^
+In file included from /usr/local/include/clang/Basic/Diagnostic.h:19:0,
+                 from /usr/local/include/clang/AST/NestedNameSpecifier.h:18,
+                 from /usr/local/include/clang/AST/Type.h:21,
+                 from /usr/local/include/clang/AST/CanonicalType.h:17,
+                 from /usr/local/include/clang/AST/ASTContext.h:19,
+                 from /usr/local/include/clang/Frontend/ASTUnit.h:17,
+                 from ASTUtils.h:20,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/local/include/clang/Basic/SourceLocation.h:187:13: note: candidate: bool clang::operator!=(const clang::SourceLocation&, const clang::SourceLocation&)
+ inline bool operator!=(const SourceLocation &LHS, const SourceLocation &RHS) {
+             ^~~~~~~~
+/usr/local/include/clang/Basic/SourceLocation.h:187:13: note:   no known conversion for argument 1 from ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ to ‘const clang::SourceLocation&’
+In file included from /usr/include/c++/7/queue:64:0,
+                 from RepairCandidateGenerator.h:22,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_queue.h:342:5: note: candidate: template<class _Tp, class _Seq> bool std::operator!=(const std::queue<_Tp, _Seq>&, const std::queue<_Tp, _Seq>&)
+     operator!=(const queue<_Tp, _Seq>& __x, const queue<_Tp, _Seq>& __y)
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_queue.h:342:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::queue<_Tp, _Seq>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/deque:64:0,
+                 from /usr/include/c++/7/queue:60,
+                 from RepairCandidateGenerator.h:22,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_deque.h:2284:5: note: candidate: template<class _Tp, class _Alloc> bool std::operator!=(const std::deque<_Tp, _Alloc>&, const std::deque<_Tp, _Alloc>&)
+     operator!=(const deque<_Tp, _Alloc>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_deque.h:2284:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::deque<_Tp, _Alloc>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/deque:64:0,
+                 from /usr/include/c++/7/queue:60,
+                 from RepairCandidateGenerator.h:22,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_deque.h:287:5: note: candidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> bool std::operator!=(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     operator!=(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_deque.h:287:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/deque:64:0,
+                 from /usr/include/c++/7/queue:60,
+                 from RepairCandidateGenerator.h:22,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_deque.h:280:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> bool std::operator!=(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator!=(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_deque.h:280:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/list:63:0,
+                 from /usr/local/include/clang/Basic/Diagnostic.h:32,
+                 from /usr/local/include/clang/AST/NestedNameSpecifier.h:18,
+                 from /usr/local/include/clang/AST/Type.h:21,
+                 from /usr/local/include/clang/AST/CanonicalType.h:17,
+                 from /usr/local/include/clang/AST/ASTContext.h:19,
+                 from /usr/local/include/clang/Frontend/ASTUnit.h:17,
+                 from ASTUtils.h:20,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_list.h:1925:5: note: candidate: template<class _Tp, class _Alloc> bool std::operator!=(const std::__cxx11::list<_Tp, _Alloc>&, const std::__cxx11::list<_Tp, _Alloc>&)
+     operator!=(const list<_Tp, _Alloc>& __x, const list<_Tp, _Alloc>& __y)
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_list.h:1925:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::__cxx11::list<_Tp, _Alloc>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/list:63:0,
+                 from /usr/local/include/clang/Basic/Diagnostic.h:32,
+                 from /usr/local/include/clang/AST/NestedNameSpecifier.h:18,
+                 from /usr/local/include/clang/AST/Type.h:21,
+                 from /usr/local/include/clang/AST/CanonicalType.h:17,
+                 from /usr/local/include/clang/AST/ASTContext.h:19,
+                 from /usr/local/include/clang/Frontend/ASTUnit.h:17,
+                 from ASTUtils.h:20,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_list.h:293:5: note: candidate: template<class _Val> bool std::operator!=(const std::_List_iterator<_Tp>&, const std::_List_const_iterator<_Tp>&)
+     operator!=(const _List_iterator<_Val>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_list.h:293:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::_List_iterator<_Tp>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/functional:58:0,
+                 from /usr/local/include/llvm/ADT/STLExtras.h:29,
+                 from /usr/local/include/llvm/ADT/StringRef.h:12,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:17,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/std_function.h:788:5: note: candidate: template<class _Res, class ... _Args> bool std::operator!=(std::nullptr_t, const std::function<_Res(_ArgTypes ...)>&)
+     operator!=(nullptr_t, const function<_Res(_Args...)>& __f) noexcept
+     ^~~~~~~~
+/usr/include/c++/7/bits/std_function.h:788:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   mismatched types ‘const std::function<_Res(_ArgTypes ...)>’ and ‘long int’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/functional:58:0,
+                 from /usr/local/include/llvm/ADT/STLExtras.h:29,
+                 from /usr/local/include/llvm/ADT/StringRef.h:12,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:17,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/std_function.h:782:5: note: candidate: template<class _Res, class ... _Args> bool std::operator!=(const std::function<_Res(_ArgTypes ...)>&, std::nullptr_t)
+     operator!=(const function<_Res(_Args...)>& __f, nullptr_t) noexcept
+     ^~~~~~~~
+/usr/include/c++/7/bits/std_function.h:782:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::function<_Res(_ArgTypes ...)>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:31,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/shared_ptr.h:393:5: note: candidate: template<class _Tp> bool std::operator!=(std::nullptr_t, const std::shared_ptr<_Tp>&)
+     operator!=(nullptr_t, const shared_ptr<_Tp>& __a) noexcept
+     ^~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:393:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   mismatched types ‘const std::shared_ptr<_Tp>’ and ‘long int’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:31,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/shared_ptr.h:388:5: note: candidate: template<class _Tp> bool std::operator!=(const std::shared_ptr<_Tp>&, std::nullptr_t)
+     operator!=(const shared_ptr<_Tp>& __a, nullptr_t) noexcept
+     ^~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:388:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::shared_ptr<_Tp>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:31,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/shared_ptr.h:383:5: note: candidate: template<class _Tp, class _Up> bool std::operator!=(const std::shared_ptr<_Tp>&, const std::shared_ptr<_Up>&)
+     operator!=(const shared_ptr<_Tp>& __a, const shared_ptr<_Up>& __b) noexcept
+     ^~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:383:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::shared_ptr<_Tp>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/shared_ptr.h:52:0,
+                 from /usr/include/c++/7/memory:81,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:31,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/shared_ptr_base.h:1436:5: note: candidate: template<class _Tp, __gnu_cxx::_Lock_policy _Lp> bool std::operator!=(std::nullptr_t, const std::__shared_ptr<_Tp, _Lp>&)
+     operator!=(nullptr_t, const __shared_ptr<_Tp, _Lp>& __a) noexcept
+     ^~~~~~~~
+/usr/include/c++/7/bits/shared_ptr_base.h:1436:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   mismatched types ‘const std::__shared_ptr<_Tp, _Lp>’ and ‘long int’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/shared_ptr.h:52:0,
+                 from /usr/include/c++/7/memory:81,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:31,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/shared_ptr_base.h:1431:5: note: candidate: template<class _Tp, __gnu_cxx::_Lock_policy _Lp> bool std::operator!=(const std::__shared_ptr<_Tp, _Lp>&, std::nullptr_t)
+     operator!=(const __shared_ptr<_Tp, _Lp>& __a, nullptr_t) noexcept
+     ^~~~~~~~
+/usr/include/c++/7/bits/shared_ptr_base.h:1431:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::__shared_ptr<_Tp, _Lp>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/shared_ptr.h:52:0,
+                 from /usr/include/c++/7/memory:81,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:31,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/shared_ptr_base.h:1425:5: note: candidate: template<class _Tp1, class _Tp2, __gnu_cxx::_Lock_policy _Lp> bool std::operator!=(const std::__shared_ptr<_Tp1, _Lp>&, const std::__shared_ptr<_Tp2, _Lp>&)
+     operator!=(const __shared_ptr<_Tp1, _Lp>& __a,
+     ^~~~~~~~
+/usr/include/c++/7/bits/shared_ptr_base.h:1425:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::__shared_ptr<_Tp1, _Lp>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/memory:80:0,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:31,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/unique_ptr.h:707:5: note: candidate: template<class _Tp, class _Dp> bool std::operator!=(std::nullptr_t, const std::unique_ptr<_Tp, _Dp>&)
+     operator!=(nullptr_t, const unique_ptr<_Tp, _Dp>& __x) noexcept
+     ^~~~~~~~
+/usr/include/c++/7/bits/unique_ptr.h:707:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   mismatched types ‘const std::unique_ptr<_Tp, _Dp>’ and ‘long int’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/memory:80:0,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:31,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/unique_ptr.h:702:5: note: candidate: template<class _Tp, class _Dp> bool std::operator!=(const std::unique_ptr<_Tp, _Dp>&, std::nullptr_t)
+     operator!=(const unique_ptr<_Tp, _Dp>& __x, nullptr_t) noexcept
+     ^~~~~~~~
+/usr/include/c++/7/bits/unique_ptr.h:702:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::unique_ptr<_Tp, _Dp>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/memory:80:0,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:31,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/unique_ptr.h:696:5: note: candidate: template<class _Tp, class _Dp, class _Up, class _Ep> bool std::operator!=(const std::unique_ptr<_Tp, _Dp>&, const std::unique_ptr<_Up, _Ep>&)
+     operator!=(const unique_ptr<_Tp, _Dp>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/unique_ptr.h:696:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::unique_ptr<_Tp, _Dp>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/iterator:66:0,
+                 from /usr/local/include/llvm/ADT/iterator_range.h:21,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:16,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stream_iterator.h:137:5: note: candidate: template<class _Tp, class _CharT, class _Traits, class _Dist> bool std::operator!=(const std::istream_iterator<_Tp, _CharT, _Traits, _Dist>&, const std::istream_iterator<_Tp, _CharT, _Traits, _Dist>&)
+     operator!=(const istream_iterator<_Tp, _CharT, _Traits, _Dist>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stream_iterator.h:137:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::istream_iterator<_Tp, _CharT, _Traits, _Dist>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/map:62:0,
+                 from ErrorLocalizer.h:25,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_multimap.h:1083:5: note: candidate: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::multimap<_Key, _Tp, _Compare, _Alloc>&, const std::multimap<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const multimap<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_multimap.h:1083:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::multimap<_Key, _Tp, _Compare, _Alloc>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/map:61:0,
+                 from ErrorLocalizer.h:25,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_map.h:1418:5: note: candidate: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::map<_Key, _Tp, _Compare, _Alloc>&, const std::map<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const map<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_map.h:1418:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::map<_Key, _Tp, _Compare, _Alloc>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/stl_map.h:63:0,
+                 from /usr/include/c++/7/map:61,
+                 from ErrorLocalizer.h:25,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/tuple:1423:5: note: candidate: template<class ... _TElements, class ... _UElements> constexpr bool std::operator!=(const std::tuple<_Tps ...>&, const std::tuple<_Args2 ...>&)
+     operator!=(const tuple<_TElements...>& __t,
+     ^~~~~~~~
+/usr/include/c++/7/tuple:1423:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::tuple<_Tps ...>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/tuple:39:0,
+                 from /usr/include/c++/7/bits/stl_map.h:63,
+                 from /usr/include/c++/7/map:61,
+                 from ErrorLocalizer.h:25,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/array:257:5: note: candidate: template<class _Tp, long unsigned int _Nm> bool std::operator!=(const std::array<_Tp, _Nm>&, const std::array<_Tp, _Nm>&)
+     operator!=(const array<_Tp, _Nm>& __one, const array<_Tp, _Nm>& __two)
+     ^~~~~~~~
+/usr/include/c++/7/array:257:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::array<_Tp, _Nm>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/7/bits/basic_ios.h:37,
+                 from /usr/include/c++/7/ios:44,
+                 from /usr/include/c++/7/istream:38,
+                 from /usr/include/c++/7/fstream:38,
+                 from ErrorLocalizer.h:23,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/streambuf_iterator.h:210:5: note: candidate: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
+     ^~~~~~~~
+/usr/include/c++/7/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/ios_base.h:46:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/istream:38,
+                 from /usr/include/c++/7/fstream:38,
+                 from ErrorLocalizer.h:23,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/system_error:331:3: note: candidate: bool std::operator!=(const std::error_condition&, const std::error_condition&)
+   operator!=(const error_condition& __lhs,
+   ^~~~~~~~
+/usr/include/c++/7/system_error:331:3: note:   no known conversion for argument 1 from ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ to ‘const std::error_condition&’
+/usr/include/c++/7/system_error:327:3: note: candidate: bool std::operator!=(const std::error_condition&, const std::error_code&)
+   operator!=(const error_condition& __lhs, const error_code& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/7/system_error:327:3: note:   no known conversion for argument 1 from ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ to ‘const std::error_condition&’
+/usr/include/c++/7/system_error:323:3: note: candidate: bool std::operator!=(const std::error_code&, const std::error_condition&)
+   operator!=(const error_code& __lhs, const error_condition& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/7/system_error:323:3: note:   no known conversion for argument 1 from ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ to ‘const std::error_code&’
+/usr/include/c++/7/system_error:319:3: note: candidate: bool std::operator!=(const std::error_code&, const std::error_code&)
+   operator!=(const error_code& __lhs, const error_code& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/7/system_error:319:3: note:   no known conversion for argument 1 from ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ to ‘const std::error_code&’
+In file included from /usr/include/c++/7/set:62:0,
+                 from Utils.h:22,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_multiset.h:920:5: note: candidate: template<class _Key, class _Compare, class _Alloc> bool std::operator!=(const std::multiset<_Key, _Compare, _Alloc>&, const std::multiset<_Key, _Compare, _Alloc>&)
+     operator!=(const multiset<_Key, _Compare, _Alloc>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_multiset.h:920:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::multiset<_Key, _Compare, _Alloc>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/set:61:0,
+                 from Utils.h:22,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_set.h:937:5: note: candidate: template<class _Key, class _Compare, class _Alloc> bool std::operator!=(const std::set<_Key, _Compare, _Alloc>&, const std::set<_Key, _Compare, _Alloc>&)
+     operator!=(const set<_Key, _Compare, _Alloc>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_set.h:937:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::set<_Key, _Compare, _Alloc>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/set:60:0,
+                 from Utils.h:22,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_tree.h:1553:5: note: candidate: template<class _Key, class _Val, class _KeyOfValue, class _Compare, class _Alloc> bool std::operator!=(const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)
+     operator!=(const _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_tree.h:1553:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/set:60:0,
+                 from Utils.h:22,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_tree.h:412:5: note: candidate: template<class _Val> bool std::operator!=(const std::_Rb_tree_iterator<_Tp>&, const std::_Rb_tree_const_iterator<_Val>&)
+     operator!=(const _Rb_tree_iterator<_Val>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_tree.h:412:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::_Rb_tree_iterator<_Tp>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/string:52:0,
+                 from Utils.h:21,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/basic_string.h:6081:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/basic_string.h:6081:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/string:52:0,
+                 from Utils.h:21,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/basic_string.h:6069:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const _CharT* __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/basic_string.h:6069:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   mismatched types ‘const _CharT*’ and ‘std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/string:52:0,
+                 from Utils.h:21,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/basic_string.h:6056:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/basic_string.h:6056:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/char_traits.h:40:0,
+                 from /usr/include/c++/7/string:40,
+                 from Utils.h:21,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/postypes.h:221:5: note: candidate: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     ^~~~~~~~
+/usr/include/c++/7/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::fpos<_StateT>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/vector:64:0,
+                 from Utils.h:20,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_vector.h:1625:5: note: candidate: template<class _Tp, class _Alloc> bool std::operator!=(const std::vector<_Tp, _Alloc>&, const std::vector<_Tp, _Alloc>&)
+     operator!=(const vector<_Tp, _Alloc>& __x, const vector<_Tp, _Alloc>& __y)
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_vector.h:1625:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::vector<_Tp, _Alloc>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/vector:61:0,
+                 from Utils.h:20,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/allocator.h:164:5: note: candidate: template<class _Tp> bool std::operator!=(const std::allocator<_Tp>&, const std::allocator<_Tp>&)
+     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
+     ^~~~~~~~
+/usr/include/c++/7/bits/allocator.h:164:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::allocator<_Tp>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/vector:61:0,
+                 from Utils.h:20,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/allocator.h:158:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_Tp>&, const std::allocator<_Tp>&)
+     operator!=(const allocator<_T1>&, const allocator<_T2>&)
+     ^~~~~~~~
+/usr/include/c++/7/bits/allocator.h:158:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::allocator<_Tp>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/algorithm:61,
+                 from Utils.h:19,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_iterator.h:1139:5: note: candidate: template<class _Iterator> bool std::operator!=(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator!=(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:1139:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::move_iterator<_IteratorL>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/algorithm:61,
+                 from Utils.h:19,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_iterator.h:1133:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator!=(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:1133:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::move_iterator<_IteratorL>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/algorithm:61,
+                 from Utils.h:19,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_iterator.h:352:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator!=(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:352:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/algorithm:61,
+                 from Utils.h:19,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_iterator.h:314:5: note: candidate: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator!=(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:314:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/utility:70:0,
+                 from /usr/include/c++/7/algorithm:60,
+                 from Utils.h:19,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_pair.h:461:5: note: candidate: template<class _T1, class _T2> constexpr bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_pair.h:461:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const std::pair<_T1, _T2>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h:33:0,
+                 from /usr/include/c++/7/bits/allocator.h:46,
+                 from /usr/include/c++/7/vector:61,
+                 from Utils.h:20,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/ext/new_allocator.h:160:5: note: candidate: template<class _Tp> bool __gnu_cxx::operator!=(const __gnu_cxx::new_allocator<_Tp>&, const __gnu_cxx::new_allocator<_Tp>&)
+     operator!=(const new_allocator<_Tp>&, const new_allocator<_Tp>&)
+     ^~~~~~~~
+/usr/include/c++/7/ext/new_allocator.h:160:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const __gnu_cxx::new_allocator<_Tp>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/algorithm:61,
+                 from Utils.h:19,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_iterator.h:883:5: note: candidate: template<class _Iterator, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&)
+     operator!=(const __normal_iterator<_Iterator, _Container>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:883:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const __gnu_cxx::__normal_iterator<_Iterator, _Container>’
+             if (it != NULL)
+                       ^
+In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/7/algorithm:61,
+                 from Utils.h:19,
+                 from ErrorLocalizer.h:19,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+/usr/include/c++/7/bits/stl_iterator.h:876:5: note: candidate: template<class _IteratorL, class _IteratorR, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)
+     operator!=(const __normal_iterator<_IteratorL, _Container>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/7/bits/stl_iterator.h:876:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/strings.h:23:0,
+                 from /usr/include/string.h:431,
+                 from /usr/include/c++/7/cstring:42,
+                 from /usr/local/include/llvm/Support/MathExtras.h:22,
+                 from /usr/local/include/llvm/ADT/SmallVector.h:20,
+                 from /usr/local/include/llvm/Support/raw_ostream.h:16,
+                 from ErrorLocalizer.h:27,
+                 from ASTUtils.h:19,
+                 from RepairCandidateGenerator.h:19,
+                 from ExprSynthesizer.h:19,
+                 from CodeRewrite.h:19,
+                 from CodeRewrite.cpp:18:
+CodeRewrite.cpp:340:23: note:   ‘std::set<std::map<long unsigned int, clang::Expr*> >::iterator {aka std::_Rb_tree_const_iterator<std::map<long unsigned int, clang::Expr*> >}’ is not derived from ‘const __gnu_cxx::__normal_iterator<_IteratorL, _Container>’
+             if (it != NULL)
+                       ^
+make[2]: *** [CodeRewrite.o] Error 1
+make[1]: *** [all-recursive] Error 1
+make: *** [all] Error 2

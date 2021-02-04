@@ -1156,7 +1156,11 @@ std::string RepairCandidate::toString(SourceContextManager &M) const {
     for (size_t i = 0; i < actions.size(); i++)
         if (!M.isNewStmt(actions[i].loc.stmt))
             sout << "At location " << actions[i].loc.toString(M) << "\n";
-    CodeRewriter R(M, *this, NULL);
+    
+    std::vector<RepairCandidate> candidate_list;
+    candidate_list.clear();
+    candidate_list.push_back(*this);
+    CodeRewriter R(M, candidate_list, NULL);
     std::map<std::string, std::vector<std::string> > patches = R.getPatches();
     for (std::map<std::string, std::vector<std::string> >::iterator it = patches.begin();
             it != patches.end(); ++it) {

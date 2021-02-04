@@ -34,7 +34,7 @@ NewCodeMapTy combineCode(const CodeSegTy &codeSegs, const CodeSegTy &patch);
 class CodeRewriter {
     CodeSegTy resCodeSegs, resPatches;
 public:
-    CodeRewriter(SourceContextManager &M, const RepairCandidate &rc, ExprFillInfo *pefi);
+    CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi);
 
     CodeSegTy getCodeSegments() {
         return resCodeSegs;

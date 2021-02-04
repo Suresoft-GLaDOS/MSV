@@ -1,97 +1,80 @@
 make: 'prog' is up to date.
 Path env:  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 /root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
-bresenham.cpp:73:7: error: invalid use of 'this' outside of a non-static member function
-  if (this->_M_offset++ == int(_S_word_bit) - 1) {
-      ^
-bresenham.cpp:73:32: error: use of undeclared identifier '_S_word_bit'; did you mean 'std::_S_word_bit'?
-  if (this->_M_offset++ == int(_S_word_bit) - 1) {
-                               ^~~~~~~~~~~
-                               std::_S_word_bit
+bresenham.cpp:17:9: error: invalid use of 'this' outside of a non-static member function
+    if (this->_M_offset++ == int(_S_word_bit) - 1) {
+        ^
+bresenham.cpp:17:34: error: use of undeclared identifier '_S_word_bit'; did you mean 'std::_S_word_bit'?
+    if (this->_M_offset++ == int(_S_word_bit) - 1) {
+                                 ^~~~~~~~~~~
+                                 std::_S_word_bit
 /usr/lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/bits/stl_bvector.h:68:10: note: 'std::_S_word_bit' declared here
   enum { _S_word_bit = int(__CHAR_BIT__ * sizeof(_Bit_type)) };
          ^
-bresenham.cpp:74:7: error: invalid use of 'this' outside of a non-static member function
-      this->_M_offset = 0;
-      ^
-bresenham.cpp:75:9: error: invalid use of 'this' outside of a non-static member function
-      ++this->_M_p;
+bresenham.cpp:18:9: error: invalid use of 'this' outside of a non-static member function
+        this->_M_offset = 0;
         ^
-bresenham.cpp:82:3: error: invalid use of 'this' outside of a non-static member function
-  this->_M_offset = 0;
-  ^
-bresenham.cpp:88:3: error: invalid use of 'this' outside of a non-static member function
-  this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-  ^
-bresenham.cpp:88:46: error: use of undeclared identifier 'type'
-  this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-                                             ^
-bresenham.cpp:88:51: error: use of undeclared identifier 'parameter'
-  this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-                                                  ^
-bresenham.cpp:94:8: error: no matching function for call to '__is_neg'
-  if (!__is_neg())
-       ^~~~~~~~
+bresenham.cpp:19:11: error: invalid use of 'this' outside of a non-static member function
+        ++this->_M_p;
+          ^
+bresenham.cpp:25:10: error: redefinition of 'count'
+    bool count=true;
+         ^
+bresenham.cpp:13:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:29:35: error: use of undeclared identifier 'y0'
+    double steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
+                                  ^
+bresenham.cpp:29:57: error: use of undeclared identifier 'x0'
+    double steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
+                                                        ^
+bresenham.cpp:32:10: error: redefinition of 'count'
+    bool count=true;
+         ^
+bresenham.cpp:13:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:39:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:13:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:43:10: error: use of undeclared identifier 'steep'
+    if ((steep) || __is_neg()) {
+         ^
+bresenham.cpp:43:20: error: no matching function for call to '__is_neg'
+    if ((steep) || __is_neg()) {
+                   ^~~~~~~~
 bresenham.cpp:1:38: note: candidate function not viable: requires at least 1 argument, but 0 were provided
 extern "C" { int __get_mutant(); int __is_neg(int, ...); int __abst_hole(); }
                                      ^
-bresenham.cpp:100:5: error: invalid use of 'this' outside of a non-static member function
-  ++this->current;
-    ^
-bresenham.cpp:106:5: error: invalid use of 'this' outside of a non-static member function
-  --this->_M_p;
-    ^
-bresenham.cpp:112:5: error: invalid use of 'this' outside of a non-static member function
-  --this->current;
-    ^
-bresenham.cpp:118:5: error: invalid use of 'this' outside of a non-static member function
-  ++this->iter;
-    ^
-bresenham.cpp:124:5: error: invalid use of 'this' outside of a non-static member function
-  --this->_M_current;
-    ^
-14 errors generated.
-Makefile:2: recipe for target 'prog' failed
-make: *** [prog] Error 1
-/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
-/root/project/prophet-gpl/wrap/g++ -o prog bresenham.o
-/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
-bresenham.cpp:67:7: error: invalid use of 'this' outside of a non-static member function
-  if (this->_M_offset++ == int(_S_word_bit) - 1) {
-      ^
-bresenham.cpp:67:32: error: use of undeclared identifier '_S_word_bit'; did you mean 'std::_S_word_bit'?
-  if (this->_M_offset++ == int(_S_word_bit) - 1) {
-                               ^~~~~~~~~~~
-                               std::_S_word_bit
-/usr/lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/bits/stl_bvector.h:68:10: note: 'std::_S_word_bit' declared here
-  enum { _S_word_bit = int(__CHAR_BIT__ * sizeof(_Bit_type)) };
-         ^
-bresenham.cpp:68:7: error: invalid use of 'this' outside of a non-static member function
-      this->_M_offset = 0;
-      ^
-bresenham.cpp:69:9: error: invalid use of 'this' outside of a non-static member function
-      ++this->_M_p;
+bresenham.cpp:44:9: error: use of undeclared identifier 'a'
+        a = x0;
         ^
-4 errors generated.
-Makefile:2: recipe for target 'prog' failed
-make: *** [prog] Error 1
-/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
-bresenham.cpp:67:3: error: invalid use of 'this' outside of a non-static member function
-  this->_M_offset = 0;
-  ^
-1 error generated.
-Makefile:2: recipe for target 'prog' failed
-make: *** [prog] Error 1
-/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
-bresenham.cpp:67:3: error: invalid use of 'this' outside of a non-static member function
-  this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-  ^
-bresenham.cpp:67:46: error: use of undeclared identifier 'type'
-  this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-                                             ^
-bresenham.cpp:67:51: error: use of undeclared identifier 'parameter'
-  this->_M_impl._M_start = std::vector<bool, type-parameter-0-0>::iterator(0, 0);
-                                                  ^
-3 errors generated.
+bresenham.cpp:44:13: error: use of undeclared identifier 'x0'
+        a = x0;
+            ^
+bresenham.cpp:45:9: error: use of undeclared identifier 'x0'
+        x0 = y0;
+        ^
+bresenham.cpp:45:14: error: use of undeclared identifier 'y0'
+        x0 = y0;
+             ^
+bresenham.cpp:46:9: error: use of undeclared identifier 'y0'
+        y0 = a;
+        ^
+bresenham.cpp:46:14: error: use of undeclared identifier 'a'
+        y0 = a;
+             ^
+bresenham.cpp:47:9: error: use of undeclared identifier 'a'
+        a = x1;
+        ^
+bresenham.cpp:49:14: error: use of undeclared identifier 'a'
+        y1 = a;
+             ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
 Makefile:2: recipe for target 'prog' failed
 make: *** [prog] Error 1
