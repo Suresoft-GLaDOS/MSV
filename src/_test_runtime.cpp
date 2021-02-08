@@ -311,3 +311,7 @@ extern "C" int __is_neg(int count, ...) {
     }
     return 0;
 }
+
+extern "C" int __choose(const char *id) {
+  return 0;
+}

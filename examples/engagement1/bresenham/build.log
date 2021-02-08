@@ -1,3 +1,204 @@
 /root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
 /root/project/prophet-gpl/wrap/g++ -o prog bresenham.o
 Path env:  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
+bresenham.cpp:14:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:15:9: error: invalid use of 'this' outside of a non-static member function
+    if (this->_M_offset++ == int(_S_word_bit) - 1) {
+        ^
+bresenham.cpp:15:34: error: use of undeclared identifier '_S_word_bit'; did you mean 'std::_S_word_bit'?
+    if (this->_M_offset++ == int(_S_word_bit) - 1) {
+                                 ^~~~~~~~~~~
+                                 std::_S_word_bit
+/usr/lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/bits/stl_bvector.h:68:10: note: 'std::_S_word_bit' declared here
+  enum { _S_word_bit = int(__CHAR_BIT__ * sizeof(_Bit_type)) };
+         ^
+bresenham.cpp:16:9: error: invalid use of 'this' outside of a non-static member function
+        this->_M_offset = 0;
+        ^
+bresenham.cpp:17:11: error: invalid use of 'this' outside of a non-static member function
+        ++this->_M_p;
+          ^
+bresenham.cpp:23:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:24:35: error: use of undeclared identifier 'y0'
+    double steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
+                                  ^
+bresenham.cpp:24:57: error: use of undeclared identifier 'x0'
+    double steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
+                                                        ^
+bresenham.cpp:27:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:31:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:32:10: error: use of undeclared identifier 'steep'
+    if ((steep) || __is_neg()) {
+         ^
+bresenham.cpp:32:20: error: no matching function for call to '__is_neg'
+    if ((steep) || __is_neg()) {
+                   ^~~~~~~~
+bresenham.cpp:1:38: note: candidate function not viable: requires at least 1 argument, but 0 were provided
+extern "C" { int __get_mutant(); int __is_neg(int, ...); int __abst_hole(); }
+                                     ^
+bresenham.cpp:33:9: error: use of undeclared identifier 'a'
+        a = x0;
+        ^
+bresenham.cpp:33:13: error: use of undeclared identifier 'x0'
+        a = x0;
+            ^
+bresenham.cpp:34:9: error: use of undeclared identifier 'x0'
+        x0 = y0;
+        ^
+bresenham.cpp:34:14: error: use of undeclared identifier 'y0'
+        x0 = y0;
+             ^
+bresenham.cpp:35:9: error: use of undeclared identifier 'y0'
+        y0 = a;
+        ^
+bresenham.cpp:35:14: error: use of undeclared identifier 'a'
+        y0 = a;
+             ^
+bresenham.cpp:36:9: error: use of undeclared identifier 'a'
+        a = x1;
+        ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+Makefile:2: recipe for target 'prog' failed
+make: *** [prog] Error 1
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
+bresenham.cpp:14:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:15:9: error: invalid use of 'this' outside of a non-static member function
+    if (this->_M_offset++ == int(_S_word_bit) - 1) {
+        ^
+bresenham.cpp:15:34: error: use of undeclared identifier '_S_word_bit'; did you mean 'std::_S_word_bit'?
+    if (this->_M_offset++ == int(_S_word_bit) - 1) {
+                                 ^~~~~~~~~~~
+                                 std::_S_word_bit
+/usr/lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/bits/stl_bvector.h:68:10: note: 'std::_S_word_bit' declared here
+  enum { _S_word_bit = int(__CHAR_BIT__ * sizeof(_Bit_type)) };
+         ^
+bresenham.cpp:16:9: error: invalid use of 'this' outside of a non-static member function
+        this->_M_offset = 0;
+        ^
+bresenham.cpp:17:11: error: invalid use of 'this' outside of a non-static member function
+        ++this->_M_p;
+          ^
+bresenham.cpp:23:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:24:35: error: use of undeclared identifier 'y0'
+    double steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
+                                  ^
+bresenham.cpp:24:57: error: use of undeclared identifier 'x0'
+    double steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
+                                                        ^
+bresenham.cpp:27:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:31:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:32:5: error: invalid use of 'this' outside of a non-static member function
+    this->_M_offset = 0;
+    ^
+bresenham.cpp:33:9: error: use of undeclared identifier 'steep'
+    if (steep) {
+        ^
+bresenham.cpp:34:9: error: use of undeclared identifier 'a'
+        a = x0;
+        ^
+bresenham.cpp:34:13: error: use of undeclared identifier 'x0'
+        a = x0;
+            ^
+bresenham.cpp:35:9: error: use of undeclared identifier 'x0'
+        x0 = y0;
+        ^
+bresenham.cpp:35:14: error: use of undeclared identifier 'y0'
+        x0 = y0;
+             ^
+bresenham.cpp:36:9: error: use of undeclared identifier 'y0'
+        y0 = a;
+        ^
+bresenham.cpp:36:14: error: use of undeclared identifier 'a'
+        y0 = a;
+             ^
+bresenham.cpp:37:9: error: use of undeclared identifier 'a'
+        a = x1;
+        ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+Makefile:2: recipe for target 'prog' failed
+make: *** [prog] Error 1
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
+bresenham.cpp:14:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:15:9: error: invalid use of 'this' outside of a non-static member function
+    if (this->_M_offset++ == int(_S_word_bit) - 1) {
+        ^
+bresenham.cpp:15:34: error: use of undeclared identifier '_S_word_bit'; did you mean 'std::_S_word_bit'?
+    if (this->_M_offset++ == int(_S_word_bit) - 1) {
+                                 ^~~~~~~~~~~
+                                 std::_S_word_bit
+/usr/lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/bits/stl_bvector.h:68:10: note: 'std::_S_word_bit' declared here
+  enum { _S_word_bit = int(__CHAR_BIT__ * sizeof(_Bit_type)) };
+         ^
+bresenham.cpp:16:9: error: invalid use of 'this' outside of a non-static member function
+        this->_M_offset = 0;
+        ^
+bresenham.cpp:17:11: error: invalid use of 'this' outside of a non-static member function
+        ++this->_M_p;
+          ^
+bresenham.cpp:23:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:24:35: error: use of undeclared identifier 'y0'
+    double steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
+                                  ^
+bresenham.cpp:24:57: error: use of undeclared identifier 'x0'
+    double steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
+                                                        ^
+bresenham.cpp:27:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:31:9: error: use of undeclared identifier 'count'
+    if (count==true){
+        ^
+bresenham.cpp:32:5: error: invalid use of 'this' outside of a non-static member function
+    this->_M_offset = 0;
+    ^
+bresenham.cpp:33:9: error: use of undeclared identifier 'steep'
+    if (steep) {
+        ^
+bresenham.cpp:34:9: error: use of undeclared identifier 'a'
+        a = x0;
+        ^
+bresenham.cpp:34:13: error: use of undeclared identifier 'x0'
+        a = x0;
+            ^
+bresenham.cpp:35:9: error: use of undeclared identifier 'x0'
+        x0 = y0;
+        ^
+bresenham.cpp:35:14: error: use of undeclared identifier 'y0'
+        x0 = y0;
+             ^
+bresenham.cpp:36:9: error: use of undeclared identifier 'y0'
+        y0 = a;
+        ^
+bresenham.cpp:36:14: error: use of undeclared identifier 'a'
+        y0 = a;
+             ^
+bresenham.cpp:37:9: error: use of undeclared identifier 'a'
+        a = x1;
+        ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+Makefile:2: recipe for target 'prog' failed
+make: *** [prog] Error 1

@@ -329,7 +329,6 @@ std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceConte
     return ret;
 }
 
-#include <optional>
 CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi) {
     std::map<ASTLocTy, std::pair<std::string, bool> > res1;
     res1.clear();
@@ -362,7 +361,9 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
 
     // We then categorize location based on the src_file and their offset
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > res2;
+    std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > tmp_loc;
     res2.clear();
+    tmp_loc.clear();
     for (std::map<ASTLocTy, std::pair<std::string, bool> >::iterator it = res1.begin();
             it != res1.end(); ++it) {
         //llvm::errs() << "Location: " << it->first.toString(M) << "\n";
@@ -377,6 +378,49 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         // We reverse the start and end for sorting purpose
         res2[src_file].insert(std::make_pair(std::make_pair(offset_pair.second,
                         offset_pair.first), loc));
+    }
+
+    // Sorting res2 with start location
+    if (false){
+        for (std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> >::iterator        
+            it = tmp_loc.begin(); it != tmp_loc.end(); ++it) {
+
+            std::vector<std::pair<size_t,size_t>> vector_loc;
+            std::vector<ASTLocTy> vector_astloc;
+            vector_loc.clear();
+            vector_astloc.clear();
+            for (std::map<std::pair<size_t, size_t>, ASTLocTy>::iterator it2 = it->second.begin();
+                it2 != it->second.end(); ++it2) {
+                vector_loc.push_back(it2->first);
+                vector_astloc.push_back(it2->second);
+            }
+            int i,j;
+            std::pair<size_t,size_t> key;
+            ASTLocTy key_loc;
+            for (i=1;i<vector_loc.size();i++){
+                key=vector_loc[i];
+                key_loc=vector_astloc[i];
+                for (j=i-1;j>=0;j--){
+                    if (vector_loc[j].second>key.second){
+                        vector_loc[j+1]=vector_loc[j];
+                        vector_astloc[j+1]=vector_astloc[j];
+                    }
+                    else{
+                        break;
+                    }
+                }
+                vector_loc[j+1]=key;
+                vector_astloc[j+1]=key_loc;
+            }
+            outlog_printf(2,"test\n");
+
+            std::map<std::pair<size_t, size_t>, ASTLocTy> new_map;
+            new_map.clear();
+            for (int k=0;k<vector_loc.size();k++){
+                new_map[vector_loc[k]]=vector_astloc[k];
+            }
+            res2[it->first]=new_map;
+        }
     }
     outlog_printf(2,"Generating patches...\n");
     // Then we handle each source file saperately
@@ -398,8 +442,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             // NOTE: The start and the end are reversed
             long long start = it2->first.second;
             long long end = it2->first.first;
-            assert( start >= last_end);
-            //if (start<last_end) continue;
+            //assert( start >= last_end);
+            if (start < last_end) continue;
             if (cur_start == -1) {
                 //if (res1[it2->second].first.find("this") != std::string::npos) continue;
                 cur_start = start;
