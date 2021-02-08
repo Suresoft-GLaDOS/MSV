@@ -167,9 +167,9 @@ NewCodeMapTy combineCode(const CodeSegTy &codeSegs, const CodeSegTy &patch) {
         std::string indent_str = "";
         for (size_t i = 0; i < patch_vec.size(); i++) {
             getTrailingIndent(seg_vec[i], indent_str);
-            ret[src_file] += std::string("bool count=true;\nif (count==true){\n");
+            //ret[src_file] += std::string("bool count=true;\nif (count==true){\n");
             ret[src_file] += indentPatch(std::string("//prophet generated patch\n") +
-                    patch_vec[i], indent_str) +std::string("}\n") +seg_vec[i+1];
+                    patch_vec[i], indent_str) /* +std::string("}\n")*/ +seg_vec[i+1];
         }
     }
     return ret;
@@ -398,19 +398,19 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             // NOTE: The start and the end are reversed
             long long start = it2->first.second;
             long long end = it2->first.first;
-            //assert( start >= last_end);
-            if (start<last_end) continue;
+            assert( start >= last_end);
+            //if (start<last_end) continue;
             if (cur_start == -1) {
-                if (res1[it2->second].first.find("this") != std::string::npos) continue;
+                //if (res1[it2->second].first.find("this") != std::string::npos) continue;
                 cur_start = start;
                 cur_end = end;
                 cur_patch = res1[it2->second].first;
                 if (res1[it2->second].second)
                     cur_patch = "    " + indentPatch(cur_patch, "    ");
-                //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
+                cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
             }
             else if (start<=cur_start && cur_end <= end) {
-                if (res1[it2->second].first.find("this") != std::string::npos) continue;
+                //if (res1[it2->second].first.find("this") != std::string::npos) continue;
                 // We need to merge these two, we first need to decide in the bigger one,
                 // which part is not changed
                 std::string top_part = code.substr(start, cur_start - start);
@@ -429,12 +429,12 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 }
                 if (res1[it2->second].second)
                     cur_patch = "    " + indentPatch(cur_patch, "    ");
-                //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
+                cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
                 cur_start = start;
                 cur_end = end;
             }
             else {
-                if (res1[it2->second].first.find("this") != std::string::npos) continue;
+                //if (res1[it2->second].first.find("this") != std::string::npos) continue;
                 assert(start >= cur_end);
                 std::string last_code=resCodeSegs[src_file][resCodeSegs[src_file].size()-1];
                 resCodeSegs[src_file].pop_back();
@@ -453,7 +453,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 cur_patch = res1[it2->second].first;
                 if (res1[it2->second].second)
                     cur_patch = "    " + indentPatch(cur_patch, "    ");
-                //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
+                cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
             }
             printf("current patch: %s\n",cur_patch.c_str());
         }

@@ -457,7 +457,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 
         // Backup fixed file
         srand(time(NULL));
-        std::ofstream fout_bak(std::string(target_file+"_bak_"+std::to_string(rand())).c_str(),std::ofstream::out);
+        std::ofstream fout_bak(std::string(target_file+"_bak_"+std::to_string(rand())+".cpp").c_str(),std::ofstream::out);
+        fout_bak << "bool count=true;\n";
         fout_bak<<it->second;
         fout_bak.close();
         // remove the .o and .lo files to recompile

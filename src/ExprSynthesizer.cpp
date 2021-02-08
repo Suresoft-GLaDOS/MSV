@@ -2020,7 +2020,7 @@ class TestBatcher {
             tmp_patches.push_back(T->getPatches(tmp[i].id));
             tot_explored_templates += tmp[i].rc.getCandidateAtoms().size();
             patch_explored += tmp[i].rc.getCandidateAtoms().size();
-            outlog_printf(0, "The number of explored templates: %lu\n", tot_explored_templates);
+            //outlog_printf(3, "The number of explored templates: %lu\n", tot_explored_templates);
         }
         // 지금까지 나온 패치들을 하나의 코드에 합쳐봄
         std::map<std::string, std::string> codes = mergeCode(codeSegs, tmp_patches);
@@ -2128,10 +2128,9 @@ public:
                 for (int j=0;j<candidate.size();j++){
                     tot_explored_templates += candidate[j].getCandidateAtoms().size();
                     patch_explored += candidate[j].getCandidateAtoms().size();
-                    outlog_printf(0, "The number of explored templates: %lu\n", tot_explored_templates);
+                    //outlog_printf(0, "The number of explored templates: %lu\n", tot_explored_templates);
                 }
                 std::map<NewCodeMapTy, double> code_set = singleTest(codeSegs, patches, T, ids[i]);
-                if (code_set.size()==0) continue;
                 for (std::map<NewCodeMapTy, double>::iterator it = code_set.begin();
                         it != code_set.end(); it++) {
                     NewCodeMapTy code = it->first;
