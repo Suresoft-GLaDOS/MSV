@@ -486,9 +486,10 @@ public:
     virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
         std::vector<std::set<ExprFillInfo> *> infos;
         infos.clear();
+
+        outlog_printf(2, "[%llu] Preprocess the following candidate with BasicTester:\n%d\n", get_timer(),
+            candidate.size());
         for (int i=0;i<candidate.size();i++){
-            outlog_printf(2, "[%llu] Preprocess the following candidate with BasicTester:\n%s\n", get_timer(),
-                    candidate[i].toString(M).c_str());
             // We are going to create a set of binding ExprFillInfos
             infos.push_back(enumerateExprBindings(M, candidate[i], -1));
         }
@@ -737,9 +738,9 @@ public:
     virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
         std::vector<std::set<ExprFillInfo> *> the_infos;
         the_infos.clear();
+        outlog_printf(2, "[%llu] Preprocess the following candidate with StringConstTester:\n%d\n", get_timer(),
+            candidate.size());
         for (int i=0;i<candidate.size();i++){
-            outlog_printf(2, "[%llu] Preprocess the following candidate with StringConstTester:\n%s\n", get_timer(),
-                    candidate[i].toString(M).c_str());
             // We are going to create a set of binding ExprFillInfos
             the_infos.push_back(enumerateExprBindings(M, candidate[i], getMutateId(candidate[i])));
         }
@@ -2130,6 +2131,7 @@ public:
                     outlog_printf(0, "The number of explored templates: %lu\n", tot_explored_templates);
                 }
                 std::map<NewCodeMapTy, double> code_set = singleTest(codeSegs, patches, T, ids[i]);
+                if (code_set.size()==0) continue;
                 for (std::map<NewCodeMapTy, double>::iterator it = code_set.begin();
                         it != code_set.end(); it++) {
                     NewCodeMapTy code = it->first;

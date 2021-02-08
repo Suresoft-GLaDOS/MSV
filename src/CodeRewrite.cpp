@@ -401,14 +401,16 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             //assert( start >= last_end);
             if (start<last_end) continue;
             if (cur_start == -1) {
+                if (res1[it2->second].first.find("this") != std::string::npos) continue;
                 cur_start = start;
                 cur_end = end;
                 cur_patch = res1[it2->second].first;
                 if (res1[it2->second].second)
                     cur_patch = "    " + indentPatch(cur_patch, "    ");
-                cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
+                //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
             }
             else if (start<=cur_start && cur_end <= end) {
+                if (res1[it2->second].first.find("this") != std::string::npos) continue;
                 // We need to merge these two, we first need to decide in the bigger one,
                 // which part is not changed
                 std::string top_part = code.substr(start, cur_start - start);
@@ -427,11 +429,12 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 }
                 if (res1[it2->second].second)
                     cur_patch = "    " + indentPatch(cur_patch, "    ");
-                cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
+                //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
                 cur_start = start;
                 cur_end = end;
             }
             else {
+                if (res1[it2->second].first.find("this") != std::string::npos) continue;
                 assert(start >= cur_end);
                 std::string last_code=resCodeSegs[src_file][resCodeSegs[src_file].size()-1];
                 resCodeSegs[src_file].pop_back();
@@ -450,7 +453,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 cur_patch = res1[it2->second].first;
                 if (res1[it2->second].second)
                     cur_patch = "    " + indentPatch(cur_patch, "    ");
-                cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
+                //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
             }
             printf("current patch: %s\n",cur_patch.c_str());
         }

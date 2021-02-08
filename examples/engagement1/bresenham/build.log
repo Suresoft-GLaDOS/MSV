@@ -1,78 +1,241 @@
-make: 'prog' is up to date.
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
+/root/project/prophet-gpl/wrap/g++ -o prog bresenham.o
 Path env:  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 /root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
-bresenham.cpp:17:9: error: invalid use of 'this' outside of a non-static member function
-    if (this->_M_offset++ == int(_S_word_bit) - 1) {
-        ^
-bresenham.cpp:17:34: error: use of undeclared identifier '_S_word_bit'; did you mean 'std::_S_word_bit'?
-    if (this->_M_offset++ == int(_S_word_bit) - 1) {
-                                 ^~~~~~~~~~~
-                                 std::_S_word_bit
-/usr/lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/bits/stl_bvector.h:68:10: note: 'std::_S_word_bit' declared here
-  enum { _S_word_bit = int(__CHAR_BIT__ * sizeof(_Bit_type)) };
-         ^
-bresenham.cpp:18:9: error: invalid use of 'this' outside of a non-static member function
-        this->_M_offset = 0;
-        ^
-bresenham.cpp:19:11: error: invalid use of 'this' outside of a non-static member function
-        ++this->_M_p;
-          ^
-bresenham.cpp:25:10: error: redefinition of 'count'
+bresenham.cpp:20:10: error: redefinition of 'count'
     bool count=true;
          ^
-bresenham.cpp:13:10: note: previous definition is here
+bresenham.cpp:15:10: note: previous definition is here
     bool count=true;
          ^
-bresenham.cpp:29:35: error: use of undeclared identifier 'y0'
-    double steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
-                                  ^
-bresenham.cpp:29:57: error: use of undeclared identifier 'x0'
-    double steep = abs((int)(y1 - y0)) > abs((int)(x1 - x0));
-                                                        ^
-bresenham.cpp:32:10: error: redefinition of 'count'
-    bool count=true;
-         ^
-bresenham.cpp:13:10: note: previous definition is here
-    bool count=true;
-         ^
-bresenham.cpp:39:11: error: redefinition of 'count'
+bresenham.cpp:25:11: error: redefinition of 'count'
      bool count=true;
           ^
-bresenham.cpp:13:10: note: previous definition is here
+bresenham.cpp:15:10: note: previous definition is here
     bool count=true;
          ^
-bresenham.cpp:43:10: error: use of undeclared identifier 'steep'
+bresenham.cpp:28:10: error: use of undeclared identifier 'steep'
     if ((steep) || __is_neg()) {
          ^
-bresenham.cpp:43:20: error: no matching function for call to '__is_neg'
+bresenham.cpp:28:20: error: no matching function for call to '__is_neg'
     if ((steep) || __is_neg()) {
                    ^~~~~~~~
 bresenham.cpp:1:38: note: candidate function not viable: requires at least 1 argument, but 0 were provided
 extern "C" { int __get_mutant(); int __is_neg(int, ...); int __abst_hole(); }
                                      ^
-bresenham.cpp:44:9: error: use of undeclared identifier 'a'
+bresenham.cpp:29:9: error: use of undeclared identifier 'a'
         a = x0;
         ^
-bresenham.cpp:44:13: error: use of undeclared identifier 'x0'
-        a = x0;
-            ^
-bresenham.cpp:45:9: error: use of undeclared identifier 'x0'
-        x0 = y0;
-        ^
-bresenham.cpp:45:14: error: use of undeclared identifier 'y0'
-        x0 = y0;
-             ^
-bresenham.cpp:46:9: error: use of undeclared identifier 'y0'
-        y0 = a;
-        ^
-bresenham.cpp:46:14: error: use of undeclared identifier 'a'
+bresenham.cpp:31:14: error: use of undeclared identifier 'a'
         y0 = a;
              ^
-bresenham.cpp:47:9: error: use of undeclared identifier 'a'
+bresenham.cpp:32:9: error: use of undeclared identifier 'a'
         a = x1;
         ^
-bresenham.cpp:49:14: error: use of undeclared identifier 'a'
+bresenham.cpp:34:14: error: use of undeclared identifier 'a'
         y1 = a;
+             ^
+bresenham.cpp:37:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:40:23: error: no matching function for call to '__is_neg'
+    if ((x0 > x1) && !__is_neg()) {
+                      ^~~~~~~~
+bresenham.cpp:1:38: note: candidate function not viable: requires at least 1 argument, but 0 were provided
+extern "C" { int __get_mutant(); int __is_neg(int, ...); int __abst_hole(); }
+                                     ^
+bresenham.cpp:41:9: error: use of undeclared identifier 'a'
+        a = x0;
+        ^
+bresenham.cpp:43:14: error: use of undeclared identifier 'a'
+        x1 = a;
+             ^
+bresenham.cpp:44:9: error: use of undeclared identifier 'a'
+        a = y0;
+        ^
+bresenham.cpp:46:14: error: use of undeclared identifier 'a'
+        y1 = a;
+             ^
+bresenham.cpp:50:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:55:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:61:23: error: use of undeclared identifier 'deltay'
+     float deltaerr = deltay / deltax;
+                      ^
+bresenham.cpp:61:32: error: use of undeclared identifier 'deltax'
+     float deltaerr = deltay / deltax;
+                               ^
+bresenham.cpp:62:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+Makefile:2: recipe for target 'prog' failed
+make: *** [prog] Error 1
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
+bresenham.cpp:20:10: error: redefinition of 'count'
+    bool count=true;
+         ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:25:10: error: use of undeclared identifier 'steep'
+     if (steep)
+         ^
+bresenham.cpp:27:3: error: use of undeclared identifier 'a'
+         a = x0; x0 = y0; y0 = a;
+         ^
+bresenham.cpp:27:25: error: use of undeclared identifier 'a'
+         a = x0; x0 = y0; y0 = a;
+                               ^
+bresenham.cpp:28:3: error: use of undeclared identifier 'a'
+         a = x1; x1 = y1; y1 = a;
+         ^
+bresenham.cpp:28:25: error: use of undeclared identifier 'a'
+         a = x1; x1 = y1; y1 = a;
+                               ^
+bresenham.cpp:32:3: error: use of undeclared identifier 'a'
+         a = x0; x0 = x1; x1 = a;
+         ^
+bresenham.cpp:32:25: error: use of undeclared identifier 'a'
+         a = x0; x0 = x1; x1 = a;
+                               ^
+bresenham.cpp:33:3: error: use of undeclared identifier 'a'
+         a = y0; y0 = y1; y1 = a;
+         ^
+bresenham.cpp:33:25: error: use of undeclared identifier 'a'
+         a = y0; y0 = y1; y1 = a;
+                               ^
+bresenham.cpp:36:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:41:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:47:23: error: use of undeclared identifier 'deltay'
+     float deltaerr = deltay / deltax;
+                      ^
+bresenham.cpp:47:32: error: use of undeclared identifier 'deltax'
+     float deltaerr = deltay / deltax;
+                               ^
+bresenham.cpp:48:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:54:8: error: use of undeclared identifier 'ystep'
+       ystep = 1;
+       ^
+bresenham.cpp:56:8: error: use of undeclared identifier 'ystep'
+       ystep = -1;
+       ^
+bresenham.cpp:58:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:66:7: error: use of undeclared identifier 'steep'
+         if (steep){
+             ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+Makefile:2: recipe for target 'prog' failed
+make: *** [prog] Error 1
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
+bresenham.cpp:20:10: error: redefinition of 'count'
+    bool count=true;
+         ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:25:10: error: use of undeclared identifier 'steep'
+     if (steep)
+         ^
+bresenham.cpp:27:3: error: use of undeclared identifier 'a'
+         a = x0; x0 = y0; y0 = a;
+         ^
+bresenham.cpp:27:25: error: use of undeclared identifier 'a'
+         a = x0; x0 = y0; y0 = a;
+                               ^
+bresenham.cpp:28:3: error: use of undeclared identifier 'a'
+         a = x1; x1 = y1; y1 = a;
+         ^
+bresenham.cpp:28:25: error: use of undeclared identifier 'a'
+         a = x1; x1 = y1; y1 = a;
+                               ^
+bresenham.cpp:32:3: error: use of undeclared identifier 'a'
+         a = x0; x0 = x1; x1 = a;
+         ^
+bresenham.cpp:32:25: error: use of undeclared identifier 'a'
+         a = x0; x0 = x1; x1 = a;
+                               ^
+bresenham.cpp:33:3: error: use of undeclared identifier 'a'
+         a = y0; y0 = y1; y1 = a;
+         ^
+bresenham.cpp:33:25: error: use of undeclared identifier 'a'
+         a = y0; y0 = y1; y1 = a;
+                               ^
+bresenham.cpp:36:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:41:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:47:23: error: use of undeclared identifier 'deltay'
+     float deltaerr = deltay / deltax;
+                      ^
+bresenham.cpp:47:32: error: use of undeclared identifier 'deltax'
+     float deltaerr = deltay / deltax;
+                               ^
+bresenham.cpp:48:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:54:8: error: use of undeclared identifier 'ystep'
+       ystep = 1;
+       ^
+bresenham.cpp:56:8: error: use of undeclared identifier 'ystep'
+       ystep = -1;
+       ^
+bresenham.cpp:58:11: error: redefinition of 'count'
+     bool count=true;
+          ^
+bresenham.cpp:15:10: note: previous definition is here
+    bool count=true;
+         ^
+bresenham.cpp:66:7: error: use of undeclared identifier 'steep'
+         if (steep){
              ^
 fatal error: too many errors emitted, stopping now [-ferror-limit=]
 20 errors generated.
