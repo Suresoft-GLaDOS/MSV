@@ -484,6 +484,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         else
             rc.score = 4*PRIORITY_ALPHA;
         rc.kind = RepairCandidate::TightenConditionKind;
+        rc.original=n;
         q.push_back(rc);
     }
 
