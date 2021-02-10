@@ -30,7 +30,8 @@
 const char* HANDLER_PREFIX =
     "int __get_mutant(); "
     "int __is_neg(int, ...); "
-    "int __abst_hole(); ";
+    "int __abst_hole(); "
+    "int __choose(char *);";
 const char* MEMSET_PREFIX =
     "void* memset(void*, int, unsigned long); ";
 

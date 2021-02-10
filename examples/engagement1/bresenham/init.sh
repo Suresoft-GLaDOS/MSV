@@ -1,5 +1,5 @@
 rm profile_localization.res
-rm __fixed_bresenham.cpp*
+rm src/*_bak_*
 rm test.cache
 cd profile
 rm prog

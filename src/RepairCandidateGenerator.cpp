@@ -518,6 +518,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         else
             rc.score = 4*PRIORITY_ALPHA;
         rc.kind = RepairCandidate::LoosenConditionKind;
+        rc.original=n;
         q.push_back(rc);
 
         if (naive) return;
@@ -554,6 +555,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 else
                     rc.score = 4*PRIORITY_ALPHA;
                 rc.kind = RepairCandidate::LoosenConditionKind;
+                rc.original=n;
                 q.push_back(rc);
             }
     }
@@ -591,6 +593,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 else
                     rc.score = getPriority(n) + PRIORITY_ALPHA;
                 rc.kind = RepairCandidate::AddInitKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 q.push_back(rc);
             }
@@ -618,6 +621,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 else
                     rc.score = getPriority(n) + PRIORITY_ALPHA/2;
                 rc.kind = RepairCandidate::ReplaceKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 rc.oldRExpr = V.getOldRExpr(*it);
                 rc.newRExpr = V.getNewRExpr(*it);
@@ -644,6 +648,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 else
                     rc.score = getPriority(n) + PRIORITY_ALPHA + PRIORITY_ALPHA/2;
                 rc.kind = RepairCandidate::ReplaceStringKind;
+                rc.original=n;
                 q.push_back(rc);
             }
         }
@@ -662,6 +667,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 else
                     rc.score = getPriority(n) + PRIORITY_ALPHA;
                 rc.kind = RepairCandidate::ReplaceKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 rc.oldRExpr = V2.getOldRExpr(*it);
                 rc.newRExpr = V2.getNewRExpr(*it);
@@ -708,6 +714,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     }
                 }
                 rc.kind = RepairCandidate::AddAndReplaceKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 tmp_map[stmtToString(*ctxt, *it2)] = rc;
             }
@@ -728,6 +735,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     }
                 }
                 rc.kind = RepairCandidate::AddAndReplaceKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 tmp_map[stmtToString(*ctxt, *it)] = rc;
             }
@@ -755,6 +763,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     }
                 }
                 rc.kind = RepairCandidate::AddAndReplaceKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 tmp_map[stmtToString(*ctxt, *it)] = rc;
             }
@@ -798,6 +807,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         else
             rc.score = getPriority(n) + PRIORITY_ALPHA;
         rc.kind = RepairCandidate::GuardKind;
+        rc.original=n;
         rc.is_first = is_first;
         q.push_back(rc);
         if (naive) return;
@@ -827,6 +837,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 else
                     rc.score = getPriority(n) + PRIORITY_ALPHA;
                 rc.kind = RepairCandidate::SpecialGuardKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 q.push_back(rc);
             }
@@ -853,6 +864,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         else
             rc.score = getPriority(n) + PRIORITY_ALPHA;
         rc.kind = RepairCandidate::ReplaceKind;
+        rc.original=n;
         rc.is_first = false;
         rc.oldRExpr = NULL;
         rc.newRExpr = NULL;
@@ -898,6 +910,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 }
             }
             rc.kind = RepairCandidate::IfExitKind;
+            rc.original=n;
             rc.is_first = is_first;
             q.push_back(rc);
         }
@@ -930,6 +943,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     }
                 }
                 rc.kind = RepairCandidate::IfExitKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 q.push_back(rc);
             }
@@ -956,6 +970,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     rc.score += PRIORITY_ALPHA;
             }
             rc.kind = RepairCandidate::IfExitKind;
+            rc.original=n;
             rc.is_first = is_first;
             q.push_back(rc);
         }
@@ -987,6 +1002,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     rc.score += PRIORITY_ALPHA;
             }
             rc.kind = RepairCandidate::IfExitKind;
+            rc.original=n;
             rc.is_first = is_first;
             q.push_back(rc);
         }

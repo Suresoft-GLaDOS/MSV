@@ -5,9 +5,9 @@ Total 1864 different repair schemas!!!!
 Total 2422 different repair candidate templates for scoring!!!
 Total 625 different partial repair candidate templates!!
 Trying different candidates!
-BasicTester pointer: 0x56160f89f710
-StringConstTester pointer: 0x56160f00d270
-CondTester pointer: 0x56160f7f7ff0
+BasicTester pointer: 0x5628c843e6b0
+StringConstTester pointer: 0x5628c7b69270
+CondTester pointer: 0x5628c8351960
 Generating Candidates...
 Candidates size: 1864
 Generating Codes...
@@ -21,19 +21,19 @@ codes size: 1
 res size: 1
 result size: 1863
 Spawn 1 instances, now Total 1
-Single building for Tester 0x56160f7f7ff0 id 1863 failed as well!
+Single building for Tester 0x5628c8351960 id 1863 failed as well!
 [9] Preprocess the following candidate with StringConstTester:
 1864
 Generating patches...
 [9] StringConstTester, a patch instance with id 0:
 Spawn 1 instances, now Total 2
-Single building for Tester 0x56160f00d270 id 0 failed as well!
+Single building for Tester 0x5628c7b69270 id 0 failed as well!
 [11] Preprocess the following candidate with BasicTester:
 1864
 Generating patches...
 [11] BasicTester, a patch instance with id 0:
 Spawn 1 instances, now Total 3
-Single building for Tester 0x56160f89f710 id 1 failed as well!
+Single building for Tester 0x5628c843e6b0 id 1 failed as well!
 Generating Result...The total number of synthesis runs: 0
 The total number of concrete conds: 0
 The total number of explored concrete patches: 7266
