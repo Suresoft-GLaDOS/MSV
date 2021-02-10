@@ -274,66 +274,93 @@ static std::pair<size_t, size_t> getStartEndOffset(SourceContextManager &M,
     }
     return std::make_pair(start_idx, end_idx);
 }
+bool hasUnknownIdent(ASTContext *ctxt,Stmt *s){
+    std::string str=stmtToString(*ctxt,s);
+    if (str.find("--this")!=std::string::npos ||
+        str.find("++this")!=std::string::npos||
+        str.find("_M_")!=std::string::npos ||
+        str.find("_S_")!=std::string::npos) return true;
+    else return false;
+}
 int counter=0;
 std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceContextManager &M,
         const std::vector<RepairCandidate> &rc) {
     // We first construct the list of stmt close to each original ASTLocTy
     // and we store it to tmp_map1
-    std::map<ASTLocTy, std::vector<Stmt*> > tmp_map1;
+    std::map<ASTLocTy, std::vector<std::vector<Stmt*>> > tmp_map1;
     //std::map<Stmt*, ASTLocTy> tmp_map2;
     tmp_map1.clear();
     //tmp_map2.clear();
     // Change: Process with candidates vactor, not one candidate
     for (size_t j=0;j<rc.size();j++){
         for (size_t i = 0; i < rc[j].actions.size(); i++) {
+            const ASTLocTy &rootLoc = rc[j].actions[i].loc;
+            std::vector<Stmt *> vec_create;
+            vec_create.clear();
+            tmp_map1[rootLoc].push_back(vec_create);
+            std::vector<Stmt *> &tmp_vector=tmp_map1[rootLoc][tmp_map1[rootLoc].size()-1];
+            tmp_vector.clear();
+            Stmt* S = (Stmt*) rc[j].actions[i].ast_node;
+            
+            if (hasUnknownIdent(M.getSourceContext(rc[j].actions[i].loc.filename),S)) continue;
             // This is a new original statement
             //if (tmp_map2.count(rc[j].actions[i].loc.stmt) == 0) {
-            if (std::find(tmp_map1[rc[j].actions[i].loc].begin(),tmp_map1[rc[j].actions[i].loc].end(),
-                rc[j].actions[i].loc.stmt)==tmp_map1[rc[j].actions[i].loc].end()){
+            if (std::find(tmp_vector.begin(),tmp_vector.end(),
+                rc[j].actions[i].loc.stmt)==tmp_vector.end()){
                 //tmp_map2.insert(std::make_pair(rc[j].actions[i].loc.stmt, rc[j].actions[i].loc));
-                tmp_map1[rc[j].actions[i].loc].clear();
-                tmp_map1[rc[j].actions[i].loc].push_back(rc[j].actions[i].loc.stmt);
+                tmp_vector.clear();
+                tmp_vector.push_back(rc[j].actions[i].loc.stmt);
             }
-            ASTLocTy rootLoc = rc[j].actions[i].loc;
-            Stmt* S = (Stmt*) rc[j].actions[i].ast_node;
             //tmp_map2[S] = rootLoc;
-            std::vector<Stmt*> &tmp_vec = tmp_map1[rootLoc];
-            std::vector<Stmt*>::iterator pos = std::find(tmp_vec.begin(),
-                   tmp_vec.end(), rc[j].actions[i].loc.stmt);
-            assert( pos != tmp_vec.end() );
+            std::vector<Stmt*>::iterator pos = std::find(tmp_vector.begin(),
+                   tmp_vector.end(), rc[j].actions[i].loc.stmt);
+            assert( pos != tmp_vector.end() );
             if (rc[j].actions[i].kind == RepairAction::ReplaceMutationKind){
                 *pos=S;
             }
             else if (rc[j].actions[i].kind == RepairAction::InsertMutationKind)
-                tmp_vec.insert(pos, S);
+                tmp_vector.insert(pos, S);
             else if (rc[j].actions[i].kind == RepairAction::InsertAfterMutationKind){
                 assert(rc[j].actions[i].kind == RepairAction::InsertAfterMutationKind);
                 pos ++;
-                if (pos == tmp_vec.end())
-                    tmp_vec.push_back(S);
+                if (pos == tmp_vector.end())
+                    tmp_vector.push_back(S);
                 else
-                    tmp_vec.insert(pos, S);
+                    tmp_vector.insert(pos, S);
             }
         }
     }
     // We then get string from the list of stmt for each ASTLocTy
     std::map<ASTLocTy, std::pair<std::string, bool> > ret;
     ret.clear();
-    for (std::map<ASTLocTy, std::vector<Stmt*> >::iterator it = tmp_map1.begin();
+    for (std::map<ASTLocTy, std::vector<std::vector<Stmt*>> >::iterator it = tmp_map1.begin();
             it != tmp_map1.end(); ++it) {
-        std::vector<Stmt*> &tmp_vec = it->second;
-        ret[it->first].first = "";
-        ret[it->first].second = !llvm::isa<CompoundStmt>(it->first.parent_stmt);
+        std::map<std::string,bool> str_vec;
+        str_vec.clear();
         ASTContext *ctxt = M.getSourceContext(it->first.filename);
-        for (size_t i = 0; i < tmp_vec.size(); i++) {
-            std::string tmp = stmtToString(*ctxt, tmp_vec[i]);
-            ret[it->first].first += tmp;
-            if (tmp[tmp.size() - 1]  != '\n' && tmp[tmp.size() - 1] != ';')
-                ret[it->first].first += ";\n";
+        for (std::vector<std::vector<Stmt *>>::iterator it2=it->second.begin();
+                it2!=it->second.end();it2++){
+            std::vector<Stmt*> &tmp_vec = *it2;
+            std::pair<std::string,bool> str_pair;
+            str_pair.first = "";
+            str_pair.second = !llvm::isa<CompoundStmt>(it->first.parent_stmt);
+            for (size_t i = 0; i < tmp_vec.size(); i++) {
+                std::string tmp = stmtToString(*ctxt, tmp_vec[i]);
+                str_pair.first += tmp;
+                if (tmp[tmp.size() - 1]  != '\n' && tmp[tmp.size() - 1] != ';')
+                    str_pair.first += ";\n";
+            }
+            str_vec.insert(str_pair);
         }
         std::string switcher="switch(__choose(\"__ID"+std::to_string(counter)+"\"))";
-        std::string new_tmp=switcher+"{\n"+"\tcase 0: {\n"+stmtToString(*ctxt,it->first.stmt)+"\nbreak;\n}\n"+
-            "\tcase 1: {\n"+ret[it->first].first+"\nbreak;\n}\n}";
+        std::string cases=switcher+"{\n\tcase 0: {\n"+stmtToString(*ctxt,it->first.stmt)+"\nbreak;\n}\n";
+        int i=1;
+        for (std::map<std::string,bool>::iterator str_it=str_vec.begin();str_it!=str_vec.end();str_it++){
+            cases+="\tcase "+std::to_string(i)+": {\n"+str_it->first+"\nbreak;\n}\n";
+            i++;
+            ret[it->first].second=str_it->second;
+        }
+        std::string new_tmp=cases+"}\n";
         ret[it->first].first=new_tmp;
         printf("\ncurrent candidate: %d\n",counter);
         printf("parent stmt: %x\n",it->first.parent_stmt);
