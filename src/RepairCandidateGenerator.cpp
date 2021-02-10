@@ -881,6 +881,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
             placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy);
+        
         //clang::CallExpr *is_neg_call = G->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
         //UnaryOperator *UO = new(*ctxt) UnaryOperator(hinfo.is_neg, UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation());
         FunctionDecl* curFD = L->getCurrentFunction();

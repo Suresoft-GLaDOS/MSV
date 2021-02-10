@@ -27,8 +27,8 @@ uname -v = #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH: /root/.vscode-server/bin/8490d3dde47c57ba65ec40dd192d014fd2113496/bin/
-PATH: /root/.vscode-server/bin/8490d3dde47c57ba65ec40dd192d014fd2113496/bin/
+PATH: /root/.vscode-server/bin/5d424b828ada08e1eb9f95d6cb41120234ef57c7/bin/
+PATH: /root/.vscode-server/bin/5d424b828ada08e1eb9f95d6cb41120234ef57c7/bin/
 PATH: /usr/local/sbin/
 PATH: /usr/local/bin/
 PATH: /usr/sbin/
@@ -676,7 +676,7 @@ configure:24665: checking whether APR has DSO support
 configure:24692: result: yes
 configure:24775: checking for library containing crypt
 configure:24805: gcc -o conftest -g -O2 -pthread  -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c  >&5
-/tmp/cceKK02W.o: In function `main':
+/tmp/ccrGCZfg.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/conftest.c:34: undefined reference to `crypt'
 collect2: error: ld returned 1 exit status
 configure:24805: $? = 1

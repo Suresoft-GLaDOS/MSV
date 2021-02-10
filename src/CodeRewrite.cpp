@@ -363,8 +363,8 @@ std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceConte
         std::string new_tmp=cases+"}\n";
         ret[it->first].first=new_tmp;
         printf("\ncurrent candidate: %d\n",counter);
-        printf("parent stmt: %x\n",it->first.parent_stmt);
-        printf("current stmt: %x\n",it->first.stmt);
+        printf("parent stmt: %s\n",stmtToString(*ctxt,it->first.parent_stmt).c_str());
+        printf("current stmt: %s\n",stmtToString(*ctxt,it->first.stmt).c_str());
         printf("stmt: %s\n",ret[it->first].first.c_str());
         counter++;
     }
@@ -392,7 +392,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             }
             //rc.dump();
             // We first the rid of all ExprMutationKind in rc
-            //RepairCandidate rc1 = replaceExprInCandidate(M, rc[i], efi);
+            //rc[i] = replaceExprInCandidate(M, rc[i], efi);
             //rc1.dump();
             // We then eliminate ASTLocTy with new statements, and replace them with
             // strings
