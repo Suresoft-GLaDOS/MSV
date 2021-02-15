@@ -1,3 +1,46 @@
 Initialize the program!
 Generating repair candidates!
 Processing bresenham.cpp
+Total 1864 different repair schemas!!!!
+Total 2422 different repair candidate templates for scoring!!!
+Total 625 different partial repair candidate templates!!
+Trying different candidates!
+candidate count: 1864
+BasicTester pointer: 0x5568e68ef230
+StringConstTester pointer: 0x5568e68aa5a0
+CondTester pointer: 0x5568e6600290
+Generating Candidates...
+Candidates size: 1864
+Generating Codes...
+[7] Preprocess the following candidate with CondTester:
+1864 Candidates
+Generating patches with CondTester...
+Generating patches...
+Patch Generated!
+[7] CondTester, a patch instance with id 0:
+codes size: 1
+res size: 1
+result size: 1863
+Spawn 1 instances, now Total 1
+[10] CondTester, Testing instance id 1863:
+[10] Preprocess the following candidate with StringConstTester:
+1864
+Generating patches...
+[10] StringConstTester, a patch instance with id 0:
+Spawn 1 instances, now Total 2
+[12] StringConstTester, Testing instance id 0:
+[12] Preprocess the following candidate with BasicTester:
+1864
+Generating patches...
+[13] BasicTester, a patch instance with id 0:
+Spawn 1 instances, now Total 3
+[15] BasicTester, Testing instance id 1:
+Generating Result...The total number of synthesis runs: 0
+The total number of concrete conds: 0
+The total number of explored concrete patches: 7266
+result size: 0
+Repair process ends without working fix!!
+Total 1864 different repair schemas!!!!
+Total 2422 different repair candidate templates for scoring!!!
+Total number of compiles: 3
+Total number of test eval: 4

@@ -282,9 +282,43 @@ bool hasUnknownIdent(ASTContext *ctxt,Stmt *s){
         str.find("_S_")!=std::string::npos) return true;
     else return false;
 }
-int counter=0;
-std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceContextManager &M,
+std::string toString(RepairAction action){
+    switch(action.kind){
+        case RepairAction::ReplaceMutationKind:
+            return "ReplaceMutationKind";
+        case RepairAction::InsertMutationKind:
+            return "InsertMutationKind";
+        case RepairAction::InsertAfterMutationKind:
+            return "InsertAfterMutationKind";
+        default:
+            return "ExprMutationKind";
+    }
+}
+std::string toString(RepairCandidate candidate){
+    switch(candidate.kind){
+        case RepairCandidate::TightenConditionKind:
+            return "TightenConditionKind";
+        case RepairCandidate::LoosenConditionKind:
+            return "LoosenConditionKind";
+        case RepairCandidate::GuardKind:
+            return "GuardKind";
+        case RepairCandidate::SpecialGuardKind:
+            return "SpecialGuardKind";
+        case RepairCandidate::IfExitKind:
+            return "IfExitKind";
+        case RepairCandidate::AddInitKind:
+            return "AddInitKind";
+        case RepairCandidate::ReplaceKind:
+            return "ReplaceKind";
+        case RepairCandidate::ReplaceStringKind:
+            return "ReplaceStringKind";
+        default:
+            return "AddAndReplaceKind";
+    }
+}
+std::map<ASTLocTy, std::pair<std::string, bool> > CodeRewriter::eliminateAllNewLoc(SourceContextManager &M,
         const std::vector<RepairCandidate> &rc) {
+    counter=0;
     // We first construct the list of stmt close to each original ASTLocTy
     // and we store it to tmp_map1
     std::map<ASTLocTy, std::vector<std::vector<Stmt*>> > tmp_map1;
@@ -293,8 +327,17 @@ std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceConte
     //tmp_map2.clear();
     // Change: Process with candidates vactor, not one candidate
     for (size_t j=0;j<rc.size();j++){
+        if (DeclStmt::classof(rc[j].original)) continue;
         for (size_t i = 0; i < rc[j].actions.size(); i++) {
             const ASTLocTy &rootLoc = rc[j].actions[i].loc;
+            if (DeclStmt::classof(rootLoc.stmt)) continue;
+
+            // outlog_printf(2,"Candidate Type: %s\n",toString(rc[j]).c_str());
+            // outlog_printf(2,"Action Type: %s\n",toString(rc[j].actions[i]).c_str());
+            // ASTContext *ctxt = M.getSourceContext(rootLoc.filename);
+            // std::string new_str=stmtToString(*ctxt,(Stmt*)rc[j].actions[i].ast_node);
+            // outlog_printf(2,"new string: %s\n\n",new_str.c_str());
+
             std::vector<Stmt *> vec_create;
             vec_create.clear();
             tmp_map1[rootLoc].push_back(vec_create);
@@ -302,7 +345,7 @@ std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceConte
             tmp_vector.clear();
             Stmt* S = (Stmt*) rc[j].actions[i].ast_node;
             
-            if (hasUnknownIdent(M.getSourceContext(rc[j].actions[i].loc.filename),S)) continue;
+            //if (hasUnknownIdent(M.getSourceContext(rc[j].actions[i].loc.filename),S)) continue;
             // This is a new original statement
             //if (tmp_map2.count(rc[j].actions[i].loc.stmt) == 0) {
             if (std::find(tmp_vector.begin(),tmp_vector.end(),
@@ -333,6 +376,7 @@ std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceConte
     // We then get string from the list of stmt for each ASTLocTy
     std::map<ASTLocTy, std::pair<std::string, bool> > ret;
     ret.clear();
+    index=0;
     for (std::map<ASTLocTy, std::vector<std::vector<Stmt*>> >::iterator it = tmp_map1.begin();
             it != tmp_map1.end(); ++it) {
         std::map<std::string,bool> str_vec;
@@ -352,16 +396,19 @@ std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceConte
             }
             str_vec.insert(str_pair);
         }
+        std::string original_case=stmtToString(*ctxt,it->first.stmt);
+        if (original_case[original_case.size() - 1]  != '\n' && original_case[original_case.size() - 1] != ';')
+            original_case += ";\n";
         std::string switcher="switch(__choose(\"__ID"+std::to_string(counter)+"\"))";
-        std::string cases=switcher+"{\n\tcase 0: {\n"+stmtToString(*ctxt,it->first.stmt)+"\nbreak;\n}\n";
+        std::string cases=switcher+"{\n\tcase 0: {\n"+original_case+"\nbreak;\n}\n";
         int i=1;bool skip=false;
         for (std::map<std::string,bool>::iterator str_it=str_vec.begin();str_it!=str_vec.end();str_it++){
-            if (stmtToString(*ctxt,it->first.stmt)==str_it->first){
+            if (original_case==str_it->first){
                 skip=true;
                 break;
             }
             if (str_it->first=="") continue;
-            cases+="\tcase "+std::to_string(i)+": {\n"+str_it->first+"\nbreak;\n}\n";
+            cases+="#ifdef COMPILE_"+std::to_string(index++)+"\n\tcase "+std::to_string(i)+": {\n"+str_it->first+"\nbreak;\n}\n#endif\n";
             i++;
             ret[it->first].second=str_it->second;
         }
@@ -370,7 +417,7 @@ std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceConte
         ret[it->first].first=new_tmp;
         // printf("\ncurrent candidate: %d\n",counter);
         // printf("parent stmt: %s\n",stmtToString(*ctxt,it->first.parent_stmt).c_str());
-        // printf("current stmt: %s\n",stmtToString(*ctxt,it->first.stmt).c_str());
+        // printf("current stmt: %s\n",original_case.c_str());
         // printf("stmt: %s\n",ret[it->first].first.c_str());
         counter++;
     }
@@ -495,7 +542,6 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             //assert( start >= last_end);
             if (start < last_end) continue;
             if (cur_start == -1) {
-                //if (res1[it2->second].first.find("this") != std::string::npos) continue;
                 cur_start = start;
                 cur_end = end;
                 cur_patch = res1[it2->second].first;
@@ -504,7 +550,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
             }
             else if (start<=cur_start && cur_end <= end) {
-                //if (res1[it2->second].first.find("this") != std::string::npos) continue;
+                continue;
                 // We need to merge these two, we first need to decide in the bigger one,
                 // which part is not changed
                 std::string top_part = code.substr(start, cur_start - start);
@@ -524,11 +570,11 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 if (res1[it2->second].second)
                     cur_patch = "    " + indentPatch(cur_patch, "    ");
                 //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
+                // cur_patch+="\nbreak;\n}\n}";
                 cur_start = start;
                 cur_end = end;
             }
             else {
-                //if (res1[it2->second].first.find("this") != std::string::npos) continue;
                 assert(start >= cur_end);
                 std::string last_code=resCodeSegs[src_file][resCodeSegs[src_file].size()-1];
                 resCodeSegs[src_file].pop_back();

@@ -404,8 +404,8 @@ protected:
     SourceContextManager &M;
     TestCaseSetTy negative_cases, positive_cases;
     std::vector<RepairCandidate> candidates;
-    std::vector<CodeSegTy> codes;
-    std::vector<PatchListTy> patches;
+    CodeSegTy codes;
+    PatchListTy patches;
     TestCaseSetTy failed_cases;
     bool naive;
 
@@ -474,13 +474,13 @@ public:
     }
 
     virtual CodeSegTy getCodeSegs(unsigned long id) {
-        assert( id < codes.size() );
-        return codes[id];
+        //assert( id < codes.size() );
+        return codes;
     }
 
     virtual CodeSegTy getPatches(unsigned long id) {
-        assert( id < patches.size() );
-        return patches[id];
+        //assert( id < patches.size() );
+        return patches;
     }
 
     virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
@@ -506,8 +506,8 @@ public:
         }
         for (int i=0;i<candidate.size();i++)
             candidates.push_back(candidate[i]);
-        codes.push_back(a_code);
-        patches.push_back(a_patch);
+        codes=a_code;
+        patches=a_patch;
         res.push_back((unsigned long)codes.size());
         // OK, this is hacky, we are going to propagate this change to other place,
         // only here
@@ -524,8 +524,8 @@ public:
                 }
                 for (int i=0;i<candidate.size();i++)
                     candidates.push_back(candidate[i]);
-                codes.push_back(a_new_code);
-                patches.push_back(a_new_patch);
+                codes=a_new_code;
+                patches=a_new_patch;
                 res.push_back(codes.size());
             }
         }
@@ -539,12 +539,12 @@ public:
     virtual bool test(const BenchProgram::EnvMapTy &env, unsigned long id) {
         {
             outlog_printf(2, "[%llu] BasicTester, Testing instance id %lu:\n", get_timer(), id);
-            out_codes(codes[id], patches[id]);
+            out_codes(codes, patches);
         }
         outlog_printf(3, "Testing negative cases!\n");
         if (!testNegativeCases(env)) {
-            codes[id].clear();
-            patches[id].clear();
+            codes.clear();
+            patches.clear();
             return false;
         }
         outlog_printf(3, "Testing positive cases!\n");
@@ -553,8 +553,8 @@ public:
             outlog_printf(2, "[%llu] Passed!\n", get_timer());
         else {
             // We are going to clear out stuff tested, to avoid memory usage.
-            codes[id].clear();
-            patches[id].clear();
+            codes.clear();
+            patches.clear();
         }
         return ret;
     }
@@ -569,7 +569,7 @@ public:
 
         if (DumpPassedCandidate.getValue() != "")
             dumpCandidate(M, candidates[id], NULL, score);
-        return singleResult(cleanUpCode(combineCode(codes[id], patches[id])), score);
+        return singleResult(cleanUpCode(combineCode(codes, patches)), score);
     }
 };
 
@@ -726,13 +726,13 @@ public:
     }
 
     virtual CodeSegTy getCodeSegs(unsigned long id) {
-        assert( id < codes.size() );
-        return codes[id];
+        //assert( id < codes.size() );
+        return codes;
     }
 
     virtual CodeSegTy getPatches(unsigned long id) {
         assert( id < patches.size() );
-        return patches[id];
+        return patches;
     }
 
     virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
@@ -757,8 +757,8 @@ public:
         res.push_back((unsigned long)codes.size());
         for (int i=0;i<candidate.size();i++)
             candidates.push_back(candidate[i]);
-        codes.push_back(a_code);
-        patches.push_back(a_patch);
+        codes=a_code;
+        patches=a_patch;
         for (int i=0;i<the_infos.size();i++){
             infos_set.push_back(the_infos[i]);
             for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
@@ -780,8 +780,8 @@ public:
                 res.push_back(codes.size());
                 for (int i=0;i<candidate.size();i++)
                     candidates.push_back(candidate[i]);
-                codes.push_back(a_new_code);
-                patches.push_back(a_new_patch);
+                codes=a_new_code;
+                patches=a_new_patch;
                 for (int i=0;i<the_infos.size();i++){
                     infos_set.push_back(the_infos[i]);
                     for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
@@ -799,7 +799,7 @@ public:
     virtual bool test(const BenchProgram::EnvMapTy &env, unsigned long id) {
         {
             outlog_printf(2, "[%llu] StringConstTester, Testing instance id %lu:\n", get_timer(), id);
-            out_codes(codes[id], patches[id]);
+            out_codes(codes, patches);
         }
         outlog_printf(3, "Testing negative cases!\n");
         candidate_strs[id].clear();
@@ -831,9 +831,9 @@ public:
                         }
                     }
                 if (!may_pass || candidate_strs[id].size() > 1) {
-                    codes[id].clear();
+                    codes.clear();
                     candidate_strs[id].clear();
-                    patches[id].clear();
+                    patches.clear();
                     {
                         std::string cmd = "rm -rf " + tmp_out;
                         int ret = system(cmd.c_str());
@@ -1702,9 +1702,9 @@ public:
         }
         for (int i=0;i<candidate.size();i++)
             candidates.push_back(candidate[i]);
-        codes.push_back(a_code);
+        codes=a_code;
         outlog_printf(2,"codes size: %d\n",codes.size());
-        patches.push_back(a_patch);
+        patches=a_patch;
         for (int i=0;i<the_infos.size();i++){
             infos_set.push_back(the_infos[i]);
             for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
@@ -1719,30 +1719,30 @@ public:
     virtual bool test(const BenchProgram::EnvMapTy &env, unsigned long id) {
         {
             outlog_printf(2, "[%llu] CondTester, Testing instance id %lu:\n", get_timer(), id);
-            out_codes(codes[id], patches[id]);
+            out_codes(codes, patches);
         }
         // We first need to find the flip combination that will make it passes each
         // negative cases, and we store it to negative_records
         std::map<unsigned long, std::vector<unsigned long> > negative_records;
-        outlog_printf(3, "Testing negative cases!\n");
+        outlog_printf(2, "Testing negative cases!\n");
         if (!testNegativeCases(env, negative_records)) {
-            codes[id].clear();
-            patches[id].clear();
+            codes.clear();
+            patches.clear();
             return false;
         }
-        outlog_printf(3, "Testing positive cases!\n");
+        outlog_printf(2, "Testing positive cases!\n");
         if (!BasicTester::testPositiveCases(env)) {
-            codes[id].clear();
-            patches[id].clear();
+            codes.clear();
+            patches.clear();
             return false;
         }
         // Then we need to collect the variable values at the expr, we store it into
         // this caseVMap
-        outlog_printf(3, "Collect values for post processing!\n");
+        outlog_printf(2, "Collect values for post processing!\n");
         std::map<unsigned long, std::vector<std::vector<long long> > > caseVMap;
         if (!collectValues(env, candidates[id], negative_records, caseVMap)) {
-            codes[id].clear();
-            patches[id].clear();
+            codes.clear();
+            patches.clear();
             return false;
         }
         valueRecords[id] = caseVMap;
@@ -1760,7 +1760,7 @@ public:
         post_cnt ++;
         {
             outlog_printf(2, "CondTester, Postprocessing instance id %lu:\n", id);
-            out_codes(codes[id], patches[id]);
+            out_codes(codes, patches);
         }
         BranchRecordTy &negative_records = branchRecords[id];
         ValueRecordTy &caseVMap = valueRecords[id];
@@ -1901,8 +1901,8 @@ public:
         // FIXME: This is too hacky, I hate this!
         double score = computeFinalScore(learning, M, candidate, id, NULL);
         if (found_score < score) {
-            CodeSegTy codeSegs = codes[id];
-            PatchListTy patch = patches[id];
+            CodeSegTy codeSegs = codes;
+            PatchListTy patch = patches;
             NewCodeMapTy new_code = combineCode(codeSegs, patch);
             std::string src_file = candidate.actions[condition_idx].loc.src_file;
             outlog_printf(3, "Initial synthesize failed, final attempt\n");
