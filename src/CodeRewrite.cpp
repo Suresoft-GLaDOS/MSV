@@ -354,18 +354,24 @@ std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceConte
         }
         std::string switcher="switch(__choose(\"__ID"+std::to_string(counter)+"\"))";
         std::string cases=switcher+"{\n\tcase 0: {\n"+stmtToString(*ctxt,it->first.stmt)+"\nbreak;\n}\n";
-        int i=1;
+        int i=1;bool skip=false;
         for (std::map<std::string,bool>::iterator str_it=str_vec.begin();str_it!=str_vec.end();str_it++){
+            if (stmtToString(*ctxt,it->first.stmt)==str_it->first){
+                skip=true;
+                break;
+            }
+            if (str_it->first=="") continue;
             cases+="\tcase "+std::to_string(i)+": {\n"+str_it->first+"\nbreak;\n}\n";
             i++;
             ret[it->first].second=str_it->second;
         }
+        if (skip==true) continue;
         std::string new_tmp=cases+"}\n";
         ret[it->first].first=new_tmp;
-        printf("\ncurrent candidate: %d\n",counter);
-        printf("parent stmt: %s\n",stmtToString(*ctxt,it->first.parent_stmt).c_str());
-        printf("current stmt: %s\n",stmtToString(*ctxt,it->first.stmt).c_str());
-        printf("stmt: %s\n",ret[it->first].first.c_str());
+        // printf("\ncurrent candidate: %d\n",counter);
+        // printf("parent stmt: %s\n",stmtToString(*ctxt,it->first.parent_stmt).c_str());
+        // printf("current stmt: %s\n",stmtToString(*ctxt,it->first.stmt).c_str());
+        // printf("stmt: %s\n",ret[it->first].first.c_str());
         counter++;
     }
     return ret;

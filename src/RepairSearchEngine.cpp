@@ -280,7 +280,6 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                             sout << "-" << cnt;
                         outlog_printf(1, "Found a fix! Store to: %s\n", sout.str().c_str());
                         std::ofstream fout(sout.str().c_str(), std::ofstream::out);
-                        fout <<"bool count=true;";
                         fout << it->second;
                         fout.close();
                     }
