@@ -408,7 +408,7 @@ protected:
     PatchListTy patches;
     TestCaseSetTy failed_cases;
     bool naive;
-    int total_macro;
+    long long total_macro;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, false);
@@ -483,7 +483,7 @@ public:
         //assert( id < patches.size() );
         return patches;
     }
-    int getMacroCount(){
+    long long getMacroCount(){
         return total_macro;
     }
 
@@ -1989,7 +1989,7 @@ class TestBatcher {
 
     std::map<NewCodeMapTy, double> singleTest(const CodeSegTy &codeSegs, const CodeSegTy &patches,
             BasicTester *T, unsigned long id) {
-        int macros=T->getMacroCount();
+        long long macros=T->getMacroCount();
         // macros=2;
 
         BenchProgram::EnvMapTy buildEnv;
@@ -1998,9 +1998,9 @@ class TestBatcher {
             buildEnv["COMPILE_CMD"] = "clang++";
         else
             buildEnv["COMPILE_CMD"] = GCC_CMD;
-        std::vector<int> succ_id;
+        std::vector<long long> succ_id;
         const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
-        for (int i=0;i<macros;i++){
+        for (long long i=0;i<macros;i++){
             bool include=true;
             for (std::map<std::string,std::string>::const_iterator combined_it=combined.begin();
                     combined_it!=combined.end();combined_it++){
@@ -2011,7 +2011,7 @@ class TestBatcher {
             }
 
             if (include==true){
-                std::vector<int> macros;
+                std::vector<long long> macros;
                 macros.push_back(i);
                 bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
                         combined,macros,true);

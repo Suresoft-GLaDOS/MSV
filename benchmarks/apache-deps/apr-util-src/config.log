@@ -676,7 +676,7 @@ configure:24665: checking whether APR has DSO support
 configure:24692: result: yes
 configure:24775: checking for library containing crypt
 configure:24805: gcc -o conftest -g -O2 -pthread  -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c  >&5
-/tmp/ccVSPk5A.o: In function `main':
+/tmp/ccUAoJht.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/conftest.c:34: undefined reference to `crypt'
 collect2: error: ld returned 1 exit status
 configure:24805: $? = 1

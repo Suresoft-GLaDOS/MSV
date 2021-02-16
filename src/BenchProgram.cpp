@@ -296,7 +296,7 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
         fprintf(stderr, "\"%s\"\n", build_args[i].c_str());*/
 }
 
-bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log,std::vector<int> compile_macro) {
+bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log,std::vector<long long> compile_macro) {
     char ori_dir[1000];
     char* retc = getcwd(ori_dir, 1000);
     assert(retc != NULL);
@@ -307,7 +307,7 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     assert(ret == 0);
 
     std::string cflags="";
-    for (int i=0;i<compile_macro.size();i++)
+    for (long long i=0;i<compile_macro.size();i++)
         cflags+="-D COMPILE_"+std::to_string(compile_macro[i])+" ";
     if (timeout_limit == 0)
         ret = execute_with_timeout((std::string("make CFLAGS=\""+cflags+"\" >>") + build_log + " 2>&1"), 60);
@@ -320,13 +320,13 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     return succ;
 }
 
-bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bool force_reconf,std::vector<int> compile_macro) {
+bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bool force_reconf,std::vector<long long> compile_macro) {
     assert(src_dirs.count(subDir) != 0);
     std::string src_dir = getFullPath(work_dir + "/" + subDir);
     if (force_reconf || !src_dirs[subDir]) {
         std::string cmd;
         std::string cflags="";
-        for (int i=0;i<compile_macro.size();i++)
+        for (long long i=0;i<compile_macro.size();i++)
             cflags+="-D COMPILE_"+std::to_string(compile_macro[i])+" ";
 
         if (dep_dir != ""){
@@ -417,7 +417,7 @@ void BenchProgram::popEnvMap(const EnvMapTy &envMap) {
 }
 
 bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wrapScript,
-        const EnvMapTy &envMap,std::vector<int> compile_macro) {
+        const EnvMapTy &envMap,std::vector<long long> compile_macro) {
     pushEnvMap(envMap);
 
     pushWrapPath(CLANG_WRAP_PATH, wrapScript);
@@ -442,7 +442,7 @@ bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wra
 }
 
 bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-        const std::map<std::string, std::string> &fileCodeMap,std::vector<int> compile_macro,bool createFile) {
+        const std::map<std::string, std::string> &fileCodeMap,std::vector<long long> compile_macro,bool createFile) {
     compile_cnt ++;
     // This is to backup the changed sourcefile, in case something broken
     // the workdir, and we want to just resume
