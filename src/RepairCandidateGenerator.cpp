@@ -676,6 +676,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    // TODO: Remove strange templates (e.g. --this, _M_...(), ...)
     void genAddStatement(Stmt* n, bool is_first, bool is_func_block) {
         if (in_yacc_func) return;
         if (naive) return;
@@ -685,6 +686,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         std::map<std::string, RepairCandidate> tmp_map;
         tmp_map.clear();
         for (std::set<Expr*>::iterator it = exprs.begin(); it != exprs.end(); ++it) {
+            //outlog_printf(2,"Exprs: %s\n",stmtToString(*ctxt,*it).c_str());
             AtomReplaceVisitor V(ctxt, L, *it, false);
             V.TraverseStmt(*it);
             std::set<Stmt*> stmts = V.getResult();

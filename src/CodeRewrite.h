@@ -37,8 +37,8 @@ class CodeRewriter {
 public:
     int index;
     CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi);
-    std::map<ASTLocTy, std::pair<std::string, bool> > eliminateAllNewLoc(SourceContextManager &M,
-        const std::vector<RepairCandidate> &rc);
+    std::map<ASTLocTy, std::map<std::string, bool> > eliminateAllNewLoc(SourceContextManager &M,
+        const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str);
 
     CodeSegTy getCodeSegments() {
         return resCodeSegs;

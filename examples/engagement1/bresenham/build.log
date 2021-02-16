@@ -1,111 +1,249 @@
-/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
-/root/project/prophet-gpl/wrap/g++ -o prog bresenham.o
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp  -o bresenham.o
+/root/project/prophet-gpl/wrap/g++  -o prog bresenham.o
 Path env:  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -D COMPILE_0  -o bresenham.o
 bresenham.cpp:18:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-     switch(__choose("__ID7")){
+     switch(__choose("__ID0"))
                      ^
-bresenham.cpp:1075:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-     switch(__choose("__ID8")){
+bresenham.cpp:1076:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID1"))
                      ^
-bresenham.cpp:2139:28: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID0")){
+bresenham.cpp:2140:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID3"))
+                     ^
+bresenham.cpp:2144:310: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+                                                                                                                                                                                                                                                                                                     switch(__choose("__ID2"))
+                                                                                                                                                                                                                                                                                                                     ^
+bresenham.cpp:47532:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID4"))
                            ^
-bresenham.cpp:2754:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID1")){
+bresenham.cpp:48212:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID5"))
                            ^
-bresenham.cpp:3433:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID2")){
+bresenham.cpp:48892:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID6"))
                            ^
-bresenham.cpp:4112:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID3")){
-                           ^
-bresenham.cpp:4792:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-         switch(__choose("__ID5")){
+bresenham.cpp:49573:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID7"))
                          ^
-bresenham.cpp:5471:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-         switch(__choose("__ID6")){
+bresenham.cpp:50253:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID8"))
                          ^
-bresenham.cpp:6417:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-  switch(__choose("__ID11")){
+bresenham.cpp:51200:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID9"))
                   ^
-bresenham.cpp:6890:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-  switch(__choose("__ID12")){
+bresenham.cpp:51674:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID10"))
                   ^
-bresenham.cpp:7357:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-  switch(__choose("__ID13")){
+bresenham.cpp:52142:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID11"))
                   ^
-11 warnings generated.
-/root/project/prophet-gpl/wrap/g++ -o prog bresenham.o
-/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
+12 warnings generated.
+/root/project/prophet-gpl/wrap/g++ -D COMPILE_0  -o prog bresenham.o
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -D COMPILE_1  -o bresenham.o
 bresenham.cpp:18:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-     switch(__choose("__ID7")){
+     switch(__choose("__ID0"))
                      ^
-bresenham.cpp:1075:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-     switch(__choose("__ID8")){
+bresenham.cpp:34:8: error: invalid use of 'this' outside of a non-static member function
+     ++this->_M_current;
+       ^
+bresenham.cpp:1076:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID1"))
                      ^
-bresenham.cpp:2139:28: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID0")){
+bresenham.cpp:2140:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID3"))
+                     ^
+bresenham.cpp:2144:310: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+                                                                                                                                                                                                                                                                                                     switch(__choose("__ID2"))
+                                                                                                                                                                                                                                                                                                                     ^
+bresenham.cpp:47532:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID4"))
                            ^
-bresenham.cpp:2754:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID1")){
+bresenham.cpp:48212:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID5"))
                            ^
-bresenham.cpp:3433:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID2")){
+bresenham.cpp:48892:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID6"))
                            ^
-bresenham.cpp:4112:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID3")){
-                           ^
-bresenham.cpp:4792:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-         switch(__choose("__ID5")){
+bresenham.cpp:49573:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID7"))
                          ^
-bresenham.cpp:5471:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-         switch(__choose("__ID6")){
+bresenham.cpp:50253:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID8"))
                          ^
-bresenham.cpp:6417:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-  switch(__choose("__ID11")){
+bresenham.cpp:51200:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID9"))
                   ^
-bresenham.cpp:6890:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-  switch(__choose("__ID12")){
+bresenham.cpp:51674:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID10"))
                   ^
-bresenham.cpp:7357:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-  switch(__choose("__ID13")){
+bresenham.cpp:52142:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID11"))
                   ^
-11 warnings generated.
-/root/project/prophet-gpl/wrap/g++ -o prog bresenham.o
-/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -o bresenham.o
+12 warnings and 1 error generated.
+Makefile:2: recipe for target 'prog' failed
+make: *** [prog] Error 1
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -D COMPILE_0  -o bresenham.o
 bresenham.cpp:18:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-     switch(__choose("__ID7")){
+     switch(__choose("__ID0"))
                      ^
-bresenham.cpp:1075:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-     switch(__choose("__ID8")){
+bresenham.cpp:1076:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID1"))
                      ^
-bresenham.cpp:2139:28: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID0")){
+bresenham.cpp:2140:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID3"))
+                     ^
+bresenham.cpp:2144:310: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+                                                                                                                                                                                                                                                                                                     switch(__choose("__ID2"))
+                                                                                                                                                                                                                                                                                                                     ^
+bresenham.cpp:47532:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID4"))
                            ^
-bresenham.cpp:2754:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID1")){
+bresenham.cpp:48212:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID5"))
                            ^
-bresenham.cpp:3433:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID2")){
+bresenham.cpp:48892:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID6"))
                            ^
-bresenham.cpp:4112:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-           switch(__choose("__ID3")){
-                           ^
-bresenham.cpp:4792:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-         switch(__choose("__ID5")){
+bresenham.cpp:49573:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID7"))
                          ^
-bresenham.cpp:5471:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-         switch(__choose("__ID6")){
+bresenham.cpp:50253:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID8"))
                          ^
-bresenham.cpp:6417:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-  switch(__choose("__ID11")){
+bresenham.cpp:51200:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID9"))
                   ^
-bresenham.cpp:6890:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-  switch(__choose("__ID12")){
+bresenham.cpp:51674:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID10"))
                   ^
-bresenham.cpp:7357:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
-  switch(__choose("__ID13")){
+bresenham.cpp:52142:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID11"))
                   ^
-11 warnings generated.
-/root/project/prophet-gpl/wrap/g++ -o prog bresenham.o
+12 warnings generated.
+/root/project/prophet-gpl/wrap/g++ -D COMPILE_0  -o prog bresenham.o
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -D COMPILE_1  -o bresenham.o
+bresenham.cpp:18:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID0"))
+                     ^
+bresenham.cpp:34:8: error: invalid use of 'this' outside of a non-static member function
+     ++this->_M_current;
+       ^
+bresenham.cpp:1076:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID1"))
+                     ^
+bresenham.cpp:2140:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID3"))
+                     ^
+bresenham.cpp:2144:310: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+                                                                                                                                                                                                                                                                                                     switch(__choose("__ID2"))
+                                                                                                                                                                                                                                                                                                                     ^
+bresenham.cpp:47532:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID4"))
+                           ^
+bresenham.cpp:48212:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID5"))
+                           ^
+bresenham.cpp:48892:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID6"))
+                           ^
+bresenham.cpp:49573:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID7"))
+                         ^
+bresenham.cpp:50253:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID8"))
+                         ^
+bresenham.cpp:51200:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID9"))
+                  ^
+bresenham.cpp:51674:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID10"))
+                  ^
+bresenham.cpp:52142:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID11"))
+                  ^
+12 warnings and 1 error generated.
+Makefile:2: recipe for target 'prog' failed
+make: *** [prog] Error 1
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -D COMPILE_0  -o bresenham.o
+bresenham.cpp:18:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID0"))
+                     ^
+bresenham.cpp:1076:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID1"))
+                     ^
+bresenham.cpp:2140:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID3"))
+                     ^
+bresenham.cpp:2144:310: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+                                                                                                                                                                                                                                                                                                     switch(__choose("__ID2"))
+                                                                                                                                                                                                                                                                                                                     ^
+bresenham.cpp:47532:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID4"))
+                           ^
+bresenham.cpp:48212:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID5"))
+                           ^
+bresenham.cpp:48892:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID6"))
+                           ^
+bresenham.cpp:49573:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID7"))
+                         ^
+bresenham.cpp:50253:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID8"))
+                         ^
+bresenham.cpp:51200:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID9"))
+                  ^
+bresenham.cpp:51674:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID10"))
+                  ^
+bresenham.cpp:52142:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID11"))
+                  ^
+12 warnings generated.
+/root/project/prophet-gpl/wrap/g++ -D COMPILE_0  -o prog bresenham.o
+/root/project/prophet-gpl/wrap/g++ -c bresenham.cpp -D COMPILE_1  -o bresenham.o
+bresenham.cpp:18:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID0"))
+                     ^
+bresenham.cpp:34:8: error: invalid use of 'this' outside of a non-static member function
+     ++this->_M_current;
+       ^
+bresenham.cpp:1076:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID1"))
+                     ^
+bresenham.cpp:2140:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+     switch(__choose("__ID3"))
+                     ^
+bresenham.cpp:2144:310: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+                                                                                                                                                                                                                                                                                                     switch(__choose("__ID2"))
+                                                                                                                                                                                                                                                                                                                     ^
+bresenham.cpp:47532:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID4"))
+                           ^
+bresenham.cpp:48212:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID5"))
+                           ^
+bresenham.cpp:48892:21: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+           switch(__choose("__ID6"))
+                           ^
+bresenham.cpp:49573:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID7"))
+                         ^
+bresenham.cpp:50253:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+         switch(__choose("__ID8"))
+                         ^
+bresenham.cpp:51200:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID9"))
+                  ^
+bresenham.cpp:51674:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID10"))
+                  ^
+bresenham.cpp:52142:19: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  switch(__choose("__ID11"))
+                  ^
+12 warnings and 1 error generated.
+Makefile:2: recipe for target 'prog' failed
+make: *** [prog] Error 1

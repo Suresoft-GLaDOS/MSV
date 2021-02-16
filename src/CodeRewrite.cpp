@@ -316,21 +316,25 @@ std::string toString(RepairCandidate candidate){
             return "AddAndReplaceKind";
     }
 }
-std::map<ASTLocTy, std::pair<std::string, bool> > CodeRewriter::eliminateAllNewLoc(SourceContextManager &M,
-        const std::vector<RepairCandidate> &rc) {
+std::map<ASTLocTy, std::map<std::string, bool> > CodeRewriter::eliminateAllNewLoc(SourceContextManager &M,
+        const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str) {
     counter=0;
+    original_str.clear();
     // We first construct the list of stmt close to each original ASTLocTy
     // and we store it to tmp_map1
     std::map<ASTLocTy, std::vector<std::vector<Stmt*>> > tmp_map1;
-    //std::map<Stmt*, ASTLocTy> tmp_map2;
     tmp_map1.clear();
-    //tmp_map2.clear();
     // Change: Process with candidates vactor, not one candidate
     for (size_t j=0;j<rc.size();j++){
         if (DeclStmt::classof(rc[j].original)) continue;
         for (size_t i = 0; i < rc[j].actions.size(); i++) {
             const ASTLocTy &rootLoc = rc[j].actions[i].loc;
             if (DeclStmt::classof(rootLoc.stmt)) continue;
+            if (tmp_map1[rootLoc].size()==0){
+                std::vector<Stmt *> orig_vec;
+                orig_vec.push_back(rc[j].original);
+                tmp_map1[rootLoc].push_back(orig_vec);
+            }
 
             // outlog_printf(2,"Candidate Type: %s\n",toString(rc[j]).c_str());
             // outlog_printf(2,"Action Type: %s\n",toString(rc[j].actions[i]).c_str());
@@ -341,7 +345,7 @@ std::map<ASTLocTy, std::pair<std::string, bool> > CodeRewriter::eliminateAllNewL
             std::vector<Stmt *> vec_create;
             vec_create.clear();
             tmp_map1[rootLoc].push_back(vec_create);
-            std::vector<Stmt *> &tmp_vector=tmp_map1[rootLoc][tmp_map1[rootLoc].size()-1];
+            std::vector<Stmt *> tmp_vector;
             tmp_vector.clear();
             Stmt* S = (Stmt*) rc[j].actions[i].ast_node;
             
@@ -371,17 +375,26 @@ std::map<ASTLocTy, std::pair<std::string, bool> > CodeRewriter::eliminateAllNewL
                 else
                     tmp_vector.insert(pos, S);
             }
+            tmp_map1[rootLoc].push_back(tmp_vector);
         }
     }
     // We then get string from the list of stmt for each ASTLocTy
-    std::map<ASTLocTy, std::pair<std::string, bool> > ret;
+    std::map<ASTLocTy, std::map<std::string, bool> > ret;
     ret.clear();
     index=0;
     for (std::map<ASTLocTy, std::vector<std::vector<Stmt*>> >::iterator it = tmp_map1.begin();
             it != tmp_map1.end(); ++it) {
         std::map<std::string,bool> str_vec;
         str_vec.clear();
+
         ASTContext *ctxt = M.getSourceContext(it->first.filename);
+        std::string original_case=stmtToString(*ctxt,it->first.stmt);
+        if (original_case[original_case.size() - 1]  != '\n' && original_case[original_case.size() - 1] != ';')
+            original_case += ";\n";
+        original_str.insert(std::pair<ASTLocTy,std::string>(it->first,
+                original_case));
+        bool skip=false;
+
         for (std::vector<std::vector<Stmt *>>::iterator it2=it->second.begin();
                 it2!=it->second.end();it2++){
             std::vector<Stmt*> &tmp_vec = *it2;
@@ -394,39 +407,47 @@ std::map<ASTLocTy, std::pair<std::string, bool> > CodeRewriter::eliminateAllNewL
                 if (tmp[tmp.size() - 1]  != '\n' && tmp[tmp.size() - 1] != ';')
                     str_pair.first += ";\n";
             }
+
+            if (str_pair.first=="") continue;
+            if (original_case==str_pair.first){
+                continue;
+            }
             str_vec.insert(str_pair);
         }
-        std::string original_case=stmtToString(*ctxt,it->first.stmt);
-        if (original_case[original_case.size() - 1]  != '\n' && original_case[original_case.size() - 1] != ';')
-            original_case += ";\n";
-        std::string switcher="switch(__choose(\"__ID"+std::to_string(counter)+"\"))";
-        std::string cases=switcher+"{\n\tcase 0: {\n"+original_case+"\nbreak;\n}\n";
-        int i=1;bool skip=false;
-        for (std::map<std::string,bool>::iterator str_it=str_vec.begin();str_it!=str_vec.end();str_it++){
-            if (original_case==str_it->first){
-                skip=true;
-                break;
-            }
-            if (str_it->first=="") continue;
-            cases+="#ifdef COMPILE_"+std::to_string(index++)+"\n\tcase "+std::to_string(i)+": {\n"+str_it->first+"\nbreak;\n}\n#endif\n";
-            i++;
-            ret[it->first].second=str_it->second;
-        }
+
         if (skip==true) continue;
-        std::string new_tmp=cases+"}\n";
-        ret[it->first].first=new_tmp;
+        ret[it->first]=str_vec;
+        
+        // std::string switcher="switch(__choose(\"__ID"+std::to_string(counter)+"\"))";
+        // std::string cases=switcher+"{\n\tcase 0: {\n"+original_case+"\nbreak;\n}\n";
+        // int i=1;bool skip=false;
+        // for (std::map<std::string,bool>::iterator str_it=str_vec.begin();str_it!=str_vec.end();str_it++){
+        //     if (original_case==str_it->first){
+        //         skip=true;
+        //         break;
+        //     }
+        //     if (str_it->first=="") continue;
+        //     cases+="#ifdef COMPILE_"+std::to_string(index++)+"\n\tcase "+std::to_string(i)+": {\n"+str_it->first+"\nbreak;\n}\n#endif\n";
+        //     i++;
+        //     ret[it->first].second=str_it->second;
+        // }
+        // if (skip==true) continue;
+        // std::string new_tmp=cases+"}\n";
+        // ret[it->first].first=new_tmp;
         // printf("\ncurrent candidate: %d\n",counter);
         // printf("parent stmt: %s\n",stmtToString(*ctxt,it->first.parent_stmt).c_str());
         // printf("current stmt: %s\n",original_case.c_str());
         // printf("stmt: %s\n",ret[it->first].first.c_str());
-        counter++;
+        //counter++;
     }
+    // for (std::map<ASTLocTy,std::map<std::string,bool>>::iterator it=ret.begin();it!=ret.end();it++){
+    //     outlog_printf(2,"original: %s\n",it->second.begin()->first.c_str());
+    // }
     return ret;
 }
 
 CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi) {
-    std::map<ASTLocTy, std::pair<std::string, bool> > res1;
-    res1.clear();
+    std::map<ASTLocTy,std::string> original_str;
     for (int i=0;i<rc.size();i++){
         std::vector<ExprFillInfo> temp((*pefi)[i]->begin(),(*pefi)[i]->end());
         for(int k=0;k<temp.size();k++){
@@ -454,14 +475,13 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         }
     }
     // Create string with whole candidate vector 
-    res1=eliminateAllNewLoc(M, rc);
-
+    std::map<ASTLocTy, std::map<std::string, bool> > res1=eliminateAllNewLoc(M, rc,original_str);
     // We then categorize location based on the src_file and their offset
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > res2;
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > tmp_loc;
     res2.clear();
     tmp_loc.clear();
-    for (std::map<ASTLocTy, std::pair<std::string, bool> >::iterator it = res1.begin();
+    for (std::map<ASTLocTy, std::map<std::string, bool> >::iterator it = res1.begin();
             it != res1.end(); ++it) {
         //llvm::errs() << "Location: " << it->first.toString(M) << "\n";
         //llvm::errs() << "patch: " << it->second.first << "\n";
@@ -523,6 +543,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     // Then we handle each source file saperately
     resCodeSegs.clear();
     resPatches.clear();
+    int index=1;
     for (std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> >::iterator
             it = res2.begin(); it != res2.end(); ++it) {
         std::string src_file = it->first;
@@ -537,38 +558,83 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         for (std::map<std::pair<size_t, size_t>, ASTLocTy>::iterator it2 = it->second.begin();
                 it2 != it->second.end(); ++it2) {
             // NOTE: The start and the end are reversed
+            if (it2->first.second==0) continue;
             long long start = it2->first.second;
             long long end = it2->first.first;
+            int case_count=0;
             //assert( start >= last_end);
             if (start < last_end) continue;
             if (cur_start == -1) {
                 cur_start = start;
                 cur_end = end;
-                cur_patch = res1[it2->second].first;
-                if (res1[it2->second].second)
-                    cur_patch = "    " + indentPatch(cur_patch, "    ");
+                outlog_printf(2,"start-end: %d %d\n",start,end);
+                ASTContext *ctxt = M.getSourceContext(it2->second.filename);
+
+                cur_patch="switch(__choose(\"__ID"+std::to_string(counter++)+"\"))\n{\n";
+                cur_patch+="case "+std::to_string(case_count++)+": {\n";
+                cur_patch += original_str[it2->second];
+                cur_patch+="\nbreak;\n}\n";
+                for (std::map<std::string,bool>::iterator patch_it=res1[it2->second].begin();
+                        patch_it!=res1[it2->second].end();patch_it++){
+                    cur_patch+="#ifdef COMPILE_"+std::to_string(index++)+"\n";
+                    cur_patch+="case "+std::to_string(case_count++)+": {\n";
+                    cur_patch += patch_it->first;
+                    cur_patch+="\nbreak;\n}\n";
+                    if (patch_it->second)
+                        cur_patch = "    " + indentPatch(cur_patch, "    ");
+                    cur_patch+="#endif\n";
+                }
+                cur_patch+="}\n";
+                //outlog_printf(2,"first: %s\n",cur_patch.c_str());
                 //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
             }
             else if (start<=cur_start && cur_end <= end) {
-                continue;
                 // We need to merge these two, we first need to decide in the bigger one,
                 // which part is not changed
+                std::string before_patch=cur_patch;
                 std::string top_part = code.substr(start, cur_start - start);
                 std::string mid_part = code.substr(cur_start, cur_end-cur_start);
                 std::string bottom_part = code.substr(cur_end, end - cur_end);
-                std::string big_patch = res1[it2->second].first;
+                std::string big_patch=original_str[it2->second];
+                // outlog_printf(2,"top: %s\n",top_part.c_str());
+                // outlog_printf(2,"mid: %s\n",mid_part.c_str());
+                // outlog_printf(2,"bottom: %s\n",bottom_part.c_str());
+                // outlog_printf(2,"before: %s\n",before_patch.c_str());
+                cur_patch="switch(__choose(\"__ID"+std::to_string(counter++)+"\"))\n{\n";
+                cur_patch+="case "+std::to_string(case_count++)+": {\n";
                 if (top_part + mid_part == big_patch.substr(0, cur_end - start)) {
-                    cur_patch = top_part + cur_patch + big_patch.substr(cur_end - start);
+                    cur_patch += top_part + before_patch + big_patch.substr(cur_end - start);
                 }
                 else {
                     // assert( mid_part + bottom_part ==
                     //         big_patch.substr(cur_start,big_patch.size() - (end - cur_start)));
                     assert(big_patch.find(mid_part)!=std::string::npos);
-                    cur_patch = big_patch.substr(0, big_patch.find(mid_part))
-                        + cur_patch + bottom_part;
+                    cur_patch += big_patch.substr(0, big_patch.find(mid_part))
+                        + before_patch + bottom_part;
                 }
-                if (res1[it2->second].second)
-                    cur_patch = "    " + indentPatch(cur_patch, "    ");
+                cur_patch+="\nbreak;\n}\n";
+
+                for (std::map<std::string,bool>::iterator patch_it=res1[it2->second].begin();
+                        patch_it!=res1[it2->second].end();patch_it++){
+                    cur_patch+="#ifdef COMPILE_"+std::to_string(index++)+"\n";
+                    big_patch = patch_it->first;
+                    cur_patch+="case "+std::to_string(case_count++)+": {\n";
+                    if (top_part + mid_part == big_patch.substr(0, cur_end - start)) {
+                        cur_patch += top_part + before_patch + big_patch.substr(cur_end - start);
+                    }
+                    else {
+                        // assert( mid_part + bottom_part ==
+                        //         big_patch.substr(cur_start,big_patch.size() - (end - cur_start)));
+                        assert(big_patch.find(mid_part)!=std::string::npos);
+                        cur_patch += big_patch.substr(0, big_patch.find(mid_part))
+                            + before_patch + bottom_part;
+                    }
+                    cur_patch+="\nbreak;\n}\n";
+                    if (patch_it->second)
+                        cur_patch = "    " + indentPatch(cur_patch, "    ");
+                    cur_patch+="#endif\n";
+                }
+                cur_patch+="}\n";
                 //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
                 // cur_patch+="\nbreak;\n}\n}";
                 cur_start = start;
@@ -590,10 +656,23 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 last_end = cur_end;
                 cur_start = start;
                 cur_end = end;
-                cur_patch = res1[it2->second].first;
-                if (res1[it2->second].second)
-                    cur_patch = "    " + indentPatch(cur_patch, "    ");
-                //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
+
+                cur_patch="switch(__choose(\"__ID"+std::to_string(counter++)+"\"))\n{\n";
+                cur_patch+="case "+std::to_string(case_count++)+": {\n";
+                cur_patch += original_str[it2->second];
+                cur_patch+="\nbreak;\n}\n";
+                for (std::map<std::string,bool>::iterator patch_it=res1[it2->second].begin();
+                        patch_it!=res1[it2->second].end();patch_it++){
+                    cur_patch+="#ifdef COMPILE_"+std::to_string(index++)+"\n";
+                    cur_patch+="case "+std::to_string(case_count++)+": {\n";
+                    cur_patch += patch_it->first;
+                    cur_patch+="\nbreak;\n}\n";
+                    if (patch_it->second)
+                        cur_patch = "    " + indentPatch(cur_patch, "    ");
+                    cur_patch+="#endif\n";
+                    //cur_patch = std::string("if (count==true){\n") + cur_patch + "}\n";
+                }
+                cur_patch+="}\n";
             }
             //printf("current patch: %s\n",cur_patch.c_str());
         }

@@ -408,6 +408,7 @@ protected:
     PatchListTy patches;
     TestCaseSetTy failed_cases;
     bool naive;
+    int total_macro;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, false);
@@ -482,6 +483,9 @@ public:
         //assert( id < patches.size() );
         return patches;
     }
+    int getMacroCount(){
+        return total_macro;
+    }
 
     virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
         std::vector<std::set<ExprFillInfo> *> infos;
@@ -499,6 +503,7 @@ public:
         CodeRewriter R(M, candidate, &infos);
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
+        total_macro=R.index;
         {
             outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu:\n", get_timer(),
                     codes.size());
@@ -731,7 +736,7 @@ public:
     }
 
     virtual CodeSegTy getPatches(unsigned long id) {
-        assert( id < patches.size() );
+        //assert( id < patches.size() );
         return patches;
     }
 
@@ -749,6 +754,7 @@ public:
         CodeRewriter R(M, candidate, &the_infos);
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
+        total_macro=R.index;
         {
             outlog_printf(2, "[%llu] StringConstTester, a patch instance with id %lu:\n", get_timer(),
                     codes.size());
@@ -1695,6 +1701,7 @@ public:
         outlog_printf(2,"Patch Generated!\n");
         std::map<std::string, std::vector<std::string> > a_code = R.getCodeSegments();
         std::map<std::string, std::vector<std::string> > a_patch = R.getPatches();
+        total_macro=R.index;
         {
             outlog_printf(2, "[%llu] CondTester, a patch instance with id %lu:\n", get_timer(),
                     codes.size());
@@ -1982,20 +1989,55 @@ class TestBatcher {
 
     std::map<NewCodeMapTy, double> singleTest(const CodeSegTy &codeSegs, const CodeSegTy &patches,
             BasicTester *T, unsigned long id) {
+        int macros=T->getMacroCount();
+        // macros=2;
+
         BenchProgram::EnvMapTy buildEnv;
         buildEnv.clear();
         if (ForCPP.getValue())
             buildEnv["COMPILE_CMD"] = "clang++";
         else
             buildEnv["COMPILE_CMD"] = GCC_CMD;
-        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
-                combineCode(codeSegs, patches));
-        if (!build_succ) {
+        std::vector<int> succ_id;
+        const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
+        for (int i=0;i<macros;i++){
+            bool include=true;
+            for (std::map<std::string,std::string>::const_iterator combined_it=combined.begin();
+                    combined_it!=combined.end();combined_it++){
+                // if (combined_it->second.find("COMPILE_"+std::to_string(i)) != std::string::npos){
+                //     include=true;
+                //     break;
+                // }
+            }
+
+            if (include==true){
+                std::vector<int> macros;
+                macros.push_back(i);
+                bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
+                        combined,macros,true);
+                if (build_succ) {
+                    succ_id.push_back(i);
+                    outlog_printf(2,"Build success: %d\n",i);
+                }
+            }
+        }
+        if (succ_id.size()<=1) {
             outlog_printf(2, "Single building for Tester %p id %lu failed as well!\n",
                     T, id);
             return std::map<NewCodeMapTy, double>();
         }
-        bool ret = T->test(BenchProgram::EnvMapTy(), id);
+        else{
+            outlog_printf(2,"One by one building finish! Success/Total: %d/%d\n",succ_id.size(),macros);
+            outlog_printf(2,"Trying to build full program...\n");
+
+            bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
+                    combined,succ_id);
+            if (build_succ) {
+                outlog_printf(2,"Full program build success!\n");
+            }
+        }
+        //bool ret = T->test(BenchProgram::EnvMapTy(), id);
+        bool ret=false;
         if (ret)
             return T->getResults(id);
         else
@@ -2114,6 +2156,7 @@ public:
         for (size_t i = 0; i < ids.size(); i++) {
             CodeSegTy codeSegs = T->getCodeSegs(i);
             PatchListTy patches = T->getPatches(i);
+            outlog_printf(2,"Total macros: %d\n",T->getMacroCount());
             //if (canMerge(codeSegs, patches) && (!naive)) {
             if (false){
                 if (candidateMap.count(codeSegs) == 0)
