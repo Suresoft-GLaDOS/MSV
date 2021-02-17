@@ -543,7 +543,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     // Then we handle each source file saperately
     resCodeSegs.clear();
     resPatches.clear();
-    int index=1;
+    index=1;
     for (std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> >::iterator
             it = res2.begin(); it != res2.end(); ++it) {
         std::string src_file = it->first;
@@ -567,7 +567,6 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             if (cur_start == -1) {
                 cur_start = start;
                 cur_end = end;
-                outlog_printf(2,"start-end: %d %d\n",start,end);
                 ASTContext *ctxt = M.getSourceContext(it2->second.filename);
 
                 cur_patch="switch(__choose(\"__ID"+std::to_string(counter++)+"\"))\n{\n";

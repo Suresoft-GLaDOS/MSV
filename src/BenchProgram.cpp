@@ -59,12 +59,12 @@ static void execute_cmd_until_succ(const std::string &cmd) {
 }
 
 BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
-        bool no_clean_up): config(configFileName) {
+        bool no_clean_up): config(configFileName),case_counter(0) {
     Init(workDirPath, no_clean_up);
 }
 
 BenchProgram::BenchProgram(const std::string &workDirPath)
-    : config(workDirPath + "/" + CONFIG_FILE_PATH) {
+    : config(workDirPath + "/" + CONFIG_FILE_PATH),case_counter(0) {
     Init(workDirPath, true);
 }
 
@@ -296,7 +296,7 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
         fprintf(stderr, "\"%s\"\n", build_args[i].c_str());*/
 }
 
-bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log,std::vector<long long> compile_macro) {
+bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log,std::vector<long long> compile_macro,std::string output_file) {
     char ori_dir[1000];
     char* retc = getcwd(ori_dir, 1000);
     assert(retc != NULL);
@@ -309,10 +309,11 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     std::string cflags="";
     for (long long i=0;i<compile_macro.size();i++)
         cflags+="-D COMPILE_"+std::to_string(compile_macro[i])+" ";
+    std::string output="-o "+output_file;
     if (timeout_limit == 0)
-        ret = execute_with_timeout((std::string("make CFLAGS=\""+cflags+"\" >>") + build_log + " 2>&1"), 60);
+        ret = execute_with_timeout((std::string("make CFLAGS=\""+cflags+"\" OUTPUT_NAME=\""+output+"\" >>") + build_log + " 2>&1"), 60);
     else
-        ret = execute_with_timeout((std::string("make CFLAGS=\""+cflags+"\" >>") + build_log + " 2>&1"), timeout_limit);
+        ret = execute_with_timeout((std::string("make CFLAGS=\""+cflags+"\" OUTPUT_NAME=\""+output+"\" >>") + build_log + " 2>&1"), timeout_limit);
 
     bool succ = (ret == 0);
     ret = chdir(ori_dir);
@@ -320,7 +321,7 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     return succ;
 }
 
-bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bool force_reconf,std::vector<long long> compile_macro) {
+bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bool force_reconf,std::vector<long long> compile_macro,std::string output_name) {
     assert(src_dirs.count(subDir) != 0);
     std::string src_dir = getFullPath(work_dir + "/" + subDir);
     if (force_reconf || !src_dirs[subDir]) {
@@ -343,7 +344,7 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
         return ret == 0;
     }
     else {
-        return incrementalBuild(timeout_limit, src_dir, build_log_file,compile_macro);
+        return incrementalBuild(timeout_limit, src_dir, build_log_file,compile_macro,output_name);
     }
 }
 
@@ -417,7 +418,7 @@ void BenchProgram::popEnvMap(const EnvMapTy &envMap) {
 }
 
 bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wrapScript,
-        const EnvMapTy &envMap,std::vector<long long> compile_macro) {
+        const EnvMapTy &envMap,std::vector<long long> compile_macro,std::string output_name) {
     pushEnvMap(envMap);
 
     pushWrapPath(CLANG_WRAP_PATH, wrapScript);
@@ -429,7 +430,7 @@ bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wra
     {
         //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
         ExecutionTimer timer;
-        succ = buildFull(subDir, timeout_limit,false,compile_macro);
+        succ = buildFull(subDir, timeout_limit,false,compile_macro,output_name);
         if (succ) {
             total_repair_build_time += timer.getSeconds();
             repair_build_cnt ++;
@@ -442,7 +443,7 @@ bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wra
 }
 
 bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-        const std::map<std::string, std::string> &fileCodeMap,std::vector<long long> compile_macro,bool createFile) {
+        const std::map<std::string, std::string> &fileCodeMap,std::vector<long long> compile_macro,bool createFile,std::string output_name) {
     compile_cnt ++;
     // This is to backup the changed sourcefile, in case something broken
     // the workdir, and we want to just resume
@@ -457,6 +458,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         std::ostringstream sout;
         sout << "cp -f " << target_file << " " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
         std::string cmd = sout.str();
+
         execute_cmd_until_succ(cmd);
         cnt ++;
         fout2 << normalizePath(target_file) << "\n";
@@ -488,7 +490,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     }
     fout2.close();
 
-    bool succ = buildSubDir("src", wrapScript, envMap,compile_macro);
+    bool succ = buildSubDir("src", wrapScript, envMap,compile_macro,output_name+std::to_string(case_counter++));
 
     // Remove temporary backup file, because we have done it
     cnt = 0;

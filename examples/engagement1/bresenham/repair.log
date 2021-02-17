@@ -5,55 +5,27 @@ Total 1864 different repair schemas!!!!
 Total 2422 different repair candidate templates for scoring!!!
 Total 625 different partial repair candidate templates!!
 Trying different candidates!
-BasicTester pointer: 0x56023dd22eb0
-StringConstTester pointer: 0x56023dd20620
-CondTester pointer: 0x56023dd14480
+BasicTester pointer: 0x561f986dcd00
+StringConstTester pointer: 0x561f986662c0
+CondTester pointer: 0x561f9869c0a0
 Generating Candidates...
 Candidates size: 1864
 Generating Codes...
-[7] Preprocess the following candidate with CondTester:
-1864 Candidates
-Generating patches with CondTester...
+[7] Preprocess the following candidate with BasicTester:
+1864
 Generating patches...
-start-end: 449 532
-Patch Generated!
-[7] CondTester, a patch instance with id 0:
-codes size: 1
-res size: 1
-result size: 1863
+[7] BasicTester, a patch instance with id 0:
 Spawn 1 instances, now Total 1
-Total macros: 0
+Total macros: 903
 Saving this fix to: /root/project/prophet-gpl/examples/engagement1/bresenham/src/bresenham.cpp_bak_1804289383.cpp
-Build success: 0
-Saving this fix to: /root/project/prophet-gpl/examples/engagement1/bresenham/src/bresenham.cpp_bak_1739164188.cpp
-Single building for Tester 0x56023dd14480 id 1863 failed as well!
-[12] Preprocess the following candidate with StringConstTester:
-1864
-Generating patches...
-start-end: 449 532
-[12] StringConstTester, a patch instance with id 0:
-Spawn 1 instances, now Total 2
-Total macros: 0
-Saving this fix to: /root/project/prophet-gpl/examples/engagement1/bresenham/src/bresenham.cpp_bak_823574385.cpp
-Build success: 0
-Saving this fix to: /root/project/prophet-gpl/examples/engagement1/bresenham/src/bresenham.cpp_bak_1285160024.cpp
-Single building for Tester 0x56023dd20620 id 0 failed as well!
-[17] Preprocess the following candidate with BasicTester:
-1864
-Generating patches...
-start-end: 449 532
-[17] BasicTester, a patch instance with id 0:
-Spawn 1 instances, now Total 3
-Total macros: 0
-Saving this fix to: /root/project/prophet-gpl/examples/engagement1/bresenham/src/bresenham.cpp_bak_1458981931.cpp
-Build success: 0
-Saving this fix to: /root/project/prophet-gpl/examples/engagement1/bresenham/src/bresenham.cpp_bak_846434284.cpp
-Single building for Tester 0x56023dd22eb0 id 1 failed as well!
+One by one building finish! Success/Total: 249/903
+Trying to find and build with success case...
+Total success case: 1
 Generating Result...The total number of synthesis runs: 0
 The total number of concrete conds: 0
-The total number of explored concrete patches: 7266
+The total number of explored concrete patches: 2422
 Repair process ends without working fix!!
 Total 1864 different repair schemas!!!!
 Total 2422 different repair candidate templates for scoring!!!
-Total number of compiles: 6
+Total number of compiles: 905
 Total number of test eval: 0

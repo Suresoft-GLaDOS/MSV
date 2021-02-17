@@ -25,6 +25,7 @@
 #include "CodeRewrite.h"
 #include "DuplicateDetector.h"
 #include "FeatureParameter.h"
+#include "DeltaDebuggingTest.h"
 #include "llvm/Support/CommandLine.h"
 #include "clang/AST/Expr.h"
 #include "clang/AST/Stmt.h"
@@ -1990,7 +1991,7 @@ class TestBatcher {
     std::map<NewCodeMapTy, double> singleTest(const CodeSegTy &codeSegs, const CodeSegTy &patches,
             BasicTester *T, unsigned long id) {
         long long macros=T->getMacroCount();
-        // macros=2;
+        // macros=20;
 
         BenchProgram::EnvMapTy buildEnv;
         buildEnv.clear();
@@ -2000,25 +2001,18 @@ class TestBatcher {
             buildEnv["COMPILE_CMD"] = GCC_CMD;
         std::vector<long long> succ_id;
         const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
-        for (long long i=0;i<macros;i++){
-            bool include=true;
-            for (std::map<std::string,std::string>::const_iterator combined_it=combined.begin();
-                    combined_it!=combined.end();combined_it++){
-                // if (combined_it->second.find("COMPILE_"+std::to_string(i)) != std::string::npos){
-                //     include=true;
-                //     break;
-                // }
-            }
+        // Create source file with fix
+        // This should success
+        P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,std::vector<long long>(),true);
 
-            if (include==true){
-                std::vector<long long> macros;
-                macros.push_back(i);
-                bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
-                        combined,macros,true);
-                if (build_succ) {
-                    succ_id.push_back(i);
-                    outlog_printf(2,"Build success: %d\n",i);
-                }
+        for (long long i=0;i<macros;i++){
+            std::vector<long long> macros;
+            macros.push_back(i);
+            bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
+                    combined,macros);
+            if (build_succ) {
+                succ_id.push_back(i);
+                outlog_printf(4,"Build success: %d\n",i);
             }
         }
         if (succ_id.size()<=1) {
@@ -2028,13 +2022,20 @@ class TestBatcher {
         }
         else{
             outlog_printf(2,"One by one building finish! Success/Total: %d/%d\n",succ_id.size(),macros);
-            outlog_printf(2,"Trying to build full program...\n");
+            outlog_printf(2,"Trying to find and build with success case...\n");
 
-            bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
-                    combined,succ_id);
-            if (build_succ) {
-                outlog_printf(2,"Full program build success!\n");
-            }
+            DeltaDebuggingTest case_finder(combined,P,buildEnv,succ_id);
+            case_finder.run();
+            std::vector<std::vector<long long>> result=case_finder.getResult();
+            outlog_printf(2,"Total success case: %d\n",result.size());
+
+            // outlog_printf(2,"Trying to build full program...\n");
+
+            // bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
+            //         combined,succ_id,true);
+            // if (build_succ) {
+            //     outlog_printf(2,"Full program build success!\n");
+            // }
         }
         //bool ret = T->test(BenchProgram::EnvMapTy(), id);
         bool ret=false;
@@ -2262,8 +2263,8 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     }
 
     outlog_printf(2,"Generating Codes...\n");
-    for (int i=0;i<testers.size();i++)
-        TB.test(candidate, testers[i]);
+    //for (int i=0;i<testers.size();i++)
+        TB.test(candidate, testers[2]);
 
     // FIXME: we ignore time limit now, we will add back later
     // while (q.size() > 0 && ((tested_cnt < candidate_limit) || (candidate_limit == 0))) {

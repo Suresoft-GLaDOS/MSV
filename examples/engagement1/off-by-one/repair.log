@@ -1,0 +1,34 @@
+Initialize the program!
+Verify Test Cases
+All passed!
+Done Verification
+Generating repair candidates!
+Total 0 different repair schemas!!!!
+Total 0 different repair candidate templates for scoring!!!
+Total 0 different partial repair candidate templates!!
+Trying different candidates!
+BasicTester pointer: 0x559c1949e9c0
+StringConstTester pointer: 0x559c1948f710
+CondTester pointer: 0x559c1949f900
+Generating Candidates...
+Candidates size: 0
+Generating Codes...
+[0] Preprocess the following candidate with BasicTester:
+0
+Generating patches...
+[0] BasicTester, a patch instance with id 0:
+Spawn 1 instances, now Total 1
+Total macros: 1
+One by one building finish! Success/Total: 20/20
+Trying to find success case...
+Total success case: 1
+Trying to build full program...
+Full program build success!
+Generating Result...The total number of synthesis runs: 0
+The total number of concrete conds: 0
+The total number of explored concrete patches: 0
+Repair process ends without working fix!!
+Total 0 different repair schemas!!!!
+Total 0 different repair candidate templates for scoring!!!
+Total number of compiles: 22
+Total number of test eval: 3
