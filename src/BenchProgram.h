@@ -199,7 +199,7 @@ public:
             const EnvMapTy &envMap,std::vector<long long> compile_macro=std::vector<long long>(),std::string output_name="prog");
 
     bool buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-            const std::map<std::string, std::string> &fileCodeMap,std::vector<long long> compile_macro=std::vector<long long>(),bool createFile=false,
+            const std::map<std::string, std::string> &fileCodeMap,long long max_macro,
             std::string output_name="prog");
     bool buildTest(const std::string &wrapScript, const EnvMapTy &envMap,
             const std::map<std::string, std::string> &fileCodeMap,long long max_macro);

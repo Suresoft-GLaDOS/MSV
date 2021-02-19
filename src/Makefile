@@ -152,8 +152,7 @@ am_learner_OBJECTS = learner.$(OBJEXT) FeatureExtract.$(OBJEXT) \
 	SourceContextManager.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
 	GlobalAnalyzer.$(OBJEXT) ASTUtils.$(OBJEXT) \
 	BenchProgram.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
-	Utils.$(OBJEXT) CodeRewrite.$(OBJEXT) \
-	DeltaDebuggingTest.$(OBJEXT)
+	Utils.$(OBJEXT) CodeRewrite.$(OBJEXT)
 learner_OBJECTS = $(am_learner_OBJECTS)
 am__DEPENDENCIES_1 =
 learner_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -165,14 +164,14 @@ am_pdiffer_OBJECTS = pdiffer.$(OBJEXT) Utils.$(OBJEXT) \
 	LocalAnalyzer.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
 	ASTUtils.$(OBJEXT) BenchProgram.$(OBJEXT) \
 	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
-	FeatureExtract.$(OBJEXT) DeltaDebuggingTest.$(OBJEXT)
+	FeatureExtract.$(OBJEXT)
 pdiffer_OBJECTS = $(am_pdiffer_OBJECTS)
 pdiffer_DEPENDENCIES = $(am__DEPENDENCIES_1)
 pdiffer_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(pdiffer_LDFLAGS) $(LDFLAGS) -o $@
 am_playground_OBJECTS = PlayGround.$(OBJEXT) Utils.$(OBJEXT) \
-	BenchProgram.$(OBJEXT) DeltaDebuggingTest.$(OBJEXT)
+	BenchProgram.$(OBJEXT)
 playground_OBJECTS = $(am_playground_OBJECTS)
 playground_DEPENDENCIES = $(am__DEPENDENCIES_1)
 playground_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -185,7 +184,7 @@ am_prophet_OBJECTS = Main.$(OBJEXT) Utils.$(OBJEXT) \
 	SourceContextManager.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
 	DuplicateDetector.$(OBJEXT) ExprSynthesizer.$(OBJEXT) \
 	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
-	FeatureExtract.$(OBJEXT) DeltaDebuggingTest.$(OBJEXT)
+	FeatureExtract.$(OBJEXT)
 prophet_OBJECTS = $(am_prophet_OBJECTS)
 prophet_DEPENDENCIES = $(am__DEPENDENCIES_1)
 prophet_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -439,24 +438,24 @@ ClangLDADD = -lclangTooling -lclangFrontendTool -lclangFrontend \
 	-lLLVMSupport -lLLVMDemangle -lz -lcurses
 pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp DeltaDebuggingTest.cpp
+				  CodeRewrite.cpp FeatureExtract.cpp
 
 pdiffer_LDFLAGS = `llvm-config --ldflags`
 pdiffer_LDADD = $(ClangLDADD) -lexplain
 learner_SOURCES = learner.cpp FeatureExtract.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  Utils.cpp CodeRewrite.cpp DeltaDebuggingTest.cpp
+				  Utils.cpp CodeRewrite.cpp
 
 learner_LDFLAGS = `llvm-config --ldflags`
 learner_LDADD = $(ClangLDADD) -lexplain
 prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp BenchProgram.cpp ASTUtils.cpp \
 				  ErrorLocalizer.cpp LocalAnalyzer.cpp ProfileErrorLocalizer.cpp SourceContextManager.cpp \
 				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp DeltaDebuggingTest.cpp
+				  CodeRewrite.cpp FeatureExtract.cpp
 
 prophet_LDFLAGS = `llvm-config --ldflags`
 prophet_LDADD = $(ClangLDADD) -lexplain
-playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp DeltaDebuggingTest.cpp
+playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp
 playground_LDFLAGS = `llvm-config --ldflags`
 playground_LDADD = $(ClangLDADD) -lexplain
 libprofiler_la_SOURCES = ProfilerAction.cpp
@@ -618,7 +617,6 @@ include ./$(DEPDIR)/ASTDiffer.Po
 include ./$(DEPDIR)/ASTUtils.Po
 include ./$(DEPDIR)/BenchProgram.Po
 include ./$(DEPDIR)/CodeRewrite.Po
-include ./$(DEPDIR)/DeltaDebuggingTest.Po
 include ./$(DEPDIR)/DuplicateDetector.Po
 include ./$(DEPDIR)/ErrorLocalizer.Po
 include ./$(DEPDIR)/ExprSynthesizer.Po

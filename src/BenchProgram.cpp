@@ -443,7 +443,7 @@ bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wra
 }
 
 bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-        const std::map<std::string, std::string> &fileCodeMap,std::vector<long long> compile_macro,bool createFile,std::string output_name) {
+        const std::map<std::string, std::string> &fileCodeMap,long long max_macro,std::string output_name) {
     compile_cnt ++;
     // This is to backup the changed sourcefile, in case something broken
     // the workdir, and we want to just resume
@@ -469,15 +469,13 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         system(std::string("clang-format -i "+target_file).c_str());
 
         // Backup fixed file
-        if (createFile){
-            srand(time(NULL));
-            std::string backup_file=target_file+"_bak_"+std::to_string(rand())+".cpp";
-            outlog_printf(2,"Saving this fix to: %s\n",backup_file.c_str());
-            std::ofstream fout_bak(backup_file.c_str(),std::ofstream::out);
-            fout_bak<<it->second;
-            fout_bak.close();
-            system(std::string("clang-format -i "+backup_file).c_str());
-        }
+        srand(time(NULL));
+        std::string backup_file=target_file+"_bak_"+std::to_string(rand())+".cpp";
+        outlog_printf(2,"Saving this fix to: %s\n",backup_file.c_str());
+        std::ofstream fout_bak(backup_file.c_str(),std::ofstream::out);
+        fout_bak<<it->second;
+        fout_bak.close();
+        system(std::string("clang-format -i "+backup_file).c_str());
         // remove the .o and .lo files to recompile
         {
             std::string tmp = replace_ext(target_file, ".o");
@@ -492,8 +490,74 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     }
     fout2.close();
 
-    outlog_printf(2,"Building at: %s\n",std::string(output_name+std::to_string(case_counter++)).c_str());
-    bool succ = buildSubDir("src", wrapScript, envMap,compile_macro,output_name+std::to_string(case_counter++));
+    outlog_printf(2,"Building with no macros...\n");
+    // Build with no macro, should be success
+    bool succ = buildSubDir("src", wrapScript, envMap,std::vector<long long>(),"__temp");
+    assert(succ);
+
+    outlog_printf(2,"Testing with Delta-Debugging...\n");
+    // Run Delta-Debugging test to find fail cases
+    pushEnvMap(envMap);
+    pushWrapPath(CLANG_WRAP_PATH, wrapScript);
+    time_t timeout_limit = 0;
+    if (repair_build_cnt > 10)
+        timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
+    int ret;
+    {
+        //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
+        ExecutionTimer timer;
+        std::string src_dir = getFullPath(work_dir + "/src");
+        std::string cmd;
+        cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+std::to_string(max_macro);
+        if (!src_dirs["src"]) cmd+=" -t "+build_cmd;
+        if (dep_dir!="") cmd+=" -p "+dep_dir;
+
+        if (timeout_limit == 0)
+            ret = system(cmd.c_str());
+        else
+            ret = execute_with_timeout(cmd.c_str(), timeout_limit);
+
+        if (ret==0) {
+            total_repair_build_time += timer.getSeconds();
+            repair_build_cnt ++;
+        }
+    }
+    popWrapPath();
+    popEnvMap(envMap);
+
+    outlog_printf(2,"Building final program...\n");
+    // Get fail case and create final macros
+    std::vector<long long> fail;
+    std::vector<long long> succ_id;
+    fail.clear();
+
+    char *home;
+    home=getenv("HOME");
+    if (home==NULL)
+        home=getenv("HOMEPATH");
+
+    std::string resultPath=std::string(home)+"/__dd_test.log";
+    char eachResult[100];
+    std::ifstream result(resultPath.c_str(),std::ifstream::in);
+    assert(result.is_open());
+    while(result.getline(eachResult,100)){
+        fail.push_back(stoll(std::string(eachResult)));
+    }
+
+    for (long long i=0;i<max_macro;i++){
+        bool include=false;
+        for (size_t j=0;j<fail.size();j++){
+            if (fail[j]==i) {
+                include=true;
+                break;
+            }
+        }
+        if (!include) succ_id.push_back(i);
+    }
+
+    // Build final build
+    succ = buildSubDir("src", wrapScript, envMap,succ_id,output_name);
+    if (succ) outlog_printf(2,"Success to build final program: %s\n",output_name.c_str());
 
     // Remove temporary backup file, because we have done it
     cnt = 0;
@@ -528,106 +592,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     std::string cmd = "rm -rf " + work_dir + "/__backup.log";
     execute_cmd_until_succ(cmd);
     return succ;
-}
-bool BenchProgram::buildTest(const std::string &wrapScript, const EnvMapTy &envMap,
-            const std::map<std::string, std::string> &fileCodeMap,long long max_macro){
-    std::ofstream fout2((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ofstream::out);
-    size_t cnt = 0;
-    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
-            it != fileCodeMap.end(); ++it) {
-        std::string target_file = it->first;
-        if (target_file[0] != '/')
-            target_file = src_dir + "/" + target_file;
-        // Copy the backup
-        std::ostringstream sout;
-        sout << "cp -f " << target_file << " " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
-        std::string cmd = sout.str();
-
-        execute_cmd_until_succ(cmd);
-        cnt ++;
-        fout2 << normalizePath(target_file) << "\n";
-        fout2.flush();
-        std::ofstream fout(target_file.c_str(), std::ofstream::out);
-        fout << it->second;
-        fout.close();
-        system(std::string("clang-format -i "+target_file).c_str());
-
-        // remove the .o and .lo files to recompile
-        {
-            std::string tmp = replace_ext(target_file, ".o");
-            std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
-        }
-        {
-            std::string tmp = replace_ext(target_file, ".lo");
-            std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
-        }
-    }
-    fout2.close();
-
-    pushEnvMap(envMap);
-    pushWrapPath(CLANG_WRAP_PATH, wrapScript);
-    time_t timeout_limit = 0;
-    if (repair_build_cnt > 10)
-        timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
-    int ret;
-    {
-        //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
-        ExecutionTimer timer;
-        std::string src_dir = getFullPath(work_dir + "/src");
-        std::string cmd;
-        cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+std::to_string(max_macro);
-        if (!src_dirs["src"]) cmd+=" -t "+build_cmd;
-        if (dep_dir!="") cmd+=" -p "+dep_dir;
-
-        if (timeout_limit == 0)
-            ret = system(cmd.c_str());
-        else
-            ret = execute_with_timeout(cmd.c_str(), timeout_limit);
-
-        if (ret==0) {
-            total_repair_build_time += timer.getSeconds();
-            repair_build_cnt ++;
-        }
-    }
-    popWrapPath();
-    popEnvMap(envMap);
-
-    // Remove temporary backup file, because we have done it
-    cnt = 0;
-    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
-            it != fileCodeMap.end(); ++ it) {
-        std::string target_file = it->first;
-        if (target_file[0] != '/')
-            target_file = src_dir + "/" + it->first;
-        else
-            target_file = it->first;
-        std::ostringstream sout;
-        sout << "mv -f " << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << target_file;
-        std::string cmd = sout.str();
-        execute_cmd_until_succ(cmd);
-        cnt ++;
-        // Make sure it refresh the build system to avoid cause problem
-        cmd = std::string("touch ") + target_file;
-        execute_cmd_until_succ(cmd);
-        // remove the .o and .lo files to force recompile next time
-        {
-            std::string tmp = replace_ext(target_file, ".o");
-            std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
-        }
-        {
-            std::string tmp = replace_ext(target_file, ".lo");
-            std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
-        }
-    }
-
-    std::string cmd = "rm -rf " + work_dir + "/__backup.log";
-    execute_cmd_until_succ(cmd);
-    return (ret==0);
-
 }
 
 /*void BenchProgram::prepare_test() {

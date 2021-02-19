@@ -424,8 +424,9 @@ class DD:
     # Logging
     def report_progress(self, c, title):
         if len(c) != self.__last_reported_length:
-            print
-            print title + ": " + 'len(c)' + " deltas left:", self.coerce(c)
+            if self.debug_dd:
+                print
+                print title + ": " + 'len(c)' + " deltas left:", self.coerce(c)
             self.__last_reported_length = len(c)
 
 
@@ -473,13 +474,14 @@ class DD:
 
             cs = self.split(c, n)
 
-            print
-            print "dd (run #" + 'run' + "): trying",
-            for i in range(n):
-                if i > 0:
-                    print "+",
-                print len(cs[i]),
+            if debug_dd:
                 print
+                print "dd (run #" + 'run' + "): trying",
+                for i in range(n):
+                    if i > 0:
+                        print "+",
+                    print len(cs[i]),
+                    print
 
             # Check subsets
             ts = []
@@ -622,20 +624,22 @@ class DD:
 
             if n > len(c):
                 # No further minimizing
-                print "dd: done"
+                if self.debug_dd:
+                    print "dd: done"
                 return c
 
             self.report_progress(c, "dd")
 
             cs = self.split(c, n)
-
-            print
-            print "dd (run #" + 'run' + "): trying",
-            for i in range(n):
-                if i > 0:
-                    print "+",
-                print len(cs[i]),
+            
+            if self.debug_dd:
                 print
+                print "dd (run #" + 'run' + "): trying",
+                for i in range(n):
+                    if i > 0:
+                        print "+",
+                    print len(cs[i]),
+                    print
 
             c_failed    = 0
             cbar_failed = 0
@@ -696,11 +700,13 @@ class DD:
                 if not c_failed and not cbar_failed:
                     if n >= len(c):
                         # No further minimizing
-                        print "dd: done"
+                        if self.debug_dd:
+                            print "dd: done"
                         return c
 
             next_n = min(len(c), n * 2)
-            print "dd: increase granularity to", next_n
+            if self.debug_dd:
+                print "dd: increase granularity to", next_n
             cbar_offset = (cbar_offset * next_n) / n
 
             c = next_c
@@ -760,20 +766,22 @@ class DD:
 
             if n > len(c):
                 # No further minimizing
-                print "dd: done"
+                if self.debug_dd:   
+                    print "dd: done"
                 return (c, c1, c2)
 
             self.report_progress(c, "dd")
 
             cs = self.split(c, n)
 
-            print
-            print "dd (run #" + 'run' + "): trying",
-            for i in range(n):
-                if i > 0:
-                    print "+",
-                print len(cs[i]),
+            if self.debug_dd:
                 print
+                print "dd (run #" + 'run' + "): trying",
+                for i in range(n):
+                    if i > 0:
+                        print "+",
+                    print len(cs[i]),
+                    print
 
             progress = 0
 
@@ -849,11 +857,13 @@ class DD:
             else:
                 if n >= len(c):
                     # No further minimizing
-                    print "dd: done"
+                    if self.debug_dd:
+                        print "dd: done"
                     return (c, c1, c2)
 
                 next_n = min(len(c), n * 2)
-                print "dd: increase granularity to", next_n
+                if self.debug_dd:
+                    print "dd: increase granularity to", next_n
                 cbar_offset = (cbar_offset * next_n) / n
 
             c1  = next_c1
@@ -900,8 +910,8 @@ if __name__ == '__main__':
             my_env=os.environ
             if self.file=="":
                 os.chdir(src_dir)
-                subprocess.call(["rm","__temp*"])
-                subprocess.call(['rm',"-rf","ext/phar/phar.php"])
+                subprocess.Popen(["rm","__temp*"],stderr=subprocess.PIPE)
+                subprocess.call(['rm',"-rf","ext/phar/phar.php"],stderr=subprocess.PIPE)
                 args.append('make')
                 cflags=""
                 for i in c:
@@ -936,7 +946,6 @@ if __name__ == '__main__':
                 return self.UNRESOLVED
         def __init__(self,script_file):
             self.file=script_file
-            self.debug_dd=1
             DD.__init__(self)
 
     dd_test=BuildTest(build_cmd)
