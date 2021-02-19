@@ -319,6 +319,7 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     assert(ret == 0);
     //FIXME: ugly for php
     ret = system("rm -rf ext/phar/phar.php");
+    system("rm prog");
     assert(ret == 0);
 
     std::string cflags="";
@@ -500,99 +501,111 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     bool succ = buildSubDir("src", wrapScript, envMap,std::vector<long long>());
     // assert(succ);
 
-    outlog_printf(2,"Testing with Delta-Debugging...\n");
-    // Run Delta-Debugging test to find fail cases
-    pushEnvMap(envMap);
-    pushWrapPath(CLANG_WRAP_PATH, wrapScript);
-    time_t timeout_limit = 0;
-    if (repair_build_cnt > 10)
-        timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
-    int ret;
-    {
-        //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
-        ExecutionTimer timer;
-        std::string src_dir = getFullPath(work_dir + "/src");
-        std::string cmd;
-        cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+std::to_string(max_macro);
-        if (!src_dirs["src"]) cmd+=" -t "+build_cmd;
-        if (dep_dir!="") cmd+=" -p "+dep_dir;
-
-        if (timeout_limit == 0)
-            ret = system(cmd.c_str());
-        else
-            ret = execute_with_timeout(cmd.c_str(), timeout_limit);
-
-        if (ret==0) {
-            total_repair_build_time += timer.getSeconds();
-            repair_build_cnt ++;
-        }
-    }
-    popWrapPath();
-    popEnvMap(envMap);
-
     deleteLibraryFile(fileCodeMap);
-    outlog_printf(2,"Building final program...\n");
-    // Get fail case and create final macros
-    std::vector<long long> fail;
+    outlog_printf(2,"Trying to build with all macros...\n");
     std::vector<long long> succ_id;
-    fail.clear();
-
-    char *home;
-    home=getenv("HOME");
-    if (home==NULL)
-        home=getenv("HOMEPATH");
-
-    std::string resultPath=std::string(home)+"/__dd_test.log";
-    char eachResult[100];
-    std::ifstream result(resultPath.c_str(),std::ifstream::in);
-    assert(result.is_open());
-    while(result.getline(eachResult,100)){
-        fail.push_back(stoll(std::string(eachResult)));
+    for (long long i=0;i<max_macro;i++)
+        succ_id.push_back(i);
+    succ=buildSubDir("src",wrapScript,envMap,succ_id);
+    if (succ){
+        outlog_printf(2,"Build Success!\n");
     }
+    else{
+        outlog_printf(2,"Build failed, Trying to find fail macros...\n");
+        outlog_printf(2,"Testing with Delta-Debugging...\n");
+        // Run Delta-Debugging test to find fail cases
+        pushEnvMap(envMap);
+        pushWrapPath(CLANG_WRAP_PATH, wrapScript);
+        time_t timeout_limit = 0;
+        if (repair_build_cnt > 10)
+            timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
+        int ret;
+        {
+            //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
+            ExecutionTimer timer;
+            std::string src_dir = getFullPath(work_dir + "/src");
+            std::string cmd;
+            cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+std::to_string(max_macro);
+            if (!src_dirs["src"]) cmd+=" -t "+build_cmd;
+            if (dep_dir!="") cmd+=" -p "+dep_dir;
 
-    for (long long i=0;i<max_macro;i++){
-        bool include=false;
-        for (size_t j=0;j<fail.size();j++){
-            if (fail[j]==i) {
-                include=true;
-                break;
+            if (timeout_limit == 0)
+                ret = system(cmd.c_str());
+            else
+                ret = execute_with_timeout(cmd.c_str(), timeout_limit);
+
+            if (ret==0) {
+                total_repair_build_time += timer.getSeconds();
+                repair_build_cnt ++;
             }
         }
-        if (!include) succ_id.push_back(i);
-    }
-    outlog_printf(2,"Total success macros: %d\n",succ_id.size());
+        popWrapPath();
+        popEnvMap(envMap);
 
-    // Build final build
-    succ = buildSubDir("src", wrapScript, envMap,succ_id);
-    if (succ) outlog_printf(2,"Success to build final program: %s\n",output_name.c_str());
+        deleteLibraryFile(fileCodeMap);
+        outlog_printf(2,"Building final program...\n");
+        // Get fail case and create final macros
+        std::vector<long long> fail;
+        succ_id.clear();
+        fail.clear();
 
-    // Remove temporary backup file, because we have done it
-    cnt = 0;
-    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
-            it != fileCodeMap.end(); ++ it) {
-        std::string target_file = it->first;
-        if (target_file[0] != '/')
-            target_file = src_dir + "/" + it->first;
-        else
-            target_file = it->first;
-        std::ostringstream sout;
-        sout << "mv -f " << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << target_file;
-        std::string cmd = sout.str();
-        execute_cmd_until_succ(cmd);
-        cnt ++;
-        // Make sure it refresh the build system to avoid cause problem
-        cmd = std::string("touch ") + target_file;
-        execute_cmd_until_succ(cmd);
-        // remove the .o and .lo files to force recompile next time
-        {
-            std::string tmp = replace_ext(target_file, ".o");
-            std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
+        char *home;
+        home=getenv("HOME");
+        if (home==NULL)
+            home=getenv("HOMEPATH");
+
+        std::string resultPath=std::string(home)+"/__dd_test.log";
+        char eachResult[100];
+        std::ifstream result(resultPath.c_str(),std::ifstream::in);
+        assert(result.is_open());
+        while(result.getline(eachResult,100)){
+            fail.push_back(stoll(std::string(eachResult)));
         }
-        {
-            std::string tmp = replace_ext(target_file, ".lo");
-            std::string cmd = "rm -f "  + tmp;
+
+        for (long long i=0;i<max_macro;i++){
+            bool include=false;
+            for (size_t j=0;j<fail.size();j++){
+                if (fail[j]==i) {
+                    include=true;
+                    break;
+                }
+            }
+            if (!include) succ_id.push_back(i);
+        }
+        outlog_printf(2,"Total success macros: %d\n",succ_id.size());
+
+        // Build final build
+        succ = buildSubDir("src", wrapScript, envMap,succ_id);
+        if (succ) outlog_printf(2,"Success to build final program: %s\n",output_name.c_str());
+
+        // Remove temporary backup file, because we have done it
+        cnt = 0;
+        for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
+                it != fileCodeMap.end(); ++ it) {
+            std::string target_file = it->first;
+            if (target_file[0] != '/')
+                target_file = src_dir + "/" + it->first;
+            else
+                target_file = it->first;
+            std::ostringstream sout;
+            sout << "mv -f " << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << target_file;
+            std::string cmd = sout.str();
             execute_cmd_until_succ(cmd);
+            cnt ++;
+            // Make sure it refresh the build system to avoid cause problem
+            cmd = std::string("touch ") + target_file;
+            execute_cmd_until_succ(cmd);
+            // remove the .o and .lo files to force recompile next time
+            {
+                std::string tmp = replace_ext(target_file, ".o");
+                std::string cmd = "rm -f "  + tmp;
+                execute_cmd_until_succ(cmd);
+            }
+            {
+                std::string tmp = replace_ext(target_file, ".lo");
+                std::string cmd = "rm -f "  + tmp;
+                execute_cmd_until_succ(cmd);
+            }
         }
     }
 

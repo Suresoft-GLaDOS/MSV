@@ -913,7 +913,6 @@ if __name__ == '__main__':
                 subprocess.call(['rm','prog'],stderr=subprocess.PIPE)
                 subprocess.call(['rm',"-rf","ext/phar/phar.php"],stderr=subprocess.PIPE)
                 args.append('make')
-                args.append('-B')
                 cflags=""
                 for i in c:
                     cflags=cflags+' -D '
