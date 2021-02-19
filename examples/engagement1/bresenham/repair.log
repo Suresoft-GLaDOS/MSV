@@ -4,10 +4,9 @@ Processing bresenham.cpp
 Total 361 different repair schemas!!!!
 Total 790 different repair candidate templates for scoring!!!
 Total 478 different partial repair candidate templates!!
-Trying different candidates!
-BasicTester pointer: 0x556403f0f7a0
-StringConstTester pointer: 0x556403f1ccc0
-CondTester pointer: 0x556403f32140
+BasicTester pointer: 0x560402a0e110
+StringConstTester pointer: 0x560402a0b880
+CondTester pointer: 0x5604029ff6e0
 Generating Candidates...
 Candidates size: 361
 Generating Codes...
@@ -17,13 +16,12 @@ Generating patches...
 [7] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 217
-Saving this fix to: /root/project/prophet-gpl/examples/engagement1/bresenham/src/bresenham.cpp_bak_476186462.cpp
+Saving this fix to: __fixed_bresenham.cpp
 Building with no macros...
 Testing with Delta-Debugging...
 Building final program...
-Success to build final program: prog
-Generating Result...The total number of synthesis runs: 0
-The total number of concrete conds: 0
+Total success macros: 215
+Success to build final program: __fixed_bresenham.cpp
 The total number of explored concrete patches: 790
 Repair process ends without working fix!!
 Total 361 different repair schemas!!!!

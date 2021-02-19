@@ -243,9 +243,7 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         return 0;
     }
     else {
-        outlog_printf(1, "Trying different candidates!\n");
-        printf("candidate count: %d\n",q.size());
-        ExprSynthesizer ES(P, M, q, naive, learning, FP);
+        ExprSynthesizer ES(P, M, q, out_file,naive, learning, FP);
         if (timeout_limit != 0)
             ES.setTimeoutLimit(timeout_limit);
         size_t cnt = 0;
@@ -262,37 +260,6 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                 outlog_printf(1, "Total %lu different repair schemas!!!!\n", schema_cnt);
                 outlog_printf(1, "Total %lu different repair candidate templates for scoring!!!\n", candidate_cnt);
                 return 1;
-            }
-            else {
-                std::string prefix_name = out_file;
-                if ((out_file.size() >= 2) && (out_file.substr(out_file.size() - 2) == ".c"))
-                    prefix_name = out_file.substr(0, out_file.size() - 2);
-                for (ExprSynthesizerResultTy::iterator it2 = res.begin(); it2 != res.end();
-                        ++it2) {
-                    std::map<std::string, std::string> new_codes = it2->first;
-                    for (std::map<std::string, std::string>::iterator it = new_codes.begin();
-                            it != new_codes.end(); ++it) {
-                        std::ostringstream sout;
-                        // Here prefix_name is just a prefix
-                        sout << prefix_name << replaceSlash(it->first);
-                        if (cnt != 0)
-                            sout << "-" << cnt;
-                        outlog_printf(1, "Found a fix! Store to: %s\n", sout.str().c_str());
-                        std::ofstream fout(sout.str().c_str(), std::ofstream::out);
-                        fout << it->second;
-                        fout.close();
-                    }
-                    resList.push_back(std::make_pair(-it2->second, cnt));
-                    cnt ++;
-                }
-                // We are just going to rewrite the summary file
-                if (summaryFile != "") {
-                    sort(resList.begin(), resList.end());
-                    std::ofstream fout(summaryFile.c_str(), std::ofstream::out);
-                    for (size_t i = 0; i < resList.size(); i++)
-                        fout << i << ": " << resList[i].second << " " << -resList[i].first << "\n";
-                    fout.close();
-                }
             }
             if (((timeout_limit > 0) && (get_timer() > timeout_limit))) {
                 outlog_printf(1, "[%llu] Timeout! The limit is %llu!\n", get_timer(), timeout_limit);

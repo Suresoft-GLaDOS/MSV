@@ -910,15 +910,15 @@ if __name__ == '__main__':
             my_env=os.environ
             if self.file=="":
                 os.chdir(src_dir)
-                subprocess.Popen(["rm","__temp*"],stderr=subprocess.PIPE)
+                subprocess.call(['rm','prog'],stderr=subprocess.PIPE)
                 subprocess.call(['rm',"-rf","ext/phar/phar.php"],stderr=subprocess.PIPE)
                 args.append('make')
+                args.append('-B')
                 cflags=""
                 for i in c:
                     cflags=cflags+' -D '
-                    cflags=cflags+' COMPILE_'+str(i)
+                    cflags=cflags+'COMPILE_'+str(i)
                 my_env["CFLAGS"]=cflags
-                my_env["OUTPUT_NAME"]="__temp"
                 args.append(">>")
                 args.append(build_log_file)
                 args.append("2>&1")
@@ -927,8 +927,6 @@ if __name__ == '__main__':
                 if dep_dir!="":
                     args.append("-p")
                     args.append(dep_dir)
-                    args.append("-o")
-                    args.append("__temp")
                 for i in c:
                     args.append("-D")
                     args.append("COMPILE_"+str(i))
@@ -955,7 +953,7 @@ if __name__ == '__main__':
     (c, c1, c2)=dd_test.dd(macro_list)
     # c=dd_test.dd(macro_list)
 
-    print "result",c
+    print "Fail macros:",c
     home=os.path.expanduser("~")
     os.chdir(home)
     f=open("__dd_test.log","w")

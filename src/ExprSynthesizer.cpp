@@ -1965,6 +1965,7 @@ class TestBatcher {
     bool naive;
     bool learning;
     FeatureParameter *FP;
+    std::string fixedFile;
 
     struct CandidateEntry {
         RepairCandidate rc;
@@ -1997,20 +1998,20 @@ class TestBatcher {
         const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
         // Create source file with fix
         // This should success
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros);
+        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
 
         return std::map<NewCodeMapTy, double>();
     }
 
 public:
     TestBatcher(BenchProgram &P, bool naive,
-            bool learning, FeatureParameter *FP):
-        P(P), naive(naive), learning(learning && !naive), FP(FP), res(), succCandidates(), candidateMap(), cur_size(0),
+            bool learning, FeatureParameter *FP,std::string fixedFile):
+        P(P), naive(naive), learning(learning && !naive), FP(FP), fixedFile(fixedFile),res(), succCandidates(), candidateMap(), cur_size(0),
     total_cnt(0) { }
 
     // This is a lazy test routine, we are only going to decode it without
     // actually doing the test in the most of the time
-    void test(const std::vector<RepairCandidate> &candidate, BasicTester* T) {
+    bool test(const std::vector<RepairCandidate> &candidate, BasicTester* T) {
         T->preprocess(candidate);
         outlog_printf(2, "Begin building test\n");
         CodeSegTy codeSegs = T->getCodeSegs();
@@ -2032,6 +2033,7 @@ public:
             for (int j=0;j<candidate.size();j++)
                 succCandidates.push_back(candidate[j]);
         }
+        return res.size()!=0;
     }
 
     bool hasResult() {
@@ -2066,7 +2068,7 @@ public:
 bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
         ExprSynthesizerResultTy &res, bool full_synthesis, bool quit_with_any) {
     the_timeout_limit = this->timeout_limit;
-    TestBatcher TB(P, naive, learning, FP);
+    TestBatcher TB(P, naive, learning, FP,fixedFile);
     std::vector<BasicTester*> testers;
     testers.clear();
     testers.push_back(new ConditionSynthesisTester(P, learning, M, full_synthesis));
@@ -2096,40 +2098,13 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
         q.pop();
     }
 
+    bool result;
     outlog_printf(2,"Generating Codes...\n");
     //for (int i=0;i<testers.size();i++)
-        TB.test(candidate, testers[2]);
+    result= TB.test(candidate, testers[2]);
 
-    outlog_printf(2,"Generating Result...");
-
-    if (TB.hasResult()) {
-        std::vector<std::pair<NewCodeMapTy, double> > tmp = TB.getResults();
-        collected_res.insert(collected_res.end(), tmp.begin(), tmp.end());
-        std::vector<RepairCandidate> succs = TB.getSuccCandidates();
-        for (size_t i = 0; i < succs.size(); i++) {
-            cache->markSucc(succs[i].toString(M));
-            unsigned long schema_id = candidate_to_id[succs[i].toString(M)];
-            outlog_printf(1, "Generate a candidate with schema id: %lu\n", schema_id);
-            if (generate_min_id > schema_id)
-                generate_min_id = schema_id;
-        }
-        ((ConditionSynthesisTester*)testers[0])->dumpStat();
-    }
-    if (generate_min_id != 100000000)
-        outlog_printf(1, "The first schema id that generates patch: %lu\n", generate_min_id);
-    outlog_printf(0, "The total number of synthesis runs: %lu\n", tot_synthesis_run);
-    outlog_printf(0, "The total number of concrete conds: %lu\n", tot_concrete_conds);
     outlog_printf(0, "The total number of explored concrete patches: %lu\n", patch_explored);
-    //res.clear();
-    for (size_t i = 0; i < collected_res.size(); i++)
-        for (size_t j = i; j < collected_res.size(); j++)
-            if (collected_res[i].second < collected_res[j].second)
-                std::swap(collected_res[i], collected_res[j]);
-    //for (size_t i = 0; i < collected_res.size(); i++)
-    //    res.push_back(collected_res[i].first);
-    res = collected_res;
     for (size_t i = 0; i < testers.size(); i++)
         delete testers[i];
-    printf("result size: %d\n",res.size());
-    return res.size() != 0;
+    return result;
 }
