@@ -1,31 +1,32 @@
 Initialize the program!
 Generating repair candidates!
 Processing bresenham.cpp
-Total 1864 different repair schemas!!!!
-Total 2422 different repair candidate templates for scoring!!!
-Total 625 different partial repair candidate templates!!
+Total 361 different repair schemas!!!!
+Total 790 different repair candidate templates for scoring!!!
+Total 478 different partial repair candidate templates!!
 Trying different candidates!
-BasicTester pointer: 0x561f986dcd00
-StringConstTester pointer: 0x561f986662c0
-CondTester pointer: 0x561f9869c0a0
+BasicTester pointer: 0x564fd2fa9110
+StringConstTester pointer: 0x564fd2fa6880
+CondTester pointer: 0x564fd2f9a6e0
 Generating Candidates...
-Candidates size: 1864
+Candidates size: 361
 Generating Codes...
 [7] Preprocess the following candidate with BasicTester:
-1864
+361
 Generating patches...
 [7] BasicTester, a patch instance with id 0:
 Spawn 1 instances, now Total 1
-Total macros: 903
-Saving this fix to: /root/project/prophet-gpl/examples/engagement1/bresenham/src/bresenham.cpp_bak_1804289383.cpp
-One by one building finish! Success/Total: 249/903
-Trying to find and build with success case...
-Total success case: 1
+Total macros: 217
+Saving this fix to: /root/project/prophet-gpl/examples/engagement1/bresenham/src/bresenham.cpp_bak_1298945068.cpp
+Building at: prog0
+Trying to build full program...
+Building at: prog2
+Full program build success!
 Generating Result...The total number of synthesis runs: 0
 The total number of concrete conds: 0
-The total number of explored concrete patches: 2422
+The total number of explored concrete patches: 790
 Repair process ends without working fix!!
-Total 1864 different repair schemas!!!!
-Total 2422 different repair candidate templates for scoring!!!
-Total number of compiles: 905
+Total 361 different repair schemas!!!!
+Total 790 different repair candidate templates for scoring!!!
+Total number of compiles: 2
 Total number of test eval: 0

@@ -66,6 +66,9 @@ public:
     const std::set<clang::Stmt*> & getCandidateIfStmts() {
         return CandidateIfStmts;
     }
+    clang::ASTContext & getContext(){
+        return C;
+    }
 
     ExprListTy getCandidateEnumConstant(clang::EnumConstantDecl *ECD);
 

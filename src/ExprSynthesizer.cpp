@@ -2003,46 +2003,46 @@ class TestBatcher {
         const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
         // Create source file with fix
         // This should success
-        P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,std::vector<long long>(),true);
+        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,std::vector<long long>(),true);
+        assert(result_init);
+        P.buildTest(CLANG_TEST_WRAP,buildEnv,combined,macros);
+
+        std::vector<long long> fail;
+        fail.clear();
+
+        char *home;
+        home=getenv("HOME");
+        if (home==NULL)
+            home=getenv("HOMEPATH");
+
+        std::string resultPath=std::string(home)+"/__dd_test.log";
+        char eachResult[100];
+        std::ifstream result(resultPath.c_str(),std::ifstream::in);
+        assert(result.is_open());
+        while(result.getline(eachResult,100)){
+            fail.push_back(stoll(std::string(eachResult)));
+        }
 
         for (long long i=0;i<macros;i++){
-            std::vector<long long> macros;
-            macros.push_back(i);
-            bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
-                    combined,macros);
-            if (build_succ) {
-                succ_id.push_back(i);
-                outlog_printf(4,"Build success: %d\n",i);
+            bool include=false;
+            for (size_t j=0;j<fail.size();j++){
+                if (fail[j]==i) {
+                    include=true;
+                    break;
+                }
             }
+            if (!include) succ_id.push_back(i);
         }
-        if (succ_id.size()<=1) {
-            outlog_printf(2, "Single building for Tester %p id %lu failed as well!\n",
-                    T, id);
-            return std::map<NewCodeMapTy, double>();
+
+        outlog_printf(2,"Trying to build full program...\n");
+
+        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
+                combined,succ_id,false);
+        if (build_succ) {
+            outlog_printf(2,"Full program build success!\n");
         }
-        else{
-            outlog_printf(2,"One by one building finish! Success/Total: %d/%d\n",succ_id.size(),macros);
-            outlog_printf(2,"Trying to find and build with success case...\n");
 
-            DeltaDebuggingTest case_finder(combined,P,buildEnv,succ_id);
-            case_finder.run();
-            std::vector<std::vector<long long>> result=case_finder.getResult();
-            outlog_printf(2,"Total success case: %d\n",result.size());
-
-            // outlog_printf(2,"Trying to build full program...\n");
-
-            // bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
-            //         combined,succ_id,true);
-            // if (build_succ) {
-            //     outlog_printf(2,"Full program build success!\n");
-            // }
-        }
-        //bool ret = T->test(BenchProgram::EnvMapTy(), id);
-        bool ret=false;
-        if (ret)
-            return T->getResults(id);
-        else
-            return std::map<NewCodeMapTy, double>();
+        return std::map<NewCodeMapTy, double>();
     }
 
     void doTest(const CodeSegTy &codeSegs) {

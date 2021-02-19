@@ -550,6 +550,30 @@ class StmtChecker : public RecursiveASTVisitor<StmtChecker> {
     GlobalAnalyzer *G;
     std::set<VarDecl*> inside;
     std::set<Expr*> invalidExprs;
+    bool isMemberMethod(CXXRecordDecl *record,FunctionDecl *func){
+        if (!llvm::isa<CXXMethodDecl>(func)) return false;
+        bool isMember=false;
+        for (CXXRecordDecl::method_iterator it=record->method_begin();
+                it!=record->method_end();it++){
+            if (*it==func) {
+                isMember=true;
+                break;
+            }
+        }
+        return isMember;
+    }
+    bool isMemberField(RecordDecl *record,FieldDecl *field){
+        bool isMember=false;
+        for (RecordDecl::field_iterator it=record->field_begin();
+                it!=record->field_end();it++){
+            if (*it==field) {
+                isMember=true;
+                break;
+            }
+        }
+        return isMember;
+    }
+
 public:
     StmtChecker(LocalAnalyzer *L, GlobalAnalyzer *G): L(L), G(G) {
         inside.clear();
@@ -560,13 +584,115 @@ public:
         inside.insert(VD);
         return true;
     }
+    virtual bool VisitCXXThisExpr(CXXThisExpr *expr){
+        FunctionDecl *current=L->getCurrentFunction();
+        if (!llvm::isa<CXXMethodDecl>(current)) invalidExprs.insert(expr);
+        return true;
+    }
+    virtual bool VisitMemberExpr(MemberExpr *expr){
+        bool found=false;
+        // outlog_printf(2,"check: %s\n",stmtToString(G->getContext(),expr).c_str());
+        ValueDecl* decl=expr->getMemberDecl();
+        //outlog_printf(2,"decl: %s\n",decl->getNameAsString().c_str());
+        FunctionDecl *current=L->getCurrentFunction();
+
+        FieldDecl *field=llvm::dyn_cast<FieldDecl>(decl);
+        if (field){
+            RecordDecl *record=field->getParent();
+
+            CXXRecordDecl *classDecl=llvm::dyn_cast<CXXRecordDecl>(record);
+            // If expr is class member(C++)
+            if (classDecl){
+                // If class access is 'this'
+                std::string exprStr=stmtToString(G->getContext(),expr);
+
+                CXXThisExpr *thisExpr=llvm::dyn_cast<CXXThisExpr>(expr->getBase());
+                //if (thisExpr){
+                if (exprStr.find("this")!=std::string::npos || thisExpr){
+                    // Check class of current function and expr reference same class
+                    CXXMethodDecl *currentMethod=llvm::dyn_cast<CXXMethodDecl>(current);
+                    if (currentMethod){
+                        CXXRecordDecl *currentRecord=llvm::dyn_cast<CXXRecordDecl>(currentMethod->getParent());
+                        if (currentRecord && currentRecord==classDecl){
+                            if (isMemberField(classDecl,field)){
+                                found=true;
+                            }
+                        }
+                    }
+                }
+
+                // If current method is member of current class, all member is accessible
+                else if (isMemberMethod(classDecl,current)){
+                    if (isMemberField(classDecl,field)){
+                        found=true;
+                    }
+                }
+
+                // If not, check expr is accessible
+                else if (isMemberField(classDecl,field)){
+                        if (field->getAccess()==AccessSpecifier::AS_public)
+                            found=true;
+                    }
+            }
+            // If expr is struct/union member, all member is accessible
+            else{
+                if (isMemberField(record,field)){
+                    found=true;
+                }
+            }
+        }
+
+        CXXMethodDecl *method=llvm::dyn_cast<CXXMethodDecl>(decl);
+        if (method){
+            RecordDecl *record=method->getParent();
+
+            CXXRecordDecl *classDecl=llvm::dyn_cast<CXXRecordDecl>(record);
+
+            // If expr is class member(C++)
+            if (classDecl){
+                // If class access is 'this'
+                CXXThisExpr *thisExpr=llvm::dyn_cast<CXXThisExpr>(expr->getBase());
+                // if (thisExpr){
+                std::string exprStr=stmtToString(G->getContext(),expr);
+                if (exprStr.find("this")!=std::string::npos || thisExpr){
+                    // Check class of current function and expr reference same class
+                    CXXMethodDecl *currentMethod=llvm::dyn_cast<CXXMethodDecl>(current);
+                    if (currentMethod){
+                        CXXRecordDecl *currentRecord=llvm::dyn_cast<CXXRecordDecl>(currentMethod->getParent());
+                        if (currentRecord && currentRecord==classDecl){
+                            if (isMemberMethod(classDecl,method)){
+                                found=true;
+                            }
+                        }
+                    }
+                }
+
+                // If current method is member of current class, all member is accessible
+                else if (isMemberMethod(classDecl,current)){
+                    if (isMemberMethod(classDecl,method)){
+                        found=true;
+                    }
+                }
+
+                // If not, check expr is accessible
+                else if (isMemberMethod(classDecl,method)){
+                    if (method->getAccess()==AccessSpecifier::AS_public)
+                            found=true;
+                    }
+            }
+
+        }
+        // outlog_printf(2,"finish: %s: %s\n",stmtToString(G->getContext(),expr).c_str(),std::to_string(found).c_str());
+        if (!found) invalidExprs.insert(expr);
+        return true;
+    }
 
     virtual bool VisitDeclRefExpr(DeclRefExpr *DRE) {
         ValueDecl *VD = DRE->getDecl();
-        if (llvm::isa<FieldDecl>(VD)) return true;
         if (llvm::isa<EnumConstantDecl>(VD)) return true;
 
         bool found = false;
+        // If variable not declared, this is invalid
         VarDecl *VarD = llvm::dyn_cast<VarDecl>(VD);
         if (VarD) {
             if (L->getLocalVarDecls().count(VarD) != 0)
@@ -576,6 +702,8 @@ public:
             if (inside.count(VarD) != 0)
                 found = true;
         }
+
+        // If function not declared, this is invalid
         FunctionDecl *FuncD = llvm::dyn_cast<FunctionDecl>(VD);
         if (FuncD) {
             if (G->getFuncDecls().count(FuncD) != 0)

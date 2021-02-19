@@ -1,5 +1,4 @@
 /* original courtesy of player1537, http://www.cemetech.net/forum/viewtopic.php?t=5401 */
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <utility>

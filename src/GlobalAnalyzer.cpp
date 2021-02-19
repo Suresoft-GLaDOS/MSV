@@ -121,7 +121,7 @@ public:
         SourceLocation startLoc = CS->getLBracLoc();
         SourceLocation endLoc = CS->getRBracLoc();
         std::string filename = M.getFilename(M.getExpansionLoc(startLoc)).str();
-        //if (is_header(filename))
+        // if (is_header(filename))
         //    return true;
         bool old_in_macro = in_macro;
         if (!in_macro && M.getExpansionLoc(startLoc) == M.getExpansionLoc(endLoc)) {

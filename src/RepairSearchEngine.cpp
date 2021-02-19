@@ -115,7 +115,6 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                 break;
         }
     }
-
     size_t candidate_cnt = 0;
     size_t partial_candidate_cnt = 0;
     FeatureExtractor EX;

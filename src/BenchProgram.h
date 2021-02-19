@@ -123,6 +123,7 @@ private:
     std::string build_cmd;
     // The test command script path, this is an absolute path!
     std::string test_cmd;
+    std::string ddtest_cmd;
 
     std::string profile_dir;
 
@@ -200,7 +201,8 @@ public:
     bool buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
             const std::map<std::string, std::string> &fileCodeMap,std::vector<long long> compile_macro=std::vector<long long>(),bool createFile=false,
             std::string output_name="prog");
-
+    bool buildTest(const std::string &wrapScript, const EnvMapTy &envMap,
+            const std::map<std::string, std::string> &fileCodeMap,long long max_macro);
     TestCaseSetTy testSet(const std::string &subDir, const TestCaseSetTy &case_set,
             const EnvMapTy &envMap, bool pass_basic_src_dir = false);
 

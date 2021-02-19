@@ -418,31 +418,7 @@ std::map<ASTLocTy, std::map<std::string, bool> > CodeRewriter::eliminateAllNewLo
         if (skip==true) continue;
         ret[it->first]=str_vec;
         
-        // std::string switcher="switch(__choose(\"__ID"+std::to_string(counter)+"\"))";
-        // std::string cases=switcher+"{\n\tcase 0: {\n"+original_case+"\nbreak;\n}\n";
-        // int i=1;bool skip=false;
-        // for (std::map<std::string,bool>::iterator str_it=str_vec.begin();str_it!=str_vec.end();str_it++){
-        //     if (original_case==str_it->first){
-        //         skip=true;
-        //         break;
-        //     }
-        //     if (str_it->first=="") continue;
-        //     cases+="#ifdef COMPILE_"+std::to_string(index++)+"\n\tcase "+std::to_string(i)+": {\n"+str_it->first+"\nbreak;\n}\n#endif\n";
-        //     i++;
-        //     ret[it->first].second=str_it->second;
-        // }
-        // if (skip==true) continue;
-        // std::string new_tmp=cases+"}\n";
-        // ret[it->first].first=new_tmp;
-        // printf("\ncurrent candidate: %d\n",counter);
-        // printf("parent stmt: %s\n",stmtToString(*ctxt,it->first.parent_stmt).c_str());
-        // printf("current stmt: %s\n",original_case.c_str());
-        // printf("stmt: %s\n",ret[it->first].first.c_str());
-        //counter++;
     }
-    // for (std::map<ASTLocTy,std::map<std::string,bool>>::iterator it=ret.begin();it!=ret.end();it++){
-    //     outlog_printf(2,"original: %s\n",it->second.begin()->first.c_str());
-    // }
     return ret;
 }
 
@@ -543,7 +519,6 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     // Then we handle each source file saperately
     resCodeSegs.clear();
     resPatches.clear();
-    index=1;
     for (std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> >::iterator
             it = res2.begin(); it != res2.end(); ++it) {
         std::string src_file = it->first;

@@ -291,10 +291,12 @@ public:
         start_stmt->dump();
         ICE->getType()->dump();
         ConstCharP->dump();*/
+        std::vector<int> args;
+        args.push_back(1);
         if (ctxt->hasSameType(ICE->getType(), ConstCharP)) {
             Expr *E1 = stripParenAndCast(ICE);
             if (llvm::isa<StringLiteral>(E1)) {
-                Expr *placeholder = M.getExprPlaceholder(ctxt, ConstCharP);
+                Expr *placeholder = M.getExprPlaceholder(ctxt, ConstCharP,args);
                 StmtReplacer R(ctxt, start_stmt);
                 R.addRule(ICE, placeholder);
                 Stmt *S = R.getResult();
@@ -460,10 +462,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         //assert(ori_cond->getType()->isIntegerType());
         Expr *placeholder;
+        std::vector<int> args;
+        args.push_back(1);
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ori_cond->getType(), VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
@@ -496,10 +500,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         //assert(ori_cond->getType()->isIntegerType());
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
         Expr* placeholder;
+        std::vector<int> args;
+        args.push_back(1);
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
         BinaryOperator *BO = BinaryOperator::Create(*ctxt,ParenE,
                 placeholder, BO_LOr, ctxt->IntTy, VK_RValue,
                 OK_Ordinary, SourceLocation(), FPOptionsOverride());
@@ -787,10 +793,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         Expr* placeholder;
+        std::vector<int> args;
+        args.push_back(1);
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
         //clang::CallExpr *is_neg_call = L->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
@@ -879,10 +887,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         Expr* placeholder;
+        std::vector<int> args;
+        args.push_back(1);
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
         
         //clang::CallExpr *is_neg_call = G->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
         //UnaryOperator *UO = new(*ctxt) UnaryOperator(hinfo.is_neg, UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation());

@@ -1,26 +1,5 @@
-g++    -c -o prog.o prog.cpp
 gcc -o prog  prog.o
 make: 'prog' is up to date.
 Path env:  /root/project/prophet-gpl/wrap:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
-make: 'prog' is up to date.
 make: 'prog' is up to date.
 make: 'prog' is up to date.
