@@ -123,6 +123,7 @@ private:
     std::string build_cmd;
     // The test command script path, this is an absolute path!
     std::string test_cmd;
+    std::string ddtest_cmd;
 
     std::string profile_dir;
 
@@ -137,6 +138,7 @@ private:
     time_t total_repair_build_time;
     size_t repair_build_cnt;
     size_t case_timeout;
+    size_t case_counter;
 
     TestCaseSetTy positive_cases, negative_cases;
 
@@ -147,7 +149,7 @@ private:
 
     void Init(const std::string &workDirPath, bool no_clean_up);
 
-    bool buildFull(const std::string &subDir, time_t timeout_limit = 0, bool force_reconf = false);
+    bool buildFull(const std::string &subDir, time_t timeout_limit = 0, bool force_reconf = false,std::vector<long long> compile_macro=std::vector<long long>());
 
     void getCompileMisc(const std::string &src_file, std::string &build_dir, std::vector<std::string> &build_args);
 
@@ -162,6 +164,8 @@ private:
     void pushWrapPath(const std::string &wrapPath, const std::string &cc_path);
 
     void popWrapPath();
+
+    void deleteLibraryFile(const std::map<std::string, std::string> &fileCodeMap);
 
 public:
 
@@ -193,11 +197,11 @@ public:
             const std::string &code);
 
     bool buildSubDir(const std::string &subDir, const std::string &wrapScript,
-            const EnvMapTy &envMap);
+            const EnvMapTy &envMap,std::vector<long long> compile_macro=std::vector<long long>());
 
     bool buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-            const std::map<std::string, std::string> &fileCodeMap);
-
+            const std::map<std::string, std::string> &fileCodeMap,long long max_macro,
+            std::string output_name="");
     TestCaseSetTy testSet(const std::string &subDir, const TestCaseSetTy &case_set,
             const EnvMapTy &envMap, bool pass_basic_src_dir = false);
 

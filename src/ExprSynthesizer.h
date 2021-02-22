@@ -40,11 +40,12 @@ class ExprSynthesizer {
     bool learning;
     FeatureParameter *FP;
     unsigned long long timeout_limit;
+    std::string fixedFile;
 public:
     ExprSynthesizer(BenchProgram &P, SourceContextManager &M,
-            RepairCandidateQueue &q,
+            RepairCandidateQueue &q, std::string fixedFile,
             bool naive, bool learning, FeatureParameter *FP):
-        P(P), M(M), tested_cnt(0), q(q), naive(naive), learning(learning && !naive), FP(FP),
+        P(P), M(M), tested_cnt(0), q(q), fixedFile(fixedFile),naive(naive), learning(learning && !naive), FP(FP),
         timeout_limit(0) { }
 
     bool workUntil(size_t candidate_limit,

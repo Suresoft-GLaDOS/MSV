@@ -29,6 +29,7 @@ namespace clang {
     class FunctionDecl;
     class EnumConstantDecl;
     class EnumDecl;
+    class RecordDecl;
 }
 
 class GlobalAnalyzer {
@@ -36,6 +37,7 @@ class GlobalAnalyzer {
     std::string filename;
     std::set<clang::VarDecl*> GlobalVarDecls;
     std::set<clang::FunctionDecl*> FuncDecls;
+    std::set<clang::RecordDecl*> RecordDecls;
     std::map<clang::EnumConstantDecl*, clang::EnumDecl*> EnumMap;
     std::set<clang::Expr*> CandidateExprs;
     std::set<clang::Stmt*> CandidateMacroExps;
@@ -54,6 +56,9 @@ public:
     const std::set<clang::VarDecl*> & getGlobalVarDecls() {
         return GlobalVarDecls;
     }
+    const std::set<clang::RecordDecl*> &getRecordDecls(){
+        return RecordDecls;
+    }
 
     const std::set<clang::Expr*> & getCandidateExprs() {
         return CandidateExprs;
@@ -65,6 +70,9 @@ public:
 
     const std::set<clang::Stmt*> & getCandidateIfStmts() {
         return CandidateIfStmts;
+    }
+    clang::ASTContext & getContext(){
+        return C;
     }
 
     ExprListTy getCandidateEnumConstant(clang::EnumConstantDecl *ECD);

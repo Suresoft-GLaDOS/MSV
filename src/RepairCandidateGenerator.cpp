@@ -291,10 +291,12 @@ public:
         start_stmt->dump();
         ICE->getType()->dump();
         ConstCharP->dump();*/
+        std::vector<int> args;
+        args.push_back(1);
         if (ctxt->hasSameType(ICE->getType(), ConstCharP)) {
             Expr *E1 = stripParenAndCast(ICE);
             if (llvm::isa<StringLiteral>(E1)) {
-                Expr *placeholder = M.getExprPlaceholder(ctxt, ConstCharP);
+                Expr *placeholder = M.getExprPlaceholder(ctxt, ConstCharP,args);
                 StmtReplacer R(ctxt, start_stmt);
                 R.addRule(ICE, placeholder);
                 Stmt *S = R.getResult();
@@ -460,10 +462,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         //assert(ori_cond->getType()->isIntegerType());
         Expr *placeholder;
+        std::vector<int> args;
+        args.push_back(1);
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ori_cond->getType(), VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
@@ -484,6 +488,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         else
             rc.score = 4*PRIORITY_ALPHA;
         rc.kind = RepairCandidate::TightenConditionKind;
+        rc.original=n;
         q.push_back(rc);
     }
 
@@ -495,10 +500,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         //assert(ori_cond->getType()->isIntegerType());
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
         Expr* placeholder;
+        std::vector<int> args;
+        args.push_back(1);
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
         BinaryOperator *BO = BinaryOperator::Create(*ctxt,ParenE,
                 placeholder, BO_LOr, ctxt->IntTy, VK_RValue,
                 OK_Ordinary, SourceLocation(), FPOptionsOverride());
@@ -517,6 +524,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         else
             rc.score = 4*PRIORITY_ALPHA;
         rc.kind = RepairCandidate::LoosenConditionKind;
+        rc.original=n;
         q.push_back(rc);
 
         if (naive) return;
@@ -553,6 +561,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 else
                     rc.score = 4*PRIORITY_ALPHA;
                 rc.kind = RepairCandidate::LoosenConditionKind;
+                rc.original=n;
                 q.push_back(rc);
             }
     }
@@ -590,6 +599,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 else
                     rc.score = getPriority(n) + PRIORITY_ALPHA;
                 rc.kind = RepairCandidate::AddInitKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 q.push_back(rc);
             }
@@ -608,19 +618,22 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             V.TraverseStmt(n);
             std::set<Stmt*> res = V.getResult();
             for (std::set<Stmt*>::iterator it = res.begin(); it != res.end(); ++it) {
-                RepairCandidate rc;
-                rc.actions.clear();
-                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, *it));
-                // FIXME:
-                if (learning)
-                    rc.score = getLocScore(n);
-                else
-                    rc.score = getPriority(n) + PRIORITY_ALPHA/2;
-                rc.kind = RepairCandidate::ReplaceKind;
-                rc.is_first = is_first;
-                rc.oldRExpr = V.getOldRExpr(*it);
-                rc.newRExpr = V.getNewRExpr(*it);
-                q.push_back(rc);
+                if (L->isValidStmt(*it,NULL)){
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, *it));
+                    // FIXME:
+                    if (learning)
+                        rc.score = getLocScore(n);
+                    else
+                        rc.score = getPriority(n) + PRIORITY_ALPHA/2;
+                    rc.kind = RepairCandidate::ReplaceKind;
+                    rc.original=n;
+                    rc.is_first = is_first;
+                    rc.oldRExpr = V.getOldRExpr(*it);
+                    rc.newRExpr = V.getNewRExpr(*it);
+                    q.push_back(rc);
+                }
             }
         }
 
@@ -630,20 +643,23 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             V.TraverseStmt(n);
             std::set<std::pair<Stmt*, Expr*> > res = V.getResult();
             for (std::set<std::pair<Stmt*, Expr*> >::iterator it = res.begin(); it != res.end(); ++it) {
-                RepairCandidate rc;
-                rc.actions.clear();
-                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, it->first));
-                rc.actions.push_back(RepairAction(newStatementLoc(loc, it->first), it->second, std::vector<Expr*>()));
-                rc.actions[rc.actions.size() - 1].tag = RepairAction::StringConstantTag;
-                rc.is_first = is_first;
-                rc.oldRExpr = V.getOldRExpr(it->first);
-                rc.newRExpr = NULL;
-                if (learning)
-                    rc.score = getLocScore(n);
-                else
-                    rc.score = getPriority(n) + PRIORITY_ALPHA + PRIORITY_ALPHA/2;
-                rc.kind = RepairCandidate::ReplaceStringKind;
-                q.push_back(rc);
+                if (L->isValidStmt(it->first,NULL)){
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, it->first));
+                    rc.actions.push_back(RepairAction(newStatementLoc(loc, it->first), it->second, std::vector<Expr*>()));
+                    rc.actions[rc.actions.size() - 1].tag = RepairAction::StringConstantTag;
+                    rc.is_first = is_first;
+                    rc.oldRExpr = V.getOldRExpr(it->first);
+                    rc.newRExpr = NULL;
+                    if (learning)
+                        rc.score = getLocScore(n);
+                    else
+                        rc.score = getPriority(n) + PRIORITY_ALPHA + PRIORITY_ALPHA/2;
+                    rc.kind = RepairCandidate::ReplaceStringKind;
+                    rc.original=n;
+                    q.push_back(rc);
+                }
             }
         }
 
@@ -661,6 +677,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 else
                     rc.score = getPriority(n) + PRIORITY_ALPHA;
                 rc.kind = RepairCandidate::ReplaceKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 rc.oldRExpr = V2.getOldRExpr(*it);
                 rc.newRExpr = V2.getNewRExpr(*it);
@@ -669,6 +686,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    // TODO: Remove strange templates (e.g. --this, _M_...(), ...)
     void genAddStatement(Stmt* n, bool is_first, bool is_func_block) {
         if (in_yacc_func) return;
         if (naive) return;
@@ -678,6 +696,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         std::map<std::string, RepairCandidate> tmp_map;
         tmp_map.clear();
         for (std::set<Expr*>::iterator it = exprs.begin(); it != exprs.end(); ++it) {
+            //outlog_printf(2,"Exprs: %s\n",stmtToString(*ctxt,*it).c_str());
             AtomReplaceVisitor V(ctxt, L, *it, false);
             V.TraverseStmt(*it);
             std::set<Stmt*> stmts = V.getResult();
@@ -707,6 +726,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     }
                 }
                 rc.kind = RepairCandidate::AddAndReplaceKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 tmp_map[stmtToString(*ctxt, *it2)] = rc;
             }
@@ -727,6 +747,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     }
                 }
                 rc.kind = RepairCandidate::AddAndReplaceKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 tmp_map[stmtToString(*ctxt, *it)] = rc;
             }
@@ -754,6 +775,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     }
                 }
                 rc.kind = RepairCandidate::AddAndReplaceKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 tmp_map[stmtToString(*ctxt, *it)] = rc;
             }
@@ -775,10 +797,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         Expr* placeholder;
+        std::vector<int> args;
+        args.push_back(1);
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
         //clang::CallExpr *is_neg_call = L->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
@@ -797,6 +821,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         else
             rc.score = getPriority(n) + PRIORITY_ALPHA;
         rc.kind = RepairCandidate::GuardKind;
+        rc.original=n;
         rc.is_first = is_first;
         q.push_back(rc);
         if (naive) return;
@@ -826,6 +851,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 else
                     rc.score = getPriority(n) + PRIORITY_ALPHA;
                 rc.kind = RepairCandidate::SpecialGuardKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 q.push_back(rc);
             }
@@ -852,6 +878,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         else
             rc.score = getPriority(n) + PRIORITY_ALPHA;
         rc.kind = RepairCandidate::ReplaceKind;
+        rc.original=n;
         rc.is_first = false;
         rc.oldRExpr = NULL;
         rc.newRExpr = NULL;
@@ -864,10 +891,13 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         Expr* placeholder;
+        std::vector<int> args;
+        args.push_back(1);
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
+        
         //clang::CallExpr *is_neg_call = G->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
         //UnaryOperator *UO = new(*ctxt) UnaryOperator(hinfo.is_neg, UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation());
         FunctionDecl* curFD = L->getCurrentFunction();
@@ -897,6 +927,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 }
             }
             rc.kind = RepairCandidate::IfExitKind;
+            rc.original=n;
             rc.is_first = is_first;
             q.push_back(rc);
         }
@@ -929,6 +960,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     }
                 }
                 rc.kind = RepairCandidate::IfExitKind;
+                rc.original=n;
                 rc.is_first = is_first;
                 q.push_back(rc);
             }
@@ -955,6 +987,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     rc.score += PRIORITY_ALPHA;
             }
             rc.kind = RepairCandidate::IfExitKind;
+            rc.original=n;
             rc.is_first = is_first;
             q.push_back(rc);
         }
@@ -986,6 +1019,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     rc.score += PRIORITY_ALPHA;
             }
             rc.kind = RepairCandidate::IfExitKind;
+            rc.original=n;
             rc.is_first = is_first;
             q.push_back(rc);
         }
