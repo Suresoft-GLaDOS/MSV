@@ -2017,10 +2017,10 @@ public:
         CodeSegTy codeSegs = T->getCodeSegs();
         PatchListTy patches = T->getPatches();
         outlog_printf(2,"Total macros: %d\n",T->getMacroCount());
-        for (int j=0;j<candidate.size();j++){
-            tot_explored_templates += candidate[j].getCandidateAtoms().size();
-            patch_explored += candidate[j].getCandidateAtoms().size();
-        }
+        // for (int j=0;j<candidate.size();j++){
+        //     tot_explored_templates += candidate[j].getCandidateAtoms().size();
+        //     patch_explored += candidate[j].getCandidateAtoms().size();
+        // }
         std::map<NewCodeMapTy, double> code_set = singleTest(codeSegs, patches, T);
         for (std::map<NewCodeMapTy, double>::iterator it = code_set.begin();
                 it != code_set.end(); it++) {

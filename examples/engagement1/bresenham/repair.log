@@ -1,32 +1,32 @@
 Initialize the program!
 Generating repair candidates!
 Processing bresenham.cpp
-Total 436 different repair schemas!!!!
-Total 994 different repair candidate templates for scoring!!!
+Total 433 different repair schemas!!!!
+Total 991 different repair candidate templates for scoring!!!
 Total 625 different partial repair candidate templates!!
-BasicTester pointer: 0x55ccf1c08110
-StringConstTester pointer: 0x55ccf1c05880
-CondTester pointer: 0x55ccf1bf96e0
+BasicTester pointer: 0x55c3090387a0
+StringConstTester pointer: 0x55c3090485f0
+CondTester pointer: 0x55c308d9b790
 Generating Candidates...
-Candidates size: 436
+Candidates size: 433
 Generating Codes...
 [7] Preprocess the following candidate with BasicTester:
-436
+433
 Generating patches...
 [7] BasicTester, a patch instance with id 0:
 Begin building test
-Total macros: 239
+Total macros: 236
 Saving this fix to: __fixed_bresenham.cpp
 Building with no macros...
 Trying to build with all macros...
 Build failed, Trying to find fail macros...
 Testing with Delta-Debugging...
 Building final program...
-Total success macros: 237
+Total success macros: 235
 Success to build final program: __fixed_bresenham.cpp
-The total number of explored concrete patches: 994
+The total number of explored concrete patches: 0
 Repair process ends without working fix!!
-Total 436 different repair schemas!!!!
-Total 994 different repair candidate templates for scoring!!!
+Total 433 different repair schemas!!!!
+Total 991 different repair candidate templates for scoring!!!
 Total number of compiles: 1
 Total number of test eval: 0

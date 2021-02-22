@@ -215,6 +215,10 @@ GlobalAnalyzer::GlobalAnalyzer(ASTContext &C, const std::string &filename): C(C)
         FunctionDecl *FD = llvm::dyn_cast<FunctionDecl>(*it);
         if (FD && FD->getDeclName().isIdentifier() && (FD->getName() != IS_NEG_HANDLER) && (FD->getName() != UNKNOWN_HOOK))
             FuncDecls.insert(FD);
+        RecordDecl *record=llvm::dyn_cast<RecordDecl>(*it);
+        if (record && record->getDeclName().isIdentifier()){
+            RecordDecls.insert(record);
+        }
     }
 
     EnumMap.clear();

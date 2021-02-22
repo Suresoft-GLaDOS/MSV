@@ -499,7 +499,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     outlog_printf(2,"Building with no macros...\n");
     // Build with no macro, should be success
     bool succ = buildSubDir("src", wrapScript, envMap,std::vector<long long>());
-    // assert(succ);
 
     deleteLibraryFile(fileCodeMap);
     outlog_printf(2,"Trying to build with all macros...\n");
@@ -519,7 +518,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         time_t timeout_limit = 0;
         if (repair_build_cnt > 10)
             timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
-        int ret;
+        int ret=1;
         {
             //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
             ExecutionTimer timer;
@@ -577,35 +576,34 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         // Build final build
         succ = buildSubDir("src", wrapScript, envMap,succ_id);
         if (succ) outlog_printf(2,"Success to build final program: %s\n",output_name.c_str());
-
-        // Remove temporary backup file, because we have done it
-        cnt = 0;
-        for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
-                it != fileCodeMap.end(); ++ it) {
-            std::string target_file = it->first;
-            if (target_file[0] != '/')
-                target_file = src_dir + "/" + it->first;
-            else
-                target_file = it->first;
-            std::ostringstream sout;
-            sout << "mv -f " << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << target_file;
-            std::string cmd = sout.str();
+    }
+    // Remove temporary backup file, because we have done it
+    cnt = 0;
+    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
+            it != fileCodeMap.end(); ++ it) {
+        std::string target_file = it->first;
+        if (target_file[0] != '/')
+            target_file = src_dir + "/" + it->first;
+        else
+            target_file = it->first;
+        std::ostringstream sout;
+        sout << "mv -f " << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << target_file;
+        std::string cmd = sout.str();
+        execute_cmd_until_succ(cmd);
+        cnt ++;
+        // Make sure it refresh the build system to avoid cause problem
+        cmd = std::string("touch ") + target_file;
+        execute_cmd_until_succ(cmd);
+        // remove the .o and .lo files to force recompile next time
+        {
+            std::string tmp = replace_ext(target_file, ".o");
+            std::string cmd = "rm -f "  + tmp;
             execute_cmd_until_succ(cmd);
-            cnt ++;
-            // Make sure it refresh the build system to avoid cause problem
-            cmd = std::string("touch ") + target_file;
+        }
+        {
+            std::string tmp = replace_ext(target_file, ".lo");
+            std::string cmd = "rm -f "  + tmp;
             execute_cmd_until_succ(cmd);
-            // remove the .o and .lo files to force recompile next time
-            {
-                std::string tmp = replace_ext(target_file, ".o");
-                std::string cmd = "rm -f "  + tmp;
-                execute_cmd_until_succ(cmd);
-            }
-            {
-                std::string tmp = replace_ext(target_file, ".lo");
-                std::string cmd = "rm -f "  + tmp;
-                execute_cmd_until_succ(cmd);
-            }
         }
     }
 

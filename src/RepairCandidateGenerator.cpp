@@ -618,20 +618,22 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             V.TraverseStmt(n);
             std::set<Stmt*> res = V.getResult();
             for (std::set<Stmt*>::iterator it = res.begin(); it != res.end(); ++it) {
-                RepairCandidate rc;
-                rc.actions.clear();
-                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, *it));
-                // FIXME:
-                if (learning)
-                    rc.score = getLocScore(n);
-                else
-                    rc.score = getPriority(n) + PRIORITY_ALPHA/2;
-                rc.kind = RepairCandidate::ReplaceKind;
-                rc.original=n;
-                rc.is_first = is_first;
-                rc.oldRExpr = V.getOldRExpr(*it);
-                rc.newRExpr = V.getNewRExpr(*it);
-                q.push_back(rc);
+                if (L->isValidStmt(*it,NULL)){
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, *it));
+                    // FIXME:
+                    if (learning)
+                        rc.score = getLocScore(n);
+                    else
+                        rc.score = getPriority(n) + PRIORITY_ALPHA/2;
+                    rc.kind = RepairCandidate::ReplaceKind;
+                    rc.original=n;
+                    rc.is_first = is_first;
+                    rc.oldRExpr = V.getOldRExpr(*it);
+                    rc.newRExpr = V.getNewRExpr(*it);
+                    q.push_back(rc);
+                }
             }
         }
 
@@ -641,21 +643,23 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             V.TraverseStmt(n);
             std::set<std::pair<Stmt*, Expr*> > res = V.getResult();
             for (std::set<std::pair<Stmt*, Expr*> >::iterator it = res.begin(); it != res.end(); ++it) {
-                RepairCandidate rc;
-                rc.actions.clear();
-                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, it->first));
-                rc.actions.push_back(RepairAction(newStatementLoc(loc, it->first), it->second, std::vector<Expr*>()));
-                rc.actions[rc.actions.size() - 1].tag = RepairAction::StringConstantTag;
-                rc.is_first = is_first;
-                rc.oldRExpr = V.getOldRExpr(it->first);
-                rc.newRExpr = NULL;
-                if (learning)
-                    rc.score = getLocScore(n);
-                else
-                    rc.score = getPriority(n) + PRIORITY_ALPHA + PRIORITY_ALPHA/2;
-                rc.kind = RepairCandidate::ReplaceStringKind;
-                rc.original=n;
-                q.push_back(rc);
+                if (L->isValidStmt(it->first,NULL)){
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, it->first));
+                    rc.actions.push_back(RepairAction(newStatementLoc(loc, it->first), it->second, std::vector<Expr*>()));
+                    rc.actions[rc.actions.size() - 1].tag = RepairAction::StringConstantTag;
+                    rc.is_first = is_first;
+                    rc.oldRExpr = V.getOldRExpr(it->first);
+                    rc.newRExpr = NULL;
+                    if (learning)
+                        rc.score = getLocScore(n);
+                    else
+                        rc.score = getPriority(n) + PRIORITY_ALPHA + PRIORITY_ALPHA/2;
+                    rc.kind = RepairCandidate::ReplaceStringKind;
+                    rc.original=n;
+                    q.push_back(rc);
+                }
             }
         }
 

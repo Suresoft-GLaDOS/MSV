@@ -6526,28 +6526,14 @@ int main(int argc, char **argv) {
   }
 #ifdef COMPILE_218
   case 1: {
-    fscanf((f), "%d %d\n", &x, &y);
-
-    break;
-  }
-#endif
-#ifdef COMPILE_219
-  case 2: {
-    fscanf(f, __is_neg(1), &x, &y);
-
-    break;
-  }
-#endif
-#ifdef COMPILE_220
-  case 3: {
     if (!__is_neg(1))
       fscanf(f, "%d %d\n", &x, &y);
 
     break;
   }
 #endif
-#ifdef COMPILE_221
-  case 4: {
+#ifdef COMPILE_219
+  case 2: {
     if (__is_neg(1))
       return 0;
     fscanf(f, "%d %d\n", &x, &y);
@@ -6555,8 +6541,8 @@ int main(int argc, char **argv) {
     break;
   }
 #endif
-#ifdef COMPILE_222
-  case 5: {
+#ifdef COMPILE_220
+  case 3: {
     if (__is_neg(1))
       return 1;
     fscanf(f, "%d %d\n", &x, &y);
@@ -6564,8 +6550,8 @@ int main(int argc, char **argv) {
     break;
   }
 #endif
-#ifdef COMPILE_223
-  case 6: {
+#ifdef COMPILE_221
+  case 4: {
     throw;
     fscanf(f, "%d %d\n", &x, &y);
 
@@ -6580,23 +6566,16 @@ int main(int argc, char **argv) {
 
     break;
   }
-#ifdef COMPILE_224
+#ifdef COMPILE_222
   case 1: {
-    fclose((f));
-
-    break;
-  }
-#endif
-#ifdef COMPILE_225
-  case 2: {
     if (!__is_neg(1))
       fclose(f);
 
     break;
   }
 #endif
-#ifdef COMPILE_226
-  case 3: {
+#ifdef COMPILE_223
+  case 2: {
     if (__is_neg(1))
       return 0;
     fclose(f);
@@ -6604,8 +6583,8 @@ int main(int argc, char **argv) {
     break;
   }
 #endif
-#ifdef COMPILE_227
-  case 4: {
+#ifdef COMPILE_224
+  case 3: {
     if (__is_neg(1))
       return 1;
     fclose(f);
@@ -6613,8 +6592,8 @@ int main(int argc, char **argv) {
     break;
   }
 #endif
-#ifdef COMPILE_228
-  case 5: {
+#ifdef COMPILE_225
+  case 4: {
     throw;
     fclose(f);
 
@@ -6630,7 +6609,7 @@ int main(int argc, char **argv) {
 
     break;
   }
-#ifdef COMPILE_229
+#ifdef COMPILE_226
   case 1: {
     buggy(x, y, line);
     buggy(x, y, line);
@@ -6638,7 +6617,7 @@ int main(int argc, char **argv) {
     break;
   }
 #endif
-#ifdef COMPILE_230
+#ifdef COMPILE_227
   case 2: {
     if (!__is_neg(1))
       buggy(x, y, line);
@@ -6646,7 +6625,7 @@ int main(int argc, char **argv) {
     break;
   }
 #endif
-#ifdef COMPILE_231
+#ifdef COMPILE_228
   case 3: {
     if (__is_neg(1))
       return 0;
@@ -6655,7 +6634,7 @@ int main(int argc, char **argv) {
     break;
   }
 #endif
-#ifdef COMPILE_232
+#ifdef COMPILE_229
   case 4: {
     if (__is_neg(1))
       return 1;
@@ -6664,7 +6643,7 @@ int main(int argc, char **argv) {
     break;
   }
 #endif
-#ifdef COMPILE_233
+#ifdef COMPILE_230
   case 5: {
     throw;
     buggy(x, y, line);
