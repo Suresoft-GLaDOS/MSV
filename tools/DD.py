@@ -416,17 +416,16 @@ class DD:
         return t, csub
 
         # Inquiries
-        def resolving(self):
-            """Return 1 while resolving."""
-            return self.__resolving
+    def resolving(self):
+        """Return 1 while resolving."""
+        return self.__resolving
 
 
     # Logging
     def report_progress(self, c, title):
         if len(c) != self.__last_reported_length:
             if self.debug_dd:
-                print
-                print title + ": " + 'len(c)' + " deltas left:", self.coerce(c)
+                print title + ": " + str(len(c)) + " deltas left:", self.coerce(c)
             self.__last_reported_length = len(c)
 
 
@@ -745,6 +744,7 @@ class DD:
 	# We replace the tail recursion from the paper by a loop
         while 1:
             if self.debug_dd:
+                print
                 print "dd: c1 =", self.pretty(c1)
                 print "dd: c2 =", self.pretty(c2)
 
@@ -755,11 +755,11 @@ class DD:
                 t1 = self.test(c1)
                 t2 = self.test(c2)
             
-            assert t1 == self.PASS
-            assert t2 == self.FAIL
+            assert t1 == self.PASS # c`v
+            assert t2 == self.FAIL # c`x
             assert self.__listsubseteq(c1, c2)
 
-            c = self.__listminus(c2, c1)
+            c = self.__listminus(c2, c1) # delta i
 
             if self.debug_dd:
                 print "dd: c2 - c1 =", self.pretty(c)
@@ -775,13 +775,12 @@ class DD:
             cs = self.split(c, n)
 
             if self.debug_dd:
-                print
-                print "dd (run #" + 'run' + "): trying",
+                print "dd (run #" + str(run) + "): trying",
                 for i in range(n):
                     if i > 0:
                         print "+",
                     print len(cs[i]),
-                    print
+                print
 
             progress = 0
 
@@ -799,6 +798,7 @@ class DD:
                 (t, csub) = self.test_and_resolve(cs[i], c1, c, self.REMOVE)
                 csub = self.__listunion(c1, csub)
 
+                # t1, t2 is just assertion, no meaning
                 if t == self.FAIL and t1 == self.PASS:
                     # Found
                     progress    = 1
@@ -807,7 +807,7 @@ class DD:
                     cbar_offset = 0
 
                     if self.debug_dd:
-                        print "dd: reduce c2 to", len(next_c2), "deltas:",
+                        print "dd: reduce c2 to(subset)", len(next_c2), "deltas:",
                         print self.pretty(next_c2)
                     break
 
@@ -819,7 +819,7 @@ class DD:
                     cbar_offset = i
 
                     if self.debug_dd:
-                        print "dd: increase c1 to", len(next_c1), "deltas:",
+                        print "dd: increase c1 to(subset)", len(next_c1), "deltas:",
                         print self.pretty(next_c1)
                     break
 
@@ -836,7 +836,7 @@ class DD:
                     cbar_offset = 0
 
                     if self.debug_dd:
-                        print "dd: increase c1 to", len(next_c1), "deltas:",
+                        print "dd: increase c1 to(complement)", len(next_c1), "deltas:",
                         print self.pretty(next_c1)
                     break
 
@@ -848,7 +848,7 @@ class DD:
                     cbar_offset = i
 
                     if self.debug_dd:
-                        print "dd: reduce c2 to", len(next_c2), "deltas:",
+                        print "dd: reduce c2 to(complement)", len(next_c2), "deltas:",
                         print self.pretty(next_c2)
                     break
 
@@ -874,6 +874,192 @@ class DD:
     def dd(self, c):
         return self.dddiff(c)           # Backwards compatibility
 
+class DD2(DD):
+    def __listminus(self, c1, c2):
+	"""Return a list of all elements of C1 that are not in C2."""
+        s2 = {}
+        for delta in c2:
+            s2[delta] = 1
+        
+        c = []
+        for delta in c1:
+            if not s2.has_key(delta):
+                c.append(delta)
+
+        return c
+
+    def __listintersect(self, c1, c2):
+	"""Return the common elements of C1 and C2."""
+        s2 = {}
+        for delta in c2:
+            s2[delta] = 1
+
+        c = []
+        for delta in c1:
+            if s2.has_key(delta):
+                c.append(delta)
+
+        return c
+
+    def __listunion(self, c1, c2):
+	"""Return the union of C1 and C2."""
+        s1 = {}
+        for delta in c1:
+            s1[delta] = 1
+
+        c = c1[:]
+        for delta in c2:
+            if not s1.has_key(delta):
+                c.append(delta)
+
+        return c
+
+    def __listsubseteq(self, c1, c2):
+        """Return 1 if C1 is a subset or equal to C2."""
+        s2 = {}
+        for delta in c2:
+            s2[delta] = 1
+
+        for delta in c1:
+            if not s2.has_key(delta):
+                return 0
+
+        return 1
+
+    def __dddiff(self,c1,c2,n,cbar_offset):
+        if self.debug_dd:
+            print
+            print "dd: c1 =", self.pretty(c1)
+            print "dd: c2 =", self.pretty(c2)
+
+        if self.assume_axioms_hold:
+            t1 = self.PASS
+            t2 = self.FAIL
+        else:
+            t1 = self.test(c1)
+            t2 = self.test(c2)
+        
+        assert t1 == self.PASS # c`v
+        assert t2 == self.FAIL # c`x
+        assert self.__listsubseteq(c1, c2)
+
+        c = self.__listminus(c2, c1) # delta i
+
+        if self.debug_dd:
+            print "dd: c2 - c1 =", self.pretty(c)
+
+        if n > len(c):
+            # No further minimizing
+            if self.debug_dd:   
+                print "dd: done"
+            return c1
+
+        self.report_progress(c, "dd")
+
+        cs = self.split(c, n)
+
+        if self.debug_dd:
+            # print "dd (run #" + str(run) + "): trying",
+            for i in range(n):
+                if i > 0:
+                    print "+",
+                print len(cs[i]),
+            print
+
+        progress = 0
+
+        next_c1 = c1[:]
+        next_c2 = c2[:]
+        next_n = n
+        temp_c=[]
+
+    # Check subsets
+        for j in range(n):
+            i = (j + cbar_offset) % n
+            
+            if self.debug_dd:
+                print "dd: trying", self.pretty(cs[i])
+
+            (t, csub) = self.test_and_resolve(cs[i], c1, c, self.REMOVE)
+            csub = self.__listunion(c1, csub)
+
+            # t1, t2 is just assertion, no meaning
+            if t == self.FAIL and t1 == self.PASS:
+                # Found
+                progress    = 1
+                next_c2     = csub
+                next_n      = 2
+                cbar_offset = 0
+
+                if self.debug_dd:
+                    print "dd: reduce c2 to(subset)", len(next_c2), "deltas:",
+                    print self.pretty(next_c2)
+                if self.__listsubseteq(c1,temp_c)!=1:
+                    self.__listunion(temp_c,self.__dddiff(c1,next_c2,next_n,cbar_offset))
+
+            if t == self.PASS and t2 == self.FAIL:
+                # Reduce to complement
+                progress    = 1
+                next_c1     = csub
+                next_n      = max(next_n - 1, 2)
+                cbar_offset = i
+
+                if self.debug_dd:
+                    print "dd: increase c1 to(subset)", len(next_c1), "deltas:",
+                    print self.pretty(next_c1)
+                if self.__listsubseteq(next_c1,temp_c)!=1:
+                    self.__listunion(temp_c,self.__dddiff(next_c1,c2,next_n,cbar_offset))
+
+
+            csub = self.__listminus(c, cs[i])
+            (t, csub) = self.test_and_resolve(csub, c1, c, self.ADD)
+            csub = self.__listunion(c1, csub)
+
+            if t == self.PASS and t2 == self.FAIL:
+                # Found
+                progress    = 1
+                next_c1     = csub
+                next_n      = 2
+                cbar_offset = 0
+
+                if self.debug_dd:
+                    print "dd: increase c1 to(complement)", len(next_c1), "deltas:",
+                    print self.pretty(next_c1)
+                if self.__listsubseteq(next_c1,temp_c)!=1:
+                  self.__listunion(temp_c,self.__dddiff(next_c1,c2,next_n,cbar_offset))
+
+            if t == self.FAIL and t1 == self.PASS:
+                # Increase
+                progress    = 1
+                next_c2     = csub
+                next_n      = max(next_n - 1, 2)
+                cbar_offset = i
+
+                if self.debug_dd:
+                    print "dd: reduce c2 to(complement)", len(next_c2), "deltas:",
+                    print self.pretty(next_c2)
+                if self.__listsubseteq(c1,temp_c)!=1:
+                    self.__listunion(temp_c,self.__dddiff(c1,next_c2,next_n,cbar_offset))
+
+        if n >= len(c):
+            # No further minimizing
+            if self.debug_dd:
+                print "dd: done"
+            return temp_c
+
+        next_n = min(len(c), n * 2)
+        if self.debug_dd:
+            print "dd: increase granularity to", next_n
+        cbar_offset = (cbar_offset * next_n) / n
+        self.__listunion(temp_c,self.__dddiff(c1,c2,next_n,cbar_offset))
+        return temp_c
+
+    def _dddiff(self, c1, c2, n):
+        temp= self.__dddiff(c1,c2,n,0)
+        result=c2[:]
+        for i in temp:
+            result.remove(temp)
+        return result
 		    
 import os
 import subprocess
@@ -944,6 +1130,7 @@ if __name__ == '__main__':
         def __init__(self,script_file):
             self.file=script_file
             DD.__init__(self)
+            self.debug_dd=True
 
     dd_test=BuildTest(build_cmd)
     macro_list=[]
@@ -959,6 +1146,23 @@ if __name__ == '__main__':
     for i in c:
         f.write(str(i)+"\n")
     f.close()
+
+    # class Temp(DD2):
+    #     def _test(self,c):
+    #         if 24 in c:
+    #             return self.FAIL
+    #         elif 56 in c and 98 in c:
+    #             return self.FAIL
+    #         else:
+    #             return self.PASS
+    #     def __init__(self):
+    #         DD.__init__(self)
+    #         self.debug_dd=True
+    
+    # temp=Temp()
+    # temp_list=range(100)
+    # c=temp.dd(temp_list)
+    # print c
     
 
 
