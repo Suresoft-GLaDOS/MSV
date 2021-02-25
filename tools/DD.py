@@ -733,7 +733,7 @@ class DD:
 
         if self.debug_dd:
             print ("dddiff(" + self.pretty(c) + ", " + 'n' + ") = " +
-                    'outcome')
+                    str(outcome))
 
         return outcome
 
@@ -874,7 +874,14 @@ class DD:
     def dd(self, c):
         return self.dddiff(c)           # Backwards compatibility
 
+from math import log,ceil,floor
+
 class DD2(DD):
+    success=[]
+    run=0
+    use_cal=True
+    full_macros=[]
+
     def __listminus(self, c1, c2):
 	"""Return a list of all elements of C1 that are not in C2."""
         s2 = {}
@@ -925,141 +932,43 @@ class DD2(DD):
                 return 0
 
         return 1
-
-    def __dddiff(self,c1,c2,n,cbar_offset):
+    def _search(self,c):
         if self.debug_dd:
             print
-            print "dd: c1 =", self.pretty(c1)
-            print "dd: c2 =", self.pretty(c2)
-
-        if self.assume_axioms_hold:
-            t1 = self.PASS
-            t2 = self.FAIL
-        else:
-            t1 = self.test(c1)
-            t2 = self.test(c2)
+            print "Run #:",self.run
+            print "Searching:",c
         
-        assert t1 == self.PASS # c`v
-        assert t2 == self.FAIL # c`x
-        assert self.__listsubseteq(c1, c2)
-
-        c = self.__listminus(c2, c1) # delta i
-
-        if self.debug_dd:
-            print "dd: c2 - c1 =", self.pretty(c)
-
-        if n > len(c):
-            # No further minimizing
-            if self.debug_dd:   
-                print "dd: done"
-            return c1
-
-        self.report_progress(c, "dd")
-
-        cs = self.split(c, n)
-
-        if self.debug_dd:
-            # print "dd (run #" + str(run) + "): trying",
-            for i in range(n):
-                if i > 0:
-                    print "+",
-                print len(cs[i]),
-            print
-
-        progress = 0
-
-        next_c1 = c1[:]
-        next_c2 = c2[:]
-        next_n = n
-        temp_c=[]
-
-    # Check subsets
-        for j in range(n):
-            i = (j + cbar_offset) % n
-            
+        result=self.test(c)
+        self.run+=1
+        if result==self.PASS:
+            self.success=self.__listunion(c,self.success)
             if self.debug_dd:
-                print "dd: trying", self.pretty(cs[i])
+                print "Extend success to:",self.success
 
-            (t, csub) = self.test_and_resolve(cs[i], c1, c, self.REMOVE)
-            csub = self.__listunion(c1, csub)
-
-            # t1, t2 is just assertion, no meaning
-            if t == self.FAIL and t1 == self.PASS:
-                # Found
-                progress    = 1
-                next_c2     = csub
-                next_n      = 2
-                cbar_offset = 0
-
-                if self.debug_dd:
-                    print "dd: reduce c2 to(subset)", len(next_c2), "deltas:",
-                    print self.pretty(next_c2)
-                if self.__listsubseteq(c1,temp_c)!=1:
-                    self.__listunion(temp_c,self.__dddiff(c1,next_c2,next_n,cbar_offset))
-
-            if t == self.PASS and t2 == self.FAIL:
-                # Reduce to complement
-                progress    = 1
-                next_c1     = csub
-                next_n      = max(next_n - 1, 2)
-                cbar_offset = i
-
-                if self.debug_dd:
-                    print "dd: increase c1 to(subset)", len(next_c1), "deltas:",
-                    print self.pretty(next_c1)
-                if self.__listsubseteq(next_c1,temp_c)!=1:
-                    self.__listunion(temp_c,self.__dddiff(next_c1,c2,next_n,cbar_offset))
-
-
-            csub = self.__listminus(c, cs[i])
-            (t, csub) = self.test_and_resolve(csub, c1, c, self.ADD)
-            csub = self.__listunion(c1, csub)
-
-            if t == self.PASS and t2 == self.FAIL:
-                # Found
-                progress    = 1
-                next_c1     = csub
-                next_n      = 2
-                cbar_offset = 0
-
-                if self.debug_dd:
-                    print "dd: increase c1 to(complement)", len(next_c1), "deltas:",
-                    print self.pretty(next_c1)
-                if self.__listsubseteq(next_c1,temp_c)!=1:
-                  self.__listunion(temp_c,self.__dddiff(next_c1,c2,next_n,cbar_offset))
-
-            if t == self.FAIL and t1 == self.PASS:
-                # Increase
-                progress    = 1
-                next_c2     = csub
-                next_n      = max(next_n - 1, 2)
-                cbar_offset = i
-
-                if self.debug_dd:
-                    print "dd: reduce c2 to(complement)", len(next_c2), "deltas:",
-                    print self.pretty(next_c2)
-                if self.__listsubseteq(c1,temp_c)!=1:
-                    self.__listunion(temp_c,self.__dddiff(c1,next_c2,next_n,cbar_offset))
-
-        if n >= len(c):
-            # No further minimizing
+        else:
             if self.debug_dd:
-                print "dd: done"
-            return temp_c
+                print "Fail:",c
+            if len(c)>1:
+                if len(c)-log(len(c),2)-self.run>0 or not self.use_cal:
+                    cs = self.split(c, 2)
+                    if self.debug_dd:
+                        print "Splitting to:",cs[0],"and",cs[1]
+                    self._search(cs[0])
+                    self._search(cs[1])
+                else:
+                    if self.debug_dd:
+                        print "Splitting seems worse, test each case"
+                    for one in c:
+                        self._search([one])
+            else:
+                if self.debug_dd:
+                    print c,"is fail case!"
+    def search(self,c):
+        self._search(c)
 
-        next_n = min(len(c), n * 2)
-        if self.debug_dd:
-            print "dd: increase granularity to", next_n
-        cbar_offset = (cbar_offset * next_n) / n
-        self.__listunion(temp_c,self.__dddiff(c1,c2,next_n,cbar_offset))
-        return temp_c
-
-    def _dddiff(self, c1, c2, n):
-        temp= self.__dddiff(c1,c2,n,0)
-        result=c2[:]
-        for i in temp:
-            result.remove(temp)
-        return result
+    def __init__(self,full_macros):
+        self.full_macros=full_macros
+        DD.__init__(self)
 		    
 import os
 import subprocess
@@ -1089,7 +998,7 @@ if __name__ == '__main__':
     # Test the outcome cache
     oc_test()
                             
-    class BuildTest(DD):
+    class BuildTest(DD2):
         def _test(self,c):
             result=1
             args=[]
@@ -1127,43 +1036,77 @@ if __name__ == '__main__':
                 return self.PASS
             else:
                 return self.UNRESOLVED
-        def __init__(self,script_file):
+        def __init__(self,script_file,full_macros):
             self.file=script_file
-            DD.__init__(self)
+            DD2.__init__(self,full_macros)
             self.debug_dd=True
 
-    dd_test=BuildTest(build_cmd)
-    macro_list=[]
-    for i in range(macros):
-        macro_list.append(i)
-    (c, c1, c2)=dd_test.dd(macro_list)
-    # c=dd_test.dd(macro_list)
+    macro_list=range(macros)
+    dd_test=BuildTest(build_cmd,macro_list)
+    # (c,c1,c2)=dd_test.dd(macro_list)
+    dd_test.search(macro_list)
+    print "Run with optimization:",dd_test.run
 
-    print "Fail macros:",c
+    fail=macro_list
+    for i in dd_test.success:
+        fail.remove(i)
+    print "Fail macros:",fail
+    print
+
+    dd_test.success=[]
+    dd_test.run=0
+    dd_test.use_cal=False
+    macro_list=range(macros)
+    dd_test.search(macro_list)
+    print "Run without optimization:",dd_test.run
+    fail=macro_list
+    for i in dd_test.success:
+        fail.remove(i)
+    print "Fail macros:",fail
+    print
+
     home=os.path.expanduser("~")
     os.chdir(home)
     f=open("__dd_test.log","w")
-    for i in c:
+    for i in fail:
         f.write(str(i)+"\n")
     f.close()
 
-    # class Temp(DD2):
-    #     def _test(self,c):
-    #         if 24 in c:
-    #             return self.FAIL
-    #         elif 56 in c and 98 in c:
-    #             return self.FAIL
-    #         else:
-    #             return self.PASS
-    #     def __init__(self):
-    #         DD.__init__(self)
-    #         self.debug_dd=True
+    class Temp(DD2):
+        def _test(self,c):
+            if 0 in c or 2 in c:
+                return self.FAIL
+            elif 4 in c or 6 in c:
+                return self.FAIL
+            else:
+                return self.PASS
+        def __init__(self):
+            DD.__init__(self)
+            self.debug_dd=True
     
     # temp=Temp()
-    # temp_list=range(100)
-    # c=temp.dd(temp_list)
-    # print c
+    # temp.use_cal=True
+    # temp_list=range(8)
+    # temp.search(temp_list)
+    # print "Result:",temp.success
+
+    # fail=temp_list
+    # for i in temp.success:
+    #     fail.remove(i)
+    # print "Fail:",fail
+    # print "Run:",temp.run
     
+    # temp=Temp()
+    # temp.use_cal=False
+    # temp_list=range(8)
+    # temp.search(temp_list)
+    # print "Result:",temp.success
+
+    # fail=temp_list
+    # for i in temp.success:
+    #     fail.remove(i)
+    # print "Fail:",fail
+    # print "Run:",temp.run
 
 
 # Local Variables:

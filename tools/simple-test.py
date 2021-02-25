@@ -38,6 +38,7 @@ if __name__ == "__main__":
         cur_dir = src_dir;
     else:
         cur_dir = profile_dir;
+
     if len(args) > 3:
         ids = args[3:];
         for i in ids:

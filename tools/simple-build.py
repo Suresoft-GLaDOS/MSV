@@ -26,7 +26,7 @@ def tobuild(src_dir):
     ori_dir = getcwd();
     print "Path env: ", environ["PATH"];
     chdir(src_dir);
-    ret = subprocess.call(["make","OUTPUT_NAME=prog"]);
+    ret = subprocess.call(["make"],shell=True);
     chdir(ori_dir);
 
     return ret == 0;
@@ -47,6 +47,7 @@ if __name__ == "__main__":
         elif o == "-h":
             print_usage = True;
 
+    print "simple-build"
     if config_only:
         exit(0);
 

@@ -1,0 +1,486 @@
+../../../../wrap/gcc -c test.c  -o test.o
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 4 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 4 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 5 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 5 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 6 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 6 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 7 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 7 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 9 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 9 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 14 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 14 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 10 5 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 10 5
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 12 5 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 12 5
+Library: /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0
+Library: /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0
+wrap/pclang
+['../../../../wrap/gcc', '-c', 'test.c', '-o', 'test.o']
+Invoking: clang -E test.c -o /tmp/pclang_45056391.c
+Invoking: clang -Xclang -load -Xclang /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0 -Xclang -plugin -Xclang err-profiler-gen -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/pclang_57067588.c -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/__index.loc -c test.c -o test.o
+Invoking: clang -Xclang -load -Xclang /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0 -Xclang -plugin -Xclang err-profiler-rewrite  -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_57067588.c -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_44809729.c -c /tmp/pclang_45056391.c -o test.o
+invoking: clang -I/root/project/prophet-gpl/wrap/../include -c /tmp/pclang_44809729.c -o test.o
+../../../../wrap/gcc test.o  -o prog
+wrap/pclang
+['../../../../wrap/gcc', 'test.o', '-o', 'prog']
+Non-compile cmd: clang -Wl,-rpath=/root/project/prophet-gpl/wrap/../src/.libs -L /root/project/prophet-gpl/wrap/../src/.libs test.o -o prog -lprofile_runtime
+../../../../wrap/gcc -c test.c  -o test.o
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 4 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 4 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 5 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 5 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 6 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 6 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 7 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 7 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 9 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 9 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 14 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 14 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 10 5 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 10 5
+/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 12 5 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 12 5
+/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 4 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 4 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 5 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 5 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 6 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 6 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 7 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 7 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 9 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 9 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 14 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 14 3
+/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 10 5 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 10 5
+/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 12 5 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 12 5
+Library: /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0
+Library: /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0
+wrap/pclang
+['../../../../wrap/gcc', '-c', 'test.c', '-o', 'test.o']
+Invoking: clang -E test.c -o /tmp/pclang_04467005.c
+Invoking: clang -Xclang -load -Xclang /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0 -Xclang -plugin -Xclang err-profiler-gen -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/pclang_01400335.c -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/__index.loc -c test.c -o test.o
+Invoking: clang -Xclang -load -Xclang /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0 -Xclang -plugin -Xclang err-profiler-rewrite  -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_01400335.c -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_41852553.c -c /tmp/pclang_04467005.c -o test.o
+invoking: clang -I/root/project/prophet-gpl/wrap/../include -c /tmp/pclang_41852553.c -o test.o
+../../../../wrap/gcc test.o  -o prog
+wrap/pclang
+['../../../../wrap/gcc', 'test.o', '-o', 'prog']
+Non-compile cmd: clang -Wl,-rpath=/root/project/prophet-gpl/wrap/../src/.libs -L /root/project/prophet-gpl/wrap/../src/.libs test.o -o prog -lprofile_runtime
+simple-build
+Path env:  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+../../../../wrap/gcc -c test.c  -o test.o
+wrap/tclang
+../../../../wrap/gcc test.o  -o prog
+wrap/tclang
+../../../../wrap/gcc -c test.c -D COMPILE_0 -D COMPILE_1 -D COMPILE_2 -D COMPILE_3 -D COMPILE_4 -D COMPILE_5 -D COMPILE_6 -D COMPILE_7 -D COMPILE_8 -D COMPILE_9 -D COMPILE_10 -D COMPILE_11 -D COMPILE_12 -D COMPILE_13 -D COMPILE_14 -D COMPILE_15 -D COMPILE_16 -D COMPILE_17 -D COMPILE_18 -D COMPILE_19 -D COMPILE_20 -D COMPILE_21 -D COMPILE_22 -D COMPILE_23 -D COMPILE_24 -D COMPILE_25 -D COMPILE_26 -D COMPILE_27 -D COMPILE_28 -D COMPILE_29 -D COMPILE_30 -D COMPILE_31 -D COMPILE_32 -D COMPILE_33 -D COMPILE_34 -D COMPILE_35 -D COMPILE_36 -D COMPILE_37 -D COMPILE_38 -D COMPILE_39 -D COMPILE_40 -D COMPILE_41 -D COMPILE_42 -D COMPILE_43 -D COMPILE_44 -D COMPILE_45 -D COMPILE_46 -D COMPILE_47 -D COMPILE_48 -D COMPILE_49 -D COMPILE_50 -D COMPILE_51 -D COMPILE_52 -D COMPILE_53 -D COMPILE_54 -D COMPILE_55 -D COMPILE_56 -D COMPILE_57 -D COMPILE_58 -D COMPILE_59 -D COMPILE_60 -D COMPILE_61 -D COMPILE_62 -D COMPILE_63 -D COMPILE_64 -D COMPILE_65 -D COMPILE_66 -D COMPILE_67 -D COMPILE_68 -D COMPILE_69 -D COMPILE_70 -D COMPILE_71 -D COMPILE_72 -D COMPILE_73 -D COMPILE_74 -D COMPILE_75 -D COMPILE_76 -D COMPILE_77 -D COMPILE_78 -D COMPILE_79 -D COMPILE_80 -D COMPILE_81 -D COMPILE_82 -D COMPILE_83 -D COMPILE_84 -D COMPILE_85 -D COMPILE_86 -D COMPILE_87 -D COMPILE_88 -D COMPILE_89 -D COMPILE_90 -D COMPILE_91 -D COMPILE_92 -D COMPILE_93 -D COMPILE_94 -D COMPILE_95  -o test.o
+test.c: In function ‘main’:
+test.c:20:31: warning: passing argument 3 of ‘_IO_vfscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
+     _IO_vfscanf(f, "%d %d\n", &a, &b);
+                               ^
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:462:12: note: expected ‘__va_list_tag *’ but argument is of type ‘int *’
+ extern int _IO_vfscanf (_IO_FILE * __restrict, const char * __restrict,
+            ^~~~~~~~~~~
+test.c:43:18: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘int *’ [-Wformat=]
+     fprintf(f, "%d %d\n", &a, &b);
+                 ~^        ~~
+                 %ls
+test.c:43:21: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘int *’ [-Wformat=]
+     fprintf(f, "%d %d\n", &a, &b);
+                    ~^         ~~
+                    %ls
+test.c:127:12: warning: passing argument 1 of ‘printf’ from incompatible pointer type [-Wincompatible-pointer-types]
+     printf(f, "%d %d\n", &a, &b);
+            ^
+In file included from test.c:6:0:
+/usr/include/stdio.h:318:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
+ extern int printf (const char *__restrict __format, ...);
+            ^~~~~~
+test.c:134:11: warning: passing argument 1 of ‘scanf’ from incompatible pointer type [-Wincompatible-pointer-types]
+     scanf(f, "%d %d\n", &a, &b);
+           ^
+In file included from /usr/include/features.h:424:0,
+                 from /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:33,
+                 from /usr/include/stdio.h:27,
+                 from test.c:6:
+/usr/include/stdio.h:398:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
+ extern int __REDIRECT (scanf, (const char *__restrict __format, ...),
+            ^
+test.c:141:13: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
+     sprintf(f, "%d %d\n", &a, &b);
+             ^
+In file included from test.c:6:0:
+/usr/include/stdio.h:320:12: note: expected ‘char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
+ extern int sprintf (char *__restrict __s,
+            ^~~~~~~
+test.c:141:18: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘int *’ [-Wformat=]
+     sprintf(f, "%d %d\n", &a, &b);
+                 ~^        ~~
+                 %ls
+test.c:141:21: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘int *’ [-Wformat=]
+     sprintf(f, "%d %d\n", &a, &b);
+                    ~^         ~~
+                    %ls
+test.c:148:12: warning: passing argument 1 of ‘sscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
+     sscanf(f, "%d %d\n", &a, &b);
+            ^
+In file included from /usr/include/features.h:424:0,
+                 from /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:33,
+                 from /usr/include/stdio.h:27,
+                 from test.c:6:
+/usr/include/stdio.h:400:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
+ extern int __REDIRECT_NTH (sscanf, (const char *__restrict __s,
+            ^
+test.c:501:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:594:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:618:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:711:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:736:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:829:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:854:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:947:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:972:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1065:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1089:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1182:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1207:22: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+           __overflow("%d\n", 1);
+                      ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1300:19: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+           scanf("%d\n", 1);
+                  ~^
+test.c:1324:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1417:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1441:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1534:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1560:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1653:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1679:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1772:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1796:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1889:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1914:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:2007:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:2028:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+       __overflow("%d\n", 1);
+                  ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:2121:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+       scanf("%d\n", 1);
+              ~^
+test.c: At top level:
+test.c:2133:1: error: expected identifier or ‘(’ before ‘return’
+ return 0;
+ ^~~~~~
+test.c:2134:1: error: expected identifier or ‘(’ before ‘}’ token
+ }
+ ^
+wrap/tclang
+Makefile:4: recipe for target 'all' failed
+make: *** [all] Error 1
+../../../../wrap/gcc -c test.c -D COMPILE_0 -D COMPILE_1 -D COMPILE_2 -D COMPILE_3 -D COMPILE_4 -D COMPILE_5 -D COMPILE_6 -D COMPILE_7 -D COMPILE_8 -D COMPILE_9 -D COMPILE_10 -D COMPILE_11 -D COMPILE_12 -D COMPILE_13 -D COMPILE_14 -D COMPILE_15 -D COMPILE_16 -D COMPILE_17 -D COMPILE_18 -D COMPILE_19 -D COMPILE_20 -D COMPILE_21 -D COMPILE_22 -D COMPILE_23 -D COMPILE_24 -D COMPILE_25 -D COMPILE_26 -D COMPILE_27 -D COMPILE_28 -D COMPILE_29 -D COMPILE_30 -D COMPILE_31 -D COMPILE_32 -D COMPILE_33 -D COMPILE_34 -D COMPILE_35 -D COMPILE_36 -D COMPILE_37 -D COMPILE_38 -D COMPILE_39 -D COMPILE_40 -D COMPILE_41 -D COMPILE_42 -D COMPILE_43 -D COMPILE_44 -D COMPILE_45 -D COMPILE_46 -D COMPILE_47 -D COMPILE_48 -D COMPILE_49 -D COMPILE_50 -D COMPILE_51 -D COMPILE_52 -D COMPILE_53 -D COMPILE_54 -D COMPILE_55 -D COMPILE_56 -D COMPILE_57 -D COMPILE_58 -D COMPILE_59 -D COMPILE_60 -D COMPILE_61 -D COMPILE_62 -D COMPILE_63 -D COMPILE_64 -D COMPILE_65 -D COMPILE_66 -D COMPILE_67 -D COMPILE_68 -D COMPILE_69 -D COMPILE_70 -D COMPILE_71 -D COMPILE_72 -D COMPILE_73 -D COMPILE_74 -D COMPILE_75 -D COMPILE_76 -D COMPILE_77 -D COMPILE_78 -D COMPILE_79 -D COMPILE_80 -D COMPILE_81 -D COMPILE_82 -D COMPILE_83 -D COMPILE_84 -D COMPILE_86 -D COMPILE_87 -D COMPILE_88 -D COMPILE_89 -D COMPILE_90 -D COMPILE_91 -D COMPILE_92 -D COMPILE_93 -D COMPILE_94 -D COMPILE_95  -o test.o
+test.c: In function ‘main’:
+test.c:20:31: warning: passing argument 3 of ‘_IO_vfscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
+     _IO_vfscanf(f, "%d %d\n", &a, &b);
+                               ^
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:462:12: note: expected ‘__va_list_tag *’ but argument is of type ‘int *’
+ extern int _IO_vfscanf (_IO_FILE * __restrict, const char * __restrict,
+            ^~~~~~~~~~~
+test.c:43:18: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘int *’ [-Wformat=]
+     fprintf(f, "%d %d\n", &a, &b);
+                 ~^        ~~
+                 %ls
+test.c:43:21: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘int *’ [-Wformat=]
+     fprintf(f, "%d %d\n", &a, &b);
+                    ~^         ~~
+                    %ls
+test.c:127:12: warning: passing argument 1 of ‘printf’ from incompatible pointer type [-Wincompatible-pointer-types]
+     printf(f, "%d %d\n", &a, &b);
+            ^
+In file included from test.c:6:0:
+/usr/include/stdio.h:318:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
+ extern int printf (const char *__restrict __format, ...);
+            ^~~~~~
+test.c:134:11: warning: passing argument 1 of ‘scanf’ from incompatible pointer type [-Wincompatible-pointer-types]
+     scanf(f, "%d %d\n", &a, &b);
+           ^
+In file included from /usr/include/features.h:424:0,
+                 from /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:33,
+                 from /usr/include/stdio.h:27,
+                 from test.c:6:
+/usr/include/stdio.h:398:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
+ extern int __REDIRECT (scanf, (const char *__restrict __format, ...),
+            ^
+test.c:141:13: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
+     sprintf(f, "%d %d\n", &a, &b);
+             ^
+In file included from test.c:6:0:
+/usr/include/stdio.h:320:12: note: expected ‘char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
+ extern int sprintf (char *__restrict __s,
+            ^~~~~~~
+test.c:141:18: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘int *’ [-Wformat=]
+     sprintf(f, "%d %d\n", &a, &b);
+                 ~^        ~~
+                 %ls
+test.c:141:21: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘int *’ [-Wformat=]
+     sprintf(f, "%d %d\n", &a, &b);
+                    ~^         ~~
+                    %ls
+test.c:148:12: warning: passing argument 1 of ‘sscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
+     sscanf(f, "%d %d\n", &a, &b);
+            ^
+In file included from /usr/include/features.h:424:0,
+                 from /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:33,
+                 from /usr/include/stdio.h:27,
+                 from test.c:6:
+/usr/include/stdio.h:400:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
+ extern int __REDIRECT_NTH (sscanf, (const char *__restrict __s,
+            ^
+test.c:501:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:594:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:618:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:711:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:736:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:829:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:854:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:947:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:972:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1065:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1089:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1182:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1207:22: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+           __overflow("%d\n", 1);
+                      ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1300:19: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+           scanf("%d\n", 1);
+                  ~^
+test.c:1324:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1417:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1441:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1534:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1560:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1653:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1679:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1772:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1796:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:1889:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+test.c:1914:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+         __overflow("%d\n", 1);
+                    ^~~~~~
+In file included from /usr/include/stdio.h:41:0,
+                 from test.c:6:
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
+ extern int __overflow (_IO_FILE *, int);
+            ^~~~~~~~~~
+test.c:2007:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+         scanf("%d\n", 1);
+                ~^
+wrap/tclang
+../../../../wrap/gcc test.o -D COMPILE_0 -D COMPILE_1 -D COMPILE_2 -D COMPILE_3 -D COMPILE_4 -D COMPILE_5 -D COMPILE_6 -D COMPILE_7 -D COMPILE_8 -D COMPILE_9 -D COMPILE_10 -D COMPILE_11 -D COMPILE_12 -D COMPILE_13 -D COMPILE_14 -D COMPILE_15 -D COMPILE_16 -D COMPILE_17 -D COMPILE_18 -D COMPILE_19 -D COMPILE_20 -D COMPILE_21 -D COMPILE_22 -D COMPILE_23 -D COMPILE_24 -D COMPILE_25 -D COMPILE_26 -D COMPILE_27 -D COMPILE_28 -D COMPILE_29 -D COMPILE_30 -D COMPILE_31 -D COMPILE_32 -D COMPILE_33 -D COMPILE_34 -D COMPILE_35 -D COMPILE_36 -D COMPILE_37 -D COMPILE_38 -D COMPILE_39 -D COMPILE_40 -D COMPILE_41 -D COMPILE_42 -D COMPILE_43 -D COMPILE_44 -D COMPILE_45 -D COMPILE_46 -D COMPILE_47 -D COMPILE_48 -D COMPILE_49 -D COMPILE_50 -D COMPILE_51 -D COMPILE_52 -D COMPILE_53 -D COMPILE_54 -D COMPILE_55 -D COMPILE_56 -D COMPILE_57 -D COMPILE_58 -D COMPILE_59 -D COMPILE_60 -D COMPILE_61 -D COMPILE_62 -D COMPILE_63 -D COMPILE_64 -D COMPILE_65 -D COMPILE_66 -D COMPILE_67 -D COMPILE_68 -D COMPILE_69 -D COMPILE_70 -D COMPILE_71 -D COMPILE_72 -D COMPILE_73 -D COMPILE_74 -D COMPILE_75 -D COMPILE_76 -D COMPILE_77 -D COMPILE_78 -D COMPILE_79 -D COMPILE_80 -D COMPILE_81 -D COMPILE_82 -D COMPILE_83 -D COMPILE_84 -D COMPILE_86 -D COMPILE_87 -D COMPILE_88 -D COMPILE_89 -D COMPILE_90 -D COMPILE_91 -D COMPILE_92 -D COMPILE_93 -D COMPILE_94 -D COMPILE_95  -o prog
+wrap/tclang

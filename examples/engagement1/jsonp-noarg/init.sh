@@ -1,5 +1,4 @@
 rm profile_localization.res
-rm src/*_bak_*
 rm test.cache
 cd profile
 rm prog

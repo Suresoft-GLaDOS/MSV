@@ -585,6 +585,8 @@ public:
         return true;
     }
     virtual bool VisitCXXThisExpr(CXXThisExpr *expr){
+        // Check current function is C++ method
+        // C++ 'this' can only be in class/struct method
         FunctionDecl *current=L->getCurrentFunction();
         if (!llvm::isa<CXXMethodDecl>(current)) invalidExprs.insert(expr);
         return true;
