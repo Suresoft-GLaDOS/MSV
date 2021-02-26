@@ -258,7 +258,8 @@ Expr* SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType
         IntegerLiteral *arg=IntegerLiteral::Create(*ctxt,llvm::APInt(32,counts[i]),ctxt->IntTy,SourceLocation());
         args.push_back(arg);
     }
-    return clang::CallExpr::Create(*ctxt, abstract_cond, args,
+    // return clang::CallExpr::Create(*ctxt, abstract_cond, args,
+    return clang::CallExpr::Create(*ctxt, abstract_cond, std::vector<Expr*>(),
             QT, VK_RValue, SourceLocation());
 }
 

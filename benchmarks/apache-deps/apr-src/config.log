@@ -570,7 +570,7 @@ configure:20517: $? = 0
 configure:20537: result: none required
 configure:20546: checking for library containing crypt
 configure:20576: gcc -o conftest -g -O2 -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c  >&5
-/tmp/cckanbrz.o: In function `main':
+/tmp/ccFImPN3.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:46: undefined reference to `crypt'
 collect2: error: ld returned 1 exit status
 configure:20576: $? = 1
@@ -693,7 +693,7 @@ configure:20721: $? = 0
 configure:20721: result: yes
 configure:20765: checking for CFLAGS needed for pthreads
 configure:20799: gcc -o conftest -g -O2 -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lcrypt  >&5
-/tmp/ccULn0L5.o: In function `main':
+/tmp/ccFYfQxy.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:52: undefined reference to `pthread_mutexattr_init'
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:53: undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
@@ -1265,7 +1265,7 @@ configure:21838: $? = 0
 configure:21838: result: yes
 configure:21844: checking for kqueue
 configure:21844: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lcrypt  -lpthread >&5
-/tmp/cci0GjWF.o: In function `main':
+/tmp/ccJ9uU2d.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:79: undefined reference to `kqueue'
 collect2: error: ld returned 1 exit status
 configure:21844: $? = 1
@@ -1355,7 +1355,7 @@ configure: failed program was:
 configure:21844: result: no
 configure:21850: checking for port_create
 configure:21850: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lcrypt  -lpthread >&5
-/tmp/ccCQlH1N.o: In function `main':
+/tmp/ccjGhqqm.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:79: undefined reference to `port_create'
 collect2: error: ld returned 1 exit status
 configure:21850: $? = 1
@@ -1591,7 +1591,7 @@ configure:22400: $? = 0
 configure:22400: result: yes
 configure:22412: checking for library containing shm_open
 configure:22442: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lcrypt  -lpthread >&5
-/tmp/ccngakPN.o: In function `main':
+/tmp/ccguf5Vm.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:74: undefined reference to `shm_open'
 collect2: error: ld returned 1 exit status
 configure:22442: $? = 1
@@ -2158,7 +2158,7 @@ configure:22577: $? = 0
 configure:22577: result: yes
 configure:22583: checking for create_area
 configure:22583: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread >&5
-/tmp/ccghqTXi.o: In function `main':
+/tmp/ccTqYPgL.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:106: undefined reference to `create_area'
 collect2: error: ld returned 1 exit status
 configure:22583: $? = 1
@@ -2610,7 +2610,7 @@ configure:23654: $? = 0
 configure:23654: result: yes
 configure:23654: checking for send_file
 configure:23654: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread >&5
-/tmp/ccO1490K.o: In function `main':
+/tmp/ccTwXXvg.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:128: undefined reference to `send_file'
 collect2: error: ld returned 1 exit status
 configure:23654: $? = 1
@@ -2749,7 +2749,7 @@ configure: failed program was:
 configure:23654: result: no
 configure:23654: checking for sendfilev
 configure:23654: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread >&5
-/tmp/cc0f8KKS.o: In function `main':
+/tmp/ccVyP79n.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:128: undefined reference to `sendfilev'
 collect2: error: ld returned 1 exit status
 configure:23654: $? = 1
@@ -3038,7 +3038,7 @@ configure:23961: $? = 0
 configure:23974: result: yes
 configure:23984: checking for _getch
 configure:23984: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread >&5
-/tmp/ccX2FWMm.o: In function `main':
+/tmp/ccEsiacT.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:131: undefined reference to `_getch'
 collect2: error: ld returned 1 exit status
 configure:23984: $? = 1
@@ -3339,7 +3339,7 @@ configure:24082: $? = 0
 configure:24082: result: yes
 configure:24088: checking for getpassphrase
 configure:24088: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread >&5
-/tmp/ccpMMlpU.o: In function `main':
+/tmp/ccgjKzat.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:135: undefined reference to `getpassphrase'
 collect2: error: ld returned 1 exit status
 configure:24088: $? = 1
@@ -8763,7 +8763,7 @@ configure:26483: $? = 0
 configure:26494: result: 16
 configure:26533: checking for strnicmp
 configure:26533: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread >&5
-/tmp/ccYsXrOo.o: In function `main':
+/tmp/ccHBtEj0.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:197: undefined reference to `strnicmp'
 collect2: error: ld returned 1 exit status
 configure:26533: $? = 1
@@ -8978,7 +8978,7 @@ configure:26546: $? = 0
 configure:26546: result: yes
 configure:26559: checking for stricmp
 configure:26559: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread >&5
-/tmp/ccyH3dBE.o: In function `main':
+/tmp/cchq61qb.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:198: undefined reference to `stricmp'
 collect2: error: ld returned 1 exit status
 configure:26559: $? = 1
@@ -9219,7 +9219,7 @@ configure:26622: $? = 0
 configure:26622: result: yes
 configure:26766: checking for dlopen
 configure:26766: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread >&5
-/tmp/cc95TRua.o: In function `main':
+/tmp/ccKIrIPM.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:204: undefined reference to `dlopen'
 collect2: error: ld returned 1 exit status
 configure:26766: $? = 1
@@ -9958,7 +9958,7 @@ configure:27233: $? = 0
 configure:27233: result: yes
 configure:27239: checking for create_sem
 configure:27239: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread -ldl >&5
-/tmp/cci5Ovpx.o: In function `main':
+/tmp/cc7ksKO7.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:214: undefined reference to `create_sem'
 collect2: error: ld returned 1 exit status
 configure:27239: $? = 1
@@ -14204,7 +14204,7 @@ configure: failed program was:
 configure:28661: result: no
 configure:28675: checking for library containing uuid_create
 configure:28705: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread -ldl >&5
-/tmp/ccYkyDW4.o: In function `main':
+/tmp/cctxX5VE.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:211: undefined reference to `uuid_create'
 collect2: error: ld returned 1 exit status
 configure:28705: $? = 1
@@ -14645,7 +14645,7 @@ configure: failed program was:
 configure:28725: result: no
 configure:28734: checking for library containing uuid_generate
 configure:28764: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread -ldl >&5
-/tmp/cc0IiRih.o: In function `main':
+/tmp/ccQXFNHK.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:211: undefined reference to `uuid_generate'
 collect2: error: ld returned 1 exit status
 configure:28764: $? = 1
@@ -15086,7 +15086,7 @@ configure: failed program was:
 configure:28784: result: no
 configure:28798: checking for uuid_create
 configure:28798: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread -ldl >&5
-/tmp/ccX2H4aj.o: In function `main':
+/tmp/ccyyxdBW.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:230: undefined reference to `uuid_create'
 collect2: error: ld returned 1 exit status
 configure:28798: $? = 1
@@ -15327,7 +15327,7 @@ configure: failed program was:
 configure:28798: result: no
 configure:28804: checking for uuid_generate
 configure:28804: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread -ldl >&5
-/tmp/ccJiXAqr.o: In function `main':
+/tmp/ccOHsrc4.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:230: undefined reference to `uuid_generate'
 collect2: error: ld returned 1 exit status
 configure:28804: $? = 1
@@ -18155,7 +18155,7 @@ configure:29926: $? = 0
 configure:29934: result: yes
 configure:29949: checking for set_h_errno
 configure:29949: gcc -o conftest -g -O2 -pthread -DLINUX -D_REENTRANT -D_GNU_SOURCE  conftest.c -lrt -lcrypt  -lpthread -ldl >&5
-/tmp/cc0wiJFE.o: In function `main':
+/tmp/ccdaV2ei.o: In function `main':
 /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/conftest.c:235: undefined reference to `set_h_errno'
 collect2: error: ld returned 1 exit status
 configure:29949: $? = 1

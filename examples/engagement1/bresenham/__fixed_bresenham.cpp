@@ -79,7 +79,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_3
   case 4: {
-    if (!__is_neg(1))
+    if (!__is_neg())
       if (steep) {
         a = x0;
         x0 = y0;
@@ -94,7 +94,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_4
   case 5: {
-    if ((steep) && !__is_neg(1)) {
+    if ((steep) && !__is_neg()) {
       a = x0;
       x0 = y0;
       y0 = a;
@@ -108,7 +108,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_5
   case 6: {
-    if ((steep) || __is_neg(1)) {
+    if ((steep) || __is_neg()) {
       a = x0;
       x0 = y0;
       y0 = a;
@@ -122,7 +122,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_6
   case 7: {
-    if (__is_neg(1))
+    if (__is_neg())
       return;
     if (steep) {
       a = x0;
@@ -362,7 +362,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_20
   case 4: {
-    if (!__is_neg(1))
+    if (!__is_neg())
       if (x0 > x1) {
         a = x0;
         x0 = x1;
@@ -377,7 +377,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_21
   case 5: {
-    if ((x0 > x1) && !__is_neg(1)) {
+    if ((x0 > x1) && !__is_neg()) {
       a = x0;
       x0 = x1;
       x1 = a;
@@ -391,7 +391,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_22
   case 6: {
-    if ((x0 > x1) || __is_neg(1)) {
+    if ((x0 > x1) || __is_neg()) {
       a = x0;
       x0 = x1;
       x1 = a;
@@ -405,7 +405,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_23
   case 7: {
-    if (__is_neg(1))
+    if (__is_neg())
       return;
     if (x0 > x1) {
       a = x0;
@@ -642,7 +642,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -650,7 +650,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -836,7 +836,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -844,7 +844,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -1031,7 +1031,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -1039,7 +1039,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -1226,7 +1226,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -1234,7 +1234,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -1421,7 +1421,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -1429,7 +1429,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -1616,7 +1616,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -1624,7 +1624,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -1761,7 +1761,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_59
   case 6: {
-    if (!__is_neg(1))
+    if (!__is_neg())
       if (y0 < y1)
         switch (__choose("__ID2")) {
         case 0: {
@@ -1811,7 +1811,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
         case 6: {
-          if (!__is_neg(1))
+          if (!__is_neg())
             ystep = 1;
 
           break;
@@ -1819,7 +1819,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
         case 7: {
-          if (__is_neg(1))
+          if (__is_neg())
             return;
           ystep = 1;
 
@@ -1956,7 +1956,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_60
   case 7: {
-    if ((y0 < y1) && !__is_neg(1))
+    if ((y0 < y1) && !__is_neg())
       switch (__choose("__ID2")) {
       case 0: {
         ystep = 1;
@@ -2005,7 +2005,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -2013,7 +2013,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -2150,7 +2150,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_61
   case 8: {
-    if ((y0 < y1) || __is_neg(1))
+    if ((y0 < y1) || __is_neg())
       switch (__choose("__ID2")) {
       case 0: {
         ystep = 1;
@@ -2199,7 +2199,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -2207,7 +2207,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -2344,7 +2344,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_62
   case 9: {
-    if (__is_neg(1))
+    if (__is_neg())
       return;
     if (y0 < y1)
       switch (__choose("__ID2")) {
@@ -2395,7 +2395,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -2403,7 +2403,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -2597,7 +2597,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -2605,7 +2605,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -2799,7 +2799,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -2807,7 +2807,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -2993,7 +2993,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -3001,7 +3001,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -3188,7 +3188,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -3196,7 +3196,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -3383,7 +3383,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -3391,7 +3391,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -3578,7 +3578,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -3586,7 +3586,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -3773,7 +3773,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -3781,7 +3781,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -3968,7 +3968,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -3976,7 +3976,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -4163,7 +4163,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -4171,7 +4171,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -4358,7 +4358,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -4366,7 +4366,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -4553,7 +4553,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -4561,7 +4561,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -4748,7 +4748,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           ystep = 1;
 
         break;
@@ -4756,7 +4756,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         ystep = 1;
 
@@ -4941,7 +4941,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_39
     case 6: {
-      if (!__is_neg(1))
+      if (!__is_neg())
         ystep = 1;
 
       break;
@@ -4949,7 +4949,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_40
     case 7: {
-      if (__is_neg(1))
+      if (__is_neg())
         return;
       ystep = 1;
 
@@ -5142,7 +5142,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_81
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           var.first = x;
 
         break;
@@ -5150,7 +5150,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_82
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           break;
         var.first = x;
 
@@ -5159,7 +5159,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_83
       case 8: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         var.first = x;
 
@@ -5404,7 +5404,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_109
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           var.second = y;
 
         break;
@@ -5412,7 +5412,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_110
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           break;
         var.second = y;
 
@@ -5421,7 +5421,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_111
       case 8: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         var.second = y;
 
@@ -5666,7 +5666,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_137
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg())
           line.push_back(var);
 
         break;
@@ -5674,7 +5674,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_138
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg())
           break;
         line.push_back(var);
 
@@ -5683,7 +5683,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_139
       case 8: {
-        if (__is_neg(1))
+        if (__is_neg())
           return;
         line.push_back(var);
 
@@ -5929,7 +5929,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_165
     case 6: {
-      if (!__is_neg(1))
+      if (!__is_neg())
         error = error + deltaerr;
 
       break;
@@ -5937,7 +5937,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_166
     case 7: {
-      if (__is_neg(1))
+      if (__is_neg())
         break;
       error = error + deltaerr;
 
@@ -5946,7 +5946,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_167
     case 8: {
-      if (__is_neg(1))
+      if (__is_neg())
         return;
       error = error + deltaerr;
 
@@ -6209,7 +6209,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_193
     case 6: {
-      if (!__is_neg(1))
+      if (!__is_neg())
         if (error >= 0.5) {
           y += ystep;
           error = error - 1;
@@ -6220,7 +6220,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_194
     case 7: {
-      if ((error >= 0.5) && !__is_neg(1)) {
+      if ((error >= 0.5) && !__is_neg()) {
         y += ystep;
         error = error - 1;
       }
@@ -6230,7 +6230,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_195
     case 8: {
-      if ((error >= 0.5) || __is_neg(1)) {
+      if ((error >= 0.5) || __is_neg()) {
         y += ystep;
         error = error - 1;
       }
@@ -6240,7 +6240,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_196
     case 9: {
-      if (__is_neg(1))
+      if (__is_neg())
         break;
       if (error >= 0.5) {
         y += ystep;
@@ -6252,7 +6252,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_197
     case 10: {
-      if (__is_neg(1))
+      if (__is_neg())
         return;
       if (error >= 0.5) {
         y += ystep;
@@ -6526,7 +6526,7 @@ int main(int argc, char **argv) {
   }
 #ifdef COMPILE_218
   case 1: {
-    if (!__is_neg(1))
+    if (!__is_neg())
       fscanf(f, "%d %d\n", &x, &y);
 
     break;
@@ -6534,7 +6534,7 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_219
   case 2: {
-    if (__is_neg(1))
+    if (__is_neg())
       return 0;
     fscanf(f, "%d %d\n", &x, &y);
 
@@ -6543,7 +6543,7 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_220
   case 3: {
-    if (__is_neg(1))
+    if (__is_neg())
       return 1;
     fscanf(f, "%d %d\n", &x, &y);
 
@@ -6568,7 +6568,7 @@ int main(int argc, char **argv) {
   }
 #ifdef COMPILE_222
   case 1: {
-    if (!__is_neg(1))
+    if (!__is_neg())
       fclose(f);
 
     break;
@@ -6576,7 +6576,7 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_223
   case 2: {
-    if (__is_neg(1))
+    if (__is_neg())
       return 0;
     fclose(f);
 
@@ -6585,7 +6585,7 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_224
   case 3: {
-    if (__is_neg(1))
+    if (__is_neg())
       return 1;
     fclose(f);
 
@@ -6619,7 +6619,7 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_227
   case 2: {
-    if (!__is_neg(1))
+    if (!__is_neg())
       buggy(x, y, line);
 
     break;
@@ -6627,7 +6627,7 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_228
   case 3: {
-    if (__is_neg(1))
+    if (__is_neg())
       return 0;
     buggy(x, y, line);
 
@@ -6636,7 +6636,7 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_229
   case 4: {
-    if (__is_neg(1))
+    if (__is_neg())
       return 1;
     buggy(x, y, line);
 

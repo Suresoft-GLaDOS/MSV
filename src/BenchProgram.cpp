@@ -59,12 +59,12 @@ static void execute_cmd_until_succ(const std::string &cmd) {
 }
 
 BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
-        bool no_clean_up): config(configFileName),case_counter(0) {
+        bool no_clean_up): config(configFileName),case_counter(0),count(0) {
     Init(workDirPath, no_clean_up);
 }
 
 BenchProgram::BenchProgram(const std::string &workDirPath)
-    : config(workDirPath + "/" + CONFIG_FILE_PATH),case_counter(0) {
+    : config(workDirPath + "/" + CONFIG_FILE_PATH),case_counter(0),count(0) {
     Init(workDirPath, true);
 }
 
@@ -484,6 +484,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 
         // Backup fixed file
         if (output_name!=""){
+            if (count!=0)
+                output_name+="_"+std::to_string(count);
             output_name+=it->first;
             outlog_printf(2,"Saving this fix to: %s\n",output_name.c_str());
             std::ofstream fout_bak(output_name.c_str(),std::ofstream::out);
