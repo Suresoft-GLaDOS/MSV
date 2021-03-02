@@ -121,7 +121,7 @@ public:
         SourceLocation startLoc = CS->getLBracLoc();
         SourceLocation endLoc = CS->getRBracLoc();
         std::string filename = M.getFilename(M.getExpansionLoc(startLoc)).str();
-        //if (is_header(filename))
+        // if (is_header(filename))
         //    return true;
         bool old_in_macro = in_macro;
         if (!in_macro && M.getExpansionLoc(startLoc) == M.getExpansionLoc(endLoc)) {
@@ -215,6 +215,10 @@ GlobalAnalyzer::GlobalAnalyzer(ASTContext &C, const std::string &filename): C(C)
         FunctionDecl *FD = llvm::dyn_cast<FunctionDecl>(*it);
         if (FD && FD->getDeclName().isIdentifier() && (FD->getName() != IS_NEG_HANDLER) && (FD->getName() != UNKNOWN_HOOK))
             FuncDecls.insert(FD);
+        RecordDecl *record=llvm::dyn_cast<RecordDecl>(*it);
+        if (record && record->getDeclName().isIdentifier()){
+            RecordDecls.insert(record);
+        }
     }
 
     EnumMap.clear();

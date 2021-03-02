@@ -26,7 +26,7 @@ def tobuild(src_dir):
     ori_dir = getcwd();
     print "Path env: ", environ["PATH"];
     chdir(src_dir);
-    ret = subprocess.call("make");
+    ret = subprocess.call(["make","OUTPUT_NAME=prog"]);
     chdir(ori_dir);
 
     return ret == 0;

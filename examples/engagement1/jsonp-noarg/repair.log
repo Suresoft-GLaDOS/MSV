@@ -7,14 +7,46 @@ Total 0 different repair schemas!!!!
 Total 0 different repair candidate templates for scoring!!!
 Total 0 different partial repair candidate templates!!
 Trying different candidates!
-BasicTester pointer: 0x55cb8ee70ee0
-StringConstTester pointer: 0x55cb8eca2900
-CondTester pointer: 0x55cb8eca0a70
-The total number of synthesis runs: 0
+BasicTester pointer: 0x55fa7687e900
+StringConstTester pointer: 0x55fa7686e710
+CondTester pointer: 0x55fa7687e030
+Generating Candidates...
+Candidates size: 0
+Generating Codes...
+[1] Preprocess the following candidate with CondTester:
+0 Candidates
+Generating patches with CondTester...
+Generating patches...
+Patch Generated!
+[1] CondTester, a patch instance with id 0:
+codes size: 0
+res size: 1
+result size: -1
+Spawn 1 instances, now Total 1
+Total macros: 1
+Build success: 0
+Single building for Tester 0x55fa7687e030 id 18446744073709551615 failed as well!
+[1] Preprocess the following candidate with StringConstTester:
+0
+Generating patches...
+[1] StringConstTester, a patch instance with id 0:
+Spawn 1 instances, now Total 2
+Total macros: 1
+Build success: 0
+Single building for Tester 0x55fa7686e710 id 0 failed as well!
+[1] Preprocess the following candidate with BasicTester:
+0
+Generating patches...
+[1] BasicTester, a patch instance with id 0:
+Spawn 1 instances, now Total 3
+Total macros: 1
+Build success: 0
+Single building for Tester 0x55fa7687e900 id 0 failed as well!
+Generating Result...The total number of synthesis runs: 0
 The total number of concrete conds: 0
 The total number of explored concrete patches: 0
 Repair process ends without working fix!!
 Total 0 different repair schemas!!!!
 Total 0 different repair candidate templates for scoring!!!
-Total number of compiles: 0
+Total number of compiles: 3
 Total number of test eval: 3

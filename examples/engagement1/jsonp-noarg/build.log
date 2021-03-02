@@ -1,0 +1,7 @@
+g++ -c reader.cpp -I rapidjson/include/rapidjson/  -o reader.o
+g++ -o prog  reader.o
+make: 'prog' is up to date.
+Path env:  /root/project/prophet-gpl/wrap:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+make: 'prog' is up to date.
+make: 'prog' is up to date.
+make: 'prog' is up to date.

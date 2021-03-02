@@ -30,7 +30,8 @@
 const char* HANDLER_PREFIX =
     "int __get_mutant(); "
     "int __is_neg(int, ...); "
-    "int __abst_hole(); ";
+    "int __abst_hole(); "
+    "int __choose(char *);";
 const char* MEMSET_PREFIX =
     "void* memset(void*, int, unsigned long); ";
 
@@ -248,15 +249,22 @@ LocalAnalyzer* SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc) {
 }
 
 // FIXME: This stupid shit should go somewhere else
-Expr* SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType QT) {
+Expr* SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType QT,std::vector<int> counts) {
     Expr *abstract_cond = getInternalHandlerInfo(ctxt).abstract_cond;
-    return CallExpr::Create(*ctxt, abstract_cond, std::vector<Expr*>(),
+    std::vector<Expr*> args;
+    args.clear();
+
+    for (int i=0;i<counts.size();i++){
+        IntegerLiteral *arg=IntegerLiteral::Create(*ctxt,llvm::APInt(32,counts[i]),ctxt->IntTy,SourceLocation());
+        args.push_back(arg);
+    }
+    return clang::CallExpr::Create(*ctxt, abstract_cond, args,
             QT, VK_RValue, SourceLocation());
 }
 
 Expr* SourceContextManager::getUnknownExpr(ASTContext *ctxt, ExprListTy candidate_atoms) {
     Expr *abstract_hole = getInternalHandlerInfo(ctxt).abstract_hole;
-    return CallExpr::Create(*ctxt, abstract_hole, candidate_atoms,
+    return clang::CallExpr::Create(*ctxt, abstract_hole, candidate_atoms,
         ctxt->IntTy, VK_RValue, SourceLocation());
 }
 

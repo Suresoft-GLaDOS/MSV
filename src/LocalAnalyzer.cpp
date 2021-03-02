@@ -550,6 +550,30 @@ class StmtChecker : public RecursiveASTVisitor<StmtChecker> {
     GlobalAnalyzer *G;
     std::set<VarDecl*> inside;
     std::set<Expr*> invalidExprs;
+    bool isMemberMethod(CXXRecordDecl *record,FunctionDecl *func){
+        if (!llvm::isa<CXXMethodDecl>(func)) return false;
+        bool isMember=false;
+        for (CXXRecordDecl::method_iterator it=record->method_begin();
+                it!=record->method_end();it++){
+            if (*it==func) {
+                isMember=true;
+                break;
+            }
+        }
+        return isMember;
+    }
+    bool isMemberField(RecordDecl *record,FieldDecl *field){
+        bool isMember=false;
+        for (RecordDecl::field_iterator it=record->field_begin();
+                it!=record->field_end();it++){
+            if (*it==field) {
+                isMember=true;
+                break;
+            }
+        }
+        return isMember;
+    }
+
 public:
     StmtChecker(LocalAnalyzer *L, GlobalAnalyzer *G): L(L), G(G) {
         inside.clear();
@@ -560,13 +584,18 @@ public:
         inside.insert(VD);
         return true;
     }
+    virtual bool VisitCXXThisExpr(CXXThisExpr *expr){
+        FunctionDecl *current=L->getCurrentFunction();
+        if (!llvm::isa<CXXMethodDecl>(current)) invalidExprs.insert(expr);
+        return true;
+    }
 
     virtual bool VisitDeclRefExpr(DeclRefExpr *DRE) {
         ValueDecl *VD = DRE->getDecl();
-        if (llvm::isa<FieldDecl>(VD)) return true;
         if (llvm::isa<EnumConstantDecl>(VD)) return true;
 
         bool found = false;
+        // If variable not declared, this is invalid
         VarDecl *VarD = llvm::dyn_cast<VarDecl>(VD);
         if (VarD) {
             if (L->getLocalVarDecls().count(VarD) != 0)
@@ -576,6 +605,8 @@ public:
             if (inside.count(VarD) != 0)
                 found = true;
         }
+
+        // If function not declared, this is invalid
         FunctionDecl *FuncD = llvm::dyn_cast<FunctionDecl>(VD);
         if (FuncD) {
             if (G->getFuncDecls().count(FuncD) != 0)

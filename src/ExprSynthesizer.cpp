@@ -404,10 +404,11 @@ protected:
     SourceContextManager &M;
     TestCaseSetTy negative_cases, positive_cases;
     std::vector<RepairCandidate> candidates;
-    std::vector<CodeSegTy> codes;
-    std::vector<PatchListTy> patches;
+    CodeSegTy codes;
+    PatchListTy patches;
     TestCaseSetTy failed_cases;
     bool naive;
+    long long total_macro;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, false);
@@ -473,14 +474,15 @@ public:
         return true;
     }
 
-    virtual CodeSegTy getCodeSegs(unsigned long id) {
-        assert( id < codes.size() );
-        return codes[id];
+    virtual CodeSegTy getCodeSegs() {
+        return codes;
     }
 
-    virtual CodeSegTy getPatches(unsigned long id) {
-        assert( id < patches.size() );
-        return patches[id];
+    virtual CodeSegTy getPatches() {
+        return patches;
+    }
+    long long getMacroCount(){
+        return total_macro;
     }
 
     virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
@@ -499,6 +501,7 @@ public:
         CodeRewriter R(M, candidate, &infos);
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
+        total_macro=R.index;
         {
             outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu:\n", get_timer(),
                     codes.size());
@@ -506,8 +509,8 @@ public:
         }
         for (int i=0;i<candidate.size();i++)
             candidates.push_back(candidate[i]);
-        codes.push_back(a_code);
-        patches.push_back(a_patch);
+        codes=a_code;
+        patches=a_patch;
         res.push_back((unsigned long)codes.size());
         // OK, this is hacky, we are going to propagate this change to other place,
         // only here
@@ -524,8 +527,8 @@ public:
                 }
                 for (int i=0;i<candidate.size();i++)
                     candidates.push_back(candidate[i]);
-                codes.push_back(a_new_code);
-                patches.push_back(a_new_patch);
+                codes=a_new_code;
+                patches=a_new_patch;
                 res.push_back(codes.size());
             }
         }
@@ -539,12 +542,12 @@ public:
     virtual bool test(const BenchProgram::EnvMapTy &env, unsigned long id) {
         {
             outlog_printf(2, "[%llu] BasicTester, Testing instance id %lu:\n", get_timer(), id);
-            out_codes(codes[id], patches[id]);
+            out_codes(codes, patches);
         }
         outlog_printf(3, "Testing negative cases!\n");
         if (!testNegativeCases(env)) {
-            codes[id].clear();
-            patches[id].clear();
+            codes.clear();
+            patches.clear();
             return false;
         }
         outlog_printf(3, "Testing positive cases!\n");
@@ -553,8 +556,8 @@ public:
             outlog_printf(2, "[%llu] Passed!\n", get_timer());
         else {
             // We are going to clear out stuff tested, to avoid memory usage.
-            codes[id].clear();
-            patches[id].clear();
+            codes.clear();
+            patches.clear();
         }
         return ret;
     }
@@ -569,7 +572,7 @@ public:
 
         if (DumpPassedCandidate.getValue() != "")
             dumpCandidate(M, candidates[id], NULL, score);
-        return singleResult(cleanUpCode(combineCode(codes[id], patches[id])), score);
+        return singleResult(cleanUpCode(combineCode(codes, patches)), score);
     }
 };
 
@@ -725,14 +728,12 @@ public:
         return getMutateId(candidate) != -1;
     }
 
-    virtual CodeSegTy getCodeSegs(unsigned long id) {
-        assert( id < codes.size() );
-        return codes[id];
+    virtual CodeSegTy getCodeSegs() {
+        return codes;
     }
 
-    virtual CodeSegTy getPatches(unsigned long id) {
-        assert( id < patches.size() );
-        return patches[id];
+    virtual CodeSegTy getPatches() {
+        return patches;
     }
 
     virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
@@ -749,6 +750,7 @@ public:
         CodeRewriter R(M, candidate, &the_infos);
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
+        total_macro=R.index;
         {
             outlog_printf(2, "[%llu] StringConstTester, a patch instance with id %lu:\n", get_timer(),
                     codes.size());
@@ -757,8 +759,8 @@ public:
         res.push_back((unsigned long)codes.size());
         for (int i=0;i<candidate.size();i++)
             candidates.push_back(candidate[i]);
-        codes.push_back(a_code);
-        patches.push_back(a_patch);
+        codes=a_code;
+        patches=a_patch;
         for (int i=0;i<the_infos.size();i++){
             infos_set.push_back(the_infos[i]);
             for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
@@ -780,8 +782,8 @@ public:
                 res.push_back(codes.size());
                 for (int i=0;i<candidate.size();i++)
                     candidates.push_back(candidate[i]);
-                codes.push_back(a_new_code);
-                patches.push_back(a_new_patch);
+                codes=a_new_code;
+                patches=a_new_patch;
                 for (int i=0;i<the_infos.size();i++){
                     infos_set.push_back(the_infos[i]);
                     for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
@@ -799,7 +801,7 @@ public:
     virtual bool test(const BenchProgram::EnvMapTy &env, unsigned long id) {
         {
             outlog_printf(2, "[%llu] StringConstTester, Testing instance id %lu:\n", get_timer(), id);
-            out_codes(codes[id], patches[id]);
+            out_codes(codes, patches);
         }
         outlog_printf(3, "Testing negative cases!\n");
         candidate_strs[id].clear();
@@ -831,9 +833,9 @@ public:
                         }
                     }
                 if (!may_pass || candidate_strs[id].size() > 1) {
-                    codes[id].clear();
+                    codes.clear();
                     candidate_strs[id].clear();
-                    patches[id].clear();
+                    patches.clear();
                     {
                         std::string cmd = "rm -rf " + tmp_out;
                         int ret = system(cmd.c_str());
@@ -895,7 +897,7 @@ public:
             buildEnv["COMPILE_CMD"] = "clang++";
         else
             buildEnv["COMPILE_CMD"] = GCC_CMD;
-        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code);
+        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,0);
         if (!build_succ) {
             outlog_printf(2, "Build failed!");
             return std::map<NewCodeMapTy, double>();
@@ -1695,6 +1697,7 @@ public:
         outlog_printf(2,"Patch Generated!\n");
         std::map<std::string, std::vector<std::string> > a_code = R.getCodeSegments();
         std::map<std::string, std::vector<std::string> > a_patch = R.getPatches();
+        total_macro=R.index;
         {
             outlog_printf(2, "[%llu] CondTester, a patch instance with id %lu:\n", get_timer(),
                     codes.size());
@@ -1702,9 +1705,9 @@ public:
         }
         for (int i=0;i<candidate.size();i++)
             candidates.push_back(candidate[i]);
-        codes.push_back(a_code);
+        codes=a_code;
         outlog_printf(2,"codes size: %d\n",codes.size());
-        patches.push_back(a_patch);
+        patches=a_patch;
         for (int i=0;i<the_infos.size();i++){
             infos_set.push_back(the_infos[i]);
             for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
@@ -1719,30 +1722,30 @@ public:
     virtual bool test(const BenchProgram::EnvMapTy &env, unsigned long id) {
         {
             outlog_printf(2, "[%llu] CondTester, Testing instance id %lu:\n", get_timer(), id);
-            out_codes(codes[id], patches[id]);
+            out_codes(codes, patches);
         }
         // We first need to find the flip combination that will make it passes each
         // negative cases, and we store it to negative_records
         std::map<unsigned long, std::vector<unsigned long> > negative_records;
-        outlog_printf(3, "Testing negative cases!\n");
+        outlog_printf(2, "Testing negative cases!\n");
         if (!testNegativeCases(env, negative_records)) {
-            codes[id].clear();
-            patches[id].clear();
+            codes.clear();
+            patches.clear();
             return false;
         }
-        outlog_printf(3, "Testing positive cases!\n");
+        outlog_printf(2, "Testing positive cases!\n");
         if (!BasicTester::testPositiveCases(env)) {
-            codes[id].clear();
-            patches[id].clear();
+            codes.clear();
+            patches.clear();
             return false;
         }
         // Then we need to collect the variable values at the expr, we store it into
         // this caseVMap
-        outlog_printf(3, "Collect values for post processing!\n");
+        outlog_printf(2, "Collect values for post processing!\n");
         std::map<unsigned long, std::vector<std::vector<long long> > > caseVMap;
         if (!collectValues(env, candidates[id], negative_records, caseVMap)) {
-            codes[id].clear();
-            patches[id].clear();
+            codes.clear();
+            patches.clear();
             return false;
         }
         valueRecords[id] = caseVMap;
@@ -1760,7 +1763,7 @@ public:
         post_cnt ++;
         {
             outlog_printf(2, "CondTester, Postprocessing instance id %lu:\n", id);
-            out_codes(codes[id], patches[id]);
+            out_codes(codes, patches);
         }
         BranchRecordTy &negative_records = branchRecords[id];
         ValueRecordTy &caseVMap = valueRecords[id];
@@ -1837,7 +1840,7 @@ public:
             else
                 buildEnv["COMPILE_CMD"] = GCC_CMD;
             outlog_printf(2, "Trying a synthesis expr %s\n", stmtToString(*ast, new_expr).c_str());
-            bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code);
+            bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,0);
             if (!build_succ) {
                 outlog_printf(3, "Build failed when synthesizing!\n");
                 continue;
@@ -1901,8 +1904,8 @@ public:
         // FIXME: This is too hacky, I hate this!
         double score = computeFinalScore(learning, M, candidate, id, NULL);
         if (found_score < score) {
-            CodeSegTy codeSegs = codes[id];
-            PatchListTy patch = patches[id];
+            CodeSegTy codeSegs = codes;
+            PatchListTy patch = patches;
             NewCodeMapTy new_code = combineCode(codeSegs, patch);
             std::string src_file = candidate.actions[condition_idx].loc.src_file;
             outlog_printf(3, "Initial synthesize failed, final attempt\n");
@@ -1925,7 +1928,7 @@ public:
                     buildEnv["COMPILE_CMD"] = "clang++";
                 else
                     buildEnv["COMPILE_CMD"] = GCC_CMD;
-                bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, new_code);
+                bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, new_code,0);
                 if (!build_succ) {
                     outlog_printf(3, "Build failed\n");
                     continue;
@@ -1962,6 +1965,7 @@ class TestBatcher {
     bool naive;
     bool learning;
     FeatureParameter *FP;
+    std::string fixedFile;
 
     struct CandidateEntry {
         RepairCandidate rc;
@@ -1981,169 +1985,55 @@ class TestBatcher {
 
 
     std::map<NewCodeMapTy, double> singleTest(const CodeSegTy &codeSegs, const CodeSegTy &patches,
-            BasicTester *T, unsigned long id) {
+            BasicTester *T) {
+        long long macros=T->getMacroCount();
+        // macros=20;
+
         BenchProgram::EnvMapTy buildEnv;
         buildEnv.clear();
         if (ForCPP.getValue())
             buildEnv["COMPILE_CMD"] = "clang++";
         else
             buildEnv["COMPILE_CMD"] = GCC_CMD;
-        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,
-                combineCode(codeSegs, patches));
-        if (!build_succ) {
-            outlog_printf(2, "Single building for Tester %p id %lu failed as well!\n",
-                    T, id);
-            return std::map<NewCodeMapTy, double>();
-        }
-        bool ret = T->test(BenchProgram::EnvMapTy(), id);
-        if (ret)
-            return T->getResults(id);
-        else
-            return std::map<NewCodeMapTy, double>();
+        const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
+        // Create source file with fix
+        // This should success
+        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
+
+        return std::map<NewCodeMapTy, double>();
     }
 
-    void doTest(const CodeSegTy &codeSegs) {
-        if (the_timeout_limit != 0)
-            if (get_timer() > the_timeout_limit) {
-                outlog_printf(1, "[%llu] Timeout! Limit is %llu\n", get_timer(), the_timeout_limit);
-                return;
-            }
-        outlog_printf(2, "a batched test job starts!\n");
-        // We are going to build a single batched code for this,
-        // this saves a lot of compile time for testing!
-        std::vector<CandidateEntry> &tmp = candidateMap[codeSegs];
-        cur_size -= tmp.size();
-        std::vector<PatchListTy> tmp_patches;
-        tmp_patches.clear();
-        for (size_t i = 0; i < tmp.size(); i++) {
-            BasicTester *T = tmp[i].T;
-            tmp_patches.push_back(T->getPatches(tmp[i].id));
-            tot_explored_templates += tmp[i].rc.getCandidateAtoms().size();
-            patch_explored += tmp[i].rc.getCandidateAtoms().size();
-            //outlog_printf(3, "The number of explored templates: %lu\n", tot_explored_templates);
-        }
-        // 지금까지 나온 패치들을 하나의 코드에 합쳐봄
-        std::map<std::string, std::string> codes = mergeCode(codeSegs, tmp_patches);
-        {
-            outlog_printf(4, "Building merged code:\n");
-            for (NewCodeMapTy::iterator it = codes.begin(); it != codes.end(); ++ it) {
-                outlog_printf(4, "src_file: %s\n", it->first.c_str());
-                outlog_printf(4, "full src: %s\n", it->second.c_str());
-            }
-        }
-        BenchProgram::EnvMapTy buildEnv;
-        buildEnv.clear();
-        if (ForCPP.getValue())
-            buildEnv["COMPILE_CMD"] = "clang++";
-        else
-            buildEnv["COMPILE_CMD"] = GCC_CMD;
-        // 합친 코드 빌드 테스트
-        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, codes);
-        // 성공하면 실행해서 테스트
-        if (build_succ) {
-            outlog_printf(2, "Merged code building succ, going to invoke tester!\n");
-            // We then invoke these testers they all share this same built instance
-            std::vector<std::pair<BasicTester*, unsigned long> > succ_list;
-            std::vector<RepairCandidate> c_list;
-            succ_list.clear();
-            c_list.clear();
-            for (size_t i = 0; i < tmp.size(); i++) {
-                BasicTester *T = tmp[i].T;
-                BenchProgram::EnvMapTy testEnv;
-                testEnv.clear();
-                std::ostringstream sout;
-                sout << i;
-                testEnv["MUTANT_ID"] = sout.str();
-                bool ret = T->test(testEnv, tmp[i].id);
-                if (ret) {
-                    succ_list.push_back(std::make_pair(T, tmp[i].id));
-                    c_list.push_back(tmp[i].rc);
-                }
-            }
-            // We then need to invoke the post processing of these successive runs to
-            // get the results, we split this with the main test because this part may
-            // involve build the bench program again.
-            for (size_t i = 0; i < succ_list.size(); i++) {
-                std::map<NewCodeMapTy, double> code_set = succ_list[i].first->getResults(succ_list[i].second);
-                for (std::map<NewCodeMapTy, double>::iterator it = code_set.begin();
-                        it != code_set.end(); it++) {
-                    NewCodeMapTy code = it->first;
-                    double res_score = it->second;
-                    if (res.count(code) == 0)
-                        res.insert(std::make_pair(code, res_score));
-                    else if (res[code] < res_score)
-                        res[code] = res_score;
-                    succCandidates.push_back(c_list[i]);
-                }
-            }
-        }
-        // 빌드 실패하면 각각 적용
-        else {
-            outlog_printf(2, "Merged code building failed! Going to build saperately!\n");
-            // We have to fail back to naive way, build them saperately
-            for (size_t i = 0; i < tmp.size(); i++) {
-                BasicTester *T = tmp[i].T;
-                std::map<NewCodeMapTy, double> code_set = singleTest(codeSegs, tmp_patches[i], T, tmp[i].id);
-                for (std::map<NewCodeMapTy, double>::iterator it = code_set.begin();
-                        it != code_set.end(); it++) {
-                    NewCodeMapTy code = it->first;
-                    double res_score = it->second;
-                    if (res.count(code) == 0)
-                        res.insert(std::make_pair(code, res_score));
-                    else if (res[code] < res_score)
-                        res[code] = res_score;
-                    succCandidates.push_back(tmp[i].rc);
-                }
-            }
-        }
-        candidateMap.erase(codeSegs);
-    }
 public:
     TestBatcher(BenchProgram &P, bool naive,
-            bool learning, FeatureParameter *FP):
-        P(P), naive(naive), learning(learning && !naive), FP(FP), res(), succCandidates(), candidateMap(), cur_size(0),
+            bool learning, FeatureParameter *FP,std::string fixedFile):
+        P(P), naive(naive), learning(learning && !naive), FP(FP), fixedFile(fixedFile),res(), succCandidates(), candidateMap(), cur_size(0),
     total_cnt(0) { }
 
     // This is a lazy test routine, we are only going to decode it without
     // actually doing the test in the most of the time
-    // 모든 후보에 한번에 동작할 수 있도록 개조
-    void test(const std::vector<RepairCandidate> &candidate, BasicTester* T) {
-        std::vector<unsigned long> ids = T->preprocess(candidate);
-        total_cnt += ids.size();
-        outlog_printf(2, "Spawn %lu instances, now Total %lu\n", (unsigned long)ids.size(), total_cnt);
-        for (size_t i = 0; i < ids.size(); i++) {
-            CodeSegTy codeSegs = T->getCodeSegs(i);
-            PatchListTy patches = T->getPatches(i);
-            //if (canMerge(codeSegs, patches) && (!naive)) {
-            if (false){
-                if (candidateMap.count(codeSegs) == 0)
-                    candidateMap[codeSegs].clear();
-                for (int j=0;j<candidate.size();j++)
-                    candidateMap[codeSegs].push_back(CandidateEntry(candidate[j], T, ids[i]));
-                cur_size ++;
-                if (candidateMap[codeSegs].size() >= BATCH_CAP)
-                    doTest(codeSegs);
-            }
-            else {
-                for (int j=0;j<candidate.size();j++){
-                    tot_explored_templates += candidate[j].getCandidateAtoms().size();
-                    patch_explored += candidate[j].getCandidateAtoms().size();
-                    //outlog_printf(0, "The number of explored templates: %lu\n", tot_explored_templates);
-                }
-                std::map<NewCodeMapTy, double> code_set = singleTest(codeSegs, patches, T, ids[i]);
-                for (std::map<NewCodeMapTy, double>::iterator it = code_set.begin();
-                        it != code_set.end(); it++) {
-                    NewCodeMapTy code = it->first;
-                    double res_score = it->second;
-                    if (res.count(code) == 0)
-                        res.insert(std::make_pair(code, res_score));
-                    else if (res[code] < res_score)
-                        res[code] = res_score;
-                    for (int j=0;j<candidate.size();j++)
-                        succCandidates.push_back(candidate[j]);
-                }
-            }
+    bool test(const std::vector<RepairCandidate> &candidate, BasicTester* T) {
+        T->preprocess(candidate);
+        outlog_printf(2, "Begin building test\n");
+        CodeSegTy codeSegs = T->getCodeSegs();
+        PatchListTy patches = T->getPatches();
+        outlog_printf(2,"Total macros: %d\n",T->getMacroCount());
+        // for (int j=0;j<candidate.size();j++){
+        //     tot_explored_templates += candidate[j].getCandidateAtoms().size();
+        //     patch_explored += candidate[j].getCandidateAtoms().size();
+        // }
+        std::map<NewCodeMapTy, double> code_set = singleTest(codeSegs, patches, T);
+        for (std::map<NewCodeMapTy, double>::iterator it = code_set.begin();
+                it != code_set.end(); it++) {
+            NewCodeMapTy code = it->first;
+            double res_score = it->second;
+            if (res.count(code) == 0)
+                res.insert(std::make_pair(code, res_score));
+            else if (res[code] < res_score)
+                res[code] = res_score;
+            for (int j=0;j<candidate.size();j++)
+                succCandidates.push_back(candidate[j]);
         }
+        return res.size()!=0;
     }
 
     bool hasResult() {
@@ -2164,16 +2054,6 @@ public:
         return tmp;
     }
 
-    void sync() {
-        std::vector<CodeSegTy> tmp;
-        tmp.clear();
-        for (CandidateMapTy::iterator it = candidateMap.begin();
-                it != candidateMap.end(); ++it)
-            tmp.push_back(it->first);
-        for (size_t i = 0; i < tmp.size(); ++i)
-            doTest(tmp[i]);
-    }
-
     size_t size() {
         return cur_size;
     }
@@ -2188,7 +2068,7 @@ public:
 bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
         ExprSynthesizerResultTy &res, bool full_synthesis, bool quit_with_any) {
     the_timeout_limit = this->timeout_limit;
-    TestBatcher TB(P, naive, learning, FP);
+    TestBatcher TB(P, naive, learning, FP,fixedFile);
     std::vector<BasicTester*> testers;
     testers.clear();
     testers.push_back(new ConditionSynthesisTester(P, learning, M, full_synthesis));
@@ -2218,109 +2098,13 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
         q.pop();
     }
 
+    bool result;
     outlog_printf(2,"Generating Codes...\n");
-    for (int i=0;i<testers.size();i++)
-        TB.test(candidate, testers[i]);
+    //for (int i=0;i<testers.size();i++)
+    result= TB.test(candidate, testers[2]);
 
-    // FIXME: we ignore time limit now, we will add back later
-    // while (q.size() > 0 && ((tested_cnt < candidate_limit) || (candidate_limit == 0))) {
-    //     if (timeout_limit != 0)
-    //         if (get_timer() > timeout_limit) {
-    //             outlog_printf(1, "[%llu] Timeout! Limit is %llu\n", get_timer(), timeout_limit);
-    //             break;
-    //         }
-    //     cnt ++;
-    //     time_t now_t = Timer.getSeconds();
-    //     if ((cnt % SYNC_CAP == 0) || (now_t - last_sync > SYNC_TIME_CAP)) {
-    //         last_sync = now_t;
-    //         outlog_printf(2, "Going to sync the batch tester, clear all existing tasks!\n");
-    //         TB.sync();
-    //     }
-    //     if (TB.hasResult()) {
-    //         TB.sync();
-    //         std::vector<std::pair<NewCodeMapTy, double> > tmp = TB.getResults();
-    //         if (tmp.size() > 0)
-    //             if (found_score < tmp[0].second) {
-    //                 found_score = tmp[0].second;
-    //                 outlog_printf(1, "Updated best score result: %lf\n", found_score);
-    //             }
-    //         //collected_res.insert(collected_res.end(), tmp.begin(), tmp.end());
-    //         std::vector<RepairCandidate> succs = TB.getSuccCandidates();
-    //         for (size_t i = 0; i < succs.size(); i++) {
-    //             cache->markSucc(succs[i].toString(M));
-    //             unsigned long schema_id = candidate_to_id[succs[i].toString(M)];
-    //             outlog_printf(1, "Generate a candidate with schema id: %lu\n", schema_id);
-    //             if (generate_min_id > schema_id)
-    //                 generate_min_id = schema_id;
-    //         }
-    //         ((ConditionSynthesisTester*)testers[0])->dumpStat();
-    //         if (quit_with_any) {
-    //             outlog_printf(1, "Quit-with-any flag on, just going to get out.");
-    //             break;
-    //         }
-    //     }
-    //     outlog_printf(2, "Counter: %lu\nBatcher Size:%lu\n", cnt, TB.size());
-    //     RepairCandidateWithScore candidate_a_score = q.top();
-    //     RepairCandidate candidate = candidate_a_score.first;
-    //     if (candidate_a_score.second <= found_score) {
-    //         outlog_printf(1, "The found score %lf is greater than current score %lf!\n", found_score, candidate_a_score.second);
-    //         outlog_printf(1, "Terminate current session!\n");
-    //         break;
-    //     }
-    //     q.pop();
-    //     //FIXME: Diable cache for now, need to find a better way
-    //     if (0)
-    //         if (cache->isNotSucc(candidate.toString(M))) {
-    //             outlog_printf(2, "Skip the following candidate based on cache:\n%s",
-    //                     candidate.toString(M).c_str());
-    //             continue;
-    //         }
-    //     cache->addCandidate(candidate.toString(M));
-    //     tested_cnt ++;
-    //     bool found = false;
-    //     candidate_to_id[candidate.toString(M)] = cnt;
-    //     for (size_t i = 0; i < testers.size(); i++)
-    //         if (testers[i]->canHandle(candidate)) {
-    //             TB.test(candidate, testers[i]);
-    //             found = true;
-    //             break;
-    //         }
-    //     if (!found) {
-    //         outlog_printf(0, "Unable to handle a candidate:\n%s\n", candidate.toString(M).c_str());
-    //         continue;
-    //     }
-    // }
-    outlog_printf(2,"Generating Result...");
-
-    TB.sync();
-    if (TB.hasResult()) {
-        std::vector<std::pair<NewCodeMapTy, double> > tmp = TB.getResults();
-        collected_res.insert(collected_res.end(), tmp.begin(), tmp.end());
-        std::vector<RepairCandidate> succs = TB.getSuccCandidates();
-        for (size_t i = 0; i < succs.size(); i++) {
-            cache->markSucc(succs[i].toString(M));
-            unsigned long schema_id = candidate_to_id[succs[i].toString(M)];
-            outlog_printf(1, "Generate a candidate with schema id: %lu\n", schema_id);
-            if (generate_min_id > schema_id)
-                generate_min_id = schema_id;
-        }
-        ((ConditionSynthesisTester*)testers[0])->dumpStat();
-    }
-    if (generate_min_id != 100000000)
-        outlog_printf(1, "The first schema id that generates patch: %lu\n", generate_min_id);
-    outlog_printf(0, "The total number of synthesis runs: %lu\n", tot_synthesis_run);
-    outlog_printf(0, "The total number of concrete conds: %lu\n", tot_concrete_conds);
     outlog_printf(0, "The total number of explored concrete patches: %lu\n", patch_explored);
-    //res.clear();
-    for (size_t i = 0; i < collected_res.size(); i++)
-        for (size_t j = i; j < collected_res.size(); j++)
-            if (collected_res[i].second < collected_res[j].second)
-                std::swap(collected_res[i], collected_res[j]);
-    //for (size_t i = 0; i < collected_res.size(); i++)
-    //    res.push_back(collected_res[i].first);
-    res = collected_res;
     for (size_t i = 0; i < testers.size(); i++)
         delete testers[i];
-    printf("result size: %d\n",res.size());
-    return res.size() != 0;
+    return result;
 }

@@ -123,7 +123,7 @@ public:
     }
 
     // FIXME: This stupid shit should go somewhere else
-    clang::Expr* getExprPlaceholder(clang::ASTContext *ctxt, clang::QualType QT);
+    clang::Expr* getExprPlaceholder(clang::ASTContext *ctxt, clang::QualType QT,std::vector<int> counts);
 
     clang::Expr* getUnknownExpr(clang::ASTContext *ctxt, ExprListTy candidate_atoms);
 
