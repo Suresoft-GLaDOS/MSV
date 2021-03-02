@@ -1,0 +1,7 @@
+**/prog
+*.o
+src/.libs/
+*.bak
+**/out/
+**/build/
+src/*.o
