@@ -1528,58 +1528,58 @@ class ConditionSynthesisTester : public BasicTester {
             testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
             int ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
             assert( ret == 0);
-            outlog_printf(5, "Testing %lu (with abstract condition)\n", *case_it);
+            outlog_printf(2, "Testing %lu (with abstract condition)\n", *case_it);
             bool passed = false;
             while (it_cnt < 10) {
-                outlog_printf(5, "Iteration %lu\n", it_cnt);
+                outlog_printf(2, "Iteration %lu\n", it_cnt);
                 //llvm::errs() << "Testing iteration: " << it_cnt << "\n";
                 passed = P.test(std::string("src"), *case_it, testEnv, false);
-                std::vector<unsigned long> tmp_v = parseBranchRecord();
-                writeBranchRecordTerminator();
-                for (size_t i = 0; i < tmp_v.size(); i++)
-                    outlog_printf(5, "Branch %lu: %lu\n", i, tmp_v[i]);
-                // We hit some strange error, we just assume we cannot pass this case
-                if (tmp_v.size() == 0) passed = false;
-                if (passed) {
-                    outlog_printf(5, "Passed in iteration!\n");
-                    negative_records[*case_it] = tmp_v;
-                    break;
-                }
-                bool has_zero = false;
-                for (size_t i = 0; i < tmp_v.size(); i++)
-                    if (tmp_v[i] == 0) {
-                        has_zero = true;
-                        break;
-                    }
-                if (!has_zero) break;
+                // std::vector<unsigned long> tmp_v = parseBranchRecord();
+                // writeBranchRecordTerminator();
+                // for (size_t i = 0; i < tmp_v.size(); i++)
+                //     outlog_printf(5, "Branch %lu: %lu\n", i, tmp_v[i]);
+                // // We hit some strange error, we just assume we cannot pass this case
+                // if (tmp_v.size() == 0) passed = false;
+                // if (passed) {
+                //     outlog_printf(5, "Passed in iteration!\n");
+                //     negative_records[*case_it] = tmp_v;
+                //     break;
+                // }
+                // bool has_zero = false;
+                // for (size_t i = 0; i < tmp_v.size(); i++)
+                //     if (tmp_v[i] == 0) {
+                //         has_zero = true;
+                //         break;
+                //     }
+                // if (!has_zero) break;
                 it_cnt ++;
             }
             // We will going to try all 1 before we finally give up this case
-            if (!passed) {
-                testEnv = env;
-                testEnv.insert(std::make_pair("IS_NEG", "1"));
-                testEnv.insert(std::make_pair("NEG_ARG", "0"));
-                testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
-                int ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
-                assert( ret == 0);
-                passed = P.test(std::string("src"), *case_it, testEnv, false);
-                if (passed) {
-                    std::vector<unsigned long> tmp_v = parseBranchRecord();
-                    // FIXME: strange error in wireshark, we just ignore right now
-                    if (tmp_v.size() == 0) {
-                        outlog_printf(0, "Strange error or non-deterministic behavior!\n");
-                        return false;
-                    }
-                    assert(tmp_v.size() != 0);
-                    negative_records[*case_it] = tmp_v;
-                    for (size_t i = 0; i < tmp_v.size(); i++)
-                        outlog_printf(5, "Log %lu %lu\n", i, tmp_v[i]);
-                }
-                else {
-                    // Still failed, we are going to give up
-                    return false;
-                }
-            }
+            // if (!passed) {
+            //     testEnv = env;
+            //     testEnv.insert(std::make_pair("IS_NEG", "1"));
+            //     testEnv.insert(std::make_pair("NEG_ARG", "0"));
+            //     testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
+            //     int ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
+            //     assert( ret == 0);
+            //     passed = P.test(std::string("src"), *case_it, testEnv, false);
+            //     if (passed) {
+            //         std::vector<unsigned long> tmp_v = parseBranchRecord();
+            //         // FIXME: strange error in wireshark, we just ignore right now
+            //         if (tmp_v.size() == 0) {
+            //             outlog_printf(0, "Strange error or non-deterministic behavior!\n");
+            //             return false;
+            //         }
+            //         assert(tmp_v.size() != 0);
+            //         negative_records[*case_it] = tmp_v;
+            //         for (size_t i = 0; i < tmp_v.size(); i++)
+            //             outlog_printf(5, "Log %lu %lu\n", i, tmp_v[i]);
+            //     }
+            //     else {
+            //         // Still failed, we are going to give up
+            //         return false;
+            //     }
+            // }
         }
         outlog_printf(2, "Passed Negative Cases wiht CondTestder!\n");
         return true;
@@ -1733,24 +1733,24 @@ public:
             patches.clear();
             return false;
         }
-        outlog_printf(2, "Testing positive cases!\n");
-        if (!BasicTester::testPositiveCases(env)) {
-            codes.clear();
-            patches.clear();
-            return false;
-        }
-        // Then we need to collect the variable values at the expr, we store it into
-        // this caseVMap
-        outlog_printf(2, "Collect values for post processing!\n");
-        std::map<unsigned long, std::vector<std::vector<long long> > > caseVMap;
-        if (!collectValues(env, candidates[id], negative_records, caseVMap)) {
-            codes.clear();
-            patches.clear();
-            return false;
-        }
-        valueRecords[id] = caseVMap;
-        branchRecords[id] = negative_records;
-        outlog_printf(2, "[%llu] Passed!\n", get_timer());
+        // outlog_printf(2, "Testing positive cases!\n");
+        // if (!BasicTester::testPositiveCases(env)) {
+        //     codes.clear();
+        //     patches.clear();
+        //     return false;
+        // }
+        // // Then we need to collect the variable values at the expr, we store it into
+        // // this caseVMap
+        // outlog_printf(2, "Collect values for post processing!\n");
+        // std::map<unsigned long, std::vector<std::vector<long long> > > caseVMap;
+        // if (!collectValues(env, candidates[id], negative_records, caseVMap)) {
+        //     codes.clear();
+        //     patches.clear();
+        //     return false;
+        // }
+        // valueRecords[id] = caseVMap;
+        // branchRecords[id] = negative_records;
+        // outlog_printf(2, "[%llu] Passed!\n", get_timer());
         return true;
     }
 
@@ -1999,6 +1999,7 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
+        result_init=T->test(BenchProgram::EnvMapTy(),0);
 
         return std::map<NewCodeMapTy, double>();
     }
@@ -2101,7 +2102,8 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     bool result;
     outlog_printf(2,"Generating Codes...\n");
     // for (int i=0;i<testers.size();i++)
-    result= TB.test(candidate, testers[2]);
+    result= TB.test(candidate, testers[0]);
+    // result= TB.test(candidate, testers[2]);
 
     outlog_printf(0, "The total number of explored concrete patches: %lu\n", patch_explored);
     for (size_t i = 0; i < testers.size(); i++)

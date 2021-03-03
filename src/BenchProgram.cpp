@@ -485,7 +485,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         // Backup fixed file
         if (output_name!=""){
             if (count!=0)
-                output_name+="_"+std::to_string(count);
+                output_name+=std::to_string(count)+"_";
+            count++;
             output_name+=it->first;
             outlog_printf(2,"Saving this fix to: %s\n",output_name.c_str());
             std::ofstream fout_bak(output_name.c_str(),std::ofstream::out);
