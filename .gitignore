@@ -1,1 +1,7 @@
 tools/*.log
+src/*.o
+src/*.lo
+src/learner
+src/pdiffer
+src/prophet
+src/playground
