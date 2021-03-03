@@ -2100,8 +2100,8 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
 
     bool result;
     outlog_printf(2,"Generating Codes...\n");
-    for (int i=0;i<testers.size();i++)
-        result= TB.test(candidate, testers[2]);
+    // for (int i=0;i<testers.size();i++)
+    result= TB.test(candidate, testers[2]);
 
     outlog_printf(0, "The total number of explored concrete patches: %lu\n", patch_explored);
     for (size_t i = 0; i < testers.size(); i++)
