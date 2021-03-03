@@ -291,12 +291,10 @@ public:
         start_stmt->dump();
         ICE->getType()->dump();
         ConstCharP->dump();*/
-        std::vector<int> args;
-        args.push_back(1);
         if (ctxt->hasSameType(ICE->getType(), ConstCharP)) {
             Expr *E1 = stripParenAndCast(ICE);
             if (llvm::isa<StringLiteral>(E1)) {
-                Expr *placeholder = M.getExprPlaceholder(ctxt, ConstCharP,args);
+                Expr *placeholder = M.getExprPlaceholder(ctxt, ConstCharP,std::map<Expr *,unsigned long>());
                 StmtReplacer R(ctxt, start_stmt);
                 R.addRule(ICE, placeholder);
                 Stmt *S = R.getResult();
@@ -462,8 +460,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         //assert(ori_cond->getType()->isIntegerType());
         Expr *placeholder;
-        std::vector<int> args;
-        args.push_back(1);
+        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
+        std::map<Expr *,unsigned long> args;
+        for (size_t i=0;i<candidateVars.size();i++){
+            // args is sizeof candidateVars, used for memcpy
+            args[candidateVars[i]]=sizeof(candidateVars[i]);
+        }
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
@@ -478,7 +480,6 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         rc.actions.clear();
         rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, S));
         if (!naive) {
-            ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
             rc.actions.push_back(RepairAction(newStatementLoc(loc, S), placeholder,
                         candidateVars));
         }
@@ -500,8 +501,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         //assert(ori_cond->getType()->isIntegerType());
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
         Expr* placeholder;
-        std::vector<int> args;
-        args.push_back(1);
+        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
+        std::map<Expr *,unsigned long> args;
+        for (size_t i=0;i<candidateVars.size();i++){
+            // args is sizeof candidateVars, used for memcpy
+            args[candidateVars[i]]=sizeof(candidateVars[i]);
+        }
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
@@ -514,7 +519,6 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         rc.actions.clear();
         rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, S));
         if (!naive) {
-            ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
             rc.actions.push_back(RepairAction(newStatementLoc(loc, S), placeholder,
                     candidateVars));
         }
@@ -797,8 +801,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         Expr* placeholder;
-        std::vector<int> args;
-        args.push_back(1);
+        ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+        std::map<Expr *,unsigned long> args;
+        for (size_t i=0;i<candidateVars.size();i++){
+            // args is sizeof candidateVars, used for memcpy
+            args[candidateVars[i]]=sizeof(candidateVars[i]);
+        }
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
@@ -811,7 +819,6 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         rc.actions.clear();
         rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, new_IF));
         if (!naive) {
-            ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
             rc.actions.push_back(RepairAction(newStatementLoc(loc, new_IF), placeholder,
                     candidateVars));
         }
@@ -891,8 +898,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         Expr* placeholder;
-        std::vector<int> args;
-        args.push_back(1);
+        ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+        std::map<Expr *,unsigned long> args;
+        for (size_t i=0;i<candidateVars.size();i++){
+            // args is sizeof candidateVars, used for memcpy
+            args[candidateVars[i]]=sizeof(candidateVars[i]);
+        }
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
@@ -908,7 +919,6 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             rc.actions.clear();
             rc.actions.push_back(RepairAction(loc, RepairAction::InsertMutationKind, IFS));
             if (!naive) {
-                ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
                 rc.actions.push_back(RepairAction(newStatementLoc(loc, IFS), placeholder,
                         candidateVars));
             }
