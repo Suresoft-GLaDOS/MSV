@@ -464,7 +464,6 @@ protected:
     }
     BenchProgram::EnvMapTy initEnv(const BenchProgram::EnvMapTy &env){
         BenchProgram::EnvMapTy testEnv=env;
-        outlog_printf(2,"Total ID: %d\n",count);
         for (int i=0;i<count;i++){
             testEnv["__ID"+std::to_string(i)]="0";
         }
@@ -1559,7 +1558,7 @@ class ConditionSynthesisTester : public BasicTester {
             outlog_printf(2, "Testing %lu (with abstract condition)\n", *case_it);
             bool passed = false;
             while (it_cnt < 10) {
-                outlog_printf(2, "\nIteration %lu\n", it_cnt);
+                outlog_printf(2, "Iteration %lu\n", it_cnt);
                 //llvm::errs() << "Testing iteration: " << it_cnt << "\n";
                 passed = P.test(std::string("src"), *case_it, testEnv, false);
                 std::vector<unsigned long> tmp_v = parseBranchRecord();
@@ -1738,6 +1737,48 @@ class ConditionSynthesisTester : public BasicTester {
         return result;
     }
 
+    std::map<int,std::set<int>> getIsNegCase(){
+        std::map<int,std::set<int>> idCasePair;
+        idCasePair.clear();
+        for (std::map<std::string,std::pair<int,int>>::iterator it=idAndCase.begin();
+                it!=idAndCase.end();it++){
+            std::string patch=removeInternalSwitch(it->first);
+            if (patch.find("__is_neg")!=std::string::npos)
+                idCasePair[it->second.first].insert(it->second.second);
+        }
+        return idCasePair;
+    }
+
+    std::vector<BenchProgram::EnvMapTy> setIsNegEnv(BenchProgram::EnvMapTy &env,int id){
+        std::vector<BenchProgram::EnvMapTy> envs;
+        envs.clear();
+        std::vector<BenchProgram::EnvMapTy> testEnv;
+        testEnv.clear();
+        std::map<int,std::set<int>> isNegCase=getIsNegCase();
+        if (includeIds.find(id)!=includeIds.end()){
+            testEnv=setIsNegEnv(env,includeIds[id]);
+        }
+        else{
+            testEnv.push_back(env);
+        }
+
+        for(std::set<int>::iterator it=isNegCase[id].begin();it!=isNegCase[id].end();it++){
+            for(std::vector<BenchProgram::EnvMapTy>::iterator envIt=testEnv.begin();envIt!=testEnv.end();envIt++){
+                (*envIt)["__ID"+std::to_string(id)]=std::to_string(*it);
+                envs.push_back(*envIt);
+            }
+        }
+        return envs;
+    }
+    void dumpEnv(BenchProgram::EnvMapTy env){
+        outlog_printf(2,"Printing IDs:\n");
+        for (BenchProgram::EnvMapTy::iterator it=env.begin();it!=env.end();it++){
+            if (it->first.find("__ID")!=std::string::npos){
+                outlog_printf(2,"%s: %s\n",it->first.c_str(),it->second.c_str());
+            }
+        }
+    }
+
 public:
     ConditionSynthesisTester(BenchProgram &P, bool learning, SourceContextManager &M, bool full_synthesis):
         BasicTester(P, learning, M, false),
@@ -1802,41 +1843,48 @@ public:
             outlog_printf(2, "[%llu] CondTester, Testing instance id %lu:\n", get_timer(), id);
             out_codes(codes, patches);
         }
-        BenchProgram::EnvMapTy testEnv=initEnv(env);
         // We first need to find the flip combination that will make it passes each
         // negative cases, and we store it to negative_records
-        for (std::map<std::string,std::pair<int,int>>::iterator it=idAndCase.begin();
-                it!=idAndCase.end();it++){
-            std::string patch=removeInternalSwitch(it->first);
-            if (patch.find("__is_neg")==std::string::npos) continue;
-            testEnv["__ID"+std::to_string(it->second.first)]=std::to_string(it->second.second);
-            outlog_printf(2,"%s: %s\n",("__ID"+std::to_string(it->second.first)).c_str(),testEnv["__ID"+std::to_string(it->second.first)].c_str());
-            // outlog_printf(2,"Code: %s\n",patch.c_str());
-            std::map<unsigned long, std::vector<unsigned long> > negative_records;
-            outlog_printf(2, "Testing negative cases!\n");
-            if (!testNegativeCases(testEnv, negative_records)) {
-                // codes.clear();
-                // patches.clear();
-                continue;
+        outlog_printf(2,"\nTotal ID: %d\n",count);
+        BenchProgram::EnvMapTy testEnv=initEnv(env);
+        std::map<int,std::set<int>> idCase=getIsNegCase();
+        for (std::map<int,std::set<int>>::iterator it=idCase.begin();
+                it!=idCase.end();it++){
+            outlog_printf(2,"Testing with ID %d\n",it->first);
+            std::vector<BenchProgram::EnvMapTy> envs=setIsNegEnv(testEnv,it->first);
+            if (envs.size()!=0)
+                for(std::vector<BenchProgram::EnvMapTy>::iterator envIt=envs.begin();envIt!=envs.end();envIt++){
+                    // dumpEnv(*envIt);
+                    // outlog_printf(2,"Code: %s\n",patch.c_str());
+                    std::map<unsigned long, std::vector<unsigned long> > negative_records;
+                    outlog_printf(2, "Testing negative cases!\n");
+                    if (!testNegativeCases(testEnv, negative_records)) {
+                        // codes.clear();
+                        // patches.clear();
+                        continue;
+                    }
+                    outlog_printf(2, "Testing positive cases!\n");
+                    if (!BasicTester::testPositiveCases(env)) {
+                        // codes.clear();
+                        // patches.clear();
+                        continue;
+                    }
+                    // // Then we need to collect the variable values at the expr, we store it into
+                    // this caseVMap
+                    outlog_printf(2, "Collect values for post processing!\n");
+                    std::map<unsigned long, std::vector<std::vector<long long> > > caseVMap;
+                    if (!collectValues(env, candidates[id], negative_records, caseVMap)) {
+                        // codes.clear();
+                        // patches.clear();
+                        continue;
+                    }
+                    valueRecords[id] = caseVMap;
+                    branchRecords[id] = negative_records;
+                    outlog_printf(2, "[%llu] Passed!\n", get_timer());
+                }
+            else{
+                outlog_printf(2,"No __is_neg found, pass!\n");
             }
-            outlog_printf(2, "Testing positive cases!\n");
-            if (!BasicTester::testPositiveCases(env)) {
-                // codes.clear();
-                // patches.clear();
-                continue;
-            }
-            // // Then we need to collect the variable values at the expr, we store it into
-            // this caseVMap
-            outlog_printf(2, "Collect values for post processing!\n");
-            std::map<unsigned long, std::vector<std::vector<long long> > > caseVMap;
-            if (!collectValues(env, candidates[id], negative_records, caseVMap)) {
-                // codes.clear();
-                // patches.clear();
-                continue;
-            }
-            valueRecords[id] = caseVMap;
-            branchRecords[id] = negative_records;
-            outlog_printf(2, "[%llu] Passed!\n", get_timer());
         }
         return true;
     }

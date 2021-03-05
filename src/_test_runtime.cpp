@@ -231,8 +231,10 @@ extern "C" int __is_neg(int count, ...) {
             FILE *f = fopen(tmp_file, "w");
             assert( f != NULL );
             fprintf(f, "%lu ", records_sz);
+            fprintf(stderr, "Size: %lu\n",records_sz);
             for (unsigned long i = 0; i < records_sz; i++) {
                 fprintf(f, "%lu", records[i]);
+                fprintf(stderr, "Record: %lu\n",records[i]);
                 if (i != records_sz - 1)
                     fprintf(f, " ");
             }
