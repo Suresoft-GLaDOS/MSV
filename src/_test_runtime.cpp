@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <string>
 #include <cstring>
+#include <cstdlib>
 #include <assert.h>
 #include <stdarg.h>
 #include <unistd.h>
@@ -107,13 +108,14 @@ extern "C" int __get_mutant() {
 #define MAGIC_NUMBER -123456789
 
 extern "C" int __is_neg(int count, ...) {
-    //fprintf(stderr, "fuck\n");
+    // fprintf(stderr, "fuck\n");
     if (!enable) return 0;
     char* is_neg = getenv("IS_NEG");
     if (!is_neg) return 0;
     if (strcmp(is_neg, "1") == 0) {
         char* tmp = getenv("NEG_ARG");
         if (tmp && (strcmp(tmp, "1") == 0)) {
+            fprintf(stderr,"Initing 1!\n");
             char* tmp_file = getenv("TMP_FILE");
             assert(tmp_file);
             // First time here, we need to read a tmp file to know
@@ -168,12 +170,15 @@ extern "C" int __is_neg(int count, ...) {
             }
             current_cnt ++;
 
+            fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
             // We write back immediate
             FILE *f = fopen(tmp_file, "w");
             assert( f != NULL );
             fprintf(f, "%lu ", records_sz);
+            fprintf(stderr, "Size: %lu\n",records_sz);
             for (unsigned long i = 0; i < records_sz; i++) {
                 fprintf(f, "%lu", records[i]);
+                fprintf(stderr, "Record: %lu\n",records[i]);
                 if (i != records_sz - 1)
                     fprintf(f, " ");
             }
@@ -183,6 +188,7 @@ extern "C" int __is_neg(int count, ...) {
         }
         // we always return 1
         else {
+            fprintf(stderr,"Initing 0!\n");
             // First time here, we need to read a tmp file to know
             // where we are
             if (!init) {
@@ -217,6 +223,7 @@ extern "C" int __is_neg(int count, ...) {
             }
             records[records_sz ++] = 1;
             current_cnt ++;
+            fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
 
             char* tmp_file = getenv("TMP_FILE");
             assert(tmp_file);
@@ -270,7 +277,7 @@ extern "C" int __is_neg(int count, ...) {
         va_start(ap, count);
         FILE *f = fopen(tmp_file, "a");
         fprintf(f, "%lu", (unsigned long)count);
-        //fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
+        fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
         for (unsigned long i = 0; i < (unsigned long)count; i++) {
             void* p = va_arg(ap, void*);
             unsigned long sz = va_arg(ap, unsigned long);
@@ -283,7 +290,7 @@ extern "C" int __is_neg(int count, ...) {
                 v = MAGIC_NUMBER;
             }
             fprintf(f, " %lld", v);
-            //fprintf(stderr, "i %lu %lld\n", i, v);
+            fprintf(stderr, "i %lu %lld\n", i, v);
         }
         fprintf(f, "\n");
         fclose(f);
@@ -294,12 +301,15 @@ extern "C" int __is_neg(int count, ...) {
             f = fopen(neg_arg, "w");
             assert( f != NULL );
             fprintf(f, "%lu ", records_sz);
+            fprintf(stderr, "size: %d\n",records_sz);
             for (unsigned long i = 0; i < records_sz; i++) {
                 fprintf(f, "%lu", records[i]);
+                fprintf(stderr, "record: %d\n",records[i]);
                 if (i != records_sz - 1)
                     fprintf(f, " ");
             }
             fprintf(f, "%lu", current_cnt + 1);
+            fprintf(stderr, "count: %d\n",current_cnt+1);
             fclose(f);
 
             assert( current_cnt < records_sz);
@@ -313,5 +323,8 @@ extern "C" int __is_neg(int count, ...) {
 }
 
 extern "C" int __choose(const char *id) {
-  return 0;
+  char *case_num=getenv(id);
+  int result;
+  sscanf(case_num,"%d",&result);
+  return result;
 }

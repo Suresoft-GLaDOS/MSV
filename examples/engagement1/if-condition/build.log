@@ -1,53 +1,14 @@
 ../../../../wrap/gcc -c test.c  -o test.o
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 4 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 4 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 5 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 5 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 6 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 6 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 7 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 7 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 9 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 9 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 14 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 14 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 10 5 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 10 5
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 12 5 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 12 5
-Library: /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0
-Library: /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0
-wrap/pclang
-['../../../../wrap/gcc', '-c', 'test.c', '-o', 'test.o']
-Invoking: clang -E test.c -o /tmp/pclang_45056391.c
-Invoking: clang -Xclang -load -Xclang /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0 -Xclang -plugin -Xclang err-profiler-gen -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/pclang_57067588.c -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/__index.loc -c test.c -o test.o
-Invoking: clang -Xclang -load -Xclang /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0 -Xclang -plugin -Xclang err-profiler-rewrite  -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_57067588.c -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_44809729.c -c /tmp/pclang_45056391.c -o test.o
-invoking: clang -I/root/project/prophet-gpl/wrap/../include -c /tmp/pclang_44809729.c -o test.o
+clang-11: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+wrap/tclang
 ../../../../wrap/gcc test.o  -o prog
-wrap/pclang
-['../../../../wrap/gcc', 'test.o', '-o', 'prog']
-Non-compile cmd: clang -Wl,-rpath=/root/project/prophet-gpl/wrap/../src/.libs -L /root/project/prophet-gpl/wrap/../src/.libs test.o -o prog -lprofile_runtime
+wrap/tclang
 ../../../../wrap/gcc -c test.c  -o test.o
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 4 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 4 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 5 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 5 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 6 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 6 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 7 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 7 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 9 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 9 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 14 3 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 14 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 10 5 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 10 5
-/root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 12 5 /root/project/prophet-gpl/examples/engagement1/if-condition/profile/test.c 12 5
-/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 4 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 4 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 5 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 5 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 6 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 6 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 7 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 7 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 9 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 9 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 14 3 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 14 3
-/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 10 5 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 10 5
-/root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 12 5 /root/project/prophet-gpl/examples/engagement1/if-condition/src/test.c 12 5
-Library: /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0
-Library: /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0
-wrap/pclang
-['../../../../wrap/gcc', '-c', 'test.c', '-o', 'test.o']
-Invoking: clang -E test.c -o /tmp/pclang_04467005.c
-Invoking: clang -Xclang -load -Xclang /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0 -Xclang -plugin -Xclang err-profiler-gen -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/pclang_01400335.c -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/__index.loc -c test.c -o test.o
-Invoking: clang -Xclang -load -Xclang /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so.0 -Xclang -plugin -Xclang err-profiler-rewrite  -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_01400335.c -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_41852553.c -c /tmp/pclang_04467005.c -o test.o
-invoking: clang -I/root/project/prophet-gpl/wrap/../include -c /tmp/pclang_41852553.c -o test.o
+clang-11: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+wrap/tclang
 ../../../../wrap/gcc test.o  -o prog
-wrap/pclang
-['../../../../wrap/gcc', 'test.o', '-o', 'prog']
-Non-compile cmd: clang -Wl,-rpath=/root/project/prophet-gpl/wrap/../src/.libs -L /root/project/prophet-gpl/wrap/../src/.libs test.o -o prog -lprofile_runtime
+wrap/tclang
+clang-11: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
 simple-build
 Path env:  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ../../../../wrap/gcc -c test.c  -o test.o

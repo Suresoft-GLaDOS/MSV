@@ -4,9 +4,9 @@ Processing bresenham.cpp
 Total 433 different repair schemas!!!!
 Total 991 different repair candidate templates for scoring!!!
 Total 625 different partial repair candidate templates!!
-BasicTester pointer: 0x56525849c110
-StringConstTester pointer: 0x565258499880
-CondTester pointer: 0x56525848d6e0
+BasicTester pointer: 0x55cfc52d5030
+StringConstTester pointer: 0x55cfc55815a0
+CondTester pointer: 0x55cfc518be60
 Generating Candidates...
 Candidates size: 433
 Generating Codes...
@@ -15,6 +15,7 @@ Generating Codes...
 Generating patches with CondTester...
 Generating patches...
 Patch Generated!
+ID count: 236
 [7] CondTester, a patch instance with id 0:
 codes size: 1
 res size: 1
@@ -29,15 +30,1050 @@ Testing with Delta-Debugging...
 Building final program...
 Total success macros: 235
 Success to build final program: __fixed_bresenham.cpp
-[66] CondTester, Testing instance id 0:
+[65] CondTester, Testing instance id 0:
+Total ID: 13
+Optimized:                                                                                 switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove:                                                                                 
+Optimized: a = x0;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: a = x0;
+if (y0 < y1)
+                                                                                    
+Optimized: a = x1;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: a = x1;
+if (y0 < y1)
+                                                                                    
+Optimized: a = y0;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: a = y0;
+if (y0 < y1)
+                                                                                    
+Optimized: error = error + deltaerr;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: error = error + deltaerr;
+if (y0 < y1)
+                                                                                    
+Optimized: error = error - 1;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: error = error - 1;
+if (y0 < y1)
+                                                                                    
+__ID8: 6
 Testing negative cases!
-Passed Negative Cases wiht CondTestder!
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID7: 6
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID6: 6
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID4: 6
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID5: 6
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID11: 2
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID10: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID12: 2
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID9: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID0: 4
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID1: 4
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Optimized: if (!__is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
+    if (y0 < y1)
+                                                                                        switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: if (!__is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
+    if (y0 < y1)
+                                                                                        
+__ID3: 6
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID2: 6
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID8: 7
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID8: 8
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID0: 5
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID0: 6
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID1: 5
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID1: 6
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Optimized: if ((y0 < y1) && !__is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: if ((y0 < y1) && !__is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
+                                                                                    
+__ID3: 7
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Optimized: if ((y0 < y1) || __is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: if ((y0 < y1) || __is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
+                                                                                    
+__ID3: 8
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID8: 9
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID8: 10
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID7: 7
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID6: 7
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID4: 7
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID5: 7
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID7: 8
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID6: 8
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID4: 8
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID5: 8
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID11: 3
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID10: 2
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID12: 3
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID9: 2
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID11: 4
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID10: 3
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID12: 4
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID9: 3
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID0: 7
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID1: 7
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Optimized: if (__is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
+    return;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: if (__is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
+    return;
+if (y0 < y1)
+                                                                                    
+__ID3: 9
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+__ID2: 7
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Optimized: if (steep) {
+    a = x0;
+    x0 = y0;
+    y0 = a;
+    a = x1;
+    x1 = y1;
+    y1 = a;
+}
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: if (steep) {
+    a = x0;
+    x0 = y0;
+    y0 = a;
+    a = x1;
+    x1 = y1;
+    y1 = a;
+}
+if (y0 < y1)
+                                                                                    
+Optimized: if (x0 > x1) {
+    a = x0;
+    x0 = x1;
+    x1 = a;
+    a = y0;
+    y0 = y1;
+    y1 = a;
+}
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: if (x0 > x1) {
+    a = x0;
+    x0 = x1;
+    x1 = a;
+    a = y0;
+    y0 = y1;
+    y1 = a;
+}
+if (y0 < y1)
+                                                                                    
+Optimized: if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: if (y0 < y1)
+                                                                                    
+Optimized: throw;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: throw;
+if (y0 < y1)
+                                                                                    
+Optimized: x0 = x1;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: x0 = x1;
+if (y0 < y1)
+                                                                                    
+Optimized: x0 = y0;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: x0 = y0;
+if (y0 < y1)
+                                                                                    
+Optimized: x1 = a;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: x1 = a;
+if (y0 < y1)
+                                                                                    
+Optimized: x1 = y1;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: x1 = y1;
+if (y0 < y1)
+                                                                                    
+Optimized: y0 = a;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: y0 = a;
+if (y0 < y1)
+                                                                                    
+Optimized: y0 = y1;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: y0 = y1;
+if (y0 < y1)
+                                                                                    
+Optimized: y1 = a;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: y1 = a;
+if (y0 < y1)
+                                                                                    
+Optimized: ystep = -1;
+if (y0 < y1)
+                                                                                    switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                
+}
+     else
+       ystep = -1;
+
+After remove: ystep = -1;
+if (y0 < y1)
+                                                                                    
 The total number of explored concrete patches: 0
 Repair process ends without working fix!!
 Total 433 different repair schemas!!!!
 Total 991 different repair candidate templates for scoring!!!
 Total number of compiles: 1
-Total number of test eval: 12
+Total number of test eval: 473

@@ -318,7 +318,6 @@ std::string toString(RepairCandidate candidate){
 }
 std::map<ASTLocTy, std::map<std::string, bool> > CodeRewriter::eliminateAllNewLoc(SourceContextManager &M,
         const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str) {
-    counter=0;
     original_str.clear();
     // We first construct the list of stmt close to each original ASTLocTy
     // and we store it to tmp_map1
@@ -519,6 +518,11 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     // Then we handle each source file saperately
     resCodeSegs.clear();
     resPatches.clear();
+    macroMap.clear();
+    idAndCase.clear();
+    includeIds.clear();
+    int beforeId=0;
+    counter=0;
     for (std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> >::iterator
             it = res2.begin(); it != res2.end(); ++it) {
         std::string src_file = it->first;
@@ -543,16 +547,20 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 cur_start = start;
                 cur_end = end;
                 ASTContext *ctxt = M.getSourceContext(it2->second.filename);
-
                 cur_patch="switch(__choose(\"__ID"+std::to_string(counter++)+"\"))\n{\n";
                 cur_patch+="case "+std::to_string(case_count++)+": {\n";
                 cur_patch += original_str[it2->second];
                 cur_patch+="\nbreak;\n}\n";
+                beforeId=counter-1;
                 for (std::map<std::string,bool>::iterator patch_it=res1[it2->second].begin();
                         patch_it!=res1[it2->second].end();patch_it++){
-                    cur_patch+="#ifdef COMPILE_"+std::to_string(index++)+"\n";
-                    cur_patch+="case "+std::to_string(case_count++)+": {\n";
+                    cur_patch+="#ifdef COMPILE_"+std::to_string(index)+"\n";
+                    cur_patch+="case "+std::to_string(case_count)+": {\n";
                     cur_patch += patch_it->first;
+
+                    macroMap.insert(std::pair<long long,std::pair<int,int>>(index++,std::pair<int,int>(counter-1,case_count)));
+                    idAndCase.insert(std::pair<std::string,std::pair<int,int>>(patch_it->first,std::pair<int,int>(counter-1,case_count++)));
+
                     cur_patch+="\nbreak;\n}\n";
                     if (patch_it->second)
                         cur_patch = "    " + indentPatch(cur_patch, "    ");
@@ -587,22 +595,29 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                         + before_patch + bottom_part;
                 }
                 cur_patch+="\nbreak;\n}\n";
+                includeIds.insert(std::pair<int,int>(counter-1,beforeId));
+                beforeId=counter-1;
 
                 for (std::map<std::string,bool>::iterator patch_it=res1[it2->second].begin();
                         patch_it!=res1[it2->second].end();patch_it++){
-                    cur_patch+="#ifdef COMPILE_"+std::to_string(index++)+"\n";
+                    cur_patch+="#ifdef COMPILE_"+std::to_string(index)+"\n";
                     big_patch = patch_it->first;
-                    cur_patch+="case "+std::to_string(case_count++)+": {\n";
+                    cur_patch+="case "+std::to_string(case_count)+": {\n";
+                    std::string body;
                     if (top_part + mid_part == big_patch.substr(0, cur_end - start)) {
-                        cur_patch += top_part + before_patch + big_patch.substr(cur_end - start);
+                        body = top_part + before_patch + big_patch.substr(cur_end - start);
                     }
                     else {
                         // assert( mid_part + bottom_part ==
                         //         big_patch.substr(cur_start,big_patch.size() - (end - cur_start)));
                         assert(big_patch.find(mid_part)!=std::string::npos);
-                        cur_patch += big_patch.substr(0, big_patch.find(mid_part))
+                        body += big_patch.substr(0, big_patch.find(mid_part))
                             + before_patch + bottom_part;
                     }
+                    macroMap.insert(std::pair<long long,std::pair<int,int>>(index++,std::pair<int,int>(counter-1,case_count)));
+                    idAndCase.insert(std::pair<std::string,std::pair<int,int>>(body,std::pair<int,int>(counter-1,case_count++)));
+                    
+                    cur_patch+=body;
                     cur_patch+="\nbreak;\n}\n";
                     if (patch_it->second)
                         cur_patch = "    " + indentPatch(cur_patch, "    ");
@@ -635,10 +650,13 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 cur_patch+="case "+std::to_string(case_count++)+": {\n";
                 cur_patch += original_str[it2->second];
                 cur_patch+="\nbreak;\n}\n";
+                beforeId=counter-1;
                 for (std::map<std::string,bool>::iterator patch_it=res1[it2->second].begin();
                         patch_it!=res1[it2->second].end();patch_it++){
-                    cur_patch+="#ifdef COMPILE_"+std::to_string(index++)+"\n";
-                    cur_patch+="case "+std::to_string(case_count++)+": {\n";
+                    cur_patch+="#ifdef COMPILE_"+std::to_string(index)+"\n";
+                    cur_patch+="case "+std::to_string(case_count)+": {\n";
+                    macroMap.insert(std::pair<long long,std::pair<int,int>>(index++,std::pair<int,int>(counter-1,case_count)));
+                    idAndCase.insert(std::pair<std::string,std::pair<int,int>>(patch_it->first,std::pair<int,int>(counter-1,case_count++)));
                     cur_patch += patch_it->first;
                     cur_patch+="\nbreak;\n}\n";
                     if (patch_it->second)

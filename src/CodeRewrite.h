@@ -34,6 +34,9 @@ NewCodeMapTy combineCode(const CodeSegTy &codeSegs, const CodeSegTy &patch);
 class CodeRewriter {
     CodeSegTy resCodeSegs, resPatches;
     int counter;
+    std::map<long long,std::pair<int,int>> macroMap;
+    std::map<std::string,std::pair<int,int>> idAndCase;
+    std::map<int,int> includeIds;
 public:
     int index;
     CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi);
@@ -50,6 +53,18 @@ public:
 
     NewCodeMapTy getCodes() {
         return combineCode(resCodeSegs, resPatches);
+    }
+    std::map<long long,std::pair<int,int>> getMacroMap(){
+        return macroMap;
+    }
+    std::map<std::string,std::pair<int,int>> getIdAndCase(){
+        return idAndCase;
+    }
+    std::map<int,int> getIncludeId(){
+        return includeIds;
+    }
+    int getIdCount(){
+        return counter;
     }
 };
 
