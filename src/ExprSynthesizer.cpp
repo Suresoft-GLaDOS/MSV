@@ -1541,8 +1541,10 @@ class ConditionSynthesisTester : public BasicTester {
     }
 
     bool testNegativeCases(const BenchProgram::EnvMapTy &env,
-            std::map<unsigned long, std::vector<unsigned long> > &negative_records) {
+            std::set<std::vector<unsigned long> > &negative_records) {
         negative_records.clear();
+        std::map<unsigned long,std::vector<std::vector<unsigned long>>> successRecords;
+        successRecords.clear();
         // First going to make sure it passes all negative cases
         for (TestCaseSetTy::iterator case_it = negative_cases.begin();
                 case_it != negative_cases.end(); ++case_it) {
@@ -1570,8 +1572,8 @@ class ConditionSynthesisTester : public BasicTester {
                 if (tmp_v.size() == 0) passed = false;
                 if (passed) {
                     outlog_printf(2, "Passed in iteration!\n");
-                    negative_records[*case_it] = tmp_v;
-                    break;
+                    successRecords[*case_it].push_back(tmp_v);
+                    negative_records.insert(tmp_v);
                 }
                 bool has_zero = false;
                 for (size_t i = 0; i < tmp_v.size(); i++)
@@ -1584,7 +1586,7 @@ class ConditionSynthesisTester : public BasicTester {
             }
             // We will going to try all 1 before we finally give up this case
             if (!passed) {
-                outlog_printf(2,"Iteration failed, Retry with NEG_ARG=0!\n");
+                outlog_printf(2,"Trying with NEG_ARG=0!\n");
                 testEnv = env;
                 testEnv.insert(std::make_pair("IS_NEG", "1"));
                 testEnv.insert(std::make_pair("NEG_ARG", "0"));
@@ -1600,7 +1602,8 @@ class ConditionSynthesisTester : public BasicTester {
                         return false;
                     }
                     assert(tmp_v.size() != 0);
-                    negative_records[*case_it] = tmp_v;
+                    successRecords[*case_it].push_back(tmp_v);
+                    negative_records.insert(tmp_v);
                     for (size_t i = 0; i < tmp_v.size(); i++)
                         outlog_printf(5, "Log %lu %lu\n", i, tmp_v[i]);
                 }
@@ -1612,10 +1615,30 @@ class ConditionSynthesisTester : public BasicTester {
             }
         }
         outlog_printf(2, "Passed Negative Cases wiht CondTestder!\n");
-        return true;
+        // Add records that made all negative cases success!
+        for (std::map<unsigned long,std::vector<std::vector<unsigned long>>>::iterator record_it=successRecords.begin();
+                record_it!=successRecords.end();record_it++){
+            for (std::map<unsigned long,std::vector<std::vector<unsigned long>>>::iterator record_it2=successRecords.begin();
+                    record_it2!=successRecords.end();record_it2++){
+                for (std::vector<std::vector<unsigned long>>::iterator it=record_it->second.begin();
+                        it!=record_it->second.end();it++){
+                    bool include=false;
+                    for (std::vector<std::vector<unsigned long>>::iterator it2=record_it2->second.begin();
+                            it2!=record_it2->second.end();it2++){
+                        if(*it==*it2){
+                            include=true;
+                            break;
+                        }
+                    }
+                    if (include==false) negative_records.erase(*it);
+                }
+            }
+        }
+        if (negative_records.empty()) return false;
+        else return true;
     }
 
-    void parseValueRecord(std::vector<std::vector<long long> > &vec, size_t expect_size) {
+    void parseValueRecord(std::vector<std::vector<long long> > &vec) {
         vec.clear();
         FILE* f = fopen(ISNEG_RECORDFILE, "r");
         // Did not hit the condition, so it is an empty set
@@ -1631,7 +1654,6 @@ class ConditionSynthesisTester : public BasicTester {
                 over = true;
                 break;
             }
-            assert( n == expect_size);
             for (size_t i = 0; i < n; i++) {
                 unsigned long tmp;
                 ret = fscanf(f, "%lu", &tmp);
@@ -1643,11 +1665,9 @@ class ConditionSynthesisTester : public BasicTester {
         fclose(f);
     }
 
-    bool collectValues(const BenchProgram::EnvMapTy &env, const RepairCandidate &candidate,
+    bool collectValues(const BenchProgram::EnvMapTy &env,
             std::map<unsigned long, std::vector<unsigned long> > &negative_records,
             std::map<unsigned long, std::vector<std::vector<long long> > > &caseVMap) {
-        size_t condition_idx = getConditionIndex(candidate);
-        const ExprListTy &exps = candidate.actions[condition_idx].candidate_atoms;
         caseVMap.clear();
         // We first deal with the negative cases
         for (TestCaseSetTy::iterator tit = negative_cases.begin();
@@ -1674,7 +1694,7 @@ class ConditionSynthesisTester : public BasicTester {
             }
             // We are going to parse neg.out to get result
             caseVMap[*tit].clear();
-            parseValueRecord(caseVMap[*tit], exps.size());
+            parseValueRecord(caseVMap[*tit]);
         }
         // Then we deal with positive cases
         for (TestCaseSetTy::iterator tit = positive_cases.begin();
@@ -1690,7 +1710,7 @@ class ConditionSynthesisTester : public BasicTester {
             // XXX: This may happen because record takes more time, and it
             // makes the positive case to time out we simply skip if it fails
             if (!passed) continue;
-            parseValueRecord(caseVMap[*tit], exps.size());
+            parseValueRecord(caseVMap[*tit]);
         }
         return true;
     }
@@ -1704,7 +1724,7 @@ class ConditionSynthesisTester : public BasicTester {
             size_t macroEnd=result.rfind("#endif");
             result=result.erase(macroStart,macroEnd-macroStart+6);
 
-            outlog_printf(2,"\nOptimized: %s\n",result.c_str());
+            // outlog_printf(2,"\nOptimized: %s\n",result.c_str());
             position=result.find("switch(__choose");
             if (position==std::string::npos)
                 position=result.find("switch (__choose");
@@ -1733,7 +1753,7 @@ class ConditionSynthesisTester : public BasicTester {
             std::string switchStmt=temp.substr(0,end);
             position=result.find(switchStmt);
             result=result.erase(position,position-switchStmt.size());
-            outlog_printf(2,"After remove: %s\n",result.c_str());
+            // outlog_printf(2,"After remove: %s\n",result.c_str());
         }
         return result;
     }
@@ -1778,6 +1798,21 @@ class ConditionSynthesisTester : public BasicTester {
                 outlog_printf(2,"%s: %s\n",it->first.c_str(),it->second.c_str());
             }
         }
+    }
+    void dumpRecord(std::set<std::vector<unsigned long> > record){
+        size_t debugLevel=2;
+        outlog_printf(debugLevel,"{\n");
+        for (std::set<std::vector<unsigned long> >::iterator it=record.begin();
+                it!=record.end();it++){
+            outlog_printf(debugLevel,"\t[");
+            std::vector<unsigned long> temp=*it;
+            for (std::vector<unsigned long>::iterator it2=temp.begin();
+                    it2!=temp.end();it2++){
+                outlog_printf(debugLevel,"%d, ",*it2);
+            }
+            outlog_printf(debugLevel,"]\n");
+        }
+        outlog_printf(debugLevel,"\n}\n");
     }
 
 public:
@@ -1857,13 +1892,14 @@ public:
                 for(std::vector<BenchProgram::EnvMapTy>::iterator envIt=envs.begin();envIt!=envs.end();envIt++){
                     // dumpEnv(*envIt);
                     // outlog_printf(2,"Code: %s\n",patch.c_str());
-                    std::map<unsigned long, std::vector<unsigned long> > negative_records;
+                    std::set<std::vector<unsigned long> > negative_records;
                     outlog_printf(2, "Testing negative cases!\n");
                     if (!testNegativeCases(*envIt, negative_records)) {
                         // codes.clear();
                         // patches.clear();
                         continue;
                     }
+                    dumpRecord(negative_records);
                     outlog_printf(2, "Testing positive cases!\n");
                     if (!BasicTester::testPositiveCases(testEnv)) {
                         // codes.clear();

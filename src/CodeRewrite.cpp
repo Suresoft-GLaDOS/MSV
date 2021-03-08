@@ -463,53 +463,54 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         //llvm::errs() << "braket: " << it->second.second << "\n";
         ASTLocTy loc = it->first;
         std::string src_file = loc.src_file;
-        if (res2.count(src_file) == 0)
-            res2[src_file].clear();
+        if (tmp_loc.count(src_file) == 0)
+            tmp_loc[src_file].clear();
         std::pair<size_t, size_t> offset_pair = getStartEndOffset(M, src_file, loc);
         //llvm::errs() << "offset: " << offset_pair.first << " " << offset_pair.second << "\n";
         // We reverse the start and end for sorting purpose
-        res2[src_file].insert(std::make_pair(std::make_pair(offset_pair.second,
+        tmp_loc[src_file].insert(std::make_pair(std::make_pair(offset_pair.second,
                         offset_pair.first), loc));
     }
 
     // Sorting res2 with start location
-    if (false){
+    if (true){
         for (std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> >::iterator        
-            it = tmp_loc.begin(); it != tmp_loc.end(); ++it) {
-
-            std::vector<std::pair<size_t,size_t>> vector_loc;
-            std::vector<ASTLocTy> vector_astloc;
-            vector_loc.clear();
-            vector_astloc.clear();
+                it = tmp_loc.begin(); it != tmp_loc.end(); ++it) {
+            std::vector<std::pair<size_t,size_t>> locationVec;
+            std::vector<ASTLocTy> valueVec;
+            locationVec.clear();
+            valueVec.clear();
             for (std::map<std::pair<size_t, size_t>, ASTLocTy>::iterator it2 = it->second.begin();
-                it2 != it->second.end(); ++it2) {
-                vector_loc.push_back(it2->first);
-                vector_astloc.push_back(it2->second);
+                    it2 != it->second.end(); ++it2) {
+                locationVec.push_back(it2->first);
+                valueVec.push_back(it2->second);
             }
-            int i,j;
-            std::pair<size_t,size_t> key;
-            ASTLocTy key_loc;
-            for (i=1;i<vector_loc.size();i++){
-                key=vector_loc[i];
-                key_loc=vector_astloc[i];
-                for (j=i-1;j>=0;j--){
-                    if (vector_loc[j].second>key.second){
-                        vector_loc[j+1]=vector_loc[j];
-                        vector_astloc[j+1]=vector_astloc[j];
+
+            for (int i=0;i<locationVec.size();i++) {
+                for (int j=i-1;j>=0;j--){
+                    if (locationVec[j].second>locationVec[i].second){
+                        std::pair<size_t,size_t> temp=locationVec[i];
+                        locationVec[i]=locationVec[j];
+                        locationVec[j]=temp;
+
+                        ASTLocTy temp2=valueVec[i];
+                        valueVec[i]=valueVec[j];
+                        valueVec[j]=temp2;
                     }
                     else{
                         break;
                     }
                 }
-                vector_loc[j+1]=key;
-                vector_astloc[j+1]=key_loc;
             }
+                
             outlog_printf(2,"test\n");
 
             std::map<std::pair<size_t, size_t>, ASTLocTy> new_map;
             new_map.clear();
-            for (int k=0;k<vector_loc.size();k++){
-                new_map[vector_loc[k]]=vector_astloc[k];
+            for (int k=0;k<locationVec.size();k++){
+                std::pair<size_t,size_t> temp=locationVec[k];
+                ASTLocTy temp2=valueVec[k];
+                new_map[temp]=temp2;
             }
             res2[it->first]=new_map;
         }
@@ -534,6 +535,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         long long cur_start = -1;
         long long cur_end = -1;
         long long last_end = 0;
+        // FIXME: 코드 생성 구조를 바꿈. 자료구조를 만들어 원래 코드와 패치들을 저장한 후, 실제 반영할 때 switch-case문 삽입
+        // 중복 switch문을 제거하여 중첩될 경우 하나의 switch에 모든 경우의 수 부여
         for (std::map<std::pair<size_t, size_t>, ASTLocTy>::iterator it2 = it->second.begin();
                 it2 != it->second.end(); ++it2) {
             // NOTE: The start and the end are reversed
@@ -541,7 +544,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             long long start = it2->first.second;
             long long end = it2->first.first;
             int case_count=0;
-            //assert( start >= last_end);
+            // assert( start >= last_end);
             if (start < last_end) continue;
             if (cur_start == -1) {
                 cur_start = start;
@@ -584,6 +587,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 // outlog_printf(2,"mid: %s\n",mid_part.c_str());
                 // outlog_printf(2,"bottom: %s\n",bottom_part.c_str());
                 // outlog_printf(2,"before: %s\n",before_patch.c_str());
+                // outlog_printf(2,"big: %s\n",big_patch.c_str());
                 cur_patch="switch(__choose(\"__ID"+std::to_string(counter++)+"\"))\n{\n";
                 cur_patch+="case "+std::to_string(case_count++)+": {\n";
                 // cur_patch+="fprintf(stderr,\"ID %d: %d\\n\","+std::to_string(counter-1)+","+std::to_string(case_count-1)+");";

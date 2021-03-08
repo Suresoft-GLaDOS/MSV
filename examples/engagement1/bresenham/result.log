@@ -1,3 +1,4 @@
+rm: cannot remove '__fixed_*': No such file or directory
 Initialize the program!
 Generating repair candidates!
 Processing bresenham.cpp
@@ -6,947 +7,906 @@ warning: /root/project/prophet-gpl/wrap/g++: 'linker' input unused [-Wunused-com
 Total 433 different repair schemas!!!!
 Total 991 different repair candidate templates for scoring!!!
 Total 625 different partial repair candidate templates!!
-BasicTester pointer: 0x55f7e78ba030
-StringConstTester pointer: 0x55f7e764b960
-CondTester pointer: 0x55f7e7770e60
+BasicTester pointer: 0x559ccb8e5f80
+StringConstTester pointer: 0x559ccb3d9960
+CondTester pointer: 0x559ccb4fee60
 Generating Candidates...
 Candidates size: 433
 Generating Codes...
-[7] Preprocess the following candidate with CondTester:
+[4] Preprocess the following candidate with CondTester:
 433 Candidates
 Generating patches with CondTester...
+test
 Generating patches...
-Patch Generated!
-ID count: 236
-[7] CondTester, a patch instance with id 0:
-codes size: 1
-res size: 1
-result size: 432
-Begin building test
-Total macros: 236
-Saving this fix to: __fixed_bresenham.cpp
-Building with no macros...
-Trying to build with all macros...
-Build failed, Trying to find fail macros...
-Testing with Delta-Debugging...
-Run with optimization: 18
-Fail macros: [75]
+top: if (y0 < y1)
+       
+mid: ystep = 1;
 
-Building final program...
-Total success macros: 235
-Success to build final program: __fixed_bresenham.cpp
-[59] CondTester, Testing instance id 0:
+bottom:      else
+       ystep = -1;
 
-Total ID: 13
-Testing with ID 0
-Printing IDs:
-__ID0: 4
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 5
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 6
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 7
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 1
-Printing IDs:
-__ID0: 0
-__ID1: 4
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 5
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 6
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 7
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 2
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 6
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 7
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 3
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 6
-__ID3: 6
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 7
-__ID3: 6
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 6
-__ID3: 7
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 7
-__ID3: 7
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 6
-__ID3: 8
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 7
-__ID3: 8
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 6
-__ID3: 9
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 7
-__ID3: 9
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 4
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 6
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 7
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 8
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 5
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 6
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 7
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 8
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 6
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 6
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 7
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 8
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 7
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 6
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 7
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 8
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 8
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 6
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 7
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 8
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 9
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 10
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 9
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 1
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 2
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 3
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 10
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 1
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 2
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 3
-__ID11: 0
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 11
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 2
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 3
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 4
-__ID12: 0
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing with ID 12
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 2
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 3
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID10: 0
-__ID11: 0
-__ID12: 4
-__ID2: 0
-__ID3: 0
-__ID4: 0
-__ID5: 0
-__ID6: 0
-__ID7: 0
-__ID8: 0
-__ID9: 0
-Testing negative cases!
-Testing 1 (with abstract condition)
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-The total number of explored concrete patches: 0
-Repair process ends without working fix!!
-Total 433 different repair schemas!!!!
-Total 991 different repair candidate templates for scoring!!!
-Total number of compiles: 1
-Total number of test eval: 94
+before:                                                                                 switch(__choose("__ID2"))
+                                                                                {
+                                                                                case 0: {
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                                #ifdef COMPILE_34
+                                                                                case 1: {
+                                                                                a = x0;
+                                                                                ystep = 1;
+                                                                                
+                                                                                break;
+                                                                                }
+                                                                            #endif
+                                                                            #ifdef COMPILE_35
+                                                                            case 2: {
+                                                                            a = x1;
+                                                                            ystep = 1;
+                                                                            
+                                                                            break;
+                                                                            }
+                                                                        #endif
+                                                                        #ifdef COMPILE_36
+                                                                        case 3: {
+                                                                        a = y0;
+                                                                        ystep = 1;
+                                                                        
+                                                                        break;
+                                                                        }
+                                                                    #endif
+                                                                    #ifdef COMPILE_37
+                                                                    case 4: {
+                                                                    error = error + deltaerr;
+                                                                    ystep = 1;
+                                                                    
+                                                                    break;
+                                                                    }
+                                                                #endif
+                                                                #ifdef COMPILE_38
+                                                                case 5: {
+                                                                error = error - 1;
+                                                                ystep = 1;
+                                                                
+                                                                break;
+                                                                }
+                                                            #endif
+                                                            #ifdef COMPILE_39
+                                                            case 6: {
+                                                            if (!__is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
+                                                                ystep = 1;
+                                                            
+                                                            break;
+                                                            }
+                                                        #endif
+                                                        #ifdef COMPILE_40
+                                                        case 7: {
+                                                        if (__is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
+                                                            return;
+                                                        ystep = 1;
+                                                        
+                                                        break;
+                                                        }
+                                                    #endif
+                                                    #ifdef COMPILE_41
+                                                    case 8: {
+                                                    if (steep) {
+                                                        a = x0;
+                                                        x0 = y0;
+                                                        y0 = a;
+                                                        a = x1;
+                                                        x1 = y1;
+                                                        y1 = a;
+                                                    }
+                                                    ystep = 1;
+                                                    
+                                                    break;
+                                                    }
+                                                #endif
+                                                #ifdef COMPILE_42
+                                                case 9: {
+                                                if (x0 > x1) {
+                                                    a = x0;
+                                                    x0 = x1;
+                                                    x1 = a;
+                                                    a = y0;
+                                                    y0 = y1;
+                                                    y1 = a;
+                                                }
+                                                ystep = 1;
+                                                
+                                                break;
+                                                }
+                                            #endif
+                                            #ifdef COMPILE_43
+                                            case 10: {
+                                            if (y0 < y1)
+                                                ystep = 1;
+                                            else
+                                                ystep = -1;
+                                            ystep = 1;
+                                            
+                                            break;
+                                            }
+                                        #endif
+                                        #ifdef COMPILE_44
+                                        case 11: {
+                                        throw;
+                                        ystep = 1;
+                                        
+                                        break;
+                                        }
+                                    #endif
+                                    #ifdef COMPILE_45
+                                    case 12: {
+                                    x0 = x1;
+                                    ystep = 1;
+                                    
+                                    break;
+                                    }
+                                #endif
+                                #ifdef COMPILE_46
+                                case 13: {
+                                x0 = y0;
+                                ystep = 1;
+                                
+                                break;
+                                }
+                            #endif
+                            #ifdef COMPILE_47
+                            case 14: {
+                            x1 = a;
+                            ystep = 1;
+                            
+                            break;
+                            }
+                        #endif
+                        #ifdef COMPILE_48
+                        case 15: {
+                        x1 = y1;
+                        ystep = 1;
+                        
+                        break;
+                        }
+                    #endif
+                    #ifdef COMPILE_49
+                    case 16: {
+                    y0 = a;
+                    ystep = 1;
+                    
+                    break;
+                    }
+                #endif
+                #ifdef COMPILE_50
+                case 17: {
+                y0 = y1;
+                ystep = 1;
+                
+                break;
+                }
+            #endif
+            #ifdef COMPILE_51
+            case 18: {
+            y1 = a;
+            ystep = 1;
+            
+            break;
+            }
+        #endif
+        #ifdef COMPILE_52
+        case 19: {
+        ystep = -1;
+        ystep = 1;
+        
+        break;
+        }
+    #endif
+    #ifdef COMPILE_53
+    case 20: {
+    ystep = 1;
+    ystep = 1;
+    
+    break;
+    }
+#endif
+}
+
+big: if (y0 < y1)
+    ystep = 1;
+else
+    ystep = -1;
+
+top: if (steep){
+	   var.first=y;
+	   var.second=x;
+	   line.push_back(var);}
+	 else{
+	   var.first=x;
+	   var.second=y;
+	   
+mid: line.push_back(var);
+bottom: }
+
+before: switch(__choose("__ID6"))
+{
+case 0: {
+line.push_back(var);
+
+break;
+}
+#ifdef COMPILE_132
+case 1: {
+a = x0;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_133
+case 2: {
+a = x1;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_134
+case 3: {
+a = y0;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_135
+case 4: {
+error = error + deltaerr;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_136
+case 5: {
+error = error - 1;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_137
+case 6: {
+if (!__is_neg(13, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8, var.first, 8, var.second, 8))
+    line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_138
+case 7: {
+if (__is_neg(13, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8, var.first, 8, var.second, 8))
+    break;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_139
+case 8: {
+if (__is_neg(13, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8, var.first, 8, var.second, 8))
+    return;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_140
+case 9: {
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_141
+case 10: {
+if (steep) {
+    a = x0;
+    x0 = y0;
+    y0 = a;
+    a = x1;
+    x1 = y1;
+    y1 = a;
+}
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_142
+case 11: {
+if (steep) {
+    var.first = y;
+    var.second = x;
+    line.push_back(var);
+} else {
+    var.first = x;
+    var.second = y;
+    line.push_back(var);
+}
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_143
+case 12: {
+if (x0 > x1) {
+    a = x0;
+    x0 = x1;
+    x1 = a;
+    a = y0;
+    y0 = y1;
+    y1 = a;
+}
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_144
+case 13: {
+if (y0 < y1)
+    ystep = 1;
+else
+    ystep = -1;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_145
+case 14: {
+line.push_back(var);
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_146
+case 15: {
+throw;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_147
+case 16: {
+var.first = x;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_148
+case 17: {
+var.first = y;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_149
+case 18: {
+var.second = x;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_150
+case 19: {
+var.second = y;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_151
+case 20: {
+x0 = x1;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_152
+case 21: {
+x0 = y0;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_153
+case 22: {
+x1 = a;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_154
+case 23: {
+x1 = y1;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_155
+case 24: {
+y0 = a;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_156
+case 25: {
+y0 = y1;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_157
+case 26: {
+y1 = a;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_158
+case 27: {
+ystep = -1;
+line.push_back(var);
+
+break;
+}
+#endif
+#ifdef COMPILE_159
+case 28: {
+ystep = 1;
+line.push_back(var);
+
+break;
+}
+#endif
+}
+
+big: if (steep) {
+    var.first = y;
+    var.second = x;
+    line.push_back(var);
+} else {
+    var.first = x;
+    var.second = y;
+    line.push_back(var);
+}
+
+top: for (int x = x0;x < x1;x++)
+       {
+	 if (steep){
+	   var.first=y;
+	   var.second=x;
+	   line.push_back(var);}
+	 else{
+	   var.first=x;
+	   var.second=y;
+	   line.push_back(var);}
+	 error = error + deltaerr;
+	 
+mid: if (error >= 0.5)
+	   {
+	     y += ystep;
+	     error = error - 1;
+	   }
+
+bottom:        }
+
+before: switch(__choose("__ID9"))
+{
+case 0: {
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#ifdef COMPILE_219
+case 1: {
+a = x0;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_220
+case 2: {
+a = x1;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_221
+case 3: {
+a = y0;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_222
+case 4: {
+error = error + deltaerr;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_223
+case 5: {
+error = error - 1;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_224
+case 6: {
+if (!__is_neg(11, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8))
+    if (error >= 0.5) {
+        y += ystep;
+        error = error - 1;
+    }
+
+break;
+}
+#endif
+#ifdef COMPILE_225
+case 7: {
+if ((error >= 0.5) && !__is_neg(11, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8)) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_226
+case 8: {
+if ((error >= 0.5) || __is_neg(11, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8)) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_227
+case 9: {
+if (__is_neg(11, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8))
+    break;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_228
+case 10: {
+if (__is_neg(11, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8))
+    return;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_229
+case 11: {
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_230
+case 12: {
+if (steep) {
+    a = x0;
+    x0 = y0;
+    y0 = a;
+    a = x1;
+    x1 = y1;
+    y1 = a;
+}
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_231
+case 13: {
+if (steep) {
+    var.first = y;
+    var.second = x;
+    line.push_back(var);
+} else {
+    var.first = x;
+    var.second = y;
+    line.push_back(var);
+}
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_232
+case 14: {
+if (x0 > x1) {
+    a = x0;
+    x0 = x1;
+    x1 = a;
+    a = y0;
+    y0 = y1;
+    y1 = a;
+}
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_233
+case 15: {
+if (y0 < y1)
+    ystep = 1;
+else
+    ystep = -1;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_234
+case 16: {
+line.push_back(var);
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_235
+case 17: {
+throw;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_236
+case 18: {
+var.first = x;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_237
+case 19: {
+var.first = y;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_238
+case 20: {
+var.second = x;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_239
+case 21: {
+var.second = y;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_240
+case 22: {
+x0 = x1;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_241
+case 23: {
+x0 = y0;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_242
+case 24: {
+x1 = a;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_243
+case 25: {
+x1 = y1;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_244
+case 26: {
+y0 = a;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_245
+case 27: {
+y0 = y1;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_246
+case 28: {
+y1 = a;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_247
+case 29: {
+ystep = -1;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_248
+case 30: {
+ystep = 1;
+if (error >= 0.5) {
+    y += ystep;
+    error = error - 1;
+}
+
+break;
+}
+#endif
+}
+
+big: for (int x = x0; x < x1; x++) {
+    if (steep) {
+        var.first = y;
+        var.second = x;
+        line.push_back(var);
+    } else {
+        var.first = x;
+        var.second = y;
+        line.push_back(var);
+    }
+    error = error + deltaerr;
+    if (error >= 0.5) {
+        y += ystep;
+        error = error - 1;
+    }
+}
+
+prophet: CodeRewrite.cpp:598: CodeRewriter::CodeRewriter(SourceContextManager&, const std::vector<RepairCandidate>&, std::vector<std::set<std::map<long unsigned int, clang::Expr*> >*>*): Assertion `big_patch.find(mid_part)!=std::string::npos' failed.
+./run.sh: line 3:  6559 Aborted                 (core dumped) prophet run.conf -cpp -skip-verify -r . -consider-all -first-n-loc 200 -feature-para ../../../crawler/para-all.out

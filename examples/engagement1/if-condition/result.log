@@ -6,41 +6,35 @@ Generating repair candidates!
 Processing test.c
 going to directory /root/project/prophet-gpl/examples/engagement1/if-condition/src
 warning: ../../../../wrap/gcc: 'linker' input unused [-Wunused-command-line-argument]
-Total 118 different repair schemas!!!!
-Total 218 different repair candidate templates for scoring!!!
-Total 122 different partial repair candidate templates!!
-BasicTester pointer: 0x55582cd09470
-StringConstTester pointer: 0x55582cc281c0
-CondTester pointer: 0x55582cd0b310
+Total 108 different repair schemas!!!!
+Total 193 different repair candidate templates for scoring!!!
+Total 104 different partial repair candidate templates!!
+BasicTester pointer: 0x557dd185d400
+StringConstTester pointer: 0x557dd177c1c0
+CondTester pointer: 0x557dd18632b0
 Generating Candidates...
-Candidates size: 118
+Candidates size: 108
 Generating Codes...
-[2] Preprocess the following candidate with CondTester:
-118 Candidates
+[1] Preprocess the following candidate with CondTester:
+108 Candidates
 Generating patches with CondTester...
+test
 Generating patches...
 Patch Generated!
-ID count: 96
-[2] CondTester, a patch instance with id 0:
+ID count: 86
+[1] CondTester, a patch instance with id 0:
 codes size: 1
 res size: 1
-result size: 117
+result size: 107
 Begin building test
-Total macros: 96
+Total macros: 86
 Saving this fix to: __fixed_test.c
 Building with no macros...
 Trying to build with all macros...
-Build failed, Trying to find fail macros...
-Testing with Delta-Debugging...
-Run with optimization: 15
-Fail macros: [85]
+Build Success!
+[2] CondTester, Testing instance id 0:
 
-Building final program...
-Total success macros: 95
-Success to build final program: __fixed_test.c
-[6] CondTester, Testing instance id 0:
-
-Total ID: 5
+Total ID: 4
 Testing with ID 0
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -49,7 +43,6 @@ __ID0: 8
 __ID1: 0
 __ID2: 0
 __ID3: 0
-__ID4: 0
 Iteration 0
 Initing 1!
 Current cnt, Record size: 1 1
@@ -64,9 +57,13 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTestder!
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
-[6] Passed!
+[2] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -74,7 +71,6 @@ __ID0: 9
 __ID1: 0
 __ID2: 0
 __ID3: 0
-__ID4: 0
 Iteration 0
 Initing 1!
 Current cnt, Record size: 1 1
@@ -87,7 +83,7 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
+Trying with NEG_ARG=0!
 Initing 0!
 Current cnt, Record size: 1 1
 Size: 1
@@ -100,7 +96,6 @@ __ID0: 10
 __ID1: 0
 __ID2: 0
 __ID3: 0
-__ID4: 0
 Iteration 0
 Initing 1!
 Current cnt, Record size: 1 1
@@ -113,7 +108,7 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
+Trying with NEG_ARG=0!
 Initing 0!
 Current cnt, Record size: 1 1
 Size: 1
@@ -127,7 +122,6 @@ __ID0: 0
 __ID1: 36
 __ID2: 0
 __ID3: 0
-__ID4: 0
 Iteration 0
 Initing 1!
 Current cnt, Record size: 1 1
@@ -140,7 +134,7 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
+Trying with NEG_ARG=0!
 Initing 0!
 Current cnt, Record size: 1 1
 Size: 1
@@ -153,7 +147,6 @@ __ID0: 0
 __ID1: 37
 __ID2: 0
 __ID3: 0
-__ID4: 0
 Iteration 0
 Initing 1!
 Current cnt, Record size: 1 1
@@ -166,7 +159,7 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
+Trying with NEG_ARG=0!
 Initing 0!
 Current cnt, Record size: 1 1
 Size: 1
@@ -179,7 +172,6 @@ __ID0: 0
 __ID1: 38
 __ID2: 0
 __ID3: 0
-__ID4: 0
 Iteration 0
 Initing 1!
 Current cnt, Record size: 1 1
@@ -192,7 +184,7 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
+Trying with NEG_ARG=0!
 Initing 0!
 Current cnt, Record size: 1 1
 Size: 1
@@ -206,24 +198,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 6
 __ID3: 0
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -232,24 +208,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 7
 __ID3: 0
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -258,24 +218,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 8
 __ID3: 0
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing with ID 3
 Testing negative cases!
@@ -285,67 +229,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 6
 __ID3: 5
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 0
-Branch 0: 1
-Branch 1: 0
-Iteration 3
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 1
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 1
-Branch 0: 1
-Branch 1: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Initing 0!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -354,67 +239,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 7
 __ID3: 5
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 0
-Branch 0: 1
-Branch 1: 0
-Iteration 3
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 1
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 1
-Branch 0: 1
-Branch 1: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Initing 0!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -423,67 +249,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 8
 __ID3: 5
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 0
-Branch 0: 1
-Branch 1: 0
-Iteration 3
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 1
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 1
-Branch 0: 1
-Branch 1: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Initing 0!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -492,43 +259,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 6
 __ID3: 6
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -537,43 +269,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 7
 __ID3: 6
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -582,43 +279,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 8
 __ID3: 6
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -627,24 +289,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 6
 __ID3: 7
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -653,24 +299,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 7
 __ID3: 7
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -679,24 +309,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 8
 __ID3: 7
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -705,43 +319,9 @@ __ID0: 0
 __ID1: 0
 __ID2: 6
 __ID3: 8
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-Testing positive cases!
-Passed Positive Cases
-[10] Passed!
+Trying with NEG_ARG=0!
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -749,43 +329,9 @@ __ID0: 0
 __ID1: 0
 __ID2: 7
 __ID3: 8
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-Testing positive cases!
-Passed Positive Cases
-[10] Passed!
+Trying with NEG_ARG=0!
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -793,43 +339,9 @@ __ID0: 0
 __ID1: 0
 __ID2: 8
 __ID3: 8
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-Testing positive cases!
-Passed Positive Cases
-[10] Passed!
+Trying with NEG_ARG=0!
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -837,43 +349,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 6
 __ID3: 9
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -882,43 +359,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 7
 __ID3: 9
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -927,43 +369,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 8
 __ID3: 9
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -972,43 +379,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 6
 __ID3: 10
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -1017,43 +389,8 @@ __ID0: 0
 __ID1: 0
 __ID2: 7
 __ID3: 10
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Trying with NEG_ARG=0!
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -1062,81 +399,12 @@ __ID0: 0
 __ID1: 0
 __ID2: 8
 __ID3: 10
-__ID4: 0
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Iteration failed, Retry with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing with ID 4
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 0
-__ID3: 0
-__ID4: 5
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 0
-__ID3: 0
-__ID4: 6
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 0
-__ID3: 0
-__ID4: 7
-Iteration 0
-Iteration failed, Retry with NEG_ARG=0!
+Trying with NEG_ARG=0!
 Finally tests failed
 The total number of explored concrete patches: 0
 Repair process ends without working fix!!
-Total 118 different repair schemas!!!!
-Total 218 different repair candidate templates for scoring!!!
+Total 108 different repair schemas!!!!
+Total 193 different repair candidate templates for scoring!!!
 Total number of compiles: 1
-Total number of test eval: 109
+Total number of test eval: 61
