@@ -1039,7 +1039,7 @@ if __name__ == '__main__':
         def __init__(self,script_file,full_macros):
             self.file=script_file
             DD2.__init__(self,full_macros)
-            self.debug_dd=True
+            # self.debug_dd=True
 
     macro_list=range(macros)
     dd_test=BuildTest(build_cmd,macro_list)
@@ -1053,17 +1053,17 @@ if __name__ == '__main__':
     print "Fail macros:",fail
     print
 
-    dd_test.success=[]
-    dd_test.run=0
-    dd_test.use_cal=False
-    macro_list=range(macros)
-    dd_test.search(macro_list)
-    print "Run without optimization:",dd_test.run
-    fail=macro_list
-    for i in dd_test.success:
-        fail.remove(i)
-    print "Fail macros:",fail
-    print
+    # dd_test.success=[]
+    # dd_test.run=0
+    # dd_test.use_cal=False
+    # macro_list=range(macros)
+    # dd_test.search(macro_list)
+    # print "Run without optimization:",dd_test.run
+    # fail=macro_list
+    # for i in dd_test.success:
+    #     fail.remove(i)
+    # print "Fail macros:",fail
+    # print
 
     home=os.path.expanduser("~")
     os.chdir(home)

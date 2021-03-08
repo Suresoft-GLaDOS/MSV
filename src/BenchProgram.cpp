@@ -530,7 +530,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+std::to_string(max_macro);
             if (!src_dirs["src"]) cmd+=" -t "+build_cmd;
             if (dep_dir!="") cmd+=" -p "+dep_dir;
-            cmd+=" > DD.log";
+            // cmd+=" > DD.log";
 
             if (timeout_limit == 0)
                 ret = system(cmd.c_str());

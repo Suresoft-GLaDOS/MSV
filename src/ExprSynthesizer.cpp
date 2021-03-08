@@ -1557,6 +1557,7 @@ class ConditionSynthesisTester : public BasicTester {
             assert( ret == 0);
             outlog_printf(2, "Testing %lu (with abstract condition)\n", *case_it);
             bool passed = false;
+            dumpEnv(testEnv);
             while (it_cnt < 10) {
                 outlog_printf(2, "Iteration %lu\n", it_cnt);
                 //llvm::errs() << "Testing iteration: " << it_cnt << "\n";
@@ -1564,11 +1565,11 @@ class ConditionSynthesisTester : public BasicTester {
                 std::vector<unsigned long> tmp_v = parseBranchRecord();
                 writeBranchRecordTerminator();
                 for (size_t i = 0; i < tmp_v.size(); i++)
-                    outlog_printf(5, "Branch %lu: %lu\n", i, tmp_v[i]);
+                    outlog_printf(2, "Branch %lu: %lu\n", i, tmp_v[i]);
                 // We hit some strange error, we just assume we cannot pass this case
                 if (tmp_v.size() == 0) passed = false;
                 if (passed) {
-                    outlog_printf(5, "Passed in iteration!\n");
+                    outlog_printf(2, "Passed in iteration!\n");
                     negative_records[*case_it] = tmp_v;
                     break;
                 }
@@ -1657,7 +1658,7 @@ class ConditionSynthesisTester : public BasicTester {
             testEnv.insert(std::make_pair("TMP_FILE", ISNEG_RECORDFILE));
             //FIXME: It triggers non-deterministic things, get out!
             if (negative_records.find(*tit) == negative_records.end()) {
-                fprintf(stderr, "Collect value failed on case %lu!\n", *tit);
+                fprintf(stderr, "Error in case map, failed on case %lu!\n", *tit);
                 return false;
             }
             writeBranchRecord(negative_records, *tit);
@@ -1703,7 +1704,7 @@ class ConditionSynthesisTester : public BasicTester {
             size_t macroEnd=result.rfind("#endif");
             result=result.erase(macroStart,macroEnd-macroStart+6);
 
-            // outlog_printf(2,"Optimized: %s\n",result.c_str());
+            outlog_printf(2,"\nOptimized: %s\n",result.c_str());
             position=result.find("switch(__choose");
             if (position==std::string::npos)
                 position=result.find("switch (__choose");
@@ -1732,7 +1733,7 @@ class ConditionSynthesisTester : public BasicTester {
             std::string switchStmt=temp.substr(0,end);
             position=result.find(switchStmt);
             result=result.erase(position,position-switchStmt.size());
-            // outlog_printf(2,"After remove: %s\n",result.c_str());
+            outlog_printf(2,"After remove: %s\n",result.c_str());
         }
         return result;
     }
@@ -1858,28 +1859,28 @@ public:
                     // outlog_printf(2,"Code: %s\n",patch.c_str());
                     std::map<unsigned long, std::vector<unsigned long> > negative_records;
                     outlog_printf(2, "Testing negative cases!\n");
-                    if (!testNegativeCases(testEnv, negative_records)) {
+                    if (!testNegativeCases(*envIt, negative_records)) {
                         // codes.clear();
                         // patches.clear();
                         continue;
                     }
                     outlog_printf(2, "Testing positive cases!\n");
-                    if (!BasicTester::testPositiveCases(env)) {
+                    if (!BasicTester::testPositiveCases(testEnv)) {
                         // codes.clear();
                         // patches.clear();
                         continue;
                     }
                     // // Then we need to collect the variable values at the expr, we store it into
                     // this caseVMap
-                    outlog_printf(2, "Collect values for post processing!\n");
-                    std::map<unsigned long, std::vector<std::vector<long long> > > caseVMap;
-                    if (!collectValues(env, candidates[id], negative_records, caseVMap)) {
-                        // codes.clear();
-                        // patches.clear();
-                        continue;
-                    }
-                    valueRecords[id] = caseVMap;
-                    branchRecords[id] = negative_records;
+                    // outlog_printf(2, "Collect values for post processing!\n");
+                    // std::map<unsigned long, std::vector<std::vector<long long> > > caseVMap;
+                    // if (!collectValues(*envIt, candidates[id], negative_records, caseVMap)) {
+                    //     // codes.clear();
+                    //     // patches.clear();
+                    //     continue;
+                    // }
+                    // valueRecords[id] = caseVMap;
+                    // branchRecords[id] = negative_records;
                     outlog_printf(2, "[%llu] Passed!\n", get_timer());
                 }
             else{

@@ -4,9 +4,9 @@ Processing bresenham.cpp
 Total 433 different repair schemas!!!!
 Total 991 different repair candidate templates for scoring!!!
 Total 625 different partial repair candidate templates!!
-BasicTester pointer: 0x55bbf8ac4030
-StringConstTester pointer: 0x55bbf8855960
-CondTester pointer: 0x55bbf897ae60
+BasicTester pointer: 0x55f7e78ba030
+StringConstTester pointer: 0x55f7e764b960
+CondTester pointer: 0x55f7e7770e60
 Generating Candidates...
 Candidates size: 433
 Generating Codes...
@@ -30,1081 +30,913 @@ Testing with Delta-Debugging...
 Building final program...
 Total success macros: 235
 Success to build final program: __fixed_bresenham.cpp
-[66] CondTester, Testing instance id 0:
+[59] CondTester, Testing instance id 0:
+
 Total ID: 13
-__ID8: 6
+Testing with ID 0
+Printing IDs:
+__ID0: 4
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
-__ID7: 6
+Printing IDs:
+__ID0: 5
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
-__ID6: 6
+Printing IDs:
+__ID0: 6
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
+Printing IDs:
+__ID0: 7
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Testing with ID 1
+Printing IDs:
+__ID0: 0
+__ID1: 4
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 5
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 6
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 7
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Testing with ID 2
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 6
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 7
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Testing with ID 3
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 6
+__ID3: 6
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 7
+__ID3: 6
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 6
+__ID3: 7
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 7
+__ID3: 7
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 6
+__ID3: 8
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 7
+__ID3: 8
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 6
+__ID3: 9
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 7
+__ID3: 9
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Testing with ID 4
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
 __ID4: 6
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 7
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 8
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Testing with ID 5
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
 __ID5: 6
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
-__ID11: 2
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 7
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
-__ID10: 1
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 8
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
-__ID12: 2
+Testing with ID 6
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 6
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 7
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 8
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Testing with ID 7
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 6
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 7
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 8
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Testing with ID 8
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 6
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 7
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 8
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 9
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 10
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Testing with ID 9
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
 __ID9: 1
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
-__ID0: 4
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID1: 4
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID3: 6
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID2: 6
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID8: 7
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID8: 8
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID0: 5
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID0: 6
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID1: 5
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID1: 6
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID3: 7
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID3: 8
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID8: 9
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID8: 10
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID7: 7
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID6: 7
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID4: 7
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID5: 7
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID7: 8
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID6: 8
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID4: 8
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID5: 8
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID11: 3
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID10: 2
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID12: 3
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
 __ID9: 2
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
-__ID11: 4
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID10: 3
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
-__ID12: 4
-Testing negative cases!
-Testing 1 (with abstract condition)
-
-Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
-Iteration failed, Retry with NEG_ARG=0!
-Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
 __ID9: 3
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
-__ID0: 7
+Testing with ID 10
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 1
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
-__ID1: 7
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 2
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
-__ID3: 9
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 3
+__ID11: 0
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
-__ID2: 7
+Testing with ID 11
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 2
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
 Testing negative cases!
 Testing 1 (with abstract condition)
-
 Iteration 0
-
-Iteration 1
-
-Iteration 2
-
-Iteration 3
-
-Iteration 4
-
-Iteration 5
-
-Iteration 6
-
-Iteration 7
-
-Iteration 8
-
-Iteration 9
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 3
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 4
+__ID12: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Testing with ID 12
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 2
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 3
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
+Iteration failed, Retry with NEG_ARG=0!
+Finally tests failed
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID12: 4
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Iteration 0
 Iteration failed, Retry with NEG_ARG=0!
 Finally tests failed
 The total number of explored concrete patches: 0
@@ -1112,4 +944,4 @@ Repair process ends without working fix!!
 Total 433 different repair schemas!!!!
 Total 991 different repair candidate templates for scoring!!!
 Total number of compiles: 1
-Total number of test eval: 473
+Total number of test eval: 94
