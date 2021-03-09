@@ -1528,11 +1528,12 @@ class ConditionSynthesisTester : public BasicTester {
         fclose(f);
     }
 
-    void writeBranchRecord(const std::map<unsigned long, std::vector<unsigned long> > &negative_records, unsigned long idx) {
+    void writeBranchRecord(const std::set<std::vector<unsigned long>> &negative_records) {
         FILE *f = fopen(ISNEG_TMPFILE, "w");
-        std::map<unsigned long, std::vector<unsigned long> >::const_iterator fit = negative_records.find(idx);
+        // FIXME: We do this process with only first record
+        std::set<std::vector<unsigned long>>::const_iterator fit = negative_records.begin();
         assert( fit != negative_records.end() );
-        const std::vector<unsigned long> &tmp_vec = fit->second;
+        const std::vector<unsigned long> &tmp_vec = *fit;
         fprintf(f, "%lu", (unsigned long)tmp_vec.size());
         for (size_t i = 0; i < tmp_vec.size(); i++)
             fprintf(f, " %lu", tmp_vec[i]);
@@ -1654,19 +1655,22 @@ class ConditionSynthesisTester : public BasicTester {
                 over = true;
                 break;
             }
+            outlog_printf(2,"%lu: ",n);
             for (size_t i = 0; i < n; i++) {
                 unsigned long tmp;
                 ret = fscanf(f, "%lu", &tmp);
                 assert(ret == 1);
                 v.push_back(tmp);
+                outlog_printf(2,"%d, ",tmp);
             }
+            outlog_printf(2,"\n");
             vec.push_back(v);
         }
         fclose(f);
     }
 
     bool collectValues(const BenchProgram::EnvMapTy &env,
-            std::map<unsigned long, std::vector<unsigned long> > &negative_records,
+            std::set<std::vector<unsigned long>> &negative_records,
             std::map<unsigned long, std::vector<std::vector<long long> > > &caseVMap) {
         caseVMap.clear();
         // We first deal with the negative cases
@@ -1677,11 +1681,11 @@ class ConditionSynthesisTester : public BasicTester {
             testEnv.insert(std::make_pair("NEG_ARG", ISNEG_TMPFILE));
             testEnv.insert(std::make_pair("TMP_FILE", ISNEG_RECORDFILE));
             //FIXME: It triggers non-deterministic things, get out!
-            if (negative_records.find(*tit) == negative_records.end()) {
-                fprintf(stderr, "Error in case map, failed on case %lu!\n", *tit);
-                return false;
-            }
-            writeBranchRecord(negative_records, *tit);
+            // if (negative_records.find(*tit) == negative_records.end()) {
+            //     fprintf(stderr, "Error in case map, failed on case %lu!\n", *tit);
+            //     return false;
+            // }
+            writeBranchRecord(negative_records);
             std::string cmd = std::string("rm -rf ") + ISNEG_RECORDFILE;
             int ret = system(cmd.c_str());
             assert( ret == 0);
@@ -1690,7 +1694,7 @@ class ConditionSynthesisTester : public BasicTester {
             // get out
             if (!passed) {
                 fprintf(stderr, "Collect value failed on case %lu!\n", *tit);
-                return false;
+                // return false;
             }
             // We are going to parse neg.out to get result
             caseVMap[*tit].clear();
@@ -1714,56 +1718,13 @@ class ConditionSynthesisTester : public BasicTester {
         }
         return true;
     }
-    std::string removeInternalSwitch(std::string code){
-        // outlog_printf(2,"Before remove switch: %s\n",code.c_str());
-        std::string result=code;
-        size_t position;
-        if ((position=result.find("switch(__choose"))!=std::string::npos ||
-                (position=result.find("switch (__choose"))!=std::string::npos){
-            size_t macroStart=result.find("#ifdef COMPILE");
-            size_t macroEnd=result.rfind("#endif");
-            result=result.erase(macroStart,macroEnd-macroStart+6);
-
-            // outlog_printf(2,"\nOptimized: %s\n",result.c_str());
-            position=result.find("switch(__choose");
-            if (position==std::string::npos)
-                position=result.find("switch (__choose");
-            std::string temp=result.substr(position,result.size()-position);
-            int bracketCount=0;
-            int start=0;
-            int end=temp.size();
-
-            for (std::string::iterator str_it=temp.begin();
-                    str_it!=temp.end();str_it++){
-                if (*str_it=='{'){
-                    if (start==0){
-                        start=bracketCount;
-                    }
-                    bracketCount++;
-                }
-                else if (*str_it=='}'){
-                    if (bracketCount==0){
-                        break;
-                    }
-                    bracketCount--;
-                }
-                end++;
-            }
-
-            std::string switchStmt=temp.substr(0,end);
-            position=result.find(switchStmt);
-            result=result.erase(position,position-switchStmt.size());
-            // outlog_printf(2,"After remove: %s\n",result.c_str());
-        }
-        return result;
-    }
 
     std::map<int,std::set<int>> getIsNegCase(){
         std::map<int,std::set<int>> idCasePair;
         idCasePair.clear();
         for (std::map<std::string,std::pair<int,int>>::iterator it=idAndCase.begin();
                 it!=idAndCase.end();it++){
-            std::string patch=removeInternalSwitch(it->first);
+            std::string patch=it->first;
             if (patch.find("__is_neg")!=std::string::npos)
                 idCasePair[it->second.first].insert(it->second.second);
         }
@@ -1773,21 +1734,13 @@ class ConditionSynthesisTester : public BasicTester {
     std::vector<BenchProgram::EnvMapTy> setIsNegEnv(BenchProgram::EnvMapTy &env,int id){
         std::vector<BenchProgram::EnvMapTy> envs;
         envs.clear();
-        std::vector<BenchProgram::EnvMapTy> testEnv;
-        testEnv.clear();
+        BenchProgram::EnvMapTy testEnv=env;
         std::map<int,std::set<int>> isNegCase=getIsNegCase();
-        if (includeIds.find(id)!=includeIds.end()){
-            testEnv=setIsNegEnv(env,includeIds[id]);
-        }
-        else{
-            testEnv.push_back(env);
-        }
 
         for(std::set<int>::iterator it=isNegCase[id].begin();it!=isNegCase[id].end();it++){
-            for(std::vector<BenchProgram::EnvMapTy>::iterator envIt=testEnv.begin();envIt!=testEnv.end();envIt++){
-                (*envIt)["__ID"+std::to_string(id)]=std::to_string(*it);
-                envs.push_back(*envIt);
-            }
+            BenchProgram::EnvMapTy temp=testEnv;
+            temp["__ID"+std::to_string(id)]=std::to_string(*it);
+            envs.push_back(temp);
         }
         return envs;
     }
@@ -1881,6 +1834,8 @@ public:
         }
         // We first need to find the flip combination that will make it passes each
         // negative cases, and we store it to negative_records
+        std::map<BenchProgram::EnvMapTy,std::set<std::vector<unsigned long>>> records;
+        records.clear();
         outlog_printf(2,"\nTotal ID: %d\n",count);
         BenchProgram::EnvMapTy testEnv=initEnv(env);
         std::map<int,std::set<int>> idCase=getIsNegCase();
@@ -1908,13 +1863,14 @@ public:
                     }
                     // // Then we need to collect the variable values at the expr, we store it into
                     // this caseVMap
-                    // outlog_printf(2, "Collect values for post processing!\n");
-                    // std::map<unsigned long, std::vector<std::vector<long long> > > caseVMap;
-                    // if (!collectValues(*envIt, candidates[id], negative_records, caseVMap)) {
-                    //     // codes.clear();
-                    //     // patches.clear();
-                    //     continue;
-                    // }
+                    outlog_printf(2, "Collect values for post processing!\n");
+                    std::map<unsigned long, std::vector<std::vector<long long> > > caseVMap;
+                    if (!collectValues(*envIt, negative_records, caseVMap)) {
+                        // codes.clear();
+                        // patches.clear();
+                        continue;
+                    }
+                    records[*envIt]=negative_records;
                     // valueRecords[id] = caseVMap;
                     // branchRecords[id] = negative_records;
                     outlog_printf(2, "[%llu] Passed!\n", get_timer());

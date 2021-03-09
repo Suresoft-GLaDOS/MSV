@@ -484,11 +484,2324 @@ int main(int argc, char *argv[]) {
 #endif
   }
 
-  if (a > b) { // >=
+  // prophet generated patch
+  switch (__choose("__ID2")) {
+  case 0: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#ifdef COMPILE_61
+  case 1: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_62
+  case 2: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_63
+  case 3: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_64
+  case 4: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_65
+  case 5: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_66
+  case 6: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_67
+  case 7: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_68
+  case 8: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_69
+  case 9: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_70
+  case 10: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_71
+  case 11: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_72
+  case 12: {
+    if (a > b) { // >=
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_73
+  case 13: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_74
+  case 14: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_75
+  case 15: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_76
+  case 16: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_77
+  case 17: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_78
+  case 18: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_79
+  case 19: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_80
+  case 20: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_81
+  case 21: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_82
+  case 22: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_83
+  case 23: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_84
+  case 24: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_85
+  case 25: {
+    fclose((f));
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_86
+  case 26: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_87
+  case 27: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_88
+  case 28: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_89
+  case 29: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_90
+  case 30: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_91
+  case 31: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_92
+  case 32: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_93
+  case 33: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_94
+  case 34: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_95
+  case 35: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_96
+  case 36: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_97
+  case 37: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_98
+  case 38: {
+    fclose(f);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_99
+  case 39: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_100
+  case 40: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_101
+  case 41: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_102
+  case 42: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_103
+  case 43: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_104
+  case 44: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_105
+  case 45: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_106
+  case 46: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_107
+  case 47: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_108
+  case 48: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_109
+  case 49: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_110
+  case 50: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_111
+  case 51: {
+    fscanf((f), "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_112
+  case 52: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_113
+  case 53: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_114
+  case 54: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_115
+  case 55: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_116
+  case 56: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_117
+  case 57: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_118
+  case 58: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_119
+  case 59: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_120
+  case 60: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_121
+  case 61: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_122
+  case 62: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_123
+  case 63: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_124
+  case 64: {
+    fscanf(f, "%d %d\n", &a, &b);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_125
+  case 65: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_126
+  case 66: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_127
+  case 67: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_128
+  case 68: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_129
+  case 69: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_130
+  case 70: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_131
+  case 71: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_132
+  case 72: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_133
+  case 73: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_134
+  case 74: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_135
+  case 75: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_136
+  case 76: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_137
+  case 77: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_138
+  case 78: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_139
+  case 79: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        __overflow("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_140
+  case 80: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        fclose((f));
+        printf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_141
+  case 81: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        fclose(f);
+        printf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_142
+  case 82: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        fscanf((f), "%d %d\n", &a, &b);
+        printf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_143
+  case 83: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        fscanf(f, "%d %d\n", &a, &b);
+        printf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_144
+  case 84: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+          printf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_145
+  case 85: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+          return 0;
+        printf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_146
+  case 86: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+          return 1;
+        printf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_147
+  case 87: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        if (a > b) {
+          printf("%d\n", 0);
+        } else {
+          printf("%d\n", 1);
+        }
+        printf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_148
+  case 88: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 0);
+        printf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_149
+  case 89: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+        printf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_150
+  case 90: {
+    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        scanf("%d\n", 1);
+      }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_151
+  case 91: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_152
+  case 92: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_153
+  case 93: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_154
+  case 94: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_155
+  case 95: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_156
+  case 96: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_157
+  case 97: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_158
+  case 98: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_159
+  case 99: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_160
+  case 100: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_161
+  case 101: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_162
+  case 102: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_163
+  case 103: {
+    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_164
+  case 104: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_165
+  case 105: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_166
+  case 106: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_167
+  case 107: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_168
+  case 108: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_169
+  case 109: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_170
+  case 110: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_171
+  case 111: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_172
+  case 112: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_173
+  case 113: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_174
+  case 114: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_175
+  case 115: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_176
+  case 116: {
+    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_177
+  case 117: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_178
+  case 118: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_179
+  case 119: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_180
+  case 120: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_181
+  case 121: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_182
+  case 122: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_183
+  case 123: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_184
+  case 124: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_185
+  case 125: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_186
+  case 126: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_187
+  case 127: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_188
+  case 128: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_189
+  case 129: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 0;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_190
+  case 130: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_191
+  case 131: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_192
+  case 132: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_193
+  case 133: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_194
+  case 134: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_195
+  case 135: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_196
+  case 136: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_197
+  case 137: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_198
+  case 138: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_199
+  case 139: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_200
+  case 140: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_201
+  case 141: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_202
+  case 142: {
+    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      return 1;
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_203
+  case 143: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_204
+  case 144: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_205
+  case 145: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_206
+  case 146: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_207
+  case 147: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_208
+  case 148: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_209
+  case 149: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_210
+  case 150: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_211
+  case 151: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_212
+  case 152: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_213
+  case 153: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_214
+  case 154: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_215
+  case 155: {
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_216
+  case 156: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_217
+  case 157: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_218
+  case 158: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_219
+  case 159: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_220
+  case 160: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_221
+  case 161: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_222
+  case 162: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_223
+  case 163: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 0;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_224
+  case 164: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+        return 1;
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_225
+  case 165: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_226
+  case 166: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 0);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_227
+  case 167: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_228
+  case 168: {
+    printf("%d\n", 0);
+    if (a > b) {
+      printf("%d\n", 0);
+    } else {
+      scanf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_229
+  case 169: {
+    printf("%d\n", 1);
+  }
+
+  break;
+  }
+#endif
+#ifdef COMPILE_230
+case 170: {
+  __overflow("%d\n", 1);
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_231
+case 171: {
+  fclose((f));
+  printf("%d\n", 1);
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_232
+case 172: {
+  fclose(f);
+  printf("%d\n", 1);
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_233
+case 173: {
+  fscanf((f), "%d %d\n", &a, &b);
+  printf("%d\n", 1);
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_234
+case 174: {
+  fscanf(f, "%d %d\n", &a, &b);
+  printf("%d\n", 1);
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_235
+case 175: {
+  if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+    printf("%d\n", 1);
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_236
+case 176: {
+  if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+    return 0;
+  printf("%d\n", 1);
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_237
+case 177: {
+  if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+    return 1;
+  printf("%d\n", 1);
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_238
+case 178: {
+  if (a > b) {
     printf("%d\n", 0);
   } else {
     printf("%d\n", 1);
   }
+  printf("%d\n", 1);
+}
 
-  return 0;
+break;
+}
+#endif
+#ifdef COMPILE_239
+case 179: {
+  printf("%d\n", 0);
+  printf("%d\n", 1);
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_240
+case 180: {
+  printf("%d\n", 1);
+  printf("%d\n", 1);
+}
+
+break;
+}
+#endif
+#ifdef COMPILE_241
+case 181: {
+  scanf("%d\n", 1);
+}
+
+break;
+}
+#endif
+}
+
+return 0;
 }
