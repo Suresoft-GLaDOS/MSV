@@ -15,7 +15,7 @@ Path env:  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 wrap/tclang
 ../../../../wrap/gcc test.o  -o prog
 wrap/tclang
-../../../../wrap/gcc -c test.c -D COMPILE_0 -D COMPILE_1 -D COMPILE_2 -D COMPILE_3 -D COMPILE_4 -D COMPILE_5 -D COMPILE_6 -D COMPILE_7 -D COMPILE_8 -D COMPILE_9 -D COMPILE_10 -D COMPILE_11 -D COMPILE_12 -D COMPILE_13 -D COMPILE_14 -D COMPILE_15 -D COMPILE_16 -D COMPILE_17 -D COMPILE_18 -D COMPILE_19 -D COMPILE_20 -D COMPILE_21 -D COMPILE_22 -D COMPILE_23 -D COMPILE_24 -D COMPILE_25 -D COMPILE_26 -D COMPILE_27 -D COMPILE_28 -D COMPILE_29 -D COMPILE_30 -D COMPILE_31 -D COMPILE_32 -D COMPILE_33 -D COMPILE_34 -D COMPILE_35 -D COMPILE_36 -D COMPILE_37 -D COMPILE_38 -D COMPILE_39 -D COMPILE_40 -D COMPILE_41 -D COMPILE_42 -D COMPILE_43 -D COMPILE_44 -D COMPILE_45 -D COMPILE_46 -D COMPILE_47 -D COMPILE_48 -D COMPILE_49 -D COMPILE_50 -D COMPILE_51 -D COMPILE_52 -D COMPILE_53 -D COMPILE_54 -D COMPILE_55 -D COMPILE_56 -D COMPILE_57 -D COMPILE_58 -D COMPILE_59 -D COMPILE_60 -D COMPILE_61 -D COMPILE_62 -D COMPILE_63 -D COMPILE_64 -D COMPILE_65 -D COMPILE_66 -D COMPILE_67 -D COMPILE_68 -D COMPILE_69 -D COMPILE_70 -D COMPILE_71 -D COMPILE_72 -D COMPILE_73 -D COMPILE_74 -D COMPILE_75 -D COMPILE_76 -D COMPILE_77 -D COMPILE_78 -D COMPILE_79 -D COMPILE_80 -D COMPILE_81 -D COMPILE_82 -D COMPILE_83 -D COMPILE_84 -D COMPILE_85 -D COMPILE_86 -D COMPILE_87 -D COMPILE_88 -D COMPILE_89 -D COMPILE_90 -D COMPILE_91 -D COMPILE_92 -D COMPILE_93 -D COMPILE_94 -D COMPILE_95 -D COMPILE_96 -D COMPILE_97 -D COMPILE_98 -D COMPILE_99 -D COMPILE_100 -D COMPILE_101 -D COMPILE_102 -D COMPILE_103 -D COMPILE_104 -D COMPILE_105 -D COMPILE_106 -D COMPILE_107 -D COMPILE_108 -D COMPILE_109 -D COMPILE_110 -D COMPILE_111 -D COMPILE_112 -D COMPILE_113 -D COMPILE_114 -D COMPILE_115 -D COMPILE_116 -D COMPILE_117 -D COMPILE_118 -D COMPILE_119 -D COMPILE_120 -D COMPILE_121 -D COMPILE_122 -D COMPILE_123 -D COMPILE_124 -D COMPILE_125 -D COMPILE_126 -D COMPILE_127 -D COMPILE_128 -D COMPILE_129 -D COMPILE_130 -D COMPILE_131 -D COMPILE_132 -D COMPILE_133 -D COMPILE_134 -D COMPILE_135 -D COMPILE_136 -D COMPILE_137 -D COMPILE_138 -D COMPILE_139 -D COMPILE_140 -D COMPILE_141 -D COMPILE_142 -D COMPILE_143 -D COMPILE_144 -D COMPILE_145 -D COMPILE_146 -D COMPILE_147 -D COMPILE_148 -D COMPILE_149 -D COMPILE_150 -D COMPILE_151 -D COMPILE_152 -D COMPILE_153 -D COMPILE_154 -D COMPILE_155 -D COMPILE_156 -D COMPILE_157 -D COMPILE_158 -D COMPILE_159 -D COMPILE_160 -D COMPILE_161 -D COMPILE_162 -D COMPILE_163 -D COMPILE_164 -D COMPILE_165 -D COMPILE_166 -D COMPILE_167 -D COMPILE_168 -D COMPILE_169 -D COMPILE_170 -D COMPILE_171 -D COMPILE_172 -D COMPILE_173 -D COMPILE_174 -D COMPILE_175 -D COMPILE_176 -D COMPILE_177 -D COMPILE_178 -D COMPILE_179 -D COMPILE_180 -D COMPILE_181 -D COMPILE_182 -D COMPILE_183 -D COMPILE_184 -D COMPILE_185 -D COMPILE_186 -D COMPILE_187 -D COMPILE_188 -D COMPILE_189 -D COMPILE_190 -D COMPILE_191 -D COMPILE_192 -D COMPILE_193 -D COMPILE_194 -D COMPILE_195 -D COMPILE_196 -D COMPILE_197 -D COMPILE_198 -D COMPILE_199 -D COMPILE_200 -D COMPILE_201 -D COMPILE_202 -D COMPILE_203 -D COMPILE_204 -D COMPILE_205 -D COMPILE_206 -D COMPILE_207 -D COMPILE_208 -D COMPILE_209 -D COMPILE_210 -D COMPILE_211 -D COMPILE_212 -D COMPILE_213 -D COMPILE_214 -D COMPILE_215 -D COMPILE_216 -D COMPILE_217 -D COMPILE_218 -D COMPILE_219 -D COMPILE_220 -D COMPILE_221 -D COMPILE_222 -D COMPILE_223 -D COMPILE_224 -D COMPILE_225 -D COMPILE_226 -D COMPILE_227 -D COMPILE_228 -D COMPILE_229 -D COMPILE_230 -D COMPILE_231 -D COMPILE_232 -D COMPILE_233 -D COMPILE_234 -D COMPILE_235 -D COMPILE_236 -D COMPILE_237 -D COMPILE_238 -D COMPILE_239 -D COMPILE_240 -D COMPILE_241  -o test.o
+../../../../wrap/gcc -c test.c -D COMPILE_0 -D COMPILE_1 -D COMPILE_2 -D COMPILE_3 -D COMPILE_4 -D COMPILE_5 -D COMPILE_6 -D COMPILE_7 -D COMPILE_8 -D COMPILE_9 -D COMPILE_10 -D COMPILE_11 -D COMPILE_12 -D COMPILE_13 -D COMPILE_14 -D COMPILE_15 -D COMPILE_16 -D COMPILE_17 -D COMPILE_18 -D COMPILE_19 -D COMPILE_20 -D COMPILE_21 -D COMPILE_22 -D COMPILE_23 -D COMPILE_24 -D COMPILE_25 -D COMPILE_26 -D COMPILE_27 -D COMPILE_28 -D COMPILE_29 -D COMPILE_30 -D COMPILE_31 -D COMPILE_32 -D COMPILE_33 -D COMPILE_34 -D COMPILE_35 -D COMPILE_36 -D COMPILE_37 -D COMPILE_38 -D COMPILE_39 -D COMPILE_40 -D COMPILE_41 -D COMPILE_42 -D COMPILE_43 -D COMPILE_44 -D COMPILE_45 -D COMPILE_46 -D COMPILE_47 -D COMPILE_48 -D COMPILE_49 -D COMPILE_50 -D COMPILE_51 -D COMPILE_52 -D COMPILE_53 -D COMPILE_54 -D COMPILE_55 -D COMPILE_56 -D COMPILE_57 -D COMPILE_58 -D COMPILE_59 -D COMPILE_60 -D COMPILE_61 -D COMPILE_62 -D COMPILE_63 -D COMPILE_64 -D COMPILE_65 -D COMPILE_66 -D COMPILE_67 -D COMPILE_68 -D COMPILE_69 -D COMPILE_70 -D COMPILE_71 -D COMPILE_72 -D COMPILE_73 -D COMPILE_74 -D COMPILE_75 -D COMPILE_76 -D COMPILE_77 -D COMPILE_78 -D COMPILE_79 -D COMPILE_80 -D COMPILE_81 -D COMPILE_82 -D COMPILE_83 -D COMPILE_84 -D COMPILE_85 -D COMPILE_86 -D COMPILE_87 -D COMPILE_88 -D COMPILE_89 -D COMPILE_90 -D COMPILE_91 -D COMPILE_92 -D COMPILE_93 -D COMPILE_94 -D COMPILE_95 -D COMPILE_96 -D COMPILE_97 -D COMPILE_98 -D COMPILE_99 -D COMPILE_100 -D COMPILE_101 -D COMPILE_102 -D COMPILE_103 -D COMPILE_104 -D COMPILE_105 -D COMPILE_106 -D COMPILE_107 -D COMPILE_108 -D COMPILE_109 -D COMPILE_110 -D COMPILE_111 -D COMPILE_112 -D COMPILE_113 -D COMPILE_114 -D COMPILE_115 -D COMPILE_116 -D COMPILE_117 -D COMPILE_118 -D COMPILE_119 -D COMPILE_120 -D COMPILE_121 -D COMPILE_122 -D COMPILE_123 -D COMPILE_124 -D COMPILE_125 -D COMPILE_126 -D COMPILE_127 -D COMPILE_128 -D COMPILE_129 -D COMPILE_130 -D COMPILE_131 -D COMPILE_132 -D COMPILE_133 -D COMPILE_134 -D COMPILE_135 -D COMPILE_136 -D COMPILE_137 -D COMPILE_138 -D COMPILE_139 -D COMPILE_140 -D COMPILE_141 -D COMPILE_142 -D COMPILE_143 -D COMPILE_144 -D COMPILE_145 -D COMPILE_146 -D COMPILE_147 -D COMPILE_148 -D COMPILE_149 -D COMPILE_150 -D COMPILE_151 -D COMPILE_152 -D COMPILE_153 -D COMPILE_154 -D COMPILE_155 -D COMPILE_156 -D COMPILE_157 -D COMPILE_158 -D COMPILE_159 -D COMPILE_160 -D COMPILE_161 -D COMPILE_162 -D COMPILE_163 -D COMPILE_164 -D COMPILE_165 -D COMPILE_166 -D COMPILE_167 -D COMPILE_168 -D COMPILE_169 -D COMPILE_170 -D COMPILE_171 -D COMPILE_172 -D COMPILE_173 -D COMPILE_174 -D COMPILE_175 -D COMPILE_176 -D COMPILE_177 -D COMPILE_178 -D COMPILE_179 -D COMPILE_180 -D COMPILE_181 -D COMPILE_182 -D COMPILE_183 -D COMPILE_184 -D COMPILE_185 -D COMPILE_186 -D COMPILE_187 -D COMPILE_188 -D COMPILE_189 -D COMPILE_190 -D COMPILE_191 -D COMPILE_192 -D COMPILE_193 -D COMPILE_194 -D COMPILE_195 -D COMPILE_196 -D COMPILE_197 -D COMPILE_198 -D COMPILE_199 -D COMPILE_200 -D COMPILE_201 -D COMPILE_202 -D COMPILE_203 -D COMPILE_204 -D COMPILE_205 -D COMPILE_206 -D COMPILE_207 -D COMPILE_208 -D COMPILE_209 -D COMPILE_210 -D COMPILE_211 -D COMPILE_212 -D COMPILE_213 -D COMPILE_214 -D COMPILE_215 -D COMPILE_216 -D COMPILE_217 -D COMPILE_218 -D COMPILE_219 -D COMPILE_220 -D COMPILE_221 -D COMPILE_222 -D COMPILE_223  -o test.o
 test.c: In function ‘main’:
 test.c:20:31: warning: passing argument 3 of ‘_IO_vfscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
      _IO_vfscanf(f, "%d %d\n", &a, &b);
@@ -33,14 +33,32 @@ test.c:43:21: warning: format ‘%d’ expects argument of type ‘int’, but a
      fprintf(f, "%d %d\n", &a, &b);
                     ~^         ~~
                     %ls
-test.c:127:12: warning: passing argument 1 of ‘printf’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:74:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:83:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:93:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:130:12: warning: passing argument 1 of ‘printf’ from incompatible pointer type [-Wincompatible-pointer-types]
      printf(f, "%d %d\n", &a, &b);
             ^
 In file included from test.c:6:0:
 /usr/include/stdio.h:318:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
  extern int printf (const char *__restrict __format, ...);
             ^~~~~~
-test.c:134:11: warning: passing argument 1 of ‘scanf’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:137:11: warning: passing argument 1 of ‘scanf’ from incompatible pointer type [-Wincompatible-pointer-types]
      scanf(f, "%d %d\n", &a, &b);
            ^
 In file included from /usr/include/features.h:424:0,
@@ -50,22 +68,22 @@ In file included from /usr/include/features.h:424:0,
 /usr/include/stdio.h:398:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
  extern int __REDIRECT (scanf, (const char *__restrict __format, ...),
             ^
-test.c:141:13: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:144:13: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
      sprintf(f, "%d %d\n", &a, &b);
              ^
 In file included from test.c:6:0:
 /usr/include/stdio.h:320:12: note: expected ‘char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
  extern int sprintf (char *__restrict __s,
             ^~~~~~~
-test.c:141:18: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘int *’ [-Wformat=]
+test.c:144:18: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘int *’ [-Wformat=]
      sprintf(f, "%d %d\n", &a, &b);
                  ~^        ~~
                  %ls
-test.c:141:21: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘int *’ [-Wformat=]
+test.c:144:21: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘int *’ [-Wformat=]
      sprintf(f, "%d %d\n", &a, &b);
                     ~^         ~~
                     %ls
-test.c:148:12: warning: passing argument 1 of ‘sscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:151:12: warning: passing argument 1 of ‘sscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
      sscanf(f, "%d %d\n", &a, &b);
             ^
 In file included from /usr/include/features.h:424:0,
@@ -75,7 +93,25 @@ In file included from /usr/include/features.h:424:0,
 /usr/include/stdio.h:400:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
  extern int __REDIRECT_NTH (sscanf, (const char *__restrict __s,
             ^
-test.c:503:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:416:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:425:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:435:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:509:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -83,10 +119,28 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:640:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:569:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:582:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:596:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:649:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:664:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:673:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -94,10 +148,28 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:812:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:738:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:752:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:767:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:824:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:836:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:848:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -105,10 +177,28 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:984:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:913:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:927:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:942:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:999:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:1008:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1023:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -116,10 +206,28 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1156:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1088:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1102:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1117:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1174:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:1180:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1198:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -127,10 +235,40 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1328:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1263:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1277:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1292:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1349:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:1350:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1358:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1371:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1375:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -138,10 +276,70 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1487:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1384:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1398:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1412:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1426:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1440:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1458:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1472:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1486:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1490:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:1511:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1499:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1512:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1516:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
          __overflow("%d\n", 1);
                     ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -149,10 +347,70 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1659:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1525:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1539:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1553:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1567:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1581:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1599:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1613:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1627:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1631:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
          scanf("%d\n", 1);
                 ~^
-test.c:1681:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1641:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1654:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1657:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -160,10 +418,70 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1818:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1667:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1681:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1695:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1709:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1723:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1741:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1755:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1769:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1772:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:1840:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1782:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1795:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1798:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -171,10 +489,70 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1977:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1808:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1822:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1836:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1850:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1864:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1882:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1896:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1910:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1913:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:2003:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1922:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1936:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1941:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -182,10 +560,70 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:2162:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1950:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1965:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1980:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1995:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2010:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2029:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2044:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2059:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2064:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:2188:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:2073:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2087:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2092:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -193,10 +631,58 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:2347:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:2101:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2116:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2131:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2146:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2161:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2180:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2195:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2210:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2215:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:2369:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:2237:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -204,10 +690,28 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:2506:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:2297:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2310:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2324:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2377:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:2530:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:2401:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -215,13 +719,31 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:2678:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:2466:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2480:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2495:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2552:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:2693:1: error: case label not within a switch statement
- case 170: {
+test.c:2567:1: error: case label not within a switch statement
+ case 152: {
  ^~~~
-test.c:2694:14: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:2568:14: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
    __overflow("%d\n", 1);
               ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -229,122 +751,122 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:2697:1: error: break statement not within loop or switch
+test.c:2571:1: error: break statement not within loop or switch
  break;
  ^~~~~
 test.c: At top level:
-test.c:2701:1: error: expected identifier or ‘(’ before ‘case’
- case 171: {
+test.c:2575:1: error: expected identifier or ‘(’ before ‘case’
+ case 153: {
  ^~~~
-test.c:2706:1: error: expected identifier or ‘(’ before ‘break’
+test.c:2580:1: error: expected identifier or ‘(’ before ‘break’
  break;
  ^~~~~
-test.c:2707:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2581:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2710:1: error: expected identifier or ‘(’ before ‘case’
- case 172: {
+test.c:2584:1: error: expected identifier or ‘(’ before ‘case’
+ case 154: {
  ^~~~
-test.c:2715:1: error: expected identifier or ‘(’ before ‘break’
+test.c:2589:1: error: expected identifier or ‘(’ before ‘break’
  break;
  ^~~~~
-test.c:2716:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2590:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2719:1: error: expected identifier or ‘(’ before ‘case’
- case 173: {
+test.c:2593:1: error: expected identifier or ‘(’ before ‘case’
+ case 155: {
  ^~~~
-test.c:2724:1: error: expected identifier or ‘(’ before ‘break’
+test.c:2598:1: error: expected identifier or ‘(’ before ‘break’
  break;
  ^~~~~
-test.c:2725:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2599:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2728:1: error: expected identifier or ‘(’ before ‘case’
- case 174: {
+test.c:2602:1: error: expected identifier or ‘(’ before ‘case’
+ case 156: {
  ^~~~
-test.c:2733:1: error: expected identifier or ‘(’ before ‘break’
+test.c:2607:1: error: expected identifier or ‘(’ before ‘break’
  break;
  ^~~~~
-test.c:2734:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2608:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2737:1: error: expected identifier or ‘(’ before ‘case’
- case 175: {
+test.c:2611:1: error: expected identifier or ‘(’ before ‘case’
+ case 157: {
  ^~~~
-test.c:2742:1: error: expected identifier or ‘(’ before ‘break’
+test.c:2617:1: error: expected identifier or ‘(’ before ‘break’
  break;
  ^~~~~
-test.c:2743:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2618:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2746:1: error: expected identifier or ‘(’ before ‘case’
- case 176: {
+test.c:2621:1: error: expected identifier or ‘(’ before ‘case’
+ case 158: {
  ^~~~
-test.c:2752:1: error: expected identifier or ‘(’ before ‘break’
+test.c:2628:1: error: expected identifier or ‘(’ before ‘break’
  break;
  ^~~~~
-test.c:2753:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2629:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2756:1: error: expected identifier or ‘(’ before ‘case’
- case 177: {
+test.c:2632:1: error: expected identifier or ‘(’ before ‘case’
+ case 159: {
  ^~~~
-test.c:2762:1: error: expected identifier or ‘(’ before ‘break’
+test.c:2639:1: error: expected identifier or ‘(’ before ‘break’
  break;
  ^~~~~
-test.c:2763:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2640:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2766:1: error: expected identifier or ‘(’ before ‘case’
- case 178: {
+test.c:2643:1: error: expected identifier or ‘(’ before ‘case’
+ case 160: {
  ^~~~
-test.c:2775:1: error: expected identifier or ‘(’ before ‘break’
+test.c:2652:1: error: expected identifier or ‘(’ before ‘break’
  break;
  ^~~~~
-test.c:2776:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2653:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2779:1: error: expected identifier or ‘(’ before ‘case’
- case 179: {
+test.c:2656:1: error: expected identifier or ‘(’ before ‘case’
+ case 161: {
  ^~~~
-test.c:2784:1: error: expected identifier or ‘(’ before ‘break’
+test.c:2661:1: error: expected identifier or ‘(’ before ‘break’
  break;
  ^~~~~
-test.c:2785:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2662:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2788:1: error: expected identifier or ‘(’ before ‘case’
- case 180: {
+test.c:2665:1: error: expected identifier or ‘(’ before ‘case’
+ case 162: {
  ^~~~
-test.c:2793:1: error: expected identifier or ‘(’ before ‘break’
+test.c:2670:1: error: expected identifier or ‘(’ before ‘break’
  break;
  ^~~~~
-test.c:2794:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2671:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2797:1: error: expected identifier or ‘(’ before ‘case’
- case 181: {
+test.c:2674:1: error: expected identifier or ‘(’ before ‘case’
+ case 163: {
  ^~~~
-test.c:2801:1: error: expected identifier or ‘(’ before ‘break’
+test.c:2678:1: error: expected identifier or ‘(’ before ‘break’
  break;
  ^~~~~
-test.c:2802:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2679:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2804:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2681:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
-test.c:2806:1: error: expected identifier or ‘(’ before ‘return’
+test.c:2683:1: error: expected identifier or ‘(’ before ‘return’
  return 0;
  ^~~~~~
-test.c:2807:1: error: expected identifier or ‘(’ before ‘}’ token
+test.c:2684:1: error: expected identifier or ‘(’ before ‘}’ token
  }
  ^
 wrap/tclang
 Makefile:4: recipe for target 'all' failed
 make: *** [all] Error 1
-../../../../wrap/gcc -c test.c -D COMPILE_0 -D COMPILE_1 -D COMPILE_2 -D COMPILE_3 -D COMPILE_4 -D COMPILE_5 -D COMPILE_6 -D COMPILE_7 -D COMPILE_8 -D COMPILE_9 -D COMPILE_10 -D COMPILE_11 -D COMPILE_12 -D COMPILE_13 -D COMPILE_14 -D COMPILE_15 -D COMPILE_16 -D COMPILE_17 -D COMPILE_18 -D COMPILE_19 -D COMPILE_20 -D COMPILE_21 -D COMPILE_22 -D COMPILE_23 -D COMPILE_24 -D COMPILE_25 -D COMPILE_26 -D COMPILE_27 -D COMPILE_28 -D COMPILE_29 -D COMPILE_30 -D COMPILE_31 -D COMPILE_32 -D COMPILE_33 -D COMPILE_34 -D COMPILE_35 -D COMPILE_36 -D COMPILE_37 -D COMPILE_38 -D COMPILE_39 -D COMPILE_40 -D COMPILE_41 -D COMPILE_42 -D COMPILE_43 -D COMPILE_44 -D COMPILE_45 -D COMPILE_46 -D COMPILE_47 -D COMPILE_48 -D COMPILE_49 -D COMPILE_50 -D COMPILE_51 -D COMPILE_52 -D COMPILE_53 -D COMPILE_54 -D COMPILE_55 -D COMPILE_56 -D COMPILE_57 -D COMPILE_58 -D COMPILE_59 -D COMPILE_60 -D COMPILE_61 -D COMPILE_62 -D COMPILE_63 -D COMPILE_64 -D COMPILE_65 -D COMPILE_66 -D COMPILE_67 -D COMPILE_68 -D COMPILE_69 -D COMPILE_70 -D COMPILE_71 -D COMPILE_72 -D COMPILE_73 -D COMPILE_74 -D COMPILE_75 -D COMPILE_76 -D COMPILE_77 -D COMPILE_78 -D COMPILE_79 -D COMPILE_80 -D COMPILE_81 -D COMPILE_82 -D COMPILE_83 -D COMPILE_84 -D COMPILE_85 -D COMPILE_86 -D COMPILE_87 -D COMPILE_88 -D COMPILE_89 -D COMPILE_90 -D COMPILE_91 -D COMPILE_92 -D COMPILE_93 -D COMPILE_94 -D COMPILE_95 -D COMPILE_96 -D COMPILE_97 -D COMPILE_98 -D COMPILE_99 -D COMPILE_100 -D COMPILE_101 -D COMPILE_102 -D COMPILE_103 -D COMPILE_104 -D COMPILE_105 -D COMPILE_106 -D COMPILE_107 -D COMPILE_108 -D COMPILE_109 -D COMPILE_110 -D COMPILE_111 -D COMPILE_112 -D COMPILE_113 -D COMPILE_114 -D COMPILE_115 -D COMPILE_116 -D COMPILE_117 -D COMPILE_118 -D COMPILE_119 -D COMPILE_120 -D COMPILE_121 -D COMPILE_122 -D COMPILE_123 -D COMPILE_124 -D COMPILE_125 -D COMPILE_126 -D COMPILE_127 -D COMPILE_128 -D COMPILE_129 -D COMPILE_130 -D COMPILE_131 -D COMPILE_132 -D COMPILE_133 -D COMPILE_134 -D COMPILE_135 -D COMPILE_136 -D COMPILE_137 -D COMPILE_138 -D COMPILE_139 -D COMPILE_140 -D COMPILE_141 -D COMPILE_142 -D COMPILE_143 -D COMPILE_144 -D COMPILE_145 -D COMPILE_146 -D COMPILE_147 -D COMPILE_148 -D COMPILE_149 -D COMPILE_150 -D COMPILE_151 -D COMPILE_152 -D COMPILE_153 -D COMPILE_154 -D COMPILE_155 -D COMPILE_156 -D COMPILE_157 -D COMPILE_158 -D COMPILE_159 -D COMPILE_160 -D COMPILE_161 -D COMPILE_162 -D COMPILE_163 -D COMPILE_164 -D COMPILE_165 -D COMPILE_166 -D COMPILE_167 -D COMPILE_168 -D COMPILE_169 -D COMPILE_170 -D COMPILE_171 -D COMPILE_172 -D COMPILE_173 -D COMPILE_174 -D COMPILE_175 -D COMPILE_176 -D COMPILE_177 -D COMPILE_178 -D COMPILE_179 -D COMPILE_180 -D COMPILE_181 -D COMPILE_182 -D COMPILE_183 -D COMPILE_184 -D COMPILE_185 -D COMPILE_186 -D COMPILE_187 -D COMPILE_188 -D COMPILE_189 -D COMPILE_190 -D COMPILE_191 -D COMPILE_192 -D COMPILE_193 -D COMPILE_194 -D COMPILE_195 -D COMPILE_196 -D COMPILE_197 -D COMPILE_198 -D COMPILE_199 -D COMPILE_200 -D COMPILE_201 -D COMPILE_202 -D COMPILE_203 -D COMPILE_204 -D COMPILE_205 -D COMPILE_206 -D COMPILE_207 -D COMPILE_208 -D COMPILE_209 -D COMPILE_210 -D COMPILE_211 -D COMPILE_212 -D COMPILE_213 -D COMPILE_214 -D COMPILE_215 -D COMPILE_216 -D COMPILE_217 -D COMPILE_218 -D COMPILE_219 -D COMPILE_220 -D COMPILE_221 -D COMPILE_222 -D COMPILE_223 -D COMPILE_224 -D COMPILE_225 -D COMPILE_226 -D COMPILE_227 -D COMPILE_228  -o test.o
+../../../../wrap/gcc -c test.c -D COMPILE_0 -D COMPILE_1 -D COMPILE_2 -D COMPILE_3 -D COMPILE_4 -D COMPILE_5 -D COMPILE_6 -D COMPILE_7 -D COMPILE_8 -D COMPILE_9 -D COMPILE_10 -D COMPILE_11 -D COMPILE_12 -D COMPILE_13 -D COMPILE_14 -D COMPILE_15 -D COMPILE_16 -D COMPILE_17 -D COMPILE_18 -D COMPILE_19 -D COMPILE_20 -D COMPILE_21 -D COMPILE_22 -D COMPILE_23 -D COMPILE_24 -D COMPILE_25 -D COMPILE_26 -D COMPILE_27 -D COMPILE_28 -D COMPILE_29 -D COMPILE_30 -D COMPILE_31 -D COMPILE_32 -D COMPILE_33 -D COMPILE_34 -D COMPILE_35 -D COMPILE_36 -D COMPILE_37 -D COMPILE_38 -D COMPILE_39 -D COMPILE_40 -D COMPILE_41 -D COMPILE_42 -D COMPILE_43 -D COMPILE_44 -D COMPILE_45 -D COMPILE_46 -D COMPILE_47 -D COMPILE_48 -D COMPILE_49 -D COMPILE_50 -D COMPILE_51 -D COMPILE_52 -D COMPILE_53 -D COMPILE_54 -D COMPILE_55 -D COMPILE_56 -D COMPILE_57 -D COMPILE_58 -D COMPILE_59 -D COMPILE_60 -D COMPILE_61 -D COMPILE_62 -D COMPILE_63 -D COMPILE_64 -D COMPILE_65 -D COMPILE_66 -D COMPILE_67 -D COMPILE_68 -D COMPILE_69 -D COMPILE_70 -D COMPILE_71 -D COMPILE_72 -D COMPILE_73 -D COMPILE_74 -D COMPILE_75 -D COMPILE_76 -D COMPILE_77 -D COMPILE_78 -D COMPILE_79 -D COMPILE_80 -D COMPILE_81 -D COMPILE_82 -D COMPILE_83 -D COMPILE_84 -D COMPILE_85 -D COMPILE_86 -D COMPILE_87 -D COMPILE_88 -D COMPILE_89 -D COMPILE_90 -D COMPILE_91 -D COMPILE_92 -D COMPILE_93 -D COMPILE_94 -D COMPILE_95 -D COMPILE_96 -D COMPILE_97 -D COMPILE_98 -D COMPILE_99 -D COMPILE_100 -D COMPILE_101 -D COMPILE_102 -D COMPILE_103 -D COMPILE_104 -D COMPILE_105 -D COMPILE_106 -D COMPILE_107 -D COMPILE_108 -D COMPILE_109 -D COMPILE_110 -D COMPILE_111 -D COMPILE_112 -D COMPILE_113 -D COMPILE_114 -D COMPILE_115 -D COMPILE_116 -D COMPILE_117 -D COMPILE_118 -D COMPILE_119 -D COMPILE_120 -D COMPILE_121 -D COMPILE_122 -D COMPILE_123 -D COMPILE_124 -D COMPILE_125 -D COMPILE_126 -D COMPILE_127 -D COMPILE_128 -D COMPILE_129 -D COMPILE_130 -D COMPILE_131 -D COMPILE_132 -D COMPILE_133 -D COMPILE_134 -D COMPILE_135 -D COMPILE_136 -D COMPILE_137 -D COMPILE_138 -D COMPILE_139 -D COMPILE_140 -D COMPILE_141 -D COMPILE_142 -D COMPILE_143 -D COMPILE_144 -D COMPILE_145 -D COMPILE_146 -D COMPILE_147 -D COMPILE_148 -D COMPILE_149 -D COMPILE_150 -D COMPILE_151 -D COMPILE_152 -D COMPILE_153 -D COMPILE_154 -D COMPILE_155 -D COMPILE_156 -D COMPILE_157 -D COMPILE_158 -D COMPILE_159 -D COMPILE_160 -D COMPILE_161 -D COMPILE_162 -D COMPILE_163 -D COMPILE_164 -D COMPILE_165 -D COMPILE_166 -D COMPILE_167 -D COMPILE_168 -D COMPILE_169 -D COMPILE_170 -D COMPILE_171 -D COMPILE_172 -D COMPILE_173 -D COMPILE_174 -D COMPILE_175 -D COMPILE_176 -D COMPILE_177 -D COMPILE_178 -D COMPILE_179 -D COMPILE_180 -D COMPILE_181 -D COMPILE_182 -D COMPILE_183 -D COMPILE_184 -D COMPILE_185 -D COMPILE_186 -D COMPILE_187 -D COMPILE_188 -D COMPILE_189 -D COMPILE_190 -D COMPILE_191 -D COMPILE_192 -D COMPILE_193 -D COMPILE_194 -D COMPILE_195 -D COMPILE_196 -D COMPILE_197 -D COMPILE_198 -D COMPILE_199 -D COMPILE_200 -D COMPILE_201 -D COMPILE_202 -D COMPILE_203 -D COMPILE_204 -D COMPILE_205 -D COMPILE_206 -D COMPILE_207 -D COMPILE_208 -D COMPILE_209 -D COMPILE_210  -o test.o
 test.c: In function ‘main’:
 test.c:20:31: warning: passing argument 3 of ‘_IO_vfscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
      _IO_vfscanf(f, "%d %d\n", &a, &b);
@@ -362,14 +884,32 @@ test.c:43:21: warning: format ‘%d’ expects argument of type ‘int’, but a
      fprintf(f, "%d %d\n", &a, &b);
                     ~^         ~~
                     %ls
-test.c:127:12: warning: passing argument 1 of ‘printf’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:74:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:83:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:93:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:130:12: warning: passing argument 1 of ‘printf’ from incompatible pointer type [-Wincompatible-pointer-types]
      printf(f, "%d %d\n", &a, &b);
             ^
 In file included from test.c:6:0:
 /usr/include/stdio.h:318:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
  extern int printf (const char *__restrict __format, ...);
             ^~~~~~
-test.c:134:11: warning: passing argument 1 of ‘scanf’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:137:11: warning: passing argument 1 of ‘scanf’ from incompatible pointer type [-Wincompatible-pointer-types]
      scanf(f, "%d %d\n", &a, &b);
            ^
 In file included from /usr/include/features.h:424:0,
@@ -379,22 +919,22 @@ In file included from /usr/include/features.h:424:0,
 /usr/include/stdio.h:398:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
  extern int __REDIRECT (scanf, (const char *__restrict __format, ...),
             ^
-test.c:141:13: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:144:13: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
      sprintf(f, "%d %d\n", &a, &b);
              ^
 In file included from test.c:6:0:
 /usr/include/stdio.h:320:12: note: expected ‘char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
  extern int sprintf (char *__restrict __s,
             ^~~~~~~
-test.c:141:18: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘int *’ [-Wformat=]
+test.c:144:18: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘int *’ [-Wformat=]
      sprintf(f, "%d %d\n", &a, &b);
                  ~^        ~~
                  %ls
-test.c:141:21: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘int *’ [-Wformat=]
+test.c:144:21: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘int *’ [-Wformat=]
      sprintf(f, "%d %d\n", &a, &b);
                     ~^         ~~
                     %ls
-test.c:148:12: warning: passing argument 1 of ‘sscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:151:12: warning: passing argument 1 of ‘sscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
      sscanf(f, "%d %d\n", &a, &b);
             ^
 In file included from /usr/include/features.h:424:0,
@@ -404,7 +944,25 @@ In file included from /usr/include/features.h:424:0,
 /usr/include/stdio.h:400:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
  extern int __REDIRECT_NTH (sscanf, (const char *__restrict __s,
             ^
-test.c:503:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:416:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:425:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:435:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:509:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -412,10 +970,28 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:640:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:569:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:582:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:596:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:649:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:664:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:673:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -423,10 +999,28 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:812:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:738:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:752:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:767:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:824:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:836:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:848:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -434,10 +1028,28 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:984:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:913:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:927:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:942:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:999:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:1008:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1023:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -445,10 +1057,28 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1156:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1088:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1102:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1117:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1174:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:1180:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1198:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -456,10 +1086,40 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1328:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1263:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1277:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1292:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1349:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:1350:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1358:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1371:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1375:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -467,10 +1127,70 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1487:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1384:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1398:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1412:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1426:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1440:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1458:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1472:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1486:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1490:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:1511:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1499:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1512:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1516:20: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
          __overflow("%d\n", 1);
                     ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -478,10 +1198,70 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1659:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1525:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1539:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1553:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1567:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1581:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1599:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1613:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1627:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1631:17: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
          scanf("%d\n", 1);
                 ~^
-test.c:1681:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1641:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1654:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1657:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -489,10 +1269,70 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1818:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1667:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1681:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1695:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1709:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1723:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1741:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1755:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1769:34: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                   &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                  ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1772:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:1840:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1782:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1795:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1798:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -500,10 +1340,70 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:1977:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1808:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1822:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1836:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1850:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1864:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1882:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1896:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1910:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1913:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:2003:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:1922:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1936:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1941:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -511,10 +1411,70 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:2162:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:1950:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1965:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1980:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:1995:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2010:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2029:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2044:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2059:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2064:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:2188:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:2073:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2087:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2092:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -522,10 +1482,58 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:2347:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:2101:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2116:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2131:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2146:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2161:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2180:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2195:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2210:33: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                 ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2215:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:2369:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:2237:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -533,10 +1541,28 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:2506:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:2297:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2310:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2324:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2377:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
-test.c:2530:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
+test.c:2401:18: warning: passing argument 1 of ‘__overflow’ from incompatible pointer type [-Wincompatible-pointer-types]
        __overflow("%d\n", 1);
                   ^~~~~~
 In file included from /usr/include/stdio.h:41:0,
@@ -544,9 +1570,27 @@ In file included from /usr/include/stdio.h:41:0,
 /usr/include/x86_64-linux-gnu/bits/libio.h:391:12: note: expected ‘_IO_FILE * {aka struct _IO_FILE *}’ but argument is of type ‘char *’
  extern int __overflow (_IO_FILE *, int);
             ^~~~~~~~~~
-test.c:2678:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
+test.c:2466:36: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                     &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                    ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2480:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2495:35: warning: ‘sizeof’ on array function parameter ‘argv’ will return size of ‘char **’ [-Wsizeof-array-argument]
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+                                   ^
+test.c:8:26: note: declared here
+ int main(int argc, char *argv[]) {
+                          ^~~~
+test.c:2552:15: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘int’ [-Wformat=]
        scanf("%d\n", 1);
               ~^
 wrap/tclang
-../../../../wrap/gcc test.o -D COMPILE_0 -D COMPILE_1 -D COMPILE_2 -D COMPILE_3 -D COMPILE_4 -D COMPILE_5 -D COMPILE_6 -D COMPILE_7 -D COMPILE_8 -D COMPILE_9 -D COMPILE_10 -D COMPILE_11 -D COMPILE_12 -D COMPILE_13 -D COMPILE_14 -D COMPILE_15 -D COMPILE_16 -D COMPILE_17 -D COMPILE_18 -D COMPILE_19 -D COMPILE_20 -D COMPILE_21 -D COMPILE_22 -D COMPILE_23 -D COMPILE_24 -D COMPILE_25 -D COMPILE_26 -D COMPILE_27 -D COMPILE_28 -D COMPILE_29 -D COMPILE_30 -D COMPILE_31 -D COMPILE_32 -D COMPILE_33 -D COMPILE_34 -D COMPILE_35 -D COMPILE_36 -D COMPILE_37 -D COMPILE_38 -D COMPILE_39 -D COMPILE_40 -D COMPILE_41 -D COMPILE_42 -D COMPILE_43 -D COMPILE_44 -D COMPILE_45 -D COMPILE_46 -D COMPILE_47 -D COMPILE_48 -D COMPILE_49 -D COMPILE_50 -D COMPILE_51 -D COMPILE_52 -D COMPILE_53 -D COMPILE_54 -D COMPILE_55 -D COMPILE_56 -D COMPILE_57 -D COMPILE_58 -D COMPILE_59 -D COMPILE_60 -D COMPILE_61 -D COMPILE_62 -D COMPILE_63 -D COMPILE_64 -D COMPILE_65 -D COMPILE_66 -D COMPILE_67 -D COMPILE_68 -D COMPILE_69 -D COMPILE_70 -D COMPILE_71 -D COMPILE_72 -D COMPILE_73 -D COMPILE_74 -D COMPILE_75 -D COMPILE_76 -D COMPILE_77 -D COMPILE_78 -D COMPILE_79 -D COMPILE_80 -D COMPILE_81 -D COMPILE_82 -D COMPILE_83 -D COMPILE_84 -D COMPILE_85 -D COMPILE_86 -D COMPILE_87 -D COMPILE_88 -D COMPILE_89 -D COMPILE_90 -D COMPILE_91 -D COMPILE_92 -D COMPILE_93 -D COMPILE_94 -D COMPILE_95 -D COMPILE_96 -D COMPILE_97 -D COMPILE_98 -D COMPILE_99 -D COMPILE_100 -D COMPILE_101 -D COMPILE_102 -D COMPILE_103 -D COMPILE_104 -D COMPILE_105 -D COMPILE_106 -D COMPILE_107 -D COMPILE_108 -D COMPILE_109 -D COMPILE_110 -D COMPILE_111 -D COMPILE_112 -D COMPILE_113 -D COMPILE_114 -D COMPILE_115 -D COMPILE_116 -D COMPILE_117 -D COMPILE_118 -D COMPILE_119 -D COMPILE_120 -D COMPILE_121 -D COMPILE_122 -D COMPILE_123 -D COMPILE_124 -D COMPILE_125 -D COMPILE_126 -D COMPILE_127 -D COMPILE_128 -D COMPILE_129 -D COMPILE_130 -D COMPILE_131 -D COMPILE_132 -D COMPILE_133 -D COMPILE_134 -D COMPILE_135 -D COMPILE_136 -D COMPILE_137 -D COMPILE_138 -D COMPILE_139 -D COMPILE_140 -D COMPILE_141 -D COMPILE_142 -D COMPILE_143 -D COMPILE_144 -D COMPILE_145 -D COMPILE_146 -D COMPILE_147 -D COMPILE_148 -D COMPILE_149 -D COMPILE_150 -D COMPILE_151 -D COMPILE_152 -D COMPILE_153 -D COMPILE_154 -D COMPILE_155 -D COMPILE_156 -D COMPILE_157 -D COMPILE_158 -D COMPILE_159 -D COMPILE_160 -D COMPILE_161 -D COMPILE_162 -D COMPILE_163 -D COMPILE_164 -D COMPILE_165 -D COMPILE_166 -D COMPILE_167 -D COMPILE_168 -D COMPILE_169 -D COMPILE_170 -D COMPILE_171 -D COMPILE_172 -D COMPILE_173 -D COMPILE_174 -D COMPILE_175 -D COMPILE_176 -D COMPILE_177 -D COMPILE_178 -D COMPILE_179 -D COMPILE_180 -D COMPILE_181 -D COMPILE_182 -D COMPILE_183 -D COMPILE_184 -D COMPILE_185 -D COMPILE_186 -D COMPILE_187 -D COMPILE_188 -D COMPILE_189 -D COMPILE_190 -D COMPILE_191 -D COMPILE_192 -D COMPILE_193 -D COMPILE_194 -D COMPILE_195 -D COMPILE_196 -D COMPILE_197 -D COMPILE_198 -D COMPILE_199 -D COMPILE_200 -D COMPILE_201 -D COMPILE_202 -D COMPILE_203 -D COMPILE_204 -D COMPILE_205 -D COMPILE_206 -D COMPILE_207 -D COMPILE_208 -D COMPILE_209 -D COMPILE_210 -D COMPILE_211 -D COMPILE_212 -D COMPILE_213 -D COMPILE_214 -D COMPILE_215 -D COMPILE_216 -D COMPILE_217 -D COMPILE_218 -D COMPILE_219 -D COMPILE_220 -D COMPILE_221 -D COMPILE_222 -D COMPILE_223 -D COMPILE_224 -D COMPILE_225 -D COMPILE_226 -D COMPILE_227 -D COMPILE_228  -o prog
+../../../../wrap/gcc test.o -D COMPILE_0 -D COMPILE_1 -D COMPILE_2 -D COMPILE_3 -D COMPILE_4 -D COMPILE_5 -D COMPILE_6 -D COMPILE_7 -D COMPILE_8 -D COMPILE_9 -D COMPILE_10 -D COMPILE_11 -D COMPILE_12 -D COMPILE_13 -D COMPILE_14 -D COMPILE_15 -D COMPILE_16 -D COMPILE_17 -D COMPILE_18 -D COMPILE_19 -D COMPILE_20 -D COMPILE_21 -D COMPILE_22 -D COMPILE_23 -D COMPILE_24 -D COMPILE_25 -D COMPILE_26 -D COMPILE_27 -D COMPILE_28 -D COMPILE_29 -D COMPILE_30 -D COMPILE_31 -D COMPILE_32 -D COMPILE_33 -D COMPILE_34 -D COMPILE_35 -D COMPILE_36 -D COMPILE_37 -D COMPILE_38 -D COMPILE_39 -D COMPILE_40 -D COMPILE_41 -D COMPILE_42 -D COMPILE_43 -D COMPILE_44 -D COMPILE_45 -D COMPILE_46 -D COMPILE_47 -D COMPILE_48 -D COMPILE_49 -D COMPILE_50 -D COMPILE_51 -D COMPILE_52 -D COMPILE_53 -D COMPILE_54 -D COMPILE_55 -D COMPILE_56 -D COMPILE_57 -D COMPILE_58 -D COMPILE_59 -D COMPILE_60 -D COMPILE_61 -D COMPILE_62 -D COMPILE_63 -D COMPILE_64 -D COMPILE_65 -D COMPILE_66 -D COMPILE_67 -D COMPILE_68 -D COMPILE_69 -D COMPILE_70 -D COMPILE_71 -D COMPILE_72 -D COMPILE_73 -D COMPILE_74 -D COMPILE_75 -D COMPILE_76 -D COMPILE_77 -D COMPILE_78 -D COMPILE_79 -D COMPILE_80 -D COMPILE_81 -D COMPILE_82 -D COMPILE_83 -D COMPILE_84 -D COMPILE_85 -D COMPILE_86 -D COMPILE_87 -D COMPILE_88 -D COMPILE_89 -D COMPILE_90 -D COMPILE_91 -D COMPILE_92 -D COMPILE_93 -D COMPILE_94 -D COMPILE_95 -D COMPILE_96 -D COMPILE_97 -D COMPILE_98 -D COMPILE_99 -D COMPILE_100 -D COMPILE_101 -D COMPILE_102 -D COMPILE_103 -D COMPILE_104 -D COMPILE_105 -D COMPILE_106 -D COMPILE_107 -D COMPILE_108 -D COMPILE_109 -D COMPILE_110 -D COMPILE_111 -D COMPILE_112 -D COMPILE_113 -D COMPILE_114 -D COMPILE_115 -D COMPILE_116 -D COMPILE_117 -D COMPILE_118 -D COMPILE_119 -D COMPILE_120 -D COMPILE_121 -D COMPILE_122 -D COMPILE_123 -D COMPILE_124 -D COMPILE_125 -D COMPILE_126 -D COMPILE_127 -D COMPILE_128 -D COMPILE_129 -D COMPILE_130 -D COMPILE_131 -D COMPILE_132 -D COMPILE_133 -D COMPILE_134 -D COMPILE_135 -D COMPILE_136 -D COMPILE_137 -D COMPILE_138 -D COMPILE_139 -D COMPILE_140 -D COMPILE_141 -D COMPILE_142 -D COMPILE_143 -D COMPILE_144 -D COMPILE_145 -D COMPILE_146 -D COMPILE_147 -D COMPILE_148 -D COMPILE_149 -D COMPILE_150 -D COMPILE_151 -D COMPILE_152 -D COMPILE_153 -D COMPILE_154 -D COMPILE_155 -D COMPILE_156 -D COMPILE_157 -D COMPILE_158 -D COMPILE_159 -D COMPILE_160 -D COMPILE_161 -D COMPILE_162 -D COMPILE_163 -D COMPILE_164 -D COMPILE_165 -D COMPILE_166 -D COMPILE_167 -D COMPILE_168 -D COMPILE_169 -D COMPILE_170 -D COMPILE_171 -D COMPILE_172 -D COMPILE_173 -D COMPILE_174 -D COMPILE_175 -D COMPILE_176 -D COMPILE_177 -D COMPILE_178 -D COMPILE_179 -D COMPILE_180 -D COMPILE_181 -D COMPILE_182 -D COMPILE_183 -D COMPILE_184 -D COMPILE_185 -D COMPILE_186 -D COMPILE_187 -D COMPILE_188 -D COMPILE_189 -D COMPILE_190 -D COMPILE_191 -D COMPILE_192 -D COMPILE_193 -D COMPILE_194 -D COMPILE_195 -D COMPILE_196 -D COMPILE_197 -D COMPILE_198 -D COMPILE_199 -D COMPILE_200 -D COMPILE_201 -D COMPILE_202 -D COMPILE_203 -D COMPILE_204 -D COMPILE_205 -D COMPILE_206 -D COMPILE_207 -D COMPILE_208 -D COMPILE_209 -D COMPILE_210  -o prog
 wrap/tclang

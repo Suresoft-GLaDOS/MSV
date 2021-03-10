@@ -36,7 +36,9 @@ class CodeRewriter {
     int counter;
     std::map<long long,std::pair<int,int>> macroMap;
     std::map<std::string,std::pair<int,int>> idAndCase;
-    std::map<int,int> includeIds;
+    std::map<std::pair<int,int>,std::vector<int>> isNegLocation;
+
+    size_t addIsNeg(int id,int case_num,std::string code);
 public:
     int index;
     CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi);
@@ -60,11 +62,11 @@ public:
     std::map<std::string,std::pair<int,int>> getIdAndCase(){
         return idAndCase;
     }
-    std::map<int,int> getIncludeId(){
-        return includeIds;
-    }
     int getIdCount(){
         return counter;
+    }
+    std::map<std::pair<int,int>,std::vector<int>> getIsNegLocation(){
+        return isNegLocation;
     }
 };
 

@@ -9,9 +9,9 @@ warning: ../../../../wrap/gcc: 'linker' input unused [-Wunused-command-line-argu
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total 104 different partial repair candidate templates!!
-BasicTester pointer: 0x5578af504400
-StringConstTester pointer: 0x5578af4231c0
-CondTester pointer: 0x5578af50a2b0
+BasicTester pointer: 0x564ac938c790
+StringConstTester pointer: 0x564ac92fb870
+CondTester pointer: 0x564ac9390790
 Generating Candidates...
 Candidates size: 108
 Generating Codes...
@@ -21,23 +21,23 @@ Generating patches with CondTester...
 test
 Generating patches...
 Patch Generated!
-ID count: 242
+ID count: 224
 [2] CondTester, a patch instance with id 0:
 codes size: 1
 res size: 1
 result size: 107
 Begin building test
-Total macros: 242
+Total macros: 224
 Saving this fix to: __fixed_test.c
 Building with no macros...
 Trying to build with all macros...
 Build failed, Trying to find fail macros...
 Testing with Delta-Debugging...
-Run with optimization: 27
-Fail macros: [229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241]
+Run with optimization: 25
+Fail macros: [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223]
 
 Building final program...
-Total success macros: 229
+Total success macros: 211
 rm: cannot remove 'prog': No such file or directory
 Success to build final program: __fixed_test.c
 [6] CondTester, Testing instance id 0:
@@ -63,38 +63,34 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
+Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 count 5 cnt 0
-i 0 -123456789
-i 1 140734956746318
-i 2 4222428296
-i 3 -123456789
-i 4 -123456789
+i 0 94171661050032
+i 1 195568288
+i 2 21926
+i 3 140733503556280
+i 4 2
 size: 1
 record: 1
 count: 1
-5: -123456789, 1763358286, -72539000, -123456789, -123456789, 
+5: 208117936, 195568288, 21926, 310168248, 2, 
 count 5 cnt 0
-i 0 -123456789
-i 1 140728754251363
-i 2 4222428296
-i 3 -123456789
-i 4 -123456789
-5: -123456789, -144169373, -72539000, -123456789, -123456789, 
+i 0 93830832050352
+i 1 2965054112
+i 2 21846
+i 3 140729057568680
+i 4 2
+5: -1318465360, -1329913184, 21846, 159147944, 2, 
 count 5 cnt 0
-i 0 -123456789
-i 1 140723193374307
-i 2 4222428296
-i 3 -123456789
-i 4 -123456789
-5: -123456789, -1410079133, -72539000, -123456789, -123456789, 
+i 0 94052636450992
+i 1 1413829280
+i 2 21898
+i 3 140729453541208
+i 4 2
+5: 1442603184, 1413829280, 21898, 555120472, 2, 
 [7] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -682,60 +678,17 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
 Branch 0: 0
-Branch 1: 0
 Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
 Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 0
 Branch 0: 1
-Branch 1: 0
-Iteration 3
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 1
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 1
-Branch 0: 1
-Branch 1: 1
 Trying with NEG_ARG=0!
 Initing 0!
 Current cnt, Record size: 1 1
 Size: 1
-Record: 1
-Initing 0!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
 Record: 1
 Finally tests failed
 Testing negative cases!
@@ -749,60 +702,17 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
 Branch 0: 0
-Branch 1: 0
 Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
 Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 0
 Branch 0: 1
-Branch 1: 0
-Iteration 3
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 1
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 1
-Branch 0: 1
-Branch 1: 1
 Trying with NEG_ARG=0!
 Initing 0!
 Current cnt, Record size: 1 1
 Size: 1
-Record: 1
-Initing 0!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
 Record: 1
 Finally tests failed
 Testing negative cases!
@@ -816,60 +726,17 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
 Branch 0: 0
-Branch 1: 0
 Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
 Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 0
 Branch 0: 1
-Branch 1: 0
-Iteration 3
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 1
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
-Record: 1
-Branch 0: 1
-Branch 1: 1
 Trying with NEG_ARG=0!
 Initing 0!
 Current cnt, Record size: 1 1
 Size: 1
-Record: 1
-Initing 0!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 1
 Record: 1
 Finally tests failed
 Testing negative cases!
@@ -931,6 +798,7 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
+Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -955,6 +823,8 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
+free(): double free detected in tcache 2
+Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -979,6 +849,8 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
+free(): double free detected in tcache 2
+Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -1003,7 +875,6 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -1028,8 +899,6 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-free(): double free detected in tcache 2
-Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -1054,8 +923,6 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-free(): double free detected in tcache 2
-Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -1128,27 +995,8 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
 Branch 0: 0
-Branch 1: 0
 Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
 Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
@@ -1167,41 +1015,7 @@ __ID0: 0
 __ID1: 0
 __ID2: 85
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
 Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -1210,41 +1024,9 @@ __ID0: 0
 __ID1: 0
 __ID2: 86
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
+Aborted (core dumped)
 Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+Aborted (core dumped)
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -1253,22 +1035,11 @@ __ID0: 0
 __ID1: 0
 __ID2: 87
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
+free(): double free detected in tcache 2
+Aborted (core dumped)
 Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+free(): double free detected in tcache 2
+Aborted (core dumped)
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -1277,22 +1048,11 @@ __ID0: 0
 __ID1: 0
 __ID2: 88
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
+free(): double free detected in tcache 2
+Aborted (core dumped)
 Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
+free(): double free detected in tcache 2
+Aborted (core dumped)
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -1301,22 +1061,7 @@ __ID0: 0
 __ID1: 0
 __ID2: 89
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
 Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -1325,22 +1070,7 @@ __ID0: 0
 __ID1: 0
 __ID2: 90
 Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
 Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -1358,9 +1088,7 @@ __ID0: 0
 __ID1: 0
 __ID2: 92
 Iteration 0
-Aborted (core dumped)
 Trying with NEG_ARG=0!
-Aborted (core dumped)
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -1369,11 +1097,7 @@ __ID0: 0
 __ID1: 0
 __ID2: 93
 Iteration 0
-free(): double free detected in tcache 2
-Aborted (core dumped)
 Trying with NEG_ARG=0!
-free(): double free detected in tcache 2
-Aborted (core dumped)
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -1382,11 +1106,7 @@ __ID0: 0
 __ID1: 0
 __ID2: 94
 Iteration 0
-free(): double free detected in tcache 2
-Aborted (core dumped)
 Trying with NEG_ARG=0!
-free(): double free detected in tcache 2
-Aborted (core dumped)
 Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -1395,8 +1115,40 @@ __ID0: 0
 __ID1: 0
 __ID2: 95
 Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Passed in iteration!
+Passed Negative Cases wiht CondTester!
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+count 5 cnt 0
+i 0 1
+i 1 1
+i 2 94128032731312
+i 3 140734292284760
+i 4 2
+size: 1
+record: 1
+count: 1
+5: 1, 1, -470527824, 1098896728, 2, 
+count 5 cnt 0
+i 0 1
+i 1 2
+i 2 94829693968560
+i 3 140721649821880
+i 4 2
+5: 1, 2, 1111040176, 1341335736, 2, 
+[25] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1404,8 +1156,41 @@ __ID0: 0
 __ID1: 0
 __ID2: 96
 Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Aborted (core dumped)
+Branch 0: 0
+Iteration 1
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Passed in iteration!
+Passed Negative Cases wiht CondTester!
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+count 5 cnt 0
+i 0 1
+i 1 1
+i 2 94907377770672
+i 3 140729269787864
+i 4 2
+size: 1
+record: 1
+count: 1
+5: 1, 1, 1485430960, 371367128, 2, 
+count 5 cnt 0
+i 0 1
+i 1 2
+i 2 94533115580592
+i 3 140725607366216
+i 4 2
+Aborted (core dumped)
+[26] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1417,6 +1202,8 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
+free(): double free detected in tcache 2
+Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -1424,12 +1211,30 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
+Passed in iteration!
+Passed Negative Cases wiht CondTester!
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+count 5 cnt 0
+i 0 1
+i 1 1
+i 2 94327930069168
+i 3 140728023389736
+i 4 2
+size: 1
+record: 1
+count: 1
+5: 1, 1, 1858314416, -875031000, 2, 
+count 5 cnt 0
+i 0 1
+i 1 2
+i 2 94816303456432
+i 3 140734336501112
+i 4 2
+free(): double free detected in tcache 2
+Aborted (core dumped)
+[26] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1441,6 +1246,8 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
+free(): double free detected in tcache 2
+Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -1448,12 +1255,30 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
+Passed in iteration!
+Passed Negative Cases wiht CondTester!
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+count 5 cnt 0
+i 0 1
+i 1 1
+i 2 94662526316720
+i 3 140733721849912
+i 4 2
+size: 1
+record: 1
+count: 1
+5: 1, 1, 1447112880, 528461880, 2, 
+count 5 cnt 0
+i 0 1
+i 1 2
+i 2 94670126690480
+i 3 140723678756888
+i 4 2
+free(): double free detected in tcache 2
+Aborted (core dumped)
+[27] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1472,12 +1297,29 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
+Passed in iteration!
+Passed Negative Cases wiht CondTester!
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+count 5 cnt 0
+i 0 1
+i 1 1
+i 2 94645487890608
+i 3 140723908460136
+i 4 2
+size: 1
+record: 1
+count: 1
+5: 1, 1, 1588555952, -694993304, 2, 
+count 5 cnt 0
+i 0 1
+i 1 2
+i 2 93974758625456
+i 3 140720567000520
+i 4 2
+5: 1, 2, 874188976, 258514376, 2, 
+[27] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1485,8 +1327,40 @@ __ID0: 0
 __ID1: 0
 __ID2: 100
 Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Passed in iteration!
+Passed Negative Cases wiht CondTester!
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+count 5 cnt 0
+i 0 1
+i 1 1
+i 2 93891033518256
+i 3 140736027549144
+i 4 2
+size: 1
+record: 1
+count: 1
+5: 1, 1, -1246539600, -1460806184, 2, 
+count 5 cnt 0
+i 0 1
+i 1 2
+i 2 94016098537648
+i 3 140727050920440
+i 4 2
+5: 1, 2, -735571792, -1847500296, 2, 
+[28] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1494,8 +1368,39 @@ __ID0: 0
 __ID1: 0
 __ID2: 101
 Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Passed in iteration!
+Passed Negative Cases wiht CondTester!
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+count 5 cnt 0
+i 0 1
+i 1 1
+i 2 93962673942704
+i 3 140723531447176
+i 4 2
+size: 1
+record: 1
+count: 1
+5: 1, 1, 1674408112, -1072006264, 2, 
+count 5 cnt 0
+i 0 1
+i 1 2
+i 2 94488217673904
+i 3 140730281389208
+i 4 2
+[28] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1503,8 +1408,39 @@ __ID0: 0
 __ID1: 0
 __ID2: 102
 Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Passed in iteration!
+Passed Negative Cases wiht CondTester!
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+count 5 cnt 0
+i 0 1
+i 1 1
+i 2 94510695555248
+i 3 140723586256328
+i 4 2
+size: 1
+record: 1
+count: 1
+5: 1, 1, -59793232, -1017197112, 2, 
+count 5 cnt 0
+i 0 1
+i 1 2
+i 2 94174306398384
+i 3 140723664179736
+i 4 2
+[29] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1512,8 +1448,39 @@ __ID0: 0
 __ID1: 0
 __ID2: 103
 Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Passed in iteration!
+Passed Negative Cases wiht CondTester!
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+count 5 cnt 0
+i 0 1
+i 1 1
+i 2 94464306696368
+i 3 140734322281272
+i 4 2
+size: 1
+record: 1
+count: 1
+5: 1, 1, 795988144, 1128893240, 2, 
+count 5 cnt 0
+i 0 1
+i 1 2
+i 2 94562763911344
+i 3 140730685724696
+i 4 2
+[29] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1533,32 +1500,27 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
+Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 count 5 cnt 0
-i 0 -123456789
-i 1 140733348669004
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
+i 0 1
+i 1 1
+i 2 94768818368688
+i 3 140736945362856
+i 4 2
 size: 1
 record: 1
 count: 1
-5: -123456789, 155280972, -72532860, -123456789, -123456789, 
+5: 1, 1, 364982448, -542992472, 2, 
 count 5 cnt 0
-i 0 -123456789
-i 1 140732012164705
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-5: -123456789, -1181223327, -72532860, -123456789, -123456789, 
-[27] Passed!
+i 0 1
+i 1 2
+i 2 94317596098736
+i 3 140733126749992
+i 4 2
+[31] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1570,7 +1532,6 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -1578,33 +1539,12 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140729229362764
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, 330942028, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140724779865697
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-Aborted (core dumped)
-[28] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1616,7 +1556,6 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-free(): double free detected in tcache 2
 Aborted (core dumped)
 Branch 0: 0
 Iteration 1
@@ -1625,34 +1564,12 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140723934565964
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, -668887476, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140725862610529
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-free(): double free detected in tcache 2
-Aborted (core dumped)
-[29] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1673,34 +1590,12 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140721003632204
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, 695146060, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140736869709409
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-free(): double free detected in tcache 2
-Aborted (core dumped)
-[29] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1712,6 +1607,8 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
+free(): double free detected in tcache 2
+Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -1719,33 +1616,12 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140725547746892
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, 944293452, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140721683220065
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-5: -123456789, 1374733921, -72532860, -123456789, -123456789, 
-[30] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1764,33 +1640,12 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140733714179660
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, 520791628, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140724632254049
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-5: -123456789, 28800609, -72532860, -123456789, -123456789, 
-[30] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1802,66 +1657,19 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
 Branch 0: 0
-Branch 1: 0
 Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
 Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140730195863116
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, 1297442380, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140720709252705
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-count 5 cnt 0
-i 0 -123456789
-i 1 140720709252705
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-5: -123456789, 400766561, -72532860, -123456789, -123456789, 
-5: -123456789, 400766561, -72532860, -123456789, -123456789, 
-[31] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1873,66 +1681,19 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
 Branch 0: 0
-Branch 1: 0
 Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
 Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140731792373324
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, -1401014708, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140733434308193
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-count 5 cnt 0
-i 0 -123456789
-i 1 140733434308193
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-5: -123456789, 240920161, -72532860, -123456789, -123456789, 
-5: -123456789, 240920161, -72532860, -123456789, -123456789, 
-[31] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1944,66 +1705,19 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
 Branch 0: 0
-Branch 1: 0
 Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
 Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140732039382604
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, -1154005428, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140727609009761
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-count 5 cnt 0
-i 0 -123456789
-i 1 140727609009761
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-5: -123456789, -1289410975, -72532860, -123456789, -123456789, 
-5: -123456789, -1289410975, -72532860, -123456789, -123456789, 
-[32] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -2022,32 +1736,12 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140725235783244
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, 632329804, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140734895576673
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-[32] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -2066,32 +1760,12 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140734715913804
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, 1522525772, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140727454262881
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-[33] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -2110,32 +1784,12 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140723361945164
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, -1241508276, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140725313242721
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-[33] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -2147,6 +1801,7 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
+Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -2154,32 +1809,12 @@ Current cnt, Record size: 1 1
 Size: 1
 Record: 1
 Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-count 5 cnt 0
-i 0 -123456789
-i 1 140725038155340
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-size: 1
-record: 1
-count: 1
-5: -123456789, 434701900, -72532860, -123456789, -123456789, 
-count 5 cnt 0
-i 0 -123456789
-i 1 140732324636257
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-[35] Passed!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -2191,6 +1826,8 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
+free(): double free detected in tcache 2
+Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -2215,6 +1852,7 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
+free(): double free detected in tcache 2
 Aborted (core dumped)
 Branch 0: 0
 Iteration 1
@@ -2240,8 +1878,6 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-free(): double free detected in tcache 2
-Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -2266,8 +1902,6 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-free(): double free detected in tcache 2
-Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -2340,27 +1974,8 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
 Branch 0: 0
-Branch 1: 0
 Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
 Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
@@ -2378,188 +1993,6 @@ Printing IDs:
 __ID0: 0
 __ID1: 0
 __ID2: 124
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 125
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 126
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 127
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 128
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 129
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 130
 Iteration 0
 Initing 1!
 Current cnt, Record size: 1 1
@@ -2589,7 +2022,6 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -2614,8 +2046,6 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-free(): double free detected in tcache 2
-Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -2640,8 +2070,6 @@ Initing 1!
 Current cnt, Record size: 1 1
 Size: 1
 Record: 0
-free(): double free detected in tcache 2
-Aborted (core dumped)
 Branch 0: 0
 Iteration 1
 Initing 1!
@@ -2660,352 +2088,7 @@ Testing 2 (with abstract condition)
 Printing IDs:
 __ID0: 0
 __ID1: 0
-__ID2: 134
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 135
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 136
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 137
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 138
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 0
-Branch 0: 0
-Branch 1: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 2
-Size: 2
-Record: 0
-Record: 1
-Initing 1!
-Current cnt, Record size: 2 2
-Size: 2
-Record: 0
-Record: 1
-Branch 0: 0
-Branch 1: 1
-Iteration 2
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 139
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 140
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 141
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 142
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 149
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 150
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 151
-Iteration 0
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 0
-Branch 0: 0
-Iteration 1
-Initing 1!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Initing 0!
-Current cnt, Record size: 1 1
-Size: 1
-Record: 1
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 162
+__ID2: 144
 Iteration 0
 Initing 1!
 Current cnt, Record size: 1 1
@@ -3019,37 +2102,33 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
+Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 count 5 cnt 0
-i 0 -123456789
-i 1 140728248456780
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
+i 0 1
+i 1 1
+i 2 94915750973616
+i 3 140722946042168
+i 4 2
 size: 1
 record: 1
 count: 1
-5: -123456789, -649963956, -72532860, -123456789, -123456789, 
+5: 1, 1, 1268699312, -1657411272, 2, 
 count 5 cnt 0
-i 0 -123456789
-i 1 140725953517153
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-[44] Passed!
+i 0 1
+i 1 2
+i 2 93920235233456
+i 3 140721298272376
+i 4 2
+[39] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
 __ID0: 0
 __ID1: 0
-__ID2: 163
+__ID2: 145
 Iteration 0
 Initing 1!
 Current cnt, Record size: 1 1
@@ -3063,37 +2142,33 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
-Passed Negative Cases wiht CondTestder!
-{
-	[1, ]
-
-}
+Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 count 5 cnt 0
-i 0 -123456789
-i 1 140727843452492
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
+i 0 1
+i 1 1
+i 2 94106085822640
+i 3 140723359116680
+i 4 2
 size: 1
 record: 1
 count: 1
-5: -123456789, -1054968244, -72532860, -123456789, -123456789, 
+5: 1, 1, -942600016, -1244336760, 2, 
 count 5 cnt 0
-i 0 -123456789
-i 1 140725362378337
-i 2 4222434436
-i 3 -123456789
-i 4 -123456789
-[45] Passed!
+i 0 1
+i 1 2
+i 2 94123094454448
+i 3 140731052024616
+i 4 2
+[39] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
 __ID0: 0
 __ID1: 0
-__ID2: 164
+__ID2: 146
 Iteration 0
 Initing 1!
 Current cnt, Record size: 1 1
@@ -3117,7 +2192,7 @@ Testing 2 (with abstract condition)
 Printing IDs:
 __ID0: 0
 __ID1: 0
-__ID2: 175
+__ID2: 157
 Iteration 0
 Trying with NEG_ARG=0!
 Finally tests failed
@@ -3126,7 +2201,7 @@ Testing 2 (with abstract condition)
 Printing IDs:
 __ID0: 0
 __ID1: 0
-__ID2: 176
+__ID2: 158
 Iteration 0
 Trying with NEG_ARG=0!
 Finally tests failed
@@ -3135,7 +2210,7 @@ Testing 2 (with abstract condition)
 Printing IDs:
 __ID0: 0
 __ID1: 0
-__ID2: 177
+__ID2: 159
 Iteration 0
 Trying with NEG_ARG=0!
 Finally tests failed
@@ -3144,4 +2219,4 @@ Repair process ends without working fix!!
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total number of compiles: 1
-Total number of test eval: 387
+Total number of test eval: 303

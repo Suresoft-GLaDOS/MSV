@@ -273,6 +273,7 @@ public:
         return resRExpr[S].second;
     }
 };
+static inline int conditionId=0;
 
 class StringConstReplaceVisitor : public RecursiveASTVisitor<StringConstReplaceVisitor> {
     SourceContextManager &M;
@@ -294,7 +295,7 @@ public:
         if (ctxt->hasSameType(ICE->getType(), ConstCharP)) {
             Expr *E1 = stripParenAndCast(ICE);
             if (llvm::isa<StringLiteral>(E1)) {
-                Expr *placeholder = M.getExprPlaceholder(ctxt, ConstCharP,std::map<Expr *,unsigned long>());
+                Expr *placeholder = M.getExprPlaceholder(ctxt, ConstCharP,conditionId++,std::map<Expr *,unsigned long>());
                 StmtReplacer R(ctxt, start_stmt);
                 R.addRule(ICE, placeholder);
                 Stmt *S = R.getResult();
@@ -464,12 +465,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         std::map<Expr *,unsigned long> args;
         for (size_t i=0;i<candidateVars.size();i++){
             // args is sizeof candidateVars, used for memcpy
-            args[candidateVars[i]]=sizeof(candidateVars[i]);
+            args[candidateVars[i]]=ctxt->getTypeSize(candidateVars[i]->getType())/8;
         }
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,conditionId++,args);
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ori_cond->getType(), VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
@@ -505,12 +506,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         std::map<Expr *,unsigned long> args;
         for (size_t i=0;i<candidateVars.size();i++){
             // args is sizeof candidateVars, used for memcpy
-            args[candidateVars[i]]=sizeof(candidateVars[i]);
+            args[candidateVars[i]]=ctxt->getTypeSize(candidateVars[i]->getType())/8;
         }
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,conditionId++,args);
         BinaryOperator *BO = BinaryOperator::Create(*ctxt,ParenE,
                 placeholder, BO_LOr, ctxt->IntTy, VK_RValue,
                 OK_Ordinary, SourceLocation(), FPOptionsOverride());
@@ -805,12 +806,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         std::map<Expr *,unsigned long> args;
         for (size_t i=0;i<candidateVars.size();i++){
             // args is sizeof candidateVars, used for memcpy
-            args[candidateVars[i]]=sizeof(candidateVars[i]);
+            args[candidateVars[i]]=ctxt->getTypeSize(candidateVars[i]->getType())/8;
         }
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,conditionId++,args);
         //clang::CallExpr *is_neg_call = L->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
@@ -902,12 +903,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         std::map<Expr *,unsigned long> args;
         for (size_t i=0;i<candidateVars.size();i++){
             // args is sizeof candidateVars, used for memcpy
-            args[candidateVars[i]]=sizeof(candidateVars[i]);
+            args[candidateVars[i]]=ctxt->getTypeSize(candidateVars[i]->getType())/8;
         }
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,args);
+            placeholder = M.getExprPlaceholder(ctxt, ctxt->IntTy,conditionId++,args);
         
         //clang::CallExpr *is_neg_call = G->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
         //UnaryOperator *UO = new(*ctxt) UnaryOperator(hinfo.is_neg, UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation());

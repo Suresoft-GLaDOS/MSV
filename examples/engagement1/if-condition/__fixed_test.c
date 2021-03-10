@@ -1,5 +1,5 @@
 int __get_mutant();
-int __is_neg(int, ...);
+int __is_neg(int, int, ...);
 int __abst_hole();
 int __choose(char *);
 void *memset(void *, int, unsigned long);
@@ -70,7 +70,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_7
   case 8: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+    if (!__is_neg(3, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       fscanf(f, "%d %d\n", &a, &b);
 
     break;
@@ -78,7 +79,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_8
   case 9: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+    if (__is_neg(4, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
       return 0;
     fscanf(f, "%d %d\n", &a, &b);
 
@@ -87,7 +89,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_9
   case 10: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+    if (__is_neg(4, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
       return 1;
     fscanf(f, "%d %d\n", &a, &b);
 
@@ -409,7 +412,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_52
   case 36: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+    if (!__is_neg(5, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       fclose(f);
 
     break;
@@ -417,7 +421,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_53
   case 37: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+    if (__is_neg(6, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
       return 0;
     fclose(f);
 
@@ -426,7 +431,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_54
   case 38: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+    if (__is_neg(6, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
       return 1;
     fclose(f);
 
@@ -559,7 +565,8 @@ int main(int argc, char *argv[]) {
     if (a > b) { // >=
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
         printf("%d\n", 1);
     }
 
@@ -571,7 +578,8 @@ int main(int argc, char *argv[]) {
     if (a > b) { // >=
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
         return 0;
       printf("%d\n", 1);
     }
@@ -584,7 +592,8 @@ int main(int argc, char *argv[]) {
     if (a > b) { // >=
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
         return 1;
       printf("%d\n", 1);
     }
@@ -725,7 +734,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
         printf("%d\n", 1);
     }
 
@@ -738,7 +748,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
         return 0;
       printf("%d\n", 1);
     }
@@ -752,7 +763,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
         return 1;
       printf("%d\n", 1);
     }
@@ -897,7 +909,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
         printf("%d\n", 1);
     }
 
@@ -910,7 +923,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
         return 0;
       printf("%d\n", 1);
     }
@@ -924,7 +938,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
         return 1;
       printf("%d\n", 1);
     }
@@ -1069,7 +1084,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
         printf("%d\n", 1);
     }
 
@@ -1082,7 +1098,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
         return 0;
       printf("%d\n", 1);
     }
@@ -1096,7 +1113,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
         return 1;
       printf("%d\n", 1);
     }
@@ -1241,7 +1259,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
         printf("%d\n", 1);
     }
 
@@ -1254,7 +1273,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
         return 0;
       printf("%d\n", 1);
     }
@@ -1268,7 +1288,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
         return 1;
       printf("%d\n", 1);
     }
@@ -1333,7 +1354,9 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_125
   case 65: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+        (a > b)) {
       printf("%d\n", 0);
     } else {
       printf("%d\n", 1);
@@ -1344,7 +1367,9 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_126
   case 66: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+        (a > b)) {
       printf("%d\n", 0);
     } else {
       __overflow("%d\n", 1);
@@ -1355,7 +1380,9 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_127
   case 67: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+        (a > b)) {
       printf("%d\n", 0);
     } else {
       fclose((f));
@@ -1367,7 +1394,9 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_128
   case 68: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+        (a > b)) {
       printf("%d\n", 0);
     } else {
       fclose(f);
@@ -1379,7 +1408,9 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_129
   case 69: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+        (a > b)) {
       printf("%d\n", 0);
     } else {
       fscanf((f), "%d %d\n", &a, &b);
@@ -1391,7 +1422,9 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_130
   case 70: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+        (a > b)) {
       printf("%d\n", 0);
     } else {
       fscanf(f, "%d %d\n", &a, &b);
@@ -1403,11 +1436,17 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_131
   case 71: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+        (a > b)) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
         printf("%d\n", 1);
+      }
+      printf("%d\n", 1);
     }
 
     break;
@@ -1415,11 +1454,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_132
   case 72: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+        (a > b)) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 0;
+      printf("%d\n", 0);
       printf("%d\n", 1);
     }
 
@@ -1428,11 +1468,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_133
   case 73: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+        (a > b)) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 1;
+      printf("%d\n", 1);
       printf("%d\n", 1);
     }
 
@@ -1441,47 +1482,9 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_134
   case 74: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
-      printf("%d\n", 0);
-    } else {
-      if (a > b) {
-        printf("%d\n", 0);
-      } else {
-        printf("%d\n", 1);
-      }
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_135
-  case 75: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
-      printf("%d\n", 0);
-    } else {
-      printf("%d\n", 0);
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_136
-  case 76: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
-      printf("%d\n", 0);
-    } else {
-      printf("%d\n", 1);
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_137
-  case 77: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8) && (a > b)) {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+        (a > b)) {
       printf("%d\n", 0);
     } else {
       scanf("%d\n", 1);
@@ -1490,9 +1493,10 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_138
-  case 78: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_135
+  case 75: {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1502,9 +1506,10 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_139
-  case 79: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_136
+  case 76: {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1514,9 +1519,10 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_140
-  case 80: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_137
+  case 77: {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1527,9 +1533,10 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_141
-  case 81: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_138
+  case 78: {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1540,9 +1547,10 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_142
-  case 82: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_139
+  case 79: {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1553,9 +1561,10 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_143
-  case 83: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_140
+  case 80: {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1566,50 +1575,10 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_144
-  case 84: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      if (a > b) {
-        printf("%d\n", 0);
-      } else {
-        if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-          printf("%d\n", 1);
-      }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_145
-  case 85: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      if (a > b) {
-        printf("%d\n", 0);
-      } else {
-        if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-          return 0;
-        printf("%d\n", 1);
-      }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_146
-  case 86: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      if (a > b) {
-        printf("%d\n", 0);
-      } else {
-        if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-          return 1;
-        printf("%d\n", 1);
-      }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_147
-  case 87: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_141
+  case 81: {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1624,9 +1593,10 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_148
-  case 88: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_142
+  case 82: {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1637,9 +1607,10 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_149
-  case 89: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_143
+  case 83: {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1650,9 +1621,10 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_150
-  case 90: {
-    if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_144
+  case 84: {
+    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1662,11 +1634,100 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_151
-  case 91: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+#ifdef COMPILE_145
+  case 85: {
+    if ((a > b) &&
+        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_146
+  case 86: {
+    if ((a > b) &&
+        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+      printf("%d\n", 0);
+    } else {
+      __overflow("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_147
+  case 87: {
+    if ((a > b) &&
+        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+      printf("%d\n", 0);
+    } else {
+      fclose((f));
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_148
+  case 88: {
+    if ((a > b) &&
+        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+      printf("%d\n", 0);
+    } else {
+      fclose(f);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_149
+  case 89: {
+    if ((a > b) &&
+        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+      printf("%d\n", 0);
+    } else {
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_150
+  case 90: {
+    if ((a > b) &&
+        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+      printf("%d\n", 0);
+    } else {
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_151
+  case 91: {
+    if ((a > b) &&
+        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+      printf("%d\n", 0);
+    } else {
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
       printf("%d\n", 1);
     }
 
@@ -1675,10 +1736,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_152
   case 92: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) &&
+        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
-      __overflow("%d\n", 1);
+      printf("%d\n", 0);
+      printf("%d\n", 1);
     }
 
     break;
@@ -1686,10 +1750,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_153
   case 93: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) &&
+        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
-      fclose((f));
+      printf("%d\n", 1);
       printf("%d\n", 1);
     }
 
@@ -1698,11 +1764,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_154
   case 94: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) &&
+        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
-      fclose(f);
-      printf("%d\n", 1);
+      scanf("%d\n", 1);
     }
 
     break;
@@ -1710,10 +1777,11 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_155
   case 95: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) ||
+        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
-      fscanf((f), "%d %d\n", &a, &b);
       printf("%d\n", 1);
     }
 
@@ -1722,11 +1790,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_156
   case 96: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) ||
+        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
-      fscanf(f, "%d %d\n", &a, &b);
-      printf("%d\n", 1);
+      __overflow("%d\n", 1);
     }
 
     break;
@@ -1734,11 +1803,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_157
   case 97: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) ||
+        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        printf("%d\n", 1);
+      fclose((f));
+      printf("%d\n", 1);
     }
 
     break;
@@ -1746,11 +1817,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_158
   case 98: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) ||
+        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 0;
+      fclose(f);
       printf("%d\n", 1);
     }
 
@@ -1759,11 +1831,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_159
   case 99: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) ||
+        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 1;
+      fscanf((f), "%d %d\n", &a, &b);
       printf("%d\n", 1);
     }
 
@@ -1772,14 +1845,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_160
   case 100: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) ||
+        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
-      if (a > b) {
-        printf("%d\n", 0);
-      } else {
-        printf("%d\n", 1);
-      }
+      fscanf(f, "%d %d\n", &a, &b);
       printf("%d\n", 1);
     }
 
@@ -1788,10 +1859,16 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_161
   case 101: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) ||
+        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
-      printf("%d\n", 0);
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
       printf("%d\n", 1);
     }
 
@@ -1800,10 +1877,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_162
   case 102: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) ||
+        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
-      printf("%d\n", 1);
+      printf("%d\n", 0);
       printf("%d\n", 1);
     }
 
@@ -1812,7 +1891,23 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_163
   case 103: {
-    if ((a > b) && !__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if ((a > b) ||
+        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+      printf("%d\n", 0);
+    } else {
+      printf("%d\n", 1);
+      printf("%d\n", 1);
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_164
+  case 104: {
+    if ((a > b) ||
+        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
       printf("%d\n", 0);
     } else {
       scanf("%d\n", 1);
@@ -1821,9 +1916,12 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_164
-  case 104: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+#ifdef COMPILE_165
+  case 105: {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 0;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
       printf("%d\n", 1);
@@ -1832,9 +1930,12 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_165
-  case 105: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+#ifdef COMPILE_166
+  case 106: {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 0;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
       __overflow("%d\n", 1);
@@ -1843,24 +1944,15 @@ int main(int argc, char *argv[]) {
     break;
   }
 #endif
-#ifdef COMPILE_166
-  case 106: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+#ifdef COMPILE_167
+  case 107: {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 0;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
       fclose((f));
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_167
-  case 107: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
-      printf("%d\n", 0);
-    } else {
-      fclose(f);
       printf("%d\n", 1);
     }
 
@@ -1869,10 +1961,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_168
   case 108: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 0;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
-      fscanf((f), "%d %d\n", &a, &b);
+      fclose(f);
       printf("%d\n", 1);
     }
 
@@ -1881,10 +1976,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_169
   case 109: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 0;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
-      fscanf(f, "%d %d\n", &a, &b);
+      fscanf((f), "%d %d\n", &a, &b);
       printf("%d\n", 1);
     }
 
@@ -1893,11 +1991,14 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_170
   case 110: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 0;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        printf("%d\n", 1);
+      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 1);
     }
 
     break;
@@ -1905,11 +2006,17 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_171
   case 111: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 0;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 0;
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
       printf("%d\n", 1);
     }
 
@@ -1918,11 +2025,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_172
   case 112: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 0;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 1;
+      printf("%d\n", 0);
       printf("%d\n", 1);
     }
 
@@ -1931,14 +2040,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_173
   case 113: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 0;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (a > b) {
-        printf("%d\n", 0);
-      } else {
-        printf("%d\n", 1);
-      }
+      printf("%d\n", 1);
       printf("%d\n", 1);
     }
 
@@ -1947,11 +2055,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_174
   case 114: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 0;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
-      printf("%d\n", 0);
-      printf("%d\n", 1);
+      scanf("%d\n", 1);
     }
 
     break;
@@ -1959,10 +2069,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_175
   case 115: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 1;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
-      printf("%d\n", 1);
       printf("%d\n", 1);
     }
 
@@ -1971,10 +2083,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_176
   case 116: {
-    if ((a > b) || __is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8)) {
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 1;
+    if (a > b) {
       printf("%d\n", 0);
     } else {
-      scanf("%d\n", 1);
+      __overflow("%d\n", 1);
     }
 
     break;
@@ -1982,11 +2097,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_177
   case 117: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
+      fclose((f));
       printf("%d\n", 1);
     }
 
@@ -1995,12 +2112,14 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_178
   case 118: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      __overflow("%d\n", 1);
+      fclose(f);
+      printf("%d\n", 1);
     }
 
     break;
@@ -2008,12 +2127,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_179
   case 119: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fclose((f));
+      fscanf((f), "%d %d\n", &a, &b);
       printf("%d\n", 1);
     }
 
@@ -2022,12 +2142,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_180
   case 120: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fclose(f);
+      fscanf(f, "%d %d\n", &a, &b);
       printf("%d\n", 1);
     }
 
@@ -2036,12 +2157,17 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_181
   case 121: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fscanf((f), "%d %d\n", &a, &b);
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
       printf("%d\n", 1);
     }
 
@@ -2050,12 +2176,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_182
   case 122: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 0);
       printf("%d\n", 1);
     }
 
@@ -2064,13 +2191,14 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_183
   case 123: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        printf("%d\n", 1);
+      printf("%d\n", 1);
+      printf("%d\n", 1);
     }
 
     break;
@@ -2078,14 +2206,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_184
   case 124: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
+    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 0;
-      printf("%d\n", 1);
+      scanf("%d\n", 1);
     }
 
     break;
@@ -2093,13 +2220,9 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_185
   case 125: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 1;
       printf("%d\n", 1);
     }
 
@@ -2108,17 +2231,10 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_186
   case 126: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (a > b) {
-        printf("%d\n", 0);
-      } else {
-        printf("%d\n", 1);
-      }
-      printf("%d\n", 1);
+      __overflow("%d\n", 1);
     }
 
     break;
@@ -2126,12 +2242,10 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_187
   case 127: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      printf("%d\n", 0);
+      fclose((f));
       printf("%d\n", 1);
     }
 
@@ -2140,12 +2254,10 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_188
   case 128: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      printf("%d\n", 1);
+      fclose(f);
       printf("%d\n", 1);
     }
 
@@ -2154,12 +2266,11 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_189
   case 129: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 0;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      scanf("%d\n", 1);
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
     }
 
     break;
@@ -2167,11 +2278,10 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_190
   case 130: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
+      fscanf(f, "%d %d\n", &a, &b);
       printf("%d\n", 1);
     }
 
@@ -2180,12 +2290,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_191
   case 131: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      __overflow("%d\n", 1);
+      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+        printf("%d\n", 1);
     }
 
     break;
@@ -2193,12 +2303,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_192
   case 132: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fclose((f));
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+        return 0;
       printf("%d\n", 1);
     }
 
@@ -2207,12 +2317,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_193
   case 133: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fclose(f);
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+        return 1;
       printf("%d\n", 1);
     }
 
@@ -2221,12 +2331,14 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_194
   case 134: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fscanf((f), "%d %d\n", &a, &b);
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
       printf("%d\n", 1);
     }
 
@@ -2235,12 +2347,10 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_195
   case 135: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 0);
       printf("%d\n", 1);
     }
 
@@ -2249,13 +2359,11 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_196
   case 136: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        printf("%d\n", 1);
+      printf("%d\n", 1);
+      printf("%d\n", 1);
     }
 
     break;
@@ -2263,14 +2371,10 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_197
   case 137: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 0;
-      printf("%d\n", 1);
+      scanf("%d\n", 1);
     }
 
     break;
@@ -2278,13 +2382,10 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_198
   case 138: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 1;
       printf("%d\n", 1);
     }
 
@@ -2293,17 +2394,11 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_199
   case 139: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (a > b) {
-        printf("%d\n", 0);
-      } else {
-        printf("%d\n", 1);
-      }
-      printf("%d\n", 1);
+      __overflow("%d\n", 1);
     }
 
     break;
@@ -2311,12 +2406,11 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_200
   case 140: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      printf("%d\n", 0);
+      fclose((f));
       printf("%d\n", 1);
     }
 
@@ -2325,12 +2419,11 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_201
   case 141: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      printf("%d\n", 1);
+      fclose(f);
       printf("%d\n", 1);
     }
 
@@ -2339,12 +2432,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_202
   case 142: {
-    if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-      return 1;
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      scanf("%d\n", 1);
+      fscanf((f), "%d %d\n", &a, &b);
+      printf("%d\n", 1);
     }
 
     break;
@@ -2352,9 +2445,11 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_203
   case 143: {
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
+      fscanf(f, "%d %d\n", &a, &b);
       printf("%d\n", 1);
     }
 
@@ -2363,10 +2458,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_204
   case 144: {
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      __overflow("%d\n", 1);
+      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+        printf("%d\n", 1);
     }
 
     break;
@@ -2374,10 +2472,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_205
   case 145: {
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fclose((f));
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+        return 0;
       printf("%d\n", 1);
     }
 
@@ -2386,10 +2487,13 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_206
   case 146: {
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fclose(f);
+      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+        return 1;
       printf("%d\n", 1);
     }
 
@@ -2398,10 +2502,15 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_207
   case 147: {
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fscanf((f), "%d %d\n", &a, &b);
+      if (a > b) {
+        printf("%d\n", 0);
+      } else {
+        printf("%d\n", 1);
+      }
       printf("%d\n", 1);
     }
 
@@ -2410,10 +2519,11 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_208
   case 148: {
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      fscanf(f, "%d %d\n", &a, &b);
+      printf("%d\n", 0);
       printf("%d\n", 1);
     }
 
@@ -2422,11 +2532,12 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_209
   case 149: {
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        printf("%d\n", 1);
+      printf("%d\n", 1);
+      printf("%d\n", 1);
     }
 
     break;
@@ -2434,12 +2545,11 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_210
   case 150: {
+    printf("%d\n", 0);
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 0;
-      printf("%d\n", 1);
+      scanf("%d\n", 1);
     }
 
     break;
@@ -2447,258 +2557,22 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_211
   case 151: {
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 1;
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_212
-  case 152: {
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      if (a > b) {
-        printf("%d\n", 0);
-      } else {
-        printf("%d\n", 1);
-      }
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_213
-  case 153: {
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      printf("%d\n", 0);
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_214
-  case 154: {
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      printf("%d\n", 1);
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_215
-  case 155: {
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      scanf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_216
-  case 156: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_217
-  case 157: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      __overflow("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_218
-  case 158: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      fclose((f));
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_219
-  case 159: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      fclose(f);
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_220
-  case 160: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      fscanf((f), "%d %d\n", &a, &b);
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_221
-  case 161: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      fscanf(f, "%d %d\n", &a, &b);
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_222
-  case 162: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_223
-  case 163: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 0;
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_224
-  case 164: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
-        return 1;
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_225
-  case 165: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      if (a > b) {
-        printf("%d\n", 0);
-      } else {
-        printf("%d\n", 1);
-      }
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_226
-  case 166: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      printf("%d\n", 0);
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_227
-  case 167: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      printf("%d\n", 1);
-      printf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_228
-  case 168: {
-    printf("%d\n", 0);
-    if (a > b) {
-      printf("%d\n", 0);
-    } else {
-      scanf("%d\n", 1);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_229
-  case 169: {
     printf("%d\n", 1);
   }
 
   break;
   }
 #endif
-#ifdef COMPILE_230
-case 170: {
+#ifdef COMPILE_212
+case 152: {
   __overflow("%d\n", 1);
 }
 
 break;
 }
 #endif
-#ifdef COMPILE_231
-case 171: {
+#ifdef COMPILE_213
+case 153: {
   fclose((f));
   printf("%d\n", 1);
 }
@@ -2706,8 +2580,8 @@ case 171: {
 break;
 }
 #endif
-#ifdef COMPILE_232
-case 172: {
+#ifdef COMPILE_214
+case 154: {
   fclose(f);
   printf("%d\n", 1);
 }
@@ -2715,8 +2589,8 @@ case 172: {
 break;
 }
 #endif
-#ifdef COMPILE_233
-case 173: {
+#ifdef COMPILE_215
+case 155: {
   fscanf((f), "%d %d\n", &a, &b);
   printf("%d\n", 1);
 }
@@ -2724,8 +2598,8 @@ case 173: {
 break;
 }
 #endif
-#ifdef COMPILE_234
-case 174: {
+#ifdef COMPILE_216
+case 156: {
   fscanf(f, "%d %d\n", &a, &b);
   printf("%d\n", 1);
 }
@@ -2733,18 +2607,20 @@ case 174: {
 break;
 }
 #endif
-#ifdef COMPILE_235
-case 175: {
-  if (!__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_217
+case 157: {
+  if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+                &(argv), sizeof(argv), &(argc), sizeof(argc)))
     printf("%d\n", 1);
 }
 
 break;
 }
 #endif
-#ifdef COMPILE_236
-case 176: {
-  if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_218
+case 158: {
+  if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+               &(argv), sizeof(argv), &(argc), sizeof(argc)))
     return 0;
   printf("%d\n", 1);
 }
@@ -2752,9 +2628,10 @@ case 176: {
 break;
 }
 #endif
-#ifdef COMPILE_237
-case 177: {
-  if (__is_neg(5, argc, 8, argv, 8, f, 8, a, 8, b, 8))
+#ifdef COMPILE_219
+case 159: {
+  if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
+               &(argv), sizeof(argv), &(argc), sizeof(argc)))
     return 1;
   printf("%d\n", 1);
 }
@@ -2762,8 +2639,8 @@ case 177: {
 break;
 }
 #endif
-#ifdef COMPILE_238
-case 178: {
+#ifdef COMPILE_220
+case 160: {
   if (a > b) {
     printf("%d\n", 0);
   } else {
@@ -2775,8 +2652,8 @@ case 178: {
 break;
 }
 #endif
-#ifdef COMPILE_239
-case 179: {
+#ifdef COMPILE_221
+case 161: {
   printf("%d\n", 0);
   printf("%d\n", 1);
 }
@@ -2784,8 +2661,8 @@ case 179: {
 break;
 }
 #endif
-#ifdef COMPILE_240
-case 180: {
+#ifdef COMPILE_222
+case 162: {
   printf("%d\n", 1);
   printf("%d\n", 1);
 }
@@ -2793,8 +2670,8 @@ case 180: {
 break;
 }
 #endif
-#ifdef COMPILE_241
-case 181: {
+#ifdef COMPILE_223
+case 163: {
   scanf("%d\n", 1);
 }
 

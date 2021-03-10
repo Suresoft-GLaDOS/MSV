@@ -244,8 +244,9 @@ static RepairCandidate replaceExprInCandidate(SourceContextManager &M,
         StmtReplacer R(ctxt, it->first);
         for (std::map<Expr*, Expr*>::iterator it2 = it->second.begin();
                 it2 != it->second.end(); ++it2) {
-            ParenExpr *E = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), it2->second);
-            R.addRule(it2->first, E);
+            // ParenExpr *E = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), it2->second);
+            // E->dump();
+            R.addRule(it2->first, it2->second);
         }
         ret.actions[tmp_map1[it->first]].ast_node = R.getResult();
     }
@@ -349,6 +350,35 @@ std::string removeSpace(std::string code){
         }
     }
     return code;
+}
+size_t getIsNegCount(std::string code){
+    size_t position=code.find("__is_neg");
+    size_t count=0;
+
+    while (position!=std::string::npos){
+        count++;
+        position=code.find("__is_neg",position+1);
+    }
+    return count;
+}
+size_t CodeRewriter::addIsNeg(int id,int case_num,std::string code){
+    size_t position=code.find("__is_neg");
+    size_t count=0;
+
+    std::pair<int,int> location(id,case_num);
+    isNegLocation[location].clear();
+
+    while (position!=std::string::npos){
+        count++;
+        position=code.find("(",position);
+        for (position;code[position]==' ';position++){}
+        int isNegId=std::strtol(code.substr(position).c_str(),nullptr,0);
+        std::pair<int,int> location(id,case_num);
+        isNegLocation[location].push_back(isNegId);
+
+        position=code.find("__is_neg",position);
+    }
+    return count;
 }
 std::map<ASTLocTy, std::map<std::string, bool> > CodeRewriter::eliminateAllNewLoc(SourceContextManager &M,
         const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str) {
@@ -457,6 +487,8 @@ std::map<ASTLocTy, std::map<std::string, bool> > CodeRewriter::eliminateAllNewLo
 
 CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi) {
     std::map<ASTLocTy,std::string> original_str;
+    std::vector<RepairCandidate> rc1;
+    rc1.clear();
     for (int i=0;i<rc.size();i++){
         std::vector<ExprFillInfo> temp((*pefi)[i]->begin(),(*pefi)[i]->end());
         for(int k=0;k<temp.size();k++){
@@ -475,7 +507,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             }
             //rc.dump();
             // We first the rid of all ExprMutationKind in rc
-            //rc[i] = replaceExprInCandidate(M, rc[i], efi);
+            rc1.push_back(replaceExprInCandidate(M, rc[i], efi));
             //rc1.dump();
             // We then eliminate ASTLocTy with new statements, and replace them with
             // strings
@@ -484,7 +516,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         }
     }
     // Create string with whole candidate vector 
-    std::map<ASTLocTy, std::map<std::string, bool> > res1=eliminateAllNewLoc(M, rc,original_str);
+    std::map<ASTLocTy, std::map<std::string, bool> > res1=eliminateAllNewLoc(M, rc1,original_str);
     // We then categorize location based on the src_file and their offset
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > res2;
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > tmp_loc;
@@ -555,7 +587,6 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     resPatches.clear();
     macroMap.clear();
     idAndCase.clear();
-    includeIds.clear();
     int beforeId=0;
     counter=0;
     long long macro=0;
@@ -652,13 +683,19 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 std::string body="switch(__choose(\"__ID"+std::to_string(counter++)+"\"))\n{\n";
                 body+="case "+std::to_string(case_count++)+": {\n";
                 body+=cur_patch[0];
+                int isNegCount=addIsNeg(counter-1,0,cur_patch[0]);
                 body+="\nbreak;\n}\n";
                 for(int i=1;i<cur_patch.size();i++){
+                    isNegCount=getIsNegCount(cur_patch[i]);
+                    if (isNegCount>=2) continue;
+                    isNegCount=addIsNeg(counter-1,case_count,cur_patch[i]);
+
                     body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
                     body+="case "+std::to_string(case_count)+": {\n";
                     body+=cur_patch[i];
                     body+="\nbreak;\n}\n";
                     body+="#endif\n";
+
                     macroMap.insert(std::pair<long long,std::pair<int,int>>(index++,std::pair<int,int>(counter-1,case_count)));
                     idAndCase.insert(std::pair<std::string,std::pair<int,int>>(cur_patch[i],std::pair<int,int>(counter-1,case_count++)));
                 }
@@ -696,8 +733,13 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         std::string body="switch(__choose(\"__ID"+std::to_string(counter++)+"\"))\n{\n";
         body+="case "+std::to_string(case_count++)+": {\n";
         body+=cur_patch[0];
+        int isNegCount=addIsNeg(counter-1,0,cur_patch[0]);
         body+="\nbreak;\n}\n";
         for(int i=1;i<cur_patch.size();i++){
+            isNegCount=getIsNegCount(cur_patch[i]);
+            if (isNegCount>=2) continue;
+            isNegCount=addIsNeg(counter-1,case_count,cur_patch[i]);
+
             body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
             body+=cur_patch[i];
