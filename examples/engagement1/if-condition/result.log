@@ -9,20 +9,20 @@ warning: ../../../../wrap/gcc: 'linker' input unused [-Wunused-command-line-argu
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total 104 different partial repair candidate templates!!
-BasicTester pointer: 0x560338da8080
-StringConstTester pointer: 0x560338d17af0
-CondTester pointer: 0x560338da6270
+BasicTester pointer: 0x558c5552b080
+StringConstTester pointer: 0x558c5549aaf0
+CondTester pointer: 0x558c55529270
 Generating Candidates...
 Candidates size: 108
 Generating Codes...
-[2] Preprocess the following candidate with CondTester:
+[1] Preprocess the following candidate with CondTester:
 108 Candidates
 Generating patches with CondTester...
 test
 Generating patches...
 Patch Generated!
 ID count: 224
-[2] CondTester, a patch instance with id 0:
+[1] CondTester, a patch instance with id 0:
 codes size: 1
 res size: 1
 result size: 107
@@ -64,6 +64,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1105,6 +1110,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1131,6 +1141,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1160,6 +1175,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1191,6 +1211,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1220,6 +1245,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1245,6 +1275,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1270,6 +1305,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1295,6 +1335,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1320,6 +1365,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1345,6 +1395,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1932,6 +1987,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
@@ -1957,6 +2017,11 @@ Record: 1
 Branch 0: 1
 Passed in iteration!
 Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!

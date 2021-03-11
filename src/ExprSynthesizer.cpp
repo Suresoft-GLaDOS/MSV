@@ -1820,20 +1820,23 @@ class ConditionSynthesisTester : public BasicTester {
             }
         }
     }
-    void dumpRecord(std::set<std::vector<unsigned long> > record){
+    void dumpRecord(std::map<unsigned long,std::set<std::vector<unsigned long>>> record){
         size_t debugLevel=2;
-        outlog_printf(debugLevel,"{\n");
-        for (std::set<std::vector<unsigned long> >::iterator it=record.begin();
-                it!=record.end();it++){
-            outlog_printf(debugLevel,"\t[");
-            std::vector<unsigned long> temp=*it;
-            for (std::vector<unsigned long>::iterator it2=temp.begin();
-                    it2!=temp.end();it2++){
-                outlog_printf(debugLevel,"%d, ",*it2);
+        for (std::map<unsigned long,std::set<std::vector<unsigned long>>>::iterator mapIt=record.begin();
+                mapIt!=record.end();mapIt++){
+            outlog_printf(debugLevel,"Case %lu:\n{\n",mapIt->first);
+            for (std::set<std::vector<unsigned long> >::iterator it=mapIt->second.begin();
+                    it!=mapIt->second.end();it++){
+                outlog_printf(debugLevel,"\t[");
+                std::vector<unsigned long> temp=*it;
+                for (std::vector<unsigned long>::iterator it2=temp.begin();
+                        it2!=temp.end();it2++){
+                    outlog_printf(debugLevel,"%d, ",*it2);
+                }
+                outlog_printf(debugLevel,"]\n");
             }
-            outlog_printf(debugLevel,"]\n");
+            outlog_printf(debugLevel,"\n}\n");
         }
-        outlog_printf(debugLevel,"\n}\n");
     }
 
 public:
@@ -1920,7 +1923,7 @@ public:
                         // patches.clear();
                         continue;
                     }
-                    // dumpRecord(negative_records);
+                    dumpRecord(negative_records);
                     outlog_printf(2, "Testing positive cases!\n");
                     if (!BasicTester::testPositiveCases(testEnv)) {
                         // codes.clear();
