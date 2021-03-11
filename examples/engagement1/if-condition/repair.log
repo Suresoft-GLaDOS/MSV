@@ -7,9 +7,9 @@ Processing test.c
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total 104 different partial repair candidate templates!!
-BasicTester pointer: 0x564ac938c790
-StringConstTester pointer: 0x564ac92fb870
-CondTester pointer: 0x564ac9390790
+BasicTester pointer: 0x560338da8080
+StringConstTester pointer: 0x560338d17af0
+CondTester pointer: 0x560338da6270
 Generating Candidates...
 Candidates size: 108
 Generating Codes...
@@ -34,7 +34,7 @@ Testing with Delta-Debugging...
 Building final program...
 Total success macros: 211
 Success to build final program: __fixed_test.c
-[6] CondTester, Testing instance id 0:
+[9] CondTester, Testing instance id 0:
 
 Total ID: 3
 Testing with ID 0
@@ -53,10 +53,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 208117936, 195568288, 21926, 310168248, 2, 
-5: -1318465360, -1329913184, 21846, 159147944, 2, 
-5: 1442603184, 1413829280, 21898, 555120472, 2, 
-[7] Passed!
+[9] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -626,9 +623,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, -470527824, 1098896728, 2, 
-5: 1, 2, 1111040176, 1341335736, 2, 
-[25] Passed!
+[27] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -644,8 +639,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, 1485430960, 371367128, 2, 
-[26] Passed!
+[28] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -661,8 +655,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, 1858314416, -875031000, 2, 
-[26] Passed!
+[29] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -678,8 +671,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, 1447112880, 528461880, 2, 
-[27] Passed!
+[30] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -695,9 +687,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, 1588555952, -694993304, 2, 
-5: 1, 2, 874188976, 258514376, 2, 
-[27] Passed!
+[30] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -713,9 +703,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, -1246539600, -1460806184, 2, 
-5: 1, 2, -735571792, -1847500296, 2, 
-[28] Passed!
+[31] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -731,8 +719,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, 1674408112, -1072006264, 2, 
-[28] Passed!
+[31] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -748,8 +735,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, -59793232, -1017197112, 2, 
-[29] Passed!
+[32] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -765,8 +751,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, 795988144, 1128893240, 2, 
-[29] Passed!
+[32] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -782,8 +767,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, 364982448, -542992472, 2, 
-[31] Passed!
+[35] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1075,8 +1059,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, 1268699312, -1657411272, 2, 
-[39] Passed!
+[43] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1092,8 +1075,7 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-5: 1, 1, -942600016, -1244336760, 2, 
-[39] Passed!
+[43] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:

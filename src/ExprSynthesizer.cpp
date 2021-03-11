@@ -208,6 +208,35 @@ double found_score = 0;
     }
     return M.getLocalAnalyzer(cur_loc);
 }*/
+ImplicitCastExpr *createNullPointerLiteral(ASTContext *ctxt){
+    IntegerLiteral *literal=IntegerLiteral::Create(*ctxt,llvm::APInt(32,0),ctxt->IntTy,SourceLocation());
+    ImplicitCastExpr *cast=ImplicitCastExpr::Create(*ctxt,ctxt->getPointerType(ctxt->IntTy),
+            CastKind::CK_NullToPointer,literal,nullptr,VK_LValue);
+    return cast;
+}
+ImplicitCastExpr* createConditionVarList(ASTContext *ctxt,std::vector<Expr *> exprs,QualType type){
+    InitListExpr *list=new(*ctxt) InitListExpr(*ctxt,SourceLocation(),llvm::ArrayRef<Expr *>(exprs),SourceLocation());
+    CompoundLiteralExpr *compound=new(*ctxt) CompoundLiteralExpr(SourceLocation(),ctxt->getTrivialTypeSourceInfo(ctxt->getPointerType(type)),
+            ctxt->getPointerType(type),VK_LValue,list,false);
+    ImplicitCastExpr *cast=ImplicitCastExpr::Create(*ctxt,ctxt->getPointerType(type),CastKind::CK_ArrayToPointerDecay,
+            compound,nullptr,VK_LValue);
+    return cast;
+}
+ImplicitCastExpr* createConditionVarNameList(ASTContext *ctxt,std::vector<std::string> names){
+    std::vector<Expr *> exprs;
+    exprs.clear();
+    for (int i=0;i<names.size();i++){
+        StringLiteral *str = StringLiteral::Create(*ctxt, names[i], StringLiteral::Ascii,
+                false, ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, names[i].size() + 1), nullptr,ArrayType::Normal, 0),
+                SourceLocation());
+        ImplicitCastExpr *ICE1 = ImplicitCastExpr::Create(*ctxt, ctxt->getPointerType(ctxt->CharTy),
+                CK_ArrayToPointerDecay, str, 0, VK_RValue);
+        exprs.push_back(ICE1);
+    }
+
+    return createConditionVarList(ctxt,exprs,ctxt->getPointerType(ctxt->CharTy));
+}
+
 
 Expr* createAbstractConditionExpr(SourceContextManager &M, const RepairAction &action) {
     ASTContext *ctxt = M.getSourceContext(action.loc.filename);
@@ -215,22 +244,85 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, const RepairAction &a
     const ExprListTy &exprs = action.candidate_atoms;
     CallExpr *placeholder=(CallExpr*)action.ast_node;
     tmp_argv.clear();
-    tmp_argv.push_back(placeholder->getArgs()[0]);
-    tmp_argv.push_back(getNewIntegerLiteral(ctxt, exprs.size()));
+    // tmp_argv.push_back(placeholder->getArgs()[0]);
+    // tmp_argv.push_back(getNewIntegerLiteral(ctxt, exprs.size()));
+    std::vector<std::string> varName;
+    std::vector<Expr *> intVar;
+    std::vector<Expr *> charVar;
+    std::vector<Expr *> pointerVar;
+    std::vector<Expr *> doubleVar;
+    std::string location;
+    varName.clear();
+    intVar.clear();
+    charVar.clear();
+    pointerVar.clear();
+    doubleVar.clear();
+    location="";
+
     for (size_t i = 0; i < exprs.size(); ++i) {
-        ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
-        UnaryOperator *AddrsOf = 
-            UnaryOperator::Create(*ctxt,ParenE1, UO_AddrOf, ctxt->getPointerType(exprs[i]->getType()),
-                    VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
-        tmp_argv.push_back(AddrsOf);
-        ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
-        UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
-            UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
-        tmp_argv.push_back(SizeofE);
+        // ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
+        // UnaryOperator *AddrsOf = 
+        //     UnaryOperator::Create(*ctxt,ParenE1, UO_AddrOf, ctxt->getPointerType(exprs[i]->getType()),
+        //             VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+        // tmp_argv.push_back(AddrsOf);
+        // ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
+        // UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
+        //     UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
+        // tmp_argv.push_back(SizeofE);
+
+        DeclRefExpr *decl=llvm::dyn_cast<DeclRefExpr>(exprs[i]);
+        if (decl){
+            VarDecl *var=llvm::dyn_cast<VarDecl>(decl->getDecl());
+            if (var){
+                std::string name=var->getDeclName().getAsString();
+                varName.push_back(name);
+                QualType type=var->getType();
+                if (type.getTypePtr()->isIntegerType())
+                    intVar.push_back(exprs[i]);
+                else if (type.getTypePtr()->isCharType())
+                    charVar.push_back(exprs[i]);
+                else if (type.getTypePtr()->isPointerType())
+                    pointerVar.push_back(exprs[i]);
+                else if (type.getTypePtr()->isRealType())
+                    doubleVar.push_back(exprs[i]);
+            }
+        }
     }
+
+    StringLiteral *str = StringLiteral::Create(*ctxt, location, StringLiteral::Ascii,
+            false, ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, location.size() + 1), nullptr,ArrayType::Normal, 0),
+            SourceLocation());
+    tmp_argv.push_back(str);
+
+    IntegerLiteral *size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,varName.size()),ctxt->IntTy,SourceLocation());
+    tmp_argv.push_back(size);
+    if (varName.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
+    else tmp_argv.push_back(createConditionVarNameList(ctxt,varName));
+
+    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,intVar.size()),ctxt->IntTy,SourceLocation());
+    tmp_argv.push_back(size);
+    if (intVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
+    else tmp_argv.push_back(createConditionVarList(ctxt,intVar,ctxt->IntTy));
+
+    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,charVar.size()),ctxt->IntTy,SourceLocation());
+    tmp_argv.push_back(size);
+    if (charVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
+    else tmp_argv.push_back(createConditionVarList(ctxt,charVar,ctxt->CharTy));
+
+    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,pointerVar.size()),ctxt->IntTy,SourceLocation());
+    tmp_argv.push_back(size);
+    if (pointerVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
+    else tmp_argv.push_back(createConditionVarList(ctxt,pointerVar,ctxt->VoidPtrTy));
+
+    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,doubleVar.size()),ctxt->IntTy,SourceLocation());
+    tmp_argv.push_back(size);
+    if (doubleVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
+    else tmp_argv.push_back(createConditionVarList(ctxt,doubleVar,ctxt->DoubleTy));
+
     Expr *abstract_cond = M.getInternalHandlerInfo(ctxt).abstract_cond;
     CallExpr *CE = CallExpr::Create(*ctxt, abstract_cond, tmp_argv,
             ctxt->IntTy, VK_RValue, SourceLocation());
+
     return CE;
 }
 

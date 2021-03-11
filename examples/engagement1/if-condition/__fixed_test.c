@@ -1,5 +1,6 @@
 int __get_mutant();
-int __is_neg(int, int, ...);
+int __is_neg(char *, int, char **, int, int *, int, char *, int, void **, int,
+             double *);
 int __abst_hole();
 int __choose(char *);
 void *memset(void *, int, unsigned long);
@@ -70,8 +71,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_7
   case 8: {
-    if (!__is_neg(3, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"f", "a", "b", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       fscanf(f, "%d %d\n", &a, &b);
 
     break;
@@ -79,8 +80,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_8
   case 9: {
-    if (__is_neg(4, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"f", "a", "b", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     fscanf(f, "%d %d\n", &a, &b);
 
@@ -89,8 +90,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_9
   case 10: {
-    if (__is_neg(4, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"f", "a", "b", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     fscanf(f, "%d %d\n", &a, &b);
 
@@ -412,8 +413,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_52
   case 36: {
-    if (!__is_neg(5, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"f", "a", "b", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       fclose(f);
 
     break;
@@ -421,8 +422,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_53
   case 37: {
-    if (__is_neg(6, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"f", "a", "b", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     fclose(f);
 
@@ -431,8 +432,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_54
   case 38: {
-    if (__is_neg(6, 5, &(f), sizeof(f), &(a), sizeof(a), &(b), sizeof(b),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"f", "a", "b", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     fclose(f);
 
@@ -565,8 +566,8 @@ int main(int argc, char *argv[]) {
     if (a > b) { // >=
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                    (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         printf("%d\n", 1);
     }
 
@@ -578,8 +579,8 @@ int main(int argc, char *argv[]) {
     if (a > b) { // >=
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 0;
       printf("%d\n", 1);
     }
@@ -592,8 +593,8 @@ int main(int argc, char *argv[]) {
     if (a > b) { // >=
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 1;
       printf("%d\n", 1);
     }
@@ -734,8 +735,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                    (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         printf("%d\n", 1);
     }
 
@@ -748,8 +749,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 0;
       printf("%d\n", 1);
     }
@@ -763,8 +764,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 1;
       printf("%d\n", 1);
     }
@@ -909,8 +910,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                    (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         printf("%d\n", 1);
     }
 
@@ -923,8 +924,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 0;
       printf("%d\n", 1);
     }
@@ -938,8 +939,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 1;
       printf("%d\n", 1);
     }
@@ -1084,8 +1085,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                    (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         printf("%d\n", 1);
     }
 
@@ -1098,8 +1099,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 0;
       printf("%d\n", 1);
     }
@@ -1113,8 +1114,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 1;
       printf("%d\n", 1);
     }
@@ -1259,8 +1260,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                    (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         printf("%d\n", 1);
     }
 
@@ -1273,8 +1274,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 0;
       printf("%d\n", 1);
     }
@@ -1288,8 +1289,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 1;
       printf("%d\n", 1);
     }
@@ -1354,8 +1355,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_125
   case 65: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0) &&
         (a > b)) {
       printf("%d\n", 0);
     } else {
@@ -1367,8 +1368,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_126
   case 66: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0) &&
         (a > b)) {
       printf("%d\n", 0);
     } else {
@@ -1380,8 +1381,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_127
   case 67: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0) &&
         (a > b)) {
       printf("%d\n", 0);
     } else {
@@ -1394,8 +1395,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_128
   case 68: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0) &&
         (a > b)) {
       printf("%d\n", 0);
     } else {
@@ -1408,8 +1409,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_129
   case 69: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0) &&
         (a > b)) {
       printf("%d\n", 0);
     } else {
@@ -1422,8 +1423,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_130
   case 70: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0) &&
         (a > b)) {
       printf("%d\n", 0);
     } else {
@@ -1436,8 +1437,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_131
   case 71: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0) &&
         (a > b)) {
       printf("%d\n", 0);
     } else {
@@ -1454,8 +1455,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_132
   case 72: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0) &&
         (a > b)) {
       printf("%d\n", 0);
     } else {
@@ -1468,8 +1469,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_133
   case 73: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0) &&
         (a > b)) {
       printf("%d\n", 0);
     } else {
@@ -1482,8 +1483,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_134
   case 74: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)) &&
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0) &&
         (a > b)) {
       printf("%d\n", 0);
     } else {
@@ -1495,8 +1496,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_135
   case 75: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1508,8 +1509,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_136
   case 76: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1521,8 +1522,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_137
   case 77: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1535,8 +1536,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_138
   case 78: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1549,8 +1550,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_139
   case 79: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1563,8 +1564,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_140
   case 80: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1577,8 +1578,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_141
   case 81: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1595,8 +1596,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_142
   case 82: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1609,8 +1610,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_143
   case 83: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1623,8 +1624,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_144
   case 84: {
-    if (!__is_neg(7, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       if (a > b) {
         printf("%d\n", 0);
       } else {
@@ -1637,8 +1638,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_145
   case 85: {
     if ((a > b) &&
-        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        !__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       printf("%d\n", 1);
@@ -1650,8 +1651,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_146
   case 86: {
     if ((a > b) &&
-        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        !__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       __overflow("%d\n", 1);
@@ -1663,8 +1664,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_147
   case 87: {
     if ((a > b) &&
-        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        !__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       fclose((f));
@@ -1677,8 +1678,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_148
   case 88: {
     if ((a > b) &&
-        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        !__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       fclose(f);
@@ -1691,8 +1692,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_149
   case 89: {
     if ((a > b) &&
-        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        !__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       fscanf((f), "%d %d\n", &a, &b);
@@ -1705,8 +1706,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_150
   case 90: {
     if ((a > b) &&
-        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        !__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       fscanf(f, "%d %d\n", &a, &b);
@@ -1719,8 +1720,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_151
   case 91: {
     if ((a > b) &&
-        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        !__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       if (a > b) {
@@ -1737,8 +1738,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_152
   case 92: {
     if ((a > b) &&
-        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        !__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       printf("%d\n", 0);
@@ -1751,8 +1752,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_153
   case 93: {
     if ((a > b) &&
-        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        !__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       printf("%d\n", 1);
@@ -1765,8 +1766,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_154
   case 94: {
     if ((a > b) &&
-        !__is_neg(12, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                  &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        !__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                  (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       scanf("%d\n", 1);
@@ -1778,8 +1779,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_155
   case 95: {
     if ((a > b) ||
-        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        __is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       printf("%d\n", 1);
@@ -1791,8 +1792,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_156
   case 96: {
     if ((a > b) ||
-        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        __is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       __overflow("%d\n", 1);
@@ -1804,8 +1805,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_157
   case 97: {
     if ((a > b) ||
-        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        __is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       fclose((f));
@@ -1818,8 +1819,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_158
   case 98: {
     if ((a > b) ||
-        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        __is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       fclose(f);
@@ -1832,8 +1833,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_159
   case 99: {
     if ((a > b) ||
-        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        __is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       fscanf((f), "%d %d\n", &a, &b);
@@ -1846,8 +1847,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_160
   case 100: {
     if ((a > b) ||
-        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        __is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       fscanf(f, "%d %d\n", &a, &b);
@@ -1860,8 +1861,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_161
   case 101: {
     if ((a > b) ||
-        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        __is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       if (a > b) {
@@ -1878,8 +1879,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_162
   case 102: {
     if ((a > b) ||
-        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        __is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       printf("%d\n", 0);
@@ -1892,8 +1893,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_163
   case 103: {
     if ((a > b) ||
-        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        __is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       printf("%d\n", 1);
@@ -1906,8 +1907,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_164
   case 104: {
     if ((a > b) ||
-        __is_neg(13, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc))) {
+        __is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0)) {
       printf("%d\n", 0);
     } else {
       scanf("%d\n", 1);
@@ -1918,8 +1919,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_165
   case 105: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     if (a > b) {
       printf("%d\n", 0);
@@ -1932,8 +1933,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_166
   case 106: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     if (a > b) {
       printf("%d\n", 0);
@@ -1946,8 +1947,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_167
   case 107: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     if (a > b) {
       printf("%d\n", 0);
@@ -1961,8 +1962,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_168
   case 108: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     if (a > b) {
       printf("%d\n", 0);
@@ -1976,8 +1977,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_169
   case 109: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     if (a > b) {
       printf("%d\n", 0);
@@ -1991,8 +1992,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_170
   case 110: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     if (a > b) {
       printf("%d\n", 0);
@@ -2006,8 +2007,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_171
   case 111: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     if (a > b) {
       printf("%d\n", 0);
@@ -2025,8 +2026,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_172
   case 112: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     if (a > b) {
       printf("%d\n", 0);
@@ -2040,8 +2041,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_173
   case 113: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     if (a > b) {
       printf("%d\n", 0);
@@ -2055,8 +2056,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_174
   case 114: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 0;
     if (a > b) {
       printf("%d\n", 0);
@@ -2069,8 +2070,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_175
   case 115: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     if (a > b) {
       printf("%d\n", 0);
@@ -2083,8 +2084,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_176
   case 116: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     if (a > b) {
       printf("%d\n", 0);
@@ -2097,8 +2098,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_177
   case 117: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     if (a > b) {
       printf("%d\n", 0);
@@ -2112,8 +2113,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_178
   case 118: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     if (a > b) {
       printf("%d\n", 0);
@@ -2127,8 +2128,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_179
   case 119: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     if (a > b) {
       printf("%d\n", 0);
@@ -2142,8 +2143,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_180
   case 120: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     if (a > b) {
       printf("%d\n", 0);
@@ -2157,8 +2158,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_181
   case 121: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     if (a > b) {
       printf("%d\n", 0);
@@ -2176,8 +2177,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_182
   case 122: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     if (a > b) {
       printf("%d\n", 0);
@@ -2191,8 +2192,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_183
   case 123: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     if (a > b) {
       printf("%d\n", 0);
@@ -2206,8 +2207,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_184
   case 124: {
-    if (__is_neg(8, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                 &(argv), sizeof(argv), &(argc), sizeof(argc)))
+    if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                 (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
       return 1;
     if (a > b) {
       printf("%d\n", 0);
@@ -2293,8 +2294,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                    (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         printf("%d\n", 1);
     }
 
@@ -2306,8 +2307,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 0;
       printf("%d\n", 1);
     }
@@ -2320,8 +2321,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 1;
       printf("%d\n", 1);
     }
@@ -2462,8 +2463,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                    &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                    (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         printf("%d\n", 1);
     }
 
@@ -2476,8 +2477,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 0;
       printf("%d\n", 1);
     }
@@ -2491,8 +2492,8 @@ int main(int argc, char *argv[]) {
     if (a > b) {
       printf("%d\n", 0);
     } else {
-      if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                   &(argv), sizeof(argv), &(argc), sizeof(argc)))
+      if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                   (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
         return 1;
       printf("%d\n", 1);
     }
@@ -2609,8 +2610,8 @@ break;
 #endif
 #ifdef COMPILE_217
 case 157: {
-  if (!__is_neg(10, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-                &(argv), sizeof(argv), &(argc), sizeof(argc)))
+  if (!__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+                (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
     printf("%d\n", 1);
 }
 
@@ -2619,8 +2620,8 @@ break;
 #endif
 #ifdef COMPILE_218
 case 158: {
-  if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-               &(argv), sizeof(argv), &(argc), sizeof(argc)))
+  if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+               (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
     return 0;
   printf("%d\n", 1);
 }
@@ -2630,8 +2631,8 @@ break;
 #endif
 #ifdef COMPILE_219
 case 159: {
-  if (__is_neg(11, 5, &(a), sizeof(a), &(b), sizeof(b), &(f), sizeof(f),
-               &(argv), sizeof(argv), &(argc), sizeof(argc)))
+  if (__is_neg("", 5, (char **){"a", "b", "f", "argv", "argc"}, 3,
+               (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0, 0))
     return 1;
   printf("%d\n", 1);
 }

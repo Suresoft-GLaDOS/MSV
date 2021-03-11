@@ -29,7 +29,7 @@
 
 const char* HANDLER_PREFIX =
     "int __get_mutant(); "
-    "int __is_neg(int, int, ...); "
+    "int __is_neg(char *, int, char **, int, int *, int, char *, int, void **, int, double *); "
     "int __abst_hole(); "
     "int __choose(char *);";
 const char* MEMSET_PREFIX =

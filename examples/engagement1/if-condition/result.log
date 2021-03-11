@@ -9,9 +9,9 @@ warning: ../../../../wrap/gcc: 'linker' input unused [-Wunused-command-line-argu
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total 104 different partial repair candidate templates!!
-BasicTester pointer: 0x564ac938c790
-StringConstTester pointer: 0x564ac92fb870
-CondTester pointer: 0x564ac9390790
+BasicTester pointer: 0x560338da8080
+StringConstTester pointer: 0x560338d17af0
+CondTester pointer: 0x560338da6270
 Generating Candidates...
 Candidates size: 108
 Generating Codes...
@@ -40,7 +40,7 @@ Building final program...
 Total success macros: 211
 rm: cannot remove 'prog': No such file or directory
 Success to build final program: __fixed_test.c
-[6] CondTester, Testing instance id 0:
+[9] CondTester, Testing instance id 0:
 
 Total ID: 3
 Testing with ID 0
@@ -67,31 +67,8 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 94171661050032
-i 1 195568288
-i 2 21926
-i 3 140733503556280
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 208117936, 195568288, 21926, 310168248, 2, 
-count 5 cnt 0
-i 0 93830832050352
-i 1 2965054112
-i 2 21846
-i 3 140729057568680
-i 4 2
-5: -1318465360, -1329913184, 21846, 159147944, 2, 
-count 5 cnt 0
-i 0 94052636450992
-i 1 1413829280
-i 2 21898
-i 3 140729453541208
-i 4 2
-5: 1442603184, 1413829280, 21898, 555120472, 2, 
-[7] Passed!
+Collect value failed on case 2!
+[9] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1131,24 +1108,8 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 94128032731312
-i 3 140734292284760
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, -470527824, 1098896728, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 94829693968560
-i 3 140721649821880
-i 4 2
-5: 1, 2, 1111040176, 1341335736, 2, 
-[25] Passed!
+Collect value failed on case 2!
+[27] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1173,24 +1134,10 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 94907377770672
-i 3 140729269787864
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, 1485430960, 371367128, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 94533115580592
-i 3 140725607366216
-i 4 2
 Aborted (core dumped)
-[26] Passed!
+Collect value failed on case 2!
+Aborted (core dumped)
+[28] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1216,25 +1163,12 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 94327930069168
-i 3 140728023389736
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, 1858314416, -875031000, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 94816303456432
-i 3 140734336501112
-i 4 2
 free(): double free detected in tcache 2
 Aborted (core dumped)
-[26] Passed!
+Collect value failed on case 2!
+free(): double free detected in tcache 2
+Aborted (core dumped)
+[29] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1260,25 +1194,12 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 94662526316720
-i 3 140733721849912
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, 1447112880, 528461880, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 94670126690480
-i 3 140723678756888
-i 4 2
 free(): double free detected in tcache 2
 Aborted (core dumped)
-[27] Passed!
+Collect value failed on case 2!
+free(): double free detected in tcache 2
+Aborted (core dumped)
+[30] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1302,24 +1223,8 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 94645487890608
-i 3 140723908460136
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, 1588555952, -694993304, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 93974758625456
-i 3 140720567000520
-i 4 2
-5: 1, 2, 874188976, 258514376, 2, 
-[27] Passed!
+Collect value failed on case 2!
+[30] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1343,24 +1248,8 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 93891033518256
-i 3 140736027549144
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, -1246539600, -1460806184, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 94016098537648
-i 3 140727050920440
-i 4 2
-5: 1, 2, -735571792, -1847500296, 2, 
-[28] Passed!
+Collect value failed on case 2!
+[31] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1384,23 +1273,8 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 93962673942704
-i 3 140723531447176
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, 1674408112, -1072006264, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 94488217673904
-i 3 140730281389208
-i 4 2
-[28] Passed!
+Collect value failed on case 2!
+[31] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1424,23 +1298,8 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 94510695555248
-i 3 140723586256328
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, -59793232, -1017197112, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 94174306398384
-i 3 140723664179736
-i 4 2
-[29] Passed!
+Collect value failed on case 2!
+[32] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1464,23 +1323,8 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 94464306696368
-i 3 140734322281272
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, 795988144, 1128893240, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 94562763911344
-i 3 140730685724696
-i 4 2
-[29] Passed!
+Collect value failed on case 2!
+[32] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1504,23 +1348,8 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 94768818368688
-i 3 140736945362856
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, 364982448, -542992472, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 94317596098736
-i 3 140733126749992
-i 4 2
-[31] Passed!
+Collect value failed on case 2!
+[35] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -2106,23 +1935,8 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 94915750973616
-i 3 140722946042168
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, 1268699312, -1657411272, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 93920235233456
-i 3 140721298272376
-i 4 2
-[39] Passed!
+Collect value failed on case 2!
+[43] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -2146,23 +1960,8 @@ Passed Negative Cases wiht CondTester!
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-count 5 cnt 0
-i 0 1
-i 1 1
-i 2 94106085822640
-i 3 140723359116680
-i 4 2
-size: 1
-record: 1
-count: 1
-5: 1, 1, -942600016, -1244336760, 2, 
-count 5 cnt 0
-i 0 1
-i 1 2
-i 2 94123094454448
-i 3 140731052024616
-i 4 2
-[39] Passed!
+Collect value failed on case 2!
+[43] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
