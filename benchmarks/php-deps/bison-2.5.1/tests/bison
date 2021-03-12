@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-abs_top_srcdir='/root/project/prophet-gpl/benchmarks/php-deps/bison-2.5.1'
-abs_top_builddir='/root/project/prophet-gpl/benchmarks/php-deps/bison-2.5.1'
+abs_top_srcdir='/root/test/prophet/benchmarks/php-deps/bison-2.5.1'
+abs_top_builddir='/root/test/prophet/benchmarks/php-deps/bison-2.5.1'
 : ${PERL=perl}
 
 # Use the shipped files, not those installed.

@@ -1,6 +1,6 @@
 # Package Information for pkg-config
 
-prefix=/root/project/prophet-gpl/benchmarks/lighttpd-deps/sqlite3-build
+prefix=/root/test/prophet/benchmarks/lighttpd-deps/sqlite3-build
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

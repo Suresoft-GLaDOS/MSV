@@ -59,7 +59,7 @@ def compile( out_dir, deps_dir, compile_only = False, config_only = False):
                 print "Failed to run autogen.sh, Check automake version!";
                 chdir(ori_dir);
                 exit(1);
-        ret = subprocess.call(["./configure","--disable-fast-install", "--with-ldap", "--with-bzip2", "--with-openssl", "--with-gdbm", "--with-memcache", "--with-webdav-props", "--with-webdav-locks", "--prefix=/home/fanl/Workspace/prophet/build/benchmarks/tmptest/lighttpd-build"], env = my_env);
+        ret = subprocess.call(["./configure","--disable-fast-install", "--with-ldap", "--with-bzip2", "--with-openssl", "--with-gdbm", "--with-memcache", "--with-webdav-props", "--with-webdav-locks", "--prefix=/root/test/prophet/build/benchmarks/tmptest/lighttpd-build"], env = my_env);
         if ret != 0:
                 print "Configure Error!";
                 chdir(ori_dir);

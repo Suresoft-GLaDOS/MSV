@@ -433,6 +433,15 @@ public:
 
     virtual ~StmtReplacerImpl() { }
 
+    virtual bool TraverseBinaryOperator(BinaryOperator *BO)
+    {
+        return TraverseBinaryOperatorImpl(BO);
+    }
+    virtual bool TraverseUnaryOperator(UnaryOperator *UO)
+    {
+        return TraverseUnaryOperatorImpl(UO);
+    }
+
     void addRule(Expr* a, Expr *b) {
         //llvm::errs() << "Adding rule: " << a << " " << b << "\n";
         //a->dump();

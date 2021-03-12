@@ -133,18 +133,25 @@ int main(int argc, char* argv[]) {
     ConfigFile *config = P->getCurrentConfig();
     std::string localizer = config->getStr("localizer");
 
+    outlog_printf(1, "Get config file! localizer: %s\n", localizer.c_str());
+
     std::set<std::string> bugged_file = splitStringWithWhite(config->getStr("bugged_file"));
 
     ErrorLocalizer *L = NULL;
     if (localizer == "")
         L = new NaiveErrorLocalizer(*P);
     else if (localizer == "profile") {
-        if (existFile(P->getLocalizationResultFilename()))
+        if (existFile(P->getLocalizationResultFilename())) {
+            outlog_printf(1, "existFile!!!!!\n");
             L = new ProfileErrorLocalizer(*P, P->getLocalizationResultFilename());
-        else if (SkipProfileBuild)
+        }
+        else if (SkipProfileBuild) {
             L = new ProfileErrorLocalizer(*P, bugged_file, true);
-        else
+        }
+        else {
+            outlog_printf(1, "not exist!!!!!");
             L = new ProfileErrorLocalizer(*P, bugged_file, false);
+        }
     }
 
    if (InitOnly) {

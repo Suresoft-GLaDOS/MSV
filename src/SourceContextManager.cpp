@@ -1,18 +1,18 @@
-// Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
+// Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL
 // Prophet
-// 
+//
 // This file is part of Prophet.
-// 
+//
 // Prophet is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // Prophet is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 #include "SourceContextManager.h"
@@ -27,55 +27,64 @@
 #include "clang/AST/Expr.h"
 #include "clang/AST/Decl.h"
 
-const char* HANDLER_PREFIX =
+const char *HANDLER_PREFIX =
     "int __get_mutant(); "
     "int __is_neg(int, ...); "
     "int __abst_hole(); ";
-const char* MEMSET_PREFIX =
+const char *MEMSET_PREFIX =
     "void* memset(void*, int, unsigned long); ";
 
 using namespace clang;
 
-namespace {
+namespace
+{
 
-class AllStmtVisitor : public RecursiveASTVisitor<AllStmtVisitor> {
-    std::set<Stmt*> &stmts;
-public:
-    AllStmtVisitor(std::set<Stmt*> &stmts): stmts(stmts) { }
+    class AllStmtVisitor : public RecursiveASTVisitor<AllStmtVisitor>
+    {
+        std::set<Stmt *> &stmts;
 
-    bool TraverseStmt(Stmt* s) {
-        if (s == NULL) return true;
-        stmts.insert(s);
-        bool ret = RecursiveASTVisitor::TraverseStmt(s);
-        return ret;
-    }
-};
+    public:
+        AllStmtVisitor(std::set<Stmt *> &stmts) : stmts(stmts) {}
+
+        bool TraverseStmt(Stmt *s)
+        {
+            if (s == NULL)
+                return true;
+            stmts.insert(s);
+            bool ret = RecursiveASTVisitor::TraverseStmt(s);
+            return ret;
+        }
+    };
 
 }
 
-SourceContextManager::~SourceContextManager() {
-/*    for (std::map<std::string, clang::ASTUnit*>::iterator it = unitMap.begin(); it != unitMap.end(); ++it)
+SourceContextManager::~SourceContextManager()
+{
+    /*    for (std::map<std::string, clang::ASTUnit*>::iterator it = unitMap.begin(); it != unitMap.end(); ++it)
         delete it->second;*/
-    for (std::map<ASTLocTy, LocalAnalyzer*>::iterator it = localAnalyzerMap.begin(); it != localAnalyzerMap.end(); ++it)
+    for (std::map<ASTLocTy, LocalAnalyzer *>::iterator it = localAnalyzerMap.begin(); it != localAnalyzerMap.end(); ++it)
         delete it->second;
-    for (std::map<ASTContext*, GlobalAnalyzer*>::iterator it = globalAnalyzerMap.begin(); it != globalAnalyzerMap.end(); ++it)
+    for (std::map<ASTContext *, GlobalAnalyzer *>::iterator it = globalAnalyzerMap.begin(); it != globalAnalyzerMap.end(); ++it)
         delete it->second;
 }
 
-ASTContext *SourceContextManager::getSourceContext(const std::string &src_file) {
+ASTContext *SourceContextManager::getSourceContext(const std::string &src_file)
+{
     assert(!is_header(src_file));
-    if (unitMap.count(src_file) == 0) {
+    if (unitMap.count(src_file) == 0)
+    {
         assert(P);
         fetch(src_file);
     }
     return &(unitMap[src_file]->getASTContext());
 }
 
-static inline ImplicitCastExpr* createFExpr(ASTContext &ctxt, FunctionDecl *FD) {
+static inline ImplicitCastExpr *createFExpr(ASTContext &ctxt, FunctionDecl *FD)
+{
     DeclRefExpr *FRef = DeclRefExpr::Create(ctxt, NestedNameSpecifierLoc(), SourceLocation(),
-            FD, false, SourceLocation(), FD->getType(), VK_RValue);
+                                            FD, false, SourceLocation(), FD->getType(), VK_RValue);
     return ImplicitCastExpr::Create(ctxt, ctxt.getDecayedType(FD->getType()), CK_FunctionToPointerDecay,
-            FRef, 0, VK_RValue);
+                                    FRef, 0, VK_RValue);
 }
 
 /*static inline CallExpr* createCallExpr(ASTContext &ctxt, FunctionDecl *FD) {
@@ -83,20 +92,23 @@ static inline ImplicitCastExpr* createFExpr(ASTContext &ctxt, FunctionDecl *FD) 
     return new(ctxt) CallExpr(ctxt, FCast, ArrayRef<Expr*>(), ctxt.IntTy, VK_RValue, SourceLocation());
 }*/
 
-void SourceContextManager::fetch(const std::string &file) {
+void SourceContextManager::fetch(const std::string &file)
+{
     std::string code;
-    assert( file.size() > 1);
+    assert(file.size() > 1);
     std::string fullpath;
     if (file[0] == '/')
         fullpath = file;
     else
         fullpath = P->getSrcdir() + "/" + file;
-    if (!readCodeToString(fullpath, code)) {
+    if (!readCodeToString(fullpath, code))
+    {
         fprintf(stderr, "Failed to read the file %s\n", fullpath.c_str());
         assert(0);
     }
 
-    if (!is_header(file)) {
+    if (!is_header(file))
+    {
         std::string prefix = "";
         // This is the fix some strange compile complain about the memset
         if ((code.find("ifdef") != std::string::npos) ||
@@ -118,18 +130,24 @@ void SourceContextManager::fetch(const std::string &file) {
         AllStmtVisitor V(existing_stmts);
         V.TraverseDecl(UD);
         DeclContext *DC = UD;
-        if (get_ext(file) == "cpp" || get_ext(file) == "cc") {
+        if (get_ext(file) == "cpp" || get_ext(file) == "cc")
+        {
             LinkageSpecDecl *LSD = NULL;
-            for (DeclContext::decl_iterator it = UD->decls_begin(); it != UD->decls_end(); ++it) {
+            for (DeclContext::decl_iterator it = UD->decls_begin(); it != UD->decls_end(); ++it)
+            {
                 LSD = llvm::dyn_cast<LinkageSpecDecl>(*it);
-                if (LSD) break;
+                if (LSD)
+                    break;
             }
-            if (LSD) DC = LSD;
+            if (LSD)
+                DC = LSD;
         }
 
-        for (DeclContext::decl_iterator it = DC->decls_begin(); it != DC->decls_end(); ++it) {
+        for (DeclContext::decl_iterator it = DC->decls_begin(); it != DC->decls_end(); ++it)
+        {
             FunctionDecl *FD = llvm::dyn_cast<FunctionDecl>(*it);
-            if (FD && FD->getDeclName().isIdentifier()) {
+            if (FD && FD->getDeclName().isIdentifier())
+            {
                 if (FD->getName() == IS_NEG_HANDLER)
                     internalHandlerMap[&ctxt].abstract_cond = createFExpr(ctxt, FD);
                 if (FD->getName() == "memset")
@@ -144,10 +162,11 @@ void SourceContextManager::fetch(const std::string &file) {
 }
 
 std::string SourceContextManager::newSourceFile(const std::string &projDir, const std::string &srcFile,
-        const std::string &buildDir, const std::vector<std::string> &buildArgs) {
+                                                const std::string &buildDir, const std::vector<std::string> &buildArgs)
+{
     std::string key_srcfile = projDir + "/" + srcFile;
     std::string full_key_path = getFullPath(key_srcfile);
-    assert( (codeMap.count(key_srcfile) == 0) && "Duplicate srcfile invoked!");
+    assert((codeMap.count(key_srcfile) == 0) && "Duplicate srcfile invoked!");
     std::string code;
     {
         DirectorySwitcher DS(projDir);
@@ -187,18 +206,24 @@ std::string SourceContextManager::newSourceFile(const std::string &projDir, cons
     AllStmtVisitor V(existing_stmts);
     V.TraverseDecl(UD);
     DeclContext *DC = UD;
-    if (get_ext(srcFile) == "cpp" || get_ext(srcFile) == "cc") {
+    if (get_ext(srcFile) == "cpp" || get_ext(srcFile) == "cc")
+    {
         LinkageSpecDecl *LSD = NULL;
-        for (DeclContext::decl_iterator it = UD->decls_begin(); it != UD->decls_end(); ++it) {
+        for (DeclContext::decl_iterator it = UD->decls_begin(); it != UD->decls_end(); ++it)
+        {
             LSD = llvm::dyn_cast<LinkageSpecDecl>(*it);
-            if (LSD) break;
+            if (LSD)
+                break;
         }
-        if (LSD) DC = LSD;
+        if (LSD)
+            DC = LSD;
     }
 
-    for (DeclContext::decl_iterator it = DC->decls_begin(); it != DC->decls_end(); ++it) {
+    for (DeclContext::decl_iterator it = DC->decls_begin(); it != DC->decls_end(); ++it)
+    {
         FunctionDecl *FD = llvm::dyn_cast<FunctionDecl>(*it);
-        if (FD && FD->getDeclName().isIdentifier()) {
+        if (FD && FD->getDeclName().isIdentifier())
+        {
             if (FD->getName() == IS_NEG_HANDLER)
                 internalHandlerMap[&ctxt].abstract_cond = createFExpr(ctxt, FD);
             if (FD->getName() == "memset")
@@ -225,8 +250,10 @@ void SourceContextManager::popChanges(RepairCandidate &candidate) {
             &StmtList[0], StmtList.size());
 }*/
 
-LocalAnalyzer* SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc) {
-    if (localAnalyzerMap.count(loc) == 0) {
+LocalAnalyzer *SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc)
+{
+    if (localAnalyzerMap.count(loc) == 0)
+    {
         ASTContext *C = getSourceContext(loc.filename);
         //llvm::errs() << "Location " << loc.filename << ":" << getExpLineNumber(*C, loc.stmt) << "\n";
         //loc.stmt->printPretty(llvm::errs(), 0, C->getPrintingPolicy());
@@ -234,36 +261,54 @@ LocalAnalyzer* SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc) {
         //std::set<Expr*> exprs = localAnalyzerMap[loc]->getCandidateInsertExprs();
         //llvm::errs() << "Tot expr " << exprs.size() << "\n";
         //for (std::set<Expr*>::iterator it = exprs.begin(); it != exprs.end(); ++it) {
-            //(*it)->printPretty(llvm::errs(), 0, C->getPrintingPolicy());
-            //llvm::errs() << "\n";
+        //(*it)->printPretty(llvm::errs(), 0, C->getPrintingPolicy());
+        //llvm::errs() << "\n";
         //}
         //std::set<Stmt*> stmts = localAnalyzerMap[loc]->getCandidateMacroExps();
         //llvm::errs() << "Tot macro " << stmts.size() << "\n";
         //for (std::set<Stmt*>::iterator it = stmts.begin(); it != stmts.end(); ++it) {
-            //(*it)->printPretty(llvm::errs(), 0, C->getPrintingPolicy());
-            //llvm::errs() << "\n";
+        //(*it)->printPretty(llvm::errs(), 0, C->getPrintingPolicy());
+        //llvm::errs() << "\n";
         //}
     }
     return localAnalyzerMap[loc];
 }
 
 // FIXME: This stupid shit should go somewhere else
-Expr* SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType QT) {
+Expr *SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType QT, std::map<Expr *, unsigned long> atoms)
+{
     Expr *abstract_cond = getInternalHandlerInfo(ctxt).abstract_cond;
-    return CallExpr::Create(*ctxt, abstract_cond, std::vector<Expr*>(),
-            QT, VK_RValue, SourceLocation());
+    int count = atoms.size();
+
+    std::vector<Expr *> args;
+    IntegerLiteral *size = IntegerLiteral::Create(*ctxt, llvm::APInt(32, count), ctxt->IntTy, SourceLocation());
+    args.push_back(size);
+    for (std::map<Expr *, unsigned long>::iterator it = atoms.begin(); it != atoms.end(); it++)
+    {
+        char expr[100];
+        args.push_back(it->first);
+
+        IntegerLiteral *arg = IntegerLiteral::Create(*ctxt, llvm::APInt(32, it->second), ctxt->IntTy, SourceLocation());
+        args.push_back(arg);
+    }
+
+    // return CallExpr::Create(*ctxt, abstract_cond, std::vector<Expr*>(),
+    return CallExpr::Create(*ctxt, abstract_cond, args,
+                            QT, VK_RValue, SourceLocation());
 }
 
-Expr* SourceContextManager::getUnknownExpr(ASTContext *ctxt, ExprListTy candidate_atoms) {
+Expr *SourceContextManager::getUnknownExpr(ASTContext *ctxt, ExprListTy candidate_atoms)
+{
     Expr *abstract_hole = getInternalHandlerInfo(ctxt).abstract_hole;
     return CallExpr::Create(*ctxt, abstract_hole, candidate_atoms,
-        ctxt->IntTy, VK_RValue, SourceLocation());
+                            ctxt->IntTy, VK_RValue, SourceLocation());
 }
 
-std::string SourceContextManager::cleanUpCode(const std::string &code) {
+std::string SourceContextManager::cleanUpCode(const std::string &code)
+{
     std::string ret = code;
     size_t idx = code.find("\n");
-    assert( idx != std::string::npos);
+    assert(idx != std::string::npos);
     ret = ret.substr(idx + 1);
     if (ret.find("memset") != std::string::npos && ((ret.find("<string.h>") == std::string::npos) || (ret.find("ifdef") != std::string::npos)))
         ret = std::string("#include <string.h>\n") + ret;

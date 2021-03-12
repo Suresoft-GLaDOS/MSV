@@ -94,6 +94,8 @@ def extract_arguments(out_dir, src_file):
     lines = out.strip().split("\n");
     directory = ".";
     last_line = "";
+    print "tester_common.py!!!!!";
+    print "out: " + out;
     for line in lines:
         strip_line = line.strip();
         if (len(strip_line) > 0) and (strip_line[len(strip_line) - 1] == "\\"):
@@ -131,6 +133,7 @@ def extract_arguments(out_dir, src_file):
     subprocess.call(["touch", src_file]);
     p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE);
     (out, err) = p.communicate();
+    print "tester_common.py!!!!! out?";
     print out;
     lines = out.strip().split("\n");
     directory = ".";

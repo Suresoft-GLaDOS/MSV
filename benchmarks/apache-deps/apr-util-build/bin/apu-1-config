@@ -21,7 +21,7 @@
 APRUTIL_MAJOR_VERSION="1"
 APRUTIL_DOTTED_VERSION="1.5.5"
 
-prefix="/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-build"
+prefix="/root/test/prophet/benchmarks/apache-deps/apr-util-build"
 exec_prefix="${prefix}"
 bindir="${exec_prefix}/bin"
 libdir="${exec_prefix}/lib"
@@ -35,8 +35,8 @@ DBM_LIBS="  "
 
 APRUTIL_LIBNAME="aprutil-${APRUTIL_MAJOR_VERSION}"
 
-APU_SOURCE_DIR="/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src"
-APU_BUILD_DIR="/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src"
+APU_SOURCE_DIR="/root/test/prophet/benchmarks/apache-deps/apr-util-src"
+APU_BUILD_DIR="/root/test/prophet/benchmarks/apache-deps/apr-util-src"
 APR_XML_EXPAT_OLD="@APR_XML_EXPAT_OLD@"
 APU_DB_VERSION="0"
 

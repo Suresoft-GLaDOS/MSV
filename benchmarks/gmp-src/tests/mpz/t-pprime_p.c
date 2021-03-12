@@ -94,7 +94,7 @@ check_small (void)
   for (i = 0; i < 300; i++)
     {
       mpz_set_si (n, i);
-      check_pn (n, 2 * isprime (i));
+      check_pn (n, isprime (i));
     }
 
   mpz_clear (n);
@@ -194,8 +194,7 @@ check_fermat_mersenne (int count)
       for (j = 0; j < numberof (fermat_exponents); j++)
 	if (fermat_exponents[j] == i)
 	  {
-	    /* Fermat's primes are small enough for a definite answer. */
-	    want = 2;
+	    want = 1;
 	    break;
 	  }
       check_one (pp, want);
@@ -205,7 +204,7 @@ check_fermat_mersenne (int count)
       for (j = 0; j < numberof (mersenne_exponents); j++)
 	if (mersenne_exponents[j] == i)
 	  {
-	    want = 1 << (i < 50);
+	    want = 1;
 	    break;
 	  }
       check_one (pp, want);

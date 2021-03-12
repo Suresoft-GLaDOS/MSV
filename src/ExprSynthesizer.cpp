@@ -125,9 +125,9 @@ std::set<std::string> replaceIsNegWithClause(const std::string &code) {
 
     // We are going to locate the left and right hand
     size_t left = locate_next(code, idx, -1, "(");
-    left = locate_next(code, left, -1, "(");
+    //left = locate_next(code, left, -1, "(");
     size_t right = locate_next(code, idx, 1, ")");
-    right = locate_next(code, right, 1, ")");
+    //right = locate_next(code, right, 1, ")");
     assert( left != std::string::npos);
     assert( right != std::string::npos);
     assert( right >= left);

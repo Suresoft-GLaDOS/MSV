@@ -1,5 +1,0 @@
-pretest/multi_module_ok.bmk : TEST_MODE=MULTI_MODULE_OK
-/home/fanl/Workspace/prophet/build/benchmarks/fbc-5557-workdir/src/fbc-src/tests/../../fbc-root/bin/fbc  -lang fb -g -w 0  -m pretest/multi_module_ok -c pretest/multi_module_ok.bas -o pretest/multi_module_ok.o
-/home/fanl/Workspace/prophet/build/benchmarks/fbc-5557-workdir/src/fbc-src/tests/../../fbc-root/bin/fbc  -lang fb -g -w 0  -m pretest/multi_module_ok -c pretest/multi_module_subs.bas -o pretest/multi_module_subs.o
-/home/fanl/Workspace/prophet/build/benchmarks/fbc-5557-workdir/src/fbc-src/tests/../../fbc-root/bin/fbc  -g pretest/multi_module_ok.o pretest/multi_module_subs.o -x pretest/multi_module_ok
-pretest/multi_module_ok.bmk : RESULT=PASSED

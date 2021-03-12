@@ -35,7 +35,7 @@ if test "${LC_ALL+set}" = set; then LC_ALL=C; export LC_ALL; fi
 if test "${LC_MESSAGES+set}" = set; then LC_MESSAGES=C; export LC_MESSAGES; fi
 if test "${LC_CTYPE+set}"    = set; then LC_CTYPE=C;    export LC_CTYPE;    fi
 
-: ${AC_MACRODIR=/root/project/prophet-gpl/benchmarks/php-deps/autoconf-2.13-build/share/autoconf}
+: ${AC_MACRODIR=/root/test/prophet/benchmarks/php-deps/autoconf-2.13-build/share/autoconf}
 : ${M4=/usr/bin/m4}
 : ${AWK=mawk}
 case "${M4}" in

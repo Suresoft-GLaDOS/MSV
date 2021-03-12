@@ -32,4 +32,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/root/project/prophet-gpl/benchmarks/lighttpd-deps/libxml2-2.7.2-build/lib'
+libdir='/root/test/prophet/benchmarks/lighttpd-deps/libxml2-2.7.2-build/lib'

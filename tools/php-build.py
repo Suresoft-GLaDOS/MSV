@@ -29,8 +29,9 @@ if __name__=="__main__":
 
     compile_only = False
     config_only = False
-
+    print("php-build.py: " + str(argv))
     opts, args = getopt.getopt(argv[1:],'cd:hj:lp:r:x')
+    print("opts: " + str(opts) + " args: " + str(args))
     dryrun_src = ""
     revision = ""
     paraj = 0
@@ -85,9 +86,14 @@ if __name__=="__main__":
         if dryrun_src != "":
             (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
             if len(args) > 1:
+                print("outfile!!!!1 builddir: " + str(builddir) + " buildargs: " + str(buildargs))
                 out_file = open(args[1], "w")
-                print(out_file, builddir)
-                print(out_file, buildargs)
+                out_file.write(builddir)
+                out_file.write("\n")
+                out_file.write(buildargs)
+                out_file.write("\n")
+                #print(out_file, builddir)
+                #print(out_file, buildargs)
                 out_file.close()
             else:
                 print(builddir)

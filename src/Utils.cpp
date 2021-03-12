@@ -83,12 +83,16 @@ std::string stripLine(const std::string &str) {
 }
 
 void parseArgFile(const std::string &arg_file, std::string &build_dir, std::vector<std::string> &build_args) {
+    outlog_printf(1, "parseArgFile!!! arg_file: %s  | build_dir: %s\n", arg_file.c_str(), build_dir.c_str());
     FILE *in = fopen(arg_file.c_str(), "r");
     assert(in != NULL);
     char tmps[1000];
     build_args.clear();
     int cnt = fscanf(in, "%s", tmps);
-    assert( cnt > 0);
+    //assert( cnt > 0);
+    if (cnt <= 0) {
+        outlog_printf(1, "cnt: %d\n", cnt);
+    }
     build_dir = tmps;
     // We need to put extra include directory arguments in to avoid compile error
     // when building AST trees
@@ -172,10 +176,12 @@ bool is_header(const std::string &str) {
 //    return !((str[str.size() - 2] == '.') && (str[str.size() - 1] == 'c'));
 }
 
-std::string getFullPath(const std::string &path) {
+std::string getFullPath(const std::string &path){
+    outlog_printf(1, "getFullPath!!!!!! %s\n", path.c_str());
+
     char tmp[PATH_MAX];
     char * ret = realpath(path.c_str(), tmp);
-    assert( ret != 0);
+    assert(ret != 0);
     return std::string(tmp);
 }
 

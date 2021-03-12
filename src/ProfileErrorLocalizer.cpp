@@ -261,11 +261,18 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         Q2.pop();
     }
 
-    for (long i = (long)tmpv.size() - 1; i >=0; --i)
-        candidateResults.push_back(tmpv[i]);
-    for (long i = (long)tmpv2.size() - 1; i >= 0; --i)
-        candidateResults.push_back(tmpv2[i]);
-
+    for (long i = (long)tmpv.size() - 1; i >=0; --i) {
+        if (tmpv[i].loc.expFilename.find("php_date") != std::string::npos)
+        {
+            candidateResults.push_back(tmpv[i]);
+        }
+    }
+    for (long i = (long)tmpv2.size() - 1; i >= 0; --i) {
+        if (tmpv2[i].loc.expFilename.find("php_date") != std::string::npos)
+        {
+            candidateResults.push_back(tmpv2[i]);
+        }
+    }
     printResult(P.getLocalizationResultFilename());
 }
 
@@ -290,6 +297,7 @@ void ProfileErrorLocalizer::printResult(const std::string &outfile) {
 ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P, const std::string &res_file)
     : P(P), negative_cases(P.getNegativeCaseSet()), positive_cases(P.getPositiveCaseSet())
 {
+    outlog_printf(1, "ProfileErrorLocalizer!!!! ext/date/php_date.c\n");
     LI = NULL;
     std::ifstream fin(res_file.c_str(), std::ifstream::in);
     assert(fin.is_open());
@@ -308,7 +316,11 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P, const std::string 
             fprintf(stderr, "Corrupted file at line %lu, assume pid 0\n", (unsigned long)cnt);
             tmp.pid = "0";
         }
-        candidateResults.push_back(tmp);
+        if (tmp.loc.expFilename == "ext/date/php_date.c") {
+            outlog_printf(1, "ProfileErrorLocalizer!!!! ext/date/php_date.c %d\n", tmp.loc.expLine);
+            candidateResults.push_back(tmp);
+        }
+
     }
     fin.close();
 }

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-prefix=/root/project/prophet-gpl/benchmarks/lighttpd-deps/pcre-8.36-build
+prefix=/root/test/prophet/benchmarks/lighttpd-deps/pcre-8.36-build
 exec_prefix=${prefix}
 exec_prefix_set=no
 

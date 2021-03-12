@@ -275,11 +275,15 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
         buildFull("src");
         src_dirs["src"] = true;
     }
+    char cwd_buf[100];
+    getcwd(cwd_buf, 99);
+    outlog_printf(1, "getCompileMisc! cwd: %s | src_file: %s | build_dir: %s \n", cwd_buf, src_file.c_str(), build_dir.c_str());
     std::string cmd;
     if (dep_dir != "")
         cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
     else
         cmd = build_cmd + " -c -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
+    outlog_printf(1, "getCompileMisc!! cmd: %s\n", cmd.c_str());
     int sys_ret = explain_system_on_error(cmd.c_str());
 
     assert( sys_ret == 0 );
@@ -288,9 +292,9 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
     if (sys_ret != 0)
         fprintf(stderr, "Remove __args failed!\n");
     src_dirs["src"] = true;
-/*    fprintf(stderr, "Arguments we get:\n");
+    fprintf(stderr, "Arguments we get:\n");
     for (size_t i = 0; i < build_args.size(); ++i)
-        fprintf(stderr, "\"%s\"\n", build_args[i].c_str());*/
+        fprintf(stderr, "\"%s\"\n", build_args[i].c_str()); /* */
 }
 
 bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log) {
@@ -739,8 +743,8 @@ std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::strin
     if (getcwd(ori_dir, 1000) == 0)
         assert(0 && "Failed to get current directory path!\n");
     std::string target = build_dir;
-    if (target == ".")
-        target = src_dir;
+    //if (target == ".")
+    target = src_dir;
 
     // Include an implicit header lookup path of the current directory
     std::vector<std::string> tmpArgs;
@@ -751,6 +755,8 @@ std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::strin
     tmpArgs.push_back("-I");
     tmpArgs.push_back(full_key_path.substr(0, idx));
     tmpArgs.insert(tmpArgs.end(), args.begin(), args.end());
+
+    outlog_printf(1, "buildClangASTUnit! target: %s, src_dir: %s\n", target.c_str(), src_dir.c_str());
 
     int ret = chdir(target.c_str());
     assert( ret == 0 );

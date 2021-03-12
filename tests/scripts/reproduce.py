@@ -119,7 +119,7 @@ if (not found) or (defect_token == ""):
     print_defect();
     exit(1);
 
-if (not os.path.exists(defect_token)):
+if (False and not os.path.exists(defect_token)):
     cmd = "wget " + scenario_addr + defect_token;
     ret = system(cmd);
     if (ret != 0):
@@ -128,17 +128,18 @@ if (not os.path.exists(defect_token)):
 else:
     print "Work with existing tarball";
 
-cmd = "rm -rf " + app + "-case*";
-system(cmd);
-cmd = "tar xvzf " + defect_token;
-system(cmd);
-system("rm -rf *fix*");
+#cmd = "rm -rf " + app + "-case*";
+#system(cmd);
+#cmd = "tar xvzf " + defect_token;
+#system(cmd);
+#system("rm -rf *fix*");
 glob_res = glob.glob(app + "-case-*");
 assert( len(glob_res) > 0);
 case_dir = glob_res[0];
 glob_res = glob.glob(case_dir + "/" + app + "*workdir");
 assert( len(glob_res) > 0);
 work_dir = glob_res[0];
+print(work_dir)
 
 if init_only:
     cmd = "rm -rf " + work_dir + "/profile_localization.res";
@@ -147,7 +148,7 @@ if init_only:
     system(cmd);
 elif compare_space:
     ori_dir = getcwd();
-    chdir("/root/project/prophet-gpl/tools");
+    chdir("/root/test/prophet/tools");
     cmd = "./space-compare.py";
     if prophet:
         if no_sema:
@@ -164,12 +165,13 @@ elif compare_space:
     system(cmd);
     chdir(ori_dir);
 elif parse_space:
-    cmd = "/root/project/prophet-gpl/tools/spr-correct-compare.py";
+    cmd = "/root/test/prophet/tools/spr-correct-compare.py";
     if (not nof):
         cmd += " --bug-file";
     system(cmd);
 else:
     cmd = "prophet -r " + work_dir+" -skip-verify";
+    #cmd = "prophet -r " + work_dir;
     if timeout != 0:
         cmd += " -timeout " + str(timeout);
     cmd = "time " + cmd;
@@ -182,7 +184,7 @@ else:
     if (loc_only):
         cmd += " -no-feature";
     if (prophet):
-        para_file = " /root/project/prophet-gpl/crawler/para-";
+        para_file = " /root/test/prophet/crawler/para-";
         if (replace_ext):
             para_file += "rext-";
         if (no_mod):
@@ -209,6 +211,8 @@ else:
     if dest != "":
         system("rm -rf *fix* out.log repair.log __candidate*");
         cmd += " > out.log";
+    print "PWD:";
+    system("pwd");
     print "Invoking: " + cmd;
     system(cmd);
     if dest != "":

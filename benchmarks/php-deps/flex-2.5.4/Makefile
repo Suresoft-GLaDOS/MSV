@@ -29,7 +29,7 @@ LIBS =
 # Raw, unformatted troff source will be installed if INSTALLMAN=man,
 # nroff preformatted versions will be installed if INSTALLMAN=cat.
 
-prefix = /root/project/prophet-gpl/benchmarks/php-deps/flex-2.5.4-build
+prefix = /root/test/prophet/benchmarks/php-deps/flex-2.5.4-build
 exec_prefix = ${prefix}
 bindir = $(exec_prefix)/bin
 libdir = $(exec_prefix)/lib

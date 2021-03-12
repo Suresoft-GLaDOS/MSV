@@ -24,9 +24,9 @@
 #
 # Configuration variables
 #
-apr_builddir=/root/project/prophet-gpl/benchmarks/apache-deps/apr-build/build-1
-apr_builders=/root/project/prophet-gpl/benchmarks/apache-deps/apr-build/build-1
-top_builddir=/root/project/prophet-gpl/benchmarks/apache-deps/apr-build/build-1
+apr_builddir=/root/test/prophet/benchmarks/apache-deps/apr-build/build-1
+apr_builders=/root/test/prophet/benchmarks/apache-deps/apr-build/build-1
+top_builddir=/root/test/prophet/benchmarks/apache-deps/apr-build/build-1
 
 # Some layouts require knowing what version we are at.
 APR_MAJOR_VERSION=1

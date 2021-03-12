@@ -11,7 +11,7 @@ prog.c:12:25: note: use '=' to turn this equality comparison into an assignment
                         ^~
                         =
 1 warning generated.
-Library: /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so
+Library: /root/test/prophet/wrap/../src/.libs/libprofiler.so
 prog.c:12:25: warning: equality comparison result unused [-Wunused-comparison]
             filename[i] == '\0';
             ~~~~~~~~~~~~^~~~~~~
@@ -20,7 +20,7 @@ prog.c:12:25: note: use '=' to turn this equality comparison into an assignment
                         ^~
                         =
 1 warning generated.
-Library: /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so
+Library: /root/test/prophet/wrap/../src/.libs/libprofiler.so
 prog.c:20:25: warning: equality comparison result unused [-Wunused-comparison]
             filename[i] == '\0';
             ~~~~~~~~~~~~^~~~~~~
@@ -29,11 +29,11 @@ prog.c:20:25: note: use '=' to turn this equality comparison into an assignment
                         ^~
                         =
 1 warning generated.
-['/root/project/prophet-gpl/wrap/cc', '-std=c99', '-c', '-o', 'prog.o', 'prog.c']
+['/root/test/prophet/wrap/cc', '-std=c99', '-c', '-o', 'prog.o', 'prog.c']
 Invoking: /usr/local/bin/clang -std=c99 -E -o /tmp/pclang_67180573.c prog.c -ldl
-Invoking: /usr/local/bin/clang -Xclang -load -Xclang /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so -Xclang -plugin -Xclang err-profiler-gen -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/pclang_66478449.c -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/__index.loc -std=c99 -c -o prog.o prog.c
-Invoking: /usr/local/bin/clang -Xclang -load -Xclang /root/project/prophet-gpl/wrap/../src/.libs/libprofiler.so -Xclang -plugin -Xclang err-profiler-rewrite  -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_66478449.c -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_82196641.c -std=c99 -c -o prog.o /tmp/pclang_67180573.c
-invoking: /usr/local/bin/clang -I/root/project/prophet-gpl/wrap/../include -std=c99 -c -o prog.o /tmp/pclang_82196641.c
+Invoking: /usr/local/bin/clang -Xclang -load -Xclang /root/test/prophet/wrap/../src/.libs/libprofiler.so -Xclang -plugin -Xclang err-profiler-gen -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/pclang_66478449.c -Xclang -plugin-arg-err-profiler-gen -Xclang /tmp/__index.loc -std=c99 -c -o prog.o prog.c
+Invoking: /usr/local/bin/clang -Xclang -load -Xclang /root/test/prophet/wrap/../src/.libs/libprofiler.so -Xclang -plugin -Xclang err-profiler-rewrite  -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_66478449.c -Xclang -plugin-arg-err-profiler-rewrite -Xclang /tmp/pclang_82196641.c -std=c99 -c -o prog.o /tmp/pclang_67180573.c
+invoking: /usr/local/bin/clang -I/root/test/prophet/wrap/../include -std=c99 -c -o prog.o /tmp/pclang_82196641.c
 gcc -o prog prog.o
-['/root/project/prophet-gpl/wrap/gcc', '-o', 'prog', 'prog.o']
-Path env:  /root/project/prophet-gpl/wrap:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+['/root/test/prophet/wrap/gcc', '-o', 'prog', 'prog.o']
+Path env:  /root/test/prophet/wrap:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

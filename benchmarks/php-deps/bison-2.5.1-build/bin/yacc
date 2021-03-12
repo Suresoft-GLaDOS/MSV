@@ -1,2 +1,2 @@
 #! /bin/sh
-exec '/root/project/prophet-gpl/benchmarks/php-deps/bison-2.5.1-build/bin/bison' -y "$@"
+exec '/root/test/prophet/benchmarks/php-deps/bison-2.5.1-build/bin/bison' -y "$@"

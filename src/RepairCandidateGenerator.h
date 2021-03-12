@@ -1,18 +1,18 @@
-// Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
+// Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL
 // Prophet
-// 
+//
 // This file is part of Prophet.
-// 
+//
 // Prophet is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // Prophet is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
@@ -21,18 +21,21 @@
 #include <vector>
 #include <queue>
 
-namespace clang {
+namespace clang
+{
     class Stmt;
     class Expr;
 }
 
-typedef std::vector<clang::Stmt*> StmtListTy;
-typedef std::vector<clang::Expr*> ExprListTy;
+typedef std::vector<clang::Stmt *> StmtListTy;
+typedef std::vector<clang::Expr *> ExprListTy;
 
-struct RepairAction {
+struct RepairAction
+{
     // tag = 1, means a statement level mutation
     // tag = 2, means a expr level mutation
-    typedef enum {
+    typedef enum
+    {
         ReplaceMutationKind = 0,
         InsertMutationKind,
         InsertAfterMutationKind,
@@ -46,23 +49,24 @@ struct RepairAction {
     ExprListTy candidate_atoms;
     // This is a tag to indicate which subroutine created this
     // action
-    typedef enum {
+    typedef enum
+    {
         InvalidTag = 0,
         CondTag,
         StringConstantTag,
     } ExprTagTy;
     ExprTagTy tag;
 
-    RepairAction(const ASTLocTy &loc, RepairActionKind kind, clang::Stmt* new_stmt)
-        : kind(kind), loc(loc), ast_node((void*)new_stmt),
-        candidate_atoms(), tag(InvalidTag) { }
+    RepairAction(const ASTLocTy &loc, RepairActionKind kind, clang::Stmt *new_stmt)
+        : kind(kind), loc(loc), ast_node((void *)new_stmt),
+          candidate_atoms(), tag(InvalidTag) {}
 
-    RepairAction(const ASTLocTy &loc, clang::Expr* expr,
-            const std::vector<clang::Expr*> &candidate_atoms)
-        : kind(ExprMutationKind), loc(loc), ast_node((void*)expr),
-        candidate_atoms(candidate_atoms), tag(CondTag) { }
+    RepairAction(const ASTLocTy &loc, clang::Expr *expr,
+                 const std::vector<clang::Expr *> &candidate_atoms)
+        : kind(ExprMutationKind), loc(loc), ast_node((void *)expr),
+          candidate_atoms(candidate_atoms), tag(CondTag) {}
 
-/*    bool operator < (const RepairAction &a)  const {
+    /*    bool operator < (const RepairAction &a)  const {
         if (kind != a.kind)
             return kind < a.kind;
         else if (loc < a.loc)
@@ -78,11 +82,13 @@ struct RepairAction {
     }*/
 };
 
-struct RepairCandidate {
+struct RepairCandidate
+{
     std::vector<RepairAction> actions;
     // Below are required information to calculate the property
     // of the repair candidate
-    typedef enum {
+    typedef enum
+    {
         TightenConditionKind = 0,
         LoosenConditionKind,
         GuardKind,
@@ -94,13 +100,13 @@ struct RepairCandidate {
         AddAndReplaceKind
     } CandidateKind;
     CandidateKind kind;
-    bool is_first; // start of a block? not including condition changes
+    bool is_first;                    // start of a block? not including condition changes
     clang::Expr *oldRExpr, *newRExpr; // info for replace only
     // This should be the human localization score for learning
     // or the pre-fixed score if not using learning
     double score;
-    std::map<clang::Expr*, double> scoreMap;
-   /* size_t score;
+    std::map<clang::Expr *, double> scoreMap;
+    /* size_t score;
 
     bool operator <(const RepairCandidate &a) const {
         if (score != a.score)
@@ -118,14 +124,16 @@ struct RepairCandidate {
         }
     }*/
 
-    RepairCandidate(): actions(), kind(), is_first(false), oldRExpr(NULL), newRExpr(NULL), score(0), scoreMap() { }
+    RepairCandidate() : actions(), kind(), is_first(false), oldRExpr(NULL), newRExpr(NULL), score(0), scoreMap() {}
 
-    std::set<clang::Expr*> getCandidateAtoms() const {
-        std::set<clang::Expr*> ret;
+    std::set<clang::Expr *> getCandidateAtoms() const
+    {
+        std::set<clang::Expr *> ret;
         ret.clear();
         ret.insert(NULL);
         for (size_t i = 0; i < actions.size(); i++)
-            if (actions[i].kind == RepairAction::ExprMutationKind) {
+            if (actions[i].kind == RepairAction::ExprMutationKind)
+            {
                 for (size_t j = 0; j < actions[i].candidate_atoms.size(); j++)
                     ret.insert(actions[i].candidate_atoms[j]);
                 return ret;
@@ -142,21 +150,26 @@ class RepairCandidateGeneratorImpl;
 
 typedef std::pair<RepairCandidate, double> RepairCandidateWithScore;
 
-struct RepairComp {
-    bool operator () (const RepairCandidateWithScore &a, const RepairCandidateWithScore &b) {
+struct RepairComp
+{
+    bool operator()(const RepairCandidateWithScore &a, const RepairCandidateWithScore &b)
+    {
         return a.second < b.second;
     }
 };
 
 typedef std::priority_queue<RepairCandidateWithScore, std::vector<RepairCandidateWithScore>,
-        RepairComp> RepairCandidateQueue;
+                            RepairComp>
+    RepairCandidateQueue;
 
-class RepairCandidateGenerator {
+class RepairCandidateGenerator
+{
     RepairCandidateGeneratorImpl *impl;
+
 public:
     RepairCandidateGenerator(SourceContextManager &M, const std::string &file,
-            const std::map<clang::Stmt*, unsigned long> &locs,
-            bool naive, bool learning);
+                             const std::map<clang::Stmt *, unsigned long> &locs,
+                             bool naive, bool learning);
 
     void setFlipP(double GeoP);
 
