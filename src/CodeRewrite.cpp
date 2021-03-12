@@ -361,6 +361,32 @@ size_t getIsNegCount(std::string code){
     }
     return count;
 }
+std::string addLocationInIsNeg(std::string code,int id,int case_num){
+    size_t position=code.find("__is_neg");
+    size_t count=0;
+
+    while (position!=std::string::npos){
+        position=code.find("(",position);
+        code=code.erase(position+1,2);
+
+        std::string location;
+        location="\""+std::to_string(id)+"-"+std::to_string(case_num)+"-"+std::to_string(count)+"\"";
+        code=code.insert(position+1,location);
+        
+        position=code.find("__is_neg",position+1);
+        count++;
+    }
+    return code;
+}
+RepairCandidate::CandidateKind getCandidateKind(std::string code){
+    size_t position=code.find("__is_neg");
+    if (code[position-1]=='(') return RepairCandidate::CandidateKind::IfExitKind;
+    else {
+        if (code.find("&&",position-7)!=std::string::npos) return RepairCandidate::CandidateKind::TightenConditionKind;
+        else if (code.find("||",position-7)!=std::string::npos) return RepairCandidate::CandidateKind::LoosenConditionKind;
+        else return RepairCandidate::CandidateKind::GuardKind;
+    }
+}
 size_t CodeRewriter::addIsNeg(int id,int case_num,std::string code){
     size_t position=code.find("__is_neg");
     size_t count=0;
@@ -371,10 +397,9 @@ size_t CodeRewriter::addIsNeg(int id,int case_num,std::string code){
     while (position!=std::string::npos){
         count++;
         position=code.find("(",position);
-        for (position;code[position]==' ';position++){}
-        int isNegId=std::strtol(code.substr(position).c_str(),nullptr,0);
         std::pair<int,int> location(id,case_num);
-        isNegLocation[location].push_back(isNegId);
+        IsNegInformation info(id,case_num,count,getCandidateKind(code.substr(position-10)));
+        isNegLocation[location].push_back(info);
 
         position=code.find("__is_neg",position);
     }
@@ -692,7 +717,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
 
                     body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
                     body+="case "+std::to_string(case_count)+": {\n";
-                    body+=cur_patch[i];
+                    body+=addLocationInIsNeg(cur_patch[i],counter-1,case_count);
                     body+="\nbreak;\n}\n";
                     body+="#endif\n";
 
@@ -742,7 +767,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
 
             body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
-            body+=cur_patch[i];
+            body+=addLocationInIsNeg(cur_patch[i],counter-1,case_count);
             body+="\nbreak;\n}\n";
             body+="#endif\n";
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index++,std::pair<int,int>(counter-1,case_count)));

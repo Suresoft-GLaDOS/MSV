@@ -1557,7 +1557,7 @@ class ConditionSynthesisTester : public BasicTester {
     std::vector<std::set<ExprFillInfo> *> infos_set;
     std::map<BenchProgram::EnvMapTy,ValueRecordTy> valueRecords;
     std::map<BenchProgram::EnvMapTy,BranchRecordTy> branchRecords;
-    std::map<std::pair<int,int>,std::vector<int>> isNegLocation;
+    std::map<std::pair<int,int>,std::vector<IsNegInformation>> isNegLocation;
     bool full_synthesis;
     unsigned long post_cnt;
 

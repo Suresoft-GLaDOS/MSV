@@ -7,9 +7,9 @@ Processing test.c
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total 104 different partial repair candidate templates!!
-BasicTester pointer: 0x558c5552b080
-StringConstTester pointer: 0x558c5549aaf0
-CondTester pointer: 0x558c55529270
+BasicTester pointer: 0x55c7ef6fd080
+StringConstTester pointer: 0x55c7ef66caf0
+CondTester pointer: 0x55c7ef6fb270
 Generating Candidates...
 Candidates size: 108
 Generating Codes...
@@ -780,7 +780,7 @@ Case 2:
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-[32] Passed!
+[31] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1119,7 +1119,7 @@ Case 2:
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-[43] Passed!
+[42] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:

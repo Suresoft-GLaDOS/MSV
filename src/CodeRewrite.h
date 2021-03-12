@@ -36,7 +36,7 @@ class CodeRewriter {
     int counter;
     std::map<long long,std::pair<int,int>> macroMap;
     std::map<std::string,std::pair<int,int>> idAndCase;
-    std::map<std::pair<int,int>,std::vector<int>> isNegLocation;
+    std::map<std::pair<int,int>,std::vector<IsNegInformation>> isNegLocation;
 
     size_t addIsNeg(int id,int case_num,std::string code);
 public:
@@ -65,7 +65,7 @@ public:
     int getIdCount(){
         return counter;
     }
-    std::map<std::pair<int,int>,std::vector<int>> getIsNegLocation(){
+    std::map<std::pair<int,int>,std::vector<IsNegInformation>> getIsNegLocation(){
         return isNegLocation;
     }
 };
