@@ -1,6 +1,6 @@
 #! /bin/sh
 
-prefix=/root/test/prophet/benchmarks/lighttpd-deps/libxml2-2.7.2-build
+prefix=/root/project/prophet-gpl/benchmarks/lighttpd-deps/libxml2-2.7.2-build
 exec_prefix=${prefix}
 includedir=${prefix}/include
 libdir=${exec_prefix}/lib

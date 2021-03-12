@@ -1,26 +1,27 @@
 /* Test mpz_nextprime.
 
-Copyright 2009, 2015, 2018 Free Software Foundation, Inc.
+Copyright 2009 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
 
@@ -45,13 +46,12 @@ run (const char *start, int reps, const char *end, short diffs[])
     {
       mpz_nextprime (y, x);
       mpz_sub (x, y, x);
-      if (diffs != NULL &&
-	  (! mpz_fits_sshort_p (x) || diffs[i] != (short) mpz_get_ui (x)))
+      if (diffs != NULL && diffs[i] != mpz_get_ui (x))
 	{
 	  gmp_printf ("diff list discrepancy\n");
 	  abort ();
 	}
-      mpz_swap (x, y);
+      mpz_set (x, y);
     }
 
   mpz_set_str (y, end, 0);
@@ -71,7 +71,6 @@ extern short diff1[];
 extern short diff3[];
 extern short diff4[];
 extern short diff5[];
-extern short diff6[];
 
 int
 main (int argc, char **argv)
@@ -92,21 +91,19 @@ main (int argc, char **argv)
   run ("0x8a43866f5776ccd5b02186e90d28946aeb0ed914", 50,
        "0x8a43866f5776ccd5b02186e90d28946aeb0eeec5", diff3);
 
-  run ("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6C", 50, /* 2^148 - 148 */
+  run ("0x10000000000000000000000000000000000000", 50,
        "0x100000000000000000000000000000000010ab", diff4);
 
   run ("0x1c2c26be55317530311facb648ea06b359b969715db83292ab8cf898d8b1b", 50,
        "0x1c2c26be55317530311facb648ea06b359b969715db83292ab8cf898da957", diff5);
-
-  run ("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF80", 50, /* 2^128 - 128 */
-       "0x10000000000000000000000000000155B", diff6);
 
   mpz_init (bs);
   mpz_init (x);
   mpz_init (nxtp);
   mpz_init (ref_nxtp);
 
-  TESTS_REPS (reps, argv, argc);
+  if (argc == 2)
+     reps = atoi (argv[1]);
 
   for (i = 0; i < reps; i++)
     {
@@ -210,7 +207,7 @@ short diff3[] =
 
 short diff4[] =
 {
-  239,92,64,6,104,24,46,258,68,18,54,100,68,154,26,4,
+  91,92,64,6,104,24,46,258,68,18,54,100,68,154,26,4,
   38,142,168,42,18,26,286,104,136,116,40,2,28,110,52,78,
   104,24,54,96,4,626,196,24,56,36,52,102,48,156,26,18,
   42,40
@@ -222,11 +219,4 @@ short diff5[] =
   18,174,6,24,348,32,64,116,268,162,20,156,28,110,52,428,
   196,14,262,30,194,120,300,66,268,12,428,370,212,198,192,130,
   30,80
-};
-
-short diff6[] =
-{
-  179,30,84,108,112,36,42,110,52,132,60,30,326,114,496,92,100,
-  272,36,54,90,4,2,24,40,398,150,72,60,16,8,4,80,16,2,342,112,
-  14,136,236,40,18,50,192,198,204,40,266,42,274
 };

@@ -1,4 +1,4 @@
-prefix=/root/test/prophet/benchmarks/php-deps/libxml2-2.7.2-build
+prefix=/root/project/prophet-gpl/benchmarks/php-deps/libxml2-2.7.2-build
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

@@ -461,10 +461,6 @@ long __MPN(count_leading_zeros) (UDItype);
       __asm__ ("rsbs\t%1, %5, %4\n\tsbc\t%0, %2, %3"			\
 	       : "=r" (sh), "=&r" (sl)					\
 	       : "r" (ah), "rI" (bh), "rI" (al), "r" (bl) __CLOBBER_CC); \
-    else if (__builtin_constant_p (bl))					\
-      __asm__ ("subs\t%1, %4, %5\n\tsbc\t%0, %2, %3"			\
-	       : "=r" (sh), "=&r" (sl)					\
-	       : "r" (ah), "rI" (bh), "r" (al), "rI" (bl) __CLOBBER_CC); \
     else								\
       __asm__ ("subs\t%1, %4, %5\n\tsbc\t%0, %2, %3"			\
 	       : "=r" (sh), "=&r" (sl)					\
@@ -500,10 +496,6 @@ long __MPN(count_leading_zeros) (UDItype);
 		   : "=r" (sh), "=&r" (sl)				\
 		   : "rI" (ah), "r" (bh), "rI" (al), "r" (bl) __CLOBBER_CC); \
       }									\
-    else if (__builtin_constant_p (bl))					\
-      __asm__ ("subs\t%1, %4, %5\n\tsbc\t%0, %2, %3"			\
-	       : "=r" (sh), "=&r" (sl)					\
-	       : "r" (ah), "rI" (bh), "r" (al), "rI" (bl) __CLOBBER_CC); \
     else								\
       __asm__ ("subs\t%1, %4, %5\n\tsbc\t%0, %2, %3"			\
 	       : "=r" (sh), "=&r" (sl)					\

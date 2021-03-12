@@ -1,21 +1,21 @@
 /* Test locale support, or attempt to do so.
 
-Copyright 2001, 2002, 2011, 2014, 2020 Free Software Foundation, Inc.
+Copyright 2001, 2002 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #define _GNU_SOURCE    /* for DECIMAL_POINT in glibc langinfo.h */
 
@@ -37,18 +37,17 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 #include <locale.h>    /* for lconv */
 #endif
 
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
+
 
 const char *decimal_point;
 
 /* Replace the libc localeconv with one we can manipulate. */
-#if HAVE_LOCALECONV && ! defined __MINGW32__
+#if HAVE_LOCALECONV
 struct lconv *
 localeconv (void)
-#if defined __cplusplus && defined __GLIBC__
-  throw()
-#endif
 {
   static struct lconv  l;
   l.decimal_point = (char *) decimal_point;
@@ -57,12 +56,9 @@ localeconv (void)
 #endif
 
 /* Replace the libc nl_langinfo with one we can manipulate. */
-#if HAVE_NL_LANGINFO && ! defined __TERMUX__
+#if HAVE_NL_LANGINFO
 char *
 nl_langinfo (nl_item n)
-#if defined __cplusplus && defined __GLIBC__
-  throw()
-#endif
 {
 #if defined (DECIMAL_POINT)
   if (n == DECIMAL_POINT)

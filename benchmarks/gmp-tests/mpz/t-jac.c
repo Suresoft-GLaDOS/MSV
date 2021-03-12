@@ -1,21 +1,21 @@
 /* Exercise mpz_*_kronecker_*() and mpz_jacobi() functions.
 
-Copyright 1999-2004, 2013 Free Software Foundation, Inc.
+Copyright 1999, 2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 
 /* With no arguments the various Kronecker/Jacobi symbol routines are
@@ -24,6 +24,9 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
    To check the test data against PARI-GP, run
 
 	   t-jac -p | gp -q
+
+   It takes a while because the output from "t-jac -p" is big.
+
 
    Enhancements:
 
@@ -34,8 +37,12 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 #include <stdlib.h>
 #include <string.h>
 
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
+
+/* For count_leading_zeros in mpz_nextprime_step. */
+#include "longlong.h"
 
 #ifdef _LONG_LONG_LIMB
 #define LL(l,ll)  ll
@@ -625,20 +632,7 @@ check_data (void)
       "451716845976689892447895811408978421929", -1 },
     { "67674091930576781943923596701346271058970643542491743605048620644676477275152701774960868941561652032482173612421015",
       "4902678867794567120224500687210807069172039735", 0 },
-    { "2666617146103764067061017961903284334497474492754652499788571378062969111250584288683585223600172138551198546085281683283672592", "2666617146103764067061017961903284334497474492754652499788571378062969111250584288683585223600172138551198546085281683290481773", 1 },
-
-    /* Exercises the case asize == 1, btwos > 0 in mpz_jacobi. */
-    { "804609", "421248363205206617296534688032638102314410556521742428832362659824", 1 } ,
-    { "4190209", "2239744742177804210557442048984321017460028974602978995388383905961079286530650825925074203175536427000", 1 },
-
-    /* Exercises the case asize == 1, btwos = 63 in mpz_jacobi
-       (relevant when GMP_LIMB_BITS == 64). */
-    { "17311973299000934401", "1675975991242824637446753124775689449936871337036614677577044717424700351103148799107651171694863695242089956242888229458836426332300124417011114380886016", 1 },
-    { "3220569220116583677", "41859917623035396746", -1 },
-
-    /* Other test cases that triggered bugs during development. */
-    { "37200210845139167613356125645445281805", "340116213441272389607827434472642576514", -1 },
-    { "74400421690278335226712251290890563610", "451716845976689892447895811408978421929", -1 },
+    { "2666617146103764067061017961903284334497474492754652499788571378062969111250584288683585223600172138551198546085281683283672592", "2666617146103764067061017961903284334497474492754652499788571378062969111250584288683585223600172138551198546085281683290481773", 1 }
   };
 
   int    i;
@@ -678,7 +672,7 @@ check_squares_zi (void)
   for (i = 0; i < 50; i++)
     {
       mpz_urandomb (bs, rands, 32);
-      size_range = mpz_get_ui (bs) % 10 + i/8 + 2;
+      size_range = mpz_get_ui (bs) % 10 + 2;
 
       mpz_urandomb (bs, rands, size_range);
       an = mpz_get_ui (bs);
@@ -840,143 +834,248 @@ check_jacobi_factored (void)
 #undef PRIME_MAX_B_SIZE
 }
 
-/* These tests compute (a|n), where the quotient sequence includes
-   large quotients, and n has a known factorization. Such inputs are
-   generated as follows. First, construct a large n, as a power of a
-   prime p of moderate size.
+static const unsigned char primegap[] =
+{
+  2,2,4,2,4,2,4,6,2,6,4,2,4,6,6,2,6,4,2,6,4,6,8,4,2,4,2,4,14,4,6,
+  2,10,2,6,6,4,6,6,2,10,2,4,2,12,12,4,2,4,6,2,10,6,6,6,2,6,4,2,10,14,4,2,
+  4,14,6,10,2,4,6,8,6,6,4,6,8,4,8,10,2,10,2,6,4,6,8,4,2,4,12,8,4,8,4,6,
+  12,2,18,6,10,6,6,2,6,10,6,6,2,6,6,4,2,12,10,2,4,6,6,2,12,4,6,8,10,8,10,8,
+  6,6,4,8,6,4,8,4,14,10,12,2,10,2,4,2,10,14,4,2,4,14,4,2,4,20,4,8,10,8,4,6,
+  6,14,4,6,6,8,6,12
+};
 
-   Next, compute a matrix from factors (q,1;1,0), with q chosen with
-   uniformly distributed size. We must stop with matrix elements of
-   roughly half the size of n. Denote elements of M as M = (m00, m01;
-   m10, m11).
+#define NUMBER_OF_PRIMES 167
 
-   We now look for solutions to
+/* Similar to mpz_nextprime, finds the first (odd) prime of the form n
+   + k * step, with k >= 1. If n and step has a common factor, it never
+   terminates... */
+static void
+mpz_nextprime_step (mpz_ptr p, mpz_srcptr n, mpz_srcptr step_in)
+{
+  unsigned short *moduli;
+  unsigned short *step_moduli;
+  unsigned long difference;
+  int i;
+  unsigned prime_limit;
+  unsigned long prime;
+  int cnt;
+  mp_size_t pn;
+  mp_bitcnt_t nbits;
+  unsigned incr;
+  mpz_t step;
+  TMP_SDECL;
 
-     n = m00 x + m01 y
-     a = m10 x + m11 y
+  ASSERT_ALWAYS (mpz_sgn (step_in) > 0);
 
-   with x,y > 0. Since n >= m00 * m01, there exists a positive
-   solution to the first equation. Find those x, y, and substitute in
-   the second equation to get a. Then the quotient sequence for (a|n)
-   is precisely the quotients used when constructing M, followed by
-   the quotient sequence for (x|y).
+  /* Negative n could be supported, but currently aren't. */
+  ASSERT_ALWAYS (mpz_sgn (n) >= 0);
 
-   Numbers should also be large enough that we exercise hgcd_jacobi,
-   which means that they should be larger than
+  mpz_init (step);
 
-     max (GCD_DC_THRESHOLD, 3 * HGCD_THRESHOLD)
+  switch ( (mpz_odd_p (n) << 1) + mpz_odd_p (step_in))
+    {
+    default:
+    case 0:
+      /* Both even. */
+      abort ();
+    case 1:
+      /* n even, step odd. Use odd k. */
+      mpz_mul_2exp (step, step_in, 1);
+      mpz_add (p, n, step_in);
+      break;
+    case 2:
+      /* n odd, step even. All k > 0 give odd result. */
+      mpz_set (step, step_in);
+      mpz_add (p, n, step_in);
+      break;
+    case 3:
+      /* Both n and step odd. Use even k. */
+      mpz_mul_2exp (step, step_in, 1);
+      mpz_add (p, n, step);
+      break;
+    }
 
-   With an n of roughly 40000 bits, this should hold on most machines.
-*/
+  ASSERT_ALWAYS (mpz_odd_p (p));
+  ASSERT_ALWAYS (mpz_even_p (step));
+
+  if (mpz_cmp_ui (p, 7) <= 0)
+    {
+      mpz_clear (step);
+      return;
+    }
+
+  pn = SIZ(p);
+  count_leading_zeros (cnt, PTR(p)[pn - 1]);
+  nbits = pn * GMP_NUMB_BITS - (cnt - GMP_NAIL_BITS);
+  if (nbits / 2 >= NUMBER_OF_PRIMES)
+    prime_limit = NUMBER_OF_PRIMES - 1;
+  else
+    prime_limit = nbits / 2;
+
+  TMP_SMARK;
+
+  /* Compute residues modulo small odd primes */
+  moduli = TMP_SALLOC_TYPE (prime_limit * sizeof moduli[0], unsigned short);
+  step_moduli = TMP_SALLOC_TYPE (prime_limit * sizeof step_moduli[0], unsigned short);
+
+  for (;;)
+    {
+      ASSERT_ALWAYS (mpz_odd_p (p));
+
+      /* FIXME: Compute lazily? */
+      prime = 3;
+      for (i = 0; i < prime_limit; i++)
+	{
+	  moduli[i] = mpz_fdiv_ui (p, prime);
+	  step_moduli[i] = mpz_fdiv_ui (step, prime);
+	  prime += primegap[i];
+	}
+
+      /* INCR_LIMIT * (max_prime - 1) must fit in an unsigned. */
+#define INCR_LIMIT 0x10000
+
+      for (difference = incr = 0; incr < INCR_LIMIT; difference ++)
+	{
+	  /* First check residues */
+	  prime = 3;
+	  for (i = 0; i < prime_limit; i++)
+	    {
+	      unsigned r;
+	      /* FIXME: Reduce moduli + incr and store back, to allow
+		 for division-free reductions. Alternatively, table
+		 primes[]'s inverses. */
+	      r = (moduli[i] + incr*step_moduli[i]) % prime;
+	      prime += primegap[i];
+
+	      if (r == 0)
+		goto next;
+	    }
+
+	  mpz_addmul_ui (p, step, difference);
+	  difference = 0;
+
+	  ASSERT_ALWAYS (mpz_odd_p (p));
+
+	  /* Miller-Rabin test */
+	  if (mpz_millerrabin (p, 10))
+	    goto done;
+	next:;
+	  incr ++;
+	}
+
+      mpz_addmul_ui (p, step, difference);
+      difference = 0;
+    }
+ done:
+  mpz_clear (step);
+  TMP_SFREE;
+}
 
 void
 check_large_quotients (void)
 {
-#define COUNT 50
-#define PBITS 200
-#define PPOWER 201
-#define MAX_QBITS 500
+#define COUNT 5
+#define MAX_THRESHOLD 15
 
   gmp_randstate_ptr rands = RANDS;
-
-  mpz_t p, n, q, g, s, t, x, y, bs;
-  mpz_t M[2][2];
-  mp_bitcnt_t nsize;
   unsigned i;
+  mpz_t op1, op2, temp1, temp2, bs;
 
-  mpz_init (p);
-  mpz_init (n);
-  mpz_init (q);
-  mpz_init (g);
-  mpz_init (s);
-  mpz_init (t);
-  mpz_init (x);
-  mpz_init (y);
+  mpz_init (op1);
+  mpz_init (op2);
+  mpz_init (temp1);
+  mpz_init (temp2);
   mpz_init (bs);
-  mpz_init (M[0][0]);
-  mpz_init (M[0][1]);
-  mpz_init (M[1][0]);
-  mpz_init (M[1][1]);
-
-  /* First generate a number with known factorization, as a random
-     smallish prime raised to an odd power. Then (a|n) = (a|p). */
-  mpz_rrandomb (p, rands, PBITS);
-  mpz_nextprime (p, p);
-  mpz_pow_ui (n, p, PPOWER);
-
-  nsize = mpz_sizeinbase (n, 2);
 
   for (i = 0; i < COUNT; i++)
     {
+      unsigned j;
+      unsigned chain_len;
       int answer;
-      mp_bitcnt_t msize;
+      mp_bitcnt_t gcd_size;
 
-      mpz_set_ui (M[0][0], 1);
-      mpz_set_ui (M[0][1], 0);
-      mpz_set_ui (M[1][0], 0);
-      mpz_set_ui (M[1][1], 1);
-
-      for (msize = 1; 2*(msize + MAX_QBITS) + 1 < nsize ;)
+      /* Code originally copied from t-gcd.c */
+      mpz_set_ui (op1, 0);
+      mpz_urandomb (bs, rands, 32);
+      mpz_urandomb (bs, rands, mpz_get_ui (bs) % 10 + 1);
+      
+      gcd_size = 1 + mpz_get_ui (bs);
+      if (gcd_size & 1)
 	{
-	  unsigned i;
-	  mpz_rrandomb (bs, rands, 32);
-	  mpz_rrandomb (q, rands, 1 + mpz_get_ui (bs) % MAX_QBITS);
-
-	  /* Multiply by (q, 1; 1,0) from the right */
-	  for (i = 0; i < 2; i++)
-	    {
-	      mp_bitcnt_t size;
-	      mpz_swap (M[i][0], M[i][1]);
-	      mpz_addmul (M[i][0], M[i][1], q);
-	      size = mpz_sizeinbase (M[i][0], 2);
-	      if (size > msize)
-		msize = size;
-	    }
-	}
-      mpz_gcdext (g, s, t, M[0][0], M[0][1]);
-      ASSERT_ALWAYS (mpz_cmp_ui (g, 1) == 0);
-
-      /* Solve n = M[0][0] * x + M[0][1] * y */
-      if (mpz_sgn (s) > 0)
-	{
-	  mpz_mul (x, n, s);
-	  mpz_fdiv_qr (q, x, x, M[0][1]);
-	  mpz_mul (y, q, M[0][0]);
-	  mpz_addmul (y, t, n);
-	  ASSERT_ALWAYS (mpz_sgn (y) > 0);
+	  gcd_size = 0;
+	  mpz_set_ui (op2, 1);
 	}
       else
 	{
-	  mpz_mul (y, n, t);
-	  mpz_fdiv_qr (q, y, y, M[0][0]);
-	  mpz_mul (x, q, M[0][1]);
-	  mpz_addmul (x, s, n);
-	  ASSERT_ALWAYS (mpz_sgn (x) > 0);
+	  mpz_rrandomb (op2, rands, gcd_size);
+	  mpz_add_ui (op2, op2, 2);
 	}
-      mpz_mul (x, x, M[1][0]);
-      mpz_addmul (x, y, M[1][1]);
 
-      /* Now (x|n) has the selected large quotients */
-      answer = refmpz_legendre (x, p);
-      try_zi_zi (x, n, answer);
+      mpz_urandomb (bs, rands, 32);
+      chain_len = 1 + mpz_get_ui (bs) % (GMP_NUMB_BITS * MAX_THRESHOLD / 256);
+
+      for (j = 0; j < chain_len; j++)
+	{
+	  mpz_urandomb (bs, rands, 32);
+	  mpz_urandomb (bs, rands, mpz_get_ui (bs) % 12 + 1);
+	  mpz_rrandomb (temp2, rands, mpz_get_ui (bs) + 1);
+	  mpz_add_ui (temp2, temp2, 1);
+	  mpz_mul (temp1, op2, temp2);
+	  mpz_add (op1, op1, temp1);
+
+	  /* Don't generate overly huge operands.  */
+	  if (SIZ (op1) > 3 * MAX_THRESHOLD)
+	    {
+	      mpz_swap (op1, op2);
+	      break;
+	    }
+
+	  mpz_urandomb (bs, rands, 32);
+	  mpz_urandomb (bs, rands, mpz_get_ui (bs) % 12 + 1);
+	  mpz_rrandomb (temp2, rands, mpz_get_ui (bs) + 1);
+	  mpz_add_ui (temp2, temp2, 1);
+	  mpz_mul (temp1, op1, temp2);
+	  mpz_add (op2, op2, temp1);
+
+	  /* Don't generate overly huge operands.  */
+	  if (SIZ (op2) > 3 * MAX_THRESHOLD)
+	    break;
+	}
+      ASSERT_ALWAYS (mpz_cmp (op1, op2) < 0);
+
+      if (gcd_size)
+	answer = 0;
+      else
+	{
+	  if (mpz_odd_p (op1) && mpz_probab_prime_p (op1, 5))
+	    {
+	      answer = refmpz_legendre (op2, op1);
+	    }
+	  else if (mpz_odd_p (op2) && mpz_probab_prime_p (op2, 5))
+	    {
+	      mpz_swap (op1, op2);
+	      answer = refmpz_legendre (op2, op1);
+	    }
+	  else
+	    {
+	      mpz_nextprime_step (op1, op2, op1);
+	      answer = refmpz_legendre (op2, op1);
+	    }
+	}
+      try_all (op2, op1, answer);
+#if 0
+      gmp_printf("(a/b) = %d:\n"
+		 "a = %Zd\n"
+		 "b = %Zd\n", answer, op2, op1);
+#endif
     }
-  mpz_clear (p);
-  mpz_clear (n);
-  mpz_clear (q);
-  mpz_clear (g);
-  mpz_clear (s);
-  mpz_clear (t);
-  mpz_clear (x);
-  mpz_clear (y);
+  mpz_clear (op1);
+  mpz_clear (op2);
+  mpz_clear (temp1);
+  mpz_clear (temp2);
   mpz_clear (bs);
-  mpz_clear (M[0][0]);
-  mpz_clear (M[0][1]);
-  mpz_clear (M[1][0]);
-  mpz_clear (M[1][1]);
 #undef COUNT
-#undef PBITS
-#undef PPOWER
-#undef MAX_QBITS
+#undef MAX_THRESHOLD
 }
 
 int

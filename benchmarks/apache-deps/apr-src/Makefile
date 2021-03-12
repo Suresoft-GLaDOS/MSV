@@ -1,8 +1,8 @@
 
 srcdir=.
 
-top_srcdir=/root/test/prophet/benchmarks/apache-deps/apr-src
-top_blddir=/root/test/prophet/benchmarks/apache-deps/apr-src
+top_srcdir=/root/project/prophet-gpl/benchmarks/apache-deps/apr-src
+top_blddir=/root/project/prophet-gpl/benchmarks/apache-deps/apr-src
 
 #
 # APR (Apache Portable Runtime) library Makefile.
@@ -41,8 +41,8 @@ TARGETS = $(TARGET_LIB) include/private/apr_escape_test_char.h apr.exp apr-confi
 LT_VERSION = -version-info 5:3:5
 
 # bring in rules.mk for standard functionality
-include /root/test/prophet/benchmarks/apache-deps/apr-src/build/apr_rules.mk
-include /root/test/prophet/benchmarks/apache-deps/apr-src/build-outputs.mk
+include /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/build/apr_rules.mk
+include /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/build-outputs.mk
 
 CLEAN_TARGETS = apr-config.out apr.exp exports.c export_vars.c .make.dirs \
 	build/apr_rules.out tools/gen_test_char \
@@ -58,7 +58,7 @@ EXTRACLEAN_TARGETS = configure aclocal.m4 include/arch/unix/apr_private.h.in \
 	build/argz.m4 build/libtool.m4 build/ltoptions.m4 \
 	build/ltsugar.m4 build/ltversion.m4 build/lt~obsolete.m4
 
-prefix=/root/test/prophet/benchmarks/apache-deps/apr-build
+prefix=/root/project/prophet-gpl/benchmarks/apache-deps/apr-build
 exec_prefix=${prefix}
 bindir=${exec_prefix}/bin
 libdir=${exec_prefix}/lib

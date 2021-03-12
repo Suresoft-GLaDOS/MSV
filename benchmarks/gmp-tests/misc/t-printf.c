@@ -1,21 +1,21 @@
 /* Test gmp_printf and related functions.
 
-Copyright 2001-2003, 2015 Free Software Foundation, Inc.
+Copyright 2001, 2002, 2003 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 
 /* Usage: t-printf [-s]
@@ -25,9 +25,14 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
        faulty or strange.  */
 
 
-#include "config.h"	/* needed for the HAVE_, could also move gmp incls */
+#include "config.h"
 
+#if HAVE_STDARG
 #include <stdarg.h>
+#else
+#include <varargs.h>
+#endif
+
 #include <stddef.h>    /* for ptrdiff_t */
 #include <stdio.h>
 #include <stdlib.h>
@@ -51,6 +56,7 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 #include <unistd.h>  /* for unlink */
 #endif
 
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
 
@@ -67,7 +73,12 @@ FILE  *check_vfprintf_fp;
 
 
 void
+#if HAVE_STDARG
 check_plain (const char *want, const char *fmt_orig, ...)
+#else
+check_plain (va_alist)
+     va_dcl
+#endif
 {
   char        got[MAX_OUTPUT];
   int         got_len, want_len;
@@ -75,7 +86,15 @@ check_plain (const char *want, const char *fmt_orig, ...)
   char        *fmt, *q;
   const char  *p;
   va_list     ap;
+#if HAVE_STDARG
   va_start (ap, fmt_orig);
+#else
+  const char  *want;
+  const char  *fmt_orig;
+  va_start (ap);
+  want = va_arg (ap, const char *);
+  fmt_orig = va_arg (ap, const char *);
+#endif
 
   if (! option_check_printf)
     return;
@@ -299,10 +318,23 @@ check_obstack_vprintf (const char *want, const char *fmt, va_list ap)
 
 
 void
+#if HAVE_STDARG
 check_one (const char *want, const char *fmt, ...)
+#else
+check_one (va_alist)
+     va_dcl
+#endif
 {
   va_list ap;
+#if HAVE_STDARG
   va_start (ap, fmt);
+#else
+  const char  *want;
+  const char  *fmt;
+  va_start (ap);
+  want = va_arg (ap, const char *);
+  fmt = va_arg (ap, const char *);
+#endif
 
   /* simplest first */
   check_vsprintf (want, fmt, ap);
@@ -871,15 +903,6 @@ check_misc (void)
     static char  xs[801];
     memset (xs, 'x', sizeof(xs)-1);
     check_one (xs, "%s", xs);
-  }
-  {
-    char  *xs;
-    xs = (char *) (*__gmp_allocate_func) (MAX_OUTPUT * 2 - 12);
-    memset (xs, '%', MAX_OUTPUT * 2 - 14);
-    xs [MAX_OUTPUT * 2 - 13] = '\0';
-    xs [MAX_OUTPUT * 2 - 14] = 'x';
-    check_one (xs + MAX_OUTPUT - 7, xs, NULL);
-    (*__gmp_free_func) (xs, MAX_OUTPUT * 2 - 12);
   }
 
   mpz_set_ui (z, 12345L);

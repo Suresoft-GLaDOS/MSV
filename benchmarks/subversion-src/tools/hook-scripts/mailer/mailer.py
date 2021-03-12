@@ -23,9 +23,9 @@
 # mailer.py: send email describing a commit
 #
 # $HeadURL: http://svn.apache.org/repos/asf/subversion/trunk/tools/hook-scripts/mailer/mailer.py $
-# $LastChangedDate: 2021-01-22 21:04:31 +0900 (Fri, 22 Jan 2021) $
-# $LastChangedBy: stsp $
-# $LastChangedRevision: 1885784 $
+# $LastChangedDate: 2021-01-19 01:30:27 +0900 (Tue, 19 Jan 2021) $
+# $LastChangedBy: futatuki $
+# $LastChangedRevision: 1885656 $
 #
 # USAGE: mailer.py commit      REPOS REVISION [CONFIG-FILE]
 #        mailer.py propchange  REPOS REVISION AUTHOR REVPROPNAME [CONFIG-FILE]
@@ -1021,7 +1021,7 @@ class DiffGenerator:
       # return a data item for this diff
       return _data(
         path=change.path,
-        base_path=base_path_bytes,
+        base_path=base_path,
         base_rev=change.base_rev,
         diff=diff,
         diff_url=diff_url,

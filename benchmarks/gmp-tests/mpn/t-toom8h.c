@@ -7,12 +7,19 @@
    toom{22,33,44,6h}_mul with invalid input size. */
 #define MIN_AN MUL_TOOM8H_MIN
 
-#define MIN_BN(an)			 \
-(MAX(GMP_NUMB_BITS <=  9*3 ? (an*7)/ 9 : \
-     GMP_NUMB_BITS <= 10*3 ? (an*6)/10 : \
-     GMP_NUMB_BITS <= 11*3 ? (an*5)/11 : \
-     GMP_NUMB_BITS <= 12*3 ? (an*4)/12 : \
-     (an*4)/13, 86) )
+#if GMP_NUMB_BITS <= 10*3
+#define MIN_BN(an) (MAX ((an*6)/10, 86) )
+#else
+#if GMP_NUMB_BITS <= 11*3
+#define MIN_BN(an) (MAX ((an*5)/11, 86) )
+#else
+#if GMP_NUMB_BITS <= 12*3
+#define MIN_BN(an) (MAX ((an*4)/12, 86) )
+#else
+#define MIN_BN(an) (MAX ((an*4)/13, 86) )
+#endif
+#endif
+#endif
 
 #define COUNT 1000
 

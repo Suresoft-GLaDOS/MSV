@@ -17,7 +17,7 @@ old_library='libpcrecpp.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' /root/test/prophet/benchmarks/lighttpd-deps/pcre-8.36/libpcre.la'
+dependency_libs=' /root/project/prophet-gpl/benchmarks/lighttpd-deps/pcre-8.36/libpcre.la'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
@@ -38,5 +38,5 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/root/test/prophet/benchmarks/lighttpd-deps/pcre-8.36-build/lib'
-relink_command="(cd /root/test/prophet/benchmarks/lighttpd-deps/pcre-8.36; /bin/bash /root/test/prophet/benchmarks/lighttpd-deps/pcre-8.36/libtool  --silent --tag CXX --mode=relink g++ -fvisibility=hidden -fvisibility-inlines-hidden -O2 -version-info 0:1:0 -o libpcrecpp.la -rpath /root/test/prophet/benchmarks/lighttpd-deps/pcre-8.36-build/lib libpcrecpp_la-pcrecpp.lo libpcrecpp_la-pcre_scanner.lo libpcrecpp_la-pcre_stringpiece.lo libpcre.la @inst_prefix_dir@)"
+libdir='/root/project/prophet-gpl/benchmarks/lighttpd-deps/pcre-8.36-build/lib'
+relink_command="(cd /root/project/prophet-gpl/benchmarks/lighttpd-deps/pcre-8.36; /bin/bash /root/project/prophet-gpl/benchmarks/lighttpd-deps/pcre-8.36/libtool  --silent --tag CXX --mode=relink g++ -fvisibility=hidden -fvisibility-inlines-hidden -O2 -version-info 0:1:0 -o libpcrecpp.la -rpath /root/project/prophet-gpl/benchmarks/lighttpd-deps/pcre-8.36-build/lib libpcrecpp_la-pcrecpp.lo libpcrecpp_la-pcre_scanner.lo libpcrecpp_la-pcre_stringpiece.lo libpcre.la @inst_prefix_dir@)"

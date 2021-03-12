@@ -1,22 +1,23 @@
 /* Reference mpn functions, designed to be simple, portable and independent
    of the normal gmp code.  Speed isn't a consideration.
 
-Copyright 1996-2009, 2011-2014 Free Software Foundation, Inc.
+Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+2007, 2008, 2009 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 
 /* Most routines have assertions representing what the mpn routines are
@@ -31,6 +32,7 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 #include <stdio.h>  /* for NULL */
 #include <stdlib.h> /* for malloc */
 
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "longlong.h"
 
@@ -67,8 +69,8 @@ byte_overlap_p (const void *v_xp, mp_size_t xsize,
 int
 refmpn_overlap_p (mp_srcptr xp, mp_size_t xsize, mp_srcptr yp, mp_size_t ysize)
 {
-  return byte_overlap_p (xp, xsize * GMP_LIMB_BYTES,
-			 yp, ysize * GMP_LIMB_BYTES);
+  return byte_overlap_p (xp, xsize * BYTES_PER_MP_LIMB,
+			 yp, ysize * BYTES_PER_MP_LIMB);
 }
 
 /* Check overlap for a routine defined to work low to high. */
@@ -107,7 +109,7 @@ refmpn_malloc_limbs (mp_size_t size)
   ASSERT (size >= 0);
   if (size == 0)
     size = 1;
-  p = (mp_ptr) malloc ((size_t) (size * GMP_LIMB_BYTES));
+  p = (mp_ptr) malloc ((size_t) (size * BYTES_PER_MP_LIMB));
   ASSERT (p != NULL);
   return p;
 }
@@ -531,7 +533,7 @@ sbb (mp_limb_t *w, mp_limb_t x, mp_limb_t y, mp_limb_t c)
 
 #define AORS_1(operation)                               \
   {                                                     \
-    mp_size_t  i;                                       \
+    mp_limb_t  i;                                       \
 							\
     ASSERT (refmpn_overlap_fullonly_p (rp, sp, size));  \
     ASSERT (size >= 1);                                 \
@@ -595,201 +597,6 @@ refmpn_sub_n (mp_ptr rp, mp_srcptr s1p, mp_srcptr s2p, mp_size_t size)
 }
 
 mp_limb_t
-refmpn_cnd_add_n (mp_limb_t cnd, mp_ptr rp, mp_srcptr s1p, mp_srcptr s2p, mp_size_t size)
-{
-  if (cnd != 0)
-    return refmpn_add_n (rp, s1p, s2p, size);
-  else
-    {
-      refmpn_copyi (rp, s1p, size);
-      return 0;
-    }
-}
-mp_limb_t
-refmpn_cnd_sub_n (mp_limb_t cnd, mp_ptr rp, mp_srcptr s1p, mp_srcptr s2p, mp_size_t size)
-{
-  if (cnd != 0)
-    return refmpn_sub_n (rp, s1p, s2p, size);
-  else
-    {
-      refmpn_copyi (rp, s1p, size);
-      return 0;
-    }
-}
-
-
-#define AORS_ERR1_N(operation)						\
-  {                                                                     \
-    mp_size_t  i;                                                       \
-    mp_limb_t carry2;							\
-									\
-    ASSERT (refmpn_overlap_fullonly_p (rp, s1p, size));			\
-    ASSERT (refmpn_overlap_fullonly_p (rp, s2p, size));			\
-    ASSERT (! refmpn_overlap_p (rp, size, yp, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 2, s1p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 2, s2p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 2, yp, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 2, rp, size));			\
-									\
-    ASSERT (carry == 0 || carry == 1);					\
-    ASSERT (size >= 1);							\
-    ASSERT_MPN (s1p, size);						\
-    ASSERT_MPN (s2p, size);						\
-    ASSERT_MPN (yp, size);						\
-									\
-    ep[0] = ep[1] = CNST_LIMB(0);					\
-									\
-    for (i = 0; i < size; i++)                                          \
-      {									\
-	carry = operation (&rp[i], s1p[i], s2p[i], carry);		\
-	if (carry == 1)							\
-	  {								\
-	    carry2 = ref_addc_limb (&ep[0], ep[0], yp[size - 1 - i]);	\
-	    carry2 = ref_addc_limb (&ep[1], ep[1], carry2);		\
-	    ASSERT (carry2 == 0);					\
-	  }								\
-      }									\
-    return carry;                                                       \
-  }
-
-mp_limb_t
-refmpn_add_err1_n (mp_ptr rp, mp_srcptr s1p, mp_srcptr s2p,
-		   mp_ptr ep, mp_srcptr yp,
-		   mp_size_t size, mp_limb_t carry)
-{
-  AORS_ERR1_N (adc);
-}
-mp_limb_t
-refmpn_sub_err1_n (mp_ptr rp, mp_srcptr s1p, mp_srcptr s2p,
-		   mp_ptr ep, mp_srcptr yp,
-		   mp_size_t size, mp_limb_t carry)
-{
-  AORS_ERR1_N (sbb);
-}
-
-
-#define AORS_ERR2_N(operation)						\
-  {                                                                     \
-    mp_size_t  i;                                                       \
-    mp_limb_t carry2;							\
-									\
-    ASSERT (refmpn_overlap_fullonly_p (rp, s1p, size));			\
-    ASSERT (refmpn_overlap_fullonly_p (rp, s2p, size));			\
-    ASSERT (! refmpn_overlap_p (rp, size, y1p, size));			\
-    ASSERT (! refmpn_overlap_p (rp, size, y2p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 4, s1p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 4, s2p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 4, y1p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 4, y2p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 4, rp, size));			\
-									\
-    ASSERT (carry == 0 || carry == 1);					\
-    ASSERT (size >= 1);							\
-    ASSERT_MPN (s1p, size);						\
-    ASSERT_MPN (s2p, size);						\
-    ASSERT_MPN (y1p, size);						\
-    ASSERT_MPN (y2p, size);						\
-									\
-    ep[0] = ep[1] = CNST_LIMB(0);					\
-    ep[2] = ep[3] = CNST_LIMB(0);					\
-									\
-    for (i = 0; i < size; i++)                                          \
-      {									\
-	carry = operation (&rp[i], s1p[i], s2p[i], carry);		\
-	if (carry == 1)							\
-	  {								\
-	    carry2 = ref_addc_limb (&ep[0], ep[0], y1p[size - 1 - i]);	\
-	    carry2 = ref_addc_limb (&ep[1], ep[1], carry2);		\
-	    ASSERT (carry2 == 0);					\
-	    carry2 = ref_addc_limb (&ep[2], ep[2], y2p[size - 1 - i]);	\
-	    carry2 = ref_addc_limb (&ep[3], ep[3], carry2);		\
-	    ASSERT (carry2 == 0);					\
-	  }								\
-      }									\
-    return carry;                                                       \
-  }
-
-mp_limb_t
-refmpn_add_err2_n (mp_ptr rp, mp_srcptr s1p, mp_srcptr s2p,
-		   mp_ptr ep, mp_srcptr y1p, mp_srcptr y2p,
-		   mp_size_t size, mp_limb_t carry)
-{
-  AORS_ERR2_N (adc);
-}
-mp_limb_t
-refmpn_sub_err2_n (mp_ptr rp, mp_srcptr s1p, mp_srcptr s2p,
-		   mp_ptr ep, mp_srcptr y1p, mp_srcptr y2p,
-		   mp_size_t size, mp_limb_t carry)
-{
-  AORS_ERR2_N (sbb);
-}
-
-
-#define AORS_ERR3_N(operation)						\
-  {                                                                     \
-    mp_size_t  i;                                                       \
-    mp_limb_t carry2;							\
-									\
-    ASSERT (refmpn_overlap_fullonly_p (rp, s1p, size));			\
-    ASSERT (refmpn_overlap_fullonly_p (rp, s2p, size));			\
-    ASSERT (! refmpn_overlap_p (rp, size, y1p, size));			\
-    ASSERT (! refmpn_overlap_p (rp, size, y2p, size));			\
-    ASSERT (! refmpn_overlap_p (rp, size, y3p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 6, s1p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 6, s2p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 6, y1p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 6, y2p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 6, y3p, size));			\
-    ASSERT (! refmpn_overlap_p (ep, 6, rp, size));			\
-									\
-    ASSERT (carry == 0 || carry == 1);					\
-    ASSERT (size >= 1);							\
-    ASSERT_MPN (s1p, size);						\
-    ASSERT_MPN (s2p, size);						\
-    ASSERT_MPN (y1p, size);						\
-    ASSERT_MPN (y2p, size);						\
-    ASSERT_MPN (y3p, size);						\
-									\
-    ep[0] = ep[1] = CNST_LIMB(0);					\
-    ep[2] = ep[3] = CNST_LIMB(0);					\
-    ep[4] = ep[5] = CNST_LIMB(0);					\
-									\
-    for (i = 0; i < size; i++)                                          \
-      {									\
-	carry = operation (&rp[i], s1p[i], s2p[i], carry);		\
-	if (carry == 1)							\
-	  {								\
-	    carry2 = ref_addc_limb (&ep[0], ep[0], y1p[size - 1 - i]);	\
-	    carry2 = ref_addc_limb (&ep[1], ep[1], carry2);		\
-	    ASSERT (carry2 == 0);					\
-	    carry2 = ref_addc_limb (&ep[2], ep[2], y2p[size - 1 - i]);	\
-	    carry2 = ref_addc_limb (&ep[3], ep[3], carry2);		\
-	    ASSERT (carry2 == 0);					\
-	    carry2 = ref_addc_limb (&ep[4], ep[4], y3p[size - 1 - i]);	\
-	    carry2 = ref_addc_limb (&ep[5], ep[5], carry2);		\
-	    ASSERT (carry2 == 0);					\
-	  }								\
-      }									\
-    return carry;                                                       \
-  }
-
-mp_limb_t
-refmpn_add_err3_n (mp_ptr rp, mp_srcptr s1p, mp_srcptr s2p,
-		   mp_ptr ep, mp_srcptr y1p, mp_srcptr y2p, mp_srcptr y3p,
-		   mp_size_t size, mp_limb_t carry)
-{
-  AORS_ERR3_N (adc);
-}
-mp_limb_t
-refmpn_sub_err3_n (mp_ptr rp, mp_srcptr s1p, mp_srcptr s2p,
-		   mp_ptr ep, mp_srcptr y1p, mp_srcptr y2p, mp_srcptr y3p,
-		   mp_size_t size, mp_limb_t carry)
-{
-  AORS_ERR3_N (sbb);
-}
-
-
-mp_limb_t
 refmpn_addlsh_n (mp_ptr rp, mp_srcptr up, mp_srcptr vp,
 		 mp_size_t n, unsigned int s)
 {
@@ -850,11 +657,11 @@ refmpn_addlsh2_n_ip2 (mp_ptr rp, mp_srcptr vp, mp_size_t n)
 }
 mp_limb_t
 refmpn_addlsh_nc (mp_ptr rp, mp_srcptr up, mp_srcptr vp,
-		  mp_size_t n, unsigned int s, mp_limb_t carry)
+		 mp_size_t n, unsigned int s, mp_limb_t carry)
 {
   mp_limb_t cy;
 
-  ASSERT (carry <= (CNST_LIMB(1) << s));
+  ASSERT (carry >= 0 && carry <= (CNST_LIMB(1) << s));
 
   cy = refmpn_addlsh_n (rp, up, vp, n, s);
   cy += refmpn_add_1 (rp, rp, n, carry);
@@ -932,11 +739,11 @@ refmpn_sublsh2_n_ip2 (mp_ptr rp, mp_srcptr vp, mp_size_t n)
 }
 mp_limb_t
 refmpn_sublsh_nc (mp_ptr rp, mp_srcptr up, mp_srcptr vp,
-		  mp_size_t n, unsigned int s, mp_limb_t carry)
+		 mp_size_t n, unsigned int s, mp_limb_t carry)
 {
   mp_limb_t cy;
 
-  ASSERT (carry <= (CNST_LIMB(1) << s));
+  ASSERT (carry >= 0 && carry <= (CNST_LIMB(1) << s));
 
   cy = refmpn_sublsh_n (rp, up, vp, n, s);
   cy += refmpn_sub_1 (rp, rp, n, carry);
@@ -984,7 +791,7 @@ refmpn_rsblsh2_n (mp_ptr rp, mp_srcptr up, mp_srcptr vp, mp_size_t n)
 }
 mp_limb_signed_t
 refmpn_rsblsh_nc (mp_ptr rp, mp_srcptr up, mp_srcptr vp,
-		  mp_size_t n, unsigned int s, mp_limb_signed_t carry)
+		 mp_size_t n, unsigned int s, mp_limb_signed_t carry)
 {
   mp_limb_signed_t cy;
 
@@ -1796,63 +1603,8 @@ refmpn_mul_basecase (mp_ptr prodp,
     prodp[usize+i] = refmpn_addmul_1 (prodp+i, up, usize, vp[i]);
 }
 
-
-/* The same as mpn/generic/mulmid_basecase.c, but using refmpn functions. */
-void
-refmpn_mulmid_basecase (mp_ptr rp,
-			mp_srcptr up, mp_size_t un,
-			mp_srcptr vp, mp_size_t vn)
-{
-  mp_limb_t cy;
-  mp_size_t i;
-
-  ASSERT (un >= vn);
-  ASSERT (vn >= 1);
-  ASSERT (! refmpn_overlap_p (rp, un - vn + 3, up, un));
-  ASSERT (! refmpn_overlap_p (rp, un - vn + 3, vp, vn));
-  ASSERT_MPN (up, un);
-  ASSERT_MPN (vp, vn);
-
-  rp[un - vn + 1] = refmpn_mul_1 (rp, up + vn - 1, un - vn + 1, vp[0]);
-  rp[un - vn + 2] = CNST_LIMB (0);
-  for (i = 1; i < vn; i++)
-    {
-      cy = refmpn_addmul_1 (rp, up + vn - i - 1, un - vn + 1, vp[i]);
-      cy = ref_addc_limb (&rp[un - vn + 1], rp[un - vn + 1], cy);
-      cy = ref_addc_limb (&rp[un - vn + 2], rp[un - vn + 2], cy);
-      ASSERT (cy == 0);
-    }
-}
-
-void
-refmpn_toom42_mulmid (mp_ptr rp, mp_srcptr up, mp_srcptr vp, mp_size_t n,
-		      mp_ptr scratch)
-{
-  refmpn_mulmid_basecase (rp, up, 2*n - 1, vp, n);
-}
-
-void
-refmpn_mulmid_n (mp_ptr rp, mp_srcptr up, mp_srcptr vp, mp_size_t n)
-{
-  /* FIXME: this could be made faster by using refmpn_mul and then subtracting
-     off products near the middle product region boundary */
-  refmpn_mulmid_basecase (rp, up, 2*n - 1, vp, n);
-}
-
-void
-refmpn_mulmid (mp_ptr rp, mp_srcptr up, mp_size_t un,
-	       mp_srcptr vp, mp_size_t vn)
-{
-  /* FIXME: this could be made faster by using refmpn_mul and then subtracting
-     off products near the middle product region boundary */
-  refmpn_mulmid_basecase (rp, up, un, vp, vn);
-}
-
-
-
 #define TOOM3_THRESHOLD (MAX (MUL_TOOM33_THRESHOLD, SQR_TOOM3_THRESHOLD))
 #define TOOM4_THRESHOLD (MAX (MUL_TOOM44_THRESHOLD, SQR_TOOM4_THRESHOLD))
-#define TOOM6_THRESHOLD (MAX (MUL_TOOM6H_THRESHOLD, SQR_TOOM6_THRESHOLD))
 #if WANT_FFT
 #define FFT_THRESHOLD (MAX (MUL_FFT_THRESHOLD, SQR_FFT_THRESHOLD))
 #else
@@ -1862,12 +1614,14 @@ refmpn_mulmid (mp_ptr rp, mp_srcptr up, mp_size_t un,
 void
 refmpn_mul (mp_ptr wp, mp_srcptr up, mp_size_t un, mp_srcptr vp, mp_size_t vn)
 {
-  mp_ptr tp, rp;
+  mp_ptr tp;
   mp_size_t tn;
+  mp_limb_t cy;
 
   if (vn < TOOM3_THRESHOLD)
     {
-      /* In the mpn_mul_basecase and toom2 ranges, use our own mul_basecase. */
+      /* In the mpn_mul_basecase and mpn_kara_mul_n range, use our own
+	 mul_basecase.  */
       if (vn != 0)
 	refmpn_mul_basecase (wp, up, un, vp, vn);
       else
@@ -1875,49 +1629,44 @@ refmpn_mul (mp_ptr wp, mp_srcptr up, mp_size_t un, mp_srcptr vp, mp_size_t vn)
       return;
     }
 
-  MPN_ZERO (wp, vn);
-  rp = refmpn_malloc_limbs (2 * vn);
-
   if (vn < TOOM4_THRESHOLD)
-    tn = mpn_toom22_mul_itch (vn, vn);
-  else if (vn < TOOM6_THRESHOLD)
-    tn = mpn_toom33_mul_itch (vn, vn);
-  else if (vn < FFT_THRESHOLD)
-    tn = mpn_toom44_mul_itch (vn, vn);
-  else
-    tn = mpn_toom6h_mul_itch (vn, vn);
-  tp = refmpn_malloc_limbs (tn);
-
-  while (un >= vn)
     {
-      if (vn < TOOM4_THRESHOLD)
-	/* In the toom3 range, use mpn_toom22_mul.  */
-	mpn_toom22_mul (rp, up, vn, vp, vn, tp);
-      else if (vn < TOOM6_THRESHOLD)
-	/* In the toom4 range, use mpn_toom33_mul.  */
-	mpn_toom33_mul (rp, up, vn, vp, vn, tp);
-      else if (vn < FFT_THRESHOLD)
-	/* In the toom6 range, use mpn_toom44_mul.  */
-	mpn_toom44_mul (rp, up, vn, vp, vn, tp);
+      /* In the mpn_toom33_mul range, use mpn_toom22_mul.  */
+      tn = 2 * vn + mpn_toom22_mul_itch (vn, vn);
+      tp = refmpn_malloc_limbs (tn);
+      mpn_toom22_mul (tp, up, vn, vp, vn, tp + 2 * vn);
+    }
+  else if (vn < FFT_THRESHOLD)
+    {
+      /* In the mpn_toom44_mul range, use mpn_toom33_mul.  */
+      tn = 2 * vn + mpn_toom33_mul_itch (vn, vn);
+      tp = refmpn_malloc_limbs (tn);
+      mpn_toom33_mul (tp, up, vn, vp, vn, tp + 2 * vn);
+    }
+  else
+    {
+      /* Finally, for the largest operands, use mpn_toom44_mul.  */
+      tn = 2 * vn + mpn_toom44_mul_itch (vn, vn);
+      tp = refmpn_malloc_limbs (tn);
+      mpn_toom44_mul (tp, up, vn, vp, vn, tp + 2 * vn);
+    }
+
+  if (un != vn)
+    {
+      if (un - vn < vn)
+	refmpn_mul (wp + vn, vp, vn, up + vn, un - vn);
       else
-	/* For the largest operands, use mpn_toom6h_mul.  */
-	mpn_toom6h_mul (rp, up, vn, vp, vn, tp);
+	refmpn_mul (wp + vn, up + vn, un - vn, vp, vn);
 
-      ASSERT_NOCARRY (refmpn_add (wp, rp, 2 * vn, wp, vn));
-      wp += vn;
-
-      up += vn;
-      un -= vn;
+      MPN_COPY (wp, tp, vn);
+      cy = refmpn_add (wp + vn, wp + vn, un, tp + vn, vn);
+    }
+  else
+    {
+      MPN_COPY (wp, tp, 2 * vn);
     }
 
   free (tp);
-
-  if (un != 0)
-    {
-      refmpn_mul (rp, vp, vn, up, un);
-      ASSERT_NOCARRY (refmpn_add (wp, rp, un + vn, wp, vn));
-    }
-  free (rp);
 }
 
 void
@@ -1939,12 +1688,6 @@ void
 refmpn_sqr (mp_ptr dst, mp_srcptr src, mp_size_t size)
 {
   refmpn_mul (dst, src, size, src, size);
-}
-
-void
-refmpn_sqrlo (mp_ptr dst, mp_srcptr src, mp_size_t size)
-{
-  refmpn_mullo_n (dst, src, src, size);
 }
 
 /* Allowing usize<vsize, usize==0 or vsize==0. */
@@ -1980,68 +1723,6 @@ refmpn_mul_any (mp_ptr prodp,
 
 
 mp_limb_t
-refmpn_gcd_11 (mp_limb_t x, mp_limb_t y)
-{
-  /* The non-ref function also requires input operands to be odd, but
-     below refmpn_gcd_1 doesn't guarantee that. */
-  ASSERT (x > 0);
-  ASSERT (y > 0);
-  do
-    {
-      while ((x & 1) == 0)  x >>= 1;
-      while ((y & 1) == 0)  y >>= 1;
-
-      if (x < y)
-	MP_LIMB_T_SWAP (x, y);
-
-      x -= y;
-    }
-  while (x != 0);
-
-  return y;
-}
-
-mp_double_limb_t
-refmpn_gcd_22 (mp_limb_t x1, mp_limb_t x0, mp_limb_t y1, mp_limb_t y0)
-{
-  mp_double_limb_t g;
-  mp_limb_t cy;
-  ASSERT ((x0 & 1) != 0);
-  ASSERT ((y0 & 1) != 0);
-
-  do
-    {
-      while ((x0 & 1) == 0)
-	{
-	  x0 = (x1 << (GMP_NUMB_BITS - 1)) | (x0 >> 1);
-	  x1 >>= 1;
-	}
-      while ((y0 & 1) == 0)
-	{
-	  y0 = (y1 << (GMP_NUMB_BITS - 1)) | (y0 >> 1);
-	  y1 >>= 1;
-	}
-
-
-      if (x1 < y1 || (x1 == y1 && x0 < y0))
-	{
-	  mp_limb_t t;
-	  t = x1; x1 = y1; y1 = t;
-	  t = x0; x0 = y0; y0 = t;
-	}
-
-      cy = (x0 < y0);
-      x0 -= y0;
-      x1 -= y1 + cy;
-    }
-  while ((x1 | x0) != 0);
-
-  g.d1 = y1;
-  g.d0 = y0;
-  return g;
-}
-
-mp_limb_t
 refmpn_gcd_1 (mp_srcptr xp, mp_size_t xsize, mp_limb_t y)
 {
   mp_limb_t  x;
@@ -2064,7 +1745,20 @@ refmpn_gcd_1 (mp_srcptr xp, mp_size_t xsize, mp_limb_t y)
       twos++;
     }
 
-  return refmpn_gcd_11 (x, y) << twos;
+  for (;;)
+    {
+      while ((x & 1) == 0)  x >>= 1;
+      while ((y & 1) == 0)  y >>= 1;
+
+      if (x < y)
+	MP_LIMB_T_SWAP (x, y);
+
+      x -= y;
+      if (x == 0)
+	break;
+    }
+
+  return y << twos;
 }
 
 
@@ -2370,7 +2064,7 @@ refmpn_tdiv_qr (mp_ptr qp, mp_ptr rp, mp_size_t qxn,
     }
 }
 
-mp_limb_t
+void
 refmpn_redc_1 (mp_ptr rp, mp_ptr up, mp_srcptr mp, mp_size_t n, mp_limb_t invm)
 {
   mp_size_t j;
@@ -2383,11 +2077,12 @@ refmpn_redc_1 (mp_ptr rp, mp_ptr up, mp_srcptr mp, mp_size_t n, mp_limb_t invm)
 
   for (j = n - 1; j >= 0; j--)
     {
-      up[0] = refmpn_addmul_1 (up, mp, n, (up[0] * invm) & GMP_NUMB_MASK);
+      up[0] = mpn_addmul_1 (up, mp, n, (up[0] * invm) & GMP_NUMB_MASK);
       up++;
     }
   cy = mpn_add_n (rp, up, up - n, n);
-  return cy;
+  if (cy != 0)
+    mpn_sub_n (rp, rp, mp, n);
 }
 
 size_t
@@ -2404,7 +2099,7 @@ refmpn_get_str (unsigned char *dst, int base, mp_ptr src, mp_size_t size)
 
   MPN_SIZEINBASE (dsize, src, size, base);
   ASSERT (dsize >= 1);
-  ASSERT (! byte_overlap_p (dst, (mp_size_t) dsize, src, size * GMP_LIMB_BYTES));
+  ASSERT (! byte_overlap_p (dst, (mp_size_t) dsize, src, size * BYTES_PER_MP_LIMB));
 
   if (size == 0)
     {
@@ -2450,7 +2145,7 @@ ref_bswap_limb (mp_limb_t src)
   int        i;
 
   dst = 0;
-  for (i = 0; i < GMP_LIMB_BYTES; i++)
+  for (i = 0; i < BYTES_PER_MP_LIMB; i++)
     {
       dst = (dst << 8) + (src & 0xFF);
       src >>= 8;

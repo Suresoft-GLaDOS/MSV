@@ -3,22 +3,23 @@
 /*
 Copyright 2000, 2001, 2010 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include <stdio.h>
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
 
@@ -49,18 +50,12 @@ mp_limb_t calling_conventions_values[17] =
 
 
 /* values to check */
-#ifdef __cplusplus
-extern "C" {
-#endif
 struct {
   unsigned  control;
   unsigned  status;
   unsigned  tag;
   unsigned  other[4];
 } calling_conventions_fenv;
-#ifdef __cplusplus
-}
-#endif
 
 /* expected values, as per x86call.asm */
 #define VALUE_EBX   0x01234567

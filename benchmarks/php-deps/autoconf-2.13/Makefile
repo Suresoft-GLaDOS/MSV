@@ -41,7 +41,7 @@ SCRIPTS = $(ASCRIPTS) autoscan
 
 transform=s,x,x,
 
-prefix = /root/test/prophet/benchmarks/php-deps/autoconf-2.13-build
+prefix = /root/project/prophet-gpl/benchmarks/php-deps/autoconf-2.13-build
 exec_prefix = ${prefix}
 
 # Directory in which to install scripts.

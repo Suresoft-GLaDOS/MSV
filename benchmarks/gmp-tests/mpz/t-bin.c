@@ -1,29 +1,30 @@
 /* Exercise mpz_bin_ui and mpz_bin_uiui.
 
-Copyright 2000, 2001, 2010, 2012, 2018 Free Software Foundation, Inc.
+Copyright 2000, 2001, 2010 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
 
 /* Default number of generated tests. */
-#define COUNT 700
+#define COUNT 400
 
 void
 try_mpz_bin_ui (mpz_srcptr want, mpz_srcptr n, unsigned long k)
@@ -76,11 +77,55 @@ samples (void)
     const char     *want;
   } data[] = {
 
+    {   "0",  0, "1"   },
+    {   "0",  1, "0"   },
+    {   "0",  2, "0"   },
+    {   "0",  3, "0"   },
+    {   "0",  4, "0"   },
     {   "0", 123456, "0" },
-    {   "1", 543210, "0" },
-    {   "2", 123321, "0" },
-    {   "3", 234567, "0" },
-    {   "10", 23456, "0" },
+
+    {   "1",  0, "1"   },
+    {   "1",  1, "1"   },
+    {   "1",  2, "0"   },
+    {   "1",  3, "0"   },
+    {   "1",  4, "0"   },
+    {   "1", 123456, "0" },
+
+    {   "2",  0, "1"   },
+    {   "2",  2, "1"   },
+    {   "2",  3, "0"   },
+    {   "2",  4, "0"   },
+    {   "2", 123456, "0" },
+
+    {   "3",  0, "1"   },
+    {   "3",  1, "3"   },
+    {   "3",  2, "3"   },
+    {   "3",  3, "1"   },
+    {   "3",  4, "0"   },
+    {   "3",  5, "0"   },
+    {   "3", 123456, "0" },
+
+    {   "4",  0, "1"   },
+    {   "4",  1, "4"   },
+    {   "4",  3, "4"   },
+    {   "4",  4, "1"   },
+    {   "4",  5, "0"   },
+    {   "4",  6, "0"   },
+    {   "4", 123456, "0" },
+
+    {   "10",  0, "1"   },
+    {   "10",  1, "10"  },
+    {   "10",  2, "45"  },
+    {   "10",  3, "120" },
+    {   "10",  4, "210" },
+    {   "10",  6, "210" },
+    {   "10",  7, "120" },
+    {   "10",  8, "45"  },
+    {   "10",  9, "10"  },
+    {   "10", 10, "1"   },
+    {   "10", 11,     "0" },
+    {   "10", 12,     "0" },
+    {   "10", 123456, "0" },
 
     /* negatives, using bin(-n,k)=bin(n+k-1,k) */
     {   "-1",  0,  "1"  },
@@ -143,8 +188,9 @@ twos (int count)
   unsigned long  k;
 
   mpz_init (n);
+  mpz_init (want);
 
-  mpz_init_set_ui (want, (unsigned long) 2);
+  mpz_set_ui (want, (unsigned long) 2);
   for (k = 1; k < count; k++)
     {
       mpz_set_ui (n, 2*k);
@@ -165,28 +211,29 @@ twos (int count)
 void
 randomwalk (int count)
 {
-  mpz_t          n_z, want, tmp;
+  mpz_t          n_z, want;
   unsigned long  n, k, i, r;
   int            tests;
   gmp_randstate_ptr rands;
 
   rands = RANDS;
   mpz_init (n_z);
+  mpz_init (want);
 
   k = 3;
   n = 12;
-  mpz_init_set_ui (want, (unsigned long) 220); /* binomial(12,3) = 220 */
+  mpz_set_ui (want, (unsigned long) 220); /* binomial(12,3) = 220 */
 
   for (tests = 1; tests < count; tests++)
     {
-      r = gmp_urandomm_ui (rands, 62) + 1;
-      for (i = r & 7; i > 0; i--)
+      r = gmp_urandomm_ui (rands, 30) + 1;
+      for (i = r & 3; i > 0; i--)
 	{
 	  n++; k++;
 	  mpz_mul_ui (want, want, n);
 	  mpz_fdiv_q_ui (want, want, k);
 	}
-      for (i = r >> 3; i > 0; i--)
+      for (i = r >> 2; i > 0; i--)
 	{
 	  n++;
 	  mpz_mul_ui (want, want, n);
@@ -199,110 +246,6 @@ randomwalk (int count)
       try_mpz_bin_uiui (want, n, k);
     }
 
-  k = 2;
-  mpz_urandomb (n_z, rands, 200);
-  mpz_mul (want, n_z, n_z); /* want = n_z ^ 2 */
-  mpz_sub (want, want, n_z); /* want = n_z ^ 2 - n_z = n_z (n_z- 1) */
-  mpz_tdiv_q_2exp (want, want, 1); /* want = n_z (n_z- 1) / 2 = binomial (n_z, 2) */
-  mpz_init (tmp);
-  for (tests = 1; tests < count; tests++)
-    {
-      r = gmp_urandomm_ui (rands, 62) + 1;
-      for (i = r & 7; i > 0; i--)
-	{
-	  k++;
-	  mpz_add_ui (n_z, n_z, 1);
-	  mpz_mul (want, want, n_z);
-	  mpz_tdiv_q_ui (want, want, k);
-	}
-      for (i = r >> 3; i > 0; i--)
-	{
-	  mpz_add_ui (n_z, n_z, 1);
-	  mpz_mul (want, want, n_z);
-	  mpz_sub_ui (tmp, n_z, k);
-	  mpz_tdiv_q (want, want, tmp);
-	}
-
-      try_mpz_bin_ui (want, n_z, k);
-    }
-
-  mpz_clear (tmp);
-  mpz_clear (n_z);
-  mpz_clear (want);
-}
-
-/* Test some random bin(n,k) cases.  This produces some biggish
-   numbers to exercise the limb accumulating code.  */
-void
-randomwalk_down (int count)
-{
-  mpz_t          n_z, want, tmp;
-  unsigned long  n, k, i, r;
-  int            tests;
-  gmp_randstate_ptr rands;
-
-  rands = RANDS;
-  mpz_init (n_z);
-  mpz_init (tmp);
-
-  k = 2;
-  n = ULONG_MAX;
-  mpz_init_set_ui (want, n);
-  mpz_mul_ui (want, want, n >> 1);
-
-  for (tests = 1; tests < count; tests++)
-    {
-      r = gmp_urandomm_ui (rands, 62) + 1;
-      for (i = r & 7; i > 0; i--)
-	{
-	  mpz_mul_ui (want, want, n - k);
-	  ++k;
-	  mpz_tdiv_q_ui (want, want, k);
-	}
-      for (i = r >> 3; i > 0; i--)
-	{
-	  mpz_mul_ui (want, want, n - k);
-	  mpz_tdiv_q_ui (want, want, n);
-	  --n;
-	}
-
-      mpz_set_ui (n_z, n);
-      try_mpz_bin_ui (want, n_z, n - k);
-
-      try_mpz_bin_uiui (want, n, n - k);
-    }
-
-  mpz_clear (tmp);
-  mpz_clear (n_z);
-  mpz_clear (want);
-}
-
-
-/* Test all bin(n,k) cases, with 0 <= k <= n + 1 <= count.  */
-void
-smallexaustive (unsigned int count)
-{
-  mpz_t          n_z, want;
-  unsigned long  n, k;
-
-  mpz_init (n_z);
-  mpz_init (want);
-
-  for (n = 0; n < count; n++)
-    {
-      mpz_set_ui (want, (unsigned long) 1);
-      mpz_set_ui (n_z, n);
-      for (k = 0; k <= n; k++)
-	{
-	  try_mpz_bin_ui (want, n_z, k);
-	  try_mpz_bin_uiui (want, n, k);
-	  mpz_mul_ui (want, want, n - k);
-	  mpz_fdiv_q_ui (want, want, k + 1);
-	}
-      try_mpz_bin_ui (want, n_z, k);
-      try_mpz_bin_uiui (want, n, k);
-    }
-
   mpz_clear (n_z);
   mpz_clear (want);
 }
@@ -312,16 +255,24 @@ main (int argc, char **argv)
 {
   int count;
 
-  count = COUNT;
-  TESTS_REPS (count, argv, argc);
+  if (argc > 1)
+    {
+      char *end;
+      count = strtol (argv[1], &end, 0);
+      if (*end || count <= 0)
+	{
+	  fprintf (stderr, "Invalid test count: %s.\n", argv[1]);
+	  return 1;
+	}
+    }
+  else
+    count = COUNT;
 
   tests_start ();
 
   samples ();
-  smallexaustive (count >> 4);
   twos (count >> 1);
   randomwalk (count - (count >> 1));
-  randomwalk_down (count >> 1);
 
   tests_end ();
   exit (0);

@@ -264,6 +264,7 @@ typedef __mpq_struct *mpq_ptr;
   || defined (_STDIO_H_INCLUDED)      /* QNX4 */		\
   || defined (_ISO_STDIO_ISO_H)       /* Sun C++ */		\
   || defined (__STDIO_LOADED)         /* VMS */			\
+  || defined (_STDIO)                 /* HPE NonStop */         \
   || defined (__DEFINED_FILE)         /* musl */
 #define _GMP_H_HAVE_FILE 1
 #endif
@@ -946,6 +947,9 @@ __GMP_DECLSPEC void mpz_neg (mpz_ptr, mpz_srcptr);
 
 #define mpz_nextprime __gmpz_nextprime
 __GMP_DECLSPEC void mpz_nextprime (mpz_ptr, mpz_srcptr);
+
+#define mpz_prevprime __gmpz_prevprime
+__GMP_DECLSPEC int mpz_prevprime (mpz_ptr, mpz_srcptr);
 
 #define mpz_out_raw __gmpz_out_raw
 #ifdef _GMP_H_HAVE_FILE
@@ -2329,7 +2333,7 @@ enum
 /* Major version number is the value of __GNU_MP__ too, above. */
 #define __GNU_MP_VERSION            6
 #define __GNU_MP_VERSION_MINOR      2
-#define __GNU_MP_VERSION_PATCHLEVEL 1
+#define __GNU_MP_VERSION_PATCHLEVEL 99
 #define __GNU_MP_RELEASE (__GNU_MP_VERSION * 10000 + __GNU_MP_VERSION_MINOR * 100 + __GNU_MP_VERSION_PATCHLEVEL)
 
 #define __GMP_H__

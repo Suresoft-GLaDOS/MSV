@@ -1,26 +1,27 @@
 /* Test mp*_class operators and functions.
 
-Copyright 2001-2003, 2015 Free Software Foundation, Inc.
+Copyright 2001, 2002, 2003 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include "config.h"
 
 #include <iostream>
 
+#include "gmp.h"
 #include "gmpxx.h"
 #include "gmp-impl.h"
 #include "tests.h"
@@ -59,8 +60,6 @@ check_mpz (void)
     mpz_class a(-123);
     mpz_class b;
     b = abs(a); ASSERT_ALWAYS(b == 123);
-    a <<= 300;
-    b = abs(a); ASSERT_ALWAYS(a + b == 0);
   }
 
   // sqrt
@@ -493,7 +492,6 @@ check_mpq (void)
     mpq_class a(1, 3), b(3, 4);
     mpq_class c;
     c = a * b; ASSERT_ALWAYS(c == 0.25);
-    c = b * b; ASSERT_ALWAYS(c == 0.5625);
   }
 
   // operator/
@@ -501,16 +499,6 @@ check_mpq (void)
     mpq_class a(1, 2), b(2, 3);
     mpq_class c;
     c = a / b; ASSERT_ALWAYS(c == 0.75);
-  }
-  {
-    mpq_class one = 1;
-    mpq_class x(2, 5);
-    ASSERT_ALWAYS(1 / x == one / x);
-    ASSERT_ALWAYS(1u / x == one / x);
-    x = (-1) / x;
-    ASSERT_ALWAYS(x == -2.5);
-    ASSERT_ALWAYS(0 / x == 0);
-    ASSERT_ALWAYS(0u / x == 0);
   }
 
   // operator<<
@@ -546,13 +534,6 @@ check_mpq (void)
   {
     mpq_class a(123);
     double b = 45;
-    int c;
-    c = cmp(a, b); ASSERT_ALWAYS(c > 0);
-    c = cmp(b, a); ASSERT_ALWAYS(c < 0);
-  }
-  {
-    mpq_class a(123);
-    mpz_class b(45);
     int c;
     c = cmp(a, b); ASSERT_ALWAYS(c > 0);
     c = cmp(b, a); ASSERT_ALWAYS(c < 0);
@@ -718,20 +699,6 @@ check_mpf (void)
   {
     mpf_class a(123);
     double b = 45;
-    int c;
-    c = cmp(a, b); ASSERT_ALWAYS(c > 0);
-    c = cmp(b, a); ASSERT_ALWAYS(c < 0);
-  }
-  {
-    mpf_class a(123);
-    mpz_class b(45);
-    int c;
-    c = cmp(a, b); ASSERT_ALWAYS(c > 0);
-    c = cmp(b, a); ASSERT_ALWAYS(c < 0);
-  }
-  {
-    mpf_class a(123);
-    mpq_class b(45);
     int c;
     c = cmp(a, b); ASSERT_ALWAYS(c > 0);
     c = cmp(b, a); ASSERT_ALWAYS(c < 0);

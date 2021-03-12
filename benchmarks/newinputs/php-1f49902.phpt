@@ -41,7 +41,7 @@ print_r($s);
 stream_wrapper_register('sxx', 'sww') or die('failed');
 print_r( fstat(fopen('sxx://test', 'r'))['mtime'] );?>
 --EXPECT--
-Notice: Undefined property: sw::$undefined in /root/test/prophet/build/benchmarks/php-src-1f49902/php-1f49902.php on line 11
+Notice: Undefined property: sw::$undefined in /home/fanl/Workspace/prophet/build/benchmarks/php-src-1f49902/php-1f49902.php on line 11
 Array
 (
     [0] => 1

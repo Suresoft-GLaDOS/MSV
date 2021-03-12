@@ -7,7 +7,7 @@ IT IS ONLY SAFE TO REACH IT THROUGH DOCUMENTED INTERFACES.
 IN FACT, IT IS ALMOST GUARANTEED THAT IT WILL CHANGE OR
 DISAPPEAR IN A FUTURE GNU MP RELEASE.
 
-Copyright 2010-2012, 2015-2017 Free Software Foundation, Inc.
+Copyright 2010-2012, 2015-2017, 2020 Free Software Foundation, Inc.
 
 This file is part of the GNU MP Library.
 
@@ -61,31 +61,31 @@ see https://www.gnu.org/licenses/.  */
       (PR) *= (P);						\
   } while (0)
 
-#define LOOP_ON_SIEVE_CONTINUE(prime,end,sieve)			\
+#define LOOP_ON_SIEVE_CONTINUE(prime,end)			\
     __max_i = (end);						\
 								\
     do {							\
       ++__i;							\
-      if (((sieve)[__index] & __mask) == 0)			\
+      if ((*__sieve & __mask) == 0)				\
 	{							\
 	  mp_limb_t prime;					\
 	  prime = id_to_n(__i)
 
 #define LOOP_ON_SIEVE_BEGIN(prime,start,end,off,sieve)		\
   do {								\
-    mp_limb_t __mask, __index, __max_i, __i;			\
+    mp_limb_t __mask, *__sieve, __max_i, __i;			\
 								\
     __i = (start)-(off);					\
-    __index = __i / GMP_LIMB_BITS;				\
+    __sieve = (sieve) + __i / GMP_LIMB_BITS;			\
     __mask = CNST_LIMB(1) << (__i % GMP_LIMB_BITS);		\
     __i += (off);						\
 								\
-    LOOP_ON_SIEVE_CONTINUE(prime,end,sieve)
+    LOOP_ON_SIEVE_CONTINUE(prime,end)
 
 #define LOOP_ON_SIEVE_STOP					\
 	}							\
       __mask = __mask << 1 | __mask >> (GMP_LIMB_BITS-1);	\
-      __index += __mask & 1;					\
+      __sieve += __mask & 1;					\
     }  while (__i <= __max_i)
 
 #define LOOP_ON_SIEVE_END					\
@@ -132,7 +132,7 @@ limb_apprsqrt (mp_limb_t x)
   ASSERT (x > 2);
   count_leading_zeros (s, x);
   s = (GMP_LIMB_BITS - s) >> 1;
-  return ((CNST_LIMB(1) << s) + (x >> s)) >> 1;
+  return ((CNST_LIMB(1) << (s - 1)) + (x >> 1 >> s));
 }
 
 #if 0
@@ -222,7 +222,7 @@ mpz_2multiswing_1 (mpz_ptr x, mp_limb_t n, mp_ptr sieve, mp_ptr factors)
 
     l_max_prod = max_prod * 3;
 
-    LOOP_ON_SIEVE_CONTINUE (prime, n_to_bit (n/3), sieve);
+    LOOP_ON_SIEVE_CONTINUE (prime, n_to_bit (n/3));
     SH_SWING_A_PRIME (prime, n, prod, l_max_prod, factors, j);
     LOOP_ON_SIEVE_END;
   }

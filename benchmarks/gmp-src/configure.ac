@@ -612,7 +612,7 @@ case $host in
     ;;
 
 
-  arm*-*-* | aarch64*-*-*)
+  arm*-*-* | aarch64*-*-* | [applem[1-9]-*-*])
     abilist="32"
     gcc_cflags="$gcc_cflags $fomit_frame_pointer"
     gcc_cflags_optlist="arch fpmode neon tune"
@@ -777,6 +777,14 @@ case $host in
 	gcc_cflags_arch="-march=armv8-a"
 	gcc_cflags_neon="-mfpu=neon"
 	gcc_cflags_tune=""
+	;;
+      [applem[1-9]*])
+	abilist="64"
+	path_64="arm64/applem1 arm64"
+	gcc_cflags_arch="-march=armv8-a"
+	gcc_cflags_neon="-mfpu=neon"
+	gcc_cflags_tune=""
+	CALLING_CONVENTIONS_OBJS=""
 	;;
       *)
 	path="arm"
@@ -1889,12 +1897,19 @@ case $host in
 	x86_have_mulx=yes
 	path_64="x86_64/zen x86_64"
 	;;
-      zen2 | zen2noavx | zen3 | zen3noavx)
+      zen2 | zen2noavx)
 	gcc_cflags_cpu="-mtune=znver2 -mtune=znver1 -mtune=amdfam10 -mtune=k8"
 	gcc_cflags_arch="-march=znver2 -march=znver1 -march=amdfam10 -march=k8"
 	path="x86/k7/mmx x86/k7 x86/mmx x86"
 	x86_have_mulx=yes
 	path_64="x86_64/zen2 x86_64/zen x86_64"
+	;;
+      zen3 | zen3noavx)
+	gcc_cflags_cpu="-mtune=znver3 -mtune=znver2 -mtune=znver1 -mtune=amdfam10 -mtune=k8"
+	gcc_cflags_arch="-march=znver3 -march=znver2 -march=znver1 -march=amdfam10 -march=k8"
+	path="x86/k7/mmx x86/k7 x86/mmx x86"
+	x86_have_mulx=yes
+	path_64="x86_64/zen3 x86_64/zen2 x86_64/zen x86_64"
 	;;
       core2)
 	gcc_cflags_cpu="-mtune=core2 -mtune=k8"
@@ -3696,7 +3711,7 @@ if test "$gmp_asm_syntax_testing" != no; then
   GMP_ASM_ALIGN_LOG
 
   case $host in
-    arm*-*-* | aarch64*-*-*)
+    arm*-*-* | aarch64*-*-* | [applem[1-9]-*-*])
       case $ABI in
         32)
 	  GMP_INCLUDE_MPN(arm/arm-defs.m4) ;;

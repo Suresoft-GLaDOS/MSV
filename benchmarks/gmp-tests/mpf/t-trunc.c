@@ -1,24 +1,25 @@
 /* Test mpf_trunc, mpf_ceil, mpf_floor.
 
-Copyright 2001, 2002, 2020 Free Software Foundation, Inc.
+Copyright 2001, 2002 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
 
@@ -78,7 +79,7 @@ check_one (mpf_srcptr src, mpf_srcptr trunc, mpf_srcptr ceil, mpf_srcptr floor)
 
   /* Can't do these unconditionally in case truncation by mpf_set strips
      some low non-zero limbs which would have rounded the result.  */
-  if (mpf_size (src) <= PREC(trunc)+1)
+  if (ABSIZ(src) <= PREC(trunc)+1)
     {
       CHECK_INPLACE ("mpf_ceil",  mpf_ceil,  ceil);
       CHECK_INPLACE ("mpf_floor", mpf_floor, floor);

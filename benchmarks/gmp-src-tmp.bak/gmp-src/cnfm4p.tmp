@@ -1,1 +1,0 @@
-define_not_for_expansion(`HAVE_HOST_CPU_skylake')

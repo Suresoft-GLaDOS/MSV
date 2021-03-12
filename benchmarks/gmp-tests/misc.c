@@ -1,21 +1,21 @@
 /* Miscellaneous test program support routines.
 
-Copyright 2000-2003, 2005, 2013, 2015, 2019 Free Software Foundation, Inc.
+Copyright 2000, 2001, 2002, 2003, 2005 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include "config.h"
 
@@ -40,6 +40,7 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 # endif
 #endif
 
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
 
@@ -48,27 +49,6 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 void
 tests_start (void)
 {
-  char version[10];
-#if __STDC_VERSION__ >= 199901L
-  snprintf (version, sizeof version, "%u.%u.%u",
-	    __GNU_MP_VERSION,
-	    __GNU_MP_VERSION_MINOR,
-	    __GNU_MP_VERSION_PATCHLEVEL);
-#else
-  sprintf (version, "%u.%u.%u",
-	    __GNU_MP_VERSION,
-	    __GNU_MP_VERSION_MINOR,
-	    __GNU_MP_VERSION_PATCHLEVEL);
-#endif
-
-  if (strcmp (gmp_version, version) != 0)
-    {
-      fprintf (stderr, "tests are not linked to the newly compiled library\n");
-      fprintf (stderr, "  local version is: %s\n", version);
-      fprintf (stderr, "  linked version is: %s\n", gmp_version);
-      abort ();
-    }
-
   /* don't buffer, so output is not lost if a test causes a segv etc */
   setbuf (stdout, NULL);
   setbuf (stderr, NULL);
@@ -83,42 +63,13 @@ tests_end (void)
   tests_memory_end ();
 }
 
-static void
-seed_from_tod (gmp_randstate_ptr  rands)
-{
-  unsigned long seed;
-#if HAVE_GETTIMEOFDAY
-  struct timeval  tv;
-  gettimeofday (&tv, NULL);
-  seed = tv.tv_sec ^ ((unsigned long) tv.tv_usec << 12);
-  seed &= 0xffffffff;
-#else
-  time_t  tv;
-  time (&tv);
-  seed = tv;
-#endif
-  gmp_randseed_ui (rands, seed);
-  printf ("Seed GMP_CHECK_RANDOMIZE=%lu (include this in bug reports)\n", seed);
-}
-
-static void
-seed_from_urandom (gmp_randstate_ptr rands, FILE *fs)
-{
-  mpz_t seed;
-  unsigned char buf[6];
-  fread (buf, 1, 6, fs);
-  mpz_init (seed);
-  mpz_import (seed, 6, 1, 1, 0, 0, buf);
-  gmp_randseed (rands, seed);
-  gmp_printf ("Seed GMP_CHECK_RANDOMIZE=%Zd (include this in bug reports)\n", seed);
-  mpz_clear (seed);
-}
 
 void
 tests_rand_start (void)
 {
   gmp_randstate_ptr  rands;
-  char           *seed_string;
+  char           *perform_seed;
+  unsigned long  seed;
 
   if (__gmp_rands_initialized)
     {
@@ -131,28 +82,35 @@ tests_rand_start (void)
   __gmp_rands_initialized = 1;
   rands = __gmp_rands;
 
-  seed_string = getenv ("GMP_CHECK_RANDOMIZE");
-  if (seed_string != NULL)
+  perform_seed = getenv ("GMP_CHECK_RANDOMIZE");
+  if (perform_seed != NULL)
     {
-      if (strcmp (seed_string, "0") != 0 &&
-	  strcmp (seed_string, "1") != 0)
+#ifdef HAVE_STRTOUL
+      seed = strtoul (perform_seed, 0, 0);
+#else
+      /* This will not work right for seeds >= 2^31 on 64-bit machines.
+	 Perhaps use atol unconditionally?  Is that ubiquitous?  */
+      seed = atoi (perform_seed);
+#endif
+      if (! (seed == 0 || seed == 1))
         {
-	  mpz_t seed;
-	  mpz_init_set_str (seed, seed_string, 0);
-          gmp_printf ("Re-seeding with GMP_CHECK_RANDOMIZE=%Zd\n", seed);
-          gmp_randseed (rands, seed);
-	  mpz_clear (seed);
+          printf ("Re-seeding with GMP_CHECK_RANDOMIZE=%lu\n", seed);
+          gmp_randseed_ui (rands, seed);
         }
       else
         {
-	  FILE *fs = fopen ("/dev/urandom", "r");
-	  if (fs != NULL)
-	    {
-	      seed_from_urandom (rands, fs);
-	      fclose (fs);
-	    }
-	  else
-	    seed_from_tod (rands);
+#if HAVE_GETTIMEOFDAY
+          struct timeval  tv;
+          gettimeofday (&tv, NULL);
+          seed = tv.tv_sec ^ (tv.tv_usec << 12);
+	  seed &= 0xffffffff;
+#else
+          time_t  tv;
+          time (&tv);
+          seed = tv;
+#endif
+          gmp_randseed_ui (rands, seed);
+          printf ("Seed GMP_CHECK_RANDOMIZE=%lu (include this in bug reports)\n", seed);
         }
       fflush (stdout);
     }
@@ -165,7 +123,7 @@ tests_rand_end (void)
 
 
 /* Only used if CPU calling conventions checking is available. */
-mp_limb_t (*calling_conventions_function) (ANYARGS);
+mp_limb_t (*calling_conventions_function) __GMP_PROTO ((ANYARGS));
 
 
 /* Return p advanced to the next multiple of "align" bytes.  "align" must be
@@ -216,7 +174,7 @@ strtoupper (char *s_orig)
 {
   char  *s;
   for (s = s_orig; *s != '\0'; s++)
-    if (islower (*s))
+    if (isascii (*s))
       *s = toupper (*s);
   return s_orig;
 }
@@ -290,7 +248,7 @@ byte_diff_lowest (const void *p1, const void *p2, mp_size_t size)
 }
 
 
-/* Find most significant byte position where p1,size and p2,size differ.  */
+/* Find most significant limb position where p1,size and p2,size differ.  */
 mp_size_t
 byte_diff_highest (const void *p1, const void *p2, mp_size_t size)
 {
@@ -407,14 +365,6 @@ mpz_negrandom (mpz_ptr rop, gmp_randstate_t rstate)
     mpz_neg (rop, rop);
 }
 
-void
-mpz_clobber(mpz_ptr rop)
-{
-  MPN_ZERO(PTR(rop), ALLOC(rop));
-  PTR(rop)[0] = 0xDEADBEEF;
-  SIZ(rop) = 0xDEFACE;
-}
-
 mp_limb_t
 urandom (void)
 {
@@ -432,7 +382,7 @@ urandom (void)
 
 /* Call (*func)() with various random number generators. */
 void
-call_rand_algs (void (*func) (const char *, gmp_randstate_ptr))
+call_rand_algs (void (*func) __GMP_PROTO ((const char *, gmp_randstate_ptr)))
 {
   gmp_randstate_t  rstate;
   mpz_t            a;
@@ -515,7 +465,7 @@ tests_isinf (double d)
 int
 tests_hardware_setround (int mode)
 {
-#if ! defined NO_ASM && HAVE_HOST_CPU_FAMILY_x86
+#if HAVE_HOST_CPU_FAMILY_x86
   int  rc;
   switch (mode) {
   case 0: rc = 0; break;  /* nearest */
@@ -536,7 +486,7 @@ tests_hardware_setround (int mode)
 int
 tests_hardware_getround (void)
 {
-#if ! defined NO_ASM && HAVE_HOST_CPU_FAMILY_x86
+#if HAVE_HOST_CPU_FAMILY_x86
   switch ((x86_fstcw () & ~0xC00) >> 10) {
   case 0: return 0; break;  /* nearest */
   case 1: return 3; break;  /* down    */

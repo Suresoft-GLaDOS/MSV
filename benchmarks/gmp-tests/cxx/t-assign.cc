@@ -1,33 +1,33 @@
 /* Test mp*_class assignment operators.
 
-Copyright 2001-2003 Free Software Foundation, Inc.
+Copyright 2001, 2002, 2003 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include "config.h"
 
 #include <iostream>
 #include <string>
 
+#include "gmp.h"
 #include "gmpxx.h"
 #include "gmp-impl.h"
 #include "tests.h"
 
-using std::string;
-using std::invalid_argument;
+using namespace std;
 
 
 void
@@ -171,7 +171,7 @@ check_mpz (void)
       mpz_class b;
       b = a;
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -182,37 +182,8 @@ check_mpz (void)
       mpz_class b;
       b = a;
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
-  }
-
-  // swap(mpz_class &)
-  {
-    mpz_class a(123);
-    mpz_class b(456);
-    a.swap(b);
-    a.swap(a);
-    ASSERT_ALWAYS(a == 456);
-    ASSERT_ALWAYS(b == 123);
-  }
-
-  // swap(mpz_class &, mpz_class &)
-  {
-    mpz_class a(123);
-    mpz_class b(456);
-    ::swap(a, b);
-    ::swap(a, a);
-    ASSERT_ALWAYS(a == 456);
-    ASSERT_ALWAYS(b == 123);
-  }
-  {
-    using std::swap;
-    mpz_class a(123);
-    mpz_class b(456);
-    swap(a, b);
-    swap(a, a);
-    ASSERT_ALWAYS(a == 456);
-    ASSERT_ALWAYS(b == 123);
   }
 }
 
@@ -357,7 +328,7 @@ check_mpq (void)
       mpq_class b;
       b = a;
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -368,37 +339,8 @@ check_mpq (void)
       mpq_class b;
       b = a;
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
-  }
-
-  // swap(mpq_class &)
-  {
-    mpq_class a(3, 2);
-    mpq_class b(-1, 4);
-    a.swap(b);
-    a.swap(a);
-    ASSERT_ALWAYS(a == -.25);
-    ASSERT_ALWAYS(b == 1.5);
-  }
-
-  // swap(mpq_class &, mpq_class &)
-  {
-    mpq_class a(3, 2);
-    mpq_class b(-1, 4);
-    ::swap(a, b);
-    ::swap(a, a);
-    ASSERT_ALWAYS(a == -.25);
-    ASSERT_ALWAYS(b == 1.5);
-  }
-  {
-    using std::swap;
-    mpq_class a(3, 2);
-    mpq_class b(-1, 4);
-    swap(a, b);
-    swap(a, a);
-    ASSERT_ALWAYS(a == -.25);
-    ASSERT_ALWAYS(b == 1.5);
   }
 }
 
@@ -543,7 +485,7 @@ check_mpf (void)
       mpf_class b;
       b = a;
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -554,37 +496,8 @@ check_mpf (void)
       mpf_class b;
       b = a;
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
-  }
-
-  // swap(mpf_class &)
-  {
-    mpf_class a(123);
-    mpf_class b(456);
-    a.swap(b);
-    a.swap(a);
-    ASSERT_ALWAYS(a == 456);
-    ASSERT_ALWAYS(b == 123);
-  }
-
-  // swap(mpf_class &, mpf_class &)
-  {
-    mpf_class a(123);
-    mpf_class b(456);
-    ::swap(a, b);
-    ::swap(a, a);
-    ASSERT_ALWAYS(a == 456);
-    ASSERT_ALWAYS(b == 123);
-  }
-  {
-    using std::swap;
-    mpf_class a(123);
-    mpf_class b(456);
-    swap(a, b);
-    swap(a, a);
-    ASSERT_ALWAYS(a == 456);
-    ASSERT_ALWAYS(b == 123);
   }
 }
 

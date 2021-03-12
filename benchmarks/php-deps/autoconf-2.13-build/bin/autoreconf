@@ -29,7 +29,7 @@ force=no
 automake_mode=--gnu
 automake_deps=
 
-test -z "$AC_MACRODIR" && AC_MACRODIR=/root/test/prophet/benchmarks/php-deps/autoconf-2.13-build/share/autoconf
+test -z "$AC_MACRODIR" && AC_MACRODIR=/root/project/prophet-gpl/benchmarks/php-deps/autoconf-2.13-build/share/autoconf
 
 while test $# -gt 0; do
   case "$1" in 

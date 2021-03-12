@@ -19,6 +19,11 @@
 /* Define as function used for conversion of strings to apr_off_t */
 #define APR_OFF_T_STRFN strtol
 
+/* Define to one of `_getb67', `GETB67', `getb67' for Cray-2 and Cray-YMP
+   systems. This function is required for `alloca.c' support on those systems.
+   */
+/* #undef CRAY_STACKSEG_END */
+
 /* Define to 1 if using `alloca.c'. */
 /* #undef C_ALLOCA */
 
@@ -59,7 +64,7 @@
 /* #undef GETHOSTBYNAME_IS_THREAD_SAFE */
 
 /* Define if gethostbyname_r has the glibc style */
-/* #undef GETHOSTBYNAME_R_GLIBC2 */
+#define GETHOSTBYNAME_R_GLIBC2 1
 
 /* Define if gethostbyname_r has the hostent_data for the third argument */
 /* #undef GETHOSTBYNAME_R_HOSTENT_DATA */
@@ -68,7 +73,7 @@
 /* #undef GETSERVBYNAME_IS_THREAD_SAFE */
 
 /* Define if getservbyname_r has the glibc style */
-/* #undef GETSERVBYNAME_R_GLIBC2 */
+#define GETSERVBYNAME_R_GLIBC2 1
 
 /* Define if getservbyname_r has the OSF/1 style */
 /* #undef GETSERVBYNAME_R_OSF1 */
@@ -85,7 +90,8 @@
 /* Define to 1 if you have `alloca', as a function or macro. */
 #define HAVE_ALLOCA 1
 
-/* Define to 1 if <alloca.h> works. */
+/* Define to 1 if you have <alloca.h> and it should be used (not on Ultrix).
+   */
 #define HAVE_ALLOCA_H 1
 
 /* Define to 1 if you have the <arpa/inet.h> header file. */
@@ -277,9 +283,6 @@
 
 /* Define to 1 if you have the <memory.h> header file. */
 #define HAVE_MEMORY_H 1
-
-/* Define to 1 if you have the <minix/config.h> header file. */
-/* #undef HAVE_MINIX_CONFIG_H */
 
 /* Define to 1 if you have the `mkstemp' function. */
 #define HAVE_MKSTEMP 1
@@ -687,13 +690,10 @@
 /* #undef HAVE_UUID_UUID_H */
 
 /* Define if C compiler supports VLA */
-/* #undef HAVE_VLA */
+#define HAVE_VLA 1
 
 /* Define to 1 if you have the `waitpid' function. */
 #define HAVE_WAITPID 1
-
-/* Define to 1 if you have the <wchar.h> header file. */
-#define HAVE_WCHAR_H 1
 
 /* Define to 1 if you have the <windows.h> header file. */
 /* #undef HAVE_WINDOWS_H */
@@ -746,7 +746,7 @@
 /* Define if readdir is thread safe */
 /* #undef READDIR_IS_THREAD_SAFE */
 
-/* Define to 1 if the `setpgrp' function requires zero arguments. */
+/* Define to 1 if the `setpgrp' function takes no argument. */
 #define SETPGRP_VOID 1
 
 /* */
@@ -796,9 +796,7 @@
 	STACK_DIRECTION = 0 => direction of growth unknown */
 /* #undef STACK_DIRECTION */
 
-/* Define to 1 if all of the C90 standard headers exist (not just the ones
-   required in a freestanding environment). This macro is provided for
-   backward compatibility; new code need not use it. */
+/* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
 
 /* Define if strerror returns int */
@@ -859,82 +857,21 @@
 #ifndef _ALL_SOURCE
 # define _ALL_SOURCE 1
 #endif
-/* Enable general extensions on macOS.  */
-#ifndef _DARWIN_C_SOURCE
-# define _DARWIN_C_SOURCE 1
-#endif
-/* Enable general extensions on Solaris.  */
-#ifndef __EXTENSIONS__
-# define __EXTENSIONS__ 1
-#endif
 /* Enable GNU extensions on systems that have them.  */
 #ifndef _GNU_SOURCE
 # define _GNU_SOURCE 1
 #endif
-/* Identify the host operating system as Minix.
-   This macro does not affect the system headers' behavior.
-   A future release of Autoconf may stop defining this macro.  */
-#ifndef _MINIX
-/* # undef _MINIX */
-#endif
-/* Enable general extensions on NetBSD.
-   Enable NetBSD compatibility extensions on Minix.  */
-#ifndef _NETBSD_SOURCE
-# define _NETBSD_SOURCE 1
-#endif
-/* Enable OpenBSD compatibility extensions on NetBSD.
-   Oddly enough, this does nothing on OpenBSD.  */
-#ifndef _OPENBSD_SOURCE
-# define _OPENBSD_SOURCE 1
-#endif
-/* Define to 1 if needed for POSIX-compatible behavior.  */
-#ifndef _POSIX_SOURCE
-/* # undef _POSIX_SOURCE */
-#endif
-/* Define to 2 if needed for POSIX-compatible behavior.  */
-#ifndef _POSIX_1_SOURCE
-/* # undef _POSIX_1_SOURCE */
-#endif
-/* Enable POSIX-compatible threading on Solaris.  */
+/* Enable threading extensions on Solaris.  */
 #ifndef _POSIX_PTHREAD_SEMANTICS
 # define _POSIX_PTHREAD_SEMANTICS 1
-#endif
-/* Enable extensions specified by ISO/IEC TS 18661-5:2014.  */
-#ifndef __STDC_WANT_IEC_60559_ATTRIBS_EXT__
-# define __STDC_WANT_IEC_60559_ATTRIBS_EXT__ 1
-#endif
-/* Enable extensions specified by ISO/IEC TS 18661-1:2014.  */
-#ifndef __STDC_WANT_IEC_60559_BFP_EXT__
-# define __STDC_WANT_IEC_60559_BFP_EXT__ 1
-#endif
-/* Enable extensions specified by ISO/IEC TS 18661-2:2015.  */
-#ifndef __STDC_WANT_IEC_60559_DFP_EXT__
-# define __STDC_WANT_IEC_60559_DFP_EXT__ 1
-#endif
-/* Enable extensions specified by ISO/IEC TS 18661-4:2015.  */
-#ifndef __STDC_WANT_IEC_60559_FUNCS_EXT__
-# define __STDC_WANT_IEC_60559_FUNCS_EXT__ 1
-#endif
-/* Enable extensions specified by ISO/IEC TS 18661-3:2015.  */
-#ifndef __STDC_WANT_IEC_60559_TYPES_EXT__
-# define __STDC_WANT_IEC_60559_TYPES_EXT__ 1
-#endif
-/* Enable extensions specified by ISO/IEC TR 24731-2:2010.  */
-#ifndef __STDC_WANT_LIB_EXT2__
-# define __STDC_WANT_LIB_EXT2__ 1
-#endif
-/* Enable extensions specified by ISO/IEC 24747:2009.  */
-#ifndef __STDC_WANT_MATH_SPEC_FUNCS__
-# define __STDC_WANT_MATH_SPEC_FUNCS__ 1
 #endif
 /* Enable extensions on HP NonStop.  */
 #ifndef _TANDEM_SOURCE
 # define _TANDEM_SOURCE 1
 #endif
-/* Enable X/Open extensions.  Define to 500 only if necessary
-   to make mbstate_t available.  */
-#ifndef _XOPEN_SOURCE
-/* # undef _XOPEN_SOURCE */
+/* Enable general extensions on Solaris.  */
+#ifndef __EXTENSIONS__
+# define __EXTENSIONS__ 1
 #endif
 
 
@@ -956,6 +893,16 @@
 # endif
 #endif
 
+/* Define to 1 if on MINIX. */
+/* #undef _MINIX */
+
+/* Define to 2 if the system does not provide POSIX.1 features except with
+   this defined. */
+/* #undef _POSIX_1_SOURCE */
+
+/* Define to 1 if you need to in order for `stat' and other things to work. */
+/* #undef _POSIX_SOURCE */
+
 /* Define to empty if `const' does not conform to ANSI C. */
 /* #undef const */
 
@@ -971,7 +918,7 @@
 /* Define to `long int' if <sys/types.h> does not define. */
 /* #undef off_t */
 
-/* Define as a signed integer type capable of holding a process identifier. */
+/* Define to `int' if <sys/types.h> does not define. */
 /* #undef pid_t */
 
 /* Define to `unsigned int' if <sys/types.h> does not define. */

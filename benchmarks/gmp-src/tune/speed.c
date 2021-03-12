@@ -36,7 +36,9 @@ see https://www.gnu.org/licenses/.  */
    speed_foo() wants an "r" parameter.
 
    The routines don't have help messages or descriptions, but most have
-   suggestive names.  See the source code for full details. */
+   suggestive names.  See the source code for full details.
+
+*/
 
 #include "config.h"
 
@@ -315,6 +317,9 @@ const struct routine_t {
 #endif
 
   { "mpz_nextprime",     speed_mpz_nextprime        },
+  { "mpz_nextprime_1",   speed_mpz_nextprime_1, FLAG_R_OPTIONAL },
+  { "mpz_prevprime",     speed_mpz_prevprime        },
+  { "mpz_prevprime_1",   speed_mpz_prevprime_1, FLAG_R_OPTIONAL },
 
   { "mpz_jacobi",        speed_mpz_jacobi           },
   { "mpn_jacobi_base",   speed_mpn_jacobi_base      },

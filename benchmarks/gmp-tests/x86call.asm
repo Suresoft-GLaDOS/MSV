@@ -1,22 +1,21 @@
 dnl  x86 calling conventions checking.
 
-dnl  Copyright 2000, 2003, 2010, 2013 Free Software Foundation, Inc.
-
-dnl  This file is part of the GNU MP Library test suite.
-
-dnl  The GNU MP Library test suite is free software; you can redistribute it
-dnl  and/or modify it under the terms of the GNU General Public License as
+dnl  Copyright 2000, 2003, 2010 Free Software Foundation, Inc.
+dnl
+dnl  This file is part of the GNU MP Library.
+dnl
+dnl  The GNU MP Library is free software; you can redistribute it and/or
+dnl  modify it under the terms of the GNU Lesser General Public License as
 dnl  published by the Free Software Foundation; either version 3 of the
 dnl  License, or (at your option) any later version.
-
-dnl  The GNU MP Library test suite is distributed in the hope that it will be
-dnl  useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-dnl  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-dnl  Public License for more details.
-
-dnl  You should have received a copy of the GNU General Public License along
-dnl  with the GNU MP Library test suite.  If not, see
-dnl  https://www.gnu.org/licenses/.
+dnl
+dnl  The GNU MP Library is distributed in the hope that it will be useful,
+dnl  but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+dnl  Lesser General Public License for more details.
+dnl
+dnl  You should have received a copy of the GNU Lesser General Public License
+dnl  along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.
 
 
 dnl  The current version of the code attempts to keep the call/return
@@ -40,10 +39,10 @@ C
 C Execute an fstcw, returning the current x87 control word.
 
 PROLOGUE(x86_fstcw)
-	xor	%eax, %eax
-	push	%eax
+	xorl	%eax, %eax
+	pushl	%eax
 	fstcw	(%esp)
-	pop	%eax
+	popl	%eax
 	ret
 EPILOGUE()
 
@@ -96,24 +95,24 @@ m4_assert_numargs(1)
 	ALIGN(8)
 PROLOGUE(calling_conventions)
 	LEA(	G(calling_conventions_values), %ecx)
-	pop	RETADDR(%ecx)
+	popl	RETADDR(%ecx)
 
-	mov	%ebx, SAVE_EBX(%ecx)
-	mov	%ebp, SAVE_EBP(%ecx)
-	mov	%esi, SAVE_ESI(%ecx)
-	mov	%edi, SAVE_EDI(%ecx)
+	movl	%ebx, SAVE_EBX(%ecx)
+	movl	%ebp, SAVE_EBP(%ecx)
+	movl	%esi, SAVE_ESI(%ecx)
+	movl	%edi, SAVE_EDI(%ecx)
 
 	C Values we expect to see unchanged, as per amd64check.c
-	mov	WANT_EBX(%ecx), %ebx
-	mov	WANT_EBP(%ecx), %ebp
-	mov	WANT_ESI(%ecx), %esi
-	mov	WANT_EDI(%ecx), %edi
+	movl	WANT_EBX(%ecx), %ebx
+	movl	WANT_EBP(%ecx), %ebp
+	movl	WANT_ESI(%ecx), %esi
+	movl	WANT_EDI(%ecx), %edi
 
 	C Try to provoke a problem by starting with junk in the caller-saves
 	C registers, especially in %eax and %edx which will be return values
-	mov	JUNK_EAX(%ecx), %eax
-	mov	JUNK_EDX(%ecx), %edx
-C	mov	JUNK_ECX(%ecx), %ecx
+	movl	JUNK_EAX(%ecx), %eax
+	movl	JUNK_EDX(%ecx), %edx
+C	movl	JUNK_ECX(%ecx), %ecx
 
 ifdef(`PIC',`
 	LEA(	G(calling_conventions_function), %ecx)
@@ -124,21 +123,21 @@ ifdef(`PIC',`
 
 	LEA(	G(calling_conventions_values), %ecx)
 
-	mov	%ebx, EBX(%ecx)
-	mov	%ebp, EBP(%ecx)
-	mov	%esi, ESI(%ecx)
-	mov	%edi, EDI(%ecx)
+	movl	%ebx, EBX(%ecx)
+	movl	%ebp, EBP(%ecx)
+	movl	%esi, ESI(%ecx)
+	movl	%edi, EDI(%ecx)
 
 	pushf
-	pop	%ebx
-	mov	%ebx, EFLAGS(%ecx)
+	popl	%ebx
+	movl	%ebx, EFLAGS(%ecx)
 
-	mov	SAVE_EBX(%ecx), %ebx
-	mov	SAVE_ESI(%ecx), %esi
-	mov	SAVE_EDI(%ecx), %edi
-	mov	SAVE_EBP(%ecx), %ebp
+	movl	SAVE_EBX(%ecx), %ebx
+	movl	SAVE_ESI(%ecx), %esi
+	movl	SAVE_EDI(%ecx), %edi
+	movl	SAVE_EBP(%ecx), %ebp
 
-	push	RETADDR(%ecx)
+	pushl	RETADDR(%ecx)
 
 ifdef(`PIC',`
 	LEA(	G(calling_conventions_fenv), %ecx)
@@ -151,4 +150,3 @@ ifdef(`PIC',`
 	ret
 
 EPILOGUE()
-ASM_END()

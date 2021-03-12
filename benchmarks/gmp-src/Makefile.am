@@ -104,11 +104,11 @@
 # libgmpxx.so.3.0.4) incrementing, to make it clear which GMP it's from.
 
 LIBGMP_LT_CURRENT    = 14
-LIBGMP_LT_REVISION   = 1
+LIBGMP_LT_REVISION   = 0
 LIBGMP_LT_AGE        = 4
 
 LIBGMPXX_LT_CURRENT  = 10
-LIBGMPXX_LT_REVISION = 1
+LIBGMPXX_LT_REVISION = 0
 LIBGMPXX_LT_AGE      = 6
 
 

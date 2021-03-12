@@ -1,26 +1,27 @@
 /* Test mpf_get_str and mpf_set_str.
 
-Copyright 1996, 2000, 2001, 2008, 2019, 2020 Free Software Foundation, Inc.
+Copyright 1996, 2000, 2001, 2008 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h> /* for strlen */
 
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
 
@@ -71,29 +72,8 @@ main (int argc, char **argv)
 
   /* First test some specific values.  */
 
-  mpf_set_str (y, "1.23456", 0);
-  mpf_set_str (x, "1.23456", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "00000000000000000000000000000000000000001.23456", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "0.000000000000000000000000000000000000000123456e40", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, ".000000000000000000000000000000000000000123456e40", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "00000000000000000000.00000000000000000000123456e21", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-
   mpf_set_str (y, "1.23456e1000", 0);
+
   mpf_set_str (x, "1.23456e1000", 10);
   if (mpf_cmp (x, y) != 0)
     abort ();
@@ -101,103 +81,6 @@ main (int argc, char **argv)
   if (mpf_cmp (x, y) != 0)
     abort ();
   mpf_set_str (x, "1.23456e+1000", 10);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "00000000000000000000000000000000000000001.23456e+1000", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "0.000000000000000000000000000000000000000123456e+1040", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, ".000000000000000000000000000000000000000123456e+1040", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "00000000000000000000.00000000000000000000123456e+1021", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-
-  mpf_set_str (y, "1.23456", 16);
-  mpf_set_str (x, "00000000000000000000000000000000000000001.23456", 16);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "0.000000000000000000000000000000000000000123456@28", 16);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, ".000000000000000000000000000000000000000123456@28", 16);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "00000000000000000000.00000000000000000000123456@15", 16);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-
-  mpf_set_str (y, "   0", 10);
-  mpf_set_str (x, "00000000000000000000000000000000000000000000000000000", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "0000000000000000000000000000000000000000000000000000.", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "000000000000000000000000000000000000000000000000000.0", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, ".0000000000000000000000000000000000000000000000000000", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "0.000000000000000000000000000000000000000000000000000", 10);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-
-  mpf_set_str (x, "00000000000000000000000000000000000000000000000000000", 16);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "0000000000000000000000000000000000000000000000000000.", 16);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "000000000000000000000000000000000000000000000000000.0", 16);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, ".0000000000000000000000000000000000000000000000000000", 16);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "0.000000000000000000000000000000000000000000000000000", 16);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "+00000000000000000000000000000000000000000000000000000e-345", 9);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "-0000000000000000000000000000000000000000000000000000.@AB", 26);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "000000000000000000000000000000000000000000000000000.0@78", 19);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "+.0000000000000000000000000000000000000000000000000000e555", 6);
-  MPF_CHECK_FORMAT (x);
-  if (mpf_cmp (x, y) != 0)
-    abort ();
-  mpf_set_str (x, "-0.000000000000000000000000000000000000000000000000000@-AAAAAAAAAAAAAAAAAAAAAAAA", 17);
-  MPF_CHECK_FORMAT (x);
   if (mpf_cmp (x, y) != 0)
     abort ();
 
@@ -209,15 +92,14 @@ main (int argc, char **argv)
         {
           /* exercise the special case in get_str for for x==0 */
           mpf_set_ui (x, 0L);
-          base = 0;
+          base = 10;
         }
       else
         {
           size = urandom () % (2 * SIZE) - SIZE;
           exp = urandom () % EXPO;
           mpf_random2 (x, size, exp);
-          base = urandom () % 62;
-          base += base > 0;
+          base = urandom () % 61 + 2;
         }
 
       str = mpf_get_str (0, &bexp, base, 0, x);

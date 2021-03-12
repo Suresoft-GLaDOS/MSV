@@ -1,22 +1,21 @@
 dnl  AMD64 calling conventions checking.
 
 dnl  Copyright 2000, 2003, 2004, 2006, 2007, 2010 Free Software Foundation, Inc.
-
-dnl  This file is part of the GNU MP Library test suite.
-
-dnl  The GNU MP Library test suite is free software; you can redistribute it
-dnl  and/or modify it under the terms of the GNU General Public License as
+dnl
+dnl  This file is part of the GNU MP Library.
+dnl
+dnl  The GNU MP Library is free software; you can redistribute it and/or
+dnl  modify it under the terms of the GNU Lesser General Public License as
 dnl  published by the Free Software Foundation; either version 3 of the
 dnl  License, or (at your option) any later version.
-
-dnl  The GNU MP Library test suite is distributed in the hope that it will be
-dnl  useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-dnl  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-dnl  Public License for more details.
-
-dnl  You should have received a copy of the GNU General Public License along
-dnl  with the GNU MP Library test suite.  If not, see
-dnl  https://www.gnu.org/licenses/.
+dnl
+dnl  The GNU MP Library is distributed in the hope that it will be useful,
+dnl  but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+dnl  Lesser General Public License for more details.
+dnl
+dnl  You should have received a copy of the GNU Lesser General Public License
+dnl  along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.
 
 
 dnl  The current version of the code attempts to keep the call/return
@@ -30,7 +29,7 @@ C
 C Execute an fldcw, setting the x87 control word to cw.
 
 PROLOGUE(x86_fldcw)
-	mov	%rdi, -8(%rsp)
+	movq	%rdi, -8(%rsp)
 	fldcw	-8(%rsp)
 	ret
 EPILOGUE()
@@ -43,7 +42,7 @@ C Execute an fstcw, returning the current x87 control word.
 PROLOGUE(x86_fstcw)
 	movq	$0, -8(%rsp)
 	fstcw	-8(%rsp)
-	mov	-8(%rsp), %rax
+	movq	-8(%rsp), %rax
 	ret
 EPILOGUE()
 
@@ -101,52 +100,52 @@ m4_assert_numargs(1)
 	TEXT
 	ALIGN(32)
 PROLOGUE(calling_conventions)
-	mov	G(calling_conventions_values)@GOTPCREL(%rip), %rax
-	pop	RETADDR(%rax)
+	movq	G(calling_conventions_values)@GOTPCREL(%rip), %rax
+	popq	RETADDR(%rax)
 
-	mov	%rbx, SAVE_RBX(%rax)
-	mov	%rbp, SAVE_RBP(%rax)
-	mov	%r12, SAVE_R12(%rax)
-	mov	%r13, SAVE_R13(%rax)
-	mov	%r14, SAVE_R14(%rax)
-	mov	%r15, SAVE_R15(%rax)
+	movq	%rbx, SAVE_RBX(%rax)
+	movq	%rbp, SAVE_RBP(%rax)
+	movq	%r12, SAVE_R12(%rax)
+	movq	%r13, SAVE_R13(%rax)
+	movq	%r14, SAVE_R14(%rax)
+	movq	%r15, SAVE_R15(%rax)
 
 	C Values we expect to see unchanged, as per amd64check.c
-	mov	WANT_RBX(%rax), %rbx
-	mov	WANT_RBP(%rax), %rbp
-	mov	WANT_R12(%rax), %r12
-	mov	WANT_R13(%rax), %r13
-	mov	WANT_R14(%rax), %r14
-	mov	WANT_R15(%rax), %r15
+	movq	WANT_RBX(%rax), %rbx
+	movq	WANT_RBP(%rax), %rbp
+	movq	WANT_R12(%rax), %r12
+	movq	WANT_R13(%rax), %r13
+	movq	WANT_R14(%rax), %r14
+	movq	WANT_R15(%rax), %r15
 
 	C Try to provoke a problem by starting with junk in the caller-saves
 	C registers, especially %rax which will be the return value.
-C	mov	JUNK_RAX(%rax), %rax		C overwritten below anyway
-	mov	JUNK_R10(%rax), %r10
-	mov	JUNK_R11(%rax), %r11
+C	movq	JUNK_RAX(%rax), %rax		C overwritten below anyway
+	movq	JUNK_R10(%rax), %r10
+	movq	JUNK_R11(%rax), %r11
 
-	mov	G(calling_conventions_function)@GOTPCREL(%rip), %rax
+	movq	G(calling_conventions_function)@GOTPCREL(%rip), %rax
 	call	*(%rax)
 
-	mov	G(calling_conventions_values)@GOTPCREL(%rip), %rcx
+	movq	G(calling_conventions_values)@GOTPCREL(%rip), %rcx
 
-	mov	%rbx, RBX(%rcx)
-	mov	%rbp, RBP(%rcx)
-	mov	%r12, R12(%rcx)
-	mov	%r13, R13(%rcx)
-	mov	%r14, R14(%rcx)
-	mov	%r15, R15(%rcx)
+	movq	%rbx, RBX(%rcx)
+	movq	%rbp, RBP(%rcx)
+	movq	%r12, R12(%rcx)
+	movq	%r13, R13(%rcx)
+	movq	%r14, R14(%rcx)
+	movq	%r15, R15(%rcx)
 
-	pushf
-	pop	%rbx
-	mov	%rbx, RFLAGS(%rcx)
+	pushfq
+	popq	%rbx
+	movq	%rbx, RFLAGS(%rcx)
 
-	mov	SAVE_RBX(%rcx), %rbx
-	mov	SAVE_RBP(%rcx), %rbp
-	mov	SAVE_R12(%rcx), %r12
-	mov	SAVE_R13(%rcx), %r13
-	mov	SAVE_R14(%rcx), %r14
-	mov	SAVE_R15(%rcx), %r15
+	movq	SAVE_RBX(%rcx), %rbx
+	movq	SAVE_RBP(%rcx), %rbp
+	movq	SAVE_R12(%rcx), %r12
+	movq	SAVE_R13(%rcx), %r13
+	movq	SAVE_R14(%rcx), %r14
+	movq	SAVE_R15(%rcx), %r15
 
 	C Overwrite parameter registers
 C	mov	JUNK_R9(%rcx), %r9
@@ -156,9 +155,9 @@ C	mov	JUNK_RDX(%rcx), %rdx
 C	mov	JUNK_RSI(%rcx), %rsi
 C	mov	JUNK_RDI(%rcx), %rdi
 
-	push	RETADDR(%rcx)
+	pushq	RETADDR(%rcx)
 
-	mov	G(calling_conventions_fenv)@GOTPCREL(%rip), %rcx
+	movq	G(calling_conventions_fenv)@GOTPCREL(%rip), %rcx
 	fstenv	(%rcx)
 	finit
 

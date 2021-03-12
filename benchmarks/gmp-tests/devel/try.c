@@ -3,22 +3,23 @@
    THIS IS A TEST PROGRAM USED ONLY FOR DEVELOPMENT.  IT'S ALMOST CERTAIN TO
    BE SUBJECT TO INCOMPATIBLE CHANGES IN FUTURE VERSIONS OF GMP.
 
-Copyright 2000-2006, 2008, 2009, 2011, 2012 Free Software Foundation, Inc.
+Copyright 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2008, 2009, 2011
+Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 
 /* Usage: try [options] <function>...
@@ -125,6 +126,7 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 #include <sys/mman.h>
 #endif
 
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "longlong.h"
 #include "tests.h"
@@ -209,11 +211,11 @@ int  option_data = DATA_TRAND;
 
 
 mp_size_t  pagesize;
-#define PAGESIZE_LIMBS  (pagesize / GMP_LIMB_BYTES)
+#define PAGESIZE_LIMBS  (pagesize / BYTES_PER_MP_LIMB)
 
 /* must be a multiple of the page size */
 #define REDZONE_BYTES   (pagesize * 16)
-#define REDZONE_LIMBS   (REDZONE_BYTES / GMP_LIMB_BYTES)
+#define REDZONE_LIMBS   (REDZONE_BYTES / BYTES_PER_MP_LIMB)
 
 
 #define MAX3(x,y,z)   (MAX (x, MAX (y, z)))
@@ -238,7 +240,7 @@ struct region_t {
 int trap_location = TRAP_NOWHERE;
 
 
-#define NUM_SOURCES  5
+#define NUM_SOURCES  2
 #define NUM_DESTS    2
 
 struct source_t {
@@ -287,7 +289,7 @@ struct each_t  fun = { "Fun" };
 
 #define SRC_SIZE(n)  ((n) == 1 && tr->size2 ? size2 : size)
 
-void validate_fail (void);
+void validate_fail __GMP_PROTO ((void));
 
 
 #if HAVE_TRY_NEW_C
@@ -295,41 +297,37 @@ void validate_fail (void);
 #endif
 
 
-typedef mp_limb_t (*tryfun_t) (ANYARGS);
+typedef mp_limb_t (*tryfun_t) __GMP_PROTO ((ANYARGS));
 
 struct try_t {
   char  retval;
 
-  char  src[NUM_SOURCES];
-  char  dst[NUM_DESTS];
+  char  src[2];
+  char  dst[2];
 
 #define SIZE_YES          1
 #define SIZE_ALLOW_ZERO   2
 #define SIZE_1            3  /* 1 limb  */
 #define SIZE_2            4  /* 2 limbs */
 #define SIZE_3            5  /* 3 limbs */
-#define SIZE_4            6  /* 4 limbs */
-#define SIZE_6            7  /* 6 limbs */
-#define SIZE_FRACTION     8  /* size2 is fraction for divrem etc */
-#define SIZE_SIZE2        9
-#define SIZE_PLUS_1      10
-#define SIZE_SUM         11
-#define SIZE_DIFF        12
-#define SIZE_DIFF_PLUS_1 13
-#define SIZE_DIFF_PLUS_3 14
-#define SIZE_RETVAL      15
-#define SIZE_CEIL_HALF   16
-#define SIZE_GET_STR     17
-#define SIZE_PLUS_MSIZE_SUB_1 18  /* size+msize-1 */
-#define SIZE_ODD         19
+#define SIZE_FRACTION     6  /* size2 is fraction for divrem etc */
+#define SIZE_SIZE2        7
+#define SIZE_PLUS_1       8
+#define SIZE_SUM          9
+#define SIZE_DIFF        10
+#define SIZE_DIFF_PLUS_1 11
+#define SIZE_RETVAL      12
+#define SIZE_CEIL_HALF   13
+#define SIZE_GET_STR     14
+#define SIZE_PLUS_MSIZE_SUB_1 15  /* size+msize-1 */
   char  size;
   char  size2;
-  char  dst_size[NUM_DESTS];
+  char  dst_size[2];
 
   /* multiplier_N size in limbs */
   mp_size_t  msize;
 
-  char  dst_bytes[NUM_DESTS];
+  char  dst_bytes[2];
 
   char  dst0_from_src1;
 
@@ -360,7 +358,6 @@ struct try_t {
 #define DATA_SRC1_HIGHBIT     7
 #define DATA_MULTIPLE_DIVISOR 8
 #define DATA_UDIV_QRNND       9
-#define DATA_DIV_QR_1        10
   char  data;
 
 /* Default is allow full overlap. */
@@ -369,13 +366,12 @@ struct try_t {
 #define OVERLAP_HIGH_TO_LOW  3
 #define OVERLAP_NOT_SRCS     4
 #define OVERLAP_NOT_SRC2     8
-#define OVERLAP_NOT_DST2     16
   char  overlap;
 
   tryfun_t    reference;
   const char  *reference_name;
 
-  void        (*validate) (void);
+  void        (*validate) __GMP_PROTO ((void));
   const char  *validate_name;
 };
 
@@ -458,7 +454,7 @@ validate_bdiv_q_1
 
     refmpn_mul_1 (tp, dst, size, divisor);
     /* Set ignored low bits */
-    tp[0] |= (src[0] & LOW_ZEROS_MASK (divisor));
+    tp[0] |= (src[0] & LOW_ZEROS_MASK (divisor)); 
     if (! refmpn_equal_anynail (tp, src, size))
       {
 	printf ("Bdiv wrong: res * divisor != src (mod B^size)\n");
@@ -539,40 +535,6 @@ validate_modexact_1_odd (void)
   validate_modexact_1c_odd ();
 }
 
-void
-validate_div_qr_1_pi1 (void)
-{
-  mp_srcptr up = ref.s[0].p;
-  mp_size_t un = size;
-  mp_size_t uh = ref.s[1].p[0];
-  mp_srcptr qp = fun.d[0].p;
-  mp_limb_t r = fun.retval;
-  mp_limb_t cy;
-  int cmp;
-  mp_ptr tp;
-  if (r >= divisor)
-    {
-      gmp_printf ("Bad remainder %Md, d = %Md\n", r, divisor);
-      validate_fail ();
-    }
-  tp = refmpn_malloc_limbs (un);
-  cy = refmpn_mul_1 (tp, qp, un, divisor);
-  cy += refmpn_add_1 (tp, tp, un, r);
-  if (cy != uh || refmpn_cmp (tp, up, un) != 0)
-    {
-      gmp_printf ("Incorrect result, size %ld.\n"
-		  "d = %Mx, u = %Mx, %Nx\n"
-		  "got: r = %Mx, q = %Nx\n"
-		  "q d + r = %Mx, %Nx",
-		  (long) un,
-		  divisor, uh, up, un,
-		  r, qp, un,
-		  cy, tp, un);
-      validate_fail ();
-    }
-  free (tp);
-}
-
 
 void
 validate_sqrtrem (void)
@@ -617,45 +579,6 @@ validate_sqrtrem (void)
     validate_fail ();
 }
 
-void
-validate_sqrt (void)
-{
-  mp_srcptr  orig_ptr = s[0].p;
-  mp_size_t  orig_size = size;
-  mp_size_t  root_size = (size+1)/2;
-  mp_srcptr  root_ptr = fun.d[0].p;
-  int        perf_pow = (fun.retval == 0);
-  mp_size_t  prod_size = 2*root_size;
-  mp_ptr     p;
-  int  error = 0;
-
-  p = refmpn_malloc_limbs (prod_size);
-
-  refmpn_sqr (p, root_ptr, root_size);
-  MPN_NORMALIZE (p, prod_size);
-  if (refmpn_cmp_twosizes (p,prod_size, orig_ptr,orig_size) != - !perf_pow)
-    {
-      printf ("root^2 bigger than original, or wrong return value.\n");
-      mpn_trace ("prod...", p, prod_size);
-      error = 1;
-    }
-
-  refmpn_sub (p, orig_ptr,orig_size, p,prod_size);
-  MPN_NORMALIZE (p, prod_size);
-  if (prod_size >= root_size &&
-      refmpn_sub (p, p,prod_size, root_ptr, root_size) == 0 &&
-      refmpn_cmp_twosizes (p, prod_size, root_ptr, root_size) > 0)
-    {
-      printf ("(root+1)^2 smaller than original.\n");
-      mpn_trace ("prod", p, prod_size);
-      error = 1;
-    }
-  free (p);
-
-  if (error)
-    validate_fail ();
-}
-
 
 /* These types are indexes into the param[] array and are arbitrary so long
    as they're all distinct and within the size of param[].  Renumber
@@ -663,9 +586,6 @@ validate_sqrt (void)
 
 enum {
   TYPE_ADD = 1, TYPE_ADD_N, TYPE_ADD_NC, TYPE_SUB, TYPE_SUB_N, TYPE_SUB_NC,
-
-  TYPE_ADD_ERR1_N, TYPE_ADD_ERR2_N, TYPE_ADD_ERR3_N,
-  TYPE_SUB_ERR1_N, TYPE_SUB_ERR2_N, TYPE_SUB_ERR3_N,
 
   TYPE_MUL_1, TYPE_MUL_1C,
 
@@ -694,11 +614,8 @@ enum {
   TYPE_SUBLSH1_NC, TYPE_SUBLSH2_NC, TYPE_SUBLSH_NC,
   TYPE_RSBLSH1_NC, TYPE_RSBLSH2_NC, TYPE_RSBLSH_NC,
 
-  TYPE_ADDCND_N, TYPE_SUBCND_N,
-
   TYPE_MOD_1, TYPE_MOD_1C, TYPE_DIVMOD_1, TYPE_DIVMOD_1C, TYPE_DIVREM_1,
   TYPE_DIVREM_1C, TYPE_PREINV_DIVREM_1, TYPE_DIVREM_2, TYPE_PREINV_MOD_1,
-  TYPE_DIV_QR_1N_PI1,
   TYPE_MOD_34LSUB1, TYPE_UDIV_QRNND, TYPE_UDIV_QRNND_R,
 
   TYPE_DIVEXACT_1, TYPE_BDIV_Q_1, TYPE_DIVEXACT_BY3, TYPE_DIVEXACT_BY3C,
@@ -714,11 +631,11 @@ enum {
   TYPE_XOR_N, TYPE_XNOR_N,
 
   TYPE_MUL_MN, TYPE_MUL_N, TYPE_SQR, TYPE_UMUL_PPMM, TYPE_UMUL_PPMM_R,
-  TYPE_MULLO_N, TYPE_SQRLO, TYPE_MULMID_MN, TYPE_MULMID_N,
+  TYPE_MULLO_N,
 
   TYPE_SBPI1_DIV_QR, TYPE_TDIV_QR,
 
-  TYPE_SQRTREM, TYPE_SQRT, TYPE_ZERO, TYPE_GET_STR, TYPE_POPCOUNT, TYPE_HAMDIST,
+  TYPE_SQRTREM, TYPE_ZERO, TYPE_GET_STR, TYPE_POPCOUNT, TYPE_HAMDIST,
 
   TYPE_EXTRA
 };
@@ -733,12 +650,21 @@ param_init (void)
 
 #define COPY(index)  memcpy (p, &param[index], sizeof (*p))
 
+#if HAVE_STRINGIZE
 #define REFERENCE(fun)                  \
   p->reference = (tryfun_t) fun;        \
   p->reference_name = #fun
 #define VALIDATE(fun)           \
   p->validate = fun;            \
   p->validate_name = #fun
+#else
+#define REFERENCE(fun)                  \
+  p->reference = (tryfun_t) fun;        \
+  p->reference_name = "fun"
+#define VALIDATE(fun)           \
+  p->validate = fun;            \
+  p->validate_name = "fun"
+#endif
 
 
   p = &param[TYPE_ADD_N];
@@ -770,53 +696,6 @@ param_init (void)
   p = &param[TYPE_SUB];
   COPY (TYPE_ADD);
   REFERENCE (refmpn_sub);
-
-
-  p = &param[TYPE_ADD_ERR1_N];
-  p->retval = 1;
-  p->dst[0] = 1;
-  p->dst[1] = 1;
-  p->src[0] = 1;
-  p->src[1] = 1;
-  p->src[2] = 1;
-  p->dst_size[1] = SIZE_2;
-  p->carry = CARRY_BIT;
-  p->overlap = OVERLAP_NOT_DST2;
-  REFERENCE (refmpn_add_err1_n);
-
-  p = &param[TYPE_SUB_ERR1_N];
-  COPY (TYPE_ADD_ERR1_N);
-  REFERENCE (refmpn_sub_err1_n);
-
-  p = &param[TYPE_ADD_ERR2_N];
-  COPY (TYPE_ADD_ERR1_N);
-  p->src[3] = 1;
-  p->dst_size[1] = SIZE_4;
-  REFERENCE (refmpn_add_err2_n);
-
-  p = &param[TYPE_SUB_ERR2_N];
-  COPY (TYPE_ADD_ERR2_N);
-  REFERENCE (refmpn_sub_err2_n);
-
-  p = &param[TYPE_ADD_ERR3_N];
-  COPY (TYPE_ADD_ERR2_N);
-  p->src[4] = 1;
-  p->dst_size[1] = SIZE_6;
-  REFERENCE (refmpn_add_err3_n);
-
-  p = &param[TYPE_SUB_ERR3_N];
-  COPY (TYPE_ADD_ERR3_N);
-  REFERENCE (refmpn_sub_err3_n);
-
-  p = &param[TYPE_ADDCND_N];
-  COPY (TYPE_ADD_N);
-  p->carry = CARRY_BIT;
-  REFERENCE (refmpn_cnd_add_n);
-
-  p = &param[TYPE_SUBCND_N];
-  COPY (TYPE_ADD_N);
-  p->carry = CARRY_BIT;
-  REFERENCE (refmpn_cnd_sub_n);
 
 
   p = &param[TYPE_MUL_1];
@@ -894,7 +773,7 @@ param_init (void)
   p->src[1] = 1;
   p->msize = 2;
   p->dst0_from_src1 = 1;
-  p->overlap = OVERLAP_NONE;
+  p->overlap = OVERLAP_NOT_SRC2;
   REFERENCE (refmpn_addmul_2);
 
   p = &param[TYPE_ADDMUL_3];
@@ -1171,17 +1050,6 @@ param_init (void)
   p->size = SIZE_YES; /* ie. no size==0 */
   REFERENCE (refmpn_preinv_divrem_1);
 
-  p = &param[TYPE_DIV_QR_1N_PI1];
-  p->retval = 1;
-  p->src[0] = 1;
-  p->src[1] = 1;
-  /* SIZE_1 not supported. Always uses low limb only. */
-  p->size2 = 1;
-  p->dst[0] = 1;
-  p->divisor = DIVISOR_NORM;
-  p->data = DATA_DIV_QR_1;
-  VALIDATE (validate_div_qr_1_pi1);
-
   p = &param[TYPE_PREINV_MOD_1];
   p->retval = 1;
   p->src[0] = 1;
@@ -1337,27 +1205,10 @@ param_init (void)
   p->dst_size[0] = 0;
   REFERENCE (refmpn_mullo_n);
 
-  p = &param[TYPE_SQRLO];
-  COPY (TYPE_SQR);
-  p->dst_size[0] = 0;
-  REFERENCE (refmpn_sqrlo);
-
   p = &param[TYPE_MUL_MN];
   COPY (TYPE_MUL_N);
   p->size2 = 1;
   REFERENCE (refmpn_mul_basecase);
-
-  p = &param[TYPE_MULMID_MN];
-  COPY (TYPE_MUL_MN);
-  p->dst_size[0] = SIZE_DIFF_PLUS_3;
-  REFERENCE (refmpn_mulmid_basecase);
-
-  p = &param[TYPE_MULMID_N];
-  COPY (TYPE_MUL_N);
-  p->size = SIZE_ODD;
-  p->size2 = SIZE_CEIL_HALF;
-  p->dst_size[0] = SIZE_DIFF_PLUS_3;
-  REFERENCE (refmpn_mulmid_n);
 
   p = &param[TYPE_UMUL_PPMM];
   p->retval = 1;
@@ -1435,15 +1286,6 @@ param_init (void)
   p->overlap = OVERLAP_NONE;
   VALIDATE (validate_sqrtrem);
   REFERENCE (refmpn_sqrtrem);
-
-  p = &param[TYPE_SQRT];
-  p->retval = 1;
-  p->dst[0] = 1;
-  p->dst[1] = 0;
-  p->src[0] = 1;
-  p->dst_size[0] = SIZE_CEIL_HALF;
-  p->overlap = OVERLAP_NONE;
-  VALIDATE (validate_sqrt);
 
   p = &param[TYPE_ZERO];
   p->dst[0] = 1;
@@ -1687,19 +1529,6 @@ mpn_toom4_sqr_fun (mp_ptr dst, mp_srcptr src, mp_size_t size)
   TMP_FREE;
 }
 
-void
-mpn_toom42_mulmid_fun (mp_ptr dst, mp_srcptr src1, mp_srcptr src2,
-		       mp_size_t size)
-{
-  mp_ptr  tspace;
-  mp_size_t n;
-  TMP_DECL;
-  TMP_MARK;
-  tspace = TMP_ALLOC_LIMBS (mpn_toom42_mulmid_itch (size));
-  mpn_toom42_mulmid (dst, src1, src2, size, tspace);
-  TMP_FREE;
-}
-
 mp_limb_t
 umul_ppmm_fun (mp_limb_t *lowptr, mp_limb_t m1, mp_limb_t m2)
 {
@@ -1712,9 +1541,6 @@ void
 MPN_ZERO_fun (mp_ptr ptr, mp_size_t size)
 { MPN_ZERO (ptr, size); }
 
-mp_size_t
-mpn_sqrt_fun (mp_ptr dst, mp_srcptr src, mp_size_t size)
-{ return mpn_sqrtrem (dst, NULL, src, size); }
 
 struct choice_t {
   const char  *name;
@@ -1723,8 +1549,13 @@ struct choice_t {
   mp_size_t   minsize;
 };
 
+#if HAVE_STRINGIZE
 #define TRY(fun)        #fun, (tryfun_t) fun
 #define TRY_FUNFUN(fun) #fun, (tryfun_t) fun##_fun
+#else
+#define TRY(fun)        "fun", (tryfun_t) fun
+#define TRY_FUNFUN(fun) "fun", (tryfun_t) fun/**/_fun
+#endif
 
 const struct choice_t choice_array[] = {
   { TRY(mpn_add),       TYPE_ADD    },
@@ -1746,13 +1577,6 @@ const struct choice_t choice_array[] = {
 #if HAVE_NATIVE_mpn_add_n_sub_nc
   { TRY(mpn_add_n_sub_nc), TYPE_ADDSUB_NC },
 #endif
-
-  { TRY(mpn_add_err1_n),  TYPE_ADD_ERR1_N  },
-  { TRY(mpn_sub_err1_n),  TYPE_SUB_ERR1_N  },
-  { TRY(mpn_add_err2_n),  TYPE_ADD_ERR2_N  },
-  { TRY(mpn_sub_err2_n),  TYPE_SUB_ERR2_N  },
-  { TRY(mpn_add_err3_n),  TYPE_ADD_ERR3_N  },
-  { TRY(mpn_sub_err3_n),  TYPE_SUB_ERR3_N  },
 
   { TRY(mpn_addmul_1),  TYPE_ADDMUL_1  },
   { TRY(mpn_submul_1),  TYPE_SUBMUL_1  },
@@ -1803,12 +1627,10 @@ const struct choice_t choice_array[] = {
   { TRY(mpn_copyd), TYPE_COPYD },
 #endif
 
-  { TRY(mpn_cnd_add_n), TYPE_ADDCND_N },
-  { TRY(mpn_cnd_sub_n), TYPE_SUBCND_N },
-#if HAVE_NATIVE_mpn_addlsh1_n == 1
+#if HAVE_NATIVE_mpn_addlsh1_n
   { TRY(mpn_addlsh1_n), TYPE_ADDLSH1_N },
 #endif
-#if HAVE_NATIVE_mpn_addlsh2_n == 1
+#if HAVE_NATIVE_mpn_addlsh2_n
   { TRY(mpn_addlsh2_n), TYPE_ADDLSH2_N },
 #endif
 #if HAVE_NATIVE_mpn_addlsh_n
@@ -1832,10 +1654,10 @@ const struct choice_t choice_array[] = {
 #if HAVE_NATIVE_mpn_addlsh_n_ip2
   { TRY_FUNFUN(mpn_addlsh_n_ip2), TYPE_ADDLSH_N_IP2 },
 #endif
-#if HAVE_NATIVE_mpn_sublsh1_n == 1
+#if HAVE_NATIVE_mpn_sublsh1_n
   { TRY(mpn_sublsh1_n), TYPE_SUBLSH1_N },
 #endif
-#if HAVE_NATIVE_mpn_sublsh2_n == 1
+#if HAVE_NATIVE_mpn_sublsh2_n
   { TRY(mpn_sublsh2_n), TYPE_SUBLSH2_N },
 #endif
 #if HAVE_NATIVE_mpn_sublsh_n
@@ -1850,10 +1672,10 @@ const struct choice_t choice_array[] = {
 #if HAVE_NATIVE_mpn_sublsh_n_ip1
   { TRY_FUNFUN(mpn_sublsh_n_ip1), TYPE_SUBLSH_N_IP1 },
 #endif
-#if HAVE_NATIVE_mpn_rsblsh1_n == 1
+#if HAVE_NATIVE_mpn_rsblsh1_n
   { TRY(mpn_rsblsh1_n), TYPE_RSBLSH1_N },
 #endif
-#if HAVE_NATIVE_mpn_rsblsh2_n == 1
+#if HAVE_NATIVE_mpn_rsblsh2_n
   { TRY(mpn_rsblsh2_n), TYPE_RSBLSH2_N },
 #endif
 #if HAVE_NATIVE_mpn_rsblsh_n
@@ -1866,19 +1688,19 @@ const struct choice_t choice_array[] = {
   { TRY(mpn_rsh1sub_n), TYPE_RSH1SUB_N },
 #endif
 
-#if HAVE_NATIVE_mpn_addlsh1_nc == 1
+#if HAVE_NATIVE_mpn_addlsh1_nc
   { TRY(mpn_addlsh1_nc), TYPE_ADDLSH1_NC },
 #endif
-#if HAVE_NATIVE_mpn_addlsh2_nc == 1
+#if HAVE_NATIVE_mpn_addlsh2_nc
   { TRY(mpn_addlsh2_nc), TYPE_ADDLSH2_NC },
 #endif
 #if HAVE_NATIVE_mpn_addlsh_nc
   { TRY(mpn_addlsh_nc), TYPE_ADDLSH_NC },
 #endif
-#if HAVE_NATIVE_mpn_sublsh1_nc == 1
+#if HAVE_NATIVE_mpn_sublsh1_nc
   { TRY(mpn_sublsh1_nc), TYPE_SUBLSH1_NC },
 #endif
-#if HAVE_NATIVE_mpn_sublsh2_nc == 1
+#if HAVE_NATIVE_mpn_sublsh2_nc
   { TRY(mpn_sublsh2_nc), TYPE_SUBLSH2_NC },
 #endif
 #if HAVE_NATIVE_mpn_sublsh_nc
@@ -1917,7 +1739,6 @@ const struct choice_t choice_array[] = {
 #if HAVE_NATIVE_mpn_mod_1c
   { TRY(mpn_mod_1c),       TYPE_MOD_1C },
 #endif
-  { TRY(mpn_div_qr_1n_pi1), TYPE_DIV_QR_1N_PI1 },
 #if GMP_NUMB_BITS % 4 == 0
   { TRY(mpn_mod_34lsub1),  TYPE_MOD_34LSUB1 },
 #endif
@@ -1968,10 +1789,7 @@ const struct choice_t choice_array[] = {
 
 
   { TRY(mpn_mul_basecase), TYPE_MUL_MN },
-  { TRY(mpn_mulmid_basecase), TYPE_MULMID_MN },
   { TRY(mpn_mullo_basecase), TYPE_MULLO_N },
-  { TRY(mpn_sqrlo_basecase), TYPE_SQRLO },
-  { TRY(mpn_sqrlo), TYPE_SQRLO },
 #if SQR_TOOM2_THRESHOLD > 0
   { TRY(mpn_sqr_basecase), TYPE_SQR },
 #endif
@@ -1995,11 +1813,6 @@ const struct choice_t choice_array[] = {
   { TRY_FUNFUN(mpn_toom44_mul),  TYPE_MUL_N,  MPN_TOOM44_MUL_MINSIZE },
   { TRY_FUNFUN(mpn_toom4_sqr),   TYPE_SQR,    MPN_TOOM4_SQR_MINSIZE },
 
-  { TRY(mpn_mulmid_n),  TYPE_MULMID_N, 1 },
-  { TRY(mpn_mulmid),  TYPE_MULMID_MN, 1 },
-  { TRY_FUNFUN(mpn_toom42_mulmid),  TYPE_MULMID_N,
-    (2 * MPN_TOOM42_MULMID_MINSIZE - 1) },
-
   { TRY(mpn_gcd_1),        TYPE_GCD_1            },
   { TRY(mpn_gcd),          TYPE_GCD              },
   { TRY(mpz_legendre),     TYPE_MPZ_LEGENDRE     },
@@ -2013,8 +1826,7 @@ const struct choice_t choice_array[] = {
   { TRY(mpn_popcount),   TYPE_POPCOUNT },
   { TRY(mpn_hamdist),    TYPE_HAMDIST },
 
-  { TRY(mpn_sqrtrem),     TYPE_SQRTREM },
-  { TRY_FUNFUN(mpn_sqrt), TYPE_SQRT },
+  { TRY(mpn_sqrtrem),    TYPE_SQRTREM },
 
   { TRY_FUNFUN(MPN_ZERO), TYPE_ZERO },
 
@@ -2084,12 +1896,12 @@ malloc_region (struct region_t *r, mp_size_t n)
   mp_ptr  p;
   size_t  nbytes;
 
-  ASSERT ((pagesize % GMP_LIMB_BYTES) == 0);
+  ASSERT ((pagesize % BYTES_PER_MP_LIMB) == 0);
 
   n = round_up_multiple (n, PAGESIZE_LIMBS);
   r->size = n;
 
-  nbytes = n*GMP_LIMB_BYTES + 2*REDZONE_BYTES + pagesize;
+  nbytes = n*BYTES_PER_MP_LIMB + 2*REDZONE_BYTES + pagesize;
 
 #if defined (MAP_ANONYMOUS) && ! defined (MAP_ANON)
 #define MAP_ANON  MAP_ANONYMOUS
@@ -2220,15 +2032,15 @@ int        divisor_index;
 struct overlap_t {
   int  s[NUM_SOURCES];
 } overlap_array[] = {
-  { { -1, -1, -1, -1, -1 } },
-  { {  0, -1, -1, -1, -1 } },
-  { { -1,  0, -1, -1, -1 } },
-  { {  0,  0, -1, -1, -1 } },
-  { {  1, -1, -1, -1, -1 } },
-  { { -1,  1, -1, -1, -1 } },
-  { {  1,  1, -1, -1, -1 } },
-  { {  0,  1, -1, -1, -1 } },
-  { {  1,  0, -1, -1, -1 } },
+  { { -1, -1 } },
+  { {  0, -1 } },
+  { { -1,  0 } },
+  { {  0,  0 } },
+  { {  1, -1 } },
+  { { -1,  1 } },
+  { {  1,  1 } },
+  { {  0,  1 } },
+  { {  1,  0 } },
 };
 
 struct overlap_t  *overlap, *overlap_limit;
@@ -2237,7 +2049,6 @@ struct overlap_t  *overlap, *overlap_limit;
   (tr->overlap & OVERLAP_NONE       ? 1 \
    : tr->overlap & OVERLAP_NOT_SRCS ? 3 \
    : tr->overlap & OVERLAP_NOT_SRC2 ? 2 \
-   : tr->overlap & OVERLAP_NOT_DST2 ? 4	\
    : tr->dst[1]                     ? 9 \
    : tr->src[1]                     ? 4 \
    : tr->dst[0]                     ? 2 \
@@ -2503,26 +2314,6 @@ call (struct each_t *e, tryfun_t function)
     e->retval = CALLING_CONVENTIONS (function)
       (e->d[0].p, e->s[0].p, e->s[1].p, size, carry);
     break;
-  case TYPE_ADDCND_N:
-  case TYPE_SUBCND_N:
-    e->retval = CALLING_CONVENTIONS (function)
-      (carry, e->d[0].p, e->s[0].p, e->s[1].p, size);
-    break;
-  case TYPE_ADD_ERR1_N:
-  case TYPE_SUB_ERR1_N:
-    e->retval = CALLING_CONVENTIONS (function)
-      (e->d[0].p, e->s[0].p, e->s[1].p, e->d[1].p, e->s[2].p, size, carry);
-    break;
-  case TYPE_ADD_ERR2_N:
-  case TYPE_SUB_ERR2_N:
-    e->retval = CALLING_CONVENTIONS (function)
-      (e->d[0].p, e->s[0].p, e->s[1].p, e->d[1].p, e->s[2].p, e->s[3].p, size, carry);
-    break;
-  case TYPE_ADD_ERR3_N:
-  case TYPE_SUB_ERR3_N:
-    e->retval = CALLING_CONVENTIONS (function)
-      (e->d[0].p, e->s[0].p, e->s[1].p, e->d[1].p, e->s[2].p, e->s[3].p, e->s[4].p, size, carry);
-    break;
 
   case TYPE_MUL_1:
   case TYPE_ADDMUL_1:
@@ -2645,14 +2436,6 @@ call (struct each_t *e, tryfun_t function)
     e->retval = CALLING_CONVENTIONS (function)
       (e->s[0].p, size, divisor, refmpn_invert_limb (divisor));
     break;
-  case TYPE_DIV_QR_1N_PI1:
-    {
-      mp_limb_t dinv = refmpn_invert_limb (divisor);
-      e->retval = CALLING_CONVENTIONS (function)
-	(e->d[0].p, e->s[0].p, size, e->s[1].p[0], divisor, dinv);
-      break;
-    }
-
   case TYPE_MOD_34LSUB1:
     e->retval = CALLING_CONVENTIONS (function) (e->s[0].p, size);
     break;
@@ -2773,7 +2556,6 @@ call (struct each_t *e, tryfun_t function)
     break;
 
   case TYPE_MUL_MN:
-  case TYPE_MULMID_MN:
     CALLING_CONVENTIONS (function)
       (e->d[0].p, e->s[0].p, size, e->s[1].p, size2);
     break;
@@ -2781,12 +2563,7 @@ call (struct each_t *e, tryfun_t function)
   case TYPE_MULLO_N:
     CALLING_CONVENTIONS (function) (e->d[0].p, e->s[0].p, e->s[1].p, size);
     break;
-  case TYPE_MULMID_N:
-    CALLING_CONVENTIONS (function) (e->d[0].p, e->s[0].p, e->s[1].p,
-				    (size + 1) / 2);
-    break;
   case TYPE_SQR:
-  case TYPE_SQRLO:
     CALLING_CONVENTIONS (function) (e->d[0].p, e->s[0].p, size);
     break;
 
@@ -2821,11 +2598,6 @@ call (struct each_t *e, tryfun_t function)
   case TYPE_SQRTREM:
     e->retval = (* (long (*)(ANYARGS)) CALLING_CONVENTIONS (function))
       (e->d[0].p, e->d[1].p, e->s[0].p, size);
-    break;
-
-  case TYPE_SQRT:
-    e->retval = (* (long (*)(ANYARGS)) CALLING_CONVENTIONS (function))
-      (e->d[0].p, e->s[0].p, size);
     break;
 
   case TYPE_ZERO:
@@ -2919,12 +2691,6 @@ pointer_setup (struct each_t *e)
       case SIZE_3:
 	d[i].size = 3;
 	break;
-      case SIZE_4:
-	d[i].size = 4;
-	break;
-      case SIZE_6:
-	d[i].size = 6;
-	break;
 
       case SIZE_PLUS_1:
 	d[i].size = size+1;
@@ -2950,10 +2716,6 @@ pointer_setup (struct each_t *e)
 
       case SIZE_DIFF_PLUS_1:
 	d[i].size = size - size2 + 1;
-	break;
-
-      case SIZE_DIFF_PLUS_3:
-	d[i].size = size - size2 + 3;
 	break;
 
       case SIZE_CEIL_HALF:
@@ -3183,10 +2945,6 @@ try_one (void)
       case DATA_UDIV_QRNND:
 	s[i].p[1] %= divisor;
 	break;
-      case DATA_DIV_QR_1:
-	if (i == 1)
-	  s[i].p[0] %= divisor;
-	break;
       }
 
       mprotect_region (&s[i].region, PROT_READ);
@@ -3269,15 +3027,13 @@ try_one (void)
 #define SIZE_ITERATION                                          \
   for (size = MAX3 (option_firstsize,                           \
 		    choice->minsize,                            \
-		    (tr->size == SIZE_ALLOW_ZERO) ? 0 : 1),	\
-	 size += (tr->size == SIZE_ODD) && !(size & 1);		\
+		    (tr->size == SIZE_ALLOW_ZERO) ? 0 : 1);     \
        size <= option_lastsize;                                 \
-       size += (tr->size == SIZE_ODD) ? 2 : 1)
+       size++)
 
 #define SIZE2_FIRST                                     \
   (tr->size2 == SIZE_2 ? 2                              \
    : tr->size2 == SIZE_FRACTION ? option_firstsize2     \
-   : tr->size2 == SIZE_CEIL_HALF ? ((size + 1) / 2)	\
    : tr->size2 ?                                        \
    MAX (choice->minsize, (option_firstsize2 != 0        \
 			  ? option_firstsize2 : 1))     \
@@ -3286,7 +3042,6 @@ try_one (void)
 #define SIZE2_LAST                                      \
   (tr->size2 == SIZE_2 ? 2                              \
    : tr->size2 == SIZE_FRACTION ? FRACTION_COUNT-1      \
-   : tr->size2 == SIZE_CEIL_HALF ? ((size + 1) / 2)	\
    : tr->size2 ? size                                   \
    : 0)
 
@@ -3448,7 +3203,7 @@ Error, error, cannot get page size
 	printf ("s[%d] %p to %p (0x%lX bytes)\n",
 		i, (void *) (s[i].region.ptr),
 		(void *) (s[i].region.ptr + s[i].region.size),
-		(long) s[i].region.size * GMP_LIMB_BYTES);
+		(long) s[i].region.size * BYTES_PER_MP_LIMB);
       }
 
 #define INIT_EACH(e,es)                                                 \
@@ -3458,7 +3213,7 @@ Error, error, cannot get page size
 	printf ("%s d[%d] %p to %p (0x%lX bytes)\n",                    \
 		es, i, (void *) (e.d[i].region.ptr),			\
 		(void *)  (e.d[i].region.ptr + e.d[i].region.size),	\
-		(long) e.d[i].region.size * GMP_LIMB_BYTES);         \
+		(long) e.d[i].region.size * BYTES_PER_MP_LIMB);         \
       }
 
     INIT_EACH(ref, "ref");

@@ -1,27 +1,28 @@
 /* Test mp*_class constructors.
 
-Copyright 2001-2003 Free Software Foundation, Inc.
+Copyright 2001, 2002, 2003 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include "config.h"
 
 #include <iostream>
 #include <string>
 
+#include "gmp.h"
 #include "gmpxx.h"
 #include "gmp-impl.h"
 #include "tests.h"
@@ -154,7 +155,7 @@ check_mpz (void)
       const char *a = "ABC";
       mpz_class b(a);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -165,7 +166,7 @@ check_mpz (void)
       int base = 16;
       mpz_class b(a, base);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -175,7 +176,7 @@ check_mpz (void)
       string a("abc");
       mpz_class b(a);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -186,7 +187,7 @@ check_mpz (void)
       int base = 8;
       mpz_class b(a, base);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -319,7 +320,6 @@ check_mpq (void)
     const char *a = "FFFF";
     int base = 16;
     mpq_class b(a, base); ASSERT_ALWAYS(b == 65535u);
-    mpq_class c(0, 1); ASSERT_ALWAYS(c == 0);
   }
 
   // mpq_class(const std::string &)
@@ -341,7 +341,7 @@ check_mpq (void)
       const char *a = "abc";
       mpq_class b(a);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -352,7 +352,7 @@ check_mpq (void)
       int base = 16;
       mpq_class b (a, base);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -362,7 +362,7 @@ check_mpq (void)
       string a("abc");
       mpq_class b(a);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -373,7 +373,7 @@ check_mpq (void)
       int base = 8;
       mpq_class b (a, base);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -635,7 +635,7 @@ check_mpf (void)
       const char *a = "abc";
       mpf_class b(a);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -646,7 +646,7 @@ check_mpf (void)
       int prec = 256;
       mpf_class b(a, prec); ASSERT_ALWAYS(b == 1234567890L);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
   {
@@ -655,7 +655,7 @@ check_mpf (void)
       int prec = 64, base = 8;
       mpf_class b(a, prec, base); ASSERT_ALWAYS(b == 262143L);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -665,7 +665,7 @@ check_mpf (void)
       string a("abc");
       mpf_class b(a); ASSERT_ALWAYS(b == 1234567890L);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 
@@ -676,7 +676,7 @@ check_mpf (void)
       int prec = 128;
       mpf_class b(a, prec); ASSERT_ALWAYS(b == 1234567890L);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
   {
@@ -685,7 +685,7 @@ check_mpf (void)
       int prec = 256, base = 16;
       mpf_class b(a, prec, base); ASSERT_ALWAYS(b == 65535u);
       ASSERT_ALWAYS (0);  /* should not be reached */
-    } catch (invalid_argument&) {
+    } catch (invalid_argument) {
     }
   }
 

@@ -1,31 +1,32 @@
 /* Test mpz_remove.
 
-Copyright 1991, 1993, 1994, 1996, 1997, 2000, 2001, 2009, 2012, 2013 Free
-Software Foundation, Inc.
+Copyright 1991, 1993, 1994, 1996, 1997, 2000, 2001, 2009 Free Software
+Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
 
-void debug_mp (mpz_t);
-unsigned long int mpz_refremove (mpz_t, const mpz_t, const mpz_t);
+void debug_mp __GMP_PROTO ((mpz_t));
+unsigned long int mpz_refremove __GMP_PROTO ((mpz_t, const mpz_t, const mpz_t));
 
 int
 main (int argc, char **argv)
@@ -34,7 +35,7 @@ main (int argc, char **argv)
   mpz_t t, dest, refdest, dividend, divisor;
   mp_size_t dividend_size, divisor_size;
   int i;
-  int reps = 1000;
+  int reps = 100;
   unsigned long int pwr, refpwr;
   gmp_randstate_ptr rands;
   mpz_t bs;
@@ -46,12 +47,17 @@ main (int argc, char **argv)
   if (argc == 2)
     reps = atoi (argv[1]);
 
-  mpz_inits (bs, t, dest, refdest, dividend, divisor, NULL);
+  mpz_init (bs);
+  mpz_init (t);
+  mpz_init (dest);
+  mpz_init (refdest);
+  mpz_init (dividend);
+  mpz_init (divisor);
 
   for (i = 0; i < reps; i++)
     {
       mpz_urandomb (bs, rands, 32);
-      size_range = mpz_get_ui (bs) % 18 + 1; /* 1..524288 bit operands */
+      size_range = mpz_get_ui (bs) % 18 + 2; /* 0..524288 bit operands */
 
       do
 	{
@@ -59,7 +65,7 @@ main (int argc, char **argv)
 	  divisor_size = mpz_get_ui (bs);
 	  mpz_rrandomb (divisor, rands, divisor_size);
 	}
-      while (mpz_sgn (divisor) == 0);
+      while (mpz_cmp_ui (divisor, 1) <= 0);
 
       mpz_urandomb (bs, rands, size_range);
       dividend_size = mpz_get_ui (bs) + divisor_size;
@@ -67,8 +73,6 @@ main (int argc, char **argv)
 
       mpz_urandomb (bs, rands, 32);
       exp = mpz_get_ui (bs) % (5 + 10000 / mpz_sizeinbase (divisor, 2));
-      if (mpz_get_ui (bs) & 2)
-	mpz_neg (divisor, divisor);
       mpz_pow_ui (t, divisor, exp);
       mpz_mul (dividend, dividend, t);
 
@@ -88,8 +92,6 @@ main (int argc, char **argv)
 	}
     }
 
-  mpz_clears (bs, t, dest, refdest, dividend, divisor, NULL);
-
   tests_end ();
   exit (0);
 }
@@ -98,29 +100,22 @@ unsigned long int
 mpz_refremove (mpz_t dest, const mpz_t src, const mpz_t f)
 {
   unsigned long int pwr;
+  mpz_t rem, x;
 
-  pwr = 0;
+  mpz_init (rem);
+  mpz_init (x);
 
   mpz_set (dest, src);
-  if (mpz_cmpabs_ui (f, 1) > 0)
+  for (pwr = 0;; pwr++)
     {
-      mpz_t rem, x;
-
-      mpz_init (x);
-      mpz_init (rem);
-
-      for (;; pwr++)
-	{
-	  mpz_tdiv_qr (x, rem, dest, f);
-	  if (mpz_cmp_ui (rem, 0) != 0)
-	    break;
-	  mpz_swap (dest, x);
-	}
-
-      mpz_clear (x);
-      mpz_clear (rem);
+      mpz_tdiv_qr (x, rem, dest, f);
+      if (mpz_cmp_ui (rem, 0) != 0)
+	break;
+      mpz_set (dest, x);
     }
 
+  mpz_clear (x);
+  mpz_clear (rem);
   return pwr;
 }
 

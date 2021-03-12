@@ -2,23 +2,24 @@
 
 Copyright 2002, 2003 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "longlong.h"
 #include "tests.h"
@@ -49,8 +50,8 @@ struct {
 int  ncall;
 
 
-void __cyg_profile_func_enter (void *, void *)
-  __attribute__ ((no_instrument_function));
+void __cyg_profile_func_enter __GMP_PROTO ((void *this_fn, void *call_site))
+     __attribute__ ((no_instrument_function));
 
 void
 __cyg_profile_func_enter (void *this_fn, void *call_site)
@@ -73,8 +74,8 @@ __cyg_profile_func_enter (void *this_fn, void *call_site)
   ncall++;
 }
 
-void __cyg_profile_func_exit (void *, void *)
-  __attribute__ ((no_instrument_function));
+void __cyg_profile_func_exit __GMP_PROTO ((void *this_fn, void *call_site))
+     __attribute__ ((no_instrument_function));
 
 void
 __cyg_profile_func_exit  (void *this_fn, void *call_site)

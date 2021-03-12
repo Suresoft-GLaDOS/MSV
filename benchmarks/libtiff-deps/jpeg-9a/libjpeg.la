@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/root/test/prophet/benchmarks/libtiff-deps/jpeg-9a-build/lib'
+libdir='/root/project/prophet-gpl/benchmarks/libtiff-deps/jpeg-9a-build/lib'

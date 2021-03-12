@@ -4,25 +4,26 @@
 
 Copyright 2009 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
 
@@ -80,7 +81,16 @@ main (int argc, char **argv)
   TMP_DECL;
   TMP_MARK;
 
-  TESTS_REPS (count, argv, argc);
+  if (argc > 1)
+    {
+      char *end;
+      count = strtol (argv[1], &end, 0);
+      if (*end || count <= 0)
+	{
+	  fprintf (stderr, "Invalid test count: %s.\n", argv[1]);
+	  return 1;
+	}
+    }
 
   tests_start ();
   rands = RANDS;

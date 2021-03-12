@@ -1,33 +1,34 @@
 /* Test mpz_cmp, mpz_mul.
 
-Copyright 1991, 1993, 1994, 1996, 1997, 2000-2004 Free Software Foundation,
-Inc.
+Copyright 1991, 1993, 1994, 1996, 1997, 2000, 2001, 2002, 2003, 2004 Free
+Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "longlong.h"
 #include "tests.h"
 
-void debug_mp (mpz_t);
-static void refmpz_mul (mpz_t, const mpz_t, const mpz_t);
-void dump_abort (int, const char *, mpz_t, mpz_t, mpz_t, mpz_t);
+void debug_mp __GMP_PROTO ((mpz_t));
+static void refmpz_mul __GMP_PROTO ((mpz_t, const mpz_t, const mpz_t));
+void dump_abort __GMP_PROTO ((int, const char *, mpz_t, mpz_t, mpz_t, mpz_t));
 
 #define FFT_MIN_BITSIZE 100000
 
@@ -77,10 +78,7 @@ main (int argc, char **argv)
   extra_fft = getenv ("GMP_CHECK_FFT");
   fft_max_2exp = 0;
   if (extra_fft != NULL)
-    {
-      fft_max_2exp = atoi (extra_fft);
-      printf ("GMP_CHECK_FFT=%d (include this in bug reports)\n", fft_max_2exp);
-    }
+    fft_max_2exp = atoi (extra_fft);
 
   if (fft_max_2exp <= 1)	/* compat with old use of GMP_CHECK_FFT */
     fft_max_2exp = 22;		/* default limit, good for any machine */

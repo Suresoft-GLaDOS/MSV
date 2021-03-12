@@ -23,7 +23,7 @@ srcdir = .
 
 M4 = /usr/bin/m4
 
-prefix = /root/test/prophet/benchmarks/php-deps/autoconf-2.13-build
+prefix = /root/project/prophet-gpl/benchmarks/php-deps/autoconf-2.13-build
 exec_prefix = ${prefix}
 
 AUTOCONF = ../autoconf

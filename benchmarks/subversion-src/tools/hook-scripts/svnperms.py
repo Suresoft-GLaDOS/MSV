@@ -22,9 +22,9 @@
 #
 
 # $HeadURL: http://svn.apache.org/repos/asf/subversion/trunk/tools/hook-scripts/svnperms.py $
-# $LastChangedDate: 2021-02-09 20:59:13 +0900 (Tue, 09 Feb 2021) $
-# $LastChangedBy: stsp $
-# $LastChangedRevision: 1886358 $
+# $LastChangedDate: 2016-04-30 17:16:53 +0900 (Sat, 30 Apr 2016) $
+# $LastChangedBy: stefan2 $
+# $LastChangedRevision: 1741723 $
 
 import sys, os
 import getopt
@@ -137,8 +137,7 @@ class Permission:
                     try:
                         groupusers.extend(self._group[token[1:]])
                     except KeyError:
-                        raise Error("group '%s' not found" % \
-                                     token[1:])
+                        raise Error, "group '%s' not found" % token[1:]
                 else:
                     groupusers.append(token)
             self._group[option] = groupusers

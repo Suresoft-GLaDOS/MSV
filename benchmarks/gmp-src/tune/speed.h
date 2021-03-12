@@ -65,7 +65,6 @@ see https://www.gnu.org/licenses/.  */
 	 64   itanium-2 L1
 	128   itanium-2 L2
 */
-#undef CACHE_LINE_SIZE
 #define CACHE_LINE_SIZE   64 /* bytes */
 
 #define SPEED_TMP_ALLOC_ADJUST_MASK  (CACHE_LINE_SIZE/GMP_LIMB_BYTES - 1)
@@ -409,6 +408,9 @@ double speed_mpz_fib2_ui (struct speed_params *);
 double speed_mpz_init_clear (struct speed_params *);
 double speed_mpz_init_realloc_clear (struct speed_params *);
 double speed_mpz_nextprime (struct speed_params *);
+double speed_mpz_nextprime_1 (struct speed_params *);
+double speed_mpz_prevprime (struct speed_params *);
+double speed_mpz_prevprime_1 (struct speed_params *);
 double speed_mpz_jacobi (struct speed_params *);
 double speed_mpz_lucnum_ui (struct speed_params *);
 double speed_mpz_lucnum2_ui (struct speed_params *);
@@ -2576,6 +2578,52 @@ int speed_routine_count_zeros_setup (struct speed_params *, mp_ptr, int, int);
 #define SPEED_ROUTINE_MPZ_LUCNUM_UI(function) SPEED_ROUTINE_MPZ_UI(function)
 
 
+#define SPEED_ROUTINE_MPZ_UNARY_1(function)				\
+  {									\
+    mpz_t     z, a;							\
+    unsigned  i;							\
+    mp_limb_t ls;							\
+    double    t;							\
+									\
+    SPEED_RESTRICT_COND (s->size >= 0);					\
+									\
+    mpz_init (z);							\
+    ls = s->size;							\
+    mpz_roinit_n (a, &ls, s->size != 0);				\
+									\
+    if (s->r < 2)							\
+      {									\
+	speed_starttime ();						\
+	i = s->reps;							\
+	do								\
+	  function (z, a);						\
+	while (--i != 0);						\
+	t = speed_endtime ();						\
+      }									\
+    else								\
+      {									\
+	speed_starttime ();						\
+	i = s->reps;							\
+	do								\
+	  {								\
+	    int j = s->r;						\
+	    mpz_set (z, a);						\
+	    do								\
+	      {								\
+		function (z, z);					\
+	      }								\
+	    while (--j != 0);						\
+	  }								\
+	while (--i != 0);						\
+	t = speed_endtime ();						\
+	s->time_divisor = s->r;						\
+      }									\
+									\
+    mpz_clear (z);							\
+    return t;								\
+  }
+
+
 #define SPEED_ROUTINE_MPZ_2_UI(function)				\
   {									\
     mpz_t     z, z2;							\
@@ -2840,7 +2888,7 @@ int speed_routine_count_zeros_setup (struct speed_params *, mp_ptr, int, int);
   }
 
 #define SPEED_ROUTINE_MPN_GCD_1(function)				\
-  SPEED_ROUTINE_MPN_GCD_1_CALL(do{}while(0) , function (&px[j-1], 1, py[j-1]))
+  SPEED_ROUTINE_MPN_GCD_1_CALL( , function (&px[j-1], 1, py[j-1]))
 
 #define SPEED_ROUTINE_MPN_GCD_11(function)				\
   SPEED_ROUTINE_MPN_GCD_1_CALL((px[i] |= 1, py[i] |= 1),		\
@@ -2868,7 +2916,6 @@ int speed_routine_count_zeros_setup (struct speed_params *, mp_ptr, int, int);
     unsigned   i, j;							\
     struct hgcd_matrix1 m = {{{0,0},{0,0}}};				\
     double     t;							\
-    mp_limb_t chain;							\
 									\
     speed_operand_src (s, s->xp_block, SPEED_BLOCK_SIZE);		\
     speed_operand_src (s, s->yp_block, SPEED_BLOCK_SIZE);		\
@@ -2876,7 +2923,7 @@ int speed_routine_count_zeros_setup (struct speed_params *, mp_ptr, int, int);
 									\
     speed_starttime ();							\
     i = s->reps;							\
-    chain = 0;								\
+    mp_limb_t chain = 0;						\
     do									\
       {									\
 	for (j = 0; j < SPEED_BLOCK_SIZE; j+= 2)			\

@@ -1,24 +1,25 @@
 /* Test mpz_get_d.
 
-Copyright 2002, 2012, 2020 Free Software Foundation, Inc.
+Copyright 2002 Free Software Foundation, Inc.
 
-This file is part of the GNU MP Library test suite.
+This file is part of the GNU MP Library.
 
-The GNU MP Library test suite is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
+The GNU MP Library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
-The GNU MP Library test suite is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+The GNU MP Library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
+You should have received a copy of the GNU Lesser General Public License
+along with the GNU MP Library.  If not, see http://www.gnu.org/licenses/.  */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "gmp.h"
 #include "gmp-impl.h"
 #include "tests.h"
 
@@ -30,20 +31,13 @@ check_onebit (void)
   mpz_t   z;
   double  got, want;
   /* FIXME: It'd be better to base this on the float format. */
-#if defined (__vax) || defined (__vax__)
-  int     limit = 127 - 1;  /* vax fp numbers have limited range */
+#ifdef __vax
+  int     limit = 127;  /* vax fp numbers have limited range */
 #else
   int     limit = 512;
 #endif
 
   mpz_init (z);
-
-  got = mpz_get_d (z);
-  if (got != 0)
-    {
-      printf    ("mpz_get_d wrong on zero\n");
-      abort();
-    }
 
   mpz_set_ui (z, 1L);
   want = 1.0;
