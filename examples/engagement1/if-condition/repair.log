@@ -7,20 +7,20 @@ Processing test.c
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total 104 different partial repair candidate templates!!
-BasicTester pointer: 0x55c7ef6fd080
-StringConstTester pointer: 0x55c7ef66caf0
-CondTester pointer: 0x55c7ef6fb270
+BasicTester pointer: 0x55a4a0546080
+StringConstTester pointer: 0x55a4a04b5af0
+CondTester pointer: 0x55a4a0544270
 Generating Candidates...
 Candidates size: 108
 Generating Codes...
-[1] Preprocess the following candidate with CondTester:
+[3] Preprocess the following candidate with CondTester:
 108 Candidates
 Generating patches with CondTester...
 test
 Generating patches...
 Patch Generated!
 ID count: 224
-[1] CondTester, a patch instance with id 0:
+[3] CondTester, a patch instance with id 0:
 codes size: 1
 res size: 1
 result size: 107
@@ -34,7 +34,7 @@ Testing with Delta-Debugging...
 Building final program...
 Total success macros: 211
 Success to build final program: __fixed_test.c
-[9] CondTester, Testing instance id 0:
+[11] CondTester, Testing instance id 0:
 
 Total ID: 3
 Testing with ID 0
@@ -49,6 +49,8 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Finally tests failed
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -58,7 +60,7 @@ Case 2:
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-[9] Passed!
+[11] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -624,48 +626,7 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Passed in iteration!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[27] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 96
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[28] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 97
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
+Trying with NEG_ARG=0!
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -681,117 +642,57 @@ Testing 2 (with abstract condition)
 Printing IDs:
 __ID0: 0
 __ID1: 0
+__ID2: 96
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Passed in iteration!
+Trying with NEG_ARG=0!
+Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+[30] Passed!
+Testing negative cases!
+Testing 2 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID2: 97
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Passed in iteration!
+Trying with NEG_ARG=0!
+Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+[31] Passed!
+Testing negative cases!
+Testing 2 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
 __ID2: 98
 Iteration 0
 Branch 0: 0
 Iteration 1
 Branch 0: 1
 Passed in iteration!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[30] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 99
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[30] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 100
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[31] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 101
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[31] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 102
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[31] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 103
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
+Trying with NEG_ARG=0!
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -807,12 +708,13 @@ Testing 2 (with abstract condition)
 Printing IDs:
 __ID0: 0
 __ID1: 0
-__ID2: 104
+__ID2: 99
 Iteration 0
 Branch 0: 0
 Iteration 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -822,7 +724,117 @@ Case 2:
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-[35] Passed!
+[32] Passed!
+Testing negative cases!
+Testing 2 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID2: 100
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Passed in iteration!
+Trying with NEG_ARG=0!
+Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+[33] Passed!
+Testing negative cases!
+Testing 2 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID2: 101
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Passed in iteration!
+Trying with NEG_ARG=0!
+Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+[33] Passed!
+Testing negative cases!
+Testing 2 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID2: 102
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Passed in iteration!
+Trying with NEG_ARG=0!
+Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+[34] Passed!
+Testing negative cases!
+Testing 2 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID2: 103
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Passed in iteration!
+Trying with NEG_ARG=0!
+Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+[34] Passed!
+Testing negative cases!
+Testing 2 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID2: 104
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Passed in iteration!
+Trying with NEG_ARG=0!
+Passed Negative Cases wiht CondTester!
+Case 2:
+{
+	[1, ]
+
+}
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+[38] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1110,6 +1122,7 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1119,7 +1132,7 @@ Case 2:
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-[42] Passed!
+[45] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1131,6 +1144,7 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1140,7 +1154,7 @@ Case 2:
 Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
-[43] Passed!
+[46] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1185,4 +1199,4 @@ Repair process ends without working fix!!
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total number of compiles: 1
-Total number of test eval: 303
+Total number of test eval: 316
