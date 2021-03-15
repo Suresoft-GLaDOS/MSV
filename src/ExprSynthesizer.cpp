@@ -1549,6 +1549,14 @@ std::set<std::string> getPassedConstantHelper(ASTContext *ast, Stmt *S) {
     V.TraverseStmt(IFS->getCond());
     return V.getResult();
 }
+template<typename T>
+size_t getElementCount(std::vector<T> vector,T target){
+    size_t count=0;
+    for (typename std::vector<T>::iterator it=vector.begin();it!=vector.end();it++){
+        if (*it==target) count++;
+    }
+    return count;
+}
 
 class ConditionSynthesisTester : public BasicTester {
     typedef std::map<unsigned long, std::set<std::vector<unsigned long>>> BranchRecordTy;
@@ -1620,12 +1628,12 @@ class ConditionSynthesisTester : public BasicTester {
         fclose(f);
     }
 
-    void writeBranchRecord(const std::map<unsigned long,std::set<std::vector<unsigned long>>> &negative_records,unsigned long case_id) {
+    void writeBranchRecord(const std::map<unsigned long,std::vector<unsigned long>> &negative_records,unsigned long case_id) {
         FILE *f = fopen(ISNEG_TMPFILE, "w");
-        std::map<unsigned long,std::set<std::vector<unsigned long>>>::const_iterator fit = negative_records.find(case_id);
+        std::map<unsigned long,std::vector<unsigned long>>::const_iterator fit = negative_records.find(case_id);
         assert( fit != negative_records.end() );
-        // FIXME: We use only first record, write all record!
-        const std::vector<unsigned long> &tmp_vec = *fit->second.begin();
+        // FIXME: We use only closest record, write all record!
+        const std::vector<unsigned long> &tmp_vec = fit->second;
         fprintf(f, "%lu", (unsigned long)tmp_vec.size());
         for (size_t i = 0; i < tmp_vec.size(); i++)
             fprintf(f, " %lu", tmp_vec[i]);
@@ -1675,32 +1683,29 @@ class ConditionSynthesisTester : public BasicTester {
                 it_cnt ++;
             }
             // We will going to try all 1 before we finally give up this case
-            if (!passed) {
-                outlog_printf(2,"Trying with NEG_ARG=0!\n");
-                testEnv = env;
-                testEnv.insert(std::make_pair("IS_NEG", "1"));
-                testEnv.insert(std::make_pair("NEG_ARG", "0"));
-                testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
-                int ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
-                assert( ret == 0);
-                passed = P.test(std::string("src"), *case_it, testEnv, false);
-                if (passed) {
-                    std::vector<unsigned long> tmp_v = parseBranchRecord();
-                    // FIXME: strange error in wireshark, we just ignore right now
-                    if (tmp_v.size() == 0) {
-                        outlog_printf(0, "Strange error or non-deterministic behavior!\n");
-                        continue;
-                    }
-                    assert(tmp_v.size() != 0);
-                    negative_records[*case_it].insert(tmp_v);
-                    for (size_t i = 0; i < tmp_v.size(); i++)
-                        outlog_printf(5, "Log %lu %lu\n", i, tmp_v[i]);
-                }
-                else {
-                    // Still failed, we are going to give up
-                    outlog_printf(2,"Finally tests failed\n");
+            outlog_printf(2,"Trying with NEG_ARG=0!\n");
+            testEnv = env;
+            testEnv.insert(std::make_pair("IS_NEG", "1"));
+            testEnv.insert(std::make_pair("NEG_ARG", "0"));
+            testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
+            ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
+            assert( ret == 0);
+            passed = P.test(std::string("src"), *case_it, testEnv, false);
+            if (passed) {
+                std::vector<unsigned long> tmp_v = parseBranchRecord();
+                // FIXME: strange error in wireshark, we just ignore right now
+                if (tmp_v.size() == 0) {
+                    outlog_printf(0, "Strange error or non-deterministic behavior!\n");
                     continue;
                 }
+                assert(tmp_v.size() != 0);
+                negative_records[*case_it].insert(tmp_v);
+                for (size_t i = 0; i < tmp_v.size(); i++)
+                    outlog_printf(5, "Log %lu %lu\n", i, tmp_v[i]);
+            }
+            else {
+                // Still failed, we are going to give up
+                continue;
             }
             if (negative_records[*case_it].empty()) return false;
         }
@@ -1743,6 +1748,19 @@ class ConditionSynthesisTester : public BasicTester {
             std::map<unsigned long,std::set<std::vector<unsigned long>>> &negative_records,
             std::map<unsigned long,std::vector<std::vector<long long>>> &caseVMap) {
         caseVMap.clear();
+        std::map<unsigned long,std::vector<unsigned long>> final_records;
+        final_records.clear();
+        for (std::map<unsigned long,std::set<std::vector<unsigned long>>>::iterator it=negative_records.begin();
+                it!=negative_records.end();it++){
+            std::vector<unsigned long> current;
+            current.clear();
+            for (std::set<std::vector<unsigned long>>::iterator recordsIt=it->second.begin();
+                    recordsIt!=it->second.end();recordsIt++){
+                if (getElementCount(*recordsIt,(unsigned long)1)<getElementCount(current,(unsigned long)1))
+                    current=*recordsIt;
+            }
+            final_records[it->first]=current;
+        }
         // We first deal with the negative cases
         for (TestCaseSetTy::iterator tit = negative_cases.begin();
                 tit != negative_cases.end(); ++tit) {
@@ -1751,11 +1769,11 @@ class ConditionSynthesisTester : public BasicTester {
             testEnv.insert(std::make_pair("NEG_ARG", ISNEG_TMPFILE));
             testEnv.insert(std::make_pair("TMP_FILE", ISNEG_RECORDFILE));
             //FIXME: It triggers non-deterministic things, get out!
-            if (negative_records.find(*tit) == negative_records.end()) {
+            if (final_records.find(*tit) == final_records.end()) {
                 fprintf(stderr, "Error in case map, failed on case %lu!\n", *tit);
                 return false;
             }
-            writeBranchRecord(negative_records,*tit);
+            writeBranchRecord(final_records,*tit);
             std::string cmd = std::string("rm -rf ") + ISNEG_RECORDFILE;
             int ret = system(cmd.c_str());
             assert( ret == 0);

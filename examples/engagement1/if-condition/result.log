@@ -9,20 +9,20 @@ warning: ../../../../wrap/gcc: 'linker' input unused [-Wunused-command-line-argu
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total 104 different partial repair candidate templates!!
-BasicTester pointer: 0x55c7ef6fd080
-StringConstTester pointer: 0x55c7ef66caf0
-CondTester pointer: 0x55c7ef6fb270
+BasicTester pointer: 0x55a4a0546080
+StringConstTester pointer: 0x55a4a04b5af0
+CondTester pointer: 0x55a4a0544270
 Generating Candidates...
 Candidates size: 108
 Generating Codes...
-[1] Preprocess the following candidate with CondTester:
+[3] Preprocess the following candidate with CondTester:
 108 Candidates
 Generating patches with CondTester...
 test
 Generating patches...
 Patch Generated!
 ID count: 224
-[1] CondTester, a patch instance with id 0:
+[3] CondTester, a patch instance with id 0:
 codes size: 1
 res size: 1
 result size: 107
@@ -40,7 +40,7 @@ Building final program...
 Total success macros: 211
 rm: cannot remove 'prog': No such file or directory
 Success to build final program: __fixed_test.c
-[9] CondTester, Testing instance id 0:
+[11] CondTester, Testing instance id 0:
 
 Total ID: 3
 Testing with ID 0
@@ -63,6 +63,12 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Finally tests failed
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -73,7 +79,7 @@ Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 Collect value failed on case 2!
-[9] Passed!
+[11] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1109,6 +1115,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1119,7 +1130,7 @@ Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 Collect value failed on case 2!
-[27] Passed!
+[29] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1140,6 +1151,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1152,7 +1168,7 @@ Collect values for post processing!
 Aborted (core dumped)
 Collect value failed on case 2!
 Aborted (core dumped)
-[28] Passed!
+[30] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1174,6 +1190,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1188,7 +1209,7 @@ Aborted (core dumped)
 Collect value failed on case 2!
 free(): double free detected in tcache 2
 Aborted (core dumped)
-[29] Passed!
+[31] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1210,6 +1231,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1224,7 +1250,7 @@ Aborted (core dumped)
 Collect value failed on case 2!
 free(): double free detected in tcache 2
 Aborted (core dumped)
-[30] Passed!
+[32] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1244,6 +1270,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1254,7 +1285,7 @@ Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 Collect value failed on case 2!
-[30] Passed!
+[32] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1274,6 +1305,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1284,7 +1320,7 @@ Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 Collect value failed on case 2!
-[31] Passed!
+[33] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1304,6 +1340,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1314,7 +1355,7 @@ Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 Collect value failed on case 2!
-[31] Passed!
+[33] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1334,6 +1375,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1344,7 +1390,7 @@ Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 Collect value failed on case 2!
-[31] Passed!
+[34] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1364,6 +1410,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1374,7 +1425,7 @@ Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 Collect value failed on case 2!
-[32] Passed!
+[34] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1394,6 +1445,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1404,7 +1460,7 @@ Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 Collect value failed on case 2!
-[35] Passed!
+[38] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -1986,6 +2042,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -1996,7 +2057,7 @@ Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 Collect value failed on case 2!
-[42] Passed!
+[45] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -2016,6 +2077,11 @@ Size: 1
 Record: 1
 Branch 0: 1
 Passed in iteration!
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
 Passed Negative Cases wiht CondTester!
 Case 2:
 {
@@ -2026,7 +2092,7 @@ Testing positive cases!
 Passed Positive Cases
 Collect values for post processing!
 Collect value failed on case 2!
-[43] Passed!
+[46] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -2083,4 +2149,4 @@ Repair process ends without working fix!!
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total number of compiles: 1
-Total number of test eval: 303
+Total number of test eval: 316
