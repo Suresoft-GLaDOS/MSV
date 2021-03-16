@@ -5,3 +5,4 @@ src/prophet
 libtool
 config.status
 autom4te.cache/requests
+config.log
