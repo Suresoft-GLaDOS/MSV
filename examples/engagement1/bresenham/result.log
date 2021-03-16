@@ -1,4 +1,3 @@
-rm: cannot remove '__fixed_*': No such file or directory
 Initialize the program!
 Generating repair candidates!
 Processing bresenham.cpp
@@ -7,906 +6,8721 @@ warning: /root/project/prophet-gpl/wrap/g++: 'linker' input unused [-Wunused-com
 Total 433 different repair schemas!!!!
 Total 991 different repair candidate templates for scoring!!!
 Total 625 different partial repair candidate templates!!
-BasicTester pointer: 0x559ccb8e5f80
-StringConstTester pointer: 0x559ccb3d9960
-CondTester pointer: 0x559ccb4fee60
+BasicTester pointer: 0x55ea050a0d60
+StringConstTester pointer: 0x55ea0499e3d0
+CondTester pointer: 0x55ea04a1ffb0
 Generating Candidates...
 Candidates size: 433
 Generating Codes...
-[4] Preprocess the following candidate with CondTester:
+[7] Preprocess the following candidate with CondTester:
 433 Candidates
 Generating patches with CondTester...
 test
 Generating patches...
-top: if (y0 < y1)
-       
-mid: ystep = 1;
+Patch Generated!
+ID count: 236
+[7] CondTester, a patch instance with id 0:
+codes size: 1
+res size: 1
+result size: 432
+Begin building test
+Total macros: 236
+Saving this fix to: __fixed_bresenham.cpp
+Building with no macros...
+Trying to build with all macros...
+Build failed, Trying to find fail macros...
+Testing with Delta-Debugging...
+Run with optimization: 75
+Fail macros: [34, 35, 36, 37, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 218, 219, 220, 222, 223, 224, 227, 228, 229, 232, 233, 234]
 
-bottom:      else
-       ystep = -1;
+Building final program...
+Total success macros: 205
+Success to build final program: __fixed_bresenham.cpp
+[177] CondTester, Testing instance id 0:
 
-before:                                                                                 switch(__choose("__ID2"))
-                                                                                {
-                                                                                case 0: {
-                                                                                ystep = 1;
-                                                                                
-                                                                                break;
-                                                                                }
-                                                                                #ifdef COMPILE_34
-                                                                                case 1: {
-                                                                                a = x0;
-                                                                                ystep = 1;
-                                                                                
-                                                                                break;
-                                                                                }
-                                                                            #endif
-                                                                            #ifdef COMPILE_35
-                                                                            case 2: {
-                                                                            a = x1;
-                                                                            ystep = 1;
-                                                                            
-                                                                            break;
-                                                                            }
-                                                                        #endif
-                                                                        #ifdef COMPILE_36
-                                                                        case 3: {
-                                                                        a = y0;
-                                                                        ystep = 1;
-                                                                        
-                                                                        break;
-                                                                        }
-                                                                    #endif
-                                                                    #ifdef COMPILE_37
-                                                                    case 4: {
-                                                                    error = error + deltaerr;
-                                                                    ystep = 1;
-                                                                    
-                                                                    break;
-                                                                    }
-                                                                #endif
-                                                                #ifdef COMPILE_38
-                                                                case 5: {
-                                                                error = error - 1;
-                                                                ystep = 1;
-                                                                
-                                                                break;
-                                                                }
-                                                            #endif
-                                                            #ifdef COMPILE_39
-                                                            case 6: {
-                                                            if (!__is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
-                                                                ystep = 1;
-                                                            
-                                                            break;
-                                                            }
-                                                        #endif
-                                                        #ifdef COMPILE_40
-                                                        case 7: {
-                                                        if (__is_neg(9, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8))
-                                                            return;
-                                                        ystep = 1;
-                                                        
-                                                        break;
-                                                        }
-                                                    #endif
-                                                    #ifdef COMPILE_41
-                                                    case 8: {
-                                                    if (steep) {
-                                                        a = x0;
-                                                        x0 = y0;
-                                                        y0 = a;
-                                                        a = x1;
-                                                        x1 = y1;
-                                                        y1 = a;
-                                                    }
-                                                    ystep = 1;
-                                                    
-                                                    break;
-                                                    }
-                                                #endif
-                                                #ifdef COMPILE_42
-                                                case 9: {
-                                                if (x0 > x1) {
-                                                    a = x0;
-                                                    x0 = x1;
-                                                    x1 = a;
-                                                    a = y0;
-                                                    y0 = y1;
-                                                    y1 = a;
-                                                }
-                                                ystep = 1;
-                                                
-                                                break;
-                                                }
-                                            #endif
-                                            #ifdef COMPILE_43
-                                            case 10: {
-                                            if (y0 < y1)
-                                                ystep = 1;
-                                            else
-                                                ystep = -1;
-                                            ystep = 1;
-                                            
-                                            break;
-                                            }
-                                        #endif
-                                        #ifdef COMPILE_44
-                                        case 11: {
-                                        throw;
-                                        ystep = 1;
-                                        
-                                        break;
-                                        }
-                                    #endif
-                                    #ifdef COMPILE_45
-                                    case 12: {
-                                    x0 = x1;
-                                    ystep = 1;
-                                    
-                                    break;
-                                    }
-                                #endif
-                                #ifdef COMPILE_46
-                                case 13: {
-                                x0 = y0;
-                                ystep = 1;
-                                
-                                break;
-                                }
-                            #endif
-                            #ifdef COMPILE_47
-                            case 14: {
-                            x1 = a;
-                            ystep = 1;
-                            
-                            break;
-                            }
-                        #endif
-                        #ifdef COMPILE_48
-                        case 15: {
-                        x1 = y1;
-                        ystep = 1;
-                        
-                        break;
-                        }
-                    #endif
-                    #ifdef COMPILE_49
-                    case 16: {
-                    y0 = a;
-                    ystep = 1;
-                    
-                    break;
-                    }
-                #endif
-                #ifdef COMPILE_50
-                case 17: {
-                y0 = y1;
-                ystep = 1;
-                
-                break;
-                }
-            #endif
-            #ifdef COMPILE_51
-            case 18: {
-            y1 = a;
-            ystep = 1;
-            
-            break;
-            }
-        #endif
-        #ifdef COMPILE_52
-        case 19: {
-        ystep = -1;
-        ystep = 1;
-        
-        break;
-        }
-    #endif
-    #ifdef COMPILE_53
-    case 20: {
-    ystep = 1;
-    ystep = 1;
-    
-    break;
-    }
-#endif
-}
-
-big: if (y0 < y1)
-    ystep = 1;
-else
-    ystep = -1;
-
-top: if (steep){
-	   var.first=y;
-	   var.second=x;
-	   line.push_back(var);}
-	 else{
-	   var.first=x;
-	   var.second=y;
-	   
-mid: line.push_back(var);
-bottom: }
-
-before: switch(__choose("__ID6"))
-{
-case 0: {
-line.push_back(var);
-
-break;
-}
-#ifdef COMPILE_132
-case 1: {
-a = x0;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_133
-case 2: {
-a = x1;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_134
-case 3: {
-a = y0;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_135
-case 4: {
-error = error + deltaerr;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_136
-case 5: {
-error = error - 1;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_137
-case 6: {
-if (!__is_neg(13, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8, var.first, 8, var.second, 8))
-    line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_138
-case 7: {
-if (__is_neg(13, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8, var.first, 8, var.second, 8))
-    break;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_139
-case 8: {
-if (__is_neg(13, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8, var.first, 8, var.second, 8))
-    return;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_140
-case 9: {
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_141
-case 10: {
-if (steep) {
-    a = x0;
-    x0 = y0;
-    y0 = a;
-    a = x1;
-    x1 = y1;
-    y1 = a;
-}
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_142
-case 11: {
-if (steep) {
-    var.first = y;
-    var.second = x;
-    line.push_back(var);
-} else {
-    var.first = x;
-    var.second = y;
-    line.push_back(var);
-}
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_143
-case 12: {
-if (x0 > x1) {
-    a = x0;
-    x0 = x1;
-    x1 = a;
-    a = y0;
-    y0 = y1;
-    y1 = a;
-}
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_144
-case 13: {
-if (y0 < y1)
-    ystep = 1;
-else
-    ystep = -1;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_145
-case 14: {
-line.push_back(var);
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_146
-case 15: {
-throw;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_147
-case 16: {
-var.first = x;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_148
-case 17: {
-var.first = y;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_149
-case 18: {
-var.second = x;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_150
-case 19: {
-var.second = y;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_151
-case 20: {
-x0 = x1;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_152
-case 21: {
-x0 = y0;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_153
-case 22: {
-x1 = a;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_154
-case 23: {
-x1 = y1;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_155
-case 24: {
-y0 = a;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_156
-case 25: {
-y0 = y1;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_157
-case 26: {
-y1 = a;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_158
-case 27: {
-ystep = -1;
-line.push_back(var);
-
-break;
-}
-#endif
-#ifdef COMPILE_159
-case 28: {
-ystep = 1;
-line.push_back(var);
-
-break;
-}
-#endif
-}
-
-big: if (steep) {
-    var.first = y;
-    var.second = x;
-    line.push_back(var);
-} else {
-    var.first = x;
-    var.second = y;
-    line.push_back(var);
-}
-
-top: for (int x = x0;x < x1;x++)
-       {
-	 if (steep){
-	   var.first=y;
-	   var.second=x;
-	   line.push_back(var);}
-	 else{
-	   var.first=x;
-	   var.second=y;
-	   line.push_back(var);}
-	 error = error + deltaerr;
-	 
-mid: if (error >= 0.5)
-	   {
-	     y += ystep;
-	     error = error - 1;
-	   }
-
-bottom:        }
-
-before: switch(__choose("__ID9"))
-{
-case 0: {
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#ifdef COMPILE_219
-case 1: {
-a = x0;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_220
-case 2: {
-a = x1;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_221
-case 3: {
-a = y0;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_222
-case 4: {
-error = error + deltaerr;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_223
-case 5: {
-error = error - 1;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_224
-case 6: {
-if (!__is_neg(11, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8))
-    if (error >= 0.5) {
-        y += ystep;
-        error = error - 1;
-    }
-
-break;
-}
-#endif
-#ifdef COMPILE_225
-case 7: {
-if ((error >= 0.5) && !__is_neg(11, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8)) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_226
-case 8: {
-if ((error >= 0.5) || __is_neg(11, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8)) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_227
-case 9: {
-if (__is_neg(11, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8))
-    break;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_228
-case 10: {
-if (__is_neg(11, x1, 8, y1, 8, x0, 8, y0, 8, steep, 8, a, 8, deltax, 8, deltay, 8, ystep, 8, y, 8, x, 8))
-    return;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_229
-case 11: {
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_230
-case 12: {
-if (steep) {
-    a = x0;
-    x0 = y0;
-    y0 = a;
-    a = x1;
-    x1 = y1;
-    y1 = a;
-}
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_231
-case 13: {
-if (steep) {
-    var.first = y;
-    var.second = x;
-    line.push_back(var);
-} else {
-    var.first = x;
-    var.second = y;
-    line.push_back(var);
-}
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_232
-case 14: {
-if (x0 > x1) {
-    a = x0;
-    x0 = x1;
-    x1 = a;
-    a = y0;
-    y0 = y1;
-    y1 = a;
-}
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_233
-case 15: {
-if (y0 < y1)
-    ystep = 1;
-else
-    ystep = -1;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_234
-case 16: {
-line.push_back(var);
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_235
-case 17: {
-throw;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_236
-case 18: {
-var.first = x;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_237
-case 19: {
-var.first = y;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_238
-case 20: {
-var.second = x;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_239
-case 21: {
-var.second = y;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_240
-case 22: {
-x0 = x1;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_241
-case 23: {
-x0 = y0;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_242
-case 24: {
-x1 = a;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_243
-case 25: {
-x1 = y1;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_244
-case 26: {
-y0 = a;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_245
-case 27: {
-y0 = y1;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_246
-case 28: {
-y1 = a;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_247
-case 29: {
-ystep = -1;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-#ifdef COMPILE_248
-case 30: {
-ystep = 1;
-if (error >= 0.5) {
-    y += ystep;
-    error = error - 1;
-}
-
-break;
-}
-#endif
-}
-
-big: for (int x = x0; x < x1; x++) {
-    if (steep) {
-        var.first = y;
-        var.second = x;
-        line.push_back(var);
-    } else {
-        var.first = x;
-        var.second = y;
-        line.push_back(var);
-    }
-    error = error + deltaerr;
-    if (error >= 0.5) {
-        y += ystep;
-        error = error - 1;
-    }
-}
-
-prophet: CodeRewrite.cpp:598: CodeRewriter::CodeRewriter(SourceContextManager&, const std::vector<RepairCandidate>&, std::vector<std::set<std::map<long unsigned int, clang::Expr*> >*>*): Assertion `big_patch.find(mid_part)!=std::string::npos' failed.
-./run.sh: line 3:  6559 Aborted                 (core dumped) prophet run.conf -cpp -skip-verify -r . -consider-all -first-n-loc 200 -feature-para ../../../crawler/para-all.out
+Total ID: 12
+Testing with ID 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 4
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+rand: 14571632
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 5
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 6
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+rand: 21342320
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 2
+Initing 1!
+rand: 25684080
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 3
+Initing 1!
+rand: 21010544
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 4
+Initing 1!
+rand: 29997168
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 7
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+rand: 35682416
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 2
+Initing 1!
+rand: 26642544
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing with ID 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 4
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+rand: 23599216
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 5
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 6
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+rand: 31799408
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 2
+Initing 1!
+rand: 35039344
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 7
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+rand: 12929136
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 2
+Initing 1!
+rand: 16496752
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 3
+Initing 1!
+rand: 16705648
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 4
+Initing 1!
+rand: 34707568
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing with ID 2
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 6
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+rand: 28371056
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 7
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 26
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+rand: 30255216
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 2
+Initing 1!
+rand: 32008304
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 27
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+rand: 7764080
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 2
+Initing 1!
+rand: 19720304
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 28
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 29
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 1
+Initing 1!
+rand: 15968368
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Branch 0: 0
+Iteration 2
+Initing 1!
+rand: 35584112
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing with ID 3
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 6
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 26073200
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 28833904
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 3
+Initing 1!
+rand: 16017520
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 4
+Initing 1!
+rand: 29284464
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Initing 1!
+rand: 18352240
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 6
+Initing 1!
+rand: 8484976
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 7
+Initing 1!
+rand: 23836784
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 8
+Initing 1!
+rand: 22804592
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 9
+Initing 1!
+rand: 25012336
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 2 2
+Size: 2
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 3 3
+Size: 3
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 4 4
+Size: 4
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 5 5
+Size: 5
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 7
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 12613744
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 38627440
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 3
+Initing 1!
+rand: 39360624
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 4
+Initing 1!
+rand: 30345328
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 5
+Initing 1!
+rand: 11786352
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 6
+Initing 1!
+rand: 7805040
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 7
+Initing 1!
+rand: 17918064
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 8
+Initing 1!
+rand: 8366192
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 9
+Initing 1!
+rand: 26941552
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 2 2
+Size: 2
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 3 3
+Size: 3
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 4 4
+Size: 4
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 5 5
+Size: 5
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 8
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 14424176
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 2
+Initing 1!
+rand: 12724336
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 3
+Initing 1!
+rand: 18454640
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Initing 1!
+rand: 38201456
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Initing 1!
+rand: 29050992
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 6
+Initing 1!
+rand: 7026800
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 7
+Initing 1!
+rand: 20777072
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 8
+Initing 1!
+rand: 11352176
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 9
+Initing 1!
+rand: 25245808
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing with ID 4
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 6
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 13211760
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 9717872
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 3
+Initing 1!
+rand: 12916848
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 2 2
+Size: 2
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 3 3
+Size: 3
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 4 4
+Size: 4
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 5 5
+Size: 5
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 7
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 24291440
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 18872432
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 3
+Initing 1!
+rand: 7264368
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Initing 1!
+rand: 23459952
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 5
+Initing 1!
+rand: 12818544
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 6
+Initing 1!
+rand: 24033392
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 7
+Initing 1!
+rand: 14444656
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 8
+Initing 1!
+rand: 21158000
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 9
+Initing 1!
+rand: 13146224
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 2 2
+Size: 2
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 3 3
+Size: 3
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 4 4
+Size: 4
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 5 5
+Size: 5
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 8
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 34388080
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 12331120
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 3
+Initing 1!
+rand: 23550064
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Initing 1!
+rand: 14297200
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 5
+Initing 1!
+rand: 21309552
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 6
+Initing 1!
+rand: 27297904
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 7
+Initing 1!
+rand: 37505136
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 8
+Initing 1!
+rand: 31262832
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 9
+Initing 1!
+rand: 25905264
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing with ID 5
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 6
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 23124080
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 10053744
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 3
+Initing 1!
+rand: 8783984
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Initing 1!
+rand: 18098288
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Initing 1!
+rand: 16652400
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 6
+Initing 1!
+rand: 9836656
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 7
+Initing 1!
+rand: 35100784
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 8
+Initing 1!
+rand: 26929264
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 9
+Initing 1!
+rand: 36276336
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 2 2
+Size: 2
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 3 3
+Size: 3
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 4 4
+Size: 4
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 5 5
+Size: 5
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 7
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 15681648
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 2
+Initing 1!
+rand: 6879344
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 3
+Initing 1!
+rand: 7391344
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Initing 1!
+rand: 33679472
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 5
+Initing 1!
+rand: 14342256
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 6
+Initing 1!
+rand: 30586992
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 7
+Initing 1!
+rand: 7567472
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 8
+Initing 1!
+rand: 26871920
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 9
+Initing 1!
+rand: 15931504
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 2 2
+Size: 2
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 3 3
+Size: 3
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 4 4
+Size: 4
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 5 5
+Size: 5
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 8
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 34531440
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 7022704
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 3
+Initing 1!
+rand: 16849008
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Initing 1!
+rand: 24455280
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Initing 1!
+rand: 38766704
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 6
+Initing 1!
+rand: 31737968
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 7
+Initing 1!
+rand: 15226992
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 8
+Initing 1!
+rand: 28330096
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 9
+Initing 1!
+rand: 19511408
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing with ID 6
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 6
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 25278608
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 12761232
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 3
+Initing 1!
+rand: 39479440
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Initing 1!
+rand: 34506896
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 5
+Initing 1!
+rand: 38181008
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 6
+Initing 1!
+rand: 39528592
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 7
+Initing 1!
+rand: 26372240
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 8
+Initing 1!
+rand: 19949712
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 9
+Initing 1!
+rand: 22358160
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 2 2
+Size: 2
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 3 3
+Size: 3
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 4 4
+Size: 4
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 5 5
+Size: 5
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 7
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 38213776
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 29247632
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 3
+Initing 1!
+rand: 25077904
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Initing 1!
+rand: 6535312
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 5
+Initing 1!
+rand: 37550224
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 6
+Initing 1!
+rand: 11081872
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 7
+Initing 1!
+rand: 7239824
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 8
+Initing 1!
+rand: 9816208
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 9
+Initing 1!
+rand: 13748368
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 2 2
+Size: 2
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 3 3
+Size: 3
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 4 4
+Size: 4
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 5 5
+Size: 5
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 8
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 39041168
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 32716944
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 3
+Initing 1!
+rand: 17139856
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Initing 1!
+rand: 29010064
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Initing 1!
+rand: 34986128
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 6
+Initing 1!
+rand: 25835664
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 7
+Initing 1!
+rand: 35473552
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 8
+Initing 1!
+rand: 10295440
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 9
+Initing 1!
+rand: 39663760
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing with ID 7
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 6
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 22222992
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 17598608
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 3
+Initing 1!
+rand: 21416080
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 4
+Initing 1!
+rand: 32241808
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 5
+Initing 1!
+rand: 27322512
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 6
+Initing 1!
+rand: 25634960
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 7
+Initing 1!
+rand: 21325968
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 8
+Initing 1!
+rand: 25790608
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 9
+Initing 1!
+rand: 12056720
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 2 2
+Size: 2
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 3 3
+Size: 3
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 4 4
+Size: 4
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 5 5
+Size: 5
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 7
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 8
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 27277456
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 31840400
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 3
+Initing 1!
+rand: 30488720
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 4
+Initing 1!
+rand: 28870800
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 5
+Initing 1!
+rand: 33421456
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 6
+Initing 1!
+rand: 32532624
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 7
+Initing 1!
+rand: 12707984
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 8
+Initing 1!
+rand: 22796432
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 9
+Initing 1!
+rand: 23001232
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 2 2
+Size: 2
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 3 3
+Size: 3
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 4 4
+Size: 4
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 5 5
+Size: 5
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 9
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 23304336
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 2
+Initing 1!
+rand: 29321360
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 3
+Initing 1!
+rand: 20195472
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Initing 1!
+rand: 34261136
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 5
+Initing 1!
+rand: 19626128
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 6
+Initing 1!
+rand: 34437264
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 7
+Initing 1!
+rand: 30480528
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 8
+Initing 1!
+rand: 39696528
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 9
+Initing 1!
+rand: 37980304
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 2 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 3 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 4 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 5 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 2 2
+Size: 2
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 3 3
+Size: 3
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 4 4
+Size: 4
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 5 5
+Size: 5
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Initing 0!
+Current cnt, Record size: 6 6
+Size: 6
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Record: 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 10
+__ID8: 0
+__ID9: 0
+Iteration 0
+Initing 1!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 0
+Current cnt, Record size: 2 2
+Size: 2
+Record: 0
+Record: 0
+Current cnt, Record size: 3 3
+Size: 3
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 4 4
+Size: 4
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 5 5
+Size: 5
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Initing 1!
+rand: 9746576
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 5 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Current cnt, Record size: 6 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 2
+Initing 1!
+rand: 27588752
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 3
+Initing 1!
+rand: 10528912
+Current cnt, Record size: 1 6
+Size: 6
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Initing 1!
+rand: 29108368
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 5
+Initing 1!
+rand: 13064336
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 6
+Initing 1!
+rand: 33917072
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 7
+Initing 1!
+rand: 26175632
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 3 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 4 6
+Size: 6
+Record: 0
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 8
+Initing 1!
+rand: 28358800
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 1
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 9
+Initing 1!
+rand: 16832656
+Current cnt, Record size: 1 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Current cnt, Record size: 2 6
+Size: 6
+Record: 0
+Record: 1
+Record: 0
+Record: 0
+Record: 1
+Record: 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Trying with NEG_ARG=0!
+Initing 0!
+Current cnt, Record size: 1 1
+Size: 1
+Record: 1
+Testing with ID 8
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 1
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 2
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 3
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing with ID 9
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 1
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 2
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 3
+Iteration 0
+Trying with NEG_ARG=0!
+Testing with ID 10
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 2
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 3
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 4
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing with ID 11
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 2
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 3
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 4
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+The total number of explored concrete patches: 0
+Repair process ends without working fix!!
+Total 433 different repair schemas!!!!
+Total 991 different repair candidate templates for scoring!!!
+Total number of compiles: 1
+Total number of test eval: 245

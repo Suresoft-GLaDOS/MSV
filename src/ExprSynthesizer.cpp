@@ -208,21 +208,31 @@ double found_score = 0;
     }
     return M.getLocalAnalyzer(cur_loc);
 }*/
-ImplicitCastExpr *createNullPointerLiteral(ASTContext *ctxt){
+Expr *createNullPointerLiteral(ASTContext *ctxt){
     IntegerLiteral *literal=IntegerLiteral::Create(*ctxt,llvm::APInt(32,0),ctxt->IntTy,SourceLocation());
     ImplicitCastExpr *cast=ImplicitCastExpr::Create(*ctxt,ctxt->getPointerType(ctxt->IntTy),
             CastKind::CK_NullToPointer,literal,nullptr,VK_LValue);
     return cast;
 }
-ImplicitCastExpr* createConditionVarList(ASTContext *ctxt,std::vector<Expr *> exprs,QualType type){
+Expr* createConditionVarList(ASTContext *ctxt,std::vector<Expr *> exprs,QualType type){
     InitListExpr *list=new(*ctxt) InitListExpr(*ctxt,SourceLocation(),llvm::ArrayRef<Expr *>(exprs),SourceLocation());
-    CompoundLiteralExpr *compound=new(*ctxt) CompoundLiteralExpr(SourceLocation(),ctxt->getTrivialTypeSourceInfo(ctxt->getPointerType(type)),
-            ctxt->getPointerType(type),VK_LValue,list,false);
-    ImplicitCastExpr *cast=ImplicitCastExpr::Create(*ctxt,ctxt->getPointerType(type),CastKind::CK_ArrayToPointerDecay,
+    QualType cast_type=type;
+    if (ForCPP){
+        cast_type.addConst();
+        cast_type=ctxt->getIncompleteArrayType(cast_type,ArrayType::ArraySizeModifier::Normal,3);
+    }
+    else{
+        cast_type=ctxt->getPointerType(cast_type);
+    }
+
+    CompoundLiteralExpr *compound=new(*ctxt) CompoundLiteralExpr(SourceLocation(),ctxt->getTrivialTypeSourceInfo(cast_type),
+            cast_type,VK_LValue,list,false);
+
+    ImplicitCastExpr *cast=ImplicitCastExpr::Create(*ctxt,cast_type,CastKind::CK_ArrayToPointerDecay,
             compound,nullptr,VK_LValue);
     return cast;
 }
-ImplicitCastExpr* createConditionVarNameList(ASTContext *ctxt,std::vector<std::string> names){
+Expr* createConditionVarNameList(ASTContext *ctxt,std::vector<std::string> names){
     std::vector<Expr *> exprs;
     exprs.clear();
     for (int i=0;i<names.size();i++){
@@ -277,13 +287,13 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, const RepairAction &a
                 std::string name=var->getDeclName().getAsString();
                 varName.push_back(name);
                 QualType type=var->getType();
-                if (type.getTypePtr()->isIntegerType())
+                if (ctxt->hasSameType(type,ctxt->IntTy))
                     intVar.push_back(exprs[i]);
-                else if (type.getTypePtr()->isCharType())
+                else if (ctxt->hasSameType(type,ctxt->CharTy))
                     charVar.push_back(exprs[i]);
-                else if (type.getTypePtr()->isPointerType())
+                else if (type->isPointerType())
                     pointerVar.push_back(exprs[i]);
-                else if (type.getTypePtr()->isRealType())
+                else if (ctxt->hasSameType(type,ctxt->DoubleTy))
                     doubleVar.push_back(exprs[i]);
             }
         }
@@ -294,11 +304,7 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, const RepairAction &a
             SourceLocation());
     tmp_argv.push_back(str);
 
-    IntegerLiteral *size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,varName.size()),ctxt->IntTy,SourceLocation());
-    tmp_argv.push_back(size);
-    if (varName.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
-    else tmp_argv.push_back(createConditionVarNameList(ctxt,varName));
-
+    IntegerLiteral *size;
     size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,intVar.size()),ctxt->IntTy,SourceLocation());
     tmp_argv.push_back(size);
     if (intVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
@@ -318,6 +324,15 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, const RepairAction &a
     tmp_argv.push_back(size);
     if (doubleVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
     else tmp_argv.push_back(createConditionVarList(ctxt,doubleVar,ctxt->DoubleTy));
+
+    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,varName.size()),ctxt->IntTy,SourceLocation());
+    tmp_argv.push_back(size);
+    for (int i=0;i<varName.size();i++){
+        StringLiteral *str = StringLiteral::Create(*ctxt, varName[i], StringLiteral::Ascii,
+                false, ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, varName[i].size() + 1), nullptr,ArrayType::Normal, 0),
+                SourceLocation());
+        tmp_argv.push_back(str);
+    }
 
     Expr *abstract_cond = M.getInternalHandlerInfo(ctxt).abstract_cond;
     CallExpr *CE = CallExpr::Create(*ctxt, abstract_cond, tmp_argv,
@@ -1559,7 +1574,7 @@ size_t getElementCount(std::vector<T> vector,T target){
 }
 
 class ConditionSynthesisTester : public BasicTester {
-    typedef std::map<unsigned long, std::set<std::vector<unsigned long>>> BranchRecordTy;
+    typedef std::map<unsigned long, std::vector<unsigned long>> BranchRecordTy;
     typedef std::map<unsigned long, std::vector<std::vector<long long> > > ValueRecordTy;
     std::vector<ExprFillInfo> infos;
     std::vector<std::set<ExprFillInfo> *> infos_set;
@@ -1642,7 +1657,7 @@ class ConditionSynthesisTester : public BasicTester {
     }
 
     bool testNegativeCases(const BenchProgram::EnvMapTy &env,
-            std::map<unsigned long,std::set<std::vector<unsigned long>>> &negative_records) {
+            std::map<unsigned long,std::vector<unsigned long>> &negative_records) {
         negative_records.clear();
         // First going to make sure it passes all negative cases
         for (TestCaseSetTy::iterator case_it = negative_cases.begin();
@@ -1671,7 +1686,8 @@ class ConditionSynthesisTester : public BasicTester {
                 if (tmp_v.size() == 0) passed = false;
                 if (passed) {
                     outlog_printf(2, "Passed in iteration!\n");
-                    negative_records[*case_it].insert(tmp_v);
+                    negative_records[*case_it]=tmp_v;
+                    break;
                 }
                 bool has_zero = false;
                 for (size_t i = 0; i < tmp_v.size(); i++)
@@ -1683,29 +1699,31 @@ class ConditionSynthesisTester : public BasicTester {
                 it_cnt ++;
             }
             // We will going to try all 1 before we finally give up this case
-            outlog_printf(2,"Trying with NEG_ARG=0!\n");
-            testEnv = env;
-            testEnv.insert(std::make_pair("IS_NEG", "1"));
-            testEnv.insert(std::make_pair("NEG_ARG", "0"));
-            testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
-            ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
-            assert( ret == 0);
-            passed = P.test(std::string("src"), *case_it, testEnv, false);
-            if (passed) {
-                std::vector<unsigned long> tmp_v = parseBranchRecord();
-                // FIXME: strange error in wireshark, we just ignore right now
-                if (tmp_v.size() == 0) {
-                    outlog_printf(0, "Strange error or non-deterministic behavior!\n");
+            if (!passed){
+                outlog_printf(2,"Trying with NEG_ARG=0!\n");
+                testEnv = env;
+                testEnv.insert(std::make_pair("IS_NEG", "1"));
+                testEnv.insert(std::make_pair("NEG_ARG", "0"));
+                testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
+                ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
+                assert( ret == 0);
+                passed = P.test(std::string("src"), *case_it, testEnv, false);
+                if (passed) {
+                    std::vector<unsigned long> tmp_v = parseBranchRecord();
+                    // FIXME: strange error in wireshark, we just ignore right now
+                    if (tmp_v.size() == 0) {
+                        outlog_printf(0, "Strange error or non-deterministic behavior!\n");
+                        continue;
+                    }
+                    assert(tmp_v.size() != 0);
+                    negative_records[*case_it]=tmp_v;
+                    for (size_t i = 0; i < tmp_v.size(); i++)
+                        outlog_printf(5, "Log %lu %lu\n", i, tmp_v[i]);
+                }
+                else {
+                    // Still failed, we are going to give up
                     continue;
                 }
-                assert(tmp_v.size() != 0);
-                negative_records[*case_it].insert(tmp_v);
-                for (size_t i = 0; i < tmp_v.size(); i++)
-                    outlog_printf(5, "Log %lu %lu\n", i, tmp_v[i]);
-            }
-            else {
-                // Still failed, we are going to give up
-                continue;
             }
             if (negative_records[*case_it].empty()) return false;
         }
@@ -1745,22 +1763,9 @@ class ConditionSynthesisTester : public BasicTester {
     }
 
     bool collectValues(const BenchProgram::EnvMapTy &env,
-            std::map<unsigned long,std::set<std::vector<unsigned long>>> &negative_records,
+            std::map<unsigned long,std::vector<unsigned long>> &negative_records,
             std::map<unsigned long,std::vector<std::vector<long long>>> &caseVMap) {
         caseVMap.clear();
-        std::map<unsigned long,std::vector<unsigned long>> final_records;
-        final_records.clear();
-        for (std::map<unsigned long,std::set<std::vector<unsigned long>>>::iterator it=negative_records.begin();
-                it!=negative_records.end();it++){
-            std::vector<unsigned long> current;
-            current.clear();
-            for (std::set<std::vector<unsigned long>>::iterator recordsIt=it->second.begin();
-                    recordsIt!=it->second.end();recordsIt++){
-                if (getElementCount(*recordsIt,(unsigned long)1)<getElementCount(current,(unsigned long)1))
-                    current=*recordsIt;
-            }
-            final_records[it->first]=current;
-        }
         // We first deal with the negative cases
         for (TestCaseSetTy::iterator tit = negative_cases.begin();
                 tit != negative_cases.end(); ++tit) {
@@ -1769,11 +1774,11 @@ class ConditionSynthesisTester : public BasicTester {
             testEnv.insert(std::make_pair("NEG_ARG", ISNEG_TMPFILE));
             testEnv.insert(std::make_pair("TMP_FILE", ISNEG_RECORDFILE));
             //FIXME: It triggers non-deterministic things, get out!
-            if (final_records.find(*tit) == final_records.end()) {
+            if (negative_records.find(*tit) == negative_records.end()) {
                 fprintf(stderr, "Error in case map, failed on case %lu!\n", *tit);
                 return false;
             }
-            writeBranchRecord(final_records,*tit);
+            writeBranchRecord(negative_records,*tit);
             std::string cmd = std::string("rm -rf ") + ISNEG_RECORDFILE;
             int ret = system(cmd.c_str());
             assert( ret == 0);
@@ -1838,22 +1843,17 @@ class ConditionSynthesisTester : public BasicTester {
             }
         }
     }
-    void dumpRecord(std::map<unsigned long,std::set<std::vector<unsigned long>>> record){
+    void dumpRecord(std::map<unsigned long,std::vector<unsigned long>> record){
         size_t debugLevel=2;
-        for (std::map<unsigned long,std::set<std::vector<unsigned long>>>::iterator mapIt=record.begin();
-                mapIt!=record.end();mapIt++){
-            outlog_printf(debugLevel,"Case %lu:\n{\n",mapIt->first);
-            for (std::set<std::vector<unsigned long> >::iterator it=mapIt->second.begin();
-                    it!=mapIt->second.end();it++){
-                outlog_printf(debugLevel,"\t[");
-                std::vector<unsigned long> temp=*it;
-                for (std::vector<unsigned long>::iterator it2=temp.begin();
-                        it2!=temp.end();it2++){
-                    outlog_printf(debugLevel,"%d, ",*it2);
-                }
-                outlog_printf(debugLevel,"]\n");
+        for (std::map<unsigned long,std::vector<unsigned long> >::iterator it=record.begin();
+                it!=record.end();it++){
+            outlog_printf(debugLevel,"\t[");
+            std::vector<unsigned long> temp=it->second;
+            for (std::vector<unsigned long>::iterator it2=temp.begin();
+                    it2!=temp.end();it2++){
+                outlog_printf(debugLevel,"%d, ",*it2);
             }
-            outlog_printf(debugLevel,"\n}\n");
+            outlog_printf(debugLevel,"]\n");
         }
     }
 
@@ -1934,7 +1934,7 @@ public:
                 for(std::vector<BenchProgram::EnvMapTy>::iterator envIt=envs.begin();envIt!=envs.end();envIt++){
                     // dumpEnv(*envIt);
                     // outlog_printf(2,"Code: %s\n",patch.c_str());
-                    std::map<unsigned long,std::set<std::vector<unsigned long>>> negative_records;
+                    std::map<unsigned long,std::vector<unsigned long>> negative_records;
                     outlog_printf(2, "Testing negative cases!\n");
                     if (!testNegativeCases(*envIt, negative_records)) {
                         // codes.clear();

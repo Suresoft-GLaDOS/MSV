@@ -633,8 +633,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             long long start = it2->first.second;
             long long end = it2->first.first;
             int case_count=0;
-            assert( start >= last_end);
-            // if (start < last_end) continue;
+            // assert( start >= last_end);
+            if (start < last_end) continue;
             if (cur_start == -1) {
                 cur_patch.clear();
                 cur_start = start;
@@ -670,27 +670,31 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
 
                 for (std::map<std::string,bool>::iterator patch_it=res1[it2->second].begin();
                         patch_it!=res1[it2->second].end();patch_it++){
-                    big_patch = patch_it->first;
-                    std::string body;
-                    if (removeSpace(top_part) == removeSpace(big_patch.substr(0, cur_start - start))) {
-                        for(int i=0;i<before_patch.size();i++){
-                            body = top_part + before_patch[i] + big_patch.substr(cur_end - start);
-                            if (patch_it->second)
-                                body = "    " + indentPatch(body, "    ");
-                            cur_patch.push_back(body);
-                        }
-                    }
-                    else {
-                        assert(removeSpace(big_patch).find(removeSpace(bottom_part))!=std::string::npos);
-                        for(int i=0;i<before_patch.size();i++){
-                            body = big_patch.substr(0, big_patch.find(mid_part))
-                                + before_patch[i] + bottom_part;
-                            if (patch_it->second)
-                                body = "    " + indentPatch(body, "    ");
-                            // outlog_printf(2,"big: %s\n",body.c_str());
-                            cur_patch.push_back(body);
-                        }
-                    }
+                    // big_patch = patch_it->first;
+                    // std::string body;
+                    // if (removeSpace(top_part) == removeSpace(big_patch.substr(0, cur_start - start))) {
+                    //     for(int i=0;i<before_patch.size();i++){
+                    //         body = top_part + before_patch[i] + big_patch.substr(cur_end - start);
+                    //         if (patch_it->second)
+                    //             body = "    " + indentPatch(body, "    ");
+                    //         cur_patch.push_back(body);
+                    //     }
+                    // }
+                    // else {
+                    //     assert(removeSpace(big_patch).find(removeSpace(bottom_part))!=std::string::npos);
+                    //     for(int i=0;i<before_patch.size();i++){
+                    //         body = big_patch.substr(0, big_patch.find(mid_part))
+                    //             + before_patch[i] + bottom_part;
+                    //         if (patch_it->second)
+                    //             body = "    " + indentPatch(body, "    ");
+                    //         // outlog_printf(2,"big: %s\n",body.c_str());
+                    //         cur_patch.push_back(body);
+                    //     }
+                    // }
+                    std::string patch=patch_it->first;
+                    if (patch_it->second)
+                        patch = "    " + indentPatch(patch_it->first, "    ");
+                    cur_patch.push_back(patch);
                 }
                 cur_start = start;
                 cur_end = end;

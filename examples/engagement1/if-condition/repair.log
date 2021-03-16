@@ -7,34 +7,30 @@ Processing test.c
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total 104 different partial repair candidate templates!!
-BasicTester pointer: 0x55a4a0546080
-StringConstTester pointer: 0x55a4a04b5af0
-CondTester pointer: 0x55a4a0544270
+BasicTester pointer: 0x561ae88aba90
+StringConstTester pointer: 0x561ae881cba0
+CondTester pointer: 0x561ae87b2500
 Generating Candidates...
 Candidates size: 108
 Generating Codes...
-[3] Preprocess the following candidate with CondTester:
+[2] Preprocess the following candidate with CondTester:
 108 Candidates
 Generating patches with CondTester...
 test
 Generating patches...
 Patch Generated!
-ID count: 224
-[3] CondTester, a patch instance with id 0:
+ID count: 86
+[2] CondTester, a patch instance with id 0:
 codes size: 1
 res size: 1
 result size: 107
 Begin building test
-Total macros: 224
+Total macros: 86
 Saving this fix to: __fixed_test.c
 Building with no macros...
 Trying to build with all macros...
-Build failed, Trying to find fail macros...
-Testing with Delta-Debugging...
-Building final program...
-Total success macros: 211
-Success to build final program: __fixed_test.c
-[11] CondTester, Testing instance id 0:
+Build Success!
+[3] CondTester, Testing instance id 0:
 
 Total ID: 3
 Testing with ID 0
@@ -48,19 +44,7 @@ Iteration 0
 Branch 0: 0
 Iteration 1
 Branch 0: 1
-Passed in iteration!
 Trying with NEG_ARG=0!
-Finally tests failed
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[11] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -72,7 +56,6 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Trying with NEG_ARG=0!
-Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -84,7 +67,6 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Trying with NEG_ARG=0!
-Finally tests failed
 Testing with ID 1
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -97,7 +79,6 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Trying with NEG_ARG=0!
-Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -109,7 +90,6 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Trying with NEG_ARG=0!
-Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -121,7 +101,6 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Trying with NEG_ARG=0!
-Finally tests failed
 Testing with ID 2
 Testing negative cases!
 Testing 2 (with abstract condition)
@@ -134,7 +113,6 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Trying with NEG_ARG=0!
-Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -146,7 +124,6 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Trying with NEG_ARG=0!
-Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -158,7 +135,28 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Trying with NEG_ARG=0!
-Finally tests failed
+Testing negative cases!
+Testing 2 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID2: 17
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 2 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID2: 18
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -167,7 +165,6 @@ __ID1: 0
 __ID2: 19
 Iteration 0
 Trying with NEG_ARG=0!
-Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -175,8 +172,16 @@ __ID0: 0
 __ID1: 0
 __ID2: 20
 Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Passed in iteration!
+Passed Negative Cases wiht CondTester!
+	[1, ]
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+[6] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -184,1019 +189,24 @@ __ID0: 0
 __ID1: 0
 __ID2: 21
 Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
 Trying with NEG_ARG=0!
-Finally tests failed
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
 __ID0: 0
 __ID1: 0
-__ID2: 32
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 33
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 34
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 45
+__ID2: 22
 Iteration 0
 Branch 0: 0
 Iteration 1
 Branch 0: 1
 Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 46
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 47
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 58
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 59
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 60
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 65
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 66
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 67
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 68
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 69
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 70
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 71
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 72
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 73
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 74
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 75
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 76
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 77
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 78
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 79
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 80
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 81
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 82
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 83
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 84
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 85
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 86
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 87
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 88
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 89
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 90
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 91
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 92
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 93
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 94
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 95
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[29] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 96
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[30] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 97
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[31] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 98
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[32] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 99
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[32] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 100
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[33] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 101
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[33] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 102
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[34] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 103
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[34] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 104
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[38] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 105
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 106
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 107
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 108
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 109
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 110
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 111
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 112
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 113
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 114
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 115
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 116
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 117
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 118
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 119
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 120
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 121
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 122
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 123
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 124
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 131
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 132
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 133
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 144
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[45] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 145
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Passed in iteration!
-Trying with NEG_ARG=0!
-Passed Negative Cases wiht CondTester!
-Case 2:
-{
-	[1, ]
-
-}
-Testing positive cases!
-Passed Positive Cases
-Collect values for post processing!
-[46] Passed!
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 146
-Iteration 0
-Branch 0: 0
-Iteration 1
-Branch 0: 1
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 157
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 158
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
-Testing negative cases!
-Testing 2 (with abstract condition)
-Printing IDs:
-__ID0: 0
-__ID1: 0
-__ID2: 159
-Iteration 0
-Trying with NEG_ARG=0!
-Finally tests failed
 The total number of explored concrete patches: 0
 Repair process ends without working fix!!
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total number of compiles: 1
-Total number of test eval: 316
+Total number of test eval: 48

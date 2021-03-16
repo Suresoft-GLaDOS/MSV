@@ -522,6 +522,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         if (repair_build_cnt > 10)
             timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
         int ret=1;
+        if (true)
         {
             //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
             ExecutionTimer timer;
