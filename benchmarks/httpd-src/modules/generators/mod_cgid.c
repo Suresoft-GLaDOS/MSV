@@ -218,7 +218,7 @@ typedef struct {
 #define cgi_server_conf cgid_server_conf
 #define cgi_module cgid_module
 
-#ifdef HAVE_CGID_FDPASSING
+#ifdef HAVE_FDPASSING
 /* Pull in CGI bucket implementation. */
 #define WANT_CGI_BUCKET
 #endif
@@ -353,7 +353,7 @@ static apr_status_t close_unix_socket(void *thefd)
 static apr_status_t sock_readhdr(int fd, int *errfd, void *vbuf, size_t buf_size)
 {
     int rc;
-#ifndef HAVE_CGID_FDPASSING
+#ifndef HAVE_FDPASSING
     char *buf = vbuf;
     size_t bytes_read = 0;
 
@@ -458,7 +458,7 @@ static apr_status_t sock_writev(int fd, int auxfd, request_rec *r, int count, ..
     }
     va_end(ap);
 
-#ifndef HAVE_CGID_FDPASSING
+#ifndef HAVE_FDPASSING
     do {
         rc = writev(fd, vec, count);
     } while (rc < 0 && errno == EINTR);
@@ -744,6 +744,9 @@ static int cgid_server(void *data)
         return errno;
     }
 
+    apr_pool_cleanup_register(pcgi, (void *)((long)sd),
+                              close_unix_socket, close_unix_socket);
+
     omask = umask(0077); /* so that only Apache can use socket */
     rc = bind(sd, (struct sockaddr *)server_addr, server_addr_len);
     umask(omask); /* can't fail, so can't clobber errno */
@@ -777,9 +780,6 @@ static int cgid_server(void *data)
             return errno;
         }
     }
-
-    apr_pool_cleanup_register(pcgi, (void *)((long)sd),
-                              close_unix_socket, close_unix_socket);
 
     /* if running as root, switch to configured user/group */
     if ((rc = ap_run_drop_privileges(pcgi, ap_server_conf)) != 0) {
@@ -1541,7 +1541,7 @@ static int cgid_handler(request_rec *r)
     }
     */
 
-#ifdef HAVE_CGID_FDPASSING
+#ifdef HAVE_FDPASSING
     rv = apr_file_pipe_create(&script_err, &errpipe_out, r->pool);
     if (rv) {
         return log_scripterror(r, conf, HTTP_SERVICE_UNAVAILABLE, rv, APLOGNO(10176),
@@ -1623,7 +1623,7 @@ static int cgid_handler(request_rec *r)
     shutdown(sd, 1);
 
     bb = apr_brigade_create(r->pool, c->bucket_alloc);
-#ifdef HAVE_CGID_FDPASSING
+#ifdef HAVE_FDPASSING
     b = cgi_bucket_create(r, dc->timeout, tempsock, script_err, c->bucket_alloc);
     if (b == NULL)
         return HTTP_INTERNAL_SERVER_ERROR; /* should call log_scripterror() w/ _UNAVAILABLE? */

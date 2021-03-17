@@ -27,16 +27,6 @@ uname -v = #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH: /angelix/build/criu/criu
-PATH: /angelix/build/criu/crit
-PATH: /angelix/build/perl/bin
-PATH: /angelix/build/bin/
-PATH: /angelix/src/tools
-PATH: /angelix/build/z3_2_19/bin/
-PATH: /angelix/build/z3/build/
-PATH: /angelix/src/klee/Release+Asserts/bin/
-PATH: /angelix/build/llvm-2.9/Release+Asserts/bin/
-PATH: /angelix/build/llvm-gcc4.2-2.9-x86_64-linux/bin/
 PATH: /usr/local/sbin
 PATH: /usr/local/bin
 PATH: /usr/sbin
@@ -429,12 +419,9 @@ configure:7987: checking lex output file root
 configure:8001: result: lex.yy
 configure:8006: checking lex library
 configure:8020: gcc -o conftest -g -O2   conftest.c   >&5
-/tmp/ccM2emDa.o: In function `input':
-/root/project/prophet-gpl/benchmarks/php-deps/bison-2.5.1/lex.yy.c:1180: undefined reference to `yywrap'
-/tmp/ccM2emDa.o: In function `yylex':
-/root/project/prophet-gpl/benchmarks/php-deps/bison-2.5.1/lex.yy.c:871: undefined reference to `yywrap'
-/tmp/ccM2emDa.o: In function `main':
-/root/project/prophet-gpl/benchmarks/php-deps/bison-2.5.1/conftest.l:17: undefined reference to `yywrap'
+lex.yy.c:1180: error: undefined reference to 'yywrap'
+lex.yy.c:871: error: undefined reference to 'yywrap'
+conftest.l:17: error: undefined reference to 'yywrap'
 collect2: error: ld returned 1 exit status
 configure:8020: $? = 1
 configure: failed program was:
@@ -2448,8 +2435,7 @@ configure:8730: $? = 0
 configure:8738: result: yes
 configure:8870: checking for _set_invalid_parameter_handler
 configure:8870: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccGgEnGZ.o: In function `main':
-/root/project/prophet-gpl/benchmarks/php-deps/bison-2.5.1/conftest.c:85: undefined reference to `_set_invalid_parameter_handler'
+conftest.c:85: error: undefined reference to '_set_invalid_parameter_handler'
 collect2: error: ld returned 1 exit status
 configure:8870: $? = 1
 configure: failed program was:
@@ -2556,8 +2542,7 @@ configure:8870: $? = 0
 configure:8870: result: yes
 configure:8870: checking for vasnprintf
 configure:8870: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccrQXdYi.o: In function `main':
-/root/project/prophet-gpl/benchmarks/php-deps/bison-2.5.1/conftest.c:88: undefined reference to `vasnprintf'
+conftest.c:88: error: undefined reference to 'vasnprintf'
 collect2: error: ld returned 1 exit status
 configure:8870: $? = 1
 configure: failed program was:
@@ -4030,7 +4015,7 @@ configure:11015: gcc -o conftest -g -O2   conftest.c  >&5
 configure:11015: $? = 0
 configure:11015: ./conftest
 *** %n in writable segment detected ***
-./configure: line 2803: 48162 Aborted                 (core dumped) ./conftest$ac_exeext
+./configure: line 2803: 56190 Aborted                 (core dumped) ./conftest$ac_exeext
 configure:11015: $? = 134
 configure: program exited with status 134
 configure: failed program was:
@@ -5350,8 +5335,7 @@ conftest.c:136:1: warning: null argument where non-null required (argument 1) [-
 conftest.c:137:16: warning: null argument where non-null required (argument 1) [-Wnonnull]
                 pthread_mutexattr_init((pthread_mutexattr_t*)0);
                 ^~~~~~~~~~~~~~~~~~~~~~
-/tmp/ccIXg0ID.o: In function `main':
-/root/project/prophet-gpl/benchmarks/php-deps/bison-2.5.1/conftest.c:137: undefined reference to `pthread_mutexattr_init'
+conftest.c:137: error: undefined reference to 'pthread_mutexattr_init'
 collect2: error: ld returned 1 exit status
 configure:15917: $? = 1
 configure: failed program was:
@@ -9085,7 +9069,7 @@ configure:28231: gcc -o conftest -g -O2   conftest.c  >&5
 configure:28231: $? = 0
 configure:28231: ./conftest
 *** %n in writable segment detected ***
-./configure: line 2803: 52076 Aborted                 (core dumped) ./conftest$ac_exeext
+./configure: line 2803: 60147 Aborted                 (core dumped) ./conftest$ac_exeext
 configure:28231: $? = 134
 configure: program exited with status 134
 configure: failed program was:

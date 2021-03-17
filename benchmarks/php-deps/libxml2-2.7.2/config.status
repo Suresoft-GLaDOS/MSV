@@ -606,7 +606,7 @@ s,@MV@,|#_!!_#|/bin/mv,g
 s,@TAR@,|#_!!_#|/bin/tar,g
 s,@PERL@,|#_!!_#|/usr/bin/perl,g
 s,@WGET@,|#_!!_#|/usr/bin/wget,g
-s,@XMLLINT@,|#_!!_#|/usr/bin/xmllint,g
+s,@XMLLINT@,|#_!!_#|/usr/local/bin/xmllint,g
 CEOF
 cat >"$tmp/subs-2.sed" <<\CEOF
 /@[a-zA-Z_][a-zA-Z_0-9]*@/!b
@@ -730,7 +730,7 @@ s,@PYTHON_INCLUDES@,|#_!!_#|/usr/include/python2.7,g
 s,@PYTHON_SITE_PACKAGES@,|#_!!_#|/usr/lib/python2.7/dist-packages,g
 s,@M_LIBS@,|#_!!_#|-lm,g
 s,@RDL_LIBS@,|#_!!_#|,g
-s,@RELDATE@,|#_!!_#|Fri Jan 22 2021,g
+s,@RELDATE@,|#_!!_#|Wed Mar 17 2021,g
 s,@PYTHON_TESTS@,|#_!!_#| RelaxNGPythonTests SchemasPythonTests,g
 s,@LIBOBJS@,|#_!!_#|,g
 s,@LTLIBOBJS@,|#_!!_#|,g

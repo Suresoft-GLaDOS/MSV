@@ -615,7 +615,7 @@ uninstall-am:
 
 all-local: php-src lighttpd-src libtiff-src libtiff-tests libtiff-tests2 gmp-src gmp-tests gzip-src gzip-tests python-src python-tests wireshark-src wireshark-tests apr-src httpd-src subversion-src curl-src
 
-php-src :
+php-src:
 	git clone https://github.com/php/php-src.git php-src
 
 lighttpd-src:
@@ -707,7 +707,7 @@ apr-src:
 	svn co http://svn.apache.org/repos/asf/apr/apr/trunk apr-src
 
 httpd-src:
-	svn co http://svn.apache.org/repos/asf/httpd/httpd/trunk httpd-src
+	git clone https://github.com/apache/httpd.git httpd-src
 
 subversion-src:
 	svn co http://svn.apache.org/repos/asf/subversion/trunk subversion-src

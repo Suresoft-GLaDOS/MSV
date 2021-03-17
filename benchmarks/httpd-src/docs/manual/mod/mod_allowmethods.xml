@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE modulesynopsis SYSTEM "../style/modulesynopsis.dtd">
 <?xml-stylesheet type="text/xsl" href="../style/manual.en.xsl"?>
-<!-- $LastChangedRevision: 1883203 $ -->
+<!-- $LastChangedRevision$ -->
 
 <!--
 Upon adding a new module XML doc, you will need to:

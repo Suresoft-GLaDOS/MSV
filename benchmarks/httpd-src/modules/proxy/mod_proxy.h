@@ -1336,6 +1336,25 @@ PROXY_DECLARE(int) ap_proxy_tunnel_run(proxy_tunnel_rec *tunnel);
 APR_DECLARE_OPTIONAL_FN(int, ap_proxy_clear_connection,
         (request_rec *r, apr_table_t *headers));
 
+/**
+ * Configure and create workers (and balancer) in mod_balancer.
+ * @param r request
+ * @param params table with the parameters like b=mycluster etc.
+ * @return 404 when the worker/balancer doesn't exist,
+ *         400 if something is invalid
+ *         200 for success.
+ */ 
+APR_DECLARE_OPTIONAL_FN(apr_status_t, balancer_manage,
+        (request_rec *, apr_table_t *params));
+
+/**
+ * Do a AJP CPING and wait for CPONG on the socket
+ *
+ */
+APR_DECLARE_OPTIONAL_FN(apr_status_t, ajp_handle_cping_cpong,
+        (apr_socket_t *sock, request_rec *r,
+         apr_interval_time_t timeout));
+
 
 /**
  * @param socket        socket to test

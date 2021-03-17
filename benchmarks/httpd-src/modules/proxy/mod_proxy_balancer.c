@@ -1087,6 +1087,8 @@ static void push2table(const char *input, apr_table_t *params,
         }
         ap_unescape_url(key);
         ap_unescape_url(val);
+        /* hcuri, worker name, balancer name, at least  are escaped when building the form, so twice */
+        ap_unescape_url(val);
         if (allowed == NULL) { /* allow all */
             apr_table_set(params, key, val);
         }
@@ -1105,16 +1107,18 @@ static void push2table(const char *input, apr_table_t *params,
 }
 
 /*
- * Process the parameters and add or update the worker of the balancer
+ * Process the parameters and add or update the worker of the
+ * balancer.  Must only be called if the nonce has been validated to
+ * match, to avoid XSS attacks.
  */
 static int balancer_process_balancer_worker(request_rec *r, proxy_server_conf *conf,
                                             proxy_balancer *bsel,
-                                            proxy_worker *wsel, int ok2change,
+                                            proxy_worker *wsel,
                                             apr_table_t *params)
 {
     apr_status_t rv;
     /* First set the params */
-    if (wsel && ok2change) {
+    if (wsel) {
         const char *val;
         int was_usable = PROXY_WORKER_IS_USABLE(wsel);
 
@@ -1213,7 +1217,7 @@ static int balancer_process_balancer_worker(request_rec *r, proxy_server_conf *c
                 *wsel->s->hcexpr = '\0';
         }
         /* If the health check method doesn't support an expr, then null it */
-        if (wsel->s->method == NONE || wsel->s->method == TCP) {
+        if (wsel->s->method == NONE || wsel->s->method == TCP || wsel->s->method == CPING) {
             *wsel->s->hcexpr = '\0';
         }
         /* if enabling, we need to reset all lb params */
@@ -1223,7 +1227,7 @@ static int balancer_process_balancer_worker(request_rec *r, proxy_server_conf *c
 
     }
 
-    if (bsel && ok2change) {
+    if (bsel) {
         const char *val;
         int ival;
         ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, APLOGNO(01193)
@@ -1374,6 +1378,42 @@ static int balancer_process_balancer_worker(request_rec *r, proxy_server_conf *c
 }
 
 /*
+ * Process a request for balancer or worker management from another module
+ */
+static apr_status_t balancer_manage(request_rec *r, apr_table_t *params)
+{
+    void *sconf;
+    proxy_server_conf *conf;
+    proxy_balancer *bsel = NULL;
+    proxy_worker *wsel = NULL;
+    const char *name;
+    sconf = r->server->module_config;
+    conf = (proxy_server_conf *) ap_get_module_config(sconf, &proxy_module);
+
+    /* Process the parameters */
+    if ((name = apr_table_get(params, "b"))) {
+        ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "balancer_manage "
+                  "balancer: %s", name);
+        bsel = ap_proxy_get_balancer(r->pool, conf,
+            apr_pstrcat(r->pool, BALANCER_PREFIX, name, NULL), 0);
+    }
+
+    if ((name = apr_table_get(params, "w"))) {
+        ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "balancer_manage "
+                  "worker: %s", name);
+        wsel = ap_proxy_get_worker(r->pool, bsel, conf, name);
+    }
+    if (bsel) {
+        ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "balancer_manage "
+                  "balancer: %s",  bsel->s->name);
+        return(balancer_process_balancer_worker(r, conf, bsel, wsel, params));
+    }
+    ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "balancer_manage failed: "
+                      "No balancer!");
+    return HTTP_BAD_REQUEST;
+}
+
+/*
  * builds the page and links to configure via HTLM or XML.
  */
 static void balancer_display_page(request_rec *r, proxy_server_conf *conf,
@@ -1400,6 +1440,7 @@ static void balancer_display_page(request_rec *r, proxy_server_conf *conf,
             ap_rputs("    <httpd:balancer>\n", r);
             /* Start proxy_balancer */
             ap_rvputs(r, "      <httpd:name>", balancer->s->name, "</httpd:name>\n", NULL);
+            ap_rvputs(r, "      <httpd:nonce>", balancer->s->nonce, "</httpd:nonce>\n", NULL);
             if (*balancer->s->sticky) {
                 ap_rvputs(r, "      <httpd:stickysession>", ap_escape_html(r->pool, balancer->s->sticky),
                           "</httpd:stickysession>\n", NULL);
@@ -1865,7 +1906,6 @@ static int balancer_handler(request_rec *r)
     proxy_worker *wsel = NULL;
     apr_table_t *params;
     int i;
-    int ok2change = 1;
     const char *name, *ref;
     apr_status_t rv;
 
@@ -1946,30 +1986,23 @@ static int balancer_handler(request_rec *r)
 
 
     /* Check that the supplied nonce matches this server's nonce;
-     * otherwise ignore all parameters, to prevent a CSRF attack. */
-    if (!bsel ||
-        (*bsel->s->nonce &&
-         (
-          (name = apr_table_get(params, "nonce")) == NULL ||
-          strcmp(bsel->s->nonce, name) != 0
-         )
-        )
-       ) {
-        ok2change = 0;
+     * otherwise don't process any input, preventing a CSRF
+     * attacks. */
+    if (bsel
+        && (*bsel->s->nonce
+            && ((name = apr_table_get(params, "nonce")) != NULL
+                && strcmp(bsel->s->nonce, name) == 0))) {
+        /* Process the parameters and add the worker to the balancer */
+        rv = balancer_process_balancer_worker(r, conf, bsel, wsel, params);
+        if (rv != APR_SUCCESS) {
+            return HTTP_BAD_REQUEST;
+        }
     }
 
-    /* process the parameters and  add the worker to the balancer */
-    rv = balancer_process_balancer_worker(r, conf, bsel, wsel, ok2change, params);
-    if (rv != APR_SUCCESS) {
-       return HTTP_BAD_REQUEST;
-    }
+    /* Produce response, in XML if required by parameters. */
+    balancer_display_page(r, conf, bsel, wsel,
+                          apr_table_get(params, "xml") != NULL);
 
-    /* display the HTML or XML page */
-    if (apr_table_get(params, "xml")) {
-        balancer_display_page(r, conf, bsel, wsel, 1);
-    } else {
-        balancer_display_page(r, conf, bsel, wsel, 0);
-    }
     return DONE;
 }
 
@@ -2030,6 +2063,7 @@ static void ap_proxy_balancer_register_hook(apr_pool_t *p)
     static const char *const aszPred[] = { "mpm_winnt.c", "mod_slotmem_shm.c", NULL};
     static const char *const aszPred2[] = { "mod_proxy.c", NULL};
      /* manager handler */
+    APR_REGISTER_OPTIONAL_FN(balancer_manage);
     ap_hook_post_config(balancer_post_config, aszPred2, NULL, APR_HOOK_MIDDLE);
     ap_hook_pre_config(balancer_pre_config, NULL, NULL, APR_HOOK_MIDDLE);
     ap_hook_handler(balancer_handler, NULL, NULL, APR_HOOK_FIRST);

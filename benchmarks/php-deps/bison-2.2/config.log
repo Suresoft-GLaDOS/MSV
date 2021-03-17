@@ -27,16 +27,6 @@ hostinfo               = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH: /angelix/build/criu/criu
-PATH: /angelix/build/criu/crit
-PATH: /angelix/build/perl/bin
-PATH: /angelix/build/bin/
-PATH: /angelix/src/tools
-PATH: /angelix/build/z3_2_19/bin/
-PATH: /angelix/build/z3/build/
-PATH: /angelix/src/klee/Release+Asserts/bin/
-PATH: /angelix/build/llvm-2.9/Release+Asserts/bin/
-PATH: /angelix/build/llvm-gcc4.2-2.9-x86_64-linux/bin/
 PATH: /usr/local/sbin
 PATH: /usr/local/bin
 PATH: /usr/sbin
@@ -490,7 +480,7 @@ configure:6080: found /usr/bin/flex
 configure:6090: result: flex
 configure:6103: checking for yywrap in -lfl
 configure:6133: gcc -o conftest -g -O2   conftest.c -lfl   >&5
-/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/libfl.so: undefined reference to `yylex'
+/usr/lib/x86_64-linux-gnu/libfl.so: error: undefined reference to 'yylex'
 collect2: error: ld returned 1 exit status
 configure:6139: $? = 1
 configure: failed program was:

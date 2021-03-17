@@ -9,7 +9,6 @@
 
 #define CORE_PRIVATE
 
-#include "apr.h"
 #include "apr_allocator.h"
 #include "apr_atomic.h"
 #include "apr_dso.h"
