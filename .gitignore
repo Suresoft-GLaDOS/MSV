@@ -7,4 +7,9 @@ src/prophet
 src/playground
 .vscode
 src/*.la
-src/.*
+examples/engagement1/bresenham/DD.log
+examples/engagement1/bresenham/result.log
+examples/engagement1/bresenham/build.log
+examples/engagement1/if-condition/DD.log
+examples/engagement1/if-condition/build.log
+examples/engagement1/if-condition/result.log

@@ -4,9 +4,9 @@ Processing bresenham.cpp
 Total 433 different repair schemas!!!!
 Total 991 different repair candidate templates for scoring!!!
 Total 625 different partial repair candidate templates!!
-BasicTester pointer: 0x55ea050a0d60
-StringConstTester pointer: 0x55ea0499e3d0
-CondTester pointer: 0x55ea04a1ffb0
+BasicTester pointer: 0x562ffed83280
+StringConstTester pointer: 0x562ffe63b3d0
+CondTester pointer: 0x562ffe6bcfb0
 Generating Candidates...
 Candidates size: 433
 Generating Codes...
@@ -31,7 +31,7 @@ Testing with Delta-Debugging...
 Building final program...
 Total success macros: 205
 Success to build final program: __fixed_bresenham.cpp
-[177] CondTester, Testing instance id 0:
+[178] CondTester, Testing instance id 0:
 
 Total ID: 12
 Testing with ID 0
@@ -90,12 +90,6 @@ __ID9: 0
 Iteration 0
 Branch 0: 0
 Iteration 1
-Branch 0: 0
-Iteration 2
-Branch 0: 0
-Iteration 3
-Branch 0: 0
-Iteration 4
 Branch 0: 1
 Trying with NEG_ARG=0!
 Testing negative cases!
@@ -116,8 +110,6 @@ __ID9: 0
 Iteration 0
 Branch 0: 0
 Iteration 1
-Branch 0: 0
-Iteration 2
 Branch 0: 1
 Trying with NEG_ARG=0!
 Testing with ID 1
@@ -176,8 +168,6 @@ __ID9: 0
 Iteration 0
 Branch 0: 0
 Iteration 1
-Branch 0: 0
-Iteration 2
 Branch 0: 1
 Trying with NEG_ARG=0!
 Testing negative cases!
@@ -198,12 +188,6 @@ __ID9: 0
 Iteration 0
 Branch 0: 0
 Iteration 1
-Branch 0: 0
-Iteration 2
-Branch 0: 0
-Iteration 3
-Branch 0: 0
-Iteration 4
 Branch 0: 1
 Trying with NEG_ARG=0!
 Testing with ID 2
@@ -262,8 +246,6 @@ __ID9: 0
 Iteration 0
 Branch 0: 0
 Iteration 1
-Branch 0: 0
-Iteration 2
 Branch 0: 1
 Trying with NEG_ARG=0!
 Testing negative cases!
@@ -284,8 +266,6 @@ __ID9: 0
 Iteration 0
 Branch 0: 0
 Iteration 1
-Branch 0: 0
-Iteration 2
 Branch 0: 1
 Trying with NEG_ARG=0!
 Testing negative cases!
@@ -323,8 +303,6 @@ __ID9: 0
 Iteration 0
 Branch 0: 0
 Iteration 1
-Branch 0: 0
-Iteration 2
 Branch 0: 1
 Trying with NEG_ARG=0!
 Testing with ID 3
@@ -354,7 +332,7 @@ Iteration 1
 Branch 0: 0
 Branch 1: 0
 Branch 2: 0
-Branch 3: 1
+Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 2
@@ -362,57 +340,57 @@ Branch 0: 1
 Branch 1: 0
 Branch 2: 0
 Branch 3: 0
-Branch 4: 1
-Branch 5: 1
+Branch 4: 0
+Branch 5: 0
 Iteration 3
-Branch 0: 1
-Branch 1: 0
-Branch 2: 0
-Branch 3: 1
-Branch 4: 1
-Branch 5: 1
-Iteration 4
 Branch 0: 1
 Branch 1: 1
 Branch 2: 0
 Branch 3: 1
 Branch 4: 0
 Branch 5: 0
-Iteration 5
+Iteration 4
 Branch 0: 1
-Branch 1: 0
+Branch 1: 1
 Branch 2: 0
 Branch 3: 1
 Branch 4: 0
-Branch 5: 0
-Iteration 6
+Branch 5: 1
+Iteration 5
 Branch 0: 1
-Branch 1: 0
+Branch 1: 1
 Branch 2: 0
 Branch 3: 0
 Branch 4: 0
-Branch 5: 0
+Branch 5: 1
+Iteration 6
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
 Iteration 7
 Branch 0: 0
-Branch 1: 0
-Branch 2: 0
-Branch 3: 1
-Branch 4: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
 Branch 5: 1
 Iteration 8
 Branch 0: 0
-Branch 1: 0
+Branch 1: 1
 Branch 2: 1
 Branch 3: 1
-Branch 4: 1
+Branch 4: 0
 Branch 5: 1
 Iteration 9
 Branch 0: 0
-Branch 1: 0
+Branch 1: 1
 Branch 2: 1
 Branch 3: 1
-Branch 4: 1
-Branch 5: 0
+Branch 4: 0
+Branch 5: 1
 Trying with NEG_ARG=0!
 Testing negative cases!
 Testing 1 (with abstract condition)
@@ -438,37 +416,37 @@ Branch 4: 0
 Branch 5: 0
 Iteration 1
 Branch 0: 1
-Branch 1: 1
-Branch 2: 0
+Branch 1: 0
+Branch 2: 1
 Branch 3: 1
 Branch 4: 0
-Branch 5: 0
+Branch 5: 1
 Iteration 2
 Branch 0: 1
 Branch 1: 1
-Branch 2: 0
+Branch 2: 1
 Branch 3: 1
-Branch 4: 1
-Branch 5: 0
+Branch 4: 0
+Branch 5: 1
 Iteration 3
-Branch 0: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Branch 0: 1
 Branch 1: 1
 Branch 2: 1
 Branch 3: 0
 Branch 4: 1
-Branch 5: 0
-Iteration 4
-Branch 0: 0
-Branch 1: 1
-Branch 2: 0
-Branch 3: 1
-Branch 4: 1
 Branch 5: 1
 Iteration 5
 Branch 0: 0
-Branch 1: 0
-Branch 2: 0
-Branch 3: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
 Branch 4: 1
 Branch 5: 1
 Iteration 6
@@ -479,26 +457,26 @@ Branch 3: 1
 Branch 4: 1
 Branch 5: 1
 Iteration 7
-Branch 0: 1
+Branch 0: 0
 Branch 1: 1
-Branch 2: 0
+Branch 2: 1
 Branch 3: 1
-Branch 4: 1
-Branch 5: 0
+Branch 4: 0
+Branch 5: 1
 Iteration 8
 Branch 0: 0
-Branch 1: 0
-Branch 2: 0
-Branch 3: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
 Branch 4: 0
 Branch 5: 1
 Iteration 9
 Branch 0: 0
 Branch 1: 1
-Branch 2: 0
-Branch 3: 1
+Branch 2: 1
+Branch 3: 0
 Branch 4: 0
-Branch 5: 1
+Branch 5: 0
 Trying with NEG_ARG=0!
 Testing negative cases!
 Testing 1 (with abstract condition)
@@ -523,67 +501,67 @@ Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 1
-Branch 0: 1
+Branch 0: 0
 Branch 1: 1
 Branch 2: 0
-Branch 3: 1
+Branch 3: 0
 Branch 4: 0
-Branch 5: 1
+Branch 5: 0
 Iteration 2
-Branch 0: 1
+Branch 0: 0
 Branch 1: 1
 Branch 2: 0
 Branch 3: 1
 Branch 4: 0
 Branch 5: 0
 Iteration 3
-Branch 0: 1
-Branch 1: 0
-Branch 2: 0
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
 Branch 3: 1
 Branch 4: 0
 Branch 5: 0
 Iteration 4
-Branch 0: 0
-Branch 1: 0
-Branch 2: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
 Branch 3: 1
 Branch 4: 0
 Branch 5: 0
 Iteration 5
-Branch 0: 1
+Branch 0: 0
 Branch 1: 0
-Branch 2: 0
+Branch 2: 1
 Branch 3: 1
-Branch 4: 0
+Branch 4: 1
 Branch 5: 0
 Iteration 6
 Branch 0: 0
-Branch 1: 1
+Branch 1: 0
 Branch 2: 1
 Branch 3: 1
 Branch 4: 1
 Branch 5: 0
 Iteration 7
-Branch 0: 0
-Branch 1: 1
+Branch 0: 1
+Branch 1: 0
 Branch 2: 1
 Branch 3: 1
 Branch 4: 1
-Branch 5: 1
+Branch 5: 0
 Iteration 8
 Branch 0: 0
-Branch 1: 1
+Branch 1: 0
 Branch 2: 1
-Branch 3: 0
+Branch 3: 1
 Branch 4: 1
 Branch 5: 0
 Iteration 9
 Branch 0: 0
-Branch 1: 1
+Branch 1: 0
 Branch 2: 1
 Branch 3: 0
-Branch 4: 0
+Branch 4: 1
 Branch 5: 0
 Trying with NEG_ARG=0!
 Testing with ID 4
@@ -617,18 +595,60 @@ Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 2
-Branch 0: 0
+Branch 0: 1
 Branch 1: 1
 Branch 2: 0
 Branch 3: 0
-Branch 4: 1
+Branch 4: 0
 Branch 5: 0
 Iteration 3
 Branch 0: 1
 Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 5
+Branch 0: 1
+Branch 1: 0
 Branch 2: 1
 Branch 3: 1
-Branch 4: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 6
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 7
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 8
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 9
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
 Branch 5: 1
 Trying with NEG_ARG=0!
 Testing negative cases!
@@ -661,59 +681,59 @@ Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 2
-Branch 0: 1
-Branch 1: 1
+Branch 0: 0
+Branch 1: 0
 Branch 2: 1
 Branch 3: 1
-Branch 4: 0
+Branch 4: 1
 Branch 5: 0
 Iteration 3
-Branch 0: 1
-Branch 1: 1
-Branch 2: 1
-Branch 3: 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 4
-Branch 0: 1
-Branch 1: 1
+Branch 0: 0
+Branch 1: 0
 Branch 2: 0
 Branch 3: 0
-Branch 4: 0
-Branch 5: 1
+Branch 4: 1
+Branch 5: 0
 Iteration 5
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 6
 Branch 0: 0
 Branch 1: 1
 Branch 2: 0
-Branch 3: 0
-Branch 4: 0
-Branch 5: 1
-Iteration 6
-Branch 0: 1
-Branch 1: 1
-Branch 2: 0
-Branch 3: 0
-Branch 4: 0
+Branch 3: 1
+Branch 4: 1
 Branch 5: 1
 Iteration 7
-Branch 0: 1
-Branch 1: 1
+Branch 0: 0
+Branch 1: 0
 Branch 2: 0
-Branch 3: 0
-Branch 4: 0
-Branch 5: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
 Iteration 8
 Branch 0: 1
-Branch 1: 1
-Branch 2: 0
-Branch 3: 0
-Branch 4: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
 Branch 5: 0
 Iteration 9
-Branch 0: 1
-Branch 1: 1
-Branch 2: 0
-Branch 3: 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
 Branch 4: 1
 Branch 5: 0
 Trying with NEG_ARG=0!
@@ -741,64 +761,64 @@ Branch 4: 0
 Branch 5: 0
 Iteration 1
 Branch 0: 0
-Branch 1: 1
-Branch 2: 0
-Branch 3: 0
-Branch 4: 0
-Branch 5: 0
-Iteration 2
-Branch 0: 0
-Branch 1: 1
-Branch 2: 1
-Branch 3: 0
-Branch 4: 0
-Branch 5: 0
-Iteration 3
-Branch 0: 0
-Branch 1: 1
+Branch 1: 0
 Branch 2: 1
 Branch 3: 0
 Branch 4: 0
 Branch 5: 1
+Iteration 2
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 3
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
 Iteration 4
 Branch 0: 0
 Branch 1: 0
 Branch 2: 1
-Branch 3: 0
+Branch 3: 1
 Branch 4: 0
-Branch 5: 1
+Branch 5: 0
 Iteration 5
-Branch 0: 0
+Branch 0: 1
 Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 6
+Branch 0: 1
+Branch 1: 1
 Branch 2: 0
 Branch 3: 0
 Branch 4: 0
 Branch 5: 1
-Iteration 6
-Branch 0: 0
+Iteration 7
+Branch 0: 1
 Branch 1: 1
 Branch 2: 0
 Branch 3: 1
 Branch 4: 0
-Branch 5: 0
-Iteration 7
-Branch 0: 0
+Branch 5: 1
+Iteration 8
+Branch 0: 1
 Branch 1: 0
 Branch 2: 0
 Branch 3: 1
 Branch 4: 0
-Branch 5: 0
-Iteration 8
-Branch 0: 0
-Branch 1: 0
-Branch 2: 1
-Branch 3: 1
-Branch 4: 0
-Branch 5: 0
+Branch 5: 1
 Iteration 9
-Branch 0: 0
+Branch 0: 1
 Branch 1: 0
-Branch 2: 1
+Branch 2: 0
 Branch 3: 0
 Branch 4: 0
 Branch 5: 0
@@ -827,68 +847,68 @@ Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 1
-Branch 0: 1
+Branch 0: 0
 Branch 1: 0
-Branch 2: 0
+Branch 2: 1
 Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 2
 Branch 0: 0
-Branch 1: 1
+Branch 1: 0
 Branch 2: 1
 Branch 3: 1
 Branch 4: 0
-Branch 5: 1
+Branch 5: 0
 Iteration 3
 Branch 0: 1
-Branch 1: 1
-Branch 2: 0
+Branch 1: 0
+Branch 2: 1
 Branch 3: 1
 Branch 4: 0
-Branch 5: 1
+Branch 5: 0
 Iteration 4
 Branch 0: 1
-Branch 1: 1
+Branch 1: 0
 Branch 2: 0
 Branch 3: 1
 Branch 4: 0
 Branch 5: 0
 Iteration 5
-Branch 0: 0
+Branch 0: 1
 Branch 1: 0
 Branch 2: 0
 Branch 3: 1
-Branch 4: 1
+Branch 4: 0
 Branch 5: 1
 Iteration 6
-Branch 0: 1
-Branch 1: 0
-Branch 2: 0
-Branch 3: 1
-Branch 4: 1
-Branch 5: 1
-Iteration 7
-Branch 0: 1
-Branch 1: 0
-Branch 2: 0
-Branch 3: 0
-Branch 4: 1
-Branch 5: 0
-Iteration 8
-Branch 0: 1
-Branch 1: 0
-Branch 2: 0
-Branch 3: 1
-Branch 4: 1
-Branch 5: 0
-Iteration 9
-Branch 0: 1
+Branch 0: 0
 Branch 1: 1
 Branch 2: 0
 Branch 3: 1
 Branch 4: 1
 Branch 5: 0
+Iteration 7
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 8
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 9
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
 Trying with NEG_ARG=0!
 Testing negative cases!
 Testing 1 (with abstract condition)
@@ -913,68 +933,68 @@ Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 1
-Branch 0: 1
+Branch 0: 0
 Branch 1: 0
-Branch 2: 0
-Branch 3: 0
+Branch 2: 1
+Branch 3: 1
 Branch 4: 1
 Branch 5: 1
 Iteration 2
 Branch 0: 1
-Branch 1: 0
-Branch 2: 1
-Branch 3: 0
-Branch 4: 1
-Branch 5: 1
-Iteration 3
-Branch 0: 1
 Branch 1: 1
-Branch 2: 0
+Branch 2: 1
 Branch 3: 1
 Branch 4: 0
 Branch 5: 1
-Iteration 4
+Iteration 3
 Branch 0: 1
 Branch 1: 0
-Branch 2: 0
-Branch 3: 1
-Branch 4: 1
-Branch 5: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
 Iteration 5
 Branch 0: 1
 Branch 1: 1
-Branch 2: 0
-Branch 3: 1
-Branch 4: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
 Branch 5: 1
 Iteration 6
 Branch 0: 1
-Branch 1: 1
-Branch 2: 0
+Branch 1: 0
+Branch 2: 1
 Branch 3: 1
 Branch 4: 0
 Branch 5: 1
 Iteration 7
-Branch 0: 0
-Branch 1: 0
+Branch 0: 1
+Branch 1: 1
 Branch 2: 1
-Branch 3: 0
+Branch 3: 1
 Branch 4: 0
 Branch 5: 1
 Iteration 8
-Branch 0: 0
-Branch 1: 0
+Branch 0: 1
+Branch 1: 1
 Branch 2: 1
-Branch 3: 0
+Branch 3: 1
 Branch 4: 0
 Branch 5: 0
 Iteration 9
-Branch 0: 0
-Branch 1: 0
-Branch 2: 0
-Branch 3: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
 Branch 4: 0
-Branch 5: 0
+Branch 5: 1
 Trying with NEG_ARG=0!
 Testing negative cases!
 Testing 1 (with abstract condition)
@@ -1001,66 +1021,66 @@ Branch 5: 0
 Iteration 1
 Branch 0: 0
 Branch 1: 0
-Branch 2: 1
+Branch 2: 0
 Branch 3: 0
 Branch 4: 0
-Branch 5: 0
+Branch 5: 1
 Iteration 2
 Branch 0: 0
 Branch 1: 0
 Branch 2: 1
-Branch 3: 1
+Branch 3: 0
 Branch 4: 0
-Branch 5: 0
+Branch 5: 1
 Iteration 3
-Branch 0: 0
-Branch 1: 0
+Branch 0: 1
+Branch 1: 1
 Branch 2: 1
 Branch 3: 0
 Branch 4: 0
-Branch 5: 0
+Branch 5: 1
 Iteration 4
 Branch 0: 0
-Branch 1: 0
+Branch 1: 1
 Branch 2: 1
-Branch 3: 1
+Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 5
 Branch 0: 0
-Branch 1: 0
+Branch 1: 1
 Branch 2: 1
 Branch 3: 0
-Branch 4: 0
+Branch 4: 1
 Branch 5: 0
 Iteration 6
 Branch 0: 0
-Branch 1: 0
+Branch 1: 1
 Branch 2: 1
-Branch 3: 1
+Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 7
 Branch 0: 0
-Branch 1: 1
-Branch 2: 1
-Branch 3: 1
-Branch 4: 0
-Branch 5: 0
-Iteration 8
-Branch 0: 0
-Branch 1: 0
-Branch 2: 1
-Branch 3: 1
-Branch 4: 1
-Branch 5: 0
-Iteration 9
-Branch 0: 0
 Branch 1: 0
 Branch 2: 1
 Branch 3: 0
 Branch 4: 0
 Branch 5: 0
+Iteration 8
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 9
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
 Trying with NEG_ARG=0!
 Testing with ID 6
 Testing negative cases!
@@ -1089,65 +1109,65 @@ Iteration 1
 Branch 0: 0
 Branch 1: 0
 Branch 2: 0
-Branch 3: 1
+Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 2
 Branch 0: 0
-Branch 1: 0
+Branch 1: 1
 Branch 2: 0
-Branch 3: 1
+Branch 3: 0
 Branch 4: 0
 Branch 5: 1
 Iteration 3
 Branch 0: 0
-Branch 1: 0
-Branch 2: 1
+Branch 1: 1
+Branch 2: 0
 Branch 3: 1
 Branch 4: 0
 Branch 5: 1
 Iteration 4
-Branch 0: 0
+Branch 0: 1
 Branch 1: 1
-Branch 2: 1
+Branch 2: 0
 Branch 3: 1
 Branch 4: 0
 Branch 5: 1
 Iteration 5
-Branch 0: 0
-Branch 1: 0
-Branch 2: 0
-Branch 3: 1
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 6
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
 Branch 4: 0
 Branch 5: 0
-Iteration 6
-Branch 0: 0
-Branch 1: 0
-Branch 2: 1
-Branch 3: 1
-Branch 4: 1
-Branch 5: 1
 Iteration 7
 Branch 0: 1
 Branch 1: 1
 Branch 2: 1
 Branch 3: 0
 Branch 4: 1
-Branch 5: 1
+Branch 5: 0
 Iteration 8
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 9
 Branch 0: 1
 Branch 1: 1
 Branch 2: 1
 Branch 3: 0
 Branch 4: 1
-Branch 5: 1
-Iteration 9
-Branch 0: 0
-Branch 1: 0
-Branch 2: 1
-Branch 3: 0
-Branch 4: 1
-Branch 5: 1
+Branch 5: 0
 Trying with NEG_ARG=0!
 Testing negative cases!
 Testing 1 (with abstract condition)
@@ -1172,66 +1192,66 @@ Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 1
-Branch 0: 1
+Branch 0: 0
 Branch 1: 0
 Branch 2: 0
-Branch 3: 0
+Branch 3: 1
 Branch 4: 0
 Branch 5: 0
 Iteration 2
 Branch 0: 1
 Branch 1: 0
 Branch 2: 0
-Branch 3: 0
-Branch 4: 1
+Branch 3: 1
+Branch 4: 0
 Branch 5: 0
 Iteration 3
-Branch 0: 0
+Branch 0: 1
 Branch 1: 0
 Branch 2: 0
-Branch 3: 0
-Branch 4: 0
+Branch 3: 1
+Branch 4: 1
 Branch 5: 0
 Iteration 4
-Branch 0: 0
+Branch 0: 1
 Branch 1: 0
 Branch 2: 0
-Branch 3: 0
-Branch 4: 1
-Branch 5: 1
-Iteration 5
-Branch 0: 0
-Branch 1: 1
-Branch 2: 0
-Branch 3: 0
+Branch 3: 1
 Branch 4: 0
+Branch 5: 0
+Iteration 5
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
 Branch 5: 0
 Iteration 6
 Branch 0: 1
-Branch 1: 1
+Branch 1: 0
 Branch 2: 0
 Branch 3: 0
-Branch 4: 0
+Branch 4: 1
 Branch 5: 0
 Iteration 7
 Branch 0: 1
-Branch 1: 1
+Branch 1: 0
 Branch 2: 0
-Branch 3: 0
-Branch 4: 0
+Branch 3: 1
+Branch 4: 1
 Branch 5: 0
 Iteration 8
-Branch 0: 0
+Branch 0: 1
 Branch 1: 1
-Branch 2: 0
-Branch 3: 0
+Branch 2: 1
+Branch 3: 1
 Branch 4: 0
-Branch 5: 0
+Branch 5: 1
 Iteration 9
-Branch 0: 0
-Branch 1: 1
-Branch 2: 0
-Branch 3: 0
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
 Branch 4: 0
 Branch 5: 1
 Trying with NEG_ARG=0!
@@ -1260,15 +1280,15 @@ Branch 5: 0
 Iteration 1
 Branch 0: 0
 Branch 1: 0
-Branch 2: 1
-Branch 3: 1
-Branch 4: 1
-Branch 5: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
 Iteration 2
 Branch 0: 0
-Branch 1: 1
+Branch 1: 0
 Branch 2: 0
-Branch 3: 1
+Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 3
@@ -1283,42 +1303,42 @@ Branch 0: 0
 Branch 1: 1
 Branch 2: 0
 Branch 3: 1
-Branch 4: 0
+Branch 4: 1
 Branch 5: 0
 Iteration 5
-Branch 0: 1
+Branch 0: 0
 Branch 1: 1
-Branch 2: 0
+Branch 2: 1
 Branch 3: 1
-Branch 4: 0
+Branch 4: 1
 Branch 5: 0
 Iteration 6
-Branch 0: 1
+Branch 0: 0
 Branch 1: 1
 Branch 2: 0
 Branch 3: 1
-Branch 4: 0
-Branch 5: 0
+Branch 4: 1
+Branch 5: 1
 Iteration 7
 Branch 0: 0
 Branch 1: 1
-Branch 2: 0
+Branch 2: 1
 Branch 3: 1
-Branch 4: 0
-Branch 5: 0
+Branch 4: 1
+Branch 5: 1
 Iteration 8
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 9
 Branch 0: 0
 Branch 1: 1
 Branch 2: 0
 Branch 3: 1
 Branch 4: 0
-Branch 5: 0
-Iteration 9
-Branch 0: 1
-Branch 1: 1
-Branch 2: 0
-Branch 3: 0
-Branch 4: 1
 Branch 5: 0
 Trying with NEG_ARG=0!
 Testing with ID 7
@@ -1346,14 +1366,14 @@ Branch 4: 0
 Branch 5: 0
 Iteration 1
 Branch 0: 0
-Branch 1: 0
+Branch 1: 1
 Branch 2: 0
 Branch 3: 0
 Branch 4: 1
-Branch 5: 0
+Branch 5: 1
 Iteration 2
 Branch 0: 1
-Branch 1: 0
+Branch 1: 1
 Branch 2: 0
 Branch 3: 0
 Branch 4: 1
@@ -1362,51 +1382,44 @@ Iteration 3
 Branch 0: 1
 Branch 1: 1
 Branch 2: 0
-Branch 3: 1
+Branch 3: 0
 Branch 4: 1
-Branch 5: 0
+Branch 5: 1
 Iteration 4
-Branch 0: 0
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 5
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 6
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 7
+Branch 0: 1
 Branch 1: 1
 Branch 2: 0
 Branch 3: 1
 Branch 4: 1
-Branch 5: 0
-Iteration 5
-Branch 0: 0
-Branch 1: 1
-Branch 2: 1
-Branch 3: 1
-Branch 4: 1
-Branch 5: 0
-Iteration 6
-Branch 0: 0
-Branch 1: 0
-Branch 2: 1
-Branch 3: 1
-Branch 4: 1
-Branch 5: 0
-Iteration 7
-Branch 0: 0
-Branch 1: 0
-Branch 2: 1
-Branch 3: 1
-Branch 4: 0
-Branch 5: 0
+Branch 5: 1
 Iteration 8
 Branch 0: 1
 Branch 1: 1
-Branch 2: 0
+Branch 2: 1
 Branch 3: 1
-Branch 4: 0
-Branch 5: 0
-Iteration 9
-Branch 0: 1
-Branch 1: 0
-Branch 2: 0
-Branch 3: 1
-Branch 4: 0
-Branch 5: 0
+Branch 4: 1
+Branch 5: 1
 Trying with NEG_ARG=0!
 Testing negative cases!
 Testing 1 (with abstract condition)
@@ -1449,67 +1462,67 @@ Branch 4: 0
 Branch 5: 0
 Iteration 1
 Branch 0: 0
-Branch 1: 1
-Branch 2: 1
-Branch 3: 0
-Branch 4: 1
-Branch 5: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
 Iteration 2
 Branch 0: 0
-Branch 1: 1
+Branch 1: 0
 Branch 2: 1
-Branch 3: 0
-Branch 4: 1
+Branch 3: 1
+Branch 4: 0
 Branch 5: 1
 Iteration 3
 Branch 0: 0
 Branch 1: 0
-Branch 2: 0
-Branch 3: 0
-Branch 4: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
 Branch 5: 1
 Iteration 4
 Branch 0: 0
 Branch 1: 0
-Branch 2: 0
-Branch 3: 0
+Branch 2: 1
+Branch 3: 1
 Branch 4: 1
 Branch 5: 1
 Iteration 5
 Branch 0: 0
 Branch 1: 0
 Branch 2: 1
-Branch 3: 0
+Branch 3: 1
 Branch 4: 1
 Branch 5: 1
 Iteration 6
 Branch 0: 0
 Branch 1: 0
 Branch 2: 1
-Branch 3: 0
-Branch 4: 0
-Branch 5: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
 Iteration 7
 Branch 0: 0
-Branch 1: 1
+Branch 1: 0
 Branch 2: 1
 Branch 3: 0
 Branch 4: 1
 Branch 5: 0
 Iteration 8
 Branch 0: 0
-Branch 1: 0
+Branch 1: 1
 Branch 2: 1
 Branch 3: 0
-Branch 4: 0
-Branch 5: 1
+Branch 4: 1
+Branch 5: 0
 Iteration 9
 Branch 0: 0
 Branch 1: 1
 Branch 2: 1
 Branch 3: 0
 Branch 4: 0
-Branch 5: 1
+Branch 5: 0
 Trying with NEG_ARG=0!
 Testing negative cases!
 Testing 1 (with abstract condition)
@@ -1534,14 +1547,14 @@ Branch 3: 0
 Branch 4: 0
 Branch 5: 0
 Iteration 1
-Branch 0: 1
-Branch 1: 1
+Branch 0: 0
+Branch 1: 0
 Branch 2: 0
 Branch 3: 1
-Branch 4: 1
+Branch 4: 0
 Branch 5: 0
 Iteration 2
-Branch 0: 1
+Branch 0: 0
 Branch 1: 0
 Branch 2: 0
 Branch 3: 1
@@ -1549,53 +1562,53 @@ Branch 4: 1
 Branch 5: 0
 Iteration 3
 Branch 0: 0
-Branch 1: 1
+Branch 1: 0
 Branch 2: 1
 Branch 3: 1
-Branch 4: 0
+Branch 4: 1
 Branch 5: 0
 Iteration 4
 Branch 0: 1
-Branch 1: 0
+Branch 1: 1
 Branch 2: 0
-Branch 3: 0
-Branch 4: 1
+Branch 3: 1
+Branch 4: 0
 Branch 5: 0
 Iteration 5
-Branch 0: 1
+Branch 0: 0
 Branch 1: 1
 Branch 2: 0
-Branch 3: 0
-Branch 4: 0
-Branch 5: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
 Iteration 6
-Branch 0: 1
+Branch 0: 0
 Branch 1: 1
-Branch 2: 0
-Branch 3: 0
-Branch 4: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
 Branch 5: 1
 Iteration 7
 Branch 0: 0
 Branch 1: 1
-Branch 2: 0
+Branch 2: 1
 Branch 3: 0
-Branch 4: 0
-Branch 5: 0
+Branch 4: 1
+Branch 5: 1
 Iteration 8
-Branch 0: 1
-Branch 1: 0
+Branch 0: 0
+Branch 1: 1
 Branch 2: 0
 Branch 3: 0
 Branch 4: 1
-Branch 5: 0
+Branch 5: 1
 Iteration 9
-Branch 0: 1
-Branch 1: 0
+Branch 0: 0
+Branch 1: 1
 Branch 2: 0
-Branch 3: 0
+Branch 3: 1
 Branch 4: 1
-Branch 5: 0
+Branch 5: 1
 Trying with NEG_ARG=0!
 Testing negative cases!
 Testing 1 (with abstract condition)
@@ -1622,64 +1635,22 @@ Branch 5: 0
 Iteration 1
 Branch 0: 0
 Branch 1: 0
-Branch 2: 0
-Branch 3: 0
+Branch 2: 1
+Branch 3: 1
 Branch 4: 0
 Branch 5: 1
 Iteration 2
 Branch 0: 1
 Branch 1: 0
-Branch 2: 0
-Branch 3: 0
-Branch 4: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
 Branch 5: 1
 Iteration 3
 Branch 0: 1
-Branch 1: 0
-Branch 2: 0
-Branch 3: 1
-Branch 4: 0
-Branch 5: 1
-Iteration 4
-Branch 0: 0
-Branch 1: 0
+Branch 1: 1
 Branch 2: 1
 Branch 3: 1
-Branch 4: 0
-Branch 5: 1
-Iteration 5
-Branch 0: 0
-Branch 1: 0
-Branch 2: 1
-Branch 3: 1
-Branch 4: 0
-Branch 5: 1
-Iteration 6
-Branch 0: 0
-Branch 1: 0
-Branch 2: 0
-Branch 3: 1
-Branch 4: 0
-Branch 5: 1
-Iteration 7
-Branch 0: 0
-Branch 1: 0
-Branch 2: 0
-Branch 3: 1
-Branch 4: 1
-Branch 5: 1
-Iteration 8
-Branch 0: 0
-Branch 1: 1
-Branch 2: 0
-Branch 3: 1
-Branch 4: 1
-Branch 5: 1
-Iteration 9
-Branch 0: 0
-Branch 1: 1
-Branch 2: 0
-Branch 3: 0
 Branch 4: 1
 Branch 5: 1
 Trying with NEG_ARG=0!
@@ -1896,4 +1867,4 @@ Repair process ends without working fix!!
 Total 433 different repair schemas!!!!
 Total 991 different repair candidate templates for scoring!!!
 Total number of compiles: 1
-Total number of test eval: 245
+Total number of test eval: 233
