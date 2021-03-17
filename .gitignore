@@ -20,3 +20,5 @@ examples/engagement1/bresenham/build.log
 examples/engagement1/if-condition/DD.log
 examples/engagement1/if-condition/build.log
 examples/engagement1/if-condition/result.log
+benchmarks/*-src
+benchmarks/*-tests*
