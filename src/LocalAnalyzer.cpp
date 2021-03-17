@@ -585,6 +585,8 @@ public:
         return true;
     }
     virtual bool VisitCXXThisExpr(CXXThisExpr *expr){
+        // Check current function is C++ method
+        // C++ 'this' can only be in class/struct method
         FunctionDecl *current=L->getCurrentFunction();
         if (!llvm::isa<CXXMethodDecl>(current)) invalidExprs.insert(expr);
         return true;
@@ -749,8 +751,10 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL)
         }
     }
     sort(tmp_v.begin(), tmp_v.end());
-    for (size_t i = 0; i < tmp_v.size(); i++)
-        ret.push_back(tmp_v[i].second);
+    for (size_t i = 0; i < tmp_v.size(); i++){
+        if (ctxt->getTypeSize(tmp_v[i].second->getType())<=64)
+            ret.push_back(tmp_v[i].second);
+    }
     return ret;
 }
 

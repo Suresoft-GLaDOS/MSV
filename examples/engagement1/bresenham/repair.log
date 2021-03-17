@@ -4,16 +4,23 @@ Processing bresenham.cpp
 Total 433 different repair schemas!!!!
 Total 991 different repair candidate templates for scoring!!!
 Total 625 different partial repair candidate templates!!
-BasicTester pointer: 0x564e4017d3a0
-StringConstTester pointer: 0x564e4018a8c0
-CondTester pointer: 0x564e4019fd40
+BasicTester pointer: 0x562ffed83280
+StringConstTester pointer: 0x562ffe63b3d0
+CondTester pointer: 0x562ffe6bcfb0
 Generating Candidates...
 Candidates size: 433
 Generating Codes...
-[7] Preprocess the following candidate with BasicTester:
-433
+[7] Preprocess the following candidate with CondTester:
+433 Candidates
+Generating patches with CondTester...
+test
 Generating patches...
-[7] BasicTester, a patch instance with id 0:
+Patch Generated!
+ID count: 236
+[7] CondTester, a patch instance with id 0:
+codes size: 1
+res size: 1
+result size: 432
 Begin building test
 Total macros: 236
 Saving this fix to: __fixed_bresenham.cpp
@@ -22,11 +29,1842 @@ Trying to build with all macros...
 Build failed, Trying to find fail macros...
 Testing with Delta-Debugging...
 Building final program...
-Total success macros: 235
+Total success macros: 205
 Success to build final program: __fixed_bresenham.cpp
+[178] CondTester, Testing instance id 0:
+
+Total ID: 12
+Testing with ID 0
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 4
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 5
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 6
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 7
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Testing with ID 1
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 4
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 5
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 6
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 7
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Testing with ID 2
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 6
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 7
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 26
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 27
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 28
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 29
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Iteration 1
+Branch 0: 1
+Trying with NEG_ARG=0!
+Testing with ID 3
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 6
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 3
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 5
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 6
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 7
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 8
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 9
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 7
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 2
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 3
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 5
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 6
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 7
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 8
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 9
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 8
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 3
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 6
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 7
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 8
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 9
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Trying with NEG_ARG=0!
+Testing with ID 4
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 6
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 3
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 5
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 6
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 7
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 8
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 9
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 7
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 3
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 5
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 6
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 7
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 8
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 9
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 8
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 2
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 3
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 6
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 7
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 8
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 9
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Trying with NEG_ARG=0!
+Testing with ID 5
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 6
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 3
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 6
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 7
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 8
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 9
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 7
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 2
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 3
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 6
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 7
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 8
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 9
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 8
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 2
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 3
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 6
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 7
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 8
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 9
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Trying with NEG_ARG=0!
+Testing with ID 6
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 6
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 3
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 5
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 6
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 7
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 8
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 9
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 7
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 3
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 4
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 6
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 7
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 8
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 9
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 8
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 1
+Iteration 2
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 3
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 4
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 5
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 6
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 7
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 8
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 9
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Trying with NEG_ARG=0!
+Testing with ID 7
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 6
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 2
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 3
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 4
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 5
+Branch 0: 1
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 6
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 7
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 8
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 7
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 8
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 2
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 3
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 4
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 5
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 6
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 7
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 8
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 0
+Iteration 9
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 9
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 2
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 3
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 0
+Iteration 4
+Branch 0: 1
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 0
+Branch 5: 0
+Iteration 5
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 6
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 7
+Branch 0: 0
+Branch 1: 1
+Branch 2: 1
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 8
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 0
+Branch 4: 1
+Branch 5: 1
+Iteration 9
+Branch 0: 0
+Branch 1: 1
+Branch 2: 0
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 10
+__ID8: 0
+__ID9: 0
+Iteration 0
+Branch 0: 0
+Branch 1: 0
+Branch 2: 0
+Branch 3: 0
+Branch 4: 0
+Branch 5: 0
+Iteration 1
+Branch 0: 0
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 0
+Branch 5: 1
+Iteration 2
+Branch 0: 1
+Branch 1: 0
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Iteration 3
+Branch 0: 1
+Branch 1: 1
+Branch 2: 1
+Branch 3: 1
+Branch 4: 1
+Branch 5: 1
+Trying with NEG_ARG=0!
+Testing with ID 8
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 1
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 2
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 3
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing with ID 9
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 1
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 2
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 3
+Iteration 0
+Trying with NEG_ARG=0!
+Testing with ID 10
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 2
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 3
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 4
+__ID11: 0
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing with ID 11
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 2
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 3
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
+Testing negative cases!
+Testing 1 (with abstract condition)
+Printing IDs:
+__ID0: 0
+__ID1: 0
+__ID10: 0
+__ID11: 4
+__ID2: 0
+__ID3: 0
+__ID4: 0
+__ID5: 0
+__ID6: 0
+__ID7: 0
+__ID8: 0
+__ID9: 0
+Iteration 0
+Trying with NEG_ARG=0!
 The total number of explored concrete patches: 0
 Repair process ends without working fix!!
 Total 433 different repair schemas!!!!
 Total 991 different repair candidate templates for scoring!!!
 Total number of compiles: 1
-Total number of test eval: 0
+Total number of test eval: 233

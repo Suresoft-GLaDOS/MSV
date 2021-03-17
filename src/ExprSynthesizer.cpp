@@ -208,27 +208,136 @@ double found_score = 0;
     }
     return M.getLocalAnalyzer(cur_loc);
 }*/
+Expr *createNullPointerLiteral(ASTContext *ctxt){
+    IntegerLiteral *literal=IntegerLiteral::Create(*ctxt,llvm::APInt(32,0),ctxt->IntTy,SourceLocation());
+    ImplicitCastExpr *cast=ImplicitCastExpr::Create(*ctxt,ctxt->getPointerType(ctxt->IntTy),
+            CastKind::CK_NullToPointer,literal,nullptr,VK_LValue);
+    return cast;
+}
+Expr* createConditionVarList(ASTContext *ctxt,std::vector<Expr *> exprs,QualType type){
+    InitListExpr *list=new(*ctxt) InitListExpr(*ctxt,SourceLocation(),llvm::ArrayRef<Expr *>(exprs),SourceLocation());
+    QualType cast_type=type;
+    if (ForCPP){
+        cast_type.addConst();
+        cast_type=ctxt->getIncompleteArrayType(cast_type,ArrayType::ArraySizeModifier::Normal,3);
+    }
+    else{
+        cast_type=ctxt->getPointerType(cast_type);
+    }
+
+    CompoundLiteralExpr *compound=new(*ctxt) CompoundLiteralExpr(SourceLocation(),ctxt->getTrivialTypeSourceInfo(cast_type),
+            cast_type,VK_LValue,list,false);
+
+    ImplicitCastExpr *cast=ImplicitCastExpr::Create(*ctxt,cast_type,CastKind::CK_ArrayToPointerDecay,
+            compound,nullptr,VK_LValue);
+    return cast;
+}
+Expr* createConditionVarNameList(ASTContext *ctxt,std::vector<std::string> names){
+    std::vector<Expr *> exprs;
+    exprs.clear();
+    for (int i=0;i<names.size();i++){
+        StringLiteral *str = StringLiteral::Create(*ctxt, names[i], StringLiteral::Ascii,
+                false, ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, names[i].size() + 1), nullptr,ArrayType::Normal, 0),
+                SourceLocation());
+        ImplicitCastExpr *ICE1 = ImplicitCastExpr::Create(*ctxt, ctxt->getPointerType(ctxt->CharTy),
+                CK_ArrayToPointerDecay, str, 0, VK_RValue);
+        exprs.push_back(ICE1);
+    }
+
+    return createConditionVarList(ctxt,exprs,ctxt->getPointerType(ctxt->CharTy));
+}
+
 
 Expr* createAbstractConditionExpr(SourceContextManager &M, const RepairAction &action) {
     ASTContext *ctxt = M.getSourceContext(action.loc.filename);
     std::vector<Expr*> tmp_argv;
     const ExprListTy &exprs = action.candidate_atoms;
+    CallExpr *placeholder=(CallExpr*)action.ast_node;
     tmp_argv.clear();
-    tmp_argv.push_back(getNewIntegerLiteral(ctxt, exprs.size()));
+    // tmp_argv.push_back(placeholder->getArgs()[0]);
+    // tmp_argv.push_back(getNewIntegerLiteral(ctxt, exprs.size()));
+    std::vector<std::string> varName;
+    std::vector<Expr *> intVar;
+    std::vector<Expr *> charVar;
+    std::vector<Expr *> pointerVar;
+    std::vector<Expr *> doubleVar;
+    std::string location;
+    varName.clear();
+    intVar.clear();
+    charVar.clear();
+    pointerVar.clear();
+    doubleVar.clear();
+    location="";
+
     for (size_t i = 0; i < exprs.size(); ++i) {
-        ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
-        UnaryOperator *AddrsOf = 
-            UnaryOperator::Create(*ctxt,ParenE1, UO_AddrOf, ctxt->getPointerType(exprs[i]->getType()),
-                    VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
-        tmp_argv.push_back(AddrsOf);
-        ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
-        UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
-            UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
-        tmp_argv.push_back(SizeofE);
+        // ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
+        // UnaryOperator *AddrsOf = 
+        //     UnaryOperator::Create(*ctxt,ParenE1, UO_AddrOf, ctxt->getPointerType(exprs[i]->getType()),
+        //             VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+        // tmp_argv.push_back(AddrsOf);
+        // ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
+        // UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
+        //     UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
+        // tmp_argv.push_back(SizeofE);
+
+        DeclRefExpr *decl=llvm::dyn_cast<DeclRefExpr>(exprs[i]);
+        if (decl){
+            VarDecl *var=llvm::dyn_cast<VarDecl>(decl->getDecl());
+            if (var){
+                std::string name=var->getDeclName().getAsString();
+                varName.push_back(name);
+                QualType type=var->getType();
+                if (ctxt->hasSameType(type,ctxt->IntTy))
+                    intVar.push_back(exprs[i]);
+                else if (ctxt->hasSameType(type,ctxt->CharTy))
+                    charVar.push_back(exprs[i]);
+                else if (type->isPointerType())
+                    pointerVar.push_back(exprs[i]);
+                else if (ctxt->hasSameType(type,ctxt->DoubleTy))
+                    doubleVar.push_back(exprs[i]);
+            }
+        }
     }
+
+    StringLiteral *str = StringLiteral::Create(*ctxt, location, StringLiteral::Ascii,
+            false, ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, location.size() + 1), nullptr,ArrayType::Normal, 0),
+            SourceLocation());
+    tmp_argv.push_back(str);
+
+    IntegerLiteral *size;
+    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,intVar.size()),ctxt->IntTy,SourceLocation());
+    tmp_argv.push_back(size);
+    if (intVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
+    else tmp_argv.push_back(createConditionVarList(ctxt,intVar,ctxt->IntTy));
+
+    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,charVar.size()),ctxt->IntTy,SourceLocation());
+    tmp_argv.push_back(size);
+    if (charVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
+    else tmp_argv.push_back(createConditionVarList(ctxt,charVar,ctxt->CharTy));
+
+    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,pointerVar.size()),ctxt->IntTy,SourceLocation());
+    tmp_argv.push_back(size);
+    if (pointerVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
+    else tmp_argv.push_back(createConditionVarList(ctxt,pointerVar,ctxt->VoidPtrTy));
+
+    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,doubleVar.size()),ctxt->IntTy,SourceLocation());
+    tmp_argv.push_back(size);
+    if (doubleVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
+    else tmp_argv.push_back(createConditionVarList(ctxt,doubleVar,ctxt->DoubleTy));
+
+    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,varName.size()),ctxt->IntTy,SourceLocation());
+    tmp_argv.push_back(size);
+    for (int i=0;i<varName.size();i++){
+        StringLiteral *str = StringLiteral::Create(*ctxt, varName[i], StringLiteral::Ascii,
+                false, ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, varName[i].size() + 1), nullptr,ArrayType::Normal, 0),
+                SourceLocation());
+        tmp_argv.push_back(str);
+    }
+
     Expr *abstract_cond = M.getInternalHandlerInfo(ctxt).abstract_cond;
     CallExpr *CE = CallExpr::Create(*ctxt, abstract_cond, tmp_argv,
             ctxt->IntTy, VK_RValue, SourceLocation());
+
     return CE;
 }
 
@@ -409,6 +518,9 @@ protected:
     TestCaseSetTy failed_cases;
     bool naive;
     long long total_macro;
+    int count;
+    std::map<long long,std::pair<int,int>> macroMap;
+    std::map<std::string,std::pair<int,int>> idAndCase;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, false);
@@ -458,6 +570,19 @@ protected:
         ret.insert(std::make_pair(code, score));
         return ret;
     }
+    BenchProgram::EnvMapTy initEnv(const BenchProgram::EnvMapTy &env){
+        BenchProgram::EnvMapTy testEnv=env;
+        for (int i=0;i<count;i++){
+            testEnv["__ID"+std::to_string(i)]="0";
+        }
+        return testEnv;
+    }
+    template<typename K,typename V> bool hasKey(std::map<K,V> target,K key){
+        for (typename std::map<K,V>::iterator it=target.begin();it!=target.end();it++){
+            if (it->first==key) return true;
+        }
+        return false;
+    }
 
 public:
     BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive):
@@ -501,6 +626,9 @@ public:
         CodeRewriter R(M, candidate, &infos);
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
+        macroMap=R.getMacroMap();
+        idAndCase=R.getIdAndCase();
+        count=R.getIdCount();
         total_macro=R.index;
         {
             outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu:\n", get_timer(),
@@ -544,14 +672,15 @@ public:
             outlog_printf(2, "[%llu] BasicTester, Testing instance id %lu:\n", get_timer(), id);
             out_codes(codes, patches);
         }
+        BenchProgram::EnvMapTy testEnv=initEnv(env);
         outlog_printf(3, "Testing negative cases!\n");
-        if (!testNegativeCases(env)) {
+        if (!testNegativeCases(testEnv)) {
             codes.clear();
             patches.clear();
             return false;
         }
         outlog_printf(3, "Testing positive cases!\n");
-        bool ret = testPositiveCases(env);
+        bool ret = testPositiveCases(testEnv);
         if (ret)
             outlog_printf(2, "[%llu] Passed!\n", get_timer());
         else {
@@ -750,6 +879,9 @@ public:
         CodeRewriter R(M, candidate, &the_infos);
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
+        macroMap=R.getMacroMap();
+        idAndCase=R.getIdAndCase();
+        count=R.getIdCount();
         total_macro=R.index;
         {
             outlog_printf(2, "[%llu] StringConstTester, a patch instance with id %lu:\n", get_timer(),
@@ -803,13 +935,14 @@ public:
             outlog_printf(2, "[%llu] StringConstTester, Testing instance id %lu:\n", get_timer(), id);
             out_codes(codes, patches);
         }
+        BenchProgram::EnvMapTy testEnv=initEnv(env);
         outlog_printf(3, "Testing negative cases!\n");
         candidate_strs[id].clear();
         for (TestCaseSetTy::iterator it = negative_cases.begin();
                 it != negative_cases.end(); it++) {
             std::string tmp_out = "/tmp/__out.str";
             std::string tmp_exp = "/tmp/__exp.str";
-            BenchProgram::EnvMapTy new_env = env;
+            BenchProgram::EnvMapTy new_env = testEnv;
             new_env["OUTIFFAIL"] = tmp_out;
             new_env["EXPIFFAIL"] = tmp_exp;
             {
@@ -1431,14 +1564,23 @@ std::set<std::string> getPassedConstantHelper(ASTContext *ast, Stmt *S) {
     V.TraverseStmt(IFS->getCond());
     return V.getResult();
 }
+template<typename T>
+size_t getElementCount(std::vector<T> vector,T target){
+    size_t count=0;
+    for (typename std::vector<T>::iterator it=vector.begin();it!=vector.end();it++){
+        if (*it==target) count++;
+    }
+    return count;
+}
 
 class ConditionSynthesisTester : public BasicTester {
-    typedef std::map<unsigned long, std::vector<unsigned long> > BranchRecordTy;
+    typedef std::map<unsigned long, std::vector<unsigned long>> BranchRecordTy;
     typedef std::map<unsigned long, std::vector<std::vector<long long> > > ValueRecordTy;
     std::vector<ExprFillInfo> infos;
     std::vector<std::set<ExprFillInfo> *> infos_set;
-    std::map<unsigned long, ValueRecordTy> valueRecords;
-    std::map<unsigned long, BranchRecordTy> branchRecords;
+    std::map<BenchProgram::EnvMapTy,ValueRecordTy> valueRecords;
+    std::map<BenchProgram::EnvMapTy,BranchRecordTy> branchRecords;
+    std::map<std::pair<int,int>,std::vector<IsNegInformation>> isNegLocation;
     bool full_synthesis;
     unsigned long post_cnt;
 
@@ -1501,10 +1643,11 @@ class ConditionSynthesisTester : public BasicTester {
         fclose(f);
     }
 
-    void writeBranchRecord(const std::map<unsigned long, std::vector<unsigned long> > &negative_records, unsigned long idx) {
+    void writeBranchRecord(const std::map<unsigned long,std::vector<unsigned long>> &negative_records,unsigned long case_id) {
         FILE *f = fopen(ISNEG_TMPFILE, "w");
-        std::map<unsigned long, std::vector<unsigned long> >::const_iterator fit = negative_records.find(idx);
+        std::map<unsigned long,std::vector<unsigned long>>::const_iterator fit = negative_records.find(case_id);
         assert( fit != negative_records.end() );
+        // FIXME: We use only closest record, write all record!
         const std::vector<unsigned long> &tmp_vec = fit->second;
         fprintf(f, "%lu", (unsigned long)tmp_vec.size());
         for (size_t i = 0; i < tmp_vec.size(); i++)
@@ -1514,7 +1657,7 @@ class ConditionSynthesisTester : public BasicTester {
     }
 
     bool testNegativeCases(const BenchProgram::EnvMapTy &env,
-            std::map<unsigned long, std::vector<unsigned long> > &negative_records) {
+            std::map<unsigned long,std::vector<unsigned long>> &negative_records) {
         negative_records.clear();
         // First going to make sure it passes all negative cases
         for (TestCaseSetTy::iterator case_it = negative_cases.begin();
@@ -1528,21 +1671,22 @@ class ConditionSynthesisTester : public BasicTester {
             testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
             int ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
             assert( ret == 0);
-            outlog_printf(5, "Testing %lu (with abstract condition)\n", *case_it);
+            outlog_printf(2, "Testing %lu (with abstract condition)\n", *case_it);
             bool passed = false;
+            dumpEnv(testEnv);
             while (it_cnt < 10) {
-                outlog_printf(5, "Iteration %lu\n", it_cnt);
+                outlog_printf(2, "Iteration %lu\n", it_cnt);
                 //llvm::errs() << "Testing iteration: " << it_cnt << "\n";
                 passed = P.test(std::string("src"), *case_it, testEnv, false);
                 std::vector<unsigned long> tmp_v = parseBranchRecord();
                 writeBranchRecordTerminator();
                 for (size_t i = 0; i < tmp_v.size(); i++)
-                    outlog_printf(5, "Branch %lu: %lu\n", i, tmp_v[i]);
+                    outlog_printf(2, "Branch %lu: %lu\n", i, tmp_v[i]);
                 // We hit some strange error, we just assume we cannot pass this case
                 if (tmp_v.size() == 0) passed = false;
                 if (passed) {
-                    outlog_printf(5, "Passed in iteration!\n");
-                    negative_records[*case_it] = tmp_v;
+                    outlog_printf(2, "Passed in iteration!\n");
+                    negative_records[*case_it]=tmp_v;
                     break;
                 }
                 bool has_zero = false;
@@ -1555,12 +1699,13 @@ class ConditionSynthesisTester : public BasicTester {
                 it_cnt ++;
             }
             // We will going to try all 1 before we finally give up this case
-            if (!passed) {
+            if (!passed){
+                outlog_printf(2,"Trying with NEG_ARG=0!\n");
                 testEnv = env;
                 testEnv.insert(std::make_pair("IS_NEG", "1"));
                 testEnv.insert(std::make_pair("NEG_ARG", "0"));
                 testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
-                int ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
+                ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
                 assert( ret == 0);
                 passed = P.test(std::string("src"), *case_it, testEnv, false);
                 if (passed) {
@@ -1568,24 +1713,26 @@ class ConditionSynthesisTester : public BasicTester {
                     // FIXME: strange error in wireshark, we just ignore right now
                     if (tmp_v.size() == 0) {
                         outlog_printf(0, "Strange error or non-deterministic behavior!\n");
-                        return false;
+                        continue;
                     }
                     assert(tmp_v.size() != 0);
-                    negative_records[*case_it] = tmp_v;
+                    negative_records[*case_it]=tmp_v;
                     for (size_t i = 0; i < tmp_v.size(); i++)
                         outlog_printf(5, "Log %lu %lu\n", i, tmp_v[i]);
                 }
                 else {
                     // Still failed, we are going to give up
-                    return false;
+                    continue;
                 }
             }
+            if (negative_records[*case_it].empty()) return false;
         }
-        outlog_printf(2, "Passed Negative Cases wiht CondTestder!\n");
+        if (negative_records.empty()) return false;
+        outlog_printf(2, "Passed Negative Cases wiht CondTester!\n");
         return true;
     }
 
-    void parseValueRecord(std::vector<std::vector<long long> > &vec, size_t expect_size) {
+    void parseValueRecord(std::vector<std::vector<long long> > &vec) {
         vec.clear();
         FILE* f = fopen(ISNEG_RECORDFILE, "r");
         // Did not hit the condition, so it is an empty set
@@ -1601,23 +1748,23 @@ class ConditionSynthesisTester : public BasicTester {
                 over = true;
                 break;
             }
-            assert( n == expect_size);
+            outlog_printf(2,"%lu: ",n);
             for (size_t i = 0; i < n; i++) {
                 unsigned long tmp;
                 ret = fscanf(f, "%lu", &tmp);
                 assert(ret == 1);
                 v.push_back(tmp);
+                outlog_printf(2,"%d, ",tmp);
             }
+            outlog_printf(2,"\n");
             vec.push_back(v);
         }
         fclose(f);
     }
 
-    bool collectValues(const BenchProgram::EnvMapTy &env, const RepairCandidate &candidate,
-            std::map<unsigned long, std::vector<unsigned long> > &negative_records,
-            std::map<unsigned long, std::vector<std::vector<long long> > > &caseVMap) {
-        size_t condition_idx = getConditionIndex(candidate);
-        const ExprListTy &exps = candidate.actions[condition_idx].candidate_atoms;
+    bool collectValues(const BenchProgram::EnvMapTy &env,
+            std::map<unsigned long,std::vector<unsigned long>> &negative_records,
+            std::map<unsigned long,std::vector<std::vector<long long>>> &caseVMap) {
         caseVMap.clear();
         // We first deal with the negative cases
         for (TestCaseSetTy::iterator tit = negative_cases.begin();
@@ -1628,10 +1775,10 @@ class ConditionSynthesisTester : public BasicTester {
             testEnv.insert(std::make_pair("TMP_FILE", ISNEG_RECORDFILE));
             //FIXME: It triggers non-deterministic things, get out!
             if (negative_records.find(*tit) == negative_records.end()) {
-                fprintf(stderr, "Collect value failed on case %lu!\n", *tit);
+                fprintf(stderr, "Error in case map, failed on case %lu!\n", *tit);
                 return false;
             }
-            writeBranchRecord(negative_records, *tit);
+            writeBranchRecord(negative_records,*tit);
             std::string cmd = std::string("rm -rf ") + ISNEG_RECORDFILE;
             int ret = system(cmd.c_str());
             assert( ret == 0);
@@ -1640,11 +1787,10 @@ class ConditionSynthesisTester : public BasicTester {
             // get out
             if (!passed) {
                 fprintf(stderr, "Collect value failed on case %lu!\n", *tit);
-                return false;
+                // return false;
             }
             // We are going to parse neg.out to get result
-            caseVMap[*tit].clear();
-            parseValueRecord(caseVMap[*tit], exps.size());
+            parseValueRecord(caseVMap[*tit]);
         }
         // Then we deal with positive cases
         for (TestCaseSetTy::iterator tit = positive_cases.begin();
@@ -1656,13 +1802,59 @@ class ConditionSynthesisTester : public BasicTester {
             int ret = system(cmd.c_str());
             assert( ret == 0);
             bool passed = P.test(std::string("src"), *tit, testEnv, false);
-            caseVMap[*tit].clear();
             // XXX: This may happen because record takes more time, and it
             // makes the positive case to time out we simply skip if it fails
             if (!passed) continue;
-            parseValueRecord(caseVMap[*tit], exps.size());
+            parseValueRecord(caseVMap[*tit]);
         }
         return true;
+    }
+
+    std::map<int,std::set<int>> getIsNegCase(){
+        std::map<int,std::set<int>> idCasePair;
+        idCasePair.clear();
+        for (std::map<std::string,std::pair<int,int>>::iterator it=idAndCase.begin();
+                it!=idAndCase.end();it++){
+            std::string patch=it->first;
+            if (patch.find("__is_neg")!=std::string::npos)
+                idCasePair[it->second.first].insert(it->second.second);
+        }
+        return idCasePair;
+    }
+
+    std::vector<BenchProgram::EnvMapTy> setIsNegEnv(BenchProgram::EnvMapTy &env,int id){
+        std::vector<BenchProgram::EnvMapTy> envs;
+        envs.clear();
+        BenchProgram::EnvMapTy testEnv=env;
+        std::map<int,std::set<int>> isNegCase=getIsNegCase();
+
+        for(std::set<int>::iterator it=isNegCase[id].begin();it!=isNegCase[id].end();it++){
+            BenchProgram::EnvMapTy temp=testEnv;
+            temp["__ID"+std::to_string(id)]=std::to_string(*it);
+            envs.push_back(temp);
+        }
+        return envs;
+    }
+    void dumpEnv(BenchProgram::EnvMapTy env){
+        outlog_printf(2,"Printing IDs:\n");
+        for (BenchProgram::EnvMapTy::iterator it=env.begin();it!=env.end();it++){
+            if (it->first.find("__ID")!=std::string::npos){
+                outlog_printf(2,"%s: %s\n",it->first.c_str(),it->second.c_str());
+            }
+        }
+    }
+    void dumpRecord(std::map<unsigned long,std::vector<unsigned long>> record){
+        size_t debugLevel=2;
+        for (std::map<unsigned long,std::vector<unsigned long> >::iterator it=record.begin();
+                it!=record.end();it++){
+            outlog_printf(debugLevel,"\t[");
+            std::vector<unsigned long> temp=it->second;
+            for (std::vector<unsigned long>::iterator it2=temp.begin();
+                    it2!=temp.end();it2++){
+                outlog_printf(debugLevel,"%d, ",*it2);
+            }
+            outlog_printf(debugLevel,"]\n");
+        }
     }
 
 public:
@@ -1697,6 +1889,11 @@ public:
         outlog_printf(2,"Patch Generated!\n");
         std::map<std::string, std::vector<std::string> > a_code = R.getCodeSegments();
         std::map<std::string, std::vector<std::string> > a_patch = R.getPatches();
+        macroMap=R.getMacroMap();
+        idAndCase=R.getIdAndCase();
+        outlog_printf(2,"ID count: %d\n",idAndCase.size());
+        count=R.getIdCount();
+        isNegLocation=R.getIsNegLocation();
         total_macro=R.index;
         {
             outlog_printf(2, "[%llu] CondTester, a patch instance with id %lu:\n", get_timer(),
@@ -1726,31 +1923,48 @@ public:
         }
         // We first need to find the flip combination that will make it passes each
         // negative cases, and we store it to negative_records
-        std::map<unsigned long, std::vector<unsigned long> > negative_records;
-        outlog_printf(2, "Testing negative cases!\n");
-        if (!testNegativeCases(env, negative_records)) {
-            codes.clear();
-            patches.clear();
-            return false;
+        outlog_printf(2,"\nTotal ID: %d\n",count);
+        BenchProgram::EnvMapTy testEnv=initEnv(env);
+        std::map<int,std::set<int>> idCase=getIsNegCase();
+        for (std::map<int,std::set<int>>::iterator it=idCase.begin();
+                it!=idCase.end();it++){
+            outlog_printf(2,"Testing with ID %d\n",it->first);
+            std::vector<BenchProgram::EnvMapTy> envs=setIsNegEnv(testEnv,it->first);
+            if (envs.size()!=0)
+                for(std::vector<BenchProgram::EnvMapTy>::iterator envIt=envs.begin();envIt!=envs.end();envIt++){
+                    // dumpEnv(*envIt);
+                    // outlog_printf(2,"Code: %s\n",patch.c_str());
+                    std::map<unsigned long,std::vector<unsigned long>> negative_records;
+                    outlog_printf(2, "Testing negative cases!\n");
+                    if (!testNegativeCases(*envIt, negative_records)) {
+                        // codes.clear();
+                        // patches.clear();
+                        continue;
+                    }
+                    dumpRecord(negative_records);
+                    outlog_printf(2, "Testing positive cases!\n");
+                    if (!BasicTester::testPositiveCases(testEnv)) {
+                        // codes.clear();
+                        // patches.clear();
+                        continue;
+                    }
+                    // Then we need to collect the variable values at the expr, we store it into
+                    // this caseVMap
+                    outlog_printf(2, "Collect values for post processing!\n");
+                    std::map<unsigned long,std::vector<std::vector<long long>>> caseVMap;
+                    if (!collectValues(*envIt, negative_records, caseVMap)) {
+                        // codes.clear();
+                        // patches.clear();
+                        continue;
+                    }
+                    valueRecords[*envIt] = caseVMap;
+                    branchRecords[*envIt] = negative_records;
+                    outlog_printf(2, "[%llu] Passed!\n", get_timer());
+                }
+            else{
+                outlog_printf(2,"No __is_neg found, pass!\n");
+            }
         }
-        outlog_printf(2, "Testing positive cases!\n");
-        if (!BasicTester::testPositiveCases(env)) {
-            codes.clear();
-            patches.clear();
-            return false;
-        }
-        // Then we need to collect the variable values at the expr, we store it into
-        // this caseVMap
-        outlog_printf(2, "Collect values for post processing!\n");
-        std::map<unsigned long, std::vector<std::vector<long long> > > caseVMap;
-        if (!collectValues(env, candidates[id], negative_records, caseVMap)) {
-            codes.clear();
-            patches.clear();
-            return false;
-        }
-        valueRecords[id] = caseVMap;
-        branchRecords[id] = negative_records;
-        outlog_printf(2, "[%llu] Passed!\n", get_timer());
         return true;
     }
 
@@ -1759,205 +1973,205 @@ public:
         outlog_printf(0, "Total cnt of cond schemas: %lu\n", codes.size());
     }
 
-    virtual std::map<NewCodeMapTy, double> getResults(unsigned long id) {
-        post_cnt ++;
-        {
-            outlog_printf(2, "CondTester, Postprocessing instance id %lu:\n", id);
-            out_codes(codes, patches);
-        }
-        BranchRecordTy &negative_records = branchRecords[id];
-        ValueRecordTy &caseVMap = valueRecords[id];
-        RepairCandidate candidate = candidates[id];
-        long long condition_idx = getConditionIndex(candidate);
-        ASTContext *ast = M.getSourceContext(candidate.actions[condition_idx].loc.filename);
-        ExprListTy &exps = candidates[id].actions[condition_idx].candidate_atoms;
-        // We are going to do the synthesize, and we recompile everything we tried to recompile
-        // FIXME: This is some really shitty code
-        std::vector<Expr*> candidateExprs;
-        if (learning)
-            candidateExprs = synthesizeResult(exps, negative_records, caseVMap,
-                negative_cases, positive_cases, ast);
-        else
-            candidateExprs = synthesizeResultSPR(exps, negative_records, caseVMap,
-                negative_cases, positive_cases, ast);
-        std::map<NewCodeMapTy, double> res_set;
-        res_set.clear();
-        bool passed_constant = false;
-        double passed_constant_score = -1e20;
-        std::set<std::string> helper;
-        helper.clear();
-        int passed_cnt = 0;
-        patch_explored += candidateExprs.size();
-        for (size_t i = 0; i < candidateExprs.size(); i++) {
-            if (the_timeout_limit != 0)
-                if (get_timer() > the_timeout_limit) {
-                    outlog_printf(1, "[%llu] Timeout! Limit is %llu\n", get_timer(), the_timeout_limit);
-                    break;
-                }
-            Expr* new_expr = candidateExprs[i];
-            ExprFillInfo cur_info = infos[id];
-            cur_info[condition_idx] = new_expr;
-            double score = computeFinalScore(learning, M, candidate, id, new_expr);
-            if (learning) {
-                if (!isZeroConstantExpr(stripParenAndCast(new_expr)) && (stmtToString(*ast, new_expr).find("len") != std::string::npos))
-                    score -= 0.7;
-                if (passed_constant) {
-                    bool found_it = false;
-                    std::string stmtStr = stmtToString(*ast, stripParenAndCast(new_expr));
-                    for (std::set<std::string>::iterator it = helper.begin(); it != helper.end(); it++)
-                        if (stmtStr.find(*it) == 0) {
-                            size_t idx = it->size();
-                            if (stmtStr.size() > idx + 2)
-                                if ((stmtStr[idx] == ' ') && (stmtStr[idx + 2] == '=')) {
-                                    found_it = true;
-                                    break;
-                                }
-                        }
-                    if (found_it) {
-                        outlog_printf(2, "Going to try %s even with passed constant!\n", stmtStr.c_str());
-                    }
-                    else {
-                        outlog_printf(2, "Rejected %s because of passed constant!\n", stmtStr.c_str());
-                        if (passed_constant_score - 0.1 + 1e-4 * score < score)
-                            score = passed_constant_score - 0.1 + 1e-4 * score;
-                    }
-                }
-            }
-            if (!full_synthesis) {
-                if (learning) {
-                    if (found_score >= score && !isIntegerConstant(new_expr))
-                        continue;
-                }
-                else if (found_score >= score)
-                    continue;
-            }
-            CodeRewriter R(M, candidates, &infos_set);
-            NewCodeMapTy code = R.getCodes();
-            BenchProgram::EnvMapTy buildEnv;
-            buildEnv.clear();
-            if (ForCPP.getValue())
-                buildEnv["COMPILE_CMD"] = "clang++";
-            else
-                buildEnv["COMPILE_CMD"] = GCC_CMD;
-            outlog_printf(2, "Trying a synthesis expr %s\n", stmtToString(*ast, new_expr).c_str());
-            bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,0);
-            if (!build_succ) {
-                outlog_printf(3, "Build failed when synthesizing!\n");
-                continue;
-            }
-            TestCaseSetTy passed;
-            outlog_printf(3, "Verifing Negative cases!\n");
-            passed = P.testSet("src", negative_cases, std::map<std::string, std::string>());
-            if (passed != negative_cases) {
-                outlog_printf(3, "Not passed!\n");
-                continue;
-            }
-            outlog_printf(3, "Verifying positive cases\n");
-            bool passed_pos = testPositiveCases(std::map<std::string, std::string>());
-            //passed = P.testSet("src", positive_cases, std::map<std::string, std::string>());
-            if (!passed_pos) {
-                outlog_printf(3, "Not passed!\n");
-                continue;
-            }
-            outlog_printf(2, "[%llu] Passed!\n", get_timer());
-            passed_cnt ++;
-            if (full_synthesis && !learning)
-                // OK, i don't want to explain this. It is just a hacky fix to make the experiment checking
-                // easier. The first passed will come out first if possible.
-                res_set.insert(std::make_pair(cleanUpCode(code), score - 1e-3 * passed_cnt));
-            else
-                res_set.insert(std::make_pair(cleanUpCode(code), score));
-            if (DumpPassedCandidate.getValue() != "") {
-                assert(candidate.actions.size() > 0);
-                Expr *E1 = NULL;
-                if (new_expr) {
-                    E1 = stripParenAndCast(new_expr);
-                    if (isIntegerConstant(E1))
-                        E1 = NULL;
-                    if (E1) {
-                        BinaryOperator *BO = llvm::dyn_cast<BinaryOperator>(E1);
-                        if (BO)
-                            E1 = BO->getLHS();
-                    }
-                }
-                dumpCandidate(M, candidates[id], E1, score);
-            }
-            if (learning)
-                if (isIntegerConstant(new_expr)) {
-                    passed_constant = true;
-                    passed_constant_score = score;
-                    helper = getPassedConstantHelper(ast, candidate.actions[condition_idx].loc.stmt);
-                    outlog_printf(2, "Passed constant expr!\n");
-                    for (std::set<std::string>::iterator it = helper.begin(); it != helper.end(); ++it)
-                        outlog_printf(2, "Still allow %s.\n", it->c_str());
-                }
-            if (found_score < score) {
-                found_score = score;
-                outlog_printf(2, "Passed with updated best score %lf\n", found_score);
-            }
-        }
-        if (res_set.size() != 0) {
-            valueRecords.erase(id);
-            branchRecords.erase(id);
-            return res_set;
-        }
-        // FIXME: This is too hacky, I hate this!
-        double score = computeFinalScore(learning, M, candidate, id, NULL);
-        if (found_score < score) {
-            CodeSegTy codeSegs = codes;
-            PatchListTy patch = patches;
-            NewCodeMapTy new_code = combineCode(codeSegs, patch);
-            std::string src_file = candidate.actions[condition_idx].loc.src_file;
-            outlog_printf(3, "Initial synthesize failed, final attempt\n");
-            // We are going to loose / tight the condition with existing
-            // clause as the final attempt
-            assert( new_code.count(src_file) != 0);
-            std::set<std::string> codes = replaceIsNegWithClause(new_code[src_file]);
-            unsigned long cnt = 0;
-            patch_explored += codes.size();
-            for (std::set<std::string>::iterator sit = codes.begin();
-                    sit != codes.end(); ++sit) {
-                cnt ++;
-                outlog_printf(3, "Final attempt %lu/%lu with expr %s\n", cnt, codes.size(),
-                        sit->c_str());
-                new_code[src_file] = *sit;
-                TestCaseSetTy passed;
-                BenchProgram::EnvMapTy buildEnv;
-                buildEnv.clear();
-                if (ForCPP.getValue())
-                    buildEnv["COMPILE_CMD"] = "clang++";
-                else
-                    buildEnv["COMPILE_CMD"] = GCC_CMD;
-                bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, new_code,0);
-                if (!build_succ) {
-                    outlog_printf(3, "Build failed\n");
-                    continue;
-                }
-                outlog_printf(3, "Trying Negative cases!\n");
-                passed = P.testSet("src", negative_cases, std::map<std::string, std::string>());
-                if (passed == negative_cases) {
-                    outlog_printf(3, "Trying Positive cases!\n");
-                    passed = P.testSet("src", positive_cases, std::map<std::string, std::string>());
-                    if (passed == positive_cases) {
-                        outlog_printf(2, "[%llu] Passed!\n", get_timer());
-                        if (DumpPassedCandidate.getValue() != "")
-                            dumpCandidate(M, candidate, NULL, score);
-                        valueRecords.erase(id);
-                        branchRecords.erase(id);
-                        if (found_score < score) {
-                            found_score = score;
-                            outlog_printf(2, "Updated best score %lf\n", found_score);
-                        }
-                        return singleResult(cleanUpCode(new_code), score);
-                    }
-                }
-            }
-        }
-        outlog_printf(2, "Postprocessing failed!\n");
-        valueRecords.erase(id);
-        branchRecords.erase(id);
-        return std::map<NewCodeMapTy, double>();
-    }
+    // virtual std::map<NewCodeMapTy, double> getResults(BenchProgram::EnvMapTy id) {
+    //     post_cnt ++;
+    //     {
+    //         outlog_printf(2, "CondTester, Postprocessing instance id %lu:\n", id);
+    //         out_codes(codes, patches);
+    //     }
+    //     BranchRecordTy &negative_records = branchRecords[id];
+    //     ValueRecordTy &caseVMap = valueRecords[id];
+    //     RepairCandidate candidate = candidates[id];
+    //     long long condition_idx = getConditionIndex(candidate);
+    //     ASTContext *ast = M.getSourceContext(candidate.actions[condition_idx].loc.filename);
+    //     ExprListTy &exps = candidates[id].actions[condition_idx].candidate_atoms;
+    //     // We are going to do the synthesize, and we recompile everything we tried to recompile
+    //     // FIXME: This is some really shitty code
+    //     std::vector<Expr*> candidateExprs;
+    //     if (learning)
+    //         candidateExprs = synthesizeResult(exps, negative_records, caseVMap,
+    //             negative_cases, positive_cases, ast);
+    //     else
+    //         candidateExprs = synthesizeResultSPR(exps, negative_records, caseVMap,
+    //             negative_cases, positive_cases, ast);
+    //     std::map<NewCodeMapTy, double> res_set;
+    //     res_set.clear();
+    //     bool passed_constant = false;
+    //     double passed_constant_score = -1e20;
+    //     std::set<std::string> helper;
+    //     helper.clear();
+    //     int passed_cnt = 0;
+    //     patch_explored += candidateExprs.size();
+    //     for (size_t i = 0; i < candidateExprs.size(); i++) {
+    //         if (the_timeout_limit != 0)
+    //             if (get_timer() > the_timeout_limit) {
+    //                 outlog_printf(1, "[%llu] Timeout! Limit is %llu\n", get_timer(), the_timeout_limit);
+    //                 break;
+    //             }
+    //         Expr* new_expr = candidateExprs[i];
+    //         ExprFillInfo cur_info = infos[id];
+    //         cur_info[condition_idx] = new_expr;
+    //         double score = computeFinalScore(learning, M, candidate, id, new_expr);
+    //         if (learning) {
+    //             if (!isZeroConstantExpr(stripParenAndCast(new_expr)) && (stmtToString(*ast, new_expr).find("len") != std::string::npos))
+    //                 score -= 0.7;
+    //             if (passed_constant) {
+    //                 bool found_it = false;
+    //                 std::string stmtStr = stmtToString(*ast, stripParenAndCast(new_expr));
+    //                 for (std::set<std::string>::iterator it = helper.begin(); it != helper.end(); it++)
+    //                     if (stmtStr.find(*it) == 0) {
+    //                         size_t idx = it->size();
+    //                         if (stmtStr.size() > idx + 2)
+    //                             if ((stmtStr[idx] == ' ') && (stmtStr[idx + 2] == '=')) {
+    //                                 found_it = true;
+    //                                 break;
+    //                             }
+    //                     }
+    //                 if (found_it) {
+    //                     outlog_printf(2, "Going to try %s even with passed constant!\n", stmtStr.c_str());
+    //                 }
+    //                 else {
+    //                     outlog_printf(2, "Rejected %s because of passed constant!\n", stmtStr.c_str());
+    //                     if (passed_constant_score - 0.1 + 1e-4 * score < score)
+    //                         score = passed_constant_score - 0.1 + 1e-4 * score;
+    //                 }
+    //             }
+    //         }
+    //         if (!full_synthesis) {
+    //             if (learning) {
+    //                 if (found_score >= score && !isIntegerConstant(new_expr))
+    //                     continue;
+    //             }
+    //             else if (found_score >= score)
+    //                 continue;
+    //         }
+    //         CodeRewriter R(M, candidates, &infos_set);
+    //         NewCodeMapTy code = R.getCodes();
+    //         BenchProgram::EnvMapTy buildEnv;
+    //         buildEnv.clear();
+    //         if (ForCPP.getValue())
+    //             buildEnv["COMPILE_CMD"] = "clang++";
+    //         else
+    //             buildEnv["COMPILE_CMD"] = GCC_CMD;
+    //         outlog_printf(2, "Trying a synthesis expr %s\n", stmtToString(*ast, new_expr).c_str());
+    //         bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,0);
+    //         if (!build_succ) {
+    //             outlog_printf(3, "Build failed when synthesizing!\n");
+    //             continue;
+    //         }
+    //         TestCaseSetTy passed;
+    //         outlog_printf(3, "Verifing Negative cases!\n");
+    //         passed = P.testSet("src", negative_cases, std::map<std::string, std::string>());
+    //         if (passed != negative_cases) {
+    //             outlog_printf(3, "Not passed!\n");
+    //             continue;
+    //         }
+    //         outlog_printf(3, "Verifying positive cases\n");
+    //         bool passed_pos = testPositiveCases(std::map<std::string, std::string>());
+    //         //passed = P.testSet("src", positive_cases, std::map<std::string, std::string>());
+    //         if (!passed_pos) {
+    //             outlog_printf(3, "Not passed!\n");
+    //             continue;
+    //         }
+    //         outlog_printf(2, "[%llu] Passed!\n", get_timer());
+    //         passed_cnt ++;
+    //         if (full_synthesis && !learning)
+    //             // OK, i don't want to explain this. It is just a hacky fix to make the experiment checking
+    //             // easier. The first passed will come out first if possible.
+    //             res_set.insert(std::make_pair(cleanUpCode(code), score - 1e-3 * passed_cnt));
+    //         else
+    //             res_set.insert(std::make_pair(cleanUpCode(code), score));
+    //         if (DumpPassedCandidate.getValue() != "") {
+    //             assert(candidate.actions.size() > 0);
+    //             Expr *E1 = NULL;
+    //             if (new_expr) {
+    //                 E1 = stripParenAndCast(new_expr);
+    //                 if (isIntegerConstant(E1))
+    //                     E1 = NULL;
+    //                 if (E1) {
+    //                     BinaryOperator *BO = llvm::dyn_cast<BinaryOperator>(E1);
+    //                     if (BO)
+    //                         E1 = BO->getLHS();
+    //                 }
+    //             }
+    //             dumpCandidate(M, candidates[id], E1, score);
+    //         }
+    //         if (learning)
+    //             if (isIntegerConstant(new_expr)) {
+    //                 passed_constant = true;
+    //                 passed_constant_score = score;
+    //                 helper = getPassedConstantHelper(ast, candidate.actions[condition_idx].loc.stmt);
+    //                 outlog_printf(2, "Passed constant expr!\n");
+    //                 for (std::set<std::string>::iterator it = helper.begin(); it != helper.end(); ++it)
+    //                     outlog_printf(2, "Still allow %s.\n", it->c_str());
+    //             }
+    //         if (found_score < score) {
+    //             found_score = score;
+    //             outlog_printf(2, "Passed with updated best score %lf\n", found_score);
+    //         }
+    //     }
+    //     if (res_set.size() != 0) {
+    //         valueRecords.erase(id);
+    //         branchRecords.erase(id);
+    //         return res_set;
+    //     }
+    //     // FIXME: This is too hacky, I hate this!
+    //     double score = computeFinalScore(learning, M, candidate, id, NULL);
+    //     if (found_score < score) {
+    //         CodeSegTy codeSegs = codes;
+    //         PatchListTy patch = patches;
+    //         NewCodeMapTy new_code = combineCode(codeSegs, patch);
+    //         std::string src_file = candidate.actions[condition_idx].loc.src_file;
+    //         outlog_printf(3, "Initial synthesize failed, final attempt\n");
+    //         // We are going to loose / tight the condition with existing
+    //         // clause as the final attempt
+    //         assert( new_code.count(src_file) != 0);
+    //         std::set<std::string> codes = replaceIsNegWithClause(new_code[src_file]);
+    //         unsigned long cnt = 0;
+    //         patch_explored += codes.size();
+    //         for (std::set<std::string>::iterator sit = codes.begin();
+    //                 sit != codes.end(); ++sit) {
+    //             cnt ++;
+    //             outlog_printf(3, "Final attempt %lu/%lu with expr %s\n", cnt, codes.size(),
+    //                     sit->c_str());
+    //             new_code[src_file] = *sit;
+    //             TestCaseSetTy passed;
+    //             BenchProgram::EnvMapTy buildEnv;
+    //             buildEnv.clear();
+    //             if (ForCPP.getValue())
+    //                 buildEnv["COMPILE_CMD"] = "clang++";
+    //             else
+    //                 buildEnv["COMPILE_CMD"] = GCC_CMD;
+    //             bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, new_code,0);
+    //             if (!build_succ) {
+    //                 outlog_printf(3, "Build failed\n");
+    //                 continue;
+    //             }
+    //             outlog_printf(3, "Trying Negative cases!\n");
+    //             passed = P.testSet("src", negative_cases, std::map<std::string, std::string>());
+    //             if (passed == negative_cases) {
+    //                 outlog_printf(3, "Trying Positive cases!\n");
+    //                 passed = P.testSet("src", positive_cases, std::map<std::string, std::string>());
+    //                 if (passed == positive_cases) {
+    //                     outlog_printf(2, "[%llu] Passed!\n", get_timer());
+    //                     if (DumpPassedCandidate.getValue() != "")
+    //                         dumpCandidate(M, candidate, NULL, score);
+    //                     valueRecords.erase(id);
+    //                     branchRecords.erase(id);
+    //                     if (found_score < score) {
+    //                         found_score = score;
+    //                         outlog_printf(2, "Updated best score %lf\n", found_score);
+    //                     }
+    //                     return singleResult(cleanUpCode(new_code), score);
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     outlog_printf(2, "Postprocessing failed!\n");
+    //     valueRecords.erase(id);
+    //     branchRecords.erase(id);
+    //     return std::map<NewCodeMapTy, double>();
+    // }
 };
 
 class TestBatcher {
@@ -1999,6 +2213,7 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
+        result_init=T->test(BenchProgram::EnvMapTy(),0);
 
         return std::map<NewCodeMapTy, double>();
     }
@@ -2100,8 +2315,9 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
 
     bool result;
     outlog_printf(2,"Generating Codes...\n");
-    //for (int i=0;i<testers.size();i++)
-    result= TB.test(candidate, testers[2]);
+    // for (int i=0;i<testers.size();i++)
+    result= TB.test(candidate, testers[0]);
+    // result= TB.test(candidate, testers[2]);
 
     outlog_printf(0, "The total number of explored concrete patches: %lu\n", patch_explored);
     for (size_t i = 0; i < testers.size(); i++)

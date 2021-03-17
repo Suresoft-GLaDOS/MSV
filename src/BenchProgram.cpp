@@ -59,12 +59,12 @@ static void execute_cmd_until_succ(const std::string &cmd) {
 }
 
 BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
-        bool no_clean_up): config(configFileName),case_counter(0) {
+        bool no_clean_up): config(configFileName),case_counter(0),count(0) {
     Init(workDirPath, no_clean_up);
 }
 
 BenchProgram::BenchProgram(const std::string &workDirPath)
-    : config(workDirPath + "/" + CONFIG_FILE_PATH),case_counter(0) {
+    : config(workDirPath + "/" + CONFIG_FILE_PATH),case_counter(0),count(0) {
     Init(workDirPath, true);
 }
 
@@ -484,6 +484,9 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 
         // Backup fixed file
         if (output_name!=""){
+            if (count!=0)
+                output_name+=std::to_string(count)+"_";
+            count++;
             output_name+=it->first;
             outlog_printf(2,"Saving this fix to: %s\n",output_name.c_str());
             std::ofstream fout_bak(output_name.c_str(),std::ofstream::out);
@@ -519,6 +522,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         if (repair_build_cnt > 10)
             timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
         int ret=1;
+        if (true)
         {
             //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
             ExecutionTimer timer;
@@ -527,6 +531,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+std::to_string(max_macro);
             if (!src_dirs["src"]) cmd+=" -t "+build_cmd;
             if (dep_dir!="") cmd+=" -p "+dep_dir;
+            // cmd+=" > DD.log";
 
             if (timeout_limit == 0)
                 ret = system(cmd.c_str());
@@ -556,10 +561,12 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         std::string resultPath=std::string(home)+"/__dd_test.log";
         char eachResult[100];
         std::ifstream result(resultPath.c_str(),std::ifstream::in);
-        assert(result.is_open());
+        // assert(result.is_open());
         while(result.getline(eachResult,100)){
             fail.push_back(stoll(std::string(eachResult)));
         }
+        result.close();
+        system(std::string("rm "+resultPath).c_str());
 
         for (long long i=0;i<max_macro;i++){
             bool include=false;

@@ -1,4 +1,2 @@
-CFLAGS='-std=c99'
-
 prog: prog.o
-	gcc $(OUTPUT_NAME) $(CFLAGS) prog.o
+	/root/project/prophet-gpl/wrap/gcc -o prog -std=c99 $(CFLAGS) prog.c

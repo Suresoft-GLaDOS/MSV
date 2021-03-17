@@ -160,6 +160,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         clearProfileResult();
         bool tmp = P.test("profile", *it, testEnv, true);
         res = parseProfileResult();
+        outlog_printf(2,"Result: %d\n",res.size());
 
         if (*it < min_id) min_id = *it;
         if (*it > max_id) max_id = *it;
@@ -194,6 +195,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         clearProfileResult();
         bool tmp = P.test("profile", *it, testEnv, true);
         res = parseProfileResult();
+        outlog_printf(2,"Result: %d\n",res.size());
         cnt ++;
         if (!tmp) {
             fprintf(stderr, "Profile version failed on this, maybe because of timeout due to overhead!\n");

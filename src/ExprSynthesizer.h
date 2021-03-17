@@ -60,3 +60,12 @@ public:
         timeout_limit = limit;
     }
 };
+
+struct IsNegInformation{
+    int id;
+    int case_num;
+    int offset;
+    RepairCandidate::CandidateKind kind;
+    IsNegInformation(int id,int case_num,int offset,RepairCandidate::CandidateKind kind):
+            id(id),case_num(case_num),offset(offset),kind(kind) {}
+};

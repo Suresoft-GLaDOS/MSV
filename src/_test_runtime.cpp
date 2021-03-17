@@ -21,14 +21,19 @@
 #include <stdio.h>
 #include <string>
 #include <cstring>
+#include <cstdlib>
 #include <assert.h>
 #include <stdarg.h>
 #include <unistd.h>
 #include <sstream>
 #include <iostream>
 #include <vector>
+#include <array>
+#include <time.h>
+#include <cstdint>
 
 #define MAXSZ 1048576
+#define ONE_OR_N_BIT 50
 
 static bool init = false;
 static bool enable = false;
@@ -106,8 +111,8 @@ extern "C" int __get_mutant() {
 
 #define MAGIC_NUMBER -123456789
 
-extern "C" int __is_neg(int count, ...) {
-    //fprintf(stderr, "fuck\n");
+extern "C" int __is_neg(const char *location,int int_size,const int *ints, int char_size,const char *chars,int ptr_size,const void **ptrs, int double_size,const double *doubles,int var_size, ...) {
+    // fprintf(stderr, "fuck\n");
     if (!enable) return 0;
     char* is_neg = getenv("IS_NEG");
     if (!is_neg) return 0;
@@ -116,14 +121,17 @@ extern "C" int __is_neg(int count, ...) {
         if (tmp && (strcmp(tmp, "1") == 0)) {
             char* tmp_file = getenv("TMP_FILE");
             assert(tmp_file);
+            int isFlip=0;
             // First time here, we need to read a tmp file to know
             // where we are
             if (!init) {
+                fprintf(stderr,"Initing 1!\n");
                 init = true;
                 FILE *f = fopen(tmp_file, "r");
                 if (f == NULL) {
                     records_sz = 0;
                     current_cnt = 0;
+                    isFlip=0;
                 }
                 else {
                     unsigned long n;
@@ -140,40 +148,86 @@ extern "C" int __is_neg(int count, ...) {
                     ret = fscanf(f, "%lu", &tmp);
                     fclose(f);
                     if (ret != 0) {
-                        assert( tmp == 0);
-                        assert( records_sz > 0);
-                        long long i = records_sz - 1;
-                        while (i >= 0) {
-                            if (records[i] == 0)
-                                break;
-                            else
-                                i--;
-                        }
-                        assert( i >= 0);
-                        records[i] = 1;
-                        records_sz = i + 1;
+                    //     assert( tmp == 0);
+                    //     assert( records_sz > 0);
+                    //     long long i = records_sz - 1;
+                    //     while (i >= 0) {
+                    //         if (records[i] == 0)
+                    //             break;
+                    //         else
+                    //             i--;
+                    //     }
+                    //     assert( i >= 0);
+                    //     records[i] = 1;
+                    //     records_sz = i + 1;
                         current_cnt = 0;
-                    }
-                    else {
-                        current_cnt = records_sz;
+                        isFlip=1;
+                    } else
+                    {
+                        // current_cnt = records_sz;
+                        // current_cnt=0;
                     }
                 }
             }
+            if (isFlip==1){
+                // If size is 1, do simple flip
+                if (records_sz==1){
+                    if (records[0]==0) records[0]=1;
+                    else records[0]=0;
+                }
+                else{
+                    // Get temp pointer for get random seed
+                    char *temp=(char *)malloc(1);
+                    srand(reinterpret_cast<std::uintptr_t>(temp));
+                    free(temp);
+
+                    // Mutate configuration with MCMC sampling
+                    int isOneBit=rand()%100;
+                    if (isOneBit<ONE_OR_N_BIT){
+                        int position=rand()%records_sz;
+                        if (records[position]==0) records[position]=1;
+                        else records[position]=0;
+                    }
+                    else{
+                        int length=rand()%records_sz;
+                        int position[MAXSZ];
+                        for (int i=0;i<length;i++){
+                            position[i]=rand()%records_sz;
+                            for (int j=0;j<i;j++){
+                                if (position[j]==position[i]){
+                                    i--;
+                                    break;
+                                }
+                            }
+
+                            if (records[position[i]]==0) records[position[i]]=1;
+                            else records[position[i]]=0;
+                        }
+                    }
+                }
+            }
+
             int ret = 0;
-            if (current_cnt < records_sz)
+            if (current_cnt < records_sz){
                 ret = (int) records[current_cnt];
+            }
             else {
-                if (records_sz < MAXSZ)
+                if (records_sz < MAXSZ){
                     records[records_sz++] = 0;
+                    isFlip=0;
+                }
             }
             current_cnt ++;
 
+            fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
             // We write back immediate
             FILE *f = fopen(tmp_file, "w");
             assert( f != NULL );
             fprintf(f, "%lu ", records_sz);
+            fprintf(stderr, "Size: %lu\n",records_sz);
             for (unsigned long i = 0; i < records_sz; i++) {
                 fprintf(f, "%lu", records[i]);
+                fprintf(stderr, "Record: %lu\n",records[i]);
                 if (i != records_sz - 1)
                     fprintf(f, " ");
             }
@@ -183,6 +237,7 @@ extern "C" int __is_neg(int count, ...) {
         }
         // we always return 1
         else {
+            fprintf(stderr,"Initing 0!\n");
             // First time here, we need to read a tmp file to know
             // where we are
             if (!init) {
@@ -217,6 +272,7 @@ extern "C" int __is_neg(int count, ...) {
             }
             records[records_sz ++] = 1;
             current_cnt ++;
+            fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
 
             char* tmp_file = getenv("TMP_FILE");
             assert(tmp_file);
@@ -224,8 +280,10 @@ extern "C" int __is_neg(int count, ...) {
             FILE *f = fopen(tmp_file, "w");
             assert( f != NULL );
             fprintf(f, "%lu ", records_sz);
+            fprintf(stderr, "Size: %lu\n",records_sz);
             for (unsigned long i = 0; i < records_sz; i++) {
                 fprintf(f, "%lu", records[i]);
+                fprintf(stderr, "Record: %lu\n",records[i]);
                 if (i != records_sz - 1)
                     fprintf(f, " ");
             }
@@ -266,52 +324,58 @@ extern "C" int __is_neg(int count, ...) {
             }
         }
         //fprintf(stderr, "here1\n");
-        va_list ap;
-        va_start(ap, count);
-        FILE *f = fopen(tmp_file, "a");
-        fprintf(f, "%lu", (unsigned long)count);
-        //fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
-        for (unsigned long i = 0; i < (unsigned long)count; i++) {
-            void* p = va_arg(ap, void*);
-            unsigned long sz = va_arg(ap, unsigned long);
-            assert( sz <= 8 );
-            long long v = 0;
-            if (isGoodAddr(p, sz)) {
-                memcpy(&v, p, sz);
-            }
-            else {
-                v = MAGIC_NUMBER;
-            }
-            fprintf(f, " %lld", v);
-            //fprintf(stderr, "i %lu %lld\n", i, v);
-        }
-        fprintf(f, "\n");
-        fclose(f);
+        // va_list ap;
+        // va_start(ap, count);
+        // FILE *f = fopen(tmp_file, "a");
+        // fprintf(f, "%lu", (unsigned long)count);
+        // fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
+        // for (unsigned long i = 0; i < (unsigned long)count; i++) {
+        //     void* p = va_arg(ap, void*);
+        //     unsigned long sz = va_arg(ap, unsigned long);
+        //     assert( sz <= 8 );
+        //     long long v = 0;
+        //     if (isGoodAddr(p, sz)) {
+        //         memcpy(&v, p, sz);
+        //     }
+        //     else {
+        //         v = MAGIC_NUMBER;
+        //     }
+        //     fprintf(f, " %lld", v);
+        //     fprintf(stderr, "i %lu %lld\n", i, v);
+        // }
+        // fprintf(f, "\n");
+        // fclose(f);
 
-        if (strcmp(is_neg, "RECORD1") == 0) {
-            // We write back with additional int to note the end
-            char* neg_arg = getenv("NEG_ARG");
-            f = fopen(neg_arg, "w");
-            assert( f != NULL );
-            fprintf(f, "%lu ", records_sz);
-            for (unsigned long i = 0; i < records_sz; i++) {
-                fprintf(f, "%lu", records[i]);
-                if (i != records_sz - 1)
-                    fprintf(f, " ");
-            }
-            fprintf(f, "%lu", current_cnt + 1);
-            fclose(f);
+        // if (strcmp(is_neg, "RECORD1") == 0) {
+        //     // We write back with additional int to note the end
+        //     char* neg_arg = getenv("NEG_ARG");
+        //     f = fopen(neg_arg, "w");
+        //     assert( f != NULL );
+        //     fprintf(f, "%lu ", records_sz);
+        //     fprintf(stderr, "size: %d\n",records_sz);
+        //     for (unsigned long i = 0; i < records_sz; i++) {
+        //         fprintf(f, "%lu", records[i]);
+        //         fprintf(stderr, "record: %d\n",records[i]);
+        //         if (i != records_sz - 1)
+        //             fprintf(f, " ");
+        //     }
+        //     fprintf(f, "%lu", current_cnt + 1);
+        //     fprintf(stderr, "count: %d\n",current_cnt+1);
+        //     fclose(f);
 
-            assert( current_cnt < records_sz);
-            //fprintf(stderr, "fuck you %lu\n", records[current_cnt]);
-            return records[current_cnt++];
-        }
-        else
-            return 0;
+        //     assert( current_cnt < records_sz);
+        //     //fprintf(stderr, "fuck you %lu\n", records[current_cnt]);
+        //     return records[current_cnt++];
+        // }
+        // else
+        //     return 0;
     }
     return 0;
 }
 
 extern "C" int __choose(const char *id) {
-  return 0;
+  char *case_num=getenv(id);
+  int result;
+  sscanf(case_num,"%d",&result);
+  return result;
 }

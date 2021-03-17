@@ -6,3 +6,17 @@ src/.libs/
 **/build/
 src/*.o
 tools/*.log
+src/*.o
+src/*.lo
+src/learner
+src/pdiffer
+src/prophet
+src/playground
+.vscode
+src/*.la
+examples/engagement1/bresenham/DD.log
+examples/engagement1/bresenham/result.log
+examples/engagement1/bresenham/build.log
+examples/engagement1/if-condition/DD.log
+examples/engagement1/if-condition/build.log
+examples/engagement1/if-condition/result.log

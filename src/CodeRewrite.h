@@ -34,6 +34,11 @@ NewCodeMapTy combineCode(const CodeSegTy &codeSegs, const CodeSegTy &patch);
 class CodeRewriter {
     CodeSegTy resCodeSegs, resPatches;
     int counter;
+    std::map<long long,std::pair<int,int>> macroMap;
+    std::map<std::string,std::pair<int,int>> idAndCase;
+    std::map<std::pair<int,int>,std::vector<IsNegInformation>> isNegLocation;
+
+    size_t addIsNeg(int id,int case_num,std::string code);
 public:
     int index;
     CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi);
@@ -50,6 +55,18 @@ public:
 
     NewCodeMapTy getCodes() {
         return combineCode(resCodeSegs, resPatches);
+    }
+    std::map<long long,std::pair<int,int>> getMacroMap(){
+        return macroMap;
+    }
+    std::map<std::string,std::pair<int,int>> getIdAndCase(){
+        return idAndCase;
+    }
+    int getIdCount(){
+        return counter;
+    }
+    std::map<std::pair<int,int>,std::vector<IsNegInformation>> getIsNegLocation(){
+        return isNegLocation;
     }
 };
 

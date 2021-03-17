@@ -144,6 +144,7 @@ private:
 
     unsigned long compile_cnt;
     unsigned long test_cnt;
+    int count;
 
     TestCache *cache;
 

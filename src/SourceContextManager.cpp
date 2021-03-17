@@ -29,7 +29,7 @@
 
 const char* HANDLER_PREFIX =
     "int __get_mutant(); "
-    "int __is_neg(int, ...); "
+    "int __is_neg(const char *, int ,const int *, int ,const char *,int ,const void **, int ,const double *,int, ...); "
     "int __abst_hole(); "
     "int __choose(char *);";
 const char* MEMSET_PREFIX =
@@ -249,13 +249,20 @@ LocalAnalyzer* SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc) {
 }
 
 // FIXME: This stupid shit should go somewhere else
-Expr* SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType QT,std::vector<int> counts) {
+Expr* SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType QT,int id,std::map<Expr *,unsigned long> atoms) {
     Expr *abstract_cond = getInternalHandlerInfo(ctxt).abstract_cond;
-    std::vector<Expr*> args;
-    args.clear();
+    int count=atoms.size();
 
-    for (int i=0;i<counts.size();i++){
-        IntegerLiteral *arg=IntegerLiteral::Create(*ctxt,llvm::APInt(32,counts[i]),ctxt->IntTy,SourceLocation());
+    std::vector<Expr *> args;
+    IntegerLiteral *idExpr=IntegerLiteral::Create(*ctxt,llvm::APInt(32,id),ctxt->IntTy,SourceLocation());
+    args.push_back(idExpr);
+    IntegerLiteral *size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,count),ctxt->IntTy,SourceLocation());
+    args.push_back(size);
+    for (std::map<Expr *,unsigned long>::iterator it=atoms.begin();it!=atoms.end();it++){
+        char expr[100];
+        args.push_back(it->first);
+
+        IntegerLiteral *arg=IntegerLiteral::Create(*ctxt,llvm::APInt(32,it->second),ctxt->IntTy,SourceLocation());
         args.push_back(arg);
     }
     return clang::CallExpr::Create(*ctxt, abstract_cond, args,

@@ -107,6 +107,7 @@ int main(int argc, char **argv)
   //typedef rapidjson::UTF8<char> Encoding;
 
   FILE *infile = fopen(argv[1], "r");
+  assert(infile!=NULL);
   rapidjson::FileStream fstr(infile);
 
   Document docu;

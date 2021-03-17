@@ -157,7 +157,9 @@ _test_runtime.lo: _test_runtime.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/7/vector /usr/include/c++/7/bits/stl_construct.h \
  /usr/include/c++/7/bits/stl_uninitialized.h \
  /usr/include/c++/7/bits/stl_vector.h \
- /usr/include/c++/7/bits/stl_bvector.h /usr/include/c++/7/bits/vector.tcc
+ /usr/include/c++/7/bits/stl_bvector.h /usr/include/c++/7/bits/vector.tcc \
+ /usr/include/c++/7/array /usr/include/c++/7/utility \
+ /usr/include/c++/7/bits/stl_relops.h
 
 /usr/include/stdc-predef.h:
 
@@ -558,3 +560,9 @@ _test_runtime.lo: _test_runtime.cpp /usr/include/stdc-predef.h \
 /usr/include/c++/7/bits/stl_bvector.h:
 
 /usr/include/c++/7/bits/vector.tcc:
+
+/usr/include/c++/7/array:
+
+/usr/include/c++/7/utility:
+
+/usr/include/c++/7/bits/stl_relops.h:

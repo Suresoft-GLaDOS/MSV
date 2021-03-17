@@ -1,6 +1,7 @@
 extern "C" {
 int __get_mutant();
-int __is_neg(int, ...);
+int __is_neg(const char *, int, const int *, int, const char *, int,
+             const void **, int, const double *, int, ...);
 int __abst_hole();
 int __choose(char *);
 }
@@ -79,7 +80,8 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_3
   case 4: {
-    if (!__is_neg(1))
+    if (!__is_neg("0-4-0", 0, 0, 0, 0, 0, 0, 0, 0, 6, "steep", "x1", "y1", "x0",
+                  "y0", "a"))
       if (steep) {
         a = x0;
         x0 = y0;
@@ -94,7 +96,8 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_4
   case 5: {
-    if ((steep) && !__is_neg(1)) {
+    if ((steep) && !__is_neg("0-5-0", 0, 0, 0, 0, 0, 0, 0, 0, 6, "steep", "x1",
+                             "y1", "x0", "y0", "a")) {
       a = x0;
       x0 = y0;
       y0 = a;
@@ -108,7 +111,8 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_5
   case 6: {
-    if ((steep) || __is_neg(1)) {
+    if ((steep) || __is_neg("0-6-0", 0, 0, 0, 0, 0, 0, 0, 0, 6, "steep", "x1",
+                            "y1", "x0", "y0", "a")) {
       a = x0;
       x0 = y0;
       y0 = a;
@@ -122,7 +126,8 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_6
   case 7: {
-    if (__is_neg(1))
+    if (__is_neg("0-7-0", 0, 0, 0, 0, 0, 0, 0, 0, 6, "steep", "x1", "y1", "x0",
+                 "y0", "a"))
       return;
     if (steep) {
       a = x0;
@@ -362,7 +367,8 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_20
   case 4: {
-    if (!__is_neg(1))
+    if (!__is_neg("1-4-0", 0, 0, 0, 0, 0, 0, 0, 0, 6, "x1", "x0", "y1", "a",
+                  "y0", "steep"))
       if (x0 > x1) {
         a = x0;
         x0 = x1;
@@ -377,7 +383,8 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_21
   case 5: {
-    if ((x0 > x1) && !__is_neg(1)) {
+    if ((x0 > x1) && !__is_neg("1-5-0", 0, 0, 0, 0, 0, 0, 0, 0, 6, "x1", "x0",
+                               "y1", "a", "y0", "steep")) {
       a = x0;
       x0 = x1;
       x1 = a;
@@ -391,7 +398,8 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_22
   case 6: {
-    if ((x0 > x1) || __is_neg(1)) {
+    if ((x0 > x1) || __is_neg("1-6-0", 0, 0, 0, 0, 0, 0, 0, 0, 6, "x1", "x0",
+                              "y1", "a", "y0", "steep")) {
       a = x0;
       x0 = x1;
       x1 = a;
@@ -405,7 +413,8 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_23
   case 7: {
-    if (__is_neg(1))
+    if (__is_neg("1-7-0", 0, 0, 0, 0, 0, 0, 0, 0, 6, "x1", "x0", "y1", "a",
+                 "y0", "steep"))
       return;
     if (x0 > x1) {
       a = x0;
@@ -591,388 +600,243 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   float deltaerr = deltay / deltax;
   int ystep;
   // prophet generated patch
-  switch (__choose("__ID3")) {
+  switch (__choose("__ID2")) {
   case 0: {
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
     break;
   }
-#ifdef COMPILE_54
-  case 1: {
-    a = x0;
-    if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
 #ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
+  case 1: {
+    if (y0 < y1)
+      a = x0;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
+  case 2: {
+    if (y0 < y1)
+      a = x1;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
+  case 3: {
+    if (y0 < y1)
+      a = y0;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
+  case 4: {
+    if (y0 < y1)
+      error = error + deltaerr;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
+  case 5: {
+    if (y0 < y1)
+      error = error - 1;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
+  case 6: {
+    if (y0 < y1)
+      if (!__is_neg("2-6-0", 3, (const int[]){ystep, deltax, deltay}, 0, 0, 0,
+                    0, 0, 0, 9, "ystep", "y1", "y0", "deltax", "deltay", "x1",
+                    "x0", "steep", "a"))
+        ystep = 1;
+      else
+        ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
+  case 7: {
+    if (y0 < y1)
+      if (__is_neg("2-7-0", 3, (const int[]){ystep, deltax, deltay}, 0, 0, 0, 0,
+                   0, 0, 9, "ystep", "y1", "y0", "deltax", "deltay", "x1", "x0",
+                   "steep", "a"))
+        return;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
+  case 8: {
+    if (y0 < y1)
+      if (steep) {
+        a = x0;
+        x0 = y0;
+        y0 = a;
+        a = x1;
+        x1 = y1;
+        y1 = a;
       }
+    ystep = 1;
+    else ystep = -1;
+
+    break;
+  }
 #endif
 #ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
+  case 9: {
+    if (y0 < y1)
+      if (x0 > x1) {
+        a = x0;
+        x0 = x1;
+        x1 = a;
+        a = y0;
+        y0 = y1;
+        y1 = a;
       }
+    ystep = 1;
+    else ystep = -1;
+
+    break;
+  }
 #endif
 #ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
+  case 10: {
+    if (y0 < y1)
+      if (y0 < y1)
         ystep = 1;
+      else
+        ystep = -1;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
+  case 11: {
+    if (y0 < y1)
+      throw;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
+  case 12: {
+    if (y0 < y1)
+      x0 = x1;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
+  case 13: {
+    if (y0 < y1)
+      x0 = y0;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
+  case 14: {
+    if (y0 < y1)
+      x1 = a;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
+  case 15: {
+    if (y0 < y1)
+      x1 = y1;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
+  case 16: {
+    if (y0 < y1)
+      y0 = a;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
+  case 17: {
+    if (y0 < y1)
+      y0 = y1;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
+  case 18: {
+    if (y0 < y1)
+      y1 = a;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
+  case 19: {
+    if (y0 < y1)
+      ystep = -1;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
 #ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
+  case 20: {
+    if (y0 < y1)
+      ystep = 1;
+    ystep = 1;
+    else ystep = -1;
 
-        break;
-      }
+    break;
+  }
 #endif
-      }
+#ifdef COMPILE_54
+  case 21: {
+    a = x0;
+    if (y0 < y1)
+      ystep = 1;
     else
       ystep = -1;
 
@@ -980,194 +844,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_55
-  case 2: {
+  case 22: {
     a = x1;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -1175,194 +855,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_56
-  case 3: {
+  case 23: {
     a = y0;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -1370,194 +866,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_57
-  case 4: {
+  case 24: {
     error = error + deltaerr;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -1565,194 +877,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_58
-  case 5: {
+  case 25: {
     error = error - 1;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -1760,194 +888,12 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_59
-  case 6: {
-    if (!__is_neg(1))
+  case 26: {
+    if (!__is_neg("2-26-0", 3, (const int[]){ystep, deltax, deltay}, 0, 0, 0, 0,
+                  0, 0, 9, "y1", "y0", "ystep", "deltax", "deltay", "x1", "x0",
+                  "a", "steep"))
       if (y0 < y1)
-        switch (__choose("__ID2")) {
-        case 0: {
-          ystep = 1;
-
-          break;
-        }
-#ifdef COMPILE_34
-        case 1: {
-          a = x0;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_35
-        case 2: {
-          a = x1;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_36
-        case 3: {
-          a = y0;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_37
-        case 4: {
-          error = error + deltaerr;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_38
-        case 5: {
-          error = error - 1;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_39
-        case 6: {
-          if (!__is_neg(1))
-            ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_40
-        case 7: {
-          if (__is_neg(1))
-            return;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_41
-        case 8: {
-          if (steep) {
-            a = x0;
-            x0 = y0;
-            y0 = a;
-            a = x1;
-            x1 = y1;
-            y1 = a;
-          }
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_42
-        case 9: {
-          if (x0 > x1) {
-            a = x0;
-            x0 = x1;
-            x1 = a;
-            a = y0;
-            y0 = y1;
-            y1 = a;
-          }
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_43
-        case 10: {
-          if (y0 < y1)
-            ystep = 1;
-          else
-            ystep = -1;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_44
-        case 11: {
-          throw;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_45
-        case 12: {
-          x0 = x1;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_46
-        case 13: {
-          x0 = y0;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_47
-        case 14: {
-          x1 = a;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_48
-        case 15: {
-          x1 = y1;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_49
-        case 16: {
-          y0 = a;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_50
-        case 17: {
-          y0 = y1;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_51
-        case 18: {
-          y1 = a;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_52
-        case 19: {
-          ystep = -1;
-          ystep = 1;
-
-          break;
-        }
-#endif
-#ifdef COMPILE_53
-        case 20: {
-          ystep = 1;
-          ystep = 1;
-
-          break;
-        }
-#endif
-        }
+        ystep = 1;
       else
         ystep = -1;
 
@@ -1955,193 +901,12 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_60
-  case 7: {
-    if ((y0 < y1) && !__is_neg(1))
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+  case 27: {
+    if ((y0 < y1) &&
+        !__is_neg("2-27-0", 3, (const int[]){ystep, deltax, deltay}, 0, 0, 0, 0,
+                  0, 0, 9, "y1", "y0", "ystep", "deltax", "deltay", "x1", "x0",
+                  "a", "steep"))
+      ystep = 1;
     else
       ystep = -1;
 
@@ -2149,193 +914,11 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_61
-  case 8: {
-    if ((y0 < y1) || __is_neg(1))
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+  case 28: {
+    if ((y0 < y1) || __is_neg("2-28-0", 3, (const int[]){ystep, deltax, deltay},
+                              0, 0, 0, 0, 0, 0, 9, "y1", "y0", "ystep",
+                              "deltax", "deltay", "x1", "x0", "a", "steep"))
+      ystep = 1;
     else
       ystep = -1;
 
@@ -2343,195 +926,13 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_62
-  case 9: {
-    if (__is_neg(1))
+  case 29: {
+    if (__is_neg("2-29-0", 3, (const int[]){ystep, deltax, deltay}, 0, 0, 0, 0,
+                 0, 0, 9, "y1", "y0", "ystep", "deltax", "deltay", "x1", "x0",
+                 "a", "steep"))
       return;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -2539,7 +940,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_63
-  case 10: {
+  case 30: {
     if (steep) {
       a = x0;
       x0 = y0;
@@ -2549,191 +950,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
       y1 = a;
     }
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -2741,7 +958,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_64
-  case 11: {
+  case 31: {
     if (x0 > x1) {
       a = x0;
       x0 = x1;
@@ -2751,191 +968,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
       y1 = a;
     }
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -2943,193 +976,13 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_65
-  case 12: {
+  case 32: {
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
+    else
+      ystep = -1;
+    if (y0 < y1)
+      ystep = 1;
     else
       ystep = -1;
 
@@ -3137,194 +990,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_66
-  case 13: {
+  case 33: {
     throw;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -3332,194 +1001,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_67
-  case 14: {
+  case 34: {
     x0 = x1;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -3527,194 +1012,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_68
-  case 15: {
+  case 35: {
     x0 = y0;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -3722,194 +1023,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_69
-  case 16: {
+  case 36: {
     x1 = a;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -3917,194 +1034,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_70
-  case 17: {
+  case 37: {
     x1 = y1;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -4112,194 +1045,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_71
-  case 18: {
+  case 38: {
     y0 = a;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -4307,194 +1056,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_72
-  case 19: {
+  case 39: {
     y0 = y1;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -4502,194 +1067,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_73
-  case 20: {
+  case 40: {
     y1 = a;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -4697,194 +1078,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_74
-  case 21: {
+  case 41: {
     ystep = -1;
     if (y0 < y1)
-      switch (__choose("__ID2")) {
-      case 0: {
-        ystep = 1;
-
-        break;
-      }
-#ifdef COMPILE_34
-      case 1: {
-        a = x0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_35
-      case 2: {
-        a = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_36
-      case 3: {
-        a = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_37
-      case 4: {
-        error = error + deltaerr;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_38
-      case 5: {
-        error = error - 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_39
-      case 6: {
-        if (!__is_neg(1))
-          ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_40
-      case 7: {
-        if (__is_neg(1))
-          return;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_41
-      case 8: {
-        if (steep) {
-          a = x0;
-          x0 = y0;
-          y0 = a;
-          a = x1;
-          x1 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_42
-      case 9: {
-        if (x0 > x1) {
-          a = x0;
-          x0 = x1;
-          x1 = a;
-          a = y0;
-          y0 = y1;
-          y1 = a;
-        }
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_43
-      case 10: {
-        if (y0 < y1)
-          ystep = 1;
-        else
-          ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_44
-      case 11: {
-        throw;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_45
-      case 12: {
-        x0 = x1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_46
-      case 13: {
-        x0 = y0;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_47
-      case 14: {
-        x1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_48
-      case 15: {
-        x1 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_49
-      case 16: {
-        y0 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_50
-      case 17: {
-        y0 = y1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_51
-      case 18: {
-        y1 = a;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_52
-      case 19: {
-        ystep = -1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-#ifdef COMPILE_53
-      case 20: {
-        ystep = 1;
-        ystep = 1;
-
-        break;
-      }
-#endif
-      }
+      ystep = 1;
     else
       ystep = -1;
 
@@ -4892,193 +1089,12 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
   }
 #endif
 #ifdef COMPILE_75
-  case 22: {
-    switch (__choose("__ID2")) {
-    case 0: {
+  case 42: {
+    ystep = 1;
+    if (y0 < y1)
       ystep = 1;
-
-      break;
-    }
-#ifdef COMPILE_34
-    case 1: {
-      a = x0;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_35
-    case 2: {
-      a = x1;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_36
-    case 3: {
-      a = y0;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_37
-    case 4: {
-      error = error + deltaerr;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_38
-    case 5: {
-      error = error - 1;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_39
-    case 6: {
-      if (!__is_neg(1))
-        ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_40
-    case 7: {
-      if (__is_neg(1))
-        return;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_41
-    case 8: {
-      if (steep) {
-        a = x0;
-        x0 = y0;
-        y0 = a;
-        a = x1;
-        x1 = y1;
-        y1 = a;
-      }
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_42
-    case 9: {
-      if (x0 > x1) {
-        a = x0;
-        x0 = x1;
-        x1 = a;
-        a = y0;
-        y0 = y1;
-        y1 = a;
-      }
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_43
-    case 10: {
-      if (y0 < y1)
-        ystep = 1;
-      else
-        ystep = -1;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_44
-    case 11: {
-      throw;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_45
-    case 12: {
-      x0 = x1;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_46
-    case 13: {
-      x0 = y0;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_47
-    case 14: {
-      x1 = a;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_48
-    case 15: {
-      x1 = y1;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_49
-    case 16: {
-      y0 = a;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_50
-    case 17: {
-      y0 = y1;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_51
-    case 18: {
-      y1 = a;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_52
-    case 19: {
+    else
       ystep = -1;
-      ystep = 1;
-
-      break;
-    }
-#endif
-#ifdef COMPILE_53
-    case 20: {
-      ystep = 1;
-      ystep = 1;
-
-      break;
-    }
-#endif
-    }
-    else ystep = -1;
 
     break;
   }
@@ -5094,7 +1110,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
       line.push_back(var);
     } else {
       // prophet generated patch
-      switch (__choose("__ID4")) {
+      switch (__choose("__ID3")) {
       case 0: {
         var.first = x;
 
@@ -5142,7 +1158,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_81
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg("3-6-0", 5, (const int[]){x, y, ystep, deltax, deltay}, 0,
+                      0, 0, 0, 0, 0, 11, "x", "y", "steep", "ystep", "x1", "x0",
+                      "y0", "y1", "deltax", "deltay", "a"))
           var.first = x;
 
         break;
@@ -5150,7 +1168,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_82
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg("3-7-0", 5, (const int[]){x, y, ystep, deltax, deltay}, 0,
+                     0, 0, 0, 0, 0, 11, "x", "y", "steep", "ystep", "x1", "x0",
+                     "y0", "y1", "deltax", "deltay", "a"))
           break;
         var.first = x;
 
@@ -5159,7 +1179,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_83
       case 8: {
-        if (__is_neg(1))
+        if (__is_neg("3-8-0", 5, (const int[]){x, y, ystep, deltax, deltay}, 0,
+                     0, 0, 0, 0, 0, 11, "x", "y", "steep", "ystep", "x1", "x0",
+                     "y0", "y1", "deltax", "deltay", "a"))
           return;
         var.first = x;
 
@@ -5356,7 +1378,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
       }
       // prophet generated patch
-      switch (__choose("__ID5")) {
+      switch (__choose("__ID4")) {
       case 0: {
         var.second = y;
 
@@ -5404,7 +1426,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_109
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg("4-6-0", 5, (const int[]){y, x, ystep, deltax, deltay}, 0,
+                      0, 0, 0, 0, 0, 11, "y", "x", "ystep", "steep", "x1", "x0",
+                      "y0", "y1", "deltax", "deltay", "a"))
           var.second = y;
 
         break;
@@ -5412,7 +1436,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_110
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg("4-7-0", 5, (const int[]){y, x, ystep, deltax, deltay}, 0,
+                     0, 0, 0, 0, 0, 11, "y", "x", "ystep", "steep", "x1", "x0",
+                     "y0", "y1", "deltax", "deltay", "a"))
           break;
         var.second = y;
 
@@ -5421,7 +1447,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_111
       case 8: {
-        if (__is_neg(1))
+        if (__is_neg("4-8-0", 5, (const int[]){y, x, ystep, deltax, deltay}, 0,
+                     0, 0, 0, 0, 0, 11, "y", "x", "ystep", "steep", "x1", "x0",
+                     "y0", "y1", "deltax", "deltay", "a"))
           return;
         var.second = y;
 
@@ -5618,7 +1646,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
       }
       // prophet generated patch
-      switch (__choose("__ID6")) {
+      switch (__choose("__ID5")) {
       case 0: {
         line.push_back(var);
 
@@ -5666,7 +1694,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_137
       case 6: {
-        if (!__is_neg(1))
+        if (!__is_neg("5-6-0", 5, (const int[]){y, x, ystep, deltax, deltay}, 0,
+                      0, 0, 0, 0, 0, 11, "y", "x", "ystep", "steep", "x1", "x0",
+                      "y0", "y1", "deltax", "deltay", "a"))
           line.push_back(var);
 
         break;
@@ -5674,7 +1704,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_138
       case 7: {
-        if (__is_neg(1))
+        if (__is_neg("5-7-0", 5, (const int[]){y, x, ystep, deltax, deltay}, 0,
+                     0, 0, 0, 0, 0, 11, "y", "x", "ystep", "steep", "x1", "x0",
+                     "y0", "y1", "deltax", "deltay", "a"))
           break;
         line.push_back(var);
 
@@ -5683,7 +1715,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_139
       case 8: {
-        if (__is_neg(1))
+        if (__is_neg("5-8-0", 5, (const int[]){y, x, ystep, deltax, deltay}, 0,
+                     0, 0, 0, 0, 0, 11, "y", "x", "ystep", "steep", "x1", "x0",
+                     "y0", "y1", "deltax", "deltay", "a"))
           return;
         line.push_back(var);
 
@@ -5881,7 +1915,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
       }
     }
     // prophet generated patch
-    switch (__choose("__ID7")) {
+    switch (__choose("__ID6")) {
     case 0: {
       error = error + deltaerr;
 
@@ -5929,7 +1963,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_165
     case 6: {
-      if (!__is_neg(1))
+      if (!__is_neg("6-6-0", 5, (const int[]){y, ystep, x, deltax, deltay}, 0,
+                    0, 0, 0, 0, 0, 11, "y", "ystep", "x", "steep", "x1", "x0",
+                    "y0", "y1", "deltax", "deltay", "a"))
         error = error + deltaerr;
 
       break;
@@ -5937,7 +1973,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_166
     case 7: {
-      if (__is_neg(1))
+      if (__is_neg("6-7-0", 5, (const int[]){y, ystep, x, deltax, deltay}, 0, 0,
+                   0, 0, 0, 0, 11, "y", "ystep", "x", "steep", "x1", "x0", "y0",
+                   "y1", "deltax", "deltay", "a"))
         break;
       error = error + deltaerr;
 
@@ -5946,7 +1984,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_167
     case 8: {
-      if (__is_neg(1))
+      if (__is_neg("6-8-0", 5, (const int[]){y, ystep, x, deltax, deltay}, 0, 0,
+                   0, 0, 0, 0, 11, "y", "ystep", "x", "steep", "x1", "x0", "y0",
+                   "y1", "deltax", "deltay", "a"))
         return;
       error = error + deltaerr;
 
@@ -6143,7 +2183,7 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
     }
     // prophet generated patch
-    switch (__choose("__ID8")) {
+    switch (__choose("__ID7")) {
     case 0: {
       if (error >= 0.5) {
         y += ystep;
@@ -6209,7 +2249,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_193
     case 6: {
-      if (!__is_neg(1))
+      if (!__is_neg("7-6-0", 5, (const int[]){ystep, y, x, deltax, deltay}, 0,
+                    0, 0, 0, 0, 0, 11, "ystep", "y", "x", "steep", "x1", "x0",
+                    "y0", "y1", "deltax", "deltay", "a"))
         if (error >= 0.5) {
           y += ystep;
           error = error - 1;
@@ -6220,7 +2262,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_194
     case 7: {
-      if ((error >= 0.5) && !__is_neg(1)) {
+      if ((error >= 0.5) &&
+          !__is_neg("7-7-0", 5, (const int[]){ystep, y, x, deltax, deltay}, 0,
+                    0, 0, 0, 0, 0, 11, "ystep", "y", "x", "steep", "x1", "x0",
+                    "y0", "y1", "deltax", "deltay", "a")) {
         y += ystep;
         error = error - 1;
       }
@@ -6230,7 +2275,10 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_195
     case 8: {
-      if ((error >= 0.5) || __is_neg(1)) {
+      if ((error >= 0.5) ||
+          __is_neg("7-8-0", 5, (const int[]){ystep, y, x, deltax, deltay}, 0, 0,
+                   0, 0, 0, 0, 11, "ystep", "y", "x", "steep", "x1", "x0", "y0",
+                   "y1", "deltax", "deltay", "a")) {
         y += ystep;
         error = error - 1;
       }
@@ -6240,7 +2288,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_196
     case 9: {
-      if (__is_neg(1))
+      if (__is_neg("7-9-0", 5, (const int[]){ystep, y, x, deltax, deltay}, 0, 0,
+                   0, 0, 0, 0, 11, "ystep", "y", "x", "steep", "x1", "x0", "y0",
+                   "y1", "deltax", "deltay", "a"))
         break;
       if (error >= 0.5) {
         y += ystep;
@@ -6252,7 +2302,9 @@ void buggy(unsigned x1, unsigned y1, DiscreteLine &line) {
 #endif
 #ifdef COMPILE_197
     case 10: {
-      if (__is_neg(1))
+      if (__is_neg("7-10-0", 5, (const int[]){ystep, y, x, deltax, deltay}, 0,
+                   0, 0, 0, 0, 0, 11, "ystep", "y", "x", "steep", "x1", "x0",
+                   "y0", "y1", "deltax", "deltay", "a"))
         return;
       if (error >= 0.5) {
         y += ystep;
@@ -6518,7 +2570,7 @@ int main(int argc, char **argv) {
   FILE *f = fopen(argv[1], "r");
   int x, y;
   // prophet generated patch
-  switch (__choose("__ID9")) {
+  switch (__choose("__ID8")) {
   case 0: {
     fscanf(f, "%d %d\n", &x, &y);
 
@@ -6526,7 +2578,9 @@ int main(int argc, char **argv) {
   }
 #ifdef COMPILE_218
   case 1: {
-    if (!__is_neg(1))
+    if (!__is_neg("8-1-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                  (void *const[]){f, argv}, 0, 0, 5, "f", "x", "y", "argv",
+                  "argc"))
       fscanf(f, "%d %d\n", &x, &y);
 
     break;
@@ -6534,7 +2588,9 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_219
   case 2: {
-    if (__is_neg(1))
+    if (__is_neg("8-2-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                 (void *const[]){f, argv}, 0, 0, 5, "f", "x", "y", "argv",
+                 "argc"))
       return 0;
     fscanf(f, "%d %d\n", &x, &y);
 
@@ -6543,7 +2599,9 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_220
   case 3: {
-    if (__is_neg(1))
+    if (__is_neg("8-3-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                 (void *const[]){f, argv}, 0, 0, 5, "f", "x", "y", "argv",
+                 "argc"))
       return 1;
     fscanf(f, "%d %d\n", &x, &y);
 
@@ -6560,7 +2618,7 @@ int main(int argc, char **argv) {
 #endif
   }
   // prophet generated patch
-  switch (__choose("__ID10")) {
+  switch (__choose("__ID9")) {
   case 0: {
     fclose(f);
 
@@ -6568,7 +2626,9 @@ int main(int argc, char **argv) {
   }
 #ifdef COMPILE_222
   case 1: {
-    if (!__is_neg(1))
+    if (!__is_neg("9-1-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                  (void *const[]){f, argv}, 0, 0, 5, "f", "x", "y", "argv",
+                  "argc"))
       fclose(f);
 
     break;
@@ -6576,7 +2636,9 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_223
   case 2: {
-    if (__is_neg(1))
+    if (__is_neg("9-2-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                 (void *const[]){f, argv}, 0, 0, 5, "f", "x", "y", "argv",
+                 "argc"))
       return 0;
     fclose(f);
 
@@ -6585,7 +2647,9 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_224
   case 3: {
-    if (__is_neg(1))
+    if (__is_neg("9-3-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                 (void *const[]){f, argv}, 0, 0, 5, "f", "x", "y", "argv",
+                 "argc"))
       return 1;
     fclose(f);
 
@@ -6603,7 +2667,7 @@ int main(int argc, char **argv) {
   }
   DiscreteLine line;
   // prophet generated patch
-  switch (__choose("__ID11")) {
+  switch (__choose("__ID10")) {
   case 0: {
     buggy(x, y, line);
 
@@ -6619,7 +2683,9 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_227
   case 2: {
-    if (!__is_neg(1))
+    if (!__is_neg("10-2-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                  (void *const[]){f, argv}, 0, 0, 5, "x", "y", "f", "argv",
+                  "argc"))
       buggy(x, y, line);
 
     break;
@@ -6627,7 +2693,9 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_228
   case 3: {
-    if (__is_neg(1))
+    if (__is_neg("10-3-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                 (void *const[]){f, argv}, 0, 0, 5, "x", "y", "f", "argv",
+                 "argc"))
       return 0;
     buggy(x, y, line);
 
@@ -6636,7 +2704,9 @@ int main(int argc, char **argv) {
 #endif
 #ifdef COMPILE_229
   case 4: {
-    if (__is_neg(1))
+    if (__is_neg("10-4-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                 (void *const[]){f, argv}, 0, 0, 5, "x", "y", "f", "argv",
+                 "argc"))
       return 1;
     buggy(x, y, line);
 
@@ -6653,6 +2723,66 @@ int main(int argc, char **argv) {
 #endif
   }
 
-  for (unsigned i = 0, end = line.size(); i != line.size(); i++)
-    printf("%d %d\n", line[i].first, line[i].second);
+  // prophet generated patch
+  switch (__choose("__ID11")) {
+  case 0: {
+    for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
+      printf("%d %d\n", line[i].first, line[i].second);
+
+    break;
+  }
+#ifdef COMPILE_231
+  case 1: {
+    buggy(x, y, line);
+    for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
+      printf("%d %d\n", line[i].first, line[i].second);
+
+    break;
+  }
+#endif
+#ifdef COMPILE_232
+  case 2: {
+    if (!__is_neg("11-2-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                  (void *const[]){f, argv}, 0, 0, 5, "x", "y", "f", "argv",
+                  "argc"))
+      for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
+        printf("%d %d\n", line[i].first, line[i].second);
+
+    break;
+  }
+#endif
+#ifdef COMPILE_233
+  case 3: {
+    if (__is_neg("11-3-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                 (void *const[]){f, argv}, 0, 0, 5, "x", "y", "f", "argv",
+                 "argc"))
+      return 0;
+    for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
+      printf("%d %d\n", line[i].first, line[i].second);
+
+    break;
+  }
+#endif
+#ifdef COMPILE_234
+  case 4: {
+    if (__is_neg("11-4-0", 3, (const int[]){x, y, argc}, 0, 0, 2,
+                 (void *const[]){f, argv}, 0, 0, 5, "x", "y", "f", "argv",
+                 "argc"))
+      return 1;
+    for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
+      printf("%d %d\n", line[i].first, line[i].second);
+
+    break;
+  }
+#endif
+#ifdef COMPILE_235
+  case 5: {
+    throw;
+    for (unsigned int i = 0, end = line.size(); i != line.size(); i++)
+      printf("%d %d\n", line[i].first, line[i].second);
+
+    break;
+  }
+#endif
+  }
 }
