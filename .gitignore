@@ -6,4 +6,3 @@ src/.libs/
 **/build/
 src/*.o
 tools/*.log
-
