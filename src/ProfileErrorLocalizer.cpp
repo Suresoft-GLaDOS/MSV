@@ -66,7 +66,6 @@ std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileRes
             assert(0);
             pid = "0";
         }
-        printf("nstr: %s\n",nstr.c_str());
         
         while (std::getline(fin, line1)) {
             if (line1 == "") break;
@@ -222,6 +221,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         // FIXME: this is really hacky
         if (bugged_files.size() != 0)
             if (bugged_files.count(it->first.expFilename) == 1) {
+                outlog_printf(2,"Bugged file: %s\n",it->first.expFilename.c_str());
                 Q2.push(std::make_pair( std::make_pair(-(it->second.execution_cnt * SIGMA - positive_mark[it->first]),
                     (it->second.beforeend_cnt)), std::make_pair(it->first, it->second.pid) ));
                 while (Q2.size() > LOC2_LIMIT)

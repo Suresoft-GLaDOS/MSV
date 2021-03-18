@@ -119,7 +119,7 @@ if (not found) or (defect_token == ""):
     print_defect();
     exit(1);
 
-if (not os.path.exists(defect_token)):
+if (False and not os.path.exists(defect_token)):
     cmd = "wget " + scenario_addr + defect_token;
     ret = system(cmd);
     if (ret != 0):
@@ -128,11 +128,11 @@ if (not os.path.exists(defect_token)):
 else:
     print "Work with existing tarball";
 
-cmd = "rm -rf " + app + "-case*";
-system(cmd);
-cmd = "tar xvzf " + defect_token;
-system(cmd);
-system("rm -rf *fix*");
+# cmd = "rm -rf " + app + "-case*";
+# system(cmd);
+# cmd = "tar xvzf " + defect_token;
+# system(cmd);
+# system("rm -rf *fix*");
 glob_res = glob.glob(app + "-case-*");
 assert( len(glob_res) > 0);
 case_dir = glob_res[0];

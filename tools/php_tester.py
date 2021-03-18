@@ -243,7 +243,7 @@ class php_tester:
     # build a revision of php
     def set_revision(self, revision, deps_dir = ""):
         ori_dir = getcwd();
-        print self.repo_dir + " " + revision;
+        # print self.repo_dir + " " + revision;
         try:
             if (deps_dir == ""):
                 ret = switch_to(self.repo_dir, revision);
