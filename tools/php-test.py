@@ -36,9 +36,6 @@ if __name__ == "__main__":
     src_dir = args[0];
     test_dir = args[1];
     work_dir = args[2];
-    with open("/result/php-test.log", "a") as f:
-        text = "src_dir: " + src_dir + "\ntest_dir: " + test_dir + "\nwork_dir: " + work_dir;
-        f.write(text);
         
     if len(args) > 3:
         ids = args[3:];

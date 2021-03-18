@@ -452,7 +452,7 @@ bison-2.5.1-build:
 	make install
 
 flex-2.5.4-build:
-	cp $(srcdir)/flex-2.5.4a.tar.gz flex-2.5.4a.tar.gz
+	#cp $(srcdir)/flex-2.5.4a.tar.gz flex-2.5.4a.tar.gz
 	tar xvzf flex-2.5.4a.tar.gz
 	cd flex-2.5.4 && \
 	./configure --prefix=$(abs_builddir)/flex-2.5.4-build && \
@@ -460,7 +460,7 @@ flex-2.5.4-build:
 	make install
 
 flex-2.5.39-build:
-	cp $(srcdir)/flex-2.5.39.tar.gz flex-2.5.39.tar.gz
+	#cp $(srcdir)/flex-2.5.39.tar.gz flex-2.5.39.tar.gz
 	tar xvzf flex-2.5.39.tar.gz
 	cd flex-2.5.39 && \
 	./configure --prefix=$(abs_builddir)/flex-2.5.39-build && \

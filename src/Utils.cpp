@@ -177,7 +177,7 @@ bool is_header(const std::string &str) {
 }
 
 std::string getFullPath(const std::string &path){
-    outlog_printf(1, "getFullPath!!!!!! %s\n", path.c_str());
+    //outlog_printf(1, "getFullPath!!!!!! %s\n", path.c_str());
 
     char tmp[PATH_MAX];
     char * ret = realpath(path.c_str(), tmp);

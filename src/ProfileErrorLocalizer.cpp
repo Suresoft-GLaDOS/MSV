@@ -262,16 +262,10 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
     }
 
     for (long i = (long)tmpv.size() - 1; i >=0; --i) {
-        if (tmpv[i].loc.expFilename.find("php_date") != std::string::npos)
-        {
-            candidateResults.push_back(tmpv[i]);
-        }
+        candidateResults.push_back(tmpv[i]);
     }
     for (long i = (long)tmpv2.size() - 1; i >= 0; --i) {
-        if (tmpv2[i].loc.expFilename.find("php_date") != std::string::npos)
-        {
-            candidateResults.push_back(tmpv2[i]);
-        }
+        candidateResults.push_back(tmpv2[i]);
     }
     printResult(P.getLocalizationResultFilename());
 }
@@ -316,9 +310,9 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P, const std::string 
             fprintf(stderr, "Corrupted file at line %lu, assume pid 0\n", (unsigned long)cnt);
             tmp.pid = "0";
         }
+        candidateResults.push_back(tmp);
         if (tmp.loc.expFilename == "ext/date/php_date.c") {
             outlog_printf(1, "ProfileErrorLocalizer!!!! ext/date/php_date.c %d\n", tmp.loc.expLine);
-            candidateResults.push_back(tmp);
         }
 
     }
