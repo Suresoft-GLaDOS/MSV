@@ -1,2 +1,4 @@
 build/
 **/*.o
+benchmarks/lighttpd-deps/libxml2-2.7.2
+benchmarks/lighttpd-deps/sqlite-autoconf-3080600
