@@ -1,4 +1,5 @@
 **/prog
+**/build.log
 **/*.o
 *.bak
 **/out/
