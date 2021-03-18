@@ -1,10 +1,8 @@
 **/prog
-*.o
+**/*.o
 *.bak
 **/out/
-src/*.o
 tools/*.log
-src/*.o
 src/*.lo
 src/learner
 src/pdiffer
@@ -21,3 +19,4 @@ examples/engagement1/if-condition/result.log
 benchmarks/*-src
 benchmarks/*-tests*
 autom4te.cache
+build/benchmarks/*.tar.gz
