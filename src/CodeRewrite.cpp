@@ -363,18 +363,14 @@ size_t getIsNegCount(std::string code){
 }
 std::string addLocationInIsNeg(std::string code,int id,int case_num){
     size_t position=code.find("__is_neg");
-    size_t count=0;
 
-    while (position!=std::string::npos){
+    if (position!=std::string::npos){
         position=code.find("(",position);
         code=code.erase(position+1,2);
 
         std::string location;
-        location="\""+std::to_string(id)+"-"+std::to_string(case_num)+"-"+std::to_string(count)+"\"";
+        location="\""+std::to_string(id)+"-"+std::to_string(case_num)+"\"";
         code=code.insert(position+1,location);
-        
-        position=code.find("__is_neg",position+1);
-        count++;
     }
     return code;
 }

@@ -7,9 +7,9 @@ Processing test.c
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total 104 different partial repair candidate templates!!
-BasicTester pointer: 0x561ae88aba90
-StringConstTester pointer: 0x561ae881cba0
-CondTester pointer: 0x561ae87b2500
+BasicTester pointer: 0x558761af1a90
+StringConstTester pointer: 0x558761a62ba0
+CondTester pointer: 0x5587619f8500
 Generating Candidates...
 Candidates size: 108
 Generating Codes...
@@ -45,6 +45,12 @@ Branch 0: 0
 Iteration 1
 Branch 0: 1
 Trying with NEG_ARG=0!
+Passed Negative Cases wiht CondTester!
+	[1, ]
+Testing positive cases!
+Passed Positive Cases
+Collect values for post processing!
+[4] Passed!
 Testing negative cases!
 Testing 2 (with abstract condition)
 Printing IDs:
@@ -209,4 +215,4 @@ Repair process ends without working fix!!
 Total 108 different repair schemas!!!!
 Total 193 different repair candidate templates for scoring!!!
 Total number of compiles: 1
-Total number of test eval: 48
+Total number of test eval: 53

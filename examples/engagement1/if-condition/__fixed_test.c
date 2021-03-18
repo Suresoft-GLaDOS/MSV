@@ -71,8 +71,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_7
   case 8: {
-    if (!__is_neg("0-8-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
-                  0, 0, 5, "f", "a", "b", "argv", "argc"))
+    if (!__is_neg("0-8", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0,
+                  0, 5, "f", "a", "b", "argv", "argc"))
       fscanf(f, "%d %d\n", &a, &b);
 
     break;
@@ -80,8 +80,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_8
   case 9: {
-    if (__is_neg("0-9-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
-                 0, 0, 5, "f", "a", "b", "argv", "argc"))
+    if (__is_neg("0-9", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0,
+                 0, 5, "f", "a", "b", "argv", "argc"))
       return 0;
     fscanf(f, "%d %d\n", &a, &b);
 
@@ -90,8 +90,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_9
   case 10: {
-    if (__is_neg("0-10-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
-                 0, 0, 5, "f", "a", "b", "argv", "argc"))
+    if (__is_neg("0-10", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0,
+                 0, 5, "f", "a", "b", "argv", "argc"))
       return 1;
     fscanf(f, "%d %d\n", &a, &b);
 
@@ -413,7 +413,7 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_52
   case 36: {
-    if (!__is_neg("1-36-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
+    if (!__is_neg("1-36", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
                   0, 0, 5, "f", "a", "b", "argv", "argc"))
       fclose(f);
 
@@ -422,8 +422,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_53
   case 37: {
-    if (__is_neg("1-37-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
-                 0, 0, 5, "f", "a", "b", "argv", "argc"))
+    if (__is_neg("1-37", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0,
+                 0, 5, "f", "a", "b", "argv", "argc"))
       return 0;
     fclose(f);
 
@@ -432,8 +432,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_54
   case 38: {
-    if (__is_neg("1-38-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
-                 0, 0, 5, "f", "a", "b", "argv", "argc"))
+    if (__is_neg("1-38", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0,
+                 0, 5, "f", "a", "b", "argv", "argc"))
       return 1;
     fclose(f);
 
@@ -566,8 +566,8 @@ int main(int argc, char *argv[]) {
     if (a > b) { // >=
       printf("%d\n", 0);
     } else {
-      if (!__is_neg("2-6-0", 3, (int *){a, b, argc}, 0, 0, 2,
-                    (void **){f, argv}, 0, 0, 5, "a", "b", "f", "argv", "argc"))
+      if (!__is_neg("2-6", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
+                    0, 0, 5, "a", "b", "f", "argv", "argc"))
         printf("%d\n", 1);
     }
 
@@ -579,7 +579,7 @@ int main(int argc, char *argv[]) {
     if (a > b) { // >=
       printf("%d\n", 0);
     } else {
-      if (__is_neg("2-7-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
+      if (__is_neg("2-7", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
                    0, 0, 5, "a", "b", "f", "argv", "argc"))
         return 0;
       printf("%d\n", 1);
@@ -593,7 +593,7 @@ int main(int argc, char *argv[]) {
     if (a > b) { // >=
       printf("%d\n", 0);
     } else {
-      if (__is_neg("2-8-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
+      if (__is_neg("2-8", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
                    0, 0, 5, "a", "b", "f", "argv", "argc"))
         return 1;
       printf("%d\n", 1);
@@ -703,7 +703,7 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_77
   case 17: {
-    if (!__is_neg("2-17-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
+    if (!__is_neg("2-17", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
                   0, 0, 5, "a", "b", "f", "argv", "argc") &&
         (a > b)) {
       printf("%d\n", 0);
@@ -716,7 +716,7 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_78
   case 18: {
-    if (!__is_neg("2-18-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
+    if (!__is_neg("2-18", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
                   0, 0, 5, "a", "b", "f", "argv", "argc"))
       if (a > b) {
         printf("%d\n", 0);
@@ -730,7 +730,7 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_79
   case 19: {
     if ((a > b) &&
-        !__is_neg("2-19-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
+        !__is_neg("2-19", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
                   0, 0, 5, "a", "b", "f", "argv", "argc")) {
       printf("%d\n", 0);
     } else {
@@ -743,8 +743,8 @@ int main(int argc, char *argv[]) {
 #ifdef COMPILE_80
   case 20: {
     if ((a > b) ||
-        __is_neg("2-20-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
-                 0, 0, 5, "a", "b", "f", "argv", "argc")) {
+        __is_neg("2-20", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0,
+                 0, 5, "a", "b", "f", "argv", "argc")) {
       printf("%d\n", 0);
     } else {
       printf("%d\n", 1);
@@ -755,8 +755,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_81
   case 21: {
-    if (__is_neg("2-21-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
-                 0, 0, 5, "a", "b", "f", "argv", "argc"))
+    if (__is_neg("2-21", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0,
+                 0, 5, "a", "b", "f", "argv", "argc"))
       return 0;
     if (a > b) {
       printf("%d\n", 0);
@@ -769,8 +769,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef COMPILE_82
   case 22: {
-    if (__is_neg("2-22-0", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv},
-                 0, 0, 5, "a", "b", "f", "argv", "argc"))
+    if (__is_neg("2-22", 3, (int *){a, b, argc}, 0, 0, 2, (void **){f, argv}, 0,
+                 0, 5, "a", "b", "f", "argv", "argc"))
       return 1;
     if (a > b) {
       printf("%d\n", 0);
