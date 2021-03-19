@@ -642,6 +642,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         sout << *it << " ";
     sout <<  " > __res\n";
     cmd = sout.str();
+    printf("Command: %s\n",cmd.c_str());
     int res;
 
     pushEnvMap(env_pairs);

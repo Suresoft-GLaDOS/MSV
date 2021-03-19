@@ -39,9 +39,6 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
         php_deps_dir = deps_dir;
     chdir(out_dir);
     my_env = environ;
-    my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"];
-    my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"];
-    my_env["PATH"] = php_deps_dir + "/flex-2.5.4-build/bin:" + my_env["PATH"];
     # switch to the revision
     if revision != "":
         assert(not compile_only);
@@ -55,6 +52,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
     # builds, we will try multiple times
     if not compile_only:
         cnt = 0;
+        subprocess.call(["make","clean"],env=my_env)
         while (True):
             print "Current path: ", my_env["PATH"];
             cnt = cnt + 1;
@@ -64,16 +62,20 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
                 return False;
             # clean up things
             #subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
+
             # create configure file
             ret = subprocess.call(["./buildconf"], env = my_env);
             if ret != 0:
                 print "Failed to create config, check autoconf version!";
                 chdir(ori_dir);
                 return False;
+            
             # do the configure
-            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build","-enable-debug"], env = my_env, stderr = subprocess.PIPE);
+            subprocess.call(["rm","config.cache"],env=my_env)
+            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip","enable-debug"], env = my_env, stderr = subprocess.PIPE);
+            # p = subprocess.Popen(["./configure","-enable-zip"], env = my_env, stderr = subprocess.PIPE);
             (out, err) = p.communicate();
-	    print out
+            print out
             print p.returncode
             if p.returncode != 0:
                 if is_due_to_autoconf_v(err):
@@ -286,6 +288,8 @@ class php_tester:
         p = subprocess.Popen([prog, helper, "-p", test_prog, "-q"] + arg_list,stdout=subprocess.PIPE);
         chdir(ori_dir);
         (out, err) = p.communicate();
+        print "Out:",out
+        print "Err:",err
         lines = out.split("\n");
         test_section = False;
         cnt = 0;
@@ -302,7 +306,8 @@ class php_tester:
                 test_section = False;
             elif (test_section == True) and (_is_start(tokens[0])):
                 if cnt >= n:
-                    print out;
+                    # print out;
+                    print "Error in testing, exit!"
                     exit(1);
                 the_idx = new_s[0];
                 new_s.remove(the_idx);
@@ -328,7 +333,7 @@ class php_tester:
         self.tmptest_dir = self.work_dir + "/__cleantests";
         if (path.exists(self.tmptest_dir)):
             shutil.rmtree(self.tmptest_dir);
-        #print "Preparing clean test dir..."
+        print "Preparing clean test dir..."
         if (s == None):
             shutil.copytree(self.test_dir, self.tmptest_dir);
         else:
@@ -340,6 +345,7 @@ class php_tester:
         self.prepare_test(s);
         new_s = [];
         ret = set();
+        print "Starting Test..."
         for i in s:
             new_s.append(i);
             if (len(new_s) >= 100):

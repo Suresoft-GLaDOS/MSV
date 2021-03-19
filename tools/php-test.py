@@ -46,7 +46,7 @@ if __name__ == "__main__":
         ret = a.test(s, profile_dir);
         for i in ret:
             print i,
-        print;
+        # print "test"
         if len(ids) == 1 and len(ret) == 0:
             if "OUTIFFAIL" in os.environ:
                 outf = work_dir + "/__cleantests/" + ids[0] + ".out";

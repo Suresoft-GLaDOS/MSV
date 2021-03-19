@@ -62,7 +62,7 @@ std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileRes
         // We get an empty pid, FIXME investigate why this will happen
         if (pid == "") {
             fprintf(stderr, "Cannot get pid value, assume 0.");
-            llvm::errs() << nstr << "\n";
+            // llvm::errs() << nstr << "\n";
             assert(0);
             pid = "0";
         }
@@ -159,7 +159,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         clearProfileResult();
         bool tmp = P.test("profile", *it, testEnv, true);
         res = parseProfileResult();
-        outlog_printf(2,"Result: %d\n",res.size());
+        llvm::errs() << "Finish!" << "\n";
 
         if (*it < min_id) min_id = *it;
         if (*it > max_id) max_id = *it;
