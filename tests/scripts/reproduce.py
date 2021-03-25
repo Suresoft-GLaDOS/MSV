@@ -38,6 +38,7 @@ password = "";
 print_fix_only = "";
 timeout = 0;
 feature_dump = False;
+skip_build=False
 for o, a in opts:
     if o == "--geop":
         geop = a;
@@ -82,6 +83,8 @@ for o, a in opts:
         print_fix_only = a;
     elif o == "--feature-dump":
         feature_dump = True;
+    elif o=="--skip-build":
+        skip_build=True
 
 scenario_addr = "http://www.cs.toronto.edu/~fanl/program_repair/scenarios/";
 
@@ -202,6 +205,8 @@ else:
         cmd += " -cond-ext";
     if full_dump:
         cmd += " -full-explore -full-synthesis -dump-passed-candidate __candidate";
+    if skip_build:
+        cmd += " -skip-profile-build "
     if print_fix_only != "":
         cmd += " -print-fix-only " + print_fix_only;
         if feature_dump:

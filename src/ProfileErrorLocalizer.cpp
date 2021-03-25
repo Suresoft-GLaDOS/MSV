@@ -125,6 +125,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
     else {
         P.clearSrcClone("profile");
         P.createSrcClone("profile");
+        // P.addExistingSrcClone("profile",false);
         BenchProgram::EnvMapTy envMap;
         envMap.clear();
         if (ForCPP.getValue())
@@ -159,7 +160,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         clearProfileResult();
         bool tmp = P.test("profile", *it, testEnv, true);
         res = parseProfileResult();
-        llvm::errs() << "Finish!" << "\n";
+        // llvm::errs() << "Finish!" << "\n";
 
         if (*it < min_id) min_id = *it;
         if (*it > max_id) max_id = *it;
@@ -194,7 +195,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         clearProfileResult();
         bool tmp = P.test("profile", *it, testEnv, true);
         res = parseProfileResult();
-        outlog_printf(2,"Result: %d\n",res.size());
+        // outlog_printf(2,"Result: %d\n",res.size());
         cnt ++;
         if (!tmp) {
             fprintf(stderr, "Profile version failed on this, maybe because of timeout due to overhead!\n");
@@ -221,7 +222,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         // FIXME: this is really hacky
         if (bugged_files.size() != 0)
             if (bugged_files.count(it->first.expFilename) == 1) {
-                outlog_printf(2,"Bugged file: %s\n",it->first.expFilename.c_str());
+                // outlog_printf(2,"Bugged file: %s\n",it->first.expFilename.c_str());
                 Q2.push(std::make_pair( std::make_pair(-(it->second.execution_cnt * SIGMA - positive_mark[it->first]),
                     (it->second.beforeend_cnt)), std::make_pair(it->first, it->second.pid) ));
                 while (Q2.size() > LOC2_LIMIT)

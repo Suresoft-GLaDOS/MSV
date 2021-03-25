@@ -64,15 +64,17 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             #subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
 
             # create configure file
-            ret = subprocess.call(["./buildconf"], env = my_env);
-            if ret != 0:
-                print "Failed to create config, check autoconf version!";
-                chdir(ori_dir);
-                return False;
+            # ret = subprocess.call(["./buildconf"], env = my_env);
+            # if ret != 0:
+            #     print "Failed to create config, check autoconf version!";
+            #     chdir(ori_dir);
+            #     return False;
             
             # do the configure
             subprocess.call(["rm","config.cache"],env=my_env)
-            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip","enable-debug"], env = my_env, stderr = subprocess.PIPE);
+            print out_dir
+            print php_deps_dir
+            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip"], env = my_env, stderr = subprocess.PIPE,shell=True);
             # p = subprocess.Popen(["./configure","-enable-zip"], env = my_env, stderr = subprocess.PIPE);
             (out, err) = p.communicate();
             print out
@@ -93,7 +95,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             else:
                 break;
             subprocess.call(["make", "clean"], env = my_env);
-            subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
+            # subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
         subprocess.call(["make", "clean"], env = my_env);
 
     if not config_only:
@@ -285,11 +287,12 @@ class php_tester:
                 test_prog = ori_dir + "/" + profile_dir + "/sapi/cli/php";
             else:
                 test_prog = profile_dir + "/sapi/cli/php";
+        # print "Program:",test_prog
         p = subprocess.Popen([prog, helper, "-p", test_prog, "-q"] + arg_list,stdout=subprocess.PIPE);
         chdir(ori_dir);
         (out, err) = p.communicate();
-        print "Out:",out
-        print "Err:",err
+        # print "Out:",out
+        # print "Err:",err
         lines = out.split("\n");
         test_section = False;
         cnt = 0;
@@ -306,8 +309,8 @@ class php_tester:
                 test_section = False;
             elif (test_section == True) and (_is_start(tokens[0])):
                 if cnt >= n:
-                    # print out;
-                    print "Error in testing, exit!"
+                    print out;
+                    # print "Error in testing, exit!"
                     exit(1);
                 the_idx = new_s[0];
                 new_s.remove(the_idx);
@@ -333,7 +336,7 @@ class php_tester:
         self.tmptest_dir = self.work_dir + "/__cleantests";
         if (path.exists(self.tmptest_dir)):
             shutil.rmtree(self.tmptest_dir);
-        print "Preparing clean test dir..."
+        # print "Preparing clean test dir..."
         if (s == None):
             shutil.copytree(self.test_dir, self.tmptest_dir);
         else:
@@ -345,7 +348,7 @@ class php_tester:
         self.prepare_test(s);
         new_s = [];
         ret = set();
-        print "Starting Test..."
+        # print "Starting Test..."
         for i in s:
             new_s.append(i);
             if (len(new_s) >= 100):
