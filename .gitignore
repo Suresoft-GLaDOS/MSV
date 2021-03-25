@@ -4,6 +4,7 @@
 *.bak
 **/out/
 tools/*.log
+**/result.log
 src/*.lo
 src/learner
 src/pdiffer
