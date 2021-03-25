@@ -1754,7 +1754,7 @@ main() {
     
     salt[0]='$'; salt[1]='6'; salt[2]='$'; salt[3]='$'; salt[4]='b'; salt[5]='a'; salt[6]='r'; salt[7]='\0';
     strcpy(answer, salt);
-    strcpy(&answer[29],"52524QMXjqd7rHQZPQ1yHsXkQqC1FBzDiVfTHXL.LaeDAeVV.IzMaV9VU4MQ8kPuZa2SOP1A0RPm772EaFYjpEJtdu.");
+    strcpy(&answer[29],"49502QMXjqd7rHQZPQ1yHsXkQqC1FBzDiVfTHXL.LaeDAeVV.IzMaV9VU4MQ8kPuZa2SOP1A0RPm772EaFYjpEJtdu.");
     exit (strcmp((char *)crypt("foo",salt),answer));
 #else
 	exit(0);

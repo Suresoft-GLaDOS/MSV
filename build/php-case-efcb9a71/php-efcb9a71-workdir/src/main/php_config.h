@@ -2875,7 +2875,7 @@
 /* #undef PTHREADS */
 
 /* PHP build date */
-#define PHP_BUILD_DATE "2021-03-24"
+#define PHP_BUILD_DATE "2021-03-25"
 
 /* hardcode for each of the cross compiler host */
 #define PHP_OS "Linux"
