@@ -19,7 +19,7 @@ ac_cv_atof_accept_nan=${ac_cv_atof_accept_nan='yes'}
 ac_cv_attribute_aligned=${ac_cv_attribute_aligned='yes'}
 ac_cv_broken_sprintf=${ac_cv_broken_sprintf='no'}
 ac_cv_c_bigendian_php=${ac_cv_c_bigendian_php='no'}
-ac_cv_c_inline=${ac_cv_c_inline='inline'}
+ac_cv_c_inline=${ac_cv_c_inline='no'}
 ac_cv_crypt_SHA256=${ac_cv_crypt_SHA256='no'}
 ac_cv_crypt_SHA512=${ac_cv_crypt_SHA512='no'}
 ac_cv_crypt_blowfish=${ac_cv_crypt_blowfish='no'}
@@ -278,14 +278,14 @@ ac_cv_pread=${ac_cv_pread='yes'}
 ac_cv_prog_AR=${ac_cv_prog_AR='ar'}
 ac_cv_prog_AWK=${ac_cv_prog_AWK='nawk'}
 ac_cv_prog_CC=${ac_cv_prog_CC='gcc'}
-ac_cv_prog_CPP=${ac_cv_prog_CPP='gcc -E'}
+ac_cv_prog_CPP=${ac_cv_prog_CPP='/lib/cpp'}
 ac_cv_prog_LN_S=${ac_cv_prog_LN_S='ln -s'}
 ac_cv_prog_RANLIB=${ac_cv_prog_RANLIB='ranlib'}
 ac_cv_prog_RE2C=${ac_cv_prog_RE2C='re2c'}
 ac_cv_prog_STRIP=${ac_cv_prog_STRIP='strip'}
 ac_cv_prog_YACC=${ac_cv_prog_YACC='bison -y'}
 ac_cv_prog_cc_cross=${ac_cv_prog_cc_cross='no'}
-ac_cv_prog_cc_g=${ac_cv_prog_cc_g='yes'}
+ac_cv_prog_cc_g=${ac_cv_prog_cc_g='no'}
 ac_cv_prog_cc_gcc_c_o=${ac_cv_prog_cc_gcc_c_o='yes'}
 ac_cv_prog_cc_works=${ac_cv_prog_cc_works='yes'}
 ac_cv_prog_egrep=${ac_cv_prog_egrep='grep -E'}
@@ -313,7 +313,7 @@ ac_cv_struct_tm_zone=${ac_cv_struct_tm_zone='yes'}
 ac_cv_time_r_type=${ac_cv_time_r_type='POSIX'}
 ac_cv_type_fp_except=${ac_cv_type_fp_except='no'}
 ac_cv_type_in_addr_t=${ac_cv_type_in_addr_t='yes'}
-ac_cv_type_mbstate_t=${ac_cv_type_mbstate_t='yes'}
+ac_cv_type_mbstate_t=${ac_cv_type_mbstate_t='no'}
 ac_cv_type_signal=${ac_cv_type_signal='void'}
 ac_cv_type_size_t=${ac_cv_type_size_t='yes'}
 ac_cv_type_uid_t=${ac_cv_type_uid_t='yes'}
@@ -326,26 +326,26 @@ lt_cv_file_magic_cmd=${lt_cv_file_magic_cmd='$MAGIC_CMD'}
 lt_cv_file_magic_test_file=${lt_cv_file_magic_test_file=''}
 lt_cv_ld_reload_flag=${lt_cv_ld_reload_flag='-r'}
 lt_cv_objdir=${lt_cv_objdir='.libs'}
-lt_cv_path_LD=${lt_cv_path_LD='/usr/bin/ld'}
+lt_cv_path_LD=${lt_cv_path_LD='/usr/bin/ld wrap/pclang ['"'"'/root/project/prophet-gpl/wrap/gcc'"'"', '"'"'-print-prog-name=ld'"'"'] Non-compile cmd: /usr/local/bin/clang -print-prog-name=ld'}
 lt_cv_path_NM=${lt_cv_path_NM='/usr/bin/nm -B'}
 lt_cv_path_SED=${lt_cv_path_SED='/bin/sed'}
 lt_cv_prog_compiler_c_o=${lt_cv_prog_compiler_c_o='yes'}
 lt_cv_prog_compiler_pic_works=${lt_cv_prog_compiler_pic_works='yes'}
-lt_cv_prog_compiler_rtti_exceptions=${lt_cv_prog_compiler_rtti_exceptions='no'}
-lt_cv_prog_compiler_static_works=${lt_cv_prog_compiler_static_works='yes'}
-lt_cv_prog_gnu_ld=${lt_cv_prog_gnu_ld='yes'}
+lt_cv_prog_compiler_rtti_exceptions=${lt_cv_prog_compiler_rtti_exceptions='yes'}
+lt_cv_prog_compiler_static_works=${lt_cv_prog_compiler_static_works='no'}
+lt_cv_prog_gnu_ld=${lt_cv_prog_gnu_ld='no'}
 lt_cv_sys_global_symbol_pipe=${lt_cv_sys_global_symbol_pipe='sed -n -e '"'"'s/^.*[ 	]\([ABCDGIRSTW][ABCDGIRSTW]*\)[ 	][ 	]*\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2 \2/p'"'"}
 lt_cv_sys_global_symbol_to_c_name_address=${lt_cv_sys_global_symbol_to_c_name_address='sed -n -e '"'"'s/^: \([^ ]*\) $/  {\"\1\", (lt_ptr) 0},/p'"'"' -e '"'"'s/^[BCDEGRST] \([^ ]*\) \([^ ]*\)$/  {"\2", (lt_ptr) \&\2},/p'"'"}
 lt_cv_sys_global_symbol_to_cdecl=${lt_cv_sys_global_symbol_to_cdecl='sed -n -e '"'"'s/^. .* \(.*\)$/extern int \1;/p'"'"}
 lt_cv_sys_lib_dlsearch_path_spec=${lt_cv_sys_lib_dlsearch_path_spec='/lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /usr/local/lib /usr/local/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /lib32 /usr/lib32 '}
-lt_cv_sys_lib_search_path_spec=${lt_cv_sys_lib_search_path_spec='/usr/lib/x86_64-linux-gnu /usr/lib /usr/local/lib /lib/x86_64-linux-gnu /lib /usr/lib/gcc/x86_64-linux-gnu/7'}
+lt_cv_sys_lib_search_path_spec=${lt_cv_sys_lib_search_path_spec='/usr/local/lib/clang/11.1.0 /usr/lib/gcc/x86_64-linux-gnu/7.5.0 /usr/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /lib64 /usr/lib /usr/local/lib /lib'}
 lt_cv_sys_max_cmd_len=${lt_cv_sys_max_cmd_len='1572864'}
 lt_cv_sys_path_separator=${lt_cv_sys_path_separator=':'}
 lt_lt_cv_prog_compiler_c_o=${lt_lt_cv_prog_compiler_c_o='"yes"'}
 lt_lt_cv_sys_global_symbol_pipe=${lt_lt_cv_sys_global_symbol_pipe='"sed -n -e '"'"'s/^.*[ 	]\\([ABCDGIRSTW][ABCDGIRSTW]*\\)[ 	][ 	]*\\([_A-Za-z][_A-Za-z0-9]*\\)\$/\\1 \\2 \\2/p'"'"'"'}
 lt_lt_cv_sys_global_symbol_to_c_name_address=${lt_lt_cv_sys_global_symbol_to_c_name_address='"sed -n -e '"'"'s/^: \\([^ ]*\\) \$/  {\\\"\\1\\\", (lt_ptr) 0},/p'"'"' -e '"'"'s/^[BCDEGRST] \\([^ ]*\\) \\([^ ]*\\)\$/  {\"\\2\", (lt_ptr) \\&\\2},/p'"'"'"'}
 lt_lt_cv_sys_global_symbol_to_cdecl=${lt_lt_cv_sys_global_symbol_to_cdecl='"sed -n -e '"'"'s/^. .* \\(.*\\)\$/extern int \\1;/p'"'"'"'}
-php_cv_bison_version=${php_cv_bison_version='invalid'}
+php_cv_bison_version=${php_cv_bison_version='2.2 (ok)'}
 php_cv_cc_dashr=${php_cv_cc_dashr='no'}
 php_cv_cc_rpath=${php_cv_cc_rpath='yes'}
 php_cv_libxml_build_works=${php_cv_libxml_build_works='yes'}

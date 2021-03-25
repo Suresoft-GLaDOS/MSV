@@ -20,7 +20,7 @@ install-cgi: $(SAPI_CGI_PATH)
 	@$(INSTALL) -m 0755 $(SAPI_CGI_PATH) $(INSTALL_ROOT)$(bindir)/$(program_prefix)php-cgi$(program_suffix)$(EXEEXT)
 
 
-ext/fileinfo/libmagic/apprentice.lo: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/fileinfo/data_file.c
+ext/fileinfo/libmagic/apprentice.lo: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/fileinfo/data_file.c
 phpincludedir=$(prefix)/include/php
 
 PDO_HEADER_FILES= \
@@ -48,8 +48,8 @@ install-pdo-headers:
 install: $(all_targets) $(install_targets) install-pdo-headers
 
 
-/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar_path_check.c: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar_path_check.re
-	$(RE2C) -b -o /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar_path_check.c /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar_path_check.re
+/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar_path_check.c: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar_path_check.re
+	$(RE2C) -b -o /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar_path_check.c /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar_path_check.re
 
 pharcmd: ext/phar/phar.php ext/phar/phar.phar
 
@@ -70,19 +70,19 @@ PHP_PHARCMD_EXECUTABLE = ` \
 	fi;`
 PHP_PHARCMD_BANG = `$(top_srcdir)/build/shtool echo -n -- "$(INSTALL_ROOT)$(bindir)/$(program_prefix)php$(program_suffix)$(EXEEXT)";`
 
-ext/phar/phar/phar.inc: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/phar.inc
+ext/phar/phar/phar.inc: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/phar.inc
 	-@test -d ext/phar/phar || mkdir ext/phar/phar
-	-@test -f ext/phar/phar/phar.inc || cp /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/phar.inc ext/phar/phar/phar.inc
+	-@test -f ext/phar/phar/phar.inc || cp /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/phar.inc ext/phar/phar/phar.inc
 
-ext/phar/phar.php: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/build_precommand.php /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/*.inc /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/*.php $(SAPI_CLI_PATH)
+ext/phar/phar.php: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/build_precommand.php /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/*.inc /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/*.php $(SAPI_CLI_PATH)
 	-@echo "Generating phar.php"
-	@$(PHP_PHARCMD_EXECUTABLE) $(PHP_PHARCMD_SETTINGS) /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/build_precommand.php > ext/phar/phar.php
+	@$(PHP_PHARCMD_EXECUTABLE) $(PHP_PHARCMD_SETTINGS) /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/build_precommand.php > ext/phar/phar.php
 
-ext/phar/phar.phar: ext/phar/phar.php ext/phar/phar/phar.inc /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/*.inc /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/*.php $(SAPI_CLI_PATH)
+ext/phar/phar.phar: ext/phar/phar.php ext/phar/phar/phar.inc /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/*.inc /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/*.php $(SAPI_CLI_PATH)
 	-@echo "Generating phar.phar"
 	-@rm -f ext/phar/phar.phar
-	-@rm -f /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar.phar
-	@$(PHP_PHARCMD_EXECUTABLE) $(PHP_PHARCMD_SETTINGS) ext/phar/phar.php pack -f ext/phar/phar.phar -a pharcommand -c auto -x \\.svn -p 0 -s /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/phar.php -h sha1 -b "$(PHP_PHARCMD_BANG)"  /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/
+	-@rm -f /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar.phar
+	@$(PHP_PHARCMD_EXECUTABLE) $(PHP_PHARCMD_SETTINGS) ext/phar/phar.php pack -f ext/phar/phar.phar -a pharcommand -c auto -x \\.svn -p 0 -s /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/phar.php -h sha1 -b "$(PHP_PHARCMD_BANG)"  /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/phar/phar/
 	-@chmod +x ext/phar/phar.phar
 
 install-pharcmd: pharcmd
@@ -91,10 +91,10 @@ install-pharcmd: pharcmd
 	-@rm -f $(INSTALL_ROOT)$(bindir)/phar
 	$(LN_S) -f $(bindir)/phar.phar $(INSTALL_ROOT)$(bindir)/phar
 
-/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/standard/var_unserializer.c: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/standard/var_unserializer.re
+/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/standard/var_unserializer.c: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/standard/var_unserializer.re
 	@(cd $(top_srcdir); $(RE2C) -b -o ext/standard/var_unserializer.c ext/standard/var_unserializer.re)
 
-/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/standard/url_scanner_ex.c: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/standard/url_scanner_ex.re
+/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/standard/url_scanner_ex.c: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/standard/url_scanner_ex.re
 	@(cd $(top_srcdir); $(RE2C) -b -o ext/standard/url_scanner_ex.c	ext/standard/url_scanner_ex.re)
 
 ext/standard/info.lo: ext/standard/../../main/build-defs.h
@@ -121,22 +121,22 @@ install-pear-installer: $(SAPI_CLI_PATH)
 install-pear:
 	@echo "Installing PEAR environment:      $(INSTALL_ROOT)$(peardir)/"
 	@if test ! -f pear/install-pear-nozlib.phar; then \
-		if test -f /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/pear/install-pear-nozlib.phar; then \
-			cp /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/pear/install-pear-nozlib.phar pear/install-pear-nozlib.phar; \
+		if test -f /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/pear/install-pear-nozlib.phar; then \
+			cp /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/pear/install-pear-nozlib.phar pear/install-pear-nozlib.phar; \
 		else \
 			if test ! -z "$(WGET)" && test -x "$(WGET)"; then \
 				"$(WGET)" http://pear.php.net/install-pear-nozlib.phar -nd -P pear/; \
 			elif test ! -z "$(FETCH)" && test -x "$(FETCH)"; then \
 				"$(FETCH)" -o pear/ http://pear.php.net/install-pear-nozlib.phar; \
 			else \
-				$(top_builddir)/sapi/cli/php -n /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/pear/fetch.php http://pear.php.net/install-pear-nozlib.phar pear/install-pear-nozlib.phar; \
+				$(top_builddir)/sapi/cli/php -n /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/pear/fetch.php http://pear.php.net/install-pear-nozlib.phar pear/install-pear-nozlib.phar; \
 			fi \
 		fi \
 	fi
 	@if test -f pear/install-pear-nozlib.phar && $(mkinstalldirs) $(INSTALL_ROOT)$(peardir); then \
 		$(MAKE) -s install-pear-installer; \
 	else \
-		cat /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/pear/install-pear.txt; \
+		cat /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/pear/install-pear.txt; \
 	fi
 
 
@@ -186,32 +186,32 @@ install-programs: scripts/phpize scripts/php-config
 		$(INSTALL_DATA) scripts/man1/$${page}.1 $(INSTALL_ROOT)$(mandir)/man1/$(program_prefix)$${page}$(program_suffix).1; \
 	done
 	
-scripts/phpize: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/scripts/phpize.in $(top_builddir)/config.status
+scripts/phpize: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/scripts/phpize.in $(top_builddir)/config.status
 	(CONFIG_FILES=$@ CONFIG_HEADERS= $(top_builddir)/config.status)
 
-scripts/php-config: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/scripts/php-config.in $(top_builddir)/config.status
+scripts/php-config: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/scripts/php-config.in $(top_builddir)/config.status
 	(CONFIG_FILES=$@ CONFIG_HEADERS= $(top_builddir)/config.status)
 
 #
 # Zend
 #
 
-Zend/zend_language_scanner.lo: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.h
-Zend/zend_ini_scanner.lo: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.h
+Zend/zend_language_scanner.lo: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.h
+Zend/zend_ini_scanner.lo: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.h
 
-/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_scanner.c: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_scanner.l
+/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_scanner.c: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_scanner.l
 	@(cd $(top_srcdir); $(RE2C) $(RE2C_FLAGS) --case-inverted -cbdFt Zend/zend_language_scanner_defs.h -oZend/zend_language_scanner.c Zend/zend_language_scanner.l)
 
-/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.h: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.c
-/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.c: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.y
-	@$(YACC) -p zend -v -d /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.y -o $@
+/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.h: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.c
+/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.c: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.y
+	@$(YACC) -p zend -v -d /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.y -o $@
 
-/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.h: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.c
-/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.c: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y
-	@$(YACC) -p ini_ -v -d /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y -o $@
+/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.h: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.c
+/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.c: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y
+	@$(YACC) -p ini_ -v -d /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y -o $@
 
-/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_scanner.c: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_scanner.l
+/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_scanner.c: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_scanner.l
 	@(cd $(top_srcdir); $(RE2C) $(RE2C_FLAGS) --case-inverted -cbdFt Zend/zend_ini_scanner_defs.h -oZend/zend_ini_scanner.c Zend/zend_ini_scanner.l)
 
-Zend/zend_indent.lo Zend/zend_highlight.lo Zend/zend_compile.lo: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.h
-Zend/zend_execute.lo: /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_vm_execute.h /root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_vm_opcodes.h
+Zend/zend_indent.lo Zend/zend_highlight.lo Zend/zend_compile.lo: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_language_parser.h
+Zend/zend_execute.lo: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_vm_execute.h /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_vm_opcodes.h

@@ -75,7 +75,7 @@ s%@CC@%gcc%g
 s%@CPP@%gcc -E%g
 s%@LN_S@%ln -s%g
 s%@AWK@%nawk%g
-s%@YACC@%exit 0;%g
+s%@YACC@%bison -y%g
 s%@RE2C@%re2c%g
 s%@SHLIB_SUFFIX_NAME@%so%g
 s%@SHLIB_DL_SUFFIX_NAME@%so%g
@@ -124,19 +124,19 @@ s%@EXPANDED_LOCALSTATEDIR@%/usr/local/var%g
 s%@EXPANDED_PHP_CONFIG_FILE_PATH@%/usr/local/lib%g
 s%@EXPANDED_PHP_CONFIG_FILE_SCAN_DIR@%%g
 s%@PHP_INSTALLED_SAPIS@% cli cgi%g
-s%@abs_builddir@%/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src%g
-s%@abs_srcdir@%/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src%g
-s%@php_abs_top_builddir@%/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src%g
-s%@php_abs_top_srcdir@%/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src%g
+s%@abs_builddir@%/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src%g
+s%@abs_srcdir@%/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src%g
+s%@php_abs_top_builddir@%/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src%g
+s%@php_abs_top_srcdir@%/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src%g
 s%@program_prefix@%%g
 s%@program_suffix@%%g
 s%@DEBUG_CFLAGS@%%g
 s%@EXTENSION_DIR@%/usr/local/lib/php/extensions/no-debug-non-zts-20100525%g
 s%@EXTRA_LDFLAGS@%   -L/usr/local/lib%g
 s%@EXTRA_LDFLAGS_PROGRAM@%   -L/usr/local/lib%g
-s%@EXTRA_LIBS@%-lcrypt   -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt %g
+s%@EXTRA_LIBS@%-lcrypt   -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt %g
 s%@ZEND_EXTRA_LIBS@%%g
-s%@INCLUDES@% -I/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/date/lib -I/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/ereg/regex -I/usr/local/include/libxml2 -I/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/sqlite3/libsqlite -I$(top_builddir)/TSRM -I$(top_builddir)/Zend%g
+s%@INCLUDES@% -I/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/date/lib -I/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/ereg/regex -I/usr/local/include/libxml2 -I/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/sqlite3/libsqlite -I$(top_builddir)/TSRM -I$(top_builddir)/Zend%g
 s%@EXTRA_INCLUDES@%%g
 s%@INSTALL_IT@%%g
 s%@NATIVE_RPATHS@% -Wl,-rpath,/usr/local/lib%g
@@ -1776,9 +1776,9 @@ CEOF
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}PHP_BUILD_DATE${ac_dB}PHP_BUILD_DATE${ac_dC}"2021-03-18"${ac_dD}
-${ac_uA}PHP_BUILD_DATE${ac_uB}PHP_BUILD_DATE${ac_uC}"2021-03-18"${ac_uD}
-${ac_eA}PHP_BUILD_DATE${ac_eB}PHP_BUILD_DATE${ac_eC}"2021-03-18"${ac_eD}
+${ac_dA}PHP_BUILD_DATE${ac_dB}PHP_BUILD_DATE${ac_dC}"2021-03-25"${ac_dD}
+${ac_uA}PHP_BUILD_DATE${ac_uB}PHP_BUILD_DATE${ac_uC}"2021-03-25"${ac_uD}
+${ac_eA}PHP_BUILD_DATE${ac_eB}PHP_BUILD_DATE${ac_eC}"2021-03-25"${ac_eD}
 ${ac_dA}PHP_UNAME${ac_dB}PHP_UNAME${ac_dC}"Linux e7b4c2dae444 4.15.0-128-generic #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux"${ac_dD}
 ${ac_uA}PHP_UNAME${ac_uB}PHP_UNAME${ac_uC}"Linux e7b4c2dae444 4.15.0-128-generic #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux"${ac_uD}
 ${ac_eA}PHP_UNAME${ac_eB}PHP_UNAME${ac_eC}"Linux e7b4c2dae444 4.15.0-128-generic #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux"${ac_eD}

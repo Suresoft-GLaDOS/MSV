@@ -89,9 +89,14 @@ ConfigFile* BenchProgram::getCurrentConfig() {
 
 void BenchProgram::createSrcClone(const std::string &subDir) {
     assert( src_dirs.count(subDir) == 0);
-    std::string cmd = "cp -rf ";
+    std::string copy = "cp -rf ";
+    std::string cmd=copy;
     cmd += ori_src_dir + " " + work_dir + "/" + subDir;
     execute_cmd_until_succ(cmd);
+
+    cmd=copy;
+    cmd+= ori_src_dir+"/.git "+work_dir+"/"+subDir;
+    system(cmd.c_str());
     src_dirs.insert(std::make_pair(subDir, false));
 }
 
@@ -369,6 +374,7 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
         else
             cmd = build_cmd + " -j 10 " +cflags+ " "+src_dir + " >>" + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 " +cflags+ " "+src_dir + " 2>&1";
+        outlog_printf(2,"Command: %s\n",cmd.c_str());
         int ret;
         if (timeout_limit == 0)
             ret = system(cmd.c_str());

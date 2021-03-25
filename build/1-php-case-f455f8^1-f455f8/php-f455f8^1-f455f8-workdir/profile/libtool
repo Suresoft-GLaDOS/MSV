@@ -85,7 +85,7 @@ AR_FLAGS="cru"
 LTCC="gcc"
 
 # LTCC compiler flags.
-LTCFLAGS="-I/usr/include -g -O2 -fvisibility=hidden"
+LTCFLAGS="-I/usr/include -O2 -fvisibility=hidden"
 
 # A language-specific compiler.
 CC="gcc"
@@ -97,7 +97,7 @@ with_gcc=yes
 EGREP="grep -E"
 
 # The linker used to build libraries.
-LD="/usr/bin/ld -m elf_x86_64"
+LD="/usr/bin/ld wrap/pclang ['/root/project/prophet-gpl/wrap/gcc', '-print-prog-name=ld'] Non-compile cmd: /usr/local/bin/clang -print-prog-name=ld -m elf_x86_64"
 
 # Whether we need hard or soft links.
 LN_S="ln -s"
@@ -171,16 +171,16 @@ dlopen_self=unknown
 dlopen_self_static=unknown
 
 # Compiler flag to prevent dynamic linking.
-link_static_flag="-static"
+link_static_flag=""
 
 # Compiler flag to turn off builtin functions.
-no_builtin_flag=" -fno-builtin"
+no_builtin_flag=" -fno-builtin -fno-rtti -fno-exceptions"
 
 # Compiler flag to allow reflexive dlopens.
-export_dynamic_flag_spec="\${wl}--export-dynamic"
+export_dynamic_flag_spec=""
 
 # Compiler flag to generate shared objects directly from archives.
-whole_archive_flag_spec="\${wl}--whole-archive\$convenience \${wl}--no-whole-archive"
+whole_archive_flag_spec=""
 
 # Compiler flag to generate thread-safe objects.
 thread_safe_flag_spec=""
@@ -211,7 +211,7 @@ old_archive_from_new_cmds=""
 old_archive_from_expsyms_cmds=""
 
 # Commands used to build and install a shared archive.
-archive_cmds="\$CC -shared \$libobjs \$deplibs \$compiler_flags \${wl}-soname \$wl\$soname -o \$lib"
+archive_cmds=""
 archive_expsym_cmds=""
 postinstall_cmds=""
 postuninstall_cmds=""
@@ -276,7 +276,7 @@ global_symbol_to_cdecl="sed -n -e 's/^. .* \\(.*\\)\$/extern int \\1;/p'"
 global_symbol_to_c_name_address="sed -n -e 's/^: \\([^ ]*\\) \$/  {\\\"\\1\\\", (lt_ptr) 0},/p' -e 's/^[BCDEGRST] \\([^ ]*\\) \\([^ ]*\\)\$/  {\"\\2\", (lt_ptr) \\&\\2},/p'"
 
 # This is the shared library runtime path variable.
-runpath_var=LD_RUN_PATH
+runpath_var=
 
 # This is the shared library path variable.
 shlibpath_var=LD_LIBRARY_PATH
@@ -285,14 +285,14 @@ shlibpath_var=LD_LIBRARY_PATH
 shlibpath_overrides_runpath=no
 
 # How to hardcode a shared library path into an executable.
-hardcode_action=immediate
+hardcode_action=unsupported
 
 # Whether we should hardcode library paths into libraries.
 hardcode_into_libs=yes
 
 # Flag to hardcode $libdir into a binary during linking.
 # This must work even if $libdir does not exist.
-hardcode_libdir_flag_spec="\${wl}--rpath \${wl}\$libdir"
+hardcode_libdir_flag_spec=""
 
 # If ld is used when linking, flag to hardcode $libdir into
 # a binary during linking. This must work even if $libdir does
@@ -320,13 +320,13 @@ hardcode_automatic=no
 
 # Variables whose values should be saved in libtool wrapper scripts and
 # restored at relink time.
-variables_saved_for_relink="PATH LD_LIBRARY_PATH LD_RUN_PATH GCC_EXEC_PREFIX COMPILER_PATH LIBRARY_PATH"
+variables_saved_for_relink="PATH LD_LIBRARY_PATH  GCC_EXEC_PREFIX COMPILER_PATH LIBRARY_PATH"
 
 # Whether libtool must link a program against all its dependency libraries.
 link_all_deplibs=unknown
 
 # Compile-time system search path for libraries
-sys_lib_search_path_spec="/usr/lib/x86_64-linux-gnu /usr/lib /usr/local/lib /lib/x86_64-linux-gnu /lib /usr/lib/gcc/x86_64-linux-gnu/7"
+sys_lib_search_path_spec="/usr/local/lib/clang/11.1.0 /usr/lib/gcc/x86_64-linux-gnu/7.5.0 /usr/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /lib64 /usr/lib /usr/local/lib /lib"
 
 # Run-time system search path for libraries
 sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /usr/local/lib /usr/local/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /lib32 /usr/lib32 "

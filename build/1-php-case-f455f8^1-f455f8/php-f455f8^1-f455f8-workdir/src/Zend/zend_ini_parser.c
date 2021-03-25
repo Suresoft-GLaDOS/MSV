@@ -110,7 +110,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 1 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 1 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
 
 /*
    +----------------------------------------------------------------------+
@@ -390,7 +390,7 @@ typedef int YYSTYPE;
 
 
 /* Line 216 of yacc.c.  */
-#line 394 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.c"
+#line 394 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.c"
 
 #ifdef short
 # undef short
@@ -1653,7 +1653,7 @@ yyreduce:
   switch (yyn)
     {
         case 4:
-#line 278 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 278 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     {
 #if DEBUG_CFG_PARSER
 			printf("SECTION: [%s]\n", Z_STRVAL((yyvsp[(2) - (3)])));
@@ -1664,7 +1664,7 @@ yyreduce:
     break;
 
   case 5:
-#line 285 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 285 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     {
 #if DEBUG_CFG_PARSER
 			printf("NORMAL: '%s' = '%s'\n", Z_STRVAL((yyvsp[(1) - (3)])), Z_STRVAL((yyvsp[(3) - (3)])));
@@ -1676,7 +1676,7 @@ yyreduce:
     break;
 
   case 6:
-#line 293 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 293 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     {
 #if DEBUG_CFG_PARSER
 			printf("OFFSET: '%s'[%s] = '%s'\n", Z_STRVAL((yyvsp[(1) - (5)])), Z_STRVAL((yyvsp[(2) - (5)])), Z_STRVAL((yyvsp[(5) - (5)])));
@@ -1689,213 +1689,213 @@ yyreduce:
     break;
 
   case 7:
-#line 302 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 302 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { ZEND_INI_PARSER_CB(&(yyvsp[(1) - (1)]), NULL, NULL, ZEND_INI_PARSER_ENTRY, ZEND_INI_PARSER_ARG TSRMLS_CC); free(Z_STRVAL((yyvsp[(1) - (1)]))); }
     break;
 
   case 9:
-#line 307 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 307 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); }
     break;
 
   case 10:
-#line 308 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 308 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_init_string(&(yyval)); }
     break;
 
   case 11:
-#line 312 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 312 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); }
     break;
 
   case 12:
-#line 313 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 313 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); }
     break;
 
   case 13:
-#line 314 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 314 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); }
     break;
 
   case 14:
-#line 315 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 315 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_init_string(&(yyval)); }
     break;
 
   case 15:
-#line 319 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 319 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); }
     break;
 
   case 16:
-#line 320 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 320 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_init_string(&(yyval)); }
     break;
 
   case 17:
-#line 324 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 324 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_add_string(&(yyval), &(yyvsp[(1) - (2)]), &(yyvsp[(2) - (2)])); free(Z_STRVAL((yyvsp[(2) - (2)]))); }
     break;
 
   case 18:
-#line 325 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 325 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_add_string(&(yyval), &(yyvsp[(1) - (2)]), &(yyvsp[(2) - (2)])); free(Z_STRVAL((yyvsp[(2) - (2)]))); }
     break;
 
   case 19:
-#line 326 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 326 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_init_string(&(yyval)); }
     break;
 
   case 20:
-#line 330 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 330 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); }
     break;
 
   case 21:
-#line 331 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 331 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); }
     break;
 
   case 22:
-#line 332 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 332 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(2) - (3)]); }
     break;
 
   case 23:
-#line 333 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 333 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_add_string(&(yyval), &(yyvsp[(1) - (2)]), &(yyvsp[(2) - (2)])); free(Z_STRVAL((yyvsp[(2) - (2)]))); }
     break;
 
   case 24:
-#line 334 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 334 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_add_string(&(yyval), &(yyvsp[(1) - (2)]), &(yyvsp[(2) - (2)])); free(Z_STRVAL((yyvsp[(2) - (2)]))); }
     break;
 
   case 25:
-#line 335 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 335 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_add_string(&(yyval), &(yyvsp[(1) - (4)]), &(yyvsp[(3) - (4)])); free(Z_STRVAL((yyvsp[(3) - (4)]))); }
     break;
 
   case 26:
-#line 339 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 339 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); }
     break;
 
   case 27:
-#line 340 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 340 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); }
     break;
 
   case 28:
-#line 341 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 341 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(2) - (3)]); }
     break;
 
   case 29:
-#line 342 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 342 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_add_string(&(yyval), &(yyvsp[(1) - (2)]), &(yyvsp[(2) - (2)])); free(Z_STRVAL((yyvsp[(2) - (2)]))); }
     break;
 
   case 30:
-#line 343 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 343 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_add_string(&(yyval), &(yyvsp[(1) - (2)]), &(yyvsp[(2) - (2)])); free(Z_STRVAL((yyvsp[(2) - (2)]))); }
     break;
 
   case 31:
-#line 344 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 344 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_add_string(&(yyval), &(yyvsp[(1) - (4)]), &(yyvsp[(3) - (4)])); free(Z_STRVAL((yyvsp[(3) - (4)]))); }
     break;
 
   case 32:
-#line 348 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 348 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); }
     break;
 
   case 33:
-#line 349 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 349 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_do_op('|', &(yyval), &(yyvsp[(1) - (3)]), &(yyvsp[(3) - (3)])); }
     break;
 
   case 34:
-#line 350 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 350 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_do_op('&', &(yyval), &(yyvsp[(1) - (3)]), &(yyvsp[(3) - (3)])); }
     break;
 
   case 35:
-#line 351 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 351 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_do_op('~', &(yyval), &(yyvsp[(2) - (2)]), NULL); }
     break;
 
   case 36:
-#line 352 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 352 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_do_op('!', &(yyval), &(yyvsp[(2) - (2)]), NULL); }
     break;
 
   case 37:
-#line 353 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 353 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(2) - (3)]); }
     break;
 
   case 38:
-#line 357 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 357 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_get_var(&(yyval), &(yyvsp[(2) - (3)]) TSRMLS_CC); free(Z_STRVAL((yyvsp[(2) - (3)]))); }
     break;
 
   case 39:
-#line 361 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 361 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); }
     break;
 
   case 40:
-#line 362 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 362 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); /*printf("TC_RAW: '%s'\n", Z_STRVAL($1));*/ }
     break;
 
   case 41:
-#line 363 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 363 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); /*printf("TC_NUMBER: '%s'\n", Z_STRVAL($1));*/ }
     break;
 
   case 42:
-#line 364 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 364 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); /*printf("TC_STRING: '%s'\n", Z_STRVAL($1));*/ }
     break;
 
   case 43:
-#line 365 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 365 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); /*printf("TC_WHITESPACE: '%s'\n", Z_STRVAL($1));*/ }
     break;
 
   case 44:
-#line 369 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 369 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { zend_ini_get_constant(&(yyval), &(yyvsp[(1) - (1)]) TSRMLS_CC); }
     break;
 
   case 45:
-#line 370 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 370 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); /*printf("TC_RAW: '%s'\n", Z_STRVAL($1));*/ }
     break;
 
   case 46:
-#line 371 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 371 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); /*printf("TC_NUMBER: '%s'\n", Z_STRVAL($1));*/ }
     break;
 
   case 47:
-#line 372 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 372 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); /*printf("TC_STRING: '%s'\n", Z_STRVAL($1));*/ }
     break;
 
   case 48:
-#line 373 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
+#line 373 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.y"
     { (yyval) = (yyvsp[(1) - (1)]); /*printf("TC_WHITESPACE: '%s'\n", Z_STRVAL($1));*/ }
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1899 "/home/ubuntu/Workspace/prophet/build/tests/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.c"
+#line 1899 "/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/Zend/zend_ini_parser.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);

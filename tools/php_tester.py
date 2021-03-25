@@ -54,6 +54,8 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
         cnt = 0;
         subprocess.call(["make","clean"],env=my_env)
         while (True):
+            my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"]
+            my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"]
             print "Current path: ", my_env["PATH"];
             cnt = cnt + 1;
             if cnt > 3:
@@ -61,14 +63,15 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
                 chdir(ori_dir);
                 return False;
             # clean up things
-            #subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
+            subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
 
             # create configure file
-            # ret = subprocess.call(["./buildconf"], env = my_env);
-            # if ret != 0:
-            #     print "Failed to create config, check autoconf version!";
-            #     chdir(ori_dir);
-            #     return False;
+            ret = subprocess.call(["./buildconf"], env = my_env,shell=True);
+            if ret != 0:
+                print "Failed to create config, check autoconf version!";
+                chdir(ori_dir);
+                return False;
+            print "build conf success"
             
             # do the configure
             subprocess.call(["rm","config.cache"],env=my_env)

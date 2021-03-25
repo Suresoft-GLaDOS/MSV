@@ -72,10 +72,10 @@ s%@target_cpu@%x86_64%g
 s%@target_vendor@%unknown%g
 s%@target_os@%linux-gnu%g
 s%@CC@%gcc%g
-s%@CPP@%gcc -E%g
+s%@CPP@%/lib/cpp%g
 s%@LN_S@%ln -s%g
 s%@AWK@%nawk%g
-s%@YACC@%exit 0;%g
+s%@YACC@%bison -y%g
 s%@RE2C@%re2c%g
 s%@SHLIB_SUFFIX_NAME@%so%g
 s%@SHLIB_DL_SUFFIX_NAME@%so%g
@@ -111,7 +111,7 @@ s%@PDO_OCI_DIR@%%g
 s%@PDO_OCI_VERSION@%%g
 s%@SNMP_CONFIG@%%g
 s%@RANLIB@%ranlib%g
-s%@INLINE_CFLAGS@%-I/usr/include -g -O2 -fvisibility=hidden -prefer-non-pic -static%g
+s%@INLINE_CFLAGS@%-I/usr/include -O2 -fvisibility=hidden -prefer-non-pic -static%g
 s%@INCLUDE_PATH@%.:/usr/local/lib/php%g
 s%@EXPANDED_PEAR_INSTALLDIR@%/usr/local/lib/php%g
 s%@EXPANDED_EXTENSION_DIR@%/usr/local/lib/php/extensions/no-debug-non-zts-20100525%g
@@ -1563,24 +1563,21 @@ CEOF
 ${ac_dA}HAVE_MBSINIT${ac_dB}HAVE_MBSINIT${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_MBSINIT${ac_uB}HAVE_MBSINIT${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_MBSINIT${ac_eB}HAVE_MBSINIT${ac_eC}1${ac_eD}
-${ac_dA}HAVE_MBSTATE_T${ac_dB}HAVE_MBSTATE_T${ac_dC}1${ac_dD}
-${ac_uA}HAVE_MBSTATE_T${ac_uB}HAVE_MBSTATE_T${ac_uC}1${ac_uD}
-${ac_eA}HAVE_MBSTATE_T${ac_eB}HAVE_MBSTATE_T${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_LIBXML${ac_dB}HAVE_LIBXML${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_LIBXML${ac_uB}HAVE_LIBXML${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_LIBXML${ac_eB}HAVE_LIBXML${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_XML${ac_dB}HAVE_XML${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_XML${ac_uB}HAVE_XML${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_XML${ac_eB}HAVE_XML${ac_eC}1${ac_eD}
+${ac_dA}HAVE_LIBXML${ac_dB}HAVE_LIBXML${ac_dC}1${ac_dD}
+${ac_uA}HAVE_LIBXML${ac_uB}HAVE_LIBXML${ac_uC}1${ac_uD}
+${ac_eA}HAVE_LIBXML${ac_eB}HAVE_LIBXML${ac_eC}1${ac_eD}
 CEOF
   sed -f conftest.frag conftest.in > conftest.out
   rm -f conftest.in
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}HAVE_LIBXML${ac_dB}HAVE_LIBXML${ac_dC}1${ac_dD}
-${ac_uA}HAVE_LIBXML${ac_uB}HAVE_LIBXML${ac_uC}1${ac_uD}
-${ac_eA}HAVE_LIBXML${ac_eB}HAVE_LIBXML${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_XMLREADER${ac_dB}HAVE_XMLREADER${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_XMLREADER${ac_uB}HAVE_XMLREADER${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_XMLREADER${ac_eB}HAVE_XMLREADER${ac_eC}1${ac_eD}
@@ -1590,15 +1587,15 @@ ${ac_eA}HAVE_LIBXML${ac_eB}HAVE_LIBXML${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_XMLWRITER${ac_dB}HAVE_XMLWRITER${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_XMLWRITER${ac_uB}HAVE_XMLWRITER${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_XMLWRITER${ac_eB}HAVE_XMLWRITER${ac_eC}1${ac_eD}
+${ac_dA}HAVE_INTTYPES_H${ac_dB}HAVE_INTTYPES_H${ac_dC}1${ac_dD}
+${ac_uA}HAVE_INTTYPES_H${ac_uB}HAVE_INTTYPES_H${ac_uC}1${ac_uD}
+${ac_eA}HAVE_INTTYPES_H${ac_eB}HAVE_INTTYPES_H${ac_eC}1${ac_eD}
 CEOF
   sed -f conftest.frag conftest.in > conftest.out
   rm -f conftest.in
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}HAVE_INTTYPES_H${ac_dB}HAVE_INTTYPES_H${ac_dC}1${ac_dD}
-${ac_uA}HAVE_INTTYPES_H${ac_uB}HAVE_INTTYPES_H${ac_uC}1${ac_uD}
-${ac_eA}HAVE_INTTYPES_H${ac_eB}HAVE_INTTYPES_H${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_STDINT_H${ac_dB}HAVE_STDINT_H${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_STDINT_H${ac_uB}HAVE_STDINT_H${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_STDINT_H${ac_eB}HAVE_STDINT_H${ac_eC}1${ac_eD}
@@ -1608,15 +1605,15 @@ ${ac_eA}HAVE_LIMITS_H${ac_eB}HAVE_LIMITS_H${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_MALLOC_H${ac_dB}HAVE_MALLOC_H${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_MALLOC_H${ac_uB}HAVE_MALLOC_H${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_MALLOC_H${ac_eB}HAVE_MALLOC_H${ac_eC}1${ac_eD}
+${ac_dA}HAVE_STRING_H${ac_dB}HAVE_STRING_H${ac_dC}1${ac_dD}
+${ac_uA}HAVE_STRING_H${ac_uB}HAVE_STRING_H${ac_uC}1${ac_uD}
+${ac_eA}HAVE_STRING_H${ac_eB}HAVE_STRING_H${ac_eC}1${ac_eD}
 CEOF
   sed -f conftest.frag conftest.in > conftest.out
   rm -f conftest.in
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}HAVE_STRING_H${ac_dB}HAVE_STRING_H${ac_dC}1${ac_dD}
-${ac_uA}HAVE_STRING_H${ac_uB}HAVE_STRING_H${ac_uC}1${ac_uD}
-${ac_eA}HAVE_STRING_H${ac_eB}HAVE_STRING_H${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_UNISTD_H${ac_dB}HAVE_UNISTD_H${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_UNISTD_H${ac_uB}HAVE_UNISTD_H${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_UNISTD_H${ac_eB}HAVE_UNISTD_H${ac_eC}1${ac_eD}
@@ -1626,15 +1623,15 @@ ${ac_eA}HAVE_STDARG_H${ac_eB}HAVE_STDARG_H${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_SYS_TYPES_H${ac_dB}HAVE_SYS_TYPES_H${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_SYS_TYPES_H${ac_uB}HAVE_SYS_TYPES_H${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_SYS_TYPES_H${ac_eB}HAVE_SYS_TYPES_H${ac_eC}1${ac_eD}
+${ac_dA}HAVE_SYS_TIME_H${ac_dB}HAVE_SYS_TIME_H${ac_dC}1${ac_dD}
+${ac_uA}HAVE_SYS_TIME_H${ac_uB}HAVE_SYS_TIME_H${ac_uC}1${ac_uD}
+${ac_eA}HAVE_SYS_TIME_H${ac_eB}HAVE_SYS_TIME_H${ac_eC}1${ac_eD}
 CEOF
   sed -f conftest.frag conftest.in > conftest.out
   rm -f conftest.in
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}HAVE_SYS_TIME_H${ac_dB}HAVE_SYS_TIME_H${ac_dC}1${ac_dD}
-${ac_uA}HAVE_SYS_TIME_H${ac_uB}HAVE_SYS_TIME_H${ac_uC}1${ac_uD}
-${ac_eA}HAVE_SYS_TIME_H${ac_eB}HAVE_SYS_TIME_H${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_SIGNAL_H${ac_dB}HAVE_SIGNAL_H${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_SIGNAL_H${ac_uB}HAVE_SIGNAL_H${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_SIGNAL_H${ac_eB}HAVE_SIGNAL_H${ac_eC}1${ac_eD}
@@ -1644,15 +1641,15 @@ ${ac_eA}HAVE_STDLIB_H${ac_eB}HAVE_STDLIB_H${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_DLFCN_H${ac_dB}HAVE_DLFCN_H${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_DLFCN_H${ac_uB}HAVE_DLFCN_H${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_DLFCN_H${ac_eB}HAVE_DLFCN_H${ac_eC}1${ac_eD}
+${ac_dA}RETSIGTYPE${ac_dB}RETSIGTYPE${ac_dC}void${ac_dD}
+${ac_uA}RETSIGTYPE${ac_uB}RETSIGTYPE${ac_uC}void${ac_uD}
+${ac_eA}RETSIGTYPE${ac_eB}RETSIGTYPE${ac_eC}void${ac_eD}
 CEOF
   sed -f conftest.frag conftest.in > conftest.out
   rm -f conftest.in
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}RETSIGTYPE${ac_dB}RETSIGTYPE${ac_dC}void${ac_dD}
-${ac_uA}RETSIGTYPE${ac_uB}RETSIGTYPE${ac_uC}void${ac_uD}
-${ac_eA}RETSIGTYPE${ac_eB}RETSIGTYPE${ac_eC}void${ac_eD}
 ${ac_dA}HAVE_INT32_T${ac_dB}HAVE_INT32_T${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_INT32_T${ac_uB}HAVE_INT32_T${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_INT32_T${ac_eB}HAVE_INT32_T${ac_eC}1${ac_eD}
@@ -1662,15 +1659,15 @@ ${ac_eA}HAVE_UINT32_T${ac_eB}HAVE_UINT32_T${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_VPRINTF${ac_dB}HAVE_VPRINTF${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_VPRINTF${ac_uB}HAVE_VPRINTF${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_VPRINTF${ac_eB}HAVE_VPRINTF${ac_eC}1${ac_eD}
+${ac_dA}HAVE_ALLOCA_H${ac_dB}HAVE_ALLOCA_H${ac_dC}1${ac_dD}
+${ac_uA}HAVE_ALLOCA_H${ac_uB}HAVE_ALLOCA_H${ac_uC}1${ac_uD}
+${ac_eA}HAVE_ALLOCA_H${ac_eB}HAVE_ALLOCA_H${ac_eC}1${ac_eD}
 CEOF
   sed -f conftest.frag conftest.in > conftest.out
   rm -f conftest.in
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}HAVE_ALLOCA_H${ac_dB}HAVE_ALLOCA_H${ac_dC}1${ac_dD}
-${ac_uA}HAVE_ALLOCA_H${ac_uB}HAVE_ALLOCA_H${ac_uC}1${ac_uD}
-${ac_eA}HAVE_ALLOCA_H${ac_eB}HAVE_ALLOCA_H${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_ALLOCA${ac_dB}HAVE_ALLOCA${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_ALLOCA${ac_uB}HAVE_ALLOCA${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_ALLOCA${ac_eB}HAVE_ALLOCA${ac_eC}1${ac_eD}
@@ -1680,15 +1677,15 @@ ${ac_eA}HAVE_MEMCPY${ac_eB}HAVE_MEMCPY${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_STRDUP${ac_dB}HAVE_STRDUP${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_STRDUP${ac_uB}HAVE_STRDUP${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_STRDUP${ac_eB}HAVE_STRDUP${ac_eC}1${ac_eD}
+${ac_dA}HAVE_GETPID${ac_dB}HAVE_GETPID${ac_dC}1${ac_dD}
+${ac_uA}HAVE_GETPID${ac_uB}HAVE_GETPID${ac_uC}1${ac_uD}
+${ac_eA}HAVE_GETPID${ac_eB}HAVE_GETPID${ac_eC}1${ac_eD}
 CEOF
   sed -f conftest.frag conftest.in > conftest.out
   rm -f conftest.in
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}HAVE_GETPID${ac_dB}HAVE_GETPID${ac_dC}1${ac_dD}
-${ac_uA}HAVE_GETPID${ac_uB}HAVE_GETPID${ac_uC}1${ac_uD}
-${ac_eA}HAVE_GETPID${ac_eB}HAVE_GETPID${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_KILL${ac_dB}HAVE_KILL${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_KILL${ac_uB}HAVE_KILL${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_KILL${ac_eB}HAVE_KILL${ac_eC}1${ac_eD}
@@ -1698,15 +1695,15 @@ ${ac_eA}HAVE_STRTOD${ac_eB}HAVE_STRTOD${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_STRTOL${ac_dB}HAVE_STRTOL${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_STRTOL${ac_uB}HAVE_STRTOL${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_STRTOL${ac_eB}HAVE_STRTOL${ac_eC}1${ac_eD}
+${ac_dA}HAVE_FINITE${ac_dB}HAVE_FINITE${ac_dC}1${ac_dD}
+${ac_uA}HAVE_FINITE${ac_uB}HAVE_FINITE${ac_uC}1${ac_uD}
+${ac_eA}HAVE_FINITE${ac_eB}HAVE_FINITE${ac_eC}1${ac_eD}
 CEOF
   sed -f conftest.frag conftest.in > conftest.out
   rm -f conftest.in
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}HAVE_FINITE${ac_dB}HAVE_FINITE${ac_dC}1${ac_dD}
-${ac_uA}HAVE_FINITE${ac_uB}HAVE_FINITE${ac_uC}1${ac_uD}
-${ac_eA}HAVE_FINITE${ac_eB}HAVE_FINITE${ac_eC}1${ac_eD}
 ${ac_dA}ZEND_BROKEN_SPRINTF${ac_dB}ZEND_BROKEN_SPRINTF${ac_dC}0${ac_dD}
 ${ac_uA}ZEND_BROKEN_SPRINTF${ac_uB}ZEND_BROKEN_SPRINTF${ac_uC}0${ac_uD}
 ${ac_eA}ZEND_BROKEN_SPRINTF${ac_eB}ZEND_BROKEN_SPRINTF${ac_eC}0${ac_eD}
@@ -1716,15 +1713,15 @@ ${ac_eA}HAVE_FINITE${ac_eB}HAVE_FINITE${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_ISINF${ac_dB}HAVE_ISINF${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_ISINF${ac_uB}HAVE_ISINF${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_ISINF${ac_eB}HAVE_ISINF${ac_eC}1${ac_eD}
+${ac_dA}HAVE_ISNAN${ac_dB}HAVE_ISNAN${ac_dC}1${ac_dD}
+${ac_uA}HAVE_ISNAN${ac_uB}HAVE_ISNAN${ac_uC}1${ac_uD}
+${ac_eA}HAVE_ISNAN${ac_eB}HAVE_ISNAN${ac_eC}1${ac_eD}
 CEOF
   sed -f conftest.frag conftest.in > conftest.out
   rm -f conftest.in
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}HAVE_ISNAN${ac_dB}HAVE_ISNAN${ac_dC}1${ac_dD}
-${ac_uA}HAVE_ISNAN${ac_uB}HAVE_ISNAN${ac_uC}1${ac_uD}
-${ac_eA}HAVE_ISNAN${ac_eB}HAVE_ISNAN${ac_eC}1${ac_eD}
 ${ac_dA}HAVE__FPU_SETCW${ac_dB}HAVE__FPU_SETCW${ac_dC}1${ac_dD}
 ${ac_uA}HAVE__FPU_SETCW${ac_uB}HAVE__FPU_SETCW${ac_uC}1${ac_uD}
 ${ac_eA}HAVE__FPU_SETCW${ac_eB}HAVE__FPU_SETCW${ac_eC}1${ac_eD}
@@ -1734,18 +1731,21 @@ ${ac_eA}HAVE_FPU_INLINE_ASM_X86${ac_eB}HAVE_FPU_INLINE_ASM_X86${ac_eC}1${ac_eD}
 ${ac_dA}HAVE_DLFCN_H${ac_dB}HAVE_DLFCN_H${ac_dC}1${ac_dD}
 ${ac_uA}HAVE_DLFCN_H${ac_uB}HAVE_DLFCN_H${ac_uC}1${ac_uD}
 ${ac_eA}HAVE_DLFCN_H${ac_eB}HAVE_DLFCN_H${ac_eC}1${ac_eD}
+${ac_dA}ZEND_VM_KIND${ac_dB}ZEND_VM_KIND${ac_dC}ZEND_VM_KIND_CALL${ac_dD}
+${ac_uA}ZEND_VM_KIND${ac_uB}ZEND_VM_KIND${ac_uC}ZEND_VM_KIND_CALL${ac_uD}
+${ac_eA}ZEND_VM_KIND${ac_eB}ZEND_VM_KIND${ac_eC}ZEND_VM_KIND_CALL${ac_eD}
 CEOF
   sed -f conftest.frag conftest.in > conftest.out
   rm -f conftest.in
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}ZEND_VM_KIND${ac_dB}ZEND_VM_KIND${ac_dC}ZEND_VM_KIND_CALL${ac_dD}
-${ac_uA}ZEND_VM_KIND${ac_uB}ZEND_VM_KIND${ac_uC}ZEND_VM_KIND_CALL${ac_uD}
-${ac_eA}ZEND_VM_KIND${ac_eB}ZEND_VM_KIND${ac_eC}ZEND_VM_KIND_CALL${ac_eD}
 ${ac_dA}ZEND_DEBUG${ac_dB}ZEND_DEBUG${ac_dC}0${ac_dD}
 ${ac_uA}ZEND_DEBUG${ac_uB}ZEND_DEBUG${ac_uC}0${ac_uD}
 ${ac_eA}ZEND_DEBUG${ac_eB}ZEND_DEBUG${ac_eC}0${ac_eD}
+${ac_dA}inline${ac_dB}inline${ac_dC}${ac_dD}
+${ac_uA}inline${ac_uB}inline${ac_uC}${ac_uD}
+${ac_eA}inline${ac_eB}inline${ac_eC}${ac_eD}
 ${ac_dA}ZEND_MM_ALIGNMENT${ac_dB}ZEND_MM_ALIGNMENT${ac_dC}8${ac_dD}
 ${ac_uA}ZEND_MM_ALIGNMENT${ac_uB}ZEND_MM_ALIGNMENT${ac_uC}8${ac_uD}
 ${ac_eA}ZEND_MM_ALIGNMENT${ac_eB}ZEND_MM_ALIGNMENT${ac_eC}8${ac_eD}
@@ -1776,9 +1776,9 @@ CEOF
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}PHP_BUILD_DATE${ac_dB}PHP_BUILD_DATE${ac_dC}"2021-03-24"${ac_dD}
-${ac_uA}PHP_BUILD_DATE${ac_uB}PHP_BUILD_DATE${ac_uC}"2021-03-24"${ac_uD}
-${ac_eA}PHP_BUILD_DATE${ac_eB}PHP_BUILD_DATE${ac_eC}"2021-03-24"${ac_eD}
+${ac_dA}PHP_BUILD_DATE${ac_dB}PHP_BUILD_DATE${ac_dC}"2021-03-25"${ac_dD}
+${ac_uA}PHP_BUILD_DATE${ac_uB}PHP_BUILD_DATE${ac_uC}"2021-03-25"${ac_uD}
+${ac_eA}PHP_BUILD_DATE${ac_eB}PHP_BUILD_DATE${ac_eC}"2021-03-25"${ac_eD}
 ${ac_dA}PHP_UNAME${ac_dB}PHP_UNAME${ac_dC}"Linux e7b4c2dae444 4.15.0-128-generic #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux"${ac_dD}
 ${ac_uA}PHP_UNAME${ac_uB}PHP_UNAME${ac_uC}"Linux e7b4c2dae444 4.15.0-128-generic #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux"${ac_uD}
 ${ac_eA}PHP_UNAME${ac_eB}PHP_UNAME${ac_eC}"Linux e7b4c2dae444 4.15.0-128-generic #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux"${ac_eD}

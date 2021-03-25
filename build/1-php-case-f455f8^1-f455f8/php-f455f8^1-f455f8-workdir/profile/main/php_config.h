@@ -88,7 +88,7 @@
 #define HAVE_VPRINTF 1
 
 /* Define as __inline if that's what the C compiler calls it.  */
-/* #undef inline */
+#define inline 
 
 /* Define if your C compiler doesn't accept -c and -o together.  */
 /* #undef NO_MINUS_C_MINUS_O */
@@ -2647,7 +2647,7 @@
 /* #undef HAVE_STRPTIME_DECL_FAILS */
 
 /* Define if your system has mbstate_t in wchar.h */
-#define HAVE_MBSTATE_T 1
+/* #undef HAVE_MBSTATE_T */
 
 /* Whether to build standard as dynamic module */
 /* #undef COMPILE_DL_STANDARD */
@@ -2875,7 +2875,7 @@
 /* #undef PTHREADS */
 
 /* PHP build date */
-#define PHP_BUILD_DATE "2021-03-24"
+#define PHP_BUILD_DATE "2021-03-25"
 
 /* hardcode for each of the cross compiler host */
 #define PHP_OS "Linux"

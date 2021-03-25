@@ -1303,7 +1303,7 @@ configure:20610: checking for xml2-config path
 configure:20768: checking whether libxml build works
 configure:20795: gcc -o conftest -g -O2 -fvisibility=hidden   -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c 
           
-         -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl 1>&5
+         -lrt -lm -ldl -lnsl  -lxml2 -lz -lm 1>&5
 configure:21160: checking for OpenSSL support
 configure:21204: checking for Kerberos support
 configure:23083: checking for PCRE library to use
@@ -1337,9 +1337,9 @@ configure:32897: checking for ENCHANT support
 configure:33548: checking whether to enable EXIF (metadata from images) support
 configure:33892: checking for fileinfo support
 configure:34242: checking for utimes
-configure:34270: gcc -o conftest -g -O2 -fvisibility=hidden   -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:34270: gcc -o conftest -g -O2 -fvisibility=hidden   -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:34242: checking for strndup
-configure:34270: gcc -o conftest -g -O2 -fvisibility=hidden   -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:34270: gcc -o conftest -g -O2 -fvisibility=hidden   -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:34254:6: warning: conflicting types for built-in function 'strndup' [-Wbuiltin-declaration-mismatch]
  char $ac_func();
       ^~~~~~~
@@ -1362,7 +1362,7 @@ configure:46256: checking for mhash support
 configure:46300: checking whether to enable hash support
 configure:46358: checking whether byte ordering is bigendian
 configure:46409: checking size of short
-configure:46428: gcc -o conftest -g -O2 -fvisibility=hidden   -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:46428: gcc -o conftest -g -O2 -fvisibility=hidden   -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:46419:1: warning: return type defaults to 'int' [-Wimplicit-int]
  main()
  ^~~~
@@ -1384,11 +1384,11 @@ configure:46487: checking size of long
 configure:46526: checking size of long long
 configure:46894: checking for iconv support
 configure:46955: checking for iconv
-configure:46983: gcc -o conftest -g -O2 -fvisibility=hidden   -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:46983: gcc -o conftest -g -O2 -fvisibility=hidden   -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:47578: checking if iconv is glibc's
-configure:47587: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:47587: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:47872: checking if iconv supports errno
-configure:47907: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:47907: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:47939: checking if your cpp allows macro usage in include lines
 configure:47951: gcc -c -I/usr/include -g -O2 -fvisibility=hidden  conftest.c 1>&5
 configure:48307: checking for IMAP support
@@ -1428,7 +1428,7 @@ configure:75225: checking for nanosleep
 configure:75281: checking for time.h
 configure:75291: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:75415: checking for fdatasync in -lrt
-configure:75434: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt  -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:75434: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt  -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:75515: checking for PostgreSQL support
 configure:77234: checking for phar archive support
 configure:77568: checking for phar openssl support
@@ -1444,29 +1444,29 @@ configure: failed program was:
 #include "confdefs.h"
 #include <sys/mkdev.h>
 configure:78025: checking for seteuid
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78025: checking for setegid
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78025: checking for setsid
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78025: checking for getsid
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78025: checking for setpgid
 configure:78025: checking for getpgid
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78025: checking for ctermid
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78025: checking for mkfifo
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78025: checking for mknod
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78025: checking for getrlimit
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78025: checking for getlogin
 configure:78025: checking for getgroups
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78025: checking for makedev
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78047: error: undefined reference to 'makedev'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -1493,12 +1493,12 @@ makedev();
 
 ; return 0; }
 configure:78025: checking for initgroups
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78025: checking for getpwuid_r
 configure:78025: checking for getgrgid_r
-configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78053: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78079: checking for working ttyname_r() implementation
-configure:78099: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:78099: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:78121: checking for utsname.domainname
 configure:78139: gcc -c -I/usr/include -g -O2 -fvisibility=hidden  conftest.c 1>&5
 configure:78170: checking for PSPELL support
@@ -1508,7 +1508,7 @@ configure:80517: checking for recode support
 configure:81637: checking whether to enable PHP sessions
 configure:81681: checking for mm support
 configure:81703: checking whether pwrite works
-configure:81736: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:81736: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:81723:5: warning: return type defaults to 'int' [-Wimplicit-int]
      main() {
      ^~~~
@@ -1531,7 +1531,7 @@ configure:81730:5: warning: incompatible implicit declaration of built-in functi
      ^~~~
 configure:81730:5: note: include '<stdlib.h>' or provide a declaration of 'exit'
 configure:81823: checking whether pread works
-configure:81856: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:81856: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:81844:5: warning: return type defaults to 'int' [-Wimplicit-int]
      main() {
      ^~~~
@@ -1563,7 +1563,7 @@ configure:83524: checking whether to enable UCD SNMP hack
 configure:85324: checking whether to enable SOAP support
 configure:85932: checking whether to enable sockets support
 configure:86451: checking whether zend_object_value is packed
-configure:86470: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -I/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/date/lib -I/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/ereg/regex -I/usr/local/include/libxml2 -I/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/sqlite3/libsqlite -I/root/project/prophet-gpl/build/benchmarks/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:86470: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -I/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/date/lib -I/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/ereg/regex -I/usr/local/include/libxml2 -I/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src/ext/sqlite3/libsqlite -I/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure: failed program was:
 #line 86461 "configure"
 #include "confdefs.h"
@@ -1574,7 +1574,7 @@ int main(int argc, char **argv) {
 }
   
 configure:86832: checking whether flush should be called explicitly after a buffered io
-configure:86881: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:86881: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure: In function 'main':
 configure:86868:11: warning: implicit declaration of function 'strcmp' [-Wimplicit-function-declaration]
   if (0 != strcmp(buffer, "line 1\n"))
@@ -1594,9 +1594,9 @@ configure:86870:2: warning: ignoring return value of 'fgets', declared with attr
   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 configure:86850: warning: the use of `tmpnam' is dangerous, better use `mkstemp'
 configure:86909: checking for crypt in -lcrypt
-configure:86928: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt  -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl 1>&5
+configure:86928: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt  -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm 1>&5
 configure:86957: checking for standard DES crypt
-configure:86987: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:86987: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:86978:1: warning: return type defaults to 'int' [-Wimplicit-int]
  main() {
  ^~~~
@@ -1610,7 +1610,7 @@ configure:86980:11: warning: implicit declaration of function 'strcmp' [-Wimplic
      exit (strcmp((char *)crypt("rasmuslerdorf","rl"),"rl.3StKT.4T8M"));
            ^~~~~~
 configure:87008: checking for extended DES crypt
-configure:87038: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87038: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87029:1: warning: return type defaults to 'int' [-Wimplicit-int]
  main() {
  ^~~~
@@ -1643,7 +1643,7 @@ main() {
 #endif
 }
 configure:87059: checking for MD5 crypt
-configure:87098: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87098: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87080:1: warning: return type defaults to 'int' [-Wimplicit-int]
  main() {
  ^~~~
@@ -1667,7 +1667,7 @@ configure:87091:11: warning: implicit declaration of function 'strcmp' [-Wimplic
      exit (strcmp((char *)crypt("rasmuslerdorf",salt),answer));
            ^~~~~~
 configure:87119: checking for Blowfish crypt
-configure:87155: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87155: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87140:1: warning: return type defaults to 'int' [-Wimplicit-int]
  main() {
  ^~~~
@@ -1716,7 +1716,7 @@ main() {
 #endif
 }
 configure:87176: checking for SHA512 crypt
-configure:87211: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87211: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87197:1: warning: return type defaults to 'int' [-Wimplicit-int]
  main() {
  ^~~~
@@ -1755,14 +1755,14 @@ main() {
     
     salt[0]='$'; salt[1]='6'; salt[2]='$'; salt[3]='$'; salt[4]='b'; salt[5]='a'; salt[6]='r'; salt[7]='\0';
     strcpy(answer, salt);
-    strcpy(&answer[29],"44439QMXjqd7rHQZPQ1yHsXkQqC1FBzDiVfTHXL.LaeDAeVV.IzMaV9VU4MQ8kPuZa2SOP1A0RPm772EaFYjpEJtdu.");
+    strcpy(&answer[29],"70486QMXjqd7rHQZPQ1yHsXkQqC1FBzDiVfTHXL.LaeDAeVV.IzMaV9VU4MQ8kPuZa2SOP1A0RPm772EaFYjpEJtdu.");
     exit (strcmp((char *)crypt("foo",salt),answer));
 #else
 	exit(0);
 #endif
 }
 configure:87232: checking for SHA256 crypt
-configure:87267: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87267: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87253:1: warning: return type defaults to 'int' [-Wimplicit-int]
  main() {
  ^~~~
@@ -1814,46 +1814,46 @@ configure:87307: gcc -c -I/usr/include -g -O2 -fvisibility=hidden  conftest.c 1>
 configure:87332: checking whether the compiler supports aligned attribute
 configure:87348: gcc -c -I/usr/include -g -O2 -fvisibility=hidden  conftest.c 1>&5
 configure:87527: checking for getcwd
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87527: checking for getwd
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87549: warning: the `getwd' function is dangerous and should not be used.
 configure:87527: checking for asinh
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87539:6: warning: conflicting types for built-in function 'asinh' [-Wbuiltin-declaration-mismatch]
  char $ac_func();
       ^~~~~
 configure:87527: checking for acosh
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87539:6: warning: conflicting types for built-in function 'acosh' [-Wbuiltin-declaration-mismatch]
  char $ac_func();
       ^~~~~
 configure:87527: checking for atanh
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87539:6: warning: conflicting types for built-in function 'atanh' [-Wbuiltin-declaration-mismatch]
  char $ac_func();
       ^~~~~
 configure:87527: checking for log1p
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87539:6: warning: conflicting types for built-in function 'log1p' [-Wbuiltin-declaration-mismatch]
  char $ac_func();
       ^~~~~
 configure:87527: checking for hypot
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87539:6: warning: conflicting types for built-in function 'hypot' [-Wbuiltin-declaration-mismatch]
  char $ac_func();
       ^~~~~
 configure:87527: checking for glob
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87527: checking for strfmon
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87539:6: warning: conflicting types for built-in function 'strfmon' [-Wbuiltin-declaration-mismatch]
  char $ac_func();
       ^~~~~~~
 configure:87527: checking for nice
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87527: checking for fpclass
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87549: error: undefined reference to 'fpclass'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -1880,22 +1880,22 @@ fpclass();
 
 ; return 0; }
 configure:87527: checking for isinf
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87539:6: warning: conflicting types for built-in function 'isinf' [-Wbuiltin-declaration-mismatch]
  char $ac_func();
       ^~~~~
 configure:87527: checking for isnan
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87539:6: warning: conflicting types for built-in function 'isnan' [-Wbuiltin-declaration-mismatch]
  char $ac_func();
       ^~~~~
 configure:87527: checking for mempcpy
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87539:6: warning: conflicting types for built-in function 'mempcpy' [-Wbuiltin-declaration-mismatch]
  char $ac_func();
       ^~~~~~~
 configure:87527: checking for strpncpy
-configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87555: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87549: error: undefined reference to 'strpncpy'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -1922,7 +1922,7 @@ strpncpy();
 
 ; return 0; }
 configure:87580: checking for working fnmatch
-configure:87595: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87595: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87592:1: warning: return type defaults to 'int' [-Wimplicit-int]
  main() { exit (fnmatch ("a*", "abc", 0) != 0); }
  ^~~~
@@ -1936,13 +1936,13 @@ configure:87592:16: warning: implicit declaration of function 'fnmatch' [-Wimpli
  main() { exit (fnmatch ("a*", "abc", 0) != 0); }
                 ^~~~~~~
 configure:87622: checking for fork
-configure:87650: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87650: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87634:6: warning: conflicting types for built-in function 'fork' [-Wbuiltin-declaration-mismatch]
  char $ac_func();
       ^~~~
 configure:87680: checking if your OS can spawn processes with inherited handles
 configure:87704: checking for res_nsearch
-configure:87732: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87732: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87726: error: undefined reference to 'res_nsearch'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -1969,7 +1969,7 @@ res_nsearch();
 
 ; return 0; }
 configure:87750: checking for __res_nsearch
-configure:87778: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87778: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87772: error: undefined reference to '__res_nsearch'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -1996,7 +1996,7 @@ __res_nsearch();
 
 ; return 0; }
 configure:87816: checking for res_nsearch in -lresolv
-configure:87835: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv  -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:87835: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv  -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:87831: error: undefined reference to 'res_nsearch'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -2011,13 +2011,13 @@ int main() {
 res_nsearch()
 ; return 0; }
 configure:87855: checking for __res_nsearch in -lresolv
-configure:87874: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv  -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
-configure:87910: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt -lresolv 1>&5
+configure:87874: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv  -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
+configure:87910: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt -lresolv 1>&5
 configure:87907:1: warning: return type defaults to 'int' [-Wimplicit-int]
  main() { return (0); }
  ^~~~
 configure:88239: checking for dns_search
-configure:88267: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:88267: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:88261: error: undefined reference to 'dns_search'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -2044,7 +2044,7 @@ dns_search();
 
 ; return 0; }
 configure:88285: checking for __dns_search
-configure:88313: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:88313: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:88307: error: undefined reference to '__dns_search'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -2071,7 +2071,7 @@ __dns_search();
 
 ; return 0; }
 configure:88351: checking for dns_search in -lresolv
-configure:88370: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:88370: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:88366: error: undefined reference to 'dns_search'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -2086,7 +2086,7 @@ int main() {
 dns_search()
 ; return 0; }
 configure:88390: checking for __dns_search in -lresolv
-configure:88409: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:88409: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:88405: error: undefined reference to '__dns_search'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -2101,7 +2101,7 @@ int main() {
 __dns_search()
 ; return 0; }
 configure:88487: checking for dns_search in -lbind
-configure:88506: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lbind  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:88506: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lbind  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 /usr/bin/ld: error: cannot find -lbind
 configure:88502: error: undefined reference to 'dns_search'
 collect2: error: ld returned 1 exit status
@@ -2117,7 +2117,7 @@ int main() {
 dns_search()
 ; return 0; }
 configure:88526: checking for __dns_search in -lbind
-configure:88545: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lbind  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:88545: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lbind  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 /usr/bin/ld: error: cannot find -lbind
 configure:88541: error: undefined reference to '__dns_search'
 collect2: error: ld returned 1 exit status
@@ -2133,7 +2133,7 @@ int main() {
 __dns_search()
 ; return 0; }
 configure:88623: checking for dns_search in -lsocket
-configure:88642: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lsocket  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:88642: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lsocket  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 /usr/bin/ld: error: cannot find -lsocket
 configure:88638: error: undefined reference to 'dns_search'
 collect2: error: ld returned 1 exit status
@@ -2149,7 +2149,7 @@ int main() {
 dns_search()
 ; return 0; }
 configure:88662: checking for __dns_search in -lsocket
-configure:88681: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lsocket  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:88681: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lsocket  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 /usr/bin/ld: error: cannot find -lsocket
 configure:88677: error: undefined reference to '__dns_search'
 collect2: error: ld returned 1 exit status
@@ -2165,7 +2165,7 @@ int main() {
 __dns_search()
 ; return 0; }
 configure:88774: checking for dn_expand
-configure:88802: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:88802: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:88796: error: undefined reference to 'dn_expand'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -2192,9 +2192,9 @@ dn_expand();
 
 ; return 0; }
 configure:88820: checking for __dn_expand
-configure:88848: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:88848: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:89309: checking for dn_skipname
-configure:89337: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:89337: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:89331: error: undefined reference to 'dn_skipname'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -2221,9 +2221,9 @@ dn_skipname();
 
 ; return 0; }
 configure:89355: checking for __dn_skipname
-configure:89383: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:89383: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:89846: checking for res_search
-configure:89874: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:89874: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:89868: error: undefined reference to 'res_search'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -2250,25 +2250,25 @@ res_search();
 
 ; return 0; }
 configure:89892: checking for __res_search
-configure:89920: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:89920: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:90377: checking whether atof() accepts NAN
-configure:90408: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:90408: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:90435: checking whether atof() accepts INF
-configure:90469: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:90469: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:90496: checking whether HUGE_VAL == INF
-configure:90530: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:90530: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:90557: checking whether HUGE_VAL + -HUGEVAL == NAN
-configure:90593: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:90593: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:90620: checking whether strptime() declaration fails
 configure:90642: gcc -c -I/usr/include -g -O2 -fvisibility=hidden  conftest.c 1>&5
 configure:90670: checking for wchar.h
 configure:90680: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:90709: checking for mblen
-configure:90737: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:90737: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:90764: checking for mbrlen
-configure:90792: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:90792: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:90764: checking for mbsinit
-configure:90792: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lxml2 -lz -llzma -lm -ldl -lcrypt 1>&5
+configure:90792: gcc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  -Wl,-rpath,/usr/local/lib -L/usr/local/lib conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lz -lm -lxml2 -lz -lm -lxml2 -lz -lm -lcrypt 1>&5
 configure:90817: checking for mbstate_t
 configure:90836: gcc -c -I/usr/include -g -O2 -fvisibility=hidden  conftest.c 1>&5
 configure:90864: checking for atomic.h

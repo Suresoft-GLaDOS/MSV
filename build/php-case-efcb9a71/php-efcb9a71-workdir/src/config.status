@@ -75,7 +75,7 @@ s%@CC@%gcc%g
 s%@CPP@%gcc -E%g
 s%@LN_S@%ln -s%g
 s%@AWK@%nawk%g
-s%@YACC@%exit 0;%g
+s%@YACC@%bison -y%g
 s%@RE2C@%re2c%g
 s%@SHLIB_SUFFIX_NAME@%so%g
 s%@SHLIB_DL_SUFFIX_NAME@%so%g
