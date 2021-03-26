@@ -256,13 +256,19 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, const RepairAction &a
     tmp_argv.clear();
     // tmp_argv.push_back(placeholder->getArgs()[0]);
     // tmp_argv.push_back(getNewIntegerLiteral(ctxt, exprs.size()));
-    std::vector<std::string> varName;
+    std::vector<std::string> intVarName;
+    std::vector<std::string> charVarName;
+    std::vector<std::string> pointerVarName;
+    std::vector<std::string> doubleVarName;
     std::vector<Expr *> intVar;
     std::vector<Expr *> charVar;
     std::vector<Expr *> pointerVar;
     std::vector<Expr *> doubleVar;
     std::string location;
-    varName.clear();
+    intVarName.clear();
+    charVarName.clear();
+    pointerVarName.clear();
+    doubleVarName.clear();
     intVar.clear();
     charVar.clear();
     pointerVar.clear();
@@ -285,16 +291,24 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, const RepairAction &a
             VarDecl *var=llvm::dyn_cast<VarDecl>(decl->getDecl());
             if (var){
                 std::string name=var->getDeclName().getAsString();
-                varName.push_back(name);
+                // varName.push_back(name);
                 QualType type=var->getType();
-                if (ctxt->hasSameType(type,ctxt->IntTy))
+                if (ctxt->hasSameType(type,ctxt->IntTy)){
                     intVar.push_back(exprs[i]);
-                else if (ctxt->hasSameType(type,ctxt->CharTy))
+                    intVarName.push_back(name);
+                }
+                else if (ctxt->hasSameType(type,ctxt->CharTy)){
                     charVar.push_back(exprs[i]);
-                else if (type->isPointerType())
+                    charVarName.push_back(name);
+                }
+                else if (type->isPointerType()){
                     pointerVar.push_back(exprs[i]);
-                else if (ctxt->hasSameType(type,ctxt->DoubleTy))
+                    pointerVarName.push_back(name);
+                }
+                else if (ctxt->hasSameType(type,ctxt->DoubleTy)){
                     doubleVar.push_back(exprs[i]);
+                    doubleVarName.push_back(name);
+                }
             }
         }
     }
@@ -325,8 +339,14 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, const RepairAction &a
     if (doubleVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
     else tmp_argv.push_back(createConditionVarList(ctxt,doubleVar,ctxt->DoubleTy));
 
-    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,varName.size()),ctxt->IntTy,SourceLocation());
-    tmp_argv.push_back(size);
+    std::vector<std::string> varName;
+    varName.clear();
+
+    varName.insert(varName.end(),intVarName.begin(),intVarName.end());
+    varName.insert(varName.end(),charVarName.begin(),charVarName.end());
+    varName.insert(varName.end(),pointerVarName.begin(),pointerVarName.end());
+    varName.insert(varName.end(),doubleVarName.begin(),doubleVarName.end());
+    
     for (int i=0;i<varName.size();i++){
         StringLiteral *str = StringLiteral::Create(*ctxt, varName[i], StringLiteral::Ascii,
                 false, ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, varName[i].size() + 1), nullptr,ArrayType::Normal, 0),

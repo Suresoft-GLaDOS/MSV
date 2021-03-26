@@ -1776,9 +1776,9 @@ CEOF
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
-${ac_dA}PHP_BUILD_DATE${ac_dB}PHP_BUILD_DATE${ac_dC}"2021-03-25"${ac_dD}
-${ac_uA}PHP_BUILD_DATE${ac_uB}PHP_BUILD_DATE${ac_uC}"2021-03-25"${ac_uD}
-${ac_eA}PHP_BUILD_DATE${ac_eB}PHP_BUILD_DATE${ac_eC}"2021-03-25"${ac_eD}
+${ac_dA}PHP_BUILD_DATE${ac_dB}PHP_BUILD_DATE${ac_dC}"2021-03-26"${ac_dD}
+${ac_uA}PHP_BUILD_DATE${ac_uB}PHP_BUILD_DATE${ac_uC}"2021-03-26"${ac_uD}
+${ac_eA}PHP_BUILD_DATE${ac_eB}PHP_BUILD_DATE${ac_eC}"2021-03-26"${ac_eD}
 ${ac_dA}PHP_UNAME${ac_dB}PHP_UNAME${ac_dC}"Linux e7b4c2dae444 4.15.0-128-generic #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux"${ac_dD}
 ${ac_uA}PHP_UNAME${ac_uB}PHP_UNAME${ac_uC}"Linux e7b4c2dae444 4.15.0-128-generic #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux"${ac_uD}
 ${ac_eA}PHP_UNAME${ac_eB}PHP_UNAME${ac_eC}"Linux e7b4c2dae444 4.15.0-128-generic #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux"${ac_eD}

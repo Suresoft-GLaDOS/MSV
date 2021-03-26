@@ -41,6 +41,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
     my_env = environ;
     # switch to the revision
     if revision != "":
+        print "revision",revision
         assert(not compile_only);
         ret = subprocess.call(["git", "checkout", revision, "-f"], env = my_env);
         if ret != 0:
@@ -71,17 +72,12 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
                 print "Failed to create config, check autoconf version!";
                 chdir(ori_dir);
                 return False;
-            print "build conf success"
             
             # do the configure
             subprocess.call(["rm","config.cache"],env=my_env)
-            print out_dir
-            print php_deps_dir
-            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip"], env = my_env, stderr = subprocess.PIPE,shell=True);
+            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip","-enable-debug"], env = my_env, stderr = subprocess.PIPE,shell=True);
             # p = subprocess.Popen(["./configure","-enable-zip"], env = my_env, stderr = subprocess.PIPE);
             (out, err) = p.communicate();
-            print out
-            print p.returncode
             if p.returncode != 0:
                 if is_due_to_autoconf_v(err):
                     # This is possible caused by wrong autoconf version, we can use

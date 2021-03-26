@@ -489,6 +489,12 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     // the workdir, and we want to just resume
     std::ofstream fout2((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ofstream::out);
     size_t cnt = 0;
+    outlog_printf(2,"Build original program...\n");
+    bool succ = buildFull("src", 0,true,std::vector<long long>());
+    if (!succ){
+        outlog_printf(2,"Fail to build original program!\n");
+    }
+
     outlog_printf(2,"Preprocessing test...\n");
     for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
             it != fileCodeMap.end(); ++it) {
@@ -528,16 +534,24 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     fout2.close();
     deleteLibraryFile(fileCodeMap);
 
-    // outlog_printf(2,"Building with no macros...\n");
-    // // Build with no macro, should be success
-    // bool succ = buildSubDir("src", wrapScript, envMap,std::vector<long long>());
+    outlog_printf(2,"Building with no macros...\n");
+    // Build with no macro, should be success
+    pushEnvMap(envMap);
+
+    pushWrapPath(CLANG_WRAP_PATH, wrapScript);
+
+    succ = buildFull("src", 0,true,std::vector<long long>());
+    if (!succ){
+        outlog_printf(2,"Fail to build with no macros!\n");
+    }
 
     // deleteLibraryFile(fileCodeMap);
+
     // outlog_printf(2,"Trying to build with all macros...\n");
     // std::vector<long long> succ_id;
     // for (long long i=0;i<max_macro;i++)
     //     succ_id.push_back(i);
-    // succ=buildSubDir("src",wrapScript,envMap,succ_id);
+    // succ=buildFull("src", 0,true,succ_id);
     // if (succ){
     //     outlog_printf(2,"Build Success!\n");
     // }
@@ -545,8 +559,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     //     outlog_printf(2,"Build failed, Trying to find fail macros...\n");
     //     outlog_printf(2,"Testing with Delta-Debugging...\n");
     //     // Run Delta-Debugging test to find fail cases
-    //     pushEnvMap(envMap);
-    //     pushWrapPath(CLANG_WRAP_PATH, wrapScript);
     //     time_t timeout_limit = 0;
     //     if (repair_build_cnt > 10)
     //         timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
@@ -558,7 +570,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     //         std::string src_dir = getFullPath(work_dir + "/src");
     //         std::string cmd;
     //         cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+std::to_string(max_macro);
-    //         if (!src_dirs["src"]) cmd+=" -t "+build_cmd;
+    //         cmd+=" -t "+build_cmd;
     //         if (dep_dir!="") cmd+=" -p "+dep_dir;
     //         // cmd+=" > DD.log";
 
@@ -572,8 +584,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     //             repair_build_cnt ++;
     //         }
     //     }
-    //     popWrapPath();
-    //     popEnvMap(envMap);
 
     //     deleteLibraryFile(fileCodeMap);
     //     outlog_printf(2,"Building final program...\n");
@@ -584,6 +594,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 
     //     char *home;
     //     home=getenv("HOME");
+    //     // We have to cover Windows!
     //     if (home==NULL)
     //         home=getenv("HOMEPATH");
 
@@ -610,8 +621,11 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     //     outlog_printf(2,"Total success macros: %d\n",succ_id.size());
 
     //     // Build final build
-    //     succ = buildSubDir("src", wrapScript, envMap,succ_id);
+    //     succ = buildFull("src", 0,true,succ_id);
     //     if (succ) outlog_printf(2,"Success to build final program: %s\n",output_name.c_str());
+    //     popWrapPath();
+
+    //     popEnvMap(envMap);
     // }
     // Remove temporary backup file, because we have done it
     cnt = 0;
@@ -645,8 +659,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 
     std::string cmd = "rm -rf " + work_dir + "/__backup.log";
     execute_cmd_until_succ(cmd);
-    // return succ;
-    return true;
+    return succ;
 }
 
 /*void BenchProgram::prepare_test() {
@@ -672,7 +685,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         sout << *it << " ";
     sout <<  " > __res\n";
     cmd = sout.str();
-    printf("Command: %s\n",cmd.c_str());
+    // printf("Command: %s\n",cmd.c_str());
     int res;
 
     pushEnvMap(env_pairs);

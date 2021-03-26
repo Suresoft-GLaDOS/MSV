@@ -111,7 +111,7 @@ extern "C" int __get_mutant() {
 
 #define MAGIC_NUMBER -123456789
 
-extern "C" int __is_neg(const char *location,int int_size,const int *ints, int char_size,const char *chars,int ptr_size,const void **ptrs, int double_size,const double *doubles,int var_size, ...) {
+extern "C" int __is_neg(const char *location,int int_size,const int *ints, int char_size,const char *chars,int ptr_size,const void **ptrs, int double_size,const double *doubles, ...) {
     // fprintf(stderr, "fuck\n");
     if (!enable) return 0;
     char* is_neg = getenv("IS_NEG");
