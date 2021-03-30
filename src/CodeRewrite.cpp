@@ -607,6 +607,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     macroMap.clear();
     idAndCase.clear();
     int beforeId=0;
+    index=0;
     counter=0;
     long long macro=0;
     for (std::map<std::string,std::vector<std::pair<size_t,size_t>>>::iterator
@@ -670,10 +671,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 currentPatch.push_back(big_patch);
 
                 for (std::map<std::pair<size_t,size_t>,std::vector<std::string>>::iterator beforeIt=cur_patch.begin();
-                        beforeIt!=cur_patch.end();beforeIt++){
+                        beforeIt!=cur_patch.end();){
                     if (beforeIt->first.first>=start && beforeIt->first.second<=end){
-                        cur_patch.erase(beforeIt);
-
                         std::string top_part = code.substr(start, beforeIt->first.first - start);
                         std::string mid_part = code.substr(beforeIt->first.first, beforeIt->first.second-beforeIt->first.first);
                         std::string bottom_part = code.substr(beforeIt->first.second, end - beforeIt->first.second);
@@ -685,13 +684,21 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                         // outlog_printf(2,"big: %s\n",big_patch.c_str());
                         // outlog_printf(2,"before: %s\n",before_patch[0].c_str());
                         std::vector<std::string> before_patch=beforeIt->second;
+
+                        std::map<std::pair<size_t,size_t>,std::vector<std::string>>::iterator removeIt=beforeIt;
+                        beforeIt++;
+                        cur_patch.erase(removeIt);
                         for (int j=0;j<before_patch.size();j++){
                             std::string body=top_part+before_patch[j]+bottom_part;
                             // outlog_printf(2,"Before Patch: %s\n\n",body.c_str());
                             currentPatch.push_back(body);
                         }
                     }
+                    else{
+                        beforeIt++;
+                    }
                 }
+                
                 // for (std::map<std::string,bool>::iterator patch_it=res1[it2->second].begin();
                 //         patch_it!=res1[it2->second].end();patch_it++){
                 for (std::map<std::string,bool>::iterator patch_it=res1[currentCandidate[i]].begin();
@@ -737,17 +744,42 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             }
         }
 
-        for (std::map<std::pair<size_t,size_t>,std::vector<std::string>>::iterator patchIt=cur_patch.begin();
-                patchIt!=cur_patch.end();patchIt++){
+        outlog_printf(2,"Generating Codes...\n");
+        std::vector<std::pair<size_t,size_t>> location;
+        std::vector<std::vector<std::string>> value;
+        location.clear();
+        value.clear();
+        for (std::map<std::pair<size_t,size_t>,std::vector<std::string>>::iterator it2 = cur_patch.begin();
+                    it2 != cur_patch.end(); ++it2) {
+            location.push_back(it2->first);
+            value.push_back(it2->second);
+        }
+        for (int i=1;i<location.size();i++) {
+            std::pair<size_t,size_t> temp=location[i];
+            std::vector<std::string> temp2=value[i];
+            int j;
+            for (j=i;j>=1 && location[j-1].first>=temp.first;j--){
+                // if (location[j-1].first==temp.first)
+                    // if (location[j-1].second<temp.second)
+                    //     continue;
+                location[j]=location[j-1];
+                value[j]=value[j-1];
+            }
+            location[j]=temp;
+            value[j]=temp2;
+        }
+
+        for (int i=0;i<location.size();i++){
+            // outlog_printf(2,"Location: %d %d %d\n",location[i].first,location[i].second,code.size());
             std::string last_code=resCodeSegs[src_file][resCodeSegs[src_file].size()-1];
             resCodeSegs[src_file].pop_back();
             assert(code.find(last_code)!=std::string::npos);
             size_t seg_start=code.find(last_code);
             int case_count=0;
 
-            cur_start=patchIt->first.first;
-            cur_end=patchIt->first.second;
-            std::vector<std::string> currentPatch=patchIt->second;
+            cur_start=location[i].first;
+            cur_end=location[i].second;
+            std::vector<std::string> currentPatch=value[i];
             // std::string front=last_code.substr(0,code.size()-seg_start-(code.size()-cur_start));
             std::string front=code.substr(seg_start,cur_start-seg_start);
             // outlog_printf(2,"Location: %d %d %d %d\n",cur_start,cur_end,seg_start,code.size());
@@ -760,7 +792,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             body+=currentPatch[0];
             int isNegCount=addIsNeg(counter-1,0,currentPatch[0]);
             body+="\nbreak;\n}\n";
-            for(int i=1;i<cur_patch.size();i++){
+            for(int i=1;i<currentPatch.size();i++){
                 isNegCount=getIsNegCount(currentPatch[i]);
                 if (isNegCount>=2) continue;
                 isNegCount=addIsNeg(counter-1,case_count,currentPatch[i]);

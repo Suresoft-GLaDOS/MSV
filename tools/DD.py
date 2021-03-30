@@ -1021,9 +1021,9 @@ if __name__ == '__main__':
                 if dep_dir!="":
                     args.append("-p")
                     args.append(dep_dir)
-                for i in c:
+                if len(c)!=0:
                     args.append("-D")
-                    args.append("COMPILE_"+str(i))
+                    args.append("\""+str(c[0])+"-"+str(c[len(c)-1])+"\"")
                 args.append(src_dir)
                 args.append(">>")
                 args.append(build_log_file)

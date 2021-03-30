@@ -30,12 +30,14 @@ if __name__=="__main__":
     compile_only = False
     config_only = False
 
-    opts, args = getopt.getopt(argv[1:],'cd:hj:lp:r:x')
+    opts, args = getopt.getopt(argv[1:],'cd:hj:lp:r:xD:')
     dryrun_src = ""
     revision = ""
     paraj = 0
+    macro=""
     print_fix_log = False
     print_usage = False
+    switch_id=0
     for o, a in opts:
         if o == "-d":
             dryrun_src = a
@@ -53,6 +55,8 @@ if __name__=="__main__":
             print_usage = True
         elif o == "-j":
             paraj = int(a)
+        elif o=="-D":
+            macro=a
 
     if (len(args) < 1) or (print_usage):
         print("Usage: php-build.py <directory> [-r revision | -d src_file | -l] [-h]")
@@ -75,10 +79,18 @@ if __name__=="__main__":
             print("Comment:")
             print(comment)
     else:
+        macro_list=[]
+        if macro!="":
+            start_end=macro.split("-")
+            start=int(start_end[0])
+            end=int(start_end[1])
+            for i in range(start,end+1):
+                macro_list.append(i)
+
         if revision != "":
-            succ = switch_to(out_dir, revision, php_deps_dir, paraj)
+            succ = switch_to(out_dir, revision, php_deps_dir, paraj,macro_list)
         else:
-            succ = switch_to(out_dir, "", php_deps_dir, compile_only, config_only, paraj)
+            succ = switch_to(out_dir, "", php_deps_dir, compile_only, config_only, paraj,macro_list)
         if (not succ):
             exit(1)
         if dryrun_src != "":

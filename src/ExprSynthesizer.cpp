@@ -590,13 +590,6 @@ protected:
         ret.insert(std::make_pair(code, score));
         return ret;
     }
-    BenchProgram::EnvMapTy initEnv(const BenchProgram::EnvMapTy &env){
-        BenchProgram::EnvMapTy testEnv=env;
-        for (int i=0;i<count;i++){
-            testEnv["__ID"+std::to_string(i)]="0";
-        }
-        return testEnv;
-    }
     template<typename K,typename V> bool hasKey(std::map<K,V> target,K key){
         for (typename std::map<K,V>::iterator it=target.begin();it!=target.end();it++){
             if (it->first==key) return true;
@@ -629,6 +622,14 @@ public:
     long long getMacroCount(){
         return total_macro;
     }
+    BenchProgram::EnvMapTy initEnv(const BenchProgram::EnvMapTy &env){
+        BenchProgram::EnvMapTy testEnv=env;
+        for (int i=0;i<count;i++){
+            testEnv["__ID"+std::to_string(i)]="0";
+        }
+        return testEnv;
+    }
+
 
     virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
         std::vector<std::set<ExprFillInfo> *> infos;
@@ -2228,7 +2229,8 @@ class TestBatcher {
         if (ForCPP.getValue())
             buildEnv["COMPILE_CMD"] = "clang++";
         else
-            buildEnv["COMPILE_CMD"] = GCC_CMD;
+            buildEnv["COMPILE_CMD"] = CLANG_CMD;
+        buildEnv=T->initEnv(buildEnv);
         const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
         // Create source file with fix
         // This should success

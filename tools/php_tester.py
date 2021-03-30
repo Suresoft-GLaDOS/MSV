@@ -31,7 +31,7 @@ def is_due_to_bison_v(config_out):
     last_line = lines[len(lines) - 1];
     return last_line.find("bison is required") != -1;
 
-def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, config_only = False, paraj = 0):
+def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, config_only = False, paraj = 0,macros=[]):
     ori_dir = getcwd();
     if deps_dir[0] != "/":
         php_deps_dir = ori_dir + "/" + deps_dir;
@@ -48,6 +48,20 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             print "Failed to switch to the revision " + revision;
             chdir(ori_dir);
             return False;
+    
+    # Add switch macros to acinclude
+    if len(macros)!=0:
+        cmd=["cp","acinclude.m4",ori_dir+"/acinclude-bak.m4"]
+        subprocess.call(cmd,env=my_env)
+        ac_include=open("acinclude.m4",'a')
+        ac_include.write("\n")
+        for i in macros:
+            ac_include.write("AC_DEFUN([COMPILE_"+str(i)+"],[])\n")
+        ac_include.flush()
+        ac_include.close()
+
+        cmd=["cp","acinclude.m4",ori_dir+"/acinclude.m4"]
+        subprocess.call(cmd,env=my_env)
 
     # it is tricky to find the right dependency version to make it
     # builds, we will try multiple times
@@ -58,6 +72,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"]
             my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"]
             print "Current path: ", my_env["PATH"];
+
             cnt = cnt + 1;
             if cnt > 3:
                 print "Failed to configure after " + str(cnt) + " times";
@@ -74,9 +89,8 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
                 return False;
             
             # do the configure
-            subprocess.call(["rm","config.cache"],env=my_env)
-            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip","-enable-debug"], env = my_env, stderr = subprocess.PIPE,shell=True);
-            # p = subprocess.Popen(["./configure","-enable-zip"], env = my_env, stderr = subprocess.PIPE);
+            # subprocess.call(["rm","config.cache"],env=my_env)
+            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip","-enable-debug","-with-gnu-ld"], env = my_env, stderr = subprocess.PIPE)
             (out, err) = p.communicate();
             if p.returncode != 0:
                 if is_due_to_autoconf_v(err):
@@ -99,15 +113,21 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
 
     if not config_only:
         ret = subprocess.call(["rm", "-rf", "ext/phar/phar.php"], env = my_env);
+        command=["make"]
+        if paraj != 0:
+            command.append("-j")
+            command.append(str(paraj))
         assert( ret == 0);
-        if paraj == 0:
-            ret = subprocess.call(["make"], env = my_env);
-        else:
-            ret = subprocess.call(["make", "-j", str(paraj)], env = my_env);
+        ret = subprocess.call(command, env = my_env);
         chdir(ori_dir);
         if ret != 0:
             print "Failed to compile!";
             return False;
+
+    if len(macros)!=0:
+        cmd=["cp",ori_dir+"/acinclude-bak.m4",out_dir+"/acinclude.m4"]
+        subprocess.call(cmd,env=my_env)
+
     return True;
 
 def extract_test_cases(out_dir = "php-src-tests", repo_dir = ""):
