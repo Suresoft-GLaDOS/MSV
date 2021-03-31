@@ -35,8 +35,8 @@ class CodeRewriter {
     CodeSegTy resCodeSegs, resPatches;
     int counter;
     std::map<long long,std::pair<int,int>> macroMap;
-    std::map<std::string,std::pair<int,int>> idAndCase;
     std::map<std::pair<int,int>,std::vector<IsNegInformation>> isNegLocation;
+    std::map<int,std::map<int,std::string>> idAndCase;
 
     size_t addIsNeg(int id,int case_num,std::string code);
 public:
@@ -59,7 +59,7 @@ public:
     std::map<long long,std::pair<int,int>> getMacroMap(){
         return macroMap;
     }
-    std::map<std::string,std::pair<int,int>> getIdAndCase(){
+    std::map<int,std::map<int,std::string>> getIdAndCase(){
         return idAndCase;
     }
     int getIdCount(){

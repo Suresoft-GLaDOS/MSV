@@ -444,7 +444,10 @@ std::map<ASTLocTy, std::map<std::string, bool> > CodeRewriter::eliminateAllNewLo
             //        tmp_vector.end(), rc[j].actions[0].loc.stmt);
             // assert( pos != tmp_vector.end() );
             if (rc[j].actions[0].kind == RepairAction::ReplaceMutationKind){
-                tmp_map1[rootLoc].insert(std::pair<std::string,bool>(stmtToString(*ctxt,S),isIndent));
+                std::string newStmt=stmtToString(*ctxt,S);
+                if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
+                    newStmt += ";\n";
+                tmp_map1[rootLoc].insert(std::pair<std::string,bool>(newStmt,isIndent));
             }
             else if (rc[j].actions[0].kind == RepairAction::InsertMutationKind){
                 std::string newStmt=stmtToString(*ctxt,S);
@@ -786,6 +789,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             // outlog_printf(2,"Code: %s\n",front.c_str());
         
             resCodeSegs[src_file].push_back(front);
+            std::map<int,std::string> casePatch;
+            casePatch.clear();
 
             std::string body="switch(__choose(\"__ID"+std::to_string(counter++)+"\"))\n{\n";
             body+="case "+std::to_string(case_count++)+": {\n";
@@ -799,12 +804,14 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
 
                 body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
                 body+="case "+std::to_string(case_count)+": {\n";
-                body+=addLocationInIsNeg(currentPatch[i],counter-1,case_count);
+                std::string currentBody=addLocationInIsNeg(currentPatch[i],counter-1,case_count);
+                body+=currentBody;
+                casePatch[case_count]=currentBody;
                 body+="\nbreak;\n}\n";
                 body+="#endif\n";
-                macroMap.insert(std::pair<long long,std::pair<int,int>>(index++,std::pair<int,int>(counter-1,case_count)));
-                idAndCase.insert(std::pair<std::string,std::pair<int,int>>(currentPatch[i],std::pair<int,int>(counter-1,case_count++)));
+                macroMap.insert(std::pair<long long,std::pair<int,int>>(index++,std::pair<int,int>(counter-1,case_count++)));
             }
+            idAndCase[counter-1]=casePatch;
             body+="}\n";
             resPatches[src_file].push_back(body);
             resCodeSegs[src_file].push_back(code.substr(cur_end,code.size()-cur_end));

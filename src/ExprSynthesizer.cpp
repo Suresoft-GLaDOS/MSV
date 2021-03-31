@@ -540,7 +540,7 @@ protected:
     long long total_macro;
     int count;
     std::map<long long,std::pair<int,int>> macroMap;
-    std::map<std::string,std::pair<int,int>> idAndCase;
+    std::map<int,std::map<int,std::string>> idAndCase;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, false);
@@ -549,9 +549,11 @@ protected:
     bool testNegativeCases(const BenchProgram::EnvMapTy &env) {
         for (TestCaseSetTy::iterator it = negative_cases.begin();
                 it != negative_cases.end(); it++)
-            if (!testOneCase(env, *it))
-                return false;
-        outlog_printf(2, "Passed Negative Cases\n");
+            if (!testOneCase(env, *it)){
+                outlog_printf(2,"Failed negative case %lu\n",*it);
+                // return false;
+            }
+        // outlog_printf(2, "Passed Negative Cases\n");
         return true;
     }
 
@@ -560,7 +562,7 @@ protected:
                 it != failed_cases.end(); it++) {
             if (!testOneCase(env, *it)) {
                 outlog_printf(2, "Failed positive case %lu\n", *it);
-                return false;
+                // return false;
             }
         }
         for (TestCaseSetTy::iterator it = positive_cases.begin();
@@ -570,10 +572,10 @@ protected:
             if (!testOneCase(env, *it)) {
                 outlog_printf(2, "Failed positive case %lu\n", *it);
                 failed_cases.insert(*it);
-                return false;
+                // return false;
             }
         }
-        outlog_printf(2, "Passed Positive Cases\n");
+        // outlog_printf(2, "Passed Positive Cases\n");
         return true;
     }
 
@@ -595,6 +597,20 @@ protected:
             if (it->first==key) return true;
         }
         return false;
+    }
+    void savePatch(std::map<int,std::map<int,std::string>> patches){
+        std::string path=P.getWorkdir()+"/patches.txt";
+        std::ofstream fout(path.c_str(),std::ofstream::out);
+
+        for (std::map<int,std::map<int,std::string>>::iterator it=patches.begin();it!=patches.end();it++){
+            fout << "switch:" << it->first << "\n";
+            for (std::map<int,std::string>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
+                fout << "case:" << it2->first << "\n";
+                fout << it2->second << "\n";
+            }
+        }
+        fout << "\n";
+        fout.close();
     }
 
 public:
@@ -635,7 +651,7 @@ public:
         std::vector<std::set<ExprFillInfo> *> infos;
         infos.clear();
 
-        outlog_printf(2, "[%llu] Preprocess the following candidate with BasicTester:\n%d\n", get_timer(),
+        outlog_printf(2, "[%llu] Preprocess the following candidate with BasicTester: %d\n", get_timer(),
             candidate.size());
         for (int i=0;i<candidate.size();i++){
             // We are going to create a set of binding ExprFillInfos
@@ -649,6 +665,7 @@ public:
         CodeSegTy a_patch = R.getPatches();
         macroMap=R.getMacroMap();
         idAndCase=R.getIdAndCase();
+        savePatch(idAndCase);
         count=R.getIdCount();
         total_macro=R.index;
         {
@@ -694,18 +711,28 @@ public:
             out_codes(codes, patches);
         }
         BenchProgram::EnvMapTy testEnv=initEnv(env);
-        outlog_printf(3, "Testing negative cases!\n");
+        bool ret;
+        // bool ret = testPositiveCases(testEnv);
+        // if (!ret){
+        //     outlog_printf(2,"Fail to test with original\n");
+        // }
+
+        // testEnv["__ID4"]="642";
+        testEnv["__ID20"]="829";
+        outlog_printf(2, "Testing negative cases!\n");
         if (!testNegativeCases(testEnv)) {
             codes.clear();
             patches.clear();
+            outlog_printf(2,"Negative Case fail\n");
             return false;
         }
-        outlog_printf(3, "Testing positive cases!\n");
-        bool ret = testPositiveCases(testEnv);
+        outlog_printf(2, "Testing positive cases!\n");
+        ret = testPositiveCases(testEnv);
         if (ret)
             outlog_printf(2, "[%llu] Passed!\n", get_timer());
         else {
             // We are going to clear out stuff tested, to avoid memory usage.
+            outlog_printf(2,"Fail to test with success patch\n");
             codes.clear();
             patches.clear();
         }
@@ -1834,11 +1861,14 @@ class ConditionSynthesisTester : public BasicTester {
     std::map<int,std::set<int>> getIsNegCase(){
         std::map<int,std::set<int>> idCasePair;
         idCasePair.clear();
-        for (std::map<std::string,std::pair<int,int>>::iterator it=idAndCase.begin();
+        for (std::map<int,std::map<int,std::string>>::iterator it=idAndCase.begin();
                 it!=idAndCase.end();it++){
-            std::string patch=it->first;
-            if (patch.find("__is_neg")!=std::string::npos)
-                idCasePair[it->second.first].insert(it->second.second);
+            for (std::map<int,std::string>::iterator it2=it->second.begin();
+                    it2!=it->second.end();it2++){
+                std::string patch=it2->second;
+                if (patch.find("__is_neg")!=std::string::npos)
+                    idCasePair[it->first].insert(it2->first);
+            }
         }
         return idCasePair;
     }
@@ -2235,7 +2265,7 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
-        // result_init=T->test(BenchProgram::EnvMapTy(),0);
+        result_init=T->test(BenchProgram::EnvMapTy(),0);
 
         return std::map<NewCodeMapTy, double>();
     }
@@ -2338,8 +2368,8 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     bool result;
     outlog_printf(2,"Generating Codes...\n");
     // for (int i=0;i<testers.size();i++)
-    result= TB.test(candidate, testers[0]);
-    // result= TB.test(candidate, testers[2]);
+    // result= TB.test(candidate, testers[0]);
+    result= TB.test(candidate, testers[2]);
 
     outlog_printf(0, "The total number of explored concrete patches: %lu\n", patch_explored);
     for (size_t i = 0; i < testers.size(); i++)

@@ -374,7 +374,7 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
         else
             cmd = build_cmd + " -j 10 " +cflags+ " "+src_dir + " >>" + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 " +cflags+ " "+src_dir + " 2>&1";
-        // outlog_printf(2,"Command: %s\n",cmd.c_str());
+        outlog_printf(2,"Command: %s\n",cmd.c_str());
         int ret;
         if (timeout_limit == 0)
             ret = system(cmd.c_str());
@@ -531,16 +531,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         // remove the .o and .lo files to recompile
     }
     fout2.close();
-    deleteLibraryFile(fileCodeMap);
-
-    outlog_printf(2,"Building with no macros...\n");
-    // Build with no macro, should be success
-
-    succ = buildFull("src", 0,true,std::vector<long long>());
-    if (!succ){
-        outlog_printf(2,"Fail to build with no macros!\n");
-    }
-
     deleteLibraryFile(fileCodeMap);
 
     outlog_printf(2,"Trying to build with all macros...\n");
@@ -740,7 +730,7 @@ bool BenchProgram::test(const std::string &subDir, size_t id, const EnvMapTy &en
 }
 
 bool BenchProgram::verifyTestCases() {
-    buildFull("src");
+    buildFull("src",0,true);
     //prepare_test();
     std::set<unsigned long> tmp = testSet("src", negative_cases, std::map<std::string, std::string>());
     if (tmp.size() != 0) {
@@ -756,10 +746,9 @@ bool BenchProgram::verifyTestCases() {
             if (tmp.count(*it) == 0)
                 outlog_printf(0, "%lu\n", *it);
         outlog_printf(0, "Only passed tot: %lu\n", tmp.size());
-        return false;
-        //fprintf(stderr, "Eliminate not passed cases!\n");
-        //positive_cases = tmp;
-        //return true;
+        // return false;
+        positive_cases = tmp;
+        return true;
     }
     outlog_printf(0, "All passed!\n");
     return true;
