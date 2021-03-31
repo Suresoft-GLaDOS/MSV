@@ -1,0 +1,4 @@
+001- exception 'Exception' with message 'Unable to open database: %s' in %s.php:%d
+002- Stack trace:
+003- #0 %s.php(%d): SQLite3->__construct('%s')
+004- #1 {main}

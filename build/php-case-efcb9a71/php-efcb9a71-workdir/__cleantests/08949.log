@@ -1,0 +1,22 @@
+
+---- EXPECTED OUTPUT
+Warning: opendir(): connect() failed: Connection refused in %s on line %d
+
+Warning: opendir(ftp://...@localhost/): failed to open dir: operation failed in %s on line %d
+bool(false)
+
+Warning: opendir(): connect() failed: Connection refused in %s on line %d
+
+Warning: opendir(ftp://...@localhost/): failed to open dir: operation failed in %s on line %d
+bool(false)
+---- ACTUAL OUTPUT
+Warning: opendir(): connect() failed: Cannot assign requested address in /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/__cleantests/08949.php on line 5
+
+Warning: opendir(ftp://...@localhost/): failed to open dir: operation failed in /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/__cleantests/08949.php on line 5
+bool(false)
+
+Warning: opendir(): connect() failed: Cannot assign requested address in /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/__cleantests/08949.php on line 6
+
+Warning: opendir(ftp://...@localhost/): failed to open dir: operation failed in /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/__cleantests/08949.php on line 6
+bool(false)
+---- FAILED

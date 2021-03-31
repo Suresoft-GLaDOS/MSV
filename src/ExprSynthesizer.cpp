@@ -2265,9 +2265,12 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
-        result_init=T->test(BenchProgram::EnvMapTy(),0);
+        // result_init=T->test(BenchProgram::EnvMapTy(),0);
 
-        return std::map<NewCodeMapTy, double>();
+        std::map<NewCodeMapTy, double> newCode;
+        newCode.clear();
+        newCode[combined]=(double)0;
+        return newCode;
     }
 
 public:

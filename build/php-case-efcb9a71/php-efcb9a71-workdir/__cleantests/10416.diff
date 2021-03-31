@@ -1,0 +1,6 @@
+010+ Key: myimage Name: myimage
+011- Key: myimage Name: myimage
+014+ Index 1: myimage
+015+ Index 2: rdf
+014- Index 1: rdf
+015- Index 2: myimage

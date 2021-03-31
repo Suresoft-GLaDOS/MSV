@@ -1,9 +1,8 @@
 Initialize the program!
 Verify Test Cases
-Command: /root/project/prophet-gpl/tools/php-build.py -p /root/project/prophet-gpl/benchmarks/php-deps -j 10  /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src >>/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/build.log 2>&1
+Command: /root/project/prophet-gpl/tools/php-build.py -p /root/project/prophet-gpl/benchmarks/php-deps -j 10  /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/src >>/root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/build.log 2>&1
 Unexpected fail:
 682
-1518
 1873
 4165
 4341
@@ -13,6 +12,7 @@ Unexpected fail:
 6171
 6273
 6584
+6672
 6689
 6703
 6770
@@ -42,9 +42,6 @@ Unexpected fail:
 8882
 8884
 8949
-9489
-9673
-9788
 10416
 10956
 10966
@@ -59,41 +56,34 @@ Unexpected fail:
 11030
 11033
 11047
-Only passed tot: 6883
+Only passed tot: 6934
 Done Verification
 Generating repair candidates!
-Processing ext/dom/document.c
-Total 11634 different repair schemas!!!!
-Total 16479 different repair candidate templates for scoring!!!
-Total 5007 different partial repair candidate templates!!
-BasicTester pointer: 0x563b859632e0
-StringConstTester pointer: 0x563b84ee6c90
-CondTester pointer: 0x563b8535b3a0
+Processing Zend/zend_variables.c
+Total 2425 different repair schemas!!!!
+Total 12509 different repair candidate templates for scoring!!!
+Total 10392 different partial repair candidate templates!!
+BasicTester pointer: 0x5575896da570
+StringConstTester pointer: 0x557589758e80
+CondTester pointer: 0x55758978eaa0
 Generating Candidates...
-Candidates size: 11634
+Candidates size: 2425
 Generating Codes...
-[380] Preprocess the following candidate with BasicTester: 11634
+[379] Preprocess the following candidate with BasicTester: 2425
 Generating patches...
 Generating Codes...
-[380] BasicTester, a patch instance with id 0:
+[379] BasicTester, a patch instance with id 0:
 Begin building test
-Total macros: 7541
+Total macros: 1937
 Preprocessing test...
-Saving this fix to: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/fixed_document.c
+Saving this fix to: /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
 Trying to build with all macros...
-Command: /root/project/prophet-gpl/tools/php-build.py -p /root/project/prophet-gpl/benchmarks/php-deps -j 10 -D "0-7540" /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/src >>/root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/build.log 2>&1
+Command: /root/project/prophet-gpl/tools/php-build.py -p /root/project/prophet-gpl/benchmarks/php-deps -j 10 -D "0-1936" /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/src >>/root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/build.log 2>&1
 Build Success!
-[691] BasicTester, Testing instance id 0:
-Testing negative cases!
-Failed negative case 10396
-Testing positive cases!
-Failed positive case 10406
-Failed positive case 10518
-Failed positive case 10521
-[2128] Passed!
 The total number of explored concrete patches: 0
-Repair process ends without working fix!!
-Total 11634 different repair schemas!!!!
-Total 16479 different repair candidate templates for scoring!!!
+Repair process ends successfully!
+Total 2425 different repair schemas!!!!
+Total 12509 different repair candidate templates for scoring!!!
+Total 10392 different partial repair candidate templates!!
 Total number of compiles: 1
-Total number of test eval: 6884
+Total number of test eval: 0
