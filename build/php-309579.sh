@@ -15,7 +15,7 @@ fi
 
 if [[ $1 = "-o" ]];
 then
-	../tests/scripts/reproduce.py --prophet php-309579-309580 &> result.log
+	../tests/scripts/reproduce.py --prophet --bug-file php-309579-309580 &> result.log
 else
-	../tests/scripts/reproduce.py --prophet php-309579-309580
+	../tests/scripts/reproduce.py --prophet --bug-file php-309579-309580
 fi

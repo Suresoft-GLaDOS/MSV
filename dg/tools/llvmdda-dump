@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#defult program
+GUI=xdg-open
+DIRECTDOT=0
+
+set -e
+
+if which xdot &>/dev/null; then
+	GUI=xdot
+	DIRECTDOT=1
+elif which okular &>/dev/null; then
+	GUI=okular
+elif which evince &>/dev/null; then
+	GUI=evince
+fi
+
+PATH=`dirname $0`:$PATH
+llvm-dda-dump -dot $@ > _dda.dot
+
+if [ $DIRECTDOT -eq 1 ]; then
+	$GUI _dda.dot
+	rm _dda.dot
+else
+	dot -Tpdf -o _dda.pdf _dda.dot
+	$GUI _dda.pdf
+	rm _dda.pdf _dda.dot
+fi

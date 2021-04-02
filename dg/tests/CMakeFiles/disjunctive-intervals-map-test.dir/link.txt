@@ -1,0 +1,1 @@
+/usr/bin/c++  -std=c++14 -fno-rtti -Wall -Wextra -fno-exceptions -g -O2 -g -DNDEBUG -rdynamic CMakeFiles/disjunctive-intervals-map-test.dir/disjunctive-intervals-map-test.cpp.o CMakeFiles/catch-main.dir/catch-main.cpp.o -o disjunctive-intervals-map-test  -Wl,-rpath,/root/project/prophet-gpl/dg/lib ../lib/libdganalysis.so 

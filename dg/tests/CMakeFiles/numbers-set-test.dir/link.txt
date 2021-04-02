@@ -1,0 +1,1 @@
+/usr/bin/c++  -std=c++14 -fno-rtti -Wall -Wextra -fno-exceptions -g -O2 -g -DNDEBUG -rdynamic CMakeFiles/numbers-set-test.dir/numbers-set-test.cpp.o CMakeFiles/catch-main.dir/catch-main.cpp.o -o numbers-set-test 

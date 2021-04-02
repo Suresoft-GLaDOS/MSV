@@ -601,13 +601,16 @@ protected:
     void savePatch(std::map<int,std::map<int,std::string>> patches){
         std::string path=P.getWorkdir()+"/patches.txt";
         std::ofstream fout(path.c_str(),std::ofstream::out);
+        int count=0;
+        int i;
+        for (std::map<int,std::map<int,std::string>>::iterator it=patches.begin();it!=patches.end();it++) i++;
+        fout << count << "\n";
 
         for (std::map<int,std::map<int,std::string>>::iterator it=patches.begin();it!=patches.end();it++){
-            fout << "switch:" << it->first << "\n";
             for (std::map<int,std::string>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
-                fout << "case:" << it2->first << "\n";
-                fout << it2->second << "\n";
+                i=it2->first;
             }
+            fout << i << "\n";
         }
         fout << "\n";
         fout.close();
@@ -717,8 +720,6 @@ public:
         //     outlog_printf(2,"Fail to test with original\n");
         // }
 
-        // testEnv["__ID4"]="642";
-        testEnv["__ID20"]="829";
         outlog_printf(2, "Testing negative cases!\n");
         if (!testNegativeCases(testEnv)) {
             codes.clear();

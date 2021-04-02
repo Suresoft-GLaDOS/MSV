@@ -1,0 +1,29 @@
+#!/bin/sh
+
+DIR=`dirname $0`
+
+#defult program
+GUI=xdg-open
+DIRECTDOT=0
+
+set -e
+
+if which xdot &>/dev/null; then
+	GUI=xdot
+	DIRECTDOT=1
+elif which okular &>/dev/null; then
+	GUI=okular
+elif which evince &>/dev/null; then
+	GUI=evince
+fi
+
+$DIR/llvm-dg-dump $* > _ldg-show-output.dot
+
+if [ $DIRECTDOT -eq 1 ]; then
+	$GUI _ldg-show-output.dot
+else
+	dot -Tpdf _ldg-show-output.dot -o ldg-show-output.pdf
+	$GUI _ldg-show-output.pdf
+fi
+
+rm _ldg-show-output*

@@ -1,0 +1,1 @@
+/usr/bin/c++  -std=c++14 -fno-rtti -Wall -Wextra -fno-exceptions -g -O2 -g -DNDEBUG -rdynamic CMakeFiles/ptset-benchmark.dir/ptset-benchmark.cpp.o -o ptset-benchmark  -Wl,-rpath,/root/project/prophet-gpl/dg/lib ../lib/libdgpta.so ../lib/libdganalysis.so 

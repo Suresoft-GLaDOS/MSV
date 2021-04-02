@@ -1023,14 +1023,15 @@ if __name__ == '__main__':
                     args.append(dep_dir)
                 if len(c)!=0:
                     args.append("-D")
-                    args.append("\""+str(c[0])+"-"+str(c[len(c)-1])+"\"")
+                    args.append(str(c[0])+"-"+str(c[len(c)-1]))
                 args.append(src_dir)
                 args.append(">>")
                 args.append(build_log_file)
-                args.append("2>&1")
-            # print args
-            process=subprocess.Popen(args,shell=True,env=my_env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-            process.communicate()
+                # args.append("2>&1")
+            print args
+            process=subprocess.Popen(args,env=my_env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            (out,err)=process.communicate()
+            # print err
             result=process.returncode
             if result==0:
                 return self.PASS
@@ -1039,7 +1040,7 @@ if __name__ == '__main__':
         def __init__(self,script_file,full_macros):
             self.file=script_file
             DD2.__init__(self,full_macros)
-            # self.debug_dd=True
+            self.debug_dd=True
 
     macro_list=range(macros)
     dd_test=BuildTest(build_cmd,macro_list)

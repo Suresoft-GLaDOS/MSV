@@ -541,13 +541,16 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     if (succ){
         outlog_printf(2,"Build Success!\n");
     }
+    // else
+    //     outlog_printf(2,"Fail to build!\n");
     else{
-        outlog_printf(2,"Build failed, Trying to find fail macros...\n");
+        // outlog_printf(2,"Build failed, Trying to find fail macros...\n");
         // Run Binary-Search to find fail cases
         time_t timeout_limit = 0;
         if (repair_build_cnt > 10)
             timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
         int ret=1;
+        // TODO: We don't do search, it need much time!
         if (true)
         {
             //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
@@ -558,11 +561,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             cmd+=" -t "+build_cmd;
             if (dep_dir!="") cmd+=" -p "+dep_dir;
             // cmd+=" > DD.log";
-
-            if (timeout_limit == 0)
-                ret = system(cmd.c_str());
-            else
-                ret = execute_with_timeout(cmd.c_str(), timeout_limit);
+            ret = system(cmd.c_str());
 
             if (ret==0) {
                 total_repair_build_time += timer.getSeconds();
@@ -604,6 +603,11 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             if (!include) succ_id.push_back(i);
         }
         outlog_printf(2,"Total success macros: %d\n",succ_id.size());
+        std::ofstream finalMacros("succ_macro.txt",std::ofstream::out);
+        for (long long i=0;i<succ_id.size();i++){
+            finalMacros << i << "\n";
+        }
+        finalMacros.close();
 
         // Build final build
         succ = buildFull("src", 0,true,succ_id);

@@ -27,13 +27,13 @@ Index 0: GIF (image/gif) (-)
 NULL
 
 Length: 3
+Key: rdf Name: rdf
 Key: test Name: test
 Key: myimage Name: myimage
-Key: rdf Name: rdf
 
-Index 0: test
-Index 1: myimage
-Index 2: rdf
+Index 0: rdf
+Index 1: test
+Index 2: myimage
 
 NULL
 NULL

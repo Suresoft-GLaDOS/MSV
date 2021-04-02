@@ -49,25 +49,12 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             chdir(ori_dir);
             return False;
     
-    # Add switch macros to acinclude
-    if len(macros)!=0:
-        cmd=["cp","acinclude.m4",ori_dir+"/acinclude-bak.m4"]
-        subprocess.call(cmd,env=my_env)
-        ac_include=open("acinclude.m4",'a')
-        ac_include.write("\n")
-        for i in macros:
-            ac_include.write("AC_DEFUN([COMPILE_"+str(i)+"],[])\n")
-        ac_include.flush()
-        ac_include.close()
-
-        cmd=["cp","acinclude.m4",ori_dir+"/acinclude.m4"]
-        subprocess.call(cmd,env=my_env)
-
     # it is tricky to find the right dependency version to make it
     # builds, we will try multiple times
     if not compile_only:
         cnt = 0;
         subprocess.call(["make","clean"],env=my_env)
+        cflags=""
         while (True):
             my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"]
             my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"]
@@ -81,6 +68,27 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             # clean up things
             subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
 
+            # Generate configure.in with macros
+            if len(macros)!=0:
+                cmd="cp configure.in "+ori_dir
+                subprocess.call(cmd,env=my_env,shell=True)
+
+                config_in=open("configure.in",'r')
+                ac_str=config_in.read()
+                config_in.close()
+                splitted=ac_str.split("AC_OUTPUT")
+
+                macro_define=""
+                for i in macros:
+                    macro_define=macro_define+("AC_DEFINE(COMPILE_"+str(i)+", 1, [ ])\n")
+                final=splitted[0]+"\n"+macro_define+"AC_OUTPUT"+splitted[1]
+
+                config_in=open("configure.in","w")
+                config_in.write(final)
+                config_in.close()
+                cmd="cp configure.in "+ori_dir+"/configure-bak.in"
+                subprocess.call(cmd,env=my_env,shell=True)
+
             # create configure file
             ret = subprocess.call(["./buildconf"], env = my_env,shell=True);
             if ret != 0:
@@ -90,7 +98,12 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             
             # do the configure
             # subprocess.call(["rm","config.cache"],env=my_env)
-            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip","-enable-debug","-with-gnu-ld"], env = my_env, stderr = subprocess.PIPE)
+            configure=["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip","-enable-debug","-with-gnu-ld"]
+            if len(macros)!=0:
+                cmd="cp "+ori_dir+"/configure.in configure.in"
+                subprocess.call(cmd,env=my_env,shell=True)
+
+            p = subprocess.Popen(configure, env = my_env, stderr = subprocess.PIPE)
             (out, err) = p.communicate();
             if p.returncode != 0:
                 if is_due_to_autoconf_v(err):
@@ -123,10 +136,6 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
         if ret != 0:
             print "Failed to compile!";
             return False;
-
-    if len(macros)!=0:
-        cmd=["cp",ori_dir+"/acinclude-bak.m4",out_dir+"/acinclude.m4"]
-        subprocess.call(cmd,env=my_env)
 
     return True;
 
