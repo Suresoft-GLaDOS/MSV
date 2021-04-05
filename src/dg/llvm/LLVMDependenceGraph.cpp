@@ -1,11 +1,3 @@
-#ifndef HAVE_LLVM
-# error "Need LLVM for LLVMDependenceGraph"
-#endif
-
-#ifndef ENABLE_CFG
- #error "Need CFG enabled for building LLVM Dependence Graph"
-#endif
-
 #include <utility>
 #include <unordered_map>
 #include <set>
@@ -31,21 +23,20 @@ SILENCE_LLVM_WARNINGS_POP
 #include "dg/llvm/LLVMDependenceGraph.h"
 #include "dg/llvm/LLVMNode.h"
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
-// !FIXME
-#include "../lib/llvm/ControlDependence/legacy/NTSCD.h"
-#include "../lib/llvm/ControlDependence/NTSCD.h"
-#include "../lib/llvm/ControlDependence/InterproceduralCD.h"
+#include "dg/llvm/ControlDependence/legacy/NTSCD.h"
+#include "dg/llvm/ControlDependence/NTSCD.h"
+#include "dg/llvm/ControlDependence/InterproceduralCD.h"
 
-#include "llvm/LLVMDGVerifier.h"
-#include "llvm-utils.h"
+#include "dg/llvm/LLVMDGVerifier.h"
+#include "dg/llvm/llvm-utils.h"
 #include "dg/util/debug.h"
 
 #include "dg/ADT/Queue.h"
 
-#include "DefUse/DefUse.h"
+#include "dg/llvm/DefUse/DefUse.h"
 
-#include "ControlFlowGraph.h"
-#include "MayHappenInParallel.h"
+#include "dg/llvm/ThreadRegions/ControlFlowGraph.h"
+#include "dg/llvm/ThreadRegions/MayHappenInParallel.h"
 
 using llvm::errs;
 using std::make_pair;

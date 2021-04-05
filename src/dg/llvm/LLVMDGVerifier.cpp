@@ -10,7 +10,7 @@ SILENCE_LLVM_WARNINGS_POP
 
 #include "dg/llvm/LLVMDependenceGraph.h"
 #include "dg/llvm/LLVMNode.h"
-#include "llvm/LLVMDGVerifier.h"
+#include "dg/llvm/LLVMDGVerifier.h"
 
 namespace dg {
 

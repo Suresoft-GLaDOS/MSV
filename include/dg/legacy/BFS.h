@@ -28,7 +28,6 @@ enum BFSFlags {
     BFS_BB_DOM                  = 1 << 15,
 };
 
-#ifdef ENABLE_CFG
 
 static inline uint32_t
 convertBFSBBFlags(uint32_t flags)
@@ -87,7 +86,6 @@ private:
     unsigned int bfsorder;
     uint32_t flags;
 };
-#endif // ENABLE_CFG
 
 } // namespace legacy
 } // namespace dg

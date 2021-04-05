@@ -85,9 +85,7 @@ public:
     using ContainerType = std::map<KeyT, NodeT *>;
     using iterator = typename ContainerType::iterator;
     using const_iterator = typename ContainerType::const_iterator;
-#ifdef ENABLE_CFG
     using BBlocksMapT = std::map<KeyT, BBlock<NodeT> *>;
-#endif
 
 private:
     // entry and exit nodes of the graph
@@ -106,7 +104,6 @@ private:
     // call-sites (nodes) that are calling this graph
     DGContainer<NodeT *> callers;
 
-#ifdef ENABLE_CFG
     // blocks contained in this graph
     BBlocksMapT _blocks;
 
@@ -117,7 +114,6 @@ private:
 
     // root of post-dominator tree
     BBlock<NodeT> *PDTreeRoot;
-#endif // ENABLE_CFG
 
 protected:
     // nodes contained in this dg. They are protected, so that
@@ -130,14 +126,11 @@ protected:
 public:
     DependenceGraph<NodeT>()
         : entryNode(nullptr), exitNode(nullptr), formalParameters(nullptr)
-#ifdef ENABLE_CFG
         , entryBB(nullptr), exitBB(nullptr), PDTreeRoot(nullptr)
-#endif
     {
     }
 
     ~DependenceGraph<NodeT>() {
-#ifdef ENABLE_CFG
 #ifdef ENABLE_DEBUG
         bool deleted_entry = false;
         bool deleted_exit = false;
@@ -156,7 +149,6 @@ public:
         assert(deleted_entry && "Did not have entry in _blocks");
         assert(deleted_exit && "Did not have exit in _blocks");
 #endif // ENABLE_DEBUG
-#endif
     }
 
     // iterators for local nodes
@@ -407,7 +399,6 @@ public:
     const DGContainer<NodeT *>& getCallers() const { return callers; }
     bool addCaller(NodeT *sg) { return callers.insert(sg); }
 
-#ifdef ENABLE_CFG
     // get blocks contained in this graph
     BBlocksMapT& getBlocks() { return _blocks; }
     const BBlocksMapT& getBlocks() const { return _blocks; }
@@ -447,7 +438,6 @@ public:
         return old;
     }
 
-#endif // ENABLE_CFG
 
 private:
 

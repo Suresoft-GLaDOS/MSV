@@ -9,9 +9,7 @@
 #include "dg/ADT/Queue.h"
 #include "dg/DependenceGraph.h"
 
-#ifdef ENABLE_CFG
 #include "dg/BBlock.h"
-#endif
 
 namespace dg {
 
@@ -61,16 +59,12 @@ private:
         WalkData(uint32_t si, WalkAndMark *wm,
                  std::set<BBlock<NodeT> *> *mb = nullptr)
             : slice_id(si), analysis(wm)
-#ifdef ENABLE_CFG
               , markedBlocks(mb)
-#endif
              {}
 
         uint32_t slice_id;
         WalkAndMark *analysis;
-#ifdef ENABLE_CFG
         std::set<BBlock<NodeT> *> *markedBlocks;
-#endif
     };
 
     static void markSlice(NodeT *n, WalkData *data)
@@ -78,7 +72,6 @@ private:
         uint32_t slice_id = data->slice_id;
         n->setSlice(slice_id);
 
-#ifdef ENABLE_CFG
         // when we marked a node, we need to mark even
         // the basic block - if there are basic blocks
         if (BBlock<NodeT> *B = n->getBBlock()) {
@@ -105,7 +98,6 @@ private:
                 }
             }
         }
-#endif
 
         // the same with dependence graph, if we keep a node from
         // a dependence graph, we need to keep the dependence graph
@@ -216,13 +208,11 @@ public:
         if (forward_slice) {
             std::set<NodeT *> inslice;
             for (auto *BB : wm.getMarkedBlocks()) {
-#if ENABLE_CFG
                 for (auto *nd : BB->getNodes()) {
                     if (nd->getSlice() == sl_id) {
                         inslice.insert(nd);
                     }
                 }
-#endif
             }
 
             // do backward slicing to make the slice executable
@@ -239,10 +229,8 @@ public:
     // before this routine (otherwise everything is sliced)
     uint32_t slice(DependenceGraph<NodeT> *dg, uint32_t sl_id = 0)
     {
-#ifdef ENABLE_CFG
         // first slice away bblocks that should go away
         sliceBBlocks(dg, sl_id);
-#endif // ENABLE_CFG
 
         // now slice the nodes from the remaining graphs
         sliceNodes(dg, sl_id);
@@ -258,7 +246,6 @@ public:
         return true;
     }
 
-#ifdef ENABLE_CFG
     virtual bool removeBlock(BBlock<NodeT> *) {
         return true;
     }
@@ -333,7 +320,6 @@ public:
                 "Inconsistency in sliced blocks");
     }
 
-#endif
 };
 
 } // namespace dg

@@ -1,14 +1,6 @@
 #ifndef _LLVM_NODE_H_
 #define _LLVM_NODE_H_
 
-#ifndef HAVE_LLVM
-#error "Need LLVM"
-#endif
-
-#ifndef ENABLE_CFG
-#error "Need CFG enabled"
-#endif
-
 #include <utility>
 #include <map>
 #include <set>

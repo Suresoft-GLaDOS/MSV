@@ -119,9 +119,7 @@ public:
 
         start();
 
-#ifdef ENABLE_CFG
         dumpBBs(dg);
-#endif
 
         // even when we have printed nodes while
         // going through BBs, print nodes again,
@@ -434,10 +432,8 @@ private:
     {
         dumpSubgraphStart(sub);
 
-#ifdef ENABLE_CFG
         // dump BBs in the subgraph
         dumpBBs(sub, 2);
-#endif
 
         // dump all nodes again, if there is any that is
         // not in any BB

@@ -86,19 +86,15 @@ public:
             // add unprocessed vertices
             if (options & NODES_WALK_CD) {
                 processEdges(n->control_begin(), n->control_end());
-#ifdef ENABLE_CFG
                 // we can have control dependencies in BBlocks
                 processBBlockCDs(n);
-#endif // ENABLE_CFG
             }
 
             if (options & NODES_WALK_REV_CD) {
                 processEdges(n->rev_control_begin(), n->rev_control_end());
 
-#ifdef ENABLE_CFG
                 // we can have control dependencies in BBlocks
                 processBBlockRevCDs(n);
-#endif // ENABLE_CFG
             }
 
             if (options & NODES_WALK_DD)
@@ -119,13 +115,11 @@ public:
             if (options & NODES_WALK_REV_ID)
                 processEdges(n->rev_interference_begin(), n->rev_interference_end());
 
-#ifdef ENABLE_CFG
             if (options & NODES_WALK_BB_CFG)
                 processBBlockCFG(n);
 
             if (options & NODES_WALK_BB_REV_CFG)
                 processBBlockRevCFG(n);
-#endif // ENABLE_CFG
 
             if (options & NODES_WALK_BB_POSTDOM_FRONTIERS)
                 processBBlockPostDomFrontieres(n);
@@ -171,7 +165,6 @@ private:
         }
     }
 
-#ifdef ENABLE_CFG
     // we can have control dependencies in BBlocks
     void processBBlockRevCDs(NodeT *n)
     {
@@ -225,7 +218,6 @@ private:
         for (BBlock<NodeT> *S : BB->getPostDomFrontiers())
             enqueue(S->getLastNode());
     }
-#endif // ENABLE_CFG
 
     QueueT queue;
     // id of particular nodes walk
@@ -269,7 +261,6 @@ protected:
 template<typename NodeT>
 unsigned int BBlockWalkBase<NodeT>::walk_run_counter = 0;
 
-#ifdef ENABLE_CFG
 template <typename NodeT, typename QueueT>
 class BBlockWalk : public BBlockWalkBase<NodeT>
 {
@@ -391,7 +382,6 @@ private:
     unsigned int runid;
 };
 
-#endif
 
 } // legacy
 } // namespace dg

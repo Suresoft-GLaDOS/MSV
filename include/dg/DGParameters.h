@@ -75,11 +75,9 @@ public:
             delete gl.second.out;
         }
 
-#ifdef ENABLE_CFG
         // delete auxiliary basic blocks
         delete BBIn;
         delete BBOut;
-#endif
     }
 
     DGParameterPair<NodeT> *operator[](KeyT k) { return find(k); }

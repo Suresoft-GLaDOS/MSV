@@ -189,7 +189,6 @@ public:
         removeUses();
         removeCDs();
 
-#ifdef ENABLE_CFG
         // if this is head or tail of BB,
         // we must take it into account
         if (basicBlock) {
@@ -213,7 +212,6 @@ public:
 
             basicBlock = nullptr;
         }
-#endif
     }
 
     // control dependency edges iterators
@@ -281,7 +279,6 @@ public:
     size_t getUseDependenciesNum() const { return useEdges.size(); }
     size_t getUserDependenciesNum() const { return userEdges.size(); }
 
-#ifdef ENABLE_CFG
     BBlock<NodeT> *getBBlock() { return basicBlock; }
     const BBlock<NodeT> *getBBlock() const { return basicBlock; }
 
@@ -297,7 +294,6 @@ public:
         return analysisAuxData.dfsorder;
     }
 
-#endif /* ENABLE_CFG */
 
     bool addSubgraph(DependenceGraphT *sub)
     {
@@ -415,11 +411,9 @@ private:
     // id of the slice this nodes is in. If it is 0, it is in no slice
     uint32_t slice_id{0};
 
-#ifdef ENABLE_CFG
     // some analyses need classical CFG edges
     // and it is better to have even basic blocks
     BBlock<NodeT> *basicBlock{nullptr};
-#endif /* ENABLE_CFG */
 
     // auxiliary data for different analyses
     legacy::AnalysesAuxiliaryData analysisAuxData;

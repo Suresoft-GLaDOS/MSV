@@ -97,7 +97,6 @@ private:
     uint32_t flags;
 };
 
-#ifdef ENABLE_CFG
 
 static uint32_t inline
 convertBBFlags(uint32_t flags)
@@ -152,7 +151,6 @@ private:
     unsigned int dfsorder;
     uint32_t flags;
 };
-#endif // ENABLE_CFG
 
 } // namespace legacy
 } // namespace dg

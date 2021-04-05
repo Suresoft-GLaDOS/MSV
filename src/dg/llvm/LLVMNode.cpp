@@ -1,11 +1,3 @@
-#ifndef HAVE_LLVM
-# error "Need LLVM for LLVMDependenceGraph"
-#endif
-
-#ifndef ENABLE_CFG
- #error "Need CFG enabled for building LLVM Dependence Graph"
-#endif
-
 #include <dg/util/SilenceLLVMWarnings.h>
 SILENCE_LLVM_WARNINGS_PUSH
 #include <llvm/IR/Instruction.h>

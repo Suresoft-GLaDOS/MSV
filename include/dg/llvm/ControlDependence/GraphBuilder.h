@@ -5,7 +5,7 @@
 
 #include "llvm/IR/CFG.h"
 
-#include "ControlDependence/CDGraph.h"
+#include "dg/ControlDependence/CDGraph.h"
 #include "dg/util/debug.h"
 
 namespace dg {
