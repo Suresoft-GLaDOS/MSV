@@ -22,4 +22,4 @@ benchmarks/*-src
 benchmarks/*-tests*
 autom4te.cache
 build/benchmarks/*.tar.gz
-**/CMakeFiles
+**/CMakeFiles/
