@@ -1,1 +1,0 @@
-/usr/bin/c++  -std=c++14 -fno-rtti -Wall -Wextra -fno-exceptions -O2 -g -DNDEBUG -rdynamic CMakeFiles/llvm-vr-dump.dir/llvm-vr-dump.cpp.o -o llvm-vr-dump  -lLLVM 

@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -std=c++14 -fno-rtti -Wall -Wextra -fno-exceptions -O2 -g -DNDEBUG -shared -Wl,-soname,libdgsdg.so -o libdgsdg.so CMakeFiles/dgsdg.dir/SystemDependenceGraph/DependenceGraph.cpp.o  -Wl,-rpath,/root/project/prophet-gpl/dg/lib: libdgpta.so libdgdda.so libdganalysis.so 

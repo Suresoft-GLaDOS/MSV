@@ -1,1 +1,0 @@
-/usr/bin/c++  -std=c++14 -fno-rtti -Wall -Wextra -fno-exceptions -g -O2 -g -DNDEBUG -rdynamic CMakeFiles/nodes-walk-test.dir/nodes-walk-test.cpp.o CMakeFiles/catch-main.dir/catch-main.cpp.o -o nodes-walk-test 

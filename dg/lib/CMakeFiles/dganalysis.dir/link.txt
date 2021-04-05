@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -std=c++14 -fno-rtti -Wall -Wextra -fno-exceptions -O2 -g -DNDEBUG -shared -Wl,-soname,libdganalysis.so -o libdganalysis.so CMakeFiles/dganalysis.dir/Offset.cpp.o CMakeFiles/dganalysis.dir/Debug.cpp.o CMakeFiles/dganalysis.dir/BBlockBase.cpp.o 
