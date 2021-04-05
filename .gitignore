@@ -24,4 +24,4 @@ autom4te.cache
 build/benchmarks/*.tar.gz
 **/CMakeFiles/
 **/CMakeCache.txt
-dg/build/
+dg/
