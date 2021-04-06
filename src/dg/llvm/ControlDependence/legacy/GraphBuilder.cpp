@@ -7,13 +7,13 @@ SILENCE_LLVM_WARNINGS_PUSH
 #include <llvm/Pass.h>
 SILENCE_LLVM_WARNINGS_POP
 
-#include "llvm/ForkJoin/ForkJoin.h"
+#include "dg/llvm/ForkJoin/ForkJoin.h"
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 
-#include "GraphBuilder.h"
-#include "Function.h"
-#include "Block.h"
-#include "TarjanAnalysis.h"
+#include "dg/llvm/ControlDependence/legacy/GraphBuilder.h"
+#include "dg/llvm/ControlDependence/legacy/Function.h"
+#include "dg/llvm/ControlDependence/legacy/Block.h"
+#include "dg/llvm/ControlDependence/legacy/TarjanAnalysis.h"
 
 using dg::ForkJoinAnalysis;
 

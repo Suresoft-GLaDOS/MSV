@@ -506,6 +506,7 @@ config.status:1159: creating tests/atlocal
 config.status:1159: creating wrap/Makefile
 config.status:1159: creating include/Makefile
 config.status:1159: creating config.h
+config.status:1340: config.h is unchanged
 config.status:1388: executing tests/atconfig commands
 config.status:1388: executing depfiles commands
 config.status:1388: executing libtool commands

@@ -1,4 +1,4 @@
-#include "FunctionGraph.h"
+#include "dg/llvm/ThreadRegions/Graphs/FunctionGraph.h"
 
 FunctionGraph::FunctionGraph(const llvm::Function *llvmFunction,
                              EntryNode * entryNode,

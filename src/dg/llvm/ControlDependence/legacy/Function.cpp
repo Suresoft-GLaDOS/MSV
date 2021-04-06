@@ -1,5 +1,5 @@
-#include "Function.h"
-#include "Block.h"
+#include "dg/llvm/ControlDependence/legacy/Function.h"
+#include "dg/llvm/ControlDependence/legacy/Block.h"
 
 #include <ostream>
 #include <algorithm>

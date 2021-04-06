@@ -1,5 +1,5 @@
-#include "EntryNode.h"
-#include "ForkNode.h"
+#include "dg/llvm/ThreadRegions/Nodes/EntryNode.h"
+#include "dg/llvm/ThreadRegions/Nodes/ForkNode.h"
 
 using namespace std;
 

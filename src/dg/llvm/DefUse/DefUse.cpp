@@ -21,9 +21,9 @@ SILENCE_LLVM_WARNINGS_POP
 #include "dg/llvm/LLVMNode.h"
 #include "dg/llvm/LLVMDependenceGraph.h"
 
-#include "llvm/llvm-utils.h"
+#include "dg/llvm/llvm-utils.h"
 
-#include "DefUse.h"
+#include "dg/llvm/DefUse/DefUse.h"
 
 using namespace llvm;
 

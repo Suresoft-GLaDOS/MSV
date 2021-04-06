@@ -1,6 +1,6 @@
-#include "JoinNode.h"
-#include "ExitNode.h"
-#include "ForkNode.h"
+#include "dg/llvm/ThreadRegions/Nodes/JoinNode.h"
+#include "dg/llvm/ThreadRegions/Nodes/ExitNode.h"
+#include "dg/llvm/ThreadRegions/Nodes/ForkNode.h"
 
 #include <dg/util/SilenceLLVMWarnings.h>
 SILENCE_LLVM_WARNINGS_PUSH

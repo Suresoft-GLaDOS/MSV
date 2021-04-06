@@ -1,4 +1,4 @@
-#include "SCD.h"
+#include "dg/llvm/ControlDependence/SCD.h"
 
 #include <dg/util/SilenceLLVMWarnings.h>
 SILENCE_LLVM_WARNINGS_PUSH

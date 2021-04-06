@@ -13,6 +13,7 @@ SILENCE_LLVM_WARNINGS_PUSH
 SILENCE_LLVM_WARNINGS_POP
 
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include <string>
 
@@ -169,7 +170,7 @@ public:
     SDG2Dot(SystemDependenceGraph *sdg) : _llvmsdg(sdg) {}
 
     void dump(const std::string& file) const {
-        std::ofstream out(file);
+        std::ofstream out(file.c_str(),std::ofstream::out);
         std::set<sdg::DGNodeCall *> calls;
 
         out << "digraph SDG {\n";

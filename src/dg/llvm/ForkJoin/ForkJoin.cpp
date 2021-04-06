@@ -1,6 +1,6 @@
 #include <cassert>
 
-#include "ForkJoin.h"
+#include "dg/llvm/ForkJoin/ForkJoin.h"
 
 namespace dg {
 

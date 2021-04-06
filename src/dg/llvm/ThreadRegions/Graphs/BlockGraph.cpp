@@ -1,4 +1,4 @@
-#include "BlockGraph.h"
+#include "dg/llvm/ThreadRegions/Graphs/BlockGraph.h"
 
 BlockGraph::BlockGraph(const llvm::BasicBlock *llvmBlock,
                        Node *firstNode,

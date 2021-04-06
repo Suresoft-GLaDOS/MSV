@@ -1,6 +1,6 @@
-#include "ExitNode.h"
-#include "JoinNode.h"
-#include "ThreadRegion.h"
+#include "dg/llvm/ThreadRegions/Nodes/ExitNode.h"
+#include "dg/llvm/ThreadRegions/Nodes/JoinNode.h"
+#include "dg/llvm/ThreadRegions/ThreadRegion.h"
 
 #include <iostream>
 #include <string>

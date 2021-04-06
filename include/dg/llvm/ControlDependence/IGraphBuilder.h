@@ -9,7 +9,7 @@
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 #include "dg/llvm/CallGraph/CallGraph.h"
 
-#include "ControlDependence/CDGraph.h"
+#include "dg/ControlDependence/CDGraph.h"
 #include "GraphBuilder.h"
 #include "dg/util/debug.h"
 

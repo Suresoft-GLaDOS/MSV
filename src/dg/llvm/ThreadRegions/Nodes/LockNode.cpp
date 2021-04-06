@@ -1,4 +1,4 @@
-#include "LockNode.h"
+#include "dg/llvm/ThreadRegions/Nodes/LockNode.h"
 
 LockNode::LockNode(const llvm::Instruction * instruction, const llvm::CallInst *callInst)
     :Node(NodeType::LOCK, instruction, callInst)

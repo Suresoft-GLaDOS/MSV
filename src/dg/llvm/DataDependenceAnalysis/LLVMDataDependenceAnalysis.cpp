@@ -4,7 +4,7 @@ SILENCE_LLVM_WARNINGS_PUSH
 SILENCE_LLVM_WARNINGS_POP
 
 #include "dg/llvm/DataDependence/DataDependence.h"
-#include "llvm/ReadWriteGraph/LLVMReadWriteGraphBuilder.h"
+#include "dg/llvm/ReadWriteGraph/LLVMReadWriteGraphBuilder.h"
 
 namespace dg {
 namespace dda {

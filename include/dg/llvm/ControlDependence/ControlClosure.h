@@ -6,7 +6,7 @@
 #include "dg/llvm/ControlDependence/ControlDependence.h"
 #include "GraphBuilder.h"
 
-#include "ControlDependence/ControlClosure.h"
+#include "dg/ControlDependence/ControlClosure.h"
 
 #include <set>
 #include <map>

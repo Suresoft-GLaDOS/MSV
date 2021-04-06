@@ -7,7 +7,7 @@ SILENCE_LLVM_WARNINGS_PUSH
 SILENCE_LLVM_WARNINGS_POP
 
 #include "dg/util/debug.h"
-#include "llvm/ControlDependence/InterproceduralCD.h"
+#include "dg/llvm/ControlDependence/InterproceduralCD.h"
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 #include "dg/ADT/Queue.h"
 

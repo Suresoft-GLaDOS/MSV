@@ -1,11 +1,11 @@
-#include "GraphBuilder.h"
+#include "dg/llvm/ThreadRegions/Graphs/GraphBuilder.h"
 
-#include "llvm/ForkJoin/ForkJoin.h"
+#include "dg/llvm/ForkJoin/ForkJoin.h"
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 
-#include "llvm/ThreadRegions/Nodes/Nodes.h"
-#include "BlockGraph.h"
-#include "FunctionGraph.h"
+#include "dg/llvm/ThreadRegions/Nodes/Nodes.h"
+#include "dg/llvm/ThreadRegions/Graphs/BlockGraph.h"
+#include "dg/llvm/ThreadRegions/Graphs/FunctionGraph.h"
 
 #include <llvm/IR/CFG.h>
 #include <llvm/IR/Instructions.h>

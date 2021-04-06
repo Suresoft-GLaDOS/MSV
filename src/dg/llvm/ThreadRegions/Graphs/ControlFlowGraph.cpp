@@ -1,8 +1,8 @@
-#include "ControlFlowGraph.h"
+#include "dg/llvm/ThreadRegions/ControlFlowGraph.h"
 
-#include "GraphBuilder.h"
-#include "ThreadRegionsBuilder.h"
-#include "CriticalSectionsBuilder.h"
+#include "dg/llvm/ThreadRegions/Graphs/GraphBuilder.h"
+#include "dg/llvm/ThreadRegions/Graphs/ThreadRegionsBuilder.h"
+#include "dg/llvm/ThreadRegions/Graphs/CriticalSectionsBuilder.h"
 
 ControlFlowGraph::ControlFlowGraph(dg::DGLLVMPointerAnalysis *pointsToAnalysis)
     :graphBuilder(new GraphBuilder(pointsToAnalysis)),

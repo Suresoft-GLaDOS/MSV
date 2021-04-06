@@ -7,8 +7,8 @@
 #include "GraphBuilder.h"
 #include "IGraphBuilder.h"
 
-#include "ControlDependence/DOD.h"
-#include "ControlDependence/DODNTSCD.h"
+#include "dg/ControlDependence/DOD.h"
+#include "dg/ControlDependence/DODNTSCD.h"
 
 #include <set>
 #include <map>

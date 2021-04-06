@@ -7,7 +7,7 @@
 #include "GraphBuilder.h"
 #include "IGraphBuilder.h"
 
-#include "ControlDependence/NTSCD.h"
+#include "dg/ControlDependence/NTSCD.h"
 
 #include <set>
 #include <map>

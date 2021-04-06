@@ -1,7 +1,7 @@
-#include "ForkNode.h"
-#include "EntryNode.h"
-#include "JoinNode.h"
-#include "ControlFlowGraph.h"
+#include "dg/llvm/ThreadRegions/Nodes/ForkNode.h"
+#include "dg/llvm/ThreadRegions/Nodes/EntryNode.h"
+#include "dg/llvm/ThreadRegions/Nodes/JoinNode.h"
+#include "dg/llvm/ThreadRegions/ControlFlowGraph.h"
 
 #include <iostream>
 

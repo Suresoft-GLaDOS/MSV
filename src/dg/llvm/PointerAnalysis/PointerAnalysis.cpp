@@ -4,7 +4,7 @@ SILENCE_LLVM_WARNINGS_PUSH
 SILENCE_LLVM_WARNINGS_POP
 
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
-#include "llvm/llvm-utils.h"
+#include "dg/llvm/llvm-utils.h"
 
 namespace dg {
 

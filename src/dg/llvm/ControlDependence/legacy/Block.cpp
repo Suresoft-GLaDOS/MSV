@@ -1,5 +1,5 @@
-#include "Block.h"
-#include "Function.h"
+#include "dg/llvm/ControlDependence/legacy/Block.h"
+#include "dg/llvm/ControlDependence/legacy/Function.h"
 
 #include <sstream>
 

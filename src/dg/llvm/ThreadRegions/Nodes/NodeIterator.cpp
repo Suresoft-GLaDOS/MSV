@@ -1,6 +1,6 @@
-#include "NodeIterator.h"
+#include "dg/llvm/ThreadRegions/Nodes/NodeIterator.h"
 
-#include "Nodes.h"
+#include "dg/llvm/ThreadRegions/Nodes/Nodes.h"
 
 NodeIterator::NodeIterator(const Node *node, bool begin) {
     if (!node) {

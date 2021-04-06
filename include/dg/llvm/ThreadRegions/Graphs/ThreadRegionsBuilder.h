@@ -5,7 +5,7 @@
 #include <set>
 #include <iosfwd>
 
-#include "ThreadRegion.h"
+#include "dg/llvm/ThreadRegions/ThreadRegion.h"
 
 class Node;
 class ForkNode;

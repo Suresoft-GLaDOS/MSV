@@ -1,5 +1,5 @@
-#include "CriticalSectionsBuilder.h"
-#include "llvm/ThreadRegions/Nodes/Nodes.h"
+#include "dg/llvm/ThreadRegions/Graphs/CriticalSectionsBuilder.h"
+#include "dg/llvm/ThreadRegions/Nodes/Nodes.h"
 
 #include <dg/util/SilenceLLVMWarnings.h>
 SILENCE_LLVM_WARNINGS_PUSH

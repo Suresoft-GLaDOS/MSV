@@ -26,9 +26,9 @@ SILENCE_LLVM_WARNINGS_POP
 #include "dg/llvm/PointerAnalysis/PointerGraph.h"
 #include "dg/ADT/Queue.h"
 
-#include "llvm/ForkJoin/ForkJoin.h"
-#include "llvm/ReadWriteGraph/LLVMReadWriteGraphBuilder.h"
-#include "llvm/llvm-utils.h"
+#include "dg/llvm/ForkJoin/ForkJoin.h"
+#include "dg/llvm/ReadWriteGraph/LLVMReadWriteGraphBuilder.h"
+#include "dg/llvm/llvm-utils.h"
 
 namespace dg {
 namespace dda {

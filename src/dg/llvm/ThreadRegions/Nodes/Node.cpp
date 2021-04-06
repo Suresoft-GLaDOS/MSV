@@ -7,7 +7,7 @@ SILENCE_LLVM_WARNINGS_POP
 #include <iostream>
 #include <sstream>
 
-#include "Node.h"
+#include "dg/llvm/ThreadRegions/Nodes/Node.h"
 
 using namespace std;
 using namespace llvm;

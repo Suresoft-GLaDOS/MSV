@@ -28,8 +28,8 @@ SILENCE_LLVM_WARNINGS_POP
 #include "dg/PointerAnalysis/PointerGraphOptimizations.h"
 #include "dg/llvm/PointerAnalysis/PointerGraph.h"
 
-#include "llvm/PointerAnalysis/PointerGraphValidator.h"
-#include "llvm/llvm-utils.h"
+#include "dg/llvm/PointerAnalysis/PointerGraphValidator.h"
+#include "dg/llvm/llvm-utils.h"
 
 #include "dg/util/debug.h"
 

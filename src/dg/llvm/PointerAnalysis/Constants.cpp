@@ -1,5 +1,5 @@
 #include "dg/llvm/PointerAnalysis/PointerGraph.h"
-#include "llvm/llvm-utils.h"
+#include "dg/llvm/llvm-utils.h"
 
 namespace dg {
 namespace pta {

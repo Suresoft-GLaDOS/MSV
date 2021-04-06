@@ -1,10 +1,10 @@
 #include "dg/llvm/ControlDependence/ControlDependence.h"
-#include "llvm/ControlDependence/ControlClosure.h"
-#include "llvm/ControlDependence/legacy/NTSCD.h"
-#include "llvm/ControlDependence/DOD.h"
-#include "llvm/ControlDependence/NTSCD.h"
-#include "llvm/ControlDependence/SCD.h"
-#include "llvm/ControlDependence/InterproceduralCD.h"
+#include "dg/llvm/ControlDependence/ControlClosure.h"
+#include "dg/llvm/ControlDependence/legacy/NTSCD.h"
+#include "dg/llvm/ControlDependence/DOD.h"
+#include "dg/llvm/ControlDependence/NTSCD.h"
+#include "dg/llvm/ControlDependence/SCD.h"
+#include "dg/llvm/ControlDependence/InterproceduralCD.h"
 
 namespace dg {
 

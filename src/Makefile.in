@@ -192,7 +192,6 @@ am__objects_1 = dg/BBlockBase.$(OBJEXT) dg/Debug.$(OBJEXT) \
 	dg/SystemDependenceGraph/DependenceGraph.$(OBJEXT) \
 	dg/llvm/LLVMDependenceGraph.$(OBJEXT) \
 	dg/llvm/LLVMDGVerifier.$(OBJEXT) dg/llvm/LLVMNode.$(OBJEXT) \
-	dg/llvm/SummaryEdges.$(OBJEXT) \
 	dg/llvm/ControlDependence/ControlDependence.$(OBJEXT) \
 	dg/llvm/ControlDependence/InterproceduralCD.$(OBJEXT) \
 	dg/llvm/ControlDependence/SCD.$(OBJEXT) \
@@ -514,7 +513,7 @@ DG_SRC = dg/BBlockBase.cpp dg/Debug.cpp dg/Offset.cpp \
 	dg/ReadWriteGraph/ReadWriteGraph.cpp \
 	dg/SystemDependenceGraph/DependenceGraph.cpp \
 	dg/llvm/LLVMDependenceGraph.cpp dg/llvm/LLVMDGVerifier.cpp \
-	dg/llvm/LLVMNode.cpp dg/llvm/SummaryEdges.cpp \
+	dg/llvm/LLVMNode.cpp \
 	dg/llvm/ControlDependence/ControlDependence.cpp \
 	dg/llvm/ControlDependence/InterproceduralCD.cpp \
 	dg/llvm/ControlDependence/SCD.cpp \
@@ -815,8 +814,6 @@ dg/llvm/LLVMDGVerifier.$(OBJEXT): dg/llvm/$(am__dirstamp) \
 	dg/llvm/$(DEPDIR)/$(am__dirstamp)
 dg/llvm/LLVMNode.$(OBJEXT): dg/llvm/$(am__dirstamp) \
 	dg/llvm/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/SummaryEdges.$(OBJEXT): dg/llvm/$(am__dirstamp) \
-	dg/llvm/$(DEPDIR)/$(am__dirstamp)
 dg/llvm/ControlDependence/$(am__dirstamp):
 	@$(MKDIR_P) dg/llvm/ControlDependence
 	@: > dg/llvm/ControlDependence/$(am__dirstamp)
@@ -1104,7 +1101,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@dg/llvm/$(DEPDIR)/LLVMDGVerifier.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@dg/llvm/$(DEPDIR)/LLVMDependenceGraph.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@dg/llvm/$(DEPDIR)/LLVMNode.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@dg/llvm/$(DEPDIR)/SummaryEdges.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@dg/llvm/ControlDependence/$(DEPDIR)/ControlDependence.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@dg/llvm/ControlDependence/$(DEPDIR)/InterproceduralCD.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@dg/llvm/ControlDependence/$(DEPDIR)/SCD.Po@am__quote@

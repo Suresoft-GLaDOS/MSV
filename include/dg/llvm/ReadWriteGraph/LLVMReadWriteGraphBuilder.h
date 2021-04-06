@@ -18,7 +18,7 @@ SILENCE_LLVM_WARNINGS_POP
 #include "dg/llvm/DataDependence/LLVMDataDependenceAnalysisOptions.h"
 #include "dg/llvm/CallGraph/CallGraph.h"
 
-#include "llvm/GraphBuilder.h"
+#include "dg/llvm/GraphBuilder.h"
 
 #ifndef NDEBUG
 #include "dg/util/debug.h"

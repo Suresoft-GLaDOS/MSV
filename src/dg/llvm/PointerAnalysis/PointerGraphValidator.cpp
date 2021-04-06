@@ -4,7 +4,7 @@ SILENCE_LLVM_WARNINGS_PUSH
 #include <llvm/IR/Type.h>
 SILENCE_LLVM_WARNINGS_POP
 
-#include "llvm/PointerAnalysis/PointerGraphValidator.h"
+#include "dg/llvm/PointerAnalysis/PointerGraphValidator.h"
 
 namespace dg {
 namespace pta {
