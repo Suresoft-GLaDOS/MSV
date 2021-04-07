@@ -348,11 +348,11 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     assert(ret == 0);
 
     if (timeout_limit == 0)
-        // ret = execute_with_timeout((std::string("make >> ") + build_log + " 2>&1"), 60);
-        ret = execute_with_timeout((std::string("make")), 60);
+        ret = execute_with_timeout((std::string("make >> ") + build_log + " 2>&1"), 60);
+        // ret = execute_with_timeout((std::string("make")), 60);
     else
-        // ret = execute_with_timeout((std::string("make >> ") + build_log + " 2>&1"), timeout_limit);
-        ret = execute_with_timeout((std::string("make")), timeout_limit);
+        ret = execute_with_timeout((std::string("make >> ") + build_log + " 2>&1"), timeout_limit);
+        // ret = execute_with_timeout((std::string("make")), timeout_limit);
     bool succ = (ret == 0);
     ret = chdir(ori_dir);
     assert(ret == 0);
@@ -393,7 +393,7 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
         else
             cmd = build_cmd + " -j 10 " + src_dir + " >>" + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 " +cflags+ " "+src_dir + " 2>&1";
-        outlog_printf(2,"Command: %s\n",cmd.c_str());
+        // outlog_printf(2,"Command: %s\n",cmd.c_str());
         int ret;
         if (timeout_limit == 0)
             ret = system(cmd.c_str());
@@ -595,9 +595,9 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                 total_repair_build_time += timer.getSeconds();
                 repair_build_cnt ++;
             }
+            deleteLibraryFile(fileCodeMap);
         }
 
-        deleteLibraryFile(fileCodeMap);
         outlog_printf(2,"Building final program...\n");
         // Get fail case and create final macros
         std::vector<long long> fail;
@@ -630,6 +630,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             }
             if (!include) succ_id.push_back(i);
         }
+
         outlog_printf(2,"Total success macros: %d\n",succ_id.size());
         std::ofstream finalMacros("succ_macro.txt",std::ofstream::out);
         for (long long i=0;i<succ_id.size();i++){
@@ -638,8 +639,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         finalMacros.close();
 
         // Build final build
-        succ = buildFull("src", 0,false,succ_id,files);
-        if (succ) outlog_printf(2,"Success to build final program: %s\n",output_name.c_str());
+        succ = buildFull("src", 0,true,succ_id,files);
+        if (succ) outlog_printf(2,"Success to build final program!\n");
         popWrapPath();
 
         popEnvMap(envMap);

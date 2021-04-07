@@ -1,0 +1,34 @@
+Initialize the program!
+Generating repair candidates!
+Processing Zend/zend_variables.c
+Total 2425 different repair schemas!!!!
+Total 12509 different repair candidate templates for scoring!!!
+Total 10392 different partial repair candidate templates!!
+BasicTester pointer: 0x5646d1ba2790
+StringConstTester pointer: 0x5646d1c212b0
+CondTester pointer: 0x5646d1c56ed0
+Generating Candidates...
+Candidates size: 2425
+Generating Codes...
+[71] Preprocess the following candidate with BasicTester: 2425
+Generating patches...
+Generating Codes...
+[71] BasicTester, a patch instance with id 0:
+Begin building test
+Total macros: 1937
+Preprocessing test...
+Saving this fix to: /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
+Trying to build with all macros...
+Command: /root/project/prophet-gpl/tools/php-build.py -p /root/project/prophet-gpl/benchmarks/php-deps -j 10 /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/src >>/root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/build.log 2>&1
+Build failed, Trying to find fail macros...
+Building final program...
+Total success macros: 1933
+Command: /root/project/prophet-gpl/tools/php-build.py -p /root/project/prophet-gpl/benchmarks/php-deps -j 10 /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/src >>/root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/build.log 2>&1
+Success to build final program!
+The total number of explored concrete patches: 0
+Repair process ends successfully!
+Total 2425 different repair schemas!!!!
+Total 12509 different repair candidate templates for scoring!!!
+Total 10392 different partial repair candidate templates!!
+Total number of compiles: 1
+Total number of test eval: 0
