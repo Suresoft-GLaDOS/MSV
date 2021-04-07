@@ -976,12 +976,12 @@ import getopt
 from sys import argv
 
 if __name__ == '__main__':
-    opts, args = getopt.getopt(argv[1:], "l:s:m:t:p:")
+    opts, args = getopt.getopt(argv[1:], "l:s:m:p:w:")
     dep_dir = ""
     build_log_file = ""
     src_dir=""
     macros=0
-    build_cmd=""
+    files=[]
 
     for o, a in opts:
         if o == "-p":
@@ -992,58 +992,57 @@ if __name__ == '__main__':
             src_dir=a
         elif o == "-m":
             macros=int(a)
-        elif o=="-t":
-            build_cmd=a
+        elif o=="-w":
+            files=a.split(":")
 
     # Test the outcome cache
     oc_test()
                             
     class BuildTest(DD2):
         def _test(self,c):
+            for file in files:
+                file_in=open(file,"r")
+                code=file_in.read()
+                code_seg=code.split("// compile_fin\n")
+                code=code_seg[1]
+                file_in.close()
+
+                macro_define=""
+                for i in c:
+                    macro_define+="#define COMPILE_"
+                    macro_define+=str(i)
+                    macro_define+="\n"
+                macro_define+="// compile_fin\n"
+                macro_define+=code
+                file_out=open(file,"w")
+                file_out.write(macro_define)
+                file_out.close()
             result=1
             args=[]
             my_env=os.environ
-            if self.file=="":
-                os.chdir(src_dir)
-                subprocess.call(['rm','prog'],stderr=subprocess.PIPE)
-                subprocess.call(['rm',"-rf","ext/phar/phar.php"],stderr=subprocess.PIPE)
-                args.append('make')
-                cflags=""
-                for i in c:
-                    cflags=cflags+' -D '
-                    cflags=cflags+'COMPILE_'+str(i)
-                my_env["CFLAGS"]=cflags
-                args.append(">>")
-                args.append(build_log_file)
-                args.append("2>&1")
-            else:
-                args.append(self.file)
-                if dep_dir!="":
-                    args.append("-p")
-                    args.append(dep_dir)
-                if len(c)!=0:
-                    args.append("-D")
-                    args.append(str(c[0])+"-"+str(c[len(c)-1]))
-                args.append(src_dir)
-                args.append(">>")
-                args.append(build_log_file)
-                # args.append("2>&1")
-            print args
+            os.chdir(src_dir)
+            # subprocess.call(['rm','prog'],stderr=subprocess.PIPE)
+            subprocess.call(['rm',"-rf","ext/phar/phar.php"],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+            args.append('make')
+            # args.append(">>")
+            # args.append(build_log_file)
+            # args.append("2>&1")
+            # print args
             process=subprocess.Popen(args,env=my_env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
             (out,err)=process.communicate()
+            # print out
             # print err
             result=process.returncode
             if result==0:
                 return self.PASS
             else:
                 return self.UNRESOLVED
-        def __init__(self,script_file,full_macros):
-            self.file=script_file
+        def __init__(self,full_macros):
             DD2.__init__(self,full_macros)
             self.debug_dd=True
 
     macro_list=range(macros)
-    dd_test=BuildTest(build_cmd,macro_list)
+    dd_test=BuildTest(macro_list)
     # (c,c1,c2)=dd_test.dd(macro_list)
     dd_test.search(macro_list)
     print "Run with optimization:",dd_test.run

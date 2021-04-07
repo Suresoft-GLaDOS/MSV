@@ -33,6 +33,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include <dg/llvm/LLVMSlicer.h>
+
 #define LOCALIZATION_RESULT "profile_localization.res"
 #define CONFIG_FILE_PATH "repair.conf"
 #define SOURCECODE_BACKUP "__backup"
@@ -334,7 +336,7 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
         fprintf(stderr, "\"%s\"\n", build_args[i].c_str());*/
 }
 
-bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log,std::vector<long long> compile_macro) {
+bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log) {
     char ori_dir[1000];
     char* retc = getcwd(ori_dir, 1000);
     assert(retc != NULL);
@@ -345,34 +347,51 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     system("rm prog");
     assert(ret == 0);
 
-    std::string cflags="";
-    for (long long i=0;i<compile_macro.size();i++)
-        cflags+="-D COMPILE_"+std::to_string(compile_macro[i])+" ";
     if (timeout_limit == 0)
-        ret = execute_with_timeout((std::string("make CFLAGS=\""+cflags+"\" >> ") + build_log + " 2>&1"), 60);
+        // ret = execute_with_timeout((std::string("make >> ") + build_log + " 2>&1"), 60);
+        ret = execute_with_timeout((std::string("make")), 60);
     else
-        ret = execute_with_timeout((std::string("make CFLAGS=\""+cflags+"\" >> ") + build_log + " 2>&1"), timeout_limit);
+        // ret = execute_with_timeout((std::string("make >> ") + build_log + " 2>&1"), timeout_limit);
+        ret = execute_with_timeout((std::string("make")), timeout_limit);
     bool succ = (ret == 0);
     ret = chdir(ori_dir);
     assert(ret == 0);
     return succ;
 }
 
-bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bool force_reconf,std::vector<long long> compile_macro) {
+bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bool force_reconf,std::vector<long long> compile_macro,std::vector<std::string> files) {
     assert(src_dirs.count(subDir) != 0);
     std::string src_dir = getFullPath(work_dir + "/" + subDir);
+
+    if (compile_macro.size()!=0){
+        for (int i=0;i<files.size();i++){
+            std::string code;
+            readCodeToString(files[i],code);
+            std::string sep="// compile_fin";
+            if (code.find(sep)!=std::string::npos)
+                code=code.substr(code.find(sep));
+            std::string macroDefine="";
+            for (long long macro: compile_macro){
+                macroDefine+="#define COMPILE_";
+                macroDefine+=std::to_string(macro);
+                macroDefine+="\n";
+            }
+            macroDefine+="// compile_fin\n";
+            macroDefine+=code;
+
+            std::ofstream fout(files[i],std::ofstream::out);
+            fout << macroDefine;
+            fout.close();
+        }
+    }
     if (force_reconf || !src_dirs[subDir]) {
         std::string cmd;
-        std::string cflags="";
-        if (!compile_macro.empty())
-            cflags+="-D \""+std::to_string(compile_macro[0])+"-"+std::to_string(compile_macro[compile_macro.size()-1])+"\"";
-
         if (dep_dir != ""){
-            cmd = build_cmd + " -p " + dep_dir + " -j 10 "+cflags+ " "+src_dir + " >>" + build_log_file + " 2>&1";
+            cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " >>" + build_log_file + " 2>&1";
             // cmd = build_cmd + " -p " + dep_dir + " -j 10 "+cflags+ " "+src_dir + " 2>&1";
         }
         else
-            cmd = build_cmd + " -j 10 " +cflags+ " "+src_dir + " >>" + build_log_file + " 2>&1";
+            cmd = build_cmd + " -j 10 " + src_dir + " >>" + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 " +cflags+ " "+src_dir + " 2>&1";
         outlog_printf(2,"Command: %s\n",cmd.c_str());
         int ret;
@@ -384,7 +403,7 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
         return ret == 0;
     }
     else {
-        return incrementalBuild(timeout_limit, src_dir, build_log_file,compile_macro);
+        return incrementalBuild(timeout_limit, src_dir, build_log_file);
     }
 }
 
@@ -487,6 +506,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     compile_cnt ++;
     // This is to backup the changed sourcefile, in case something broken
     // the workdir, and we want to just resume
+    std::vector<std::string> files;
+    files.clear();
     std::ofstream fout2((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ofstream::out);
     size_t cnt = 0;
     bool succ;
@@ -501,6 +522,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         if (target_file[0] != '/')
             target_file = src_dir + "/" + target_file;
         // Copy the backup
+        files.push_back(target_file);
         std::ostringstream sout;
         sout << "cp -f " << target_file << " " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
         std::string cmd = sout.str();
@@ -537,14 +559,14 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     std::vector<long long> succ_id;
     for (long long i=0;i<max_macro;i++)
         succ_id.push_back(i);
-    succ=buildFull("src", 0,true,succ_id);
+    succ=buildFull("src", 0,true,succ_id,files);
     if (succ){
         outlog_printf(2,"Build Success!\n");
     }
     // else
     //     outlog_printf(2,"Fail to build!\n");
     else{
-        // outlog_printf(2,"Build failed, Trying to find fail macros...\n");
+        outlog_printf(2,"Build failed, Trying to find fail macros...\n");
         // Run Binary-Search to find fail cases
         time_t timeout_limit = 0;
         if (repair_build_cnt > 10)
@@ -558,8 +580,14 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             std::string src_dir = getFullPath(work_dir + "/src");
             std::string cmd;
             cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+std::to_string(max_macro);
-            cmd+=" -t "+build_cmd;
+            // cmd+=" -t "+build_cmd;
             if (dep_dir!="") cmd+=" -p "+dep_dir;
+            cmd+=" -w ";
+            for (int i=0;i<files.size();i++){
+                if (i!=0) cmd+=":";
+                cmd+=files[i];
+            }
+            cmd+=" ";
             // cmd+=" > DD.log";
             ret = system(cmd.c_str());
 
@@ -610,7 +638,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         finalMacros.close();
 
         // Build final build
-        succ = buildFull("src", 0,true,succ_id);
+        succ = buildFull("src", 0,false,succ_id,files);
         if (succ) outlog_printf(2,"Success to build final program: %s\n",output_name.c_str());
         popWrapPath();
 

@@ -72,13 +72,13 @@ dg/llvm/ThreadRegions/Nodes/ReturnNode.cpp dg/llvm/ThreadRegions/Nodes/UnlockNod
 
 pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp
+				  CodeRewrite.cpp FeatureExtract.cpp $(DG_SRC)
 pdiffer_LDFLAGS = `llvm-config --ldflags`
 pdiffer_LDADD = $(ClangLDADD) -lexplain
 
 learner_SOURCES = learner.cpp FeatureExtract.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  Utils.cpp CodeRewrite.cpp
+				  Utils.cpp CodeRewrite.cpp $(DG_SRC)
 learner_LDFLAGS = `llvm-config --ldflags`
 learner_LDADD = $(ClangLDADD) -lexplain
 
@@ -89,7 +89,7 @@ prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp BenchProgram.cpp AST
 prophet_LDFLAGS = `llvm-config --ldflags`
 prophet_LDADD = $(ClangLDADD) -lexplain
 
-playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp
+playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp $(DG_SRC)
 playground_LDFLAGS = `llvm-config --ldflags`
 playground_LDADD = $(ClangLDADD) -lexplain
 

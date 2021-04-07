@@ -68,27 +68,6 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             # clean up things
             subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
 
-            # Generate configure.in with macros
-            if len(macros)!=0:
-                cmd="cp configure.in "+ori_dir
-                subprocess.call(cmd,env=my_env,shell=True)
-
-                config_in=open("configure.in",'r')
-                ac_str=config_in.read()
-                config_in.close()
-                splitted=ac_str.split("AC_OUTPUT")
-
-                macro_define=""
-                for i in macros:
-                    macro_define=macro_define+("AC_DEFINE(COMPILE_"+str(i)+", 1, [ ])\n")
-                final=splitted[0]+"\n"+macro_define+"AC_OUTPUT"+splitted[1]
-
-                config_in=open("configure.in","w")
-                config_in.write(final)
-                config_in.close()
-                cmd="cp configure.in "+ori_dir+"/configure-bak.in"
-                subprocess.call(cmd,env=my_env,shell=True)
-
             # create configure file
             ret = subprocess.call(["./buildconf"], env = my_env,shell=True);
             if ret != 0:
@@ -99,9 +78,6 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             # do the configure
             # subprocess.call(["rm","config.cache"],env=my_env)
             configure=["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip","-enable-debug","-with-gnu-ld"]
-            if len(macros)!=0:
-                cmd="cp "+ori_dir+"/configure.in configure.in"
-                subprocess.call(cmd,env=my_env,shell=True)
 
             p = subprocess.Popen(configure, env = my_env, stderr = subprocess.PIPE)
             (out, err) = p.communicate();

@@ -148,35 +148,6 @@ libtest_runtime_la_LIBADD =
 am_libtest_runtime_la_OBJECTS = _test_runtime.lo
 libtest_runtime_la_OBJECTS = $(am_libtest_runtime_la_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
-am_learner_OBJECTS = learner.$(OBJEXT) FeatureExtract.$(OBJEXT) \
-	SourceContextManager.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
-	GlobalAnalyzer.$(OBJEXT) ASTUtils.$(OBJEXT) \
-	BenchProgram.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
-	Utils.$(OBJEXT) CodeRewrite.$(OBJEXT)
-learner_OBJECTS = $(am_learner_OBJECTS)
-am__DEPENDENCIES_1 =
-learner_DEPENDENCIES = $(am__DEPENDENCIES_1)
-learner_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(learner_LDFLAGS) $(LDFLAGS) -o $@
-am_pdiffer_OBJECTS = pdiffer.$(OBJEXT) Utils.$(OBJEXT) \
-	ASTDiffer.$(OBJEXT) SourceContextManager.$(OBJEXT) \
-	LocalAnalyzer.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
-	ASTUtils.$(OBJEXT) BenchProgram.$(OBJEXT) \
-	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
-	FeatureExtract.$(OBJEXT)
-pdiffer_OBJECTS = $(am_pdiffer_OBJECTS)
-pdiffer_DEPENDENCIES = $(am__DEPENDENCIES_1)
-pdiffer_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(pdiffer_LDFLAGS) $(LDFLAGS) -o $@
-am_playground_OBJECTS = PlayGround.$(OBJEXT) Utils.$(OBJEXT) \
-	BenchProgram.$(OBJEXT)
-playground_OBJECTS = $(am_playground_OBJECTS)
-playground_DEPENDENCIES = $(am__DEPENDENCIES_1)
-playground_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(playground_LDFLAGS) $(LDFLAGS) -o $@
 am__dirstamp = $(am__leading_dot)dirstamp
 am__objects_1 = dg/BBlockBase.$(OBJEXT) dg/Debug.$(OBJEXT) \
 	dg/Offset.$(OBJEXT) dg/ControlDependence/NTSCD.$(OBJEXT) \
@@ -241,6 +212,35 @@ am__objects_1 = dg/BBlockBase.$(OBJEXT) dg/Debug.$(OBJEXT) \
 	dg/llvm/ThreadRegions/Nodes/NodeIterator.$(OBJEXT) \
 	dg/llvm/ThreadRegions/Nodes/ReturnNode.$(OBJEXT) \
 	dg/llvm/ThreadRegions/Nodes/UnlockNode.$(OBJEXT)
+am_learner_OBJECTS = learner.$(OBJEXT) FeatureExtract.$(OBJEXT) \
+	SourceContextManager.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
+	GlobalAnalyzer.$(OBJEXT) ASTUtils.$(OBJEXT) \
+	BenchProgram.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
+	Utils.$(OBJEXT) CodeRewrite.$(OBJEXT) $(am__objects_1)
+learner_OBJECTS = $(am_learner_OBJECTS)
+am__DEPENDENCIES_1 =
+learner_DEPENDENCIES = $(am__DEPENDENCIES_1)
+learner_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(learner_LDFLAGS) $(LDFLAGS) -o $@
+am_pdiffer_OBJECTS = pdiffer.$(OBJEXT) Utils.$(OBJEXT) \
+	ASTDiffer.$(OBJEXT) SourceContextManager.$(OBJEXT) \
+	LocalAnalyzer.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
+	ASTUtils.$(OBJEXT) BenchProgram.$(OBJEXT) \
+	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
+	FeatureExtract.$(OBJEXT) $(am__objects_1)
+pdiffer_OBJECTS = $(am_pdiffer_OBJECTS)
+pdiffer_DEPENDENCIES = $(am__DEPENDENCIES_1)
+pdiffer_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(pdiffer_LDFLAGS) $(LDFLAGS) -o $@
+am_playground_OBJECTS = PlayGround.$(OBJEXT) Utils.$(OBJEXT) \
+	BenchProgram.$(OBJEXT) $(am__objects_1)
+playground_OBJECTS = $(am_playground_OBJECTS)
+playground_DEPENDENCIES = $(am__DEPENDENCIES_1)
+playground_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(playground_LDFLAGS) $(LDFLAGS) -o $@
 am_prophet_OBJECTS = Main.$(OBJEXT) Utils.$(OBJEXT) \
 	RepairSearchEngine.$(OBJEXT) BenchProgram.$(OBJEXT) \
 	ASTUtils.$(OBJEXT) ErrorLocalizer.$(OBJEXT) \
@@ -565,13 +565,13 @@ DG_SRC = dg/BBlockBase.cpp dg/Debug.cpp dg/Offset.cpp \
 	dg/llvm/ThreadRegions/Nodes/UnlockNode.cpp
 pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp
+				  CodeRewrite.cpp FeatureExtract.cpp $(DG_SRC)
 
 pdiffer_LDFLAGS = `llvm-config --ldflags`
 pdiffer_LDADD = $(ClangLDADD) -lexplain
 learner_SOURCES = learner.cpp FeatureExtract.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  Utils.cpp CodeRewrite.cpp
+				  Utils.cpp CodeRewrite.cpp $(DG_SRC)
 
 learner_LDFLAGS = `llvm-config --ldflags`
 learner_LDADD = $(ClangLDADD) -lexplain
@@ -582,7 +582,7 @@ prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp BenchProgram.cpp AST
 
 prophet_LDFLAGS = `llvm-config --ldflags`
 prophet_LDADD = $(ClangLDADD) -lexplain
-playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp
+playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp $(DG_SRC)
 playground_LDFLAGS = `llvm-config --ldflags`
 playground_LDADD = $(ClangLDADD) -lexplain
 libprofiler_la_SOURCES = ProfilerAction.cpp
@@ -717,18 +717,6 @@ clean-binPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
-
-learner$(EXEEXT): $(learner_OBJECTS) $(learner_DEPENDENCIES) $(EXTRA_learner_DEPENDENCIES) 
-	@rm -f learner$(EXEEXT)
-	$(AM_V_CXXLD)$(learner_LINK) $(learner_OBJECTS) $(learner_LDADD) $(LIBS)
-
-pdiffer$(EXEEXT): $(pdiffer_OBJECTS) $(pdiffer_DEPENDENCIES) $(EXTRA_pdiffer_DEPENDENCIES) 
-	@rm -f pdiffer$(EXEEXT)
-	$(AM_V_CXXLD)$(pdiffer_LINK) $(pdiffer_OBJECTS) $(pdiffer_LDADD) $(LIBS)
-
-playground$(EXEEXT): $(playground_OBJECTS) $(playground_DEPENDENCIES) $(EXTRA_playground_DEPENDENCIES) 
-	@rm -f playground$(EXEEXT)
-	$(AM_V_CXXLD)$(playground_LINK) $(playground_OBJECTS) $(playground_LDADD) $(LIBS)
 dg/$(am__dirstamp):
 	@$(MKDIR_P) dg
 	@: > dg/$(am__dirstamp)
@@ -1031,6 +1019,18 @@ dg/llvm/ThreadRegions/Nodes/ReturnNode.$(OBJEXT):  \
 dg/llvm/ThreadRegions/Nodes/UnlockNode.$(OBJEXT):  \
 	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
 	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
+
+learner$(EXEEXT): $(learner_OBJECTS) $(learner_DEPENDENCIES) $(EXTRA_learner_DEPENDENCIES) 
+	@rm -f learner$(EXEEXT)
+	$(AM_V_CXXLD)$(learner_LINK) $(learner_OBJECTS) $(learner_LDADD) $(LIBS)
+
+pdiffer$(EXEEXT): $(pdiffer_OBJECTS) $(pdiffer_DEPENDENCIES) $(EXTRA_pdiffer_DEPENDENCIES) 
+	@rm -f pdiffer$(EXEEXT)
+	$(AM_V_CXXLD)$(pdiffer_LINK) $(pdiffer_OBJECTS) $(pdiffer_LDADD) $(LIBS)
+
+playground$(EXEEXT): $(playground_OBJECTS) $(playground_DEPENDENCIES) $(EXTRA_playground_DEPENDENCIES) 
+	@rm -f playground$(EXEEXT)
+	$(AM_V_CXXLD)$(playground_LINK) $(playground_OBJECTS) $(playground_LDADD) $(LIBS)
 
 prophet$(EXEEXT): $(prophet_OBJECTS) $(prophet_DEPENDENCIES) $(EXTRA_prophet_DEPENDENCIES) 
 	@rm -f prophet$(EXEEXT)

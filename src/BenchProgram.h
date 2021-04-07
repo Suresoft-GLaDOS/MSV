@@ -150,7 +150,7 @@ private:
 
     void Init(const std::string &workDirPath, bool no_clean_up);
 
-    bool buildFull(const std::string &subDir, time_t timeout_limit = 0, bool force_reconf = false,std::vector<long long> compile_macro=std::vector<long long>());
+    bool buildFull(const std::string &subDir, time_t timeout_limit = 0, bool force_reconf = false,std::vector<long long> compile_macro=std::vector<long long>(),std::vector<std::string> files=std::vector<std::string>());
 
     void getCompileMisc(const std::string &src_file, std::string &build_dir, std::vector<std::string> &build_args);
 
