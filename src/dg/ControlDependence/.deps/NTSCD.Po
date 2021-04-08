@@ -1,4 +1,0 @@
-dg/ControlDependence/NTSCD.o: dg/ControlDependence/NTSCD.cpp \
- /usr/include/stdc-predef.h
-
-/usr/include/stdc-predef.h:

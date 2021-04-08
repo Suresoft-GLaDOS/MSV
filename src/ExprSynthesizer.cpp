@@ -602,8 +602,8 @@ protected:
         std::string path=P.getWorkdir()+"/patches.txt";
         std::ofstream fout(path.c_str(),std::ofstream::out);
         int count=0;
-        int i;
-        for (std::map<int,std::map<int,std::string>>::iterator it=patches.begin();it!=patches.end();it++) i++;
+        int i=0;
+        for (std::map<int,std::map<int,std::string>>::iterator it=patches.begin();it!=patches.end();it++) count++;
         fout << count << "\n";
 
         for (std::map<int,std::map<int,std::string>>::iterator it=patches.begin();it!=patches.end();it++){
@@ -2263,6 +2263,11 @@ class TestBatcher {
             buildEnv["COMPILE_CMD"] = CLANG_CMD;
         buildEnv=T->initEnv(buildEnv);
         const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
+
+        // Run DG
+        // FIXME: based on php, need generalize!
+        // P.runAnalyze();
+
         // Create source file with fix
         // This should success
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);

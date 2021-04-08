@@ -25,6 +25,8 @@
 #include <set>
 #include <map>
 
+#include "DGController.h"
+
 class ConfigFile;
 
 class LocationIndex;
@@ -208,6 +210,8 @@ public:
 
     bool test(const std::string &subDir, size_t id, const EnvMapTy &envMap,
             bool pass_basic_src_dir);
+
+    void runAnalyze();
 
 /*    BenchProgram(const std::string &src_dir, const std::string &test_dir,
             const std::string &build_cmd, const std::string &test_cmd,

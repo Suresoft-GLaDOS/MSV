@@ -33,8 +33,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include <dg/llvm/LLVMSlicer.h>
-
 #define LOCALIZATION_RESULT "profile_localization.res"
 #define CONFIG_FILE_PATH "repair.conf"
 #define SOURCECODE_BACKUP "__backup"
@@ -942,3 +940,10 @@ std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::strin
     int ret = system(cmd.c_str());
     assert( ret == 0);
 }*/
+
+void BenchProgram::runAnalyze(){
+    std::string file=src_dir+"/sapi/cli/php_cli.c";
+    dg::PointerAnalysis pta=dg::PointerAnalysis::createPointerAnalysis(file);
+    pta.run();
+    dg::DGLLVMPointerAnalysis &dgPTA=pta.getPTA();
+}

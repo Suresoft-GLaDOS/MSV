@@ -1,8 +1,0 @@
-dg/llvm/ThreadRegions/Graphs/FunctionGraph.o: \
- dg/llvm/ThreadRegions/Graphs/FunctionGraph.cpp \
- /usr/include/stdc-predef.h \
- ../include/dg/llvm/ThreadRegions/Graphs/FunctionGraph.h
-
-/usr/include/stdc-predef.h:
-
-../include/dg/llvm/ThreadRegions/Graphs/FunctionGraph.h:
