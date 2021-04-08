@@ -25,3 +25,4 @@ build/benchmarks/*.tar.gz
 **/CMakeFiles/
 **/CMakeCache.txt
 /dg/
+**.Po
