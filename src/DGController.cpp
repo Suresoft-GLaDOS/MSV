@@ -1,8 +1,8 @@
 #include "DGController.h"
 
-using namespace dg;
+using namespace clang;
 
-llvm::Module createModule(std::string file){
+llvm::Module *createModule(std::string file){
     llvm::LLVMContext context;
     llvm::SMDiagnostic SMD;
 
@@ -11,14 +11,14 @@ llvm::Module createModule(std::string file){
 
     return mod;
 }
-LLVMDependenceGraph* createDG(llvm::Module* module){
-    LLVMDependenceGraphBuilder builder(module);
+dg::LLVMDependenceGraph* createDG(llvm::Module* module){
+    dg::llvmdg::LLVMDependenceGraphBuilder builder(module);
 
-    return builder.build();
+    return builder.build().get();
 }
 
 void Slicer::run(){
-    llvm::LLVMNode *start=dependenceGraph->getEntry();
+    dg::LLVMNode *start=dependenceGraph->getEntry();
     uint32_t slice_id = 0xdead;
     slicer.slice(dependenceGraph,start,slice_id);
 }

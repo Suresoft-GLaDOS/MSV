@@ -940,10 +940,3 @@ std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::strin
     int ret = system(cmd.c_str());
     assert( ret == 0);
 }*/
-
-void BenchProgram::runAnalyze(){
-    std::string file=src_dir+"/sapi/cli/php_cli.c";
-    dg::PointerAnalysis pta=dg::PointerAnalysis::createPointerAnalysis(file);
-    pta.run();
-    dg::DGLLVMPointerAnalysis &dgPTA=pta.getPTA();
-}

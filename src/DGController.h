@@ -13,16 +13,16 @@
 #include "dg/llvm/LLVMDependenceGraphBuilder.h"
 #include "dg/llvm/LLVMNode.h"
 
-namespace dg{
+namespace clang{
 static llvm::Module* createModule(std::string file);
-static LLVMDependenceGraph* createDG(llvm::Module* module);
+static dg::LLVMDependenceGraph* createDG(llvm::Module* module);
 
 class Slicer{
     std::string file;
-    LLVMSlicer slicer;
-    LLVMDependenceGraph *dependenceGraph;
+    dg::llvmdg::LLVMSlicer slicer;
+    dg::LLVMDependenceGraph *dependenceGraph;
 public:
-    Slicer(std::string file,LLVMDependenceGraph *graph): file(file),dependenceGraph(graph), slicer(){}
+    Slicer(std::string file,dg::LLVMDependenceGraph *graph): file(file),dependenceGraph(graph), slicer(){}
     void run();
 };
 } // fin namespace dg
