@@ -8,18 +8,21 @@
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 #include "dg/llvm/PointerAnalysis/LLVMPointerAnalysisOptions.h"
 
-namespace dg{
+#include "dg/llvm/LLVMSlicer.h"
+#include "dg/llvm/LLVMDependenceGraph.h"
+#include "dg/llvm/LLVMDependenceGraphBuilder.h"
+#include "dg/llvm/LLVMNode.h"
 
-class PointerAnalysis{
+namespace dg{
+static llvm::Module* createModule(std::string file);
+static LLVMDependenceGraph* createDG(llvm::Module* module);
+
+class Slicer{
     std::string file;
-    DGLLVMPointerAnalysis pta;
-protected:
-    PointerAnalysis(std::string file,llvm::Module *mod,LLVMPointerAnalysisOptions opts): file(file),pta(mod,opts){}
+    LLVMSlicer slicer;
+    LLVMDependenceGraph *dependenceGraph;
 public:
-    static PointerAnalysis createPointerAnalysis(std::string file);
+    Slicer(std::string file,LLVMDependenceGraph *graph): file(file),dependenceGraph(graph), slicer(){}
     void run();
-    DGLLVMPointerAnalysis &getPTA(){
-        return pta;
-    }
 };
-}
+} // fin namespace dg

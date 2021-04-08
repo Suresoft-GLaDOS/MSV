@@ -2266,7 +2266,9 @@ class TestBatcher {
 
         // Run DG
         // FIXME: based on php, need generalize!
-        // P.runAnalyze();
+        // dg::LLVMDependenceGraph *graph=dg::createDG(dg::createModule("sapi/cli/php_cli.c"));
+        // dg::Slicer slice("sapi/cli/php_cli.c",graph);
+        // slice.run();
 
         // Create source file with fix
         // This should success
