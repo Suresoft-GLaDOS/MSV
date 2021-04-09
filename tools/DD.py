@@ -1039,7 +1039,7 @@ if __name__ == '__main__':
                 return self.UNRESOLVED
         def __init__(self,full_macros):
             DD2.__init__(self,full_macros)
-            # self.debug_dd=True
+            self.debug_dd=True
 
     macro_list=range(macros)
     dd_test=BuildTest(macro_list)

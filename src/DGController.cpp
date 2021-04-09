@@ -19,6 +19,7 @@ dg::LLVMDependenceGraph* createDG(llvm::Module* module){
 
 void Slicer::run(){
     dg::LLVMNode *start=dependenceGraph->getEntry();
+    // TODO: Is hard-coded number ok?
     uint32_t slice_id = 0xdead;
     slicer.slice(dependenceGraph,start,slice_id);
 }
