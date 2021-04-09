@@ -551,9 +551,9 @@ protected:
                 it != negative_cases.end(); it++)
             if (!testOneCase(env, *it)){
                 outlog_printf(2,"Failed negative case %lu\n",*it);
-                // return false;
+                return false;
             }
-        // outlog_printf(2, "Passed Negative Cases\n");
+        outlog_printf(2, "Passed Negative Cases\n");
         return true;
     }
 
@@ -562,7 +562,7 @@ protected:
                 it != failed_cases.end(); it++) {
             if (!testOneCase(env, *it)) {
                 outlog_printf(2, "Failed positive case %lu\n", *it);
-                // return false;
+                return false;
             }
         }
         for (TestCaseSetTy::iterator it = positive_cases.begin();
@@ -572,10 +572,10 @@ protected:
             if (!testOneCase(env, *it)) {
                 outlog_printf(2, "Failed positive case %lu\n", *it);
                 failed_cases.insert(*it);
-                // return false;
+                return false;
             }
         }
-        // outlog_printf(2, "Passed Positive Cases\n");
+        outlog_printf(2, "Passed Positive Cases\n");
         return true;
     }
 
@@ -715,11 +715,6 @@ public:
         }
         BenchProgram::EnvMapTy testEnv=initEnv(env);
         bool ret;
-        // bool ret = testPositiveCases(testEnv);
-        // if (!ret){
-        //     outlog_printf(2,"Fail to test with original\n");
-        // }
-
         outlog_printf(2, "Testing negative cases!\n");
         if (!testNegativeCases(testEnv)) {
             codes.clear();
@@ -2273,7 +2268,7 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
-        // result_init=T->test(BenchProgram::EnvMapTy(),0);
+        result_init=T->test(BenchProgram::EnvMapTy(),0);
 
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();
