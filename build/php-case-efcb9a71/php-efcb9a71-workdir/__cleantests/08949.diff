@@ -1,4 +1,0 @@
-001+ Warning: opendir(): connect() failed: Cannot assign requested address in /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/__cleantests/08949.php on line 5
-001- Warning: opendir(): connect() failed: Connection refused in %s on line %d
-006+ Warning: opendir(): connect() failed: Cannot assign requested address in /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/__cleantests/08949.php on line 6
-006- Warning: opendir(): connect() failed: Connection refused in %s on line %d

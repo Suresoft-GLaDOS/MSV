@@ -31,7 +31,7 @@ def is_due_to_bison_v(config_out):
     last_line = lines[len(lines) - 1];
     return last_line.find("bison is required") != -1;
 
-def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, config_only = False, paraj = 0,macros=[]):
+def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, config_only = False, paraj = 0):
     ori_dir = getcwd();
     if deps_dir[0] != "/":
         php_deps_dir = ori_dir + "/" + deps_dir;
@@ -39,27 +39,25 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
         php_deps_dir = deps_dir;
     chdir(out_dir);
     my_env = environ;
+    my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"];
+    my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"];
+    my_env["PATH"] = php_deps_dir + "/flex-2.5.4-build/bin:" + my_env["PATH"];
     # switch to the revision
     if revision != "":
-        print "revision",revision
         assert(not compile_only);
         ret = subprocess.call(["git", "checkout", revision, "-f"], env = my_env);
         if ret != 0:
             print "Failed to switch to the revision " + revision;
             chdir(ori_dir);
             return False;
-    
+
     # it is tricky to find the right dependency version to make it
     # builds, we will try multiple times
     if not compile_only:
         cnt = 0;
         subprocess.call(["make","clean"],env=my_env)
-        cflags=""
         while (True):
-            my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"]
-            my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"]
             print "Current path: ", my_env["PATH"];
-
             cnt = cnt + 1;
             if cnt > 3:
                 print "Failed to configure after " + str(cnt) + " times";
@@ -67,20 +65,17 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
                 return False;
             # clean up things
             subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
-
             # create configure file
             ret = subprocess.call(["./buildconf"], env = my_env,shell=True);
             if ret != 0:
                 print "Failed to create config, check autoconf version!";
                 chdir(ori_dir);
                 return False;
-            
             # do the configure
-            # subprocess.call(["rm","config.cache"],env=my_env)
-            configure=["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip","-enable-debug","-with-gnu-ld"]
-
-            p = subprocess.Popen(configure, env = my_env, stderr = subprocess.PIPE)
+            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-debug","-enable-zip"], env = my_env, stderr = subprocess.PIPE);
             (out, err) = p.communicate();
+            print out
+            print p.returncode
             if p.returncode != 0:
                 if is_due_to_autoconf_v(err):
                     # This is possible caused by wrong autoconf version, we can use
@@ -102,17 +97,15 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
 
     if not config_only:
         ret = subprocess.call(["rm", "-rf", "ext/phar/phar.php"], env = my_env);
-        command=["make"]
-        if paraj != 0:
-            command.append("-j")
-            command.append(str(paraj))
         assert( ret == 0);
-        ret = subprocess.call(command, env = my_env);
+        if paraj == 0:
+            ret = subprocess.call(["make"], env = my_env);
+        else:
+            ret = subprocess.call(["make", "-j", str(paraj)], env = my_env);
         chdir(ori_dir);
         if ret != 0:
             print "Failed to compile!";
             return False;
-
     return True;
 
 def extract_test_cases(out_dir = "php-src-tests", repo_dir = ""):
@@ -251,7 +244,7 @@ class php_tester:
     # build a revision of php
     def set_revision(self, revision, deps_dir = ""):
         ori_dir = getcwd();
-        # print self.repo_dir + " " + revision;
+        print self.repo_dir + " " + revision;
         try:
             if (deps_dir == ""):
                 ret = switch_to(self.repo_dir, revision);
@@ -272,6 +265,7 @@ class php_tester:
 
     # test the php build with testcases [test_id, test_id+n)
     def _test(self, s, profile_dir = ""):
+        #print "###############3php_tester: _test()"
         assert(path.exists(self.repo_dir+"/sapi/cli/php"));
         assert(path.exists(self.repo_dir+"/run-tests.php"));
         prog = "./sapi/cli/php";
@@ -291,12 +285,10 @@ class php_tester:
                 test_prog = ori_dir + "/" + profile_dir + "/sapi/cli/php";
             else:
                 test_prog = profile_dir + "/sapi/cli/php";
-        # print "Program:",test_prog
-        p = subprocess.Popen([prog, helper, "-p", test_prog, "-q"] + arg_list,stdout=subprocess.PIPE);
+        afl_cmd = ["afl-fuzz", "-o", "out", "-i", "in", "-n", "-m", "none", "-d", "-w", "..", "-t", "10000", "--"];
+        p = subprocess.Popen(afl_cmd + [prog, helper, "-p", test_prog, "-q"] + arg_list, stdout=subprocess.PIPE);
         chdir(ori_dir);
         (out, err) = p.communicate();
-        # print "Out:",out
-        # print "Err:",err
         lines = out.split("\n");
         test_section = False;
         cnt = 0;
@@ -311,10 +303,9 @@ class php_tester:
                 test_section = True;
             elif (tokens[0][0:6] == "======") and (test_section == True):
                 test_section = False;
-            elif (test_section == True) and (_is_start(tokens[0])):
+            if (test_section == True) and (_is_start(tokens[0])):
                 if cnt >= n:
                     print out;
-                    # print "Error in testing, exit!"
                     exit(1);
                 the_idx = new_s[0];
                 new_s.remove(the_idx);
@@ -322,7 +313,7 @@ class php_tester:
                 if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
                     ret.add(the_idx);
                 cnt = cnt + 1;
-            elif (test_section == True) and (tokens[0] == "Fatal"):
+            if (test_section == True) and (tokens[0] == "Fatal"):
                 the_idx = new_s[0];
                 new_s.remove(the_idx);
                 tmp = self._test(new_s);
@@ -340,7 +331,7 @@ class php_tester:
         self.tmptest_dir = self.work_dir + "/__cleantests";
         if (path.exists(self.tmptest_dir)):
             shutil.rmtree(self.tmptest_dir);
-        # print "Preparing clean test dir..."
+        #print "Preparing clean test dir..."
         if (s == None):
             shutil.copytree(self.test_dir, self.tmptest_dir);
         else:
@@ -352,7 +343,6 @@ class php_tester:
         self.prepare_test(s);
         new_s = [];
         ret = set();
-        # print "Starting Test..."
         for i in s:
             new_s.append(i);
             if (len(new_s) >= 100):
@@ -380,3 +370,4 @@ class php_tester:
                 i = i + 100;
             ret = ret | r;
         return ret;
+
