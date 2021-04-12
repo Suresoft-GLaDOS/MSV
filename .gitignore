@@ -31,3 +31,4 @@ Makeflie
 Makefile.in
 configure
 *~
+*.m4
