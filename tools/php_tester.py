@@ -288,11 +288,11 @@ class php_tester:
                 test_prog = profile_dir + "/sapi/cli/php";
         # TODO: afl_cmd=["afl_fuzz","-w",self.work_dir,"-p",self.repo_dir+"/sapi/cli/php","-h",test_prog] + arg_list
         # -t(timeout) can be optional
-        afl_cmd = ["afl-fuzz", "-o", self.work_dir+"/out", "-i", self.work_dir+"/in", "-n", "-m", "none", "-d", "-w", self.work_dir, "-t", str(self.time_out), "--"];
-        p = subprocess.Popen(afl_cmd + [prog, helper, "-p", test_prog, "-q"] + arg_list, stdout=subprocess.PIPE);
+        afl_cmd = ["afl-fuzz", "-o", self.work_dir+"/out", "-i", self.test_dir, "-n", "-m", "none", "-d", "-w", self.work_dir, "-t", str(self.time_out), "--"];
+        p = subprocess.Popen(afl_cmd + [prog, helper, "-p", test_prog, "-q"] + arg_list, stdout=subprocess.PIPE,stderr=subprocess.PIPE);
         chdir(ori_dir);
         (out, err) = p.communicate();
-        print out
+        # print out
         lines = out.split("\n");
         test_section = False;
         cnt = 0;

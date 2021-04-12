@@ -4,9 +4,9 @@ Processing Zend/zend_variables.c
 Total 2425 different repair schemas!!!!
 Total 12509 different repair candidate templates for scoring!!!
 Total 10392 different partial repair candidate templates!!
-BasicTester pointer: 0x557455d96790
-StringConstTester pointer: 0x557455e152b0
-CondTester pointer: 0x557455e4aed0
+BasicTester pointer: 0x55da97005790
+StringConstTester pointer: 0x55da970842b0
+CondTester pointer: 0x55da970b9ed0
 Generating Candidates...
 Candidates size: 2425
 Generating Codes...
@@ -23,12 +23,12 @@ Build failed, Trying to find fail macros...
 Building final program...
 Total success macros: 1933
 Success to build final program!
-[1231] BasicTester, Testing instance id 0:
+[1230] BasicTester, Testing instance id 0:
 Testing negative cases!
 Failed negative case 1442
 Negative Case fail
 Testing positive cases!
-Failed positive case 0
+Failed positive case 682
 Fail to test with success patch
 The total number of explored concrete patches: 0
 Repair process ends successfully!
@@ -36,4 +36,4 @@ Total 2425 different repair schemas!!!!
 Total 12509 different repair candidate templates for scoring!!!
 Total 10392 different partial repair candidate templates!!
 Total number of compiles: 1
-Total number of test eval: 2
+Total number of test eval: 604
