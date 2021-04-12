@@ -27,8 +27,4 @@ build/benchmarks/*.tar.gz
 /dg/
 **.Po
 **/__cleantests
-Makeflie
-Makefile.in
-configure
 *~
-*.m4
