@@ -237,6 +237,7 @@ class php_tester:
         line = f.readline();
         f.close();
         self.n = int(line.strip("\n"));
+        self.time_out=10000
 
     def getn(self):
         return self.n;
@@ -268,8 +269,8 @@ class php_tester:
         #print "###############3php_tester: _test()"
         assert(path.exists(self.repo_dir+"/sapi/cli/php"));
         assert(path.exists(self.repo_dir+"/run-tests.php"));
-        prog = "./sapi/cli/php";
-        helper = "./run-tests.php";
+        prog = self.repo_dir+"/sapi/cli/php";
+        helper = self.repo_dir+"/run-tests.php";
         ori_dir = getcwd();
         arg_list = []
         for i in s:
@@ -285,10 +286,13 @@ class php_tester:
                 test_prog = ori_dir + "/" + profile_dir + "/sapi/cli/php";
             else:
                 test_prog = profile_dir + "/sapi/cli/php";
-        afl_cmd = ["afl-fuzz", "-o", "out", "-i", "in", "-n", "-m", "none", "-d", "-w", "..", "-t", "10000", "--"];
+        # TODO: afl_cmd=["afl_fuzz","-w",self.work_dir,"-p",self.repo_dir+"/sapi/cli/php","-h",test_prog] + arg_list
+        # -t(timeout) can be optional
+        afl_cmd = ["afl-fuzz", "-o", self.work_dir+"/out", "-i", self.work_dir+"/in", "-n", "-m", "none", "-d", "-w", self.work_dir, "-t", str(self.time_out), "--"];
         p = subprocess.Popen(afl_cmd + [prog, helper, "-p", test_prog, "-q"] + arg_list, stdout=subprocess.PIPE);
         chdir(ori_dir);
         (out, err) = p.communicate();
+        print out
         lines = out.split("\n");
         test_section = False;
         cnt = 0;
@@ -303,7 +307,7 @@ class php_tester:
                 test_section = True;
             elif (tokens[0][0:6] == "======") and (test_section == True):
                 test_section = False;
-            if (test_section == True) and (_is_start(tokens[0])):
+            elif (test_section == True) and (_is_start(tokens[0])):
                 if cnt >= n:
                     print out;
                     exit(1);
@@ -313,7 +317,7 @@ class php_tester:
                 if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
                     ret.add(the_idx);
                 cnt = cnt + 1;
-            if (test_section == True) and (tokens[0] == "Fatal"):
+            elif (test_section == True) and (tokens[0] == "Fatal"):
                 the_idx = new_s[0];
                 new_s.remove(the_idx);
                 tmp = self._test(new_s);

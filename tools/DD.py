@@ -1039,13 +1039,14 @@ if __name__ == '__main__':
                 return self.UNRESOLVED
         def __init__(self,full_macros):
             DD2.__init__(self,full_macros)
-            # self.debug_dd=True
+            self.debug_dd=True
+            self.use_cal=False
 
     macro_list=range(macros)
     dd_test=BuildTest(macro_list)
     # (c,c1,c2)=dd_test.dd(macro_list)
     dd_test.search(macro_list)
-    print "Run with optimization:",dd_test.run
+    # print "Run with optimization:",dd_test.run
 
     fail=macro_list
     for i in dd_test.success:
