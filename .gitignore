@@ -26,3 +26,4 @@ build/benchmarks/*.tar.gz
 **/CMakeCache.txt
 /dg/
 **.Po
+**/__cleantests
