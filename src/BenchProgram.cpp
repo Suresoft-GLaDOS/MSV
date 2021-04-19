@@ -386,11 +386,11 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
         std::string cmd;
         if (dep_dir != ""){
             cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " >>" + build_log_file + " 2>&1";
-            // cmd = build_cmd + " -p " + dep_dir + " -j 10 "+cflags+ " "+src_dir + " 2>&1";
+            // cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " 2>&1";
         }
         else
             cmd = build_cmd + " -j 10 " + src_dir + " >>" + build_log_file + " 2>&1";
-            // cmd = build_cmd + " -j 10 " +cflags+ " "+src_dir + " 2>&1";
+            // cmd = build_cmd + " -j 10 " +src_dir + " 2>&1";
         // outlog_printf(2,"Command: %s\n",cmd.c_str());
         int ret;
         if (timeout_limit == 0)
@@ -498,6 +498,22 @@ bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wra
     popEnvMap(envMap);
     return succ;
 }
+void BenchProgram::saveFixedFiles(const std::map<std::string, std::string> &fileCodeMap,std::string output_name){
+    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
+            it != fileCodeMap.end(); ++it) {
+        std::string backupName=output_name;
+        if (count!=0)
+            backupName=output_name+std::to_string(count)+"_";
+        count++;
+        std::vector<std::string> split=splitPath(it->first);
+        backupName+=split[split.size()-1];
+        outlog_printf(2,"Saving this fix to: %s\n",std::string(work_dir+"/"+backupName).c_str());
+        std::ofstream fout_bak(std::string(work_dir+"/"+backupName).c_str(),std::ofstream::out);
+        fout_bak << it->second;
+        fout_bak.close();
+        system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
+    }
+}
 
 bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
         const std::map<std::string, std::string> &fileCodeMap,long long max_macro,std::string output_name) {
@@ -533,22 +549,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         fout << it->second;
         fout.close();
         // system(std::string("clang-format -i "+target_file).c_str());
-
-        // Backup fixed file
-        if (output_name!=""){
-            std::string backupName=output_name;
-            if (count!=0)
-                backupName=output_name+std::to_string(count)+"_";
-            count++;
-            std::vector<std::string> split=splitPath(it->first);
-            backupName+=split[split.size()-1];
-            outlog_printf(2,"Saving this fix to: %s\n",std::string(work_dir+"/"+backupName).c_str());
-            std::ofstream fout_bak(std::string(work_dir+"/"+backupName).c_str(),std::ofstream::out);
-            fout_bak << it->second;
-            fout_bak.close();
-            system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
-        }
-        // remove the .o and .lo files to recompile
     }
     fout2.close();
     deleteLibraryFile(fileCodeMap);
@@ -685,16 +685,19 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 }*/
 
 BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
-        const TestCaseSetTy &case_set, const EnvMapTy &env_pairs, bool pass_basic_src_dir) {
+        const TestCaseSetTy &case_set, const EnvMapTy &env_pairs, bool pass_basic_src_dir,bool is_fuzz) {
     if (case_set.size() == 0)
         return std::set<unsigned long>();
 
     // Prepare test script to generate test result
-    std::string cmd;
+    std::string cmd=test_cmd;
+    if (is_fuzz)
+        cmd+=" -f";
+
     if (!pass_basic_src_dir)
-        cmd = test_cmd + " " + getFullPath(work_dir + "/" + subDir) + " " + test_dir + " " + work_dir + " ";
+        cmd = cmd + " " + getFullPath(work_dir + "/" + subDir) + " " + test_dir + " " + work_dir + " ";
     else
-        cmd = test_cmd + " -p " + getFullPath(work_dir + "/" + subDir) + " " + src_dir + " " + test_dir + " " + work_dir + " ";
+        cmd = cmd + " -p " + getFullPath(work_dir + "/" + subDir) + " " + src_dir + " " + test_dir + " " + work_dir + " ";
     std::ostringstream sout;
     sout << cmd;
     for (TestCaseSetTy::const_iterator it = case_set.begin(); it != case_set.end(); it ++)
@@ -751,12 +754,12 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
 }
 
 bool BenchProgram::test(const std::string &subDir, size_t id, const EnvMapTy &envMap,
-        bool pass_basic_src_dir) {
+        bool pass_basic_src_dir,bool is_fuzz) {
     test_cnt ++;
     TestCaseSetTy tmp;
     tmp.clear();
     tmp.insert(id);
-    TestCaseSetTy res = testSet(subDir, tmp, envMap, pass_basic_src_dir);
+    TestCaseSetTy res = testSet(subDir, tmp, envMap, pass_basic_src_dir,is_fuzz);
     return res.size() == 1;
 }
 

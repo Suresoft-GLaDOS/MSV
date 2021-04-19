@@ -145,6 +145,12 @@ def fix_argv(s):
 #argv = new_argv;
 print "wrap/pclang"
 
+# clang_cmd=argv[0]
+# if clang_cmd=="cc" or clang_cmd=="gcc":
+#     clang_cmd="clang"
+# else:
+#     clang_cmd="clang++"
+
 for i in range(1, len(argv)):
     argv[i] = fix_argv(argv[i]);
 
@@ -165,7 +171,7 @@ src_file = "";
 src_type = "c";
 src_idx = -1;
 
-print argv;
+# print argv;
 just_compile = False;
 found_output = False;
 for i in range(1, len(argv)):

@@ -123,9 +123,9 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         P.addExistingSrcClone("profile", true);
     }
     else {
+        outlog_printf(2,"Building profile to localizing\n");
         P.clearSrcClone("profile");
         P.createSrcClone("profile");
-        // P.addExistingSrcClone("profile",false);
         BenchProgram::EnvMapTy envMap;
         envMap.clear();
         if (ForCPP.getValue())
@@ -134,7 +134,12 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
             envMap["COMPILE_CMD"] = CLANG_CMD;
         envMap["INDEX_FILE"] = INDEX_FILE;
         clearTmpDirectory();
-        P.buildSubDir("profile", CLANG_PROFILE_WRAP, envMap);
+        outlog_printf(2,"COMPILE_CMD: %s\n",envMap["COMPILE_CMD"].c_str());
+        bool result=P.buildSubDir("profile", CLANG_PROFILE_WRAP, envMap);
+        if (!result){
+            outlog_printf(0,"Profile build failed!\n");
+            exit(1);
+        }
     }
 
     typedef std::map<SourcePositionTy, ProfileInfoTy> ProfileLocationMapTy;

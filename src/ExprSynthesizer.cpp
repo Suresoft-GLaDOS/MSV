@@ -543,7 +543,7 @@ protected:
     std::map<int,std::map<int,std::string>> idAndCase;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
-        return P.test(std::string("src"), t_id, env, false);
+        return P.test(std::string("src"), t_id, env, false,true);
     }
 
     bool testNegativeCases(const BenchProgram::EnvMapTy &env) {
@@ -638,7 +638,7 @@ public:
     virtual CodeSegTy getPatches() {
         return patches;
     }
-    long long getMacroCount(){
+    virtual long long getMacroCount(){
         return total_macro;
     }
     BenchProgram::EnvMapTy initEnv(const BenchProgram::EnvMapTy &env){
@@ -2267,6 +2267,8 @@ class TestBatcher {
 
         // Create source file with fix
         // This should success
+        P.saveFixedFiles(combined,fixedFile);
+        
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
         result_init=T->test(BenchProgram::EnvMapTy(),0);
 

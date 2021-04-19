@@ -93,6 +93,6 @@ if __name__=="__main__":
                 # print(out_file, builddir)
                 # print(out_file, buildargs)
                 out_file.close()
-            else:
-                print(builddir)
-                print(buildargs)
+            # else:
+            #     print(builddir)
+            #     print(buildargs)

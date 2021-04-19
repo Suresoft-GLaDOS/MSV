@@ -201,15 +201,17 @@ public:
 
     bool buildSubDir(const std::string &subDir, const std::string &wrapScript,
             const EnvMapTy &envMap,std::vector<long long> compile_macro=std::vector<long long>());
+    
+    void saveFixedFiles(const std::map<std::string, std::string> &fileCodeMap,std::string output_name);
 
     bool buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
             const std::map<std::string, std::string> &fileCodeMap,long long max_macro,
             std::string output_name="");
     TestCaseSetTy testSet(const std::string &subDir, const TestCaseSetTy &case_set,
-            const EnvMapTy &envMap, bool pass_basic_src_dir = false);
+            const EnvMapTy &envMap, bool pass_basic_src_dir = false,bool is_fuzz=false);
 
     bool test(const std::string &subDir, size_t id, const EnvMapTy &envMap,
-            bool pass_basic_src_dir);
+            bool pass_basic_src_dir,bool is_fuzz=false);
 
 /*    BenchProgram(const std::string &src_dir, const std::string &test_dir,
             const std::string &build_cmd, const std::string &test_cmd,

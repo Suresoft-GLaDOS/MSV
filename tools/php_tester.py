@@ -72,7 +72,8 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
                 chdir(ori_dir);
                 return False;
             # do the configure
-            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-debug","-enable-zip"], env = my_env, stderr = subprocess.PIPE);
+            # p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-debug","-enable-zip"], env = my_env, stderr = subprocess.PIPE);
+            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip"], env = my_env, stderr = subprocess.PIPE)
             (out, err) = p.communicate();
             print out
             print p.returncode
@@ -229,7 +230,7 @@ class php_initializer:
         return ret;
 
 class php_tester:
-    def __init__(self, work_dir, repo_dir, test_dir):
+    def __init__(self, work_dir, repo_dir, test_dir,is_fuzz=False):
         self.repo_dir = repo_dir;
         self.test_dir = test_dir;
         self.work_dir = work_dir;
@@ -238,6 +239,8 @@ class php_tester:
         f.close();
         self.n = int(line.strip("\n"));
         self.time_out=10000
+
+        self.is_fuzz=is_fuzz
 
     def getn(self):
         return self.n;
@@ -267,6 +270,11 @@ class php_tester:
     # test the php build with testcases [test_id, test_id+n)
     def _test(self, s, profile_dir = ""):
         #print "###############3php_tester: _test()"
+        env=environ
+        env["AFL_SKIP_CPUFREQ"]=1
+        env["AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES"]=1
+        env["AFL_NO_UI"]=1
+        env["AFL_FAST_CAL"]=1
         assert(path.exists(self.repo_dir+"/sapi/cli/php"));
         assert(path.exists(self.repo_dir+"/run-tests.php"));
         prog = self.repo_dir+"/sapi/cli/php";
@@ -288,8 +296,13 @@ class php_tester:
                 test_prog = profile_dir + "/sapi/cli/php";
         # TODO: afl_cmd=["afl_fuzz","-w",self.work_dir,"-p",self.repo_dir+"/sapi/cli/php","-h",test_prog] + arg_list
         # -t(timeout) can be optional
-        afl_cmd = ["afl-fuzz", "-o", self.work_dir+"/out", "-i", self.test_dir, "-n", "-m", "none", "-d", "-w", self.work_dir, "-t", str(self.time_out), "--"];
-        p = subprocess.Popen(afl_cmd + [prog, helper, "-p", test_prog, "-q"] + arg_list, stdout=subprocess.PIPE,stderr=subprocess.PIPE);
+        cmd=[]
+        if self.is_fuzz:
+            cmd = ["afl-fuzz", "-o", self.work_dir+"/out", "-i", self.test_dir, "-n", "-m", "none", "-d", "-w", self.work_dir, "-t", str(self.time_out), "--"];
+            cmd=cmd + [prog, helper, "-p", test_prog, "-q"] + arg_list
+        else:
+            cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=env);
         chdir(ori_dir);
         (out, err) = p.communicate();
         # print out

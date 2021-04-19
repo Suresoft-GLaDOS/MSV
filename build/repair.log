@@ -1,39 +1,40 @@
 Initialize the program!
+Skip verify!
 Generating repair candidates!
-Processing Zend/zend_variables.c
-Total 2425 different repair schemas!!!!
-Total 12509 different repair candidate templates for scoring!!!
-Total 10392 different partial repair candidate templates!!
-BasicTester pointer: 0x55da97005790
-StringConstTester pointer: 0x55da970842b0
-CondTester pointer: 0x55da970b9ed0
+Processing ext/dom/document.c
+Total 9293 different repair schemas!!!!
+Total 14138 different repair candidate templates for scoring!!!
+Total 5007 different partial repair candidate templates!!
+BasicTester pointer: 0x559edd0bd0d0
+StringConstTester pointer: 0x559edbd8e320
+CondTester pointer: 0x559edbdb9390
 Generating Candidates...
-Candidates size: 2425
+Candidates size: 9293
 Generating Codes...
-[71] Preprocess the following candidate with BasicTester: 2425
+[86] Preprocess the following candidate with BasicTester: 9293
 Generating patches...
 Generating Codes...
-[71] BasicTester, a patch instance with id 0:
+[86] BasicTester, a patch instance with id 0:
 Begin building test
-Total macros: 1937
+Total macros: 6112
+Saving this fix to: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/fixed_document.c
 Preprocessing test...
-Saving this fix to: /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
 Trying to build with all macros...
 Build failed, Trying to find fail macros...
 Building final program...
-Total success macros: 1933
+Total success macros: 6091
 Success to build final program!
-[1230] BasicTester, Testing instance id 0:
+[7413] BasicTester, Testing instance id 0:
 Testing negative cases!
-Failed negative case 1442
+Failed negative case 10396
 Negative Case fail
 Testing positive cases!
-Failed positive case 682
+Failed positive case 0
 Fail to test with success patch
 The total number of explored concrete patches: 0
 Repair process ends successfully!
-Total 2425 different repair schemas!!!!
-Total 12509 different repair candidate templates for scoring!!!
-Total 10392 different partial repair candidate templates!!
+Total 9293 different repair schemas!!!!
+Total 14138 different repair candidate templates for scoring!!!
+Total 5007 different partial repair candidate templates!!
 Total number of compiles: 1
-Total number of test eval: 604
+Total number of test eval: 2

@@ -129,6 +129,9 @@ int main(int argc, char* argv[]) {
         }
         outlog_printf(1, "Done Verification\n");
     }
+    else{
+        outlog_printf(2,"Skip verify!\n");
+    }
 
     ConfigFile *config = P->getCurrentConfig();
     std::string localizer = config->getStr("localizer");
