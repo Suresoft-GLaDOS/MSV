@@ -238,7 +238,7 @@ class php_tester:
         line = f.readline();
         f.close();
         self.n = int(line.strip("\n"));
-        self.time_out=10000
+        self.time_out=10000000
 
         self.is_fuzz=is_fuzz
 
@@ -271,14 +271,16 @@ class php_tester:
     def _test(self, s, profile_dir = ""):
         #print "###############3php_tester: _test()"
         env=environ
-        env["AFL_SKIP_CPUFREQ"]=1
-        env["AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES"]=1
-        env["AFL_NO_UI"]=1
-        env["AFL_FAST_CAL"]=1
+        env["AFL_SKIP_CPUFREQ"]="1"
+        env["AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES"]="1"
+        env["AFL_NO_UI"]="1"
+        env["AFL_FAST_CAL"]="1"
         assert(path.exists(self.repo_dir+"/sapi/cli/php"));
         assert(path.exists(self.repo_dir+"/run-tests.php"));
-        prog = self.repo_dir+"/sapi/cli/php";
-        helper = self.repo_dir+"/run-tests.php";
+        # prog = self.repo_dir+"/sapi/cli/php";
+        # helper = self.repo_dir+"/run-tests.php";
+        prog = "./sapi/cli/php";
+        helper = "./run-tests.php";
         ori_dir = getcwd();
         arg_list = []
         for i in s:
@@ -298,7 +300,9 @@ class php_tester:
         # -t(timeout) can be optional
         cmd=[]
         if self.is_fuzz:
-            cmd = ["afl-fuzz", "-o", self.work_dir+"/out", "-i", self.test_dir, "-n", "-m", "none", "-d", "-w", self.work_dir, "-t", str(self.time_out), "--"];
+            # cmd = ["afl-fuzz", "-o", self.work_dir+"/out", "-n", "-m", "none", "-d", "-w", self.work_dir, "-t", str(self.time_out), "--"];
+            # cmd=cmd + [prog, helper, "-p", test_prog, "-q"] + arg_list
+            cmd = ["afl-fuzz", "-o", "out", "-n", "-m", "none", "-d", "-w", "..", "-t", str(self.time_out), "--"];
             cmd=cmd + [prog, helper, "-p", test_prog, "-q"] + arg_list
         else:
             cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list
