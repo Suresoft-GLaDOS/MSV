@@ -511,7 +511,7 @@ void BenchProgram::saveFixedFiles(const std::map<std::string, std::string> &file
         std::ofstream fout_bak(std::string(work_dir+"/"+backupName).c_str(),std::ofstream::out);
         fout_bak << it->second;
         fout_bak.close();
-        system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
+        // system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
     }
 }
 
@@ -764,7 +764,15 @@ bool BenchProgram::test(const std::string &subDir, size_t id, const EnvMapTy &en
 }
 
 bool BenchProgram::verifyTestCases() {
-    buildFull("src",0,true);
+    outlog_printf(2,"Building for verify\n");
+    bool result=buildFull("src",0,true);
+    if (result){
+        outlog_printf(2,"Build success\n");
+    }
+    else{
+        outlog_printf(2,"Build fail\n");
+        return false;
+    }
     //prepare_test();
     std::set<unsigned long> tmp = testSet("src", negative_cases, std::map<std::string, std::string>());
     if (tmp.size() != 0) {

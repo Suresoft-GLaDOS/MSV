@@ -238,7 +238,7 @@ class php_tester:
         line = f.readline();
         f.close();
         self.n = int(line.strip("\n"));
-        self.time_out=10000000
+        self.time_out=1000000
 
         self.is_fuzz=is_fuzz
 

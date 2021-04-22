@@ -375,6 +375,9 @@ extern "C" int __is_neg(const char *location,int int_size,const int *ints, int c
 
 extern "C" int __choose(const char *id) {
   char *case_num=getenv(id);
+  // FIXME: in php process, sometime environment variables are disappered
+  if (case_num==NULL)
+    return 0;
   int result;
   sscanf(case_num,"%d",&result);
   return result;
