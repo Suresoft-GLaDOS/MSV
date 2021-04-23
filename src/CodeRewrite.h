@@ -41,7 +41,7 @@ class CodeRewriter {
     size_t addIsNeg(int id,int case_num,std::string code);
 public:
     int index;
-    CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi);
+    CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::string work_dir="");
     std::map<ASTLocTy, std::map<std::string, bool> > eliminateAllNewLoc(SourceContextManager &M,
         const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str);
 

@@ -140,13 +140,16 @@ private:
     time_t total_repair_build_time;
     size_t repair_build_cnt;
     size_t case_timeout;
-    size_t case_counter;
 
     TestCaseSetTy positive_cases, negative_cases;
 
     unsigned long compile_cnt;
     unsigned long test_cnt;
     int count;
+
+    // For testing with specific switch id and case, instead of using AFL
+    int switchId;
+    int caseNum;
 
     TestCache *cache;
 
@@ -176,9 +179,9 @@ public:
     // in the workDirPath path. If it is empty string, we will create a work dir
     // with an empty directory
     BenchProgram(const std::string &configFileName, const std::string &workDirPath,
-            bool no_clean_up = false);
+            bool no_clean_up = false,int switchId=-1,int caseNum=-1);
 
-    BenchProgram(const std::string &workDirPath);
+    BenchProgram(const std::string &workDirPath,int switchId=-1,int caseNum=-1);
 
     TestCaseSetTy getPositiveCaseSet() {
         return positive_cases;
@@ -227,6 +230,11 @@ public:
     std::string getSrcdir() { return src_dir; }
 
     std::string normalizePath(const std::string &);
+
+    void setSwitch(int switchId,int caseNum){
+        this->switchId=switchId;
+        this->caseNum=caseNum;
+    }
 
     //void setArgFile(const std::string &fixtest_argfile);
 

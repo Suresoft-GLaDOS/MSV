@@ -27,6 +27,7 @@
 #include <unistd.h>
 #include <sstream>
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <array>
 #include <time.h>
@@ -373,12 +374,20 @@ extern "C" int __is_neg(const char *location,int int_size,const int *ints, int c
     return 0;
 }
 
-extern "C" int __choose(const char *id) {
-  char *case_num=getenv(id);
-  // FIXME: in php process, sometime environment variables are disappered
-  if (case_num==NULL)
-    return 0;
-  int result;
-  sscanf(case_num,"%d",&result);
-  return result;
+extern "C" int __choose(char *table_file,const int id) {
+    int result;
+
+    FILE *file=fopen(table_file,"r");
+    if (file==NULL)
+        return 0;
+    fscanf(file,"%d",&result);
+    if (result!=id){
+        result=0;
+    }
+    else{
+        fscanf(file,"%d",&result);
+    }
+    fclose(file);
+
+    return result;
 }

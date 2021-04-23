@@ -74,12 +74,13 @@ static std::vector<std::string> splitPath(std::string path){
 }
 
 BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
-        bool no_clean_up): config(configFileName),case_counter(0),count(0) {
+        bool no_clean_up,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),
+        caseNum(caseNum) {
     Init(workDirPath, no_clean_up);
 }
 
-BenchProgram::BenchProgram(const std::string &workDirPath)
-    : config(workDirPath + "/" + CONFIG_FILE_PATH),case_counter(0),count(0) {
+BenchProgram::BenchProgram(const std::string &workDirPath,int switchId,int caseNum)
+    : config(workDirPath + "/" + CONFIG_FILE_PATH),count(0),switchId(switchId),caseNum(caseNum) {
     Init(workDirPath, true);
 }
 
@@ -511,7 +512,7 @@ void BenchProgram::saveFixedFiles(const std::map<std::string, std::string> &file
         std::ofstream fout_bak(std::string(work_dir+"/"+backupName).c_str(),std::ofstream::out);
         fout_bak << it->second;
         fout_bak.close();
-        // system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
+        system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
     }
 }
 
@@ -692,7 +693,10 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     // Prepare test script to generate test result
     std::string cmd=test_cmd;
     if (is_fuzz)
-        cmd+=" -f";
+        if (switchId>=0 && caseNum>=0)
+            cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
+        else
+            cmd+=" -f";
 
     if (!pass_basic_src_dir)
         cmd = cmd + " " + getFullPath(work_dir + "/" + subDir) + " " + test_dir + " " + work_dir + " ";

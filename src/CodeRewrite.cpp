@@ -513,7 +513,7 @@ std::map<ASTLocTy, std::map<std::string, bool> > CodeRewriter::eliminateAllNewLo
     return tmp_map1;
 }
 
-CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi) {
+CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::string work_dir) {
     std::map<ASTLocTy,std::string> original_str;
     std::vector<RepairCandidate> rc1;
     rc1.clear();
@@ -792,7 +792,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             std::map<int,std::string> casePatch;
             casePatch.clear();
 
-            std::string body="switch(__choose(\"__ID"+std::to_string(counter++)+"\"))\n{\n";
+            std::string body="switch(__choose(\""+work_dir+"/switch.txt\","+std::to_string(counter++)+"))\n{\n";
             body+="case "+std::to_string(case_count++)+": {\n";
             body+=currentPatch[0];
             int isNegCount=addIsNeg(counter-1,0,currentPatch[0]);

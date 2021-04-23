@@ -547,22 +547,24 @@ protected:
     }
 
     bool testNegativeCases(const BenchProgram::EnvMapTy &env) {
+        bool result=true;
         for (TestCaseSetTy::iterator it = negative_cases.begin();
                 it != negative_cases.end(); it++)
             if (!testOneCase(env, *it)){
                 outlog_printf(2,"Failed negative case %lu\n",*it);
-                return false;
+                result=false;
             }
         outlog_printf(2, "Passed Negative Cases\n");
-        return true;
+        return result;
     }
 
     bool testPositiveCases(const BenchProgram::EnvMapTy &env) {
+        bool result=true;
         for (TestCaseSetTy::iterator it = failed_cases.begin();
                 it != failed_cases.end(); it++) {
             if (!testOneCase(env, *it)) {
                 outlog_printf(2, "Failed positive case %lu\n", *it);
-                // return false;
+                result=false;
             }
         }
         for (TestCaseSetTy::iterator it = positive_cases.begin();
@@ -572,11 +574,11 @@ protected:
             if (!testOneCase(env, *it)) {
                 outlog_printf(2, "Failed positive case %lu\n", *it);
                 failed_cases.insert(*it);
-                // return false;
+                result=false;
             }
         }
         outlog_printf(2, "Passed Positive Cases\n");
-        return true;
+        return result;
     }
 
     NewCodeMapTy cleanUpCode(const NewCodeMapTy &code) {
@@ -663,7 +665,7 @@ public:
 
         std::vector<unsigned long> res;
         res.clear();
-        CodeRewriter R(M, candidate, &infos);
+        CodeRewriter R(M, candidate, &infos,P.getWorkdir());
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
         macroMap=R.getMacroMap();
@@ -920,7 +922,7 @@ public:
         }
         std::vector<unsigned long> res;
         res.clear();
-        CodeRewriter R(M, candidate, &the_infos);
+        CodeRewriter R(M, candidate, &the_infos,P.getWorkdir());
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
         macroMap=R.getMacroMap();
@@ -1066,7 +1068,7 @@ public:
         ASTContext *ctxt = M.getSourceContext(candidate.actions[mutate_id].loc.filename);
         efi[mutate_id] = createNewStringExpr(ctxt, efi[mutate_id], *candidate_strs[id].begin());
 
-        CodeRewriter R(M, candidates, &infos_set);
+        CodeRewriter R(M, candidates, &infos_set,P.getWorkdir());
         NewCodeMapTy code = R.getCodes();
         BenchProgram::EnvMapTy buildEnv;
         buildEnv.clear();
@@ -1932,7 +1934,7 @@ public:
         std::vector<unsigned long> res;
         res.clear();
         outlog_printf(2,"Generating patches with CondTester...\n");
-        CodeRewriter R(M, candidate, &the_infos);
+        CodeRewriter R(M, candidate, &the_infos,P.getWorkdir());
         outlog_printf(2,"Patch Generated!\n");
         std::map<std::string, std::vector<std::string> > a_code = R.getCodeSegments();
         std::map<std::string, std::vector<std::string> > a_patch = R.getPatches();

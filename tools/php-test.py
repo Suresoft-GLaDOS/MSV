@@ -27,18 +27,29 @@ if __name__ == "__main__":
         print "Usage: php-tester.py <src_dir> <test_dir> <work_dir> [cases]";
         exit(1);
 
-    opts, args = getopt.getopt(argv[1:], "p:f");
+    opts, args = getopt.getopt(argv[1:], "p:fs:");
     profile_dir = "";
     is_fuzz=False
+    id=0
+    case=0
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
         elif o=="-f":
             is_fuzz=True
+        elif o=="-s":
+            id_case=a.split("-")
+            id=id_case[0]
+            case=id_case[1]
 
     src_dir = args[0];
     test_dir = args[1];
     work_dir = args[2];
+
+    if is_fuzz==False:
+        switch_file=open(work_dir+"/switch.txt","w")
+        switch_file.write(str(id)+"\n"+str(case)+"\n")
+        switch_file.close()
         
     if len(args) > 3:
         ids = args[3:];

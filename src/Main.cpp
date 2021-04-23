@@ -88,6 +88,9 @@ llvm::cl::opt<double> GeoP("geop", llvm::cl::value_desc("flip probability"),
 llvm::cl::opt<unsigned int> Timeout("timeout", llvm::cl::init(0), llvm::cl::desc("Soft timeout limit in hours"));
 llvm::cl::opt<bool> ForCPP("cpp", llvm::cl::init(false));
 
+llvm::cl::opt<std::string> SwitchCaseDebug("switch-id",llvm::cl::value_desc("<switch id>-<case>"),
+        llvm::cl::init(""),llvm::cl::desc("Test with specific switch id and case instead of AFL"));
+
 int main(int argc, char* argv[]) {
     llvm::cl::ParseCommandLineOptions(argc, argv);
 
@@ -119,6 +122,14 @@ int main(int argc, char* argv[]) {
     else{
         P = new BenchProgram(run_work_dir);
     }
+    if (SwitchCaseDebug.getValue()!=""){
+        std::string switchCase=SwitchCaseDebug.getValue();
+        std::string switchId=switchCase.substr(0,switchCase.find("-"));
+        std::string caseNum=switchCase.substr(switchCase.find("-")+1,switchCase.size());
+
+        P->setSwitch(std::stoi(switchId),std::stoi(caseNum));
+    }
+
 
     if (!SkipVerify) {
         outlog_printf(1, "Verify Test Cases\n");

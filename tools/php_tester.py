@@ -310,6 +310,7 @@ class php_tester:
         chdir(ori_dir);
         (out, err) = p.communicate();
         # print out
+        # print err
         lines = out.split("\n");
         test_section = False;
         cnt = 0;

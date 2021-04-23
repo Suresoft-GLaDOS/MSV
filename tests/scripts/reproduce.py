@@ -17,7 +17,7 @@ def print_defect():
                                             "init", "prophet", "replace-ext", "cond-ext", \
                                             "full-dump", "timeout=", "compare-space", "no-sema", "no-mod", \
                                             "random", "baseline", "ssvm", "dest=", "pass=", "print-fix-only=",
-                                            "feature-dump"]);
+                                            "feature-dump","switch-id="]);
 nof = True;
 nloc = 200;
 geop = "0.02";
@@ -39,6 +39,7 @@ print_fix_only = "";
 timeout = 0;
 feature_dump = False;
 skip_build=False
+switch_id=""
 for o, a in opts:
     if o == "--geop":
         geop = a;
@@ -85,6 +86,8 @@ for o, a in opts:
         feature_dump = True;
     elif o=="--skip-build":
         skip_build=True
+    elif o=="--switch-id":
+        switch_id=a
 
 scenario_addr = "http://www.cs.toronto.edu/~fanl/program_repair/scenarios/";
 
@@ -211,6 +214,8 @@ else:
         cmd += " -print-fix-only " + print_fix_only;
         if feature_dump:
             cmd += " -dump-feature";
+    if switch_id!="":
+        cmd+=" -switch-id "+switch_id
     if dest != "":
         system("rm -rf *fix* out.log repair.log __candidate*");
         cmd += " > out.log";
