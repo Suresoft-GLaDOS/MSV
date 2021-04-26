@@ -134,7 +134,6 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
             envMap["COMPILE_CMD"] = CLANG_CMD;
         envMap["INDEX_FILE"] = INDEX_FILE;
         clearTmpDirectory();
-        outlog_printf(2,"COMPILE_CMD: %s\n",envMap["COMPILE_CMD"].c_str());
         bool result=P.buildSubDir("profile", CLANG_PROFILE_WRAP, envMap);
         if (!result){
             outlog_printf(0,"Profile build failed!\n");
