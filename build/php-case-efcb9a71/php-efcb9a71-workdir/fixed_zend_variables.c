@@ -36,7 +36,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   0)) {
+                   1)) {
   case 0: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -83,6 +83,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
+      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -124,7 +125,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
+      (*zvalue).value.obj.handlers->del_ref((zvalue));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -166,7 +167,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      (*zvalue).value.obj.handlers->del_ref((zvalue));
+      (*zvalue).value.obj.handlers->del_ref(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -208,7 +209,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      (*zvalue).value.obj.handlers->del_ref(zvalue);
+      (executor_globals.argument_stack) =
+          zend_vm_stack_new_page(((16 * 1024) - 16));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -250,8 +252,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      (executor_globals.argument_stack) =
-          zend_vm_stack_new_page(((16 * 1024) - 16));
+      _efree(((zvalue)));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -293,7 +294,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _efree(((zvalue)));
+      _efree(((zvalue)->value.ht));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -335,7 +336,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _efree(((zvalue)->value.ht));
+      _efree(((zvalue)->value.str.val));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -377,7 +378,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _efree(((zvalue)->value.str.val));
+      _efree((zvalue->value.ht));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -419,7 +420,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _efree((zvalue->value.ht));
+      _efree((zvalue->value.str.val));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -461,7 +462,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _efree((zvalue->value.str.val));
+      _zend_list_addref((zvalue)->value.lval);
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -503,7 +504,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _zend_list_addref((zvalue)->value.lval);
+      _zend_list_delete((zvalue)->value.lval);
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -545,7 +546,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _zend_list_delete((zvalue)->value.lval);
+      _zend_list_delete(zvalue->value.lval);
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -587,7 +588,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _zend_list_delete(zvalue->value.lval);
+      _zval_copy_ctor_func((zvalue));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -629,7 +630,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _zval_copy_ctor_func((zvalue));
+      _zval_dtor(((zvalue)));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -671,7 +672,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _zval_dtor(((zvalue)));
+      _zval_dtor_func((zvalue));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -713,7 +714,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _zval_dtor_func((zvalue));
+      _zval_ptr_dtor((&(zvalue)));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -755,7 +756,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      _zval_ptr_dtor((&(zvalue)));
+      convert_to_boolean((zvalue));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -797,7 +798,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      convert_to_boolean((zvalue));
+      exit(1);
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -839,7 +840,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      exit(1);
+      gc_remove_zval_from_buffer((zvalue));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -881,7 +882,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      gc_remove_zval_from_buffer((zvalue));
+      gc_zval_check_possible_root(((zvalue)));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -923,7 +924,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      gc_zval_check_possible_root(((zvalue)));
+      gc_zval_possible_root((zvalue));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -965,7 +966,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      gc_zval_possible_root((zvalue));
+      i_zval_ptr_dtor((zvalue));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1007,7 +1008,9 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      i_zval_ptr_dtor((zvalue));
+      if (!(executor_globals.active_symbol_table)) {
+        zend_rebuild_symbol_table();
+      }
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1049,8 +1052,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      if (!(executor_globals.active_symbol_table)) {
-        zend_rebuild_symbol_table();
+      if (zvalue->value.ht &&
+          (zvalue->value.ht != &(executor_globals.symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        _efree((zvalue->value.ht));
       }
       STR_FREE_REL(zvalue->value.str.val);
       break;
@@ -1093,10 +1098,12 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      if (zvalue->value.ht &&
-          (zvalue->value.ht != &(executor_globals.symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        _efree((zvalue->value.ht));
+      if (zvalue->value.str.val &&
+          !(((zvalue->value.str.val) >=
+             (compiler_globals.interned_strings_start)) &&
+            ((zvalue->value.str.val) <
+             (compiler_globals.interned_strings_end)))) {
+        _efree((zvalue->value.str.val));
       }
       STR_FREE_REL(zvalue->value.str.val);
       break;
@@ -1139,13 +1146,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      if (zvalue->value.str.val &&
-          !(((zvalue->value.str.val) >=
-             (compiler_globals.interned_strings_start)) &&
-            ((zvalue->value.str.val) <
-             (compiler_globals.interned_strings_end)))) {
-        _efree((zvalue->value.str.val));
-      }
+      memset(&compiler_globals, 0, sizeof(*(&compiler_globals)));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1187,7 +1188,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      memset(&compiler_globals, 0, sizeof(*(&compiler_globals)));
+      memset(&zvalue->value, 0, sizeof(*(&zvalue->value)));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1229,7 +1230,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      memset(&zvalue->value, 0, sizeof(*(&zvalue->value)));
+      memset(&zvalue->value.str, 0, sizeof(*(&zvalue->value.str)));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1271,7 +1272,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      memset(&zvalue->value.str, 0, sizeof(*(&zvalue->value.str)));
+      memset(zvalue, 0, sizeof(*(zvalue)));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1313,7 +1314,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      memset(zvalue, 0, sizeof(*(zvalue)));
+      zend_error((1 << 3L), "A non well formed numeric value encountered");
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1355,7 +1356,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      zend_error((1 << 3L), "A non well formed numeric value encountered");
+      zend_hash_destroy((zvalue)->value.ht);
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1397,7 +1398,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      zend_hash_destroy((zvalue)->value.ht);
+      zend_hash_destroy(zvalue->value.ht);
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1439,7 +1440,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      zend_hash_destroy(zvalue->value.ht);
+      zend_rebuild_symbol_table();
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1481,7 +1482,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      zend_rebuild_symbol_table();
+      zval_addref_p((zvalue));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1523,7 +1524,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      zval_addref_p((zvalue));
+      zval_set_isref_p((zvalue));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1565,7 +1566,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      zval_set_isref_p((zvalue));
+      zval_set_refcount_p((zvalue), 0);
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1607,7 +1608,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      zval_set_refcount_p((zvalue), 0);
+      zval_unset_isref_p((zvalue));
       STR_FREE_REL(zvalue->value.str.val);
       break;
     case IS_ARRAY:
@@ -1649,8 +1650,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT:
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
-      zval_unset_isref_p((zvalue));
       STR_FREE_REL(zvalue->value.str.val);
+      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -1692,6 +1693,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
+      (*zvalue).value.obj.handlers->del_ref((zvalue));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -1733,7 +1735,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
+      (*zvalue).value.obj.handlers->del_ref(zvalue);
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -1775,7 +1777,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      (*zvalue).value.obj.handlers->del_ref((zvalue));
+      (executor_globals.argument_stack) =
+          zend_vm_stack_new_page(((16 * 1024) - 16));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -1817,7 +1820,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      (*zvalue).value.obj.handlers->del_ref(zvalue);
+      _efree(((zvalue)));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -1859,8 +1862,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      (executor_globals.argument_stack) =
-          zend_vm_stack_new_page(((16 * 1024) - 16));
+      _efree(((zvalue)->value.ht));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -1902,7 +1904,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _efree(((zvalue)));
+      _efree(((zvalue)->value.str.val));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -1944,7 +1946,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _efree(((zvalue)->value.ht));
+      _efree((zvalue->value.ht));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -1986,7 +1988,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _efree(((zvalue)->value.str.val));
+      _efree((zvalue->value.str.val));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2028,7 +2030,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _efree((zvalue->value.ht));
+      _zend_list_addref((zvalue)->value.lval);
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2070,7 +2072,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _efree((zvalue->value.str.val));
+      _zend_list_delete((zvalue)->value.lval);
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2112,7 +2114,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _zend_list_addref((zvalue)->value.lval);
+      _zend_list_delete(zvalue->value.lval);
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2154,7 +2156,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _zend_list_delete((zvalue)->value.lval);
+      _zval_copy_ctor_func((zvalue));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2196,7 +2198,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _zend_list_delete(zvalue->value.lval);
+      _zval_dtor(((zvalue)));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2238,7 +2240,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _zval_copy_ctor_func((zvalue));
+      _zval_dtor_func((zvalue));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2280,7 +2282,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _zval_dtor(((zvalue)));
+      _zval_ptr_dtor((&(zvalue)));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2322,7 +2324,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _zval_dtor_func((zvalue));
+      convert_to_boolean((zvalue));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2364,7 +2366,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      _zval_ptr_dtor((&(zvalue)));
+      exit(1);
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2406,7 +2408,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      convert_to_boolean((zvalue));
+      gc_remove_zval_from_buffer((zvalue));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2448,7 +2450,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      exit(1);
+      gc_zval_check_possible_root(((zvalue)));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2490,7 +2492,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      gc_remove_zval_from_buffer((zvalue));
+      gc_zval_possible_root((zvalue));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2532,7 +2534,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      gc_zval_check_possible_root(((zvalue)));
+      i_zval_ptr_dtor((zvalue));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2574,7 +2576,9 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      gc_zval_possible_root((zvalue));
+      if (!(executor_globals.active_symbol_table)) {
+        zend_rebuild_symbol_table();
+      }
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2616,7 +2620,11 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      i_zval_ptr_dtor((zvalue));
+      if (zvalue->value.ht &&
+          (zvalue->value.ht != &(executor_globals.symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        _efree((zvalue->value.ht));
+      }
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2658,8 +2666,12 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      if (!(executor_globals.active_symbol_table)) {
-        zend_rebuild_symbol_table();
+      if (zvalue->value.str.val &&
+          !(((zvalue->value.str.val) >=
+             (compiler_globals.interned_strings_start)) &&
+            ((zvalue->value.str.val) <
+             (compiler_globals.interned_strings_end)))) {
+        _efree((zvalue->value.str.val));
       }
       break;
     case IS_ARRAY:
@@ -2702,11 +2714,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      if (zvalue->value.ht &&
-          (zvalue->value.ht != &(executor_globals.symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        _efree((zvalue->value.ht));
-      }
+      zend_error((1 << 3L), "A non well formed numeric value encountered");
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2748,13 +2756,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      if (zvalue->value.str.val &&
-          !(((zvalue->value.str.val) >=
-             (compiler_globals.interned_strings_start)) &&
-            ((zvalue->value.str.val) <
-             (compiler_globals.interned_strings_end)))) {
-        _efree((zvalue->value.str.val));
-      }
+      zend_hash_destroy((zvalue)->value.ht);
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2796,7 +2798,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      zend_error((1 << 3L), "A non well formed numeric value encountered");
+      zend_hash_destroy(zvalue->value.ht);
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2838,7 +2840,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      zend_hash_destroy((zvalue)->value.ht);
+      zend_rebuild_symbol_table();
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2880,7 +2882,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      zend_hash_destroy(zvalue->value.ht);
+      zval_addref_p((zvalue));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2922,7 +2924,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      zend_rebuild_symbol_table();
+      zval_set_isref_p((zvalue));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -2964,7 +2966,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      zval_addref_p((zvalue));
+      zval_set_refcount_p((zvalue), 0);
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -3006,7 +3008,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      zval_set_isref_p((zvalue));
+      zval_unset_isref_p((zvalue));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
@@ -3048,13 +3050,13 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      zval_set_refcount_p((zvalue), 0);
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        (*(zvalue)).value.obj.handlers->del_ref(zvalue);
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3090,13 +3092,13 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CLASS:
       CHECK_ZVAL_STRING_REL(zvalue);
       STR_FREE_REL(zvalue->value.str.val);
-      zval_unset_isref_p((zvalue));
       break;
     case IS_ARRAY:
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        (*zvalue).value.obj.handlers->del_ref((zvalue));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3138,6 +3140,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        (*zvalue).value.obj.handlers->del_ref(zvalue);
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3179,6 +3182,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        (executor_globals.argument_stack) =
+            zend_vm_stack_new_page(((16 * 1024) - 16));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3220,7 +3225,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        (*(zvalue)).value.obj.handlers->del_ref(zvalue);
+        _efree(((zvalue)));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3262,7 +3267,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        (*zvalue).value.obj.handlers->del_ref((zvalue));
+        _efree(((zvalue)->value.ht));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3304,7 +3309,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        (*zvalue).value.obj.handlers->del_ref(zvalue);
+        _efree(((zvalue)->value.str.val));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3346,8 +3351,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        (executor_globals.argument_stack) =
-            zend_vm_stack_new_page(((16 * 1024) - 16));
+        _efree((zvalue->value.ht));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3389,7 +3393,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _efree(((zvalue)));
+        _efree((zvalue->value.str.val));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3431,7 +3435,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _efree(((zvalue)->value.ht));
+        _zend_list_addref((zvalue)->value.lval);
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3473,7 +3477,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _efree(((zvalue)->value.str.val));
+        _zend_list_delete((zvalue)->value.lval);
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3515,7 +3519,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _efree((zvalue->value.ht));
+        _zend_list_delete(zvalue->value.lval);
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3557,7 +3561,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _efree((zvalue->value.str.val));
+        _zval_copy_ctor_func((zvalue));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3599,7 +3603,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _zend_list_addref((zvalue)->value.lval);
+        _zval_dtor(((zvalue)));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3641,7 +3645,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _zend_list_delete((zvalue)->value.lval);
+        _zval_dtor_func((zvalue));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3683,7 +3687,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _zend_list_delete(zvalue->value.lval);
+        _zval_ptr_dtor((&(zvalue)));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3725,7 +3729,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _zval_copy_ctor_func((zvalue));
+        convert_to_boolean((zvalue));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3767,7 +3771,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _zval_dtor(((zvalue)));
+        exit(1);
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3809,7 +3813,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _zval_dtor_func((zvalue));
+        gc_remove_zval_from_buffer((zvalue));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3851,7 +3855,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        _zval_ptr_dtor((&(zvalue)));
+        gc_zval_check_possible_root(((zvalue)));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3893,7 +3897,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        convert_to_boolean((zvalue));
+        gc_zval_possible_root((zvalue));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3935,7 +3939,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        exit(1);
+        i_zval_ptr_dtor((zvalue));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -3977,7 +3981,9 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        gc_remove_zval_from_buffer((zvalue));
+        if (!(executor_globals.active_symbol_table)) {
+          zend_rebuild_symbol_table();
+        }
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -4019,7 +4025,11 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        gc_zval_check_possible_root(((zvalue)));
+        if (zvalue->value.ht &&
+            (zvalue->value.ht != &(executor_globals.symbol_table))) {
+          zend_hash_destroy(zvalue->value.ht);
+          _efree((zvalue->value.ht));
+        }
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -4061,7 +4071,13 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        gc_zval_possible_root((zvalue));
+        if (zvalue->value.str.val &&
+            !(((zvalue->value.str.val) >=
+               (compiler_globals.interned_strings_start)) &&
+              ((zvalue->value.str.val) <
+               (compiler_globals.interned_strings_end)))) {
+          _efree((zvalue->value.str.val));
+        }
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -4103,7 +4119,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        i_zval_ptr_dtor((zvalue));
+        memset(&zvalue->value, 0, sizeof(*(&zvalue->value)));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -4145,9 +4161,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        if (!(executor_globals.active_symbol_table)) {
-          zend_rebuild_symbol_table();
-        }
+        memset(zvalue, 0, sizeof(*(zvalue)));
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -4189,12 +4203,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        if (zvalue->value.ht &&
-            (zvalue->value.ht != &(executor_globals.symbol_table))) {
-          zend_hash_destroy(zvalue->value.ht);
-          _efree((zvalue->value.ht));
-        }
-        zend_hash_destroy(zvalue->value.ht);
+        zend_destroy_rsrc_list(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4235,13 +4244,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        if (zvalue->value.str.val &&
-            !(((zvalue->value.str.val) >=
-               (compiler_globals.interned_strings_start)) &&
-              ((zvalue->value.str.val) <
-               (compiler_globals.interned_strings_end)))) {
-          _efree((zvalue->value.str.val));
-        }
+        zend_error((1 << 3L), "A non well formed numeric value encountered");
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -4283,8 +4286,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        memset(&zvalue->value, 0, sizeof(*(&zvalue->value)));
-        zend_hash_destroy(zvalue->value.ht);
+        zend_hash_clean(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4325,8 +4327,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        memset(zvalue, 0, sizeof(*(zvalue)));
-        zend_hash_destroy(zvalue->value.ht);
+        zend_hash_destroy((zvalue)->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4367,7 +4368,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_destroy_rsrc_list(zvalue->value.ht);
+        zend_hash_destroy((zvalue)->value.ht);
+        zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4408,7 +4410,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_error((1 << 3L), "A non well formed numeric value encountered");
+        zend_hash_destroy(zvalue->value.ht);
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -4450,7 +4452,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_clean(zvalue->value.ht);
+        zend_hash_graceful_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4491,7 +4493,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy((zvalue)->value.ht);
+        zend_hash_graceful_reverse_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4532,8 +4534,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy((zvalue)->value.ht);
-        zend_hash_destroy(zvalue->value.ht);
+        zend_hash_rehash(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4574,7 +4575,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
+        zend_rebuild_symbol_table();
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -4616,7 +4617,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_graceful_destroy(zvalue->value.ht);
+        zend_reset_all_cv(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4657,7 +4658,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_graceful_reverse_destroy(zvalue->value.ht);
+        zval_addref_p((zvalue));
+        zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4698,7 +4700,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_rehash(zvalue->value.ht);
+        zval_set_isref_p((zvalue));
+        zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4739,7 +4742,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_rebuild_symbol_table();
+        zval_set_refcount_p((zvalue), 0);
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -4781,7 +4784,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_reset_all_cv(zvalue->value.ht);
+        zval_unset_isref_p((zvalue));
+        zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4822,8 +4826,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zval_addref_p((zvalue));
         zend_hash_destroy(zvalue->value.ht);
+        (*(zvalue)).value.obj.handlers->del_ref(zvalue);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4864,8 +4868,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zval_set_isref_p((zvalue));
         zend_hash_destroy(zvalue->value.ht);
+        (*zvalue).value.obj.handlers->del_ref((zvalue));
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -4906,215 +4910,6 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zval_set_refcount_p((zvalue), 0);
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_115
-  case 116: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zval_unset_isref_p((zvalue));
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_116
-  case 117: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_117
-  case 118: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        (*(zvalue)).value.obj.handlers->del_ref(zvalue);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_118
-  case 119: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        (*zvalue).value.obj.handlers->del_ref((zvalue));
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_119
-  case 120: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         (*zvalue).value.obj.handlers->del_ref(zvalue);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -5143,8 +4938,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_120
-  case 121: {
+#ifdef COMPILE_115
+  case 116: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -5186,6 +4981,215 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
+#ifdef COMPILE_116
+  case 117: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        _efree(((zvalue)));
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_117
+  case 118: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        _efree(((zvalue)->value.ht));
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_118
+  case 119: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        _efree(((zvalue)->value.ht));
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_119
+  case 120: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        _efree(((zvalue)->value.str.val));
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_120
+  case 121: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        _efree((zvalue->value.ht));
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
 #ifdef COMPILE_121
   case 122: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -5201,7 +5205,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _efree(((zvalue)));
+        _efree((zvalue->value.str.val));
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -5243,7 +5247,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _efree(((zvalue)->value.ht));
+        _zend_list_addref((zvalue)->value.lval);
+        FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
     case IS_OBJECT: {
@@ -5284,7 +5289,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _efree(((zvalue)->value.ht));
+        _zend_list_delete((zvalue)->value.lval);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -5326,7 +5331,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _efree(((zvalue)->value.str.val));
+        _zend_list_delete(zvalue->value.lval);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -5368,8 +5373,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _efree((zvalue->value.ht));
-        FREE_HASHTABLE(zvalue->value.ht);
+        _zend_mem_block_size((zvalue->value.ht));
       }
     } break;
     case IS_OBJECT: {
@@ -5410,7 +5414,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _efree((zvalue->value.str.val));
+        _zval_copy_ctor_func((zvalue));
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -5452,7 +5456,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _zend_list_addref((zvalue)->value.lval);
+        _zval_dtor(((zvalue)));
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -5494,7 +5498,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _zend_list_delete((zvalue)->value.lval);
+        _zval_dtor_func((zvalue));
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -5536,7 +5540,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _zend_list_delete(zvalue->value.lval);
+        _zval_ptr_dtor((&(zvalue)));
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -5578,7 +5582,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _zend_mem_block_size((zvalue->value.ht));
+        convert_to_boolean((zvalue));
+        FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
     case IS_OBJECT: {
@@ -5619,8 +5624,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _zval_copy_ctor_func((zvalue));
-        FREE_HASHTABLE(zvalue->value.ht);
+        dlclose((zvalue->value.ht));
       }
     } break;
     case IS_OBJECT: {
@@ -5661,7 +5665,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _zval_dtor(((zvalue)));
+        exit(1);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -5703,8 +5707,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _zval_dtor_func((zvalue));
-        FREE_HASHTABLE(zvalue->value.ht);
+        free((zvalue->value.ht));
       }
     } break;
     case IS_OBJECT: {
@@ -5745,7 +5748,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        _zval_ptr_dtor((&(zvalue)));
+        gc_remove_zval_from_buffer((zvalue));
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -5787,7 +5790,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        convert_to_boolean((zvalue));
+        gc_zval_check_possible_root(((zvalue)));
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -5829,7 +5832,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        dlclose((zvalue->value.ht));
+        gc_zval_possible_root((zvalue));
+        FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
     case IS_OBJECT: {
@@ -5870,7 +5874,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        exit(1);
+        i_zval_ptr_dtor((zvalue));
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -5899,215 +5903,6 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_138
   case 139: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        free((zvalue->value.ht));
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_139
-  case 140: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        gc_remove_zval_from_buffer((zvalue));
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_140
-  case 141: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        gc_zval_check_possible_root(((zvalue)));
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_141
-  case 142: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        gc_zval_possible_root((zvalue));
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_142
-  case 143: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        i_zval_ptr_dtor((zvalue));
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_143
-  case 144: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -6150,8 +5945,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_144
-  case 145: {
+#ifdef COMPILE_139
+  case 140: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -6196,8 +5991,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_145
-  case 146: {
+#ifdef COMPILE_140
+  case 141: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -6244,6 +6039,214 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
+#ifdef COMPILE_141
+  case 142: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        list_entry_destructor((zvalue->value.ht));
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_142
+  case 143: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        memset(&zvalue->value, 0, sizeof(*(&zvalue->value)));
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_143
+  case 144: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        memset(zvalue, 0, sizeof(*(zvalue)));
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_144
+  case 145: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        plist_entry_destructor((zvalue->value.ht));
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_145
+  case 146: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        zend_error((1 << 3L), "A non well formed numeric value encountered");
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
 #ifdef COMPILE_146
   case 147: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -6259,7 +6262,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        list_entry_destructor((zvalue->value.ht));
+        zend_hash_destroy((zvalue)->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
     case IS_OBJECT: {
@@ -6300,7 +6304,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        memset(&zvalue->value, 0, sizeof(*(&zvalue->value)));
+        zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -6342,7 +6346,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        memset(zvalue, 0, sizeof(*(zvalue)));
+        zend_rebuild_symbol_table();
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -6384,7 +6388,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        plist_entry_destructor((zvalue->value.ht));
+        zend_vm_stack_free((zvalue->value.ht));
       }
     } break;
     case IS_OBJECT: {
@@ -6425,8 +6429,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        zend_error((1 << 3L), "A non well formed numeric value encountered");
-        FREE_HASHTABLE(zvalue->value.ht);
+        zend_vm_stack_free_int((zvalue->value.ht));
       }
     } break;
     case IS_OBJECT: {
@@ -6467,8 +6470,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        zend_hash_destroy((zvalue)->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
+        zend_vm_stack_push((zvalue->value.ht));
       }
     } break;
     case IS_OBJECT: {
@@ -6509,8 +6511,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
+        zend_vm_stack_push_nocheck((zvalue->value.ht));
       }
     } break;
     case IS_OBJECT: {
@@ -6551,7 +6552,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        zend_rebuild_symbol_table();
+        zval_addref_p((zvalue));
         FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
@@ -6593,7 +6594,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        zend_vm_stack_free((zvalue->value.ht));
+        zval_set_isref_p((zvalue));
+        FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
     case IS_OBJECT: {
@@ -6634,7 +6636,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        zend_vm_stack_free_int((zvalue->value.ht));
+        zval_set_refcount_p((zvalue), 0);
+        FREE_HASHTABLE(zvalue->value.ht);
       }
     } break;
     case IS_OBJECT: {
@@ -6675,214 +6678,6 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
-        zend_vm_stack_push((zvalue->value.ht));
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_157
-  case 158: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        zend_vm_stack_push_nocheck((zvalue->value.ht));
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_158
-  case 159: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        zval_addref_p((zvalue));
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_159
-  case 160: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        zval_set_isref_p((zvalue));
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_160
-  case 161: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        zval_set_refcount_p((zvalue), 0);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_161
-  case 162: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
         zval_unset_isref_p((zvalue));
         FREE_HASHTABLE(zvalue->value.ht);
       }
@@ -6910,8 +6705,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_162
-  case 163: {
+#ifdef COMPILE_157
+  case 158: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -6952,8 +6747,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_163
-  case 164: {
+#ifdef COMPILE_158
+  case 159: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -6994,8 +6789,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_164
-  case 165: {
+#ifdef COMPILE_159
+  case 160: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -7036,8 +6831,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_165
-  case 166: {
+#ifdef COMPILE_160
+  case 161: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -7079,6 +6874,216 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
+#ifdef COMPILE_161
+  case 162: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      _efree(((zvalue)));
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_162
+  case 163: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      _efree(((zvalue)->value.ht));
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_163
+  case 164: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      _efree(((zvalue)->value.str.val));
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_164
+  case 165: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      _efree((zvalue->value.ht));
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_165
+  case 166: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      _efree((zvalue->value.str.val));
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
 #ifdef COMPILE_166
   case 167: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -7092,7 +7097,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _efree(((zvalue)));
+      _zend_list_addref((zvalue)->value.lval);
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7134,7 +7139,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _efree(((zvalue)->value.ht));
+      _zend_list_delete((zvalue)->value.lval);
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7176,7 +7181,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _efree(((zvalue)->value.str.val));
+      _zend_list_delete(zvalue->value.lval);
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7218,7 +7223,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _efree((zvalue->value.ht));
+      _zval_copy_ctor_func((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7260,7 +7265,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _efree((zvalue->value.str.val));
+      _zval_dtor(((zvalue)));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7302,7 +7307,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _zend_list_addref((zvalue)->value.lval);
+      _zval_dtor_func((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7344,7 +7349,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _zend_list_delete((zvalue)->value.lval);
+      _zval_ptr_dtor((&(zvalue)));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7386,7 +7391,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _zend_list_delete(zvalue->value.lval);
+      convert_to_boolean((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7428,7 +7433,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _zval_copy_ctor_func((zvalue));
+      exit(1);
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7470,7 +7475,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _zval_dtor(((zvalue)));
+      gc_remove_zval_from_buffer((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7512,7 +7517,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _zval_dtor_func((zvalue));
+      gc_zval_check_possible_root(((zvalue)));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7554,7 +7559,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      _zval_ptr_dtor((&(zvalue)));
+      gc_zval_possible_root((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7596,7 +7601,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      convert_to_boolean((zvalue));
+      i_zval_ptr_dtor((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -7627,216 +7632,6 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_179
   case 180: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      exit(1);
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_180
-  case 181: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      gc_remove_zval_from_buffer((zvalue));
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_181
-  case 182: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      gc_zval_check_possible_root(((zvalue)));
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_182
-  case 183: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      gc_zval_possible_root((zvalue));
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_183
-  case 184: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      i_zval_ptr_dtor((zvalue));
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_184
-  case 185: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -7879,8 +7674,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_185
-  case 186: {
+#ifdef COMPILE_180
+  case 181: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -7925,8 +7720,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_186
-  case 187: {
+#ifdef COMPILE_181
+  case 182: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -7973,8 +7768,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_187
-  case 188: {
+#ifdef COMPILE_182
+  case 183: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -8015,8 +7810,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_188
-  case 189: {
+#ifdef COMPILE_183
+  case 184: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -8058,6 +7853,216 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
+#ifdef COMPILE_184
+  case 185: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      memset(&zvalue->value, 0, sizeof(*(&zvalue->value)));
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_185
+  case 186: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      memset(zvalue, 0, sizeof(*(zvalue)));
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_186
+  case 187: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      zend_error((1 << 3L), "A non well formed numeric value encountered");
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_187
+  case 188: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      zend_hash_destroy((zvalue)->value.ht);
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_188
+  case 189: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      zend_hash_destroy(zvalue->value.ht);
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
 #ifdef COMPILE_189
   case 190: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -8071,7 +8076,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      memset(&zvalue->value, 0, sizeof(*(&zvalue->value)));
+      zend_rebuild_symbol_table();
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -8113,7 +8118,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      memset(zvalue, 0, sizeof(*(zvalue)));
+      zval_addref_p((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -8155,7 +8160,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      zend_error((1 << 3L), "A non well formed numeric value encountered");
+      zval_set_isref_p((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -8197,7 +8202,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      zend_hash_destroy((zvalue)->value.ht);
+      zval_set_refcount_p((zvalue), 0);
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -8239,7 +8244,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      zend_hash_destroy(zvalue->value.ht);
+      zval_unset_isref_p((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
@@ -8281,12 +8286,13 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      zend_rebuild_symbol_table();
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
-    } break;
+    }
+      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
+      break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
@@ -8323,12 +8329,13 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      zval_addref_p((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
-    } break;
+    }
+      (*zvalue).value.obj.handlers->del_ref((zvalue));
+      break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
@@ -8365,12 +8372,13 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      zval_set_isref_p((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
-    } break;
+    }
+      (*zvalue).value.obj.handlers->del_ref(zvalue);
+      break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
@@ -8407,12 +8415,14 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      zval_set_refcount_p((zvalue), 0);
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
-    } break;
+    }
+      (executor_globals.argument_stack) =
+          zend_vm_stack_new_page(((16 * 1024) - 16));
+      break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
@@ -8449,12 +8459,13 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_CONSTANT_ARRAY: {
       TSRMLS_FETCH();
 
-      zval_unset_isref_p((zvalue));
       if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
-    } break;
+    }
+      _efree(((zvalue)));
+      break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
@@ -8495,7 +8506,9 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
-    } break;
+    }
+      _efree(((zvalue)->value.ht));
+      break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
@@ -8537,7 +8550,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
+      _efree(((zvalue)->value.str.val));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -8580,7 +8593,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      (*zvalue).value.obj.handlers->del_ref((zvalue));
+      _efree((zvalue->value.ht));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -8623,7 +8636,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      (*zvalue).value.obj.handlers->del_ref(zvalue);
+      _efree((zvalue->value.str.val));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -8666,8 +8679,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      (executor_globals.argument_stack) =
-          zend_vm_stack_new_page(((16 * 1024) - 16));
+      _zend_list_addref((zvalue)->value.lval);
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -8710,7 +8722,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _efree(((zvalue)));
+      _zend_list_delete((zvalue)->value.lval);
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -8753,7 +8765,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _efree(((zvalue)->value.ht));
+      _zend_list_delete(zvalue->value.lval);
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -8796,7 +8808,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _efree(((zvalue)->value.str.val));
+      _zval_copy_ctor_func((zvalue));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -8839,7 +8851,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _efree((zvalue->value.ht));
+      _zval_dtor(((zvalue)));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -8882,7 +8894,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _efree((zvalue->value.str.val));
+      _zval_dtor_func((zvalue));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -8925,7 +8937,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _zend_list_addref((zvalue)->value.lval);
+      _zval_ptr_dtor((&(zvalue)));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -8968,7 +8980,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _zend_list_delete((zvalue)->value.lval);
+      convert_to_boolean((zvalue));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9011,7 +9023,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _zend_list_delete(zvalue->value.lval);
+      exit(1);
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9054,7 +9066,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _zval_copy_ctor_func((zvalue));
+      gc_remove_zval_from_buffer((zvalue));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9097,7 +9109,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _zval_dtor(((zvalue)));
+      gc_zval_check_possible_root(((zvalue)));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9140,7 +9152,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _zval_dtor_func((zvalue));
+      gc_zval_possible_root((zvalue));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9183,7 +9195,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      _zval_ptr_dtor((&(zvalue)));
+      i_zval_ptr_dtor((zvalue));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9226,7 +9238,9 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      convert_to_boolean((zvalue));
+      if (!(executor_globals.active_symbol_table)) {
+        zend_rebuild_symbol_table();
+      }
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9269,7 +9283,11 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      exit(1);
+      if (zvalue->value.ht &&
+          (zvalue->value.ht != &(executor_globals.symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        _efree((zvalue->value.ht));
+      }
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9312,7 +9330,13 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      gc_remove_zval_from_buffer((zvalue));
+      if (zvalue->value.str.val &&
+          !(((zvalue->value.str.val) >=
+             (compiler_globals.interned_strings_start)) &&
+            ((zvalue->value.str.val) <
+             (compiler_globals.interned_strings_end)))) {
+        _efree((zvalue->value.str.val));
+      }
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9355,7 +9379,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      gc_zval_check_possible_root(((zvalue)));
+      zend_error((1 << 3L), "A non well formed numeric value encountered");
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9398,7 +9422,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      gc_zval_possible_root((zvalue));
+      zend_hash_destroy((zvalue)->value.ht);
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9441,7 +9465,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      i_zval_ptr_dtor((zvalue));
+      zend_hash_destroy(zvalue->value.ht);
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9484,9 +9508,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      if (!(executor_globals.active_symbol_table)) {
-        zend_rebuild_symbol_table();
-      }
+      zend_rebuild_symbol_table();
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9529,11 +9551,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      if (zvalue->value.ht &&
-          (zvalue->value.ht != &(executor_globals.symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        _efree((zvalue->value.ht));
-      }
+      zval_addref_p((zvalue));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9576,13 +9594,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      if (zvalue->value.str.val &&
-          !(((zvalue->value.str.val) >=
-             (compiler_globals.interned_strings_start)) &&
-            ((zvalue->value.str.val) <
-             (compiler_globals.interned_strings_end)))) {
-        _efree((zvalue->value.str.val));
-      }
+      zval_set_isref_p((zvalue));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9625,7 +9637,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      zend_error((1 << 3L), "A non well formed numeric value encountered");
+      zval_set_refcount_p((zvalue), 0);
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9668,7 +9680,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         FREE_HASHTABLE(zvalue->value.ht);
       }
     }
-      zend_hash_destroy((zvalue)->value.ht);
+      zval_unset_isref_p((zvalue));
       break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
@@ -9710,13 +9722,11 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
-    }
-      zend_hash_destroy(zvalue->value.ht);
-      break;
+    } break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -9753,12 +9763,11 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
-    }
-      zend_rebuild_symbol_table();
-      break;
+    } break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
+      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
@@ -9796,13 +9805,11 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
-    }
-      zval_addref_p((zvalue));
-      break;
+    } break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      (*zvalue).value.obj.handlers->del_ref((zvalue));
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -9839,12 +9846,11 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         zend_hash_destroy(zvalue->value.ht);
         FREE_HASHTABLE(zvalue->value.ht);
       }
-    }
-      zval_set_isref_p((zvalue));
-      break;
+    } break;
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
+      (*zvalue).value.obj.handlers->del_ref((zvalue));
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
@@ -9867,299 +9873,6 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_231
   case 232: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    }
-      zval_set_refcount_p((zvalue), 0);
-      break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_232
-  case 233: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    }
-      zval_unset_isref_p((zvalue));
-      break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_233
-  case 234: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_234
-  case 235: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_235
-  case 236: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_236
-  case 237: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      (*zvalue).value.obj.handlers->del_ref((zvalue));
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_237
-  case 238: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      (*zvalue).value.obj.handlers->del_ref((zvalue));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_238
-  case 239: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -10200,8 +9913,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_239
-  case 240: {
+#ifdef COMPILE_232
+  case 233: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -10243,6 +9956,298 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
+#ifdef COMPILE_233
+  case 234: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      _convert_to_string(zvalue);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_234
+  case 235: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      _efree(((zvalue)));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_235
+  case 236: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      _efree(((zvalue)->value.ht));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_236
+  case 237: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      _efree(((zvalue)->value.str.val));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_237
+  case 238: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      _efree((zvalue->value.ht));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_238
+  case 239: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      _efree((zvalue->value.str.val));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_239
+  case 240: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      _object_init(zvalue);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
 #ifdef COMPILE_240
   case 241: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -10264,7 +10269,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _convert_to_string(zvalue);
+      _zend_list_addref((zvalue)->value.lval);
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10305,7 +10311,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _efree(((zvalue)));
+      _zend_list_delete((zvalue)->value.lval);
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
@@ -10347,7 +10353,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _efree(((zvalue)->value.ht));
+      _zend_list_delete(zvalue->value.lval);
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
@@ -10389,8 +10395,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _efree(((zvalue)->value.str.val));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      _zval_copy_ctor(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10431,7 +10436,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _efree((zvalue->value.ht));
+      _zval_copy_ctor_func((zvalue));
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
@@ -10473,8 +10478,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _efree((zvalue->value.str.val));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      _zval_copy_ctor_func(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10515,7 +10519,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _object_init(zvalue);
+      _zval_dtor(((zvalue)));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10556,8 +10561,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zend_list_addref((zvalue)->value.lval);
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      _zval_dtor(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10598,7 +10602,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zend_list_delete((zvalue)->value.lval);
+      _zval_dtor_func((zvalue));
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
@@ -10640,8 +10644,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zend_list_delete(zvalue->value.lval);
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      _zval_dtor_func(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10682,7 +10685,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zval_copy_ctor(zvalue);
+      _zval_dtor_wrapper(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10723,8 +10726,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zval_copy_ctor_func((zvalue));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      _zval_internal_dtor(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10765,7 +10767,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zval_copy_ctor_func(zvalue);
+      _zval_ptr_dtor((&(zvalue)));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10806,8 +10809,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zval_dtor(((zvalue)));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      add_next_index_null(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10848,7 +10850,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zval_dtor(zvalue);
+      convert_scalar_to_number(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10889,8 +10891,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zval_dtor_func((zvalue));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      convert_to_array(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10931,7 +10932,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zval_dtor_func(zvalue);
+      convert_to_boolean((zvalue));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -10972,7 +10974,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zval_dtor_wrapper(zvalue);
+      convert_to_boolean(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11013,7 +11015,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zval_internal_dtor(zvalue);
+      convert_to_double(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11054,8 +11056,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      _zval_ptr_dtor((&(zvalue)));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      convert_to_long(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11096,7 +11097,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      add_next_index_null(zvalue);
+      convert_to_null(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11137,7 +11138,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      convert_scalar_to_number(zvalue);
+      convert_to_object(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11178,7 +11179,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      convert_to_array(zvalue);
+      decrement_function(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11219,7 +11220,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      convert_to_boolean((zvalue));
+      exit(1);
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
@@ -11261,7 +11262,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      convert_to_boolean(zvalue);
+      gc_remove_zval_from_buffer((zvalue));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11302,7 +11304,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      convert_to_double(zvalue);
+      gc_remove_zval_from_buffer(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11343,7 +11345,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      convert_to_long(zvalue);
+      gc_zobj_possible_root(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11384,7 +11386,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      convert_to_null(zvalue);
+      gc_zval_check_possible_root(((zvalue)));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11425,7 +11428,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      convert_to_object(zvalue);
+      gc_zval_check_possible_root(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11466,7 +11469,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      decrement_function(zvalue);
+      gc_zval_possible_root((zvalue));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11507,8 +11511,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      exit(1);
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      gc_zval_possible_root(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11549,8 +11552,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      gc_remove_zval_from_buffer((zvalue));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      i_zend_is_true(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11591,7 +11593,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      gc_remove_zval_from_buffer(zvalue);
+      i_zval_ptr_dtor((zvalue));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11632,7 +11635,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      gc_zobj_possible_root(zvalue);
+      i_zval_ptr_dtor(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -11654,296 +11657,6 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_274
   case 275: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      gc_zval_check_possible_root(((zvalue)));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_275
-  case 276: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      gc_zval_check_possible_root(zvalue);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_276
-  case 277: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      gc_zval_possible_root((zvalue));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_277
-  case 278: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      gc_zval_possible_root(zvalue);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_278
-  case 279: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      i_zend_is_true(zvalue);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_279
-  case 280: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      i_zval_ptr_dtor((zvalue));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_280
-  case 281: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      i_zval_ptr_dtor(zvalue);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_281
-  case 282: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -11986,8 +11699,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_282
-  case 283: {
+#ifdef COMPILE_275
+  case 276: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12032,8 +11745,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_283
-  case 284: {
+#ifdef COMPILE_276
+  case 277: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12080,8 +11793,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_284
-  case 285: {
+#ifdef COMPILE_277
+  case 278: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12121,8 +11834,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_285
-  case 286: {
+#ifdef COMPILE_278
+  case 279: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12162,8 +11875,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_286
-  case 287: {
+#ifdef COMPILE_279
+  case 280: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12204,8 +11917,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_287
-  case 288: {
+#ifdef COMPILE_280
+  case 281: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12246,8 +11959,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_288
-  case 289: {
+#ifdef COMPILE_281
+  case 282: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12288,8 +12001,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_289
-  case 290: {
+#ifdef COMPILE_282
+  case 283: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12331,8 +12044,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_290
-  case 291: {
+#ifdef COMPILE_283
+  case 284: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12373,8 +12086,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_291
-  case 292: {
+#ifdef COMPILE_284
+  case 285: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12414,8 +12127,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_292
-  case 293: {
+#ifdef COMPILE_285
+  case 286: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12456,8 +12169,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_293
-  case 294: {
+#ifdef COMPILE_286
+  case 287: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12498,8 +12211,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_294
-  case 295: {
+#ifdef COMPILE_287
+  case 288: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -12540,6 +12253,293 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
+#ifdef COMPILE_288
+  case 289: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      zend_is_true(zvalue);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_289
+  case 290: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      zend_locale_sprintf_double(zvalue);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_290
+  case 291: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      zend_object_store_ctor_failed(zvalue);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_291
+  case 292: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      zend_objects_clone_obj(zvalue);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_292
+  case 293: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      zend_objects_store_add_ref(zvalue);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_293
+  case 294: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      zend_objects_store_clone_obj(zvalue);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_294
+  case 295: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      zend_objects_store_del_ref(zvalue);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
 #ifdef COMPILE_295
   case 296: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -12561,7 +12561,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_is_true(zvalue);
+      zend_objects_store_get_refcount(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -12602,7 +12602,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_locale_sprintf_double(zvalue);
+      zend_print_flat_zval_r(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -12643,7 +12643,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_object_store_ctor_failed(zvalue);
+      zend_print_variable(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -12684,7 +12684,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_objects_clone_obj(zvalue);
+      zend_rebuild_symbol_table();
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -12725,7 +12726,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_objects_store_add_ref(zvalue);
+      zend_std_get_constructor(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -12766,7 +12767,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_objects_store_clone_obj(zvalue);
+      zend_std_get_properties(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -12807,7 +12808,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_objects_store_del_ref(zvalue);
+      zval_addref_p((zvalue));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -12848,7 +12850,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_objects_store_get_refcount(zvalue);
+      zval_addref_p(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -12889,7 +12891,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_print_flat_zval_r(zvalue);
+      zval_delref_p(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -12930,7 +12932,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_print_variable(zvalue);
+      zval_is_true(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -12971,8 +12973,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_rebuild_symbol_table();
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      zval_isref_p(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13013,7 +13014,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_std_get_constructor(zvalue);
+      zval_refcount_p(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13054,7 +13055,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zend_std_get_properties(zvalue);
+      zval_set_isref_p((zvalue));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13095,8 +13097,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zval_addref_p((zvalue));
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+      zval_set_isref_p(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13137,7 +13138,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zval_addref_p(zvalue);
+      zval_set_refcount_p((zvalue), 0);
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13178,7 +13180,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zval_delref_p(zvalue);
+      zval_unset_isref_p((zvalue));
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13219,7 +13222,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zval_is_true(zvalue);
+      zval_unset_isref_p(zvalue);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13260,8 +13263,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zval_isref_p(zvalue);
-    } break;
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    }
+      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
+      break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
 
@@ -13301,8 +13306,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zval_refcount_p(zvalue);
-    } break;
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    }
+      (*zvalue).value.obj.handlers->del_ref((zvalue));
+      break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
 
@@ -13342,9 +13349,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zval_set_isref_p((zvalue));
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
+    }
+      (*zvalue).value.obj.handlers->del_ref(zvalue);
+      break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
 
@@ -13384,8 +13392,11 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zval_set_isref_p(zvalue);
-    } break;
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    }
+      (executor_globals.argument_stack) =
+          zend_vm_stack_new_page(((16 * 1024) - 16));
+      break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
 
@@ -13425,9 +13436,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zval_set_refcount_p((zvalue), 0);
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
+    }
+      _efree(((zvalue)));
+      break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
 
@@ -13467,9 +13479,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zval_unset_isref_p((zvalue));
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
+    }
+      _efree(((zvalue)->value.ht));
+      break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
 
@@ -13509,8 +13522,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     case IS_OBJECT: {
       TSRMLS_FETCH();
 
-      zval_unset_isref_p(zvalue);
-    } break;
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    }
+      _efree(((zvalue)->value.str.val));
+      break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
 
@@ -13551,7 +13566,9 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
+    }
+      _efree((zvalue->value.ht));
+      break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
 
@@ -13593,7 +13610,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
+      _efree((zvalue->value.str.val));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13636,7 +13653,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      (*zvalue).value.obj.handlers->del_ref((zvalue));
+      _zend_list_addref((zvalue)->value.lval);
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13679,7 +13696,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      (*zvalue).value.obj.handlers->del_ref(zvalue);
+      _zend_list_delete((zvalue)->value.lval);
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13722,8 +13739,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      (executor_globals.argument_stack) =
-          zend_vm_stack_new_page(((16 * 1024) - 16));
+      _zend_list_delete(zvalue->value.lval);
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13766,7 +13782,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _efree(((zvalue)));
+      _zval_copy_ctor_func((zvalue));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13809,7 +13825,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _efree(((zvalue)->value.ht));
+      _zval_dtor(((zvalue)));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13852,7 +13868,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _efree(((zvalue)->value.str.val));
+      _zval_dtor_func((zvalue));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13895,7 +13911,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _efree((zvalue->value.ht));
+      _zval_ptr_dtor((&(zvalue)));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13938,7 +13954,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _efree((zvalue->value.str.val));
+      convert_to_boolean((zvalue));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -13981,7 +13997,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _zend_list_addref((zvalue)->value.lval);
+      exit(1);
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14024,7 +14040,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _zend_list_delete((zvalue)->value.lval);
+      gc_remove_zval_from_buffer((zvalue));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14067,7 +14083,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _zend_list_delete(zvalue->value.lval);
+      gc_zval_check_possible_root(((zvalue)));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14110,7 +14126,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _zval_copy_ctor_func((zvalue));
+      gc_zval_possible_root((zvalue));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14153,7 +14169,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _zval_dtor(((zvalue)));
+      i_zval_ptr_dtor((zvalue));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14196,7 +14212,9 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _zval_dtor_func((zvalue));
+      if (!(executor_globals.active_symbol_table)) {
+        zend_rebuild_symbol_table();
+      }
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14239,7 +14257,11 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      _zval_ptr_dtor((&(zvalue)));
+      if (zvalue->value.ht &&
+          (zvalue->value.ht != &(executor_globals.symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        _efree((zvalue->value.ht));
+      }
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14282,7 +14304,13 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      convert_to_boolean((zvalue));
+      if (zvalue->value.str.val &&
+          !(((zvalue->value.str.val) >=
+             (compiler_globals.interned_strings_start)) &&
+            ((zvalue->value.str.val) <
+             (compiler_globals.interned_strings_end)))) {
+        _efree((zvalue->value.str.val));
+      }
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14325,7 +14353,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      exit(1);
+      zend_error((1 << 3L), "A non well formed numeric value encountered");
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14368,7 +14396,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      gc_remove_zval_from_buffer((zvalue));
+      zend_hash_destroy((zvalue)->value.ht);
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14411,7 +14439,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      gc_zval_check_possible_root(((zvalue)));
+      zend_hash_destroy(zvalue->value.ht);
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14454,7 +14482,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      gc_zval_possible_root((zvalue));
+      zend_rebuild_symbol_table();
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14497,7 +14525,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      i_zval_ptr_dtor((zvalue));
+      zval_addref_p((zvalue));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14540,9 +14568,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      if (!(executor_globals.active_symbol_table)) {
-        zend_rebuild_symbol_table();
-      }
+      zval_set_isref_p((zvalue));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14585,11 +14611,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      if (zvalue->value.ht &&
-          (zvalue->value.ht != &(executor_globals.symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        _efree((zvalue->value.ht));
-      }
+      zval_set_refcount_p((zvalue), 0);
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14632,13 +14654,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     }
-      if (zvalue->value.str.val &&
-          !(((zvalue->value.str.val) >=
-             (compiler_globals.interned_strings_start)) &&
-            ((zvalue->value.str.val) <
-             (compiler_globals.interned_strings_end)))) {
-        _efree((zvalue->value.str.val));
-      }
+      zval_unset_isref_p((zvalue));
       break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -14680,391 +14696,6 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    }
-      zend_error((1 << 3L), "A non well formed numeric value encountered");
-      break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_346
-  case 347: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    }
-      zend_hash_destroy((zvalue)->value.ht);
-      break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_347
-  case 348: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    }
-      zend_hash_destroy(zvalue->value.ht);
-      break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_348
-  case 349: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    }
-      zend_rebuild_symbol_table();
-      break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_349
-  case 350: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    }
-      zval_addref_p((zvalue));
-      break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_350
-  case 351: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    }
-      zval_set_isref_p((zvalue));
-      break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_351
-  case 352: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    }
-      zval_set_refcount_p((zvalue), 0);
-      break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_352
-  case 353: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    }
-      zval_unset_isref_p((zvalue));
-      break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_353
-  case 354: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_354
-  case 355: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
     } break;
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -15085,8 +14716,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_355
-  case 356: {
+#ifdef COMPILE_346
+  case 347: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -15127,8 +14758,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_356
-  case 357: {
+#ifdef COMPILE_347
+  case 348: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -15169,8 +14800,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_357
-  case 358: {
+#ifdef COMPILE_348
+  case 349: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -15212,6 +14843,381 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
+#ifdef COMPILE_349
+  case 350: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      _Exit(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_350
+  case 351: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      _efree(((zvalue)));
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_351
+  case 352: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      _efree(((zvalue)->value.ht));
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_352
+  case 353: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      _efree(((zvalue)->value.str.val));
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_353
+  case 354: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      _efree((zvalue->value.ht));
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_354
+  case 355: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      _efree((zvalue->value.str.val));
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_355
+  case 356: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      _zend_list_addref((zvalue)->value.lval);
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_356
+  case 357: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      _zend_list_addref(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_357
+  case 358: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      _zend_list_delete((zvalue)->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
 #ifdef COMPILE_358
   case 359: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -15239,7 +15245,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _Exit(zvalue->value.lval);
+      _zend_list_delete((zvalue)->value.lval);
+      zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -15280,7 +15287,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _efree(((zvalue)));
+      _zend_list_delete(zvalue->value.lval);
       zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
@@ -15322,7 +15329,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _efree(((zvalue)->value.ht));
+      _zval_copy_ctor_func((zvalue));
       zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
@@ -15364,7 +15371,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _efree(((zvalue)->value.str.val));
+      _zval_dtor(((zvalue)));
       zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
@@ -15406,7 +15413,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _efree((zvalue->value.ht));
+      _zval_dtor_func((zvalue));
       zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
@@ -15448,7 +15455,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _efree((zvalue->value.str.val));
+      _zval_ptr_dtor((&(zvalue)));
       zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
@@ -15490,8 +15497,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _zend_list_addref((zvalue)->value.lval);
-      zend_list_delete(zvalue->value.lval);
+      abs(zvalue->value.lval);
     } break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -15532,7 +15538,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _zend_list_addref(zvalue->value.lval);
+      clean_module_constants(zvalue->value.lval);
     } break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -15573,7 +15579,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _zend_list_delete((zvalue)->value.lval);
+      convert_to_boolean((zvalue));
+      zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -15614,7 +15621,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _zend_list_delete((zvalue)->value.lval);
+      exit(1);
       zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
@@ -15656,8 +15663,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _zend_list_delete(zvalue->value.lval);
-      zend_list_delete(zvalue->value.lval);
+      exit(zvalue->value.lval);
     } break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -15698,8 +15704,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _zval_copy_ctor_func((zvalue));
-      zend_list_delete(zvalue->value.lval);
+      ffs(zvalue->value.lval);
     } break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -15740,7 +15745,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _zval_dtor(((zvalue)));
+      gc_remove_zval_from_buffer((zvalue));
       zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
@@ -15782,7 +15787,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _zval_dtor_func((zvalue));
+      gc_zval_check_possible_root(((zvalue)));
       zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
@@ -15824,7 +15829,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      _zval_ptr_dtor((&(zvalue)));
+      gc_zval_possible_root((zvalue));
       zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
@@ -15866,7 +15871,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      abs(zvalue->value.lval);
+      get_binary_op(zvalue->value.lval);
     } break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -15907,7 +15912,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      clean_module_constants(zvalue->value.lval);
+      get_unary_op(zvalue->value.lval);
     } break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -15948,7 +15953,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      convert_to_boolean((zvalue));
+      i_zval_ptr_dtor((zvalue));
       zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
@@ -15965,380 +15970,6 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_376
   case 377: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      exit(1);
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_377
-  case 378: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      exit(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_378
-  case 379: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      ffs(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_379
-  case 380: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      gc_remove_zval_from_buffer((zvalue));
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_380
-  case 381: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      gc_zval_check_possible_root(((zvalue)));
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_381
-  case 382: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      gc_zval_possible_root((zvalue));
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_382
-  case 383: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      get_binary_op(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_383
-  case 384: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      get_unary_op(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_384
-  case 385: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      i_zval_ptr_dtor((zvalue));
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_385
-  case 386: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16381,8 +16012,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_386
-  case 387: {
+#ifdef COMPILE_377
+  case 378: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16427,8 +16058,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_387
-  case 388: {
+#ifdef COMPILE_378
+  case 379: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16475,8 +16106,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_388
-  case 389: {
+#ifdef COMPILE_379
+  case 380: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16517,8 +16148,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_389
-  case 390: {
+#ifdef COMPILE_380
+  case 381: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16559,8 +16190,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_390
-  case 391: {
+#ifdef COMPILE_381
+  case 382: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16600,8 +16231,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_391
-  case 392: {
+#ifdef COMPILE_382
+  case 383: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16641,8 +16272,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_392
-  case 393: {
+#ifdef COMPILE_383
+  case 384: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16682,8 +16313,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_393
-  case 394: {
+#ifdef COMPILE_384
+  case 385: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16723,8 +16354,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_394
-  case 395: {
+#ifdef COMPILE_385
+  case 386: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16764,8 +16395,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_395
-  case 396: {
+#ifdef COMPILE_386
+  case 387: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16805,8 +16436,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_396
-  case 397: {
+#ifdef COMPILE_387
+  case 388: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16846,8 +16477,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_397
-  case 398: {
+#ifdef COMPILE_388
+  case 389: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16887,8 +16518,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_398
-  case 399: {
+#ifdef COMPILE_389
+  case 390: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16928,8 +16559,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_399
-  case 400: {
+#ifdef COMPILE_390
+  case 391: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -16970,8 +16601,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_400
-  case 401: {
+#ifdef COMPILE_391
+  case 392: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -17011,8 +16642,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_401
-  case 402: {
+#ifdef COMPILE_392
+  case 393: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -17052,8 +16683,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_402
-  case 403: {
+#ifdef COMPILE_393
+  case 394: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -17094,8 +16725,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_403
-  case 404: {
+#ifdef COMPILE_394
+  case 395: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -17136,6 +16767,376 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
+#ifdef COMPILE_395
+  case 396: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_memory_peak_usage(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_396
+  case 397: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_memory_usage(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_397
+  case 398: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_rebuild_symbol_table();
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_398
+  case 399: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_rsrc_list_get_rsrc_type(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_399
+  case 400: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_timeout(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_400
+  case 401: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_vm_stack_extend(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_401
+  case 402: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_vm_stack_get_arg(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_402
+  case 403: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_vm_stack_new_page(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_403
+  case 404: {
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_vm_stack_push_args(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
 #ifdef COMPILE_404
   case 405: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -17163,7 +17164,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zend_memory_peak_usage(zvalue->value.lval);
+      zval_addref_p((zvalue));
+      zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -17204,7 +17206,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zend_memory_usage(zvalue->value.lval);
+      zval_set_isref_p((zvalue));
+      zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -17245,7 +17248,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zend_rebuild_symbol_table();
+      zval_set_refcount_p((zvalue), 0);
       zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
@@ -17287,7 +17290,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zend_rsrc_list_get_rsrc_type(zvalue->value.lval);
+      zval_unset_isref_p((zvalue));
+      zend_list_delete(zvalue->value.lval);
     } break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -17328,8 +17332,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zend_timeout(zvalue->value.lval);
-    } break;
+      zend_list_delete(zvalue->value.lval);
+    }
+      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
+      break;
     case IS_LONG:
     case IS_DOUBLE:
     case IS_BOOL:
@@ -17369,8 +17375,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zend_vm_stack_extend(zvalue->value.lval);
-    } break;
+      zend_list_delete(zvalue->value.lval);
+    }
+      (*zvalue).value.obj.handlers->del_ref((zvalue));
+      break;
     case IS_LONG:
     case IS_DOUBLE:
     case IS_BOOL:
@@ -17410,8 +17418,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zend_vm_stack_get_arg(zvalue->value.lval);
-    } break;
+      zend_list_delete(zvalue->value.lval);
+    }
+      (*zvalue).value.obj.handlers->del_ref(zvalue);
+      break;
     case IS_LONG:
     case IS_DOUBLE:
     case IS_BOOL:
@@ -17451,8 +17461,11 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zend_vm_stack_new_page(zvalue->value.lval);
-    } break;
+      zend_list_delete(zvalue->value.lval);
+    }
+      (executor_globals.argument_stack) =
+          zend_vm_stack_new_page(((16 * 1024) - 16));
+      break;
     case IS_LONG:
     case IS_DOUBLE:
     case IS_BOOL:
@@ -17492,8 +17505,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zend_vm_stack_push_args(zvalue->value.lval);
-    } break;
+      zend_list_delete(zvalue->value.lval);
+    }
+      _efree(((zvalue)));
+      break;
     case IS_LONG:
     case IS_DOUBLE:
     case IS_BOOL:
@@ -17533,9 +17548,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zval_addref_p((zvalue));
       zend_list_delete(zvalue->value.lval);
-    } break;
+    }
+      _efree(((zvalue)->value.ht));
+      break;
     case IS_LONG:
     case IS_DOUBLE:
     case IS_BOOL:
@@ -17575,9 +17591,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zval_set_isref_p((zvalue));
       zend_list_delete(zvalue->value.lval);
-    } break;
+    }
+      _efree(((zvalue)->value.str.val));
+      break;
     case IS_LONG:
     case IS_DOUBLE:
     case IS_BOOL:
@@ -17617,9 +17634,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zval_set_refcount_p((zvalue), 0);
       zend_list_delete(zvalue->value.lval);
-    } break;
+    }
+      _efree((zvalue->value.ht));
+      break;
     case IS_LONG:
     case IS_DOUBLE:
     case IS_BOOL:
@@ -17659,9 +17677,10 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       TSRMLS_FETCH();
 
       /* destroy resource */
-      zval_unset_isref_p((zvalue));
       zend_list_delete(zvalue->value.lval);
-    } break;
+    }
+      _efree((zvalue->value.str.val));
+      break;
     case IS_LONG:
     case IS_DOUBLE:
     case IS_BOOL:
@@ -17702,7 +17721,9 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
-    } break;
+    }
+      _zend_list_addref((zvalue)->value.lval);
+      break;
     case IS_LONG:
     case IS_DOUBLE:
     case IS_BOOL:
@@ -17744,7 +17765,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      (*(zvalue)).value.obj.handlers->del_ref(zvalue);
+      _zend_list_delete((zvalue)->value.lval);
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -17787,7 +17808,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      (*zvalue).value.obj.handlers->del_ref((zvalue));
+      _zend_list_delete(zvalue->value.lval);
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -17830,7 +17851,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      (*zvalue).value.obj.handlers->del_ref(zvalue);
+      _zval_copy_ctor_func((zvalue));
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -17873,8 +17894,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      (executor_globals.argument_stack) =
-          zend_vm_stack_new_page(((16 * 1024) - 16));
+      _zval_dtor(((zvalue)));
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -17917,7 +17937,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      _efree(((zvalue)));
+      _zval_dtor_func((zvalue));
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -17960,7 +17980,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      _efree(((zvalue)->value.ht));
+      _zval_ptr_dtor((&(zvalue)));
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -18003,7 +18023,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      _efree(((zvalue)->value.str.val));
+      convert_to_boolean((zvalue));
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -18046,7 +18066,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      _efree((zvalue->value.ht));
+      exit(1);
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -18089,7 +18109,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      _efree((zvalue->value.str.val));
+      gc_remove_zval_from_buffer((zvalue));
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -18132,7 +18152,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      _zend_list_addref((zvalue)->value.lval);
+      gc_zval_check_possible_root(((zvalue)));
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -18175,7 +18195,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      _zend_list_delete((zvalue)->value.lval);
+      gc_zval_possible_root((zvalue));
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -18218,7 +18238,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       /* destroy resource */
       zend_list_delete(zvalue->value.lval);
     }
-      _zend_list_delete(zvalue->value.lval);
+      i_zval_ptr_dtor((zvalue));
       break;
     case IS_LONG:
     case IS_DOUBLE:
@@ -18234,436 +18254,6 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_430
   case 431: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    }
-      _zval_copy_ctor_func((zvalue));
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_431
-  case 432: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    }
-      _zval_dtor(((zvalue)));
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_432
-  case 433: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    }
-      _zval_dtor_func((zvalue));
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_433
-  case 434: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    }
-      _zval_ptr_dtor((&(zvalue)));
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_434
-  case 435: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    }
-      convert_to_boolean((zvalue));
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_435
-  case 436: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    }
-      exit(1);
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_436
-  case 437: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    }
-      gc_remove_zval_from_buffer((zvalue));
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_437
-  case 438: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    }
-      gc_zval_check_possible_root(((zvalue)));
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_438
-  case 439: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    }
-      gc_zval_possible_root((zvalue));
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_439
-  case 440: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    }
-      i_zval_ptr_dtor((zvalue));
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_440
-  case 441: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -18707,8 +18297,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_441
-  case 442: {
+#ifdef COMPILE_431
+  case 432: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -18754,8 +18344,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_442
-  case 443: {
+#ifdef COMPILE_432
+  case 433: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -18803,8 +18393,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_443
-  case 444: {
+#ifdef COMPILE_433
+  case 434: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -18846,8 +18436,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_444
-  case 445: {
+#ifdef COMPILE_434
+  case 435: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -18889,8 +18479,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_445
-  case 446: {
+#ifdef COMPILE_435
+  case 436: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -18932,8 +18522,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_446
-  case 447: {
+#ifdef COMPILE_436
+  case 437: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -18975,8 +18565,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_447
-  case 448: {
+#ifdef COMPILE_437
+  case 438: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19018,8 +18608,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_448
-  case 449: {
+#ifdef COMPILE_438
+  case 439: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19061,8 +18651,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_449
-  case 450: {
+#ifdef COMPILE_439
+  case 440: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19104,8 +18694,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_450
-  case 451: {
+#ifdef COMPILE_440
+  case 441: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19147,8 +18737,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_451
-  case 452: {
+#ifdef COMPILE_441
+  case 442: {
     (*(zvalue)).value.obj.handlers->del_ref(zvalue);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -19189,8 +18779,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_452
-  case 453: {
+#ifdef COMPILE_442
+  case 443: {
     (*zvalue).value.obj.handlers->del_ref((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -19231,8 +18821,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_453
-  case 454: {
+#ifdef COMPILE_443
+  case 444: {
     (*zvalue).value.obj.handlers->del_ref(zvalue);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -19273,8 +18863,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_454
-  case 455: {
+#ifdef COMPILE_444
+  case 445: {
     (executor_globals.argument_stack) =
         zend_vm_stack_new_page(((16 * 1024) - 16));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -19316,9 +18906,429 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
+#ifdef COMPILE_445
+  case 446: {
+    _efree(((zvalue)));
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_446
+  case 447: {
+    _efree(((zvalue)->value.ht));
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_447
+  case 448: {
+    _efree(((zvalue)->value.str.val));
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_448
+  case 449: {
+    _efree((zvalue->value.ht));
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_449
+  case 450: {
+    _efree((zvalue->value.str.val));
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_450
+  case 451: {
+    _zend_list_addref((zvalue)->value.lval);
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_451
+  case 452: {
+    _zend_list_delete((zvalue)->value.lval);
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_452
+  case 453: {
+    _zend_list_delete(zvalue->value.lval);
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_453
+  case 454: {
+    _zval_copy_ctor_func((zvalue));
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_454
+  case 455: {
+    _zval_dtor(((zvalue)));
+    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+    case IS_STRING:
+    case IS_CONSTANT:
+    case IS_CLASS:
+      CHECK_ZVAL_STRING_REL(zvalue);
+      STR_FREE_REL(zvalue->value.str.val);
+      break;
+    case IS_ARRAY:
+    case IS_CONSTANT_ARRAY: {
+      TSRMLS_FETCH();
+
+      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
+        zend_hash_destroy(zvalue->value.ht);
+        FREE_HASHTABLE(zvalue->value.ht);
+      }
+    } break;
+    case IS_OBJECT: {
+      TSRMLS_FETCH();
+
+      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+    } break;
+    case IS_RESOURCE: {
+      TSRMLS_FETCH();
+
+      /* destroy resource */
+      zend_list_delete(zvalue->value.lval);
+    } break;
+    case IS_LONG:
+    case IS_DOUBLE:
+    case IS_BOOL:
+    case IS_NULL:
+    default:
+      return;
+      break;
+    }
+
+    break;
+  }
+#endif
 #ifdef COMPILE_455
   case 456: {
-    _efree(((zvalue)));
+    _zval_dtor_func((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19360,7 +19370,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_456
   case 457: {
-    _efree(((zvalue)->value.ht));
+    _zval_ptr_dtor((&(zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19402,7 +19412,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_457
   case 458: {
-    _efree(((zvalue)->value.str.val));
+    convert_to_boolean((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19444,7 +19454,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_458
   case 459: {
-    _efree((zvalue->value.ht));
+    exit(1);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19486,7 +19496,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_459
   case 460: {
-    _efree((zvalue->value.str.val));
+    gc_remove_zval_from_buffer((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19528,7 +19538,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_460
   case 461: {
-    _zend_list_addref((zvalue)->value.lval);
+    gc_zval_check_possible_root(((zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19570,7 +19580,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_461
   case 462: {
-    _zend_list_delete((zvalue)->value.lval);
+    gc_zval_possible_root((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19612,7 +19622,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_462
   case 463: {
-    _zend_list_delete(zvalue->value.lval);
+    i_zval_ptr_dtor((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -19654,426 +19664,6 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
 #ifdef COMPILE_463
   case 464: {
-    _zval_copy_ctor_func((zvalue));
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_464
-  case 465: {
-    _zval_dtor(((zvalue)));
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_465
-  case 466: {
-    _zval_dtor_func((zvalue));
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_466
-  case 467: {
-    _zval_ptr_dtor((&(zvalue)));
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_467
-  case 468: {
-    convert_to_boolean((zvalue));
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_468
-  case 469: {
-    exit(1);
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_469
-  case 470: {
-    gc_remove_zval_from_buffer((zvalue));
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_470
-  case 471: {
-    gc_zval_check_possible_root(((zvalue)));
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_471
-  case 472: {
-    gc_zval_possible_root((zvalue));
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_472
-  case 473: {
-    i_zval_ptr_dtor((zvalue));
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-    case IS_CLASS:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      STR_FREE_REL(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-        zend_hash_destroy(zvalue->value.ht);
-        FREE_HASHTABLE(zvalue->value.ht);
-      }
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-
-      Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
-    } break;
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      /* destroy resource */
-      zend_list_delete(zvalue->value.lval);
-    } break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      return;
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_473
-  case 474: {
     if (!(executor_globals.active_symbol_table)) {
       zend_rebuild_symbol_table();
     }
@@ -20116,8 +19706,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_474
-  case 475: {
+#ifdef COMPILE_464
+  case 465: {
     if (zvalue->value.ht &&
         (zvalue->value.ht != &(executor_globals.symbol_table))) {
       zend_hash_destroy(zvalue->value.ht);
@@ -20162,8 +19752,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_475
-  case 476: {
+#ifdef COMPILE_465
+  case 466: {
     if (zvalue->value.str.val &&
         !(((zvalue->value.str.val) >=
            (compiler_globals.interned_strings_start)) &&
@@ -20210,8 +19800,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_476
-  case 477: {
+#ifdef COMPILE_466
+  case 467: {
     memset(&(*zvalue), 0, sizeof(*(&(*zvalue))));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20252,8 +19842,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_477
-  case 478: {
+#ifdef COMPILE_467
+  case 468: {
     memset(&(*zvalue).value, 0, sizeof(*(&(*zvalue).value)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20294,8 +19884,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_478
-  case 479: {
+#ifdef COMPILE_468
+  case 469: {
     memset(&(*zvalue).value.obj, 0, sizeof(*(&(*zvalue).value.obj)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20336,8 +19926,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_479
-  case 480: {
+#ifdef COMPILE_469
+  case 470: {
     memset(&compiler_globals, 0, sizeof(*(&compiler_globals)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20378,8 +19968,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_480
-  case 481: {
+#ifdef COMPILE_470
+  case 471: {
     memset(&executor_globals, 0, sizeof(*(&executor_globals)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20420,8 +20010,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_481
-  case 482: {
+#ifdef COMPILE_471
+  case 472: {
     memset(&executor_globals.symbol_table, 0,
            sizeof(*(&executor_globals.symbol_table)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -20463,8 +20053,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_482
-  case 483: {
+#ifdef COMPILE_472
+  case 473: {
     memset(&zvalue->value, 0, sizeof(*(&zvalue->value)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20505,8 +20095,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_483
-  case 484: {
+#ifdef COMPILE_473
+  case 474: {
     memset(&zvalue->value.str, 0, sizeof(*(&zvalue->value.str)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20547,8 +20137,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_484
-  case 485: {
+#ifdef COMPILE_474
+  case 475: {
     memset((*zvalue).value.obj.handlers, 0,
            sizeof(*((*zvalue).value.obj.handlers)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -20590,8 +20180,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_485
-  case 486: {
+#ifdef COMPILE_475
+  case 476: {
     memset(zvalue, 0, sizeof(*(zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20632,8 +20222,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_486
-  case 487: {
+#ifdef COMPILE_476
+  case 477: {
     zend_error((1 << 3L), "A non well formed numeric value encountered");
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20674,8 +20264,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_487
-  case 488: {
+#ifdef COMPILE_477
+  case 478: {
     zend_hash_destroy((zvalue)->value.ht);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20716,8 +20306,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_488
-  case 489: {
+#ifdef COMPILE_478
+  case 479: {
     zend_hash_destroy(zvalue->value.ht);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20758,8 +20348,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_489
-  case 490: {
+#ifdef COMPILE_479
+  case 480: {
     zend_rebuild_symbol_table();
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20800,8 +20390,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_490
-  case 491: {
+#ifdef COMPILE_480
+  case 481: {
     zval_addref_p((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20842,8 +20432,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_491
-  case 492: {
+#ifdef COMPILE_481
+  case 482: {
     zval_set_isref_p((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20884,8 +20474,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_492
-  case 493: {
+#ifdef COMPILE_482
+  case 483: {
     zval_set_refcount_p((zvalue), 0);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20926,8 +20516,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_493
-  case 494: {
+#ifdef COMPILE_483
+  case 484: {
     zval_unset_isref_p((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20975,7 +20565,7 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   1)) {
+                   2)) {
   case 0: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -21000,34 +20590,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
 
     break;
   }
-#ifdef COMPILE_494
+#ifdef COMPILE_484
   case 1: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      str_free(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY:
-    case IS_OBJECT:
-    case IS_RESOURCE:
-      zend_error(E_CORE_ERROR,
-                 "Internal zval's can't be arrays, objects or resources");
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_495
-  case 2: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21054,8 +20618,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_496
-  case 3: {
+#ifdef COMPILE_485
+  case 2: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21081,8 +20645,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_497
-  case 4: {
+#ifdef COMPILE_486
+  case 3: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21108,8 +20672,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_498
-  case 5: {
+#ifdef COMPILE_487
+  case 4: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21135,8 +20699,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_499
-  case 6: {
+#ifdef COMPILE_488
+  case 5: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21162,8 +20726,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_500
-  case 7: {
+#ifdef COMPILE_489
+  case 6: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21189,8 +20753,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_501
-  case 8: {
+#ifdef COMPILE_490
+  case 7: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21216,8 +20780,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_502
-  case 9: {
+#ifdef COMPILE_491
+  case 8: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21243,8 +20807,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_503
-  case 10: {
+#ifdef COMPILE_492
+  case 9: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21270,8 +20834,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_504
-  case 11: {
+#ifdef COMPILE_493
+  case 10: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21297,8 +20861,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_505
-  case 12: {
+#ifdef COMPILE_494
+  case 11: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21324,8 +20888,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_506
-  case 13: {
+#ifdef COMPILE_495
+  case 12: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21351,8 +20915,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_507
-  case 14: {
+#ifdef COMPILE_496
+  case 13: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21378,8 +20942,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_508
-  case 15: {
+#ifdef COMPILE_497
+  case 14: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21405,8 +20969,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_509
-  case 16: {
+#ifdef COMPILE_498
+  case 15: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21432,8 +20996,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_510
-  case 17: {
+#ifdef COMPILE_499
+  case 16: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21459,8 +21023,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_511
-  case 18: {
+#ifdef COMPILE_500
+  case 17: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21488,8 +21052,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_512
-  case 19: {
+#ifdef COMPILE_501
+  case 18: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21515,8 +21079,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_513
-  case 20: {
+#ifdef COMPILE_502
+  case 19: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21542,8 +21106,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_514
-  case 21: {
+#ifdef COMPILE_503
+  case 20: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21569,8 +21133,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_515
-  case 22: {
+#ifdef COMPILE_504
+  case 21: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21596,8 +21160,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_516
-  case 23: {
+#ifdef COMPILE_505
+  case 22: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21623,8 +21187,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_517
-  case 24: {
+#ifdef COMPILE_506
+  case 23: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21650,8 +21214,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_518
-  case 25: {
+#ifdef COMPILE_507
+  case 24: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21677,8 +21241,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_519
-  case 26: {
+#ifdef COMPILE_508
+  case 25: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21704,8 +21268,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_520
-  case 27: {
+#ifdef COMPILE_509
+  case 26: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21731,8 +21295,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_521
-  case 28: {
+#ifdef COMPILE_510
+  case 27: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21758,8 +21322,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_522
-  case 29: {
+#ifdef COMPILE_511
+  case 28: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21785,34 +21349,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_523
-  case 30: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_STRING:
-    case IS_CONSTANT:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      str_free(zvalue->value.str.val);
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY:
-    case IS_OBJECT:
-    case IS_RESOURCE:
-      zend_error(E_CORE_ERROR,
-                 "Internal zval's can't be arrays, objects or resources");
-      break;
-    case IS_LONG:
-    case IS_DOUBLE:
-    case IS_BOOL:
-    case IS_NULL:
-    default:
-      break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_524
-  case 31: {
+#ifdef COMPILE_512
+  case 29: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21839,8 +21377,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_525
-  case 32: {
+#ifdef COMPILE_513
+  case 30: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21866,8 +21404,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_526
-  case 33: {
+#ifdef COMPILE_514
+  case 31: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21893,8 +21431,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_527
-  case 34: {
+#ifdef COMPILE_515
+  case 32: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21920,8 +21458,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_528
-  case 35: {
+#ifdef COMPILE_516
+  case 33: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21947,8 +21485,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_529
-  case 36: {
+#ifdef COMPILE_517
+  case 34: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -21974,8 +21512,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_530
-  case 37: {
+#ifdef COMPILE_518
+  case 35: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22001,8 +21539,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_531
-  case 38: {
+#ifdef COMPILE_519
+  case 36: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22028,8 +21566,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_532
-  case 39: {
+#ifdef COMPILE_520
+  case 37: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22055,8 +21593,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_533
-  case 40: {
+#ifdef COMPILE_521
+  case 38: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22082,8 +21620,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_534
-  case 41: {
+#ifdef COMPILE_522
+  case 39: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22109,8 +21647,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_535
-  case 42: {
+#ifdef COMPILE_523
+  case 40: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22136,8 +21674,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_536
-  case 43: {
+#ifdef COMPILE_524
+  case 41: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22163,8 +21701,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_537
-  case 44: {
+#ifdef COMPILE_525
+  case 42: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22190,8 +21728,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_538
-  case 45: {
+#ifdef COMPILE_526
+  case 43: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22217,8 +21755,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_539
-  case 46: {
+#ifdef COMPILE_527
+  case 44: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22244,8 +21782,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_540
-  case 47: {
+#ifdef COMPILE_528
+  case 45: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22273,8 +21811,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_541
-  case 48: {
+#ifdef COMPILE_529
+  case 46: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22300,8 +21838,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_542
-  case 49: {
+#ifdef COMPILE_530
+  case 47: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22327,8 +21865,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_543
-  case 50: {
+#ifdef COMPILE_531
+  case 48: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22354,8 +21892,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_544
-  case 51: {
+#ifdef COMPILE_532
+  case 49: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22381,8 +21919,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_545
-  case 52: {
+#ifdef COMPILE_533
+  case 50: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22408,8 +21946,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_546
-  case 53: {
+#ifdef COMPILE_534
+  case 51: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22435,8 +21973,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_547
-  case 54: {
+#ifdef COMPILE_535
+  case 52: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
     case IS_CONSTANT:
@@ -22462,8 +22000,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_548
-  case 55: {
+#ifdef COMPILE_536
+  case 53: {
     (executor_globals.argument_stack) =
         zend_vm_stack_new_page(((16 * 1024) - 16));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -22490,8 +22028,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_549
-  case 56: {
+#ifdef COMPILE_537
+  case 54: {
     _efree(((zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22517,8 +22055,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_550
-  case 57: {
+#ifdef COMPILE_538
+  case 55: {
     _efree(((zvalue)->value.ht));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22544,8 +22082,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_551
-  case 58: {
+#ifdef COMPILE_539
+  case 56: {
     _efree(((zvalue)->value.str.val));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22571,8 +22109,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_552
-  case 59: {
+#ifdef COMPILE_540
+  case 57: {
     _zend_list_addref((zvalue)->value.lval);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22598,8 +22136,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_553
-  case 60: {
+#ifdef COMPILE_541
+  case 58: {
     _zend_list_delete((zvalue)->value.lval);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22625,8 +22163,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_554
-  case 61: {
+#ifdef COMPILE_542
+  case 59: {
     _zval_copy_ctor_func((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22652,8 +22190,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_555
-  case 62: {
+#ifdef COMPILE_543
+  case 60: {
     _zval_dtor(((zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22679,8 +22217,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_556
-  case 63: {
+#ifdef COMPILE_544
+  case 61: {
     _zval_dtor_func((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22706,8 +22244,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_557
-  case 64: {
+#ifdef COMPILE_545
+  case 62: {
     _zval_ptr_dtor((&(zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22733,8 +22271,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_558
-  case 65: {
+#ifdef COMPILE_546
+  case 63: {
     convert_to_boolean((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22760,8 +22298,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_559
-  case 66: {
+#ifdef COMPILE_547
+  case 64: {
     exit(1);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22787,8 +22325,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_560
-  case 67: {
+#ifdef COMPILE_548
+  case 65: {
     gc_remove_zval_from_buffer((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22814,8 +22352,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_561
-  case 68: {
+#ifdef COMPILE_549
+  case 66: {
     gc_zval_check_possible_root(((zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22841,8 +22379,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_562
-  case 69: {
+#ifdef COMPILE_550
+  case 67: {
     gc_zval_possible_root((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22868,8 +22406,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_563
-  case 70: {
+#ifdef COMPILE_551
+  case 68: {
     i_zval_ptr_dtor((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22895,8 +22433,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_564
-  case 71: {
+#ifdef COMPILE_552
+  case 69: {
     if (!(executor_globals.active_symbol_table)) {
       zend_rebuild_symbol_table();
     }
@@ -22924,8 +22462,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_565
-  case 72: {
+#ifdef COMPILE_553
+  case 70: {
     memset(&(*zvalue), 0, sizeof(*(&(*zvalue))));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22951,8 +22489,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_566
-  case 73: {
+#ifdef COMPILE_554
+  case 71: {
     memset(&compiler_globals, 0, sizeof(*(&compiler_globals)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22978,8 +22516,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_567
-  case 74: {
+#ifdef COMPILE_555
+  case 72: {
     memset(&zvalue->value, 0, sizeof(*(&zvalue->value)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -23005,8 +22543,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_568
-  case 75: {
+#ifdef COMPILE_556
+  case 73: {
     memset(&zvalue->value.str, 0, sizeof(*(&zvalue->value.str)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -23032,8 +22570,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_569
-  case 76: {
+#ifdef COMPILE_557
+  case 74: {
     memset(zvalue, 0, sizeof(*(zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -23059,8 +22597,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_570
-  case 77: {
+#ifdef COMPILE_558
+  case 75: {
     zend_error((1 << 3L), "A non well formed numeric value encountered");
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -23086,8 +22624,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_571
-  case 78: {
+#ifdef COMPILE_559
+  case 76: {
     zend_hash_destroy((zvalue)->value.ht);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -23113,8 +22651,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_572
-  case 79: {
+#ifdef COMPILE_560
+  case 77: {
     zend_rebuild_symbol_table();
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -23140,8 +22678,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_573
-  case 80: {
+#ifdef COMPILE_561
+  case 78: {
     zval_addref_p((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -23167,8 +22705,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_574
-  case 81: {
+#ifdef COMPILE_562
+  case 79: {
     zval_set_isref_p((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -23194,8 +22732,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_575
-  case 82: {
+#ifdef COMPILE_563
+  case 80: {
     zval_set_refcount_p((zvalue), 0);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -23221,8 +22759,8 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_576
-  case 83: {
+#ifdef COMPILE_564
+  case 81: {
     zval_unset_isref_p((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -23257,7 +22795,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   2)) {
+                   3)) {
   case 0: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -23302,54 +22840,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
     break;
   }
-#ifdef COMPILE_577
+#ifdef COMPILE_565
   case 1: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      zend_list_addref(zvalue->value.lval);
-    } break;
-    case IS_BOOL:
-    case IS_LONG:
-    case IS_NULL:
-      break;
-    case IS_CONSTANT:
-    case IS_STRING:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      if (!IS_INTERNED(zvalue->value.str.val)) {
-        zvalue->value.str.val =
-            (char *)estrndup_rel(zvalue->value.str.val, zvalue->value.str.len);
-      }
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      zval *tmp;
-      HashTable *original_ht = zvalue->value.ht;
-      HashTable *tmp_ht = NULL;
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht == &EG(symbol_table)) {
-        return; /* do nothing */
-      }
-      ALLOC_HASHTABLE_REL(tmp_ht);
-      zend_hash_init(tmp_ht, zend_hash_num_elements(original_ht), NULL,
-                     ZVAL_PTR_DTOR, 0);
-      zend_hash_copy(tmp_ht, original_ht, (copy_ctor_func_t)zval_add_ref,
-                     (void *)&tmp, sizeof(zval *));
-      zvalue->value.ht = tmp_ht;
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-      Z_OBJ_HT_P(zvalue)->add_ref(zvalue TSRMLS_CC);
-    } break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_578
-  case 2: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23395,8 +22887,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_579
-  case 3: {
+#ifdef COMPILE_566
+  case 2: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23442,8 +22934,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_580
-  case 4: {
+#ifdef COMPILE_567
+  case 3: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23489,8 +22981,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_581
-  case 5: {
+#ifdef COMPILE_568
+  case 4: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23537,8 +23029,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_582
-  case 6: {
+#ifdef COMPILE_569
+  case 5: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23585,8 +23077,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_583
-  case 7: {
+#ifdef COMPILE_570
+  case 6: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23632,8 +23124,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_584
-  case 8: {
+#ifdef COMPILE_571
+  case 7: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23679,8 +23171,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_585
-  case 9: {
+#ifdef COMPILE_572
+  case 8: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23726,8 +23218,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_586
-  case 10: {
+#ifdef COMPILE_573
+  case 9: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23773,8 +23265,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_587
-  case 11: {
+#ifdef COMPILE_574
+  case 10: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23820,8 +23312,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_588
-  case 12: {
+#ifdef COMPILE_575
+  case 11: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23867,8 +23359,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_589
-  case 13: {
+#ifdef COMPILE_576
+  case 12: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23914,8 +23406,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_590
-  case 14: {
+#ifdef COMPILE_577
+  case 13: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -23961,8 +23453,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_591
-  case 15: {
+#ifdef COMPILE_578
+  case 14: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24008,8 +23500,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_592
-  case 16: {
+#ifdef COMPILE_579
+  case 15: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24055,8 +23547,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_593
-  case 17: {
+#ifdef COMPILE_580
+  case 16: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24102,8 +23594,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_594
-  case 18: {
+#ifdef COMPILE_581
+  case 17: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24149,8 +23641,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_595
-  case 19: {
+#ifdef COMPILE_582
+  case 18: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24196,8 +23688,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_596
-  case 20: {
+#ifdef COMPILE_583
+  case 19: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24243,8 +23735,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_597
-  case 21: {
+#ifdef COMPILE_584
+  case 20: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24290,8 +23782,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_598
-  case 22: {
+#ifdef COMPILE_585
+  case 21: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24337,8 +23829,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_599
-  case 23: {
+#ifdef COMPILE_586
+  case 22: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24390,8 +23882,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_600
-  case 24: {
+#ifdef COMPILE_587
+  case 23: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24439,8 +23931,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_601
-  case 25: {
+#ifdef COMPILE_588
+  case 24: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24488,8 +23980,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_602
-  case 26: {
+#ifdef COMPILE_589
+  case 25: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24535,8 +24027,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_603
-  case 27: {
+#ifdef COMPILE_590
+  case 26: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24582,8 +24074,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_604
-  case 28: {
+#ifdef COMPILE_591
+  case 27: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24629,8 +24121,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_605
-  case 29: {
+#ifdef COMPILE_592
+  case 28: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24676,8 +24168,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_606
-  case 30: {
+#ifdef COMPILE_593
+  case 29: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24723,8 +24215,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_607
-  case 31: {
+#ifdef COMPILE_594
+  case 30: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24770,8 +24262,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_608
-  case 32: {
+#ifdef COMPILE_595
+  case 31: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24817,8 +24309,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_609
-  case 33: {
+#ifdef COMPILE_596
+  case 32: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24864,8 +24356,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_610
-  case 34: {
+#ifdef COMPILE_597
+  case 33: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24911,8 +24403,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_611
-  case 35: {
+#ifdef COMPILE_598
+  case 34: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -24958,8 +24450,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_612
-  case 36: {
+#ifdef COMPILE_599
+  case 35: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25005,8 +24497,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_613
-  case 37: {
+#ifdef COMPILE_600
+  case 36: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25053,54 +24545,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_614
-  case 38: {
-    switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
-    case IS_RESOURCE: {
-      TSRMLS_FETCH();
-
-      zend_list_addref(zvalue->value.lval);
-    } break;
-    case IS_BOOL:
-    case IS_LONG:
-    case IS_NULL:
-      break;
-    case IS_CONSTANT:
-    case IS_STRING:
-      CHECK_ZVAL_STRING_REL(zvalue);
-      if (!IS_INTERNED(zvalue->value.str.val)) {
-        zvalue->value.str.val =
-            (char *)estrndup_rel(zvalue->value.str.val, zvalue->value.str.len);
-      }
-      break;
-    case IS_ARRAY:
-    case IS_CONSTANT_ARRAY: {
-      zval *tmp;
-      HashTable *original_ht = zvalue->value.ht;
-      HashTable *tmp_ht = NULL;
-      TSRMLS_FETCH();
-
-      if (zvalue->value.ht == &EG(symbol_table)) {
-        return; /* do nothing */
-      }
-      ALLOC_HASHTABLE_REL(tmp_ht);
-      zend_hash_init(tmp_ht, zend_hash_num_elements(original_ht), NULL,
-                     ZVAL_PTR_DTOR, 0);
-      zend_hash_copy(tmp_ht, original_ht, (copy_ctor_func_t)zval_add_ref,
-                     (void *)&tmp, sizeof(zval *));
-      zvalue->value.ht = tmp_ht;
-    } break;
-    case IS_OBJECT: {
-      TSRMLS_FETCH();
-      Z_OBJ_HT_P(zvalue)->add_ref(zvalue TSRMLS_CC);
-    } break;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_615
-  case 39: {
+#ifdef COMPILE_601
+  case 37: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25146,8 +24592,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_616
-  case 40: {
+#ifdef COMPILE_602
+  case 38: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25193,8 +24639,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_617
-  case 41: {
+#ifdef COMPILE_603
+  case 39: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25240,8 +24686,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_618
-  case 42: {
+#ifdef COMPILE_604
+  case 40: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25288,8 +24734,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_619
-  case 43: {
+#ifdef COMPILE_605
+  case 41: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25336,8 +24782,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_620
-  case 44: {
+#ifdef COMPILE_606
+  case 42: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25383,8 +24829,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_621
-  case 45: {
+#ifdef COMPILE_607
+  case 43: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25430,8 +24876,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_622
-  case 46: {
+#ifdef COMPILE_608
+  case 44: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25477,8 +24923,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_623
-  case 47: {
+#ifdef COMPILE_609
+  case 45: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25524,8 +24970,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_624
-  case 48: {
+#ifdef COMPILE_610
+  case 46: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25571,8 +25017,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_625
-  case 49: {
+#ifdef COMPILE_611
+  case 47: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25618,8 +25064,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_626
-  case 50: {
+#ifdef COMPILE_612
+  case 48: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25665,8 +25111,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_627
-  case 51: {
+#ifdef COMPILE_613
+  case 49: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25712,8 +25158,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_628
-  case 52: {
+#ifdef COMPILE_614
+  case 50: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25759,8 +25205,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_629
-  case 53: {
+#ifdef COMPILE_615
+  case 51: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25806,8 +25252,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_630
-  case 54: {
+#ifdef COMPILE_616
+  case 52: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25853,8 +25299,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_631
-  case 55: {
+#ifdef COMPILE_617
+  case 53: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25900,8 +25346,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_632
-  case 56: {
+#ifdef COMPILE_618
+  case 54: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25947,8 +25393,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_633
-  case 57: {
+#ifdef COMPILE_619
+  case 55: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -25994,8 +25440,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_634
-  case 58: {
+#ifdef COMPILE_620
+  case 56: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26041,8 +25487,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_635
-  case 59: {
+#ifdef COMPILE_621
+  case 57: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26088,8 +25534,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_636
-  case 60: {
+#ifdef COMPILE_622
+  case 58: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26141,8 +25587,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_637
-  case 61: {
+#ifdef COMPILE_623
+  case 59: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26190,8 +25636,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_638
-  case 62: {
+#ifdef COMPILE_624
+  case 60: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26239,8 +25685,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_639
-  case 63: {
+#ifdef COMPILE_625
+  case 61: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26286,8 +25732,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_640
-  case 64: {
+#ifdef COMPILE_626
+  case 62: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26333,8 +25779,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_641
-  case 65: {
+#ifdef COMPILE_627
+  case 63: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26380,8 +25826,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_642
-  case 66: {
+#ifdef COMPILE_628
+  case 64: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26427,8 +25873,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_643
-  case 67: {
+#ifdef COMPILE_629
+  case 65: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26474,8 +25920,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_644
-  case 68: {
+#ifdef COMPILE_630
+  case 66: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26521,8 +25967,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_645
-  case 69: {
+#ifdef COMPILE_631
+  case 67: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26568,8 +26014,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_646
-  case 70: {
+#ifdef COMPILE_632
+  case 68: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
       TSRMLS_FETCH();
@@ -26616,8 +26062,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_647
-  case 71: {
+#ifdef COMPILE_633
+  case 69: {
     (*(zvalue)).value.obj.handlers->add_ref(zvalue);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -26663,8 +26109,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_648
-  case 72: {
+#ifdef COMPILE_634
+  case 70: {
     (*zvalue).value.obj.handlers->add_ref((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -26710,8 +26156,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_649
-  case 73: {
+#ifdef COMPILE_635
+  case 71: {
     (*zvalue).value.obj.handlers->add_ref(zvalue);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -26757,8 +26203,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_650
-  case 74: {
+#ifdef COMPILE_636
+  case 72: {
     (executor_globals.argument_stack) =
         zend_vm_stack_new_page(((16 * 1024) - 16));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -26805,8 +26251,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_651
-  case 75: {
+#ifdef COMPILE_637
+  case 73: {
     (zvalue)->value.str.val =
         (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -26853,8 +26299,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_652
-  case 76: {
+#ifdef COMPILE_638
+  case 74: {
     _efree(((zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -26900,8 +26346,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_653
-  case 77: {
+#ifdef COMPILE_639
+  case 75: {
     _efree(((zvalue)->value.ht));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -26947,8 +26393,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_654
-  case 78: {
+#ifdef COMPILE_640
+  case 76: {
     _efree(((zvalue)->value.str.val));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -26994,8 +26440,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_655
-  case 79: {
+#ifdef COMPILE_641
+  case 77: {
     _zend_list_addref((zvalue)->value.lval);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27041,8 +26487,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_656
-  case 80: {
+#ifdef COMPILE_642
+  case 78: {
     _zend_list_addref(zvalue->value.lval);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27088,8 +26534,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_657
-  case 81: {
+#ifdef COMPILE_643
+  case 79: {
     _zend_list_delete((zvalue)->value.lval);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27135,8 +26581,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_658
-  case 82: {
+#ifdef COMPILE_644
+  case 80: {
     _zval_copy_ctor_func((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27182,8 +26628,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_659
-  case 83: {
+#ifdef COMPILE_645
+  case 81: {
     _zval_dtor(((zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27229,8 +26675,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_660
-  case 84: {
+#ifdef COMPILE_646
+  case 82: {
     _zval_dtor_func((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27276,8 +26722,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_661
-  case 85: {
+#ifdef COMPILE_647
+  case 83: {
     _zval_ptr_dtor((&(zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27323,8 +26769,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_662
-  case 86: {
+#ifdef COMPILE_648
+  case 84: {
     convert_to_boolean((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27370,8 +26816,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_663
-  case 87: {
+#ifdef COMPILE_649
+  case 85: {
     exit(1);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27417,8 +26863,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_664
-  case 88: {
+#ifdef COMPILE_650
+  case 86: {
     gc_remove_zval_from_buffer((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27464,8 +26910,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_665
-  case 89: {
+#ifdef COMPILE_651
+  case 87: {
     gc_zval_check_possible_root(((zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27511,8 +26957,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_666
-  case 90: {
+#ifdef COMPILE_652
+  case 88: {
     gc_zval_possible_root((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27558,8 +27004,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_667
-  case 91: {
+#ifdef COMPILE_653
+  case 89: {
     i_zval_ptr_dtor((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27605,8 +27051,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_668
-  case 92: {
+#ifdef COMPILE_654
+  case 90: {
     if (!(((zvalue->value.str.val) >=
            (compiler_globals.interned_strings_start)) &&
           ((zvalue->value.str.val) <
@@ -27658,8 +27104,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_669
-  case 93: {
+#ifdef COMPILE_655
+  case 91: {
     if (!(executor_globals.active_symbol_table)) {
       zend_rebuild_symbol_table();
     }
@@ -27707,8 +27153,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_670
-  case 94: {
+#ifdef COMPILE_656
+  case 92: {
     if (zvalue->value.ht == &(executor_globals.symbol_table)) {
       return;
     }
@@ -27756,8 +27202,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_671
-  case 95: {
+#ifdef COMPILE_657
+  case 93: {
     memset(&(*zvalue), 0, sizeof(*(&(*zvalue))));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27803,8 +27249,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_672
-  case 96: {
+#ifdef COMPILE_658
+  case 94: {
     memset(&(*zvalue).value, 0, sizeof(*(&(*zvalue).value)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27850,8 +27296,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_673
-  case 97: {
+#ifdef COMPILE_659
+  case 95: {
     memset(&(*zvalue).value.obj, 0, sizeof(*(&(*zvalue).value.obj)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27897,8 +27343,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_674
-  case 98: {
+#ifdef COMPILE_660
+  case 96: {
     memset(&compiler_globals, 0, sizeof(*(&compiler_globals)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27944,8 +27390,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_675
-  case 99: {
+#ifdef COMPILE_661
+  case 97: {
     memset(&executor_globals, 0, sizeof(*(&executor_globals)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -27991,8 +27437,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_676
-  case 100: {
+#ifdef COMPILE_662
+  case 98: {
     memset(&executor_globals.symbol_table, 0,
            sizeof(*(&executor_globals.symbol_table)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -28039,8 +27485,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_677
-  case 101: {
+#ifdef COMPILE_663
+  case 99: {
     memset(&zvalue->value, 0, sizeof(*(&zvalue->value)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -28086,8 +27532,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_678
-  case 102: {
+#ifdef COMPILE_664
+  case 100: {
     memset(&zvalue->value.str, 0, sizeof(*(&zvalue->value.str)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -28133,8 +27579,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_679
-  case 103: {
+#ifdef COMPILE_665
+  case 101: {
     memset((*zvalue).value.obj.handlers, 0,
            sizeof(*((*zvalue).value.obj.handlers)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -28181,8 +27627,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_680
-  case 104: {
+#ifdef COMPILE_666
+  case 102: {
     memset(zvalue, 0, sizeof(*(zvalue)));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -28228,8 +27674,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_681
-  case 105: {
+#ifdef COMPILE_667
+  case 103: {
     zend_error((1 << 3L), "A non well formed numeric value encountered");
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -28275,8 +27721,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_682
-  case 106: {
+#ifdef COMPILE_668
+  case 104: {
     zend_hash_destroy((zvalue)->value.ht);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -28322,8 +27768,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_683
-  case 107: {
+#ifdef COMPILE_669
+  case 105: {
     zend_rebuild_symbol_table();
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -28369,8 +27815,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_684
-  case 108: {
+#ifdef COMPILE_670
+  case 106: {
     zval_addref_p((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -28416,8 +27862,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_685
-  case 109: {
+#ifdef COMPILE_671
+  case 107: {
     zval_set_isref_p((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -28463,8 +27909,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_686
-  case 110: {
+#ifdef COMPILE_672
+  case 108: {
     zval_set_refcount_p((zvalue), 0);
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -28510,8 +27956,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_687
-  case 111: {
+#ifdef COMPILE_673
+  case 109: {
     zval_unset_isref_p((zvalue));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -28557,8 +28003,8 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     break;
   }
 #endif
-#ifdef COMPILE_688
-  case 112: {
+#ifdef COMPILE_674
+  case 110: {
     zvalue->value.str.val =
         (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
@@ -28612,13 +28058,13 @@ ZEND_API int zend_print_variable(zval *var) {
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   3)) {
+                   4)) {
   case 0: {
     return zend_print_zval(var, 0);
 
     break;
   }
-#ifdef COMPILE_689
+#ifdef COMPILE_675
   case 1: {
     (executor_globals.argument_stack) =
         zend_vm_stack_new_page(((16 * 1024) - 16));
@@ -28627,7 +28073,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_690
+#ifdef COMPILE_676
   case 2: {
     _efree(((var)));
     return zend_print_zval(var, 0);
@@ -28635,7 +28081,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_691
+#ifdef COMPILE_677
   case 3: {
     _efree(((var)->value.ht));
     return zend_print_zval(var, 0);
@@ -28643,7 +28089,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_692
+#ifdef COMPILE_678
   case 4: {
     _efree(((var)->value.str.val));
     return zend_print_zval(var, 0);
@@ -28651,7 +28097,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_693
+#ifdef COMPILE_679
   case 5: {
     _zend_list_addref((var)->value.lval);
     return zend_print_zval(var, 0);
@@ -28659,7 +28105,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_694
+#ifdef COMPILE_680
   case 6: {
     _zend_list_delete((var)->value.lval);
     return zend_print_zval(var, 0);
@@ -28667,7 +28113,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_695
+#ifdef COMPILE_681
   case 7: {
     _zval_copy_ctor_func((var));
     return zend_print_zval(var, 0);
@@ -28675,7 +28121,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_696
+#ifdef COMPILE_682
   case 8: {
     _zval_dtor(((var)));
     return zend_print_zval(var, 0);
@@ -28683,7 +28129,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_697
+#ifdef COMPILE_683
   case 9: {
     _zval_dtor_func((var));
     return zend_print_zval(var, 0);
@@ -28691,7 +28137,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_698
+#ifdef COMPILE_684
   case 10: {
     _zval_ptr_dtor((&(var)));
     return zend_print_zval(var, 0);
@@ -28699,7 +28145,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_699
+#ifdef COMPILE_685
   case 11: {
     convert_to_boolean((var));
     return zend_print_zval(var, 0);
@@ -28707,7 +28153,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_700
+#ifdef COMPILE_686
   case 12: {
     exit(1);
     return zend_print_zval(var, 0);
@@ -28715,7 +28161,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_701
+#ifdef COMPILE_687
   case 13: {
     gc_remove_zval_from_buffer((var));
     return zend_print_zval(var, 0);
@@ -28723,7 +28169,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_702
+#ifdef COMPILE_688
   case 14: {
     gc_zval_check_possible_root(((var)));
     return zend_print_zval(var, 0);
@@ -28731,7 +28177,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_703
+#ifdef COMPILE_689
   case 15: {
     gc_zval_possible_root((var));
     return zend_print_zval(var, 0);
@@ -28739,7 +28185,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_704
+#ifdef COMPILE_690
   case 16: {
     i_zval_ptr_dtor((var));
     return zend_print_zval(var, 0);
@@ -28747,7 +28193,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_705
+#ifdef COMPILE_691
   case 17: {
     if (!(executor_globals.active_symbol_table)) {
       zend_rebuild_symbol_table();
@@ -28757,7 +28203,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_706
+#ifdef COMPILE_692
   case 18: {
     zend_error((1 << 3L), "A non well formed numeric value encountered");
     return zend_print_zval(var, 0);
@@ -28765,7 +28211,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_707
+#ifdef COMPILE_693
   case 19: {
     zend_hash_destroy((var)->value.ht);
     return zend_print_zval(var, 0);
@@ -28773,7 +28219,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_708
+#ifdef COMPILE_694
   case 20: {
     zend_rebuild_symbol_table();
     return zend_print_zval(var, 0);
@@ -28781,7 +28227,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_709
+#ifdef COMPILE_695
   case 21: {
     zval_addref_p((var));
     return zend_print_zval(var, 0);
@@ -28789,7 +28235,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_710
+#ifdef COMPILE_696
   case 22: {
     zval_set_isref_p((var));
     return zend_print_zval(var, 0);
@@ -28797,7 +28243,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_711
+#ifdef COMPILE_697
   case 23: {
     zval_set_refcount_p((var), 0);
     return zend_print_zval(var, 0);
@@ -28805,7 +28251,7 @@ ZEND_API int zend_print_variable(zval *var) {
     break;
   }
 #endif
-#ifdef COMPILE_712
+#ifdef COMPILE_698
   case 24: {
     zval_unset_isref_p((var));
     return zend_print_zval(var, 0);
@@ -28849,7 +28295,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   4)) {
+                   5)) {
   case 0: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -28889,49 +28335,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 
     break;
   }
-#ifdef COMPILE_713
+#ifdef COMPILE_699
   case 1: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_714
-  case 2: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       (executor_globals.argument_stack) =
           zend_vm_stack_new_page(((16 * 1024) - 16));
@@ -28973,8 +28378,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_715
-  case 3: {
+#ifdef COMPILE_700
+  case 2: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       (tmp) = (executor_globals.uninitialized_zval_ptr);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29015,8 +28420,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_716
-  case 4: {
+#ifdef COMPILE_701
+  case 3: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       (tmp) = *p;
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29057,8 +28462,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_717
-  case 5: {
+#ifdef COMPILE_702
+  case 4: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       *(tmp) = zval_used_for_init;
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29099,8 +28504,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_718
-  case 6: {
+#ifdef COMPILE_703
+  case 5: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       *tmp = zval_used_for_init;
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29141,8 +28546,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_719
-  case 7: {
+#ifdef COMPILE_704
+  case 6: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _efree(((tmp)));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29183,8 +28588,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_720
-  case 8: {
+#ifdef COMPILE_705
+  case 7: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _efree(((tmp)->value.ht));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29225,8 +28630,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_721
-  case 9: {
+#ifdef COMPILE_706
+  case 8: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _efree(((tmp)->value.str.val));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29267,8 +28672,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_722
-  case 10: {
+#ifdef COMPILE_707
+  case 9: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _zend_hash_quick_add_or_update(
           (executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength,
@@ -29311,8 +28716,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_723
-  case 11: {
+#ifdef COMPILE_708
+  case 10: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _zend_hash_quick_add_or_update(
           (executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength,
@@ -29355,8 +28760,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_724
-  case 12: {
+#ifdef COMPILE_709
+  case 11: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _zend_hash_quick_add_or_update(
           (executor_globals.active_symbol_table), key->arKey, key->nKeyLength,
@@ -29399,8 +28804,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_725
-  case 13: {
+#ifdef COMPILE_710
+  case 12: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _zend_hash_quick_add_or_update(
           (executor_globals.active_symbol_table), key->arKey, key->nKeyLength,
@@ -29443,8 +28848,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_726
-  case 14: {
+#ifdef COMPILE_711
+  case 13: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                      key->arKey, key->nKeyLength, key->h, &tmp,
@@ -29487,8 +28892,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_727
-  case 15: {
+#ifdef COMPILE_712
+  case 14: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _zend_list_addref((tmp)->value.lval);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29529,8 +28934,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_728
-  case 16: {
+#ifdef COMPILE_713
+  case 15: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _zend_list_delete((tmp)->value.lval);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29571,8 +28976,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_729
-  case 17: {
+#ifdef COMPILE_714
+  case 16: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _zval_copy_ctor_func((tmp));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29613,8 +29018,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_730
-  case 18: {
+#ifdef COMPILE_715
+  case 17: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _zval_dtor(((tmp)));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29655,8 +29060,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_731
-  case 19: {
+#ifdef COMPILE_716
+  case 18: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _zval_dtor_func((tmp));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29697,8 +29102,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_732
-  case 20: {
+#ifdef COMPILE_717
+  case 19: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       _zval_ptr_dtor((&(tmp)));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29739,8 +29144,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_733
-  case 21: {
+#ifdef COMPILE_718
+  case 20: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       convert_to_boolean((tmp));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29781,8 +29186,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_734
-  case 22: {
+#ifdef COMPILE_719
+  case 21: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       exit(1);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29823,8 +29228,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_735
-  case 23: {
+#ifdef COMPILE_720
+  case 22: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       gc_remove_zval_from_buffer((tmp));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29865,8 +29270,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_736
-  case 24: {
+#ifdef COMPILE_721
+  case 23: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       gc_zval_check_possible_root(((tmp)));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29907,8 +29312,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_737
-  case 25: {
+#ifdef COMPILE_722
+  case 24: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       gc_zval_possible_root((tmp));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29949,8 +29354,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_738
-  case 26: {
+#ifdef COMPILE_723
+  case 25: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       i_zval_ptr_dtor((tmp));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -29991,8 +29396,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_739
-  case 27: {
+#ifdef COMPILE_724
+  case 26: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       if (!(executor_globals.active_symbol_table)) {
         zend_rebuild_symbol_table();
@@ -30035,8 +29440,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_740
-  case 28: {
+#ifdef COMPILE_725
+  case 27: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength,
                                          key->h, &tmp, sizeof(zval *),
@@ -30081,8 +29486,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_741
-  case 29: {
+#ifdef COMPILE_726
+  case 28: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = (**(p)).type & 64;
 
@@ -30122,8 +29527,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_742
-  case 30: {
+#ifdef COMPILE_727
+  case 29: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = (**(p)).type & 64;
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30164,8 +29569,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_743
-  case 31: {
+#ifdef COMPILE_728
+  case 30: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = (**p).type & 64;
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30206,8 +29611,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_744
-  case 32: {
+#ifdef COMPILE_729
+  case 31: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       memset(&(**p), 0, sizeof(*(&(**p))));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30248,8 +29653,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_745
-  case 33: {
+#ifdef COMPILE_730
+  case 32: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       tmp = (executor_globals.uninitialized_zval_ptr);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30290,8 +29695,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_746
-  case 34: {
+#ifdef COMPILE_731
+  case 33: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       tmp = *(p);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30332,8 +29737,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_747
-  case 35: {
+#ifdef COMPILE_732
+  case 34: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       tmp = *p;
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30374,8 +29779,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_748
-  case 36: {
+#ifdef COMPILE_733
+  case 35: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zend_error((1 << 3L), "A non well formed numeric value encountered");
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30416,8 +29821,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_749
-  case 37: {
+#ifdef COMPILE_734
+  case 36: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30458,8 +29863,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_750
-  case 38: {
+#ifdef COMPILE_735
+  case 37: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30500,8 +29905,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_751
-  case 39: {
+#ifdef COMPILE_736
+  case 38: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zend_hash_destroy((tmp)->value.ht);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30542,8 +29947,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_752
-  case 40: {
+#ifdef COMPILE_737
+  case 39: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zend_rebuild_symbol_table();
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30584,8 +29989,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_753
-  case 41: {
+#ifdef COMPILE_738
+  case 40: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zval_addref_p((tmp));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30626,8 +30031,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_754
-  case 42: {
+#ifdef COMPILE_739
+  case 41: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zval_addref_p(*((p)));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30668,8 +30073,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_755
-  case 43: {
+#ifdef COMPILE_740
+  case 42: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zval_addref_p(tmp);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30710,8 +30115,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_756
-  case 44: {
+#ifdef COMPILE_741
+  case 43: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zval_set_isref_p((tmp));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30752,8 +30157,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_757
-  case 45: {
+#ifdef COMPILE_742
+  case 44: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zval_set_isref_p(*(((p))));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30794,8 +30199,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_758
-  case 46: {
+#ifdef COMPILE_743
+  case 45: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zval_set_isref_p(*((p)));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30836,8 +30241,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_759
-  case 47: {
+#ifdef COMPILE_744
+  case 46: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zval_set_isref_p(tmp);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30878,8 +30283,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_760
-  case 48: {
+#ifdef COMPILE_745
+  case 47: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zval_set_refcount_p((tmp), 0);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30920,8 +30325,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_761
-  case 49: {
+#ifdef COMPILE_746
+  case 48: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zval_set_refcount_p(tmp, 0);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -30962,8 +30367,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_762
-  case 50: {
+#ifdef COMPILE_747
+  case 49: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zval_unset_isref_p((tmp));
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -31004,8 +30409,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_763
-  case 51: {
+#ifdef COMPILE_748
+  case 50: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       zval_unset_isref_p(tmp);
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -31046,90 +30451,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_764
-  case 52: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_765
-  case 53: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_766
-  case 54: {
+#ifdef COMPILE_749
+  case 51: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31171,8 +30494,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_767
-  case 55: {
+#ifdef COMPILE_750
+  case 52: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31213,8 +30536,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_768
-  case 56: {
+#ifdef COMPILE_751
+  case 53: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31255,8 +30578,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_769
-  case 57: {
+#ifdef COMPILE_752
+  case 54: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31297,8 +30620,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_770
-  case 58: {
+#ifdef COMPILE_753
+  case 55: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31339,8 +30662,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_771
-  case 59: {
+#ifdef COMPILE_754
+  case 56: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31381,8 +30704,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_772
-  case 60: {
+#ifdef COMPILE_755
+  case 57: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31423,8 +30746,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_773
-  case 61: {
+#ifdef COMPILE_756
+  case 58: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31465,8 +30788,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_774
-  case 62: {
+#ifdef COMPILE_757
+  case 59: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31510,8 +30833,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_775
-  case 63: {
+#ifdef COMPILE_758
+  case 60: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31555,8 +30878,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_776
-  case 64: {
+#ifdef COMPILE_759
+  case 61: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31599,8 +30922,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_777
-  case 65: {
+#ifdef COMPILE_760
+  case 62: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31643,8 +30966,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_778
-  case 66: {
+#ifdef COMPILE_761
+  case 63: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31687,8 +31010,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_779
-  case 67: {
+#ifdef COMPILE_762
+  case 64: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31729,8 +31052,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_780
-  case 68: {
+#ifdef COMPILE_763
+  case 65: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31771,8 +31094,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_781
-  case 69: {
+#ifdef COMPILE_764
+  case 66: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31813,8 +31136,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_782
-  case 70: {
+#ifdef COMPILE_765
+  case 67: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31855,8 +31178,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_783
-  case 71: {
+#ifdef COMPILE_766
+  case 68: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31897,8 +31220,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_784
-  case 72: {
+#ifdef COMPILE_767
+  case 69: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31939,8 +31262,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_785
-  case 73: {
+#ifdef COMPILE_768
+  case 70: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -31981,8 +31304,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_786
-  case 74: {
+#ifdef COMPILE_769
+  case 71: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32023,8 +31346,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_787
-  case 75: {
+#ifdef COMPILE_770
+  case 72: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32065,8 +31388,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_788
-  case 76: {
+#ifdef COMPILE_771
+  case 73: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32107,8 +31430,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_789
-  case 77: {
+#ifdef COMPILE_772
+  case 74: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32149,8 +31472,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_790
-  case 78: {
+#ifdef COMPILE_773
+  case 75: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32191,8 +31514,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_791
-  case 79: {
+#ifdef COMPILE_774
+  case 76: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32235,8 +31558,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_792
-  case 80: {
+#ifdef COMPILE_775
+  case 77: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32281,8 +31604,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_793
-  case 81: {
+#ifdef COMPILE_776
+  case 78: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32323,8 +31646,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_794
-  case 82: {
+#ifdef COMPILE_777
+  case 79: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32365,8 +31688,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_795
-  case 83: {
+#ifdef COMPILE_778
+  case 80: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32407,8 +31730,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_796
-  case 84: {
+#ifdef COMPILE_779
+  case 81: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32449,8 +31772,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_797
-  case 85: {
+#ifdef COMPILE_780
+  case 82: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32491,8 +31814,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_798
-  case 86: {
+#ifdef COMPILE_781
+  case 83: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32533,8 +31856,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_799
-  case 87: {
+#ifdef COMPILE_782
+  case 84: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32575,8 +31898,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_800
-  case 88: {
+#ifdef COMPILE_783
+  case 85: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32617,8 +31940,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_801
-  case 89: {
+#ifdef COMPILE_784
+  case 86: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32659,8 +31982,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_802
-  case 90: {
+#ifdef COMPILE_785
+  case 87: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32701,8 +32024,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_803
-  case 91: {
+#ifdef COMPILE_786
+  case 88: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32743,8 +32066,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_804
-  case 92: {
+#ifdef COMPILE_787
+  case 89: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32785,8 +32108,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_805
-  case 93: {
+#ifdef COMPILE_788
+  case 90: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32827,8 +32150,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_806
-  case 94: {
+#ifdef COMPILE_789
+  case 91: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32869,8 +32192,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_807
-  case 95: {
+#ifdef COMPILE_790
+  case 92: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32911,8 +32234,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_808
-  case 96: {
+#ifdef COMPILE_791
+  case 93: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32953,8 +32276,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_809
-  case 97: {
+#ifdef COMPILE_792
+  case 94: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -32995,8 +32318,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_810
-  case 98: {
+#ifdef COMPILE_793
+  case 95: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33037,8 +32360,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_811
-  case 99: {
+#ifdef COMPILE_794
+  case 96: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33079,8 +32402,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_812
-  case 100: {
+#ifdef COMPILE_795
+  case 97: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33121,8 +32444,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_813
-  case 101: {
+#ifdef COMPILE_796
+  case 98: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33163,8 +32486,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_814
-  case 102: {
+#ifdef COMPILE_797
+  case 99: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33206,8 +32529,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_815
-  case 103: {
+#ifdef COMPILE_798
+  case 100: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33248,8 +32571,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_816
-  case 104: {
+#ifdef COMPILE_799
+  case 101: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33290,8 +32613,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_817
-  case 105: {
+#ifdef COMPILE_800
+  case 102: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33332,8 +32655,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_818
-  case 106: {
+#ifdef COMPILE_801
+  case 103: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33374,8 +32697,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_819
-  case 107: {
+#ifdef COMPILE_802
+  case 104: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33416,8 +32739,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_820
-  case 108: {
+#ifdef COMPILE_803
+  case 105: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33458,8 +32781,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_821
-  case 109: {
+#ifdef COMPILE_804
+  case 106: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33500,8 +32823,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_822
-  case 110: {
+#ifdef COMPILE_805
+  case 107: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33544,8 +32867,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_823
-  case 111: {
+#ifdef COMPILE_806
+  case 108: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33588,8 +32911,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_824
-  case 112: {
+#ifdef COMPILE_807
+  case 109: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33632,8 +32955,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_825
-  case 113: {
+#ifdef COMPILE_808
+  case 110: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33676,8 +32999,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_826
-  case 114: {
+#ifdef COMPILE_809
+  case 111: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33720,8 +33043,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_827
-  case 115: {
+#ifdef COMPILE_810
+  case 112: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33762,8 +33085,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_828
-  case 116: {
+#ifdef COMPILE_811
+  case 113: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33804,8 +33127,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_829
-  case 117: {
+#ifdef COMPILE_812
+  case 114: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33846,8 +33169,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_830
-  case 118: {
+#ifdef COMPILE_813
+  case 115: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33888,8 +33211,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_831
-  case 119: {
+#ifdef COMPILE_814
+  case 116: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33930,8 +33253,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_832
-  case 120: {
+#ifdef COMPILE_815
+  case 117: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -33972,8 +33295,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_833
-  case 121: {
+#ifdef COMPILE_816
+  case 118: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34014,8 +33337,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_834
-  case 122: {
+#ifdef COMPILE_817
+  case 119: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34056,8 +33379,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_835
-  case 123: {
+#ifdef COMPILE_818
+  case 120: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34098,8 +33421,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_836
-  case 124: {
+#ifdef COMPILE_819
+  case 121: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34140,8 +33463,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_837
-  case 125: {
+#ifdef COMPILE_820
+  case 122: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34182,8 +33505,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_838
-  case 126: {
+#ifdef COMPILE_821
+  case 123: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34224,8 +33547,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_839
-  case 127: {
+#ifdef COMPILE_822
+  case 124: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34268,8 +33591,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_840
-  case 128: {
+#ifdef COMPILE_823
+  case 125: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34314,8 +33637,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_841
-  case 129: {
+#ifdef COMPILE_824
+  case 126: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34356,8 +33679,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_842
-  case 130: {
+#ifdef COMPILE_825
+  case 127: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34398,8 +33721,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_843
-  case 131: {
+#ifdef COMPILE_826
+  case 128: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34440,8 +33763,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_844
-  case 132: {
+#ifdef COMPILE_827
+  case 129: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34482,8 +33805,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_845
-  case 133: {
+#ifdef COMPILE_828
+  case 130: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34524,8 +33847,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_846
-  case 134: {
+#ifdef COMPILE_829
+  case 131: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34566,8 +33889,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_847
-  case 135: {
+#ifdef COMPILE_830
+  case 132: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34608,8 +33931,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_848
-  case 136: {
+#ifdef COMPILE_831
+  case 133: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34650,8 +33973,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_849
-  case 137: {
+#ifdef COMPILE_832
+  case 134: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34692,8 +34015,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_850
-  case 138: {
+#ifdef COMPILE_833
+  case 135: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34734,8 +34057,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_851
-  case 139: {
+#ifdef COMPILE_834
+  case 136: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34776,8 +34099,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_852
-  case 140: {
+#ifdef COMPILE_835
+  case 137: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34818,8 +34141,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_853
-  case 141: {
+#ifdef COMPILE_836
+  case 138: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34860,8 +34183,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_854
-  case 142: {
+#ifdef COMPILE_837
+  case 139: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34902,8 +34225,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_855
-  case 143: {
+#ifdef COMPILE_838
+  case 140: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34944,8 +34267,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_856
-  case 144: {
+#ifdef COMPILE_839
+  case 141: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -34986,8 +34309,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_857
-  case 145: {
+#ifdef COMPILE_840
+  case 142: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35028,8 +34351,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_858
-  case 146: {
+#ifdef COMPILE_841
+  case 143: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35070,8 +34393,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_859
-  case 147: {
+#ifdef COMPILE_842
+  case 144: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35112,8 +34435,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_860
-  case 148: {
+#ifdef COMPILE_843
+  case 145: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35154,8 +34477,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_861
-  case 149: {
+#ifdef COMPILE_844
+  case 146: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35196,8 +34519,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_862
-  case 150: {
+#ifdef COMPILE_845
+  case 147: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35238,172 +34561,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_863
-  case 151: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_864
-  case 152: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_865
-  case 153: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_866
-  case 154: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_867
-  case 155: {
+#ifdef COMPILE_846
+  case 148: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35445,8 +34604,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_868
-  case 156: {
+#ifdef COMPILE_847
+  case 149: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35487,8 +34646,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_869
-  case 157: {
+#ifdef COMPILE_848
+  case 150: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35529,8 +34688,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_870
-  case 158: {
+#ifdef COMPILE_849
+  case 151: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35571,8 +34730,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_871
-  case 159: {
+#ifdef COMPILE_850
+  case 152: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35613,8 +34772,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_872
-  case 160: {
+#ifdef COMPILE_851
+  case 153: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35655,8 +34814,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_873
-  case 161: {
+#ifdef COMPILE_852
+  case 154: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35697,8 +34856,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_874
-  case 162: {
+#ifdef COMPILE_853
+  case 155: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35739,8 +34898,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_875
-  case 163: {
+#ifdef COMPILE_854
+  case 156: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35784,8 +34943,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_876
-  case 164: {
+#ifdef COMPILE_855
+  case 157: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35829,8 +34988,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_877
-  case 165: {
+#ifdef COMPILE_856
+  case 158: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35874,8 +35033,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_878
-  case 166: {
+#ifdef COMPILE_857
+  case 159: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35919,8 +35078,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_879
-  case 167: {
+#ifdef COMPILE_858
+  case 160: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -35964,8 +35123,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_880
-  case 168: {
+#ifdef COMPILE_859
+  case 161: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36006,8 +35165,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_881
-  case 169: {
+#ifdef COMPILE_860
+  case 162: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36048,8 +35207,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_882
-  case 170: {
+#ifdef COMPILE_861
+  case 163: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36090,8 +35249,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_883
-  case 171: {
+#ifdef COMPILE_862
+  case 164: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36132,8 +35291,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_884
-  case 172: {
+#ifdef COMPILE_863
+  case 165: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36174,8 +35333,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_885
-  case 173: {
+#ifdef COMPILE_864
+  case 166: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36216,8 +35375,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_886
-  case 174: {
+#ifdef COMPILE_865
+  case 167: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36258,8 +35417,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_887
-  case 175: {
+#ifdef COMPILE_866
+  case 168: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36300,8 +35459,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_888
-  case 176: {
+#ifdef COMPILE_867
+  case 169: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36342,8 +35501,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_889
-  case 177: {
+#ifdef COMPILE_868
+  case 170: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36384,8 +35543,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_890
-  case 178: {
+#ifdef COMPILE_869
+  case 171: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36426,8 +35585,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_891
-  case 179: {
+#ifdef COMPILE_870
+  case 172: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36468,8 +35627,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_892
-  case 180: {
+#ifdef COMPILE_871
+  case 173: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36512,8 +35671,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_893
-  case 181: {
+#ifdef COMPILE_872
+  case 174: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36558,8 +35717,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_894
-  case 182: {
+#ifdef COMPILE_873
+  case 175: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36600,8 +35759,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_895
-  case 183: {
+#ifdef COMPILE_874
+  case 176: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36642,8 +35801,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_896
-  case 184: {
+#ifdef COMPILE_875
+  case 177: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36685,8 +35844,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_897
-  case 185: {
+#ifdef COMPILE_876
+  case 178: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36728,8 +35887,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_898
-  case 186: {
+#ifdef COMPILE_877
+  case 179: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36770,8 +35929,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_899
-  case 187: {
+#ifdef COMPILE_878
+  case 180: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36812,8 +35971,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_900
-  case 188: {
+#ifdef COMPILE_879
+  case 181: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36854,8 +36013,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_901
-  case 189: {
+#ifdef COMPILE_880
+  case 182: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36896,8 +36055,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_902
-  case 190: {
+#ifdef COMPILE_881
+  case 183: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36938,8 +36097,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_903
-  case 191: {
+#ifdef COMPILE_882
+  case 184: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -36980,8 +36139,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_904
-  case 192: {
+#ifdef COMPILE_883
+  case 185: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37022,8 +36181,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_905
-  case 193: {
+#ifdef COMPILE_884
+  case 186: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37064,8 +36223,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_906
-  case 194: {
+#ifdef COMPILE_885
+  case 187: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37106,8 +36265,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_907
-  case 195: {
+#ifdef COMPILE_886
+  case 188: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37148,8 +36307,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_908
-  case 196: {
+#ifdef COMPILE_887
+  case 189: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37190,8 +36349,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_909
-  case 197: {
+#ifdef COMPILE_888
+  case 190: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37232,8 +36391,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_910
-  case 198: {
+#ifdef COMPILE_889
+  case 191: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37274,8 +36433,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_911
-  case 199: {
+#ifdef COMPILE_890
+  case 192: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37316,8 +36475,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_912
-  case 200: {
+#ifdef COMPILE_891
+  case 193: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37358,8 +36517,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_913
-  case 201: {
+#ifdef COMPILE_892
+  case 194: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37400,8 +36559,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_914
-  case 202: {
+#ifdef COMPILE_893
+  case 195: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37442,8 +36601,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_915
-  case 203: {
+#ifdef COMPILE_894
+  case 196: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37484,8 +36643,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_916
-  case 204: {
+#ifdef COMPILE_895
+  case 197: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37526,8 +36685,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_917
-  case 205: {
+#ifdef COMPILE_896
+  case 198: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37568,49 +36727,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_918
-  case 206: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_919
-  case 207: {
+#ifdef COMPILE_897
+  case 199: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37652,8 +36770,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_920
-  case 208: {
+#ifdef COMPILE_898
+  case 200: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37694,8 +36812,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_921
-  case 209: {
+#ifdef COMPILE_899
+  case 201: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37736,8 +36854,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_922
-  case 210: {
+#ifdef COMPILE_900
+  case 202: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37778,8 +36896,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_923
-  case 211: {
+#ifdef COMPILE_901
+  case 203: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37820,8 +36938,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_924
-  case 212: {
+#ifdef COMPILE_902
+  case 204: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37862,8 +36980,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_925
-  case 213: {
+#ifdef COMPILE_903
+  case 205: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37904,8 +37022,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_926
-  case 214: {
+#ifdef COMPILE_904
+  case 206: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37946,8 +37064,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_927
-  case 215: {
+#ifdef COMPILE_905
+  case 207: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -37991,8 +37109,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_928
-  case 216: {
+#ifdef COMPILE_906
+  case 208: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38036,8 +37154,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_929
-  case 217: {
+#ifdef COMPILE_907
+  case 209: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38081,8 +37199,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_930
-  case 218: {
+#ifdef COMPILE_908
+  case 210: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38126,8 +37244,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_931
-  case 219: {
+#ifdef COMPILE_909
+  case 211: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38171,8 +37289,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_932
-  case 220: {
+#ifdef COMPILE_910
+  case 212: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38213,8 +37331,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_933
-  case 221: {
+#ifdef COMPILE_911
+  case 213: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38255,8 +37373,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_934
-  case 222: {
+#ifdef COMPILE_912
+  case 214: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38297,8 +37415,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_935
-  case 223: {
+#ifdef COMPILE_913
+  case 215: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38339,8 +37457,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_936
-  case 224: {
+#ifdef COMPILE_914
+  case 216: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38381,8 +37499,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_937
-  case 225: {
+#ifdef COMPILE_915
+  case 217: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38423,8 +37541,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_938
-  case 226: {
+#ifdef COMPILE_916
+  case 218: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38465,8 +37583,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_939
-  case 227: {
+#ifdef COMPILE_917
+  case 219: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38507,8 +37625,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_940
-  case 228: {
+#ifdef COMPILE_918
+  case 220: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38549,8 +37667,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_941
-  case 229: {
+#ifdef COMPILE_919
+  case 221: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38591,8 +37709,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_942
-  case 230: {
+#ifdef COMPILE_920
+  case 222: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38633,8 +37751,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_943
-  case 231: {
+#ifdef COMPILE_921
+  case 223: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38675,8 +37793,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_944
-  case 232: {
+#ifdef COMPILE_922
+  case 224: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38719,8 +37837,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_945
-  case 233: {
+#ifdef COMPILE_923
+  case 225: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38765,8 +37883,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_946
-  case 234: {
+#ifdef COMPILE_924
+  case 226: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38807,8 +37925,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_947
-  case 235: {
+#ifdef COMPILE_925
+  case 227: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38849,8 +37967,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_948
-  case 236: {
+#ifdef COMPILE_926
+  case 228: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38891,8 +38009,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_949
-  case 237: {
+#ifdef COMPILE_927
+  case 229: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38933,8 +38051,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_950
-  case 238: {
+#ifdef COMPILE_928
+  case 230: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -38975,8 +38093,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_951
-  case 239: {
+#ifdef COMPILE_929
+  case 231: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39017,8 +38135,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_952
-  case 240: {
+#ifdef COMPILE_930
+  case 232: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39059,8 +38177,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_953
-  case 241: {
+#ifdef COMPILE_931
+  case 233: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39101,8 +38219,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_954
-  case 242: {
+#ifdef COMPILE_932
+  case 234: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39143,8 +38261,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_955
-  case 243: {
+#ifdef COMPILE_933
+  case 235: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39185,8 +38303,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_956
-  case 244: {
+#ifdef COMPILE_934
+  case 236: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39227,8 +38345,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_957
-  case 245: {
+#ifdef COMPILE_935
+  case 237: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39269,8 +38387,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_958
-  case 246: {
+#ifdef COMPILE_936
+  case 238: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39311,8 +38429,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_959
-  case 247: {
+#ifdef COMPILE_937
+  case 239: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39353,8 +38471,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_960
-  case 248: {
+#ifdef COMPILE_938
+  case 240: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39395,8 +38513,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_961
-  case 249: {
+#ifdef COMPILE_939
+  case 241: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39437,8 +38555,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_962
-  case 250: {
+#ifdef COMPILE_940
+  case 242: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39479,8 +38597,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_963
-  case 251: {
+#ifdef COMPILE_941
+  case 243: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39521,8 +38639,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_964
-  case 252: {
+#ifdef COMPILE_942
+  case 244: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39563,8 +38681,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_965
-  case 253: {
+#ifdef COMPILE_943
+  case 245: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39605,8 +38723,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_966
-  case 254: {
+#ifdef COMPILE_944
+  case 246: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39647,8 +38765,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_967
-  case 255: {
+#ifdef COMPILE_945
+  case 247: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39689,8 +38807,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_968
-  case 256: {
+#ifdef COMPILE_946
+  case 248: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39731,8 +38849,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_969
-  case 257: {
+#ifdef COMPILE_947
+  case 249: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39773,8 +38891,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_970
-  case 258: {
+#ifdef COMPILE_948
+  case 250: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39815,49 +38933,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_971
-  case 259: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_972
-  case 260: {
+#ifdef COMPILE_949
+  case 251: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39899,8 +38976,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_973
-  case 261: {
+#ifdef COMPILE_950
+  case 252: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39941,8 +39018,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_974
-  case 262: {
+#ifdef COMPILE_951
+  case 253: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -39983,8 +39060,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_975
-  case 263: {
+#ifdef COMPILE_952
+  case 254: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40025,8 +39102,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_976
-  case 264: {
+#ifdef COMPILE_953
+  case 255: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40067,8 +39144,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_977
-  case 265: {
+#ifdef COMPILE_954
+  case 256: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40108,8 +39185,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_978
-  case 266: {
+#ifdef COMPILE_955
+  case 257: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40149,8 +39226,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_979
-  case 267: {
+#ifdef COMPILE_956
+  case 258: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40190,8 +39267,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_980
-  case 268: {
+#ifdef COMPILE_957
+  case 259: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40231,8 +39308,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_981
-  case 269: {
+#ifdef COMPILE_958
+  case 260: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40272,8 +39349,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_982
-  case 270: {
+#ifdef COMPILE_959
+  case 261: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40313,8 +39390,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_983
-  case 271: {
+#ifdef COMPILE_960
+  case 262: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40355,8 +39432,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_984
-  case 272: {
+#ifdef COMPILE_961
+  case 263: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40397,8 +39474,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_985
-  case 273: {
+#ifdef COMPILE_962
+  case 264: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40439,8 +39516,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_986
-  case 274: {
+#ifdef COMPILE_963
+  case 265: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40480,8 +39557,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_987
-  case 275: {
+#ifdef COMPILE_964
+  case 266: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40521,8 +39598,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_988
-  case 276: {
+#ifdef COMPILE_965
+  case 267: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40562,8 +39639,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_989
-  case 277: {
+#ifdef COMPILE_966
+  case 268: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40603,8 +39680,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_990
-  case 278: {
+#ifdef COMPILE_967
+  case 269: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40648,8 +39725,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_991
-  case 279: {
+#ifdef COMPILE_968
+  case 270: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40693,8 +39770,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_992
-  case 280: {
+#ifdef COMPILE_969
+  case 271: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40738,8 +39815,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_993
-  case 281: {
+#ifdef COMPILE_970
+  case 272: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40783,8 +39860,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_994
-  case 282: {
+#ifdef COMPILE_971
+  case 273: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40828,8 +39905,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_995
-  case 283: {
+#ifdef COMPILE_972
+  case 274: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40870,8 +39947,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_996
-  case 284: {
+#ifdef COMPILE_973
+  case 275: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40912,8 +39989,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_997
-  case 285: {
+#ifdef COMPILE_974
+  case 276: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40953,8 +40030,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_998
-  case 286: {
+#ifdef COMPILE_975
+  case 277: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -40994,8 +40071,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_999
-  case 287: {
+#ifdef COMPILE_976
+  case 278: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41035,8 +40112,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1000
-  case 288: {
+#ifdef COMPILE_977
+  case 279: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41077,8 +40154,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1001
-  case 289: {
+#ifdef COMPILE_978
+  case 280: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41119,8 +40196,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1002
-  case 290: {
+#ifdef COMPILE_979
+  case 281: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41161,8 +40238,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1003
-  case 291: {
+#ifdef COMPILE_980
+  case 282: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41203,8 +40280,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1004
-  case 292: {
+#ifdef COMPILE_981
+  case 283: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41244,8 +40321,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1005
-  case 293: {
+#ifdef COMPILE_982
+  case 284: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41285,8 +40362,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1006
-  case 294: {
+#ifdef COMPILE_983
+  case 285: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41326,8 +40403,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1007
-  case 295: {
+#ifdef COMPILE_984
+  case 286: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41367,8 +40444,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1008
-  case 296: {
+#ifdef COMPILE_985
+  case 287: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41408,8 +40485,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1009
-  case 297: {
+#ifdef COMPILE_986
+  case 288: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41449,8 +40526,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1010
-  case 298: {
+#ifdef COMPILE_987
+  case 289: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41490,8 +40567,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1011
-  case 299: {
+#ifdef COMPILE_988
+  case 290: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41531,8 +40608,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1012
-  case 300: {
+#ifdef COMPILE_989
+  case 291: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41572,8 +40649,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1013
-  case 301: {
+#ifdef COMPILE_990
+  case 292: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41613,8 +40690,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1014
-  case 302: {
+#ifdef COMPILE_991
+  case 293: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41654,8 +40731,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1015
-  case 303: {
+#ifdef COMPILE_992
+  case 294: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41696,8 +40773,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1016
-  case 304: {
+#ifdef COMPILE_993
+  case 295: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41737,8 +40814,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1017
-  case 305: {
+#ifdef COMPILE_994
+  case 296: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41778,8 +40855,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1018
-  case 306: {
+#ifdef COMPILE_995
+  case 297: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41819,8 +40896,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1019
-  case 307: {
+#ifdef COMPILE_996
+  case 298: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41860,8 +40937,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1020
-  case 308: {
+#ifdef COMPILE_997
+  case 299: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41901,8 +40978,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1021
-  case 309: {
+#ifdef COMPILE_998
+  case 300: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41943,8 +41020,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1022
-  case 310: {
+#ifdef COMPILE_999
+  case 301: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -41984,8 +41061,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1023
-  case 311: {
+#ifdef COMPILE_1000
+  case 302: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42025,8 +41102,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1024
-  case 312: {
+#ifdef COMPILE_1001
+  case 303: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42066,8 +41143,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1025
-  case 313: {
+#ifdef COMPILE_1002
+  case 304: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42107,8 +41184,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1026
-  case 314: {
+#ifdef COMPILE_1003
+  case 305: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42148,8 +41225,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1027
-  case 315: {
+#ifdef COMPILE_1004
+  case 306: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42189,8 +41266,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1028
-  case 316: {
+#ifdef COMPILE_1005
+  case 307: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42230,8 +41307,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1029
-  case 317: {
+#ifdef COMPILE_1006
+  case 308: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42272,8 +41349,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1030
-  case 318: {
+#ifdef COMPILE_1007
+  case 309: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42314,8 +41391,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1031
-  case 319: {
+#ifdef COMPILE_1008
+  case 310: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42356,8 +41433,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1032
-  case 320: {
+#ifdef COMPILE_1009
+  case 311: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42397,8 +41474,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1033
-  case 321: {
+#ifdef COMPILE_1010
+  case 312: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42439,8 +41516,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1034
-  case 322: {
+#ifdef COMPILE_1011
+  case 313: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42483,8 +41560,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1035
-  case 323: {
+#ifdef COMPILE_1012
+  case 314: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42529,8 +41606,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1036
-  case 324: {
+#ifdef COMPILE_1013
+  case 315: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42570,8 +41647,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1037
-  case 325: {
+#ifdef COMPILE_1014
+  case 316: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42611,8 +41688,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1038
-  case 326: {
+#ifdef COMPILE_1015
+  case 317: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42652,8 +41729,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1039
-  case 327: {
+#ifdef COMPILE_1016
+  case 318: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42694,8 +41771,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1040
-  case 328: {
+#ifdef COMPILE_1017
+  case 319: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42736,8 +41813,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1041
-  case 329: {
+#ifdef COMPILE_1018
+  case 320: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42777,8 +41854,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1042
-  case 330: {
+#ifdef COMPILE_1019
+  case 321: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42818,8 +41895,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1043
-  case 331: {
+#ifdef COMPILE_1020
+  case 322: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42859,8 +41936,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1044
-  case 332: {
+#ifdef COMPILE_1021
+  case 323: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42900,8 +41977,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1045
-  case 333: {
+#ifdef COMPILE_1022
+  case 324: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42941,8 +42018,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1046
-  case 334: {
+#ifdef COMPILE_1023
+  case 325: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -42982,8 +42059,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1047
-  case 335: {
+#ifdef COMPILE_1024
+  case 326: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43023,8 +42100,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1048
-  case 336: {
+#ifdef COMPILE_1025
+  case 327: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43064,8 +42141,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1049
-  case 337: {
+#ifdef COMPILE_1026
+  case 328: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43105,8 +42182,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1050
-  case 338: {
+#ifdef COMPILE_1027
+  case 329: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43146,8 +42223,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1051
-  case 339: {
+#ifdef COMPILE_1028
+  case 330: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43187,8 +42264,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1052
-  case 340: {
+#ifdef COMPILE_1029
+  case 331: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43228,8 +42305,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1053
-  case 341: {
+#ifdef COMPILE_1030
+  case 332: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43269,8 +42346,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1054
-  case 342: {
+#ifdef COMPILE_1031
+  case 333: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43310,8 +42387,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1055
-  case 343: {
+#ifdef COMPILE_1032
+  case 334: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43351,8 +42428,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1056
-  case 344: {
+#ifdef COMPILE_1033
+  case 335: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43392,8 +42469,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1057
-  case 345: {
+#ifdef COMPILE_1034
+  case 336: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43433,8 +42510,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1058
-  case 346: {
+#ifdef COMPILE_1035
+  case 337: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43474,8 +42551,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1059
-  case 347: {
+#ifdef COMPILE_1036
+  case 338: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43515,8 +42592,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1060
-  case 348: {
+#ifdef COMPILE_1037
+  case 339: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43556,8 +42633,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1061
-  case 349: {
+#ifdef COMPILE_1038
+  case 340: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43597,8 +42674,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1062
-  case 350: {
+#ifdef COMPILE_1039
+  case 341: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43638,8 +42715,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1063
-  case 351: {
+#ifdef COMPILE_1040
+  case 342: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43679,8 +42756,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1064
-  case 352: {
+#ifdef COMPILE_1041
+  case 343: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43720,8 +42797,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1065
-  case 353: {
+#ifdef COMPILE_1042
+  case 344: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43761,8 +42838,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1066
-  case 354: {
+#ifdef COMPILE_1043
+  case 345: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43802,8 +42879,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1067
-  case 355: {
+#ifdef COMPILE_1044
+  case 346: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43843,8 +42920,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1068
-  case 356: {
+#ifdef COMPILE_1045
+  case 347: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43884,8 +42961,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1069
-  case 357: {
+#ifdef COMPILE_1046
+  case 348: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43925,8 +43002,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1070
-  case 358: {
+#ifdef COMPILE_1047
+  case 349: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -43966,8 +43043,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1071
-  case 359: {
+#ifdef COMPILE_1048
+  case 350: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44007,8 +43084,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1072
-  case 360: {
+#ifdef COMPILE_1049
+  case 351: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44048,8 +43125,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1073
-  case 361: {
+#ifdef COMPILE_1050
+  case 352: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44089,8 +43166,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1074
-  case 362: {
+#ifdef COMPILE_1051
+  case 353: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44130,8 +43207,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1075
-  case 363: {
+#ifdef COMPILE_1052
+  case 354: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44171,8 +43248,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1076
-  case 364: {
+#ifdef COMPILE_1053
+  case 355: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44212,8 +43289,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1077
-  case 365: {
+#ifdef COMPILE_1054
+  case 356: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44253,8 +43330,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1078
-  case 366: {
+#ifdef COMPILE_1055
+  case 357: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44294,8 +43371,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1079
-  case 367: {
+#ifdef COMPILE_1056
+  case 358: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44335,8 +43412,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1080
-  case 368: {
+#ifdef COMPILE_1057
+  case 359: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44376,8 +43453,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1081
-  case 369: {
+#ifdef COMPILE_1058
+  case 360: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44417,8 +43494,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1082
-  case 370: {
+#ifdef COMPILE_1059
+  case 361: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44458,8 +43535,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1083
-  case 371: {
+#ifdef COMPILE_1060
+  case 362: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44499,8 +43576,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1084
-  case 372: {
+#ifdef COMPILE_1061
+  case 363: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44540,8 +43617,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1085
-  case 373: {
+#ifdef COMPILE_1062
+  case 364: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44582,8 +43659,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1086
-  case 374: {
+#ifdef COMPILE_1063
+  case 365: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44624,8 +43701,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1087
-  case 375: {
+#ifdef COMPILE_1064
+  case 366: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44666,8 +43743,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1088
-  case 376: {
+#ifdef COMPILE_1065
+  case 367: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44707,8 +43784,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1089
-  case 377: {
+#ifdef COMPILE_1066
+  case 368: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44748,8 +43825,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1090
-  case 378: {
+#ifdef COMPILE_1067
+  case 369: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44789,8 +43866,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1091
-  case 379: {
+#ifdef COMPILE_1068
+  case 370: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44830,8 +43907,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1092
-  case 380: {
+#ifdef COMPILE_1069
+  case 371: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44871,8 +43948,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1093
-  case 381: {
+#ifdef COMPILE_1070
+  case 372: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44912,8 +43989,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1094
-  case 382: {
+#ifdef COMPILE_1071
+  case 373: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44953,8 +44030,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1095
-  case 383: {
+#ifdef COMPILE_1072
+  case 374: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -44994,8 +44071,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1096
-  case 384: {
+#ifdef COMPILE_1073
+  case 375: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45035,8 +44112,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1097
-  case 385: {
+#ifdef COMPILE_1074
+  case 376: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45076,8 +44153,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1098
-  case 386: {
+#ifdef COMPILE_1075
+  case 377: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45117,8 +44194,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1099
-  case 387: {
+#ifdef COMPILE_1076
+  case 378: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45158,8 +44235,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1100
-  case 388: {
+#ifdef COMPILE_1077
+  case 379: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45199,8 +44276,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1101
-  case 389: {
+#ifdef COMPILE_1078
+  case 380: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45240,8 +44317,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1102
-  case 390: {
+#ifdef COMPILE_1079
+  case 381: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45281,8 +44358,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1103
-  case 391: {
+#ifdef COMPILE_1080
+  case 382: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45322,8 +44399,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1104
-  case 392: {
+#ifdef COMPILE_1081
+  case 383: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45363,8 +44440,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1105
-  case 393: {
+#ifdef COMPILE_1082
+  case 384: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45404,8 +44481,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1106
-  case 394: {
+#ifdef COMPILE_1083
+  case 385: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45445,8 +44522,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1107
-  case 395: {
+#ifdef COMPILE_1084
+  case 386: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45486,8 +44563,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1108
-  case 396: {
+#ifdef COMPILE_1085
+  case 387: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45527,8 +44604,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1109
-  case 397: {
+#ifdef COMPILE_1086
+  case 388: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45568,8 +44645,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1110
-  case 398: {
+#ifdef COMPILE_1087
+  case 389: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45609,8 +44686,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1111
-  case 399: {
+#ifdef COMPILE_1088
+  case 390: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45650,8 +44727,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1112
-  case 400: {
+#ifdef COMPILE_1089
+  case 391: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45691,8 +44768,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1113
-  case 401: {
+#ifdef COMPILE_1090
+  case 392: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45732,8 +44809,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1114
-  case 402: {
+#ifdef COMPILE_1091
+  case 393: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45773,8 +44850,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1115
-  case 403: {
+#ifdef COMPILE_1092
+  case 394: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45814,8 +44891,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1116
-  case 404: {
+#ifdef COMPILE_1093
+  case 395: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45855,8 +44932,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1117
-  case 405: {
+#ifdef COMPILE_1094
+  case 396: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45896,8 +44973,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1118
-  case 406: {
+#ifdef COMPILE_1095
+  case 397: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45937,8 +45014,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1119
-  case 407: {
+#ifdef COMPILE_1096
+  case 398: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -45978,8 +45055,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1120
-  case 408: {
+#ifdef COMPILE_1097
+  case 399: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46019,8 +45096,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1121
-  case 409: {
+#ifdef COMPILE_1098
+  case 400: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46060,8 +45137,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1122
-  case 410: {
+#ifdef COMPILE_1099
+  case 401: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46101,8 +45178,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1123
-  case 411: {
+#ifdef COMPILE_1100
+  case 402: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46142,8 +45219,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1124
-  case 412: {
+#ifdef COMPILE_1101
+  case 403: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46183,8 +45260,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1125
-  case 413: {
+#ifdef COMPILE_1102
+  case 404: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46224,8 +45301,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1126
-  case 414: {
+#ifdef COMPILE_1103
+  case 405: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46265,8 +45342,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1127
-  case 415: {
+#ifdef COMPILE_1104
+  case 406: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46306,8 +45383,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1128
-  case 416: {
+#ifdef COMPILE_1105
+  case 407: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46347,8 +45424,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1129
-  case 417: {
+#ifdef COMPILE_1106
+  case 408: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46388,8 +45465,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1130
-  case 418: {
+#ifdef COMPILE_1107
+  case 409: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46429,8 +45506,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1131
-  case 419: {
+#ifdef COMPILE_1108
+  case 410: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46470,8 +45547,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1132
-  case 420: {
+#ifdef COMPILE_1109
+  case 411: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46511,8 +45588,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1133
-  case 421: {
+#ifdef COMPILE_1110
+  case 412: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46552,8 +45629,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1134
-  case 422: {
+#ifdef COMPILE_1111
+  case 413: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46593,8 +45670,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1135
-  case 423: {
+#ifdef COMPILE_1112
+  case 414: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46634,8 +45711,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1136
-  case 424: {
+#ifdef COMPILE_1113
+  case 415: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46675,8 +45752,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1137
-  case 425: {
+#ifdef COMPILE_1114
+  case 416: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46716,8 +45793,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1138
-  case 426: {
+#ifdef COMPILE_1115
+  case 417: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46757,8 +45834,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1139
-  case 427: {
+#ifdef COMPILE_1116
+  case 418: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46798,8 +45875,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1140
-  case 428: {
+#ifdef COMPILE_1117
+  case 419: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46839,8 +45916,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1141
-  case 429: {
+#ifdef COMPILE_1118
+  case 420: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46880,8 +45957,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1142
-  case 430: {
+#ifdef COMPILE_1119
+  case 421: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46922,8 +45999,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1143
-  case 431: {
+#ifdef COMPILE_1120
+  case 422: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -46964,8 +46041,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1144
-  case 432: {
+#ifdef COMPILE_1121
+  case 423: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47006,8 +46083,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1145
-  case 433: {
+#ifdef COMPILE_1122
+  case 424: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47047,8 +46124,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1146
-  case 434: {
+#ifdef COMPILE_1123
+  case 425: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47088,8 +46165,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1147
-  case 435: {
+#ifdef COMPILE_1124
+  case 426: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47129,8 +46206,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1148
-  case 436: {
+#ifdef COMPILE_1125
+  case 427: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47170,8 +46247,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1149
-  case 437: {
+#ifdef COMPILE_1126
+  case 428: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47211,8 +46288,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1150
-  case 438: {
+#ifdef COMPILE_1127
+  case 429: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47252,8 +46329,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1151
-  case 439: {
+#ifdef COMPILE_1128
+  case 430: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47293,8 +46370,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1152
-  case 440: {
+#ifdef COMPILE_1129
+  case 431: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47335,8 +46412,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1153
-  case 441: {
+#ifdef COMPILE_1130
+  case 432: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47376,8 +46453,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1154
-  case 442: {
+#ifdef COMPILE_1131
+  case 433: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47417,8 +46494,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1155
-  case 443: {
+#ifdef COMPILE_1132
+  case 434: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47458,8 +46535,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1156
-  case 444: {
+#ifdef COMPILE_1133
+  case 435: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47499,8 +46576,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1157
-  case 445: {
+#ifdef COMPILE_1134
+  case 436: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47540,8 +46617,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1158
-  case 446: {
+#ifdef COMPILE_1135
+  case 437: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47581,8 +46658,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1159
-  case 447: {
+#ifdef COMPILE_1136
+  case 438: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47622,8 +46699,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1160
-  case 448: {
+#ifdef COMPILE_1137
+  case 439: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47663,8 +46740,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1161
-  case 449: {
+#ifdef COMPILE_1138
+  case 440: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47704,8 +46781,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1162
-  case 450: {
+#ifdef COMPILE_1139
+  case 441: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47745,8 +46822,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1163
-  case 451: {
+#ifdef COMPILE_1140
+  case 442: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47786,8 +46863,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1164
-  case 452: {
+#ifdef COMPILE_1141
+  case 443: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47827,8 +46904,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1165
-  case 453: {
+#ifdef COMPILE_1142
+  case 444: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47868,8 +46945,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1166
-  case 454: {
+#ifdef COMPILE_1143
+  case 445: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47909,8 +46986,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1167
-  case 455: {
+#ifdef COMPILE_1144
+  case 446: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47950,8 +47027,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1168
-  case 456: {
+#ifdef COMPILE_1145
+  case 447: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -47991,8 +47068,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1169
-  case 457: {
+#ifdef COMPILE_1146
+  case 448: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48032,8 +47109,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1170
-  case 458: {
+#ifdef COMPILE_1147
+  case 449: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48073,8 +47150,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1171
-  case 459: {
+#ifdef COMPILE_1148
+  case 450: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48114,8 +47191,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1172
-  case 460: {
+#ifdef COMPILE_1149
+  case 451: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48155,8 +47232,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1173
-  case 461: {
+#ifdef COMPILE_1150
+  case 452: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48196,8 +47273,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1174
-  case 462: {
+#ifdef COMPILE_1151
+  case 453: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48237,8 +47314,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1175
-  case 463: {
+#ifdef COMPILE_1152
+  case 454: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48278,8 +47355,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1176
-  case 464: {
+#ifdef COMPILE_1153
+  case 455: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48319,8 +47396,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1177
-  case 465: {
+#ifdef COMPILE_1154
+  case 456: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48360,8 +47437,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1178
-  case 466: {
+#ifdef COMPILE_1155
+  case 457: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48401,8 +47478,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1179
-  case 467: {
+#ifdef COMPILE_1156
+  case 458: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48442,8 +47519,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1180
-  case 468: {
+#ifdef COMPILE_1157
+  case 459: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48483,8 +47560,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1181
-  case 469: {
+#ifdef COMPILE_1158
+  case 460: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48524,8 +47601,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1182
-  case 470: {
+#ifdef COMPILE_1159
+  case 461: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48565,8 +47642,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1183
-  case 471: {
+#ifdef COMPILE_1160
+  case 462: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48606,8 +47683,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1184
-  case 472: {
+#ifdef COMPILE_1161
+  case 463: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48647,8 +47724,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1185
-  case 473: {
+#ifdef COMPILE_1162
+  case 464: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48688,8 +47765,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1186
-  case 474: {
+#ifdef COMPILE_1163
+  case 465: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48729,8 +47806,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1187
-  case 475: {
+#ifdef COMPILE_1164
+  case 466: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48770,8 +47847,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1188
-  case 476: {
+#ifdef COMPILE_1165
+  case 467: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48811,8 +47888,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1189
-  case 477: {
+#ifdef COMPILE_1166
+  case 468: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48852,8 +47929,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1190
-  case 478: {
+#ifdef COMPILE_1167
+  case 469: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48893,8 +47970,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1191
-  case 479: {
+#ifdef COMPILE_1168
+  case 470: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48934,8 +48011,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1192
-  case 480: {
+#ifdef COMPILE_1169
+  case 471: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -48975,8 +48052,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1193
-  case 481: {
+#ifdef COMPILE_1170
+  case 472: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49016,8 +48093,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1194
-  case 482: {
+#ifdef COMPILE_1171
+  case 473: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49057,8 +48134,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1195
-  case 483: {
+#ifdef COMPILE_1172
+  case 474: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49098,8 +48175,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1196
-  case 484: {
+#ifdef COMPILE_1173
+  case 475: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49139,8 +48216,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1197
-  case 485: {
+#ifdef COMPILE_1174
+  case 476: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49180,8 +48257,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1198
-  case 486: {
+#ifdef COMPILE_1175
+  case 477: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49222,8 +48299,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1199
-  case 487: {
+#ifdef COMPILE_1176
+  case 478: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49263,8 +48340,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1200
-  case 488: {
+#ifdef COMPILE_1177
+  case 479: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49304,8 +48381,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1201
-  case 489: {
+#ifdef COMPILE_1178
+  case 480: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49345,8 +48422,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1202
-  case 490: {
+#ifdef COMPILE_1179
+  case 481: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49386,8 +48463,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1203
-  case 491: {
+#ifdef COMPILE_1180
+  case 482: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49427,8 +48504,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1204
-  case 492: {
+#ifdef COMPILE_1181
+  case 483: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49468,8 +48545,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1205
-  case 493: {
+#ifdef COMPILE_1182
+  case 484: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49509,8 +48586,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1206
-  case 494: {
+#ifdef COMPILE_1183
+  case 485: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49550,8 +48627,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1207
-  case 495: {
+#ifdef COMPILE_1184
+  case 486: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49591,8 +48668,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1208
-  case 496: {
+#ifdef COMPILE_1185
+  case 487: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49632,8 +48709,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1209
-  case 497: {
+#ifdef COMPILE_1186
+  case 488: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49673,8 +48750,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1210
-  case 498: {
+#ifdef COMPILE_1187
+  case 489: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49714,8 +48791,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1211
-  case 499: {
+#ifdef COMPILE_1188
+  case 490: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49755,8 +48832,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1212
-  case 500: {
+#ifdef COMPILE_1189
+  case 491: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49796,8 +48873,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1213
-  case 501: {
+#ifdef COMPILE_1190
+  case 492: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49838,8 +48915,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1214
-  case 502: {
+#ifdef COMPILE_1191
+  case 493: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49880,8 +48957,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1215
-  case 503: {
+#ifdef COMPILE_1192
+  case 494: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49922,8 +48999,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1216
-  case 504: {
+#ifdef COMPILE_1193
+  case 495: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -49964,8 +49041,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1217
-  case 505: {
+#ifdef COMPILE_1194
+  case 496: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50006,8 +49083,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1218
-  case 506: {
+#ifdef COMPILE_1195
+  case 497: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50048,8 +49125,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1219
-  case 507: {
+#ifdef COMPILE_1196
+  case 498: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50090,8 +49167,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1220
-  case 508: {
+#ifdef COMPILE_1197
+  case 499: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50131,8 +49208,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1221
-  case 509: {
+#ifdef COMPILE_1198
+  case 500: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50172,8 +49249,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1222
-  case 510: {
+#ifdef COMPILE_1199
+  case 501: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50214,8 +49291,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1223
-  case 511: {
+#ifdef COMPILE_1200
+  case 502: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50256,8 +49333,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1224
-  case 512: {
+#ifdef COMPILE_1201
+  case 503: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50298,8 +49375,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1225
-  case 513: {
+#ifdef COMPILE_1202
+  case 504: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50340,8 +49417,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1226
-  case 514: {
+#ifdef COMPILE_1203
+  case 505: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50381,8 +49458,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1227
-  case 515: {
+#ifdef COMPILE_1204
+  case 506: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50422,8 +49499,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1228
-  case 516: {
+#ifdef COMPILE_1205
+  case 507: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50463,49 +49540,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1229
-  case 517: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1230
-  case 518: {
+#ifdef COMPILE_1206
+  case 508: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50547,8 +49583,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1231
-  case 519: {
+#ifdef COMPILE_1207
+  case 509: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50589,8 +49625,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1232
-  case 520: {
+#ifdef COMPILE_1208
+  case 510: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50631,8 +49667,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1233
-  case 521: {
+#ifdef COMPILE_1209
+  case 511: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50673,8 +49709,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1234
-  case 522: {
+#ifdef COMPILE_1210
+  case 512: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50715,8 +49751,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1235
-  case 523: {
+#ifdef COMPILE_1211
+  case 513: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50756,8 +49792,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1236
-  case 524: {
+#ifdef COMPILE_1212
+  case 514: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50798,8 +49834,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1237
-  case 525: {
+#ifdef COMPILE_1213
+  case 515: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50840,8 +49876,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1238
-  case 526: {
+#ifdef COMPILE_1214
+  case 516: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50882,8 +49918,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1239
-  case 527: {
+#ifdef COMPILE_1215
+  case 517: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50923,8 +49959,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1240
-  case 528: {
+#ifdef COMPILE_1216
+  case 518: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -50968,8 +50004,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1241
-  case 529: {
+#ifdef COMPILE_1217
+  case 519: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51013,8 +50049,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1242
-  case 530: {
+#ifdef COMPILE_1218
+  case 520: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51058,8 +50094,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1243
-  case 531: {
+#ifdef COMPILE_1219
+  case 521: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51103,8 +50139,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1244
-  case 532: {
+#ifdef COMPILE_1220
+  case 522: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51148,8 +50184,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1245
-  case 533: {
+#ifdef COMPILE_1221
+  case 523: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51190,8 +50226,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1246
-  case 534: {
+#ifdef COMPILE_1222
+  case 524: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51232,8 +50268,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1247
-  case 535: {
+#ifdef COMPILE_1223
+  case 525: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51273,8 +50309,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1248
-  case 536: {
+#ifdef COMPILE_1224
+  case 526: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51315,8 +50351,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1249
-  case 537: {
+#ifdef COMPILE_1225
+  case 527: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51356,8 +50392,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1250
-  case 538: {
+#ifdef COMPILE_1226
+  case 528: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51398,8 +50434,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1251
-  case 539: {
+#ifdef COMPILE_1227
+  case 529: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51439,8 +50475,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1252
-  case 540: {
+#ifdef COMPILE_1228
+  case 530: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51481,8 +50517,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1253
-  case 541: {
+#ifdef COMPILE_1229
+  case 531: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51522,8 +50558,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1254
-  case 542: {
+#ifdef COMPILE_1230
+  case 532: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51563,8 +50599,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1255
-  case 543: {
+#ifdef COMPILE_1231
+  case 533: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51604,8 +50640,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1256
-  case 544: {
+#ifdef COMPILE_1232
+  case 534: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51646,8 +50682,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1257
-  case 545: {
+#ifdef COMPILE_1233
+  case 535: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51687,8 +50723,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1258
-  case 546: {
+#ifdef COMPILE_1234
+  case 536: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51728,8 +50764,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1259
-  case 547: {
+#ifdef COMPILE_1235
+  case 537: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51769,8 +50805,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1260
-  case 548: {
+#ifdef COMPILE_1236
+  case 538: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51811,8 +50847,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1261
-  case 549: {
+#ifdef COMPILE_1237
+  case 539: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51852,8 +50888,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1262
-  case 550: {
+#ifdef COMPILE_1238
+  case 540: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51893,8 +50929,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1263
-  case 551: {
+#ifdef COMPILE_1239
+  case 541: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51934,8 +50970,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1264
-  case 552: {
+#ifdef COMPILE_1240
+  case 542: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -51975,8 +51011,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1265
-  case 553: {
+#ifdef COMPILE_1241
+  case 543: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52016,8 +51052,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1266
-  case 554: {
+#ifdef COMPILE_1242
+  case 544: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52057,8 +51093,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1267
-  case 555: {
+#ifdef COMPILE_1243
+  case 545: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52099,8 +51135,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1268
-  case 556: {
+#ifdef COMPILE_1244
+  case 546: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52141,8 +51177,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1269
-  case 557: {
+#ifdef COMPILE_1245
+  case 547: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52182,8 +51218,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1270
-  case 558: {
+#ifdef COMPILE_1246
+  case 548: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52223,8 +51259,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1271
-  case 559: {
+#ifdef COMPILE_1247
+  case 549: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52265,8 +51301,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1272
-  case 560: {
+#ifdef COMPILE_1248
+  case 550: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52306,8 +51342,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1273
-  case 561: {
+#ifdef COMPILE_1249
+  case 551: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52348,8 +51384,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1274
-  case 562: {
+#ifdef COMPILE_1250
+  case 552: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52389,8 +51425,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1275
-  case 563: {
+#ifdef COMPILE_1251
+  case 553: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52430,8 +51466,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1276
-  case 564: {
+#ifdef COMPILE_1252
+  case 554: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52472,8 +51508,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1277
-  case 565: {
+#ifdef COMPILE_1253
+  case 555: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52513,8 +51549,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1278
-  case 566: {
+#ifdef COMPILE_1254
+  case 556: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52557,8 +51593,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1279
-  case 567: {
+#ifdef COMPILE_1255
+  case 557: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52603,8 +51639,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1280
-  case 568: {
+#ifdef COMPILE_1256
+  case 558: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52644,8 +51680,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1281
-  case 569: {
+#ifdef COMPILE_1257
+  case 559: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52686,8 +51722,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1282
-  case 570: {
+#ifdef COMPILE_1258
+  case 560: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52728,8 +51764,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1283
-  case 571: {
+#ifdef COMPILE_1259
+  case 561: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52769,8 +51805,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1284
-  case 572: {
+#ifdef COMPILE_1260
+  case 562: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52810,8 +51846,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1285
-  case 573: {
+#ifdef COMPILE_1261
+  case 563: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52852,8 +51888,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1286
-  case 574: {
+#ifdef COMPILE_1262
+  case 564: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52894,8 +51930,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1287
-  case 575: {
+#ifdef COMPILE_1263
+  case 565: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52936,8 +51972,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1288
-  case 576: {
+#ifdef COMPILE_1264
+  case 566: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -52978,8 +52014,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1289
-  case 577: {
+#ifdef COMPILE_1265
+  case 567: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53020,8 +52056,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1290
-  case 578: {
+#ifdef COMPILE_1266
+  case 568: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53062,8 +52098,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1291
-  case 579: {
+#ifdef COMPILE_1267
+  case 569: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53104,8 +52140,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1292
-  case 580: {
+#ifdef COMPILE_1268
+  case 570: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53145,8 +52181,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1293
-  case 581: {
+#ifdef COMPILE_1269
+  case 571: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53186,8 +52222,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1294
-  case 582: {
+#ifdef COMPILE_1270
+  case 572: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53227,8 +52263,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1295
-  case 583: {
+#ifdef COMPILE_1271
+  case 573: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53268,8 +52304,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1296
-  case 584: {
+#ifdef COMPILE_1272
+  case 574: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53309,8 +52345,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1297
-  case 585: {
+#ifdef COMPILE_1273
+  case 575: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53350,8 +52386,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1298
-  case 586: {
+#ifdef COMPILE_1274
+  case 576: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53391,8 +52427,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1299
-  case 587: {
+#ifdef COMPILE_1275
+  case 577: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53432,8 +52468,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1300
-  case 588: {
+#ifdef COMPILE_1276
+  case 578: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53473,8 +52509,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1301
-  case 589: {
+#ifdef COMPILE_1277
+  case 579: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53514,8 +52550,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1302
-  case 590: {
+#ifdef COMPILE_1278
+  case 580: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53556,8 +52592,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1303
-  case 591: {
+#ifdef COMPILE_1279
+  case 581: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53597,8 +52633,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1304
-  case 592: {
+#ifdef COMPILE_1280
+  case 582: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53638,8 +52674,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1305
-  case 593: {
+#ifdef COMPILE_1281
+  case 583: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53680,8 +52716,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1306
-  case 594: {
+#ifdef COMPILE_1282
+  case 584: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53722,8 +52758,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1307
-  case 595: {
+#ifdef COMPILE_1283
+  case 585: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53763,8 +52799,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1308
-  case 596: {
+#ifdef COMPILE_1284
+  case 586: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53805,8 +52841,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1309
-  case 597: {
+#ifdef COMPILE_1285
+  case 587: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53846,8 +52882,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1310
-  case 598: {
+#ifdef COMPILE_1286
+  case 588: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53887,8 +52923,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1311
-  case 599: {
+#ifdef COMPILE_1287
+  case 589: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53928,8 +52964,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1312
-  case 600: {
+#ifdef COMPILE_1288
+  case 590: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -53969,8 +53005,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1313
-  case 601: {
+#ifdef COMPILE_1289
+  case 591: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -54011,8 +53047,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1314
-  case 602: {
+#ifdef COMPILE_1290
+  case 592: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -54053,8 +53089,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1315
-  case 603: {
+#ifdef COMPILE_1291
+  case 593: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -54095,8 +53131,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1316
-  case 604: {
+#ifdef COMPILE_1292
+  case 594: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -54136,8 +53172,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1317
-  case 605: {
+#ifdef COMPILE_1293
+  case 595: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -54178,8 +53214,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1318
-  case 606: {
+#ifdef COMPILE_1294
+  case 596: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -54220,8 +53256,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1319
-  case 607: {
+#ifdef COMPILE_1295
+  case 597: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -54262,8 +53298,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1320
-  case 608: {
+#ifdef COMPILE_1296
+  case 598: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -54303,8 +53339,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1321
-  case 609: {
+#ifdef COMPILE_1297
+  case 599: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -54345,8 +53381,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1322
-  case 610: {
+#ifdef COMPILE_1298
+  case 600: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -54387,7 +53423,444 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1323
+#ifdef COMPILE_1299
+  case 601: {
+    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
+      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
+
+      if (!EG(active_symbol_table)) {
+        zend_rebuild_symbol_table(TSRMLS_C);
+      }
+      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
+                               key->nKeyLength, key->h,
+                               (void **)&p) == FAILURE) {
+        if (is_ref) {
+          ALLOC_INIT_ZVAL(tmp);
+          Z_SET_ISREF_P(tmp);
+          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
+                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
+                              (void **)&p);
+        } else {
+          tmp = EG(uninitialized_zval_ptr);
+          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
+        }
+      } else {
+        if (is_ref) {
+          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
+          tmp = *p;
+        } else
+          (executor_globals.argument_stack) =
+              zend_vm_stack_new_page(((16 * 1024) - 16));
+        if (Z_ISREF_PP(p)) {
+          ALLOC_INIT_ZVAL(tmp);
+          ZVAL_COPY_VALUE(tmp, *p);
+          Z_SET_REFCOUNT_P(tmp, 0);
+          Z_UNSET_ISREF_P(tmp);
+        } else {
+          tmp = *p;
+        }
+      }
+    } else {
+      tmp = *p;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_1300
+  case 602: {
+    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
+      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
+
+      if (!EG(active_symbol_table)) {
+        zend_rebuild_symbol_table(TSRMLS_C);
+      }
+      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
+                               key->nKeyLength, key->h,
+                               (void **)&p) == FAILURE) {
+        if (is_ref) {
+          ALLOC_INIT_ZVAL(tmp);
+          Z_SET_ISREF_P(tmp);
+          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
+                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
+                              (void **)&p);
+        } else {
+          tmp = EG(uninitialized_zval_ptr);
+          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
+        }
+      } else {
+        if (is_ref) {
+          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
+          tmp = *p;
+        } else
+          (tmp) = (executor_globals.uninitialized_zval_ptr);
+        if (Z_ISREF_PP(p)) {
+          ALLOC_INIT_ZVAL(tmp);
+          ZVAL_COPY_VALUE(tmp, *p);
+          Z_SET_REFCOUNT_P(tmp, 0);
+          Z_UNSET_ISREF_P(tmp);
+        } else {
+          tmp = *p;
+        }
+      }
+    } else {
+      tmp = *p;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_1301
+  case 603: {
+    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
+      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
+
+      if (!EG(active_symbol_table)) {
+        zend_rebuild_symbol_table(TSRMLS_C);
+      }
+      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
+                               key->nKeyLength, key->h,
+                               (void **)&p) == FAILURE) {
+        if (is_ref) {
+          ALLOC_INIT_ZVAL(tmp);
+          Z_SET_ISREF_P(tmp);
+          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
+                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
+                              (void **)&p);
+        } else {
+          tmp = EG(uninitialized_zval_ptr);
+          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
+        }
+      } else {
+        if (is_ref) {
+          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
+          tmp = *p;
+        } else
+          (tmp) = *p;
+        if (Z_ISREF_PP(p)) {
+          ALLOC_INIT_ZVAL(tmp);
+          ZVAL_COPY_VALUE(tmp, *p);
+          Z_SET_REFCOUNT_P(tmp, 0);
+          Z_UNSET_ISREF_P(tmp);
+        } else {
+          tmp = *p;
+        }
+      }
+    } else {
+      tmp = *p;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_1302
+  case 604: {
+    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
+      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
+
+      if (!EG(active_symbol_table)) {
+        zend_rebuild_symbol_table(TSRMLS_C);
+      }
+      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
+                               key->nKeyLength, key->h,
+                               (void **)&p) == FAILURE) {
+        if (is_ref) {
+          ALLOC_INIT_ZVAL(tmp);
+          Z_SET_ISREF_P(tmp);
+          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
+                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
+                              (void **)&p);
+        } else {
+          tmp = EG(uninitialized_zval_ptr);
+          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
+        }
+      } else {
+        if (is_ref) {
+          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
+          tmp = *p;
+        } else
+          *(tmp) = zval_used_for_init;
+        if (Z_ISREF_PP(p)) {
+          ALLOC_INIT_ZVAL(tmp);
+          ZVAL_COPY_VALUE(tmp, *p);
+          Z_SET_REFCOUNT_P(tmp, 0);
+          Z_UNSET_ISREF_P(tmp);
+        } else {
+          tmp = *p;
+        }
+      }
+    } else {
+      tmp = *p;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_1303
+  case 605: {
+    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
+      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
+
+      if (!EG(active_symbol_table)) {
+        zend_rebuild_symbol_table(TSRMLS_C);
+      }
+      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
+                               key->nKeyLength, key->h,
+                               (void **)&p) == FAILURE) {
+        if (is_ref) {
+          ALLOC_INIT_ZVAL(tmp);
+          Z_SET_ISREF_P(tmp);
+          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
+                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
+                              (void **)&p);
+        } else {
+          tmp = EG(uninitialized_zval_ptr);
+          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
+        }
+      } else {
+        if (is_ref) {
+          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
+          tmp = *p;
+        } else
+          *tmp = zval_used_for_init;
+        if (Z_ISREF_PP(p)) {
+          ALLOC_INIT_ZVAL(tmp);
+          ZVAL_COPY_VALUE(tmp, *p);
+          Z_SET_REFCOUNT_P(tmp, 0);
+          Z_UNSET_ISREF_P(tmp);
+        } else {
+          tmp = *p;
+        }
+      }
+    } else {
+      tmp = *p;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_1304
+  case 606: {
+    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
+      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
+
+      if (!EG(active_symbol_table)) {
+        zend_rebuild_symbol_table(TSRMLS_C);
+      }
+      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
+                               key->nKeyLength, key->h,
+                               (void **)&p) == FAILURE) {
+        if (is_ref) {
+          ALLOC_INIT_ZVAL(tmp);
+          Z_SET_ISREF_P(tmp);
+          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
+                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
+                              (void **)&p);
+        } else {
+          tmp = EG(uninitialized_zval_ptr);
+          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
+        }
+      } else {
+        if (is_ref) {
+          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
+          tmp = *p;
+        } else
+          _efree(((tmp)));
+        if (Z_ISREF_PP(p)) {
+          ALLOC_INIT_ZVAL(tmp);
+          ZVAL_COPY_VALUE(tmp, *p);
+          Z_SET_REFCOUNT_P(tmp, 0);
+          Z_UNSET_ISREF_P(tmp);
+        } else {
+          tmp = *p;
+        }
+      }
+    } else {
+      tmp = *p;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_1305
+  case 607: {
+    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
+      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
+
+      if (!EG(active_symbol_table)) {
+        zend_rebuild_symbol_table(TSRMLS_C);
+      }
+      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
+                               key->nKeyLength, key->h,
+                               (void **)&p) == FAILURE) {
+        if (is_ref) {
+          ALLOC_INIT_ZVAL(tmp);
+          Z_SET_ISREF_P(tmp);
+          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
+                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
+                              (void **)&p);
+        } else {
+          tmp = EG(uninitialized_zval_ptr);
+          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
+        }
+      } else {
+        if (is_ref) {
+          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
+          tmp = *p;
+        } else
+          _efree(((tmp)->value.ht));
+        if (Z_ISREF_PP(p)) {
+          ALLOC_INIT_ZVAL(tmp);
+          ZVAL_COPY_VALUE(tmp, *p);
+          Z_SET_REFCOUNT_P(tmp, 0);
+          Z_UNSET_ISREF_P(tmp);
+        } else {
+          tmp = *p;
+        }
+      }
+    } else {
+      tmp = *p;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_1306
+  case 608: {
+    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
+      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
+
+      if (!EG(active_symbol_table)) {
+        zend_rebuild_symbol_table(TSRMLS_C);
+      }
+      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
+                               key->nKeyLength, key->h,
+                               (void **)&p) == FAILURE) {
+        if (is_ref) {
+          ALLOC_INIT_ZVAL(tmp);
+          Z_SET_ISREF_P(tmp);
+          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
+                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
+                              (void **)&p);
+        } else {
+          tmp = EG(uninitialized_zval_ptr);
+          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
+        }
+      } else {
+        if (is_ref) {
+          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
+          tmp = *p;
+        } else
+          _efree(((tmp)->value.str.val));
+        if (Z_ISREF_PP(p)) {
+          ALLOC_INIT_ZVAL(tmp);
+          ZVAL_COPY_VALUE(tmp, *p);
+          Z_SET_REFCOUNT_P(tmp, 0);
+          Z_UNSET_ISREF_P(tmp);
+        } else {
+          tmp = *p;
+        }
+      }
+    } else {
+      tmp = *p;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_1307
+  case 609: {
+    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
+      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
+
+      if (!EG(active_symbol_table)) {
+        zend_rebuild_symbol_table(TSRMLS_C);
+      }
+      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
+                               key->nKeyLength, key->h,
+                               (void **)&p) == FAILURE) {
+        if (is_ref) {
+          ALLOC_INIT_ZVAL(tmp);
+          Z_SET_ISREF_P(tmp);
+          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
+                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
+                              (void **)&p);
+        } else {
+          tmp = EG(uninitialized_zval_ptr);
+          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
+        }
+      } else {
+        if (is_ref) {
+          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
+          tmp = *p;
+        } else
+          _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
+                                         (key)->arKey, key->nKeyLength, key->h,
+                                         &tmp, sizeof(zval *), (void **)&p,
+                                         (1 << 1));
+        if (Z_ISREF_PP(p)) {
+          ALLOC_INIT_ZVAL(tmp);
+          ZVAL_COPY_VALUE(tmp, *p);
+          Z_SET_REFCOUNT_P(tmp, 0);
+          Z_UNSET_ISREF_P(tmp);
+        } else {
+          tmp = *p;
+        }
+      }
+    } else {
+      tmp = *p;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_1308
+  case 610: {
+    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
+      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
+
+      if (!EG(active_symbol_table)) {
+        zend_rebuild_symbol_table(TSRMLS_C);
+      }
+      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
+                               key->nKeyLength, key->h,
+                               (void **)&p) == FAILURE) {
+        if (is_ref) {
+          ALLOC_INIT_ZVAL(tmp);
+          Z_SET_ISREF_P(tmp);
+          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
+                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
+                              (void **)&p);
+        } else {
+          tmp = EG(uninitialized_zval_ptr);
+          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
+        }
+      } else {
+        if (is_ref) {
+          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
+          tmp = *p;
+        } else
+          _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
+                                         key->arKey, (key)->nKeyLength, key->h,
+                                         &tmp, sizeof(zval *), (void **)&p,
+                                         (1 << 1));
+        if (Z_ISREF_PP(p)) {
+          ALLOC_INIT_ZVAL(tmp);
+          ZVAL_COPY_VALUE(tmp, *p);
+          Z_SET_REFCOUNT_P(tmp, 0);
+          Z_UNSET_ISREF_P(tmp);
+        } else {
+          tmp = *p;
+        }
+      }
+    } else {
+      tmp = *p;
+    }
+
+    break;
+  }
+#endif
+#ifdef COMPILE_1309
   case 611: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -54413,8 +53886,10 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
           SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
           tmp = *p;
         } else
-          (executor_globals.argument_stack) =
-              zend_vm_stack_new_page(((16 * 1024) - 16));
+          _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
+                                         key->arKey, key->nKeyLength, (key)->h,
+                                         &tmp, sizeof(zval *), (void **)&p,
+                                         (1 << 1));
         if (Z_ISREF_PP(p)) {
           ALLOC_INIT_ZVAL(tmp);
           ZVAL_COPY_VALUE(tmp, *p);
@@ -54431,7 +53906,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1324
+#ifdef COMPILE_1310
   case 612: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -54457,7 +53932,10 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
           SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
           tmp = *p;
         } else
-          (tmp) = (executor_globals.uninitialized_zval_ptr);
+          _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
+                                         key->arKey, key->nKeyLength, key->h,
+                                         &(tmp), sizeof(zval *), (void **)&p,
+                                         (1 << 1));
         if (Z_ISREF_PP(p)) {
           ALLOC_INIT_ZVAL(tmp);
           ZVAL_COPY_VALUE(tmp, *p);
@@ -54474,7 +53952,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1325
+#ifdef COMPILE_1311
   case 613: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -54500,7 +53978,10 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
           SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
           tmp = *p;
         } else
-          (tmp) = *p;
+          _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
+                                         key->arKey, key->nKeyLength, key->h,
+                                         &tmp, sizeof(zval *), (void **)&p,
+                                         (1 << 1));
         if (Z_ISREF_PP(p)) {
           ALLOC_INIT_ZVAL(tmp);
           ZVAL_COPY_VALUE(tmp, *p);
@@ -54517,453 +53998,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1326
+#ifdef COMPILE_1312
   case 614: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else
-          *(tmp) = zval_used_for_init;
-        if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1327
-  case 615: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else
-          *tmp = zval_used_for_init;
-        if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1328
-  case 616: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else
-          _efree(((tmp)));
-        if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1329
-  case 617: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else
-          _efree(((tmp)->value.ht));
-        if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1330
-  case 618: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else
-          _efree(((tmp)->value.str.val));
-        if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1331
-  case 619: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else
-          _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
-                                         (key)->arKey, key->nKeyLength, key->h,
-                                         &tmp, sizeof(zval *), (void **)&p,
-                                         (1 << 1));
-        if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1332
-  case 620: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else
-          _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
-                                         key->arKey, (key)->nKeyLength, key->h,
-                                         &tmp, sizeof(zval *), (void **)&p,
-                                         (1 << 1));
-        if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1333
-  case 621: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else
-          _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
-                                         key->arKey, key->nKeyLength, (key)->h,
-                                         &tmp, sizeof(zval *), (void **)&p,
-                                         (1 << 1));
-        if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1334
-  case 622: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else
-          _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
-                                         key->arKey, key->nKeyLength, key->h,
-                                         &(tmp), sizeof(zval *), (void **)&p,
-                                         (1 << 1));
-        if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1335
-  case 623: {
-    if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
-      is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
-
-      if (!EG(active_symbol_table)) {
-        zend_rebuild_symbol_table(TSRMLS_C);
-      }
-      if (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                               key->nKeyLength, key->h,
-                               (void **)&p) == FAILURE) {
-        if (is_ref) {
-          ALLOC_INIT_ZVAL(tmp);
-          Z_SET_ISREF_P(tmp);
-          zend_hash_quick_add(EG(active_symbol_table), key->arKey,
-                              key->nKeyLength, key->h, &tmp, sizeof(zval *),
-                              (void **)&p);
-        } else {
-          tmp = EG(uninitialized_zval_ptr);
-          zend_error(E_NOTICE, "Undefined variable: %s", key->arKey);
-        }
-      } else {
-        if (is_ref) {
-          SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
-          tmp = *p;
-        } else
-          _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
-                                         key->arKey, key->nKeyLength, key->h,
-                                         &tmp, sizeof(zval *), (void **)&p,
-                                         (1 << 1));
-        if (Z_ISREF_PP(p)) {
-          ALLOC_INIT_ZVAL(tmp);
-          ZVAL_COPY_VALUE(tmp, *p);
-          Z_SET_REFCOUNT_P(tmp, 0);
-          Z_UNSET_ISREF_P(tmp);
-        } else {
-          tmp = *p;
-        }
-      }
-    } else {
-      tmp = *p;
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1336
-  case 624: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55005,8 +54041,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1337
-  case 625: {
+#ifdef COMPILE_1313
+  case 615: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55048,8 +54084,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1338
-  case 626: {
+#ifdef COMPILE_1314
+  case 616: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55091,8 +54127,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1339
-  case 627: {
+#ifdef COMPILE_1315
+  case 617: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55134,8 +54170,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1340
-  case 628: {
+#ifdef COMPILE_1316
+  case 618: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55177,8 +54213,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1341
-  case 629: {
+#ifdef COMPILE_1317
+  case 619: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55220,8 +54256,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1342
-  case 630: {
+#ifdef COMPILE_1318
+  case 620: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55263,8 +54299,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1343
-  case 631: {
+#ifdef COMPILE_1319
+  case 621: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55306,8 +54342,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1344
-  case 632: {
+#ifdef COMPILE_1320
+  case 622: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55349,8 +54385,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1345
-  case 633: {
+#ifdef COMPILE_1321
+  case 623: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55392,8 +54428,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1346
-  case 634: {
+#ifdef COMPILE_1322
+  case 624: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55435,8 +54471,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1347
-  case 635: {
+#ifdef COMPILE_1323
+  case 625: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55478,8 +54514,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1348
-  case 636: {
+#ifdef COMPILE_1324
+  case 626: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55522,8 +54558,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1349
-  case 637: {
+#ifdef COMPILE_1325
+  case 627: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55568,8 +54604,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1350
-  case 638: {
+#ifdef COMPILE_1326
+  case 628: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55611,8 +54647,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1351
-  case 639: {
+#ifdef COMPILE_1327
+  case 629: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55654,8 +54690,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1352
-  case 640: {
+#ifdef COMPILE_1328
+  case 630: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55698,8 +54734,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1353
-  case 641: {
+#ifdef COMPILE_1329
+  case 631: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55741,8 +54777,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1354
-  case 642: {
+#ifdef COMPILE_1330
+  case 632: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55784,8 +54820,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1355
-  case 643: {
+#ifdef COMPILE_1331
+  case 633: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55828,8 +54864,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1356
-  case 644: {
+#ifdef COMPILE_1332
+  case 634: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55871,8 +54907,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1357
-  case 645: {
+#ifdef COMPILE_1333
+  case 635: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55914,8 +54950,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1358
-  case 646: {
+#ifdef COMPILE_1334
+  case 636: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -55957,8 +54993,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1359
-  case 647: {
+#ifdef COMPILE_1335
+  case 637: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56000,8 +55036,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1360
-  case 648: {
+#ifdef COMPILE_1336
+  case 638: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56043,8 +55079,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1361
-  case 649: {
+#ifdef COMPILE_1337
+  case 639: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56086,8 +55122,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1362
-  case 650: {
+#ifdef COMPILE_1338
+  case 640: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56129,8 +55165,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1363
-  case 651: {
+#ifdef COMPILE_1339
+  case 641: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56172,8 +55208,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1364
-  case 652: {
+#ifdef COMPILE_1340
+  case 642: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56215,8 +55251,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1365
-  case 653: {
+#ifdef COMPILE_1341
+  case 643: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56258,8 +55294,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1366
-  case 654: {
+#ifdef COMPILE_1342
+  case 644: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56301,8 +55337,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1367
-  case 655: {
+#ifdef COMPILE_1343
+  case 645: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56344,8 +55380,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1368
-  case 656: {
+#ifdef COMPILE_1344
+  case 646: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56387,8 +55423,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1369
-  case 657: {
+#ifdef COMPILE_1345
+  case 647: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56430,8 +55466,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1370
-  case 658: {
+#ifdef COMPILE_1346
+  case 648: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56473,8 +55509,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1371
-  case 659: {
+#ifdef COMPILE_1347
+  case 649: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56516,8 +55552,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1372
-  case 660: {
+#ifdef COMPILE_1348
+  case 650: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56559,8 +55595,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1373
-  case 661: {
+#ifdef COMPILE_1349
+  case 651: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56602,8 +55638,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1374
-  case 662: {
+#ifdef COMPILE_1350
+  case 652: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56645,8 +55681,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1375
-  case 663: {
+#ifdef COMPILE_1351
+  case 653: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56688,8 +55724,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1376
-  case 664: {
+#ifdef COMPILE_1352
+  case 654: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56731,8 +55767,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1377
-  case 665: {
+#ifdef COMPILE_1353
+  case 655: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56775,8 +55811,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1378
-  case 666: {
+#ifdef COMPILE_1354
+  case 656: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56818,8 +55854,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1379
-  case 667: {
+#ifdef COMPILE_1355
+  case 657: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56861,8 +55897,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1380
-  case 668: {
+#ifdef COMPILE_1356
+  case 658: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56904,8 +55940,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1381
-  case 669: {
+#ifdef COMPILE_1357
+  case 659: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56947,8 +55983,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1382
-  case 670: {
+#ifdef COMPILE_1358
+  case 660: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -56990,8 +56026,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1383
-  case 671: {
+#ifdef COMPILE_1359
+  case 661: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57033,8 +56069,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1384
-  case 672: {
+#ifdef COMPILE_1360
+  case 662: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57076,8 +56112,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1385
-  case 673: {
+#ifdef COMPILE_1361
+  case 663: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57122,8 +56158,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1386
-  case 674: {
+#ifdef COMPILE_1362
+  case 664: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57168,8 +56204,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1387
-  case 675: {
+#ifdef COMPILE_1363
+  case 665: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57214,8 +56250,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1388
-  case 676: {
+#ifdef COMPILE_1364
+  case 666: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57260,8 +56296,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1389
-  case 677: {
+#ifdef COMPILE_1365
+  case 667: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57306,8 +56342,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1390
-  case 678: {
+#ifdef COMPILE_1366
+  case 668: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57349,8 +56385,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1391
-  case 679: {
+#ifdef COMPILE_1367
+  case 669: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57392,8 +56428,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1392
-  case 680: {
+#ifdef COMPILE_1368
+  case 670: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57435,8 +56471,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1393
-  case 681: {
+#ifdef COMPILE_1369
+  case 671: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57478,8 +56514,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1394
-  case 682: {
+#ifdef COMPILE_1370
+  case 672: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57521,8 +56557,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1395
-  case 683: {
+#ifdef COMPILE_1371
+  case 673: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57564,8 +56600,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1396
-  case 684: {
+#ifdef COMPILE_1372
+  case 674: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57607,8 +56643,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1397
-  case 685: {
+#ifdef COMPILE_1373
+  case 675: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57650,8 +56686,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1398
-  case 686: {
+#ifdef COMPILE_1374
+  case 676: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57693,8 +56729,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1399
-  case 687: {
+#ifdef COMPILE_1375
+  case 677: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57736,8 +56772,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1400
-  case 688: {
+#ifdef COMPILE_1376
+  case 678: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57779,8 +56815,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1401
-  case 689: {
+#ifdef COMPILE_1377
+  case 679: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57822,8 +56858,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1402
-  case 690: {
+#ifdef COMPILE_1378
+  case 680: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57866,8 +56902,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1403
-  case 691: {
+#ifdef COMPILE_1379
+  case 681: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57912,8 +56948,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1404
-  case 692: {
+#ifdef COMPILE_1380
+  case 682: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57955,8 +56991,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1405
-  case 693: {
+#ifdef COMPILE_1381
+  case 683: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -57998,8 +57034,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1406
-  case 694: {
+#ifdef COMPILE_1382
+  case 684: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58042,8 +57078,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1407
-  case 695: {
+#ifdef COMPILE_1383
+  case 685: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58085,8 +57121,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1408
-  case 696: {
+#ifdef COMPILE_1384
+  case 686: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58128,8 +57164,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1409
-  case 697: {
+#ifdef COMPILE_1385
+  case 687: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58172,8 +57208,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1410
-  case 698: {
+#ifdef COMPILE_1386
+  case 688: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58215,8 +57251,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1411
-  case 699: {
+#ifdef COMPILE_1387
+  case 689: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58258,8 +57294,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1412
-  case 700: {
+#ifdef COMPILE_1388
+  case 690: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58301,8 +57337,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1413
-  case 701: {
+#ifdef COMPILE_1389
+  case 691: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58344,8 +57380,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1414
-  case 702: {
+#ifdef COMPILE_1390
+  case 692: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58387,8 +57423,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1415
-  case 703: {
+#ifdef COMPILE_1391
+  case 693: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58430,8 +57466,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1416
-  case 704: {
+#ifdef COMPILE_1392
+  case 694: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58473,8 +57509,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1417
-  case 705: {
+#ifdef COMPILE_1393
+  case 695: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58516,8 +57552,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1418
-  case 706: {
+#ifdef COMPILE_1394
+  case 696: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58559,8 +57595,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1419
-  case 707: {
+#ifdef COMPILE_1395
+  case 697: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58602,8 +57638,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1420
-  case 708: {
+#ifdef COMPILE_1396
+  case 698: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58645,8 +57681,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1421
-  case 709: {
+#ifdef COMPILE_1397
+  case 699: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58688,8 +57724,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1422
-  case 710: {
+#ifdef COMPILE_1398
+  case 700: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58731,8 +57767,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1423
-  case 711: {
+#ifdef COMPILE_1399
+  case 701: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58774,8 +57810,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1424
-  case 712: {
+#ifdef COMPILE_1400
+  case 702: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58817,8 +57853,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1425
-  case 713: {
+#ifdef COMPILE_1401
+  case 703: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58860,8 +57896,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1426
-  case 714: {
+#ifdef COMPILE_1402
+  case 704: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58903,8 +57939,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1427
-  case 715: {
+#ifdef COMPILE_1403
+  case 705: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58946,8 +57982,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1428
-  case 716: {
+#ifdef COMPILE_1404
+  case 706: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -58989,8 +58025,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1429
-  case 717: {
+#ifdef COMPILE_1405
+  case 707: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59032,8 +58068,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1430
-  case 718: {
+#ifdef COMPILE_1406
+  case 708: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59075,8 +58111,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1431
-  case 719: {
+#ifdef COMPILE_1407
+  case 709: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59118,8 +58154,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1432
-  case 720: {
+#ifdef COMPILE_1408
+  case 710: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59160,8 +58196,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1433
-  case 721: {
+#ifdef COMPILE_1409
+  case 711: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59202,8 +58238,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1434
-  case 722: {
+#ifdef COMPILE_1410
+  case 712: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59244,8 +58280,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1435
-  case 723: {
+#ifdef COMPILE_1411
+  case 713: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59286,8 +58322,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1436
-  case 724: {
+#ifdef COMPILE_1412
+  case 714: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59328,8 +58364,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1437
-  case 725: {
+#ifdef COMPILE_1413
+  case 715: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59370,8 +58406,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1438
-  case 726: {
+#ifdef COMPILE_1414
+  case 716: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59412,8 +58448,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1439
-  case 727: {
+#ifdef COMPILE_1415
+  case 717: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59456,8 +58492,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1440
-  case 728: {
+#ifdef COMPILE_1416
+  case 718: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59500,8 +58536,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1441
-  case 729: {
+#ifdef COMPILE_1417
+  case 719: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59544,8 +58580,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1442
-  case 730: {
+#ifdef COMPILE_1418
+  case 720: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59588,8 +58624,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1443
-  case 731: {
+#ifdef COMPILE_1419
+  case 721: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59632,8 +58668,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1444
-  case 732: {
+#ifdef COMPILE_1420
+  case 722: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59674,8 +58710,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1445
-  case 733: {
+#ifdef COMPILE_1421
+  case 723: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59716,8 +58752,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1446
-  case 734: {
+#ifdef COMPILE_1422
+  case 724: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59758,8 +58794,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1447
-  case 735: {
+#ifdef COMPILE_1423
+  case 725: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59800,8 +58836,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1448
-  case 736: {
+#ifdef COMPILE_1424
+  case 726: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59842,8 +58878,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1449
-  case 737: {
+#ifdef COMPILE_1425
+  case 727: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59884,8 +58920,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1450
-  case 738: {
+#ifdef COMPILE_1426
+  case 728: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59926,8 +58962,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1451
-  case 739: {
+#ifdef COMPILE_1427
+  case 729: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -59968,8 +59004,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1452
-  case 740: {
+#ifdef COMPILE_1428
+  case 730: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60010,8 +59046,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1453
-  case 741: {
+#ifdef COMPILE_1429
+  case 731: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60052,8 +59088,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1454
-  case 742: {
+#ifdef COMPILE_1430
+  case 732: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60094,8 +59130,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1455
-  case 743: {
+#ifdef COMPILE_1431
+  case 733: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60136,8 +59172,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1456
-  case 744: {
+#ifdef COMPILE_1432
+  case 734: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60180,8 +59216,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1457
-  case 745: {
+#ifdef COMPILE_1433
+  case 735: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60226,8 +59262,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1458
-  case 746: {
+#ifdef COMPILE_1434
+  case 736: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60268,8 +59304,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1459
-  case 747: {
+#ifdef COMPILE_1435
+  case 737: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60310,8 +59346,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1460
-  case 748: {
+#ifdef COMPILE_1436
+  case 738: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60353,8 +59389,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1461
-  case 749: {
+#ifdef COMPILE_1437
+  case 739: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60395,8 +59431,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1462
-  case 750: {
+#ifdef COMPILE_1438
+  case 740: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60437,8 +59473,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1463
-  case 751: {
+#ifdef COMPILE_1439
+  case 741: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60479,8 +59515,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1464
-  case 752: {
+#ifdef COMPILE_1440
+  case 742: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60521,8 +59557,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1465
-  case 753: {
+#ifdef COMPILE_1441
+  case 743: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60563,8 +59599,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1466
-  case 754: {
+#ifdef COMPILE_1442
+  case 744: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60605,8 +59641,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1467
-  case 755: {
+#ifdef COMPILE_1443
+  case 745: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60647,8 +59683,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1468
-  case 756: {
+#ifdef COMPILE_1444
+  case 746: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60689,8 +59725,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1469
-  case 757: {
+#ifdef COMPILE_1445
+  case 747: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60731,8 +59767,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1470
-  case 758: {
+#ifdef COMPILE_1446
+  case 748: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60773,8 +59809,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1471
-  case 759: {
+#ifdef COMPILE_1447
+  case 749: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60815,8 +59851,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1472
-  case 760: {
+#ifdef COMPILE_1448
+  case 750: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60857,8 +59893,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1473
-  case 761: {
+#ifdef COMPILE_1449
+  case 751: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60899,8 +59935,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1474
-  case 762: {
+#ifdef COMPILE_1450
+  case 752: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60941,8 +59977,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1475
-  case 763: {
+#ifdef COMPILE_1451
+  case 753: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -60983,8 +60019,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1476
-  case 764: {
+#ifdef COMPILE_1452
+  case 754: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61025,8 +60061,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1477
-  case 765: {
+#ifdef COMPILE_1453
+  case 755: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61067,8 +60103,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1478
-  case 766: {
+#ifdef COMPILE_1454
+  case 756: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61109,8 +60145,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1479
-  case 767: {
+#ifdef COMPILE_1455
+  case 757: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61151,8 +60187,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1480
-  case 768: {
+#ifdef COMPILE_1456
+  case 758: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61193,8 +60229,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1481
-  case 769: {
+#ifdef COMPILE_1457
+  case 759: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61235,8 +60271,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1482
-  case 770: {
+#ifdef COMPILE_1458
+  case 760: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61277,8 +60313,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1483
-  case 771: {
+#ifdef COMPILE_1459
+  case 761: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61319,8 +60355,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1484
-  case 772: {
+#ifdef COMPILE_1460
+  case 762: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61361,8 +60397,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1485
-  case 773: {
+#ifdef COMPILE_1461
+  case 763: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61403,8 +60439,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1486
-  case 774: {
+#ifdef COMPILE_1462
+  case 764: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61445,8 +60481,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1487
-  case 775: {
+#ifdef COMPILE_1463
+  case 765: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61487,8 +60523,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1488
-  case 776: {
+#ifdef COMPILE_1464
+  case 766: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -61529,8 +60565,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1489
-  case 777: {
+#ifdef COMPILE_1465
+  case 767: {
     (executor_globals.argument_stack) =
         zend_vm_stack_new_page(((16 * 1024) - 16));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
@@ -61572,8 +60608,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1490
-  case 778: {
+#ifdef COMPILE_1466
+  case 768: {
     (tmp) = (executor_globals.uninitialized_zval_ptr);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -61614,8 +60650,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1491
-  case 779: {
+#ifdef COMPILE_1467
+  case 769: {
     (tmp) = *p;
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -61656,8 +60692,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1492
-  case 780: {
+#ifdef COMPILE_1468
+  case 770: {
     *(tmp) = zval_used_for_init;
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -61698,8 +60734,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1493
-  case 781: {
+#ifdef COMPILE_1469
+  case 771: {
     *tmp = zval_used_for_init;
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -61740,8 +60776,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1494
-  case 782: {
+#ifdef COMPILE_1470
+  case 772: {
     _efree(((tmp)));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -61782,8 +60818,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1495
-  case 783: {
+#ifdef COMPILE_1471
+  case 773: {
     _efree(((tmp)->value.ht));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -61824,8 +60860,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1496
-  case 784: {
+#ifdef COMPILE_1472
+  case 774: {
     _efree(((tmp)->value.str.val));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -61866,8 +60902,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1497
-  case 785: {
+#ifdef COMPILE_1473
+  case 775: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    (key)->arKey, key->nKeyLength, key->h, &tmp,
                                    sizeof(zval *), (void **)&p, (1 << 1));
@@ -61910,8 +60946,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1498
-  case 786: {
+#ifdef COMPILE_1474
+  case 776: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, (key)->nKeyLength, key->h, &tmp,
                                    sizeof(zval *), (void **)&p, (1 << 1));
@@ -61954,8 +60990,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1499
-  case 787: {
+#ifdef COMPILE_1475
+  case 777: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, key->nKeyLength, (key)->h, &tmp,
                                    sizeof(zval *), (void **)&p, (1 << 1));
@@ -61998,8 +61034,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1500
-  case 788: {
+#ifdef COMPILE_1476
+  case 778: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, key->nKeyLength, key->h, &(tmp),
                                    sizeof(zval *), (void **)&p, (1 << 1));
@@ -62042,8 +61078,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1501
-  case 789: {
+#ifdef COMPILE_1477
+  case 779: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, key->nKeyLength, key->h, &tmp,
                                    sizeof(zval *), (void **)&p, (1 << 1));
@@ -62086,8 +61122,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1502
-  case 790: {
+#ifdef COMPILE_1478
+  case 780: {
     _zend_list_addref((tmp)->value.lval);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62128,8 +61164,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1503
-  case 791: {
+#ifdef COMPILE_1479
+  case 781: {
     _zend_list_delete((tmp)->value.lval);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62170,8 +61206,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1504
-  case 792: {
+#ifdef COMPILE_1480
+  case 782: {
     _zval_copy_ctor_func((tmp));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62212,8 +61248,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1505
-  case 793: {
+#ifdef COMPILE_1481
+  case 783: {
     _zval_dtor(((tmp)));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62254,8 +61290,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1506
-  case 794: {
+#ifdef COMPILE_1482
+  case 784: {
     _zval_dtor_func((tmp));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62296,8 +61332,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1507
-  case 795: {
+#ifdef COMPILE_1483
+  case 785: {
     _zval_ptr_dtor((&(tmp)));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62338,8 +61374,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1508
-  case 796: {
+#ifdef COMPILE_1484
+  case 786: {
     convert_to_boolean((tmp));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62380,8 +61416,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1509
-  case 797: {
+#ifdef COMPILE_1485
+  case 787: {
     exit(1);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62422,8 +61458,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1510
-  case 798: {
+#ifdef COMPILE_1486
+  case 788: {
     gc_remove_zval_from_buffer((tmp));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62464,8 +61500,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1511
-  case 799: {
+#ifdef COMPILE_1487
+  case 789: {
     gc_zval_check_possible_root(((tmp)));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62506,8 +61542,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1512
-  case 800: {
+#ifdef COMPILE_1488
+  case 790: {
     gc_zval_possible_root((tmp));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62548,8 +61584,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1513
-  case 801: {
+#ifdef COMPILE_1489
+  case 791: {
     i_zval_ptr_dtor((tmp));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62590,8 +61626,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1514
-  case 802: {
+#ifdef COMPILE_1490
+  case 792: {
     if (!(executor_globals.active_symbol_table)) {
       zend_rebuild_symbol_table();
     }
@@ -62634,8 +61670,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1515
-  case 803: {
+#ifdef COMPILE_1491
+  case 793: {
     if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength,
                                        key->h, &tmp, sizeof(zval *),
                                        ((void *)0), (1 << 1)) == 0) {
@@ -62680,8 +61716,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1516
-  case 804: {
+#ifdef COMPILE_1492
+  case 794: {
     is_ref = (**(p)).type & 64;
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62722,8 +61758,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1517
-  case 805: {
+#ifdef COMPILE_1493
+  case 795: {
     is_ref = (**p).type & 64;
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62764,8 +61800,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1518
-  case 806: {
+#ifdef COMPILE_1494
+  case 796: {
     memset(&((zval_gc_info *)(tmp))->u, 0,
            sizeof(*(&((zval_gc_info *)(tmp))->u)));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
@@ -62807,8 +61843,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1519
-  case 807: {
+#ifdef COMPILE_1495
+  case 797: {
     memset(&(**(p)), 0, sizeof(*(&(**(p)))));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62849,8 +61885,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1520
-  case 808: {
+#ifdef COMPILE_1496
+  case 798: {
     memset(&(**p), 0, sizeof(*(&(**p))));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62891,8 +61927,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1521
-  case 809: {
+#ifdef COMPILE_1497
+  case 799: {
     memset(&(*tmp), 0, sizeof(*(&(*tmp))));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62933,8 +61969,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1522
-  case 810: {
+#ifdef COMPILE_1498
+  case 800: {
     memset(&executor_globals, 0, sizeof(*(&executor_globals)));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -62975,8 +62011,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1523
-  case 811: {
+#ifdef COMPILE_1499
+  case 801: {
     memset(((zval_gc_info *)(tmp)), 0, sizeof(*(((zval_gc_info *)(tmp)))));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63017,8 +62053,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1524
-  case 812: {
+#ifdef COMPILE_1500
+  case 802: {
     memset((*(p)), 0, sizeof(*((*(p)))));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63059,8 +62095,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1525
-  case 813: {
+#ifdef COMPILE_1501
+  case 803: {
     memset((*p), 0, sizeof(*((*p))));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63101,8 +62137,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1526
-  case 814: {
+#ifdef COMPILE_1502
+  case 804: {
     memset((tmp), 0, sizeof(*((tmp))));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63143,8 +62179,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1527
-  case 815: {
+#ifdef COMPILE_1503
+  case 805: {
     memset(key, 0, sizeof(*(key)));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63185,8 +62221,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1528
-  case 816: {
+#ifdef COMPILE_1504
+  case 806: {
     tmp = (executor_globals.uninitialized_zval_ptr);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63227,8 +62263,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1529
-  case 817: {
+#ifdef COMPILE_1505
+  case 807: {
     tmp = *(p);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63269,8 +62305,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1530
-  case 818: {
+#ifdef COMPILE_1506
+  case 808: {
     tmp = *p;
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63311,8 +62347,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1531
-  case 819: {
+#ifdef COMPILE_1507
+  case 809: {
     zend_error((1 << 3L), "A non well formed numeric value encountered");
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63353,8 +62389,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1532
-  case 820: {
+#ifdef COMPILE_1508
+  case 810: {
     zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63395,8 +62431,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1533
-  case 821: {
+#ifdef COMPILE_1509
+  case 811: {
     zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63437,8 +62473,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1534
-  case 822: {
+#ifdef COMPILE_1510
+  case 812: {
     zend_hash_destroy((tmp)->value.ht);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63479,8 +62515,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1535
-  case 823: {
+#ifdef COMPILE_1511
+  case 813: {
     zend_rebuild_symbol_table();
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63521,8 +62557,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1536
-  case 824: {
+#ifdef COMPILE_1512
+  case 814: {
     zval_addref_p((tmp));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63563,8 +62599,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1537
-  case 825: {
+#ifdef COMPILE_1513
+  case 815: {
     zval_addref_p(*((p)));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63605,8 +62641,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1538
-  case 826: {
+#ifdef COMPILE_1514
+  case 816: {
     zval_addref_p(tmp);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63647,8 +62683,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1539
-  case 827: {
+#ifdef COMPILE_1515
+  case 817: {
     zval_set_isref_p((tmp));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63689,8 +62725,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1540
-  case 828: {
+#ifdef COMPILE_1516
+  case 818: {
     zval_set_isref_p(*(((p))));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63731,8 +62767,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1541
-  case 829: {
+#ifdef COMPILE_1517
+  case 819: {
     zval_set_isref_p(*((p)));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63773,8 +62809,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1542
-  case 830: {
+#ifdef COMPILE_1518
+  case 820: {
     zval_set_isref_p(tmp);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63815,8 +62851,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1543
-  case 831: {
+#ifdef COMPILE_1519
+  case 821: {
     zval_set_refcount_p((tmp), 0);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63857,8 +62893,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1544
-  case 832: {
+#ifdef COMPILE_1520
+  case 822: {
     zval_set_refcount_p(tmp, 0);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63899,8 +62935,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1545
-  case 833: {
+#ifdef COMPILE_1521
+  case 823: {
     zval_unset_isref_p((tmp));
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63941,8 +62977,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1546
-  case 834: {
+#ifdef COMPILE_1522
+  case 824: {
     zval_unset_isref_p(tmp);
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63987,7 +63023,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   5)) {
+                   6)) {
   case 0: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -63996,18 +63032,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 
     break;
   }
-#ifdef COMPILE_1547
+#ifdef COMPILE_1523
   case 1: {
-    if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
-                            sizeof(zval *), NULL) == SUCCESS) {
-      Z_ADDREF_P(tmp);
-    }
-
-    break;
-  }
-#endif
-#ifdef COMPILE_1548
-  case 2: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       (executor_globals.argument_stack) =
@@ -64018,8 +63044,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1549
-  case 3: {
+#ifdef COMPILE_1524
+  case 2: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       (tmp) = (executor_globals.uninitialized_zval_ptr);
@@ -64029,8 +63055,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1550
-  case 4: {
+#ifdef COMPILE_1525
+  case 3: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       (tmp) = *p;
@@ -64040,8 +63066,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1551
-  case 5: {
+#ifdef COMPILE_1526
+  case 4: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       *(tmp) = zval_used_for_init;
@@ -64051,8 +63077,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1552
-  case 6: {
+#ifdef COMPILE_1527
+  case 5: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       *tmp = zval_used_for_init;
@@ -64062,8 +63088,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1553
-  case 7: {
+#ifdef COMPILE_1528
+  case 6: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _convert_to_string(tmp);
@@ -64072,8 +63098,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1554
-  case 8: {
+#ifdef COMPILE_1529
+  case 7: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _efree(((tmp)));
@@ -64083,8 +63109,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1555
-  case 9: {
+#ifdef COMPILE_1530
+  case 8: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _efree(((tmp)->value.ht));
@@ -64094,8 +63120,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1556
-  case 10: {
+#ifdef COMPILE_1531
+  case 9: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _efree(((tmp)->value.str.val));
@@ -64105,8 +63131,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1557
-  case 11: {
+#ifdef COMPILE_1532
+  case 10: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _object_init(tmp);
@@ -64115,8 +63141,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1558
-  case 12: {
+#ifdef COMPILE_1533
+  case 11: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zend_hash_quick_add_or_update(
@@ -64128,8 +63154,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1559
-  case 13: {
+#ifdef COMPILE_1534
+  case 12: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zend_hash_quick_add_or_update(
@@ -64141,8 +63167,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1560
-  case 14: {
+#ifdef COMPILE_1535
+  case 13: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zend_hash_quick_add_or_update(
@@ -64154,8 +63180,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1561
-  case 15: {
+#ifdef COMPILE_1536
+  case 14: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zend_hash_quick_add_or_update(
@@ -64167,8 +63193,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1562
-  case 16: {
+#ifdef COMPILE_1537
+  case 15: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
@@ -64180,8 +63206,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1563
-  case 17: {
+#ifdef COMPILE_1538
+  case 16: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zend_list_addref((tmp)->value.lval);
@@ -64191,8 +63217,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1564
-  case 18: {
+#ifdef COMPILE_1539
+  case 17: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zend_list_delete((tmp)->value.lval);
@@ -64202,8 +63228,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1565
-  case 19: {
+#ifdef COMPILE_1540
+  case 18: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zval_copy_ctor(tmp);
@@ -64212,8 +63238,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1566
-  case 20: {
+#ifdef COMPILE_1541
+  case 19: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zval_copy_ctor_func((tmp));
@@ -64223,8 +63249,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1567
-  case 21: {
+#ifdef COMPILE_1542
+  case 20: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zval_copy_ctor_func(tmp);
@@ -64233,8 +63259,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1568
-  case 22: {
+#ifdef COMPILE_1543
+  case 21: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zval_dtor(((tmp)));
@@ -64244,8 +63270,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1569
-  case 23: {
+#ifdef COMPILE_1544
+  case 22: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zval_dtor(tmp);
@@ -64254,8 +63280,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1570
-  case 24: {
+#ifdef COMPILE_1545
+  case 23: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zval_dtor_func((tmp));
@@ -64265,8 +63291,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1571
-  case 25: {
+#ifdef COMPILE_1546
+  case 24: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zval_dtor_func(tmp);
@@ -64275,8 +63301,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1572
-  case 26: {
+#ifdef COMPILE_1547
+  case 25: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zval_dtor_wrapper(tmp);
@@ -64285,8 +63311,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1573
-  case 27: {
+#ifdef COMPILE_1548
+  case 26: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zval_internal_dtor(tmp);
@@ -64295,8 +63321,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1574
-  case 28: {
+#ifdef COMPILE_1549
+  case 27: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       _zval_ptr_dtor((&(tmp)));
@@ -64306,8 +63332,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1575
-  case 29: {
+#ifdef COMPILE_1550
+  case 28: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       add_next_index_null(tmp);
@@ -64316,8 +63342,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1576
-  case 30: {
+#ifdef COMPILE_1551
+  case 29: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       convert_scalar_to_number(tmp);
@@ -64326,8 +63352,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1577
-  case 31: {
+#ifdef COMPILE_1552
+  case 30: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       convert_to_array(tmp);
@@ -64336,8 +63362,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1578
-  case 32: {
+#ifdef COMPILE_1553
+  case 31: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       convert_to_boolean((tmp));
@@ -64347,8 +63373,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1579
-  case 33: {
+#ifdef COMPILE_1554
+  case 32: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       convert_to_boolean(tmp);
@@ -64357,8 +63383,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1580
-  case 34: {
+#ifdef COMPILE_1555
+  case 33: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       convert_to_double(tmp);
@@ -64367,8 +63393,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1581
-  case 35: {
+#ifdef COMPILE_1556
+  case 34: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       convert_to_long(tmp);
@@ -64377,8 +63403,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1582
-  case 36: {
+#ifdef COMPILE_1557
+  case 35: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       convert_to_null(tmp);
@@ -64387,8 +63413,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1583
-  case 37: {
+#ifdef COMPILE_1558
+  case 36: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       convert_to_object(tmp);
@@ -64397,8 +63423,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1584
-  case 38: {
+#ifdef COMPILE_1559
+  case 37: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       decrement_function(tmp);
@@ -64407,8 +63433,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1585
-  case 39: {
+#ifdef COMPILE_1560
+  case 38: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       exit(1);
@@ -64418,8 +63444,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1586
-  case 40: {
+#ifdef COMPILE_1561
+  case 39: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       gc_remove_zval_from_buffer((tmp));
@@ -64429,8 +63455,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1587
-  case 41: {
+#ifdef COMPILE_1562
+  case 40: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       gc_remove_zval_from_buffer(tmp);
@@ -64439,8 +63465,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1588
-  case 42: {
+#ifdef COMPILE_1563
+  case 41: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       gc_zobj_possible_root(tmp);
@@ -64449,8 +63475,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1589
-  case 43: {
+#ifdef COMPILE_1564
+  case 42: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       gc_zval_check_possible_root(((tmp)));
@@ -64460,8 +63486,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1590
-  case 44: {
+#ifdef COMPILE_1565
+  case 43: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       gc_zval_check_possible_root(tmp);
@@ -64470,8 +63496,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1591
-  case 45: {
+#ifdef COMPILE_1566
+  case 44: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       gc_zval_possible_root((tmp));
@@ -64481,8 +63507,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1592
-  case 46: {
+#ifdef COMPILE_1567
+  case 45: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       gc_zval_possible_root(tmp);
@@ -64491,8 +63517,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1593
-  case 47: {
+#ifdef COMPILE_1568
+  case 46: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       i_zend_is_true(tmp);
@@ -64501,8 +63527,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1594
-  case 48: {
+#ifdef COMPILE_1569
+  case 47: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       i_zval_ptr_dtor((tmp));
@@ -64512,8 +63538,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1595
-  case 49: {
+#ifdef COMPILE_1570
+  case 48: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       i_zval_ptr_dtor(tmp);
@@ -64522,8 +63548,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1596
-  case 50: {
+#ifdef COMPILE_1571
+  case 49: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       if (!(executor_globals.active_symbol_table)) {
@@ -64535,8 +63561,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1597
-  case 51: {
+#ifdef COMPILE_1572
+  case 50: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength,
@@ -64550,8 +63576,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1598
-  case 52: {
+#ifdef COMPILE_1573
+  case 51: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       increment_function(tmp);
@@ -64560,8 +63586,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1599
-  case 53: {
+#ifdef COMPILE_1574
+  case 52: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       is_ref = (**(p)).type & 64;
@@ -64571,8 +63597,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1600
-  case 54: {
+#ifdef COMPILE_1575
+  case 53: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       is_ref = (**p).type & 64;
@@ -64582,8 +63608,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1601
-  case 55: {
+#ifdef COMPILE_1576
+  case 54: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       lex_scan(tmp);
@@ -64592,8 +63618,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1602
-  case 56: {
+#ifdef COMPILE_1577
+  case 55: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       safe_free_zval_ptr_rel(tmp);
@@ -64602,8 +63628,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1603
-  case 57: {
+#ifdef COMPILE_1578
+  case 56: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       tmp = (executor_globals.uninitialized_zval_ptr);
@@ -64613,8 +63639,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1604
-  case 58: {
+#ifdef COMPILE_1579
+  case 57: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       tmp = *(p);
@@ -64624,8 +63650,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1605
-  case 59: {
+#ifdef COMPILE_1580
+  case 58: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       tmp = *p;
@@ -64635,8 +63661,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1606
-  case 60: {
+#ifdef COMPILE_1581
+  case 59: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_error((1 << 3L), "A non well formed numeric value encountered");
@@ -64646,8 +63672,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1607
-  case 61: {
+#ifdef COMPILE_1582
+  case 60: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
@@ -64657,8 +63683,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1608
-  case 62: {
+#ifdef COMPILE_1583
+  case 61: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
@@ -64668,8 +63694,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1609
-  case 63: {
+#ifdef COMPILE_1584
+  case 62: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_hash_destroy((tmp)->value.ht);
@@ -64679,8 +63705,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1610
-  case 64: {
+#ifdef COMPILE_1585
+  case 63: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_is_true(tmp);
@@ -64689,8 +63715,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1611
-  case 65: {
+#ifdef COMPILE_1586
+  case 64: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_locale_sprintf_double(tmp);
@@ -64699,8 +63725,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1612
-  case 66: {
+#ifdef COMPILE_1587
+  case 65: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_object_store_ctor_failed(tmp);
@@ -64709,8 +63735,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1613
-  case 67: {
+#ifdef COMPILE_1588
+  case 66: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_objects_clone_obj(tmp);
@@ -64719,8 +63745,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1614
-  case 68: {
+#ifdef COMPILE_1589
+  case 67: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_objects_store_add_ref(tmp);
@@ -64729,8 +63755,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1615
-  case 69: {
+#ifdef COMPILE_1590
+  case 68: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_objects_store_clone_obj(tmp);
@@ -64739,8 +63765,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1616
-  case 70: {
+#ifdef COMPILE_1591
+  case 69: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_objects_store_del_ref(tmp);
@@ -64749,8 +63775,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1617
-  case 71: {
+#ifdef COMPILE_1592
+  case 70: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_objects_store_get_refcount(tmp);
@@ -64759,8 +63785,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1618
-  case 72: {
+#ifdef COMPILE_1593
+  case 71: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_print_flat_zval_r(tmp);
@@ -64769,8 +63795,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1619
-  case 73: {
+#ifdef COMPILE_1594
+  case 72: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_print_variable(tmp);
@@ -64779,8 +63805,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1620
-  case 74: {
+#ifdef COMPILE_1595
+  case 73: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_rebuild_symbol_table();
@@ -64790,8 +63816,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1621
-  case 75: {
+#ifdef COMPILE_1596
+  case 74: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_std_get_constructor(tmp);
@@ -64800,8 +63826,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1622
-  case 76: {
+#ifdef COMPILE_1597
+  case 75: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zend_std_get_properties(tmp);
@@ -64810,8 +63836,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1623
-  case 77: {
+#ifdef COMPILE_1598
+  case 76: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_addref_p((tmp));
@@ -64820,8 +63846,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1624
-  case 78: {
+#ifdef COMPILE_1599
+  case 77: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_addref_p((tmp));
@@ -64831,8 +63857,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1625
-  case 79: {
+#ifdef COMPILE_1600
+  case 78: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_addref_p(*((p)));
@@ -64842,8 +63868,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1626
-  case 80: {
+#ifdef COMPILE_1601
+  case 79: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_addref_p(tmp);
@@ -64853,8 +63879,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1627
-  case 81: {
+#ifdef COMPILE_1602
+  case 80: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_delref_p(tmp);
@@ -64863,8 +63889,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1628
-  case 82: {
+#ifdef COMPILE_1603
+  case 81: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_is_true(tmp);
@@ -64873,8 +63899,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1629
-  case 83: {
+#ifdef COMPILE_1604
+  case 82: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_isref_p(tmp);
@@ -64883,8 +63909,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1630
-  case 84: {
+#ifdef COMPILE_1605
+  case 83: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_refcount_p(tmp);
@@ -64893,8 +63919,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1631
-  case 85: {
+#ifdef COMPILE_1606
+  case 84: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_set_isref_p((tmp));
@@ -64904,8 +63930,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1632
-  case 86: {
+#ifdef COMPILE_1607
+  case 85: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_set_isref_p(*(((p))));
@@ -64915,8 +63941,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1633
-  case 87: {
+#ifdef COMPILE_1608
+  case 86: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_set_isref_p(*((p)));
@@ -64926,8 +63952,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1634
-  case 88: {
+#ifdef COMPILE_1609
+  case 87: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_set_isref_p(tmp);
@@ -64936,8 +63962,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1635
-  case 89: {
+#ifdef COMPILE_1610
+  case 88: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_set_isref_p(tmp);
@@ -64947,8 +63973,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1636
-  case 90: {
+#ifdef COMPILE_1611
+  case 89: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_set_refcount_p((tmp), 0);
@@ -64958,8 +63984,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1637
-  case 91: {
+#ifdef COMPILE_1612
+  case 90: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_set_refcount_p(tmp, 0);
@@ -64969,8 +63995,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1638
-  case 92: {
+#ifdef COMPILE_1613
+  case 91: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_unset_isref_p((tmp));
@@ -64980,8 +64006,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1639
-  case 93: {
+#ifdef COMPILE_1614
+  case 92: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_unset_isref_p(tmp);
@@ -64990,8 +64016,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1640
-  case 94: {
+#ifdef COMPILE_1615
+  case 93: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
       zval_unset_isref_p(tmp);
@@ -65001,8 +64027,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1641
-  case 95: {
+#ifdef COMPILE_1616
+  case 94: {
     (executor_globals.argument_stack) =
         zend_vm_stack_new_page(((16 * 1024) - 16));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
@@ -65013,8 +64039,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1642
-  case 96: {
+#ifdef COMPILE_1617
+  case 95: {
     (tmp) = (executor_globals.uninitialized_zval_ptr);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65024,8 +64050,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1643
-  case 97: {
+#ifdef COMPILE_1618
+  case 96: {
     (tmp) = *p;
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65035,8 +64061,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1644
-  case 98: {
+#ifdef COMPILE_1619
+  case 97: {
     *(tmp) = zval_used_for_init;
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65046,8 +64072,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1645
-  case 99: {
+#ifdef COMPILE_1620
+  case 98: {
     *tmp = zval_used_for_init;
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65057,8 +64083,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1646
-  case 100: {
+#ifdef COMPILE_1621
+  case 99: {
     _efree(((tmp)));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65068,8 +64094,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1647
-  case 101: {
+#ifdef COMPILE_1622
+  case 100: {
     _efree(((tmp)->value.ht));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65079,8 +64105,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1648
-  case 102: {
+#ifdef COMPILE_1623
+  case 101: {
     _efree(((tmp)->value.str.val));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65090,8 +64116,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1649
-  case 103: {
+#ifdef COMPILE_1624
+  case 102: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    (key)->arKey, key->nKeyLength, key->h, &tmp,
                                    sizeof(zval *), (void **)&p, (1 << 1));
@@ -65103,8 +64129,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1650
-  case 104: {
+#ifdef COMPILE_1625
+  case 103: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, (key)->nKeyLength, key->h, &tmp,
                                    sizeof(zval *), (void **)&p, (1 << 1));
@@ -65116,8 +64142,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1651
-  case 105: {
+#ifdef COMPILE_1626
+  case 104: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, key->nKeyLength, (key)->h, &tmp,
                                    sizeof(zval *), (void **)&p, (1 << 1));
@@ -65129,8 +64155,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1652
-  case 106: {
+#ifdef COMPILE_1627
+  case 105: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, key->nKeyLength, key->h, &(tmp),
                                    sizeof(zval *), (void **)&p, (1 << 1));
@@ -65142,8 +64168,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1653
-  case 107: {
+#ifdef COMPILE_1628
+  case 106: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, key->nKeyLength, key->h, &tmp,
                                    sizeof(zval *), (void **)&p, (1 << 1));
@@ -65155,8 +64181,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1654
-  case 108: {
+#ifdef COMPILE_1629
+  case 107: {
     _zend_list_addref((tmp)->value.lval);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65166,8 +64192,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1655
-  case 109: {
+#ifdef COMPILE_1630
+  case 108: {
     _zend_list_delete((tmp)->value.lval);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65177,8 +64203,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1656
-  case 110: {
+#ifdef COMPILE_1631
+  case 109: {
     _zval_copy_ctor_func((tmp));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65188,8 +64214,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1657
-  case 111: {
+#ifdef COMPILE_1632
+  case 110: {
     _zval_dtor(((tmp)));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65199,8 +64225,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1658
-  case 112: {
+#ifdef COMPILE_1633
+  case 111: {
     _zval_dtor_func((tmp));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65210,8 +64236,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1659
-  case 113: {
+#ifdef COMPILE_1634
+  case 112: {
     _zval_ptr_dtor((&(tmp)));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65221,8 +64247,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1660
-  case 114: {
+#ifdef COMPILE_1635
+  case 113: {
     convert_to_boolean((tmp));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65232,8 +64258,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1661
-  case 115: {
+#ifdef COMPILE_1636
+  case 114: {
     exit(1);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65243,8 +64269,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1662
-  case 116: {
+#ifdef COMPILE_1637
+  case 115: {
     gc_remove_zval_from_buffer((tmp));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65254,8 +64280,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1663
-  case 117: {
+#ifdef COMPILE_1638
+  case 116: {
     gc_zval_check_possible_root(((tmp)));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65265,8 +64291,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1664
-  case 118: {
+#ifdef COMPILE_1639
+  case 117: {
     gc_zval_possible_root((tmp));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65276,8 +64302,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1665
-  case 119: {
+#ifdef COMPILE_1640
+  case 118: {
     i_zval_ptr_dtor((tmp));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65287,8 +64313,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1666
-  case 120: {
+#ifdef COMPILE_1641
+  case 119: {
     if (!(executor_globals.active_symbol_table)) {
       zend_rebuild_symbol_table();
     }
@@ -65300,8 +64326,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1667
-  case 121: {
+#ifdef COMPILE_1642
+  case 120: {
     if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength,
                                        key->h, &tmp, sizeof(zval *),
                                        ((void *)0), (1 << 1)) == 0) {
@@ -65315,8 +64341,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1668
-  case 122: {
+#ifdef COMPILE_1643
+  case 121: {
     is_ref = (**(p)).type & 64;
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65326,8 +64352,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1669
-  case 123: {
+#ifdef COMPILE_1644
+  case 122: {
     is_ref = (**p).type & 64;
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65337,8 +64363,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1670
-  case 124: {
+#ifdef COMPILE_1645
+  case 123: {
     memset(key, 0, sizeof(*(key)));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65348,8 +64374,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1671
-  case 125: {
+#ifdef COMPILE_1646
+  case 124: {
     tmp = (executor_globals.uninitialized_zval_ptr);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65359,8 +64385,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1672
-  case 126: {
+#ifdef COMPILE_1647
+  case 125: {
     tmp = *(p);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65370,8 +64396,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1673
-  case 127: {
+#ifdef COMPILE_1648
+  case 126: {
     tmp = *p;
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65381,8 +64407,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1674
-  case 128: {
+#ifdef COMPILE_1649
+  case 127: {
     zend_error((1 << 3L), "A non well formed numeric value encountered");
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65392,8 +64418,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1675
-  case 129: {
+#ifdef COMPILE_1650
+  case 128: {
     zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65403,8 +64429,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1676
-  case 130: {
+#ifdef COMPILE_1651
+  case 129: {
     zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65414,8 +64440,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1677
-  case 131: {
+#ifdef COMPILE_1652
+  case 130: {
     zend_hash_destroy((tmp)->value.ht);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65425,8 +64451,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1678
-  case 132: {
+#ifdef COMPILE_1653
+  case 131: {
     zend_rebuild_symbol_table();
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65436,8 +64462,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1679
-  case 133: {
+#ifdef COMPILE_1654
+  case 132: {
     zval_addref_p((tmp));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65447,8 +64473,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1680
-  case 134: {
+#ifdef COMPILE_1655
+  case 133: {
     zval_addref_p(*((p)));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65458,8 +64484,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1681
-  case 135: {
+#ifdef COMPILE_1656
+  case 134: {
     zval_addref_p(tmp);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65469,8 +64495,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1682
-  case 136: {
+#ifdef COMPILE_1657
+  case 135: {
     zval_set_isref_p((tmp));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65480,8 +64506,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1683
-  case 137: {
+#ifdef COMPILE_1658
+  case 136: {
     zval_set_isref_p(*(((p))));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65491,8 +64517,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1684
-  case 138: {
+#ifdef COMPILE_1659
+  case 137: {
     zval_set_isref_p(*((p)));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65502,8 +64528,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1685
-  case 139: {
+#ifdef COMPILE_1660
+  case 138: {
     zval_set_isref_p(tmp);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65513,8 +64539,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1686
-  case 140: {
+#ifdef COMPILE_1661
+  case 139: {
     zval_set_refcount_p((tmp), 0);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65524,8 +64550,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1687
-  case 141: {
+#ifdef COMPILE_1662
+  case 140: {
     zval_set_refcount_p(tmp, 0);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65535,8 +64561,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1688
-  case 142: {
+#ifdef COMPILE_1663
+  case 141: {
     zval_unset_isref_p((tmp));
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65546,8 +64572,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1689
-  case 143: {
+#ifdef COMPILE_1664
+  case 142: {
     zval_unset_isref_p(tmp);
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -65561,13 +64587,13 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   6)) {
+                   7)) {
   case 0: {
     return ZEND_HASH_APPLY_KEEP;
 
     break;
   }
-#ifdef COMPILE_1690
+#ifdef COMPILE_1665
   case 1: {
     (executor_globals.argument_stack) =
         zend_vm_stack_new_page(((16 * 1024) - 16));
@@ -65576,7 +64602,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1691
+#ifdef COMPILE_1666
   case 2: {
     (tmp) = (executor_globals.uninitialized_zval_ptr);
     return ZEND_HASH_APPLY_KEEP;
@@ -65584,7 +64610,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1692
+#ifdef COMPILE_1667
   case 3: {
     (tmp) = *p;
     return ZEND_HASH_APPLY_KEEP;
@@ -65592,7 +64618,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1693
+#ifdef COMPILE_1668
   case 4: {
     *(tmp) = zval_used_for_init;
     return ZEND_HASH_APPLY_KEEP;
@@ -65600,7 +64626,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1694
+#ifdef COMPILE_1669
   case 5: {
     *tmp = zval_used_for_init;
     return ZEND_HASH_APPLY_KEEP;
@@ -65608,7 +64634,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1695
+#ifdef COMPILE_1670
   case 6: {
     _efree(((tmp)));
     return ZEND_HASH_APPLY_KEEP;
@@ -65616,7 +64642,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1696
+#ifdef COMPILE_1671
   case 7: {
     _efree(((tmp)->value.ht));
     return ZEND_HASH_APPLY_KEEP;
@@ -65624,7 +64650,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1697
+#ifdef COMPILE_1672
   case 8: {
     _efree(((tmp)->value.str.val));
     return ZEND_HASH_APPLY_KEEP;
@@ -65632,7 +64658,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1698
+#ifdef COMPILE_1673
   case 9: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    (key)->arKey, key->nKeyLength, key->h, &tmp,
@@ -65642,7 +64668,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1699
+#ifdef COMPILE_1674
   case 10: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, (key)->nKeyLength, key->h, &tmp,
@@ -65652,7 +64678,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1700
+#ifdef COMPILE_1675
   case 11: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, key->nKeyLength, (key)->h, &tmp,
@@ -65662,7 +64688,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1701
+#ifdef COMPILE_1676
   case 12: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, key->nKeyLength, key->h, &(tmp),
@@ -65672,7 +64698,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1702
+#ifdef COMPILE_1677
   case 13: {
     _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
                                    key->arKey, key->nKeyLength, key->h, &tmp,
@@ -65682,7 +64708,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1703
+#ifdef COMPILE_1678
   case 14: {
     _zend_list_addref((tmp)->value.lval);
     return ZEND_HASH_APPLY_KEEP;
@@ -65690,7 +64716,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1704
+#ifdef COMPILE_1679
   case 15: {
     _zend_list_delete((tmp)->value.lval);
     return ZEND_HASH_APPLY_KEEP;
@@ -65698,7 +64724,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1705
+#ifdef COMPILE_1680
   case 16: {
     _zval_copy_ctor_func((tmp));
     return ZEND_HASH_APPLY_KEEP;
@@ -65706,7 +64732,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1706
+#ifdef COMPILE_1681
   case 17: {
     _zval_dtor(((tmp)));
     return ZEND_HASH_APPLY_KEEP;
@@ -65714,7 +64740,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1707
+#ifdef COMPILE_1682
   case 18: {
     _zval_dtor_func((tmp));
     return ZEND_HASH_APPLY_KEEP;
@@ -65722,7 +64748,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1708
+#ifdef COMPILE_1683
   case 19: {
     _zval_ptr_dtor((&(tmp)));
     return ZEND_HASH_APPLY_KEEP;
@@ -65730,7 +64756,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1709
+#ifdef COMPILE_1684
   case 20: {
     convert_to_boolean((tmp));
     return ZEND_HASH_APPLY_KEEP;
@@ -65738,7 +64764,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1710
+#ifdef COMPILE_1685
   case 21: {
     exit(1);
     return ZEND_HASH_APPLY_KEEP;
@@ -65746,7 +64772,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1711
+#ifdef COMPILE_1686
   case 22: {
     gc_remove_zval_from_buffer((tmp));
     return ZEND_HASH_APPLY_KEEP;
@@ -65754,7 +64780,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1712
+#ifdef COMPILE_1687
   case 23: {
     gc_zval_check_possible_root(((tmp)));
     return ZEND_HASH_APPLY_KEEP;
@@ -65762,7 +64788,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1713
+#ifdef COMPILE_1688
   case 24: {
     gc_zval_possible_root((tmp));
     return ZEND_HASH_APPLY_KEEP;
@@ -65770,7 +64796,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1714
+#ifdef COMPILE_1689
   case 25: {
     i_zval_ptr_dtor((tmp));
     return ZEND_HASH_APPLY_KEEP;
@@ -65778,7 +64804,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1715
+#ifdef COMPILE_1690
   case 26: {
     if (!(executor_globals.active_symbol_table)) {
       zend_rebuild_symbol_table();
@@ -65788,7 +64814,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1716
+#ifdef COMPILE_1691
   case 27: {
     if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength,
                                        key->h, &tmp, sizeof(zval *),
@@ -65800,7 +64826,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1717
+#ifdef COMPILE_1692
   case 28: {
     is_ref = (**(p)).type & 64;
     return ZEND_HASH_APPLY_KEEP;
@@ -65808,7 +64834,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1718
+#ifdef COMPILE_1693
   case 29: {
     is_ref = (**p).type & 64;
     return ZEND_HASH_APPLY_KEEP;
@@ -65816,7 +64842,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1719
+#ifdef COMPILE_1694
   case 30: {
     tmp = (executor_globals.uninitialized_zval_ptr);
     return ZEND_HASH_APPLY_KEEP;
@@ -65824,7 +64850,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1720
+#ifdef COMPILE_1695
   case 31: {
     tmp = *(p);
     return ZEND_HASH_APPLY_KEEP;
@@ -65832,7 +64858,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1721
+#ifdef COMPILE_1696
   case 32: {
     tmp = *p;
     return ZEND_HASH_APPLY_KEEP;
@@ -65840,7 +64866,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1722
+#ifdef COMPILE_1697
   case 33: {
     zend_error((1 << 3L), "A non well formed numeric value encountered");
     return ZEND_HASH_APPLY_KEEP;
@@ -65848,7 +64874,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1723
+#ifdef COMPILE_1698
   case 34: {
     zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
     return ZEND_HASH_APPLY_KEEP;
@@ -65856,7 +64882,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1724
+#ifdef COMPILE_1699
   case 35: {
     zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
     return ZEND_HASH_APPLY_KEEP;
@@ -65864,7 +64890,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1725
+#ifdef COMPILE_1700
   case 36: {
     zend_hash_destroy((tmp)->value.ht);
     return ZEND_HASH_APPLY_KEEP;
@@ -65872,7 +64898,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1726
+#ifdef COMPILE_1701
   case 37: {
     zend_rebuild_symbol_table();
     return ZEND_HASH_APPLY_KEEP;
@@ -65880,7 +64906,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1727
+#ifdef COMPILE_1702
   case 38: {
     zval_addref_p((tmp));
     return ZEND_HASH_APPLY_KEEP;
@@ -65888,7 +64914,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1728
+#ifdef COMPILE_1703
   case 39: {
     zval_addref_p(*((p)));
     return ZEND_HASH_APPLY_KEEP;
@@ -65896,7 +64922,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1729
+#ifdef COMPILE_1704
   case 40: {
     zval_addref_p(tmp);
     return ZEND_HASH_APPLY_KEEP;
@@ -65904,7 +64930,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1730
+#ifdef COMPILE_1705
   case 41: {
     zval_set_isref_p((tmp));
     return ZEND_HASH_APPLY_KEEP;
@@ -65912,7 +64938,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1731
+#ifdef COMPILE_1706
   case 42: {
     zval_set_isref_p(*(((p))));
     return ZEND_HASH_APPLY_KEEP;
@@ -65920,7 +64946,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1732
+#ifdef COMPILE_1707
   case 43: {
     zval_set_isref_p(*((p)));
     return ZEND_HASH_APPLY_KEEP;
@@ -65928,7 +64954,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1733
+#ifdef COMPILE_1708
   case 44: {
     zval_set_isref_p(tmp);
     return ZEND_HASH_APPLY_KEEP;
@@ -65936,7 +64962,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1734
+#ifdef COMPILE_1709
   case 45: {
     zval_set_refcount_p((tmp), 0);
     return ZEND_HASH_APPLY_KEEP;
@@ -65944,7 +64970,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1735
+#ifdef COMPILE_1710
   case 46: {
     zval_set_refcount_p(tmp, 0);
     return ZEND_HASH_APPLY_KEEP;
@@ -65952,7 +64978,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1736
+#ifdef COMPILE_1711
   case 47: {
     zval_unset_isref_p((tmp));
     return ZEND_HASH_APPLY_KEEP;
@@ -65960,7 +64986,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     break;
   }
 #endif
-#ifdef COMPILE_1737
+#ifdef COMPILE_1712
   case 48: {
     zval_unset_isref_p(tmp);
     return ZEND_HASH_APPLY_KEEP;

@@ -541,9 +541,11 @@ protected:
     int count;
     std::map<long long,std::pair<int,int>> macroMap;
     std::map<int,std::map<int,std::string>> idAndCase;
+    std::list<std::list<int>> switchCluster;
+    std::map<int,std::list<std::list<int>>> caseCluster;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
-        return P.test(std::string("src"), t_id, env, false,true);
+        return P.test(std::string("src"), t_id, env, false);
     }
 
     bool testNegativeCases(const BenchProgram::EnvMapTy &env) {
@@ -617,6 +619,40 @@ protected:
         fout << "\n";
         fout.close();
     }
+    void saveSwitchCluster(std::list<std::list<int>> cluster){
+        std::string path=P.getWorkdir()+"/switch-cluster.txt";
+        std::ofstream fout(path.c_str(),std::ofstream::out);
+        for (std::list<std::list<int>>::iterator it=cluster.begin();it!=cluster.end();it++){
+            for (std::list<int>::iterator it2=it->begin();it2!=it->end();it2++){
+                fout << *it2 << " ";
+            }
+            fout << "\n";
+        }
+        fout.close();
+    }
+    void saveCaseCluster(std::map<int,std::list<std::list<int>>> cluster){
+        std::string path=P.getWorkdir()+"/case-cluster.txt";
+        std::ofstream fout(path.c_str(),std::ofstream::out);
+        for (std::map<int,std::list<std::list<int>>>::iterator it=cluster.begin();it!=cluster.end();it++){
+            for (std::list<std::list<int>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
+                for (std::list<int>::iterator it3=it2->begin();it3!=it2->end();it3++){
+                    fout << *it3 << " ";
+                }
+                fout << "\n";
+            }
+            fout << "------------------------------------------\n";
+        }
+        fout.close();
+    }
+
+    bool fuzzTest(BenchProgram::EnvMapTy &env,size_t timeout){
+        std::string cmd="afl-fuzz ";
+        cmd+="-t "+std::to_string(timeout);
+        cmd+="-w "+P.getWorkdir();
+        cmd+="-o out -n -m none -d";
+        bool result=system(cmd.c_str());
+        return result;
+    }
 
 public:
     BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive):
@@ -673,6 +709,10 @@ public:
         savePatch(idAndCase);
         count=R.getIdCount();
         total_macro=R.index;
+        switchCluster=R.getSwitchCluster();
+        saveSwitchCluster(switchCluster);
+        caseCluster=R.getCaseCluster();
+        saveCaseCluster(caseCluster);
         {
             outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu:\n", get_timer(),
                     codes.size());
@@ -2270,9 +2310,8 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
-        
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
-        result_init=T->test(BenchProgram::EnvMapTy(),0);
+        // bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
+        // result_init=T->test(BenchProgram::EnvMapTy(),0);
 
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();

@@ -75,8 +75,8 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             # p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-debug","-enable-zip"], env = my_env, stderr = subprocess.PIPE);
             p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip"], env = my_env, stderr = subprocess.PIPE)
             (out, err) = p.communicate();
-            print out
-            print p.returncode
+            # print out
+            # print p.returncode
             if p.returncode != 0:
                 if is_due_to_autoconf_v(err):
                     # This is possible caused by wrong autoconf version, we can use

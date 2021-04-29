@@ -211,10 +211,10 @@ public:
             const std::map<std::string, std::string> &fileCodeMap,long long max_macro,
             std::string output_name="");
     TestCaseSetTy testSet(const std::string &subDir, const TestCaseSetTy &case_set,
-            const EnvMapTy &envMap, bool pass_basic_src_dir = false,bool is_fuzz=false);
+            const EnvMapTy &envMap, bool pass_basic_src_dir = false);
 
     bool test(const std::string &subDir, size_t id, const EnvMapTy &envMap,
-            bool pass_basic_src_dir,bool is_fuzz=false);
+            bool pass_basic_src_dir);
 
 /*    BenchProgram(const std::string &src_dir, const std::string &test_dir,
             const std::string &build_cmd, const std::string &test_cmd,

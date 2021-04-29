@@ -164,4 +164,5 @@ public:
     ~RepairCandidateGenerator();
 
     std::vector<RepairCandidate> run();
+    std::map<FunctionDecl*,std::pair<std::string,std::pair<unsigned,unsigned>>> getFunctionLocations();
 };

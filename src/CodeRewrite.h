@@ -37,12 +37,14 @@ class CodeRewriter {
     std::map<long long,std::pair<int,int>> macroMap;
     std::map<std::pair<int,int>,std::vector<IsNegInformation>> isNegLocation;
     std::map<int,std::map<int,std::string>> idAndCase;
+    std::map<int,std::list<std::list<int>>> caseCluster;
+    std::list<std::list<int>> switchCluster;
 
     size_t addIsNeg(int id,int case_num,std::string code);
 public:
     int index;
     CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::string work_dir="");
-    std::map<ASTLocTy, std::map<std::string, bool> > eliminateAllNewLoc(SourceContextManager &M,
+    std::map<ASTLocTy, std::map<std::string, RepairCandidate::CandidateKind> > eliminateAllNewLoc(SourceContextManager &M,
         const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str);
 
     CodeSegTy getCodeSegments() {
@@ -64,6 +66,12 @@ public:
     }
     int getIdCount(){
         return counter;
+    }
+    std::list<std::list<int>> getSwitchCluster(){
+        return switchCluster;
+    }
+    std::map<int,std::list<std::list<int>>> getCaseCluster(){
+        return caseCluster;
     }
     std::map<std::pair<int,int>,std::vector<IsNegInformation>> getIsNegLocation(){
         return isNegLocation;

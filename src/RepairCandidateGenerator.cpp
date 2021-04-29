@@ -406,6 +406,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
     const std::map<Stmt*, unsigned long> &loc_map;
     std::map<Stmt*, unsigned long> loc_map1;
     std::map<CompoundStmt*, size_t> compound_counter;
+    std::map<FunctionDecl*,std::pair<std::string,std::pair<unsigned,unsigned>>> functionLocation;
     std::vector<Stmt*> stmt_stack;
     InternalHandlerInfo hinfo;
     // This is a hacky tmp list for fix is_first + is_func_block
@@ -1053,6 +1054,10 @@ public:
     void setFlipP(double GeoP) {
         this->GeoP = GeoP;
     }
+    std::map<FunctionDecl*,std::pair<std::string,std::pair<unsigned,unsigned>>> getFunctionLocations(){
+        return functionLocation;
+    }
+
     bool TraverseStmt(Stmt *n) {
         stmt_stack.push_back(n);
         bool ret = RecursiveASTVisitor::TraverseStmt(n);
@@ -1077,6 +1082,24 @@ public:
         if (isTainted(n) || isTainted(ElseCS))
             genLooseCondition(n);
         return ret;
+    }
+    // This is for get all functions location
+    bool VisitFunctionDecl(FunctionDecl *decl){
+        if (decl->hasBody()){
+            Stmt *stmt=decl->getBody();
+            if (!stmt){
+                SourceManager &manager=ctxt->getSourceManager();
+                SourceLocation exp_loc = manager.getExpansionLoc(stmt->getBeginLoc());
+                std::string src_file = manager.getFilename(exp_loc).str();
+                unsigned start=manager.getFileOffset(exp_loc);
+                unsigned end=manager.getFileOffset(manager.getExpansionLoc(stmt->getEndLoc()));
+
+                std::pair<unsigned,unsigned> locationPair(start,end);
+                std::pair<std::string,std::pair<unsigned,unsigned>> location(src_file,locationPair);
+                functionLocation[decl]=location;
+            }
+        }
+        return true;
     }
 
     bool VisitStmt(Stmt *n) {
@@ -1251,4 +1274,7 @@ std::vector<RepairCandidate> RepairCandidateGenerator::run() {
 
 void RepairCandidateGenerator::setFlipP(double GeoP) {
     impl->setFlipP(GeoP);
+}
+std::map<FunctionDecl*,std::pair<std::string,std::pair<unsigned,unsigned>>> RepairCandidateGenerator::getFunctionLocations(){
+    return impl->getFunctionLocations();
 }

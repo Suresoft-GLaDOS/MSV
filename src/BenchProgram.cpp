@@ -686,17 +686,14 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 }*/
 
 BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
-        const TestCaseSetTy &case_set, const EnvMapTy &env_pairs, bool pass_basic_src_dir,bool is_fuzz) {
+        const TestCaseSetTy &case_set, const EnvMapTy &env_pairs, bool pass_basic_src_dir) {
     if (case_set.size() == 0)
         return std::set<unsigned long>();
 
     // Prepare test script to generate test result
     std::string cmd=test_cmd;
-    if (is_fuzz)
-        if (switchId>=0 && caseNum>=0)
-            cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
-        else
-            cmd+=" -f";
+    if (switchId>=0 && caseNum>=0)
+        cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
 
     if (!pass_basic_src_dir)
         cmd = cmd + " " + getFullPath(work_dir + "/" + subDir) + " " + test_dir + " " + work_dir + " ";
@@ -758,12 +755,12 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
 }
 
 bool BenchProgram::test(const std::string &subDir, size_t id, const EnvMapTy &envMap,
-        bool pass_basic_src_dir,bool is_fuzz) {
+        bool pass_basic_src_dir) {
     test_cnt ++;
     TestCaseSetTy tmp;
     tmp.clear();
     tmp.insert(id);
-    TestCaseSetTy res = testSet(subDir, tmp, envMap, pass_basic_src_dir,is_fuzz);
+    TestCaseSetTy res = testSet(subDir, tmp, envMap, pass_basic_src_dir);
     return res.size() == 1;
 }
 
