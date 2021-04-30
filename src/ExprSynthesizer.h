@@ -23,6 +23,8 @@
 
 namespace clang {
     class Expr;
+    class Stmt;
+    class FunctionDecl;
 }
 
 class FeatureParameter;
@@ -41,10 +43,10 @@ class ExprSynthesizer {
     FeatureParameter *FP;
     unsigned long long timeout_limit;
     std::string fixedFile;
-    std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
+    std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
 public:
     ExprSynthesizer(BenchProgram &P, SourceContextManager &M,
-            RepairCandidateQueue &q, std::string fixedFile,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
+            RepairCandidateQueue &q, std::string fixedFile,std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
             bool naive, bool learning, FeatureParameter *FP):
         P(P), M(M), tested_cnt(0), q(q), fixedFile(fixedFile),naive(naive), learning(learning && !naive), FP(FP),functionLoc(functionLoc),
         timeout_limit(0) { }
