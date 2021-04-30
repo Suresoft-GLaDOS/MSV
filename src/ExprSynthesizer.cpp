@@ -235,7 +235,7 @@ Expr* createConditionVarList(ASTContext *ctxt,std::vector<Expr *> exprs,QualType
 Expr* createConditionVarNameList(ASTContext *ctxt,std::vector<std::string> names){
     std::vector<Expr *> exprs;
     exprs.clear();
-    for (int i=0;i<names.size();i++){
+    for (size_t i=0;i<names.size();i++){
         StringLiteral *str = StringLiteral::Create(*ctxt, names[i], StringLiteral::Ascii,
                 false, ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, names[i].size() + 1), nullptr,ArrayType::Normal, 0),
                 SourceLocation());
@@ -347,7 +347,7 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, const RepairAction &a
     varName.insert(varName.end(),pointerVarName.begin(),pointerVarName.end());
     varName.insert(varName.end(),doubleVarName.begin(),doubleVarName.end());
     
-    for (int i=0;i<varName.size();i++){
+    for (size_t i=0;i<varName.size();i++){
         StringLiteral *str = StringLiteral::Create(*ctxt, varName[i], StringLiteral::Ascii,
                 false, ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, varName[i].size() + 1), nullptr,ArrayType::Normal, 0),
                 SourceLocation());
@@ -543,6 +543,7 @@ protected:
     std::map<int,std::map<int,std::string>> idAndCase;
     std::list<std::list<int>> switchCluster;
     std::map<int,std::list<std::list<int>>> caseCluster;
+    std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, false);
@@ -655,12 +656,13 @@ protected:
     }
 
 public:
-    BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive):
+    BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc):
     P(P), learning(learning), M(M),
     negative_cases(P.getNegativeCaseSet()),
     positive_cases(P.getPositiveCaseSet()),
     candidates(),
     failed_cases(),
+    functionLoc(functionLoc),
     naive(naive) {}
 
     virtual ~BasicTester() { }
@@ -694,7 +696,7 @@ public:
 
         outlog_printf(2, "[%llu] Preprocess the following candidate with BasicTester: %d\n", get_timer(),
             candidate.size());
-        for (int i=0;i<candidate.size();i++){
+        for (size_t i=0;i<candidate.size();i++){
             // We are going to create a set of binding ExprFillInfos
             infos.push_back(enumerateExprBindings(M, candidate[i], -1));
         }
@@ -718,7 +720,7 @@ public:
                     codes.size());
             out_codes(a_code, a_patch);
         }
-        for (int i=0;i<candidate.size();i++)
+        for (size_t i=0;i<candidate.size();i++)
             candidates.push_back(candidate[i]);
         codes=a_code;
         patches=a_patch;
@@ -736,7 +738,7 @@ public:
                             codes.size());
                     out_codes(a_new_code, a_new_patch);
                 }
-                for (int i=0;i<candidate.size();i++)
+                for (size_t i=0;i<candidate.size();i++)
                     candidates.push_back(candidate[i]);
                 codes=a_new_code;
                 patches=a_new_patch;
@@ -926,8 +928,8 @@ class StringConstTester : public BasicTester {
     }
 
 public:
-    StringConstTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive):
-        BasicTester(P, learning, M, naive), candidate_strs(), infos(),infos_set() { }
+    StringConstTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc):
+        BasicTester(P, learning, M, naive,functionLoc), candidate_strs(), infos(),infos_set() { }
 
     virtual ~StringConstTester() { }
 
@@ -956,7 +958,7 @@ public:
         the_infos.clear();
         outlog_printf(2, "[%llu] Preprocess the following candidate with StringConstTester:\n%d\n", get_timer(),
             candidate.size());
-        for (int i=0;i<candidate.size();i++){
+        for (size_t i=0;i<candidate.size();i++){
             // We are going to create a set of binding ExprFillInfos
             the_infos.push_back(enumerateExprBindings(M, candidate[i], getMutateId(candidate[i])));
         }
@@ -975,11 +977,11 @@ public:
             out_codes(a_code, a_patch);
         }
         res.push_back((unsigned long)codes.size());
-        for (int i=0;i<candidate.size();i++)
+        for (size_t i=0;i<candidate.size();i++)
             candidates.push_back(candidate[i]);
         codes=a_code;
         patches=a_patch;
-        for (int i=0;i<the_infos.size();i++){
+        for (size_t i=0;i<the_infos.size();i++){
             infos_set.push_back(the_infos[i]);
             for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
                 infos.push_back(*it);
@@ -998,11 +1000,11 @@ public:
                     out_codes(a_new_code, a_new_patch);
                 }
                 res.push_back(codes.size());
-                for (int i=0;i<candidate.size();i++)
+                for (size_t i=0;i<candidate.size();i++)
                     candidates.push_back(candidate[i]);
                 codes=a_new_code;
                 patches=a_new_patch;
-                for (int i=0;i<the_infos.size();i++){
+                for (size_t i=0;i<the_infos.size();i++){
                     infos_set.push_back(the_infos[i]);
                     for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
                         infos.push_back(*it);
@@ -1947,8 +1949,8 @@ class ConditionSynthesisTester : public BasicTester {
     }
 
 public:
-    ConditionSynthesisTester(BenchProgram &P, bool learning, SourceContextManager &M, bool full_synthesis):
-        BasicTester(P, learning, M, false),
+    ConditionSynthesisTester(BenchProgram &P, bool learning, SourceContextManager &M, bool full_synthesis,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc):
+        BasicTester(P, learning, M, false,functionLoc),
         infos(), infos_set(),full_synthesis(full_synthesis) { post_cnt = 0; }
 
     virtual bool canHandle(const RepairCandidate &candidate) {
@@ -1962,7 +1964,7 @@ public:
         outlog_printf(2, "[%llu] Preprocess the following candidate with CondTester:\n%d Candidates\n", get_timer(),
             candidate.size());
 
-        for (int i=0;i<candidate.size();i++){
+        for (size_t i=0;i<candidate.size();i++){
             // We identify the part we can use condition synthesizer, for the rest
             // we just brute search.
             long long condition_idx = getConditionIndex(candidate[i]);
@@ -1989,12 +1991,12 @@ public:
                     codes.size());
             out_codes(a_code, a_patch);
         }
-        for (int i=0;i<candidate.size();i++)
+        for (size_t i=0;i<candidate.size();i++)
             candidates.push_back(candidate[i]);
         codes=a_code;
         outlog_printf(2,"codes size: %d\n",codes.size());
         patches=a_patch;
-        for (int i=0;i<the_infos.size();i++){
+        for (size_t i=0;i<the_infos.size();i++){
             infos_set.push_back(the_infos[i]);
             for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
                 infos.push_back(*it);
@@ -2346,7 +2348,7 @@ public:
                 res.insert(std::make_pair(code, res_score));
             else if (res[code] < res_score)
                 res[code] = res_score;
-            for (int j=0;j<candidate.size();j++)
+            for (size_t j=0;j<candidate.size();j++)
                 succCandidates.push_back(candidate[j]);
         }
         return res.size()!=0;
@@ -2387,9 +2389,9 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     TestBatcher TB(P, naive, learning, FP,fixedFile);
     std::vector<BasicTester*> testers;
     testers.clear();
-    testers.push_back(new ConditionSynthesisTester(P, learning, M, full_synthesis));
-    testers.push_back(new StringConstTester(P, learning, M, naive));
-    testers.push_back(new BasicTester(P, learning, M, naive));
+    testers.push_back(new ConditionSynthesisTester(P, learning, M, full_synthesis,functionLoc));
+    testers.push_back(new StringConstTester(P, learning, M, naive,functionLoc));
+    testers.push_back(new BasicTester(P, learning, M, naive,functionLoc));
     outlog_printf(2, "BasicTester pointer: %p\n", testers[2]);
     outlog_printf(2, "StringConstTester pointer: %p\n", testers[1]);
     outlog_printf(2, "CondTester pointer: %p\n", testers[0]);

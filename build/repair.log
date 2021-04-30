@@ -42,6 +42,7 @@ Unexpected fail:
 8882
 8884
 8949
+10416
 10956
 10966
 10967
@@ -55,16 +56,16 @@ Unexpected fail:
 11030
 11033
 11047
-Only passed tot: 6936
+Only passed tot: 6935
 Done Verification
 Generating repair candidates!
 Processing Zend/zend_variables.c
 Total 2027 different repair schemas!!!!
 Total 7772 different repair candidate templates for scoring!!!
 Total 5915 different partial repair candidate templates!!
-BasicTester pointer: 0x55f822fb2ca0
-StringConstTester pointer: 0x55f822bfbfb0
-CondTester pointer: 0x55f823d489e0
+BasicTester pointer: 0x5644fa037c10
+StringConstTester pointer: 0x5644fa035250
+CondTester pointer: 0x5644fadca830
 Generating Candidates...
 Candidates size: 2027
 Generating Codes...

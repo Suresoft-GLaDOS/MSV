@@ -406,7 +406,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
     const std::map<Stmt*, unsigned long> &loc_map;
     std::map<Stmt*, unsigned long> loc_map1;
     std::map<CompoundStmt*, size_t> compound_counter;
-    std::map<FunctionDecl*,std::pair<std::string,std::pair<unsigned,unsigned>>> functionLocation;
+    std::map<FunctionDecl*,std::pair<unsigned,unsigned>> functionLocation;
     std::vector<Stmt*> stmt_stack;
     InternalHandlerInfo hinfo;
     // This is a hacky tmp list for fix is_first + is_func_block
@@ -1054,7 +1054,7 @@ public:
     void setFlipP(double GeoP) {
         this->GeoP = GeoP;
     }
-    std::map<FunctionDecl*,std::pair<std::string,std::pair<unsigned,unsigned>>> getFunctionLocations(){
+    std::map<FunctionDecl*,std::pair<unsigned,unsigned>> getFunctionLocations(){
         return functionLocation;
     }
 
@@ -1094,8 +1094,7 @@ public:
                 unsigned start=manager.getFileOffset(exp_loc);
                 unsigned end=manager.getFileOffset(manager.getExpansionLoc(stmt->getEndLoc()));
 
-                std::pair<unsigned,unsigned> locationPair(start,end);
-                std::pair<std::string,std::pair<unsigned,unsigned>> location(src_file,locationPair);
+                std::pair<unsigned,unsigned> location(start,end);
                 functionLocation[decl]=location;
             }
         }
@@ -1275,6 +1274,6 @@ std::vector<RepairCandidate> RepairCandidateGenerator::run() {
 void RepairCandidateGenerator::setFlipP(double GeoP) {
     impl->setFlipP(GeoP);
 }
-std::map<FunctionDecl*,std::pair<std::string,std::pair<unsigned,unsigned>>> RepairCandidateGenerator::getFunctionLocations(){
+std::map<FunctionDecl*,std::pair<unsigned,unsigned>> RepairCandidateGenerator::getFunctionLocations(){
     return impl->getFunctionLocations();
 }

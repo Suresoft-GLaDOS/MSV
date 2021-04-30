@@ -118,6 +118,8 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
     size_t candidate_cnt = 0;
     size_t partial_candidate_cnt = 0;
     FeatureExtractor EX;
+    std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
+
     for (size_t i = 0; i < files.size(); ++i) {
         std::string file = files[i];
         if (use_bugged_files) {
@@ -162,6 +164,7 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                 double final_score = computeScores(M, FP, EX, res[j], learning, random);
                 q.push(std::make_pair(res[j], final_score));
             }
+            functionLoc[file]=G.getFunctionLocations();
         }
     }
 
@@ -243,7 +246,7 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         return 0;
     }
     else {
-        ExprSynthesizer ES(P, M, q, out_file,naive, learning, FP);
+        ExprSynthesizer ES(P, M, q, out_file,functionLoc,naive, learning, FP);
         if (timeout_limit != 0)
             ES.setTimeoutLimit(timeout_limit);
         size_t cnt = 0;

@@ -319,9 +319,9 @@ std::string toString(RepairCandidate candidate){
 }
 std::string removeComment(std::string code){
     if (code.size()<2) return code;
-    for (int i=0;i<code.size()-1;i++){
+    for (size_t i=0;i<code.size()-1;i++){
         if (code[i]=='/' && code[i+1]=='/'){
-            int j=i+2;
+            size_t j=i+2;
             if (j<code.size())
                 for (j=i+2;j<code.size();j++){
                     if (code[j]=='\n') break;
@@ -343,7 +343,7 @@ std::string removeComment(std::string code){
 }
 std::string removeSpace(std::string code){
     code=removeComment(code);
-    for (int i=0;i<code.size();i++){
+    for (size_t i=0;i<code.size();i++){
         if (code[i]==' ' || code[i]=='\t' || code[i]=='\n'){
             code=code.erase(i,1);
             i--;
@@ -516,9 +516,9 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     std::map<ASTLocTy,std::string> original_str;
     std::vector<RepairCandidate> rc1;
     rc1.clear();
-    for (int i=0;i<rc.size();i++){
+    for (size_t i=0;i<rc.size();i++){
         std::vector<ExprFillInfo> temp((*pefi)[i]->begin(),(*pefi)[i]->end());
-        for(int k=0;k<temp.size();k++){
+        for(size_t k=0;k<temp.size();k++){
             ExprFillInfo efi;
             if (pefi !=nullptr){
                 efi = temp[k];
@@ -583,7 +583,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 valueVec.push_back(it2->second);
             }
 
-            for (int i=1;i<locationVec.size();i++) {
+            for (size_t i=1;i<locationVec.size();i++) {
                 std::pair<size_t,size_t> temp=locationVec[i];
                 ASTLocTy temp2=valueVec[i];
                 int j;
@@ -609,10 +609,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     macroMap.clear();
     idAndCase.clear();
     switchCluster.clear();
-    int beforeId=0;
     index=0;
     counter=0;
-    long long macro=0;
     for (std::map<std::string,std::vector<std::pair<size_t,size_t>>>::iterator
             it = location.begin(); it != location.end(); ++it) {
     // for (std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> >::iterator
@@ -630,7 +628,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         long long cur_start = -1;
         long long cur_end = -1;
         long long last_end = 0;
-        for (int i=0;i<it->second.size();i++) {
+        for (size_t i=0;i<it->second.size();i++) {
         // for (std::map<std::pair<size_t, size_t>, ASTLocTy>::iterator it2=it->second.begin();
         //         it2!=it->second.end();it2++) {
             // NOTE: The start and the end are reversed
@@ -638,8 +636,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             if (currentLocation[i].second==0) continue;
             // long long start = it2->first.second;
             // long long end = it2->first.first;
-            long long start = currentLocation[i].second;
-            long long end = currentLocation[i].first;
+            size_t start = currentLocation[i].second;
+            size_t end = currentLocation[i].first;
             // outlog_printf(2,"Location: %d %d\n",start,end);
             int case_count=0;
             assert( end >= last_end);
@@ -647,8 +645,6 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 cur_patch.clear();
                 cur_start = start;
                 cur_end = end;
-                // ASTContext *ctxt = M.getSourceContext(it2->second.filename);
-                ASTContext *ctxt = M.getSourceContext(currentCandidate[i].filename);
                 // cur_patch.push_back(original_str[it2->second]);
                 std::vector<std::string> currentPatch;
                 std::vector<RepairCandidate::CandidateKind> currentKind;
@@ -697,7 +693,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                         beforeIt++;
                         cur_patch.erase(removeIt);
                         cur_kind.erase(removeIt->first);
-                        for (int j=1;j<before_patch.size();j++){
+                        for (size_t j=1;j<before_patch.size();j++){
                             std::string body=top_part+before_patch[j]+bottom_part;
                             // outlog_printf(2,"Before Patch: %s\n\n",body.c_str());
                             currentPatch.push_back(body);
@@ -768,11 +764,11 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             value.push_back(it2->second);
             kind.push_back(cur_kind[it2->first]);
         }
-        for (int i=1;i<location.size();i++) {
+        for (size_t i=1;i<location.size();i++) {
             std::pair<size_t,size_t> temp=location[i];
             std::vector<std::string> temp2=value[i];
             std::vector<RepairCandidate::CandidateKind> temp3=kind[i];
-            int j;
+            size_t j;
             for (j=i;j>=1 && location[j-1].first>=temp.first;j--){
                 // if (location[j-1].first==temp.first)
                     // if (location[j-1].second<temp.second)
