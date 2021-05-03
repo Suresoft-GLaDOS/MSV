@@ -512,7 +512,7 @@ std::map<ASTLocTy, std::map<std::string, RepairCandidate::CandidateKind> > CodeR
     return tmp_map1;
 }
 
-CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::string work_dir) {
+CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,std::string work_dir) {
     std::map<ASTLocTy,std::string> original_str;
     std::vector<RepairCandidate> rc1;
     rc1.clear();
@@ -782,9 +782,9 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             kind[j]=temp3;
         }
 
-        counter++;
-        std::list<int> switchInFile;
-        switchInFile.clear();
+        std::map<FunctionDecl*,std::list<int>> switchInFunc;
+        switchInFunc.clear();
+        std::map<FunctionDecl*,std::pair<unsigned,unsigned>> currentFunction=functionLoc[it->first];
         for (int i=0;i<location.size();i++){
             std::map<RepairCandidate::CandidateKind,std::list<int>> caseKind;
             caseKind.clear();
@@ -809,7 +809,13 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             std::map<int,std::string> casePatch;
             casePatch.clear();
 
-            switchInFile.push_back(counter);
+            for (std::map<FunctionDecl*,std::pair<unsigned,unsigned>>::iterator funcIt=currentFunction.begin();funcIt!=currentFunction.end();funcIt++){
+                if (funcIt->second.first<=cur_start && funcIt->second.second>=cur_end){
+                    switchInFunc[funcIt->first].push_back(counter);
+                    break;
+                }
+            }
+
             std::string body="switch(__choose(\""+work_dir+"/switch.txt\","+std::to_string(counter)+"))\n{\n";
             body+="case "+std::to_string(case_count++)+": {\n";
             body+=currentPatch[0];
@@ -845,6 +851,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
 
             counter++;
         }
-        switchCluster.push_back(switchInFile);
+        for (std::map<FunctionDecl*,std::list<int>>::iterator clusterIt=switchInFunc.begin();clusterIt!=switchInFunc.end();clusterIt++){
+            switchCluster.push_back(clusterIt->second);
+        }
     }
 }

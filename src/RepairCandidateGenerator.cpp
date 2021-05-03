@@ -1084,10 +1084,10 @@ public:
         return ret;
     }
     // This is for get all functions location
-    bool VisitFunctionDecl(FunctionDecl *decl){
+    virtual bool VisitFunctionDecl(FunctionDecl *decl){
         if (decl->hasBody()){
             Stmt *stmt=decl->getBody();
-            if (!stmt){
+            if (stmt){
                 SourceManager &manager=ctxt->getSourceManager();
                 SourceLocation exp_loc = manager.getExpansionLoc(stmt->getBeginLoc());
                 std::string src_file = manager.getFilename(exp_loc).str();

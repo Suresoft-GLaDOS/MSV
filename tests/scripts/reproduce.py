@@ -175,7 +175,7 @@ elif parse_space:
         cmd += " --bug-file";
     system(cmd);
 else:
-    cmd = "prophet -r " + work_dir #+" -skip-verify ";
+    cmd = "prophet -r " + work_dir +" -skip-verify ";
     if timeout != 0:
         cmd += " -timeout " + str(timeout);
     cmd = "time " + cmd;

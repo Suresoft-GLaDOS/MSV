@@ -703,7 +703,7 @@ public:
 
         std::vector<unsigned long> res;
         res.clear();
-        CodeRewriter R(M, candidate, &infos,P.getWorkdir());
+        CodeRewriter R(M, candidate, &infos,functionLoc,P.getWorkdir());
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
         macroMap=R.getMacroMap();
@@ -964,7 +964,7 @@ public:
         }
         std::vector<unsigned long> res;
         res.clear();
-        CodeRewriter R(M, candidate, &the_infos,P.getWorkdir());
+        CodeRewriter R(M, candidate, &the_infos,functionLoc,P.getWorkdir());
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
         macroMap=R.getMacroMap();
@@ -1110,7 +1110,7 @@ public:
         ASTContext *ctxt = M.getSourceContext(candidate.actions[mutate_id].loc.filename);
         efi[mutate_id] = createNewStringExpr(ctxt, efi[mutate_id], *candidate_strs[id].begin());
 
-        CodeRewriter R(M, candidates, &infos_set,P.getWorkdir());
+        CodeRewriter R(M, candidates, &infos_set,functionLoc,P.getWorkdir());
         NewCodeMapTy code = R.getCodes();
         BenchProgram::EnvMapTy buildEnv;
         buildEnv.clear();
@@ -1976,7 +1976,7 @@ public:
         std::vector<unsigned long> res;
         res.clear();
         outlog_printf(2,"Generating patches with CondTester...\n");
-        CodeRewriter R(M, candidate, &the_infos,P.getWorkdir());
+        CodeRewriter R(M, candidate, &the_infos,functionLoc,P.getWorkdir());
         outlog_printf(2,"Patch Generated!\n");
         std::map<std::string, std::vector<std::string> > a_code = R.getCodeSegments();
         std::map<std::string, std::vector<std::string> > a_patch = R.getPatches();

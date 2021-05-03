@@ -36,7 +36,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   1)) {
+                   0)) {
   case 0: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -20565,7 +20565,7 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   2)) {
+                   1)) {
   case 0: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_STRING:
@@ -22795,7 +22795,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   3)) {
+                   2)) {
   case 0: {
     switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
     case IS_RESOURCE: {
@@ -28058,7 +28058,7 @@ ZEND_API int zend_print_variable(zval *var) {
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   4)) {
+                   3)) {
   case 0: {
     return zend_print_zval(var, 0);
 
@@ -28295,7 +28295,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   5)) {
+                   4)) {
   case 0: {
     if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF)) {
       is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -63023,7 +63023,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   6)) {
+                   5)) {
   case 0: {
     if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp,
                             sizeof(zval *), NULL) == SUCCESS) {
@@ -64587,7 +64587,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
   // prophet generated patch
   switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                    "php-efcb9a71-workdir/switch.txt",
-                   7)) {
+                   6)) {
   case 0: {
     return ZEND_HASH_APPLY_KEEP;
 
