@@ -25,6 +25,8 @@
 #include "CodeRewrite.h"
 #include "DuplicateDetector.h"
 #include "FeatureParameter.h"
+#include "cJSON/cJSON.h"
+
 #include "llvm/Support/CommandLine.h"
 #include "clang/AST/Expr.h"
 #include "clang/AST/Stmt.h"
@@ -603,47 +605,56 @@ protected:
         }
         return false;
     }
-    void savePatch(std::map<int,std::map<int,std::string>> patches){
-        std::string path=P.getWorkdir()+"/patches.txt";
-        std::ofstream fout(path.c_str(),std::ofstream::out);
-        int count=0;
-        int i=0;
-        for (std::map<int,std::map<int,std::string>>::iterator it=patches.begin();it!=patches.end();it++) count++;
-        fout << count << "\n";
+    void savePatchInfo(){        
+        cJSON *json=cJSON_CreateObject();
 
-        for (std::map<int,std::map<int,std::string>>::iterator it=patches.begin();it!=patches.end();it++){
+        // Add total switch number
+        cJSON_AddNumberToObject(json,std::string("switch_num").c_str(),idAndCase.size());
+
+        // Add case number of each switch
+        cJSON *switchCase=cJSON_CreateArray();
+        int i=0;
+        for (std::map<int,std::map<int,std::string>>::iterator it=idAndCase.begin();it!=idAndCase.end();it++){
             for (std::map<int,std::string>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
                 i=it2->first;
             }
-            fout << i << "\n";
+            cJSON *caseNumber=cJSON_CreateNumber(i);
+            cJSON_AddItemToArray(switchCase,caseNumber);
         }
-        fout << "\n";
-        fout.close();
-    }
-    void saveSwitchCluster(std::list<std::list<int>> cluster){
-        std::string path=P.getWorkdir()+"/switch-cluster.txt";
-        std::ofstream fout(path.c_str(),std::ofstream::out);
-        for (std::list<std::list<int>>::iterator it=cluster.begin();it!=cluster.end();it++){
+        cJSON_AddItemToObject(json,std::string("case_num").c_str(),switchCase);
+
+        // Add switch cluster
+        cJSON *switchClusterArray=cJSON_CreateArray();
+        for (std::list<std::list<int>>::iterator it=switchCluster.begin();it!=switchCluster.end();it++){
+            cJSON *switchGroup=cJSON_CreateArray();
             for (std::list<int>::iterator it2=it->begin();it2!=it->end();it2++){
-                fout << *it2 << " ";
+                cJSON_AddItemToArray(switchGroup,cJSON_CreateNumber(*it2));
             }
-            fout << "\n";
+            cJSON_AddItemToArray(switchClusterArray,switchGroup);
         }
-        fout.close();
-    }
-    void saveCaseCluster(std::map<int,std::list<std::list<int>>> cluster){
-        std::string path=P.getWorkdir()+"/case-cluster.txt";
-        std::ofstream fout(path.c_str(),std::ofstream::out);
-        for (std::map<int,std::list<std::list<int>>>::iterator it=cluster.begin();it!=cluster.end();it++){
+        cJSON_AddItemToObject(json,std::string("switch_cluster").c_str(),switchClusterArray);
+
+        // Add case cluster
+        cJSON *caseClusterArray=cJSON_CreateArray();
+        for (std::map<int,std::list<std::list<int>>>::iterator it=caseCluster.begin();it!=caseCluster.end();it++){
+            cJSON *caseBySwitch=cJSON_CreateArray();
             for (std::list<std::list<int>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
+                cJSON *caseInSwitch=cJSON_CreateArray();
                 for (std::list<int>::iterator it3=it2->begin();it3!=it2->end();it3++){
-                    fout << *it3 << " ";
+                    cJSON_AddItemToArray(caseInSwitch,cJSON_CreateNumber(*it3));
                 }
-                fout << "\n";
+                cJSON_AddItemToArray(caseBySwitch,caseInSwitch);
             }
-            fout << "------------------------------------------\n";
+            cJSON_AddItemToArray(caseClusterArray,caseBySwitch);
         }
+        cJSON_AddItemToObject(json,std::string("case_cluster").c_str(),caseClusterArray);
+
+        // Save JSON to file
+        char *jsonString=cJSON_Print(json);
+        std::ofstream fout(P.getWorkdir()+"/switch-info.txt",std::ofstream::out);
+        fout << jsonString << "\n";
         fout.close();
+        cJSON_Delete(json);
     }
 
     bool fuzzTest(BenchProgram::EnvMapTy &env,size_t timeout){
@@ -708,13 +719,12 @@ public:
         CodeSegTy a_patch = R.getPatches();
         macroMap=R.getMacroMap();
         idAndCase=R.getIdAndCase();
-        savePatch(idAndCase);
         count=R.getIdCount();
         total_macro=R.index;
         switchCluster=R.getSwitchCluster();
-        saveSwitchCluster(switchCluster);
         caseCluster=R.getCaseCluster();
-        saveCaseCluster(caseCluster);
+
+        savePatchInfo();
         {
             outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu:\n", get_timer(),
                     codes.size());

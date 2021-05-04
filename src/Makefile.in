@@ -217,6 +217,7 @@ am_learner_OBJECTS = learner.$(OBJEXT) FeatureExtract.$(OBJEXT) \
 	GlobalAnalyzer.$(OBJEXT) ASTUtils.$(OBJEXT) \
 	BenchProgram.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
 	Utils.$(OBJEXT) CodeRewrite.$(OBJEXT) DGController.$(OBJEXT) \
+	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT) \
 	$(am__objects_1)
 learner_OBJECTS = $(am_learner_OBJECTS)
 am__DEPENDENCIES_1 =
@@ -230,6 +231,7 @@ am_pdiffer_OBJECTS = pdiffer.$(OBJEXT) Utils.$(OBJEXT) \
 	ASTUtils.$(OBJEXT) BenchProgram.$(OBJEXT) \
 	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
 	FeatureExtract.$(OBJEXT) DGController.$(OBJEXT) \
+	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT) \
 	$(am__objects_1)
 pdiffer_OBJECTS = $(am_pdiffer_OBJECTS)
 pdiffer_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -237,7 +239,9 @@ pdiffer_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(pdiffer_LDFLAGS) $(LDFLAGS) -o $@
 am_playground_OBJECTS = PlayGround.$(OBJEXT) Utils.$(OBJEXT) \
-	BenchProgram.$(OBJEXT) DGController.$(OBJEXT) $(am__objects_1)
+	BenchProgram.$(OBJEXT) DGController.$(OBJEXT) \
+	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT) \
+	$(am__objects_1)
 playground_OBJECTS = $(am_playground_OBJECTS)
 playground_DEPENDENCIES = $(am__DEPENDENCIES_1)
 playground_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -251,6 +255,7 @@ am_prophet_OBJECTS = Main.$(OBJEXT) Utils.$(OBJEXT) \
 	DuplicateDetector.$(OBJEXT) ExprSynthesizer.$(OBJEXT) \
 	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
 	FeatureExtract.$(OBJEXT) DGController.$(OBJEXT) \
+	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT) \
 	$(am__objects_1)
 prophet_OBJECTS = $(am_prophet_OBJECTS)
 prophet_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -273,6 +278,24 @@ DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
+	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+	$(AM_CFLAGS) $(CFLAGS)
+AM_V_CC = $(am__v_CC_@AM_V@)
+am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
+am__v_CC_0 = @echo "  CC      " $@;
+am__v_CC_1 = 
+CCLD = $(CC)
+LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+AM_V_CCLD = $(am__v_CCLD_@AM_V@)
+am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
+am__v_CCLD_0 = @echo "  CCLD    " $@;
+am__v_CCLD_1 = 
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 LTCXXCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -568,24 +591,24 @@ DG_SRC = dg/BBlockBase.cpp dg/Debug.cpp dg/Offset.cpp \
 	dg/llvm/ThreadRegions/Nodes/UnlockNode.cpp
 pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp DGController.cpp $(DG_SRC)
+				  CodeRewrite.cpp FeatureExtract.cpp DGController.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c $(DG_SRC)
 
 pdiffer_LDFLAGS = `llvm-config --ldflags`
 pdiffer_LDADD = $(ClangLDADD) -lexplain
 learner_SOURCES = learner.cpp FeatureExtract.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  Utils.cpp CodeRewrite.cpp DGController.cpp $(DG_SRC)
+				  Utils.cpp CodeRewrite.cpp DGController.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c $(DG_SRC)
 
 learner_LDFLAGS = `llvm-config --ldflags`
 learner_LDADD = $(ClangLDADD) -lexplain
 prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp BenchProgram.cpp ASTUtils.cpp \
 				  ErrorLocalizer.cpp LocalAnalyzer.cpp ProfileErrorLocalizer.cpp SourceContextManager.cpp \
 				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp DGController.cpp $(DG_SRC)
+				  CodeRewrite.cpp FeatureExtract.cpp DGController.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c $(DG_SRC)
 
 prophet_LDFLAGS = `llvm-config --ldflags`
 prophet_LDADD = $(ClangLDADD) -lexplain
-playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp DGController.cpp $(DG_SRC)
+playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp DGController.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c $(DG_SRC)
 playground_LDFLAGS = `llvm-config --ldflags`
 playground_LDADD = $(ClangLDADD) -lexplain
 libprofiler_la_SOURCES = ProfilerAction.cpp
@@ -597,7 +620,7 @@ libtest_runtime_la_SOURCES = _test_runtime.cpp
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .cpp .lo .o .obj
+.SUFFIXES: .c .cpp .lo .o .obj
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -720,6 +743,16 @@ clean-binPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+cJSON/$(am__dirstamp):
+	@$(MKDIR_P) cJSON
+	@: > cJSON/$(am__dirstamp)
+cJSON/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) cJSON/$(DEPDIR)
+	@: > cJSON/$(DEPDIR)/$(am__dirstamp)
+cJSON/cJSON_Utils.$(OBJEXT): cJSON/$(am__dirstamp) \
+	cJSON/$(DEPDIR)/$(am__dirstamp)
+cJSON/cJSON.$(OBJEXT): cJSON/$(am__dirstamp) \
+	cJSON/$(DEPDIR)/$(am__dirstamp)
 dg/$(am__dirstamp):
 	@$(MKDIR_P) dg
 	@: > dg/$(am__dirstamp)
@@ -1041,6 +1074,7 @@ prophet$(EXEEXT): $(prophet_OBJECTS) $(prophet_DEPENDENCIES) $(EXTRA_prophet_DEP
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
+	-rm -f cJSON/*.$(OBJEXT)
 	-rm -f dg/*.$(OBJEXT)
 	-rm -f dg/ControlDependence/*.$(OBJEXT)
 	-rm -f dg/MemorySSA/*.$(OBJEXT)
@@ -1087,6 +1121,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/_test_runtime.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/learner.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pdiffer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@cJSON/$(DEPDIR)/cJSON.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@cJSON/$(DEPDIR)/cJSON_Utils.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@dg/$(DEPDIR)/BBlockBase.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@dg/$(DEPDIR)/Debug.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@dg/$(DEPDIR)/Offset.Po@am__quote@
@@ -1154,6 +1190,30 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/NodeIterator.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/ReturnNode.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/UnlockNode.Po@am__quote@
+
+.c.o:
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+@am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ $<
+
+.c.obj:
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+@am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+
+.c.lo:
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
+@am__fastdepCC_TRUE@	$(LTCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -1302,6 +1362,8 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-rm -f cJSON/$(DEPDIR)/$(am__dirstamp)
+	-rm -f cJSON/$(am__dirstamp)
 	-rm -f dg/$(DEPDIR)/$(am__dirstamp)
 	-rm -f dg/$(am__dirstamp)
 	-rm -f dg/ControlDependence/$(DEPDIR)/$(am__dirstamp)
@@ -1350,7 +1412,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libLTLIBRARIES \
 	clean-libtool mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) dg/$(DEPDIR) dg/ControlDependence/$(DEPDIR) dg/MemorySSA/$(DEPDIR) dg/PointerAnalysis/$(DEPDIR) dg/ReadWriteGraph/$(DEPDIR) dg/SystemDependenceGraph/$(DEPDIR) dg/llvm/$(DEPDIR) dg/llvm/ControlDependence/$(DEPDIR) dg/llvm/ControlDependence/legacy/$(DEPDIR) dg/llvm/DataDependenceAnalysis/$(DEPDIR) dg/llvm/DefUse/$(DEPDIR) dg/llvm/Dominators/$(DEPDIR) dg/llvm/ForkJoin/$(DEPDIR) dg/llvm/PointerAnalysis/$(DEPDIR) dg/llvm/ReadWriteGraph/$(DEPDIR) dg/llvm/SystemDependenceGraph/$(DEPDIR) dg/llvm/ThreadRegions/$(DEPDIR) dg/llvm/ThreadRegions/Graphs/$(DEPDIR) dg/llvm/ThreadRegions/Nodes/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) cJSON/$(DEPDIR) dg/$(DEPDIR) dg/ControlDependence/$(DEPDIR) dg/MemorySSA/$(DEPDIR) dg/PointerAnalysis/$(DEPDIR) dg/ReadWriteGraph/$(DEPDIR) dg/SystemDependenceGraph/$(DEPDIR) dg/llvm/$(DEPDIR) dg/llvm/ControlDependence/$(DEPDIR) dg/llvm/ControlDependence/legacy/$(DEPDIR) dg/llvm/DataDependenceAnalysis/$(DEPDIR) dg/llvm/DefUse/$(DEPDIR) dg/llvm/Dominators/$(DEPDIR) dg/llvm/ForkJoin/$(DEPDIR) dg/llvm/PointerAnalysis/$(DEPDIR) dg/llvm/ReadWriteGraph/$(DEPDIR) dg/llvm/SystemDependenceGraph/$(DEPDIR) dg/llvm/ThreadRegions/$(DEPDIR) dg/llvm/ThreadRegions/Graphs/$(DEPDIR) dg/llvm/ThreadRegions/Nodes/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -1396,7 +1458,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) dg/$(DEPDIR) dg/ControlDependence/$(DEPDIR) dg/MemorySSA/$(DEPDIR) dg/PointerAnalysis/$(DEPDIR) dg/ReadWriteGraph/$(DEPDIR) dg/SystemDependenceGraph/$(DEPDIR) dg/llvm/$(DEPDIR) dg/llvm/ControlDependence/$(DEPDIR) dg/llvm/ControlDependence/legacy/$(DEPDIR) dg/llvm/DataDependenceAnalysis/$(DEPDIR) dg/llvm/DefUse/$(DEPDIR) dg/llvm/Dominators/$(DEPDIR) dg/llvm/ForkJoin/$(DEPDIR) dg/llvm/PointerAnalysis/$(DEPDIR) dg/llvm/ReadWriteGraph/$(DEPDIR) dg/llvm/SystemDependenceGraph/$(DEPDIR) dg/llvm/ThreadRegions/$(DEPDIR) dg/llvm/ThreadRegions/Graphs/$(DEPDIR) dg/llvm/ThreadRegions/Nodes/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) cJSON/$(DEPDIR) dg/$(DEPDIR) dg/ControlDependence/$(DEPDIR) dg/MemorySSA/$(DEPDIR) dg/PointerAnalysis/$(DEPDIR) dg/ReadWriteGraph/$(DEPDIR) dg/SystemDependenceGraph/$(DEPDIR) dg/llvm/$(DEPDIR) dg/llvm/ControlDependence/$(DEPDIR) dg/llvm/ControlDependence/legacy/$(DEPDIR) dg/llvm/DataDependenceAnalysis/$(DEPDIR) dg/llvm/DefUse/$(DEPDIR) dg/llvm/Dominators/$(DEPDIR) dg/llvm/ForkJoin/$(DEPDIR) dg/llvm/PointerAnalysis/$(DEPDIR) dg/llvm/ReadWriteGraph/$(DEPDIR) dg/llvm/SystemDependenceGraph/$(DEPDIR) dg/llvm/ThreadRegions/$(DEPDIR) dg/llvm/ThreadRegions/Graphs/$(DEPDIR) dg/llvm/ThreadRegions/Nodes/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
