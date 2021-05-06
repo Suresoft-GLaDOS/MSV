@@ -228,6 +228,7 @@ public:
     std::string getWorkdir() { return work_dir; }
 
     std::string getSrcdir() { return src_dir; }
+    std::string getTestScript(){return test_cmd;}
 
     std::string normalizePath(const std::string &);
 

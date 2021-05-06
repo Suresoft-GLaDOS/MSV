@@ -784,10 +784,10 @@ bool BenchProgram::verifyTestCases() {
     }
     tmp = testSet("src", positive_cases, std::map<std::string, std::string>());
     if (tmp.size() != positive_cases.size()) {
-        outlog_printf(0, "Unexpected fail:\n");
-        for (std::set<unsigned long>::iterator it = positive_cases.begin(); it != positive_cases.end(); ++it)
-            if (tmp.count(*it) == 0)
-                outlog_printf(0, "%lu\n", *it);
+        // outlog_printf(0, "Unexpected fail:\n");
+        // for (std::set<unsigned long>::iterator it = positive_cases.begin(); it != positive_cases.end(); ++it)
+        //     if (tmp.count(*it) == 0)
+        //         outlog_printf(0, "%lu\n", *it);
         outlog_printf(0, "Only passed tot: %lu\n", tmp.size());
         // return false;
         positive_cases = tmp;

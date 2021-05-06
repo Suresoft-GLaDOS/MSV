@@ -657,11 +657,12 @@ protected:
         cJSON_Delete(json);
     }
 
-    bool fuzzTest(BenchProgram::EnvMapTy &env,size_t timeout){
+    bool fuzzTest(size_t timeout){
         std::string cmd="afl-fuzz ";
-        cmd+="-t "+std::to_string(timeout);
+        if (timeout>0) cmd+="-t "+std::to_string(timeout);
         cmd+="-w "+P.getWorkdir();
-        cmd+="-o out -n -m none -d";
+        cmd+="-o out -n -m none -d ";
+        cmd+=P.getTestScript();
         bool result=system(cmd.c_str());
         return result;
     }
@@ -762,31 +763,37 @@ public:
         return NULL;
     }
 
-    virtual bool test(const BenchProgram::EnvMapTy &env, unsigned long id) {
+    virtual bool test(const BenchProgram::EnvMapTy &env, unsigned long id,bool isFuzz) {
         {
             outlog_printf(2, "[%llu] BasicTester, Testing instance id %lu:\n", get_timer(), id);
             out_codes(codes, patches);
         }
-        BenchProgram::EnvMapTy testEnv=initEnv(env);
-        bool ret;
-        outlog_printf(2, "Testing negative cases!\n");
-        if (!testNegativeCases(testEnv)) {
-            codes.clear();
-            patches.clear();
-            outlog_printf(2,"Negative Case fail\n");
-            // return false;
+        
+        if (isFuzz){
+            return fuzzTest(10000000);
         }
-        outlog_printf(2, "Testing positive cases!\n");
-        ret = testPositiveCases(testEnv);
-        if (ret)
-            outlog_printf(2, "[%llu] Passed!\n", get_timer());
-        else {
-            // We are going to clear out stuff tested, to avoid memory usage.
-            outlog_printf(2,"Fail to test with success patch\n");
-            codes.clear();
-            patches.clear();
+        else{
+            BenchProgram::EnvMapTy testEnv=initEnv(env);
+            bool ret;
+            outlog_printf(2, "Testing negative cases!\n");
+            if (!testNegativeCases(testEnv)) {
+                codes.clear();
+                patches.clear();
+                outlog_printf(2,"Negative Case fail\n");
+                // return false;
+            }
+            outlog_printf(2, "Testing positive cases!\n");
+            ret = testPositiveCases(testEnv);
+            if (ret)
+                outlog_printf(2, "[%llu] Passed!\n", get_timer());
+            else {
+                // We are going to clear out stuff tested, to avoid memory usage.
+                outlog_printf(2,"Fail to test with success patch\n");
+                codes.clear();
+                patches.clear();
+            }
+            return ret;
         }
-        return ret;
     }
 
     virtual std::map<NewCodeMapTy, double> getResults(unsigned long id) {
@@ -2323,7 +2330,7 @@ class TestBatcher {
         // This should success
         P.saveFixedFiles(combined,fixedFile);
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
-        result_init=T->test(BenchProgram::EnvMapTy(),0);
+        result_init=T->test(BenchProgram::EnvMapTy(),0,false);
 
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();
