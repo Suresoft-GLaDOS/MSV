@@ -651,7 +651,7 @@ protected:
 
         // Save JSON to file
         char *jsonString=cJSON_Print(json);
-        std::ofstream fout(P.getWorkdir()+"/switch-info.txt",std::ofstream::out);
+        std::ofstream fout(P.getWorkdir()+"/switch-info.json",std::ofstream::out);
         fout << jsonString << "\n";
         fout.close();
         cJSON_Delete(json);
@@ -2322,8 +2322,8 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
-        // bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
-        // result_init=T->test(BenchProgram::EnvMapTy(),0);
+        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
+        result_init=T->test(BenchProgram::EnvMapTy(),0);
 
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();

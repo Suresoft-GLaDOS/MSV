@@ -1083,24 +1083,6 @@ public:
             genLooseCondition(n);
         return ret;
     }
-    // This is for get all functions location
-    virtual bool VisitFunctionDecl(FunctionDecl *decl){
-        if (decl->hasBody()){
-            Stmt *stmt=decl->getBody();
-            if (stmt){
-                SourceManager &manager=ctxt->getSourceManager();
-                SourceLocation exp_loc = manager.getExpansionLoc(stmt->getBeginLoc());
-                std::string src_file = manager.getFilename(exp_loc).str();
-                unsigned start=manager.getFileOffset(exp_loc);
-                unsigned end=manager.getFileOffset(manager.getExpansionLoc(stmt->getEndLoc()));
-
-                std::pair<unsigned,unsigned> location(start,end);
-                functionLocation[decl]=location;
-            }
-        }
-        return true;
-    }
-
     bool VisitStmt(Stmt *n) {
         if (llvm::isa<CompoundStmt>(n))
             return true;
@@ -1188,6 +1170,21 @@ public:
     }
 
     bool TraverseFunctionDecl(FunctionDecl *FD) {
+        // This is for get all functions location
+        if (FD->hasBody()){
+            Stmt *stmt=FD->getBody();
+            if (stmt){
+                SourceManager &manager=ctxt->getSourceManager();
+                SourceLocation exp_loc = manager.getExpansionLoc(stmt->getBeginLoc());
+                std::string src_file = manager.getFilename(exp_loc).str();
+                unsigned start=manager.getFileOffset(exp_loc);
+                unsigned end=manager.getFileOffset(manager.getExpansionLoc(stmt->getEndLoc()));
+
+                std::pair<unsigned,unsigned> location(start,end);
+                functionLocation[FD]=location;
+            }
+        }
+
         in_yacc_func = isYaccFunc(FD);
         in_float = containsFloat(FD);
         // This is to fix the first statement in the function block,
