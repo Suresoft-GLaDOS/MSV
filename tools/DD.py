@@ -976,12 +976,13 @@ import getopt
 from sys import argv
 
 if __name__ == '__main__':
-    opts, args = getopt.getopt(argv[1:], "l:s:m:p:w:")
+    opts, args = getopt.getopt(argv[1:], "l:s:m:p:w:j:")
     dep_dir = ""
     build_log_file = ""
     src_dir=""
     macros=0
     files=[]
+    parallel=0
 
     for o, a in opts:
         if o == "-p":
@@ -994,6 +995,8 @@ if __name__ == '__main__':
             macros=int(a)
         elif o=="-w":
             files=a.split(":")
+        elif o=="-j":
+            parallel=int(j)
 
     # Test the outcome cache
     oc_test()
@@ -1024,6 +1027,8 @@ if __name__ == '__main__':
             # subprocess.call(['rm','prog'],stderr=subprocess.PIPE)
             subprocess.call(['rm',"-rf","ext/phar/phar.php"],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
             args.append('make')
+            if self.parallel!=0:
+                args.append('-j'+str(parallel))
             # args.append(">>")
             # args.append(build_log_file)
             # args.append("2>&1")
@@ -1037,13 +1042,14 @@ if __name__ == '__main__':
                 return self.PASS
             else:
                 return self.UNRESOLVED
-        def __init__(self,full_macros):
+        def __init__(self,full_macros,parallel=0):
             DD2.__init__(self,full_macros)
             # self.debug_dd=True
             self.use_cal=False
+            self.parallel=parallel
 
     macro_list=range(macros)
-    dd_test=BuildTest(macro_list)
+    dd_test=BuildTest(macro_list,parallel)
     # (c,c1,c2)=dd_test.dd(macro_list)
     dd_test.search(macro_list)
     # print "Run with optimization:",dd_test.run

@@ -586,7 +586,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                 if (i!=0) cmd+=":";
                 cmd+=files[i];
             }
-            cmd+=" ";
+            cmd+=" -j 10 ";
             // cmd+=" > DD.log";
             ret = system(cmd.c_str());
 
