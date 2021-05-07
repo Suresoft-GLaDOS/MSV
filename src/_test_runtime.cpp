@@ -380,13 +380,11 @@ extern "C" int __choose(char *table_file,const int id) {
     FILE *file=fopen(table_file,"r");
     if (file==NULL)
         return 0;
-    fscanf(file,"%d",&result);
-    if (result!=id){
-        result=0;
-    }
-    else{
+    
+    for (int i=0;i<=id;i++){
         fscanf(file,"%d",&result);
     }
+
     fclose(file);
 
     return result;

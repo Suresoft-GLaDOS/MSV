@@ -685,6 +685,20 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     assert(ret == 0);
 }*/
 
+void BenchProgram::createTestSwitch(const int switchCount){
+    std::ofstream fout(work_dir+"/switch.txt");
+    for (int i=0;i<switchCount;i++){
+        if (i==switchId){
+            fout << caseNum << "\n";
+        }
+        else{
+            fout << 0 << "\n";
+        }
+    }
+    fout.close();
+}
+
+
 BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         const TestCaseSetTy &case_set, const EnvMapTy &env_pairs, bool pass_basic_src_dir) {
     if (case_set.size() == 0)
@@ -692,8 +706,8 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
 
     // Prepare test script to generate test result
     std::string cmd=test_cmd;
-    if (switchId>=0 && caseNum>=0)
-        cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
+    // if (switchId>=0 && caseNum>=0)
+    //     cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
 
     if (!pass_basic_src_dir)
         cmd = cmd + " " + getFullPath(work_dir + "/" + subDir) + " " + test_dir + " " + work_dir + " ";

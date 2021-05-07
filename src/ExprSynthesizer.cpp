@@ -773,17 +773,17 @@ public:
             return fuzzTest(10000000);
         }
         else{
-            BenchProgram::EnvMapTy testEnv=initEnv(env);
+            P.createTestSwitch(idAndCase.size());
             bool ret;
             outlog_printf(2, "Testing negative cases!\n");
-            if (!testNegativeCases(testEnv)) {
+            if (!testNegativeCases(env)) {
                 codes.clear();
                 patches.clear();
                 outlog_printf(2,"Negative Case fail\n");
                 // return false;
             }
             outlog_printf(2, "Testing positive cases!\n");
-            ret = testPositiveCases(testEnv);
+            ret = testPositiveCases(env);
             if (ret)
                 outlog_printf(2, "[%llu] Passed!\n", get_timer());
             else {

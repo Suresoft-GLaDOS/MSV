@@ -210,6 +210,8 @@ public:
     bool buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
             const std::map<std::string, std::string> &fileCodeMap,long long max_macro,
             std::string output_name="");
+
+    void createTestSwitch(const int switchCount);
     TestCaseSetTy testSet(const std::string &subDir, const TestCaseSetTy &case_set,
             const EnvMapTy &envMap, bool pass_basic_src_dir = false);
 
