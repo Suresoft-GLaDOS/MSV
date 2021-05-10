@@ -546,6 +546,7 @@ protected:
     std::list<std::list<int>> switchCluster;
     std::map<int,std::list<std::list<int>>> caseCluster;
     std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
+    std::map<long long,std::string> macroCode;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, false);
@@ -693,6 +694,9 @@ public:
     virtual long long getMacroCount(){
         return total_macro;
     }
+    std::map<long long,std::string> getMacroCode(){
+        return macroCode;
+    }
     BenchProgram::EnvMapTy initEnv(const BenchProgram::EnvMapTy &env){
         BenchProgram::EnvMapTy testEnv=env;
         for (int i=0;i<count;i++){
@@ -724,6 +728,7 @@ public:
         total_macro=R.index;
         switchCluster=R.getSwitchCluster();
         caseCluster=R.getCaseCluster();
+        macroCode=R.getMacroCode();
 
         savePatchInfo();
         {
@@ -1135,7 +1140,7 @@ public:
             buildEnv["COMPILE_CMD"] = "clang++";
         else
             buildEnv["COMPILE_CMD"] = GCC_CMD;
-        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,0);
+        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,macroCode);
         if (!build_succ) {
             outlog_printf(2, "Build failed!");
             return std::map<NewCodeMapTy, double>();
@@ -2329,7 +2334,7 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,macros,fixedFile);
+        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
         result_init=T->test(BenchProgram::EnvMapTy(),0,false);
 
         std::map<NewCodeMapTy, double> newCode;

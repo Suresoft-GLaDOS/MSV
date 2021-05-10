@@ -14,15 +14,19 @@
 #include "dg/llvm/LLVMNode.h"
 
 namespace clang{
-static llvm::Module* createModule(std::string file);
-static dg::LLVMDependenceGraph* createDG(llvm::Module* module);
+llvm::Module* createModule(std::string file);
+dg::LLVMDependenceGraph* createDG(llvm::Module* module);
 
 class Slicer{
     std::string file;
     dg::llvmdg::LLVMSlicer slicer;
     dg::LLVMDependenceGraph *dependenceGraph;
+    std::vector<dg::LLVMNode*> criteriaList;
 public:
-    Slicer(std::string file,dg::LLVMDependenceGraph *graph): file(file),dependenceGraph(graph), slicer(){}
+    Slicer(std::string file,dg::LLVMDependenceGraph *graph): file(file),dependenceGraph(graph), slicer(),criteriaList(){}
+    void addCriteria(dg::LLVMNode *criteria){
+        criteriaList.push_back(criteria);
+    }
     void run();
 };
 } // fin namespace dg

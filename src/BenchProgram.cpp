@@ -517,7 +517,7 @@ void BenchProgram::saveFixedFiles(const std::map<std::string, std::string> &file
 }
 
 bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-        const std::map<std::string, std::string> &fileCodeMap,long long max_macro,std::string output_name) {
+        const std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,std::string output_name) {
     compile_cnt ++;
     // This is to backup the changed sourcefile, in case something broken
     // the workdir, and we want to just resume
@@ -556,8 +556,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 
     outlog_printf(2,"Trying to build with all macros...\n");
     std::vector<long long> succ_id;
-    for (long long i=0;i<max_macro;i++)
-        succ_id.push_back(i);
+    for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++)
+        succ_id.push_back(it->first);
     succ=buildFull("src", 0,true,succ_id,files);
     if (succ){
         outlog_printf(2,"Build Success!\n");
@@ -566,6 +566,26 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     //     outlog_printf(2,"Fail to build!\n");
     else{
         outlog_printf(2,"Build failed, Trying to find fail macros...\n");
+        // Analyze result message to reduce search space
+        std::set<long long> errorCandidate;
+        errorCandidate.clear();
+        std::ifstream buildLog(build_log_file);
+        std::string line;
+        while(std::getline(buildLog,line)){
+            if (line.find("undefined reference to")!=std::string::npos){
+                size_t pos=line.find("undefined reference to");
+                size_t start=line.find("'",pos);
+                size_t end=line.find("'",start+1);
+                std::string errorFunc=line.substr(start+1,end-start-1);
+
+                for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                    if (it->second.find(errorFunc)!=std::string::npos){
+                        errorCandidate.insert(it->first);
+                    }
+                }
+            }
+        }
+        buildLog.close();
         // Run Binary-Search to find fail cases
         time_t timeout_limit = 0;
         if (repair_build_cnt > 10)
@@ -575,10 +595,17 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         if (true)
         {
             //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
+            std::string candidateMacro="'";
+            for (std::set<long long>::iterator it=errorCandidate.begin();it!=errorCandidate.end();it++){
+                candidateMacro+=std::to_string(*it)+",";
+            }
+            candidateMacro.pop_back();
+            candidateMacro+="'";
+
             ExecutionTimer timer;
             std::string src_dir = getFullPath(work_dir + "/src");
             std::string cmd;
-            cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+std::to_string(max_macro);
+            cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+candidateMacro;
             // cmd+=" -t "+build_cmd;
             if (dep_dir!="") cmd+=" -p "+dep_dir;
             cmd+=" -w ";
@@ -619,15 +646,15 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         result.close();
         system(std::string("rm "+resultPath).c_str());
 
-        for (long long i=0;i<max_macro;i++){
+        for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
             bool include=false;
             for (size_t j=0;j<fail.size();j++){
-                if (fail[j]==i) {
+                if (fail[j]==it->first) {
                     include=true;
                     break;
                 }
             }
-            if (!include) succ_id.push_back(i);
+            if (!include) succ_id.push_back(it->first);
         }
 
         outlog_printf(2,"Total success macros: %d\n",succ_id.size());

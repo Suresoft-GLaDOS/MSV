@@ -834,7 +834,9 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 body+="\nbreak;\n}\n";
                 body+="#endif\n";
 
-                macroMap.insert(std::pair<long long,std::pair<int,int>>(index++,std::pair<int,int>(counter,case_count)));
+                macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
+                macroCode[index]=currentBody;
+                index++;
                 caseKind[currentKind[i-1]].push_back(case_count);
 
                 case_count++;

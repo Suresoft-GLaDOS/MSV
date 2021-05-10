@@ -980,7 +980,7 @@ if __name__ == '__main__':
     dep_dir = ""
     build_log_file = ""
     src_dir=""
-    macros=0
+    macros=[]
     files=[]
     parallel=0
 
@@ -992,11 +992,13 @@ if __name__ == '__main__':
         elif o == "-s":
             src_dir=a
         elif o == "-m":
-            macros=int(a)
+            macros_str=a.split(",")
+            for i in macros_str:
+                macros.append(int(i))
         elif o=="-w":
             files=a.split(":")
         elif o=="-j":
-            parallel=int(j)
+            parallel=int(a)
 
     # Test the outcome cache
     oc_test()
@@ -1048,17 +1050,15 @@ if __name__ == '__main__':
             self.use_cal=False
             self.parallel=parallel
 
-    macro_list=range(macros)
-    dd_test=BuildTest(macro_list,parallel)
+    dd_test=BuildTest(macros,parallel)
     # (c,c1,c2)=dd_test.dd(macro_list)
-    dd_test.search(macro_list)
+    dd_test.search(macros)
     # print "Run with optimization:",dd_test.run
 
-    fail=macro_list
+    fail=macros
     for i in dd_test.success:
         fail.remove(i)
     print "Fail macros:",fail
-    print
 
     # dd_test.success=[]
     # dd_test.run=0

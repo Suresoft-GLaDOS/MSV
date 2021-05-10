@@ -208,7 +208,7 @@ public:
     void saveFixedFiles(const std::map<std::string, std::string> &fileCodeMap,std::string output_name);
 
     bool buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-            const std::map<std::string, std::string> &fileCodeMap,long long max_macro,
+            const std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
             std::string output_name="");
 
     void createTestSwitch(const int switchCount);

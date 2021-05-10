@@ -1,6 +1,6 @@
 #include "DGController.h"
 
-using namespace clang;
+namespace clang{
 
 llvm::Module *createModule(std::string file){
     llvm::LLVMContext context;
@@ -13,13 +13,18 @@ llvm::Module *createModule(std::string file){
 }
 dg::LLVMDependenceGraph* createDG(llvm::Module* module){
     dg::llvmdg::LLVMDependenceGraphBuilder builder(module);
+    std::unique_ptr<dg::LLVMDependenceGraph> graph=builder.constructCFGOnly();
 
-    return builder.build().get();
+    graph=builder.computeDependencies(std::move(graph));
+
+    return graph.get();
 }
 
 void Slicer::run(){
     dg::LLVMNode *start=dependenceGraph->getEntry();
-    // TODO: Is hard-coded number ok?
-    uint32_t slice_id = 0xdead;
-    slicer.slice(dependenceGraph,start,slice_id);
+    for (dg::LLVMNode *criteria:criteriaList){
+        slicer.mark(criteria);
+    }
+    slicer.slice(dependenceGraph,nullptr);
 }
+}; // fin namespace clang
