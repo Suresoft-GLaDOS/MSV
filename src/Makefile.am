@@ -51,7 +51,7 @@ DG_SRC += dg/PointerAnalysis/Pointer.cpp dg/PointerAnalysis/PointerAnalysis.cpp 
 dg/PointerAnalysis/PointerGraphOptimizations.cpp dg/PointerAnalysis/PointerGraphValidator.cpp dg/PointerAnalysis/PointsToSet.cpp 
 DG_SRC += dg/ReadWriteGraph/ReadWriteGraph.cpp 
 DG_SRC += dg/SystemDependenceGraph/DependenceGraph.cpp 
-DG_SRC += dg/llvm/LLVMDependenceGraph.cpp dg/llvm/LLVMDGVerifier.cpp dg/llvm/LLVMNode.cpp 
+DG_SRC += dg/llvm/LLVMDependenceGraph.cpp dg/llvm/LLVMDGVerifier.cpp dg/llvm/LLVMNode.cpp dg/llvm/LLVMSlicerCriteria.cpp
 DG_SRC += dg/llvm/ControlDependence/ControlDependence.cpp dg/llvm/ControlDependence/InterproceduralCD.cpp \
 dg/llvm/ControlDependence/SCD.cpp dg/llvm/ControlDependence/legacy/Block.cpp dg/llvm/ControlDependence/legacy/Function.cpp \
 dg/llvm/ControlDependence/legacy/GraphBuilder.cpp dg/llvm/ControlDependence/legacy/NTSCD.cpp 

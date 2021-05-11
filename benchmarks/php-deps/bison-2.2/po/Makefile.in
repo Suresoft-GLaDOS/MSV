@@ -18,7 +18,7 @@ srcdir = .
 top_srcdir = ..
 
 
-prefix = /usr/local
+prefix = /root/project/prophet-gpl/benchmarks/php-deps/bison-2.2-build
 exec_prefix = ${prefix}
 datadir = ${prefix}/share
 localedir = $(datadir)/locale

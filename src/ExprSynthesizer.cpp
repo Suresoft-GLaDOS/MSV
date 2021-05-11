@@ -2326,16 +2326,13 @@ class TestBatcher {
         const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
 
         // Run DG
-        // FIXME: based on php, need generalize!
-        // dg::LLVMDependenceGraph *graph=dg::createDG(dg::createModule("sapi/cli/php_cli.c"));
-        // dg::Slicer slice("sapi/cli/php_cli.c",graph);
-        // slice.run();
+        
 
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
-        result_init=T->test(BenchProgram::EnvMapTy(),0,false);
+        // result_init=T->test(BenchProgram::EnvMapTy(),0,false);
 
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();

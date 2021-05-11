@@ -730,7 +730,7 @@ s,@PYTHON_INCLUDES@,|#_!!_#|/usr/include/python2.7,g
 s,@PYTHON_SITE_PACKAGES@,|#_!!_#|/usr/lib/python2.7/dist-packages,g
 s,@M_LIBS@,|#_!!_#|-lm,g
 s,@RDL_LIBS@,|#_!!_#|,g
-s,@RELDATE@,|#_!!_#|Wed Mar 17 2021,g
+s,@RELDATE@,|#_!!_#|Tue May 11 2021,g
 s,@PYTHON_TESTS@,|#_!!_#| RelaxNGPythonTests SchemasPythonTests,g
 s,@LIBOBJS@,|#_!!_#|,g
 s,@LTLIBOBJS@,|#_!!_#|,g
