@@ -202,7 +202,7 @@ public:
             const std::string &code);
 
     // bool runDG(std::vector<ASTLocTy> criteriaLocation);
-    bool runDG(std::vector<std::string> files);
+    bool runDG(std::vector<std::string> files,std::map<std::string,std::set<unsigned>> lines);
 
     bool buildSubDir(const std::string &subDir, const std::string &wrapScript,
             const EnvMapTy &envMap,std::vector<long long> compile_macro=std::vector<long long>());

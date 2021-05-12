@@ -20,6 +20,19 @@ llvm::Module *createModule(std::string file,std::vector<std::string> dependencie
     llvm::Module *mod=M.get();
     return mod;
 }
+std::set<dg::LLVMNode *> Slicer::getCriteria(std::set<unsigned> slicingCriteria){
+    std::string criteria="";
+    for (unsigned lineNum:slicingCriteria){
+        criteria+=std::to_string(lineNum)+";";
+    }
+    criteria.pop_back();
+    outlog_printf(2,"criteria: %s\n",criteria.c_str());
+
+    std::set<dg::LLVMNode *> result;
+    getSlicingCriteriaNodes(*_dg.get(),criteria,result,false);
+    return result;
+}
+
 
 bool Slicer::buildDG() {
     _dg = std::move(_builder.constructCFGOnly());

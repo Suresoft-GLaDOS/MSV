@@ -475,9 +475,10 @@ void BenchProgram::popEnvMap(const EnvMapTy &envMap) {
     ori_env_map.clear();
 }
 
-bool BenchProgram::runDG(std::vector<std::string> files){
+bool BenchProgram::runDG(std::vector<std::string> files,std::map<std::string,std::set<unsigned>> lines){
     bool result=true;
 
+    // TODO: This is for only php, need generalize
     std::vector<std::string> php_dep;
     php_dep.clear();
     php_dep.push_back(src_dir+"/Zend");
@@ -494,6 +495,10 @@ bool BenchProgram::runDG(std::vector<std::string> files){
             for (llvm::Module::iterator it=module->begin();it!=module->end();it++){
                 clang::Slicer slicer(module,it->getName());
                 result=slicer.buildDG();
+
+                std::set<dg::LLVMNode *> criterias=slicer.getCriteria(lines[file]);
+                slicer.mark(criterias);
+                slicer.slice();
             }
         }
     }

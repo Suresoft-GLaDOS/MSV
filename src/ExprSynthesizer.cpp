@@ -697,6 +697,20 @@ public:
     std::map<long long,std::string> getMacroCode(){
         return macroCode;
     }
+    std::map<std::string,std::set<unsigned>> getPatchLine(){
+        std::map<std::string,std::set<unsigned>> result;
+        result.clear();
+
+        for (RepairCandidate candidate:candidates){
+            ASTContext *Context = M.getSourceContext(candidate.actions[0].loc.filename);
+            SourceManager &manager = Context->getSourceManager();
+
+            if (result.find(candidate.actions[0].loc.filename)==result.end())
+                result[candidate.actions[0].loc.filename]=std::set<unsigned>();
+            result[candidate.actions[0].loc.filename].insert(manager.getExpansionLineNumber(candidate.original->getBeginLoc()));
+        }
+        return result;
+    }
     BenchProgram::EnvMapTy initEnv(const BenchProgram::EnvMapTy &env){
         BenchProgram::EnvMapTy testEnv=env;
         for (int i=0;i<count;i++){
@@ -2330,7 +2344,9 @@ class TestBatcher {
         for (std::pair<std::string,std::string> codes:combined){
             files.push_back(P.getSrcdir()+"/"+codes.first);
         }
-        bool dgResult=P.runDG(files);
+        
+        std::map<std::string,std::set<unsigned>> candidates=T->getPatchLine();
+        bool dgResult=P.runDG(files,candidates);
         if (dgResult){
             outlog_printf(2,"DG success\n");
         }

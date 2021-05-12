@@ -12,6 +12,8 @@
 #include <llvm/Bitcode/BitcodeReader.h>
 #include <llvm/Bitcode/BitcodeWriter.h>
 
+#include <clang/Basic/SourceLocation.h>
+
 #include "TimeMeasure.h"
 #include "Utils.h"
 
@@ -23,11 +25,12 @@
 #include "dg/llvm/LLVMDependenceGraphBuilder.h"
 #include "dg/llvm/LLVMNode.h"
 
-namespace clang{
 bool getSlicingCriteriaNodes(dg::LLVMDependenceGraph& dg,
-                            const std::string& slicingCriteria,
-                            std::set<dg::LLVMNode *>& criteria_nodes,
-                            bool criteria_are_next_instr);
+                        const std::string& slicingCriteria,
+                        std::set<dg::LLVMNode *>& criteria_nodes,
+                        bool criteria_are_next_instr);
+
+namespace clang{
 
 llvm::Module* createModule(std::string file,std::vector<std::string> dependencies);
 
@@ -51,11 +54,7 @@ public:
     dg::LLVMDependenceGraph& getDG() { return *_dg.get(); }
     llvm::Module* getModule(){return M;}
 
-    bool getCriteria(dg::LLVMDependenceGraph& dg,
-                             const std::string& slicingCriteria,
-                             std::set<dg::LLVMNode *>& criteria_nodes){
-        return getSlicingCriteriaNodes(dg,slicingCriteria,criteria_nodes,false);
-    }
+    std::set<dg::LLVMNode *> getCriteria(std::set<unsigned> slicingCriteria);
 
     // Mirror LLVM to nodes of dependence graph,
     // No dependence edges are added here unless the
