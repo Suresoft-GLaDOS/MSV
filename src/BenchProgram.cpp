@@ -475,6 +475,31 @@ void BenchProgram::popEnvMap(const EnvMapTy &envMap) {
     ori_env_map.clear();
 }
 
+bool BenchProgram::runDG(std::vector<std::string> files){
+    bool result=true;
+
+    std::vector<std::string> php_dep;
+    php_dep.clear();
+    php_dep.push_back(src_dir+"/Zend");
+    php_dep.push_back(src_dir+"/TSRM");
+    php_dep.push_back(src_dir+"/main");
+
+    for (std::string file:files){
+        llvm::Module *module=clang::createModule(file,php_dep);
+        if (module==nullptr){
+            result=false;
+            break;
+        }
+        else{
+            for (llvm::Module::iterator it=module->begin();it!=module->end();it++){
+                clang::Slicer slicer(module,it->getName());
+                result=slicer.buildDG();
+            }
+        }
+    }
+    return result;
+}
+
 bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wrapScript,
         const EnvMapTy &envMap,std::vector<long long> compile_macro) {
     pushEnvMap(envMap);

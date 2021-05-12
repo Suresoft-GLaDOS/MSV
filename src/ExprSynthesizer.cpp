@@ -705,7 +705,6 @@ public:
         return testEnv;
     }
 
-
     virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
         std::vector<std::set<ExprFillInfo> *> infos;
         infos.clear();
@@ -2326,12 +2325,20 @@ class TestBatcher {
         const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
 
         // Run DG
-        
+        std::vector<std::string> files;
+        files.clear();
+        for (std::pair<std::string,std::string> codes:combined){
+            files.push_back(P.getSrcdir()+"/"+codes.first);
+        }
+        bool dgResult=P.runDG(files);
+        if (dgResult){
+            outlog_printf(2,"DG success\n");
+        }
 
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
+        // bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
         // result_init=T->test(BenchProgram::EnvMapTy(),0,false);
 
         std::map<NewCodeMapTy, double> newCode;

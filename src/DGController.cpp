@@ -2,17 +2,26 @@
 
 namespace clang{
 
-llvm::Module *createModule(std::string file){
+llvm::Module *createModule(std::string file,std::vector<std::string> dependencies){
+    // Create LLVM bitcode
+    std::string bitcodeFile=replace_ext(file,".bc");
+    std::string cmd="clang -emit-llvm -S ";
+    for (std::string dependency: dependencies)
+        cmd+="-I"+dependency+" ";
+    cmd+=file+" -o "+bitcodeFile;
+    bool result=system(cmd.c_str());
+    if (result) return nullptr;
+
+    // Get Module from generated bitcode file
     llvm::LLVMContext context;
     llvm::SMDiagnostic SMD;
 
-    std::unique_ptr<llvm::Module> M = llvm::parseIRFile(file, SMD, context);
+    std::unique_ptr<llvm::Module> M = llvm::parseIRFile(bitcodeFile, SMD, context);
     llvm::Module *mod=M.get();
-
     return mod;
 }
 
-bool Slicer::buildDG(bool compute_deps) {
+bool Slicer::buildDG() {
     _dg = std::move(_builder.constructCFGOnly());
 
     if (!_dg) {
@@ -20,8 +29,8 @@ bool Slicer::buildDG(bool compute_deps) {
         return false;
     }
 
-    if (compute_deps)
-        computeDependencies();
+    // if (compute_deps)
+    //     computeDependencies();
 
     return true;
 }

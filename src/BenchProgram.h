@@ -172,7 +172,6 @@ private:
     void popWrapPath();
 
     void deleteLibraryFile(const std::map<std::string, std::string> &fileCodeMap);
-
 public:
 
     // We create the work dir from a configuration file, and we will put workdir
@@ -201,6 +200,9 @@ public:
 
     std::unique_ptr<clang::ASTUnit> buildClangASTUnit(const std::string &src_file,
             const std::string &code);
+
+    // bool runDG(std::vector<ASTLocTy> criteriaLocation);
+    bool runDG(std::vector<std::string> files);
 
     bool buildSubDir(const std::string &subDir, const std::string &wrapScript,
             const EnvMapTy &envMap,std::vector<long long> compile_macro=std::vector<long long>());

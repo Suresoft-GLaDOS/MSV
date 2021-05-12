@@ -13,6 +13,7 @@
 #include <llvm/Bitcode/BitcodeWriter.h>
 
 #include "TimeMeasure.h"
+#include "Utils.h"
 
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 #include "dg/llvm/PointerAnalysis/LLVMPointerAnalysisOptions.h"
@@ -28,7 +29,7 @@ bool getSlicingCriteriaNodes(dg::LLVMDependenceGraph& dg,
                             std::set<dg::LLVMNode *>& criteria_nodes,
                             bool criteria_are_next_instr);
 
-llvm::Module* createModule(std::string file);
+llvm::Module* createModule(std::string file,std::vector<std::string> dependencies);
 
 class Slicer {
     llvm::Module *M{};
@@ -61,7 +62,7 @@ public:
     // 'compute_deps' parameter is set to true.
     // Otherwise, dependencies must be computed later
     // using computeDependencies().
-    bool buildDG(bool compute_deps = false);
+    bool buildDG();
 
     // Explicitely compute dependencies after building the graph.
     // This method can be used to compute dependencies without
