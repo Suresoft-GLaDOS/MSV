@@ -1,31 +1,54 @@
 #include "DGController.h"
+#include <ostream>
 
 namespace clang{
 
-llvm::Module *createModule(std::string file,std::vector<std::string> dependencies){
+std::string createIRFile(std::string file,std::vector<std::string> dependencies){
     // Create LLVM bitcode
-    std::string bitcodeFile=replace_ext(file,".bc");
+    std::string bitcodeFile=replace_ext(file,".ll");
     std::string cmd="clang -emit-llvm -S ";
     for (std::string dependency: dependencies)
         cmd+="-I"+dependency+" ";
     cmd+=file+" -o "+bitcodeFile;
     bool result=system(cmd.c_str());
-    if (result) return nullptr;
-
-    // Get Module from generated bitcode file
-    llvm::LLVMContext context;
-    llvm::SMDiagnostic SMD;
-
-    std::unique_ptr<llvm::Module> M = llvm::parseIRFile(bitcodeFile, SMD, context);
-    llvm::Module *mod=M.get();
-    return mod;
+    if (result) return "";
+    else return bitcodeFile;
 }
+
+void printModuleStats(llvm::Module *module){
+    std::cout << "Global Variables: ";
+    for (llvm::Module::const_global_iterator globalIt=module->global_begin();globalIt!=module->global_end();globalIt++)
+        std::cout << globalIt->getName().str() << "\t";
+    std::cout << std::endl << std::endl;
+
+    std::cout << "Functions: ";
+    for (llvm::Module::const_iterator it=module->begin();it!=module->end();it++)
+        std::cout << it->getName().str() << "\t";
+    std::cout << std::endl << std::endl;
+
+    std::cout << "Alias: ";
+    for (llvm::Module::const_alias_iterator aliasIt=module->alias_begin();aliasIt!=module->alias_end();aliasIt++)
+        std::cout << aliasIt->getName().str() << "\t";
+    std::cout << std::endl << std::endl;
+
+    std::cout << "IFunctions: ";
+    for (llvm::Module::const_ifunc_iterator ifuncIt=module->ifunc_begin();ifuncIt!=module->ifunc_end();ifuncIt++)
+        std::cout << ifuncIt->getName().str() << "\t";
+    std::cout << std::endl << std::endl;
+
+    std::cout << "Named Metadatas: ";
+    for (llvm::Module::const_named_metadata_iterator metaIt=module->named_metadata_begin();metaIt!=module->named_metadata_end();metaIt++)
+        std::cout << metaIt->getName().str() << "\t";
+    std::cout << std::endl << std::endl;
+}
+
 std::set<dg::LLVMNode *> Slicer::getCriteria(std::set<unsigned> slicingCriteria){
     std::string criteria="";
     for (unsigned lineNum:slicingCriteria){
         criteria+=std::to_string(lineNum)+";";
     }
-    criteria.pop_back();
+    if (!criteria.empty())
+        criteria.pop_back();
     outlog_printf(2,"criteria: %s\n",criteria.c_str());
 
     std::set<dg::LLVMNode *> result;

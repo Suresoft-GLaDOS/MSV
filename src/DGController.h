@@ -32,7 +32,8 @@ bool getSlicingCriteriaNodes(dg::LLVMDependenceGraph& dg,
 
 namespace clang{
 
-llvm::Module* createModule(std::string file,std::vector<std::string> dependencies);
+std::string createIRFile(std::string file,std::vector<std::string> dependencies);
+void printModuleStats(llvm::Module *module);
 
 class Slicer {
     llvm::Module *M{};
@@ -46,9 +47,15 @@ class Slicer {
 
     llvm::StringRef entryFunction;
 public:
-    Slicer(llvm::Module *mod,llvm::StringRef entryFunction)
-    : M(mod),entryFunction(entryFunction),
-      _builder(mod) { assert(mod && "Need module"); }
+    Slicer(llvm::Module *mod,dg::llvmdg::LLVMDependenceGraphOptions option)
+    : M(mod),entryFunction(option.entryFunction),_builder(mod,option) { 
+        assert(mod && "Need module");
+    }
+    static Slicer createSlicer(llvm::Module *mod,llvm::StringRef entryFunction){
+        dg::llvmdg::LLVMDependenceGraphOptions option;
+        option.entryFunction=entryFunction.str();
+        return Slicer(mod,option);
+    }
 
     const dg::LLVMDependenceGraph& getDG() const { return *_dg.get(); }
     dg::LLVMDependenceGraph& getDG() { return *_dg.get(); }

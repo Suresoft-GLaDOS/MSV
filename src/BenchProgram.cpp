@@ -486,19 +486,35 @@ bool BenchProgram::runDG(std::vector<std::string> files,std::map<std::string,std
     php_dep.push_back(src_dir+"/main");
 
     for (std::string file:files){
-        llvm::Module *module=clang::createModule(file,php_dep);
-        if (module==nullptr){
+        std::string irFile=clang::createIRFile(file,php_dep);
+        if (irFile=="")
+            return false;
+
+        llvm::LLVMContext context;
+        llvm::SMDiagnostic SMD;
+
+        std::unique_ptr<llvm::Module> module(llvm::parseIRFile(irFile, SMD, context));
+        if (!module){
+            SMD.print("Module Creation", llvm::errs());
+        }
+        if (!module){
+            outlog_printf(2,"Create Module error\n");
             result=false;
             break;
         }
         else{
+            clang::printModuleStats(module.get());
             for (llvm::Module::iterator it=module->begin();it!=module->end();it++){
-                clang::Slicer slicer(module,it->getName());
+                std::cout << "Slice entry: " << it->getName().str() << std::endl;
+                clang::Slicer slicer=clang::Slicer::createSlicer(module.get(),it->getName());
+                slicer.createEmptyMain();
                 result=slicer.buildDG();
 
                 std::set<dg::LLVMNode *> criterias=slicer.getCriteria(lines[file]);
                 slicer.mark(criterias);
-                slicer.slice();
+                result=slicer.slice();
+
+                clang::printModuleStats(module.get());
             }
         }
     }
