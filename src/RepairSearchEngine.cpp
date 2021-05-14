@@ -272,14 +272,14 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         std::vector<std::string> dgFiles;
         dgFiles.clear();
         for (std::string file:dgFilesSet){
-            outlog_printf(2,"%s\n",file.c_str());
+            // outlog_printf(2,"%s\n",file.c_str());
             dgFiles.push_back(file);
         }
         
-        bool dgResult=P.runDG(dgFiles,candidates);
-        if (dgResult){
-            outlog_printf(2,"DG success\n");
-        }
+        // bool dgResult=P.runDG(dgFiles,candidates);
+        // if (dgResult){
+        //     outlog_printf(2,"DG success\n");
+        // }
 
         ExprSynthesizer ES(P, M, q, out_file,functionLoc,naive, learning, FP);
         if (timeout_limit != 0)
