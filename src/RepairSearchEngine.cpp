@@ -246,6 +246,41 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         return 0;
     }
     else {
+        // Run DG to slice files with candidates location
+        std::set<std::string> dgFilesSet;
+        dgFilesSet.clear();
+        std::map<std::string,std::set<unsigned>> candidates;
+        candidates.clear();
+        for (SourcePositionTy codes:L->getCandidateLocations()){
+            if (codes.expFilename[0]=='/') continue;
+            std::string fullFile=P.getSrcdir()+"/"+codes.expFilename;
+            bool includeFile=false;
+            for (std::string file:files){
+                if (file==codes.expFilename && (!use_bugged_files || bugged_files.count(file)!=0)){
+                    includeFile=true;
+                    dgFilesSet.insert(fullFile);
+                    break;
+                }
+            }
+            if (!includeFile) continue;
+
+            if (candidates.find(fullFile)==candidates.end())
+                candidates[fullFile]=std::set<unsigned>();
+            candidates[fullFile].insert(codes.expLine);
+        }
+
+        std::vector<std::string> dgFiles;
+        dgFiles.clear();
+        for (std::string file:dgFilesSet){
+            outlog_printf(2,"%s\n",file.c_str());
+            dgFiles.push_back(file);
+        }
+        
+        bool dgResult=P.runDG(dgFiles,candidates);
+        if (dgResult){
+            outlog_printf(2,"DG success\n");
+        }
+
         ExprSynthesizer ES(P, M, q, out_file,functionLoc,naive, learning, FP);
         if (timeout_limit != 0)
             ES.setTimeoutLimit(timeout_limit);

@@ -113,8 +113,8 @@ static bool usesTheVariable(LLVMDependenceGraph& dg,
     if (memacc.first) {
         // PTA has no information, it may be a definition of the variable,
         // we do not know
-        llvm::errs() << "WARNING: matched due to a lack of information: "
-                     << I << "\n";
+        // llvm::errs() << "WARNING: matched due to a lack of information: "
+        //              << I << "\n";
         return true;
     }
 
@@ -485,10 +485,10 @@ getSlicingCriteriaInstructions(LLVMDependenceGraph& dg,
         }
 
         if (!SC.primary.empty()) {
-            llvm::errs() << "SC: Matched '" << primsec[0] << "' to: \n";
-            for (auto *val : SC.primary) {
-                llvm::errs() << "  " << *val << "\n";
-            }
+            // llvm::errs() << "SC: Matched '" << primsec[0] << "' to: \n";
+            // for (auto *val : SC.primary) {
+            //     llvm::errs() << "  " << *val << "\n";
+            // }
 
             if (criteria_are_next_instr) {
                 // the given (primary) criteria are just markers for the
@@ -507,11 +507,11 @@ getSlicingCriteriaInstructions(LLVMDependenceGraph& dg,
             getCriteriaInstructions(dg, primsec[1], SC.secondary);
 
             if (!SC.secondary.empty()) {
-                llvm::errs() << "SC: Matched '" << primsec[1]
-                             << "' (secondary) to: \n";
-                for (auto *val : SC.secondary) {
-                    llvm::errs() << "  " << *val << "\n";
-                }
+                // llvm::errs() << "SC: Matched '" << primsec[1]
+                //              << "' (secondary) to: \n";
+                // for (auto *val : SC.secondary) {
+                //     llvm::errs() << "  " << *val << "\n";
+                // }
             }
 
             if (ssctoall) {

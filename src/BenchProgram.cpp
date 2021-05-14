@@ -500,13 +500,27 @@ bool BenchProgram::runDG(std::vector<std::string> files,std::map<std::string,std
         if (!module){
             outlog_printf(2,"Create Module error\n");
             result=false;
-            break;
+            continue;
         }
         else{
-            clang::printModuleStats(module.get());
             for (llvm::Module::iterator it=module->begin();it!=module->end();it++){
+                if (it->getName().str()!="_zval_dtor_func" && it->getName().str()!="zval_add_ref" && it->getName().str()!="_zval_copy_ctor_func" && it->getName().str()!="zend_print_variable" &&
+                        it->getName().str()!="_zval_dtor_wrapper" && it->getName().str()!="zval_copy_static_var") continue;
+                llvm::LLVMContext context2;
+                llvm::SMDiagnostic SMD2;
+                std::unique_ptr<llvm::Module> module2(llvm::parseIRFile(irFile,SMD2, context2));
+                if (!module2){
+                    SMD2.print("Module Creation", llvm::errs());
+                }
+                if (!module2){
+                    outlog_printf(2,"Create Module error\n");
+                    result=false;
+                    continue;
+                }
+                clang::printModuleStats(module2.get());
+
                 std::cout << "Slice entry: " << it->getName().str() << std::endl;
-                clang::Slicer slicer=clang::Slicer::createSlicer(module.get(),it->getName());
+                clang::Slicer slicer=clang::Slicer::createSlicer(module2.get(),it->getName());
                 slicer.createEmptyMain();
                 result=slicer.buildDG();
 
@@ -514,7 +528,7 @@ bool BenchProgram::runDG(std::vector<std::string> files,std::map<std::string,std
                 slicer.mark(criterias);
                 result=slicer.slice();
 
-                clang::printModuleStats(module.get());
+                clang::printModuleStats(module2.get());
             }
         }
     }
