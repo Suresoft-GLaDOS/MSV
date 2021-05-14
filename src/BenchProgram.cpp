@@ -504,8 +504,6 @@ bool BenchProgram::runDG(std::vector<std::string> files,std::map<std::string,std
         }
         else{
             for (llvm::Module::iterator it=module->begin();it!=module->end();it++){
-                if (it->getName().str()!="_zval_dtor_func" && it->getName().str()!="zval_add_ref" && it->getName().str()!="_zval_copy_ctor_func" && it->getName().str()!="zend_print_variable" &&
-                        it->getName().str()!="_zval_dtor_wrapper" && it->getName().str()!="zval_copy_static_var") continue;
                 llvm::LLVMContext context2;
                 llvm::SMDiagnostic SMD2;
                 std::unique_ptr<llvm::Module> module2(llvm::parseIRFile(irFile,SMD2, context2));
