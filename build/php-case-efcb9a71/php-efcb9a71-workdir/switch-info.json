@@ -6,26 +6,26 @@
 	"scores":	[{
 			"file":	"Zend/zend_variables.c",
 			"scores":	[{
-					"primary":	0,
-					"secondary":	0
+					"primary":	999826,
+					"secondary":	121735
 				}, {
-					"primary":	0,
-					"secondary":	0
+					"primary":	999623,
+					"secondary":	19028
 				}, {
-					"primary":	0,
-					"secondary":	0
+					"primary":	999623,
+					"secondary":	151621
 				}, {
-					"primary":	0,
-					"secondary":	0
+					"primary":	999623,
+					"secondary":	122488
 				}, {
-					"primary":	0,
-					"secondary":	0
+					"primary":	1000000,
+					"secondary":	124008
 				}, {
-					"primary":	0,
-					"secondary":	0
+					"primary":	999995,
+					"secondary":	123974
 				}, {
-					"primary":	0,
-					"secondary":	0
+					"primary":	999995,
+					"secondary":	123872
 				}]
 		}]
 }

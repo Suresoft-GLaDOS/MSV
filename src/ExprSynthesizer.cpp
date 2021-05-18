@@ -628,10 +628,11 @@ protected:
         for (std::map<std::string,std::vector<std::pair<size_t,size_t>>>::iterator it=locations.begin();it!=locations.end();it++){
             std::vector<std::pair<size_t,size_t>> scoresInFile;
             scoresInFile.clear();
+
             for (std::vector<std::pair<size_t,size_t>>::iterator locIt=it->second.begin();locIt!=it->second.end();locIt++){
                 std::pair<size_t,size_t> currentScore(0,0);
                 for (std::map<size_t,std::pair<size_t,size_t>>::iterator it2=scores[it->first].begin();it2!=scores[it->first].end();it2++){
-                    if (it2->first>locIt->first && it2->first<locIt->second){
+                    if (it2->first>=locIt->first && it2->first<=locIt->second){
                         if (currentScore.first<it2->second.first){
                             currentScore.first=it2->second.first;
                             currentScore.second=it2->second.second;
