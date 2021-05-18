@@ -75,12 +75,12 @@ static std::vector<std::string> splitPath(std::string path){
 
 BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
         bool no_clean_up,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),
-        caseNum(caseNum) {
+        caseNum(caseNum),switchInfo(workDirPath) {
     Init(workDirPath, no_clean_up);
 }
 
 BenchProgram::BenchProgram(const std::string &workDirPath,int switchId,int caseNum)
-    : config(workDirPath + "/" + CONFIG_FILE_PATH),count(0),switchId(switchId),caseNum(caseNum) {
+    : config(workDirPath + "/" + CONFIG_FILE_PATH),count(0),switchId(switchId),caseNum(caseNum),switchInfo(workDirPath) {
     Init(workDirPath, true);
 }
 

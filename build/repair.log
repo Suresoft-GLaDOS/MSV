@@ -5,16 +5,16 @@ Processing Zend/zend_variables.c
 Total 2027 different repair schemas!!!!
 Total 7772 different repair candidate templates for scoring!!!
 Total 5915 different partial repair candidate templates!!
-BasicTester pointer: 0x55ce1e35a020
-StringConstTester pointer: 0x55ce1eba85f0
-CondTester pointer: 0x55ce1ea0cca0
+BasicTester pointer: 0x55f2b87397b0
+StringConstTester pointer: 0x55f2b84b7f00
+CondTester pointer: 0x55f2b7825670
 Generating Candidates...
 Candidates size: 2027
 Generating Codes...
-[82] Preprocess the following candidate with BasicTester: 2027
+[79] Preprocess the following candidate with BasicTester: 2027
 Generating patches...
 Generating Codes...
-[82] BasicTester, a patch instance with id 0:
+[79] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 1713
 Saving this fix to: /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c

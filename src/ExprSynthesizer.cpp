@@ -548,6 +548,9 @@ protected:
     std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
     std::map<long long,std::string> macroCode;
 
+    std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> scores;
+    std::map<std::string,std::vector<std::pair<size_t,size_t>>> locations;
+
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, false);
     }
@@ -606,56 +609,45 @@ protected:
         }
         return false;
     }
-    void savePatchInfo(){        
-        cJSON *json=cJSON_CreateObject();
-
-        // Add total switch number
-        cJSON_AddNumberToObject(json,std::string("switch_num").c_str(),idAndCase.size());
-
+    void savePatchInfo(){
         // Add case number of each switch
-        cJSON *switchCase=cJSON_CreateArray();
+        std::map<size_t,size_t> switchCase;
         int i=0;
         for (std::map<int,std::map<int,std::string>>::iterator it=idAndCase.begin();it!=idAndCase.end();it++){
             for (std::map<int,std::string>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
                 i=it2->first;
             }
-            cJSON *caseNumber=cJSON_CreateNumber(i);
-            cJSON_AddItemToArray(switchCase,caseNumber);
+            switchCase[it->first]=i;
         }
-        cJSON_AddItemToObject(json,std::string("case_num").c_str(),switchCase);
+        P.getSwitchInfo().caseNum=switchCase;
 
-        // Add switch cluster
-        cJSON *switchClusterArray=cJSON_CreateArray();
-        for (std::list<std::list<int>>::iterator it=switchCluster.begin();it!=switchCluster.end();it++){
-            cJSON *switchGroup=cJSON_CreateArray();
-            for (std::list<int>::iterator it2=it->begin();it2!=it->end();it2++){
-                cJSON_AddItemToArray(switchGroup,cJSON_CreateNumber(*it2));
-            }
-            cJSON_AddItemToArray(switchClusterArray,switchGroup);
-        }
-        cJSON_AddItemToObject(json,std::string("switch_cluster").c_str(),switchClusterArray);
+        P.getSwitchInfo().switchCluster=switchCluster;
+        P.getSwitchInfo().caseCluster=caseCluster;
 
-        // Add case cluster
-        cJSON *caseClusterArray=cJSON_CreateArray();
-        for (std::map<int,std::list<std::list<int>>>::iterator it=caseCluster.begin();it!=caseCluster.end();it++){
-            cJSON *caseBySwitch=cJSON_CreateArray();
-            for (std::list<std::list<int>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
-                cJSON *caseInSwitch=cJSON_CreateArray();
-                for (std::list<int>::iterator it3=it2->begin();it3!=it2->end();it3++){
-                    cJSON_AddItemToArray(caseInSwitch,cJSON_CreateNumber(*it3));
+        std::map<std::string,std::vector<std::pair<size_t,size_t>>> finalScores;
+        for (std::map<std::string,std::vector<std::pair<size_t,size_t>>>::iterator it=locations.begin();it!=locations.end();it++){
+            std::vector<std::pair<size_t,size_t>> scoresInFile;
+            scoresInFile.clear();
+            for (std::vector<std::pair<size_t,size_t>>::iterator locIt=it->second.begin();locIt!=it->second.end();locIt++){
+                std::pair<size_t,size_t> currentScore(0,0);
+                for (std::map<size_t,std::pair<size_t,size_t>>::iterator it2=scores[it->first].begin();it2!=scores[it->first].end();it2++){
+                    if (it2->first>locIt->first && it2->first<locIt->second){
+                        if (currentScore.first<it2->second.first){
+                            currentScore.first=it2->second.first;
+                            currentScore.second=it2->second.second;
+                        }
+                        else if (currentScore.first==it2->second.first && currentScore.second<it2->second.second){
+                            currentScore.second=it2->second.second;
+                        }
+                    }
                 }
-                cJSON_AddItemToArray(caseBySwitch,caseInSwitch);
+                scoresInFile.push_back(currentScore);
             }
-            cJSON_AddItemToArray(caseClusterArray,caseBySwitch);
+            finalScores[it->first]=scoresInFile;
         }
-        cJSON_AddItemToObject(json,std::string("case_cluster").c_str(),caseClusterArray);
+        P.getSwitchInfo().addScoreInfo(finalScores);
 
-        // Save JSON to file
-        char *jsonString=cJSON_Print(json);
-        std::ofstream fout(P.getWorkdir()+"/switch-info.json",std::ofstream::out);
-        fout << jsonString << "\n";
-        fout.close();
-        cJSON_Delete(json);
+        P.getSwitchInfo().save();
     }
 
     bool fuzzTest(size_t timeout){
@@ -669,13 +661,14 @@ protected:
     }
 
 public:
-    BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc):
-    P(P), learning(learning), M(M),
+    BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
+            std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> scores):
+    P(P), learning(learning), M(M), scores(scores),
     negative_cases(P.getNegativeCaseSet()),
     positive_cases(P.getPositiveCaseSet()),
     candidates(),
     failed_cases(),
-    functionLoc(functionLoc),
+    functionLoc(functionLoc),locations(),
     naive(naive) {}
 
     virtual ~BasicTester() { }
@@ -728,6 +721,8 @@ public:
         switchCluster=R.getSwitchCluster();
         caseCluster=R.getCaseCluster();
         macroCode=R.getMacroCode();
+
+        locations=R.getSwitchLine();
 
         savePatchInfo();
         {
@@ -949,8 +944,9 @@ class StringConstTester : public BasicTester {
     }
 
 public:
-    StringConstTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc):
-        BasicTester(P, learning, M, naive,functionLoc), candidate_strs(), infos(),infos_set() { }
+    StringConstTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
+            std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> scores):
+        BasicTester(P, learning, M, naive,functionLoc,scores), candidate_strs(), infos(),infos_set() { }
 
     virtual ~StringConstTester() { }
 
@@ -1970,8 +1966,9 @@ class ConditionSynthesisTester : public BasicTester {
     }
 
 public:
-    ConditionSynthesisTester(BenchProgram &P, bool learning, SourceContextManager &M, bool full_synthesis,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc):
-        BasicTester(P, learning, M, false,functionLoc),
+    ConditionSynthesisTester(BenchProgram &P, bool learning, SourceContextManager &M, bool full_synthesis,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
+            std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> scores):
+        BasicTester(P, learning, M, false,functionLoc,scores),
         infos(), infos_set(),full_synthesis(full_synthesis) { post_cnt = 0; }
 
     virtual bool canHandle(const RepairCandidate &candidate) {
@@ -2404,9 +2401,9 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     TestBatcher TB(P, naive, learning, FP,fixedFile);
     std::vector<BasicTester*> testers;
     testers.clear();
-    testers.push_back(new ConditionSynthesisTester(P, learning, M, full_synthesis,functionLoc));
-    testers.push_back(new StringConstTester(P, learning, M, naive,functionLoc));
-    testers.push_back(new BasicTester(P, learning, M, naive,functionLoc));
+    testers.push_back(new ConditionSynthesisTester(P, learning, M, full_synthesis,functionLoc,scores));
+    testers.push_back(new StringConstTester(P, learning, M, naive,functionLoc,scores));
+    testers.push_back(new BasicTester(P, learning, M, naive,functionLoc,scores));
     outlog_printf(2, "BasicTester pointer: %p\n", testers[2]);
     outlog_printf(2, "StringConstTester pointer: %p\n", testers[1]);
     outlog_printf(2, "CondTester pointer: %p\n", testers[0]);

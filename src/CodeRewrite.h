@@ -34,12 +34,15 @@ NewCodeMapTy combineCode(const CodeSegTy &codeSegs, const CodeSegTy &patch);
 class CodeRewriter {
     CodeSegTy resCodeSegs, resPatches;
     int counter;
+
     std::map<long long,std::pair<int,int>> macroMap;
     std::map<long long,std::string> macroCode;
     std::map<std::pair<int,int>,std::vector<IsNegInformation>> isNegLocation;
     std::map<int,std::map<int,std::string>> idAndCase;
     std::map<int,std::list<std::list<int>>> caseCluster;
     std::list<std::list<int>> switchCluster;
+
+    std::map<std::string,std::vector<std::pair<size_t,size_t>>> switchLineMap;
 
     size_t addIsNeg(int id,int case_num,std::string code);
 public:
@@ -80,6 +83,9 @@ public:
     }
     std::map<long long,std::string> getMacroCode(){
         return macroCode;
+    }
+    std::map<std::string,std::vector<std::pair<size_t,size_t>>> getSwitchLine(){
+        return switchLineMap;
     }
 };
 

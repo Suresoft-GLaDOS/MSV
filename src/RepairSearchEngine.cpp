@@ -82,6 +82,11 @@ void dumpSignificantInVec(FILE* fout, FeatureParameter *FP, const FeatureVector 
         }
 }
 
+template<typename Base, typename T>
+inline bool instanceof(T*) {
+   return std::is_base_of<Base, T>::value;
+}
+
 int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         bool print_fix_only, bool full_synthesis) {
     RepairCandidateQueue q;
@@ -281,7 +286,18 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         //     outlog_printf(2,"DG success\n");
         // }
 
-        ExprSynthesizer ES(P, M, q, out_file,functionLoc,naive, learning, FP);
+        // Create localize score data
+        std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> scores;
+        scores.clear();
+        if (!naive){
+            ProfileErrorLocalizer *profileError=(ProfileErrorLocalizer *)L;
+            std::vector<ProfileErrorLocalizer::ResRecordTy> errors=profileError->getCandidates();
+            for (std::vector<ProfileErrorLocalizer::ResRecordTy>::iterator it=errors.begin();it!=errors.end();it++){
+                scores[it->loc.expFilename][it->loc.expLine]=std::make_pair(it->primeScore,it->secondScore);
+            }
+        }
+
+        ExprSynthesizer ES(P, M, q, out_file,functionLoc,scores,naive, learning, FP);
         if (timeout_limit != 0)
             ES.setTimeoutLimit(timeout_limit);
         size_t cnt = 0;

@@ -19,6 +19,8 @@
 #include "ErrorLocalizer.h"
 #include "ProfileErrorLocalizer.h"
 #include "ConfigFile.h"
+#include "cJSON/cJSON.h"
+
 #include <clang/Frontend/ASTUnit.h>
 #include <string>
 #include <vector>
@@ -105,6 +107,104 @@ public:
     typedef std::set<unsigned long> TestCaseSetTy;
     typedef std::map<std::string, std::string> EnvMapTy;
 private:
+    typedef struct ScoreInfo{
+        size_t primaryScore;
+        size_t secondaryScore;
+
+        ScoreInfo(size_t primaryScore,size_t secondaryScore):primaryScore(primaryScore),secondaryScore(secondaryScore) {}
+    } ScoreInfo;
+
+    class SwitchInfo{
+        std::string fileName;
+
+    public:
+        std::map<size_t,size_t> caseNum;
+        std::list<std::list<int>> switchCluster;
+        std::map<int,std::list<std::list<int>>> caseCluster;
+        std::map<std::string,std::vector<ScoreInfo>> scoreInfo;
+    public:
+        SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
+        void addScoreInfo(std::map<std::string,std::vector<std::pair<size_t,size_t>>> scores){
+            for (std::map<std::string,std::vector<std::pair<size_t,size_t>>>::iterator it=scores.begin();it!=scores.end();it++){
+                std::vector<ScoreInfo> scoreOfFile;
+                scoreOfFile.clear();
+                for (std::vector<std::pair<size_t,size_t>>::iterator scoreIt=it->second.begin();scoreIt!=it->second.end();scoreIt++){
+                    scoreOfFile.push_back(ScoreInfo(scoreIt->first,scoreIt->second));
+                }
+                scoreInfo[it->first]=scoreOfFile;
+            }
+        }
+        void save(){
+            cJSON *json=cJSON_CreateObject();
+
+            // Add total switch number
+            cJSON_AddNumberToObject(json,std::string("switch_num").c_str(),caseNum.size());
+
+            // Add case number of each switch
+            cJSON *switchCase=cJSON_CreateArray();
+            int i=0;
+            for (std::map<size_t,size_t>::iterator it=caseNum.begin();it!=caseNum.end();it++){
+                cJSON *caseNumber=cJSON_CreateNumber(it->second);
+                cJSON_AddItemToArray(switchCase,caseNumber);
+            }
+            cJSON_AddItemToObject(json,std::string("case_num").c_str(),switchCase);
+
+            // Add switch cluster
+            cJSON *switchClusterArray=cJSON_CreateArray();
+            for (std::list<std::list<int>>::iterator it=switchCluster.begin();it!=switchCluster.end();it++){
+                cJSON *switchGroup=cJSON_CreateArray();
+                for (std::list<int>::iterator it2=it->begin();it2!=it->end();it2++){
+                    cJSON_AddItemToArray(switchGroup,cJSON_CreateNumber(*it2));
+                }
+                cJSON_AddItemToArray(switchClusterArray,switchGroup);
+            }
+            cJSON_AddItemToObject(json,std::string("switch_cluster").c_str(),switchClusterArray);
+
+            // Add case cluster
+            cJSON *caseClusterArray=cJSON_CreateArray();
+            for (std::map<int,std::list<std::list<int>>>::iterator it=caseCluster.begin();it!=caseCluster.end();it++){
+                cJSON *caseBySwitch=cJSON_CreateArray();
+                for (std::list<std::list<int>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
+                    cJSON *caseInSwitch=cJSON_CreateArray();
+                    for (std::list<int>::iterator it3=it2->begin();it3!=it2->end();it3++){
+                        cJSON_AddItemToArray(caseInSwitch,cJSON_CreateNumber(*it3));
+                    }
+                    cJSON_AddItemToArray(caseBySwitch,caseInSwitch);
+                }
+                cJSON_AddItemToArray(caseClusterArray,caseBySwitch);
+            }
+            cJSON_AddItemToObject(json,std::string("case_cluster").c_str(),caseClusterArray);
+
+            // Save scores
+            cJSON *scoreArray=cJSON_CreateArray();
+            for(std::map<std::string,std::vector<ScoreInfo>>::iterator it=scoreInfo.begin();it!=scoreInfo.end();it++){
+                cJSON *scoreFile=cJSON_CreateObject();
+                cJSON_AddStringToObject(scoreFile,std::string("file").c_str(),it->first.c_str());
+
+                cJSON *scoreFileArray=cJSON_CreateArray();
+                for (std::vector<ScoreInfo>::iterator scoreIt=it->second.begin();scoreIt!=it->second.end();scoreIt++){
+                    cJSON *scoreObject=cJSON_CreateObject();
+                    cJSON_AddNumberToObject(scoreObject,std::string("primary").c_str(),scoreIt->primaryScore);
+                    cJSON_AddNumberToObject(scoreObject,std::string("secondary").c_str(),scoreIt->secondaryScore);
+                    cJSON_AddItemToArray(scoreFileArray,scoreObject);
+                }
+                cJSON_AddItemToObject(scoreFile,std::string("scores").c_str(),scoreFileArray);
+
+                cJSON_AddItemToArray(scoreArray,scoreFile);
+            }
+            cJSON_AddItemToObject(json,std::string("scores").c_str(),scoreArray);
+
+            // Save JSON to file
+            char *jsonString=cJSON_Print(json);
+            std::ofstream fout(fileName,std::ofstream::out);
+            fout << jsonString << "\n";
+            fout.close();
+            cJSON_Delete(json);
+        }
+    };
+
+    SwitchInfo switchInfo;
+
     ConfigFile config;
     // The name of the work directory, all paths in this class are absolute paths
     std::string work_dir;
@@ -191,6 +291,8 @@ public:
     }
 
     ConfigFile* getCurrentConfig();
+
+    SwitchInfo &getSwitchInfo(){return switchInfo;}
 
     void createSrcClone(const std::string &subDir);
 

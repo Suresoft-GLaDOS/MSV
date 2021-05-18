@@ -609,6 +609,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     macroMap.clear();
     idAndCase.clear();
     switchCluster.clear();
+    switchLineMap.clear();
     index=0;
     counter=0;
     for (std::map<std::string,std::vector<std::pair<size_t,size_t>>>::iterator
@@ -625,6 +626,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         std::vector<ASTLocTy> currentCandidate=candidate[src_file];
         std::map<std::pair<size_t,size_t>,std::vector<std::string>> cur_patch;
         std::map<std::pair<size_t,size_t>,std::vector<RepairCandidate::CandidateKind>> cur_kind;
+        std::vector<std::pair<size_t,size_t>> locInFile;
+        locInFile.clear();
         long long cur_start = -1;
         long long cur_end = -1;
         long long last_end = 0;
@@ -662,6 +665,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 std::pair<size_t,size_t> offset(start,end);
                 cur_patch[offset]=currentPatch;
                 cur_kind[offset]=currentKind;
+
+                locInFile.push_back(std::pair<size_t,size_t>(start,end));
             }
             else if (start<=cur_start && cur_end <= end) {
                 // We need to merge these two, we first need to decide in the bigger one,
@@ -721,6 +726,20 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
 
                 cur_start = start;
                 cur_end = end;
+
+                std::vector<std::vector<std::pair<size_t,size_t>>::iterator> eraseIt;
+                eraseIt.clear();
+                for (std::vector<std::pair<size_t,size_t>>::iterator switchIt=locInFile.begin();switchIt!=locInFile.end();switchIt++){
+                    if (switchIt->first>start && switchIt->second<end){
+                        eraseIt.push_back(switchIt);
+                    }
+                }
+
+                for (size_t k=0;k<eraseIt.size();k++){
+                    locInFile.erase(eraseIt[k]);
+                }
+
+                locInFile.push_back(std::pair<size_t,size_t>(start,end));
             }
             else {
                 assert(start >= cur_end);
@@ -748,8 +767,11 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
                 std::pair<size_t,size_t> offset(start,end);
                 cur_patch[offset]=currentPatch;
                 cur_kind[offset]=currentKind;
+
+                locInFile.push_back(std::pair<size_t,size_t>(start,end));
             }
         }
+        switchLineMap[src_file]=locInFile;
 
         outlog_printf(2,"Generating Codes...\n");
         std::vector<std::pair<size_t,size_t>> location;
