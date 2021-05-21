@@ -107,13 +107,6 @@ public:
     typedef std::set<unsigned long> TestCaseSetTy;
     typedef std::map<std::string, std::string> EnvMapTy;
 private:
-    typedef struct ScoreInfo{
-        size_t primaryScore;
-        size_t secondaryScore;
-
-        ScoreInfo(size_t primaryScore,size_t secondaryScore):primaryScore(primaryScore),secondaryScore(secondaryScore) {}
-    } ScoreInfo;
-
     class SwitchInfo{
         std::string fileName;
 
@@ -121,19 +114,9 @@ private:
         std::map<size_t,size_t> caseNum;
         std::list<std::list<int>> switchCluster;
         std::map<int,std::list<std::list<int>>> caseCluster;
-        std::map<std::string,std::vector<ScoreInfo>> scoreInfo;
+        std::map<std::string,std::vector<size_t>> scoreInfo;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
-        void addScoreInfo(std::map<std::string,std::vector<std::pair<size_t,size_t>>> scores){
-            for (std::map<std::string,std::vector<std::pair<size_t,size_t>>>::iterator it=scores.begin();it!=scores.end();it++){
-                std::vector<ScoreInfo> scoreOfFile;
-                scoreOfFile.clear();
-                for (std::vector<std::pair<size_t,size_t>>::iterator scoreIt=it->second.begin();scoreIt!=it->second.end();scoreIt++){
-                    scoreOfFile.push_back(ScoreInfo(scoreIt->first,scoreIt->second));
-                }
-                scoreInfo[it->first]=scoreOfFile;
-            }
-        }
         void save(){
             cJSON *json=cJSON_CreateObject();
 
@@ -177,20 +160,16 @@ private:
 
             // Save scores
             cJSON *scoreArray=cJSON_CreateArray();
-            for(std::map<std::string,std::vector<ScoreInfo>>::iterator it=scoreInfo.begin();it!=scoreInfo.end();it++){
-                cJSON *scoreFile=cJSON_CreateObject();
-                cJSON_AddStringToObject(scoreFile,std::string("file").c_str(),it->first.c_str());
+            for (std::map<std::string,std::vector<size_t>>::iterator it=scoreInfo.begin();it!=scoreInfo.end();it++){
+                cJSON *scoreObject=cJSON_CreateObject();
+                cJSON_AddStringToObject(scoreObject,"file",it->first.c_str());
 
-                cJSON *scoreFileArray=cJSON_CreateArray();
-                for (std::vector<ScoreInfo>::iterator scoreIt=it->second.begin();scoreIt!=it->second.end();scoreIt++){
-                    cJSON *scoreObject=cJSON_CreateObject();
-                    cJSON_AddNumberToObject(scoreObject,std::string("primary").c_str(),scoreIt->primaryScore);
-                    cJSON_AddNumberToObject(scoreObject,std::string("secondary").c_str(),scoreIt->secondaryScore);
-                    cJSON_AddItemToArray(scoreFileArray,scoreObject);
-                }
-                cJSON_AddItemToObject(scoreFile,std::string("scores").c_str(),scoreFileArray);
+                cJSON *scoreFile=cJSON_CreateArray();
+                for (size_t i=0;i<it->second.size();i++)
+                    cJSON_AddItemToArray(scoreFile,cJSON_CreateNumber(it->second[i]));
+                cJSON_AddItemToObject(scoreObject,"score",scoreFile);
 
-                cJSON_AddItemToArray(scoreArray,scoreFile);
+                cJSON_AddItemToArray(scoreArray,scoreObject);
             }
             cJSON_AddItemToObject(json,std::string("scores").c_str(),scoreArray);
 
@@ -202,7 +181,7 @@ private:
             cJSON_Delete(json);
         }
     };
-
+private:
     SwitchInfo switchInfo;
 
     ConfigFile config;

@@ -72,8 +72,8 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
                 chdir(ori_dir);
                 return False;
             # do the configure
-            # p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-debug","-enable-zip"], env = my_env, stderr = subprocess.PIPE);
-            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip"], env = my_env, stderr = subprocess.PIPE)
+            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-debug","-enable-zip"], env = my_env, stderr = subprocess.PIPE);
+            # p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build/lib","-enable-zip"], env = my_env, stderr = subprocess.PIPE)
             (out, err) = p.communicate();
             # print out
             # print p.returncode

@@ -73,6 +73,46 @@ static std::vector<std::string> splitPath(std::string path){
     return result;
 }
 
+static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroStartEnd(const std::map<std::string, std::string> &fileCodeMap){
+    std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> startEnd;
+    startEnd.clear();
+
+    for (std::map<std::string, std::string>::const_iterator it=fileCodeMap.begin();it!=fileCodeMap.end();it++){
+        std::istringstream str(it->second);
+        std::string line;
+        size_t lineNum=0;
+        while(std::getline(str,line)){
+            lineNum++;
+
+            if (line.find("#ifdef COMPILE")!=std::string::npos){
+                size_t macro=std::atoi(line.substr(line.find("_")+1).c_str());
+                size_t start=lineNum;
+                size_t end=lineNum;
+                unsigned ifCount=0;
+                while(std::getline(str,line)){
+                    lineNum++;
+
+                    if (line.find("#ifdef")!=std::string::npos ||
+                            line.find("#ifndef")!=std::string::npos ||
+                            line.find("#if")!=std::string::npos)
+                        ifCount++;
+                    else if (line.find("#endif")!=std::string::npos){
+                        if (ifCount==0){
+                            end=lineNum;
+                            break;
+                        }
+                        else ifCount--;
+                    }
+                }
+
+                startEnd[it->first][macro]=std::pair<size_t,size_t>(start,end);
+            }
+        }
+    }
+
+    return startEnd;
+}
+
 BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
         bool no_clean_up,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),
         caseNum(caseNum),switchInfo(workDirPath) {
@@ -347,7 +387,7 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     assert(ret == 0);
 
     if (timeout_limit == 0)
-        ret = execute_with_timeout((std::string("make >> ") + build_log + " 2>&1"), 60);
+        ret = system((std::string("make >> ") + build_log + " 2>&1").c_str());
         // ret = execute_with_timeout((std::string("make")), 60);
     else
         ret = execute_with_timeout((std::string("make >> ") + build_log + " 2>&1"), timeout_limit);
@@ -368,7 +408,7 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
             readCodeToString(files[i],code);
             std::string sep="// compile_fin";
             if (code.find(sep)!=std::string::npos)
-                code=code.substr(code.find(sep));
+                code=code.substr(code.find(sep)+14);
             std::string macroDefine="";
             for (long long macro: compile_macro){
                 macroDefine+="#define COMPILE_";
@@ -570,7 +610,7 @@ void BenchProgram::saveFixedFiles(const std::map<std::string, std::string> &file
         std::ofstream fout_bak(std::string(work_dir+"/"+backupName).c_str(),std::ofstream::out);
         fout_bak << it->second;
         fout_bak.close();
-        system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
+        // system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
     }
 }
 
@@ -613,80 +653,149 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     deleteLibraryFile(fileCodeMap);
 
     outlog_printf(2,"Trying to build with all macros...\n");
-    std::vector<long long> succ_id;
-    for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++)
-        succ_id.push_back(it->first);
-    succ=buildFull("src", 0,true,succ_id,files);
-    if (succ){
-        outlog_printf(2,"Build Success!\n");
-    }
-    // else
-    //     outlog_printf(2,"Fail to build!\n");
-    else{
-        outlog_printf(2,"Build failed, Trying to find fail macros...\n");
-        // Analyze result message to reduce search space
-        std::set<long long> errorCandidate;
-        errorCandidate.clear();
-        std::ifstream buildLog(build_log_file);
-        std::string line;
-        while(std::getline(buildLog,line)){
-            if (line.find("undefined reference to")!=std::string::npos){
-                size_t pos=line.find("undefined reference to");
-                size_t start=line.find("'",pos);
-                size_t end=line.find("'",start+1);
-                std::string errorFunc=line.substr(start+1,end-start-1);
+    bool isFirst=true;
+    std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> macroLines=getMacroStartEnd(fileCodeMap);
+    std::set<long long> linkErrorMacros;
+    linkErrorMacros.clear();
+    std::set<long long> compileErrorMacros;
+    compileErrorMacros.clear();
+    std::set<long long> fail;
+    fail.clear();
 
-                for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                    if (it->second.find(errorFunc)!=std::string::npos){
-                        errorCandidate.insert(it->first);
+    while(!succ){
+        std::vector<long long> succ_id;
+        succ_id.clear();
+        for (std::set<long long>::iterator it=linkErrorMacros.begin();it!=linkErrorMacros.end();it++){
+            fail.insert(*it);
+        }
+        for (std::set<long long>::iterator it=compileErrorMacros.begin();it!=compileErrorMacros.end();it++){
+            fail.insert(*it);
+        }
+        
+        for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+            bool include=false;
+            for (std::set<long long>::iterator it2=fail.begin();it2!=fail.end();it2++){
+                if (*it2==it->first) {
+                    include=true;
+                    break;
+                }
+            }
+            if (!include) succ_id.push_back(it->first);
+        }
+        if (isFirst)
+            succ=buildFull("src", 0,true,succ_id,files);
+        else
+            succ=buildFull("src", 0,false,succ_id,files);
+        isFirst=false;
+        if (succ){
+            outlog_printf(2,"Build Success!\n");
+        }
+        else{
+            // Analyze result message to reduce search space
+            std::ifstream buildLog(build_log_file);
+            std::string line;
+            
+            while(std::getline(buildLog,line)){
+                if (line.find("undefined reference to")!=std::string::npos){
+                    size_t pos=line.find("undefined reference to");
+                    size_t start=line.find("'",pos);
+                    size_t end=line.find("'",start+1);
+                    std::string errorFunc=line.substr(start+1,end-start-1);
+
+                    for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                        if (it->second.find(errorFunc)!=std::string::npos){
+                            linkErrorMacros.insert(it->first);
+                        }
+                    }
+                }
+                else if (line.find("error: ")!=std::string::npos){
+                    std::string fileName;
+                    size_t location=line.find(".c:");
+                    bool isC=true;
+                    if (location==std::string::npos) {
+                        location=line.find(".cpp:");
+                        isC=false;
+                    }
+                    if (isC) {
+                        fileName=line.substr(src_dir.size()+1,location-src_dir.size()-1+2);
+                    }
+                    else{
+                        fileName=line.substr(src_dir.size()+1,location-src_dir.size()-1+4);
+                    }
+
+                    if (line.find("static declaration of")!=std::string::npos){
+                        size_t first=line.find("'");
+                        size_t last=line.find("'",first+1);
+                        std::string function=line.substr(first+1,last-first-1);
+
+                        for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                            if (it->second.find(function)!=std::string::npos){
+                                compileErrorMacros.insert(it->first);
+                            }
+                        }
+
+                    }
+                    else{
+                        std::getline(buildLog,line);
+                        line=stripLine(line);
+                        for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                            if (it->second.find(line)!=std::string::npos){
+                                compileErrorMacros.insert(it->first);
+                            }
+                        }
                     }
                 }
             }
+            buildLog.close();
         }
-        buildLog.close();
-        // Run Binary-Search to find fail cases
-        time_t timeout_limit = 0;
-        if (repair_build_cnt > 10)
-            timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
-        int ret=1;
-        // TODO: We don't do search, it need much time!
-        if (true)
-        {
-            //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
-            std::string candidateMacro="'";
-            for (std::set<long long>::iterator it=errorCandidate.begin();it!=errorCandidate.end();it++){
-                candidateMacro+=std::to_string(*it)+",";
-            }
+    }
+    // Run Binary-Search to find fail cases
+    time_t timeout_limit = 0;
+    if (repair_build_cnt > 10)
+        timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
+    int ret=1;
+
+    if (true)
+    {
+        outlog_printf(2,"Build failed, Trying to find fail macros...\n");
+        //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
+        std::string candidateMacro="'";
+        for (std::set<long long>::iterator it=fail.begin();it!=fail.end();it++){
+            candidateMacro+=std::to_string(*it)+",";
+        }
+
+        if (candidateMacro!="'"){
             candidateMacro.pop_back();
-            candidateMacro+="'";
-
-            ExecutionTimer timer;
-            std::string src_dir = getFullPath(work_dir + "/src");
-            std::string cmd;
-            cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+candidateMacro;
-            // cmd+=" -t "+build_cmd;
-            if (dep_dir!="") cmd+=" -p "+dep_dir;
-            cmd+=" -w ";
-            for (int i=0;i<files.size();i++){
-                if (i!=0) cmd+=":";
-                cmd+=files[i];
-            }
-            cmd+=" -j 10 ";
-            // cmd+=" > DD.log";
-            ret = system(cmd.c_str());
-
-            if (ret==0) {
-                total_repair_build_time += timer.getSeconds();
-                repair_build_cnt ++;
-            }
-            deleteLibraryFile(fileCodeMap);
         }
+        candidateMacro+="'";
+
+        ExecutionTimer timer;
+        std::string src_dir = getFullPath(work_dir + "/src");
+        std::string cmd;
+        cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+candidateMacro;
+        // cmd+=" -t "+build_cmd;
+        if (dep_dir!="") cmd+=" -p "+dep_dir;
+        cmd+=" -w ";
+        for (int i=0;i<files.size();i++){
+            if (i!=0) cmd+=":";
+            cmd+=files[i];
+        }
+        cmd+=" -j 10 ";
+        // cmd+=" > DD.log";
+        ret = system(cmd.c_str());
+
+        if (ret==0) {
+            total_repair_build_time += timer.getSeconds();
+            repair_build_cnt ++;
+        }
+        // deleteLibraryFile(fileCodeMap);
 
         outlog_printf(2,"Building final program...\n");
         // Get fail case and create final macros
-        std::vector<long long> fail;
+        std::vector<long long> searchFail;
+        std::vector<long long> succ_id;
         succ_id.clear();
-        fail.clear();
+        searchFail.clear();
 
         char *home;
         home=getenv("HOME");
@@ -699,21 +808,19 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         std::ifstream result(resultPath.c_str(),std::ifstream::in);
         // assert(result.is_open());
         while(result.getline(eachResult,100)){
-            fail.push_back(stoll(std::string(eachResult)));
+            searchFail.push_back(stoll(std::string(eachResult)));
         }
-        result.close();
-        system(std::string("rm "+resultPath).c_str());
-
         for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
             bool include=false;
-            for (size_t j=0;j<fail.size();j++){
-                if (fail[j]==it->first) {
+            for (std::vector<long long>::iterator it2=searchFail.begin();it2!=searchFail.end();it2++){
+                if (*it2==it->first) {
                     include=true;
                     break;
                 }
             }
             if (!include) succ_id.push_back(it->first);
         }
+
 
         outlog_printf(2,"Total success macros: %d\n",succ_id.size());
         std::ofstream finalMacros("succ_macro.txt",std::ofstream::out);
@@ -723,7 +830,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         finalMacros.close();
 
         // Build final build
-        succ = buildFull("src", 0,true,succ_id,files);
+        succ = buildFull("src", 0,false,succ_id,files);
         if (succ) outlog_printf(2,"Success to build final program!\n");
         popWrapPath();
 
@@ -883,10 +990,10 @@ bool BenchProgram::verifyTestCases() {
     }
     tmp = testSet("src", positive_cases, std::map<std::string, std::string>());
     if (tmp.size() != positive_cases.size()) {
-        // outlog_printf(0, "Unexpected fail:\n");
-        // for (std::set<unsigned long>::iterator it = positive_cases.begin(); it != positive_cases.end(); ++it)
-        //     if (tmp.count(*it) == 0)
-        //         outlog_printf(0, "%lu\n", *it);
+        outlog_printf(0, "Unexpected fail:\n");
+        for (std::set<unsigned long>::iterator it = positive_cases.begin(); it != positive_cases.end(); ++it)
+            if (tmp.count(*it) == 0)
+                outlog_printf(0, "%lu\n", *it);
         outlog_printf(0, "Only passed tot: %lu\n", tmp.size());
         // return false;
         positive_cases = tmp;

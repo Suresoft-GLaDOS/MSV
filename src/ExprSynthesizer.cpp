@@ -548,7 +548,7 @@ protected:
     std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
     std::map<long long,std::string> macroCode;
 
-    std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> scores;
+    std::map<std::string,std::vector<size_t>> scores;
     std::map<std::string,std::vector<std::pair<size_t,size_t>>> locations;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
@@ -623,30 +623,7 @@ protected:
 
         P.getSwitchInfo().switchCluster=switchCluster;
         P.getSwitchInfo().caseCluster=caseCluster;
-
-        std::map<std::string,std::vector<std::pair<size_t,size_t>>> finalScores;
-        for (std::map<std::string,std::vector<std::pair<size_t,size_t>>>::iterator it=locations.begin();it!=locations.end();it++){
-            std::vector<std::pair<size_t,size_t>> scoresInFile;
-            scoresInFile.clear();
-
-            for (std::vector<std::pair<size_t,size_t>>::iterator locIt=it->second.begin();locIt!=it->second.end();locIt++){
-                std::pair<size_t,size_t> currentScore(0,0);
-                for (std::map<size_t,std::pair<size_t,size_t>>::iterator it2=scores[it->first].begin();it2!=scores[it->first].end();it2++){
-                    if (it2->first>=locIt->first && it2->first<=locIt->second){
-                        if (currentScore.first<it2->second.first){
-                            currentScore.first=it2->second.first;
-                            currentScore.second=it2->second.second;
-                        }
-                        else if (currentScore.first==it2->second.first && currentScore.second<it2->second.second){
-                            currentScore.second=it2->second.second;
-                        }
-                    }
-                }
-                scoresInFile.push_back(currentScore);
-            }
-            finalScores[it->first]=scoresInFile;
-        }
-        P.getSwitchInfo().addScoreInfo(finalScores);
+        P.getSwitchInfo().scoreInfo=scores;
 
         P.getSwitchInfo().save();
     }
@@ -663,7 +640,7 @@ protected:
 
 public:
     BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
-            std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> scores):
+            std::map<std::string,std::vector<size_t>> scores):
     P(P), learning(learning), M(M), scores(scores),
     negative_cases(P.getNegativeCaseSet()),
     positive_cases(P.getPositiveCaseSet()),
@@ -946,7 +923,7 @@ class StringConstTester : public BasicTester {
 
 public:
     StringConstTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
-            std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> scores):
+            std::map<std::string,std::vector<size_t>> scores):
         BasicTester(P, learning, M, naive,functionLoc,scores), candidate_strs(), infos(),infos_set() { }
 
     virtual ~StringConstTester() { }
@@ -1968,7 +1945,7 @@ class ConditionSynthesisTester : public BasicTester {
 
 public:
     ConditionSynthesisTester(BenchProgram &P, bool learning, SourceContextManager &M, bool full_synthesis,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
-            std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> scores):
+            std::map<std::string,std::vector<size_t>> scores):
         BasicTester(P, learning, M, false,functionLoc,scores),
         infos(), infos_set(),full_synthesis(full_synthesis) { post_cnt = 0; }
 
@@ -2325,7 +2302,7 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
-        // bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
+        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
         // result_init=T->test(BenchProgram::EnvMapTy(),0,false);
 
         std::map<NewCodeMapTy, double> newCode;
