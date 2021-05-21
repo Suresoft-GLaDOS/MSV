@@ -1,34 +1,34 @@
 Initialize the program!
 Skip verify!
 Generating repair candidates!
-Processing Zend/zend_variables.c
-Total 2207 different repair schemas!!!!
-Total 10395 different repair candidate templates for scoring!!!
-Total 8448 different partial repair candidate templates!!
-BasicTester pointer: 0x55a0d2cfc7f0
-StringConstTester pointer: 0x55a0d2db04b0
-CondTester pointer: 0x55a0d1e25260
+Processing ext/dom/document.c
+Total 11634 different repair schemas!!!!
+Total 16479 different repair candidate templates for scoring!!!
+Total 5007 different partial repair candidate templates!!
+BasicTester pointer: 0x5610471ceb30
+StringConstTester pointer: 0x561043c93890
+CondTester pointer: 0x561043f1b800
 Generating Candidates...
-Candidates size: 2207
+Candidates size: 11634
 Generating Codes...
-[65] Preprocess the following candidate with BasicTester: 2207
+[67] Preprocess the following candidate with BasicTester: 11634
 Generating patches...
 Generating Codes...
-[65] BasicTester, a patch instance with id 0:
+[67] BasicTester, a patch instance with id 0:
 Begin building test
-Total macros: 1793
-Saving this fix to: /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
+Total macros: 7523
+Saving this fix to: /root/project/prophet-gpl/build/php-case-f455f8^1-f455f8/php-f455f8^1-f455f8-workdir/fixed_document.c
 Preprocessing test...
 Trying to build with all macros...
 Build Success!
 Build failed, Trying to find fail macros...
 Building final program...
-Total success macros: 1789
+Total success macros: 7502
 Success to build final program!
 The total number of explored concrete patches: 0
 Repair process ends successfully!
-Total 2207 different repair schemas!!!!
-Total 10395 different repair candidate templates for scoring!!!
-Total 8448 different partial repair candidate templates!!
+Total 11634 different repair schemas!!!!
+Total 16479 different repair candidate templates for scoring!!!
+Total 5007 different partial repair candidate templates!!
 Total number of compiles: 1
 Total number of test eval: 0

@@ -387,10 +387,10 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     assert(ret == 0);
 
     if (timeout_limit == 0)
-        ret = system((std::string("make >> ") + build_log + " 2>&1").c_str());
+        ret = system((std::string("make > ") + build_log + " 2>&1").c_str());
         // ret = execute_with_timeout((std::string("make")), 60);
     else
-        ret = execute_with_timeout((std::string("make >> ") + build_log + " 2>&1"), timeout_limit);
+        ret = execute_with_timeout((std::string("make > ") + build_log + " 2>&1"), timeout_limit);
         // ret = execute_with_timeout((std::string("make")), timeout_limit);
     bool succ = (ret == 0);
     ret = chdir(ori_dir);
@@ -426,11 +426,11 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
     if (force_reconf || !src_dirs[subDir]) {
         std::string cmd;
         if (dep_dir != ""){
-            cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " >>" + build_log_file + " 2>&1";
+            cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " >" + build_log_file + " 2>&1";
             // cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " 2>&1";
         }
         else
-            cmd = build_cmd + " -j 10 " + src_dir + " >>" + build_log_file + " 2>&1";
+            cmd = build_cmd + " -j 10 " + src_dir + " >" + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 " +src_dir + " 2>&1";
         // outlog_printf(2,"Command: %s\n",cmd.c_str());
         int ret;
@@ -696,51 +696,53 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             std::string line;
             
             while(std::getline(buildLog,line)){
-                if (line.find("undefined reference to")!=std::string::npos){
-                    size_t pos=line.find("undefined reference to");
-                    size_t start=line.find("'",pos);
-                    size_t end=line.find("'",start+1);
-                    std::string errorFunc=line.substr(start+1,end-start-1);
-
-                    for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                        if (it->second.find(errorFunc)!=std::string::npos){
-                            linkErrorMacros.insert(it->first);
-                        }
-                    }
-                }
-                else if (line.find("error: ")!=std::string::npos){
-                    std::string fileName;
-                    size_t location=line.find(".c:");
-                    bool isC=true;
-                    if (location==std::string::npos) {
-                        location=line.find(".cpp:");
-                        isC=false;
-                    }
-                    if (isC) {
-                        fileName=line.substr(src_dir.size()+1,location-src_dir.size()-1+2);
-                    }
-                    else{
-                        fileName=line.substr(src_dir.size()+1,location-src_dir.size()-1+4);
-                    }
-
-                    if (line.find("static declaration of")!=std::string::npos){
-                        size_t first=line.find("'");
-                        size_t last=line.find("'",first+1);
-                        std::string function=line.substr(first+1,last-first-1);
+                if (line.find("error: ")!=std::string::npos){
+                    if (line.find("undefined reference to")!=std::string::npos){
+                        size_t pos=line.find("undefined reference to");
+                        size_t start=line.find("'",pos);
+                        size_t end=line.find("'",start+1);
+                        std::string errorFunc=line.substr(start+1,end-start-1);
 
                         for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                            if (it->second.find(function)!=std::string::npos){
-                                compileErrorMacros.insert(it->first);
+                            if (it->second.find(errorFunc)!=std::string::npos){
+                                linkErrorMacros.insert(it->first);
                             }
                         }
-
                     }
-                    else{
-                        std::getline(buildLog,line);
-                        line=stripLine(line);
-                        for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                            if (it->second.find(line)!=std::string::npos){
-                                compileErrorMacros.insert(it->first);
+                    else if (line.find("linker command")==std::string::npos){
+                        std::string fileName;
+                        size_t location=line.find(".c:");
+                        bool isC=true;
+                        if (location==std::string::npos) {
+                            location=line.find(".cpp:");
+                            isC=false;
+                        }
+                        if (isC) {
+                            fileName=line.substr(src_dir.size()+1,location-src_dir.size()-1+2);
+                        }
+                        else{
+                            fileName=line.substr(src_dir.size()+1,location-src_dir.size()-1+4);
+                        }
+
+                        if (line.find("static declaration of")!=std::string::npos){
+                            size_t first=line.find("'");
+                            size_t last=line.find("'",first+1);
+                            std::string function=line.substr(first+1,last-first-1);
+
+                            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                if (it->second.find(function)!=std::string::npos){
+                                    compileErrorMacros.insert(it->first);
+                                }
+                            }
+
+                        }
+                        else{
+                            std::getline(buildLog,line);
+                            line=stripLine(line);
+                            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                if (it->second.find(line)!=std::string::npos){
+                                    compileErrorMacros.insert(it->first);
+                                }
                             }
                         }
                     }
