@@ -609,7 +609,7 @@ protected:
         }
         return false;
     }
-    void savePatchInfo(){
+    void savePatchInfo(std::map<std::string,std::vector<size_t>> scores){
         // Add case number of each switch
         std::map<size_t,size_t> switchCase;
         int i=0;
@@ -701,8 +701,28 @@ public:
         macroCode=R.getMacroCode();
 
         locations=R.getSwitchLine();
+        std::map<std::string,std::vector<size_t>> finalScore;
+        finalScore.clear();
+        for (std::map<std::string,std::vector<std::pair<size_t,size_t>>>::iterator it=locations.begin();it!=locations.end();it++){
+            std::string currentFile=it->first;
+            std::vector<std::pair<size_t,size_t>> switchLoc=it->second;
+            std::vector<size_t> score=scores[currentFile];
+            std::vector<size_t> finalLine;
+            finalLine.clear();
 
-        savePatchInfo();
+            for (size_t i=0;i<score.size();i++){
+                for (size_t j=0;j<switchLoc.size();j++){
+                    if (score[i]>=switchLoc[j].first && score[i]<=switchLoc[j].second && std::find(finalLine.begin(),finalLine.end(),j)==finalLine.end()){
+                        finalLine.push_back(j);
+                        break;
+                    }
+                }
+            }
+
+            finalScore[currentFile]=finalLine;
+        }
+
+        savePatchInfo(finalScore);
         {
             outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu:\n", get_timer(),
                     codes.size());
@@ -2302,7 +2322,7 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
+        // bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
         // result_init=T->test(BenchProgram::EnvMapTy(),0,false);
 
         std::map<NewCodeMapTy, double> newCode;

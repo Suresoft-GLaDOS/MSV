@@ -167,7 +167,7 @@ private:
                 cJSON *scoreFile=cJSON_CreateArray();
                 for (size_t i=0;i<it->second.size();i++)
                     cJSON_AddItemToArray(scoreFile,cJSON_CreateNumber(it->second[i]));
-                cJSON_AddItemToObject(scoreObject,"score",scoreFile);
+                cJSON_AddItemToObject(scoreObject,"priority",scoreFile);
 
                 cJSON_AddItemToArray(scoreArray,scoreObject);
             }

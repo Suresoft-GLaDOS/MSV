@@ -257,7 +257,7 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         std::map<std::string,std::set<unsigned>> candidates;
         candidates.clear();
         for (SourcePositionTy codes:L->getCandidateLocations()){
-            if (codes.expFilename[0]=='/') continue;
+            if (codes.expFilename[0]=='/' || is_header(codes.expFilename)) continue;
             std::string fullFile=P.getSrcdir()+"/"+codes.expFilename;
             bool includeFile=false;
             for (std::string file:files){
