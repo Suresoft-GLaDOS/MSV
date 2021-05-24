@@ -114,7 +114,7 @@ private:
         std::map<size_t,size_t> caseNum;
         std::list<std::list<int>> switchCluster;
         std::map<int,std::list<std::list<int>>> caseCluster;
-        std::map<std::string,std::vector<size_t>> scoreInfo;
+        std::vector<size_t> scoreInfo;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
         void save(){
@@ -160,18 +160,10 @@ private:
 
             // Save scores
             cJSON *scoreArray=cJSON_CreateArray();
-            for (std::map<std::string,std::vector<size_t>>::iterator it=scoreInfo.begin();it!=scoreInfo.end();it++){
-                cJSON *scoreObject=cJSON_CreateObject();
-                cJSON_AddStringToObject(scoreObject,"file",it->first.c_str());
-
-                cJSON *scoreFile=cJSON_CreateArray();
-                for (size_t i=0;i<it->second.size();i++)
-                    cJSON_AddItemToArray(scoreFile,cJSON_CreateNumber(it->second[i]));
-                cJSON_AddItemToObject(scoreObject,"priority",scoreFile);
-
-                cJSON_AddItemToArray(scoreArray,scoreObject);
+            for (std::vector<size_t>::iterator it=scoreInfo.begin();it!=scoreInfo.end();it++){
+                cJSON_AddItemToArray(scoreArray,cJSON_CreateNumber(*it));
             }
-            cJSON_AddItemToObject(json,std::string("scores").c_str(),scoreArray);
+            cJSON_AddItemToObject(json,std::string("priority").c_str(),scoreArray);
 
             // Save JSON to file
             char *jsonString=cJSON_Print(json);

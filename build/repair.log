@@ -5,9 +5,9 @@ Processing Zend/zend_variables.c
 Total 2027 different repair schemas!!!!
 Total 7772 different repair candidate templates for scoring!!!
 Total 5915 different partial repair candidate templates!!
-BasicTester pointer: 0x561a1f54aeb0
-StringConstTester pointer: 0x561a1fab90d0
-CondTester pointer: 0x561a1ee26940
+BasicTester pointer: 0x565404eae2d0
+StringConstTester pointer: 0x565404c07de0
+CondTester pointer: 0x56540466b2f0
 Generating Candidates...
 Candidates size: 2027
 Generating Codes...
