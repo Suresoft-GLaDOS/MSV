@@ -197,6 +197,7 @@ private:
     // The test command script path, this is an absolute path!
     std::string test_cmd;
     std::string ddtest_cmd;
+    std::string afl_cmd;
 
     std::string profile_dir;
 
@@ -306,6 +307,7 @@ public:
 
     std::string getSrcdir() { return src_dir; }
     std::string getTestScript(){return test_cmd;}
+    std::string getAFLScript(){return afl_cmd;}
 
     std::string normalizePath(const std::string &);
 

@@ -296,7 +296,7 @@ class php_tester:
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=env);
         chdir(ori_dir);
         (out, err) = p.communicate();
-        # print out
+        print out
         # print err
         lines = out.split("\n");
         test_section = False;

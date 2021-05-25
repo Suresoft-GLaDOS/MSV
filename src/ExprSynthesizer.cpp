@@ -629,11 +629,9 @@ protected:
     }
 
     bool fuzzTest(size_t timeout){
-        std::string cmd="afl-fuzz ";
+        std::string cmd=P.getAFLScript();
         if (timeout>0) cmd+="-t "+std::to_string(timeout);
         cmd+="-w "+P.getWorkdir();
-        cmd+="-o out -n -m none -d ";
-        cmd+=P.getTestScript();
         bool result=system(cmd.c_str());
         return result;
     }
@@ -2319,7 +2317,7 @@ class TestBatcher {
         // This should success
         P.saveFixedFiles(combined,fixedFile);
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
-        result_init=T->test(BenchProgram::EnvMapTy(),0,false);
+        // result_init=T->test(BenchProgram::EnvMapTy(),0,false);
 
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();

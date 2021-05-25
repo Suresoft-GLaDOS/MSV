@@ -76,9 +76,9 @@ std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileRes
                 unsigned long idx;
                 sin >> idx;
                 tmploc = LI->getProfileLocation(idx);
-                std::cout << "Previous filepath: " << tmploc.expFilename  << "\n";
+                // std::cout << "Previous filepath: " << tmploc.expFilename  << "\n";
                 tmploc.expFilename = P.normalizePath(tmploc.expFilename);
-                std::cout << "Trimed filepath: " << tmploc.expFilename << "\n";
+                // std::cout << "Trimed filepath: " << tmploc.expFilename << "\n";
                 tmploc.spellFilename = P.normalizePath(tmploc.spellFilename);
             }
             long long cnt, cnt2;
