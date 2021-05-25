@@ -383,7 +383,6 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     assert(ret == 0);
     //FIXME: ugly for php
     ret = system("rm -rf ext/phar/phar.php");
-    system("rm prog");
     assert(ret == 0);
 
     if (timeout_limit == 0)
@@ -879,7 +878,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     assert(ret == 0);
 }*/
 
-void BenchProgram::createTestSwitch(const int switchCount){
+void BenchProgram::createTestSwitch(const size_t switchCount){
     std::ofstream fout(work_dir+"/switch.txt");
     for (int i=0;i<switchCount;i++){
         if (i==switchId){
