@@ -2316,8 +2316,11 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
-        // result_init=T->test(BenchProgram::EnvMapTy(),0,false);
+        // bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
+        // if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
+        //     result_init=T->test(BenchProgram::EnvMapTy(),0,false);
+        // else
+        //     result_init=T->test(BenchProgram::EnvMapTy(),0,true);
 
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();

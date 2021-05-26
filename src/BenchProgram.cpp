@@ -652,8 +652,11 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     fout2.close();
     deleteLibraryFile(fileCodeMap);
 
+    outlog_printf(2,"Building with no macros...\n");
+    buildFull("src");
+
     outlog_printf(2,"Trying to build with all macros...\n");
-    bool isFirst=true;
+    size_t buildCount=0;
     std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> macroLines=getMacroStartEnd(fileCodeMap);
     std::set<long long> linkErrorMacros;
     linkErrorMacros.clear();
@@ -682,11 +685,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             }
             if (!include) succ_id.push_back(it->first);
         }
-        if (isFirst)
-            succ=buildFull("src", 0,true,succ_id,files);
-        else
-            succ=buildFull("src", 0,false,succ_id,files);
-        isFirst=false;
+        outlog_printf(2,"%uth build...\n",++buildCount);
+        succ=buildFull("src", 0,false,succ_id,files);
         if (succ){
             outlog_printf(2,"Build Success!\n");
         }

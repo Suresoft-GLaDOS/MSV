@@ -417,11 +417,12 @@ std::map<ASTLocTy, std::map<std::string, RepairCandidate::CandidateKind> > CodeR
     tmp_map1.clear();
     for (size_t j=0;j<rc.size();j++){
         if (DeclStmt::classof(rc[j].original)) continue;
-        // for (size_t i = 0; i < rc[j].actions.size(); i++) {
+        for (size_t i = 0; i < rc[j].actions.size(); i++) {
             const ASTLocTy &rootLoc = rc[j].actions[0].loc;
             ASTContext *ctxt = M.getSourceContext(rootLoc.filename);
             if (DeclStmt::classof(rootLoc.stmt)) continue;
 
+            if (i==0){
             std::pair<size_t, size_t> offset_pair = getStartEndOffset(M, rootLoc.filename, rootLoc);
             std::string code=M.getSourceCode(rootLoc.filename);
             std::string original=code.substr(offset_pair.first,offset_pair.second-offset_pair.first);
@@ -473,7 +474,8 @@ std::map<ASTLocTy, std::map<std::string, RepairCandidate::CandidateKind> > CodeR
                 orig+=newStmt;
                 tmp_map1[rootLoc].insert(std::pair<std::string,RepairCandidate::CandidateKind>(orig,rc[j].kind));
             }
-        // }
+            }
+        }
     }
     // We then get string from the list of stmt for each ASTLocTy
     // std::map<ASTLocTy, std::map<std::string, bool> > ret;
@@ -524,6 +526,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     std::vector<RepairCandidate> rc1;
     rc1.clear();
     for (size_t i=0;i<rc.size();i++){
+
         std::vector<ExprFillInfo> temp((*pefi)[i]->begin(),(*pefi)[i]->end());
         for(size_t k=0;k<temp.size();k++){
             ExprFillInfo efi;
@@ -541,14 +544,16 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             }
             //rc.dump();
             // We first the rid of all ExprMutationKind in rc
-            rc1.push_back(replaceExprInCandidate(M, rc[i], efi));
+            // rc1.push_back(replaceExprInCandidate(M, rc[i], efi));
             //rc1.dump();
             // We then eliminate ASTLocTy with new statements, and replace them with
             // strings
             //std::map<ASTLocTy, std::pair<std::string, bool> > tmp=eliminateAllNewLoc(M, rc[i]);
             //res1.insert(tmp.begin(),tmp.end());
         }
+        rc1.push_back(rc[i]);
     }
+
     // Create string with whole candidate vector 
     std::map<ASTLocTy, std::map<std::string, RepairCandidate::CandidateKind> > res1=eliminateAllNewLoc(M, rc1,original_str);
     // We then categorize location based on the src_file and their offset

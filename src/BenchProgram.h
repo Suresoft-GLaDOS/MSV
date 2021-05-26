@@ -315,6 +315,9 @@ public:
         this->switchId=switchId;
         this->caseNum=caseNum;
     }
+    std::pair<int,int> getSwitch(){
+        return std::make_pair(switchId,caseNum);
+    }
 
     //void setArgFile(const std::string &fixtest_argfile);
 
