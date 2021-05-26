@@ -311,9 +311,9 @@ public:
 
     std::string normalizePath(const std::string &);
 
-    void setSwitch(int switchId,int caseNum){
-        this->switchId=switchId;
-        this->caseNum=caseNum;
+    void setSwitch(int id,int caseNumber){
+        this->switchId=id;
+        this->caseNum=caseNumber;
     }
     std::pair<int,int> getSwitch(){
         return std::make_pair(switchId,caseNum);

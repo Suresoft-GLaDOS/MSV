@@ -250,23 +250,7 @@ LocalAnalyzer* SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc) {
 
 // FIXME: This stupid shit should go somewhere else
 Expr* SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType QT,int id,std::map<Expr *,unsigned long> atoms) {
-    Expr *abstract_cond = getInternalHandlerInfo(ctxt).abstract_cond;
-    int count=atoms.size();
-
-    std::vector<Expr *> args;
-    IntegerLiteral *idExpr=IntegerLiteral::Create(*ctxt,llvm::APInt(32,id),ctxt->IntTy,SourceLocation());
-    args.push_back(idExpr);
-    IntegerLiteral *size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,count),ctxt->IntTy,SourceLocation());
-    args.push_back(size);
-    for (std::map<Expr *,unsigned long>::iterator it=atoms.begin();it!=atoms.end();it++){
-        char expr[100];
-        args.push_back(it->first);
-
-        IntegerLiteral *arg=IntegerLiteral::Create(*ctxt,llvm::APInt(32,it->second),ctxt->IntTy,SourceLocation());
-        args.push_back(arg);
-    }
-    return clang::CallExpr::Create(*ctxt, abstract_cond, args,
-            QT, VK_RValue, SourceLocation());
+    return getInternalHandlerInfo(ctxt).abstract_cond;
 }
 
 Expr* SourceContextManager::getUnknownExpr(ASTContext *ctxt, ExprListTy candidate_atoms) {

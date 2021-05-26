@@ -232,6 +232,7 @@ Expr* createConditionVarList(ASTContext *ctxt,std::vector<Expr *> exprs,QualType
 
     ImplicitCastExpr *cast=ImplicitCastExpr::Create(*ctxt,cast_type,CastKind::CK_ArrayToPointerDecay,
             compound,nullptr,VK_LValue);
+    
     return cast;
 }
 Expr* createConditionVarNameList(ASTContext *ctxt,std::vector<std::string> names){
@@ -406,7 +407,7 @@ void enumerateExprImpl(SourceContextManager &M, const RepairCandidate &rc, long 
         //LocalAnalyzer *L = getLocalAnalyzer(M, rc, i);
         // If it is the condition synthesizer target, we are going to
         // create a special expr to replace it
-        if (i == (size_t)mutate_idx) {
+        // if (i == (size_t)mutate_idx) {
             if (rc.actions[i].tag == RepairAction::CondTag) {
                 cur_info.insert(std::make_pair(i, createAbstractConditionExpr(M, rc.actions[i])));
                 enumerateExprImpl(M, rc, mutate_idx, i + 1, ret, cur_info);
@@ -419,9 +420,9 @@ void enumerateExprImpl(SourceContextManager &M, const RepairCandidate &rc, long 
                 cur_info.erase(i);
                 return;
             }
-        }
-        else
-            ret=nullptr;
+        // }
+        // else
+        //     ret=nullptr;
         /*
         Expr* E = (Expr*)rc.actions[i].ast_node;
         RepairAction::ExprTagTy tag = rc.actions[i].tag;
@@ -629,8 +630,10 @@ protected:
     }
 
     bool fuzzTest(size_t timeout){
+        outlog_printf(2,"Running AFL!\n");
+
         std::string cmd=P.getAFLScript();
-        if (timeout>0) cmd+="-t "+std::to_string(timeout);
+        if (timeout>0) cmd+=" -t "+std::to_string(timeout);
         cmd+="-w "+P.getWorkdir();
         bool result=system(cmd.c_str());
         return result;
@@ -2316,11 +2319,11 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
-        // bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
-        // if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
-        //     result_init=T->test(BenchProgram::EnvMapTy(),0,false);
-        // else
-        //     result_init=T->test(BenchProgram::EnvMapTy(),0,true);
+        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
+        if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
+            result_init=T->test(BenchProgram::EnvMapTy(),0,true);
+        else
+            result_init=T->test(BenchProgram::EnvMapTy(),0,false);
 
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();

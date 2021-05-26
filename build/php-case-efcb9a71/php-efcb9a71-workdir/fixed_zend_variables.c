@@ -1167,7 +1167,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 			case IS_CLASS:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if (!__is_neg("0-24" 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1) && (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end))))) {
+				if (!__is_neg("0-24", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue") && (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end))))) {
 	    _efree((zvalue->value.str.val));
 	}
 				break;
@@ -1215,7 +1215,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 			case IS_CLASS:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if (!__is_neg("0-25" 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1))
+				if (!__is_neg("0-25", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
 	        _efree((zvalue->value.str.val));
 	    }
@@ -1264,7 +1264,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 			case IS_CLASS:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if (((zvalue->value.str.val) || __is_neg("0-26" 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1)) && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+				if (((zvalue->value.str.val) || __is_neg("0-26", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue")) && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
 	    _efree((zvalue->value.str.val));
 	}
 				break;
@@ -1312,7 +1312,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 			case IS_CLASS:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if ((zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) && !__is_neg("0-27" 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1)) {
+				if ((zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) && !__is_neg("0-27", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue")) {
 	    _efree((zvalue->value.str.val));
 	}
 				break;
@@ -1360,7 +1360,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 			case IS_CLASS:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if ((zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) || __is_neg("0-28" 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1)) {
+				if ((zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) || __is_neg("0-28", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue")) {
 	    _efree((zvalue->value.str.val));
 	}
 				break;
@@ -1408,7 +1408,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 			case IS_CLASS:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if (__is_neg("0-29" 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1))
+				if (__is_neg("0-29", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	STR_FREE_REL(zvalue->value.str.val);
 				break;
@@ -3203,7 +3203,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CLASS:
 				CHECK_ZVAL_STRING_REL(zvalue);
 				STR_FREE_REL(zvalue->value.str.val);
-				if (!__is_neg("0-67" 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1))
+				if (!__is_neg("0-67", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    break;
 			case IS_ARRAY:
 			case IS_CONSTANT_ARRAY: {
@@ -3250,7 +3250,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CLASS:
 				CHECK_ZVAL_STRING_REL(zvalue);
 				STR_FREE_REL(zvalue->value.str.val);
-				if (__is_neg("0-68" 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1))
+				if (__is_neg("0-68", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	break;
 			case IS_ARRAY:
@@ -4862,7 +4862,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 					TSRMLS_FETCH();
 	
 					if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-						if (!__is_neg("0-102", 106, zvalue, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.symbol_table.nTableSize, 4, executor_globals.symbol_table.nTableMask, 4, executor_globals.symbol_table.nNumOfElements, 4, executor_globals.symbol_table.nNextFreeElement, 8, executor_globals.symbol_table.pInternalPointer, 8, executor_globals.symbol_table.pListHead, 8, executor_globals.symbol_table.pListTail, 8, executor_globals.symbol_table.arBuckets, 8, executor_globals.symbol_table.pDestructor, 8, executor_globals.symbol_table.persistent, 1, executor_globals.symbol_table.nApplyCount, 1, executor_globals.symbol_table.bApplyProtection, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+						if (!__is_neg("0-102", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    zend_hash_destroy(zvalue->value.ht);
 						FREE_HASHTABLE(zvalue->value.ht);
 					}
@@ -4909,7 +4909,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 					TSRMLS_FETCH();
 	
 					if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
-						if (__is_neg("0-103", 106, zvalue, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.symbol_table.nTableSize, 4, executor_globals.symbol_table.nTableMask, 4, executor_globals.symbol_table.nNumOfElements, 4, executor_globals.symbol_table.nNextFreeElement, 8, executor_globals.symbol_table.pInternalPointer, 8, executor_globals.symbol_table.pListHead, 8, executor_globals.symbol_table.pListTail, 8, executor_globals.symbol_table.arBuckets, 8, executor_globals.symbol_table.pDestructor, 8, executor_globals.symbol_table.persistent, 1, executor_globals.symbol_table.nApplyCount, 1, executor_globals.symbol_table.bApplyProtection, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+						if (__is_neg("0-103", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	zend_hash_destroy(zvalue->value.ht);
 						FREE_HASHTABLE(zvalue->value.ht);
@@ -7116,7 +7116,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 	
 					if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
 						zend_hash_destroy(zvalue->value.ht);
-						if (!__is_neg("0-150", 4, zvalue, 8, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1))
+						if (!__is_neg("0-150", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    _efree((zvalue->value.ht));
 					}
 				}
@@ -7163,7 +7163,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 	
 					if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
 						zend_hash_destroy(zvalue->value.ht);
-						if (__is_neg("0-151", 4, zvalue, 8, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1))
+						if (__is_neg("0-151", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	FREE_HASHTABLE(zvalue->value.ht);
 					}
@@ -9137,7 +9137,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT_ARRAY: {
 					TSRMLS_FETCH();
 	
-					if (!__is_neg("0-193" 106, zvalue, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.symbol_table.nTableSize, 4, executor_globals.symbol_table.nTableMask, 4, executor_globals.symbol_table.nNumOfElements, 4, executor_globals.symbol_table.nNextFreeElement, 8, executor_globals.symbol_table.pInternalPointer, 8, executor_globals.symbol_table.pListHead, 8, executor_globals.symbol_table.pListTail, 8, executor_globals.symbol_table.arBuckets, 8, executor_globals.symbol_table.pDestructor, 8, executor_globals.symbol_table.persistent, 1, executor_globals.symbol_table.nApplyCount, 1, executor_globals.symbol_table.bApplyProtection, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2) && (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table)))) {
+					if (!__is_neg("0-193", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue") && (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table)))) {
 	    zend_hash_destroy(zvalue->value.ht);
 	    _efree((zvalue->value.ht));
 	}
@@ -9183,7 +9183,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT_ARRAY: {
 					TSRMLS_FETCH();
 	
-					if (!__is_neg("0-194" 106, zvalue, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.symbol_table.nTableSize, 4, executor_globals.symbol_table.nTableMask, 4, executor_globals.symbol_table.nNumOfElements, 4, executor_globals.symbol_table.nNextFreeElement, 8, executor_globals.symbol_table.pInternalPointer, 8, executor_globals.symbol_table.pListHead, 8, executor_globals.symbol_table.pListTail, 8, executor_globals.symbol_table.arBuckets, 8, executor_globals.symbol_table.pDestructor, 8, executor_globals.symbol_table.persistent, 1, executor_globals.symbol_table.nApplyCount, 1, executor_globals.symbol_table.bApplyProtection, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+					if (!__is_neg("0-194", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
 	        zend_hash_destroy(zvalue->value.ht);
 	        _efree((zvalue->value.ht));
@@ -9230,7 +9230,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT_ARRAY: {
 					TSRMLS_FETCH();
 	
-					if (((zvalue->value.ht) || __is_neg("0-195", 106, zvalue, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.symbol_table.nTableSize, 4, executor_globals.symbol_table.nTableMask, 4, executor_globals.symbol_table.nNumOfElements, 4, executor_globals.symbol_table.nNextFreeElement, 8, executor_globals.symbol_table.pInternalPointer, 8, executor_globals.symbol_table.pListHead, 8, executor_globals.symbol_table.pListTail, 8, executor_globals.symbol_table.arBuckets, 8, executor_globals.symbol_table.pDestructor, 8, executor_globals.symbol_table.persistent, 1, executor_globals.symbol_table.nApplyCount, 1, executor_globals.symbol_table.bApplyProtection, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2)) && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+					if (((zvalue->value.ht) || __is_neg("0-195", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue")) && (zvalue->value.ht != &(executor_globals.symbol_table))) {
 	    zend_hash_destroy(zvalue->value.ht);
 	    _efree((zvalue->value.ht));
 	}
@@ -9276,7 +9276,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT_ARRAY: {
 					TSRMLS_FETCH();
 	
-					if ((zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) && !__is_neg("0-196", 106, zvalue, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.symbol_table.nTableSize, 4, executor_globals.symbol_table.nTableMask, 4, executor_globals.symbol_table.nNumOfElements, 4, executor_globals.symbol_table.nNextFreeElement, 8, executor_globals.symbol_table.pInternalPointer, 8, executor_globals.symbol_table.pListHead, 8, executor_globals.symbol_table.pListTail, 8, executor_globals.symbol_table.arBuckets, 8, executor_globals.symbol_table.pDestructor, 8, executor_globals.symbol_table.persistent, 1, executor_globals.symbol_table.nApplyCount, 1, executor_globals.symbol_table.bApplyProtection, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2)) {
+					if ((zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) && !__is_neg("0-196", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue")) {
 	    zend_hash_destroy(zvalue->value.ht);
 	    _efree((zvalue->value.ht));
 	}
@@ -9322,7 +9322,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT_ARRAY: {
 					TSRMLS_FETCH();
 	
-					if ((zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) || __is_neg("0-197", 106, zvalue, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.symbol_table.nTableSize, 4, executor_globals.symbol_table.nTableMask, 4, executor_globals.symbol_table.nNumOfElements, 4, executor_globals.symbol_table.nNextFreeElement, 8, executor_globals.symbol_table.pInternalPointer, 8, executor_globals.symbol_table.pListHead, 8, executor_globals.symbol_table.pListTail, 8, executor_globals.symbol_table.arBuckets, 8, executor_globals.symbol_table.pDestructor, 8, executor_globals.symbol_table.persistent, 1, executor_globals.symbol_table.nApplyCount, 1, executor_globals.symbol_table.bApplyProtection, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2)) {
+					if ((zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) || __is_neg("0-197", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue")) {
 	    zend_hash_destroy(zvalue->value.ht);
 	    _efree((zvalue->value.ht));
 	}
@@ -9368,7 +9368,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT_ARRAY: {
 					TSRMLS_FETCH();
 	
-					if (__is_neg("0-198" 106, zvalue, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.symbol_table.nTableSize, 4, executor_globals.symbol_table.nTableMask, 4, executor_globals.symbol_table.nNumOfElements, 4, executor_globals.symbol_table.nNextFreeElement, 8, executor_globals.symbol_table.pInternalPointer, 8, executor_globals.symbol_table.pListHead, 8, executor_globals.symbol_table.pListTail, 8, executor_globals.symbol_table.arBuckets, 8, executor_globals.symbol_table.pDestructor, 8, executor_globals.symbol_table.persistent, 1, executor_globals.symbol_table.nApplyCount, 1, executor_globals.symbol_table.bApplyProtection, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+					if (__is_neg("0-198", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	if (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table))) {
 						zend_hash_destroy(zvalue->value.ht);
@@ -11167,7 +11167,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 						FREE_HASHTABLE(zvalue->value.ht);
 					}
 				}
-				if (!__is_neg("0-236", 1, zvalue, 8))
+				if (!__is_neg("0-236", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    break;
 			case IS_OBJECT:
 				{
@@ -11214,7 +11214,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 						FREE_HASHTABLE(zvalue->value.ht);
 					}
 				}
-				if (__is_neg("0-237", 1, zvalue, 8))
+				if (__is_neg("0-237", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	break;
 			case IS_OBJECT:
@@ -13975,7 +13975,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 				{
 					TSRMLS_FETCH();
 	
-					if (!__is_neg("0-296", 34, zvalue, 8, (*zvalue).refcount__gc, 4, (*zvalue).type, 1, (*zvalue).is_ref__gc, 1, (*zvalue).value.obj.handle, 4, (*zvalue).value.obj.handlers, 8, (*zvalue).value.obj.handlers->add_ref, 8, (*zvalue).value.obj.handlers->del_ref, 8, (*zvalue).value.obj.handlers->clone_obj, 8, (*zvalue).value.obj.handlers->read_property, 8, (*zvalue).value.obj.handlers->write_property, 8, (*zvalue).value.obj.handlers->read_dimension, 8, (*zvalue).value.obj.handlers->write_dimension, 8, (*zvalue).value.obj.handlers->get_property_ptr_ptr, 8, (*zvalue).value.obj.handlers->get, 8, (*zvalue).value.obj.handlers->set, 8, (*zvalue).value.obj.handlers->has_property, 8, (*zvalue).value.obj.handlers->unset_property, 8, (*zvalue).value.obj.handlers->has_dimension, 8, (*zvalue).value.obj.handlers->unset_dimension, 8, (*zvalue).value.obj.handlers->get_properties, 8, (*zvalue).value.obj.handlers->get_method, 8, (*zvalue).value.obj.handlers->call_method, 8, (*zvalue).value.obj.handlers->get_constructor, 8, (*zvalue).value.obj.handlers->get_class_entry, 8, (*zvalue).value.obj.handlers->get_class_name, 8, (*zvalue).value.obj.handlers->compare_objects, 8, (*zvalue).value.obj.handlers->cast_object, 8, (*zvalue).value.obj.handlers->count_elements, 8, (*zvalue).value.obj.handlers->get_debug_info, 8, (*zvalue).value.obj.handlers->get_closure, 8, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1))
+					if (!__is_neg("0-296", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    (*zvalue).value.obj.handlers->del_ref(zvalue);
 				}
 				break;
@@ -14022,7 +14022,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 				{
 					TSRMLS_FETCH();
 	
-					if (__is_neg("0-297", 34, zvalue, 8, (*zvalue).refcount__gc, 4, (*zvalue).type, 1, (*zvalue).is_ref__gc, 1, (*zvalue).value.obj.handle, 4, (*zvalue).value.obj.handlers, 8, (*zvalue).value.obj.handlers->add_ref, 8, (*zvalue).value.obj.handlers->del_ref, 8, (*zvalue).value.obj.handlers->clone_obj, 8, (*zvalue).value.obj.handlers->read_property, 8, (*zvalue).value.obj.handlers->write_property, 8, (*zvalue).value.obj.handlers->read_dimension, 8, (*zvalue).value.obj.handlers->write_dimension, 8, (*zvalue).value.obj.handlers->get_property_ptr_ptr, 8, (*zvalue).value.obj.handlers->get, 8, (*zvalue).value.obj.handlers->set, 8, (*zvalue).value.obj.handlers->has_property, 8, (*zvalue).value.obj.handlers->unset_property, 8, (*zvalue).value.obj.handlers->has_dimension, 8, (*zvalue).value.obj.handlers->unset_dimension, 8, (*zvalue).value.obj.handlers->get_properties, 8, (*zvalue).value.obj.handlers->get_method, 8, (*zvalue).value.obj.handlers->call_method, 8, (*zvalue).value.obj.handlers->get_constructor, 8, (*zvalue).value.obj.handlers->get_class_entry, 8, (*zvalue).value.obj.handlers->get_class_name, 8, (*zvalue).value.obj.handlers->compare_objects, 8, (*zvalue).value.obj.handlers->cast_object, 8, (*zvalue).value.obj.handlers->count_elements, 8, (*zvalue).value.obj.handlers->get_debug_info, 8, (*zvalue).value.obj.handlers->get_closure, 8, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1))
+					if (__is_neg("0-297", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
 				}
@@ -16877,7 +16877,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 	
 					Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
 				}
-				if (!__is_neg("0-358", 1, zvalue, 8))
+				if (!__is_neg("0-358", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    break;
 			case IS_RESOURCE:
 				{
@@ -16924,7 +16924,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 	
 					Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
 				}
-				if (__is_neg("0-359", 1, zvalue, 8))
+				if (__is_neg("0-359", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	break;
 			case IS_RESOURCE:
@@ -18950,7 +18950,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 					TSRMLS_FETCH();
 	
 					/* destroy resource */
-					if (!__is_neg("0-402", 4, zvalue, 8, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1))
+					if (!__is_neg("0-402", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    _zend_list_delete(zvalue->value.lval);
 				}
 				break;
@@ -18997,7 +18997,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 					TSRMLS_FETCH();
 	
 					/* destroy resource */
-					if (__is_neg("0-403", 4, zvalue, 8, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1))
+					if (__is_neg("0-403", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	zend_list_delete(zvalue->value.lval);
 				}
@@ -21573,7 +21573,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 					/* destroy resource */
 					zend_list_delete(zvalue->value.lval);
 				}
-				if (!__is_neg("0-458", 1, zvalue, 8))
+				if (!__is_neg("0-458", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    break;
 			case IS_LONG:
 			case IS_DOUBLE:
@@ -21620,7 +21620,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 					/* destroy resource */
 					zend_list_delete(zvalue->value.lval);
 				}
-				if (__is_neg("0-459", 1, zvalue, 8))
+				if (__is_neg("0-459", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	break;
 			case IS_LONG:
@@ -23195,7 +23195,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 	#endif
 	#ifdef COMPILE_492
 	case 493: {
-	if (!__is_neg("0-493" 7, zvalue, 8, (*zvalue).refcount__gc, 4, (*zvalue).type, 1, (*zvalue).is_ref__gc, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1))
+	if (!__is_neg("0-493", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    switch ((*zvalue).type & 15) {
 	      case 6:
 	      case 8:
@@ -23242,7 +23242,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
 	#endif
 	#ifdef COMPILE_493
 	case 494: {
-	if (__is_neg("0-494" 7, zvalue, 8, (*zvalue).refcount__gc, 4, (*zvalue).type, 1, (*zvalue).is_ref__gc, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1))
+	if (__is_neg("0-494", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
 			case IS_STRING:
@@ -24715,7 +24715,7 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_STRING:
 			case IS_CONSTANT:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if (!__is_neg("1-18", 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1))
+				if (!__is_neg("1-18", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    do {
 	        if (!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
 	            free(zvalue->value.str.val);
@@ -24745,7 +24745,7 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_STRING:
 			case IS_CONSTANT:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if (__is_neg("1-19", 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1))
+				if (__is_neg("1-19", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	str_free(zvalue->value.str.val);
 				break;
@@ -25503,7 +25503,7 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 				CHECK_ZVAL_STRING_REL(zvalue);
 				str_free(zvalue->value.str.val);
-				if (!__is_neg("1-48", 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1))
+				if (!__is_neg("1-48", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    break;
 			case IS_ARRAY:
 			case IS_CONSTANT_ARRAY:
@@ -25529,7 +25529,7 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 				CHECK_ZVAL_STRING_REL(zvalue);
 				str_free(zvalue->value.str.val);
-				if (__is_neg("1-49", 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1))
+				if (__is_neg("1-49", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	break;
 			case IS_ARRAY:
@@ -26177,7 +26177,7 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC)
 	#endif
 	#ifdef COMPILE_587
 	case 74: {
-	if (!__is_neg("1-74", 7, zvalue, 8, (*zvalue).refcount__gc, 4, (*zvalue).type, 1, (*zvalue).is_ref__gc, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1))
+	if (!__is_neg("1-74", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    switch ((*zvalue).type & 15) {
 	      case 6:
 	      case 8:
@@ -26207,7 +26207,7 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC)
 	#endif
 	#ifdef COMPILE_588
 	case 75: {
-	if (__is_neg("1-75", 7, zvalue, 8, (*zvalue).refcount__gc, 4, (*zvalue).type, 1, (*zvalue).is_ref__gc, 1, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1))
+	if (__is_neg("1-75", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
 			case IS_STRING:
@@ -27728,7 +27728,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 			case IS_STRING:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if (!__is_neg("2-24", 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1) && (!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end))))) {
+				if (!__is_neg("2-24", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue") && (!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end))))) {
 	    zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
 	}
 				break;
@@ -27775,7 +27775,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 			case IS_STRING:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if (!__is_neg("2-25", 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1))
+				if (!__is_neg("2-25", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    if (!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
 	        zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
 	    }
@@ -27823,7 +27823,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 			case IS_STRING:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if ((!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) && !__is_neg("2-26", 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1)) {
+				if ((!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) && !__is_neg("2-26", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue")) {
 	    zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
 	}
 				break;
@@ -27870,7 +27870,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 			case IS_STRING:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if ((!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) || __is_neg("2-27", 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1)) {
+				if ((!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) || __is_neg("2-27", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue")) {
 	    zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
 	}
 				break;
@@ -27917,7 +27917,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC)
 			case IS_CONSTANT:
 			case IS_STRING:
 				CHECK_ZVAL_STRING_REL(zvalue);
-				if (__is_neg("2-28", 78, zvalue, 8, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1, zvalue->value.str.val, 8, zvalue->value.str.len, 4, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, compiler_globals.active_class_entry, 8, compiler_globals.compiled_filename, 8, compiler_globals.zend_lineno, 4, compiler_globals.heredoc, 8, compiler_globals.heredoc_len, 4, compiler_globals.active_op_array, 8, compiler_globals.function_table, 8, compiler_globals.class_table, 8, compiler_globals.auto_globals, 8, compiler_globals.in_compilation, 1, compiler_globals.short_tags, 1, compiler_globals.asp_tags, 1, compiler_globals.unclean_shutdown, 1, compiler_globals.ini_parser_unbuffered_errors, 1, compiler_globals.catch_begin, 8, compiler_globals.ini_parser_param, 8, compiler_globals.interactive, 4, compiler_globals.start_lineno, 4, compiler_globals.increment_lineno, 1, compiler_globals.access_type, 4, compiler_globals.doc_comment, 8, compiler_globals.doc_comment_len, 4, compiler_globals.compiler_options, 4, compiler_globals.current_namespace, 8, compiler_globals.current_import, 8, compiler_globals.in_namespace, 1, compiler_globals.has_bracketed_namespaces, 1, compiler_globals.interned_strings_start, 8, compiler_globals.interned_strings_end, 8, compiler_globals.interned_strings_top, 8, compiler_globals.interned_strings_snapshot_top, 8, compiler_globals.script_encoding_list, 8, compiler_globals.script_encoding_list_size, 8, compiler_globals.multibyte, 1, compiler_globals.detect_unicode, 1, compiler_globals.encoding_declared, 1))
+				if (__is_neg("2-28", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	if (!IS_INTERNED(zvalue->value.str.val)) {
 					zvalue->value.str.val = (char *) estrndup_rel(zvalue->value.str.val, zvalue->value.str.len);
@@ -29703,7 +29703,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC)
 				if (!IS_INTERNED(zvalue->value.str.val)) {
 					zvalue->value.str.val = (char *) estrndup_rel(zvalue->value.str.val, zvalue->value.str.len);
 				}
-				if (!__is_neg("2-65", 1, zvalue, 8))
+				if (!__is_neg("2-65", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    break;
 			case IS_ARRAY:
 			case IS_CONSTANT_ARRAY: {
@@ -29751,7 +29751,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC)
 				if (!IS_INTERNED(zvalue->value.str.val)) {
 					zvalue->value.str.val = (char *) estrndup_rel(zvalue->value.str.val, zvalue->value.str.len);
 				}
-				if (__is_neg("2-66", 1, zvalue, 8))
+				if (__is_neg("2-66", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	break;
 			case IS_ARRAY:
@@ -31325,7 +31325,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC)
 	#endif
 	#ifdef COMPILE_699
 	case 99: {
-	if (!__is_neg("2-99", 7, zvalue, 8, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, (*zvalue).refcount__gc, 4, (*zvalue).type, 1, (*zvalue).is_ref__gc, 1))
+	if (!__is_neg("2-99", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    switch ((*zvalue).type & 15) {
 	      case 7:
 	        {
@@ -31373,7 +31373,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC)
 	#endif
 	#ifdef COMPILE_700
 	case 100: {
-	if (__is_neg("2-100", 7, zvalue, 8, zvalue->refcount__gc, 4, zvalue->type, 1, zvalue->is_ref__gc, 1, (*zvalue).refcount__gc, 4, (*zvalue).type, 1, (*zvalue).is_ref__gc, 1))
+	if (__is_neg("2-100", 0, 0, 0, 0, 1, (void **){zvalue}, 0, 0, "zvalue"))
 	    return;
 	switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
 			case IS_RESOURCE: {
@@ -32488,7 +32488,7 @@ ZEND_API int zend_print_variable(zval *var)
 	#endif
 	#ifdef COMPILE_737
 	case 18: {
-	if (!__is_neg("3-18", 1, var, 8))
+	if (!__is_neg("3-18", 0, 0, 0, 0, 1, (void **){var}, 0, 0, "var"))
 	    return zend_print_zval(var, 0);
 	
 	break;
@@ -32496,7 +32496,7 @@ ZEND_API int zend_print_variable(zval *var)
 	#endif
 	#ifdef COMPILE_738
 	case 19: {
-	if (__is_neg("3-19", 1, var, 8))
+	if (__is_neg("3-19", 0, 0, 0, 0, 1, (void **){var}, 0, 0, "var"))
 	    return 0;
 	return zend_print_zval(var, 0);
 	
@@ -33634,7 +33634,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_772
 	case 27: {
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
-			if (!__is_neg("4-27", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+			if (!__is_neg("4-27", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    is_ref = (**p).type & 64;
 	    
 			if (!EG(active_symbol_table)) {
@@ -33672,7 +33672,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_773
 	case 28: {
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
-			if (__is_neg("4-28", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+			if (__is_neg("4-28", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    return 0;
 	is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
@@ -33711,7 +33711,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_774
 	case 29: {
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
-			if (__is_neg("4-29", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+			if (__is_neg("4-29", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    return 1;
 	is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
@@ -33750,7 +33750,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_775
 	case 30: {
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
-			if (__is_neg("4-30", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+			if (__is_neg("4-30", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    return 32;
 	is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
@@ -33789,7 +33789,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_776
 	case 31: {
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
-			if (__is_neg("4-31", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+			if (__is_neg("4-31", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    return 3;
 	is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
@@ -33828,7 +33828,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_777
 	case 32: {
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
-			if (__is_neg("4-32", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+			if (__is_neg("4-32", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    return 64;
 	is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
@@ -35773,7 +35773,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
 			if (!EG(active_symbol_table)) {
-				if (!__is_neg("4-83", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+				if (!__is_neg("4-83", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    zend_rebuild_symbol_table();
 			}
 			if (zend_hash_quick_find(EG(active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **) &p) == FAILURE) {
@@ -35811,7 +35811,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
 			if (!EG(active_symbol_table)) {
-				if (__is_neg("4-84", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+				if (__is_neg("4-84", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 0;
 	zend_rebuild_symbol_table(TSRMLS_C);
 			}
@@ -35850,7 +35850,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
 			if (!EG(active_symbol_table)) {
-				if (__is_neg("4-85", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+				if (__is_neg("4-85", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 1;
 	zend_rebuild_symbol_table(TSRMLS_C);
 			}
@@ -35889,7 +35889,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
 			if (!EG(active_symbol_table)) {
-				if (__is_neg("4-86", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+				if (__is_neg("4-86", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 32;
 	zend_rebuild_symbol_table(TSRMLS_C);
 			}
@@ -35928,7 +35928,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
 			if (!EG(active_symbol_table)) {
-				if (__is_neg("4-87", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+				if (__is_neg("4-87", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 3;
 	zend_rebuild_symbol_table(TSRMLS_C);
 			}
@@ -35967,7 +35967,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
 			if (!EG(active_symbol_table)) {
-				if (__is_neg("4-88", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+				if (__is_neg("4-88", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 64;
 	zend_rebuild_symbol_table(TSRMLS_C);
 			}
@@ -37833,7 +37833,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
-			if (!__is_neg("4-137", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2) && (!(executor_globals.active_symbol_table))) {
+			if (!__is_neg("4-137", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target") && (!(executor_globals.active_symbol_table))) {
 	    zend_rebuild_symbol_table();
 	}
 			if (zend_hash_quick_find(EG(active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **) &p) == FAILURE) {
@@ -37870,7 +37870,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
-			if (!__is_neg("4-138", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (!__is_neg("4-138", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    if (!(executor_globals.active_symbol_table)) {
 	        zend_rebuild_symbol_table();
 	    }
@@ -37908,7 +37908,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
-			if ((!(executor_globals.active_symbol_table)) && !__is_neg("4-139", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2)) {
+			if ((!(executor_globals.active_symbol_table)) && !__is_neg("4-139", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target")) {
 	    zend_rebuild_symbol_table();
 	}
 			if (zend_hash_quick_find(EG(active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **) &p) == FAILURE) {
@@ -37945,7 +37945,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
-			if ((!(executor_globals.active_symbol_table)) || __is_neg("4-140", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2)) {
+			if ((!(executor_globals.active_symbol_table)) || __is_neg("4-140", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target")) {
 	    zend_rebuild_symbol_table();
 	}
 			if (zend_hash_quick_find(EG(active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **) &p) == FAILURE) {
@@ -37982,7 +37982,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
-			if (__is_neg("4-141", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (__is_neg("4-141", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 0;
 	if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
@@ -38021,7 +38021,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
-			if (__is_neg("4-142", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (__is_neg("4-142", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 1;
 	if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
@@ -38060,7 +38060,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
-			if (__is_neg("4-143", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (__is_neg("4-143", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 32;
 	if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
@@ -38099,7 +38099,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
-			if (__is_neg("4-144", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (__is_neg("4-144", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 3;
 	if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
@@ -38138,7 +38138,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 	    
-			if (__is_neg("4-145", 96, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (__is_neg("4-145", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 64;
 	if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
@@ -40060,7 +40060,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
-					if (!__is_neg("4-195", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (!__is_neg("4-195", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    do {
 	        (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
 	        ((zval_gc_info *)(tmp))->u.buffered = ((void *)0);
@@ -40101,7 +40101,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
-					if (__is_neg("4-196", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (__is_neg("4-196", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 0;
 	ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
@@ -40140,7 +40140,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
-					if (__is_neg("4-197", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (__is_neg("4-197", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 1;
 	ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
@@ -40179,7 +40179,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
-					if (__is_neg("4-198", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (__is_neg("4-198", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 32;
 	ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
@@ -40218,7 +40218,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
-					if (__is_neg("4-199", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (__is_neg("4-199", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 3;
 	ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
@@ -40257,7 +40257,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
-					if (__is_neg("4-200", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (__is_neg("4-200", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 64;
 	ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
@@ -42239,7 +42239,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
-					if (!__is_neg("4-252", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (!__is_neg("4-252", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    do {
 	        (tmp)->value = (*p)->value;
 	        (*tmp).type = (**p).type;
@@ -42280,7 +42280,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
-					if (__is_neg("4-253", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (__is_neg("4-253", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 0;
 	ZVAL_COPY_VALUE(tmp, *p);
 					Z_SET_REFCOUNT_P(tmp, 0);
@@ -42319,7 +42319,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
-					if (__is_neg("4-254", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (__is_neg("4-254", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 1;
 	ZVAL_COPY_VALUE(tmp, *p);
 					Z_SET_REFCOUNT_P(tmp, 0);
@@ -42358,7 +42358,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
-					if (__is_neg("4-255", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (__is_neg("4-255", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 32;
 	ZVAL_COPY_VALUE(tmp, *p);
 					Z_SET_REFCOUNT_P(tmp, 0);
@@ -42397,7 +42397,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
-					if (__is_neg("4-256", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (__is_neg("4-256", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 3;
 	ZVAL_COPY_VALUE(tmp, *p);
 					Z_SET_REFCOUNT_P(tmp, 0);
@@ -42436,7 +42436,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					tmp = *p;
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
-					if (__is_neg("4-257", 21, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+					if (__is_neg("4-257", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 64;
 	ZVAL_COPY_VALUE(tmp, *p);
 					Z_SET_REFCOUNT_P(tmp, 0);
@@ -45825,7 +45825,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
-					if (!__is_neg("4-347", 18, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+					if (!__is_neg("4-347", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    zval_set_refcount_p(tmp, 0);
 					Z_UNSET_ISREF_P(tmp);
 				} else {
@@ -45863,7 +45863,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
-					if (__is_neg("4-348", 18, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+					if (__is_neg("4-348", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 0;
 	Z_SET_REFCOUNT_P(tmp, 0);
 					Z_UNSET_ISREF_P(tmp);
@@ -45902,7 +45902,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
-					if (__is_neg("4-349", 18, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+					if (__is_neg("4-349", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 1;
 	Z_SET_REFCOUNT_P(tmp, 0);
 					Z_UNSET_ISREF_P(tmp);
@@ -45941,7 +45941,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
-					if (__is_neg("4-350", 18, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+					if (__is_neg("4-350", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 32;
 	Z_SET_REFCOUNT_P(tmp, 0);
 					Z_UNSET_ISREF_P(tmp);
@@ -45980,7 +45980,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
-					if (__is_neg("4-351", 18, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+					if (__is_neg("4-351", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 3;
 	Z_SET_REFCOUNT_P(tmp, 0);
 					Z_UNSET_ISREF_P(tmp);
@@ -46019,7 +46019,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				} else if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
-					if (__is_neg("4-352", 18, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, (*p)->refcount__gc, 4, (*p)->type, 1, (*p)->is_ref__gc, 1, (*tmp).refcount__gc, 4, (*tmp).type, 1, (*tmp).is_ref__gc, 1, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+					if (__is_neg("4-352", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 64;
 	Z_SET_REFCOUNT_P(tmp, 0);
 					Z_UNSET_ISREF_P(tmp);
@@ -55102,7 +55102,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
 					Z_SET_REFCOUNT_P(tmp, 0);
-					if (!__is_neg("4-596", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+					if (!__is_neg("4-596", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    zval_unset_isref_p(tmp);
 				} else {
 					tmp = *p;
@@ -55140,7 +55140,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
 					Z_SET_REFCOUNT_P(tmp, 0);
-					if (__is_neg("4-597", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+					if (__is_neg("4-597", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 0;
 	Z_UNSET_ISREF_P(tmp);
 				} else {
@@ -55179,7 +55179,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
 					Z_SET_REFCOUNT_P(tmp, 0);
-					if (__is_neg("4-598", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+					if (__is_neg("4-598", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 1;
 	Z_UNSET_ISREF_P(tmp);
 				} else {
@@ -55218,7 +55218,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
 					Z_SET_REFCOUNT_P(tmp, 0);
-					if (__is_neg("4-599", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+					if (__is_neg("4-599", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 32;
 	Z_UNSET_ISREF_P(tmp);
 				} else {
@@ -55257,7 +55257,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
 					Z_SET_REFCOUNT_P(tmp, 0);
-					if (__is_neg("4-600", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+					if (__is_neg("4-600", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 3;
 	Z_UNSET_ISREF_P(tmp);
 				} else {
@@ -55296,7 +55296,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 					ALLOC_INIT_ZVAL(tmp);
 					ZVAL_COPY_VALUE(tmp, *p);
 					Z_SET_REFCOUNT_P(tmp, 0);
-					if (__is_neg("4-601", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+					if (__is_neg("4-601", 0, 0, 0, 0, 5, (void **){tmp, p, key, target, args}, 0, 0, "tmp", "p", "key", "target", "args"))
 	    return 64;
 	Z_UNSET_ISREF_P(tmp);
 				} else {
@@ -57973,7 +57973,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (!__is_neg("4-672", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1) && (zval_isref_p(*(p)))) {
+				} else if (!__is_neg("4-672", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args") && (zval_isref_p(*(p)))) {
 	    do {
 	        (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
 	        ((zval_gc_info *)(tmp))->u.buffered = ((void *)0);
@@ -58019,7 +58019,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (!__is_neg("4-673", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (!__is_neg("4-673", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    if (zval_isref_p(*(p))) {
 	        do {
 	            (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
@@ -58066,7 +58066,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if ((zval_isref_p(*(p))) && !__is_neg("4-674", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1)) {
+				} else if ((zval_isref_p(*(p))) && !__is_neg("4-674", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args")) {
 	    do {
 	        (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
 	        ((zval_gc_info *)(tmp))->u.buffered = ((void *)0);
@@ -58112,7 +58112,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if ((zval_isref_p(*(p))) || __is_neg("4-675", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1)) {
+				} else if ((zval_isref_p(*(p))) || __is_neg("4-675", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args")) {
 	    do {
 	        (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
 	        ((zval_gc_info *)(tmp))->u.buffered = ((void *)0);
@@ -58158,7 +58158,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (__is_neg("4-676", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (__is_neg("4-676", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 0;
 	if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
@@ -58197,7 +58197,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (__is_neg("4-677", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (__is_neg("4-677", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 1;
 	if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
@@ -58236,7 +58236,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (__is_neg("4-678", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (__is_neg("4-678", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 32;
 	if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
@@ -58275,7 +58275,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (__is_neg("4-679", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (__is_neg("4-679", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 3;
 	if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
@@ -58314,7 +58314,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (__is_neg("4-680", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (__is_neg("4-680", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 64;
 	if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
@@ -60409,7 +60409,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (!__is_neg("4-735", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1) && (zval_isref_p(*(p)))) {
+				} else if (!__is_neg("4-735", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args") && (zval_isref_p(*(p)))) {
 	    do {
 	        (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
 	        ((zval_gc_info *)(tmp))->u.buffered = ((void *)0);
@@ -60455,7 +60455,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (!__is_neg("4-736", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (!__is_neg("4-736", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    if (zval_isref_p(*(p))) {
 	        do {
 	            (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
@@ -60502,7 +60502,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if ((zval_isref_p(*(p))) && !__is_neg("4-737", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1)) {
+				} else if ((zval_isref_p(*(p))) && !__is_neg("4-737", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args")) {
 	    do {
 	        (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
 	        ((zval_gc_info *)(tmp))->u.buffered = ((void *)0);
@@ -60548,7 +60548,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if ((zval_isref_p(*(p))) || __is_neg("4-738", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1)) {
+				} else if ((zval_isref_p(*(p))) || __is_neg("4-738", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args")) {
 	    do {
 	        (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
 	        ((zval_gc_info *)(tmp))->u.buffered = ((void *)0);
@@ -60594,7 +60594,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (__is_neg("4-739", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (__is_neg("4-739", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 0;
 	if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
@@ -60633,7 +60633,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (__is_neg("4-740", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (__is_neg("4-740", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 1;
 	if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
@@ -60672,7 +60672,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (__is_neg("4-741", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (__is_neg("4-741", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 32;
 	if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
@@ -60711,7 +60711,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (__is_neg("4-742", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (__is_neg("4-742", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 3;
 	if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
@@ -60750,7 +60750,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 				if (is_ref) {
 					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
 					tmp = *p;
-				} else if (__is_neg("4-743", 12, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (tmp)->refcount__gc, 4, (tmp)->type, 1, (tmp)->is_ref__gc, 1, zval_used_for_init.refcount__gc, 4, zval_used_for_init.type, 1, zval_used_for_init.is_ref__gc, 1))
+				} else if (__is_neg("4-743", 0, 0, 0, 0, 5, (void **){p, tmp, key, target, args}, 0, 0, "p", "tmp", "key", "target", "args"))
 	    return 64;
 	if (Z_ISREF_PP(p)) {
 					ALLOC_INIT_ZVAL(tmp);
@@ -62832,7 +62832,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
 			}
-			if (!__is_neg("4-798", 99, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, key->arKey, 8, key->nKeyLength, 4, key->h, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2) && (zend_hash_quick_find((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **)&p) == -1)) {
+			if (!__is_neg("4-798", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target") && (zend_hash_quick_find((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **)&p) == -1)) {
 	    if (is_ref) {
 	        do {
 	            (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
@@ -62907,7 +62907,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
 			}
-			if (!__is_neg("4-799", 99, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, key->arKey, 8, key->nKeyLength, 4, key->h, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (!__is_neg("4-799", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    if (zend_hash_quick_find((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **)&p) == -1) {
 	        if (is_ref) {
 	            do {
@@ -62983,7 +62983,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
 			}
-			if ((zend_hash_quick_find((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **)&p) == -1) && !__is_neg("4-800", 99, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, key->arKey, 8, key->nKeyLength, 4, key->h, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2)) {
+			if ((zend_hash_quick_find((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **)&p) == -1) && !__is_neg("4-800", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target")) {
 	    if (is_ref) {
 	        do {
 	            (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
@@ -63058,7 +63058,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
 			}
-			if ((zend_hash_quick_find((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **)&p) == -1) || __is_neg("4-801", 99, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, key->arKey, 8, key->nKeyLength, 4, key->h, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2)) {
+			if ((zend_hash_quick_find((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **)&p) == -1) || __is_neg("4-801", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target")) {
 	    if (is_ref) {
 	        do {
 	            (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
@@ -63133,7 +63133,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
 			}
-			if (__is_neg("4-802", 99, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, key->arKey, 8, key->nKeyLength, 4, key->h, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (__is_neg("4-802", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 0;
 	if (zend_hash_quick_find(EG(active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **) &p) == FAILURE) {
 				if (is_ref) {        
@@ -63172,7 +63172,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
 			}
-			if (__is_neg("4-803", 99, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, key->arKey, 8, key->nKeyLength, 4, key->h, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (__is_neg("4-803", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 1;
 	if (zend_hash_quick_find(EG(active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **) &p) == FAILURE) {
 				if (is_ref) {        
@@ -63211,7 +63211,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
 			}
-			if (__is_neg("4-804", 99, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, key->arKey, 8, key->nKeyLength, 4, key->h, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (__is_neg("4-804", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 32;
 	if (zend_hash_quick_find(EG(active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **) &p) == FAILURE) {
 				if (is_ref) {        
@@ -63250,7 +63250,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
 			}
-			if (__is_neg("4-805", 99, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, key->arKey, 8, key->nKeyLength, 4, key->h, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (__is_neg("4-805", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 3;
 	if (zend_hash_quick_find(EG(active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **) &p) == FAILURE) {
 				if (is_ref) {        
@@ -63289,7 +63289,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 			if (!EG(active_symbol_table)) {
 				zend_rebuild_symbol_table(TSRMLS_C);
 			}
-			if (__is_neg("4-806", 99, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2, key->arKey, 8, key->nKeyLength, 4, key->h, 8, executor_globals.return_value_ptr_ptr, 8, executor_globals.uninitialized_zval_ptr, 8, executor_globals.error_zval_ptr, 8, executor_globals.symtable_cache_limit, 8, executor_globals.symtable_cache_ptr, 8, executor_globals.opline_ptr, 8, executor_globals.active_symbol_table, 8, executor_globals.bailout, 8, executor_globals.error_reporting, 4, executor_globals.orig_error_reporting, 4, executor_globals.exit_status, 4, executor_globals.active_op_array, 8, executor_globals.function_table, 8, executor_globals.class_table, 8, executor_globals.zend_constants, 8, executor_globals.scope, 8, executor_globals.called_scope, 8, executor_globals.This, 8, executor_globals.precision, 8, executor_globals.ticks_count, 4, executor_globals.in_execution, 1, executor_globals.in_autoload, 8, executor_globals.autoload_func, 8, executor_globals.full_tables_cleanup, 1, executor_globals.no_extensions, 1, executor_globals.argument_stack, 8, executor_globals.user_error_handler_error_reporting, 4, executor_globals.user_error_handler, 8, executor_globals.user_exception_handler, 8, executor_globals.error_handling, 4, executor_globals.exception_class, 8, executor_globals.timeout_seconds, 4, executor_globals.lambda_count, 4, executor_globals.ini_directives, 8, executor_globals.modified_ini_directives, 8, executor_globals.error_reporting_ini_entry, 8, executor_globals.exception, 8, executor_globals.prev_exception, 8, executor_globals.opline_before_exception, 8, executor_globals.current_execute_data, 8, executor_globals.current_module, 8, executor_globals.active, 1, executor_globals.start_op, 8, executor_globals.saved_fpu_cw_ptr, 8, executor_globals.saved_fpu_cw, 2))
+			if (__is_neg("4-806", 0, 0, 0, 0, 5, (void **){p, key, tmp, args, target}, 0, 0, "p", "key", "tmp", "args", "target"))
 	    return 64;
 	if (zend_hash_quick_find(EG(active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **) &p) == FAILURE) {
 				if (is_ref) {        
@@ -65530,7 +65530,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1610
 	case 865: {
-	if (!__is_neg("4-865", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1) && ((**p).type & (32 | 64))) {
+	if (!__is_neg("4-865", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target") && ((**p).type & (32 | 64))) {
 	    is_ref = (**p).type & 64;
 	    if (!(executor_globals.active_symbol_table)) {
 	        zend_rebuild_symbol_table();
@@ -65604,7 +65604,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1611
 	case 866: {
-	if (!__is_neg("4-866", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+	if (!__is_neg("4-866", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    if ((**p).type & (32 | 64)) {
 	        is_ref = (**p).type & 64;
 	        if (!(executor_globals.active_symbol_table)) {
@@ -65679,7 +65679,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1612
 	case 867: {
-	if (((**p).type & (32 | 64)) && !__is_neg("4-867", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1)) {
+	if (((**p).type & (32 | 64)) && !__is_neg("4-867", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target")) {
 	    is_ref = (**p).type & 64;
 	    if (!(executor_globals.active_symbol_table)) {
 	        zend_rebuild_symbol_table();
@@ -65753,7 +65753,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1613
 	case 868: {
-	if (((**p).type & (32 | 64)) || __is_neg("4-868", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1)) {
+	if (((**p).type & (32 | 64)) || __is_neg("4-868", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target")) {
 	    is_ref = (**p).type & 64;
 	    if (!(executor_globals.active_symbol_table)) {
 	        zend_rebuild_symbol_table();
@@ -65827,7 +65827,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1614
 	case 869: {
-	if (__is_neg("4-869", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+	if (__is_neg("4-869", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    return 0;
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -65866,7 +65866,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1615
 	case 870: {
-	if (__is_neg("4-870", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+	if (__is_neg("4-870", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    return 1;
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -65905,7 +65905,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1616
 	case 871: {
-	if (__is_neg("4-871", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+	if (__is_neg("4-871", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    return 32;
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -65944,7 +65944,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1617
 	case 872: {
-	if (__is_neg("4-872", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+	if (__is_neg("4-872", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    return 3;
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -65983,7 +65983,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1618
 	case 873: {
-	if (__is_neg("4-873", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, (**p).refcount__gc, 4, (**p).type, 1, (**p).is_ref__gc, 1))
+	if (__is_neg("4-873", 0, 0, 0, 0, 5, (void **){p, args, key, tmp, target}, 0, 0, "p", "args", "key", "tmp", "target"))
 	    return 64;
 	if (Z_TYPE_PP(p) & (IS_LEXICAL_VAR|IS_LEXICAL_REF)) {
 			is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
@@ -67721,7 +67721,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_1700
 	case 50: {
 	if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), NULL) == SUCCESS) {
-			if (!__is_neg("5-50", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+			if (!__is_neg("5-50", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    zval_addref_p(tmp);
 		}
 	
@@ -67731,7 +67731,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_1701
 	case 51: {
 	if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), NULL) == SUCCESS) {
-			if (__is_neg("5-51", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+			if (__is_neg("5-51", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    return 0;
 	Z_ADDREF_P(tmp);
 		}
@@ -67742,7 +67742,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_1702
 	case 52: {
 	if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), NULL) == SUCCESS) {
-			if (__is_neg("5-52", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+			if (__is_neg("5-52", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    return 1;
 	Z_ADDREF_P(tmp);
 		}
@@ -67753,7 +67753,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_1703
 	case 53: {
 	if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), NULL) == SUCCESS) {
-			if (__is_neg("5-53", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+			if (__is_neg("5-53", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    return 32;
 	Z_ADDREF_P(tmp);
 		}
@@ -67764,7 +67764,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_1704
 	case 54: {
 	if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), NULL) == SUCCESS) {
-			if (__is_neg("5-54", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+			if (__is_neg("5-54", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    return 3;
 	Z_ADDREF_P(tmp);
 		}
@@ -67775,7 +67775,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#ifdef COMPILE_1705
 	case 55: {
 	if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), NULL) == SUCCESS) {
-			if (__is_neg("5-55", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+			if (__is_neg("5-55", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    return 64;
 	Z_ADDREF_P(tmp);
 		}
@@ -68467,7 +68467,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1776
 	case 126: {
-	if (!__is_neg("5-126", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8) && (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0)) {
+	if (!__is_neg("5-126", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args}, 0, 0, "key", "target", "tmp", "p", "args") && (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0)) {
 	    zval_addref_p(tmp);
 	}
 	
@@ -68476,7 +68476,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1777
 	case 127: {
-	if (!__is_neg("5-127", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+	if (!__is_neg("5-127", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args}, 0, 0, "key", "target", "tmp", "p", "args"))
 	    if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
 	        zval_addref_p(tmp);
 	    }
@@ -68486,7 +68486,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1778
 	case 128: {
-	if ((_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) && !__is_neg("5-128", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8)) {
+	if ((_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) && !__is_neg("5-128", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args}, 0, 0, "key", "target", "tmp", "p", "args")) {
 	    zval_addref_p(tmp);
 	}
 	
@@ -68495,7 +68495,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1779
 	case 129: {
-	if ((_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) || __is_neg("5-129", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8)) {
+	if ((_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) || __is_neg("5-129", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args}, 0, 0, "key", "target", "tmp", "p", "args")) {
 	    zval_addref_p(tmp);
 	}
 	
@@ -68504,7 +68504,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1780
 	case 130: {
-	if (__is_neg("5-130", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+	if (__is_neg("5-130", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args}, 0, 0, "key", "target", "tmp", "p", "args"))
 	    return 0;
 	if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), NULL) == SUCCESS) {
 			Z_ADDREF_P(tmp);
@@ -68515,7 +68515,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1781
 	case 131: {
-	if (__is_neg("5-131", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+	if (__is_neg("5-131", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args}, 0, 0, "key", "target", "tmp", "p", "args"))
 	    return 1;
 	if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), NULL) == SUCCESS) {
 			Z_ADDREF_P(tmp);
@@ -68526,7 +68526,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1782
 	case 132: {
-	if (__is_neg("5-132", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+	if (__is_neg("5-132", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args}, 0, 0, "key", "target", "tmp", "p", "args"))
 	    return 32;
 	if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), NULL) == SUCCESS) {
 			Z_ADDREF_P(tmp);
@@ -68537,7 +68537,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1783
 	case 133: {
-	if (__is_neg("5-133", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+	if (__is_neg("5-133", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args}, 0, 0, "key", "target", "tmp", "p", "args"))
 	    return 3;
 	if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), NULL) == SUCCESS) {
 			Z_ADDREF_P(tmp);
@@ -68548,7 +68548,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1784
 	case 134: {
-	if (__is_neg("5-134", 9, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8, key->arKey, 8, key->nKeyLength, 4, key->h, 8))
+	if (__is_neg("5-134", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args}, 0, 0, "key", "target", "tmp", "p", "args"))
 	    return 64;
 	if (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), NULL) == SUCCESS) {
 			Z_ADDREF_P(tmp);
@@ -69010,7 +69010,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1834
 	case 27: {
-	if (!__is_neg("6-27", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+	if (!__is_neg("6-27", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    return 0;
 	
 	break;
@@ -69018,7 +69018,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1835
 	case 28: {
-	if (__is_neg("6-28", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+	if (__is_neg("6-28", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    return 0;
 	return ZEND_HASH_APPLY_KEEP;
 	
@@ -69027,7 +69027,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1836
 	case 29: {
-	if (__is_neg("6-29", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+	if (__is_neg("6-29", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    return 1;
 	return ZEND_HASH_APPLY_KEEP;
 	
@@ -69036,7 +69036,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1837
 	case 30: {
-	if (__is_neg("6-30", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+	if (__is_neg("6-30", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    return 32;
 	return ZEND_HASH_APPLY_KEEP;
 	
@@ -69045,7 +69045,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1838
 	case 31: {
-	if (__is_neg("6-31", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+	if (__is_neg("6-31", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    return 3;
 	return ZEND_HASH_APPLY_KEEP;
 	
@@ -69054,7 +69054,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args
 	#endif
 	#ifdef COMPILE_1839
 	case 32: {
-	if (__is_neg("6-32", 6, p, 8, args, 8, key, 8, target, 8, is_ref, 1, tmp, 8))
+	if (__is_neg("6-32", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args}, 0, 0, "tmp", "key", "target", "p", "args"))
 	    return 64;
 	return ZEND_HASH_APPLY_KEEP;
 	
