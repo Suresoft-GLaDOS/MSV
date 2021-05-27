@@ -43,7 +43,7 @@ def main(argv):
     php_cmd = ["--", "./sapi/cli/php", "./run-tests.php", "-p", "./sapi/cli/php"]
     for test in neg_test:
         os.system("rm -rf ./out")
-        test_cmd = afl_cmd + ["-g", "{0:05d}".format(test)] + php_cmd + \
+        test_cmd = afl_cmd + php_cmd + \
             [os.path.join(arg_dict["w"], "tests", "{0:05d}.phpt".format(test))]
         print(test_cmd)
         p = subprocess.Popen(test_cmd)
