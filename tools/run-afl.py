@@ -5,6 +5,7 @@ import subprocess
 
 
 def main(argv):
+    print("run-afl.py!!!")
     arg_dict = dict()
     for i in range(len(argv)):
         if argv[i] == "-w":
@@ -31,14 +32,40 @@ def main(argv):
         line = revision_file.readline()
         for test in line.strip().split():
             pos_test.append(int(test))
+    
+    os.environ["AFL_SKIP_CPUFREQ"] = "1"
+    os.environ["AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES"] = "1"
+    os.environ["AFL_NO_UI"] = "1"
+    os.environ["AFL_FAST_CAL"] = "1"
 
     os.chdir(os.path.join(arg_dict["w"], "src"))
-    os.system("rm -rf ./out")
-    afl_cmd = ["afl-fuzz", "-o", "out", "-m", "none", "-d", "-n", "-t", arg_dict["t"], "-w", arg_dict["w"],
-               "--", "./sapi/cli/php", "./run-tests.php", "-p", "./sapi/cli/php"]
+    afl_cmd = ["afl-fuzz", "-o", "out", "-m", "none", "-d", "-n", "-t", arg_dict["t"], "-w", arg_dict["w"]]
+    php_cmd = ["--", "./sapi/cli/php", "./run-tests.php", "-p", "./sapi/cli/php"]
     for test in neg_test:
-        test_cmd = afl_cmd + ["{0:05d}.phpt".format(test)]
+        os.system("rm -rf ./out")
+        test_cmd = afl_cmd + ["-g", "{0:05d}".format(test)] + php_cmd + \
+            [os.path.join(arg_dict["w"], "tests", "{0:05d}.phpt".format(test))]
         print(test_cmd)
+        p = subprocess.Popen(test_cmd)
+        (out, err) = p.communicate()
+        out = ""
+        print("out:")
+        print(out)
+        lines = out.split("\n")
+        test_section = False
+        for line in lines:
+            tokens = line.split()
+            if len(tokens) == 0:
+                continue
+            if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
+                test_section = True
+            elif (tokens[0][0:6] == "======") and (test_section == True):
+                test_section = False
+            elif (test_section == True):
+                if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
+                    print("PASS!")
+                elif (tokens[0] == "Fatal") or (tokens[0] == "FAIL"):
+                    exit(1)
     exit(0)
 
 

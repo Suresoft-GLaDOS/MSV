@@ -634,7 +634,7 @@ protected:
 
         std::string cmd=P.getAFLScript();
         if (timeout>0) cmd+=" -t "+std::to_string(timeout);
-        cmd+="-w "+P.getWorkdir();
+        cmd+=" -w "+P.getWorkdir();
         bool result=system(cmd.c_str());
         return result;
     }
