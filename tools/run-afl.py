@@ -48,7 +48,9 @@ def main(argv):
         print(test_cmd)
         p = subprocess.Popen(test_cmd)
         (out, err) = p.communicate()
-        out = ""
+        if out == None:
+            print("none..")
+            out = ""
         print("out:")
         print(out)
         lines = out.split("\n")
