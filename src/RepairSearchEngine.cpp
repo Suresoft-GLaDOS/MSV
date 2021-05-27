@@ -175,8 +175,8 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
 
     size_t schema_cnt = q.size();
     outlog_printf(1, "Total %lu different repair schemas!!!!\n", schema_cnt);
-    outlog_printf(1, "Total %lu different repair candidate templates for scoring!!!\n", candidate_cnt);
-    outlog_printf(1, "Total %lu different partial repair candidate templates!!\n", partial_candidate_cnt);
+    // outlog_printf(1, "Total %lu different repair candidate templates for scoring!!!\n", candidate_cnt);
+    // outlog_printf(1, "Total %lu different partial repair candidate templates!!\n", partial_candidate_cnt);
     if (print_fix_only) {
         outlog_printf(1, "Print candidate templates...\n");
         FILE *fout = fopen(out_file.c_str(), "w");

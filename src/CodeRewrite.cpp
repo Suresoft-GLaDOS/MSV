@@ -226,6 +226,7 @@ static RepairCandidate replaceExprInCandidate(SourceContextManager &M,
                 tmp_map2[S].clear();
             ExprFillInfo::const_iterator e_it = efi.find(i);
             assert( e_it != efi.end());
+            // 원래 __is_neg를 efi로 넘어온 Stmt로 변경
             tmp_map2[S].insert(std::make_pair((Expr*)rc.actions[i].ast_node,
                         e_it->second));
             if (tmp_map1.count(S) == 0) {
@@ -422,7 +423,6 @@ std::map<ASTLocTy, std::map<std::string, RepairCandidate::CandidateKind> > CodeR
             ASTContext *ctxt = M.getSourceContext(rootLoc.filename);
             if (DeclStmt::classof(rootLoc.stmt)) continue;
 
-            if (i==0){
             std::pair<size_t, size_t> offset_pair = getStartEndOffset(M, rootLoc.filename, rootLoc);
             std::string code=M.getSourceCode(rootLoc.filename);
             std::string original=code.substr(offset_pair.first,offset_pair.second-offset_pair.first);
@@ -473,7 +473,6 @@ std::map<ASTLocTy, std::map<std::string, RepairCandidate::CandidateKind> > CodeR
 
                 orig+=newStmt;
                 tmp_map1[rootLoc].insert(std::pair<std::string,RepairCandidate::CandidateKind>(orig,rc[j].kind));
-            }
             }
         }
     }

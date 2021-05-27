@@ -634,7 +634,7 @@ protected:
 
         std::string cmd=P.getAFLScript();
         if (timeout>0) cmd+=" -t "+std::to_string(timeout);
-        cmd+="-w "+P.getWorkdir();
+        cmd+=" -w "+P.getWorkdir();
         bool result=system(cmd.c_str());
         return result;
     }
@@ -2402,9 +2402,9 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     testers.push_back(new ConditionSynthesisTester(P, learning, M, full_synthesis,functionLoc,scores));
     testers.push_back(new StringConstTester(P, learning, M, naive,functionLoc,scores));
     testers.push_back(new BasicTester(P, learning, M, naive,functionLoc,scores));
-    outlog_printf(2, "BasicTester pointer: %p\n", testers[2]);
-    outlog_printf(2, "StringConstTester pointer: %p\n", testers[1]);
-    outlog_printf(2, "CondTester pointer: %p\n", testers[0]);
+    // outlog_printf(2, "BasicTester pointer: %p\n", testers[2]);
+    // outlog_printf(2, "StringConstTester pointer: %p\n", testers[1]);
+    // outlog_printf(2, "CondTester pointer: %p\n", testers[0]);
     TestCache *cache = P.getTestCache();
     size_t cnt = 0;
     ExecutionTimer Timer;
@@ -2419,7 +2419,7 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
 
     std::vector<RepairCandidate> candidate;
     candidate.clear();
-    outlog_printf(2,"Generating Candidates...\nCandidates size: %d\n",q.size());
+    outlog_printf(2,"Patch Candidates Generated!\nCandidates size: %d\n",q.size());
     while(q.size()>0){
         RepairCandidateWithScore candidate_a_score = q.top();
         candidate.push_back(candidate_a_score.first);
@@ -2427,7 +2427,7 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     }
 
     bool result;
-    outlog_printf(2,"Generating Codes...\n");
+    outlog_printf(2,"Generating meta-program...\n");
     // for (int i=0;i<testers.size();i++)
     // result= TB.test(candidate, testers[0]);
     result= TB.test(candidate, testers[2]);
