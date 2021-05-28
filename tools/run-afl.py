@@ -37,19 +37,19 @@ def main(argv):
     os.environ["AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES"] = "1"
     os.environ["AFL_NO_UI"] = "1"
     os.environ["AFL_FAST_CAL"] = "1"
-
+    timeout = (int(arg_dict["t"]) // 1000) + 1
     os.chdir(os.path.join(arg_dict["w"], "src"))
-    afl_cmd = ["afl-fuzz", "-o", "out", "-m", "none", "-d", "-n", "-t", arg_dict["t"], "-w", arg_dict["w"]]
-    php_cmd = ["--", "./sapi/cli/php", "./run-tests.php", "-p", "./sapi/cli/php"]
+    afl_cmd = ["afl-fuzz", "-o", "out", "-m", "none", "-d", "-n", "-t", str(timeout * 1000), "-w", arg_dict["w"]]
+    php_cmd = ["--", "timeout", str(timeout - 1), "./sapi/cli/php", "./run-tests.php", "-p", "./sapi/cli/php"]
     for test in neg_test:
         os.system("rm -rf ./out")
         test_cmd = afl_cmd + php_cmd + \
             [os.path.join(arg_dict["w"], "tests", "{0:05d}.phpt".format(test))]
         print(test_cmd)
-        p = subprocess.Popen(test_cmd)
+        p = subprocess.Popen(test_cmd, stdout=subprocess.PIPE)
         (out, err) = p.communicate()
         if out == None:
-            print("none..")
+            print("none")
             out = ""
         print("out:")
         print(out)
