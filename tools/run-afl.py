@@ -45,7 +45,7 @@ def main(argv):
         os.system("rm -rf ./out")
         test_cmd = afl_cmd + php_cmd + \
             [os.path.join(arg_dict["w"], "tests", "{0:05d}.phpt".format(test))]
-        print(test_cmd)
+        # print(test_cmd)
         p = subprocess.Popen(test_cmd)
         (out, err) = p.communicate()
         if out == None:

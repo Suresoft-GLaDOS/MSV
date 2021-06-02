@@ -375,6 +375,7 @@ extern "C" int __is_neg(const char *location,int int_size,const int *ints, int c
 }
 
 extern "C" int __choose(char *table_file,const int id) {
+    // fprintf(stderr,"id: %d\n",id);
     int result;
 
     FILE *file=fopen(table_file,"r");

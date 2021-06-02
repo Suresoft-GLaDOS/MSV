@@ -824,7 +824,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     rc.score = getLocScore(n);
                 else
                     rc.score = getPriority(n) + PRIORITY_ALPHA;
-                rc.kind = RepairCandidate::ReplaceKind;
+                rc.kind = RepairCandidate::AddAndReplaceKind;
                 rc.original=n;
                 rc.is_first = is_first;
                 rc.oldRExpr = V2.getOldRExpr(*it);
@@ -844,7 +844,6 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         std::map<std::string, RepairCandidate> tmp_map;
         tmp_map.clear();
         for (std::set<Expr*>::iterator it = exprs.begin(); it != exprs.end(); ++it) {
-            //outlog_printf(2,"Exprs: %s\n",stmtToString(*ctxt,*it).c_str());
             AtomReplaceVisitor V(ctxt, L, *it, false);
             V.TraverseStmt(*it);
             std::set<Stmt*> stmts = V.getResult();
