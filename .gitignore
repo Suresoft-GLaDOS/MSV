@@ -30,3 +30,4 @@ build/benchmarks/*.tar.gz
 *~
 *.ll
 *.bc
+__backup*
