@@ -112,8 +112,8 @@ private:
 
     public:
         std::map<size_t,size_t> caseNum;
-        std::list<std::list<int>> switchCluster;
-        std::map<int,std::list<std::list<int>>> caseCluster;
+        std::vector<std::list<size_t>> switchCluster;
+        // std::map<int,std::list<std::list<int>>> caseCluster;
         std::vector<std::set<size_t>> scoreInfo;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
@@ -133,15 +133,15 @@ private:
             cJSON_AddItemToObject(json,std::string("case_num").c_str(),switchCase);
 
             // // Add switch cluster
-            // cJSON *switchClusterArray=cJSON_CreateArray();
-            // for (std::list<std::list<int>>::iterator it=switchCluster.begin();it!=switchCluster.end();it++){
-            //     cJSON *switchGroup=cJSON_CreateArray();
-            //     for (std::list<int>::iterator it2=it->begin();it2!=it->end();it2++){
-            //         cJSON_AddItemToArray(switchGroup,cJSON_CreateNumber(*it2));
-            //     }
-            //     cJSON_AddItemToArray(switchClusterArray,switchGroup);
-            // }
-            // cJSON_AddItemToObject(json,std::string("switch_cluster").c_str(),switchClusterArray);
+            cJSON *switchClusterArray=cJSON_CreateArray();
+            for (std::vector<std::list<size_t>>::iterator it=switchCluster.begin();it!=switchCluster.end();it++){
+                cJSON *switchGroup=cJSON_CreateArray();
+                for (std::list<size_t>::iterator it2=it->begin();it2!=it->end();it2++){
+                    cJSON_AddItemToArray(switchGroup,cJSON_CreateNumber(*it2));
+                }
+                cJSON_AddItemToArray(switchClusterArray,switchGroup);
+            }
+            cJSON_AddItemToObject(json,std::string("switch_cluster").c_str(),switchClusterArray);
 
             // // Add case cluster
             // cJSON *caseClusterArray=cJSON_CreateArray();

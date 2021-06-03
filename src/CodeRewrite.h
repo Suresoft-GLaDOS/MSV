@@ -40,8 +40,8 @@ class CodeRewriter {
     std::map<long long,std::string> macroCode;
     std::map<std::pair<int,int>,std::vector<IsNegInformation>> isNegLocation;
     std::map<int,std::map<int,std::string>> idAndCase;
-    std::map<int,std::list<std::list<int>>> caseCluster;
-    std::list<std::list<int>> switchCluster;
+    // std::map<int,std::list<std::list<int>>> caseCluster;
+    std::vector<std::list<size_t>> switchCluster;
     std::string workDir;
 
     std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> switchLineMap;
@@ -79,12 +79,12 @@ public:
     int getIdCount(){
         return counter;
     }
-    std::list<std::list<int>> getSwitchCluster(){
+    std::vector<std::list<size_t>> getSwitchCluster(){
         return switchCluster;
     }
-    std::map<int,std::list<std::list<int>>> getCaseCluster(){
-        return caseCluster;
-    }
+    // std::map<int,std::list<std::list<int>>> getCaseCluster(){
+    //     return caseCluster;
+    // }
     std::map<std::pair<int,int>,std::vector<IsNegInformation>> getIsNegLocation(){
         return isNegLocation;
     }

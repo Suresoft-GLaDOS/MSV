@@ -544,8 +544,8 @@ protected:
     int count;
     std::map<long long,std::pair<int,int>> macroMap;
     std::map<int,std::map<int,std::string>> idAndCase;
-    std::list<std::list<int>> switchCluster;
-    std::map<int,std::list<std::list<int>>> caseCluster;
+    std::vector<std::list<size_t>> switchCluster;
+    // std::map<int,std::list<std::list<int>>> caseCluster;
     std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
     std::map<long long,std::string> macroCode;
 
@@ -623,7 +623,7 @@ protected:
         P.getSwitchInfo().caseNum=switchCase;
 
         P.getSwitchInfo().switchCluster=switchCluster;
-        P.getSwitchInfo().caseCluster=caseCluster;
+        // P.getSwitchInfo().caseCluster=caseCluster;
         P.getSwitchInfo().scoreInfo=scores;
 
         P.getSwitchInfo().save();
@@ -698,7 +698,7 @@ public:
         count=R.getIdCount();
         total_macro=R.index;
         switchCluster=R.getSwitchCluster();
-        caseCluster=R.getCaseCluster();
+        // caseCluster=R.getCaseCluster();
         macroCode=R.getMacroCode();
 
         locations=R.getSwitchLine();
@@ -2329,7 +2329,7 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
+        // bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
         // if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
         //     result_init=T->test(BenchProgram::EnvMapTy(),0,true);
         // else

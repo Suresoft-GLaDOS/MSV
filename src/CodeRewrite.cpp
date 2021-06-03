@@ -538,6 +538,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     // Insert before
     if(res1[currentCandidate[currentIndex]][2].size()>0){
         currentSwitches.push_back(counter);
+        switchCluster[2].push_back(counter);
+
         body+="switch(__choose(\""+workDir+"/switch.txt\","+std::to_string(counter)+"))\n{\n";
         body+="case "+std::to_string(case_count++)+": \n";
         body+="break;\n";
@@ -566,10 +568,10 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         body+="}\n";
 
         idAndCase[counter]=casePatch;
-        for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
-                kindIt!=caseKind.end();kindIt++){
-            caseCluster[counter].push_back(kindIt->second);
-        }
+        // for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
+        //         kindIt!=caseKind.end();kindIt++){
+        //     caseCluster[counter].push_back(kindIt->second);
+        // }
 
         switchGroup.push_back(counter);
         counter++;
@@ -581,6 +583,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     if(res1[currentCandidate[currentIndex]][1].size()>0){
         case_count=0;
         currentSwitches.push_back(counter);
+        switchCluster[1].push_back(counter);
+
         std::string subPatch=stmtToString(*ctxt,loc.stmt);
         std::pair<size_t,size_t> conditionLoc=getConditionLocation(subPatch);
         // body+="{\n"+conditionTypes[currentCandidate[currentIndex]].getAsString()+" __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
@@ -610,17 +614,17 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             macroCode[index]=currentBody;
             index++;
-            caseKind[patch_it->second].push_back(case_count);
+            // caseKind[patch_it->second].push_back(case_count);
 
             case_count++;
         }
         body+="}\n";
 
         idAndCase[counter]=casePatch;
-        for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
-                kindIt!=caseKind.end();kindIt++){
-            caseCluster[counter].push_back(kindIt->second);
-        }
+        // for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
+        //         kindIt!=caseKind.end();kindIt++){
+        //     caseCluster[counter].push_back(kindIt->second);
+        // }
 
         switchGroup.push_back(counter);
         counter++;
@@ -660,6 +664,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     if(res1[currentCandidate[currentIndex]][0].size()>0 && origBody!="break;\n"){
         case_count=0;
         currentSwitches.push_back(counter);
+        switchCluster[0].push_back(counter);
+
         body+="switch(__choose(\""+workDir+"/switch.txt\","+std::to_string(counter)+"))\n{\n";
         body+="case "+std::to_string(case_count++)+": {\n";
         body+=origBody;
@@ -682,17 +688,17 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             macroCode[index]=currentBody;
             index++;
-            caseKind[patch_it->second].push_back(case_count);
+            // caseKind[patch_it->second].push_back(case_count);
 
             case_count++;
         }
         body+="}\n";
 
         idAndCase[counter]=casePatch;
-        for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
-                kindIt!=caseKind.end();kindIt++){
-            caseCluster[counter].push_back(kindIt->second);
-        }
+        // for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
+        //         kindIt!=caseKind.end();kindIt++){
+        //     caseCluster[counter].push_back(kindIt->second);
+        // }
 
         switchGroup.push_back(counter);
         counter++;
@@ -709,6 +715,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     if(res1[currentCandidate[currentIndex]][3].size()>0){
         case_count=0;
         currentSwitches.push_back(counter);
+        switchCluster[3].push_back(counter);
+
         body+="switch(__choose(\""+workDir+"/switch.txt\","+std::to_string(counter)+"))\n{\n";
         body+="case "+std::to_string(case_count++)+": {\n";
         body+="\nbreak;\n}\n";
@@ -730,17 +738,17 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             macroCode[index]=currentBody;
             index++;
-            caseKind[patch_it->second].push_back(case_count);
+            // caseKind[patch_it->second].push_back(case_count);
 
             case_count++;
         }
         body+="}\n";
 
         idAndCase[counter]=casePatch;
-        for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
-                kindIt!=caseKind.end();kindIt++){
-            caseCluster[counter].push_back(kindIt->second);
-        }
+        // for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
+        //         kindIt!=caseKind.end();kindIt++){
+        //     caseCluster[counter].push_back(kindIt->second);
+        // }
 
         switchGroup.push_back(counter);
         counter++;
@@ -752,7 +760,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     return body+"}\n";
 }
 
-CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,std::string work_dir):sourceManager(M) {
+CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,std::string work_dir):sourceManager(M),switchCluster() {
     workDir=work_dir;
     std::map<ASTLocTy,std::string> original_str;
     std::vector<RepairCandidate> rc1;
@@ -856,6 +864,9 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     macroMap.clear();
     idAndCase.clear();
     switchCluster.clear();
+    for (size_t i=0;i<4;i++){
+        switchCluster.push_back(std::list<size_t>());
+    }
     switchLineMap.clear();
     index=0;
     counter=0;
@@ -891,8 +902,6 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             casePatch.clear();
             std::map<RepairCandidate::CandidateKind,std::list<int>> caseKind;
             caseKind.clear();
-            std::list<int> switchGroup;
-            switchGroup.clear();
             
             std::string last_code=resCodeSegs[src_file][resCodeSegs[src_file].size()-1];
             resCodeSegs[src_file].pop_back();
@@ -906,7 +915,6 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             // Add patch code to code
             resPatches[src_file].push_back(body);
             resCodeSegs[src_file].push_back(code.substr(end));
-            switchCluster.push_back(switchGroup);
         }
     }
 }
