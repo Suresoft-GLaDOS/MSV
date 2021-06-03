@@ -34,6 +34,7 @@ NewCodeMapTy combineCode(const CodeSegTy &codeSegs, const CodeSegTy &patch);
 class CodeRewriter {
     CodeSegTy resCodeSegs, resPatches;
     int counter;
+    SourceContextManager &sourceManager;
 
     std::map<long long,std::pair<int,int>> macroMap;
     std::map<long long,std::string> macroCode;
@@ -41,16 +42,22 @@ class CodeRewriter {
     std::map<int,std::map<int,std::string>> idAndCase;
     std::map<int,std::list<std::list<int>>> caseCluster;
     std::list<std::list<int>> switchCluster;
+    std::string workDir;
 
-    std::map<std::string,std::vector<std::pair<size_t,size_t>>> switchLineMap;
+    std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> switchLineMap;
 
     size_t addIsNeg(int id,int case_num,std::string code);
 public:
     int index;
     CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,
             std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc=std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>>(),std::string work_dir="");
-    std::map<ASTLocTy, std::map<std::string, RepairCandidate::CandidateKind> > eliminateAllNewLoc(SourceContextManager &M,
+
+    std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateKind>>> eliminateAllNewLoc(SourceContextManager &M,
         const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str);
+
+    std::string applyPatch(size_t &currentIndex,std::vector<std::pair<size_t,size_t>> &currentLocation,std::vector<ASTLocTy> &currentCandidate,
+        std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,const std::string code);
+
 
     CodeSegTy getCodeSegments() {
         return resCodeSegs;
@@ -84,7 +91,7 @@ public:
     std::map<long long,std::string> getMacroCode(){
         return macroCode;
     }
-    std::map<std::string,std::vector<std::pair<size_t,size_t>>> getSwitchLine(){
+    std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> getSwitchLine(){
         return switchLineMap;
     }
 };

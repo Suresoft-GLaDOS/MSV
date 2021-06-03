@@ -114,7 +114,7 @@ private:
         std::map<size_t,size_t> caseNum;
         std::list<std::list<int>> switchCluster;
         std::map<int,std::list<std::list<int>>> caseCluster;
-        std::vector<size_t> scoreInfo;
+        std::vector<std::set<size_t>> scoreInfo;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
         void save(){
@@ -132,36 +132,40 @@ private:
             }
             cJSON_AddItemToObject(json,std::string("case_num").c_str(),switchCase);
 
-            // Add switch cluster
-            cJSON *switchClusterArray=cJSON_CreateArray();
-            for (std::list<std::list<int>>::iterator it=switchCluster.begin();it!=switchCluster.end();it++){
-                cJSON *switchGroup=cJSON_CreateArray();
-                for (std::list<int>::iterator it2=it->begin();it2!=it->end();it2++){
-                    cJSON_AddItemToArray(switchGroup,cJSON_CreateNumber(*it2));
-                }
-                cJSON_AddItemToArray(switchClusterArray,switchGroup);
-            }
-            cJSON_AddItemToObject(json,std::string("switch_cluster").c_str(),switchClusterArray);
+            // // Add switch cluster
+            // cJSON *switchClusterArray=cJSON_CreateArray();
+            // for (std::list<std::list<int>>::iterator it=switchCluster.begin();it!=switchCluster.end();it++){
+            //     cJSON *switchGroup=cJSON_CreateArray();
+            //     for (std::list<int>::iterator it2=it->begin();it2!=it->end();it2++){
+            //         cJSON_AddItemToArray(switchGroup,cJSON_CreateNumber(*it2));
+            //     }
+            //     cJSON_AddItemToArray(switchClusterArray,switchGroup);
+            // }
+            // cJSON_AddItemToObject(json,std::string("switch_cluster").c_str(),switchClusterArray);
 
-            // Add case cluster
-            cJSON *caseClusterArray=cJSON_CreateArray();
-            for (std::map<int,std::list<std::list<int>>>::iterator it=caseCluster.begin();it!=caseCluster.end();it++){
-                cJSON *caseBySwitch=cJSON_CreateArray();
-                for (std::list<std::list<int>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
-                    cJSON *caseInSwitch=cJSON_CreateArray();
-                    for (std::list<int>::iterator it3=it2->begin();it3!=it2->end();it3++){
-                        cJSON_AddItemToArray(caseInSwitch,cJSON_CreateNumber(*it3));
-                    }
-                    cJSON_AddItemToArray(caseBySwitch,caseInSwitch);
-                }
-                cJSON_AddItemToArray(caseClusterArray,caseBySwitch);
-            }
-            cJSON_AddItemToObject(json,std::string("case_cluster").c_str(),caseClusterArray);
+            // // Add case cluster
+            // cJSON *caseClusterArray=cJSON_CreateArray();
+            // for (std::map<int,std::list<std::list<int>>>::iterator it=caseCluster.begin();it!=caseCluster.end();it++){
+            //     cJSON *caseBySwitch=cJSON_CreateArray();
+            //     for (std::list<std::list<int>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
+            //         cJSON *caseInSwitch=cJSON_CreateArray();
+            //         for (std::list<int>::iterator it3=it2->begin();it3!=it2->end();it3++){
+            //             cJSON_AddItemToArray(caseInSwitch,cJSON_CreateNumber(*it3));
+            //         }
+            //         cJSON_AddItemToArray(caseBySwitch,caseInSwitch);
+            //     }
+            //     cJSON_AddItemToArray(caseClusterArray,caseBySwitch);
+            // }
+            // cJSON_AddItemToObject(json,std::string("case_cluster").c_str(),caseClusterArray);
 
             // Save scores
             cJSON *scoreArray=cJSON_CreateArray();
-            for (std::vector<size_t>::iterator it=scoreInfo.begin();it!=scoreInfo.end();it++){
-                cJSON_AddItemToArray(scoreArray,cJSON_CreateNumber(*it));
+            for (std::vector<std::set<size_t>>::iterator it=scoreInfo.begin();it!=scoreInfo.end();it++){
+                cJSON *currentSwithes=cJSON_CreateArray();
+                for (std::set<size_t>::iterator it2=it->begin();it2!=it->end();it2++)
+                    cJSON_AddItemToArray(currentSwithes,cJSON_CreateNumber(*it2));
+                
+                cJSON_AddItemToArray(scoreArray,currentSwithes);
             }
             cJSON_AddItemToObject(json,std::string("priority").c_str(),scoreArray);
 
