@@ -43,7 +43,7 @@ class CodeRewriter {
     std::list<std::list<int>> switchCluster;
     std::string workDir;
 
-    std::map<std::string,std::vector<std::pair<size_t,size_t>>> switchLineMap;
+    std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> switchLineMap;
 
     size_t addIsNeg(int id,int case_num,std::string code);
 public:
@@ -55,7 +55,7 @@ public:
         const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str);
 
     std::string applyPatch(size_t &currentIndex,std::vector<std::pair<size_t,size_t>> &currentLocation,std::vector<ASTLocTy> &currentCandidate,
-        std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateKind>>> &res1,const std::string code);
+        std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,const std::string code);
 
 
     CodeSegTy getCodeSegments() {
@@ -90,7 +90,7 @@ public:
     std::map<long long,std::string> getMacroCode(){
         return macroCode;
     }
-    std::map<std::string,std::vector<std::pair<size_t,size_t>>> getSwitchLine(){
+    std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> getSwitchLine(){
         return switchLineMap;
     }
 };

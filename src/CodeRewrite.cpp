@@ -516,11 +516,14 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
 }
 
 std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<size_t,size_t>> &currentLocation,std::vector<ASTLocTy> &currentCandidate,
-        std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateKind>>> &res1,const std::string code){
+        std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,const std::string code){
     // if (currentLocation[currentIndex].second==0) return "";
     size_t start = currentLocation[currentIndex].first;
     size_t end = currentLocation[currentIndex].second;
+    ASTLocTy loc=currentCandidate[currentIndex];
     // outlog_printf(2,"Location: %d %d\n",start,end);
+    std::vector<size_t> currentSwitches;
+    currentSwitches.clear();
 
     int case_count=0;
     // assert( end >= last_end);
@@ -534,6 +537,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
     // Insert before
     if(res1[currentCandidate[currentIndex]][2].size()>0){
+        currentSwitches.push_back(counter);
         body+="switch(__choose(\""+workDir+"/switch.txt\","+std::to_string(counter)+"))\n{\n";
         body+="case "+std::to_string(case_count++)+": \n";
         body+="break;\n";
@@ -575,6 +579,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     // Condition Synthesize
     if(res1[currentCandidate[currentIndex]][1].size()>0){
         case_count=0;
+        currentSwitches.push_back(counter);
         std::string subPatch=code.substr(start,end-start);
         std::pair<size_t,size_t> conditionLoc=getConditionLocation(subPatch);
         // body+="{\n"+conditionTypes[currentCandidate[currentIndex]].getAsString()+" __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
@@ -630,7 +635,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     while (currentIndex+1<currentLocation.size() && currentLocation[currentIndex+1].second<=end){
         currentIndex++;
         size_t beforeIndex=currentIndex;
-        std::string subPatch=applyPatch(currentIndex,currentLocation,currentCandidate,res1,code);
+        std::string subPatch=applyPatch(currentIndex,currentLocation,currentCandidate,res1,line,code);
 
         std::string last=bodyCodes[bodyCodes.size()-1];
         bodyCodes.pop_back();
@@ -650,6 +655,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     // Normal replace
     if(res1[currentCandidate[currentIndex]][0].size()>0 && origBody!="break;\n"){
         case_count=0;
+        currentSwitches.push_back(counter);
         body+="switch(__choose(\""+workDir+"/switch.txt\","+std::to_string(counter)+"))\n{\n";
         body+="case "+std::to_string(case_count++)+": {\n";
         body+=origBody;
@@ -698,6 +704,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     // Insert after
     if(res1[currentCandidate[currentIndex]][3].size()>0){
         case_count=0;
+        currentSwitches.push_back(counter);
         body+="switch(__choose(\""+workDir+"/switch.txt\","+std::to_string(counter)+"))\n{\n";
         body+="case "+std::to_string(case_count++)+": {\n";
         body+="\nbreak;\n}\n";
@@ -734,6 +741,9 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         switchGroup.push_back(counter);
         counter++;
     }
+    
+    for (size_t i=0;i<currentSwitches.size();i++)
+        switchLineMap[loc.filename][line[loc]].push_back(currentSwitches[i]);
 
     return body+"}\n";
 }
@@ -777,7 +787,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     // We then categorize location based on the src_file and their offset
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > res2;
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > tmp_loc;
-    std::map<std::string, std::set<std::pair<size_t,size_t>>> line;
+    std::map<std::string, std::map<ASTLocTy,std::pair<size_t,size_t>>> line;
     res2.clear();
     tmp_loc.clear();
     line.clear();
@@ -795,7 +805,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         // We reverse the start and end for sorting purpose
         tmp_loc[src_file].insert(std::make_pair(std::make_pair(offset_pair.first,
                         offset_pair.second), loc));
-        line[src_file].insert(getStartEndLine(M,loc));
+        line[src_file][loc]=getStartEndLine(M,loc);
     }
 
     // Sorting res2 with start location
@@ -857,7 +867,6 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         resCodeSegs[src_file].push_back(code);
         std::vector<std::pair<size_t,size_t>> currentLocation=location[src_file];
         std::vector<ASTLocTy> currentCandidate=candidate[src_file];
-        std::set<std::pair<size_t,size_t>> locInFile=line[src_file];
         long long cur_start = -1;
         long long cur_end = -1;
         long long last_end = 0;
@@ -888,46 +897,12 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
 
             resCodeSegs[src_file].push_back(code.substr(seg_start,start-seg_start));
 
-            std::string body=applyPatch(i,currentLocation,currentCandidate,res1,code);
+            std::string body=applyPatch(i,currentLocation,currentCandidate,res1,line[src_file],code);
 
             // Add patch code to code
             resPatches[src_file].push_back(body);
             resCodeSegs[src_file].push_back(code.substr(end));
             switchCluster.push_back(switchGroup);
         }
-
-        // process line
-        std::set<std::pair<size_t,size_t>>eraseIts;
-        eraseIts.clear();
-        for (std::set<std::pair<size_t,size_t>>::iterator lineIt=locInFile.begin();lineIt!=locInFile.end();lineIt++){
-            for (std::set<std::pair<size_t,size_t>>::iterator switchIt=locInFile.begin();switchIt!=locInFile.end();switchIt++){
-                if ((switchIt->first>=lineIt->first && switchIt->second<lineIt->second) ||
-                        (switchIt->first>lineIt->first && switchIt->second<=lineIt->second)){
-                    eraseIts.insert(*switchIt);
-                }
-            }
-        }
-
-        for (std::set<std::pair<size_t,size_t>>::iterator eraseIt=eraseIts.begin();eraseIt!=eraseIts.end();eraseIt++){
-            locInFile.erase(*eraseIt);
-        }
-        std::vector<std::pair<size_t,size_t>> lineVec;
-        lineVec.clear();
-        for (std::set<std::pair<size_t,size_t>>::iterator lineIt=locInFile.begin();lineIt!=locInFile.end();lineIt++){
-            lineVec.push_back(*lineIt);
-        }
-        for (size_t i=1;i<lineVec.size();i++) {
-            std::pair<size_t,size_t> temp=lineVec[i];
-            size_t j;
-            for (j=i;j>=1 && lineVec[j-1].first>=temp.first;j--){
-                // if (location[j-1].first==temp.first)
-                    // if (location[j-1].second<temp.second)
-                    //     continue;
-                lineVec[j]=lineVec[j-1];
-            }
-            lineVec[j]=temp;
-        }
-
-        switchLineMap[src_file]=lineVec;
     }
 }
