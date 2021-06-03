@@ -576,11 +576,12 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     }
 
     size_t conditionCounter=counter;
+    ASTContext *ctxt = sourceManager.getSourceContext(loc.filename);
     // Condition Synthesize
     if(res1[currentCandidate[currentIndex]][1].size()>0){
         case_count=0;
         currentSwitches.push_back(counter);
-        std::string subPatch=code.substr(start,end-start);
+        std::string subPatch=stmtToString(*ctxt,loc.stmt);
         std::pair<size_t,size_t> conditionLoc=getConditionLocation(subPatch);
         // body+="{\n"+conditionTypes[currentCandidate[currentIndex]].getAsString()+" __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
         body+="{\nlong long __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
@@ -627,11 +628,14 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
     // Apply sub-patches to original body
     std::string origBody="";
+    size_t indexBackup=currentIndex;
     std::vector<std::string> bodyCodes;
     bodyCodes.clear();
-    bodyCodes.push_back(code.substr(start,end-start));
+    if (res1[currentCandidate[indexBackup]][1].size()>0 && code.substr(start,2)!="if")
+        bodyCodes.push_back(stmtToString(*ctxt,loc.stmt));
+    else
+        bodyCodes.push_back(code.substr(start,end-start));
     size_t beforeEnd=start;
-    size_t indexBackup=currentIndex;
     while (currentIndex+1<currentLocation.size() && currentLocation[currentIndex+1].second<=end){
         currentIndex++;
         size_t beforeIndex=currentIndex;
@@ -748,7 +752,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     return body+"}\n";
 }
 
-CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,std::string work_dir) {
+CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,std::string work_dir):sourceManager(M) {
     workDir=work_dir;
     std::map<ASTLocTy,std::string> original_str;
     std::vector<RepairCandidate> rc1;

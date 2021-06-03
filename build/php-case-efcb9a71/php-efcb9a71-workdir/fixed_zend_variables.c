@@ -746,8 +746,12 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
           }
           {
-            long long __temp2 = (zvalue->value.str.val);
-            ;
+            long long __temp2 =
+                (zvalue->value.str.val &&
+                 !(((zvalue->value.str.val) >=
+                    (compiler_globals.interned_strings_start)) &&
+                   ((zvalue->value.str.val) <
+                    (compiler_globals.interned_strings_end))));
             switch (
                 __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                          "php-efcb9a71-workdir/switch.txt",
@@ -801,7 +805,9 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
                          "php-efcb9a71-workdir/switch.txt",
                          3)) {
             case 0: {
-              STR_FREE_REL(__temp2);
+              if (__temp2) {
+                _efree((zvalue->value.str.val));
+              }
 
               break;
             }
@@ -1471,7 +1477,8 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
           }
           {
             long long __temp6 =
-                (zvalue->value.ht && (zvalue->value.ht != &EG(symbol_table)));
+                (zvalue->value.ht &&
+                 (zvalue->value.ht != &(executor_globals.symbol_table)));
             switch (
                 __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                          "php-efcb9a71-workdir/switch.txt",
@@ -6119,7 +6126,11 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 #endif
           }
           {
-            long long __temp27 = (!IS_INTERNED(zvalue->value.str.val));
+            long long __temp27 =
+                (!(((zvalue->value.str.val) >=
+                    (compiler_globals.interned_strings_start)) &&
+                   ((zvalue->value.str.val) <
+                    (compiler_globals.interned_strings_end))));
             switch (
                 __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                          "php-efcb9a71-workdir/switch.txt",
@@ -7332,7 +7343,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #endif
     }
     {
-      long long __temp34 = (Z_TYPE_PP(p) & (IS_LEXICAL_VAR | IS_LEXICAL_REF));
+      long long __temp34 = ((**p).type & (32 | 64));
       switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                        "php-efcb9a71-workdir/switch.txt",
                        34)) {
@@ -8354,7 +8365,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #endif
             }
             {
-              long long __temp38 = (!EG(active_symbol_table));
+              long long __temp38 = (!(executor_globals.active_symbol_table));
               switch (
                   __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                            "php-efcb9a71-workdir/switch.txt",
@@ -9456,9 +9467,9 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
             }
             {
               long long __temp43 =
-                  (zend_hash_quick_find(EG(active_symbol_table), key->arKey,
-                                        key->nKeyLength, key->h,
-                                        (void **)&p) == FAILURE);
+                  (zend_hash_quick_find((executor_globals.active_symbol_table),
+                                        key->arKey, key->nKeyLength, key->h,
+                                        (void **)&p) == -1);
               switch (
                   __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                            "php-efcb9a71-workdir/switch.txt",
@@ -10620,7 +10631,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #endif
                           }
                           {
-                            long long __temp47 = (Z_ISREF_PP(p));
+                            long long __temp47 = (zval_isref_p(*(p)));
                             switch (__choose("/root/project/prophet-gpl/build/"
                                              "php-case-efcb9a71/"
                                              "php-efcb9a71-workdir/switch.txt",
@@ -16831,8 +16842,9 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     }
     {
       long long __temp61 =
-          (zend_hash_quick_add(target, key->arKey, key->nKeyLength, key->h,
-                               &tmp, sizeof(zval *), NULL) == SUCCESS);
+          (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength,
+                                          key->h, &tmp, sizeof(zval *),
+                                          ((void *)0), (1 << 1)) == 0);
       switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
                        "php-efcb9a71-workdir/switch.txt",
                        61)) {
