@@ -722,9 +722,10 @@ public:
                                 duplicated.insert(switchIt->second[j]);
                                 switches.insert(switchIt->second[j]);
                             }
-                        if(switches.size()>0)
+                        if(switches.size()>0){
                             finalScore.push_back(switches);
-                        break;
+                            break;
+                        }
                     }
                 }
             }
