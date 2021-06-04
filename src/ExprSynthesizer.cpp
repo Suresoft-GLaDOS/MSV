@@ -702,6 +702,7 @@ public:
         macroCode=R.getMacroCode();
 
         locations=R.getSwitchLine();
+        // Get priority of switches with localization!
         std::vector<std::set<size_t>> finalScore;
         finalScore.clear();
         std::set<size_t> duplicated;
@@ -711,20 +712,20 @@ public:
                 std::string currentFile=it->first;
                 std::map<std::pair<size_t,size_t>,std::vector<size_t>> switchLoc=it->second;
 
-                std::set<size_t> switches;
-                switches.clear();
                 for (std::map<std::pair<size_t,size_t>,std::vector<size_t>>::iterator switchIt=switchLoc.begin();switchIt!=switchLoc.end();switchIt++){
+                    std::set<size_t> switches;
+                    switches.clear();
                     if (scores[i].first==it->first &&
-                            ((scores[i].second)>=(switchIt->first.second)) && ((scores[i].second)<=(switchIt->first.first+1))){
+                            ((scores[i].second)>=(switchIt->first.second)) && ((scores[i].second)<=(switchIt->first.first))){
                         for (size_t j=0;j<switchIt->second.size();j++)
                             if (duplicated.count(switchIt->second[j])==0){
                                 duplicated.insert(switchIt->second[j]);
                                 switches.insert(switchIt->second[j]);
                             }
+                        if(switches.size()>0)
+                            finalScore.push_back(switches);
+                        break;
                     }
-                }
-                if (switches.size()>0){
-                    finalScore.push_back(switches);
                 }
             }
         }
