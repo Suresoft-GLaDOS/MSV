@@ -702,25 +702,53 @@ public:
         macroCode=R.getMacroCode();
 
         locations=R.getSwitchLine();
+        // Sort lines
+        std::map<std::string,std::vector<std::pair<size_t,size_t>>> sortedLines;
+        sortedLines.clear();
+        for (std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>>::iterator it=locations.begin();it!=locations.end();it++){
+            std::vector<std::pair<size_t,size_t>> sorted;
+            sorted.clear();
+
+            for (std::map<std::pair<size_t,size_t>,std::vector<size_t>>::iterator switchIt=it->second.begin();switchIt!=it->second.end();switchIt++)
+                sorted.push_back(switchIt->first);
+            
+            for (size_t i=1;i<sorted.size();i++) {
+                std::pair<size_t,size_t> temp=sorted[i];
+                size_t j;
+                for (j=i;j>=1;j--){
+                    if (sorted[j-1].second==temp.second)
+                        if (sorted[j-1].first<temp.first)
+                            break;
+                    else if (sorted[j-1].second<temp.second)
+                        break;
+                    sorted[j]=sorted[j-1];
+                }
+                sorted[j]=temp;
+            }
+
+            sortedLines[it->first]=sorted;
+        }
+
         // Get priority of switches with localization!
         std::vector<std::set<size_t>> finalScore;
         finalScore.clear();
         std::set<size_t> duplicated;
         duplicated.clear();
+        
         for (size_t i=0;i<scores.size();i++){
             for (std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>>::iterator it=locations.begin();it!=locations.end();it++){
                 std::string currentFile=it->first;
-                std::map<std::pair<size_t,size_t>,std::vector<size_t>> switchLoc=it->second;
+                std::vector<std::pair<size_t,size_t>> switchLoc=sortedLines[currentFile];
 
-                for (std::map<std::pair<size_t,size_t>,std::vector<size_t>>::iterator switchIt=switchLoc.begin();switchIt!=switchLoc.end();switchIt++){
+                for (std::vector<std::pair<size_t,size_t>>::iterator switchIt=switchLoc.begin();switchIt!=switchLoc.end();switchIt++){
                     std::set<size_t> switches;
                     switches.clear();
                     if (scores[i].first==it->first &&
-                            ((scores[i].second)>=(switchIt->first.second)) && ((scores[i].second)<=(switchIt->first.first))){
-                        for (size_t j=0;j<switchIt->second.size();j++)
-                            if (duplicated.count(switchIt->second[j])==0){
-                                duplicated.insert(switchIt->second[j]);
-                                switches.insert(switchIt->second[j]);
+                            ((scores[i].second)>=(switchIt->first)) && ((scores[i].second)<=(switchIt->second))){
+                        for (size_t j=0;j<it->second[*switchIt].size();j++)
+                            if (duplicated.count(it->second[*switchIt][j])==0){
+                                duplicated.insert(it->second[*switchIt][j]);
+                                switches.insert(it->second[*switchIt][j]);
                             }
                         if(switches.size()>0){
                             finalScore.push_back(switches);
