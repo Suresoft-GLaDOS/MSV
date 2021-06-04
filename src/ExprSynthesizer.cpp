@@ -715,7 +715,7 @@ public:
                 switches.clear();
                 for (std::map<std::pair<size_t,size_t>,std::vector<size_t>>::iterator switchIt=switchLoc.begin();switchIt!=switchLoc.end();switchIt++){
                     if (scores[i].first==it->first &&
-                            ((scores[i].second)>=(switchIt->first.first)) && ((scores[i].second)<=(switchIt->first.second))){
+                            ((scores[i].second)>=(switchIt->first.second)) && ((scores[i].second)<=(switchIt->first.first+1))){
                         for (size_t j=0;j<switchIt->second.size();j++)
                             if (duplicated.count(switchIt->second[j])==0){
                                 duplicated.insert(switchIt->second[j]);

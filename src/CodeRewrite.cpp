@@ -754,8 +754,11 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         counter++;
     }
     
-    for (size_t i=0;i<currentSwitches.size();i++)
-        switchLineMap[loc.filename][line[loc]].push_back(currentSwitches[i]);
+    for (size_t i=0;i<currentSwitches.size();i++){
+        // save line with reversed, to get priority precisely
+        std::pair<size_t,size_t> reversedLine(line[loc].second,line[loc].first);
+        switchLineMap[loc.filename][reversedLine].push_back(currentSwitches[i]);
+    }
 
     return body+"}\n";
 }
