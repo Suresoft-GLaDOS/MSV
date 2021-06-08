@@ -38,7 +38,7 @@ class CodeRewriter {
 
     std::map<long long,std::pair<int,int>> macroMap;
     std::map<long long,std::string> macroCode;
-    std::map<std::pair<int,int>,std::vector<IsNegInformation>> isNegLocation;
+    std::vector<std::pair<size_t,size_t>> isNegLocation;
     std::map<int,std::map<int,std::string>> idAndCase;
     // std::map<int,std::list<std::list<int>>> caseCluster;
     std::vector<std::list<size_t>> switchCluster;
@@ -46,7 +46,7 @@ class CodeRewriter {
 
     std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> switchLineMap;
 
-    size_t addIsNeg(int id,int case_num,std::string code);
+    void addIsNeg(size_t id,size_t case_num,std::string code);
 public:
     int index;
     CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,
@@ -85,7 +85,7 @@ public:
     // std::map<int,std::list<std::list<int>>> getCaseCluster(){
     //     return caseCluster;
     // }
-    std::map<std::pair<int,int>,std::vector<IsNegInformation>> getIsNegLocation(){
+    std::vector<std::pair<size_t,size_t>> getIsNegLocation(){
         return isNegLocation;
     }
     std::map<long long,std::string> getMacroCode(){

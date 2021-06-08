@@ -937,12 +937,14 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     assert(ret == 0);
 }*/
 
-void BenchProgram::createTestSwitch(const size_t switchCount){
+void BenchProgram::createTestSwitch(const size_t switchCount,std::pair<size_t,size_t> idAndCase){
     std::ofstream fout(work_dir+"/switch.txt");
     for (int i=0;i<switchCount;i++){
-        if (i==switchId){
+        if (i==switchId && idAndCase.second==0){
             fout << caseNum << "\n";
         }
+        else if (i==idAndCase.first)
+            fout << idAndCase.second << "\n";
         else{
             fout << 0 << "\n";
         }

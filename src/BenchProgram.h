@@ -291,7 +291,7 @@ public:
             const std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
             std::string output_name="");
 
-    void createTestSwitch(const size_t switchCount);
+    void createTestSwitch(const size_t switchCount,std::pair<size_t,size_t> idAndCase=std::pair<size_t,size_t>(0,0));
     TestCaseSetTy testSet(const std::string &subDir, const TestCaseSetTy &case_set,
             const EnvMapTy &envMap, bool pass_basic_src_dir = false);
 

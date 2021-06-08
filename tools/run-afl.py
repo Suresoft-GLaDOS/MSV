@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import os
 import sys
 import subprocess
@@ -24,7 +24,7 @@ def main(argv):
     with open(os.path.join(arg_dict['w'], 'switch-info.json')) as json_file:
         switch_json = json.load(json_file)
 
-    switches = switch_json["case_cluster"]
+    # switches = switch_json["case_cluster"]
     priority = switch_json["priority"]
     switch_num = switch_json["switch_num"]
     print(switch_num, type(switch_num))
@@ -64,7 +64,7 @@ def main(argv):
             out = ""
         print("out:")
         print(out)
-        lines = out.split("\n")
+        lines = out.splitlines()
         test_section = False
         for line in lines:
             tokens = line.split()

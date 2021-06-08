@@ -552,6 +552,10 @@ protected:
     std::vector<std::pair<std::string,size_t>> &scores;
     std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> locations;
 
+    // For condition synthesizing
+    std::vector<std::pair<size_t,size_t>> conditionLocation;
+    std::map<std::pair<size_t,size_t>,std::map<size_t,std::vector<size_t>>> records;
+
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, false);
     }
@@ -639,13 +643,67 @@ protected:
         return result;
     }
 
+    /* These methods are for condition recording */
+    std::vector<unsigned long> parseBranchRecord() {
+        std::vector<unsigned long> res;
+        res.clear();
+        FILE *f = fopen(ISNEG_TMPFILE, "r");
+        //llvm::errs() << "New code\n" << new_code << "\n";
+        if (!f) {
+            outlog_printf(3, "Not caught by the negative case, give up!\n");
+            //DEBUG(fprintf(stderr, "Not caught by the negative case, give up!\n"));
+            //llvm::errs() << tmp_passed.size() << "\n";
+            //assert(0);
+            return res;
+        }
+        unsigned long n;
+        int ret = fscanf(f, "%lu", &n);
+        // FIXME: this is hacky!
+        if (ret != 1) {
+            fclose(f);
+            return res;
+        }
+        for (size_t i = 0; i < n; i++) {
+            unsigned long tmp;
+            int ret = fscanf(f, "%lu", &tmp);
+            // FIXME: something wierd, we get out!
+            if (ret != 1) {
+                fclose(f);
+                printf("Error on reading records!\n");
+                return std::vector<unsigned long>();
+            }
+            res.push_back(tmp);
+        }
+        fclose(f);
+        return res;
+    }
+
+    void writeBranchRecordTerminator() {
+        FILE*f = fopen(ISNEG_TMPFILE, "a");
+        fprintf(f, " 0");
+        fclose(f);
+    }
+
+    void writeBranchRecord(const std::map<unsigned long,std::vector<unsigned long>> &negative_records,unsigned long case_id) {
+        FILE *f = fopen(ISNEG_TMPFILE, "w");
+        std::map<unsigned long,std::vector<unsigned long>>::const_iterator fit = negative_records.find(case_id);
+        assert( fit != negative_records.end() );
+        // FIXME: We use only closest record, write all record!
+        const std::vector<unsigned long> &tmp_vec = fit->second;
+        fprintf(f, "%lu", (unsigned long)tmp_vec.size());
+        for (size_t i = 0; i < tmp_vec.size(); i++)
+            fprintf(f, " %lu", tmp_vec[i]);
+        fprintf(f, "\n");
+        fclose(f);
+    }
+
 public:
     BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
             std::vector<std::pair<std::string,size_t>> &scores):
     P(P), learning(learning), M(M), scores(scores),
     negative_cases(P.getNegativeCaseSet()),
     positive_cases(P.getPositiveCaseSet()),
-    candidates(),
+    candidates(),conditionLocation(),records(),
     failed_cases(),
     functionLoc(functionLoc),locations(),
     naive(naive) {}
@@ -770,27 +828,83 @@ public:
         codes=a_code;
         patches=a_patch;
         res.push_back((unsigned long)codes.size());
-        // OK, this is hacky, we are going to propagate this change to other place,
-        // only here
-        //if (!naive) {
-        if (false){
-            DuplicateDetector D(M, a_code, a_patch);
-            if (D.hasDuplicateCodeToPatch()) {
-                CodeSegTy a_new_code = D.getNewCodeSegments();
-                CodeSegTy a_new_patch = D.getNewPatches();
-                {
-                    outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu (duplicate):\n", get_timer(),
-                            codes.size());
-                    out_codes(a_new_code, a_new_patch);
+
+        conditionLocation=R.getIsNegLocation();
+        return res;
+    }
+
+    /**
+     * Run condition synthesizing function to get correct record
+     * 
+     */
+    void getConditionRecord(const BenchProgram::EnvMapTy &env){
+        outlog_printf(2,"Recording bit vectors for condition synthesizing...\n");
+        for (size_t i=0;i<conditionLocation.size();i++){
+            std::pair<size_t,size_t> currentPatch(conditionLocation[i].first,conditionLocation[i].second);
+            outlog_printf(2,"\nTrying %u-%u\n",currentPatch.first,currentPatch.second);
+            P.createTestSwitch(idAndCase.size(),currentPatch);
+            // First going to make sure it passes all negative cases
+            for (TestCaseSetTy::iterator case_it = negative_cases.begin();
+                    case_it != negative_cases.end(); ++case_it) {
+                // OK, we are going to try 10 times for different path combination before
+                // we give up!
+                size_t it_cnt = 0;
+                BenchProgram::EnvMapTy testEnv = env;
+                testEnv.insert(std::make_pair("IS_NEG", "1"));
+                testEnv.insert(std::make_pair("NEG_ARG", "1"));
+                testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
+                int ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
+                assert( ret == 0);
+                bool passed = false;
+                while (it_cnt < 10) {
+                    // llvm::errs() << "Testing iteration: " << it_cnt << "\n";
+                    passed = P.test(std::string("src"), *case_it, testEnv, false);
+                    std::vector<unsigned long> tmp_v = parseBranchRecord();
+                    writeBranchRecordTerminator();
+                    // We hit some strange error, we just assume we cannot pass this case
+                    if (tmp_v.size() == 0) passed = false;
+                    if (passed) {
+                        outlog_printf(2, "Passed in iteration!\n");
+                        records[currentPatch][*case_it]=tmp_v;
+                        break;
+                    }
+                    bool has_zero = false;
+                    for (size_t j = 0; j < tmp_v.size(); j++)
+                        if (tmp_v[j] == 0) {
+                            has_zero = true;
+                            break;
+                        }
+                    if (!has_zero) break;
+                    it_cnt ++;
                 }
-                for (size_t i=0;i<candidate.size();i++)
-                    candidates.push_back(candidate[i]);
-                codes=a_new_code;
-                patches=a_new_patch;
-                res.push_back(codes.size());
+                // We will going to try all 1 before we finally give up this case
+                if (!passed){
+                    outlog_printf(2,"Trying with all records to 1!\n");
+                    testEnv = env;
+                    testEnv.insert(std::make_pair("IS_NEG", "1"));
+                    testEnv.insert(std::make_pair("NEG_ARG", "0"));
+                    testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
+                    ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
+                    assert( ret == 0);
+                    passed = P.test(std::string("src"), *case_it, testEnv, false);
+                    if (passed) {
+                        std::vector<unsigned long> tmp_v = parseBranchRecord();
+                        // FIXME: strange error in wireshark, we just ignore right now
+                        if (tmp_v.size() == 0) {
+                            outlog_printf(0, "Strange error or non-deterministic behavior!\n");
+                            continue;
+                        }
+                        assert(tmp_v.size() != 0);
+                        records[currentPatch][*case_it]=tmp_v;
+                    }
+                    else {
+                        // Still failed, we are going to give up
+                        outlog_printf(2,"Failed!\n");
+                        continue;
+                    }
+                }
             }
         }
-        return res;
     }
 
     virtual clang::Expr* getFillExpr(size_t id) {
@@ -1720,7 +1834,7 @@ class ConditionSynthesisTester : public BasicTester {
     std::vector<std::set<ExprFillInfo> *> infos_set;
     std::map<BenchProgram::EnvMapTy,ValueRecordTy> valueRecords;
     std::map<BenchProgram::EnvMapTy,BranchRecordTy> branchRecords;
-    std::map<std::pair<int,int>,std::vector<IsNegInformation>> isNegLocation;
+    std::vector<std::pair<size_t,size_t>> isNegLocation;
     bool full_synthesis;
     unsigned long post_cnt;
 
@@ -2359,7 +2473,8 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
-        // bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
+        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
+        T->getConditionRecord(BenchProgram::EnvMapTy());
         // if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
         //     result_init=T->test(BenchProgram::EnvMapTy(),0,true);
         // else

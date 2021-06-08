@@ -391,23 +391,10 @@ RepairCandidate::CandidateKind getCandidateKind(std::string code){
         else return RepairCandidate::CandidateKind::GuardKind;
     }
 }
-size_t CodeRewriter::addIsNeg(int id,int case_num,std::string code){
+void CodeRewriter::addIsNeg(size_t id,size_t case_num,std::string code){
     size_t position=code.find("__is_neg");
-    size_t count=0;
-
-    std::pair<int,int> location(id,case_num);
-    isNegLocation[location].clear();
-
-    while (position!=std::string::npos){
-        count++;
-        position=code.find("(",position);
-        std::pair<int,int> location(id,case_num);
-        IsNegInformation info(id,case_num,count,getCandidateKind(code.substr(position-10)));
-        isNegLocation[location].push_back(info);
-
-        position=code.find("__is_neg",position);
-    }
-    return count;
+    if (position!=std::string::npos)
+        isNegLocation.push_back(std::pair<size_t,size_t>(id,case_num));
 }
 std::pair<size_t,size_t> getConditionLocation(std::string ifCode){
     size_t nextLine=0;
@@ -546,9 +533,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
         for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[currentIndex]][2].begin();
                 patch_it!=res1[currentCandidate[currentIndex]][2].end();patch_it++){
-            // size_t isNegCount=getIsNegCount(patch_it->first);
-            // if (isNegCount>=2) continue;
-            // isNegCount=addIsNeg(counter,case_count,patch_it->first);
+            addIsNeg(counter,case_count,patch_it->first);
 
             body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
@@ -596,10 +581,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
         for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[currentIndex]][1].begin();
                 patch_it!=res1[currentCandidate[currentIndex]][1].end();patch_it++){
-            // outlog_printf(2,"%s\n",patch_it->first.c_str());
-            // size_t isNegCount=getIsNegCount(patch_it->first);
-            // if (isNegCount>=2) continue;
-            // isNegCount=addIsNeg(counter,case_count,patch_it->first);
+            addIsNeg(counter,case_count,patch_it->first);
 
             body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
@@ -673,9 +655,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
         for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[currentIndex]][0].begin();
                 patch_it!=res1[currentCandidate[currentIndex]][0].end();patch_it++){
-            // size_t isNegCount=getIsNegCount(patch_it->first);
-            // if (isNegCount>=2) continue;
-            // isNegCount=addIsNeg(counter,case_count,patch_it->first);
+            addIsNeg(counter,case_count,patch_it->first);
 
             body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
@@ -723,9 +703,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
         for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[currentIndex]][3].begin();
                 patch_it!=res1[currentCandidate[currentIndex]][3].end();patch_it++){
-            // size_t isNegCount=getIsNegCount(patch_it->first);
-            // if (isNegCount>=2) continue;
-            // isNegCount=addIsNeg(counter,case_count,patch_it->first);
+            addIsNeg(counter,case_count,patch_it->first);
 
             body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";

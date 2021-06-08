@@ -6,16 +6,570 @@ Total 2027 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2027
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2027
+[77] Preprocess the following candidate with BasicTester: 2027
 Generating patches...
-[78] BasicTester, a patch instance with id 0:
+[77] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2086
 Saving this fix to: /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
+Preprocessing test...
+Trying to build with all macros...
+1th build...
+2th build...
+Build Success!
+Build failed, Trying to find fail macros...
+Building final program...
+Total success macros: 2082
+Success to build final program!
+Recording bit vectors for condition synthesizing...
+
+Trying 0-44
+Trying with all records to 1!
+Failed!
+
+Trying 1-38
+Trying with all records to 1!
+Failed!
+
+Trying 2-1
+Trying with all records to 1!
+Failed!
+
+Trying 2-2
+Trying with all records to 1!
+Failed!
+
+Trying 2-3
+Trying with all records to 1!
+Failed!
+
+Trying 3-1
+Trying with all records to 1!
+Failed!
+
+Trying 3-2
+Trying with all records to 1!
+Failed!
+
+Trying 4-34
+Trying with all records to 1!
+Failed!
+
+Trying 5-38
+Trying with all records to 1!
+Failed!
+
+Trying 6-1
+Trying with all records to 1!
+Failed!
+
+Trying 6-2
+Trying with all records to 1!
+Failed!
+
+Trying 6-3
+Trying with all records to 1!
+Failed!
+
+Trying 7-36
+Trying with all records to 1!
+Failed!
+
+Trying 8-7
+Trying with all records to 1!
+Failed!
+
+Trying 9-36
+Trying with all records to 1!
+Failed!
+
+Trying 10-10
+Trying with all records to 1!
+Failed!
+
+Trying 11-10
+Trying with all records to 1!
+Failed!
+
+Trying 12-34
+Trying with all records to 1!
+Failed!
+
+Trying 13-39
+Trying with all records to 1!
+Failed!
+
+Trying 14-46
+Trying with all records to 1!
+Failed!
+
+Trying 15-34
+Trying with all records to 1!
+Failed!
+
+Trying 16-36
+Trying with all records to 1!
+Failed!
+
+Trying 17-28
+Trying with all records to 1!
+Failed!
+
+Trying 18-34
+Trying with all records to 1!
+Failed!
+
+Trying 19-1
+Trying with all records to 1!
+Failed!
+
+Trying 20-30
+Trying with all records to 1!
+Failed!
+
+Trying 21-29
+Trying with all records to 1!
+Failed!
+
+Trying 22-1
+Trying with all records to 1!
+Failed!
+
+Trying 23-25
+Trying with all records to 1!
+Failed!
+
+Trying 24-1
+Trying with all records to 1!
+Failed!
+
+Trying 25-43
+Trying with all records to 1!
+Failed!
+
+Trying 26-37
+Trying with all records to 1!
+Failed!
+
+Trying 27-1
+Trying with all records to 1!
+Failed!
+
+Trying 27-2
+Trying with all records to 1!
+Failed!
+
+Trying 28-1
+Trying with all records to 1!
+Failed!
+
+Trying 28-2
+Trying with all records to 1!
+Failed!
+
+Trying 29-33
+Trying with all records to 1!
+Failed!
+
+Trying 30-1
+Trying with all records to 1!
+Failed!
+
+Trying 31-25
+Trying with all records to 1!
+Failed!
+
+Trying 32-1
+Trying with all records to 1!
+Failed!
+
+Trying 33-59
+Trying with all records to 1!
+Failed!
+
+Trying 33-60
+Trying with all records to 1!
+Failed!
+
+Trying 33-61
+Trying with all records to 1!
+Failed!
+
+Trying 33-62
+Trying with all records to 1!
+Failed!
+
+Trying 33-63
+Trying with all records to 1!
+Failed!
+
+Trying 34-1
+Trying with all records to 1!
+Failed!
+
+Trying 34-2
+Trying with all records to 1!
+Failed!
+
+Trying 35-50
+Trying with all records to 1!
+Failed!
+
+Trying 35-51
+Trying with all records to 1!
+Failed!
+
+Trying 35-52
+Trying with all records to 1!
+Failed!
+
+Trying 35-53
+Trying with all records to 1!
+Failed!
+
+Trying 35-54
+Trying with all records to 1!
+Failed!
+
+Trying 36-1
+Trying with all records to 1!
+Failed!
+
+Trying 37-50
+Trying with all records to 1!
+Failed!
+
+Trying 37-51
+Trying with all records to 1!
+Failed!
+
+Trying 37-52
+Trying with all records to 1!
+Failed!
+
+Trying 37-53
+Trying with all records to 1!
+Failed!
+
+Trying 37-54
+Trying with all records to 1!
+Failed!
+
+Trying 38-1
+Trying with all records to 1!
+Failed!
+
+Trying 38-2
+Trying with all records to 1!
+Failed!
+
+Trying 39-49
+Trying with all records to 1!
+Failed!
+
+Trying 39-50
+Trying with all records to 1!
+Failed!
+
+Trying 39-51
+Trying with all records to 1!
+Failed!
+
+Trying 39-52
+Trying with all records to 1!
+Failed!
+
+Trying 39-53
+Trying with all records to 1!
+Failed!
+
+Trying 40-1
+Trying with all records to 1!
+Failed!
+
+Trying 41-1
+Trying with all records to 1!
+Failed!
+
+Trying 42-59
+Trying with all records to 1!
+Failed!
+
+Trying 42-60
+Trying with all records to 1!
+Failed!
+
+Trying 42-61
+Trying with all records to 1!
+Failed!
+
+Trying 42-62
+Trying with all records to 1!
+Failed!
+
+Trying 42-63
+Trying with all records to 1!
+Failed!
+
+Trying 43-1
+Trying with all records to 1!
+Failed!
+
+Trying 43-2
+Trying with all records to 1!
+Failed!
+
+Trying 44-57
+Trying with all records to 1!
+Failed!
+
+Trying 44-58
+Trying with all records to 1!
+Failed!
+
+Trying 44-59
+Trying with all records to 1!
+Failed!
+
+Trying 44-60
+Trying with all records to 1!
+Failed!
+
+Trying 44-61
+Trying with all records to 1!
+Failed!
+
+Trying 45-1
+Trying with all records to 1!
+Failed!
+
+Trying 45-2
+Trying with all records to 1!
+Failed!
+
+Trying 46-55
+Trying with all records to 1!
+Failed!
+
+Trying 46-56
+Trying with all records to 1!
+Failed!
+
+Trying 46-57
+Trying with all records to 1!
+Failed!
+
+Trying 46-58
+Trying with all records to 1!
+Failed!
+
+Trying 46-59
+Trying with all records to 1!
+Failed!
+
+Trying 47-1
+Trying with all records to 1!
+Failed!
+
+Trying 47-2
+Trying with all records to 1!
+Failed!
+
+Trying 48-52
+Trying with all records to 1!
+Failed!
+
+Trying 48-53
+Trying with all records to 1!
+Failed!
+
+Trying 48-54
+Trying with all records to 1!
+Failed!
+
+Trying 48-55
+Trying with all records to 1!
+Failed!
+
+Trying 48-56
+Trying with all records to 1!
+Failed!
+
+Trying 49-1
+Trying with all records to 1!
+Failed!
+
+Trying 50-53
+Trying with all records to 1!
+Failed!
+
+Trying 50-54
+Trying with all records to 1!
+Failed!
+
+Trying 50-55
+Trying with all records to 1!
+Failed!
+
+Trying 50-56
+Trying with all records to 1!
+Failed!
+
+Trying 50-57
+Trying with all records to 1!
+Failed!
+
+Trying 51-1
+Trying with all records to 1!
+Failed!
+
+Trying 52-49
+Trying with all records to 1!
+Failed!
+
+Trying 52-50
+Trying with all records to 1!
+Failed!
+
+Trying 52-51
+Trying with all records to 1!
+Failed!
+
+Trying 52-52
+Trying with all records to 1!
+Failed!
+
+Trying 52-53
+Trying with all records to 1!
+Failed!
+
+Trying 53-209
+Trying with all records to 1!
+Failed!
+
+Trying 54-49
+Trying with all records to 1!
+Failed!
+
+Trying 54-50
+Trying with all records to 1!
+Failed!
+
+Trying 54-51
+Trying with all records to 1!
+Failed!
+
+Trying 54-52
+Trying with all records to 1!
+Failed!
+
+Trying 54-53
+Trying with all records to 1!
+Failed!
+
+Trying 55-45
+Trying with all records to 1!
+Failed!
+
+Trying 56-45
+Trying with all records to 1!
+Failed!
+
+Trying 57-45
+Trying with all records to 1!
+Failed!
+
+Trying 58-45
+Trying with all records to 1!
+Failed!
+
+Trying 59-45
+Trying with all records to 1!
+Failed!
+
+Trying 60-50
+Trying with all records to 1!
+Failed!
+
+Trying 60-51
+Trying with all records to 1!
+Failed!
+
+Trying 60-52
+Trying with all records to 1!
+Failed!
+
+Trying 60-53
+Trying with all records to 1!
+Failed!
+
+Trying 60-54
+Trying with all records to 1!
+Failed!
+
+Trying 61-1
+Trying with all records to 1!
+Failed!
+
+Trying 61-2
+Trying with all records to 1!
+Failed!
+
+Trying 62-49
+Trying with all records to 1!
+Failed!
+
+Trying 62-50
+Trying with all records to 1!
+Failed!
+
+Trying 62-51
+Trying with all records to 1!
+Failed!
+
+Trying 62-52
+Trying with all records to 1!
+Failed!
+
+Trying 62-53
+Trying with all records to 1!
+Failed!
+
+Trying 63-45
+Trying with all records to 1!
+Failed!
+
+Trying 64-45
+Trying with all records to 1!
+Failed!
+
+Trying 65-49
+Trying with all records to 1!
+Failed!
+
+Trying 65-50
+Trying with all records to 1!
+Failed!
+
+Trying 65-51
+Trying with all records to 1!
+Failed!
+
+Trying 65-52
+Trying with all records to 1!
+Failed!
+
+Trying 65-53
+Trying with all records to 1!
+Failed!
+
+Trying 66-1
+Trying with all records to 1!
+Failed!
 The total number of explored concrete patches: 0
 Repair process ends successfully!
 Total 2027 different repair schemas!!!!
 Total 7772 different repair candidate templates for scoring!!!
 Total 5915 different partial repair candidate templates!!
-Total number of compiles: 0
-Total number of test eval: 0
+Total number of compiles: 1
+Total number of test eval: 1381

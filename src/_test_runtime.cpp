@@ -122,17 +122,15 @@ extern "C" int __is_neg(const char *location,int int_size,const int *ints, int c
         if (tmp && (strcmp(tmp, "1") == 0)) {
             char* tmp_file = getenv("TMP_FILE");
             assert(tmp_file);
-            int isFlip=0;
             // First time here, we need to read a tmp file to know
             // where we are
             if (!init) {
-                fprintf(stderr,"Initing 1!\n");
+                // fprintf(stderr,"Initing 1!\n");
                 init = true;
                 FILE *f = fopen(tmp_file, "r");
                 if (f == NULL) {
                     records_sz = 0;
                     current_cnt = 0;
-                    isFlip=0;
                 }
                 else {
                     unsigned long n;
@@ -149,61 +147,21 @@ extern "C" int __is_neg(const char *location,int int_size,const int *ints, int c
                     ret = fscanf(f, "%lu", &tmp);
                     fclose(f);
                     if (ret != 0) {
-                    //     assert( tmp == 0);
-                    //     assert( records_sz > 0);
-                    //     long long i = records_sz - 1;
-                    //     while (i >= 0) {
-                    //         if (records[i] == 0)
-                    //             break;
-                    //         else
-                    //             i--;
-                    //     }
-                    //     assert( i >= 0);
-                    //     records[i] = 1;
-                    //     records_sz = i + 1;
-                        current_cnt = 0;
-                        isFlip=1;
-                    } else
-                    {
-                        // current_cnt = records_sz;
-                        // current_cnt=0;
-                    }
-                }
-            }
-            if (isFlip==1){
-                // If size is 1, do simple flip
-                if (records_sz==1){
-                    if (records[0]==0) records[0]=1;
-                    else records[0]=0;
-                }
-                else{
-                    // Get temp pointer for get random seed
-                    char *temp=(char *)malloc(1);
-                    srand(reinterpret_cast<std::uintptr_t>(temp));
-                    free(temp);
-
-                    // Mutate configuration with MCMC sampling
-                    int isOneBit=rand()%100;
-                    if (isOneBit<ONE_OR_N_BIT){
-                        int position=rand()%records_sz;
-                        if (records[position]==0) records[position]=1;
-                        else records[position]=0;
-                    }
-                    else{
-                        int length=rand()%records_sz;
-                        int position[MAXSZ];
-                        for (int i=0;i<length;i++){
-                            position[i]=rand()%records_sz;
-                            for (int j=0;j<i;j++){
-                                if (position[j]==position[i]){
-                                    i--;
-                                    break;
-                                }
-                            }
-
-                            if (records[position[i]]==0) records[position[i]]=1;
-                            else records[position[i]]=0;
+                        assert( tmp == 0);
+                        assert( records_sz > 0);
+                        long long i = records_sz - 1;
+                        while (i >= 0) {
+                            if (records[i] == 0)
+                                break;
+                            else
+                                i--;
                         }
+                        assert( i >= 0);
+                        records[i] = 1;
+                        records_sz = i + 1;
+                        current_cnt = 0;
+                    } else{
+                        current_cnt = records_sz;
                     }
                 }
             }
@@ -215,30 +173,31 @@ extern "C" int __is_neg(const char *location,int int_size,const int *ints, int c
             else {
                 if (records_sz < MAXSZ){
                     records[records_sz++] = 0;
-                    isFlip=0;
                 }
             }
             current_cnt ++;
 
-            fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
+            // fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
             // We write back immediate
             FILE *f = fopen(tmp_file, "w");
             assert( f != NULL );
             fprintf(f, "%lu ", records_sz);
-            fprintf(stderr, "Size: %lu\n",records_sz);
+            // fprintf(stderr, "Size: %lu\n",records_sz);
+            // fprintf(stderr, "Record: ");
             for (unsigned long i = 0; i < records_sz; i++) {
                 fprintf(f, "%lu", records[i]);
-                fprintf(stderr, "Record: %lu\n",records[i]);
+                // fprintf(stderr, "%lu ",records[i]);
                 if (i != records_sz - 1)
                     fprintf(f, " ");
             }
+            // fprintf(stderr, "\n");
             fclose(f);
 
             return ret;
         }
         // we always return 1
         else {
-            fprintf(stderr,"Initing 0!\n");
+            // fprintf(stderr,"Initing 0!\n");
             // First time here, we need to read a tmp file to know
             // where we are
             if (!init) {
@@ -273,7 +232,7 @@ extern "C" int __is_neg(const char *location,int int_size,const int *ints, int c
             }
             records[records_sz ++] = 1;
             current_cnt ++;
-            fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
+            // fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
 
             char* tmp_file = getenv("TMP_FILE");
             assert(tmp_file);
@@ -281,14 +240,16 @@ extern "C" int __is_neg(const char *location,int int_size,const int *ints, int c
             FILE *f = fopen(tmp_file, "w");
             assert( f != NULL );
             fprintf(f, "%lu ", records_sz);
-            fprintf(stderr, "Size: %lu\n",records_sz);
+            // fprintf(stderr, "Size: %lu\n",records_sz);
+            // fprintf(stderr, "Record: ");
             for (unsigned long i = 0; i < records_sz; i++) {
                 fprintf(f, "%lu", records[i]);
-                fprintf(stderr, "Record: %lu\n",records[i]);
+                // fprintf(stderr, "%lu ",records[i]);
                 if (i != records_sz - 1)
                     fprintf(f, " ");
             }
             fclose(f);
+            // fprintf(stderr, "\n");
             return 1;
         }
     }
