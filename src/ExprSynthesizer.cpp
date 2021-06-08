@@ -841,7 +841,7 @@ public:
         outlog_printf(2,"Recording bit vectors for condition synthesizing...\n");
         for (size_t i=0;i<conditionLocation.size();i++){
             std::pair<size_t,size_t> currentPatch(conditionLocation[i].first,conditionLocation[i].second);
-            outlog_printf(2,"\nTrying %u-%u\n",currentPatch.first,currentPatch.second);
+            outlog_printf(2,"Trying %u-%u\n",currentPatch.first,currentPatch.second);
             P.createTestSwitch(idAndCase.size(),currentPatch);
             // First going to make sure it passes all negative cases
             for (TestCaseSetTy::iterator case_it = negative_cases.begin();
@@ -879,7 +879,6 @@ public:
                 }
                 // We will going to try all 1 before we finally give up this case
                 if (!passed){
-                    outlog_printf(2,"Trying with all records to 1!\n");
                     testEnv = env;
                     testEnv.insert(std::make_pair("IS_NEG", "1"));
                     testEnv.insert(std::make_pair("NEG_ARG", "0"));
@@ -896,6 +895,7 @@ public:
                         }
                         assert(tmp_v.size() != 0);
                         records[currentPatch][*case_it]=tmp_v;
+                        outlog_printf(2, "Passed with all 1!\n");
                     }
                     else {
                         // Still failed, we are going to give up

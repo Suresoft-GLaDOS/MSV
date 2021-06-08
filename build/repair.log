@@ -6,9 +6,9 @@ Total 2027 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2027
 Generating meta-program...
-[77] Preprocess the following candidate with BasicTester: 2027
+[76] Preprocess the following candidate with BasicTester: 2027
 Generating patches...
-[77] BasicTester, a patch instance with id 0:
+[76] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2086
 Saving this fix to: /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -25,11 +25,9 @@ Recording bit vectors for condition synthesizing...
 
 Trying 0-44
 Trying with all records to 1!
-Failed!
 
 Trying 1-38
 Trying with all records to 1!
-Failed!
 
 Trying 2-1
 Trying with all records to 1!
@@ -41,15 +39,12 @@ Failed!
 
 Trying 2-3
 Trying with all records to 1!
-Failed!
 
 Trying 3-1
 Trying with all records to 1!
-Failed!
 
 Trying 3-2
 Trying with all records to 1!
-Failed!
 
 Trying 4-34
 Trying with all records to 1!
@@ -96,12 +91,10 @@ Trying with all records to 1!
 Failed!
 
 Trying 13-39
-Trying with all records to 1!
-Failed!
+Passed in iteration!
 
 Trying 14-46
-Trying with all records to 1!
-Failed!
+Passed in iteration!
 
 Trying 15-34
 Trying with all records to 1!
@@ -120,8 +113,7 @@ Trying with all records to 1!
 Failed!
 
 Trying 19-1
-Trying with all records to 1!
-Failed!
+Passed in iteration!
 
 Trying 20-30
 Trying with all records to 1!
@@ -444,8 +436,7 @@ Trying with all records to 1!
 Failed!
 
 Trying 53-209
-Trying with all records to 1!
-Failed!
+Passed in iteration!
 
 Trying 54-49
 Trying with all records to 1!
@@ -508,40 +499,34 @@ Trying with all records to 1!
 Failed!
 
 Trying 61-1
-Trying with all records to 1!
-Failed!
+Passed in iteration!
 
 Trying 61-2
 Trying with all records to 1!
 Failed!
 
 Trying 62-49
-Trying with all records to 1!
-Failed!
+Passed in iteration!
 
 Trying 62-50
 Trying with all records to 1!
 Failed!
 
 Trying 62-51
-Trying with all records to 1!
-Failed!
+Passed in iteration!
 
 Trying 62-52
 Trying with all records to 1!
 Failed!
 
 Trying 62-53
-Trying with all records to 1!
-Failed!
+Passed in iteration!
 
 Trying 63-45
-Trying with all records to 1!
-Failed!
+Passed in iteration!
 
 Trying 64-45
-Trying with all records to 1!
-Failed!
+Passed in iteration!
 
 Trying 65-49
 Trying with all records to 1!
@@ -572,4 +557,4 @@ Total 2027 different repair schemas!!!!
 Total 7772 different repair candidate templates for scoring!!!
 Total 5915 different partial repair candidate templates!!
 Total number of compiles: 1
-Total number of test eval: 1381
+Total number of test eval: 1317
