@@ -899,7 +899,6 @@ public:
                     }
                     else {
                         // Still failed, we are going to give up
-                        outlog_printf(2,"Failed!\n");
                         continue;
                     }
                 }
