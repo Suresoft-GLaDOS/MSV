@@ -296,6 +296,9 @@ class php_tester:
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=env);
         chdir(ori_dir);
         (out, err) = p.communicate();
+        php_out=open(self.work_dir+"/temp.out","w")
+        php_out.write(out)
+        php_out.close()
         # print out
         # print err
         lines = out.split("\n");

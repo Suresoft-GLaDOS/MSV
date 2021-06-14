@@ -51,34 +51,32 @@ def main(argv):
     os.chdir(os.path.join(arg_dict["w"], "src"))
     afl_cmd = ["afl-fuzz", "-o", "out", "-m", "none", "-d", "-n", "-t",
                str(timeout * 1000), "-w", arg_dict["w"]]
-    php_cmd = ["--", "timeout", str(timeout - 1), "./sapi/cli/php", "./run-tests.php", "-p", "./sapi/cli/php"]
-    for test in neg_test:
-        os.system("rm -rf ./out")
-        test_cmd = afl_cmd + ["-u", "{0:05d}".format(test)] + php_cmd + \
-            [os.path.join(arg_dict["w"], "tests", "{0:05d}.phpt".format(test))]
-        print(test_cmd)
-        p = subprocess.Popen(test_cmd, stdout=subprocess.PIPE)
-        (out, err) = p.communicate()
-        if out == None:
-            print("none")
-            out = ""
-        print("out:")
-        print(out)
-        lines = out.splitlines()
-        test_section = False
-        for line in lines:
-            tokens = line.split()
-            if len(tokens) == 0:
-                continue
-            if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
-                test_section = True
-            elif (tokens[0][0:6] == "======") and (test_section == True):
-                test_section = False
-            elif (test_section == True):
-                if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
-                    print("PASS!")
-                elif (tokens[0] == "Fatal") or (tokens[0] == "FAIL"):
-                    exit(1)
+    afl_cmd += ["--", "timeout", str(timeout - 1), conf_dict['tools_dir']+'/php-test.py', arg_dict['w']+'/src', arg_dict['w']+'tests', arg_dict['w']]
+
+    os.system("rm -rf ./out")
+    print(afl_cmd)
+    p = subprocess.Popen(afl_cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    (out, err) = p.communicate()
+    if out == None:
+        print("none")
+        out = ""
+    print("out:")
+    print(out)
+    lines = out.splitlines()
+    test_section = False
+    for line in lines:
+        tokens = line.split()
+        if len(tokens) == 0:
+            continue
+        if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
+            test_section = True
+        elif (tokens[0][0:6] == "======") and (test_section == True):
+            test_section = False
+        elif (test_section == True):
+            if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
+                print("PASS!")
+            elif (tokens[0] == "Fatal") or (tokens[0] == "FAIL"):
+                exit(1)
     exit(0)
 
 

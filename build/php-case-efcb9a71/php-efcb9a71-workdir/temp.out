@@ -1,0 +1,31 @@
+
+=====================================================================
+PHP         : ./sapi/cli/php 
+PHP_SAPI    : cli
+PHP_VERSION : 5.3.99-dev
+ZEND_VERSION: 2.4.0
+PHP_OS      : Linux - Linux e7b4c2dae444 4.15.0-128-generic #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020 x86_64
+INI actual  : /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/src
+More .INIs  :  
+CWD         : /root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/src
+Extra dirs  : 
+VALGRIND    : Not used
+=====================================================================
+Running selected tests.
+TEST 1/1 [/root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/__cleantests/01442.phpt]FAIL Bug #54039 (use() of static variables in lambda functions can break staticness) [/root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/__cleantests/01442.phpt] 
+=====================================================================
+Number of tests :    1                 1
+Tests skipped   :    0 (  0.0%) --------
+Tests warned    :    0 (  0.0%) (  0.0%)
+Tests failed    :    1 (100.0%) (100.0%)
+Expected fail   :    0 (  0.0%) (  0.0%)
+Tests passed    :    0 (  0.0%) (  0.0%)
+---------------------------------------------------------------------
+Time taken      :    0 seconds
+=====================================================================
+
+=====================================================================
+FAILED TEST SUMMARY
+---------------------------------------------------------------------
+Bug #54039 (use() of static variables in lambda functions can break staticness) [/root/project/prophet-gpl/build/php-case-efcb9a71/php-efcb9a71-workdir/__cleantests/01442.phpt]
+=====================================================================
