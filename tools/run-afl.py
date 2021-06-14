@@ -51,7 +51,7 @@ def main(argv):
     os.chdir(os.path.join(arg_dict["w"], "src"))
     afl_cmd = ["afl-fuzz", "-o", "out", "-m", "none", "-d", "-n", "-t",
                str(timeout * 1000), "-w", arg_dict["w"]]
-    afl_cmd += ["--", "timeout", str(timeout - 1), conf_dict['tools_dir']+'/php-test.py', arg_dict['w']+'/src', arg_dict['w']+'tests', arg_dict['w']]
+    afl_cmd += ["--", conf_dict['tools_dir']+'/php-test.py', arg_dict['w']+'/src', arg_dict['w']+'tests', arg_dict['w']]
 
     os.system("rm -rf ./out")
     print(afl_cmd)
