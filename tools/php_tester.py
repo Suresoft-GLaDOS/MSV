@@ -17,7 +17,7 @@
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 import sys
 import subprocess
-from os import path, chdir, getcwd, environ, system, mkdir, walk
+from os import path, chdir, getcwd, environ, system, mkdir, walk,remove
 import shutil
 from tester_common import get_fix_revisions
 
@@ -296,9 +296,14 @@ class php_tester:
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=env);
         chdir(ori_dir);
         (out, err) = p.communicate();
-        php_out=open(self.work_dir+"/temp.out","w")
-        php_out.write(out)
-        php_out.close()
+
+        if path.exists(self.work_dir+'/temp.out'):
+            remove(self.work_dir+'/temp.out')
+        for i in s:
+            output=self.work_dir+'/__cleantest/'+str(i).zfill(5)+'.out'
+            if path.exists(output):
+                shutil.copyfile(self.work_dir+'/__cleantest/'+str(i).zfill(5)+'.out',self.work_dir+'/temp.out')
+        
         # print out
         # print err
         lines = out.split("\n");
