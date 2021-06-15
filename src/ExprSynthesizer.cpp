@@ -2473,7 +2473,7 @@ class TestBatcher {
         // This should success
         P.saveFixedFiles(combined,fixedFile);
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
-        // T->getConditionRecord(BenchProgram::EnvMapTy());
+        T->getConditionRecord(BenchProgram::EnvMapTy());
         // if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
         //     result_init=T->test(BenchProgram::EnvMapTy(),0,true);
         // else
