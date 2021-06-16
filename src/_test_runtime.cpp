@@ -335,19 +335,8 @@ extern "C" int __is_neg(const char *location,int int_size,const int *ints, int c
     return 0;
 }
 
-extern "C" int __choose(char *table_file,const int id) {
+extern "C" int __choose(char *switch_id) {
     // fprintf(stderr,"id: %d\n",id);
-    int result;
-
-    FILE *file=fopen(table_file,"r");
-    if (file==NULL)
-        return 0;
-    
-    for (int i=0;i<=id;i++){
-        fscanf(file,"%d",&result);
-    }
-
-    fclose(file);
-
+    int result=atoi(getenv(switch_id));
     return result;
 }

@@ -230,10 +230,16 @@ class php_initializer:
         return ret;
 
 class php_tester:
-    def __init__(self, work_dir, repo_dir, test_dir):
+    def __init__(self, work_dir, repo_dir, test_dir,total_switch=0,choose_switch=0,choose_case=0):
         self.repo_dir = repo_dir;
         self.test_dir = test_dir;
         self.work_dir = work_dir;
+
+        self.env=environ
+        for i in range(total_switch):
+            self.env['__SWITCH'+str(i)]='0'
+        if choose_case != 0:
+            self.env['__SWITCH'+str(choose_switch)]=str(choose_case)
         f = open(test_dir + "/testfile.log", "r");
         line = f.readline();
         f.close();
@@ -268,7 +274,6 @@ class php_tester:
     # test the php build with testcases [test_id, test_id+n)
     def _test(self, s, profile_dir = ""):
         #print "###############3php_tester: _test()"
-        env=environ
         assert(path.exists(self.repo_dir+"/sapi/cli/php"));
         assert(path.exists(self.repo_dir+"/run-tests.php"));
         # prog = self.repo_dir+"/sapi/cli/php";
@@ -293,7 +298,7 @@ class php_tester:
         # TODO: afl_cmd=["afl_fuzz","-w",self.work_dir,"-p",self.repo_dir+"/sapi/cli/php","-h",test_prog] + arg_list
         # -t(timeout) can be optional
         cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=env);
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=self.env);
         chdir(ori_dir);
         (out, err) = p.communicate();
 

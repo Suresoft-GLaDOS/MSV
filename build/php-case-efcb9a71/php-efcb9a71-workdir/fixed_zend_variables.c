@@ -2,7 +2,7 @@ int __get_mutant();
 int __is_neg(const char *, int, const int *, int, const char *, int,
              const void **, int, const double *, ...);
 int __abst_hole();
-int __choose(char *, const int);
+int __choose(char *);
 void *memset(void *, int, unsigned long);
 /*
    +----------------------------------------------------------------------+
@@ -35,9 +35,7 @@ void *memset(void *, int, unsigned long);
 ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     0)) {
+    switch (__choose("__SWITCH0")) {
     case 0:
       break;
 #ifdef COMPILE_0
@@ -409,9 +407,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     19)) {
+    switch (__choose("__SWITCH19")) {
     case 0: {
       switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
       case IS_STRING:
@@ -419,9 +415,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       case IS_CLASS:
         CHECK_ZVAL_STRING_REL(zvalue);
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           1)) {
+          switch (__choose("__SWITCH1")) {
           case 0:
             break;
 #ifdef COMPILE_44
@@ -752,10 +746,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
                     (compiler_globals.interned_strings_start)) &&
                    ((zvalue->value.str.val) <
                     (compiler_globals.interned_strings_end))));
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         2)) {
+            switch (__choose("__SWITCH2")) {
             case 0: {
 
               break;
@@ -800,10 +791,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
             }
 #endif
             }
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         3)) {
+            switch (__choose("__SWITCH3")) {
             case 0: {
               if (__temp2) {
                 _efree((zvalue->value.str.val));
@@ -847,9 +835,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
           }
         }
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           4)) {
+          switch (__choose("__SWITCH4")) {
           case 0:
             break;
 #ifdef COMPILE_87
@@ -1148,9 +1134,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         TSRMLS_FETCH();
 
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           5)) {
+          switch (__choose("__SWITCH5")) {
           case 0:
             break;
 #ifdef COMPILE_121
@@ -1479,10 +1463,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
             long long __temp6 =
                 (zvalue->value.ht &&
                  (zvalue->value.ht != &(executor_globals.symbol_table)));
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         6)) {
+            switch (__choose("__SWITCH6")) {
             case 0: {
 
               break;
@@ -1521,17 +1502,11 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
             }
 #endif
             }
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         11)) {
+            switch (__choose("__SWITCH11")) {
             case 0: {
               if (__temp6) {
                 {
-                  switch (__choose(
-                      "/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                      "php-efcb9a71-workdir/switch.txt",
-                      7)) {
+                  switch (__choose("__SWITCH7")) {
                   case 0:
                     break;
 #ifdef COMPILE_162
@@ -1840,10 +1815,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
                   }
 #endif
                   }
-                  switch (__choose(
-                      "/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                      "php-efcb9a71-workdir/switch.txt",
-                      8)) {
+                  switch (__choose("__SWITCH8")) {
                   case 0: {
                     zend_hash_destroy(zvalue->value.ht);
 
@@ -1918,10 +1890,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
                   }
                 }
                 {
-                  switch (__choose(
-                      "/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                      "php-efcb9a71-workdir/switch.txt",
-                      9)) {
+                  switch (__choose("__SWITCH9")) {
                   case 0:
                     break;
 #ifdef COMPILE_206
@@ -2230,10 +2199,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
                   }
 #endif
                   }
-                  switch (__choose(
-                      "/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                      "php-efcb9a71-workdir/switch.txt",
-                      10)) {
+                  switch (__choose("__SWITCH10")) {
                   case 0: {
                     FREE_HASHTABLE(zvalue->value.ht);
 
@@ -2430,9 +2396,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         }
       }
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           12)) {
+          switch (__choose("__SWITCH12")) {
           case 0:
             break;
 #ifdef COMPILE_264
@@ -2730,9 +2694,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         TSRMLS_FETCH();
 
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           13)) {
+          switch (__choose("__SWITCH13")) {
           case 0:
             break;
 #ifdef COMPILE_298
@@ -3065,9 +3027,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
           }
 #endif
           }
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           14)) {
+          switch (__choose("__SWITCH14")) {
           case 0: {
             Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
 
@@ -3463,9 +3423,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         }
       }
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           15)) {
+          switch (__choose("__SWITCH15")) {
           case 0:
             break;
 #ifdef COMPILE_385
@@ -3764,9 +3722,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 
         /* destroy resource */
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           16)) {
+          switch (__choose("__SWITCH16")) {
           case 0:
             break;
 #ifdef COMPILE_419
@@ -4074,9 +4030,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
           }
 #endif
           }
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           17)) {
+          switch (__choose("__SWITCH17")) {
           case 0: {
             zend_list_delete(zvalue->value.lval);
 
@@ -4320,9 +4274,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
         }
       }
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           18)) {
+          switch (__choose("__SWITCH18")) {
           case 0:
             break;
 #ifdef COMPILE_484
@@ -4643,9 +4595,7 @@ ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     20)) {
+    switch (__choose("__SWITCH20")) {
     case 0:
       break;
 #ifdef COMPILE_519
@@ -4893,18 +4843,14 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     24)) {
+    switch (__choose("__SWITCH24")) {
     case 0: {
       switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
       case IS_STRING:
       case IS_CONSTANT:
         CHECK_ZVAL_STRING_REL(zvalue);
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           21)) {
+          switch (__choose("__SWITCH21")) {
           case 0:
             break;
 #ifdef COMPILE_549
@@ -5146,9 +5092,7 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
           }
 #endif
           }
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           22)) {
+          switch (__choose("__SWITCH22")) {
           case 0: {
             str_free(zvalue->value.str.val);
 
@@ -5174,9 +5118,7 @@ ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC) {
           }
         }
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           23)) {
+          switch (__choose("__SWITCH23")) {
           case 0:
             break;
 #ifdef COMPILE_579
@@ -5423,9 +5365,7 @@ ZEND_API void zval_add_ref(zval **p) { Z_ADDREF_PP(p); }
 ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     25)) {
+    switch (__choose("__SWITCH25")) {
     case 0:
       break;
 #ifdef COMPILE_605
@@ -5789,9 +5729,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     30)) {
+    switch (__choose("__SWITCH30")) {
     case 0: {
       switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
       case IS_RESOURCE: {
@@ -5807,9 +5745,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
       case IS_STRING:
         CHECK_ZVAL_STRING_REL(zvalue);
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           26)) {
+          switch (__choose("__SWITCH26")) {
           case 0:
             break;
 #ifdef COMPILE_648
@@ -6131,10 +6067,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
                     (compiler_globals.interned_strings_start)) &&
                    ((zvalue->value.str.val) <
                     (compiler_globals.interned_strings_end))));
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         27)) {
+            switch (__choose("__SWITCH27")) {
             case 0: {
 
               break;
@@ -6164,10 +6097,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
             }
 #endif
             }
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         28)) {
+            switch (__choose("__SWITCH28")) {
             case 0: {
               if (__temp27) {
                 zvalue->value.str.val = (char *)estrndup_rel(
@@ -6212,9 +6142,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
           }
         }
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           29)) {
+          switch (__choose("__SWITCH29")) {
           case 0:
             break;
 #ifdef COMPILE_689
@@ -6541,9 +6469,7 @@ ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC) {
 ZEND_API int zend_print_variable(zval *var) {
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     31)) {
+    switch (__choose("__SWITCH31")) {
     case 0:
       break;
 #ifdef COMPILE_723
@@ -6751,9 +6677,7 @@ ZEND_API int zend_print_variable(zval *var) {
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     32)) {
+    switch (__choose("__SWITCH32")) {
     case 0: {
       return zend_print_zval(var, 0);
 
@@ -6804,9 +6728,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     33)) {
+    switch (__choose("__SWITCH33")) {
     case 0:
       break;
 #ifdef COMPILE_749
@@ -7344,9 +7266,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     }
     {
       long long __temp34 = ((**p).type & (32 | 64));
-      switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                       "php-efcb9a71-workdir/switch.txt",
-                       34)) {
+      switch (__choose("__SWITCH34")) {
       case 0: {
 
         break;
@@ -7372,16 +7292,11 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                       "php-efcb9a71-workdir/switch.txt",
-                       59)) {
+      switch (__choose("__SWITCH59")) {
       case 0: {
         if (__temp34) {
           {
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         35)) {
+            switch (__choose("__SWITCH35")) {
             case 0:
               break;
 #ifdef COMPILE_814
@@ -7855,10 +7770,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
             }
 #endif
             }
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         36)) {
+            switch (__choose("__SWITCH36")) {
             case 0: {
               is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
 
@@ -7887,10 +7799,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
           }
 
           {
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         37)) {
+            switch (__choose("__SWITCH37")) {
             case 0:
               break;
 #ifdef COMPILE_870
@@ -8366,10 +8275,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
             }
             {
               long long __temp38 = (!(executor_globals.active_symbol_table));
-              switch (
-                  __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           38)) {
+              switch (__choose("__SWITCH38")) {
               case 0: {
 
                 break;
@@ -8395,17 +8301,11 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               }
 #endif
               }
-              switch (
-                  __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           41)) {
+              switch (__choose("__SWITCH41")) {
               case 0: {
                 if (__temp38) {
                   {
-                    switch (__choose(
-                        "/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                        "php-efcb9a71-workdir/switch.txt",
-                        39)) {
+                    switch (__choose("__SWITCH39")) {
                     case 0:
                       break;
 #ifdef COMPILE_926
@@ -8873,10 +8773,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                     }
 #endif
                     }
-                    switch (__choose(
-                        "/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                        "php-efcb9a71-workdir/switch.txt",
-                        40)) {
+                    switch (__choose("__SWITCH40")) {
                     case 0: {
                       zend_rebuild_symbol_table(TSRMLS_C);
 
@@ -8914,10 +8811,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
             }
           }
           {
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         42)) {
+            switch (__choose("__SWITCH42")) {
             case 0:
               break;
 #ifdef COMPILE_981
@@ -9470,10 +9364,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                   (zend_hash_quick_find((executor_globals.active_symbol_table),
                                         key->arKey, key->nKeyLength, key->h,
                                         (void **)&p) == -1);
-              switch (
-                  __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           43)) {
+              switch (__choose("__SWITCH43")) {
               case 0: {
 
                 break;
@@ -9505,10 +9396,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               }
 #endif
               }
-              switch (
-                  __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                           "php-efcb9a71-workdir/switch.txt",
-                           58)) {
+              switch (__choose("__SWITCH58")) {
               case 0: {
                 if (__temp43) {
                   if (is_ref) {
@@ -9523,10 +9411,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                   }
                 } else {
                   {
-                    switch (__choose(
-                        "/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                        "php-efcb9a71-workdir/switch.txt",
-                        44)) {
+                    switch (__choose("__SWITCH44")) {
                     case 0:
                       break;
 #ifdef COMPILE_1046
@@ -10062,10 +9947,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                     }
                     {
                       long long __temp45 = (is_ref);
-                      switch (__choose(
-                          "/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                          "php-efcb9a71-workdir/switch.txt",
-                          45)) {
+                      switch (__choose("__SWITCH45")) {
                       case 0: {
 
                         break;
@@ -10093,19 +9975,13 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                       }
 #endif
                       }
-                      switch (__choose(
-                          "/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                          "php-efcb9a71-workdir/switch.txt",
-                          57)) {
+                      switch (__choose("__SWITCH57")) {
                       case 0: {
                         if (__temp45) {
                           SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
                           tmp = *p;
                         } else {
-                          switch (__choose("/root/project/prophet-gpl/build/"
-                                           "php-case-efcb9a71/"
-                                           "php-efcb9a71-workdir/switch.txt",
-                                           46)) {
+                          switch (__choose("__SWITCH46")) {
                           case 0:
                             break;
 #ifdef COMPILE_1109
@@ -10632,10 +10508,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                           }
                           {
                             long long __temp47 = (zval_isref_p(*(p)));
-                            switch (__choose("/root/project/prophet-gpl/build/"
-                                             "php-case-efcb9a71/"
-                                             "php-efcb9a71-workdir/switch.txt",
-                                             47)) {
+                            switch (__choose("__SWITCH47")) {
                             case 0: {
 
                               break;
@@ -10665,18 +10538,11 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                             }
 #endif
                             }
-                            switch (__choose("/root/project/prophet-gpl/build/"
-                                             "php-case-efcb9a71/"
-                                             "php-efcb9a71-workdir/switch.txt",
-                                             56)) {
+                            switch (__choose("__SWITCH56")) {
                             case 0: {
                               if (__temp47) {
                                 {
-                                  switch (__choose(
-                                      "/root/project/prophet-gpl/build/"
-                                      "php-case-efcb9a71/php-efcb9a71-workdir/"
-                                      "switch.txt",
-                                      48)) {
+                                  switch (__choose("__SWITCH48")) {
                                   case 0:
                                     break;
 #ifdef COMPILE_1170
@@ -11194,11 +11060,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                   }
 #endif
                                   }
-                                  switch (__choose(
-                                      "/root/project/prophet-gpl/build/"
-                                      "php-case-efcb9a71/php-efcb9a71-workdir/"
-                                      "switch.txt",
-                                      49)) {
+                                  switch (__choose("__SWITCH49")) {
                                   case 0: {
                                     ALLOC_INIT_ZVAL(tmp);
 
@@ -11225,11 +11087,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                   }
                                 }
                                 {
-                                  switch (__choose(
-                                      "/root/project/prophet-gpl/build/"
-                                      "php-case-efcb9a71/php-efcb9a71-workdir/"
-                                      "switch.txt",
-                                      50)) {
+                                  switch (__choose("__SWITCH50")) {
                                   case 0:
                                     break;
 #ifdef COMPILE_1227
@@ -11752,11 +11610,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                   }
 #endif
                                   }
-                                  switch (__choose(
-                                      "/root/project/prophet-gpl/build/"
-                                      "php-case-efcb9a71/php-efcb9a71-workdir/"
-                                      "switch.txt",
-                                      51)) {
+                                  switch (__choose("__SWITCH51")) {
                                   case 0: {
                                     ZVAL_COPY_VALUE(tmp, *p);
 
@@ -11781,11 +11635,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                   }
                                 }
                                 {
-                                  switch (__choose(
-                                      "/root/project/prophet-gpl/build/"
-                                      "php-case-efcb9a71/php-efcb9a71-workdir/"
-                                      "switch.txt",
-                                      52)) {
+                                  switch (__choose("__SWITCH52")) {
                                   case 0:
                                     break;
 #ifdef COMPILE_1285
@@ -12276,11 +12126,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                   }
 #endif
                                   }
-                                  switch (__choose(
-                                      "/root/project/prophet-gpl/build/"
-                                      "php-case-efcb9a71/php-efcb9a71-workdir/"
-                                      "switch.txt",
-                                      53)) {
+                                  switch (__choose("__SWITCH53")) {
                                   case 0: {
                                     Z_SET_REFCOUNT_P(tmp, 0);
 
@@ -12289,7 +12135,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1338
                                   case 1: {
                                     // AddAndReplaceKind
-                                    __choose(tmp, 0);
+                                    __overflow(tmp, 0);
 
                                     break;
                                   }
@@ -12297,7 +12143,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1339
                                   case 2: {
                                     // AddAndReplaceKind
-                                    __overflow(tmp, 0);
+                                    __sigsetjmp(tmp, 0);
 
                                     break;
                                   }
@@ -12305,7 +12151,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1340
                                   case 3: {
                                     // AddAndReplaceKind
-                                    __sigsetjmp(tmp, 0);
+                                    __stpcpy(tmp, 0);
 
                                     break;
                                   }
@@ -12313,7 +12159,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1341
                                   case 4: {
                                     // AddAndReplaceKind
-                                    __stpcpy(tmp, 0);
+                                    __zend_realloc(tmp, 0);
 
                                     break;
                                   }
@@ -12321,7 +12167,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1342
                                   case 5: {
                                     // AddAndReplaceKind
-                                    __zend_realloc(tmp, 0);
+                                    _array_init(tmp, 0);
 
                                     break;
                                   }
@@ -12329,7 +12175,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1343
                                   case 6: {
                                     // AddAndReplaceKind
-                                    _array_init(tmp, 0);
+                                    _estrndup(tmp, 0);
 
                                     break;
                                   }
@@ -12337,7 +12183,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1344
                                   case 7: {
                                     // AddAndReplaceKind
-                                    _estrndup(tmp, 0);
+                                    _longjmp(tmp, 0);
 
                                     break;
                                   }
@@ -12345,7 +12191,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1345
                                   case 8: {
                                     // AddAndReplaceKind
-                                    _longjmp(tmp, 0);
+                                    _object_init_ex(tmp, 0);
 
                                     break;
                                   }
@@ -12353,7 +12199,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1346
                                   case 9: {
                                     // AddAndReplaceKind
-                                    _object_init_ex(tmp, 0);
+                                    _zend_bailout(tmp, 0);
 
                                     break;
                                   }
@@ -12361,7 +12207,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1347
                                   case 10: {
                                     // AddAndReplaceKind
-                                    _zend_bailout(tmp, 0);
+                                    _zend_mm_alloc(tmp, 0);
 
                                     break;
                                   }
@@ -12369,7 +12215,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1348
                                   case 11: {
                                     // AddAndReplaceKind
-                                    _zend_mm_alloc(tmp, 0);
+                                    _zend_mm_block_size(tmp, 0);
 
                                     break;
                                   }
@@ -12377,7 +12223,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1349
                                   case 12: {
                                     // AddAndReplaceKind
-                                    _zend_mm_block_size(tmp, 0);
+                                    _zend_mm_free(tmp, 0);
 
                                     break;
                                   }
@@ -12385,7 +12231,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1350
                                   case 13: {
                                     // AddAndReplaceKind
-                                    _zend_mm_free(tmp, 0);
+                                    add_index_null(tmp, 0);
 
                                     break;
                                   }
@@ -12393,7 +12239,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1351
                                   case 14: {
                                     // AddAndReplaceKind
-                                    add_index_null(tmp, 0);
+                                    add_next_index_bool(tmp, 0);
 
                                     break;
                                   }
@@ -12401,7 +12247,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1352
                                   case 15: {
                                     // AddAndReplaceKind
-                                    add_next_index_bool(tmp, 0);
+                                    add_next_index_long(tmp, 0);
 
                                     break;
                                   }
@@ -12409,7 +12255,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1353
                                   case 16: {
                                     // AddAndReplaceKind
-                                    add_next_index_long(tmp, 0);
+                                    add_next_index_resource(tmp, 0);
 
                                     break;
                                   }
@@ -12417,7 +12263,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1354
                                   case 17: {
                                     // AddAndReplaceKind
-                                    add_next_index_resource(tmp, 0);
+                                    add_next_index_zval(tmp, 0);
 
                                     break;
                                   }
@@ -12425,7 +12271,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1355
                                   case 18: {
                                     // AddAndReplaceKind
-                                    add_next_index_zval(tmp, 0);
+                                    add_trait_alias(tmp, 0);
 
                                     break;
                                   }
@@ -12433,7 +12279,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1356
                                   case 19: {
                                     // AddAndReplaceKind
-                                    add_trait_alias(tmp, 0);
+                                    bitwise_not_function(tmp, 0);
 
                                     break;
                                   }
@@ -12441,7 +12287,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1357
                                   case 20: {
                                     // AddAndReplaceKind
-                                    bitwise_not_function(tmp, 0);
+                                    boolean_not_function(tmp, 0);
 
                                     break;
                                   }
@@ -12449,7 +12295,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1358
                                   case 21: {
                                     // AddAndReplaceKind
-                                    boolean_not_function(tmp, 0);
+                                    bzero(tmp, 0);
 
                                     break;
                                   }
@@ -12457,7 +12303,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1359
                                   case 22: {
                                     // AddAndReplaceKind
-                                    bzero(tmp, 0);
+                                    compile_file(tmp, 0);
 
                                     break;
                                   }
@@ -12465,7 +12311,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1360
                                   case 23: {
                                     // AddAndReplaceKind
-                                    compile_file(tmp, 0);
+                                    compile_string(tmp, 0);
 
                                     break;
                                   }
@@ -12473,7 +12319,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1361
                                   case 24: {
                                     // AddAndReplaceKind
-                                    compile_string(tmp, 0);
+                                    convert_to_long_base(tmp, 0);
 
                                     break;
                                   }
@@ -12481,7 +12327,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1362
                                   case 25: {
                                     // AddAndReplaceKind
-                                    convert_to_long_base(tmp, 0);
+                                    dlopen(tmp, 0);
 
                                     break;
                                   }
@@ -12489,7 +12335,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1363
                                   case 26: {
                                     // AddAndReplaceKind
-                                    dlopen(tmp, 0);
+                                    dlsym(tmp, 0);
 
                                     break;
                                   }
@@ -12497,7 +12343,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1364
                                   case 27: {
                                     // AddAndReplaceKind
-                                    dlsym(tmp, 0);
+                                    drand48_r(tmp, 0);
 
                                     break;
                                   }
@@ -12505,7 +12351,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1365
                                   case 28: {
                                     // AddAndReplaceKind
-                                    drand48_r(tmp, 0);
+                                    execute_internal(tmp, 0);
 
                                     break;
                                   }
@@ -12513,7 +12359,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1366
                                   case 29: {
                                     // AddAndReplaceKind
-                                    execute_internal(tmp, 0);
+                                    explicit_bzero(tmp, 0);
 
                                     break;
                                   }
@@ -12521,7 +12367,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1367
                                   case 30: {
                                     // AddAndReplaceKind
-                                    explicit_bzero(tmp, 0);
+                                    fgetpos(tmp, 0);
 
                                     break;
                                   }
@@ -12529,7 +12375,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1368
                                   case 31: {
                                     // AddAndReplaceKind
-                                    fgetpos(tmp, 0);
+                                    fopen(tmp, 0);
 
                                     break;
                                   }
@@ -12537,7 +12383,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1369
                                   case 32: {
                                     // AddAndReplaceKind
-                                    fopen(tmp, 0);
+                                    fprintf(tmp, 0);
 
                                     break;
                                   }
@@ -12545,7 +12391,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1370
                                   case 33: {
                                     // AddAndReplaceKind
-                                    fprintf(tmp, 0);
+                                    fputs(tmp, 0);
 
                                     break;
                                   }
@@ -12553,7 +12399,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1371
                                   case 34: {
                                     // AddAndReplaceKind
-                                    fputs(tmp, 0);
+                                    fscanf(tmp, 0);
 
                                     break;
                                   }
@@ -12561,7 +12407,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1372
                                   case 35: {
                                     // AddAndReplaceKind
-                                    fscanf(tmp, 0);
+                                    fsetpos(tmp, 0);
 
                                     break;
                                   }
@@ -12569,7 +12415,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1373
                                   case 36: {
                                     // AddAndReplaceKind
-                                    fsetpos(tmp, 0);
+                                    getloadavg(tmp, 0);
 
                                     break;
                                   }
@@ -12577,7 +12423,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1374
                                   case 37: {
                                     // AddAndReplaceKind
-                                    getloadavg(tmp, 0);
+                                    index(tmp, 0);
 
                                     break;
                                   }
@@ -12585,7 +12431,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1375
                                   case 38: {
                                     // AddAndReplaceKind
-                                    index(tmp, 0);
+                                    init_trait_alias_list(tmp, 0);
 
                                     break;
                                   }
@@ -12593,7 +12439,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1376
                                   case 39: {
                                     // AddAndReplaceKind
-                                    init_trait_alias_list(tmp, 0);
+                                    instanceof_function(tmp, 0);
 
                                     break;
                                   }
@@ -12601,7 +12447,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1377
                                   case 40: {
                                     // AddAndReplaceKind
-                                    instanceof_function(tmp, 0);
+                                    lcong48_r(tmp, 0);
 
                                     break;
                                   }
@@ -12609,7 +12455,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1378
                                   case 41: {
                                     // AddAndReplaceKind
-                                    lcong48_r(tmp, 0);
+                                    longjmp(tmp, 0);
 
                                     break;
                                   }
@@ -12617,7 +12463,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1379
                                   case 42: {
                                     // AddAndReplaceKind
-                                    longjmp(tmp, 0);
+                                    lrand48_r(tmp, 0);
 
                                     break;
                                   }
@@ -12625,7 +12471,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1380
                                   case 43: {
                                     // AddAndReplaceKind
-                                    lrand48_r(tmp, 0);
+                                    mblen(tmp, 0);
 
                                     break;
                                   }
@@ -12633,7 +12479,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1381
                                   case 44: {
                                     // AddAndReplaceKind
-                                    mblen(tmp, 0);
+                                    mkstemps(tmp, 0);
 
                                     break;
                                   }
@@ -12641,7 +12487,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1382
                                   case 45: {
                                     // AddAndReplaceKind
-                                    mkstemps(tmp, 0);
+                                    mrand48_r(tmp, 0);
 
                                     break;
                                   }
@@ -12649,7 +12495,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1383
                                   case 46: {
                                     // AddAndReplaceKind
-                                    mrand48_r(tmp, 0);
+                                    object_properties_init(tmp, 0);
 
                                     break;
                                   }
@@ -12657,7 +12503,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1384
                                   case 47: {
                                     // AddAndReplaceKind
-                                    object_properties_init(tmp, 0);
+                                    on_exit(tmp, 0);
 
                                     break;
                                   }
@@ -12665,7 +12511,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1385
                                   case 48: {
                                     // AddAndReplaceKind
-                                    on_exit(tmp, 0);
+                                    open_memstream(tmp, 0);
 
                                     break;
                                   }
@@ -12673,7 +12519,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1386
                                   case 49: {
                                     // AddAndReplaceKind
-                                    open_memstream(tmp, 0);
+                                    popen(tmp, 0);
 
                                     break;
                                   }
@@ -12681,7 +12527,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1387
                                   case 50: {
                                     // AddAndReplaceKind
-                                    popen(tmp, 0);
+                                    print_op_array(tmp, 0);
 
                                     break;
                                   }
@@ -12689,7 +12535,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1388
                                   case 51: {
                                     // AddAndReplaceKind
-                                    print_op_array(tmp, 0);
+                                    printf(tmp, 0);
 
                                     break;
                                   }
@@ -12697,7 +12543,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1389
                                   case 52: {
                                     // AddAndReplaceKind
-                                    printf(tmp, 0);
+                                    random_r(tmp, 0);
 
                                     break;
                                   }
@@ -12705,7 +12551,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1390
                                   case 53: {
                                     // AddAndReplaceKind
-                                    random_r(tmp, 0);
+                                    realloc(tmp, 0);
 
                                     break;
                                   }
@@ -12713,7 +12559,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1391
                                   case 54: {
                                     // AddAndReplaceKind
-                                    realloc(tmp, 0);
+                                    realpath(tmp, 0);
 
                                     break;
                                   }
@@ -12721,7 +12567,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1392
                                   case 55: {
                                     // AddAndReplaceKind
-                                    realpath(tmp, 0);
+                                    rename(tmp, 0);
 
                                     break;
                                   }
@@ -12729,7 +12575,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1393
                                   case 56: {
                                     // AddAndReplaceKind
-                                    rename(tmp, 0);
+                                    rindex(tmp, 0);
 
                                     break;
                                   }
@@ -12737,7 +12583,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1394
                                   case 57: {
                                     // AddAndReplaceKind
-                                    rindex(tmp, 0);
+                                    scanf(tmp, 0);
 
                                     break;
                                   }
@@ -12745,7 +12591,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1395
                                   case 58: {
                                     // AddAndReplaceKind
-                                    scanf(tmp, 0);
+                                    seed48_r(tmp, 0);
 
                                     break;
                                   }
@@ -12753,7 +12599,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1396
                                   case 59: {
                                     // AddAndReplaceKind
-                                    seed48_r(tmp, 0);
+                                    setbuf(tmp, 0);
 
                                     break;
                                   }
@@ -12761,7 +12607,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1397
                                   case 60: {
                                     // AddAndReplaceKind
-                                    setbuf(tmp, 0);
+                                    setstate_r(tmp, 0);
 
                                     break;
                                   }
@@ -12769,7 +12615,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1398
                                   case 61: {
                                     // AddAndReplaceKind
-                                    setstate_r(tmp, 0);
+                                    siglongjmp(tmp, 0);
 
                                     break;
                                   }
@@ -12777,7 +12623,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1399
                                   case 62: {
                                     // AddAndReplaceKind
-                                    siglongjmp(tmp, 0);
+                                    sprintf(tmp, 0);
 
                                     break;
                                   }
@@ -12785,7 +12631,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1400
                                   case 63: {
                                     // AddAndReplaceKind
-                                    sprintf(tmp, 0);
+                                    sscanf(tmp, 0);
 
                                     break;
                                   }
@@ -12793,7 +12639,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1401
                                   case 64: {
                                     // AddAndReplaceKind
-                                    sscanf(tmp, 0);
+                                    stpcpy(tmp, 0);
 
                                     break;
                                   }
@@ -12801,7 +12647,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1402
                                   case 65: {
                                     // AddAndReplaceKind
-                                    stpcpy(tmp, 0);
+                                    strcasecmp(tmp, 0);
 
                                     break;
                                   }
@@ -12809,7 +12655,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1403
                                   case 66: {
                                     // AddAndReplaceKind
-                                    strcasecmp(tmp, 0);
+                                    strcat(tmp, 0);
 
                                     break;
                                   }
@@ -12817,7 +12663,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1404
                                   case 67: {
                                     // AddAndReplaceKind
-                                    strcat(tmp, 0);
+                                    strchr(tmp, 0);
 
                                     break;
                                   }
@@ -12825,7 +12671,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1405
                                   case 68: {
                                     // AddAndReplaceKind
-                                    strchr(tmp, 0);
+                                    strcmp(tmp, 0);
 
                                     break;
                                   }
@@ -12833,7 +12679,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1406
                                   case 69: {
                                     // AddAndReplaceKind
-                                    strcmp(tmp, 0);
+                                    strcoll(tmp, 0);
 
                                     break;
                                   }
@@ -12841,7 +12687,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1407
                                   case 70: {
                                     // AddAndReplaceKind
-                                    strcoll(tmp, 0);
+                                    strcpy(tmp, 0);
 
                                     break;
                                   }
@@ -12849,7 +12695,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1408
                                   case 71: {
                                     // AddAndReplaceKind
-                                    strcpy(tmp, 0);
+                                    strcspn(tmp, 0);
 
                                     break;
                                   }
@@ -12857,7 +12703,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1409
                                   case 72: {
                                     // AddAndReplaceKind
-                                    strcspn(tmp, 0);
+                                    strndup(tmp, 0);
 
                                     break;
                                   }
@@ -12865,7 +12711,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1410
                                   case 73: {
                                     // AddAndReplaceKind
-                                    strndup(tmp, 0);
+                                    strnlen(tmp, 0);
 
                                     break;
                                   }
@@ -12873,7 +12719,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1411
                                   case 74: {
                                     // AddAndReplaceKind
-                                    strnlen(tmp, 0);
+                                    strpbrk(tmp, 0);
 
                                     break;
                                   }
@@ -12881,7 +12727,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1412
                                   case 75: {
                                     // AddAndReplaceKind
-                                    strpbrk(tmp, 0);
+                                    strrchr(tmp, 0);
 
                                     break;
                                   }
@@ -12889,7 +12735,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1413
                                   case 76: {
                                     // AddAndReplaceKind
-                                    strrchr(tmp, 0);
+                                    strsep(tmp, 0);
 
                                     break;
                                   }
@@ -12897,7 +12743,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1414
                                   case 77: {
                                     // AddAndReplaceKind
-                                    strsep(tmp, 0);
+                                    strspn(tmp, 0);
 
                                     break;
                                   }
@@ -12905,7 +12751,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1415
                                   case 78: {
                                     // AddAndReplaceKind
-                                    strspn(tmp, 0);
+                                    strstr(tmp, 0);
 
                                     break;
                                   }
@@ -12913,7 +12759,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1416
                                   case 79: {
                                     // AddAndReplaceKind
-                                    strstr(tmp, 0);
+                                    strtod(tmp, 0);
 
                                     break;
                                   }
@@ -12921,7 +12767,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1417
                                   case 80: {
                                     // AddAndReplaceKind
-                                    strtod(tmp, 0);
+                                    strtof(tmp, 0);
 
                                     break;
                                   }
@@ -12929,7 +12775,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1418
                                   case 81: {
                                     // AddAndReplaceKind
-                                    strtof(tmp, 0);
+                                    strtok(tmp, 0);
 
                                     break;
                                   }
@@ -12937,7 +12783,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1419
                                   case 82: {
                                     // AddAndReplaceKind
-                                    strtok(tmp, 0);
+                                    strtold(tmp, 0);
 
                                     break;
                                   }
@@ -12945,7 +12791,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1420
                                   case 83: {
                                     // AddAndReplaceKind
-                                    strtold(tmp, 0);
+                                    tempnam(tmp, 0);
 
                                     break;
                                   }
@@ -12953,7 +12799,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1421
                                   case 84: {
                                     // AddAndReplaceKind
-                                    tempnam(tmp, 0);
+                                    vprintf(tmp, 0);
 
                                     break;
                                   }
@@ -12961,7 +12807,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1422
                                   case 85: {
                                     // AddAndReplaceKind
-                                    vprintf(tmp, 0);
+                                    vscanf(tmp, 0);
 
                                     break;
                                   }
@@ -12969,7 +12815,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1423
                                   case 86: {
                                     // AddAndReplaceKind
-                                    vscanf(tmp, 0);
+                                    wctomb(tmp, 0);
 
                                     break;
                                   }
@@ -12977,7 +12823,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1424
                                   case 87: {
                                     // AddAndReplaceKind
-                                    wctomb(tmp, 0);
+                                    zend_add_literal(tmp, 0);
 
                                     break;
                                   }
@@ -12985,7 +12831,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1425
                                   case 88: {
                                     // AddAndReplaceKind
-                                    zend_add_literal(tmp, 0);
+                                    zend_add_to_list(tmp, 0);
 
                                     break;
                                   }
@@ -12993,7 +12839,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1426
                                   case 89: {
                                     // AddAndReplaceKind
-                                    zend_add_to_list(tmp, 0);
+                                    zend_atoi(tmp, 0);
 
                                     break;
                                   }
@@ -13001,7 +12847,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1427
                                   case 90: {
                                     // AddAndReplaceKind
-                                    zend_atoi(tmp, 0);
+                                    zend_atol(tmp, 0);
 
                                     break;
                                   }
@@ -13009,7 +12855,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1428
                                   case 91: {
                                     // AddAndReplaceKind
-                                    zend_atol(tmp, 0);
+                                    zend_binary_zval_strcasecmp(tmp, 0);
 
                                     break;
                                   }
@@ -13017,7 +12863,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1429
                                   case 92: {
                                     // AddAndReplaceKind
-                                    zend_binary_zval_strcasecmp(tmp, 0);
+                                    zend_binary_zval_strcmp(tmp, 0);
 
                                     break;
                                   }
@@ -13025,7 +12871,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1430
                                   case 93: {
                                     // AddAndReplaceKind
-                                    zend_binary_zval_strcmp(tmp, 0);
+                                    zend_call_function(tmp, 0);
 
                                     break;
                                   }
@@ -13033,7 +12879,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1431
                                   case 94: {
                                     // AddAndReplaceKind
-                                    zend_call_function(tmp, 0);
+                                    zend_check_protected(tmp, 0);
 
                                     break;
                                   }
@@ -13041,7 +12887,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1432
                                   case 95: {
                                     // AddAndReplaceKind
-                                    zend_check_protected(tmp, 0);
+                                    zend_class_implements(tmp, 0);
 
                                     break;
                                   }
@@ -13049,7 +12895,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1433
                                   case 96: {
                                     // AddAndReplaceKind
-                                    zend_class_implements(tmp, 0);
+                                    zend_compare_file_handles(tmp, 0);
 
                                     break;
                                   }
@@ -13057,7 +12903,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1434
                                   case 97: {
                                     // AddAndReplaceKind
-                                    zend_compare_file_handles(tmp, 0);
+                                    zend_copy_constants(tmp, 0);
 
                                     break;
                                   }
@@ -13065,7 +12911,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1435
                                   case 98: {
                                     // AddAndReplaceKind
-                                    zend_copy_constants(tmp, 0);
+                                    zend_delete_global_variable(tmp, 0);
 
                                     break;
                                   }
@@ -13073,7 +12919,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1436
                                   case 99: {
                                     // AddAndReplaceKind
-                                    zend_delete_global_variable(tmp, 0);
+                                    zend_dirname(tmp, 0);
 
                                     break;
                                   }
@@ -13081,7 +12927,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1437
                                   case 100: {
                                     // AddAndReplaceKind
-                                    zend_dirname(tmp, 0);
+                                    zend_disable_class(tmp, 0);
 
                                     break;
                                   }
@@ -13089,7 +12935,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1438
                                   case 101: {
                                     // AddAndReplaceKind
-                                    zend_disable_class(tmp, 0);
+                                    zend_disable_function(tmp, 0);
 
                                     break;
                                   }
@@ -13097,7 +12943,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1439
                                   case 102: {
                                     // AddAndReplaceKind
-                                    zend_disable_function(tmp, 0);
+                                    zend_do_begin_class_member_function_call(
+                                        tmp, 0);
 
                                     break;
                                   }
@@ -13105,8 +12952,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1440
                                   case 103: {
                                     // AddAndReplaceKind
-                                    zend_do_begin_class_member_function_call(
-                                        tmp, 0);
+                                    zend_do_begin_dynamic_function_call(tmp, 0);
 
                                     break;
                                   }
@@ -13114,7 +12960,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1441
                                   case 104: {
                                     // AddAndReplaceKind
-                                    zend_do_begin_dynamic_function_call(tmp, 0);
+                                    zend_do_begin_function_call(tmp, 0);
 
                                     break;
                                   }
@@ -13122,7 +12968,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1442
                                   case 105: {
                                     // AddAndReplaceKind
-                                    zend_do_begin_function_call(tmp, 0);
+                                    zend_do_begin_namespace(tmp, 0);
 
                                     break;
                                   }
@@ -13130,7 +12976,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1443
                                   case 106: {
                                     // AddAndReplaceKind
-                                    zend_do_begin_namespace(tmp, 0);
+                                    zend_do_begin_new_object(tmp, 0);
 
                                     break;
                                   }
@@ -13138,7 +12984,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1444
                                   case 107: {
                                     // AddAndReplaceKind
-                                    zend_do_begin_new_object(tmp, 0);
+                                    zend_do_begin_qm_op(tmp, 0);
 
                                     break;
                                   }
@@ -13146,7 +12992,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1445
                                   case 108: {
                                     // AddAndReplaceKind
-                                    zend_do_begin_qm_op(tmp, 0);
+                                    zend_do_boolean_and_begin(tmp, 0);
 
                                     break;
                                   }
@@ -13154,7 +13000,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1446
                                   case 109: {
                                     // AddAndReplaceKind
-                                    zend_do_boolean_and_begin(tmp, 0);
+                                    zend_do_boolean_or_begin(tmp, 0);
 
                                     break;
                                   }
@@ -13162,7 +13008,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1447
                                   case 110: {
                                     // AddAndReplaceKind
-                                    zend_do_boolean_or_begin(tmp, 0);
+                                    zend_do_case_after_statement(tmp, 0);
 
                                     break;
                                   }
@@ -13170,7 +13016,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1448
                                   case 111: {
                                     // AddAndReplaceKind
-                                    zend_do_case_after_statement(tmp, 0);
+                                    zend_do_clone(tmp, 0);
 
                                     break;
                                   }
@@ -13178,7 +13024,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1449
                                   case 112: {
                                     // AddAndReplaceKind
-                                    zend_do_clone(tmp, 0);
+                                    zend_do_declare_class_constant(tmp, 0);
 
                                     break;
                                   }
@@ -13186,7 +13032,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1450
                                   case 113: {
                                     // AddAndReplaceKind
-                                    zend_do_declare_class_constant(tmp, 0);
+                                    zend_do_declare_constant(tmp, 0);
 
                                     break;
                                   }
@@ -13194,7 +13040,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1451
                                   case 114: {
                                     // AddAndReplaceKind
-                                    zend_do_declare_constant(tmp, 0);
+                                    zend_do_declare_stmt(tmp, 0);
 
                                     break;
                                   }
@@ -13202,7 +13048,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1452
                                   case 115: {
                                     // AddAndReplaceKind
-                                    zend_do_declare_stmt(tmp, 0);
+                                    zend_do_default_before_statement(tmp, 0);
 
                                     break;
                                   }
@@ -13210,7 +13056,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1453
                                   case 116: {
                                     // AddAndReplaceKind
-                                    zend_do_default_before_statement(tmp, 0);
+                                    zend_do_end_class_declaration(tmp, 0);
 
                                     break;
                                   }
@@ -13218,7 +13064,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1454
                                   case 117: {
                                     // AddAndReplaceKind
-                                    zend_do_end_class_declaration(tmp, 0);
+                                    zend_do_exit(tmp, 0);
 
                                     break;
                                   }
@@ -13226,7 +13072,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1455
                                   case 118: {
                                     // AddAndReplaceKind
-                                    zend_do_exit(tmp, 0);
+                                    zend_do_fetch_class(tmp, 0);
 
                                     break;
                                   }
@@ -13234,7 +13080,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1456
                                   case 119: {
                                     // AddAndReplaceKind
-                                    zend_do_fetch_class(tmp, 0);
+                                    zend_do_fetch_lexical_variable(tmp, 0);
 
                                     break;
                                   }
@@ -13242,7 +13088,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1457
                                   case 120: {
                                     // AddAndReplaceKind
-                                    zend_do_fetch_lexical_variable(tmp, 0);
+                                    zend_do_fetch_static_member(tmp, 0);
 
                                     break;
                                   }
@@ -13250,7 +13096,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1458
                                   case 121: {
                                     // AddAndReplaceKind
-                                    zend_do_fetch_static_member(tmp, 0);
+                                    zend_do_for_before_statement(tmp, 0);
 
                                     break;
                                   }
@@ -13258,7 +13104,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1459
                                   case 122: {
                                     // AddAndReplaceKind
-                                    zend_do_for_before_statement(tmp, 0);
+                                    zend_do_for_cond(tmp, 0);
 
                                     break;
                                   }
@@ -13266,7 +13112,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1460
                                   case 123: {
                                     // AddAndReplaceKind
-                                    zend_do_for_cond(tmp, 0);
+                                    zend_do_foreach_end(tmp, 0);
 
                                     break;
                                   }
@@ -13274,7 +13120,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1461
                                   case 124: {
                                     // AddAndReplaceKind
-                                    zend_do_foreach_end(tmp, 0);
+                                    zend_do_if_after_statement(tmp, 0);
 
                                     break;
                                   }
@@ -13282,7 +13128,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1462
                                   case 125: {
                                     // AddAndReplaceKind
-                                    zend_do_if_after_statement(tmp, 0);
+                                    zend_do_if_cond(tmp, 0);
 
                                     break;
                                   }
@@ -13290,7 +13136,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1463
                                   case 126: {
                                     // AddAndReplaceKind
-                                    zend_do_if_cond(tmp, 0);
+                                    zend_do_implement_interface(tmp, 0);
 
                                     break;
                                   }
@@ -13298,7 +13144,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1464
                                   case 127: {
                                     // AddAndReplaceKind
-                                    zend_do_implement_interface(tmp, 0);
+                                    zend_do_implement_trait(tmp, 0);
 
                                     break;
                                   }
@@ -13306,7 +13152,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1465
                                   case 128: {
                                     // AddAndReplaceKind
-                                    zend_do_implement_trait(tmp, 0);
+                                    zend_do_inherit_interfaces(tmp, 0);
 
                                     break;
                                   }
@@ -13314,7 +13160,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1466
                                   case 129: {
                                     // AddAndReplaceKind
-                                    zend_do_inherit_interfaces(tmp, 0);
+                                    zend_do_inheritance(tmp, 0);
 
                                     break;
                                   }
@@ -13322,7 +13168,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1467
                                   case 130: {
                                     // AddAndReplaceKind
-                                    zend_do_inheritance(tmp, 0);
+                                    zend_do_list_end(tmp, 0);
 
                                     break;
                                   }
@@ -13330,7 +13176,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1468
                                   case 131: {
                                     // AddAndReplaceKind
-                                    zend_do_list_end(tmp, 0);
+                                    zend_do_mark_last_catch(tmp, 0);
 
                                     break;
                                   }
@@ -13338,7 +13184,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1469
                                   case 132: {
                                     // AddAndReplaceKind
-                                    zend_do_mark_last_catch(tmp, 0);
+                                    zend_do_print(tmp, 0);
 
                                     break;
                                   }
@@ -13346,7 +13192,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1470
                                   case 133: {
                                     // AddAndReplaceKind
-                                    zend_do_print(tmp, 0);
+                                    zend_do_return(tmp, 0);
 
                                     break;
                                   }
@@ -13354,7 +13200,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1471
                                   case 134: {
                                     // AddAndReplaceKind
-                                    zend_do_return(tmp, 0);
+                                    zend_do_shell_exec(tmp, 0);
 
                                     break;
                                   }
@@ -13362,7 +13208,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1472
                                   case 135: {
                                     // AddAndReplaceKind
-                                    zend_do_shell_exec(tmp, 0);
+                                    zend_do_verify_access_types(tmp, 0);
 
                                     break;
                                   }
@@ -13370,7 +13216,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1473
                                   case 136: {
                                     // AddAndReplaceKind
-                                    zend_do_verify_access_types(tmp, 0);
+                                    zend_do_while_cond(tmp, 0);
 
                                     break;
                                   }
@@ -13378,7 +13224,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1474
                                   case 137: {
                                     // AddAndReplaceKind
-                                    zend_do_while_cond(tmp, 0);
+                                    zend_do_while_end(tmp, 0);
 
                                     break;
                                   }
@@ -13386,7 +13232,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1475
                                   case 138: {
                                     // AddAndReplaceKind
-                                    zend_do_while_end(tmp, 0);
+                                    zend_fcall_info_argn(tmp, 0);
 
                                     break;
                                   }
@@ -13394,7 +13240,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1476
                                   case 139: {
                                     // AddAndReplaceKind
-                                    zend_fcall_info_argn(tmp, 0);
+                                    zend_fcall_info_args(tmp, 0);
 
                                     break;
                                   }
@@ -13402,7 +13248,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1477
                                   case 140: {
                                     // AddAndReplaceKind
-                                    zend_fcall_info_args(tmp, 0);
+                                    zend_fcall_info_args_clear(tmp, 0);
 
                                     break;
                                   }
@@ -13410,7 +13256,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1478
                                   case 141: {
                                     // AddAndReplaceKind
-                                    zend_fcall_info_args_clear(tmp, 0);
+                                    zend_get_class_fetch_type(tmp, 0);
 
                                     break;
                                   }
@@ -13418,7 +13264,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1479
                                   case 142: {
                                     // AddAndReplaceKind
-                                    zend_get_class_fetch_type(tmp, 0);
+                                    zend_get_compiled_variable_value(tmp, 0);
 
                                     break;
                                   }
@@ -13426,7 +13272,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1480
                                   case 143: {
                                     // AddAndReplaceKind
-                                    zend_get_compiled_variable_value(tmp, 0);
+                                    zend_get_hash_value(tmp, 0);
 
                                     break;
                                   }
@@ -13434,7 +13280,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1481
                                   case 144: {
                                     // AddAndReplaceKind
-                                    zend_get_hash_value(tmp, 0);
+                                    zend_hash_apply(tmp, 0);
 
                                     break;
                                   }
@@ -13442,7 +13288,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1482
                                   case 145: {
                                     // AddAndReplaceKind
-                                    zend_hash_apply(tmp, 0);
+                                    zend_hash_func(tmp, 0);
 
                                     break;
                                   }
@@ -13450,7 +13296,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1483
                                   case 146: {
                                     // AddAndReplaceKind
-                                    zend_hash_func(tmp, 0);
+                                    zend_hash_get_current_key_type_ex(tmp, 0);
 
                                     break;
                                   }
@@ -13458,7 +13304,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1484
                                   case 147: {
                                     // AddAndReplaceKind
-                                    zend_hash_get_current_key_type_ex(tmp, 0);
+                                    zend_hash_get_pointer(tmp, 0);
 
                                     break;
                                   }
@@ -13466,7 +13312,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1485
                                   case 148: {
                                     // AddAndReplaceKind
-                                    zend_hash_get_pointer(tmp, 0);
+                                    zend_hash_index_exists(tmp, 0);
 
                                     break;
                                   }
@@ -13474,7 +13320,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1486
                                   case 149: {
                                     // AddAndReplaceKind
-                                    zend_hash_index_exists(tmp, 0);
+                                    zend_hash_internal_pointer_end_ex(tmp, 0);
 
                                     break;
                                   }
@@ -13482,7 +13328,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1487
                                   case 150: {
                                     // AddAndReplaceKind
-                                    zend_hash_internal_pointer_end_ex(tmp, 0);
+                                    zend_hash_internal_pointer_reset_ex(tmp, 0);
 
                                     break;
                                   }
@@ -13490,7 +13336,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1488
                                   case 151: {
                                     // AddAndReplaceKind
-                                    zend_hash_internal_pointer_reset_ex(tmp, 0);
+                                    zend_hash_move_backwards_ex(tmp, 0);
 
                                     break;
                                   }
@@ -13498,7 +13344,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1489
                                   case 152: {
                                     // AddAndReplaceKind
-                                    zend_hash_move_backwards_ex(tmp, 0);
+                                    zend_hash_move_forward_ex(tmp, 0);
 
                                     break;
                                   }
@@ -13506,7 +13352,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1490
                                   case 153: {
                                     // AddAndReplaceKind
-                                    zend_hash_move_forward_ex(tmp, 0);
+                                    zend_hash_reverse_apply(tmp, 0);
 
                                     break;
                                   }
@@ -13514,7 +13360,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1491
                                   case 154: {
                                     // AddAndReplaceKind
-                                    zend_hash_reverse_apply(tmp, 0);
+                                    zend_hash_set_pointer(tmp, 0);
 
                                     break;
                                   }
@@ -13522,7 +13368,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1492
                                   case 155: {
                                     // AddAndReplaceKind
-                                    zend_hash_set_pointer(tmp, 0);
+                                    zend_hex_strtod(tmp, 0);
 
                                     break;
                                   }
@@ -13530,7 +13376,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1493
                                   case 156: {
                                     // AddAndReplaceKind
-                                    zend_hex_strtod(tmp, 0);
+                                    zend_init_list(tmp, 0);
 
                                     break;
                                   }
@@ -13538,7 +13384,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1494
                                   case 157: {
                                     // AddAndReplaceKind
-                                    zend_init_list(tmp, 0);
+                                    zend_initialize_class_data(tmp, 0);
 
                                     break;
                                   }
@@ -13546,7 +13392,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1495
                                   case 158: {
                                     // AddAndReplaceKind
-                                    zend_initialize_class_data(tmp, 0);
+                                    zend_inline_hash_func(tmp, 0);
 
                                     break;
                                   }
@@ -13554,7 +13400,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1496
                                   case 159: {
                                     // AddAndReplaceKind
-                                    zend_inline_hash_func(tmp, 0);
+                                    zend_is_auto_global(tmp, 0);
 
                                     break;
                                   }
@@ -13562,7 +13408,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1497
                                   case 160: {
                                     // AddAndReplaceKind
-                                    zend_is_auto_global(tmp, 0);
+                                    zend_iterator_unwrap(tmp, 0);
 
                                     break;
                                   }
@@ -13570,7 +13416,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1498
                                   case 161: {
                                     // AddAndReplaceKind
-                                    zend_iterator_unwrap(tmp, 0);
+                                    zend_list_insert(tmp, 0);
 
                                     break;
                                   }
@@ -13578,7 +13424,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1499
                                   case 162: {
                                     // AddAndReplaceKind
-                                    zend_list_insert(tmp, 0);
+                                    zend_llist_add_element(tmp, 0);
 
                                     break;
                                   }
@@ -13586,7 +13432,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1500
                                   case 163: {
                                     // AddAndReplaceKind
-                                    zend_llist_add_element(tmp, 0);
+                                    zend_llist_apply(tmp, 0);
 
                                     break;
                                   }
@@ -13594,7 +13440,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1501
                                   case 164: {
                                     // AddAndReplaceKind
-                                    zend_llist_apply(tmp, 0);
+                                    zend_llist_apply_with_del(tmp, 0);
 
                                     break;
                                   }
@@ -13602,7 +13448,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1502
                                   case 165: {
                                     // AddAndReplaceKind
-                                    zend_llist_apply_with_del(tmp, 0);
+                                    zend_llist_copy(tmp, 0);
 
                                     break;
                                   }
@@ -13610,7 +13456,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1503
                                   case 166: {
                                     // AddAndReplaceKind
-                                    zend_llist_copy(tmp, 0);
+                                    zend_llist_get_first_ex(tmp, 0);
 
                                     break;
                                   }
@@ -13618,7 +13464,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1504
                                   case 167: {
                                     // AddAndReplaceKind
-                                    zend_llist_get_first_ex(tmp, 0);
+                                    zend_llist_get_last_ex(tmp, 0);
 
                                     break;
                                   }
@@ -13626,7 +13472,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1505
                                   case 168: {
                                     // AddAndReplaceKind
-                                    zend_llist_get_last_ex(tmp, 0);
+                                    zend_llist_get_next_ex(tmp, 0);
 
                                     break;
                                   }
@@ -13634,7 +13480,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1506
                                   case 169: {
                                     // AddAndReplaceKind
-                                    zend_llist_get_next_ex(tmp, 0);
+                                    zend_llist_get_prev_ex(tmp, 0);
 
                                     break;
                                   }
@@ -13642,7 +13488,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1507
                                   case 170: {
                                     // AddAndReplaceKind
-                                    zend_llist_get_prev_ex(tmp, 0);
+                                    zend_llist_prepend_element(tmp, 0);
 
                                     break;
                                   }
@@ -13650,7 +13496,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1508
                                   case 171: {
                                     // AddAndReplaceKind
-                                    zend_llist_prepend_element(tmp, 0);
+                                    zend_llist_sort(tmp, 0);
 
                                     break;
                                   }
@@ -13658,7 +13504,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1509
                                   case 172: {
                                     // AddAndReplaceKind
-                                    zend_llist_sort(tmp, 0);
+                                    zend_make_callable(tmp, 0);
 
                                     break;
                                   }
@@ -13666,7 +13512,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1510
                                   case 173: {
                                     // AddAndReplaceKind
-                                    zend_make_callable(tmp, 0);
+                                    zend_multibyte_set_script_encoding(tmp, 0);
 
                                     break;
                                   }
@@ -13674,7 +13520,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1511
                                   case 174: {
                                     // AddAndReplaceKind
-                                    zend_multibyte_set_script_encoding(tmp, 0);
+                                    zend_multibyte_set_script_encoding_by_string(
+                                        tmp, 0);
 
                                     break;
                                   }
@@ -13682,8 +13529,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1512
                                   case 175: {
                                     // AddAndReplaceKind
-                                    zend_multibyte_set_script_encoding_by_string(
-                                        tmp, 0);
+                                    zend_object_create_proxy(tmp, 0);
 
                                     break;
                                   }
@@ -13691,7 +13537,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1513
                                   case 176: {
                                     // AddAndReplaceKind
-                                    zend_object_create_proxy(tmp, 0);
+                                    zend_object_std_init(tmp, 0);
 
                                     break;
                                   }
@@ -13699,7 +13545,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1514
                                   case 177: {
                                     // AddAndReplaceKind
-                                    zend_object_std_init(tmp, 0);
+                                    zend_object_store_set_object(tmp, 0);
 
                                     break;
                                   }
@@ -13707,7 +13553,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1515
                                   case 178: {
                                     // AddAndReplaceKind
-                                    zend_object_store_set_object(tmp, 0);
+                                    zend_objects_destroy_object(tmp, 0);
 
                                     break;
                                   }
@@ -13715,7 +13561,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1516
                                   case 179: {
                                     // AddAndReplaceKind
-                                    zend_objects_destroy_object(tmp, 0);
+                                    zend_objects_new(tmp, 0);
 
                                     break;
                                   }
@@ -13723,7 +13569,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1517
                                   case 180: {
                                     // AddAndReplaceKind
-                                    zend_objects_new(tmp, 0);
+                                    zend_objects_store_init(tmp, 0);
 
                                     break;
                                   }
@@ -13731,7 +13577,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1518
                                   case 181: {
                                     // AddAndReplaceKind
-                                    zend_objects_store_init(tmp, 0);
+                                    zend_oct_strtod(tmp, 0);
 
                                     break;
                                   }
@@ -13739,7 +13585,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1519
                                   case 182: {
                                     // AddAndReplaceKind
-                                    zend_oct_strtod(tmp, 0);
+                                    zend_print_zval(tmp, 0);
 
                                     break;
                                   }
@@ -13747,7 +13593,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1520
                                   case 183: {
                                     // AddAndReplaceKind
-                                    zend_print_zval(tmp, 0);
+                                    zend_print_zval_r(tmp, 0);
 
                                     break;
                                   }
@@ -13755,7 +13601,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1521
                                   case 184: {
                                     // AddAndReplaceKind
-                                    zend_print_zval_r(tmp, 0);
+                                    zend_ptr_stack_apply(tmp, 0);
 
                                     break;
                                   }
@@ -13763,7 +13609,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1522
                                   case 185: {
                                     // AddAndReplaceKind
-                                    zend_ptr_stack_apply(tmp, 0);
+                                    zend_ptr_stack_init_ex(tmp, 0);
 
                                     break;
                                   }
@@ -13771,7 +13617,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1523
                                   case 186: {
                                     // AddAndReplaceKind
-                                    zend_ptr_stack_init_ex(tmp, 0);
+                                    zend_ptr_stack_n_pop(tmp, 0);
 
                                     break;
                                   }
@@ -13779,7 +13625,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1524
                                   case 187: {
                                     // AddAndReplaceKind
-                                    zend_ptr_stack_n_pop(tmp, 0);
+                                    zend_ptr_stack_n_push(tmp, 0);
 
                                     break;
                                   }
@@ -13787,7 +13633,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1525
                                   case 188: {
                                     // AddAndReplaceKind
-                                    zend_ptr_stack_n_push(tmp, 0);
+                                    zend_ptr_stack_push(tmp, 0);
 
                                     break;
                                   }
@@ -13795,7 +13641,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1526
                                   case 189: {
                                     // AddAndReplaceKind
-                                    zend_ptr_stack_push(tmp, 0);
+                                    zend_quick_get_constant(tmp, 0);
 
                                     break;
                                   }
@@ -13803,7 +13649,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1527
                                   case 190: {
                                     // AddAndReplaceKind
-                                    zend_quick_get_constant(tmp, 0);
+                                    zend_resolve_non_class_name(tmp, 0);
 
                                     break;
                                   }
@@ -13811,7 +13657,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1528
                                   case 191: {
                                     // AddAndReplaceKind
-                                    zend_resolve_non_class_name(tmp, 0);
+                                    zend_stack_top(tmp, 0);
 
                                     break;
                                   }
@@ -13819,7 +13665,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1529
                                   case 192: {
                                     // AddAndReplaceKind
-                                    zend_stack_top(tmp, 0);
+                                    zend_startup(tmp, 0);
 
                                     break;
                                   }
@@ -13827,7 +13673,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1530
                                   case 193: {
                                     // AddAndReplaceKind
-                                    zend_startup(tmp, 0);
+                                    zend_std_get_debug_info(tmp, 0);
 
                                     break;
                                   }
@@ -13835,7 +13681,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1531
                                   case 194: {
                                     // AddAndReplaceKind
-                                    zend_std_get_debug_info(tmp, 0);
+                                    zend_str_tolower(tmp, 0);
 
                                     break;
                                   }
@@ -13843,7 +13689,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1532
                                   case 195: {
                                     // AddAndReplaceKind
-                                    zend_str_tolower(tmp, 0);
+                                    zend_str_tolower_dup(tmp, 0);
 
                                     break;
                                   }
@@ -13851,7 +13697,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1533
                                   case 196: {
                                     // AddAndReplaceKind
-                                    zend_str_tolower_dup(tmp, 0);
+                                    zend_stream_open(tmp, 0);
 
                                     break;
                                   }
@@ -13859,7 +13705,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1534
                                   case 197: {
                                     // AddAndReplaceKind
-                                    zend_stream_open(tmp, 0);
+                                    zend_string_to_double(tmp, 0);
 
                                     break;
                                   }
@@ -13867,7 +13713,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1535
                                   case 198: {
                                     // AddAndReplaceKind
-                                    zend_string_to_double(tmp, 0);
+                                    zend_strndup(tmp, 0);
 
                                     break;
                                   }
@@ -13875,7 +13721,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1536
                                   case 199: {
                                     // AddAndReplaceKind
-                                    zend_strndup(tmp, 0);
+                                    zend_strtod(tmp, 0);
 
                                     break;
                                   }
@@ -13883,7 +13729,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1537
                                   case 200: {
                                     // AddAndReplaceKind
-                                    zend_strtod(tmp, 0);
+                                    zend_ts_hash_apply(tmp, 0);
 
                                     break;
                                   }
@@ -13891,7 +13737,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1538
                                   case 201: {
                                     // AddAndReplaceKind
-                                    zend_ts_hash_apply(tmp, 0);
+                                    zend_ts_hash_func(tmp, 0);
 
                                     break;
                                   }
@@ -13899,7 +13745,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1539
                                   case 202: {
                                     // AddAndReplaceKind
-                                    zend_ts_hash_func(tmp, 0);
+                                    zend_ts_hash_index_exists(tmp, 0);
 
                                     break;
                                   }
@@ -13907,7 +13753,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1540
                                   case 203: {
                                     // AddAndReplaceKind
-                                    zend_ts_hash_index_exists(tmp, 0);
+                                    zend_ts_hash_reverse_apply(tmp, 0);
 
                                     break;
                                   }
@@ -13915,7 +13761,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1541
                                   case 204: {
                                     // AddAndReplaceKind
-                                    zend_ts_hash_reverse_apply(tmp, 0);
+                                    zval_set_isref_to_p(tmp, 0);
 
                                     break;
                                   }
@@ -13923,7 +13769,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1542
                                   case 205: {
                                     // AddAndReplaceKind
-                                    zval_set_isref_to_p(tmp, 0);
+                                    zval_update_constant(tmp, 0);
 
                                     break;
                                   }
@@ -13931,7 +13777,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1543
                                   case 206: {
                                     // AddAndReplaceKind
-                                    zval_update_constant(tmp, 0);
+                                    zval_update_constant_inline_change(tmp, 0);
 
                                     break;
                                   }
@@ -13939,24 +13785,16 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 #ifdef COMPILE_1544
                                   case 207: {
                                     // AddAndReplaceKind
-                                    zval_update_constant_inline_change(tmp, 0);
-
-                                    break;
-                                  }
-#endif
-#ifdef COMPILE_1545
-                                  case 208: {
-                                    // AddAndReplaceKind
                                     zval_update_constant_no_inline_change(tmp,
                                                                           0);
 
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1546
-                                  case 209: {
+#ifdef COMPILE_1545
+                                  case 208: {
                                     // GuardKind
-                                    if (!__is_neg("53-209", 0, 0, 0, 0, 5,
+                                    if (!__is_neg("53-208", 0, 0, 0, 0, 5,
                                                   (void **){tmp, p, key, target,
                                                             args},
                                                   0, 0, "tmp", "p", "key",
@@ -13966,8 +13804,8 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1547
-                                  case 210: {
+#ifdef COMPILE_1546
+                                  case 209: {
                                     // ReplaceKind
                                     zval_set_refcount_p((tmp), 0);
 
@@ -13977,14 +13815,10 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                   }
                                 }
                                 {
-                                  switch (__choose(
-                                      "/root/project/prophet-gpl/build/"
-                                      "php-case-efcb9a71/php-efcb9a71-workdir/"
-                                      "switch.txt",
-                                      54)) {
+                                  switch (__choose("__SWITCH54")) {
                                   case 0:
                                     break;
-#ifdef COMPILE_1548
+#ifdef COMPILE_1547
                                   case 1: {
                                     // AddAndReplaceKind
                                     (executor_globals.argument_stack) =
@@ -13994,7 +13828,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1549
+#ifdef COMPILE_1548
                                   case 2: {
                                     // AddAndReplaceKind
                                     (tmp) = (executor_globals
@@ -14003,7 +13837,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1550
+#ifdef COMPILE_1549
                                   case 3: {
                                     // AddAndReplaceKind
                                     (tmp) = *p;
@@ -14011,7 +13845,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1551
+#ifdef COMPILE_1550
                                   case 4: {
                                     // AddAndReplaceKind
                                     *(tmp) = zval_used_for_init;
@@ -14019,7 +13853,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1552
+#ifdef COMPILE_1551
                                   case 5: {
                                     // AddAndReplaceKind
                                     *tmp = zval_used_for_init;
@@ -14027,7 +13861,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1553
+#ifdef COMPILE_1552
                                   case 6: {
                                     // AddAndReplaceKind
                                     _efree(((tmp)));
@@ -14035,7 +13869,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1554
+#ifdef COMPILE_1553
                                   case 7: {
                                     // AddAndReplaceKind
                                     _efree(((tmp)->value.ht));
@@ -14043,7 +13877,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1555
+#ifdef COMPILE_1554
                                   case 8: {
                                     // AddAndReplaceKind
                                     _efree(((tmp)->value.str.val));
@@ -14051,7 +13885,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1556
+#ifdef COMPILE_1555
                                   case 9: {
                                     // AddAndReplaceKind
                                     _zend_hash_quick_add_or_update(
@@ -14063,7 +13897,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1557
+#ifdef COMPILE_1556
                                   case 10: {
                                     // AddAndReplaceKind
                                     _zend_hash_quick_add_or_update(
@@ -14075,7 +13909,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1558
+#ifdef COMPILE_1557
                                   case 11: {
                                     // AddAndReplaceKind
                                     _zend_hash_quick_add_or_update(
@@ -14087,7 +13921,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1559
+#ifdef COMPILE_1558
                                   case 12: {
                                     // AddAndReplaceKind
                                     _zend_hash_quick_add_or_update(
@@ -14099,7 +13933,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1560
+#ifdef COMPILE_1559
                                   case 13: {
                                     // AddAndReplaceKind
                                     _zend_hash_quick_add_or_update(
@@ -14111,7 +13945,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1561
+#ifdef COMPILE_1560
                                   case 14: {
                                     // AddAndReplaceKind
                                     _zend_list_addref((tmp)->value.lval);
@@ -14119,7 +13953,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1562
+#ifdef COMPILE_1561
                                   case 15: {
                                     // AddAndReplaceKind
                                     _zend_list_delete((tmp)->value.lval);
@@ -14127,7 +13961,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1563
+#ifdef COMPILE_1562
                                   case 16: {
                                     // AddAndReplaceKind
                                     _zval_copy_ctor_func((tmp));
@@ -14135,7 +13969,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1564
+#ifdef COMPILE_1563
                                   case 17: {
                                     // AddAndReplaceKind
                                     _zval_dtor(((tmp)));
@@ -14143,7 +13977,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1565
+#ifdef COMPILE_1564
                                   case 18: {
                                     // AddAndReplaceKind
                                     _zval_dtor_func((tmp));
@@ -14151,7 +13985,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1566
+#ifdef COMPILE_1565
                                   case 19: {
                                     // AddAndReplaceKind
                                     _zval_ptr_dtor((&(tmp)));
@@ -14159,7 +13993,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1567
+#ifdef COMPILE_1566
                                   case 20: {
                                     // AddAndReplaceKind
                                     convert_to_boolean((tmp));
@@ -14167,7 +14001,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1568
+#ifdef COMPILE_1567
                                   case 21: {
                                     // AddAndReplaceKind
                                     exit(1);
@@ -14175,7 +14009,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1569
+#ifdef COMPILE_1568
                                   case 22: {
                                     // AddAndReplaceKind
                                     gc_remove_zval_from_buffer((tmp));
@@ -14183,7 +14017,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1570
+#ifdef COMPILE_1569
                                   case 23: {
                                     // AddAndReplaceKind
                                     gc_zval_check_possible_root(((tmp)));
@@ -14191,7 +14025,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1571
+#ifdef COMPILE_1570
                                   case 24: {
                                     // AddAndReplaceKind
                                     gc_zval_possible_root((tmp));
@@ -14199,7 +14033,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1572
+#ifdef COMPILE_1571
                                   case 25: {
                                     // AddAndReplaceKind
                                     i_zval_ptr_dtor((tmp));
@@ -14207,7 +14041,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1573
+#ifdef COMPILE_1572
                                   case 26: {
                                     // AddAndReplaceKind
                                     if (!(executor_globals
@@ -14218,7 +14052,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1574
+#ifdef COMPILE_1573
                                   case 27: {
                                     // AddAndReplaceKind
                                     if (_zend_hash_quick_add_or_update(
@@ -14231,7 +14065,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1575
+#ifdef COMPILE_1574
                                   case 28: {
                                     // AddAndReplaceKind
                                     is_ref = (**(p)).type & 64;
@@ -14239,7 +14073,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1576
+#ifdef COMPILE_1575
                                   case 29: {
                                     // AddAndReplaceKind
                                     is_ref = (**p).type & 64;
@@ -14247,7 +14081,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1577
+#ifdef COMPILE_1576
                                   case 30: {
                                     // AddAndReplaceKind
                                     tmp = (executor_globals
@@ -14256,7 +14090,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1578
+#ifdef COMPILE_1577
                                   case 31: {
                                     // AddAndReplaceKind
                                     tmp = *(p);
@@ -14264,7 +14098,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1579
+#ifdef COMPILE_1578
                                   case 32: {
                                     // AddAndReplaceKind
                                     tmp = *p;
@@ -14272,7 +14106,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1580
+#ifdef COMPILE_1579
                                   case 33: {
                                     // AddAndReplaceKind
                                     zend_error((1 << 3L),
@@ -14282,7 +14116,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1581
+#ifdef COMPILE_1580
                                   case 34: {
                                     // AddAndReplaceKind
                                     zend_error((1 << 3L),
@@ -14292,7 +14126,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1582
+#ifdef COMPILE_1581
                                   case 35: {
                                     // AddAndReplaceKind
                                     zend_error((1 << 3L),
@@ -14302,7 +14136,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1583
+#ifdef COMPILE_1582
                                   case 36: {
                                     // AddAndReplaceKind
                                     zend_hash_destroy((tmp)->value.ht);
@@ -14310,7 +14144,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1584
+#ifdef COMPILE_1583
                                   case 37: {
                                     // AddAndReplaceKind
                                     zend_rebuild_symbol_table();
@@ -14318,7 +14152,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1585
+#ifdef COMPILE_1584
                                   case 38: {
                                     // AddAndReplaceKind
                                     zval_addref_p((tmp));
@@ -14326,7 +14160,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1586
+#ifdef COMPILE_1585
                                   case 39: {
                                     // AddAndReplaceKind
                                     zval_addref_p(*((p)));
@@ -14334,7 +14168,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1587
+#ifdef COMPILE_1586
                                   case 40: {
                                     // AddAndReplaceKind
                                     zval_addref_p(tmp);
@@ -14342,7 +14176,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1588
+#ifdef COMPILE_1587
                                   case 41: {
                                     // AddAndReplaceKind
                                     zval_set_isref_p((tmp));
@@ -14350,7 +14184,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1589
+#ifdef COMPILE_1588
                                   case 42: {
                                     // AddAndReplaceKind
                                     zval_set_isref_p(*(((p))));
@@ -14358,7 +14192,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1590
+#ifdef COMPILE_1589
                                   case 43: {
                                     // AddAndReplaceKind
                                     zval_set_isref_p(*((p)));
@@ -14366,7 +14200,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1591
+#ifdef COMPILE_1590
                                   case 44: {
                                     // AddAndReplaceKind
                                     zval_set_isref_p(tmp);
@@ -14374,7 +14208,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1592
+#ifdef COMPILE_1591
                                   case 45: {
                                     // AddAndReplaceKind
                                     zval_set_refcount_p((tmp), 0);
@@ -14382,7 +14216,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1593
+#ifdef COMPILE_1592
                                   case 46: {
                                     // AddAndReplaceKind
                                     zval_set_refcount_p(tmp, 0);
@@ -14390,7 +14224,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1594
+#ifdef COMPILE_1593
                                   case 47: {
                                     // AddAndReplaceKind
                                     zval_unset_isref_p((tmp));
@@ -14398,7 +14232,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1595
+#ifdef COMPILE_1594
                                   case 48: {
                                     // AddAndReplaceKind
                                     zval_unset_isref_p(tmp);
@@ -14406,7 +14240,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1596
+#ifdef COMPILE_1595
                                   case 49: {
                                     // IfExitKind
                                     if (__is_neg("54-49", 0, 0, 0, 0, 5,
@@ -14419,7 +14253,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1597
+#ifdef COMPILE_1596
                                   case 50: {
                                     // IfExitKind
                                     if (__is_neg("54-50", 0, 0, 0, 0, 5,
@@ -14432,7 +14266,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1598
+#ifdef COMPILE_1597
                                   case 51: {
                                     // IfExitKind
                                     if (__is_neg("54-51", 0, 0, 0, 0, 5,
@@ -14445,7 +14279,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1599
+#ifdef COMPILE_1598
                                   case 52: {
                                     // IfExitKind
                                     if (__is_neg("54-52", 0, 0, 0, 0, 5,
@@ -14458,7 +14292,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1600
+#ifdef COMPILE_1599
                                   case 53: {
                                     // IfExitKind
                                     if (__is_neg("54-53", 0, 0, 0, 0, 5,
@@ -14472,17 +14306,13 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                   }
 #endif
                                   }
-                                  switch (__choose(
-                                      "/root/project/prophet-gpl/build/"
-                                      "php-case-efcb9a71/php-efcb9a71-workdir/"
-                                      "switch.txt",
-                                      55)) {
+                                  switch (__choose("__SWITCH55")) {
                                   case 0: {
                                     Z_UNSET_ISREF_P(tmp);
 
                                     break;
                                   }
-#ifdef COMPILE_1601
+#ifdef COMPILE_1600
                                   case 1: {
                                     // AddAndReplaceKind
                                     _convert_to_string(tmp);
@@ -14490,7 +14320,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1602
+#ifdef COMPILE_1601
                                   case 2: {
                                     // AddAndReplaceKind
                                     _object_init(tmp);
@@ -14498,7 +14328,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1603
+#ifdef COMPILE_1602
                                   case 3: {
                                     // AddAndReplaceKind
                                     _zval_copy_ctor(tmp);
@@ -14506,7 +14336,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1604
+#ifdef COMPILE_1603
                                   case 4: {
                                     // AddAndReplaceKind
                                     _zval_copy_ctor_func(tmp);
@@ -14514,7 +14344,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1605
+#ifdef COMPILE_1604
                                   case 5: {
                                     // AddAndReplaceKind
                                     _zval_dtor(tmp);
@@ -14522,7 +14352,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1606
+#ifdef COMPILE_1605
                                   case 6: {
                                     // AddAndReplaceKind
                                     _zval_dtor_func(tmp);
@@ -14530,7 +14360,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1607
+#ifdef COMPILE_1606
                                   case 7: {
                                     // AddAndReplaceKind
                                     _zval_dtor_wrapper(tmp);
@@ -14538,7 +14368,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1608
+#ifdef COMPILE_1607
                                   case 8: {
                                     // AddAndReplaceKind
                                     _zval_internal_dtor(tmp);
@@ -14546,7 +14376,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1609
+#ifdef COMPILE_1608
                                   case 9: {
                                     // AddAndReplaceKind
                                     add_next_index_null(tmp);
@@ -14554,7 +14384,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1610
+#ifdef COMPILE_1609
                                   case 10: {
                                     // AddAndReplaceKind
                                     convert_scalar_to_number(tmp);
@@ -14562,7 +14392,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1611
+#ifdef COMPILE_1610
                                   case 11: {
                                     // AddAndReplaceKind
                                     convert_to_array(tmp);
@@ -14570,7 +14400,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1612
+#ifdef COMPILE_1611
                                   case 12: {
                                     // AddAndReplaceKind
                                     convert_to_boolean(tmp);
@@ -14578,7 +14408,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1613
+#ifdef COMPILE_1612
                                   case 13: {
                                     // AddAndReplaceKind
                                     convert_to_double(tmp);
@@ -14586,7 +14416,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1614
+#ifdef COMPILE_1613
                                   case 14: {
                                     // AddAndReplaceKind
                                     convert_to_long(tmp);
@@ -14594,7 +14424,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1615
+#ifdef COMPILE_1614
                                   case 15: {
                                     // AddAndReplaceKind
                                     convert_to_null(tmp);
@@ -14602,7 +14432,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1616
+#ifdef COMPILE_1615
                                   case 16: {
                                     // AddAndReplaceKind
                                     convert_to_object(tmp);
@@ -14610,7 +14440,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1617
+#ifdef COMPILE_1616
                                   case 17: {
                                     // AddAndReplaceKind
                                     decrement_function(tmp);
@@ -14618,7 +14448,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1618
+#ifdef COMPILE_1617
                                   case 18: {
                                     // AddAndReplaceKind
                                     gc_remove_zval_from_buffer(tmp);
@@ -14626,7 +14456,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1619
+#ifdef COMPILE_1618
                                   case 19: {
                                     // AddAndReplaceKind
                                     gc_zobj_possible_root(tmp);
@@ -14634,7 +14464,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1620
+#ifdef COMPILE_1619
                                   case 20: {
                                     // AddAndReplaceKind
                                     gc_zval_check_possible_root(tmp);
@@ -14642,7 +14472,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1621
+#ifdef COMPILE_1620
                                   case 21: {
                                     // AddAndReplaceKind
                                     gc_zval_possible_root(tmp);
@@ -14650,7 +14480,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1622
+#ifdef COMPILE_1621
                                   case 22: {
                                     // AddAndReplaceKind
                                     i_zend_is_true(tmp);
@@ -14658,7 +14488,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1623
+#ifdef COMPILE_1622
                                   case 23: {
                                     // AddAndReplaceKind
                                     i_zval_ptr_dtor(tmp);
@@ -14666,7 +14496,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1624
+#ifdef COMPILE_1623
                                   case 24: {
                                     // AddAndReplaceKind
                                     increment_function(tmp);
@@ -14674,7 +14504,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1625
+#ifdef COMPILE_1624
                                   case 25: {
                                     // AddAndReplaceKind
                                     lex_scan(tmp);
@@ -14682,7 +14512,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1626
+#ifdef COMPILE_1625
                                   case 26: {
                                     // AddAndReplaceKind
                                     safe_free_zval_ptr_rel(tmp);
@@ -14690,7 +14520,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1627
+#ifdef COMPILE_1626
                                   case 27: {
                                     // AddAndReplaceKind
                                     zend_is_true(tmp);
@@ -14698,7 +14528,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1628
+#ifdef COMPILE_1627
                                   case 28: {
                                     // AddAndReplaceKind
                                     zend_locale_sprintf_double(tmp);
@@ -14706,7 +14536,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1629
+#ifdef COMPILE_1628
                                   case 29: {
                                     // AddAndReplaceKind
                                     zend_object_store_ctor_failed(tmp);
@@ -14714,7 +14544,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1630
+#ifdef COMPILE_1629
                                   case 30: {
                                     // AddAndReplaceKind
                                     zend_objects_clone_obj(tmp);
@@ -14722,7 +14552,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1631
+#ifdef COMPILE_1630
                                   case 31: {
                                     // AddAndReplaceKind
                                     zend_objects_store_add_ref(tmp);
@@ -14730,7 +14560,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1632
+#ifdef COMPILE_1631
                                   case 32: {
                                     // AddAndReplaceKind
                                     zend_objects_store_clone_obj(tmp);
@@ -14738,7 +14568,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1633
+#ifdef COMPILE_1632
                                   case 33: {
                                     // AddAndReplaceKind
                                     zend_objects_store_del_ref(tmp);
@@ -14746,7 +14576,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1634
+#ifdef COMPILE_1633
                                   case 34: {
                                     // AddAndReplaceKind
                                     zend_objects_store_get_refcount(tmp);
@@ -14754,7 +14584,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1635
+#ifdef COMPILE_1634
                                   case 35: {
                                     // AddAndReplaceKind
                                     zend_print_flat_zval_r(tmp);
@@ -14762,7 +14592,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1636
+#ifdef COMPILE_1635
                                   case 36: {
                                     // AddAndReplaceKind
                                     zend_print_variable(tmp);
@@ -14770,7 +14600,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1637
+#ifdef COMPILE_1636
                                   case 37: {
                                     // AddAndReplaceKind
                                     zend_std_get_constructor(tmp);
@@ -14778,7 +14608,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1638
+#ifdef COMPILE_1637
                                   case 38: {
                                     // AddAndReplaceKind
                                     zend_std_get_properties(tmp);
@@ -14786,7 +14616,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1639
+#ifdef COMPILE_1638
                                   case 39: {
                                     // AddAndReplaceKind
                                     zval_addref_p(tmp);
@@ -14794,7 +14624,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1640
+#ifdef COMPILE_1639
                                   case 40: {
                                     // AddAndReplaceKind
                                     zval_delref_p(tmp);
@@ -14802,7 +14632,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1641
+#ifdef COMPILE_1640
                                   case 41: {
                                     // AddAndReplaceKind
                                     zval_is_true(tmp);
@@ -14810,7 +14640,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1642
+#ifdef COMPILE_1641
                                   case 42: {
                                     // AddAndReplaceKind
                                     zval_isref_p(tmp);
@@ -14818,7 +14648,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1643
+#ifdef COMPILE_1642
                                   case 43: {
                                     // AddAndReplaceKind
                                     zval_refcount_p(tmp);
@@ -14826,7 +14656,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1644
+#ifdef COMPILE_1643
                                   case 44: {
                                     // AddAndReplaceKind
                                     zval_set_isref_p(tmp);
@@ -14834,7 +14664,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1645
+#ifdef COMPILE_1644
                                   case 45: {
                                     // GuardKind
                                     if (!__is_neg("55-45", 0, 0, 0, 0, 5,
@@ -14847,7 +14677,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                                     break;
                                   }
 #endif
-#ifdef COMPILE_1646
+#ifdef COMPILE_1645
                                   case 46: {
                                     // ReplaceKind
                                     zval_unset_isref_p((tmp));
@@ -14863,7 +14693,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 
                               break;
                             }
-#ifdef COMPILE_1647
+#ifdef COMPILE_1646
                             case 1: {
                               // AddAndReplaceKind
                               _convert_to_string(tmp);
@@ -14871,7 +14701,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1648
+#ifdef COMPILE_1647
                             case 2: {
                               // AddAndReplaceKind
                               _object_init(tmp);
@@ -14879,7 +14709,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1649
+#ifdef COMPILE_1648
                             case 3: {
                               // AddAndReplaceKind
                               _zval_copy_ctor(tmp);
@@ -14887,7 +14717,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1650
+#ifdef COMPILE_1649
                             case 4: {
                               // AddAndReplaceKind
                               _zval_copy_ctor_func(tmp);
@@ -14895,7 +14725,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1651
+#ifdef COMPILE_1650
                             case 5: {
                               // AddAndReplaceKind
                               _zval_dtor(tmp);
@@ -14903,7 +14733,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1652
+#ifdef COMPILE_1651
                             case 6: {
                               // AddAndReplaceKind
                               _zval_dtor_func(tmp);
@@ -14911,7 +14741,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1653
+#ifdef COMPILE_1652
                             case 7: {
                               // AddAndReplaceKind
                               _zval_dtor_wrapper(tmp);
@@ -14919,7 +14749,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1654
+#ifdef COMPILE_1653
                             case 8: {
                               // AddAndReplaceKind
                               _zval_internal_dtor(tmp);
@@ -14927,7 +14757,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1655
+#ifdef COMPILE_1654
                             case 9: {
                               // AddAndReplaceKind
                               add_next_index_null(tmp);
@@ -14935,7 +14765,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1656
+#ifdef COMPILE_1655
                             case 10: {
                               // AddAndReplaceKind
                               convert_scalar_to_number(tmp);
@@ -14943,7 +14773,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1657
+#ifdef COMPILE_1656
                             case 11: {
                               // AddAndReplaceKind
                               convert_to_array(tmp);
@@ -14951,7 +14781,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1658
+#ifdef COMPILE_1657
                             case 12: {
                               // AddAndReplaceKind
                               convert_to_boolean(tmp);
@@ -14959,7 +14789,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1659
+#ifdef COMPILE_1658
                             case 13: {
                               // AddAndReplaceKind
                               convert_to_double(tmp);
@@ -14967,7 +14797,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1660
+#ifdef COMPILE_1659
                             case 14: {
                               // AddAndReplaceKind
                               convert_to_long(tmp);
@@ -14975,7 +14805,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1661
+#ifdef COMPILE_1660
                             case 15: {
                               // AddAndReplaceKind
                               convert_to_null(tmp);
@@ -14983,7 +14813,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1662
+#ifdef COMPILE_1661
                             case 16: {
                               // AddAndReplaceKind
                               convert_to_object(tmp);
@@ -14991,7 +14821,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1663
+#ifdef COMPILE_1662
                             case 17: {
                               // AddAndReplaceKind
                               decrement_function(tmp);
@@ -14999,7 +14829,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1664
+#ifdef COMPILE_1663
                             case 18: {
                               // AddAndReplaceKind
                               gc_remove_zval_from_buffer(tmp);
@@ -15007,7 +14837,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1665
+#ifdef COMPILE_1664
                             case 19: {
                               // AddAndReplaceKind
                               gc_zobj_possible_root(tmp);
@@ -15015,7 +14845,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1666
+#ifdef COMPILE_1665
                             case 20: {
                               // AddAndReplaceKind
                               gc_zval_check_possible_root(tmp);
@@ -15023,7 +14853,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1667
+#ifdef COMPILE_1666
                             case 21: {
                               // AddAndReplaceKind
                               gc_zval_possible_root(tmp);
@@ -15031,7 +14861,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1668
+#ifdef COMPILE_1667
                             case 22: {
                               // AddAndReplaceKind
                               i_zend_is_true(tmp);
@@ -15039,7 +14869,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1669
+#ifdef COMPILE_1668
                             case 23: {
                               // AddAndReplaceKind
                               i_zval_ptr_dtor(tmp);
@@ -15047,7 +14877,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1670
+#ifdef COMPILE_1669
                             case 24: {
                               // AddAndReplaceKind
                               increment_function(tmp);
@@ -15055,7 +14885,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1671
+#ifdef COMPILE_1670
                             case 25: {
                               // AddAndReplaceKind
                               lex_scan(tmp);
@@ -15063,7 +14893,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1672
+#ifdef COMPILE_1671
                             case 26: {
                               // AddAndReplaceKind
                               safe_free_zval_ptr_rel(tmp);
@@ -15071,7 +14901,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1673
+#ifdef COMPILE_1672
                             case 27: {
                               // AddAndReplaceKind
                               zend_is_true(tmp);
@@ -15079,7 +14909,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1674
+#ifdef COMPILE_1673
                             case 28: {
                               // AddAndReplaceKind
                               zend_locale_sprintf_double(tmp);
@@ -15087,7 +14917,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1675
+#ifdef COMPILE_1674
                             case 29: {
                               // AddAndReplaceKind
                               zend_object_store_ctor_failed(tmp);
@@ -15095,7 +14925,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1676
+#ifdef COMPILE_1675
                             case 30: {
                               // AddAndReplaceKind
                               zend_objects_clone_obj(tmp);
@@ -15103,7 +14933,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1677
+#ifdef COMPILE_1676
                             case 31: {
                               // AddAndReplaceKind
                               zend_objects_store_add_ref(tmp);
@@ -15111,7 +14941,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1678
+#ifdef COMPILE_1677
                             case 32: {
                               // AddAndReplaceKind
                               zend_objects_store_clone_obj(tmp);
@@ -15119,7 +14949,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1679
+#ifdef COMPILE_1678
                             case 33: {
                               // AddAndReplaceKind
                               zend_objects_store_del_ref(tmp);
@@ -15127,7 +14957,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1680
+#ifdef COMPILE_1679
                             case 34: {
                               // AddAndReplaceKind
                               zend_objects_store_get_refcount(tmp);
@@ -15135,7 +14965,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1681
+#ifdef COMPILE_1680
                             case 35: {
                               // AddAndReplaceKind
                               zend_print_flat_zval_r(tmp);
@@ -15143,7 +14973,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1682
+#ifdef COMPILE_1681
                             case 36: {
                               // AddAndReplaceKind
                               zend_print_variable(tmp);
@@ -15151,7 +14981,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1683
+#ifdef COMPILE_1682
                             case 37: {
                               // AddAndReplaceKind
                               zend_std_get_constructor(tmp);
@@ -15159,7 +14989,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1684
+#ifdef COMPILE_1683
                             case 38: {
                               // AddAndReplaceKind
                               zend_std_get_properties(tmp);
@@ -15167,7 +14997,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1685
+#ifdef COMPILE_1684
                             case 39: {
                               // AddAndReplaceKind
                               zval_addref_p(tmp);
@@ -15175,7 +15005,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1686
+#ifdef COMPILE_1685
                             case 40: {
                               // AddAndReplaceKind
                               zval_delref_p(tmp);
@@ -15183,7 +15013,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1687
+#ifdef COMPILE_1686
                             case 41: {
                               // AddAndReplaceKind
                               zval_is_true(tmp);
@@ -15191,7 +15021,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1688
+#ifdef COMPILE_1687
                             case 42: {
                               // AddAndReplaceKind
                               zval_isref_p(tmp);
@@ -15199,7 +15029,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1689
+#ifdef COMPILE_1688
                             case 43: {
                               // AddAndReplaceKind
                               zval_refcount_p(tmp);
@@ -15207,7 +15037,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1690
+#ifdef COMPILE_1689
                             case 44: {
                               // AddAndReplaceKind
                               zval_set_isref_p(tmp);
@@ -15215,7 +15045,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1691
+#ifdef COMPILE_1690
                             case 45: {
                               // GuardKind
                               if (!__is_neg(
@@ -15227,7 +15057,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                               break;
                             }
 #endif
-#ifdef COMPILE_1692
+#ifdef COMPILE_1691
                             case 46: {
                               // ReplaceKind
                               zval_unset_isref_p((tmp));
@@ -15241,7 +15071,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 
                         break;
                       }
-#ifdef COMPILE_1693
+#ifdef COMPILE_1692
                       case 1: {
                         // AddAndReplaceKind
                         _convert_to_string(tmp);
@@ -15249,7 +15079,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1694
+#ifdef COMPILE_1693
                       case 2: {
                         // AddAndReplaceKind
                         _object_init(tmp);
@@ -15257,7 +15087,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1695
+#ifdef COMPILE_1694
                       case 3: {
                         // AddAndReplaceKind
                         _zval_copy_ctor(tmp);
@@ -15265,7 +15095,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1696
+#ifdef COMPILE_1695
                       case 4: {
                         // AddAndReplaceKind
                         _zval_copy_ctor_func(tmp);
@@ -15273,7 +15103,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1697
+#ifdef COMPILE_1696
                       case 5: {
                         // AddAndReplaceKind
                         _zval_dtor(tmp);
@@ -15281,7 +15111,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1698
+#ifdef COMPILE_1697
                       case 6: {
                         // AddAndReplaceKind
                         _zval_dtor_func(tmp);
@@ -15289,7 +15119,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1699
+#ifdef COMPILE_1698
                       case 7: {
                         // AddAndReplaceKind
                         _zval_dtor_wrapper(tmp);
@@ -15297,7 +15127,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1700
+#ifdef COMPILE_1699
                       case 8: {
                         // AddAndReplaceKind
                         _zval_internal_dtor(tmp);
@@ -15305,7 +15135,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1701
+#ifdef COMPILE_1700
                       case 9: {
                         // AddAndReplaceKind
                         add_next_index_null(tmp);
@@ -15313,7 +15143,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1702
+#ifdef COMPILE_1701
                       case 10: {
                         // AddAndReplaceKind
                         convert_scalar_to_number(tmp);
@@ -15321,7 +15151,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1703
+#ifdef COMPILE_1702
                       case 11: {
                         // AddAndReplaceKind
                         convert_to_array(tmp);
@@ -15329,7 +15159,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1704
+#ifdef COMPILE_1703
                       case 12: {
                         // AddAndReplaceKind
                         convert_to_boolean(tmp);
@@ -15337,7 +15167,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1705
+#ifdef COMPILE_1704
                       case 13: {
                         // AddAndReplaceKind
                         convert_to_double(tmp);
@@ -15345,7 +15175,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1706
+#ifdef COMPILE_1705
                       case 14: {
                         // AddAndReplaceKind
                         convert_to_long(tmp);
@@ -15353,7 +15183,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1707
+#ifdef COMPILE_1706
                       case 15: {
                         // AddAndReplaceKind
                         convert_to_null(tmp);
@@ -15361,7 +15191,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1708
+#ifdef COMPILE_1707
                       case 16: {
                         // AddAndReplaceKind
                         convert_to_object(tmp);
@@ -15369,7 +15199,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1709
+#ifdef COMPILE_1708
                       case 17: {
                         // AddAndReplaceKind
                         decrement_function(tmp);
@@ -15377,7 +15207,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1710
+#ifdef COMPILE_1709
                       case 18: {
                         // AddAndReplaceKind
                         gc_remove_zval_from_buffer(tmp);
@@ -15385,7 +15215,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1711
+#ifdef COMPILE_1710
                       case 19: {
                         // AddAndReplaceKind
                         gc_zobj_possible_root(tmp);
@@ -15393,7 +15223,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1712
+#ifdef COMPILE_1711
                       case 20: {
                         // AddAndReplaceKind
                         gc_zval_check_possible_root(tmp);
@@ -15401,7 +15231,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1713
+#ifdef COMPILE_1712
                       case 21: {
                         // AddAndReplaceKind
                         gc_zval_possible_root(tmp);
@@ -15409,7 +15239,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1714
+#ifdef COMPILE_1713
                       case 22: {
                         // AddAndReplaceKind
                         i_zend_is_true(tmp);
@@ -15417,7 +15247,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1715
+#ifdef COMPILE_1714
                       case 23: {
                         // AddAndReplaceKind
                         i_zval_ptr_dtor(tmp);
@@ -15425,7 +15255,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1716
+#ifdef COMPILE_1715
                       case 24: {
                         // AddAndReplaceKind
                         increment_function(tmp);
@@ -15433,7 +15263,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1717
+#ifdef COMPILE_1716
                       case 25: {
                         // AddAndReplaceKind
                         lex_scan(tmp);
@@ -15441,7 +15271,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1718
+#ifdef COMPILE_1717
                       case 26: {
                         // AddAndReplaceKind
                         safe_free_zval_ptr_rel(tmp);
@@ -15449,7 +15279,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1719
+#ifdef COMPILE_1718
                       case 27: {
                         // AddAndReplaceKind
                         zend_is_true(tmp);
@@ -15457,7 +15287,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1720
+#ifdef COMPILE_1719
                       case 28: {
                         // AddAndReplaceKind
                         zend_locale_sprintf_double(tmp);
@@ -15465,7 +15295,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1721
+#ifdef COMPILE_1720
                       case 29: {
                         // AddAndReplaceKind
                         zend_object_store_ctor_failed(tmp);
@@ -15473,7 +15303,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1722
+#ifdef COMPILE_1721
                       case 30: {
                         // AddAndReplaceKind
                         zend_objects_clone_obj(tmp);
@@ -15481,7 +15311,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1723
+#ifdef COMPILE_1722
                       case 31: {
                         // AddAndReplaceKind
                         zend_objects_store_add_ref(tmp);
@@ -15489,7 +15319,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1724
+#ifdef COMPILE_1723
                       case 32: {
                         // AddAndReplaceKind
                         zend_objects_store_clone_obj(tmp);
@@ -15497,7 +15327,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1725
+#ifdef COMPILE_1724
                       case 33: {
                         // AddAndReplaceKind
                         zend_objects_store_del_ref(tmp);
@@ -15505,7 +15335,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1726
+#ifdef COMPILE_1725
                       case 34: {
                         // AddAndReplaceKind
                         zend_objects_store_get_refcount(tmp);
@@ -15513,7 +15343,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1727
+#ifdef COMPILE_1726
                       case 35: {
                         // AddAndReplaceKind
                         zend_print_flat_zval_r(tmp);
@@ -15521,7 +15351,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1728
+#ifdef COMPILE_1727
                       case 36: {
                         // AddAndReplaceKind
                         zend_print_variable(tmp);
@@ -15529,7 +15359,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1729
+#ifdef COMPILE_1728
                       case 37: {
                         // AddAndReplaceKind
                         zend_std_get_constructor(tmp);
@@ -15537,7 +15367,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1730
+#ifdef COMPILE_1729
                       case 38: {
                         // AddAndReplaceKind
                         zend_std_get_properties(tmp);
@@ -15545,7 +15375,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1731
+#ifdef COMPILE_1730
                       case 39: {
                         // AddAndReplaceKind
                         zval_addref_p(tmp);
@@ -15553,7 +15383,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1732
+#ifdef COMPILE_1731
                       case 40: {
                         // AddAndReplaceKind
                         zval_delref_p(tmp);
@@ -15561,7 +15391,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1733
+#ifdef COMPILE_1732
                       case 41: {
                         // AddAndReplaceKind
                         zval_is_true(tmp);
@@ -15569,7 +15399,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1734
+#ifdef COMPILE_1733
                       case 42: {
                         // AddAndReplaceKind
                         zval_isref_p(tmp);
@@ -15577,7 +15407,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1735
+#ifdef COMPILE_1734
                       case 43: {
                         // AddAndReplaceKind
                         zval_refcount_p(tmp);
@@ -15585,7 +15415,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1736
+#ifdef COMPILE_1735
                       case 44: {
                         // AddAndReplaceKind
                         zval_set_isref_p(tmp);
@@ -15593,7 +15423,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1737
+#ifdef COMPILE_1736
                       case 45: {
                         // GuardKind
                         if (!__is_neg("57-45", 0, 0, 0, 0, 5,
@@ -15604,7 +15434,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                         break;
                       }
 #endif
-#ifdef COMPILE_1738
+#ifdef COMPILE_1737
                       case 46: {
                         // ReplaceKind
                         zval_unset_isref_p((tmp));
@@ -15619,7 +15449,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 
                 break;
               }
-#ifdef COMPILE_1739
+#ifdef COMPILE_1738
               case 1: {
                 // AddAndReplaceKind
                 _convert_to_string(tmp);
@@ -15627,7 +15457,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1740
+#ifdef COMPILE_1739
               case 2: {
                 // AddAndReplaceKind
                 _object_init(tmp);
@@ -15635,7 +15465,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1741
+#ifdef COMPILE_1740
               case 3: {
                 // AddAndReplaceKind
                 _zval_copy_ctor(tmp);
@@ -15643,7 +15473,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1742
+#ifdef COMPILE_1741
               case 4: {
                 // AddAndReplaceKind
                 _zval_copy_ctor_func(tmp);
@@ -15651,7 +15481,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1743
+#ifdef COMPILE_1742
               case 5: {
                 // AddAndReplaceKind
                 _zval_dtor(tmp);
@@ -15659,7 +15489,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1744
+#ifdef COMPILE_1743
               case 6: {
                 // AddAndReplaceKind
                 _zval_dtor_func(tmp);
@@ -15667,7 +15497,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1745
+#ifdef COMPILE_1744
               case 7: {
                 // AddAndReplaceKind
                 _zval_dtor_wrapper(tmp);
@@ -15675,7 +15505,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1746
+#ifdef COMPILE_1745
               case 8: {
                 // AddAndReplaceKind
                 _zval_internal_dtor(tmp);
@@ -15683,7 +15513,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1747
+#ifdef COMPILE_1746
               case 9: {
                 // AddAndReplaceKind
                 add_next_index_null(tmp);
@@ -15691,7 +15521,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1748
+#ifdef COMPILE_1747
               case 10: {
                 // AddAndReplaceKind
                 convert_scalar_to_number(tmp);
@@ -15699,7 +15529,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1749
+#ifdef COMPILE_1748
               case 11: {
                 // AddAndReplaceKind
                 convert_to_array(tmp);
@@ -15707,7 +15537,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1750
+#ifdef COMPILE_1749
               case 12: {
                 // AddAndReplaceKind
                 convert_to_boolean(tmp);
@@ -15715,7 +15545,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1751
+#ifdef COMPILE_1750
               case 13: {
                 // AddAndReplaceKind
                 convert_to_double(tmp);
@@ -15723,7 +15553,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1752
+#ifdef COMPILE_1751
               case 14: {
                 // AddAndReplaceKind
                 convert_to_long(tmp);
@@ -15731,7 +15561,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1753
+#ifdef COMPILE_1752
               case 15: {
                 // AddAndReplaceKind
                 convert_to_null(tmp);
@@ -15739,7 +15569,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1754
+#ifdef COMPILE_1753
               case 16: {
                 // AddAndReplaceKind
                 convert_to_object(tmp);
@@ -15747,7 +15577,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1755
+#ifdef COMPILE_1754
               case 17: {
                 // AddAndReplaceKind
                 decrement_function(tmp);
@@ -15755,7 +15585,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1756
+#ifdef COMPILE_1755
               case 18: {
                 // AddAndReplaceKind
                 gc_remove_zval_from_buffer(tmp);
@@ -15763,7 +15593,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1757
+#ifdef COMPILE_1756
               case 19: {
                 // AddAndReplaceKind
                 gc_zobj_possible_root(tmp);
@@ -15771,7 +15601,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1758
+#ifdef COMPILE_1757
               case 20: {
                 // AddAndReplaceKind
                 gc_zval_check_possible_root(tmp);
@@ -15779,7 +15609,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1759
+#ifdef COMPILE_1758
               case 21: {
                 // AddAndReplaceKind
                 gc_zval_possible_root(tmp);
@@ -15787,7 +15617,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1760
+#ifdef COMPILE_1759
               case 22: {
                 // AddAndReplaceKind
                 i_zend_is_true(tmp);
@@ -15795,7 +15625,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1761
+#ifdef COMPILE_1760
               case 23: {
                 // AddAndReplaceKind
                 i_zval_ptr_dtor(tmp);
@@ -15803,7 +15633,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1762
+#ifdef COMPILE_1761
               case 24: {
                 // AddAndReplaceKind
                 increment_function(tmp);
@@ -15811,7 +15641,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1763
+#ifdef COMPILE_1762
               case 25: {
                 // AddAndReplaceKind
                 lex_scan(tmp);
@@ -15819,7 +15649,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1764
+#ifdef COMPILE_1763
               case 26: {
                 // AddAndReplaceKind
                 safe_free_zval_ptr_rel(tmp);
@@ -15827,7 +15657,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1765
+#ifdef COMPILE_1764
               case 27: {
                 // AddAndReplaceKind
                 zend_is_true(tmp);
@@ -15835,7 +15665,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1766
+#ifdef COMPILE_1765
               case 28: {
                 // AddAndReplaceKind
                 zend_locale_sprintf_double(tmp);
@@ -15843,7 +15673,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1767
+#ifdef COMPILE_1766
               case 29: {
                 // AddAndReplaceKind
                 zend_object_store_ctor_failed(tmp);
@@ -15851,7 +15681,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1768
+#ifdef COMPILE_1767
               case 30: {
                 // AddAndReplaceKind
                 zend_objects_clone_obj(tmp);
@@ -15859,7 +15689,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1769
+#ifdef COMPILE_1768
               case 31: {
                 // AddAndReplaceKind
                 zend_objects_store_add_ref(tmp);
@@ -15867,7 +15697,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1770
+#ifdef COMPILE_1769
               case 32: {
                 // AddAndReplaceKind
                 zend_objects_store_clone_obj(tmp);
@@ -15875,7 +15705,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1771
+#ifdef COMPILE_1770
               case 33: {
                 // AddAndReplaceKind
                 zend_objects_store_del_ref(tmp);
@@ -15883,7 +15713,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1772
+#ifdef COMPILE_1771
               case 34: {
                 // AddAndReplaceKind
                 zend_objects_store_get_refcount(tmp);
@@ -15891,7 +15721,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1773
+#ifdef COMPILE_1772
               case 35: {
                 // AddAndReplaceKind
                 zend_print_flat_zval_r(tmp);
@@ -15899,7 +15729,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1774
+#ifdef COMPILE_1773
               case 36: {
                 // AddAndReplaceKind
                 zend_print_variable(tmp);
@@ -15907,7 +15737,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1775
+#ifdef COMPILE_1774
               case 37: {
                 // AddAndReplaceKind
                 zend_std_get_constructor(tmp);
@@ -15915,7 +15745,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1776
+#ifdef COMPILE_1775
               case 38: {
                 // AddAndReplaceKind
                 zend_std_get_properties(tmp);
@@ -15923,7 +15753,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1777
+#ifdef COMPILE_1776
               case 39: {
                 // AddAndReplaceKind
                 zval_addref_p(tmp);
@@ -15931,7 +15761,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1778
+#ifdef COMPILE_1777
               case 40: {
                 // AddAndReplaceKind
                 zval_delref_p(tmp);
@@ -15939,7 +15769,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1779
+#ifdef COMPILE_1778
               case 41: {
                 // AddAndReplaceKind
                 zval_is_true(tmp);
@@ -15947,7 +15777,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1780
+#ifdef COMPILE_1779
               case 42: {
                 // AddAndReplaceKind
                 zval_isref_p(tmp);
@@ -15955,7 +15785,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1781
+#ifdef COMPILE_1780
               case 43: {
                 // AddAndReplaceKind
                 zval_refcount_p(tmp);
@@ -15963,7 +15793,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1782
+#ifdef COMPILE_1781
               case 44: {
                 // AddAndReplaceKind
                 zval_set_isref_p(tmp);
@@ -15971,7 +15801,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1783
+#ifdef COMPILE_1782
               case 45: {
                 // GuardKind
                 if (!__is_neg("58-45", 0, 0, 0, 0, 5,
@@ -15982,7 +15812,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
                 break;
               }
 #endif
-#ifdef COMPILE_1784
+#ifdef COMPILE_1783
               case 46: {
                 // ReplaceKind
                 zval_unset_isref_p((tmp));
@@ -15999,7 +15829,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 
         break;
       }
-#ifdef COMPILE_1785
+#ifdef COMPILE_1784
       case 1: {
         // AddAndReplaceKind
         _convert_to_string(tmp);
@@ -16007,7 +15837,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1786
+#ifdef COMPILE_1785
       case 2: {
         // AddAndReplaceKind
         _object_init(tmp);
@@ -16015,7 +15845,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1787
+#ifdef COMPILE_1786
       case 3: {
         // AddAndReplaceKind
         _zval_copy_ctor(tmp);
@@ -16023,7 +15853,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1788
+#ifdef COMPILE_1787
       case 4: {
         // AddAndReplaceKind
         _zval_copy_ctor_func(tmp);
@@ -16031,7 +15861,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1789
+#ifdef COMPILE_1788
       case 5: {
         // AddAndReplaceKind
         _zval_dtor(tmp);
@@ -16039,7 +15869,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1790
+#ifdef COMPILE_1789
       case 6: {
         // AddAndReplaceKind
         _zval_dtor_func(tmp);
@@ -16047,7 +15877,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1791
+#ifdef COMPILE_1790
       case 7: {
         // AddAndReplaceKind
         _zval_dtor_wrapper(tmp);
@@ -16055,7 +15885,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1792
+#ifdef COMPILE_1791
       case 8: {
         // AddAndReplaceKind
         _zval_internal_dtor(tmp);
@@ -16063,7 +15893,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1793
+#ifdef COMPILE_1792
       case 9: {
         // AddAndReplaceKind
         add_next_index_null(tmp);
@@ -16071,7 +15901,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1794
+#ifdef COMPILE_1793
       case 10: {
         // AddAndReplaceKind
         convert_scalar_to_number(tmp);
@@ -16079,7 +15909,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1795
+#ifdef COMPILE_1794
       case 11: {
         // AddAndReplaceKind
         convert_to_array(tmp);
@@ -16087,7 +15917,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1796
+#ifdef COMPILE_1795
       case 12: {
         // AddAndReplaceKind
         convert_to_boolean(tmp);
@@ -16095,7 +15925,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1797
+#ifdef COMPILE_1796
       case 13: {
         // AddAndReplaceKind
         convert_to_double(tmp);
@@ -16103,7 +15933,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1798
+#ifdef COMPILE_1797
       case 14: {
         // AddAndReplaceKind
         convert_to_long(tmp);
@@ -16111,7 +15941,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1799
+#ifdef COMPILE_1798
       case 15: {
         // AddAndReplaceKind
         convert_to_null(tmp);
@@ -16119,7 +15949,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1800
+#ifdef COMPILE_1799
       case 16: {
         // AddAndReplaceKind
         convert_to_object(tmp);
@@ -16127,7 +15957,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1801
+#ifdef COMPILE_1800
       case 17: {
         // AddAndReplaceKind
         decrement_function(tmp);
@@ -16135,7 +15965,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1802
+#ifdef COMPILE_1801
       case 18: {
         // AddAndReplaceKind
         gc_remove_zval_from_buffer(tmp);
@@ -16143,7 +15973,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1803
+#ifdef COMPILE_1802
       case 19: {
         // AddAndReplaceKind
         gc_zobj_possible_root(tmp);
@@ -16151,7 +15981,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1804
+#ifdef COMPILE_1803
       case 20: {
         // AddAndReplaceKind
         gc_zval_check_possible_root(tmp);
@@ -16159,7 +15989,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1805
+#ifdef COMPILE_1804
       case 21: {
         // AddAndReplaceKind
         gc_zval_possible_root(tmp);
@@ -16167,7 +15997,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1806
+#ifdef COMPILE_1805
       case 22: {
         // AddAndReplaceKind
         i_zend_is_true(tmp);
@@ -16175,7 +16005,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1807
+#ifdef COMPILE_1806
       case 23: {
         // AddAndReplaceKind
         i_zval_ptr_dtor(tmp);
@@ -16183,7 +16013,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1808
+#ifdef COMPILE_1807
       case 24: {
         // AddAndReplaceKind
         increment_function(tmp);
@@ -16191,7 +16021,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1809
+#ifdef COMPILE_1808
       case 25: {
         // AddAndReplaceKind
         lex_scan(tmp);
@@ -16199,7 +16029,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1810
+#ifdef COMPILE_1809
       case 26: {
         // AddAndReplaceKind
         safe_free_zval_ptr_rel(tmp);
@@ -16207,7 +16037,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1811
+#ifdef COMPILE_1810
       case 27: {
         // AddAndReplaceKind
         zend_is_true(tmp);
@@ -16215,7 +16045,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1812
+#ifdef COMPILE_1811
       case 28: {
         // AddAndReplaceKind
         zend_locale_sprintf_double(tmp);
@@ -16223,7 +16053,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1813
+#ifdef COMPILE_1812
       case 29: {
         // AddAndReplaceKind
         zend_object_store_ctor_failed(tmp);
@@ -16231,7 +16061,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1814
+#ifdef COMPILE_1813
       case 30: {
         // AddAndReplaceKind
         zend_objects_clone_obj(tmp);
@@ -16239,7 +16069,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1815
+#ifdef COMPILE_1814
       case 31: {
         // AddAndReplaceKind
         zend_objects_store_add_ref(tmp);
@@ -16247,7 +16077,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1816
+#ifdef COMPILE_1815
       case 32: {
         // AddAndReplaceKind
         zend_objects_store_clone_obj(tmp);
@@ -16255,7 +16085,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1817
+#ifdef COMPILE_1816
       case 33: {
         // AddAndReplaceKind
         zend_objects_store_del_ref(tmp);
@@ -16263,7 +16093,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1818
+#ifdef COMPILE_1817
       case 34: {
         // AddAndReplaceKind
         zend_objects_store_get_refcount(tmp);
@@ -16271,7 +16101,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1819
+#ifdef COMPILE_1818
       case 35: {
         // AddAndReplaceKind
         zend_print_flat_zval_r(tmp);
@@ -16279,7 +16109,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1820
+#ifdef COMPILE_1819
       case 36: {
         // AddAndReplaceKind
         zend_print_variable(tmp);
@@ -16287,7 +16117,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1821
+#ifdef COMPILE_1820
       case 37: {
         // AddAndReplaceKind
         zend_std_get_constructor(tmp);
@@ -16295,7 +16125,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1822
+#ifdef COMPILE_1821
       case 38: {
         // AddAndReplaceKind
         zend_std_get_properties(tmp);
@@ -16303,7 +16133,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1823
+#ifdef COMPILE_1822
       case 39: {
         // AddAndReplaceKind
         zval_addref_p(tmp);
@@ -16311,7 +16141,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1824
+#ifdef COMPILE_1823
       case 40: {
         // AddAndReplaceKind
         zval_delref_p(tmp);
@@ -16319,7 +16149,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1825
+#ifdef COMPILE_1824
       case 41: {
         // AddAndReplaceKind
         zval_is_true(tmp);
@@ -16327,7 +16157,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1826
+#ifdef COMPILE_1825
       case 42: {
         // AddAndReplaceKind
         zval_isref_p(tmp);
@@ -16335,7 +16165,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1827
+#ifdef COMPILE_1826
       case 43: {
         // AddAndReplaceKind
         zval_refcount_p(tmp);
@@ -16343,7 +16173,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1828
+#ifdef COMPILE_1827
       case 44: {
         // AddAndReplaceKind
         zval_set_isref_p(tmp);
@@ -16351,7 +16181,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1829
+#ifdef COMPILE_1828
       case 45: {
         // GuardKind
         if (!__is_neg("59-45", 0, 0, 0, 0, 5,
@@ -16362,7 +16192,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1830
+#ifdef COMPILE_1829
       case 46: {
         // ReplaceKind
         zval_unset_isref_p((tmp));
@@ -16375,12 +16205,10 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
   }
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     60)) {
+    switch (__choose("__SWITCH60")) {
     case 0:
       break;
-#ifdef COMPILE_1831
+#ifdef COMPILE_1830
     case 1: {
       // AddAndReplaceKind
       (executor_globals.argument_stack) =
@@ -16389,7 +16217,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1832
+#ifdef COMPILE_1831
     case 2: {
       // AddAndReplaceKind
       (tmp) = (executor_globals.uninitialized_zval_ptr);
@@ -16397,7 +16225,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1833
+#ifdef COMPILE_1832
     case 3: {
       // AddAndReplaceKind
       (tmp) = *p;
@@ -16405,7 +16233,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1834
+#ifdef COMPILE_1833
     case 4: {
       // AddAndReplaceKind
       *(tmp) = zval_used_for_init;
@@ -16413,7 +16241,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1835
+#ifdef COMPILE_1834
     case 5: {
       // AddAndReplaceKind
       *tmp = zval_used_for_init;
@@ -16421,7 +16249,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1836
+#ifdef COMPILE_1835
     case 6: {
       // AddAndReplaceKind
       _efree(((tmp)));
@@ -16429,7 +16257,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1837
+#ifdef COMPILE_1836
     case 7: {
       // AddAndReplaceKind
       _efree(((tmp)->value.ht));
@@ -16437,7 +16265,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1838
+#ifdef COMPILE_1837
     case 8: {
       // AddAndReplaceKind
       _efree(((tmp)->value.str.val));
@@ -16445,7 +16273,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1839
+#ifdef COMPILE_1838
     case 9: {
       // AddAndReplaceKind
       _zend_hash_quick_add_or_update(
@@ -16455,7 +16283,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1840
+#ifdef COMPILE_1839
     case 10: {
       // AddAndReplaceKind
       _zend_hash_quick_add_or_update(
@@ -16465,7 +16293,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1841
+#ifdef COMPILE_1840
     case 11: {
       // AddAndReplaceKind
       _zend_hash_quick_add_or_update(
@@ -16475,7 +16303,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1842
+#ifdef COMPILE_1841
     case 12: {
       // AddAndReplaceKind
       _zend_hash_quick_add_or_update(
@@ -16485,7 +16313,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1843
+#ifdef COMPILE_1842
     case 13: {
       // AddAndReplaceKind
       _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
@@ -16495,7 +16323,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1844
+#ifdef COMPILE_1843
     case 14: {
       // AddAndReplaceKind
       _zend_list_addref((tmp)->value.lval);
@@ -16503,7 +16331,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1845
+#ifdef COMPILE_1844
     case 15: {
       // AddAndReplaceKind
       _zend_list_delete((tmp)->value.lval);
@@ -16511,7 +16339,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1846
+#ifdef COMPILE_1845
     case 16: {
       // AddAndReplaceKind
       _zval_copy_ctor_func((tmp));
@@ -16519,7 +16347,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1847
+#ifdef COMPILE_1846
     case 17: {
       // AddAndReplaceKind
       _zval_dtor(((tmp)));
@@ -16527,7 +16355,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1848
+#ifdef COMPILE_1847
     case 18: {
       // AddAndReplaceKind
       _zval_dtor_func((tmp));
@@ -16535,7 +16363,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1849
+#ifdef COMPILE_1848
     case 19: {
       // AddAndReplaceKind
       _zval_ptr_dtor((&(tmp)));
@@ -16543,7 +16371,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1850
+#ifdef COMPILE_1849
     case 20: {
       // AddAndReplaceKind
       convert_to_boolean((tmp));
@@ -16551,7 +16379,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1851
+#ifdef COMPILE_1850
     case 21: {
       // AddAndReplaceKind
       exit(1);
@@ -16559,7 +16387,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1852
+#ifdef COMPILE_1851
     case 22: {
       // AddAndReplaceKind
       gc_remove_zval_from_buffer((tmp));
@@ -16567,7 +16395,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1853
+#ifdef COMPILE_1852
     case 23: {
       // AddAndReplaceKind
       gc_zval_check_possible_root(((tmp)));
@@ -16575,7 +16403,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1854
+#ifdef COMPILE_1853
     case 24: {
       // AddAndReplaceKind
       gc_zval_possible_root((tmp));
@@ -16583,7 +16411,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1855
+#ifdef COMPILE_1854
     case 25: {
       // AddAndReplaceKind
       i_zval_ptr_dtor((tmp));
@@ -16591,7 +16419,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1856
+#ifdef COMPILE_1855
     case 26: {
       // AddAndReplaceKind
       if (!(executor_globals.active_symbol_table)) {
@@ -16601,7 +16429,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1857
+#ifdef COMPILE_1856
     case 27: {
       // AddAndReplaceKind
       if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength,
@@ -16613,7 +16441,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1858
+#ifdef COMPILE_1857
     case 28: {
       // AddAndReplaceKind
       is_ref = (**(p)).type & 64;
@@ -16621,7 +16449,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1859
+#ifdef COMPILE_1858
     case 29: {
       // AddAndReplaceKind
       is_ref = (**p).type & 64;
@@ -16629,7 +16457,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1860
+#ifdef COMPILE_1859
     case 30: {
       // AddAndReplaceKind
       tmp = (executor_globals.uninitialized_zval_ptr);
@@ -16637,7 +16465,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1861
+#ifdef COMPILE_1860
     case 31: {
       // AddAndReplaceKind
       tmp = *(p);
@@ -16645,7 +16473,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1862
+#ifdef COMPILE_1861
     case 32: {
       // AddAndReplaceKind
       tmp = *p;
@@ -16653,7 +16481,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1863
+#ifdef COMPILE_1862
     case 33: {
       // AddAndReplaceKind
       zend_error((1 << 3L), "A non well formed numeric value encountered");
@@ -16661,7 +16489,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1864
+#ifdef COMPILE_1863
     case 34: {
       // AddAndReplaceKind
       zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
@@ -16669,7 +16497,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1865
+#ifdef COMPILE_1864
     case 35: {
       // AddAndReplaceKind
       zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
@@ -16677,7 +16505,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1866
+#ifdef COMPILE_1865
     case 36: {
       // AddAndReplaceKind
       zend_hash_destroy((tmp)->value.ht);
@@ -16685,7 +16513,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1867
+#ifdef COMPILE_1866
     case 37: {
       // AddAndReplaceKind
       zend_rebuild_symbol_table();
@@ -16693,7 +16521,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1868
+#ifdef COMPILE_1867
     case 38: {
       // AddAndReplaceKind
       zval_addref_p((tmp));
@@ -16701,7 +16529,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1869
+#ifdef COMPILE_1868
     case 39: {
       // AddAndReplaceKind
       zval_addref_p(*((p)));
@@ -16709,7 +16537,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1870
+#ifdef COMPILE_1869
     case 40: {
       // AddAndReplaceKind
       zval_addref_p(tmp);
@@ -16717,7 +16545,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1871
+#ifdef COMPILE_1870
     case 41: {
       // AddAndReplaceKind
       zval_set_isref_p((tmp));
@@ -16725,7 +16553,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1872
+#ifdef COMPILE_1871
     case 42: {
       // AddAndReplaceKind
       zval_set_isref_p(*(((p))));
@@ -16733,7 +16561,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1873
+#ifdef COMPILE_1872
     case 43: {
       // AddAndReplaceKind
       zval_set_isref_p(*((p)));
@@ -16741,7 +16569,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1874
+#ifdef COMPILE_1873
     case 44: {
       // AddAndReplaceKind
       zval_set_isref_p(tmp);
@@ -16749,7 +16577,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1875
+#ifdef COMPILE_1874
     case 45: {
       // AddAndReplaceKind
       zval_set_refcount_p((tmp), 0);
@@ -16757,7 +16585,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1876
+#ifdef COMPILE_1875
     case 46: {
       // AddAndReplaceKind
       zval_set_refcount_p(tmp, 0);
@@ -16765,7 +16593,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1877
+#ifdef COMPILE_1876
     case 47: {
       // AddAndReplaceKind
       zval_unset_isref_p((tmp));
@@ -16773,7 +16601,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1878
+#ifdef COMPILE_1877
     case 48: {
       // AddAndReplaceKind
       zval_unset_isref_p(tmp);
@@ -16781,7 +16609,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1879
+#ifdef COMPILE_1878
     case 49: {
       // AddInitKind
       memset(key, 0, sizeof(*(key)));
@@ -16789,7 +16617,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1880
+#ifdef COMPILE_1879
     case 50: {
       // IfExitKind
       if (__is_neg("60-50", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args},
@@ -16799,7 +16627,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1881
+#ifdef COMPILE_1880
     case 51: {
       // IfExitKind
       if (__is_neg("60-51", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args},
@@ -16809,7 +16637,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1882
+#ifdef COMPILE_1881
     case 52: {
       // IfExitKind
       if (__is_neg("60-52", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args},
@@ -16819,7 +16647,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1883
+#ifdef COMPILE_1882
     case 53: {
       // IfExitKind
       if (__is_neg("60-53", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args},
@@ -16829,7 +16657,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_1884
+#ifdef COMPILE_1883
     case 54: {
       // IfExitKind
       if (__is_neg("60-54", 0, 0, 0, 0, 5, (void **){key, target, tmp, p, args},
@@ -16845,14 +16673,12 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
           (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength,
                                           key->h, &tmp, sizeof(zval *),
                                           ((void *)0), (1 << 1)) == 0);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                       "php-efcb9a71-workdir/switch.txt",
-                       61)) {
+      switch (__choose("__SWITCH61")) {
       case 0: {
 
         break;
       }
-#ifdef COMPILE_1885
+#ifdef COMPILE_1884
       case 1: {
         __temp61 = ((_zend_hash_quick_add_or_update(
                          target, key->arKey, key->nKeyLength, key->h, &tmp,
@@ -16864,7 +16690,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1886
+#ifdef COMPILE_1885
       case 2: {
         __temp61 = ((_zend_hash_quick_add_or_update(
                          target, key->arKey, key->nKeyLength, key->h, &tmp,
@@ -16877,19 +16703,14 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                       "php-efcb9a71-workdir/switch.txt",
-                       64)) {
+      switch (__choose("__SWITCH64")) {
       case 0: {
         if (__temp61) {
           {
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         62)) {
+            switch (__choose("__SWITCH62")) {
             case 0:
               break;
-#ifdef COMPILE_1887
+#ifdef COMPILE_1886
             case 1: {
               // AddAndReplaceKind
               (executor_globals.argument_stack) =
@@ -16898,7 +16719,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1888
+#ifdef COMPILE_1887
             case 2: {
               // AddAndReplaceKind
               (tmp) = (executor_globals.uninitialized_zval_ptr);
@@ -16906,7 +16727,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1889
+#ifdef COMPILE_1888
             case 3: {
               // AddAndReplaceKind
               (tmp) = *p;
@@ -16914,7 +16735,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1890
+#ifdef COMPILE_1889
             case 4: {
               // AddAndReplaceKind
               *(tmp) = zval_used_for_init;
@@ -16922,7 +16743,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1891
+#ifdef COMPILE_1890
             case 5: {
               // AddAndReplaceKind
               *tmp = zval_used_for_init;
@@ -16930,7 +16751,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1892
+#ifdef COMPILE_1891
             case 6: {
               // AddAndReplaceKind
               _efree(((tmp)));
@@ -16938,7 +16759,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1893
+#ifdef COMPILE_1892
             case 7: {
               // AddAndReplaceKind
               _efree(((tmp)->value.ht));
@@ -16946,7 +16767,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1894
+#ifdef COMPILE_1893
             case 8: {
               // AddAndReplaceKind
               _efree(((tmp)->value.str.val));
@@ -16954,7 +16775,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1895
+#ifdef COMPILE_1894
             case 9: {
               // AddAndReplaceKind
               _zend_hash_quick_add_or_update(
@@ -16965,7 +16786,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1896
+#ifdef COMPILE_1895
             case 10: {
               // AddAndReplaceKind
               _zend_hash_quick_add_or_update(
@@ -16976,7 +16797,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1897
+#ifdef COMPILE_1896
             case 11: {
               // AddAndReplaceKind
               _zend_hash_quick_add_or_update(
@@ -16987,7 +16808,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1898
+#ifdef COMPILE_1897
             case 12: {
               // AddAndReplaceKind
               _zend_hash_quick_add_or_update(
@@ -16998,7 +16819,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1899
+#ifdef COMPILE_1898
             case 13: {
               // AddAndReplaceKind
               _zend_hash_quick_add_or_update(
@@ -17009,7 +16830,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1900
+#ifdef COMPILE_1899
             case 14: {
               // AddAndReplaceKind
               _zend_list_addref((tmp)->value.lval);
@@ -17017,7 +16838,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1901
+#ifdef COMPILE_1900
             case 15: {
               // AddAndReplaceKind
               _zend_list_delete((tmp)->value.lval);
@@ -17025,7 +16846,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1902
+#ifdef COMPILE_1901
             case 16: {
               // AddAndReplaceKind
               _zval_copy_ctor_func((tmp));
@@ -17033,7 +16854,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1903
+#ifdef COMPILE_1902
             case 17: {
               // AddAndReplaceKind
               _zval_dtor(((tmp)));
@@ -17041,7 +16862,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1904
+#ifdef COMPILE_1903
             case 18: {
               // AddAndReplaceKind
               _zval_dtor_func((tmp));
@@ -17049,7 +16870,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1905
+#ifdef COMPILE_1904
             case 19: {
               // AddAndReplaceKind
               _zval_ptr_dtor((&(tmp)));
@@ -17057,7 +16878,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1906
+#ifdef COMPILE_1905
             case 20: {
               // AddAndReplaceKind
               convert_to_boolean((tmp));
@@ -17065,7 +16886,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1907
+#ifdef COMPILE_1906
             case 21: {
               // AddAndReplaceKind
               exit(1);
@@ -17073,7 +16894,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1908
+#ifdef COMPILE_1907
             case 22: {
               // AddAndReplaceKind
               gc_remove_zval_from_buffer((tmp));
@@ -17081,7 +16902,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1909
+#ifdef COMPILE_1908
             case 23: {
               // AddAndReplaceKind
               gc_zval_check_possible_root(((tmp)));
@@ -17089,7 +16910,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1910
+#ifdef COMPILE_1909
             case 24: {
               // AddAndReplaceKind
               gc_zval_possible_root((tmp));
@@ -17097,7 +16918,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1911
+#ifdef COMPILE_1910
             case 25: {
               // AddAndReplaceKind
               i_zval_ptr_dtor((tmp));
@@ -17105,7 +16926,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1912
+#ifdef COMPILE_1911
             case 26: {
               // AddAndReplaceKind
               if (!(executor_globals.active_symbol_table)) {
@@ -17115,7 +16936,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1913
+#ifdef COMPILE_1912
             case 27: {
               // AddAndReplaceKind
               if (_zend_hash_quick_add_or_update(
@@ -17127,7 +16948,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1914
+#ifdef COMPILE_1913
             case 28: {
               // AddAndReplaceKind
               is_ref = (**(p)).type & 64;
@@ -17135,7 +16956,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1915
+#ifdef COMPILE_1914
             case 29: {
               // AddAndReplaceKind
               is_ref = (**p).type & 64;
@@ -17143,7 +16964,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1916
+#ifdef COMPILE_1915
             case 30: {
               // AddAndReplaceKind
               tmp = (executor_globals.uninitialized_zval_ptr);
@@ -17151,7 +16972,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1917
+#ifdef COMPILE_1916
             case 31: {
               // AddAndReplaceKind
               tmp = *(p);
@@ -17159,7 +16980,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1918
+#ifdef COMPILE_1917
             case 32: {
               // AddAndReplaceKind
               tmp = *p;
@@ -17167,7 +16988,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1919
+#ifdef COMPILE_1918
             case 33: {
               // AddAndReplaceKind
               zend_error((1 << 3L),
@@ -17176,7 +16997,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1920
+#ifdef COMPILE_1919
             case 34: {
               // AddAndReplaceKind
               zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
@@ -17184,7 +17005,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1921
+#ifdef COMPILE_1920
             case 35: {
               // AddAndReplaceKind
               zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
@@ -17192,7 +17013,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1922
+#ifdef COMPILE_1921
             case 36: {
               // AddAndReplaceKind
               zend_hash_destroy((tmp)->value.ht);
@@ -17200,7 +17021,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1923
+#ifdef COMPILE_1922
             case 37: {
               // AddAndReplaceKind
               zend_rebuild_symbol_table();
@@ -17208,7 +17029,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1924
+#ifdef COMPILE_1923
             case 38: {
               // AddAndReplaceKind
               zval_addref_p((tmp));
@@ -17216,7 +17037,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1925
+#ifdef COMPILE_1924
             case 39: {
               // AddAndReplaceKind
               zval_addref_p(*((p)));
@@ -17224,7 +17045,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1926
+#ifdef COMPILE_1925
             case 40: {
               // AddAndReplaceKind
               zval_addref_p(tmp);
@@ -17232,7 +17053,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1927
+#ifdef COMPILE_1926
             case 41: {
               // AddAndReplaceKind
               zval_set_isref_p((tmp));
@@ -17240,7 +17061,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1928
+#ifdef COMPILE_1927
             case 42: {
               // AddAndReplaceKind
               zval_set_isref_p(*(((p))));
@@ -17248,7 +17069,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1929
+#ifdef COMPILE_1928
             case 43: {
               // AddAndReplaceKind
               zval_set_isref_p(*((p)));
@@ -17256,7 +17077,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1930
+#ifdef COMPILE_1929
             case 44: {
               // AddAndReplaceKind
               zval_set_isref_p(tmp);
@@ -17264,7 +17085,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1931
+#ifdef COMPILE_1930
             case 45: {
               // AddAndReplaceKind
               zval_set_refcount_p((tmp), 0);
@@ -17272,7 +17093,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1932
+#ifdef COMPILE_1931
             case 46: {
               // AddAndReplaceKind
               zval_set_refcount_p(tmp, 0);
@@ -17280,7 +17101,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1933
+#ifdef COMPILE_1932
             case 47: {
               // AddAndReplaceKind
               zval_unset_isref_p((tmp));
@@ -17288,7 +17109,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1934
+#ifdef COMPILE_1933
             case 48: {
               // AddAndReplaceKind
               zval_unset_isref_p(tmp);
@@ -17296,7 +17117,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1935
+#ifdef COMPILE_1934
             case 49: {
               // IfExitKind
               if (__is_neg("62-49", 0, 0, 0, 0, 5,
@@ -17307,7 +17128,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1936
+#ifdef COMPILE_1935
             case 50: {
               // IfExitKind
               if (__is_neg("62-50", 0, 0, 0, 0, 5,
@@ -17318,7 +17139,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1937
+#ifdef COMPILE_1936
             case 51: {
               // IfExitKind
               if (__is_neg("62-51", 0, 0, 0, 0, 5,
@@ -17329,7 +17150,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1938
+#ifdef COMPILE_1937
             case 52: {
               // IfExitKind
               if (__is_neg("62-52", 0, 0, 0, 0, 5,
@@ -17340,7 +17161,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1939
+#ifdef COMPILE_1938
             case 53: {
               // IfExitKind
               if (__is_neg("62-53", 0, 0, 0, 0, 5,
@@ -17352,16 +17173,13 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
             }
 #endif
             }
-            switch (
-                __choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                         "php-efcb9a71-workdir/switch.txt",
-                         63)) {
+            switch (__choose("__SWITCH63")) {
             case 0: {
               Z_ADDREF_P(tmp);
 
               break;
             }
-#ifdef COMPILE_1940
+#ifdef COMPILE_1939
             case 1: {
               // AddAndReplaceKind
               _convert_to_string(tmp);
@@ -17369,7 +17187,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1941
+#ifdef COMPILE_1940
             case 2: {
               // AddAndReplaceKind
               _object_init(tmp);
@@ -17377,7 +17195,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1942
+#ifdef COMPILE_1941
             case 3: {
               // AddAndReplaceKind
               _zval_copy_ctor(tmp);
@@ -17385,7 +17203,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1943
+#ifdef COMPILE_1942
             case 4: {
               // AddAndReplaceKind
               _zval_copy_ctor_func(tmp);
@@ -17393,7 +17211,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1944
+#ifdef COMPILE_1943
             case 5: {
               // AddAndReplaceKind
               _zval_dtor(tmp);
@@ -17401,7 +17219,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1945
+#ifdef COMPILE_1944
             case 6: {
               // AddAndReplaceKind
               _zval_dtor_func(tmp);
@@ -17409,7 +17227,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1946
+#ifdef COMPILE_1945
             case 7: {
               // AddAndReplaceKind
               _zval_dtor_wrapper(tmp);
@@ -17417,7 +17235,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1947
+#ifdef COMPILE_1946
             case 8: {
               // AddAndReplaceKind
               _zval_internal_dtor(tmp);
@@ -17425,7 +17243,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1948
+#ifdef COMPILE_1947
             case 9: {
               // AddAndReplaceKind
               add_next_index_null(tmp);
@@ -17433,7 +17251,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1949
+#ifdef COMPILE_1948
             case 10: {
               // AddAndReplaceKind
               convert_scalar_to_number(tmp);
@@ -17441,7 +17259,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1950
+#ifdef COMPILE_1949
             case 11: {
               // AddAndReplaceKind
               convert_to_array(tmp);
@@ -17449,7 +17267,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1951
+#ifdef COMPILE_1950
             case 12: {
               // AddAndReplaceKind
               convert_to_boolean(tmp);
@@ -17457,7 +17275,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1952
+#ifdef COMPILE_1951
             case 13: {
               // AddAndReplaceKind
               convert_to_double(tmp);
@@ -17465,7 +17283,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1953
+#ifdef COMPILE_1952
             case 14: {
               // AddAndReplaceKind
               convert_to_long(tmp);
@@ -17473,7 +17291,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1954
+#ifdef COMPILE_1953
             case 15: {
               // AddAndReplaceKind
               convert_to_null(tmp);
@@ -17481,7 +17299,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1955
+#ifdef COMPILE_1954
             case 16: {
               // AddAndReplaceKind
               convert_to_object(tmp);
@@ -17489,7 +17307,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1956
+#ifdef COMPILE_1955
             case 17: {
               // AddAndReplaceKind
               decrement_function(tmp);
@@ -17497,7 +17315,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1957
+#ifdef COMPILE_1956
             case 18: {
               // AddAndReplaceKind
               gc_remove_zval_from_buffer(tmp);
@@ -17505,7 +17323,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1958
+#ifdef COMPILE_1957
             case 19: {
               // AddAndReplaceKind
               gc_zobj_possible_root(tmp);
@@ -17513,7 +17331,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1959
+#ifdef COMPILE_1958
             case 20: {
               // AddAndReplaceKind
               gc_zval_check_possible_root(tmp);
@@ -17521,7 +17339,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1960
+#ifdef COMPILE_1959
             case 21: {
               // AddAndReplaceKind
               gc_zval_possible_root(tmp);
@@ -17529,7 +17347,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1961
+#ifdef COMPILE_1960
             case 22: {
               // AddAndReplaceKind
               i_zend_is_true(tmp);
@@ -17537,7 +17355,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1962
+#ifdef COMPILE_1961
             case 23: {
               // AddAndReplaceKind
               i_zval_ptr_dtor(tmp);
@@ -17545,7 +17363,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1963
+#ifdef COMPILE_1962
             case 24: {
               // AddAndReplaceKind
               increment_function(tmp);
@@ -17553,7 +17371,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1964
+#ifdef COMPILE_1963
             case 25: {
               // AddAndReplaceKind
               lex_scan(tmp);
@@ -17561,7 +17379,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1965
+#ifdef COMPILE_1964
             case 26: {
               // AddAndReplaceKind
               safe_free_zval_ptr_rel(tmp);
@@ -17569,7 +17387,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1966
+#ifdef COMPILE_1965
             case 27: {
               // AddAndReplaceKind
               zend_is_true(tmp);
@@ -17577,7 +17395,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1967
+#ifdef COMPILE_1966
             case 28: {
               // AddAndReplaceKind
               zend_locale_sprintf_double(tmp);
@@ -17585,7 +17403,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1968
+#ifdef COMPILE_1967
             case 29: {
               // AddAndReplaceKind
               zend_object_store_ctor_failed(tmp);
@@ -17593,7 +17411,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1969
+#ifdef COMPILE_1968
             case 30: {
               // AddAndReplaceKind
               zend_objects_clone_obj(tmp);
@@ -17601,7 +17419,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1970
+#ifdef COMPILE_1969
             case 31: {
               // AddAndReplaceKind
               zend_objects_store_add_ref(tmp);
@@ -17609,7 +17427,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1971
+#ifdef COMPILE_1970
             case 32: {
               // AddAndReplaceKind
               zend_objects_store_clone_obj(tmp);
@@ -17617,7 +17435,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1972
+#ifdef COMPILE_1971
             case 33: {
               // AddAndReplaceKind
               zend_objects_store_del_ref(tmp);
@@ -17625,7 +17443,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1973
+#ifdef COMPILE_1972
             case 34: {
               // AddAndReplaceKind
               zend_objects_store_get_refcount(tmp);
@@ -17633,7 +17451,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1974
+#ifdef COMPILE_1973
             case 35: {
               // AddAndReplaceKind
               zend_print_flat_zval_r(tmp);
@@ -17641,7 +17459,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1975
+#ifdef COMPILE_1974
             case 36: {
               // AddAndReplaceKind
               zend_print_variable(tmp);
@@ -17649,7 +17467,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1976
+#ifdef COMPILE_1975
             case 37: {
               // AddAndReplaceKind
               zend_std_get_constructor(tmp);
@@ -17657,7 +17475,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1977
+#ifdef COMPILE_1976
             case 38: {
               // AddAndReplaceKind
               zend_std_get_properties(tmp);
@@ -17665,7 +17483,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1978
+#ifdef COMPILE_1977
             case 39: {
               // AddAndReplaceKind
               zval_delref_p(tmp);
@@ -17673,7 +17491,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1979
+#ifdef COMPILE_1978
             case 40: {
               // AddAndReplaceKind
               zval_is_true(tmp);
@@ -17681,7 +17499,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1980
+#ifdef COMPILE_1979
             case 41: {
               // AddAndReplaceKind
               zval_isref_p(tmp);
@@ -17689,7 +17507,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1981
+#ifdef COMPILE_1980
             case 42: {
               // AddAndReplaceKind
               zval_refcount_p(tmp);
@@ -17697,7 +17515,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1982
+#ifdef COMPILE_1981
             case 43: {
               // AddAndReplaceKind
               zval_set_isref_p(tmp);
@@ -17705,7 +17523,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1983
+#ifdef COMPILE_1982
             case 44: {
               // AddAndReplaceKind
               zval_unset_isref_p(tmp);
@@ -17713,7 +17531,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1984
+#ifdef COMPILE_1983
             case 45: {
               // GuardKind
               if (!__is_neg("63-45", 0, 0, 0, 0, 5,
@@ -17724,7 +17542,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
               break;
             }
 #endif
-#ifdef COMPILE_1985
+#ifdef COMPILE_1984
             case 46: {
               // ReplaceKind
               zval_addref_p((tmp));
@@ -17738,7 +17556,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
 
         break;
       }
-#ifdef COMPILE_1986
+#ifdef COMPILE_1985
       case 1: {
         // AddAndReplaceKind
         _convert_to_string(tmp);
@@ -17746,7 +17564,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1987
+#ifdef COMPILE_1986
       case 2: {
         // AddAndReplaceKind
         _object_init(tmp);
@@ -17754,7 +17572,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1988
+#ifdef COMPILE_1987
       case 3: {
         // AddAndReplaceKind
         _zval_copy_ctor(tmp);
@@ -17762,7 +17580,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1989
+#ifdef COMPILE_1988
       case 4: {
         // AddAndReplaceKind
         _zval_copy_ctor_func(tmp);
@@ -17770,7 +17588,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1990
+#ifdef COMPILE_1989
       case 5: {
         // AddAndReplaceKind
         _zval_dtor(tmp);
@@ -17778,7 +17596,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1991
+#ifdef COMPILE_1990
       case 6: {
         // AddAndReplaceKind
         _zval_dtor_func(tmp);
@@ -17786,7 +17604,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1992
+#ifdef COMPILE_1991
       case 7: {
         // AddAndReplaceKind
         _zval_dtor_wrapper(tmp);
@@ -17794,7 +17612,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1993
+#ifdef COMPILE_1992
       case 8: {
         // AddAndReplaceKind
         _zval_internal_dtor(tmp);
@@ -17802,7 +17620,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1994
+#ifdef COMPILE_1993
       case 9: {
         // AddAndReplaceKind
         add_next_index_null(tmp);
@@ -17810,7 +17628,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1995
+#ifdef COMPILE_1994
       case 10: {
         // AddAndReplaceKind
         convert_scalar_to_number(tmp);
@@ -17818,7 +17636,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1996
+#ifdef COMPILE_1995
       case 11: {
         // AddAndReplaceKind
         convert_to_array(tmp);
@@ -17826,7 +17644,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1997
+#ifdef COMPILE_1996
       case 12: {
         // AddAndReplaceKind
         convert_to_boolean(tmp);
@@ -17834,7 +17652,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1998
+#ifdef COMPILE_1997
       case 13: {
         // AddAndReplaceKind
         convert_to_double(tmp);
@@ -17842,7 +17660,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_1999
+#ifdef COMPILE_1998
       case 14: {
         // AddAndReplaceKind
         convert_to_long(tmp);
@@ -17850,7 +17668,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2000
+#ifdef COMPILE_1999
       case 15: {
         // AddAndReplaceKind
         convert_to_null(tmp);
@@ -17858,7 +17676,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2001
+#ifdef COMPILE_2000
       case 16: {
         // AddAndReplaceKind
         convert_to_object(tmp);
@@ -17866,7 +17684,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2002
+#ifdef COMPILE_2001
       case 17: {
         // AddAndReplaceKind
         decrement_function(tmp);
@@ -17874,7 +17692,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2003
+#ifdef COMPILE_2002
       case 18: {
         // AddAndReplaceKind
         gc_remove_zval_from_buffer(tmp);
@@ -17882,7 +17700,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2004
+#ifdef COMPILE_2003
       case 19: {
         // AddAndReplaceKind
         gc_zobj_possible_root(tmp);
@@ -17890,7 +17708,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2005
+#ifdef COMPILE_2004
       case 20: {
         // AddAndReplaceKind
         gc_zval_check_possible_root(tmp);
@@ -17898,7 +17716,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2006
+#ifdef COMPILE_2005
       case 21: {
         // AddAndReplaceKind
         gc_zval_possible_root(tmp);
@@ -17906,7 +17724,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2007
+#ifdef COMPILE_2006
       case 22: {
         // AddAndReplaceKind
         i_zend_is_true(tmp);
@@ -17914,7 +17732,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2008
+#ifdef COMPILE_2007
       case 23: {
         // AddAndReplaceKind
         i_zval_ptr_dtor(tmp);
@@ -17922,7 +17740,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2009
+#ifdef COMPILE_2008
       case 24: {
         // AddAndReplaceKind
         increment_function(tmp);
@@ -17930,7 +17748,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2010
+#ifdef COMPILE_2009
       case 25: {
         // AddAndReplaceKind
         lex_scan(tmp);
@@ -17938,7 +17756,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2011
+#ifdef COMPILE_2010
       case 26: {
         // AddAndReplaceKind
         safe_free_zval_ptr_rel(tmp);
@@ -17946,7 +17764,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2012
+#ifdef COMPILE_2011
       case 27: {
         // AddAndReplaceKind
         zend_is_true(tmp);
@@ -17954,7 +17772,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2013
+#ifdef COMPILE_2012
       case 28: {
         // AddAndReplaceKind
         zend_locale_sprintf_double(tmp);
@@ -17962,7 +17780,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2014
+#ifdef COMPILE_2013
       case 29: {
         // AddAndReplaceKind
         zend_object_store_ctor_failed(tmp);
@@ -17970,7 +17788,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2015
+#ifdef COMPILE_2014
       case 30: {
         // AddAndReplaceKind
         zend_objects_clone_obj(tmp);
@@ -17978,7 +17796,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2016
+#ifdef COMPILE_2015
       case 31: {
         // AddAndReplaceKind
         zend_objects_store_add_ref(tmp);
@@ -17986,7 +17804,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2017
+#ifdef COMPILE_2016
       case 32: {
         // AddAndReplaceKind
         zend_objects_store_clone_obj(tmp);
@@ -17994,7 +17812,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2018
+#ifdef COMPILE_2017
       case 33: {
         // AddAndReplaceKind
         zend_objects_store_del_ref(tmp);
@@ -18002,7 +17820,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2019
+#ifdef COMPILE_2018
       case 34: {
         // AddAndReplaceKind
         zend_objects_store_get_refcount(tmp);
@@ -18010,7 +17828,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2020
+#ifdef COMPILE_2019
       case 35: {
         // AddAndReplaceKind
         zend_print_flat_zval_r(tmp);
@@ -18018,7 +17836,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2021
+#ifdef COMPILE_2020
       case 36: {
         // AddAndReplaceKind
         zend_print_variable(tmp);
@@ -18026,7 +17844,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2022
+#ifdef COMPILE_2021
       case 37: {
         // AddAndReplaceKind
         zend_std_get_constructor(tmp);
@@ -18034,7 +17852,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2023
+#ifdef COMPILE_2022
       case 38: {
         // AddAndReplaceKind
         zend_std_get_properties(tmp);
@@ -18042,7 +17860,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2024
+#ifdef COMPILE_2023
       case 39: {
         // AddAndReplaceKind
         zval_delref_p(tmp);
@@ -18050,7 +17868,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2025
+#ifdef COMPILE_2024
       case 40: {
         // AddAndReplaceKind
         zval_is_true(tmp);
@@ -18058,7 +17876,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2026
+#ifdef COMPILE_2025
       case 41: {
         // AddAndReplaceKind
         zval_isref_p(tmp);
@@ -18066,7 +17884,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2027
+#ifdef COMPILE_2026
       case 42: {
         // AddAndReplaceKind
         zval_refcount_p(tmp);
@@ -18074,7 +17892,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2028
+#ifdef COMPILE_2027
       case 43: {
         // AddAndReplaceKind
         zval_set_isref_p(tmp);
@@ -18082,7 +17900,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2029
+#ifdef COMPILE_2028
       case 44: {
         // AddAndReplaceKind
         zval_unset_isref_p(tmp);
@@ -18090,7 +17908,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2030
+#ifdef COMPILE_2029
       case 45: {
         // GuardKind
         if (!__is_neg("64-45", 0, 0, 0, 0, 5,
@@ -18101,7 +17919,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
         break;
       }
 #endif
-#ifdef COMPILE_2031
+#ifdef COMPILE_2030
       case 46: {
         // ReplaceKind
         zval_addref_p((tmp));
@@ -18114,12 +17932,10 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
   }
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     65)) {
+    switch (__choose("__SWITCH65")) {
     case 0:
       break;
-#ifdef COMPILE_2032
+#ifdef COMPILE_2031
     case 1: {
       // AddAndReplaceKind
       (executor_globals.argument_stack) =
@@ -18128,7 +17944,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2033
+#ifdef COMPILE_2032
     case 2: {
       // AddAndReplaceKind
       (tmp) = (executor_globals.uninitialized_zval_ptr);
@@ -18136,7 +17952,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2034
+#ifdef COMPILE_2033
     case 3: {
       // AddAndReplaceKind
       (tmp) = *p;
@@ -18144,7 +17960,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2035
+#ifdef COMPILE_2034
     case 4: {
       // AddAndReplaceKind
       *(tmp) = zval_used_for_init;
@@ -18152,7 +17968,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2036
+#ifdef COMPILE_2035
     case 5: {
       // AddAndReplaceKind
       *tmp = zval_used_for_init;
@@ -18160,7 +17976,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2037
+#ifdef COMPILE_2036
     case 6: {
       // AddAndReplaceKind
       _efree(((tmp)));
@@ -18168,7 +17984,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2038
+#ifdef COMPILE_2037
     case 7: {
       // AddAndReplaceKind
       _efree(((tmp)->value.ht));
@@ -18176,7 +17992,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2039
+#ifdef COMPILE_2038
     case 8: {
       // AddAndReplaceKind
       _efree(((tmp)->value.str.val));
@@ -18184,7 +18000,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2040
+#ifdef COMPILE_2039
     case 9: {
       // AddAndReplaceKind
       _zend_hash_quick_add_or_update(
@@ -18194,7 +18010,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2041
+#ifdef COMPILE_2040
     case 10: {
       // AddAndReplaceKind
       _zend_hash_quick_add_or_update(
@@ -18204,7 +18020,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2042
+#ifdef COMPILE_2041
     case 11: {
       // AddAndReplaceKind
       _zend_hash_quick_add_or_update(
@@ -18214,7 +18030,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2043
+#ifdef COMPILE_2042
     case 12: {
       // AddAndReplaceKind
       _zend_hash_quick_add_or_update(
@@ -18224,7 +18040,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2044
+#ifdef COMPILE_2043
     case 13: {
       // AddAndReplaceKind
       _zend_hash_quick_add_or_update((executor_globals.active_symbol_table),
@@ -18234,7 +18050,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2045
+#ifdef COMPILE_2044
     case 14: {
       // AddAndReplaceKind
       _zend_list_addref((tmp)->value.lval);
@@ -18242,7 +18058,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2046
+#ifdef COMPILE_2045
     case 15: {
       // AddAndReplaceKind
       _zend_list_delete((tmp)->value.lval);
@@ -18250,7 +18066,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2047
+#ifdef COMPILE_2046
     case 16: {
       // AddAndReplaceKind
       _zval_copy_ctor_func((tmp));
@@ -18258,7 +18074,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2048
+#ifdef COMPILE_2047
     case 17: {
       // AddAndReplaceKind
       _zval_dtor(((tmp)));
@@ -18266,7 +18082,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2049
+#ifdef COMPILE_2048
     case 18: {
       // AddAndReplaceKind
       _zval_dtor_func((tmp));
@@ -18274,7 +18090,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2050
+#ifdef COMPILE_2049
     case 19: {
       // AddAndReplaceKind
       _zval_ptr_dtor((&(tmp)));
@@ -18282,7 +18098,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2051
+#ifdef COMPILE_2050
     case 20: {
       // AddAndReplaceKind
       convert_to_boolean((tmp));
@@ -18290,7 +18106,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2052
+#ifdef COMPILE_2051
     case 21: {
       // AddAndReplaceKind
       exit(1);
@@ -18298,7 +18114,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2053
+#ifdef COMPILE_2052
     case 22: {
       // AddAndReplaceKind
       gc_remove_zval_from_buffer((tmp));
@@ -18306,7 +18122,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2054
+#ifdef COMPILE_2053
     case 23: {
       // AddAndReplaceKind
       gc_zval_check_possible_root(((tmp)));
@@ -18314,7 +18130,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2055
+#ifdef COMPILE_2054
     case 24: {
       // AddAndReplaceKind
       gc_zval_possible_root((tmp));
@@ -18322,7 +18138,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2056
+#ifdef COMPILE_2055
     case 25: {
       // AddAndReplaceKind
       i_zval_ptr_dtor((tmp));
@@ -18330,7 +18146,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2057
+#ifdef COMPILE_2056
     case 26: {
       // AddAndReplaceKind
       if (!(executor_globals.active_symbol_table)) {
@@ -18340,7 +18156,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2058
+#ifdef COMPILE_2057
     case 27: {
       // AddAndReplaceKind
       if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength,
@@ -18352,7 +18168,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2059
+#ifdef COMPILE_2058
     case 28: {
       // AddAndReplaceKind
       is_ref = (**(p)).type & 64;
@@ -18360,7 +18176,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2060
+#ifdef COMPILE_2059
     case 29: {
       // AddAndReplaceKind
       is_ref = (**p).type & 64;
@@ -18368,7 +18184,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2061
+#ifdef COMPILE_2060
     case 30: {
       // AddAndReplaceKind
       tmp = (executor_globals.uninitialized_zval_ptr);
@@ -18376,7 +18192,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2062
+#ifdef COMPILE_2061
     case 31: {
       // AddAndReplaceKind
       tmp = *(p);
@@ -18384,7 +18200,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2063
+#ifdef COMPILE_2062
     case 32: {
       // AddAndReplaceKind
       tmp = *p;
@@ -18392,7 +18208,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2064
+#ifdef COMPILE_2063
     case 33: {
       // AddAndReplaceKind
       zend_error((1 << 3L), "A non well formed numeric value encountered");
@@ -18400,7 +18216,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2065
+#ifdef COMPILE_2064
     case 34: {
       // AddAndReplaceKind
       zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
@@ -18408,7 +18224,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2066
+#ifdef COMPILE_2065
     case 35: {
       // AddAndReplaceKind
       zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
@@ -18416,7 +18232,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2067
+#ifdef COMPILE_2066
     case 36: {
       // AddAndReplaceKind
       zend_hash_destroy((tmp)->value.ht);
@@ -18424,7 +18240,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2068
+#ifdef COMPILE_2067
     case 37: {
       // AddAndReplaceKind
       zend_rebuild_symbol_table();
@@ -18432,7 +18248,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2069
+#ifdef COMPILE_2068
     case 38: {
       // AddAndReplaceKind
       zval_addref_p((tmp));
@@ -18440,7 +18256,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2070
+#ifdef COMPILE_2069
     case 39: {
       // AddAndReplaceKind
       zval_addref_p(*((p)));
@@ -18448,7 +18264,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2071
+#ifdef COMPILE_2070
     case 40: {
       // AddAndReplaceKind
       zval_addref_p(tmp);
@@ -18456,7 +18272,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2072
+#ifdef COMPILE_2071
     case 41: {
       // AddAndReplaceKind
       zval_set_isref_p((tmp));
@@ -18464,7 +18280,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2073
+#ifdef COMPILE_2072
     case 42: {
       // AddAndReplaceKind
       zval_set_isref_p(*(((p))));
@@ -18472,7 +18288,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2074
+#ifdef COMPILE_2073
     case 43: {
       // AddAndReplaceKind
       zval_set_isref_p(*((p)));
@@ -18480,7 +18296,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2075
+#ifdef COMPILE_2074
     case 44: {
       // AddAndReplaceKind
       zval_set_isref_p(tmp);
@@ -18488,7 +18304,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2076
+#ifdef COMPILE_2075
     case 45: {
       // AddAndReplaceKind
       zval_set_refcount_p((tmp), 0);
@@ -18496,7 +18312,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2077
+#ifdef COMPILE_2076
     case 46: {
       // AddAndReplaceKind
       zval_set_refcount_p(tmp, 0);
@@ -18504,7 +18320,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2078
+#ifdef COMPILE_2077
     case 47: {
       // AddAndReplaceKind
       zval_unset_isref_p((tmp));
@@ -18512,7 +18328,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2079
+#ifdef COMPILE_2078
     case 48: {
       // AddAndReplaceKind
       zval_unset_isref_p(tmp);
@@ -18520,7 +18336,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2080
+#ifdef COMPILE_2079
     case 49: {
       // IfExitKind
       if (__is_neg("65-49", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args},
@@ -18530,7 +18346,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2081
+#ifdef COMPILE_2080
     case 50: {
       // IfExitKind
       if (__is_neg("65-50", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args},
@@ -18540,7 +18356,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2082
+#ifdef COMPILE_2081
     case 51: {
       // IfExitKind
       if (__is_neg("65-51", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args},
@@ -18550,7 +18366,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2083
+#ifdef COMPILE_2082
     case 52: {
       // IfExitKind
       if (__is_neg("65-52", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args},
@@ -18560,7 +18376,7 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
       break;
     }
 #endif
-#ifdef COMPILE_2084
+#ifdef COMPILE_2083
     case 53: {
       // IfExitKind
       if (__is_neg("65-53", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args},
@@ -18571,15 +18387,13 @@ ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args,
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-efcb9a71/"
-                     "php-efcb9a71-workdir/switch.txt",
-                     66)) {
+    switch (__choose("__SWITCH66")) {
     case 0: {
       return ZEND_HASH_APPLY_KEEP;
 
       break;
     }
-#ifdef COMPILE_2085
+#ifdef COMPILE_2084
     case 1: {
       // GuardKind
       if (!__is_neg("66-1", 0, 0, 0, 0, 5, (void **){tmp, key, target, p, args},

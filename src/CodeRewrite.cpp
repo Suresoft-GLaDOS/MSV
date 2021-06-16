@@ -527,7 +527,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         currentSwitches.push_back(counter);
         switchCluster[2].push_back(counter);
 
-        body+="switch(__choose(\""+workDir+"/switch.txt\","+std::to_string(counter)+"))\n{\n";
+        body+="switch(__choose(\"__SWITCH"+std::to_string(counter)+"\"))\n{\n";
         body+="case "+std::to_string(case_count++)+": \n";
         body+="break;\n";
 
@@ -574,7 +574,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         std::pair<size_t,size_t> conditionLoc=getConditionLocation(subPatch);
         // body+="{\n"+conditionTypes[currentCandidate[currentIndex]].getAsString()+" __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
         body+="{\nlong long __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
-        body+="switch(__choose(\""+workDir+"/switch.txt\","+std::to_string(counter)+"))\n{\n";
+        body+="switch(__choose(\"__SWITCH"+std::to_string(counter)+"\"))\n{\n";
         body+="case "+std::to_string(case_count++)+": {\n";
         // body+="__temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
         body+="\nbreak;\n}\n";
@@ -648,7 +648,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         currentSwitches.push_back(counter);
         switchCluster[0].push_back(counter);
 
-        body+="switch(__choose(\""+workDir+"/switch.txt\","+std::to_string(counter)+"))\n{\n";
+        body+="switch(__choose(\"__SWITCH"+std::to_string(counter)+"\"))\n{\n";
         body+="case "+std::to_string(case_count++)+": {\n";
         body+=origBody;
         body+="\nbreak;\n}\n";
@@ -697,7 +697,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         currentSwitches.push_back(counter);
         switchCluster[3].push_back(counter);
 
-        body+="switch(__choose(\""+workDir+"/switch.txt\","+std::to_string(counter)+"))\n{\n";
+        body+="switch(__choose(\"__SWITCH"+std::to_string(counter)+"\"))\n{\n";
         body+="case "+std::to_string(case_count++)+": {\n";
         body+="\nbreak;\n}\n";
 

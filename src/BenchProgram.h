@@ -291,12 +291,11 @@ public:
             const std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
             std::string output_name="");
 
-    void createTestSwitch(const size_t switchCount,std::pair<size_t,size_t> idAndCase=std::pair<size_t,size_t>(0,0));
     TestCaseSetTy testSet(const std::string &subDir, const TestCaseSetTy &case_set,
-            const EnvMapTy &envMap, bool pass_basic_src_dir = false);
+            const EnvMapTy &envMap, size_t totalSwitch=0,size_t chooseSwitch=0,size_t chooseCase=0,bool pass_basic_src_dir = false);
 
-    bool test(const std::string &subDir, size_t id, const EnvMapTy &envMap,
-            bool pass_basic_src_dir);
+    bool test(const std::string &subDir, size_t id, const EnvMapTy &envMap,size_t totalSwitch,size_t chooseSwitch=0,size_t chooseCase=0,
+            bool pass_basic_src_dir=false);
 
 /*    BenchProgram(const std::string &src_dir, const std::string &test_dir,
             const std::string &build_cmd, const std::string &test_cmd,

@@ -557,7 +557,7 @@ protected:
     std::map<std::pair<size_t,size_t>,std::map<size_t,std::vector<size_t>>> records;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
-        return P.test(std::string("src"), t_id, env, false);
+        return P.test(std::string("src"), t_id, env, idAndCase.size(),P.getSwitch().first,P.getSwitch().second);
     }
 
     bool testNegativeCases(const BenchProgram::EnvMapTy &env) {
@@ -727,6 +727,9 @@ public:
     std::map<long long,std::string> getMacroCode(){
         return macroCode;
     }
+    size_t getSwitchCount(){
+        return idAndCase.size();
+    }
     BenchProgram::EnvMapTy initEnv(const BenchProgram::EnvMapTy &env){
         BenchProgram::EnvMapTy testEnv=env;
         for (int i=0;i<count;i++){
@@ -844,12 +847,11 @@ public:
      * Run condition synthesizing function to get correct record
      * 
      */
-    void getConditionRecord(const BenchProgram::EnvMapTy &env){
+    void getConditionRecord(BenchProgram::EnvMapTy &env){
         outlog_printf(2,"Recording bit vectors for condition synthesizing...\n");
         for (size_t i=0;i<conditionLocation.size();i++){
             std::pair<size_t,size_t> currentPatch(conditionLocation[i].first,conditionLocation[i].second);
             outlog_printf(2,"Trying %u-%u\n",currentPatch.first,currentPatch.second);
-            P.createTestSwitch(idAndCase.size(),currentPatch);
             // First going to make sure it passes all negative cases
             for (TestCaseSetTy::iterator case_it = negative_cases.begin();
                     case_it != negative_cases.end(); ++case_it) {
@@ -865,7 +867,7 @@ public:
                 bool passed = false;
                 while (it_cnt < 10) {
                     // llvm::errs() << "Testing iteration: " << it_cnt << "\n";
-                    passed = P.test(std::string("src"), *case_it, testEnv, false);
+                    passed = P.test(std::string("src"), *case_it, testEnv,idAndCase.size(),currentPatch.first,currentPatch.second, false);
                     std::vector<unsigned long> tmp_v = parseBranchRecord();
                     writeBranchRecordTerminator();
                     // We hit some strange error, we just assume we cannot pass this case
@@ -892,7 +894,7 @@ public:
                     testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
                     ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
                     assert( ret == 0);
-                    passed = P.test(std::string("src"), *case_it, testEnv, false);
+                    passed = P.test(std::string("src"), *case_it, testEnv,idAndCase.size(),currentPatch.first,currentPatch.second, false);
                     if (passed) {
                         std::vector<unsigned long> tmp_v = parseBranchRecord();
                         // FIXME: strange error in wireshark, we just ignore right now
@@ -917,7 +919,7 @@ public:
         return NULL;
     }
 
-    virtual bool test(const BenchProgram::EnvMapTy &env, unsigned long id,bool isFuzz) {
+    virtual bool test(BenchProgram::EnvMapTy &env, unsigned long id,bool isFuzz) {
         {
             outlog_printf(2, "[%llu] BasicTester, Testing instance id %lu:\n", get_timer(), id);
             out_codes(codes, patches);
@@ -927,7 +929,6 @@ public:
             return fuzzTest(10000000);
         }
         else{
-            P.createTestSwitch(idAndCase.size());
             bool ret;
             outlog_printf(2, "Testing negative cases!\n");
             if (!testNegativeCases(env)) {
@@ -2474,17 +2475,20 @@ class TestBatcher {
         else
             buildEnv["COMPILE_CMD"] = CLANG_CMD;
         buildEnv=T->initEnv(buildEnv);
+        for (size_t i=0;i<T->getSwitchCount();i++)
+            buildEnv["__SWITCH"+std::to_string(i)]="0";
         const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
 
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
+        BenchProgram::EnvMapTy testEnv;
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
         // T->getConditionRecord(BenchProgram::EnvMapTy());
-        // if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
-        //     result_init=T->test(BenchProgram::EnvMapTy(),0,true);
-        // else
-        //     result_init=T->test(BenchProgram::EnvMapTy(),0,false);
+        if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
+            result_init=T->test(testEnv,0,true);
+        else
+            result_init=T->test(testEnv,0,false);
 
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();

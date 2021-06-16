@@ -937,28 +937,17 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     assert(ret == 0);
 }*/
 
-void BenchProgram::createTestSwitch(const size_t switchCount,std::pair<size_t,size_t> idAndCase){
-    std::ofstream fout(work_dir+"/switch.txt");
-    for (int i=0;i<switchCount;i++){
-        if (i==switchId && idAndCase.second==0){
-            fout << caseNum << "\n";
-        }
-        else if (i==idAndCase.first)
-            fout << idAndCase.second << "\n";
-        else{
-            fout << 0 << "\n";
-        }
-    }
-    fout.close();
-}
-
-
 BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
-        const TestCaseSetTy &case_set, const EnvMapTy &env_pairs, bool pass_basic_src_dir) {
+        const TestCaseSetTy &case_set, const EnvMapTy &env_pairs, size_t totalSwitch,size_t chooseSwitch,size_t chooseCase,bool pass_basic_src_dir) {
     if (case_set.size() == 0)
         return std::set<unsigned long>();
 
     // Prepare test script to generate test result
+    EnvMapTy testEnv=env_pairs;
+    for (size_t i=0;i<totalSwitch;i++)
+        testEnv["__SWITCH"+std::to_string(i)]="0";
+    if (chooseCase!=0)
+        testEnv["__SWITCH"+std::to_string(chooseSwitch)]=std::to_string(chooseCase);
     std::string cmd=test_cmd;
     // if (switchId>=0 && caseNum>=0)
     //     cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
@@ -976,7 +965,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     // printf("Command: %s\n",cmd.c_str());
     int res;
 
-    pushEnvMap(env_pairs);
+    pushEnvMap(testEnv);
     /*for (std::map<std::string, std::string>::const_iterator it = env_pairs.begin();
             it != env_pairs.end(); ++it) {
         res = setenv(it->first.c_str(), it->second.c_str(), 1);
@@ -1013,7 +1002,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     if (res != 0)
         fprintf(stderr, "rm __res failed\n");
 
-    popEnvMap(env_pairs);
+    popEnvMap(testEnv);
     /*for (std::map<std::string, std::string>::const_iterator it = env_pairs.begin();
             it != env_pairs.end(); ++it) {
         res = setenv(it->first.c_str(), "", 1);
@@ -1022,13 +1011,13 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     return ret;
 }
 
-bool BenchProgram::test(const std::string &subDir, size_t id, const EnvMapTy &envMap,
+bool BenchProgram::test(const std::string &subDir, size_t id, const EnvMapTy &envMap,size_t totalSwitch,size_t chooseSwitch,size_t chooseCase,
         bool pass_basic_src_dir) {
     test_cnt ++;
     TestCaseSetTy tmp;
     tmp.clear();
     tmp.insert(id);
-    TestCaseSetTy res = testSet(subDir, tmp, envMap, pass_basic_src_dir);
+    TestCaseSetTy res = testSet(subDir, tmp, envMap, totalSwitch,chooseSwitch,chooseCase,pass_basic_src_dir);
     return res.size() == 1;
 }
 

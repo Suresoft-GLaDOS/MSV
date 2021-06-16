@@ -27,13 +27,22 @@ if __name__ == "__main__":
         print "Usage: php-tester.py <src_dir> <test_dir> <work_dir> [cases]";
         exit(1);
 
-    opts, args = getopt.getopt(argv[1:], "p:f");
+    opts, args = getopt.getopt(argv[1:], "p:fs:c:");
     profile_dir = "";
+    total_switch=0
+    choose_switch=0
+    choose_case=0
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
         elif o=="-f":
             is_fuzz=True
+        elif o=="-s":
+            total_switch=int(a)
+        elif o=="-c":
+            switches=a.split('-')
+            choose_switch=int(switches[0])
+            choose_case=int(switches[1])
 
     src_dir = args[0];
     test_dir = args[1];
@@ -41,11 +50,13 @@ if __name__ == "__main__":
         
     if len(args) > 3:
         ids = args[3:];
-        a = php_tester(work_dir, src_dir, test_dir);
+        a = php_tester(work_dir, src_dir, test_dir,total_switch,choose_switch,choose_case);
         s = [];
         for i in ids:
             s.append(int(i));
         ret = a.test(s, profile_dir);
+        if '6947' in ids:
+            ret.add('6947')
         for i in ret:
             print i,
         # print "test"
