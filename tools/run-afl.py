@@ -3,16 +3,20 @@ import os
 import sys
 import subprocess
 import json
-
+import time
 
 def main(argv):
     print("run-afl.py!!!")
     arg_dict = dict()
+    parallel_count=1
     for i in range(len(argv)):
         if argv[i] == "-w":
             arg_dict["w"] = argv[i + 1]
         elif argv[i] == "-t":
             arg_dict["t"] = argv[i + 1]
+        elif argv[i]=='-j':
+            parallel_count=int(argv[i+1])
+    
     conf_dict = dict()
     with open(os.path.join(arg_dict["w"], "repair.conf")) as conf_file:
         for line in conf_file.readlines():
@@ -48,35 +52,60 @@ def main(argv):
     os.environ["AFL_NO_UI"] = "1"
     os.environ["AFL_FAST_CAL"] = "1"
     timeout = (int(arg_dict["t"]) // 1000) + 1
-    os.chdir(os.path.join(arg_dict["w"], "src"))
-    afl_cmd = ["afl-fuzz", "-o", "out", "-m", "none", "-d", "-n", "-t",
-               str(timeout * 1000), "-w", arg_dict["w"]]
-    afl_cmd += ["--", conf_dict['tools_dir']+'/php-test.py', arg_dict['w']+'/src', arg_dict['w']+'tests', arg_dict['w']]
+    # os.chdir(os.path.join(arg_dict["w"], "src"))
 
-    os.system("rm -rf ./out")
-    print(afl_cmd)
-    p = subprocess.Popen(afl_cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-    (out, err) = p.communicate()
-    if out == None:
-        print("none")
-        out = ""
-    print("out:")
-    print(out)
-    lines = out.splitlines()
-    test_section = False
-    for line in lines:
-        tokens = line.split()
-        if len(tokens) == 0:
-            continue
-        if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
-            test_section = True
-        elif (tokens[0][0:6] == "======") and (test_section == True):
-            test_section = False
-        elif (test_section == True):
-            if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
-                print("PASS!")
-            elif (tokens[0] == "Fatal") or (tokens[0] == "FAIL"):
-                exit(1)
+    fuzzer_name='fuzzer'
+    fuzzer=[]
+    fuzzer_out=[]
+    fuzzer_err=[]
+    os.system("rm -rf "+arg_dict['w']+"/out")
+    if parallel_count==1:
+        afl_cmd = ["afl-fuzz", "-o", arg_dict['w']+"/out", "-m", "none", "-d", "-n", "-t",
+               str(timeout * 1000), "-w", arg_dict["w"]]
+        afl_cmd += ["--", conf_dict['tools_dir']+'/php-test.py', arg_dict['w']+'/src', arg_dict['w']+'/tests', arg_dict['w']]
+        (fuzzer_out[0],fuzzer_err[0]) = subprocess.Popen(afl_cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    else:
+        for i in range(0,parallel_count):
+            afl_cmd = ["afl-fuzz", "-o", arg_dict['w']+"/out", "-m", "none","-d", "-n", "-t",
+                str(timeout * 1000), "-w", arg_dict["w"]]
+            if i==0:
+                afl_cmd.append('-M')
+            else:
+                afl_cmd.append('-S')
+            afl_cmd.append(fuzzer_name+str(i+1))
+            afl_cmd += ["--", conf_dict['tools_dir']+'/php-test.py', arg_dict['w']+'/src', arg_dict['w']+'/tests', arg_dict['w']]
+            print("Run afl-fuzz "+fuzzer_name+str(i+1))
+            fuzzer.append(subprocess.Popen(afl_cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE))
+
+            # Wait for init fuzzer
+            time.sleep(2)
+
+    for i in range(0,parallel_count):
+        print('waiting for fuzzer '+str(i+1)+'...')
+        (out,err)=fuzzer[i].communicate()
+        if out == None:
+            print("none")
+            out = ""
+        # print("out:")
+        out=str(out,'utf-8')
+        # print(out)
+        lines = out.splitlines()
+        # print(lines)
+        # lines=out.split(['\\n'])
+        test_section = False
+        for line in lines:
+            tokens = line.split()
+            if len(tokens) == 0:
+                continue
+            if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
+                test_section = True
+            elif (tokens[0][0:6] == "======") and (test_section == True):
+                test_section = False
+            elif (test_section == True):
+                if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
+                    print(str(i)+": PASS!")
+                elif (tokens[0] == "Fatal") or (tokens[0] == "FAIL"):
+                    print(str(i)+": Fail!")
     exit(0)
 
 
