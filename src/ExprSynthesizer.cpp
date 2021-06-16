@@ -800,14 +800,21 @@ public:
 
                 for (std::vector<std::pair<size_t,size_t>>::iterator switchIt=switchLoc.begin();switchIt!=switchLoc.end();switchIt++){
                     std::set<size_t> switches;
+                    std::set<size_t> condSwitches;
                     switches.clear();
+                    condSwitches.clear();
                     if (scores[i].first==it->first &&
                             ((scores[i].second)>=(switchIt->first)) && ((scores[i].second)<=(switchIt->second))){
                         for (size_t j=0;j<it->second[*switchIt].size();j++)
                             if (duplicated.count(it->second[*switchIt][j])==0){
                                 duplicated.insert(it->second[*switchIt][j]);
-                                switches.insert(it->second[*switchIt][j]);
+                                if (std::find(switchCluster[1].begin(),switchCluster[1].end(),it->second[*switchIt][j])!=switchCluster[1].end())
+                                    condSwitches.insert(it->second[*switchIt][j]);
+                                else
+                                    switches.insert(it->second[*switchIt][j]);
                             }
+                        if (condSwitches.size()>0)
+                            finalScore.push_back(condSwitches);
                         if(switches.size()>0){
                             finalScore.push_back(switches);
                             break;
@@ -2472,8 +2479,8 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
-        T->getConditionRecord(BenchProgram::EnvMapTy());
+        // bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
+        // T->getConditionRecord(BenchProgram::EnvMapTy());
         // if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
         //     result_init=T->test(BenchProgram::EnvMapTy(),0,true);
         // else
