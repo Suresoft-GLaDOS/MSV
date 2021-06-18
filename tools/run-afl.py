@@ -66,7 +66,7 @@ def main(argv):
         (fuzzer_out[0],fuzzer_err[0]) = subprocess.Popen(afl_cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     else:
         for i in range(0,parallel_count):
-            afl_cmd = ["afl-fuzz", "-o", arg_dict['w']+"/out", "-m", "none","-d", "-n", "-t",
+            afl_cmd = ["afl-fuzz", "-o", arg_dict['w']+"/out", "-m","none","-g","53","-d", "-n", "-t",
                 str(timeout * 1000), "-w", arg_dict["w"]]
             if i==0:
                 afl_cmd.append('-M')
@@ -88,7 +88,7 @@ def main(argv):
             out = ""
         # print("out:")
         out=str(out,'utf-8')
-        # print(out)
+        print(out)
         lines = out.splitlines()
         # print(lines)
         # lines=out.split(['\\n'])

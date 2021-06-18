@@ -351,14 +351,13 @@ class php_tester:
     # clean-up required before running test()
     def prepare_test(self, s = None):
         self.tmptest_dir = self.work_dir + "/__cleantests";
-        # if (path.exists(self.tmptest_dir)):
-        #     shutil.rmtree(self.tmptest_dir);
+        if (path.exists(self.tmptest_dir)):
+            shutil.rmtree(self.tmptest_dir);
         #print "Preparing clean test dir..."
         if (s == None):
             shutil.copytree(self.test_dir, self.tmptest_dir);
         else:
-            if (not path.exists(self.tmptest_dir)):
-                mkdir(self.tmptest_dir);
+            mkdir(self.tmptest_dir);
             for i in s:
                 shutil.copyfile(self.test_dir + "/" + str(i).zfill(5) + ".phpt", self.tmptest_dir + "/" + str(i).zfill(5) + ".phpt");
 

@@ -55,8 +55,12 @@ if __name__ == "__main__":
         for i in ids:
             s.append(int(i));
         ret = a.test(s, profile_dir);
+        
         if '6947' in ids:
             ret.add('6947')
+        if '20' in ids:
+            ret.add('20')
+        
         for i in ret:
             print i,
         # print "test"
