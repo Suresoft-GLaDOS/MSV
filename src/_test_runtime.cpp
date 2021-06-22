@@ -338,7 +338,7 @@ extern "C" int __is_neg(const char *location,int int_size,const int *ints, int c
 extern "C" int __choose(char *switch_id) {
     // fprintf(stderr,"id: %d\n",id);
     char *env=getenv(switch_id);
-    if (strlen(env)==0) return 0;
+    if (env==NULL) return 0;
     int result=atoi(env);
     return result;
 }
