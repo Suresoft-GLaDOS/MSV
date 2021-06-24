@@ -26,6 +26,7 @@
 #include "DuplicateDetector.h"
 #include "FeatureParameter.h"
 #include "cJSON/cJSON.h"
+#include "CollectCondition.h"
 
 #include "llvm/Support/CommandLine.h"
 #include "clang/AST/Expr.h"
@@ -42,6 +43,7 @@ using namespace clang;
 #define BATCH_CAP 10
 #define SYNC_CAP 200
 #define SYNC_TIME_CAP 600
+#define MAGIC_NUMBER -123456789
 
 extern llvm::cl::opt<bool> ForCPP;
 
@@ -104,6 +106,437 @@ static inline size_t rightPos(size_t a, size_t b) {
     else
         return b;
 }
+long checkV(const std::map<unsigned long, std::vector< std::vector< long long> > > &caseVMap,
+    const std::set<unsigned long> &negative_cases, const std::set<unsigned long> &positive_cases,
+    const std::map<unsigned long, std::vector<unsigned long> > &negative_records,
+    size_t idx, long long v, int flag) {
+
+    long ret = 0;
+
+    for (std::set<unsigned long>::iterator it = positive_cases.begin();
+            it != positive_cases.end(); ++it) {
+        std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator cit;
+        cit = caseVMap.find(*it);
+        assert( cit != caseVMap.end());
+        for (size_t i = 0; i < cit->second.size(); i++) {
+            assert(cit->second[i][idx] != MAGIC_NUMBER && "sanity check!");
+            int flag_mask = flag & 3;
+            int flag_bit = flag & 4;
+            long long rv = v;
+            if (flag_bit != 0)
+                rv = cit->second[i][v];
+            bool cond;
+            switch (flag_mask) {
+                case 0:
+                    cond = (cit->second[i][idx] != rv);
+                    break;
+                case 1:
+                    cond = (cit->second[i][idx] == rv);
+                    break;
+                case 2:
+                    cond = (cit->second[i][idx] < rv);
+                    break;
+                case 3:
+                    cond = (cit->second[i][idx] > rv);
+                    break;
+                default:
+                    break;
+            }
+            if (cond) {
+                ret += 2;
+                break;
+            }
+        }
+    }
+
+    bool valid = false;
+    for (std::set<unsigned long>::iterator it = negative_cases.begin();
+            it != negative_cases.end(); ++it) {
+        std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator cit;
+        cit = caseVMap.find(*it);
+        assert( cit != caseVMap.end());
+        std::map<unsigned long, std::vector<unsigned long> >::const_iterator nit;
+        nit = negative_records.find(*it);
+        if (cit->second.size() != nit->second.size()) {
+            outlog_printf(1, "Seems some non-determinism! %lu v.s. %lu Length mismatch!\n",
+                    (unsigned long)cit->second.size(), (unsigned long)nit->second.size());
+            return -1;
+        }
+        for (size_t i = 0; i < cit->second.size(); i++) {
+            assert(cit->second[i][idx] != MAGIC_NUMBER && "sanity check!");
+
+            int flag_mask = flag & 3;
+            int flag_bit = flag & 4;
+            long long rv = v;
+            if (flag_bit != 0) {
+                rv = cit->second[i][v];
+            }
+            bool cond;
+            switch (flag_mask) {
+                case 0:
+                    cond = (cit->second[i][idx] != rv);
+                    break;
+                case 1:
+                    cond = (cit->second[i][idx] == rv);
+                    break;
+                case 2:
+                    cond = (cit->second[i][idx] < rv);
+                    break;
+                case 3:
+                    cond = (cit->second[i][idx] > rv);
+                    break;
+                default:
+                    break;
+            }
+
+            if (cond)
+                valid = true;
+            if ((nit->second[i] == 0) && (cond)) {
+                ret++;
+                break;
+            }
+            if ((nit->second[i] == 1) && (!cond)) {
+                ret++;
+                break;
+            }
+        }
+    }
+    if (valid)
+        return ret;
+    else
+        return -1;
+}
+
+struct SynResTy {
+    size_t idx;
+    long long v;
+    size_t flag;
+    SynResTy(): idx(), v(), flag() {}
+
+    SynResTy(size_t idx, long long v, size_t flag):
+        idx(idx), v(v), flag(flag) {}
+
+    bool operator < (const SynResTy &a) const {
+        if (flag != a.flag)
+            return flag > a.flag;
+        else if (idx != a.idx)
+            return idx < a.idx;
+        else
+            return v < a.v;
+    }
+};
+
+static int compareTypeCheck(Expr* E1, Expr* E2) {
+    QualType T1 = E1->getType();
+    QualType T2 = E2->getType();
+    if (T1->isIntegerType() == T2->isIntegerType())
+        return 0;
+    if (T1->isPointerType() == T2->isPointerType())
+        return 1;
+    return -1;
+}
+
+std::vector<Expr*> synthesizeResult(ExprListTy exprs,
+        const std::map<unsigned long, std::vector<unsigned long> > &negative_records,
+        const std::map<unsigned long, std::vector< std::vector< long long> > > &caseVMap,
+        const std::set<unsigned long> &negative_cases,
+        const std::set<unsigned long> &positive_cases, ASTContext *ctxt) {
+    std::vector<std::pair<size_t, SynResTy> > res;
+    res.clear();
+    // If just remove work, then we remove it
+    /*bool no_pos_exec = true;
+    for (std::set<unsigned long>::const_iterator it = positive_cases.begin();
+            it != positive_cases.end(); ++it) {
+        std::map<unsigned long, std::vector< std::vector<long long> > > ::const_iterator find_it;
+        find_it = caseVMap.find(*it);
+        if (find_it->second.size() != 0) {
+            no_pos_exec = false;
+            break;
+        }
+    }
+    if (no_pos_exec)
+        res.push_back(std::make_pair(0, SynResTy(0, 1, 2)));*/
+    // Collect over all possible values for a variable
+    for (size_t vid = 0; vid < exprs.size(); vid++) {
+        std::set<long long> vals;
+        vals.clear();
+        bool give_up = false;
+        for (std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator
+                it = caseVMap.begin(); it != caseVMap.end(); ++it) {
+            for (size_t i = 0; i < it->second.size(); i++) {
+                if (it->second[i][vid] == MAGIC_NUMBER)
+                    give_up = true;
+                // This is to avoid catch those pointer values, they are not useful at all
+                if ((it->second[i][vid] < 1000) && (it->second[i][vid] > -1000))
+                    vals.insert(it->second[i][vid]);
+            }
+        }
+        if (give_up) continue;
+        for (std::set<long long>::iterator it = vals.begin(); it != vals.end(); it++) {
+            size_t flag_e = 2;
+            if (CondExt.getValue())
+                if (exprs[vid]->getType()->isIntegerType())
+                    flag_e = 4;
+            for (size_t flag_v = 0; flag_v < flag_e; flag_v ++) {
+                long long the_v = *it;
+                if (flag_v == 2)
+                    the_v ++;
+                else if (flag_v == 3)
+                    the_v --;
+                long vio = checkV(caseVMap, negative_cases, positive_cases,
+                        negative_records, vid, the_v, flag_v);
+                if (vio >= 0)
+                    res.push_back(std::make_pair((size_t)vio, SynResTy(vid, the_v, flag_v)));
+            }
+        }
+        if (CondExt.getValue()) {
+            for (size_t vid2 = 0; vid2 < exprs.size(); vid2 ++) {
+                int checkType = compareTypeCheck(exprs[vid], exprs[vid2]);
+                if (checkType == -1)
+                    continue;
+                bool give_up = false;
+                for (std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator
+                    it = caseVMap.begin(); it != caseVMap.end(); ++it) {
+                    for (size_t i = 0; i < it->second.size(); i++) {
+                        if (it->second[i][vid2] == MAGIC_NUMBER) {
+                            give_up = true;
+                            break;
+                        }
+                    }
+                    if (give_up) break;
+                }
+                if (give_up)
+                    continue;
+                size_t flag_e = 8;
+                if (checkType == 1)
+                    flag_e = 6;
+                for (size_t flag_v = 4; flag_v < flag_e; flag_v ++) {
+                    long vio = checkV(caseVMap, negative_cases, positive_cases,
+                            negative_records, vid, vid2, flag_v);
+                    if (vio >= 0)
+                        res.push_back(std::make_pair((size_t)vio, SynResTy(vid, vid2, flag_v)));
+                }
+            }
+        }
+    }
+
+    tot_synthesis_run ++;
+    tot_concrete_conds += res.size() + 1;
+
+    std::sort(res.begin(), res.end());
+    std::vector<Expr*> ret;
+    ret.clear();
+    ret.push_back(getNewIntegerLiteral(ctxt, 1));
+    for (size_t i = 0; i < res.size(); i++)
+        if (i < 20 || res[i].first == 0)
+        {
+            SynResTy &tmp = res[i].second;
+            Expr *E;
+            Expr *RHS;
+            int flag_mask = (tmp.flag & 3);
+            int flag_bit = (tmp.flag & 4);
+            if (flag_bit == 0)
+                RHS = getNewIntegerLiteral(ctxt, tmp.v);
+            else
+                RHS = exprs[tmp.v];
+            BinaryOperatorKind bkind;
+            switch (flag_mask) {
+                case 0:
+                    bkind = BO_NE;
+                    break;
+                case 1:
+                    bkind = BO_EQ;
+                    break;
+                case 2:
+                    bkind = BO_LE;
+                    break;
+                case 3:
+                    bkind = BO_GT;
+                    break;
+                default:
+                    assert(0);
+            }
+            E = BinaryOperator::Create(*ctxt,
+                exprs[tmp.idx], RHS, bkind, ctxt->IntTy, VK_RValue,
+                OK_Ordinary, SourceLocation(), FPOptionsOverride());
+            if (bkind == BO_EQ)
+                ret.push_back(getParenExpr(ctxt, E));
+            else
+                ret.push_back(E);
+        }
+        else
+            break;
+
+    return ret;
+}
+
+std::vector<Expr*> synthesizeResultSPR(ExprListTy exprs,
+        const std::map<unsigned long, std::vector<unsigned long> > &negative_records,
+        const std::map<unsigned long, std::vector< std::vector< long long> > > &caseVMap,
+        const std::set<unsigned long> &negative_cases,
+        const std::set<unsigned long> &positive_cases, ASTContext *ctxt) {
+    std::vector<std::pair<size_t, SynResTy> > res;
+    res.clear();
+    // Collect over all possible values for a variable
+    for (size_t vid = 0; vid < exprs.size(); vid++) {
+        std::set<long long> vals;
+        vals.clear();
+        bool give_up = false;
+        for (std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator
+                it = caseVMap.begin(); it != caseVMap.end(); ++it) {
+            for (size_t i = 0; i < it->second.size(); i++) {
+                if (it->second[i][vid] == MAGIC_NUMBER)
+                    give_up = true;
+                // This is to avoid catch those pointer values, they are not useful at all
+                if ((it->second[i][vid] < 1000) && (it->second[i][vid] > -1000))
+                    vals.insert(it->second[i][vid]);
+            }
+        }
+        if (give_up) continue;
+        for (std::set<long long>::iterator it = vals.begin(); it != vals.end(); it++) {
+            size_t flag_e = 2;
+            if (CondExt.getValue())
+                if (exprs[vid]->getType()->isIntegerType())
+                    flag_e = 4;
+            for (size_t flag_v = 0; flag_v < flag_e; flag_v ++) {
+                long long the_v = *it;
+                if (flag_v == 2)
+                    the_v ++;
+                else if (flag_v == 3)
+                    the_v --;
+                long vio = checkV(caseVMap, negative_cases, positive_cases,
+                        negative_records, vid, the_v, flag_v);
+                if (vio >= 0)
+                    res.push_back(std::make_pair((size_t)vio, SynResTy(vid, the_v, flag_v)));
+            }
+        }
+        if (CondExt.getValue()) {
+            for (size_t vid2 = 0; vid2 < exprs.size(); vid2 ++) {
+                int checkType = compareTypeCheck(exprs[vid], exprs[vid2]);
+                if (checkType == -1)
+                    continue;
+                bool give_up = false;
+                for (std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator
+                    it = caseVMap.begin(); it != caseVMap.end(); ++it) {
+                    for (size_t i = 0; i < it->second.size(); i++) {
+                        if (it->second[i][vid2] == MAGIC_NUMBER) {
+                            give_up = true;
+                            break;
+                        }
+                    }
+                    if (give_up) break;
+                }
+                if (give_up)
+                    continue;
+                size_t flag_e = 8;
+                if (checkType == 1)
+                    flag_e = 6;
+                for (size_t flag_v = 4; flag_v < flag_e; flag_v ++) {
+                    long vio = checkV(caseVMap, negative_cases, positive_cases,
+                            negative_records, vid, vid2, flag_v);
+                    if (vio >= 0)
+                        res.push_back(std::make_pair((size_t)vio, SynResTy(vid, vid2, flag_v)));
+                }
+            }
+        }
+    }
+
+    tot_synthesis_run ++;
+    tot_concrete_conds += res.size() + 1;
+
+    std::sort(res.begin(), res.end());
+    std::vector<Expr*> ret;
+    ret.clear();
+    ret.push_back(getNewIntegerLiteral(ctxt, 1));
+    for (size_t i = 0; i < res.size(); i++)
+        if (i < 20 || res[i].first == 0)
+        {
+            SynResTy &tmp = res[i].second;
+            Expr *E;
+            if (tmp.v == 0 && (tmp.flag == 0 || tmp.flag == 1)) {
+                Expr *RHS;
+                int flag_mask = tmp.flag & 3;
+                int flag_bit = tmp.flag & 4;
+                if (flag_bit == 0)
+                    RHS = getNewIntegerLiteral(ctxt, tmp.v);
+                else
+                    RHS = exprs[tmp.v];
+                BinaryOperatorKind bkind;
+                switch (flag_mask) {
+                    case 0:
+                        bkind = BO_NE;
+                        break;
+                    case 1:
+                        bkind = BO_EQ;
+                        break;
+                    case 2:
+                        bkind = BO_LE;
+                        break;
+                    case 3:
+                        bkind = BO_GT;
+                        break;
+                    default:
+                        assert(0);
+                }
+                E = BinaryOperator::Create(*ctxt,
+                    exprs[tmp.idx], RHS, bkind, ctxt->IntTy, VK_RValue,
+                    OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                ret.push_back(E);
+            }
+        }
+        else
+            break;
+    for (size_t i = 0; i < res.size(); i++)
+        if (i < 20 || res[i].first == 0)
+        {
+            SynResTy &tmp = res[i].second;
+            Expr *E;
+            if (tmp.v != 0 || (tmp.flag != 0 && tmp.flag != 1)) {
+                Expr *RHS;
+                int flag_mask = tmp.flag & 3;
+                int flag_bit = tmp.flag & 4;
+                if (flag_bit == 0)
+                    RHS = getNewIntegerLiteral(ctxt, tmp.v);
+                else
+                    RHS = exprs[tmp.v];
+                BinaryOperatorKind bkind;
+                switch (flag_mask) {
+                    case 0:
+                        bkind = BO_NE;
+                        break;
+                    case 1:
+                        bkind = BO_EQ;
+                        break;
+                    case 2:
+                        bkind = BO_LE;
+                        break;
+                    case 3:
+                        bkind = BO_GT;
+                        break;
+                    default:
+                        assert(0);
+                }
+                E = BinaryOperator::Create(*ctxt,
+                    exprs[tmp.idx], RHS, bkind, ctxt->IntTy, VK_RValue,
+                    OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                ret.push_back(E);
+            }
+        }
+        else
+            break;
+
+    return ret;
+}
+
+
+bool isZeroConstantExpr(Expr *E) {
+    BinaryOperator *BO = llvm::dyn_cast<BinaryOperator>(E);
+    if (!BO) return false;
+    IntegerLiteral *IL = llvm::dyn_cast<IntegerLiteral>(BO->getRHS());
+    if (!IL) return false;
+    return (IL->getValue() == 0);
+}
+
 
 std::set<std::string> replaceIsNegWithClause(const std::string &code) {
     size_t idx = code.find("\n");
@@ -643,60 +1076,6 @@ protected:
         return result;
     }
 
-    /* These methods are for condition recording */
-    std::vector<unsigned long> parseBranchRecord() {
-        std::vector<unsigned long> res;
-        res.clear();
-        FILE *f = fopen(ISNEG_TMPFILE, "r");
-        //llvm::errs() << "New code\n" << new_code << "\n";
-        if (!f) {
-            outlog_printf(3, "Not caught by the negative case, give up!\n");
-            //DEBUG(fprintf(stderr, "Not caught by the negative case, give up!\n"));
-            //llvm::errs() << tmp_passed.size() << "\n";
-            //assert(0);
-            return res;
-        }
-        unsigned long n;
-        int ret = fscanf(f, "%lu", &n);
-        // FIXME: this is hacky!
-        if (ret != 1) {
-            fclose(f);
-            return res;
-        }
-        for (size_t i = 0; i < n; i++) {
-            unsigned long tmp;
-            int ret = fscanf(f, "%lu", &tmp);
-            // FIXME: something wierd, we get out!
-            if (ret != 1) {
-                fclose(f);
-                printf("Error on reading records!\n");
-                return std::vector<unsigned long>();
-            }
-            res.push_back(tmp);
-        }
-        fclose(f);
-        return res;
-    }
-
-    void writeBranchRecordTerminator() {
-        FILE*f = fopen(ISNEG_TMPFILE, "a");
-        fprintf(f, " 0");
-        fclose(f);
-    }
-
-    void writeBranchRecord(const std::map<unsigned long,std::vector<unsigned long>> &negative_records,unsigned long case_id) {
-        FILE *f = fopen(ISNEG_TMPFILE, "w");
-        std::map<unsigned long,std::vector<unsigned long>>::const_iterator fit = negative_records.find(case_id);
-        assert( fit != negative_records.end() );
-        // FIXME: We use only closest record, write all record!
-        const std::vector<unsigned long> &tmp_vec = fit->second;
-        fprintf(f, "%lu", (unsigned long)tmp_vec.size());
-        for (size_t i = 0; i < tmp_vec.size(); i++)
-            fprintf(f, " %lu", tmp_vec[i]);
-        fprintf(f, "\n");
-        fclose(f);
-    }
-
 public:
     BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
             std::vector<std::pair<std::string,size_t>> &scores):
@@ -842,77 +1221,10 @@ public:
         conditionLocation=R.getIsNegLocation();
         return res;
     }
-
-    /**
-     * Run condition synthesizing function to get correct record
-     * 
-     */
-    void getConditionRecord(BenchProgram::EnvMapTy &env){
-        outlog_printf(2,"Recording bit vectors for condition synthesizing...\n");
-        for (size_t i=0;i<conditionLocation.size();i++){
-            std::pair<size_t,size_t> currentPatch(conditionLocation[i].first,conditionLocation[i].second);
-            outlog_printf(2,"Trying %u-%u\n",currentPatch.first,currentPatch.second);
-            // First going to make sure it passes all negative cases
-            for (TestCaseSetTy::iterator case_it = negative_cases.begin();
-                    case_it != negative_cases.end(); ++case_it) {
-                // OK, we are going to try 10 times for different path combination before
-                // we give up!
-                size_t it_cnt = 0;
-                BenchProgram::EnvMapTy testEnv = env;
-                testEnv.insert(std::make_pair("IS_NEG", "1"));
-                testEnv.insert(std::make_pair("NEG_ARG", "1"));
-                testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
-                int ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
-                assert( ret == 0);
-                bool passed = false;
-                while (it_cnt < 10) {
-                    // llvm::errs() << "Testing iteration: " << it_cnt << "\n";
-                    passed = P.test(std::string("src"), *case_it, testEnv,idAndCase.size(),currentPatch.first,currentPatch.second, false);
-                    std::vector<unsigned long> tmp_v = parseBranchRecord();
-                    writeBranchRecordTerminator();
-                    // We hit some strange error, we just assume we cannot pass this case
-                    if (tmp_v.size() == 0) passed = false;
-                    if (passed) {
-                        outlog_printf(2, "Passed in iteration!\n");
-                        records[currentPatch][*case_it]=tmp_v;
-                        break;
-                    }
-                    bool has_zero = false;
-                    for (size_t j = 0; j < tmp_v.size(); j++)
-                        if (tmp_v[j] == 0) {
-                            has_zero = true;
-                            break;
-                        }
-                    if (!has_zero) break;
-                    it_cnt ++;
-                }
-                // We will going to try all 1 before we finally give up this case
-                if (!passed){
-                    testEnv = env;
-                    testEnv.insert(std::make_pair("IS_NEG", "1"));
-                    testEnv.insert(std::make_pair("NEG_ARG", "0"));
-                    testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
-                    ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
-                    assert( ret == 0);
-                    passed = P.test(std::string("src"), *case_it, testEnv,idAndCase.size(),currentPatch.first,currentPatch.second, false);
-                    if (passed) {
-                        std::vector<unsigned long> tmp_v = parseBranchRecord();
-                        // FIXME: strange error in wireshark, we just ignore right now
-                        if (tmp_v.size() == 0) {
-                            outlog_printf(0, "Strange error or non-deterministic behavior!\n");
-                            continue;
-                        }
-                        assert(tmp_v.size() != 0);
-                        records[currentPatch][*case_it]=tmp_v;
-                        outlog_printf(2, "Passed with all 1!\n");
-                    }
-                    else {
-                        // Still failed, we are going to give up
-                        continue;
-                    }
-                }
-            }
-        }
+    void runCond(BenchProgram::EnvMapTy env,std::map<std::pair<size_t,size_t>,std::map<unsigned long,std::vector<std::vector<long long>>>> &temp){
+        CollectCondition cond(env,conditionLocation,idAndCase.size(),P,negative_cases,positive_cases,50);
+        cond.getConditionRecord();
+        cond.collectValues(temp);
     }
 
     virtual clang::Expr* getFillExpr(size_t id) {
@@ -1320,439 +1632,6 @@ public:
         return singleResult(cleanUpCode(code), score);
     }
 };
-
-#define MAGIC_NUMBER -123456789
-
-long checkV(const std::map<unsigned long, std::vector< std::vector< long long> > > &caseVMap,
-    const std::set<unsigned long> &negative_cases, const std::set<unsigned long> &positive_cases,
-    const std::map<unsigned long, std::vector<unsigned long> > &negative_records,
-    size_t idx, long long v, int flag) {
-
-    long ret = 0;
-
-    for (std::set<unsigned long>::iterator it = positive_cases.begin();
-            it != positive_cases.end(); ++it) {
-        std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator cit;
-        cit = caseVMap.find(*it);
-        assert( cit != caseVMap.end());
-        for (size_t i = 0; i < cit->second.size(); i++) {
-            assert(cit->second[i][idx] != MAGIC_NUMBER && "sanity check!");
-            int flag_mask = flag & 3;
-            int flag_bit = flag & 4;
-            long long rv = v;
-            if (flag_bit != 0)
-                rv = cit->second[i][v];
-            bool cond;
-            switch (flag_mask) {
-                case 0:
-                    cond = (cit->second[i][idx] != rv);
-                    break;
-                case 1:
-                    cond = (cit->second[i][idx] == rv);
-                    break;
-                case 2:
-                    cond = (cit->second[i][idx] < rv);
-                    break;
-                case 3:
-                    cond = (cit->second[i][idx] > rv);
-                    break;
-                default:
-                    break;
-            }
-            if (cond) {
-                ret += 2;
-                break;
-            }
-        }
-    }
-
-    bool valid = false;
-    for (std::set<unsigned long>::iterator it = negative_cases.begin();
-            it != negative_cases.end(); ++it) {
-        std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator cit;
-        cit = caseVMap.find(*it);
-        assert( cit != caseVMap.end());
-        std::map<unsigned long, std::vector<unsigned long> >::const_iterator nit;
-        nit = negative_records.find(*it);
-        if (cit->second.size() != nit->second.size()) {
-            outlog_printf(1, "Seems some non-determinism! %lu v.s. %lu Length mismatch!\n",
-                    (unsigned long)cit->second.size(), (unsigned long)nit->second.size());
-            return -1;
-        }
-        for (size_t i = 0; i < cit->second.size(); i++) {
-            assert(cit->second[i][idx] != MAGIC_NUMBER && "sanity check!");
-
-            int flag_mask = flag & 3;
-            int flag_bit = flag & 4;
-            long long rv = v;
-            if (flag_bit != 0) {
-                rv = cit->second[i][v];
-            }
-            bool cond;
-            switch (flag_mask) {
-                case 0:
-                    cond = (cit->second[i][idx] != rv);
-                    break;
-                case 1:
-                    cond = (cit->second[i][idx] == rv);
-                    break;
-                case 2:
-                    cond = (cit->second[i][idx] < rv);
-                    break;
-                case 3:
-                    cond = (cit->second[i][idx] > rv);
-                    break;
-                default:
-                    break;
-            }
-
-            if (cond)
-                valid = true;
-            if ((nit->second[i] == 0) && (cond)) {
-                ret++;
-                break;
-            }
-            if ((nit->second[i] == 1) && (!cond)) {
-                ret++;
-                break;
-            }
-        }
-    }
-    if (valid)
-        return ret;
-    else
-        return -1;
-}
-
-struct SynResTy {
-    size_t idx;
-    long long v;
-    size_t flag;
-    SynResTy(): idx(), v(), flag() {}
-
-    SynResTy(size_t idx, long long v, size_t flag):
-        idx(idx), v(v), flag(flag) {}
-
-    bool operator < (const SynResTy &a) const {
-        if (flag != a.flag)
-            return flag > a.flag;
-        else if (idx != a.idx)
-            return idx < a.idx;
-        else
-            return v < a.v;
-    }
-};
-
-static int compareTypeCheck(Expr* E1, Expr* E2) {
-    QualType T1 = E1->getType();
-    QualType T2 = E2->getType();
-    if (T1->isIntegerType() == T2->isIntegerType())
-        return 0;
-    if (T1->isPointerType() == T2->isPointerType())
-        return 1;
-    return -1;
-}
-
-std::vector<Expr*> synthesizeResult(ExprListTy exprs,
-        const std::map<unsigned long, std::vector<unsigned long> > &negative_records,
-        const std::map<unsigned long, std::vector< std::vector< long long> > > &caseVMap,
-        const std::set<unsigned long> &negative_cases,
-        const std::set<unsigned long> &positive_cases, ASTContext *ctxt) {
-    std::vector<std::pair<size_t, SynResTy> > res;
-    res.clear();
-    // If just remove work, then we remove it
-    /*bool no_pos_exec = true;
-    for (std::set<unsigned long>::const_iterator it = positive_cases.begin();
-            it != positive_cases.end(); ++it) {
-        std::map<unsigned long, std::vector< std::vector<long long> > > ::const_iterator find_it;
-        find_it = caseVMap.find(*it);
-        if (find_it->second.size() != 0) {
-            no_pos_exec = false;
-            break;
-        }
-    }
-    if (no_pos_exec)
-        res.push_back(std::make_pair(0, SynResTy(0, 1, 2)));*/
-    // Collect over all possible values for a variable
-    for (size_t vid = 0; vid < exprs.size(); vid++) {
-        std::set<long long> vals;
-        vals.clear();
-        bool give_up = false;
-        for (std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator
-                it = caseVMap.begin(); it != caseVMap.end(); ++it) {
-            for (size_t i = 0; i < it->second.size(); i++) {
-                if (it->second[i][vid] == MAGIC_NUMBER)
-                    give_up = true;
-                // This is to avoid catch those pointer values, they are not useful at all
-                if ((it->second[i][vid] < 1000) && (it->second[i][vid] > -1000))
-                    vals.insert(it->second[i][vid]);
-            }
-        }
-        if (give_up) continue;
-        for (std::set<long long>::iterator it = vals.begin(); it != vals.end(); it++) {
-            size_t flag_e = 2;
-            if (CondExt.getValue())
-                if (exprs[vid]->getType()->isIntegerType())
-                    flag_e = 4;
-            for (size_t flag_v = 0; flag_v < flag_e; flag_v ++) {
-                long long the_v = *it;
-                if (flag_v == 2)
-                    the_v ++;
-                else if (flag_v == 3)
-                    the_v --;
-                long vio = checkV(caseVMap, negative_cases, positive_cases,
-                        negative_records, vid, the_v, flag_v);
-                if (vio >= 0)
-                    res.push_back(std::make_pair((size_t)vio, SynResTy(vid, the_v, flag_v)));
-            }
-        }
-        if (CondExt.getValue()) {
-            for (size_t vid2 = 0; vid2 < exprs.size(); vid2 ++) {
-                int checkType = compareTypeCheck(exprs[vid], exprs[vid2]);
-                if (checkType == -1)
-                    continue;
-                bool give_up = false;
-                for (std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator
-                    it = caseVMap.begin(); it != caseVMap.end(); ++it) {
-                    for (size_t i = 0; i < it->second.size(); i++) {
-                        if (it->second[i][vid2] == MAGIC_NUMBER) {
-                            give_up = true;
-                            break;
-                        }
-                    }
-                    if (give_up) break;
-                }
-                if (give_up)
-                    continue;
-                size_t flag_e = 8;
-                if (checkType == 1)
-                    flag_e = 6;
-                for (size_t flag_v = 4; flag_v < flag_e; flag_v ++) {
-                    long vio = checkV(caseVMap, negative_cases, positive_cases,
-                            negative_records, vid, vid2, flag_v);
-                    if (vio >= 0)
-                        res.push_back(std::make_pair((size_t)vio, SynResTy(vid, vid2, flag_v)));
-                }
-            }
-        }
-    }
-
-    tot_synthesis_run ++;
-    tot_concrete_conds += res.size() + 1;
-
-    std::sort(res.begin(), res.end());
-    std::vector<Expr*> ret;
-    ret.clear();
-    ret.push_back(getNewIntegerLiteral(ctxt, 1));
-    for (size_t i = 0; i < res.size(); i++)
-        if (i < 20 || res[i].first == 0)
-        {
-            SynResTy &tmp = res[i].second;
-            Expr *E;
-            Expr *RHS;
-            int flag_mask = (tmp.flag & 3);
-            int flag_bit = (tmp.flag & 4);
-            if (flag_bit == 0)
-                RHS = getNewIntegerLiteral(ctxt, tmp.v);
-            else
-                RHS = exprs[tmp.v];
-            BinaryOperatorKind bkind;
-            switch (flag_mask) {
-                case 0:
-                    bkind = BO_NE;
-                    break;
-                case 1:
-                    bkind = BO_EQ;
-                    break;
-                case 2:
-                    bkind = BO_LE;
-                    break;
-                case 3:
-                    bkind = BO_GT;
-                    break;
-                default:
-                    assert(0);
-            }
-            E = BinaryOperator::Create(*ctxt,
-                exprs[tmp.idx], RHS, bkind, ctxt->IntTy, VK_RValue,
-                OK_Ordinary, SourceLocation(), FPOptionsOverride());
-            if (bkind == BO_EQ)
-                ret.push_back(getParenExpr(ctxt, E));
-            else
-                ret.push_back(E);
-        }
-        else
-            break;
-
-    return ret;
-}
-
-std::vector<Expr*> synthesizeResultSPR(ExprListTy exprs,
-        const std::map<unsigned long, std::vector<unsigned long> > &negative_records,
-        const std::map<unsigned long, std::vector< std::vector< long long> > > &caseVMap,
-        const std::set<unsigned long> &negative_cases,
-        const std::set<unsigned long> &positive_cases, ASTContext *ctxt) {
-    std::vector<std::pair<size_t, SynResTy> > res;
-    res.clear();
-    // Collect over all possible values for a variable
-    for (size_t vid = 0; vid < exprs.size(); vid++) {
-        std::set<long long> vals;
-        vals.clear();
-        bool give_up = false;
-        for (std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator
-                it = caseVMap.begin(); it != caseVMap.end(); ++it) {
-            for (size_t i = 0; i < it->second.size(); i++) {
-                if (it->second[i][vid] == MAGIC_NUMBER)
-                    give_up = true;
-                // This is to avoid catch those pointer values, they are not useful at all
-                if ((it->second[i][vid] < 1000) && (it->second[i][vid] > -1000))
-                    vals.insert(it->second[i][vid]);
-            }
-        }
-        if (give_up) continue;
-        for (std::set<long long>::iterator it = vals.begin(); it != vals.end(); it++) {
-            size_t flag_e = 2;
-            if (CondExt.getValue())
-                if (exprs[vid]->getType()->isIntegerType())
-                    flag_e = 4;
-            for (size_t flag_v = 0; flag_v < flag_e; flag_v ++) {
-                long long the_v = *it;
-                if (flag_v == 2)
-                    the_v ++;
-                else if (flag_v == 3)
-                    the_v --;
-                long vio = checkV(caseVMap, negative_cases, positive_cases,
-                        negative_records, vid, the_v, flag_v);
-                if (vio >= 0)
-                    res.push_back(std::make_pair((size_t)vio, SynResTy(vid, the_v, flag_v)));
-            }
-        }
-        if (CondExt.getValue()) {
-            for (size_t vid2 = 0; vid2 < exprs.size(); vid2 ++) {
-                int checkType = compareTypeCheck(exprs[vid], exprs[vid2]);
-                if (checkType == -1)
-                    continue;
-                bool give_up = false;
-                for (std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator
-                    it = caseVMap.begin(); it != caseVMap.end(); ++it) {
-                    for (size_t i = 0; i < it->second.size(); i++) {
-                        if (it->second[i][vid2] == MAGIC_NUMBER) {
-                            give_up = true;
-                            break;
-                        }
-                    }
-                    if (give_up) break;
-                }
-                if (give_up)
-                    continue;
-                size_t flag_e = 8;
-                if (checkType == 1)
-                    flag_e = 6;
-                for (size_t flag_v = 4; flag_v < flag_e; flag_v ++) {
-                    long vio = checkV(caseVMap, negative_cases, positive_cases,
-                            negative_records, vid, vid2, flag_v);
-                    if (vio >= 0)
-                        res.push_back(std::make_pair((size_t)vio, SynResTy(vid, vid2, flag_v)));
-                }
-            }
-        }
-    }
-
-    tot_synthesis_run ++;
-    tot_concrete_conds += res.size() + 1;
-
-    std::sort(res.begin(), res.end());
-    std::vector<Expr*> ret;
-    ret.clear();
-    ret.push_back(getNewIntegerLiteral(ctxt, 1));
-    for (size_t i = 0; i < res.size(); i++)
-        if (i < 20 || res[i].first == 0)
-        {
-            SynResTy &tmp = res[i].second;
-            Expr *E;
-            if (tmp.v == 0 && (tmp.flag == 0 || tmp.flag == 1)) {
-                Expr *RHS;
-                int flag_mask = tmp.flag & 3;
-                int flag_bit = tmp.flag & 4;
-                if (flag_bit == 0)
-                    RHS = getNewIntegerLiteral(ctxt, tmp.v);
-                else
-                    RHS = exprs[tmp.v];
-                BinaryOperatorKind bkind;
-                switch (flag_mask) {
-                    case 0:
-                        bkind = BO_NE;
-                        break;
-                    case 1:
-                        bkind = BO_EQ;
-                        break;
-                    case 2:
-                        bkind = BO_LE;
-                        break;
-                    case 3:
-                        bkind = BO_GT;
-                        break;
-                    default:
-                        assert(0);
-                }
-                E = BinaryOperator::Create(*ctxt,
-                    exprs[tmp.idx], RHS, bkind, ctxt->IntTy, VK_RValue,
-                    OK_Ordinary, SourceLocation(), FPOptionsOverride());
-                ret.push_back(E);
-            }
-        }
-        else
-            break;
-    for (size_t i = 0; i < res.size(); i++)
-        if (i < 20 || res[i].first == 0)
-        {
-            SynResTy &tmp = res[i].second;
-            Expr *E;
-            if (tmp.v != 0 || (tmp.flag != 0 && tmp.flag != 1)) {
-                Expr *RHS;
-                int flag_mask = tmp.flag & 3;
-                int flag_bit = tmp.flag & 4;
-                if (flag_bit == 0)
-                    RHS = getNewIntegerLiteral(ctxt, tmp.v);
-                else
-                    RHS = exprs[tmp.v];
-                BinaryOperatorKind bkind;
-                switch (flag_mask) {
-                    case 0:
-                        bkind = BO_NE;
-                        break;
-                    case 1:
-                        bkind = BO_EQ;
-                        break;
-                    case 2:
-                        bkind = BO_LE;
-                        break;
-                    case 3:
-                        bkind = BO_GT;
-                        break;
-                    default:
-                        assert(0);
-                }
-                E = BinaryOperator::Create(*ctxt,
-                    exprs[tmp.idx], RHS, bkind, ctxt->IntTy, VK_RValue,
-                    OK_Ordinary, SourceLocation(), FPOptionsOverride());
-                ret.push_back(E);
-            }
-        }
-        else
-            break;
-
-    return ret;
-}
-
-
-bool isZeroConstantExpr(Expr *E) {
-    BinaryOperator *BO = llvm::dyn_cast<BinaryOperator>(E);
-    if (!BO) return false;
-    IntegerLiteral *IL = llvm::dyn_cast<IntegerLiteral>(BO->getRHS());
-    if (!IL) return false;
-    return (IL->getValue() == 0);
-}
 
 class ConstantCondVisitor : public RecursiveASTVisitor<ConstantCondVisitor> {
     std::set<std::string> res;
@@ -2482,13 +2361,30 @@ class TestBatcher {
         // Create source file with fix
         // This should success
         P.saveFixedFiles(combined,fixedFile);
+        
+        std::map<std::pair<size_t,size_t>,std::map<unsigned long,std::vector<std::vector<long long>>>> conditionValues;
         BenchProgram::EnvMapTy testEnv;
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
-        // T->getConditionRecord(BenchProgram::EnvMapTy());
-        if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
-            result_init=T->test(testEnv,0,true);
-        else
-            result_init=T->test(testEnv,0,false);
+        T->runCond(testEnv,conditionValues);
+
+        for (std::map<std::pair<size_t,size_t>,std::map<unsigned long,std::vector<std::vector<long long>>>>::iterator it=conditionValues.begin();it!=conditionValues.end();it++){
+            printf("%u %u: ",it->first.first,it->first.second);
+            for (std::map<unsigned long,std::vector<std::vector<long long>>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
+                printf("%u ",it2->first);
+                // printf("%u\n",it2->first);
+                // for (size_t i=0;i<it2->second.size();i++){
+                //     for (size_t j=0;j<it2->second[i].size();j++){
+                //         printf("%d ",it2->second[i][j]);
+                //     }
+                //     printf("\n");
+                // }
+            }
+            printf("\n");
+        }
+        // if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
+        //     result_init=T->test(testEnv,0,true);
+        // else
+        //     result_init=T->test(testEnv,0,false);
 
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();

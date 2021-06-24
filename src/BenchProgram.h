@@ -292,9 +292,9 @@ public:
             std::string output_name="");
 
     TestCaseSetTy testSet(const std::string &subDir, const TestCaseSetTy &case_set,
-            const EnvMapTy &envMap, size_t totalSwitch=0,size_t chooseSwitch=0,size_t chooseCase=0,bool pass_basic_src_dir = false);
+            const EnvMapTy &envMap, size_t totalSwitch=0,size_t chooseSwitch=0,size_t chooseCase=0,size_t pid=0,bool pass_basic_src_dir = false);
 
-    bool test(const std::string &subDir, size_t id, const EnvMapTy &envMap,size_t totalSwitch,size_t chooseSwitch=0,size_t chooseCase=0,
+    bool test(const std::string &subDir, size_t id, const EnvMapTy &envMap,size_t totalSwitch,size_t chooseSwitch=0,size_t chooseCase=0,size_t pid=0,
             bool pass_basic_src_dir=false);
 
 /*    BenchProgram(const std::string &src_dir, const std::string &test_dir,

@@ -419,108 +419,23 @@ Expr* createConditionVarNameList(ASTContext *ctxt,std::vector<std::string> names
 Expr* createAbstractConditionExpr(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs) {
     std::vector<Expr*> tmp_argv;
     tmp_argv.clear();
-    std::vector<std::string> intVarName;
-    std::vector<std::string> charVarName;
-    std::vector<std::string> pointerVarName;
-    std::vector<std::string> doubleVarName;
-    std::vector<Expr *> intVar;
-    std::vector<Expr *> charVar;
-    std::vector<Expr *> pointerVar;
-    std::vector<Expr *> doubleVar;
-    std::string location;
-    intVarName.clear();
-    charVarName.clear();
-    pointerVarName.clear();
-    doubleVarName.clear();
-    intVar.clear();
-    charVar.clear();
-    pointerVar.clear();
-    doubleVar.clear();
-    location="";
-
-    for (size_t i = 0; i < exprs.size(); ++i) {
-        // ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
-        // UnaryOperator *AddrsOf = 
-        //     UnaryOperator::Create(*ctxt,ParenE1, UO_AddrOf, ctxt->getPointerType(exprs[i]->getType()),
-        //             VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
-        // tmp_argv.push_back(AddrsOf);
-        // ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
-        // UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
-        //     UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
-        // tmp_argv.push_back(SizeofE);
-
-        DeclRefExpr *decl=llvm::dyn_cast<DeclRefExpr>(exprs[i]);
-        if (decl){
-            VarDecl *var=llvm::dyn_cast<VarDecl>(decl->getDecl());
-            if (var){
-                std::string name=var->getDeclName().getAsString();
-                // varName.push_back(name);
-                QualType type=var->getType();
-                if (ctxt->hasSameType(type,ctxt->IntTy)){
-                    intVar.push_back(exprs[i]);
-                    intVarName.push_back(name);
-                }
-                else if (ctxt->hasSameType(type,ctxt->CharTy)){
-                    charVar.push_back(exprs[i]);
-                    charVarName.push_back(name);
-                }
-                else if (type->isPointerType()){
-                    pointerVar.push_back(exprs[i]);
-                    pointerVarName.push_back(name);
-                }
-                else if (ctxt->hasSameType(type,ctxt->DoubleTy)){
-                    doubleVar.push_back(exprs[i]);
-                    doubleVarName.push_back(name);
-                }
-            }
-        }
-    }
-
-    StringLiteral *str = StringLiteral::Create(*ctxt, location, StringLiteral::Ascii,
-            false, ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, location.size() + 1), nullptr,ArrayType::Normal, 0),
-            SourceLocation());
+    StringLiteral *str=StringLiteral::Create(*ctxt,"",StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
     tmp_argv.push_back(str);
-
-    IntegerLiteral *size;
-    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,intVar.size()),ctxt->IntTy,SourceLocation());
-    tmp_argv.push_back(size);
-    if (intVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
-    else tmp_argv.push_back(createConditionVarList(ctxt,intVar,ctxt->IntTy));
-
-    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,charVar.size()),ctxt->IntTy,SourceLocation());
-    tmp_argv.push_back(size);
-    if (charVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
-    else tmp_argv.push_back(createConditionVarList(ctxt,charVar,ctxt->CharTy));
-
-    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,pointerVar.size()),ctxt->IntTy,SourceLocation());
-    tmp_argv.push_back(size);
-    if (pointerVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
-    else tmp_argv.push_back(createConditionVarList(ctxt,pointerVar,ctxt->VoidPtrTy));
-
-    size=IntegerLiteral::Create(*ctxt,llvm::APInt(32,doubleVar.size()),ctxt->IntTy,SourceLocation());
-    tmp_argv.push_back(size);
-    if (doubleVar.size()==0) tmp_argv.push_back(createNullPointerLiteral(ctxt));
-    else tmp_argv.push_back(createConditionVarList(ctxt,doubleVar,ctxt->DoubleTy));
-
-    std::vector<std::string> varName;
-    varName.clear();
-
-    varName.insert(varName.end(),intVarName.begin(),intVarName.end());
-    varName.insert(varName.end(),charVarName.begin(),charVarName.end());
-    varName.insert(varName.end(),pointerVarName.begin(),pointerVarName.end());
-    varName.insert(varName.end(),doubleVarName.begin(),doubleVarName.end());
-    
-    for (size_t i=0;i<varName.size();i++){
-        StringLiteral *str = StringLiteral::Create(*ctxt, varName[i], StringLiteral::Ascii,
-                false, ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, varName[i].size() + 1), nullptr,ArrayType::Normal, 0),
-                SourceLocation());
-        tmp_argv.push_back(str);
+    tmp_argv.push_back(getNewIntegerLiteral(ctxt, exprs.size()));
+    for (size_t i = 0; i < exprs.size(); ++i) {
+        ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
+        UnaryOperator *AddrsOf = 
+            UnaryOperator::Create(*ctxt,ParenE1, UO_AddrOf, ctxt->getPointerType(exprs[i]->getType()),
+                    VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+        tmp_argv.push_back(AddrsOf);
+        ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
+        UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
+            UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
+        tmp_argv.push_back(SizeofE);
     }
-
     Expr *abstract_cond = M.getInternalHandlerInfo(ctxt).abstract_cond;
     CallExpr *CE = CallExpr::Create(*ctxt, abstract_cond, tmp_argv,
             ctxt->IntTy, VK_RValue, SourceLocation());
-
     return CE;
 }
 
