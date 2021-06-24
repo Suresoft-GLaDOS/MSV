@@ -336,6 +336,8 @@ class php_tester:
                     ret.add(the_idx);
                 cnt = cnt + 1;
             elif (test_section == True) and (tokens[0] == "Fatal"):
+                if len(new_s) <= 0:
+                    return ret;
                 the_idx = new_s[0];
                 new_s.remove(the_idx);
                 tmp = self._test(new_s);
