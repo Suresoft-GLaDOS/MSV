@@ -63,7 +63,10 @@ def main(argv):
         afl_cmd = ["afl-fuzz", "-o", arg_dict['w']+"/out", "-m", "none", "-d", "-n", "-t",
                str(timeout * 1000), "-w", arg_dict["w"]]
         afl_cmd += ["--", conf_dict['tools_dir']+'/php-test.py', arg_dict['w']+'/src', arg_dict['w']+'/tests', arg_dict['w']]
-        (fuzzer_out[0],fuzzer_err[0]) = subprocess.Popen(afl_cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        f_out = subprocess.Popen(afl_cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        fuzzer.append(f_out)
+        print(afl_cmd)
+        print(fuzzer)
     else:
         for i in range(0,parallel_count):
             afl_cmd = ["afl-fuzz", "-o", arg_dict['w']+"/out", "-m","none","-g","53","-d", "-n", "-t",

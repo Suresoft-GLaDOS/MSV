@@ -327,8 +327,8 @@ class php_tester:
                 test_section = False;
             elif (test_section == True) and (_is_start(tokens[0])):
                 if cnt >= n:
-                    print out;
-                    exit(1);
+                    #print out;
+                    exit(0);
                 the_idx = new_s[0];
                 new_s.remove(the_idx);
                 assert(cnt < n);
