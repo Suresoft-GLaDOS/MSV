@@ -508,6 +508,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     size_t start = currentLocation[currentIndex].first;
     size_t end = currentLocation[currentIndex].second;
     ASTLocTy loc=currentCandidate[currentIndex];
+    switchLoc[loc].clear();
     // outlog_printf(2,"Location: %d %d\n",start,end);
     std::vector<size_t> currentSwitches;
     currentSwitches.clear();
@@ -559,6 +560,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         // }
 
         switchGroup.push_back(counter);
+        switchLoc[loc].push_back(counter);
         counter++;
     }
 
@@ -609,6 +611,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         // }
 
         switchGroup.push_back(counter);
+        switchLoc[loc].push_back(counter);
         counter++;
     }
 
@@ -681,6 +684,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         // }
 
         switchGroup.push_back(counter);
+        switchLoc[loc].push_back(counter);
         counter++;
     }
     else{
@@ -689,7 +693,6 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     if(res1[currentCandidate[indexBackup]][1].size()>0){
         body+="}\n";
     }
-
 
     // Insert after
     if(res1[currentCandidate[currentIndex]][3].size()>0){
@@ -729,6 +732,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         // }
 
         switchGroup.push_back(counter);
+        switchLoc[loc].push_back(counter);
         counter++;
     }
     
@@ -844,6 +848,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     macroMap.clear();
     idAndCase.clear();
     switchCluster.clear();
+    switchLoc.clear();
+    switchAtoms.clear();
     for (size_t i=0;i<4;i++){
         switchCluster.push_back(std::list<size_t>());
     }
@@ -897,4 +903,16 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             resCodeSegs[src_file].push_back(code.substr(end));
         }
     }
+
+    for (size_t i=0;i<rc.size();i++){
+        if (rc[i].kind==RepairCandidate::TightenConditionKind || rc[i].kind==RepairCandidate::LoosenConditionKind || rc[i].kind==RepairCandidate::IfExitKind || rc[i].kind==RepairCandidate::GuardKind || rc[i].kind==RepairCandidate::SpecialGuardKind){
+            std::vector<size_t> switches=switchLoc[rc[i].actions[0].loc];
+            std::vector<Expr *> atoms=rc[i].actions[1].candidate_atoms;
+            for (size_t j=0;j<switches.size();j++)
+                if (switchAtoms.find(switches[j])==switchAtoms.end()){
+                    switchAtoms[switches[j]]=atoms;
+                }
+            }
+    }
+
 }

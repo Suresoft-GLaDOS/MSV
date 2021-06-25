@@ -27,11 +27,12 @@ if __name__ == "__main__":
         print "Usage: php-tester.py <src_dir> <test_dir> <work_dir> [cases]";
         exit(1);
 
-    opts, args = getopt.getopt(argv[1:], "p:fs:c:");
+    opts, args = getopt.getopt(argv[1:], "p:fs:c:i:");
     profile_dir = "";
     total_switch=0
     choose_switch=0
     choose_case=0
+    temp_dir=""
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
@@ -43,6 +44,8 @@ if __name__ == "__main__":
             switches=a.split('-')
             choose_switch=int(switches[0])
             choose_case=int(switches[1])
+        elif o=="-i":
+            temp_dir=a
 
     src_dir = args[0];
     test_dir = args[1];
@@ -50,7 +53,7 @@ if __name__ == "__main__":
         
     if len(args) > 3:
         ids = args[3:];
-        a = php_tester(work_dir, src_dir, test_dir,total_switch,choose_switch,choose_case);
+        a = php_tester(work_dir, src_dir, test_dir,total_switch,choose_switch,choose_case,temp_dir);
         s = [];
         for i in ids:
             s.append(int(i));
@@ -66,10 +69,16 @@ if __name__ == "__main__":
         # print "test"
         if len(ids) == 1 and len(ret) == 0:
             if "OUTIFFAIL" in os.environ:
-                outf = work_dir + "/__cleantests/" + ids[0] + ".out";
+                outf = work_dir + "/__cleantests/"
+                if temp_dir!="":
+                    outf+=temp_dir+"/"
+                outf += ids[0] + ".out";
                 if os.path.exists(outf):
                     system("cp -rf " + outf + " " + os.environ["OUTIFFAIL"]);
             if "EXPIFFAIL" in os.environ:
-                expf = work_dir + "/__cleantests/" + ids[0] + ".exp";
+                expf = work_dir + "/__cleantests/"
+                if temp_dir!="":
+                    outf+=temp_dir+"/"
+                outf += ids[0] + ".exp";
                 if os.path.exists(expf):
                     system("cp -rf " + expf + " " + os.environ["EXPIFFAIL"]);

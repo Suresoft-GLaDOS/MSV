@@ -309,6 +309,7 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
     this->build_cmd = getFullPath(config.getStr("build_cmd"));
     this->test_cmd = getFullPath(config.getStr("test_cmd"));
     this->ddtest_cmd=getFullPath(config.getStr("tools_dir"))+"/DD.py";
+    this->prophet_src=getFullPath(config.getStr("tools_dir"))+"/../src";
     this->afl_cmd=getFullPath(config.getStr("tools_dir"))+"/run-afl.py";
     this->localization_filename = work_dir + "/" + LOCALIZATION_RESULT;
 
@@ -684,7 +685,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         if (buildCount==6) break;
         outlog_printf(2,"%uth build...\n",++buildCount);
         if (buildCount==1)
-            succ=buildFull("src", 0,true,succ_id,files);
+            succ=buildFull("src", 0,false,succ_id,files);
         else
             succ=buildFull("src", 0,false,succ_id,files);
         if (succ){
@@ -938,7 +939,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 }*/
 
 BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
-        const TestCaseSetTy &case_set, const EnvMapTy &env_pairs, size_t totalSwitch,size_t chooseSwitch,size_t chooseCase,bool pass_basic_src_dir) {
+        const TestCaseSetTy &case_set, const EnvMapTy &env_pairs, size_t totalSwitch,size_t chooseSwitch,size_t chooseCase,size_t pid,bool pass_basic_src_dir) {
     if (case_set.size() == 0)
         return std::set<unsigned long>();
 
@@ -949,6 +950,10 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     if (chooseCase!=0)
         testEnv["__SWITCH"+std::to_string(chooseSwitch)]=std::to_string(chooseCase);
     std::string cmd=test_cmd;
+    if (pid!=0){
+        cmd+=" -i ";
+        cmd+=std::to_string(pid);
+    }
     // if (switchId>=0 && caseNum>=0)
     //     cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
 
@@ -960,7 +965,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     sout << cmd;
     for (TestCaseSetTy::const_iterator it = case_set.begin(); it != case_set.end(); it ++)
         sout << *it << " ";
-    sout <<  " > __res\n";
+    sout <<  " > __res_"+std::to_string(pid);
     cmd = sout.str();
     // printf("Command: %s\n",cmd.c_str());
     int res;
@@ -982,7 +987,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     ret.clear();
     // return value is zero, or just count as a total failure
     if (res == 0) {
-        FILE *in = fopen("__res", "r");
+        FILE *in = fopen(std::string("__res_"+std::to_string(pid)).c_str(), "r");
         assert(in != NULL);
         unsigned long id;
         while (!feof(in)) {
@@ -998,7 +1003,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         if (res != 0)
             fprintf(stderr, "strange I/O problem!\n");
     }
-    res = system("rm -rf __res");
+    res = system(std::string("rm -rf __res_"+std::to_string(pid)).c_str());
     if (res != 0)
         fprintf(stderr, "rm __res failed\n");
 
@@ -1011,13 +1016,13 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     return ret;
 }
 
-bool BenchProgram::test(const std::string &subDir, size_t id, const EnvMapTy &envMap,size_t totalSwitch,size_t chooseSwitch,size_t chooseCase,
+bool BenchProgram::test(const std::string &subDir, size_t id, const EnvMapTy &envMap,size_t totalSwitch,size_t chooseSwitch,size_t chooseCase,size_t pid,
         bool pass_basic_src_dir) {
     test_cnt ++;
     TestCaseSetTy tmp;
     tmp.clear();
     tmp.insert(id);
-    TestCaseSetTy res = testSet(subDir, tmp, envMap, totalSwitch,chooseSwitch,chooseCase,pass_basic_src_dir);
+    TestCaseSetTy res = testSet(subDir, tmp, envMap, totalSwitch,chooseSwitch,chooseCase,pid,pass_basic_src_dir);
     return res.size() == 1;
 }
 

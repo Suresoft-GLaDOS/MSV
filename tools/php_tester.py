@@ -230,10 +230,11 @@ class php_initializer:
         return ret;
 
 class php_tester:
-    def __init__(self, work_dir, repo_dir, test_dir,total_switch=0,choose_switch=0,choose_case=0):
+    def __init__(self, work_dir, repo_dir, test_dir,total_switch=0,choose_switch=0,choose_case=0,temp_dir=""):
         self.repo_dir = repo_dir;
         self.test_dir = test_dir;
         self.work_dir = work_dir;
+        self.temp_dir=temp_dir
 
         self.env=environ
         for i in range(total_switch):
@@ -353,6 +354,8 @@ class php_tester:
     # clean-up required before running test()
     def prepare_test(self, s = None):
         self.tmptest_dir = self.work_dir + "/__cleantests";
+        if self.temp_dir!="":
+            self.tmptest_dir+="/"+self.temp_dir
         if (path.exists(self.tmptest_dir)):
             shutil.rmtree(self.tmptest_dir);
         #print "Preparing clean test dir..."

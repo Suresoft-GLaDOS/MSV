@@ -110,9 +110,17 @@ extern "C" int __get_mutant() {
     return mutant_id;
 }
 
+extern "C" int __choose(const char *switch_id) {
+    // fprintf(stderr,"id: %d\n",id);
+    char *env=getenv(switch_id);
+    if (env==NULL) return 0;
+    int result=atoi(env);
+    return result;
+}
+
 #define MAGIC_NUMBER -123456789
 
-extern "C" int __is_neg(const char *location,int int_size,const int *ints, int char_size,const char *chars,int ptr_size,const void **ptrs, int double_size,const double *doubles, ...) {
+extern "C" int __is_neg(const char *location,int count, ...) {
     // fprintf(stderr, "fuck\n");
     if (!enable) return 0;
     char* is_neg = getenv("IS_NEG");
@@ -285,60 +293,52 @@ extern "C" int __is_neg(const char *location,int int_size,const int *ints, int c
                 }
             }
         }
-        //fprintf(stderr, "here1\n");
-        // va_list ap;
-        // va_start(ap, count);
-        // FILE *f = fopen(tmp_file, "a");
-        // fprintf(f, "%lu", (unsigned long)count);
+        // fprintf(stderr, "here1\n");
+        va_list ap;
+        va_start(ap, count);
+        FILE *f = fopen(tmp_file, "a");
+        fprintf(f, "%lu", (unsigned long)count);
         // fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
-        // for (unsigned long i = 0; i < (unsigned long)count; i++) {
-        //     void* p = va_arg(ap, void*);
-        //     unsigned long sz = va_arg(ap, unsigned long);
-        //     assert( sz <= 8 );
-        //     long long v = 0;
-        //     if (isGoodAddr(p, sz)) {
-        //         memcpy(&v, p, sz);
-        //     }
-        //     else {
-        //         v = MAGIC_NUMBER;
-        //     }
-        //     fprintf(f, " %lld", v);
-        //     fprintf(stderr, "i %lu %lld\n", i, v);
-        // }
-        // fprintf(f, "\n");
-        // fclose(f);
+        for (unsigned long i = 0; i < (unsigned long)count; i++) {
+            void* p = va_arg(ap, void*);
+            unsigned long sz = va_arg(ap, unsigned long);
+            assert( sz <= 8 );
+            long long v = 0;
+            if (isGoodAddr(p, sz)) {
+                memcpy(&v, p, sz);
+            }
+            else {
+                v = MAGIC_NUMBER;
+            }
+            fprintf(f, " %lld", v);
+            // fprintf(stderr, "i %lu %lld\n", i, v);
+        }
+        fprintf(f, "\n");
+        fclose(f);
 
-        // if (strcmp(is_neg, "RECORD1") == 0) {
-        //     // We write back with additional int to note the end
-        //     char* neg_arg = getenv("NEG_ARG");
-        //     f = fopen(neg_arg, "w");
-        //     assert( f != NULL );
-        //     fprintf(f, "%lu ", records_sz);
-        //     fprintf(stderr, "size: %d\n",records_sz);
-        //     for (unsigned long i = 0; i < records_sz; i++) {
-        //         fprintf(f, "%lu", records[i]);
-        //         fprintf(stderr, "record: %d\n",records[i]);
-        //         if (i != records_sz - 1)
-        //             fprintf(f, " ");
-        //     }
-        //     fprintf(f, "%lu", current_cnt + 1);
-        //     fprintf(stderr, "count: %d\n",current_cnt+1);
-        //     fclose(f);
+        if (strcmp(is_neg, "RECORD1") == 0) {
+            // We write back with additional int to note the end
+            char* neg_arg = getenv("NEG_ARG");
+            f = fopen(neg_arg, "w");
+            assert( f != NULL );
+            fprintf(f, "%lu ", records_sz);
+            // fprintf(stderr, "size: %d\n",records_sz);
+            for (unsigned long i = 0; i < records_sz; i++) {
+                fprintf(f, "%lu", records[i]);
+                // fprintf(stderr, "record: %d\n",records[i]);
+                if (i != records_sz - 1)
+                    fprintf(f, " ");
+            }
+            fprintf(f, "%lu", current_cnt + 1);
+            // fprintf(stderr, "count: %d\n",current_cnt+1);
+            fclose(f);
 
-        //     assert( current_cnt < records_sz);
-        //     //fprintf(stderr, "fuck you %lu\n", records[current_cnt]);
-        //     return records[current_cnt++];
-        // }
-        // else
-        //     return 0;
+            assert( current_cnt < records_sz);
+            //fprintf(stderr, "fuck you %lu\n", records[current_cnt]);
+            return records[current_cnt++];
+        }
+        else
+            return 0;
     }
     return 0;
-}
-
-extern "C" int __choose(char *switch_id) {
-    // fprintf(stderr,"id: %d\n",id);
-    char *env=getenv(switch_id);
-    if (env==NULL) return 0;
-    int result=atoi(env);
-    return result;
 }
