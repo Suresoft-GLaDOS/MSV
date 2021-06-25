@@ -1,3 +1,4 @@
+#pragma once
 #include "BenchProgram.h"
 
 #define MAGIC_NUMBER -123456789
@@ -36,6 +37,9 @@ public:
         BenchProgram::TestCaseSetTy &positive_cases,size_t totalProcess=1): env(env),conditionLocation(location),records(),switchNum(switchNum),program(program),negative_cases(negative_cases),positive_cases(positive_cases),totalProcess(totalProcess),pids(),readPipes() { records.clear(); }
     void getConditionRecord();
     bool collectValues(std::map<std::pair<size_t,size_t>,std::map<unsigned long,std::vector<std::vector<long long>>>> &caseVMap);
+    std::map<std::pair<size_t,size_t>,std::map<size_t,std::vector<size_t>>> getRecords(){
+        return records;
+    }
 }; // fin class CollectCondition
 
 } // fin namespace clang

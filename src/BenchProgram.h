@@ -115,6 +115,8 @@ private:
         std::vector<std::list<size_t>> switchCluster;
         // std::map<int,std::list<std::list<int>>> caseCluster;
         std::vector<std::set<size_t>> scoreInfo;
+        std::vector<std::pair<size_t,size_t>> conditionSwitches;
+        std::map<std::pair<size_t,size_t>,size_t> conditionCases;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
         void save(){
@@ -169,6 +171,23 @@ private:
             }
             cJSON_AddItemToObject(json,std::string("priority").c_str(),scoreArray);
 
+            // Save condition switches
+            cJSON *conditionArray=cJSON_CreateArray();
+            for (size_t i=0;i<conditionSwitches.size();i++){
+                cJSON *eachSwitch=cJSON_CreateArray();
+                cJSON_AddItemToArray(eachSwitch,cJSON_CreateNumber(conditionSwitches[i].first));
+                cJSON_AddItemToArray(eachSwitch,cJSON_CreateNumber(conditionSwitches[i].second));
+                cJSON_AddItemToArray(conditionArray,eachSwitch);
+            }
+            cJSON_AddItemToObject(json,"condition_switch",conditionArray);
+
+            // Save condition counts
+            cJSON *conditionCount=cJSON_CreateObject();
+            for (std::map<std::pair<size_t,size_t>,size_t>::iterator it=conditionCases.begin();it!=conditionCases.end();it++){
+                cJSON_AddNumberToObject(conditionCount,std::string(std::to_string(it->first.first)+"-"+std::to_string(it->first.second)).c_str(),it->second);
+            }
+            cJSON_AddItemToObject(json,"condition_count",conditionCount);
+
             // Save JSON to file
             char *jsonString=cJSON_Print(json);
             std::ofstream fout(fileName,std::ofstream::out);
@@ -200,6 +219,7 @@ private:
     std::string build_cmd;
     // The test command script path, this is an absolute path!
     std::string test_cmd;
+    std::string prophet_src;
     std::string ddtest_cmd;
     std::string afl_cmd;
 
@@ -320,6 +340,9 @@ public:
     }
     std::pair<int,int> getSwitch(){
         return std::make_pair(switchId,caseNum);
+    }
+    std::string getProphetSrc(){
+        return prophet_src;
     }
 
     //void setArgFile(const std::string &fixtest_argfile);

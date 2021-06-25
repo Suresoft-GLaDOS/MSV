@@ -1,7 +1,7 @@
 int __get_mutant();
 int __is_neg(const char *location, int count, ...);
 int __abst_hole();
-int __choose(char *);
+int __choose(const char *);
 void *memset(void *, int, unsigned long);
 /*
    +----------------------------------------------------------------------+

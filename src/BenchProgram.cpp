@@ -309,6 +309,7 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
     this->build_cmd = getFullPath(config.getStr("build_cmd"));
     this->test_cmd = getFullPath(config.getStr("test_cmd"));
     this->ddtest_cmd=getFullPath(config.getStr("tools_dir"))+"/DD.py";
+    this->prophet_src=getFullPath(config.getStr("tools_dir"))+"/../src";
     this->afl_cmd=getFullPath(config.getStr("tools_dir"))+"/run-afl.py";
     this->localization_filename = work_dir + "/" + LOCALIZATION_RESULT;
 

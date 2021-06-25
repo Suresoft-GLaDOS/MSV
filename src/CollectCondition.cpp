@@ -295,7 +295,7 @@ bool CollectCondition::collectValues(std::map<std::pair<size_t,size_t>,std::map<
     caseVMap.clear();
     
     for (std::map<std::pair<size_t,size_t>,std::map<size_t,std::vector<size_t>>>::iterator it=records.begin();it!=records.end();it++){
-        outlog_printf(2,"%u %u\n",it->first.first,it->first.second);
+        // outlog_printf(2,"%u %u\n",it->first.first,it->first.second);
         std::map<pid_t,int> pipes;
         std::vector<pid_t> pid;
         pid.clear();
@@ -361,6 +361,7 @@ bool CollectCondition::collectValues(std::map<std::pair<size_t,size_t>,std::map<
             }
         }
         // Then we deal with positive cases
+        if (false)
         for (BenchProgram::TestCaseSetTy::iterator tit = positive_cases.begin();
                 tit != positive_cases.end(); ++tit) {
             int tmpPipe[2];

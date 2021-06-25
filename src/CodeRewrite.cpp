@@ -849,7 +849,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     idAndCase.clear();
     switchCluster.clear();
     switchLoc.clear();
-    switchCandidates.clear();
+    switchAtoms.clear();
     for (size_t i=0;i<4;i++){
         switchCluster.push_back(std::list<size_t>());
     }
@@ -905,9 +905,14 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     }
 
     for (size_t i=0;i<rc.size();i++){
-        std::vector<size_t> switches=switchLoc[rc[i].actions[0].loc];
-        for (size_t j=0;j<switches.size();j++)
-            switchCandidates[switches[j]].push_back(rc[i]);
+        if (rc[i].kind==RepairCandidate::TightenConditionKind || rc[i].kind==RepairCandidate::LoosenConditionKind || rc[i].kind==RepairCandidate::IfExitKind || rc[i].kind==RepairCandidate::GuardKind || rc[i].kind==RepairCandidate::SpecialGuardKind){
+            std::vector<size_t> switches=switchLoc[rc[i].actions[0].loc];
+            std::vector<Expr *> atoms=rc[i].actions[1].candidate_atoms;
+            for (size_t j=0;j<switches.size();j++)
+                if (switchAtoms.find(switches[j])==switchAtoms.end()){
+                    switchAtoms[switches[j]]=atoms;
+                }
+            }
     }
 
 }

@@ -110,6 +110,14 @@ extern "C" int __get_mutant() {
     return mutant_id;
 }
 
+extern "C" int __choose(const char *switch_id) {
+    // fprintf(stderr,"id: %d\n",id);
+    char *env=getenv(switch_id);
+    if (env==NULL) return 0;
+    int result=atoi(env);
+    return result;
+}
+
 #define MAGIC_NUMBER -123456789
 
 extern "C" int __is_neg(const char *location,int count, ...) {
@@ -333,12 +341,4 @@ extern "C" int __is_neg(const char *location,int count, ...) {
             return 0;
     }
     return 0;
-}
-
-extern "C" int __choose(char *switch_id) {
-    // fprintf(stderr,"id: %d\n",id);
-    char *env=getenv(switch_id);
-    if (env==NULL) return 0;
-    int result=atoi(env);
-    return result;
 }

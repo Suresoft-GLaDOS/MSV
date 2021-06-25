@@ -32,6 +32,7 @@
 #include "clang/AST/Expr.h"
 #include "clang/AST/Stmt.h"
 #include "clang/AST/ASTContext.h"
+#include "ConditionRewriter.h"
 #include <iostream>
 
 using namespace clang;
@@ -108,11 +109,12 @@ static inline size_t rightPos(size_t a, size_t b) {
 }
 long checkV(const std::map<unsigned long, std::vector< std::vector< long long> > > &caseVMap,
     const std::set<unsigned long> &negative_cases, const std::set<unsigned long> &positive_cases,
-    const std::map<unsigned long, std::vector<unsigned long> > &negative_records,
+    const std::map<unsigned long, std::vector<size_t> > &negative_records,
     size_t idx, long long v, int flag) {
 
     long ret = 0;
 
+    if (false)
     for (std::set<unsigned long>::iterator it = positive_cases.begin();
             it != positive_cases.end(); ++it) {
         std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator cit;
@@ -371,7 +373,7 @@ std::vector<Expr*> synthesizeResult(ExprListTy exprs,
 }
 
 std::vector<Expr*> synthesizeResultSPR(ExprListTy exprs,
-        const std::map<unsigned long, std::vector<unsigned long> > &negative_records,
+        const std::map<unsigned long, std::vector<size_t> > &negative_records,
         const std::map<unsigned long, std::vector< std::vector< long long> > > &caseVMap,
         const std::set<unsigned long> &negative_cases,
         const std::set<unsigned long> &positive_cases, ASTContext *ctxt) {
@@ -988,6 +990,9 @@ protected:
     // For condition synthesizing
     std::vector<std::pair<size_t,size_t>> conditionLocation;
     std::map<std::pair<size_t,size_t>,std::map<size_t,std::vector<size_t>>> records;
+    std::map<size_t,std::vector<Expr *>> switchAtoms;
+    std::map<std::pair<size_t,size_t>,std::map<unsigned long,std::vector<std::vector<long long>>>> values;
+    std::map<size_t,ASTLocTy> switchLoc;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, idAndCase.size(),P.getSwitch().first,P.getSwitch().second);
@@ -1063,7 +1068,7 @@ protected:
         // P.getSwitchInfo().caseCluster=caseCluster;
         P.getSwitchInfo().scoreInfo=scores;
 
-        P.getSwitchInfo().save();
+        // P.getSwitchInfo().save();
     }
 
     bool fuzzTest(size_t timeout){
@@ -1077,6 +1082,7 @@ protected:
     }
 
 public:
+    ASTContext *tempCtxt;
     BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
             std::vector<std::pair<std::string,size_t>> &scores):
     P(P), learning(learning), M(M), scores(scores),
@@ -1084,7 +1090,7 @@ public:
     positive_cases(P.getPositiveCaseSet()),
     candidates(),conditionLocation(),records(),
     failed_cases(),
-    functionLoc(functionLoc),locations(),
+    functionLoc(functionLoc),locations(),tempCtxt(NULL),
     naive(naive) {}
 
     virtual ~BasicTester() { }
@@ -1140,6 +1146,15 @@ public:
         switchCluster=R.getSwitchCluster();
         // caseCluster=R.getCaseCluster();
         macroCode=R.getMacroCode();
+        switchAtoms=R.getSwitchAtoms();
+
+        switchLoc.clear();
+        std::map<ASTLocTy,std::vector<size_t>> locs=R.getSwitchLoc();
+        for (std::map<ASTLocTy,std::vector<size_t>>::iterator it=locs.begin();it!=locs.end();it++){
+            for (size_t i=0;i<it->second.size();i++){
+                switchLoc[it->second[i]]=it->first;
+            }
+        }
 
         locations=R.getSwitchLine();
         // Sort lines
@@ -1222,9 +1237,12 @@ public:
         return res;
     }
     void runCond(BenchProgram::EnvMapTy env,std::map<std::pair<size_t,size_t>,std::map<unsigned long,std::vector<std::vector<long long>>>> &temp){
-        CollectCondition cond(env,conditionLocation,idAndCase.size(),P,negative_cases,positive_cases,50);
+        CollectCondition cond(env,conditionLocation,idAndCase.size(),P,negative_cases,positive_cases,20);
         cond.getConditionRecord();
         cond.collectValues(temp);
+
+        records=cond.getRecords();
+        values=temp;
     }
 
     virtual clang::Expr* getFillExpr(size_t id) {
@@ -1261,6 +1279,83 @@ public:
             }
             return ret;
         }
+    }
+
+    std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> synthesizeCondition(){
+        std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> result;
+        result.clear();
+        for (std::map<std::pair<size_t,size_t>,std::map<size_t,std::vector<size_t>>>::iterator it=records.begin();it!=records.end();it++){
+            std::pair<size_t,size_t> currentSwitch=it->first;
+            std::map<unsigned long, std::vector<size_t> > negative_records=records[currentSwitch];
+            std::map<unsigned long, std::vector< std::vector< long long> > > caseVMap=values[currentSwitch];
+            std::vector<Expr *> atoms=switchAtoms[currentSwitch.first];
+            ASTContext *ctxt=M.getSourceContext(switchLoc[currentSwitch.first].filename);
+            if (tempCtxt==NULL) tempCtxt=ctxt;
+
+            std::vector<Expr *> tempExpr=synthesizeResultSPR(atoms,negative_records,caseVMap,negative_cases,positive_cases,ctxt);
+
+            std::vector<std::vector<Expr *>> newExprs;
+            newExprs.clear();
+            for (size_t i=0;i<atoms.size();i++){
+                Expr *current=atoms[i];
+                std::vector<Expr *> currentExprs;
+                currentExprs.clear();
+
+                for (size_t j=0;j<tempExpr.size();j++){
+                    BinaryOperator *temp=llvm::dyn_cast<BinaryOperator>(tempExpr[j]);
+                    if (temp!=NULL && temp->getLHS()==current)
+                        currentExprs.push_back(tempExpr[j]);
+                }
+                newExprs.push_back(currentExprs);
+            }
+            result[currentSwitch]=newExprs;
+
+            // outlog_printf(2,"%u %u:\n",currentSwitch.first,currentSwitch.second);
+            // for (size_t i=0;i<newExprs.size();i++)
+            //     for (size_t j=0;j<newExprs[i].size();j++)
+            //         outlog_printf(2,"%s\n",stmtToString(*ctxt,newExprs[i][j]).c_str());
+            // outlog_printf(2,"\n");
+        }
+
+        return result;
+    }
+
+    void saveConditionInfo(std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> &conds){
+        std::vector<std::pair<size_t,size_t>> conditionSwitches;
+        conditionSwitches.clear();
+        std::map<std::pair<size_t,size_t>,size_t> conditionCases;
+        conditionCases.clear();
+        for (std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>>::iterator it=conds.begin();it!=conds.end();it++){
+            conditionSwitches.push_back(it->first);
+            size_t count=0;
+
+            for (size_t i=0;i<it->second.size();i++){
+                count+=it->second[i].size();
+            }
+            conditionCases[it->first]=count+1;
+        }
+
+        P.getSwitchInfo().conditionSwitches=conditionSwitches;
+        P.getSwitchInfo().conditionCases=conditionCases;
+
+        P.getSwitchInfo().save();
+    }
+
+    std::string createLibrarySource(){
+        std::string copyCmd="cp ";
+        copyCmd+=P.getProphetSrc()+"/_test_runtime.cpp ";
+        copyCmd+=P.getWorkdir()+"/_test_runtime.cpp ";
+        system(copyCmd.c_str());
+
+        std::string source="";
+        std::ifstream file(P.getWorkdir()+"/_test_runtime.cpp");
+        std::string temp;
+        while (std::getline(file,temp)){
+            source+=temp;
+            source+="\n";
+        }
+        file.close();
+        return source;
     }
 
     virtual std::map<NewCodeMapTy, double> getResults(unsigned long id) {
@@ -1713,410 +1808,6 @@ size_t getElementCount(std::vector<T> vector,T target){
     return count;
 }
 
-class ConditionSynthesisTester : public BasicTester {
-    typedef std::map<unsigned long, std::vector<unsigned long>> BranchRecordTy;
-    typedef std::map<unsigned long, std::vector<std::vector<long long> > > ValueRecordTy;
-    std::vector<ExprFillInfo> infos;
-    std::vector<std::set<ExprFillInfo> *> infos_set;
-    std::map<BenchProgram::EnvMapTy,ValueRecordTy> valueRecords;
-    std::map<BenchProgram::EnvMapTy,BranchRecordTy> branchRecords;
-    std::vector<std::pair<size_t,size_t>> isNegLocation;
-    bool full_synthesis;
-    unsigned long post_cnt;
-
-    long long getConditionIndex(const RepairCandidate &candidate) {
-        const std::vector<RepairAction> &a = candidate.actions;
-        // We identify the part we can use condition synthesizer, for the rest
-        // we just brute search.
-        long long condition_idx = -1;
-        for (size_t i = 0; i < a.size(); i++)
-            if (a[i].kind == RepairAction::ExprMutationKind)
-                if (a[i].tag == RepairAction::CondTag) {
-                    condition_idx = i;
-                    break;
-                }
-        return condition_idx;
-    }
-
-    virtual clang::Expr* getFillExpr(size_t id) {
-        long long condition_idx = getConditionIndex(candidates[id]);
-        ExprFillInfo &tmp = infos[condition_idx];
-        return tmp[condition_idx];
-    }
-
-    std::vector<unsigned long> parseBranchRecord() {
-        std::vector<unsigned long> res;
-        res.clear();
-        FILE *f = fopen(ISNEG_TMPFILE, "r");
-        //llvm::errs() << "New code\n" << new_code << "\n";
-        if (!f) {
-            outlog_printf(3, "Not caught by the negative case, give up!\n");
-            //DEBUG(fprintf(stderr, "Not caught by the negative case, give up!\n"));
-            //llvm::errs() << tmp_passed.size() << "\n";
-            //assert(0);
-            return res;
-        }
-        unsigned long n;
-        int ret = fscanf(f, "%lu", &n);
-        // FIXME: this is hacky!
-        if (ret != 1) {
-            fclose(f);
-            return res;
-        }
-        for (size_t i = 0; i < n; i++) {
-            unsigned long tmp;
-            int ret = fscanf(f, "%lu", &tmp);
-            // FIXME: something wierd, we get out!
-            if (ret != 1) {
-                fclose(f);
-                return std::vector<unsigned long>();
-            }
-            res.push_back(tmp);
-        }
-        fclose(f);
-        return res;
-    }
-
-    void writeBranchRecordTerminator() {
-        FILE*f = fopen(ISNEG_TMPFILE, "a");
-        fprintf(f, " 0");
-        fclose(f);
-    }
-
-    void writeBranchRecord(const std::map<unsigned long,std::vector<unsigned long>> &negative_records,unsigned long case_id) {
-        FILE *f = fopen(ISNEG_TMPFILE, "w");
-        std::map<unsigned long,std::vector<unsigned long>>::const_iterator fit = negative_records.find(case_id);
-        assert( fit != negative_records.end() );
-        // FIXME: We use only closest record, write all record!
-        const std::vector<unsigned long> &tmp_vec = fit->second;
-        fprintf(f, "%lu", (unsigned long)tmp_vec.size());
-        for (size_t i = 0; i < tmp_vec.size(); i++)
-            fprintf(f, " %lu", tmp_vec[i]);
-        fprintf(f, "\n");
-        fclose(f);
-    }
-
-    bool testNegativeCases(const BenchProgram::EnvMapTy &env,
-            std::map<unsigned long,std::vector<unsigned long>> &negative_records) {
-        negative_records.clear();
-        // First going to make sure it passes all negative cases
-        for (TestCaseSetTy::iterator case_it = negative_cases.begin();
-                case_it != negative_cases.end(); ++case_it) {
-            // OK, we are going to try 10 times for different path combination before
-            // we give up!
-            size_t it_cnt = 0;
-            BenchProgram::EnvMapTy testEnv = env;
-            testEnv.insert(std::make_pair("IS_NEG", "1"));
-            testEnv.insert(std::make_pair("NEG_ARG", "1"));
-            testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
-            int ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
-            assert( ret == 0);
-            outlog_printf(2, "Testing %lu (with abstract condition)\n", *case_it);
-            bool passed = false;
-            dumpEnv(testEnv);
-            while (it_cnt < 10) {
-                outlog_printf(2, "Iteration %lu\n", it_cnt);
-                //llvm::errs() << "Testing iteration: " << it_cnt << "\n";
-                passed = P.test(std::string("src"), *case_it, testEnv, false);
-                std::vector<unsigned long> tmp_v = parseBranchRecord();
-                writeBranchRecordTerminator();
-                for (size_t i = 0; i < tmp_v.size(); i++)
-                    outlog_printf(2, "Branch %lu: %lu\n", i, tmp_v[i]);
-                // We hit some strange error, we just assume we cannot pass this case
-                if (tmp_v.size() == 0) passed = false;
-                if (passed) {
-                    outlog_printf(2, "Passed in iteration!\n");
-                    negative_records[*case_it]=tmp_v;
-                    break;
-                }
-                bool has_zero = false;
-                for (size_t i = 0; i < tmp_v.size(); i++)
-                    if (tmp_v[i] == 0) {
-                        has_zero = true;
-                        break;
-                    }
-                if (!has_zero) break;
-                it_cnt ++;
-            }
-            // We will going to try all 1 before we finally give up this case
-            if (!passed){
-                outlog_printf(2,"Trying with NEG_ARG=0!\n");
-                testEnv = env;
-                testEnv.insert(std::make_pair("IS_NEG", "1"));
-                testEnv.insert(std::make_pair("NEG_ARG", "0"));
-                testEnv.insert(std::make_pair("TMP_FILE", ISNEG_TMPFILE));
-                ret = system((std::string("rm -rf ") + ISNEG_TMPFILE).c_str());
-                assert( ret == 0);
-                passed = P.test(std::string("src"), *case_it, testEnv, false);
-                if (passed) {
-                    std::vector<unsigned long> tmp_v = parseBranchRecord();
-                    // FIXME: strange error in wireshark, we just ignore right now
-                    if (tmp_v.size() == 0) {
-                        outlog_printf(0, "Strange error or non-deterministic behavior!\n");
-                        continue;
-                    }
-                    assert(tmp_v.size() != 0);
-                    negative_records[*case_it]=tmp_v;
-                    for (size_t i = 0; i < tmp_v.size(); i++)
-                        outlog_printf(5, "Log %lu %lu\n", i, tmp_v[i]);
-                }
-                else {
-                    // Still failed, we are going to give up
-                    continue;
-                }
-            }
-            if (negative_records[*case_it].empty()) return false;
-        }
-        if (negative_records.empty()) return false;
-        outlog_printf(2, "Passed Negative Cases wiht CondTester!\n");
-        return true;
-    }
-
-    void parseValueRecord(std::vector<std::vector<long long> > &vec) {
-        vec.clear();
-        FILE* f = fopen(ISNEG_RECORDFILE, "r");
-        // Did not hit the condition, so it is an empty set
-        if (f == NULL)
-            return;
-        bool over = false;
-        while (!over) {
-            std::vector<long long> v;
-            v.clear();
-            unsigned long n;
-            int ret = fscanf(f, "%lu", &n);
-            if (ret != 1) {
-                over = true;
-                break;
-            }
-            outlog_printf(2,"%lu: ",n);
-            for (size_t i = 0; i < n; i++) {
-                unsigned long tmp;
-                ret = fscanf(f, "%lu", &tmp);
-                assert(ret == 1);
-                v.push_back(tmp);
-                outlog_printf(2,"%d, ",tmp);
-            }
-            outlog_printf(2,"\n");
-            vec.push_back(v);
-        }
-        fclose(f);
-    }
-
-    bool collectValues(const BenchProgram::EnvMapTy &env,
-            std::map<unsigned long,std::vector<unsigned long>> &negative_records,
-            std::map<unsigned long,std::vector<std::vector<long long>>> &caseVMap) {
-        caseVMap.clear();
-        // We first deal with the negative cases
-        for (TestCaseSetTy::iterator tit = negative_cases.begin();
-                tit != negative_cases.end(); ++tit) {
-            BenchProgram::EnvMapTy testEnv = env;
-            testEnv.insert(std::make_pair("IS_NEG", "RECORD1"));
-            testEnv.insert(std::make_pair("NEG_ARG", ISNEG_TMPFILE));
-            testEnv.insert(std::make_pair("TMP_FILE", ISNEG_RECORDFILE));
-            //FIXME: It triggers non-deterministic things, get out!
-            if (negative_records.find(*tit) == negative_records.end()) {
-                fprintf(stderr, "Error in case map, failed on case %lu!\n", *tit);
-                return false;
-            }
-            writeBranchRecord(negative_records,*tit);
-            std::string cmd = std::string("rm -rf ") + ISNEG_RECORDFILE;
-            int ret = system(cmd.c_str());
-            assert( ret == 0);
-            bool passed = P.test(std::string("src"), *tit, testEnv, false);
-            // FIXME: It triggers non-deterministic things, just
-            // get out
-            if (!passed) {
-                fprintf(stderr, "Collect value failed on case %lu!\n", *tit);
-                // return false;
-            }
-            // We are going to parse neg.out to get result
-            parseValueRecord(caseVMap[*tit]);
-        }
-        // Then we deal with positive cases
-        for (TestCaseSetTy::iterator tit = positive_cases.begin();
-                tit != positive_cases.end(); ++tit) {
-            BenchProgram::EnvMapTy testEnv = env;
-            testEnv.insert(std::make_pair("IS_NEG", "RECORD0"));
-            testEnv.insert(std::make_pair("TMP_FILE", ISNEG_RECORDFILE));
-            std::string cmd = std::string("rm -rf ") + ISNEG_RECORDFILE;
-            int ret = system(cmd.c_str());
-            assert( ret == 0);
-            bool passed = P.test(std::string("src"), *tit, testEnv, false);
-            // XXX: This may happen because record takes more time, and it
-            // makes the positive case to time out we simply skip if it fails
-            if (!passed) continue;
-            parseValueRecord(caseVMap[*tit]);
-        }
-        return true;
-    }
-
-    std::map<int,std::set<int>> getIsNegCase(){
-        std::map<int,std::set<int>> idCasePair;
-        idCasePair.clear();
-        for (std::map<int,std::map<int,std::string>>::iterator it=idAndCase.begin();
-                it!=idAndCase.end();it++){
-            for (std::map<int,std::string>::iterator it2=it->second.begin();
-                    it2!=it->second.end();it2++){
-                std::string patch=it2->second;
-                if (patch.find("__is_neg")!=std::string::npos)
-                    idCasePair[it->first].insert(it2->first);
-            }
-        }
-        return idCasePair;
-    }
-
-    std::vector<BenchProgram::EnvMapTy> setIsNegEnv(BenchProgram::EnvMapTy &env,int id){
-        std::vector<BenchProgram::EnvMapTy> envs;
-        envs.clear();
-        BenchProgram::EnvMapTy testEnv=env;
-        std::map<int,std::set<int>> isNegCase=getIsNegCase();
-
-        for(std::set<int>::iterator it=isNegCase[id].begin();it!=isNegCase[id].end();it++){
-            BenchProgram::EnvMapTy temp=testEnv;
-            temp["__ID"+std::to_string(id)]=std::to_string(*it);
-            envs.push_back(temp);
-        }
-        return envs;
-    }
-    void dumpEnv(BenchProgram::EnvMapTy env){
-        outlog_printf(2,"Printing IDs:\n");
-        for (BenchProgram::EnvMapTy::iterator it=env.begin();it!=env.end();it++){
-            if (it->first.find("__ID")!=std::string::npos){
-                outlog_printf(2,"%s: %s\n",it->first.c_str(),it->second.c_str());
-            }
-        }
-    }
-    void dumpRecord(std::map<unsigned long,std::vector<unsigned long>> record){
-        size_t debugLevel=2;
-        for (std::map<unsigned long,std::vector<unsigned long> >::iterator it=record.begin();
-                it!=record.end();it++){
-            outlog_printf(debugLevel,"\t[");
-            std::vector<unsigned long> temp=it->second;
-            for (std::vector<unsigned long>::iterator it2=temp.begin();
-                    it2!=temp.end();it2++){
-                outlog_printf(debugLevel,"%d, ",*it2);
-            }
-            outlog_printf(debugLevel,"]\n");
-        }
-    }
-
-public:
-    ConditionSynthesisTester(BenchProgram &P, bool learning, SourceContextManager &M, bool full_synthesis,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
-            std::vector<std::pair<std::string,size_t>> &scores):
-        BasicTester(P, learning, M, false,functionLoc,scores),
-        infos(), infos_set(),full_synthesis(full_synthesis) { post_cnt = 0; }
-
-    virtual bool canHandle(const RepairCandidate &candidate) {
-        return getConditionIndex(candidate) != -1;
-    }
-
-    virtual std::vector<unsigned long> preprocess(const std::vector<RepairCandidate> &candidate) {
-        std::vector<std::set<ExprFillInfo> *> the_infos;
-        the_infos.clear();
-
-        outlog_printf(2, "[%llu] Preprocess the following candidate with CondTester:\n%d Candidates\n", get_timer(),
-            candidate.size());
-
-        for (size_t i=0;i<candidate.size();i++){
-            // We identify the part we can use condition synthesizer, for the rest
-            // we just brute search.
-            long long condition_idx = getConditionIndex(candidate[i]);
-            //if (condition_idx==-1) continue;
-            // We are going to create a set of binding ExprFillInfos
-            the_infos.push_back(enumerateExprBindings(M, candidate[i], condition_idx));
-        }
-
-        std::vector<unsigned long> res;
-        res.clear();
-        outlog_printf(2,"Generating patches with CondTester...\n");
-        CodeRewriter R(M, candidate, &the_infos,functionLoc,P.getWorkdir());
-        outlog_printf(2,"Patch Generated!\n");
-        std::map<std::string, std::vector<std::string> > a_code = R.getCodeSegments();
-        std::map<std::string, std::vector<std::string> > a_patch = R.getPatches();
-        macroMap=R.getMacroMap();
-        idAndCase=R.getIdAndCase();
-        outlog_printf(2,"ID count: %d\n",idAndCase.size());
-        count=R.getIdCount();
-        isNegLocation=R.getIsNegLocation();
-        total_macro=R.index;
-        {
-            outlog_printf(2, "[%llu] CondTester, a patch instance with id %lu:\n", get_timer(),
-                    codes.size());
-            out_codes(a_code, a_patch);
-        }
-        for (size_t i=0;i<candidate.size();i++)
-            candidates.push_back(candidate[i]);
-        codes=a_code;
-        outlog_printf(2,"codes size: %d\n",codes.size());
-        patches=a_patch;
-        for (size_t i=0;i<the_infos.size();i++){
-            infos_set.push_back(the_infos[i]);
-            for (std::set<ExprFillInfo>::iterator it=the_infos[i]->begin();it!=the_infos[i]->end();it++)
-                infos.push_back(*it);
-        }
-        res.push_back((unsigned long)candidates.size() - 1);
-        outlog_printf(2,"res size: %d\n",res.size());
-        outlog_printf(2,"result size: %d\n",res[0]);
-        return res;
-    }
-
-    virtual bool test(const BenchProgram::EnvMapTy &env, unsigned long id) {
-        {
-            outlog_printf(2, "[%llu] CondTester, Testing instance id %lu:\n", get_timer(), id);
-            out_codes(codes, patches);
-        }
-        // We first need to find the flip combination that will make it passes each
-        // negative cases, and we store it to negative_records
-        outlog_printf(2,"\nTotal ID: %d\n",count);
-        BenchProgram::EnvMapTy testEnv=initEnv(env);
-        std::map<int,std::set<int>> idCase=getIsNegCase();
-        for (std::map<int,std::set<int>>::iterator it=idCase.begin();
-                it!=idCase.end();it++){
-            outlog_printf(2,"Testing with ID %d\n",it->first);
-            std::vector<BenchProgram::EnvMapTy> envs=setIsNegEnv(testEnv,it->first);
-            if (envs.size()!=0)
-                for(std::vector<BenchProgram::EnvMapTy>::iterator envIt=envs.begin();envIt!=envs.end();envIt++){
-                    // dumpEnv(*envIt);
-                    // outlog_printf(2,"Code: %s\n",patch.c_str());
-                    std::map<unsigned long,std::vector<unsigned long>> negative_records;
-                    outlog_printf(2, "Testing negative cases!\n");
-                    if (!testNegativeCases(*envIt, negative_records)) {
-                        // codes.clear();
-                        // patches.clear();
-                        continue;
-                    }
-                    dumpRecord(negative_records);
-                    outlog_printf(2, "Testing positive cases!\n");
-                    if (!BasicTester::testPositiveCases(testEnv)) {
-                        // codes.clear();
-                        // patches.clear();
-                        continue;
-                    }
-                    // Then we need to collect the variable values at the expr, we store it into
-                    // this caseVMap
-                    outlog_printf(2, "Collect values for post processing!\n");
-                    std::map<unsigned long,std::vector<std::vector<long long>>> caseVMap;
-                    if (!collectValues(*envIt, negative_records, caseVMap)) {
-                        // codes.clear();
-                        // patches.clear();
-                        continue;
-                    }
-                    valueRecords[*envIt] = caseVMap;
-                    branchRecords[*envIt] = negative_records;
-                    outlog_printf(2, "[%llu] Passed!\n", get_timer());
-                }
-            else{
-                outlog_printf(2,"No __is_neg found, pass!\n");
-            }
-        }
-        return true;
-    }
-
-    virtual void dumpStat() {
-        outlog_printf(0, "Total cnt of passed cond schemas: %lu\n", post_cnt);
-        outlog_printf(0, "Total cnt of cond schemas: %lu\n", codes.size());
-    }
-
     // virtual std::map<NewCodeMapTy, double> getResults(BenchProgram::EnvMapTy id) {
     //     post_cnt ++;
     //     {
@@ -2316,7 +2007,6 @@ public:
     //     branchRecords.erase(id);
     //     return std::map<NewCodeMapTy, double>();
     // }
-};
 
 class TestBatcher {
     BenchProgram &P;
@@ -2356,6 +2046,9 @@ class TestBatcher {
         buildEnv=T->initEnv(buildEnv);
         for (size_t i=0;i<T->getSwitchCount();i++)
             buildEnv["__SWITCH"+std::to_string(i)]="0";
+        
+        buildEnv["LD_LIBRARY_PATH"]=P.getProphetSrc()+"/.libs:"+std::string(getenv("LD_LIBRARY_PATH"));
+        buildEnv["LIBRARY_PATH"]=P.getProphetSrc()+"/.libs:"+std::string(getenv("LIBRARY_PATH"));
         const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
 
         // Create source file with fix
@@ -2366,21 +2059,13 @@ class TestBatcher {
         BenchProgram::EnvMapTy testEnv;
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
         T->runCond(testEnv,conditionValues);
+        std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> newConds;
+        newConds=T->synthesizeCondition();
+        T->saveConditionInfo(newConds);
 
-        for (std::map<std::pair<size_t,size_t>,std::map<unsigned long,std::vector<std::vector<long long>>>>::iterator it=conditionValues.begin();it!=conditionValues.end();it++){
-            printf("%u %u: ",it->first.first,it->first.second);
-            for (std::map<unsigned long,std::vector<std::vector<long long>>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
-                printf("%u ",it2->first);
-                // printf("%u\n",it2->first);
-                // for (size_t i=0;i<it2->second.size();i++){
-                //     for (size_t j=0;j<it2->second[i].size();j++){
-                //         printf("%d ",it2->second[i][j]);
-                //     }
-                //     printf("\n");
-                // }
-            }
-            printf("\n");
-        }
+        std::string source=T->createLibrarySource();
+        rewriteCondition(newConds,P.getWorkdir(),P.getProphetSrc()+"/../tools",T->tempCtxt);
+
         // if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
         //     result_init=T->test(testEnv,0,true);
         // else
@@ -2460,7 +2145,7 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     TestBatcher TB(P, naive, learning, FP,fixedFile);
     std::vector<BasicTester*> testers;
     testers.clear();
-    testers.push_back(new ConditionSynthesisTester(P, learning, M, full_synthesis,functionLoc,scores));
+    // testers.push_back(new ConditionSynthesisTester(P, learning, M, full_synthesis,functionLoc,scores));
     testers.push_back(new StringConstTester(P, learning, M, naive,functionLoc,scores));
     testers.push_back(new BasicTester(P, learning, M, naive,functionLoc,scores));
     // outlog_printf(2, "BasicTester pointer: %p\n", testers[2]);
@@ -2491,7 +2176,7 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     outlog_printf(2,"Generating meta-program...\n");
     // for (int i=0;i<testers.size();i++)
     // result= TB.test(candidate, testers[0]);
-    result= TB.test(candidate, testers[2]);
+    result= TB.test(candidate, testers[1]);
 
     outlog_printf(0, "The total number of explored concrete patches: %lu\n", patch_explored);
     for (size_t i = 0; i < testers.size(); i++)

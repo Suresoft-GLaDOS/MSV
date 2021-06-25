@@ -40,7 +40,7 @@ class CodeRewriter {
     std::map<long long,std::string> macroCode;
     std::vector<std::pair<size_t,size_t>> isNegLocation;
     std::map<int,std::map<int,std::string>> idAndCase;
-    std::map<size_t,std::vector<RepairCandidate>> switchCandidates;
+    std::map<size_t,std::vector<clang::Expr *>> switchAtoms;
     std::map<ASTLocTy,std::vector<size_t>> switchLoc;
     // std::map<int,std::list<std::list<int>>> caseCluster;
     std::vector<std::list<size_t>> switchCluster;
@@ -96,8 +96,11 @@ public:
     std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> getSwitchLine(){
         return switchLineMap;
     }
-    std::map<size_t,std::vector<RepairCandidate>> getSwitchCandidate(){
-        return switchCandidates;
+    std::map<size_t,std::vector<clang::Expr *>> getSwitchAtoms(){
+        return switchAtoms;
+    }
+    std::map<ASTLocTy,std::vector<size_t>> getSwitchLoc(){
+        return switchLoc;
     }
 };
 
