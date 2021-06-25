@@ -8,8 +8,6 @@ if len(argv)<3:
 
 work_dir=argv[1]
 src_dir=argv[2]
-print(work_dir)
-print(src_dir)
 
 mv_cmd="mv "+src_dir+"/.libs/libtest_runtime.so.0.0.0 "+src_dir+"/.libs/libtest_runtime_bak.so.0.0.0"
 mv_result=subprocess.call(mv_cmd,shell=True)

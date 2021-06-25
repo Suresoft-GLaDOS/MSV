@@ -2071,6 +2071,11 @@ class TestBatcher {
         // else
         //     result_init=T->test(testEnv,0,false);
 
+        std::string rollbackCmd="rm -f "+P.getProphetSrc()+"/.libs/libtest_runtime.so.0.0.0";
+        system(rollbackCmd.c_str());
+        std::string copyCmd="mv "+P.getProphetSrc()+"/.libs/libtest_runtime_bak.so.0.0.0 "+P.getProphetSrc()+"/.libs/libtest_runtime.so.0.0.0";
+        system(copyCmd.c_str());
+
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();
         newCode[combined]=(double)0;
