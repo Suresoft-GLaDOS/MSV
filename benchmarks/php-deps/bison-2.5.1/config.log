@@ -27,8 +27,6 @@ uname -v = #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH: /root/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/bin
-PATH: /root/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/bin
 PATH: /usr/local/sbin
 PATH: /usr/local/bin
 PATH: /usr/sbin
@@ -4017,7 +4015,7 @@ configure:11015: gcc -o conftest -g -O2   conftest.c  >&5
 configure:11015: $? = 0
 configure:11015: ./conftest
 *** %n in writable segment detected ***
-./configure: line 2803: 38692 Aborted                 (core dumped) ./conftest$ac_exeext
+./configure: line 2803: 13879 Aborted                 (core dumped) ./conftest$ac_exeext
 configure:11015: $? = 134
 configure: program exited with status 134
 configure: failed program was:
@@ -9071,7 +9069,7 @@ configure:28231: gcc -o conftest -g -O2   conftest.c  >&5
 configure:28231: $? = 0
 configure:28231: ./conftest
 *** %n in writable segment detected ***
-./configure: line 2803: 53424 Aborted                 (core dumped) ./conftest$ac_exeext
+./configure: line 2803: 17844 Aborted                 (core dumped) ./conftest$ac_exeext
 configure:28231: $? = 134
 configure: program exited with status 134
 configure: failed program was:

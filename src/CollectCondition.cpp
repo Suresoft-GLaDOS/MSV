@@ -96,7 +96,7 @@ void CollectCondition::record(std::pair<size_t,size_t> currentPatch,int outPipe)
         testEnv.insert(std::make_pair("NEG_ARG", "1"));
         testEnv.insert(std::make_pair("TMP_FILE", tmp_file));
         int ret = system((std::string("rm -rf ") + tmp_file).c_str());
-        assert( ret == 0);
+        // assert( ret == 0);
         bool passed = false;
         while (it_cnt < 10) {
             // llvm::errs() << "Testing iteration: " << it_cnt << "\n";
@@ -106,7 +106,7 @@ void CollectCondition::record(std::pair<size_t,size_t> currentPatch,int outPipe)
             // We hit some strange error, we just assume we cannot pass this case
             if (tmp_v.size() == 0) passed = false;
             if (passed) {
-                outlog_printf(2, "Passed in iteration: %u %u\n",currentPatch.first,currentPatch.second);
+                outlog_printf(2, "Passed in iteration: %u %u %lu\n",currentPatch.first,currentPatch.second,*case_it);
                 write(outPipe,&(*case_it),sizeof(unsigned long));
                 for (size_t i=0;i<tmp_v.size();i++)
                     write(outPipe,&tmp_v[i],sizeof(size_t));
@@ -137,7 +137,7 @@ void CollectCondition::record(std::pair<size_t,size_t> currentPatch,int outPipe)
                 // FIXME: strange error in wireshark, we just ignore right now
                 if (tmp_v.size() == 0) {
                     outlog_printf(0, "Strange error or non-deterministic behavior!\n");
-                    continue;
+                    exit(0);
                 }
                 assert(tmp_v.size() != 0);
                 write(outPipe,&(*case_it),sizeof(unsigned long));
@@ -150,7 +150,8 @@ void CollectCondition::record(std::pair<size_t,size_t> currentPatch,int outPipe)
             }
             else {
                 // Still failed, we are going to give up
-                continue;
+                // outlog_printf(2, "Failed: %u %u %lu\n",currentPatch.first,currentPatch.second,*case_it);
+                exit(0);
             }
         }
     }
@@ -295,7 +296,7 @@ bool CollectCondition::collectValues(std::map<std::pair<size_t,size_t>,std::map<
     caseVMap.clear();
     
     for (std::map<std::pair<size_t,size_t>,std::map<size_t,std::vector<size_t>>>::iterator it=records.begin();it!=records.end();it++){
-        // outlog_printf(2,"%u %u\n",it->first.first,it->first.second);
+        outlog_printf(2,"Collecting values: %u %u\n",it->first.first,it->first.second);
         std::map<pid_t,int> pipes;
         std::vector<pid_t> pid;
         pid.clear();
@@ -306,8 +307,8 @@ bool CollectCondition::collectValues(std::map<std::pair<size_t,size_t>,std::map<
         size_t currentProcess=0;
 
         // We first deal with the negative cases
-        for (BenchProgram::TestCaseSetTy::iterator tit = negative_cases.begin();
-                tit != negative_cases.end(); ++tit) {
+        for (std::map<size_t,std::vector<size_t>>::iterator tit = it->second.begin();
+                tit != it->second.end(); ++tit) {
             int tmpPipe[2];
             assert(pipe(tmpPipe)==0 && "Pipeline open failed\n");
             currentProcess++;
@@ -319,7 +320,7 @@ bool CollectCondition::collectValues(std::map<std::pair<size_t,size_t>,std::map<
             }
             if (id==0){
                 close(tmpPipe[0]);
-                collect(it->first,records[it->first],*tit,tmpPipe[1],true);
+                collect(it->first,records[it->first],tit->first,tmpPipe[1],true);
                 exit(0);
             }
 

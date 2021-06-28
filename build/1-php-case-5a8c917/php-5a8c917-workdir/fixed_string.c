@@ -1,8 +1,7 @@
 int __get_mutant();
-int __is_neg(const char *, int, const int *, int, const char *, int,
-             const void **, int, const double *, ...);
+int __is_neg(const char *location, int count, ...);
 int __abst_hole();
-int __choose(char *, const int);
+int __choose(const char *);
 void *memset(void *, int, unsigned long);
 /*
    +----------------------------------------------------------------------+
@@ -1081,9 +1080,7 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     0)) {
+    switch (__choose("__SWITCH0")) {
     case 0:
       break;
 #ifdef COMPILE_0
@@ -2279,19 +2276,20 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_143
     case 144: {
       // IfExitKind
-      if (__is_neg("0-144", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                   (void **){arr, return_value, pos, tmp, delim}, 0, 0,
-                   "numelems", "str_len", "i", "arr", "return_value", "pos",
-                   "tmp", "delim"))
+      if (__is_neg("0-144", 11, &(arr), sizeof(arr), &(numelems),
+                   sizeof(numelems), &(return_value), sizeof(return_value),
+                   &(pos), sizeof(pos), &(tmp), sizeof(tmp), &(str_len),
+                   sizeof(str_len), &(i), sizeof(i), &(delim), sizeof(delim),
+                   &((*arr).refcount__gc), sizeof((*arr).refcount__gc),
+                   &((*arr).type), sizeof((*arr).type), &((*arr).is_ref__gc),
+                   sizeof((*arr).is_ref__gc)))
         return;
 
       break;
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     1)) {
+    switch (__choose("__SWITCH1")) {
     case 0: {
       numelems = zend_hash_num_elements(Z_ARRVAL_P(arr));
 
@@ -2300,10 +2298,13 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_144
     case 1: {
       // GuardKind
-      if (!__is_neg("1-1", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                    (void **){arr, return_value, pos, tmp, delim}, 0, 0,
-                    "numelems", "str_len", "i", "arr", "return_value", "pos",
-                    "tmp", "delim"))
+      if (!__is_neg("1-1", 11, &(arr), sizeof(arr), &(numelems),
+                    sizeof(numelems), &(return_value), sizeof(return_value),
+                    &(pos), sizeof(pos), &(tmp), sizeof(tmp), &(str_len),
+                    sizeof(str_len), &(i), sizeof(i), &(delim), sizeof(delim),
+                    &((*arr).refcount__gc), sizeof((*arr).refcount__gc),
+                    &((*arr).type), sizeof((*arr).type), &((*arr).is_ref__gc),
+                    sizeof((*arr).is_ref__gc)))
         numelems = zend_hash_num_elements((*arr).value.ht);
 
       break;
@@ -2338,9 +2339,7 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     2)) {
+    switch (__choose("__SWITCH2")) {
     case 0:
       break;
 #ifdef COMPILE_148
@@ -3520,10 +3519,10 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_289
     case 142: {
       // IfExitKind
-      if (__is_neg("2-142", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                   (void **){return_value, arr, pos, tmp, delim}, 0, 0,
-                   "numelems", "str_len", "i", "return_value", "arr", "pos",
-                   "tmp", "delim"))
+      if (__is_neg("2-142", 8, &(numelems), sizeof(numelems), &(return_value),
+                   sizeof(return_value), &(arr), sizeof(arr), &(pos),
+                   sizeof(pos), &(tmp), sizeof(tmp), &(str_len),
+                   sizeof(str_len), &(i), sizeof(i), &(delim), sizeof(delim)))
         return;
 
       break;
@@ -3532,9 +3531,7 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
     }
     {
       long long __temp3 = (numelems == 0);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       3)) {
+      switch (__choose("__SWITCH3")) {
       case 0: {
 
         break;
@@ -3542,10 +3539,11 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_290
       case 1: {
         __temp3 = ((numelems == 0) ||
-                   __is_neg("3-1", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                            (void **){return_value, arr, pos, tmp, delim}, 0, 0,
-                            "numelems", "str_len", "i", "return_value", "arr",
-                            "pos", "tmp", "delim"));
+                   __is_neg("3-1", 8, &(numelems), sizeof(numelems),
+                            &(return_value), sizeof(return_value), &(arr),
+                            sizeof(arr), &(pos), sizeof(pos), &(tmp),
+                            sizeof(tmp), &(str_len), sizeof(str_len), &(i),
+                            sizeof(i), &(delim), sizeof(delim)));
 
         break;
       }
@@ -3553,18 +3551,17 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_291
       case 2: {
         __temp3 = ((numelems == 0) &&
-                   !__is_neg("3-2", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                             (void **){return_value, arr, pos, tmp, delim}, 0,
-                             0, "numelems", "str_len", "i", "return_value",
-                             "arr", "pos", "tmp", "delim"));
+                   !__is_neg("3-2", 8, &(numelems), sizeof(numelems),
+                             &(return_value), sizeof(return_value), &(arr),
+                             sizeof(arr), &(pos), sizeof(pos), &(tmp),
+                             sizeof(tmp), &(str_len), sizeof(str_len), &(i),
+                             sizeof(i), &(delim), sizeof(delim)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       4)) {
+      switch (__choose("__SWITCH4")) {
       case 0: {
         if (__temp3) {
           RETURN_EMPTY_STRING();
@@ -3575,10 +3572,11 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_292
       case 1: {
         // GuardKind
-        if (!__is_neg("4-1", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                      (void **){return_value, arr, pos, tmp, delim}, 0, 0,
-                      "numelems", "str_len", "i", "return_value", "arr", "pos",
-                      "tmp", "delim"))
+        if (!__is_neg("4-1", 8, &(numelems), sizeof(numelems), &(return_value),
+                      sizeof(return_value), &(arr), sizeof(arr), &(pos),
+                      sizeof(pos), &(tmp), sizeof(tmp), &(str_len),
+                      sizeof(str_len), &(i), sizeof(i), &(delim),
+                      sizeof(delim)))
           if (numelems == 0) {
             {
               do {
@@ -3597,10 +3595,11 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_293
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("4-2", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                      (void **){return_value, arr, pos, tmp, delim}, 0, 0,
-                      "numelems", "str_len", "i", "return_value", "arr", "pos",
-                      "tmp", "delim") &&
+        if (!__is_neg("4-2", 8, &(numelems), sizeof(numelems), &(return_value),
+                      sizeof(return_value), &(arr), sizeof(arr), &(pos),
+                      sizeof(pos), &(tmp), sizeof(tmp), &(str_len),
+                      sizeof(str_len), &(i), sizeof(i), &(delim),
+                      sizeof(delim)) &&
             (numelems == 0)) {
           {
             do {
@@ -3622,9 +3621,7 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     5)) {
+    switch (__choose("__SWITCH5")) {
     case 0:
       break;
 #ifdef COMPILE_294
@@ -4820,19 +4817,20 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_437
     case 144: {
       // IfExitKind
-      if (__is_neg("5-144", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                   (void **){arr, pos, tmp, return_value, delim}, 0, 0,
-                   "numelems", "str_len", "i", "arr", "pos", "tmp",
-                   "return_value", "delim"))
+      if (__is_neg("5-144", 11, &(arr), sizeof(arr), &(pos), sizeof(pos),
+                   &(tmp), sizeof(tmp), &(return_value), sizeof(return_value),
+                   &(numelems), sizeof(numelems), &(str_len), sizeof(str_len),
+                   &(i), sizeof(i), &(delim), sizeof(delim),
+                   &((*arr).refcount__gc), sizeof((*arr).refcount__gc),
+                   &((*arr).type), sizeof((*arr).type), &((*arr).is_ref__gc),
+                   sizeof((*arr).is_ref__gc)))
         return;
 
       break;
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     6)) {
+    switch (__choose("__SWITCH6")) {
     case 0: {
       zend_hash_internal_pointer_reset_ex(Z_ARRVAL_P(arr), &pos);
 
@@ -4953,10 +4951,13 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_452
     case 15: {
       // GuardKind
-      if (!__is_neg("6-15", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                    (void **){arr, pos, tmp, return_value, delim}, 0, 0,
-                    "numelems", "str_len", "i", "arr", "pos", "tmp",
-                    "return_value", "delim"))
+      if (!__is_neg("6-15", 11, &(arr), sizeof(arr), &(pos), sizeof(pos),
+                    &(tmp), sizeof(tmp), &(return_value), sizeof(return_value),
+                    &(numelems), sizeof(numelems), &(str_len), sizeof(str_len),
+                    &(i), sizeof(i), &(delim), sizeof(delim),
+                    &((*arr).refcount__gc), sizeof((*arr).refcount__gc),
+                    &((*arr).type), sizeof((*arr).type), &((*arr).is_ref__gc),
+                    sizeof((*arr).is_ref__gc)))
         zend_hash_internal_pointer_reset_ex((*arr).value.ht, &pos);
 
       break;
@@ -4999,9 +5000,7 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     7)) {
+    switch (__choose("__SWITCH7")) {
     case 0:
       break;
 #ifdef COMPILE_457
@@ -6309,26 +6308,28 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_614
     case 158: {
       // IfExitKind
-      if (__is_neg("7-158", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                   (void **){arr, tmp, pos, return_value, delim}, 0, 0,
-                   "numelems", "str_len", "i", "arr", "tmp", "pos",
-                   "return_value", "delim"))
+      if (__is_neg("7-158", 14, &(arr), sizeof(arr), &(tmp), sizeof(tmp),
+                   &(pos), sizeof(pos), &((*tmp)->type), sizeof((*tmp)->type),
+                   &(return_value), sizeof(return_value), &(numelems),
+                   sizeof(numelems), &(str_len), sizeof(str_len), &(i),
+                   sizeof(i), &(delim), sizeof(delim), &((*tmp)->refcount__gc),
+                   sizeof((*tmp)->refcount__gc), &((*tmp)->is_ref__gc),
+                   sizeof((*tmp)->is_ref__gc), &((*arr).refcount__gc),
+                   sizeof((*arr).refcount__gc), &((*arr).type),
+                   sizeof((*arr).type), &((*arr).is_ref__gc),
+                   sizeof((*arr).is_ref__gc)))
         return;
 
       break;
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     18)) {
+    switch (__choose("__SWITCH18")) {
     case 0: {
       while (zend_hash_get_current_data_ex(Z_ARRVAL_P(arr), (void **)&tmp,
                                            &pos) == SUCCESS) {
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                           "php-5a8c917-workdir/switch.txt",
-                           8)) {
+          switch (__choose("__SWITCH8")) {
           case 0:
             break;
 #ifdef COMPILE_615
@@ -7609,10 +7610,17 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_767
           case 153: {
             // IfExitKind
-            if (__is_neg("8-153", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                         (void **){tmp, arr, pos, return_value, delim}, 0, 0,
-                         "numelems", "str_len", "i", "tmp", "arr", "pos",
-                         "return_value", "delim"))
+            if (__is_neg("8-153", 14, &(tmp), sizeof(tmp), &((*tmp)->type),
+                         sizeof((*tmp)->type), &(arr), sizeof(arr), &(pos),
+                         sizeof(pos), &(return_value), sizeof(return_value),
+                         &(numelems), sizeof(numelems), &(str_len),
+                         sizeof(str_len), &(i), sizeof(i), &(delim),
+                         sizeof(delim), &((*tmp)->refcount__gc),
+                         sizeof((*tmp)->refcount__gc), &((*tmp)->is_ref__gc),
+                         sizeof((*tmp)->is_ref__gc), &((*arr).refcount__gc),
+                         sizeof((*arr).refcount__gc), &((*arr).type),
+                         sizeof((*arr).type), &((*arr).is_ref__gc),
+                         sizeof((*arr).is_ref__gc)))
               break;
 
             break;
@@ -7621,28 +7629,30 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_768
           case 154: {
             // IfExitKind
-            if (__is_neg("8-154", 3, (int *){numelems, str_len, i}, 0, 0, 5,
-                         (void **){tmp, arr, pos, return_value, delim}, 0, 0,
-                         "numelems", "str_len", "i", "tmp", "arr", "pos",
-                         "return_value", "delim"))
+            if (__is_neg("8-154", 14, &(tmp), sizeof(tmp), &((*tmp)->type),
+                         sizeof((*tmp)->type), &(arr), sizeof(arr), &(pos),
+                         sizeof(pos), &(return_value), sizeof(return_value),
+                         &(numelems), sizeof(numelems), &(str_len),
+                         sizeof(str_len), &(i), sizeof(i), &(delim),
+                         sizeof(delim), &((*tmp)->refcount__gc),
+                         sizeof((*tmp)->refcount__gc), &((*tmp)->is_ref__gc),
+                         sizeof((*tmp)->is_ref__gc), &((*arr).refcount__gc),
+                         sizeof((*arr).refcount__gc), &((*arr).type),
+                         sizeof((*arr).type), &((*arr).is_ref__gc),
+                         sizeof((*arr).is_ref__gc)))
               return;
 
             break;
           }
 #endif
           }
-          switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                           "php-5a8c917-workdir/switch.txt",
-                           10)) {
+          switch (__choose("__SWITCH10")) {
           case 0: {
             switch ((*tmp)->type) {
             case IS_STRING:
               smart_str_appendl(&implstr, Z_STRVAL_PP(tmp), Z_STRLEN_PP(tmp));
               {
-                switch (
-                    __choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             9)) {
+                switch (__choose("__SWITCH9")) {
                 case 0:
                   break;
 #ifdef COMPILE_769
@@ -8843,10 +8853,24 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_910
                 case 142: {
                   // IfExitKind
-                  if (__is_neg("9-142", 3, (int *){str_len, numelems, i}, 0, 0,
-                               5, (void **){tmp, arr, pos, return_value, delim},
-                               0, 0, "str_len", "numelems", "i", "tmp", "arr",
-                               "pos", "return_value", "delim"))
+                  if (__is_neg(
+                          "9-142", 19, &(tmp), sizeof(tmp),
+                          &((**tmp).value.str.val),
+                          sizeof((**tmp).value.str.val),
+                          &((**tmp).value.str.len),
+                          sizeof((**tmp).value.str.len), &(arr), sizeof(arr),
+                          &(pos), sizeof(pos), &(str_len), sizeof(str_len),
+                          &(return_value), sizeof(return_value), &(numelems),
+                          sizeof(numelems), &(i), sizeof(i), &(delim),
+                          sizeof(delim), &((&implstr)->c),
+                          sizeof((&implstr)->c), &((&implstr)->len),
+                          sizeof((&implstr)->len), &(implstr.len),
+                          sizeof(implstr.len), &(implstr.c), sizeof(implstr.c),
+                          &((**tmp).refcount__gc), sizeof((**tmp).refcount__gc),
+                          &((**tmp).type), sizeof((**tmp).type),
+                          &((**tmp).is_ref__gc), sizeof((**tmp).is_ref__gc),
+                          &((&implstr)->a), sizeof((&implstr)->a), &(implstr.a),
+                          sizeof(implstr.a)))
                     break;
 
                   break;
@@ -8855,10 +8879,24 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_911
                 case 143: {
                   // IfExitKind
-                  if (__is_neg("9-143", 3, (int *){str_len, numelems, i}, 0, 0,
-                               5, (void **){tmp, arr, pos, return_value, delim},
-                               0, 0, "str_len", "numelems", "i", "tmp", "arr",
-                               "pos", "return_value", "delim"))
+                  if (__is_neg(
+                          "9-143", 19, &(tmp), sizeof(tmp),
+                          &((**tmp).value.str.val),
+                          sizeof((**tmp).value.str.val),
+                          &((**tmp).value.str.len),
+                          sizeof((**tmp).value.str.len), &(arr), sizeof(arr),
+                          &(pos), sizeof(pos), &(str_len), sizeof(str_len),
+                          &(return_value), sizeof(return_value), &(numelems),
+                          sizeof(numelems), &(i), sizeof(i), &(delim),
+                          sizeof(delim), &((&implstr)->c),
+                          sizeof((&implstr)->c), &((&implstr)->len),
+                          sizeof((&implstr)->len), &(implstr.len),
+                          sizeof(implstr.len), &(implstr.c), sizeof(implstr.c),
+                          &((**tmp).refcount__gc), sizeof((**tmp).refcount__gc),
+                          &((**tmp).type), sizeof((**tmp).type),
+                          &((**tmp).is_ref__gc), sizeof((**tmp).is_ref__gc),
+                          &((&implstr)->a), sizeof((&implstr)->a), &(implstr.a),
+                          sizeof(implstr.a)))
                     return;
 
                   break;
@@ -8915,10 +8953,21 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_912
           case 1: {
             // GuardKind
-            if (!__is_neg("10-1", 3, (int *){str_len, numelems, i}, 0, 0, 5,
-                          (void **){tmp, arr, pos, return_value, delim}, 0, 0,
-                          "str_len", "numelems", "i", "tmp", "arr", "pos",
-                          "return_value", "delim"))
+            if (!__is_neg(
+                    "10-1", 19, &(tmp), sizeof(tmp), &((**tmp).value.str.val),
+                    sizeof((**tmp).value.str.val), &((**tmp).value.str.len),
+                    sizeof((**tmp).value.str.len), &(arr), sizeof(arr), &(pos),
+                    sizeof(pos), &(str_len), sizeof(str_len), &(return_value),
+                    sizeof(return_value), &(numelems), sizeof(numelems), &(i),
+                    sizeof(i), &(delim), sizeof(delim), &((&implstr)->c),
+                    sizeof((&implstr)->c), &((&implstr)->len),
+                    sizeof((&implstr)->len), &(implstr.len),
+                    sizeof(implstr.len), &(implstr.c), sizeof(implstr.c),
+                    &((**tmp).refcount__gc), sizeof((**tmp).refcount__gc),
+                    &((**tmp).type), sizeof((**tmp).type),
+                    &((**tmp).is_ref__gc), sizeof((**tmp).is_ref__gc),
+                    &((&implstr)->a), sizeof((&implstr)->a), &(implstr.a),
+                    sizeof(implstr.a)))
               break;
 
             break;
@@ -8928,9 +8977,7 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
         }
 
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                           "php-5a8c917-workdir/switch.txt",
-                           11)) {
+          switch (__choose("__SWITCH11")) {
           case 0:
             break;
 #ifdef COMPILE_913
@@ -10163,10 +10210,21 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1059
           case 147: {
             // IfExitKind
-            if (__is_neg("11-147", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                         (void **){delim, arr, pos, return_value, tmp}, 0, 0,
-                         "numelems", "i", "str_len", "delim", "arr", "pos",
-                         "return_value", "tmp"))
+            if (__is_neg(
+                    "11-147", 19, &(numelems), sizeof(numelems), &(i),
+                    sizeof(i), &(delim), sizeof(delim),
+                    &((*delim).value.str.val), sizeof((*delim).value.str.val),
+                    &((*delim).value.str.len), sizeof((*delim).value.str.len),
+                    &(arr), sizeof(arr), &(pos), sizeof(pos), &((&implstr)->c),
+                    sizeof((&implstr)->c), &((&implstr)->len),
+                    sizeof((&implstr)->len), &(implstr.len),
+                    sizeof(implstr.len), &(return_value), sizeof(return_value),
+                    &(implstr.c), sizeof(implstr.c), &(tmp), sizeof(tmp),
+                    &(str_len), sizeof(str_len), &((*delim).refcount__gc),
+                    sizeof((*delim).refcount__gc), &((*delim).type),
+                    sizeof((*delim).type), &((*delim).is_ref__gc),
+                    sizeof((*delim).is_ref__gc), &((&implstr)->a),
+                    sizeof((&implstr)->a), &(implstr.a), sizeof(implstr.a)))
               break;
 
             break;
@@ -10175,10 +10233,21 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1060
           case 148: {
             // IfExitKind
-            if (__is_neg("11-148", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                         (void **){delim, arr, pos, return_value, tmp}, 0, 0,
-                         "numelems", "i", "str_len", "delim", "arr", "pos",
-                         "return_value", "tmp"))
+            if (__is_neg(
+                    "11-148", 19, &(numelems), sizeof(numelems), &(i),
+                    sizeof(i), &(delim), sizeof(delim),
+                    &((*delim).value.str.val), sizeof((*delim).value.str.val),
+                    &((*delim).value.str.len), sizeof((*delim).value.str.len),
+                    &(arr), sizeof(arr), &(pos), sizeof(pos), &((&implstr)->c),
+                    sizeof((&implstr)->c), &((&implstr)->len),
+                    sizeof((&implstr)->len), &(implstr.len),
+                    sizeof(implstr.len), &(return_value), sizeof(return_value),
+                    &(implstr.c), sizeof(implstr.c), &(tmp), sizeof(tmp),
+                    &(str_len), sizeof(str_len), &((*delim).refcount__gc),
+                    sizeof((*delim).refcount__gc), &((*delim).type),
+                    sizeof((*delim).type), &((*delim).is_ref__gc),
+                    sizeof((*delim).is_ref__gc), &((&implstr)->a),
+                    sizeof((&implstr)->a), &(implstr.a), sizeof(implstr.a)))
               return;
 
             break;
@@ -10187,9 +10256,7 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
           }
           {
             long long __temp12 = (++i != numelems);
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             12)) {
+            switch (__choose("__SWITCH12")) {
             case 0: {
 
               break;
@@ -10198,10 +10265,24 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
             case 1: {
               __temp12 =
                   ((++i != numelems) ||
-                   __is_neg("12-1", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                            (void **){delim, arr, pos, return_value, tmp}, 0, 0,
-                            "numelems", "i", "str_len", "delim", "arr", "pos",
-                            "return_value", "tmp"));
+                   __is_neg("12-1", 19, &(numelems), sizeof(numelems), &(i),
+                            sizeof(i), &(delim), sizeof(delim),
+                            &((*delim).value.str.val),
+                            sizeof((*delim).value.str.val),
+                            &((*delim).value.str.len),
+                            sizeof((*delim).value.str.len), &(arr), sizeof(arr),
+                            &(pos), sizeof(pos), &((&implstr)->c),
+                            sizeof((&implstr)->c), &((&implstr)->len),
+                            sizeof((&implstr)->len), &(implstr.len),
+                            sizeof(implstr.len), &(return_value),
+                            sizeof(return_value), &(implstr.c),
+                            sizeof(implstr.c), &(tmp), sizeof(tmp), &(str_len),
+                            sizeof(str_len), &((*delim).refcount__gc),
+                            sizeof((*delim).refcount__gc), &((*delim).type),
+                            sizeof((*delim).type), &((*delim).is_ref__gc),
+                            sizeof((*delim).is_ref__gc), &((&implstr)->a),
+                            sizeof((&implstr)->a), &(implstr.a),
+                            sizeof(implstr.a)));
 
               break;
             }
@@ -10210,25 +10291,34 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
             case 2: {
               __temp12 =
                   ((++i != numelems) &&
-                   !__is_neg("12-2", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                             (void **){delim, arr, pos, return_value, tmp}, 0,
-                             0, "numelems", "i", "str_len", "delim", "arr",
-                             "pos", "return_value", "tmp"));
+                   !__is_neg("12-2", 19, &(numelems), sizeof(numelems), &(i),
+                             sizeof(i), &(delim), sizeof(delim),
+                             &((*delim).value.str.val),
+                             sizeof((*delim).value.str.val),
+                             &((*delim).value.str.len),
+                             sizeof((*delim).value.str.len), &(arr),
+                             sizeof(arr), &(pos), sizeof(pos), &((&implstr)->c),
+                             sizeof((&implstr)->c), &((&implstr)->len),
+                             sizeof((&implstr)->len), &(implstr.len),
+                             sizeof(implstr.len), &(return_value),
+                             sizeof(return_value), &(implstr.c),
+                             sizeof(implstr.c), &(tmp), sizeof(tmp), &(str_len),
+                             sizeof(str_len), &((*delim).refcount__gc),
+                             sizeof((*delim).refcount__gc), &((*delim).type),
+                             sizeof((*delim).type), &((*delim).is_ref__gc),
+                             sizeof((*delim).is_ref__gc), &((&implstr)->a),
+                             sizeof((&implstr)->a), &(implstr.a),
+                             sizeof(implstr.a)));
 
               break;
             }
 #endif
             }
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             15)) {
+            switch (__choose("__SWITCH15")) {
             case 0: {
               if (__temp12) {
                 {
-                  switch (__choose(
-                      "/root/project/prophet-gpl/build/php-case-5a8c917/"
-                      "php-5a8c917-workdir/switch.txt",
-                      13)) {
+                  switch (__choose("__SWITCH13")) {
                   case 0:
                     break;
 #ifdef COMPILE_1063
@@ -11478,11 +11568,25 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1209
                   case 147: {
                     // IfExitKind
-                    if (__is_neg("13-147", 3, (int *){numelems, i, str_len}, 0,
-                                 0, 5,
-                                 (void **){delim, arr, pos, return_value, tmp},
-                                 0, 0, "numelems", "i", "str_len", "delim",
-                                 "arr", "pos", "return_value", "tmp"))
+                    if (__is_neg(
+                            "13-147", 19, &(delim), sizeof(delim),
+                            &((*delim).value.str.val),
+                            sizeof((*delim).value.str.val),
+                            &((*delim).value.str.len),
+                            sizeof((*delim).value.str.len), &(numelems),
+                            sizeof(numelems), &(i), sizeof(i), &(arr),
+                            sizeof(arr), &(pos), sizeof(pos), &((&implstr)->c),
+                            sizeof((&implstr)->c), &((&implstr)->len),
+                            sizeof((&implstr)->len), &(implstr.len),
+                            sizeof(implstr.len), &(return_value),
+                            sizeof(return_value), &(implstr.c),
+                            sizeof(implstr.c), &(tmp), sizeof(tmp), &(str_len),
+                            sizeof(str_len), &((*delim).refcount__gc),
+                            sizeof((*delim).refcount__gc), &((*delim).type),
+                            sizeof((*delim).type), &((*delim).is_ref__gc),
+                            sizeof((*delim).is_ref__gc), &((&implstr)->a),
+                            sizeof((&implstr)->a), &(implstr.a),
+                            sizeof(implstr.a)))
                       break;
 
                     break;
@@ -11491,21 +11595,32 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1210
                   case 148: {
                     // IfExitKind
-                    if (__is_neg("13-148", 3, (int *){numelems, i, str_len}, 0,
-                                 0, 5,
-                                 (void **){delim, arr, pos, return_value, tmp},
-                                 0, 0, "numelems", "i", "str_len", "delim",
-                                 "arr", "pos", "return_value", "tmp"))
+                    if (__is_neg(
+                            "13-148", 19, &(delim), sizeof(delim),
+                            &((*delim).value.str.val),
+                            sizeof((*delim).value.str.val),
+                            &((*delim).value.str.len),
+                            sizeof((*delim).value.str.len), &(numelems),
+                            sizeof(numelems), &(i), sizeof(i), &(arr),
+                            sizeof(arr), &(pos), sizeof(pos), &((&implstr)->c),
+                            sizeof((&implstr)->c), &((&implstr)->len),
+                            sizeof((&implstr)->len), &(implstr.len),
+                            sizeof(implstr.len), &(return_value),
+                            sizeof(return_value), &(implstr.c),
+                            sizeof(implstr.c), &(tmp), sizeof(tmp), &(str_len),
+                            sizeof(str_len), &((*delim).refcount__gc),
+                            sizeof((*delim).refcount__gc), &((*delim).type),
+                            sizeof((*delim).type), &((*delim).is_ref__gc),
+                            sizeof((*delim).is_ref__gc), &((&implstr)->a),
+                            sizeof((&implstr)->a), &(implstr.a),
+                            sizeof(implstr.a)))
                       return;
 
                     break;
                   }
 #endif
                   }
-                  switch (__choose(
-                      "/root/project/prophet-gpl/build/php-case-5a8c917/"
-                      "php-5a8c917-workdir/switch.txt",
-                      14)) {
+                  switch (__choose("__SWITCH14")) {
                   case 0: {
                     smart_str_appendl(&implstr, Z_STRVAL_P(delim),
                                       Z_STRLEN_P(delim));
@@ -11515,11 +11630,25 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1211
                   case 1: {
                     // GuardKind
-                    if (!__is_neg("14-1", 3, (int *){numelems, i, str_len}, 0,
-                                  0, 5,
-                                  (void **){delim, arr, pos, return_value, tmp},
-                                  0, 0, "numelems", "i", "str_len", "delim",
-                                  "arr", "pos", "return_value", "tmp"))
+                    if (!__is_neg(
+                            "14-1", 19, &(delim), sizeof(delim),
+                            &((*delim).value.str.val),
+                            sizeof((*delim).value.str.val),
+                            &((*delim).value.str.len),
+                            sizeof((*delim).value.str.len), &(numelems),
+                            sizeof(numelems), &(i), sizeof(i), &(arr),
+                            sizeof(arr), &(pos), sizeof(pos), &((&implstr)->c),
+                            sizeof((&implstr)->c), &((&implstr)->len),
+                            sizeof((&implstr)->len), &(implstr.len),
+                            sizeof(implstr.len), &(return_value),
+                            sizeof(return_value), &(implstr.c),
+                            sizeof(implstr.c), &(tmp), sizeof(tmp), &(str_len),
+                            sizeof(str_len), &((*delim).refcount__gc),
+                            sizeof((*delim).refcount__gc), &((*delim).type),
+                            sizeof((*delim).type), &((*delim).is_ref__gc),
+                            sizeof((*delim).is_ref__gc), &((&implstr)->a),
+                            sizeof((&implstr)->a), &(implstr.a),
+                            sizeof(implstr.a)))
                       do {
                         register size_t __nl;
                         smart_str *__dest = (smart_str *)((&implstr));
@@ -11565,10 +11694,22 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1212
             case 1: {
               // GuardKind
-              if (!__is_neg("15-1", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                            (void **){delim, arr, pos, return_value, tmp}, 0, 0,
-                            "numelems", "i", "str_len", "delim", "arr", "pos",
-                            "return_value", "tmp"))
+              if (!__is_neg(
+                      "15-1", 19, &(delim), sizeof(delim),
+                      &((*delim).value.str.val), sizeof((*delim).value.str.val),
+                      &((*delim).value.str.len), sizeof((*delim).value.str.len),
+                      &(numelems), sizeof(numelems), &(i), sizeof(i), &(arr),
+                      sizeof(arr), &(pos), sizeof(pos), &((&implstr)->c),
+                      sizeof((&implstr)->c), &((&implstr)->len),
+                      sizeof((&implstr)->len), &(implstr.len),
+                      sizeof(implstr.len), &(return_value),
+                      sizeof(return_value), &(implstr.c), sizeof(implstr.c),
+                      &(tmp), sizeof(tmp), &(str_len), sizeof(str_len),
+                      &((*delim).refcount__gc), sizeof((*delim).refcount__gc),
+                      &((*delim).type), sizeof((*delim).type),
+                      &((*delim).is_ref__gc), sizeof((*delim).is_ref__gc),
+                      &((&implstr)->a), sizeof((&implstr)->a), &(implstr.a),
+                      sizeof(implstr.a)))
                 do {
                   register size_t __nl;
                   smart_str *__dest = (smart_str *)((&implstr));
@@ -11606,9 +11747,7 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
           }
         }
         {
-          switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                           "php-5a8c917-workdir/switch.txt",
-                           16)) {
+          switch (__choose("__SWITCH16")) {
           case 0:
             break;
 #ifdef COMPILE_1213
@@ -12817,10 +12956,13 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1356
           case 144: {
             // IfExitKind
-            if (__is_neg("16-144", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                         (void **){arr, pos, delim, return_value, tmp}, 0, 0,
-                         "numelems", "i", "str_len", "arr", "pos", "delim",
-                         "return_value", "tmp"))
+            if (__is_neg("16-144", 11, &(arr), sizeof(arr), &(pos), sizeof(pos),
+                         &(delim), sizeof(delim), &(numelems), sizeof(numelems),
+                         &(i), sizeof(i), &(return_value), sizeof(return_value),
+                         &(tmp), sizeof(tmp), &(str_len), sizeof(str_len),
+                         &((*arr).refcount__gc), sizeof((*arr).refcount__gc),
+                         &((*arr).type), sizeof((*arr).type),
+                         &((*arr).is_ref__gc), sizeof((*arr).is_ref__gc)))
               break;
 
             break;
@@ -12829,19 +12971,20 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1357
           case 145: {
             // IfExitKind
-            if (__is_neg("16-145", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                         (void **){arr, pos, delim, return_value, tmp}, 0, 0,
-                         "numelems", "i", "str_len", "arr", "pos", "delim",
-                         "return_value", "tmp"))
+            if (__is_neg("16-145", 11, &(arr), sizeof(arr), &(pos), sizeof(pos),
+                         &(delim), sizeof(delim), &(numelems), sizeof(numelems),
+                         &(i), sizeof(i), &(return_value), sizeof(return_value),
+                         &(tmp), sizeof(tmp), &(str_len), sizeof(str_len),
+                         &((*arr).refcount__gc), sizeof((*arr).refcount__gc),
+                         &((*arr).type), sizeof((*arr).type),
+                         &((*arr).is_ref__gc), sizeof((*arr).is_ref__gc)))
               return;
 
             break;
           }
 #endif
           }
-          switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                           "php-5a8c917-workdir/switch.txt",
-                           17)) {
+          switch (__choose("__SWITCH17")) {
           case 0: {
             zend_hash_move_forward_ex(Z_ARRVAL_P(arr), &pos);
 
@@ -12962,10 +13105,14 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1372
           case 15: {
             // GuardKind
-            if (!__is_neg("17-15", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                          (void **){arr, pos, delim, return_value, tmp}, 0, 0,
-                          "numelems", "i", "str_len", "arr", "pos", "delim",
-                          "return_value", "tmp"))
+            if (!__is_neg("17-15", 11, &(arr), sizeof(arr), &(pos), sizeof(pos),
+                          &(delim), sizeof(delim), &(numelems),
+                          sizeof(numelems), &(i), sizeof(i), &(return_value),
+                          sizeof(return_value), &(tmp), sizeof(tmp), &(str_len),
+                          sizeof(str_len), &((*arr).refcount__gc),
+                          sizeof((*arr).refcount__gc), &((*arr).type),
+                          sizeof((*arr).type), &((*arr).is_ref__gc),
+                          sizeof((*arr).is_ref__gc)))
               zend_hash_move_forward_ex((*arr).value.ht, &pos);
 
             break;
@@ -13124,10 +13271,13 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1391
     case 15: {
       // GuardKind
-      if (!__is_neg("18-15", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                    (void **){arr, pos, delim, return_value, tmp}, 0, 0,
-                    "numelems", "i", "str_len", "arr", "pos", "delim",
-                    "return_value", "tmp"))
+      if (!__is_neg("18-15", 11, &(arr), sizeof(arr), &(pos), sizeof(pos),
+                    &(delim), sizeof(delim), &(numelems), sizeof(numelems),
+                    &(i), sizeof(i), &(return_value), sizeof(return_value),
+                    &(tmp), sizeof(tmp), &(str_len), sizeof(str_len),
+                    &((*arr).refcount__gc), sizeof((*arr).refcount__gc),
+                    &((*arr).type), sizeof((*arr).type), &((*arr).is_ref__gc),
+                    sizeof((*arr).is_ref__gc)))
         zend_hash_move_forward_ex((*arr).value.ht, &pos);
 
       break;
@@ -13169,9 +13319,7 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
   }
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     19)) {
+    switch (__choose("__SWITCH19")) {
     case 0:
       break;
 #ifdef COMPILE_1396
@@ -14367,19 +14515,21 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1539
     case 144: {
       // IfExitKind
-      if (__is_neg("19-144", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                   (void **){arr, pos, return_value, delim, tmp}, 0, 0,
-                   "numelems", "i", "str_len", "arr", "pos", "return_value",
-                   "delim", "tmp"))
+      if (__is_neg("19-144", 14, &((&implstr)->c), sizeof((&implstr)->c),
+                   &((&implstr)->len), sizeof((&implstr)->len), &(arr),
+                   sizeof(arr), &(pos), sizeof(pos), &(implstr.len),
+                   sizeof(implstr.len), &(return_value), sizeof(return_value),
+                   &(implstr.c), sizeof(implstr.c), &(delim), sizeof(delim),
+                   &(numelems), sizeof(numelems), &(i), sizeof(i), &(tmp),
+                   sizeof(tmp), &(str_len), sizeof(str_len), &((&implstr)->a),
+                   sizeof((&implstr)->a), &(implstr.a), sizeof(implstr.a)))
         return;
 
       break;
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     20)) {
+    switch (__choose("__SWITCH20")) {
     case 0: {
       smart_str_0(&implstr);
 
@@ -14388,10 +14538,14 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1540
     case 1: {
       // GuardKind
-      if (!__is_neg("20-1", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                    (void **){arr, pos, return_value, delim, tmp}, 0, 0,
-                    "numelems", "i", "str_len", "arr", "pos", "return_value",
-                    "delim", "tmp"))
+      if (!__is_neg("20-1", 14, &((&implstr)->c), sizeof((&implstr)->c),
+                    &((&implstr)->len), sizeof((&implstr)->len), &(arr),
+                    sizeof(arr), &(pos), sizeof(pos), &(implstr.len),
+                    sizeof(implstr.len), &(return_value), sizeof(return_value),
+                    &(implstr.c), sizeof(implstr.c), &(delim), sizeof(delim),
+                    &(numelems), sizeof(numelems), &(i), sizeof(i), &(tmp),
+                    sizeof(tmp), &(str_len), sizeof(str_len), &((&implstr)->a),
+                    sizeof((&implstr)->a), &(implstr.a), sizeof(implstr.a)))
         do {
           if ((&implstr)->c) {
             (&implstr)->c[(&implstr)->len] = '\x00';
@@ -14406,9 +14560,7 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     21)) {
+    switch (__choose("__SWITCH21")) {
     case 0:
       break;
 #ifdef COMPILE_1541
@@ -15604,10 +15756,12 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1684
     case 144: {
       // IfExitKind
-      if (__is_neg("21-144", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                   (void **){return_value, arr, pos, delim, tmp}, 0, 0,
-                   "numelems", "i", "str_len", "return_value", "arr", "pos",
-                   "delim", "tmp"))
+      if (__is_neg("21-144", 11, &(implstr.len), sizeof(implstr.len),
+                   &(return_value), sizeof(return_value), &(implstr.c),
+                   sizeof(implstr.c), &(arr), sizeof(arr), &(pos), sizeof(pos),
+                   &(delim), sizeof(delim), &(numelems), sizeof(numelems), &(i),
+                   sizeof(i), &(tmp), sizeof(tmp), &(str_len), sizeof(str_len),
+                   &(implstr.a), sizeof(implstr.a)))
         return;
 
       break;
@@ -15616,9 +15770,7 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
     }
     {
       long long __temp22 = (implstr.len);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       22)) {
+      switch (__choose("__SWITCH22")) {
       case 0: {
 
         break;
@@ -15626,29 +15778,34 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1685
       case 1: {
         __temp22 = ((implstr.len) ||
-                    __is_neg("22-1", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                             (void **){return_value, arr, pos, delim, tmp}, 0,
-                             0, "numelems", "i", "str_len", "return_value",
-                             "arr", "pos", "delim", "tmp"));
+                    __is_neg("22-1", 11, &(implstr.len), sizeof(implstr.len),
+                             &(return_value), sizeof(return_value),
+                             &(implstr.c), sizeof(implstr.c), &(arr),
+                             sizeof(arr), &(pos), sizeof(pos), &(delim),
+                             sizeof(delim), &(numelems), sizeof(numelems), &(i),
+                             sizeof(i), &(tmp), sizeof(tmp), &(str_len),
+                             sizeof(str_len), &(implstr.a), sizeof(implstr.a)));
 
         break;
       }
 #endif
 #ifdef COMPILE_1686
       case 2: {
-        __temp22 = ((implstr.len) &&
-                    !__is_neg("22-2", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                              (void **){return_value, arr, pos, delim, tmp}, 0,
-                              0, "numelems", "i", "str_len", "return_value",
-                              "arr", "pos", "delim", "tmp"));
+        __temp22 =
+            ((implstr.len) &&
+             !__is_neg("22-2", 11, &(implstr.len), sizeof(implstr.len),
+                       &(return_value), sizeof(return_value), &(implstr.c),
+                       sizeof(implstr.c), &(arr), sizeof(arr), &(pos),
+                       sizeof(pos), &(delim), sizeof(delim), &(numelems),
+                       sizeof(numelems), &(i), sizeof(i), &(tmp), sizeof(tmp),
+                       &(str_len), sizeof(str_len), &(implstr.a),
+                       sizeof(implstr.a)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       23)) {
+      switch (__choose("__SWITCH23")) {
       case 0: {
         if (__temp22) {
           RETURN_STRINGL(implstr.c, implstr.len, 0);
@@ -15662,10 +15819,13 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1687
       case 1: {
         // GuardKind
-        if (!__is_neg("23-1", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                      (void **){return_value, arr, pos, delim, tmp}, 0, 0,
-                      "numelems", "i", "str_len", "return_value", "arr", "pos",
-                      "delim", "tmp"))
+        if (!__is_neg("23-1", 11, &(implstr.len), sizeof(implstr.len),
+                      &(return_value), sizeof(return_value), &(implstr.c),
+                      sizeof(implstr.c), &(arr), sizeof(arr), &(pos),
+                      sizeof(pos), &(delim), sizeof(delim), &(numelems),
+                      sizeof(numelems), &(i), sizeof(i), &(tmp), sizeof(tmp),
+                      &(str_len), sizeof(str_len), &(implstr.a),
+                      sizeof(implstr.a)))
           if (implstr.len) {
             {
               do {
@@ -15705,10 +15865,13 @@ PHPAPI void php_implode(zval *delim, zval *arr, zval *return_value TSRMLS_DC) {
 #ifdef COMPILE_1688
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("23-2", 3, (int *){numelems, i, str_len}, 0, 0, 5,
-                      (void **){return_value, arr, pos, delim, tmp}, 0, 0,
-                      "numelems", "i", "str_len", "return_value", "arr", "pos",
-                      "delim", "tmp") &&
+        if (!__is_neg("23-2", 11, &(implstr.len), sizeof(implstr.len),
+                      &(return_value), sizeof(return_value), &(implstr.c),
+                      sizeof(implstr.c), &(arr), sizeof(arr), &(pos),
+                      sizeof(pos), &(delim), sizeof(delim), &(numelems),
+                      sizeof(numelems), &(i), sizeof(i), &(tmp), sizeof(tmp),
+                      &(str_len), sizeof(str_len), &(implstr.a),
+                      sizeof(implstr.a)) &&
             (implstr.len)) {
           {
             do {
@@ -15759,9 +15922,7 @@ PHP_FUNCTION(implode) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     24)) {
+    switch (__choose("__SWITCH24")) {
     case 0:
       break;
 #ifdef COMPILE_1689
@@ -17501,9 +17662,9 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_1899
     case 211: {
       // IfExitKind
-      if (__is_neg("24-211", 1, (int *){ht}, 0, 0, 5,
-                   (void **){arg1, arg2, delim, arr, return_value}, 0, 0, "ht",
-                   "arg1", "arg2", "delim", "arr", "return_value"))
+      if (__is_neg("24-211", 6, &(ht), sizeof(ht), &(arg1), sizeof(arg1),
+                   &(arg2), sizeof(arg2), &(delim), sizeof(delim), &(arr),
+                   sizeof(arr), &(return_value), sizeof(return_value)))
         return;
 
       break;
@@ -17513,9 +17674,7 @@ PHP_FUNCTION(implode) {
     {
       long long __temp25 =
           (zend_parse_parameters((ht), "Z|Z", &arg1, &arg2) == -1);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       25)) {
+      switch (__choose("__SWITCH25")) {
       case 0: {
 
         break;
@@ -17524,9 +17683,9 @@ PHP_FUNCTION(implode) {
       case 1: {
         __temp25 =
             ((zend_parse_parameters((ht), "Z|Z", &arg1, &arg2) == -1) ||
-             __is_neg("25-1", 1, (int *){ht}, 0, 0, 5,
-                      (void **){arg1, arg2, delim, arr, return_value}, 0, 0,
-                      "ht", "arg1", "arg2", "delim", "arr", "return_value"));
+             __is_neg("25-1", 6, &(ht), sizeof(ht), &(arg1), sizeof(arg1),
+                      &(arg2), sizeof(arg2), &(delim), sizeof(delim), &(arr),
+                      sizeof(arr), &(return_value), sizeof(return_value)));
 
         break;
       }
@@ -17535,17 +17694,15 @@ PHP_FUNCTION(implode) {
       case 2: {
         __temp25 =
             ((zend_parse_parameters((ht), "Z|Z", &arg1, &arg2) == -1) &&
-             !__is_neg("25-2", 1, (int *){ht}, 0, 0, 5,
-                       (void **){arg1, arg2, delim, arr, return_value}, 0, 0,
-                       "ht", "arg1", "arg2", "delim", "arr", "return_value"));
+             !__is_neg("25-2", 6, &(ht), sizeof(ht), &(arg1), sizeof(arg1),
+                       &(arg2), sizeof(arg2), &(delim), sizeof(delim), &(arr),
+                       sizeof(arr), &(return_value), sizeof(return_value)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       26)) {
+      switch (__choose("__SWITCH26")) {
       case 0: {
         if (__temp25) {
           return;
@@ -17556,9 +17713,9 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_1902
       case 1: {
         // GuardKind
-        if (!__is_neg("26-1", 1, (int *){ht}, 0, 0, 5,
-                      (void **){arg1, arg2, delim, arr, return_value}, 0, 0,
-                      "ht", "arg1", "arg2", "delim", "arr", "return_value"))
+        if (!__is_neg("26-1", 6, &(ht), sizeof(ht), &(arg1), sizeof(arg1),
+                      &(arg2), sizeof(arg2), &(delim), sizeof(delim), &(arr),
+                      sizeof(arr), &(return_value), sizeof(return_value)))
           if (zend_parse_parameters((ht), "Z|Z", &arg1, &arg2) == -1) {
             return;
           }
@@ -17569,9 +17726,9 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_1903
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("26-2", 1, (int *){ht}, 0, 0, 5,
-                      (void **){arg1, arg2, delim, arr, return_value}, 0, 0,
-                      "ht", "arg1", "arg2", "delim", "arr", "return_value") &&
+        if (!__is_neg("26-2", 6, &(ht), sizeof(ht), &(arg1), sizeof(arg1),
+                      &(arg2), sizeof(arg2), &(delim), sizeof(delim), &(arr),
+                      sizeof(arr), &(return_value), sizeof(return_value)) &&
             (zend_parse_parameters((ht), "Z|Z", &arg1, &arg2) == -1)) {
           return;
         }
@@ -17585,9 +17742,7 @@ PHP_FUNCTION(implode) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     27)) {
+    switch (__choose("__SWITCH27")) {
     case 0:
       break;
 #ifdef COMPILE_1904
@@ -19417,9 +19572,12 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_2125
     case 222: {
       // IfExitKind
-      if (__is_neg("27-222", 1, (int *){ht}, 0, 0, 5,
-                   (void **){arg2, arg1, delim, arr, return_value}, 0, 0, "ht",
-                   "arg2", "arg1", "delim", "arr", "return_value"))
+      if (__is_neg("27-222", 9, &(arg2), sizeof(arg2), &(arg1), sizeof(arg1),
+                   &((**arg1).type), sizeof((**arg1).type), &(ht), sizeof(ht),
+                   &(delim), sizeof(delim), &(arr), sizeof(arr),
+                   &(return_value), sizeof(return_value),
+                   &((**arg1).refcount__gc), sizeof((**arg1).refcount__gc),
+                   &((**arg1).is_ref__gc), sizeof((**arg1).is_ref__gc)))
         return;
 
       break;
@@ -19428,9 +19586,7 @@ PHP_FUNCTION(implode) {
     }
     {
       long long __temp28 = (arg2 == ((void *)0));
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       28)) {
+      switch (__choose("__SWITCH28")) {
       case 0: {
 
         break;
@@ -19439,9 +19595,12 @@ PHP_FUNCTION(implode) {
       case 1: {
         __temp28 =
             ((arg2 == ((void *)0)) ||
-             __is_neg("28-1", 1, (int *){ht}, 0, 0, 5,
-                      (void **){arg2, arg1, delim, arr, return_value}, 0, 0,
-                      "ht", "arg2", "arg1", "delim", "arr", "return_value"));
+             __is_neg("28-1", 9, &(arg2), sizeof(arg2), &(arg1), sizeof(arg1),
+                      &((**arg1).type), sizeof((**arg1).type), &(ht),
+                      sizeof(ht), &(delim), sizeof(delim), &(arr), sizeof(arr),
+                      &(return_value), sizeof(return_value),
+                      &((**arg1).refcount__gc), sizeof((**arg1).refcount__gc),
+                      &((**arg1).is_ref__gc), sizeof((**arg1).is_ref__gc)));
 
         break;
       }
@@ -19450,17 +19609,18 @@ PHP_FUNCTION(implode) {
       case 2: {
         __temp28 =
             ((arg2 == ((void *)0)) &&
-             !__is_neg("28-2", 1, (int *){ht}, 0, 0, 5,
-                       (void **){arg2, arg1, delim, arr, return_value}, 0, 0,
-                       "ht", "arg2", "arg1", "delim", "arr", "return_value"));
+             !__is_neg("28-2", 9, &(arg2), sizeof(arg2), &(arg1), sizeof(arg1),
+                       &((**arg1).type), sizeof((**arg1).type), &(ht),
+                       sizeof(ht), &(delim), sizeof(delim), &(arr), sizeof(arr),
+                       &(return_value), sizeof(return_value),
+                       &((**arg1).refcount__gc), sizeof((**arg1).refcount__gc),
+                       &((**arg1).is_ref__gc), sizeof((**arg1).is_ref__gc)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       42)) {
+      switch (__choose("__SWITCH42")) {
       case 0: {
         if (__temp28) {
           if (Z_TYPE_PP(arg1) != IS_ARRAY) {
@@ -19477,9 +19637,7 @@ PHP_FUNCTION(implode) {
           arr = *arg1;
         } else {
           {
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             29)) {
+            switch (__choose("__SWITCH29")) {
             case 0:
               break;
 #ifdef COMPILE_2128
@@ -21300,10 +21458,13 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_2346
             case 219: {
               // IfExitKind
-              if (__is_neg("29-219", 1, (int *){ht}, 0, 0, 5,
-                           (void **){arg1, arr, arg2, delim, return_value}, 0,
-                           0, "ht", "arg1", "arr", "arg2", "delim",
-                           "return_value"))
+              if (__is_neg("29-219", 9, &(arg1), sizeof(arg1), &((**arg1).type),
+                           sizeof((**arg1).type), &(arr), sizeof(arr), &(arg2),
+                           sizeof(arg2), &(delim), sizeof(delim),
+                           &(return_value), sizeof(return_value), &(ht),
+                           sizeof(ht), &((**arg1).refcount__gc),
+                           sizeof((**arg1).refcount__gc),
+                           &((**arg1).is_ref__gc), sizeof((**arg1).is_ref__gc)))
                 return;
 
               break;
@@ -21312,22 +21473,23 @@ PHP_FUNCTION(implode) {
             }
             {
               long long __temp30 = ((**arg1).type == 4);
-              switch (
-                  __choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                           "php-5a8c917-workdir/switch.txt",
-                           30)) {
+              switch (__choose("__SWITCH30")) {
               case 0: {
 
                 break;
               }
 #ifdef COMPILE_2347
               case 1: {
-                __temp30 =
-                    (((**arg1).type == 4) ||
-                     __is_neg("30-1", 1, (int *){ht}, 0, 0, 5,
-                              (void **){arg1, arr, arg2, delim, return_value},
-                              0, 0, "ht", "arg1", "arr", "arg2", "delim",
-                              "return_value"));
+                __temp30 = (((**arg1).type == 4) ||
+                            __is_neg("30-1", 9, &(arg1), sizeof(arg1),
+                                     &((**arg1).type), sizeof((**arg1).type),
+                                     &(arr), sizeof(arr), &(arg2), sizeof(arg2),
+                                     &(delim), sizeof(delim), &(return_value),
+                                     sizeof(return_value), &(ht), sizeof(ht),
+                                     &((**arg1).refcount__gc),
+                                     sizeof((**arg1).refcount__gc),
+                                     &((**arg1).is_ref__gc),
+                                     sizeof((**arg1).is_ref__gc)));
 
                 break;
               }
@@ -21336,29 +21498,27 @@ PHP_FUNCTION(implode) {
               case 2: {
                 __temp30 =
                     (((**arg1).type == 4) &&
-                     !__is_neg("30-2", 1, (int *){ht}, 0, 0, 5,
-                               (void **){arg1, arr, arg2, delim, return_value},
-                               0, 0, "ht", "arg1", "arr", "arg2", "delim",
-                               "return_value"));
+                     !__is_neg(
+                         "30-2", 9, &(arg1), sizeof(arg1), &((**arg1).type),
+                         sizeof((**arg1).type), &(arr), sizeof(arr), &(arg2),
+                         sizeof(arg2), &(delim), sizeof(delim), &(return_value),
+                         sizeof(return_value), &(ht), sizeof(ht),
+                         &((**arg1).refcount__gc),
+                         sizeof((**arg1).refcount__gc), &((**arg1).is_ref__gc),
+                         sizeof((**arg1).is_ref__gc)));
 
                 break;
               }
 #endif
               }
-              switch (
-                  __choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                           "php-5a8c917-workdir/switch.txt",
-                           41)) {
+              switch (__choose("__SWITCH41")) {
               case 0: {
                 if (__temp30) {
                   arr = *arg1;
                   convert_to_string_ex(arg2);
                   delim = *arg2;
                 } else {
-                  switch (__choose(
-                      "/root/project/prophet-gpl/build/php-case-5a8c917/"
-                      "php-5a8c917-workdir/switch.txt",
-                      31)) {
+                  switch (__choose("__SWITCH31")) {
                   case 0:
                     break;
 #ifdef COMPILE_2349
@@ -23167,11 +23327,15 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_2564
                   case 216: {
                     // IfExitKind
-                    if (__is_neg(
-                            "31-216", 1, (int *){ht}, 0, 0, 5,
-                            (void **){arg2, delim, arr, arg1, return_value}, 0,
-                            0, "ht", "arg2", "delim", "arr", "arg1",
-                            "return_value"))
+                    if (__is_neg("31-216", 9, &(arg2), sizeof(arg2),
+                                 &((**arg2).type), sizeof((**arg2).type),
+                                 &(delim), sizeof(delim), &(arr), sizeof(arr),
+                                 &(arg1), sizeof(arg1), &(return_value),
+                                 sizeof(return_value), &(ht), sizeof(ht),
+                                 &((**arg2).refcount__gc),
+                                 sizeof((**arg2).refcount__gc),
+                                 &((**arg2).is_ref__gc),
+                                 sizeof((**arg2).is_ref__gc)))
                       return;
 
                     break;
@@ -23180,50 +23344,52 @@ PHP_FUNCTION(implode) {
                   }
                   {
                     long long __temp32 = ((**arg2).type == 4);
-                    switch (__choose(
-                        "/root/project/prophet-gpl/build/php-case-5a8c917/"
-                        "php-5a8c917-workdir/switch.txt",
-                        32)) {
+                    switch (__choose("__SWITCH32")) {
                     case 0: {
 
                       break;
                     }
 #ifdef COMPILE_2565
                     case 1: {
-                      __temp32 = (((**arg2).type == 4) ||
-                                  __is_neg("32-1", 1, (int *){ht}, 0, 0, 5,
-                                           (void **){arg2, delim, arr, arg1,
-                                                     return_value},
-                                           0, 0, "ht", "arg2", "delim", "arr",
-                                           "arg1", "return_value"));
+                      __temp32 =
+                          (((**arg2).type == 4) ||
+                           __is_neg("32-1", 9, &(arg2), sizeof(arg2),
+                                    &((**arg2).type), sizeof((**arg2).type),
+                                    &(delim), sizeof(delim), &(arr),
+                                    sizeof(arr), &(arg1), sizeof(arg1),
+                                    &(return_value), sizeof(return_value),
+                                    &(ht), sizeof(ht), &((**arg2).refcount__gc),
+                                    sizeof((**arg2).refcount__gc),
+                                    &((**arg2).is_ref__gc),
+                                    sizeof((**arg2).is_ref__gc)));
 
                       break;
                     }
 #endif
 #ifdef COMPILE_2566
                     case 2: {
-                      __temp32 = (((**arg2).type == 4) &&
-                                  !__is_neg("32-2", 1, (int *){ht}, 0, 0, 5,
-                                            (void **){arg2, delim, arr, arg1,
-                                                      return_value},
-                                            0, 0, "ht", "arg2", "delim", "arr",
-                                            "arg1", "return_value"));
+                      __temp32 =
+                          (((**arg2).type == 4) &&
+                           !__is_neg("32-2", 9, &(arg2), sizeof(arg2),
+                                     &((**arg2).type), sizeof((**arg2).type),
+                                     &(delim), sizeof(delim), &(arr),
+                                     sizeof(arr), &(arg1), sizeof(arg1),
+                                     &(return_value), sizeof(return_value),
+                                     &(ht), sizeof(ht),
+                                     &((**arg2).refcount__gc),
+                                     sizeof((**arg2).refcount__gc),
+                                     &((**arg2).is_ref__gc),
+                                     sizeof((**arg2).is_ref__gc)));
 
                       break;
                     }
 #endif
                     }
-                    switch (__choose(
-                        "/root/project/prophet-gpl/build/php-case-5a8c917/"
-                        "php-5a8c917-workdir/switch.txt",
-                        40)) {
+                    switch (__choose("__SWITCH40")) {
                     case 0: {
                       if (__temp32) {
                         {
-                          switch (__choose(
-                              "/root/project/prophet-gpl/build/"
-                              "php-case-5a8c917/php-5a8c917-workdir/switch.txt",
-                              33)) {
+                          switch (__choose("__SWITCH33")) {
                           case 0:
                             break;
 #ifdef COMPILE_2567
@@ -25017,21 +25183,43 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_2777
                           case 211: {
                             // IfExitKind
-                            if (__is_neg("33-211", 1, (int *){ht}, 0, 0, 5,
-                                         (void **){arg2, arr, arg1, delim,
-                                                   return_value},
-                                         0, 0, "ht", "arg2", "arr", "arg1",
-                                         "delim", "return_value"))
+                            if (__is_neg(
+                                    "33-211", 21, &(arg2), sizeof(arg2), &(arr),
+                                    sizeof(arr), &(arg1), sizeof(arg1),
+                                    &((**arg2).type), sizeof((**arg2).type),
+                                    &((**arg1).type), sizeof((**arg1).type),
+                                    &((**(arg1)).type), sizeof((**(arg1)).type),
+                                    &((*arg1)->type), sizeof((*arg1)->type),
+                                    &(delim), sizeof(delim), &(return_value),
+                                    sizeof(return_value), &(ht), sizeof(ht),
+                                    &((**arg2).refcount__gc),
+                                    sizeof((**arg2).refcount__gc),
+                                    &((**arg2).is_ref__gc),
+                                    sizeof((**arg2).is_ref__gc),
+                                    &((**arg1).refcount__gc),
+                                    sizeof((**arg1).refcount__gc),
+                                    &((**arg1).is_ref__gc),
+                                    sizeof((**arg1).is_ref__gc),
+                                    &((*(arg1))->refcount__gc),
+                                    sizeof((*(arg1))->refcount__gc),
+                                    &((*(arg1))->type), sizeof((*(arg1))->type),
+                                    &((*(arg1))->is_ref__gc),
+                                    sizeof((*(arg1))->is_ref__gc),
+                                    &((**(arg1)).refcount__gc),
+                                    sizeof((**(arg1)).refcount__gc),
+                                    &((**(arg1)).is_ref__gc),
+                                    sizeof((**(arg1)).is_ref__gc),
+                                    &((*arg1)->refcount__gc),
+                                    sizeof((*arg1)->refcount__gc),
+                                    &((*arg1)->is_ref__gc),
+                                    sizeof((*arg1)->is_ref__gc)))
                               return;
 
                             break;
                           }
 #endif
                           }
-                          switch (__choose(
-                              "/root/project/prophet-gpl/build/"
-                              "php-case-5a8c917/php-5a8c917-workdir/switch.txt",
-                              34)) {
+                          switch (__choose("__SWITCH34")) {
                           case 0: {
                             arr = *arg2;
 
@@ -25040,11 +25228,36 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_2778
                           case 1: {
                             // GuardKind
-                            if (!__is_neg("34-1", 1, (int *){ht}, 0, 0, 5,
-                                          (void **){arg2, arr, arg1, delim,
-                                                    return_value},
-                                          0, 0, "ht", "arg2", "arr", "arg1",
-                                          "delim", "return_value"))
+                            if (!__is_neg(
+                                    "34-1", 21, &(arg2), sizeof(arg2), &(arr),
+                                    sizeof(arr), &(arg1), sizeof(arg1),
+                                    &((**arg2).type), sizeof((**arg2).type),
+                                    &((**arg1).type), sizeof((**arg1).type),
+                                    &((**(arg1)).type), sizeof((**(arg1)).type),
+                                    &((*arg1)->type), sizeof((*arg1)->type),
+                                    &(delim), sizeof(delim), &(return_value),
+                                    sizeof(return_value), &(ht), sizeof(ht),
+                                    &((**arg2).refcount__gc),
+                                    sizeof((**arg2).refcount__gc),
+                                    &((**arg2).is_ref__gc),
+                                    sizeof((**arg2).is_ref__gc),
+                                    &((**arg1).refcount__gc),
+                                    sizeof((**arg1).refcount__gc),
+                                    &((**arg1).is_ref__gc),
+                                    sizeof((**arg1).is_ref__gc),
+                                    &((*(arg1))->refcount__gc),
+                                    sizeof((*(arg1))->refcount__gc),
+                                    &((*(arg1))->type), sizeof((*(arg1))->type),
+                                    &((*(arg1))->is_ref__gc),
+                                    sizeof((*(arg1))->is_ref__gc),
+                                    &((**(arg1)).refcount__gc),
+                                    sizeof((**(arg1)).refcount__gc),
+                                    &((**(arg1)).is_ref__gc),
+                                    sizeof((**(arg1)).is_ref__gc),
+                                    &((*arg1)->refcount__gc),
+                                    sizeof((*arg1)->refcount__gc),
+                                    &((*arg1)->is_ref__gc),
+                                    sizeof((*arg1)->is_ref__gc)))
                               arr = *arg2;
 
                             break;
@@ -25109,10 +25322,7 @@ PHP_FUNCTION(implode) {
                           }
                         }
                         {
-                          switch (__choose(
-                              "/root/project/prophet-gpl/build/"
-                              "php-case-5a8c917/php-5a8c917-workdir/switch.txt",
-                              35)) {
+                          switch (__choose("__SWITCH35")) {
                           case 0:
                             break;
 #ifdef COMPILE_2786
@@ -26938,11 +27148,31 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3000
                           case 215: {
                             // IfExitKind
-                            if (__is_neg("35-215", 1, (int *){ht}, 0, 0, 5,
-                                         (void **){arg1, arg2, delim, arr,
-                                                   return_value},
-                                         0, 0, "ht", "arg1", "arg2", "delim",
-                                         "arr", "return_value"))
+                            if (__is_neg(
+                                    "35-215", 18, &(arg1), sizeof(arg1),
+                                    &((**arg1).type), sizeof((**arg1).type),
+                                    &((**(arg1)).type), sizeof((**(arg1)).type),
+                                    &((*arg1)->type), sizeof((*arg1)->type),
+                                    &(arg2), sizeof(arg2), &(delim),
+                                    sizeof(delim), &(arr), sizeof(arr),
+                                    &(return_value), sizeof(return_value),
+                                    &(ht), sizeof(ht), &((**arg1).refcount__gc),
+                                    sizeof((**arg1).refcount__gc),
+                                    &((**arg1).is_ref__gc),
+                                    sizeof((**arg1).is_ref__gc),
+                                    &((*(arg1))->refcount__gc),
+                                    sizeof((*(arg1))->refcount__gc),
+                                    &((*(arg1))->type), sizeof((*(arg1))->type),
+                                    &((*(arg1))->is_ref__gc),
+                                    sizeof((*(arg1))->is_ref__gc),
+                                    &((**(arg1)).refcount__gc),
+                                    sizeof((**(arg1)).refcount__gc),
+                                    &((**(arg1)).is_ref__gc),
+                                    sizeof((**(arg1)).is_ref__gc),
+                                    &((*arg1)->refcount__gc),
+                                    sizeof((*arg1)->refcount__gc),
+                                    &((*arg1)->is_ref__gc),
+                                    sizeof((*arg1)->is_ref__gc)))
                               return;
 
                             break;
@@ -26951,10 +27181,7 @@ PHP_FUNCTION(implode) {
                           }
                           {
                             long long __temp36 = ((**arg1).type != 6);
-                            switch (__choose("/root/project/prophet-gpl/build/"
-                                             "php-case-5a8c917/"
-                                             "php-5a8c917-workdir/switch.txt",
-                                             36)) {
+                            switch (__choose("__SWITCH36")) {
                             case 0: {
 
                               break;
@@ -26963,11 +27190,34 @@ PHP_FUNCTION(implode) {
                             case 1: {
                               __temp36 =
                                   (((**arg1).type != 6) ||
-                                   __is_neg("36-1", 1, (int *){ht}, 0, 0, 5,
-                                            (void **){arg1, arg2, delim, arr,
-                                                      return_value},
-                                            0, 0, "ht", "arg1", "arg2", "delim",
-                                            "arr", "return_value"));
+                                   __is_neg(
+                                       "36-1", 18, &(arg1), sizeof(arg1),
+                                       &((**arg1).type), sizeof((**arg1).type),
+                                       &((**(arg1)).type),
+                                       sizeof((**(arg1)).type),
+                                       &((*arg1)->type), sizeof((*arg1)->type),
+                                       &(arg2), sizeof(arg2), &(delim),
+                                       sizeof(delim), &(arr), sizeof(arr),
+                                       &(return_value), sizeof(return_value),
+                                       &(ht), sizeof(ht),
+                                       &((**arg1).refcount__gc),
+                                       sizeof((**arg1).refcount__gc),
+                                       &((**arg1).is_ref__gc),
+                                       sizeof((**arg1).is_ref__gc),
+                                       &((*(arg1))->refcount__gc),
+                                       sizeof((*(arg1))->refcount__gc),
+                                       &((*(arg1))->type),
+                                       sizeof((*(arg1))->type),
+                                       &((*(arg1))->is_ref__gc),
+                                       sizeof((*(arg1))->is_ref__gc),
+                                       &((**(arg1)).refcount__gc),
+                                       sizeof((**(arg1)).refcount__gc),
+                                       &((**(arg1)).is_ref__gc),
+                                       sizeof((**(arg1)).is_ref__gc),
+                                       &((*arg1)->refcount__gc),
+                                       sizeof((*arg1)->refcount__gc),
+                                       &((*arg1)->is_ref__gc),
+                                       sizeof((*arg1)->is_ref__gc)));
 
                               break;
                             }
@@ -26976,20 +27226,40 @@ PHP_FUNCTION(implode) {
                             case 2: {
                               __temp36 =
                                   (((**arg1).type != 6) &&
-                                   !__is_neg("36-2", 1, (int *){ht}, 0, 0, 5,
-                                             (void **){arg1, arg2, delim, arr,
-                                                       return_value},
-                                             0, 0, "ht", "arg1", "arg2",
-                                             "delim", "arr", "return_value"));
+                                   !__is_neg(
+                                       "36-2", 18, &(arg1), sizeof(arg1),
+                                       &((**arg1).type), sizeof((**arg1).type),
+                                       &((**(arg1)).type),
+                                       sizeof((**(arg1)).type),
+                                       &((*arg1)->type), sizeof((*arg1)->type),
+                                       &(arg2), sizeof(arg2), &(delim),
+                                       sizeof(delim), &(arr), sizeof(arr),
+                                       &(return_value), sizeof(return_value),
+                                       &(ht), sizeof(ht),
+                                       &((**arg1).refcount__gc),
+                                       sizeof((**arg1).refcount__gc),
+                                       &((**arg1).is_ref__gc),
+                                       sizeof((**arg1).is_ref__gc),
+                                       &((*(arg1))->refcount__gc),
+                                       sizeof((*(arg1))->refcount__gc),
+                                       &((*(arg1))->type),
+                                       sizeof((*(arg1))->type),
+                                       &((*(arg1))->is_ref__gc),
+                                       sizeof((*(arg1))->is_ref__gc),
+                                       &((**(arg1)).refcount__gc),
+                                       sizeof((**(arg1)).refcount__gc),
+                                       &((**(arg1)).is_ref__gc),
+                                       sizeof((**(arg1)).is_ref__gc),
+                                       &((*arg1)->refcount__gc),
+                                       sizeof((*arg1)->refcount__gc),
+                                       &((*arg1)->is_ref__gc),
+                                       sizeof((*arg1)->is_ref__gc)));
 
                               break;
                             }
 #endif
                             }
-                            switch (__choose("/root/project/prophet-gpl/build/"
-                                             "php-case-5a8c917/"
-                                             "php-5a8c917-workdir/switch.txt",
-                                             37)) {
+                            switch (__choose("__SWITCH37")) {
                             case 0: {
                               if (__temp36) {
                                 if (!zval_isref_p(*arg1)) {
@@ -27026,11 +27296,33 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3003
                             case 1: {
                               // GuardKind
-                              if (!__is_neg("37-1", 1, (int *){ht}, 0, 0, 5,
-                                            (void **){arg1, arg2, delim, arr,
-                                                      return_value},
-                                            0, 0, "ht", "arg1", "arg2", "delim",
-                                            "arr", "return_value"))
+                              if (!__is_neg(
+                                      "37-1", 18, &(arg1), sizeof(arg1),
+                                      &((**arg1).type), sizeof((**arg1).type),
+                                      &((**(arg1)).type),
+                                      sizeof((**(arg1)).type), &((*arg1)->type),
+                                      sizeof((*arg1)->type), &(arg2),
+                                      sizeof(arg2), &(delim), sizeof(delim),
+                                      &(arr), sizeof(arr), &(return_value),
+                                      sizeof(return_value), &(ht), sizeof(ht),
+                                      &((**arg1).refcount__gc),
+                                      sizeof((**arg1).refcount__gc),
+                                      &((**arg1).is_ref__gc),
+                                      sizeof((**arg1).is_ref__gc),
+                                      &((*(arg1))->refcount__gc),
+                                      sizeof((*(arg1))->refcount__gc),
+                                      &((*(arg1))->type),
+                                      sizeof((*(arg1))->type),
+                                      &((*(arg1))->is_ref__gc),
+                                      sizeof((*(arg1))->is_ref__gc),
+                                      &((**(arg1)).refcount__gc),
+                                      sizeof((**(arg1)).refcount__gc),
+                                      &((**(arg1)).is_ref__gc),
+                                      sizeof((**(arg1)).is_ref__gc),
+                                      &((*arg1)->refcount__gc),
+                                      sizeof((*arg1)->refcount__gc),
+                                      &((*arg1)->is_ref__gc),
+                                      sizeof((*arg1)->is_ref__gc)))
                                 if ((**arg1).type != 6) {
                                   if (!zval_isref_p(*arg1)) {
                                     do {
@@ -27067,11 +27359,33 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3004
                             case 2: {
                               // SpecialGuardKind
-                              if (!__is_neg("37-2", 1, (int *){ht}, 0, 0, 5,
-                                            (void **){arg1, arg2, delim, arr,
-                                                      return_value},
-                                            0, 0, "ht", "arg1", "arg2", "delim",
-                                            "arr", "return_value") &&
+                              if (!__is_neg(
+                                      "37-2", 18, &(arg1), sizeof(arg1),
+                                      &((**arg1).type), sizeof((**arg1).type),
+                                      &((**(arg1)).type),
+                                      sizeof((**(arg1)).type), &((*arg1)->type),
+                                      sizeof((*arg1)->type), &(arg2),
+                                      sizeof(arg2), &(delim), sizeof(delim),
+                                      &(arr), sizeof(arr), &(return_value),
+                                      sizeof(return_value), &(ht), sizeof(ht),
+                                      &((**arg1).refcount__gc),
+                                      sizeof((**arg1).refcount__gc),
+                                      &((**arg1).is_ref__gc),
+                                      sizeof((**arg1).is_ref__gc),
+                                      &((*(arg1))->refcount__gc),
+                                      sizeof((*(arg1))->refcount__gc),
+                                      &((*(arg1))->type),
+                                      sizeof((*(arg1))->type),
+                                      &((*(arg1))->is_ref__gc),
+                                      sizeof((*(arg1))->is_ref__gc),
+                                      &((**(arg1)).refcount__gc),
+                                      sizeof((**(arg1)).refcount__gc),
+                                      &((**(arg1)).is_ref__gc),
+                                      sizeof((**(arg1)).is_ref__gc),
+                                      &((*arg1)->refcount__gc),
+                                      sizeof((*arg1)->refcount__gc),
+                                      &((*arg1)->is_ref__gc),
+                                      sizeof((*arg1)->is_ref__gc)) &&
                                   ((**arg1).type != 6)) {
                                 if (!zval_isref_p(*arg1)) {
                                   do {
@@ -27109,10 +27423,7 @@ PHP_FUNCTION(implode) {
                           }
                         }
                         {
-                          switch (__choose(
-                              "/root/project/prophet-gpl/build/"
-                              "php-case-5a8c917/php-5a8c917-workdir/switch.txt",
-                              38)) {
+                          switch (__choose("__SWITCH38")) {
                           case 0:
                             break;
 #ifdef COMPILE_3005
@@ -28906,21 +29217,38 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3215
                           case 211: {
                             // IfExitKind
-                            if (__is_neg("38-211", 1, (int *){ht}, 0, 0, 5,
-                                         (void **){arg1, delim, arg2, arr,
-                                                   return_value},
-                                         0, 0, "ht", "arg1", "delim", "arg2",
-                                         "arr", "return_value"))
+                            if (__is_neg(
+                                    "38-211", 18, &(arg1), sizeof(arg1),
+                                    &(delim), sizeof(delim), &((**arg1).type),
+                                    sizeof((**arg1).type), &((**(arg1)).type),
+                                    sizeof((**(arg1)).type), &((*arg1)->type),
+                                    sizeof((*arg1)->type), &(arg2),
+                                    sizeof(arg2), &(arr), sizeof(arr),
+                                    &(return_value), sizeof(return_value),
+                                    &(ht), sizeof(ht), &((**arg1).refcount__gc),
+                                    sizeof((**arg1).refcount__gc),
+                                    &((**arg1).is_ref__gc),
+                                    sizeof((**arg1).is_ref__gc),
+                                    &((*(arg1))->refcount__gc),
+                                    sizeof((*(arg1))->refcount__gc),
+                                    &((*(arg1))->type), sizeof((*(arg1))->type),
+                                    &((*(arg1))->is_ref__gc),
+                                    sizeof((*(arg1))->is_ref__gc),
+                                    &((**(arg1)).refcount__gc),
+                                    sizeof((**(arg1)).refcount__gc),
+                                    &((**(arg1)).is_ref__gc),
+                                    sizeof((**(arg1)).is_ref__gc),
+                                    &((*arg1)->refcount__gc),
+                                    sizeof((*arg1)->refcount__gc),
+                                    &((*arg1)->is_ref__gc),
+                                    sizeof((*arg1)->is_ref__gc)))
                               return;
 
                             break;
                           }
 #endif
                           }
-                          switch (__choose(
-                              "/root/project/prophet-gpl/build/"
-                              "php-case-5a8c917/php-5a8c917-workdir/switch.txt",
-                              39)) {
+                          switch (__choose("__SWITCH39")) {
                           case 0: {
                             delim = *arg1;
 
@@ -28929,11 +29257,31 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3216
                           case 1: {
                             // GuardKind
-                            if (!__is_neg("39-1", 1, (int *){ht}, 0, 0, 5,
-                                          (void **){arg1, delim, arg2, arr,
-                                                    return_value},
-                                          0, 0, "ht", "arg1", "delim", "arg2",
-                                          "arr", "return_value"))
+                            if (!__is_neg(
+                                    "39-1", 18, &(arg1), sizeof(arg1), &(delim),
+                                    sizeof(delim), &((**arg1).type),
+                                    sizeof((**arg1).type), &((**(arg1)).type),
+                                    sizeof((**(arg1)).type), &((*arg1)->type),
+                                    sizeof((*arg1)->type), &(arg2),
+                                    sizeof(arg2), &(arr), sizeof(arr),
+                                    &(return_value), sizeof(return_value),
+                                    &(ht), sizeof(ht), &((**arg1).refcount__gc),
+                                    sizeof((**arg1).refcount__gc),
+                                    &((**arg1).is_ref__gc),
+                                    sizeof((**arg1).is_ref__gc),
+                                    &((*(arg1))->refcount__gc),
+                                    sizeof((*(arg1))->refcount__gc),
+                                    &((*(arg1))->type), sizeof((*(arg1))->type),
+                                    &((*(arg1))->is_ref__gc),
+                                    sizeof((*(arg1))->is_ref__gc),
+                                    &((**(arg1)).refcount__gc),
+                                    sizeof((**(arg1)).refcount__gc),
+                                    &((**(arg1)).is_ref__gc),
+                                    sizeof((**(arg1)).is_ref__gc),
+                                    &((*arg1)->refcount__gc),
+                                    sizeof((*arg1)->refcount__gc),
+                                    &((*arg1)->is_ref__gc),
+                                    sizeof((*arg1)->is_ref__gc)))
                               delim = *arg1;
 
                             break;
@@ -29008,11 +29356,30 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3224
                     case 1: {
                       // GuardKind
-                      if (!__is_neg(
-                              "40-1", 1, (int *){ht}, 0, 0, 5,
-                              (void **){arg1, delim, arg2, arr, return_value},
-                              0, 0, "ht", "arg1", "delim", "arg2", "arr",
-                              "return_value"))
+                      if (!__is_neg("40-1", 18, &(arg1), sizeof(arg1), &(delim),
+                                    sizeof(delim), &((**arg1).type),
+                                    sizeof((**arg1).type), &((**(arg1)).type),
+                                    sizeof((**(arg1)).type), &((*arg1)->type),
+                                    sizeof((*arg1)->type), &(arg2),
+                                    sizeof(arg2), &(arr), sizeof(arr),
+                                    &(return_value), sizeof(return_value),
+                                    &(ht), sizeof(ht), &((**arg1).refcount__gc),
+                                    sizeof((**arg1).refcount__gc),
+                                    &((**arg1).is_ref__gc),
+                                    sizeof((**arg1).is_ref__gc),
+                                    &((*(arg1))->refcount__gc),
+                                    sizeof((*(arg1))->refcount__gc),
+                                    &((*(arg1))->type), sizeof((*(arg1))->type),
+                                    &((*(arg1))->is_ref__gc),
+                                    sizeof((*(arg1))->is_ref__gc),
+                                    &((**(arg1)).refcount__gc),
+                                    sizeof((**(arg1)).refcount__gc),
+                                    &((**(arg1)).is_ref__gc),
+                                    sizeof((**(arg1)).is_ref__gc),
+                                    &((*arg1)->refcount__gc),
+                                    sizeof((*arg1)->refcount__gc),
+                                    &((*arg1)->is_ref__gc),
+                                    sizeof((*arg1)->is_ref__gc)))
                         delim = *arg1;
 
                       break;
@@ -29083,10 +29450,24 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3232
               case 1: {
                 // GuardKind
-                if (!__is_neg("41-1", 1, (int *){ht}, 0, 0, 5,
-                              (void **){arg1, delim, arg2, arr, return_value},
-                              0, 0, "ht", "arg1", "delim", "arg2", "arr",
-                              "return_value"))
+                if (!__is_neg(
+                        "41-1", 18, &(arg1), sizeof(arg1), &(delim),
+                        sizeof(delim), &((**arg1).type), sizeof((**arg1).type),
+                        &((**(arg1)).type), sizeof((**(arg1)).type),
+                        &((*arg1)->type), sizeof((*arg1)->type), &(arg2),
+                        sizeof(arg2), &(arr), sizeof(arr), &(return_value),
+                        sizeof(return_value), &(ht), sizeof(ht),
+                        &((**arg1).refcount__gc), sizeof((**arg1).refcount__gc),
+                        &((**arg1).is_ref__gc), sizeof((**arg1).is_ref__gc),
+                        &((*(arg1))->refcount__gc),
+                        sizeof((*(arg1))->refcount__gc), &((*(arg1))->type),
+                        sizeof((*(arg1))->type), &((*(arg1))->is_ref__gc),
+                        sizeof((*(arg1))->is_ref__gc),
+                        &((**(arg1)).refcount__gc),
+                        sizeof((**(arg1)).refcount__gc),
+                        &((**(arg1)).is_ref__gc), sizeof((**(arg1)).is_ref__gc),
+                        &((*arg1)->refcount__gc), sizeof((*arg1)->refcount__gc),
+                        &((*arg1)->is_ref__gc), sizeof((*arg1)->is_ref__gc)))
                   delim = *arg1;
 
                 break;
@@ -29158,9 +29539,22 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3240
       case 1: {
         // GuardKind
-        if (!__is_neg("42-1", 1, (int *){ht}, 0, 0, 5,
-                      (void **){arg1, delim, arg2, arr, return_value}, 0, 0,
-                      "ht", "arg1", "delim", "arg2", "arr", "return_value"))
+        if (!__is_neg("42-1", 18, &(arg1), sizeof(arg1), &(delim),
+                      sizeof(delim), &((**arg1).type), sizeof((**arg1).type),
+                      &((**(arg1)).type), sizeof((**(arg1)).type),
+                      &((*arg1)->type), sizeof((*arg1)->type), &(arg2),
+                      sizeof(arg2), &(arr), sizeof(arr), &(return_value),
+                      sizeof(return_value), &(ht), sizeof(ht),
+                      &((**arg1).refcount__gc), sizeof((**arg1).refcount__gc),
+                      &((**arg1).is_ref__gc), sizeof((**arg1).is_ref__gc),
+                      &((*(arg1))->refcount__gc),
+                      sizeof((*(arg1))->refcount__gc), &((*(arg1))->type),
+                      sizeof((*(arg1))->type), &((*(arg1))->is_ref__gc),
+                      sizeof((*(arg1))->is_ref__gc), &((**(arg1)).refcount__gc),
+                      sizeof((**(arg1)).refcount__gc), &((**(arg1)).is_ref__gc),
+                      sizeof((**(arg1)).is_ref__gc), &((*arg1)->refcount__gc),
+                      sizeof((*arg1)->refcount__gc), &((*arg1)->is_ref__gc),
+                      sizeof((*arg1)->is_ref__gc)))
           delim = *arg1;
 
         break;
@@ -29228,9 +29622,7 @@ PHP_FUNCTION(implode) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     43)) {
+    switch (__choose("__SWITCH43")) {
     case 0:
       break;
 #ifdef COMPILE_3248
@@ -30970,18 +31362,16 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3458
     case 211: {
       // IfExitKind
-      if (__is_neg("43-211", 1, (int *){ht}, 0, 0, 5,
-                   (void **){return_value, delim, arr, arg2, arg1}, 0, 0, "ht",
-                   "return_value", "delim", "arr", "arg2", "arg1"))
+      if (__is_neg("43-211", 6, &(return_value), sizeof(return_value), &(delim),
+                   sizeof(delim), &(arr), sizeof(arr), &(arg2), sizeof(arg2),
+                   &(arg1), sizeof(arg1), &(ht), sizeof(ht)))
         return;
 
       break;
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     44)) {
+    switch (__choose("__SWITCH44")) {
     case 0: {
       php_implode(delim, arr, return_value TSRMLS_CC);
 
@@ -31278,9 +31668,9 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3495
     case 37: {
       // GuardKind
-      if (!__is_neg("44-37", 1, (int *){ht}, 0, 0, 5,
-                    (void **){return_value, delim, arr, arg2, arg1}, 0, 0, "ht",
-                    "return_value", "delim", "arr", "arg2", "arg1"))
+      if (!__is_neg("44-37", 6, &(return_value), sizeof(return_value), &(delim),
+                    sizeof(delim), &(arr), sizeof(arr), &(arg2), sizeof(arg2),
+                    &(arg1), sizeof(arg1), &(ht), sizeof(ht)))
         php_implode(delim, arr, return_value);
 
       break;
@@ -31387,9 +31777,7 @@ PHP_FUNCTION(implode) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     45)) {
+    switch (__choose("__SWITCH45")) {
     case 0:
       break;
 #ifdef COMPILE_3508
@@ -33154,9 +33542,12 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3721
     case 214: {
       // IfExitKind
-      if (__is_neg("45-214", 1, (int *){ht}, 0, 0, 5,
-                   (void **){arg2, delim, return_value, arr, arg1}, 0, 0, "ht",
-                   "arg2", "delim", "return_value", "arr", "arg1"))
+      if (__is_neg("45-214", 9, &(arg2), sizeof(arg2), &(delim), sizeof(delim),
+                   &(return_value), sizeof(return_value), &(arr), sizeof(arr),
+                   &(arg1), sizeof(arg1), &((delim)->refcount__gc),
+                   sizeof((delim)->refcount__gc), &((delim)->is_ref__gc),
+                   sizeof((delim)->is_ref__gc), &(ht), sizeof(ht),
+                   &((delim)->type), sizeof((delim)->type)))
         return;
 
       break;
@@ -33165,9 +33556,7 @@ PHP_FUNCTION(implode) {
     }
     {
       long long __temp46 = (arg2 == ((void *)0));
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       46)) {
+      switch (__choose("__SWITCH46")) {
       case 0: {
 
         break;
@@ -33176,9 +33565,13 @@ PHP_FUNCTION(implode) {
       case 1: {
         __temp46 =
             ((arg2 == ((void *)0)) ||
-             __is_neg("46-1", 1, (int *){ht}, 0, 0, 5,
-                      (void **){arg2, delim, return_value, arr, arg1}, 0, 0,
-                      "ht", "arg2", "delim", "return_value", "arr", "arg1"));
+             __is_neg("46-1", 9, &(arg2), sizeof(arg2), &(delim), sizeof(delim),
+                      &(return_value), sizeof(return_value), &(arr),
+                      sizeof(arr), &(arg1), sizeof(arg1),
+                      &((delim)->refcount__gc), sizeof((delim)->refcount__gc),
+                      &((delim)->is_ref__gc), sizeof((delim)->is_ref__gc),
+                      &(ht), sizeof(ht), &((delim)->type),
+                      sizeof((delim)->type)));
 
         break;
       }
@@ -33187,17 +33580,19 @@ PHP_FUNCTION(implode) {
       case 2: {
         __temp46 =
             ((arg2 == ((void *)0)) &&
-             !__is_neg("46-2", 1, (int *){ht}, 0, 0, 5,
-                       (void **){arg2, delim, return_value, arr, arg1}, 0, 0,
-                       "ht", "arg2", "delim", "return_value", "arr", "arg1"));
+             !__is_neg("46-2", 9, &(arg2), sizeof(arg2), &(delim),
+                       sizeof(delim), &(return_value), sizeof(return_value),
+                       &(arr), sizeof(arr), &(arg1), sizeof(arg1),
+                       &((delim)->refcount__gc), sizeof((delim)->refcount__gc),
+                       &((delim)->is_ref__gc), sizeof((delim)->is_ref__gc),
+                       &(ht), sizeof(ht), &((delim)->type),
+                       sizeof((delim)->type)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       47)) {
+      switch (__choose("__SWITCH47")) {
       case 0: {
         if (__temp46) {
           FREE_ZVAL(delim);
@@ -33208,9 +33603,13 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3724
       case 1: {
         // GuardKind
-        if (!__is_neg("47-1", 1, (int *){ht}, 0, 0, 5,
-                      (void **){arg2, delim, return_value, arr, arg1}, 0, 0,
-                      "ht", "arg2", "delim", "return_value", "arr", "arg1"))
+        if (!__is_neg("47-1", 9, &(arg2), sizeof(arg2), &(delim), sizeof(delim),
+                      &(return_value), sizeof(return_value), &(arr),
+                      sizeof(arr), &(arg1), sizeof(arg1),
+                      &((delim)->refcount__gc), sizeof((delim)->refcount__gc),
+                      &((delim)->is_ref__gc), sizeof((delim)->is_ref__gc),
+                      &(ht), sizeof(ht), &((delim)->type),
+                      sizeof((delim)->type)))
           if (arg2 == ((void *)0)) {
             do {
               if (((gc_root_buffer *)(((zend_uintptr_t)(((zval_gc_info *)delim)
@@ -33228,9 +33627,13 @@ PHP_FUNCTION(implode) {
 #ifdef COMPILE_3725
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("47-2", 1, (int *){ht}, 0, 0, 5,
-                      (void **){arg2, delim, return_value, arr, arg1}, 0, 0,
-                      "ht", "arg2", "delim", "return_value", "arr", "arg1") &&
+        if (!__is_neg("47-2", 9, &(arg2), sizeof(arg2), &(delim), sizeof(delim),
+                      &(return_value), sizeof(return_value), &(arr),
+                      sizeof(arr), &(arg1), sizeof(arg1),
+                      &((delim)->refcount__gc), sizeof((delim)->refcount__gc),
+                      &((delim)->is_ref__gc), sizeof((delim)->is_ref__gc),
+                      &(ht), sizeof(ht), &((delim)->type),
+                      sizeof((delim)->type)) &&
             (arg2 == ((void *)0))) {
           do {
             if (((gc_root_buffer *)(((zend_uintptr_t)(
@@ -35689,9 +36092,7 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
   /* Make sure we're dealing with strings. */
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     48)) {
+    switch (__choose("__SWITCH48")) {
     case 0:
       break;
 #ifdef COMPILE_3726
@@ -38211,12 +38612,28 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
 #ifdef COMPILE_3999
     case 274: {
       // IfExitKind
-      if (__is_neg("48-274", 2, (int *){replace_len, case_sensitivity}, 0, 0, 8,
-                   (void **){subject, result, search, replace, replace_value,
-                             search_entry, replace_entry, replace_count},
-                   0, 0, "replace_len", "case_sensitivity", "subject", "result",
-                   "search", "replace", "replace_value", "search_entry",
-                   "replace_entry", "replace_count"))
+      if (__is_neg(
+              "48-274", 25, &(subject), sizeof(subject), &((*subject)->type),
+              sizeof((*subject)->type), &((**subject).type),
+              sizeof((**subject).type), &((**(subject)).type),
+              sizeof((**(subject)).type), &(result), sizeof(result),
+              &((*result).type), sizeof((*result).type), &(search),
+              sizeof(search), &(replace), sizeof(replace), &(replace_value),
+              sizeof(replace_value), &(replace_len), sizeof(replace_len),
+              &(search_entry), sizeof(search_entry), &(replace_entry),
+              sizeof(replace_entry), &(case_sensitivity),
+              sizeof(case_sensitivity), &(replace_count), sizeof(replace_count),
+              &((*subject)->refcount__gc), sizeof((*subject)->refcount__gc),
+              &((*subject)->is_ref__gc), sizeof((*subject)->is_ref__gc),
+              &((**subject).refcount__gc), sizeof((**subject).refcount__gc),
+              &((**subject).is_ref__gc), sizeof((**subject).is_ref__gc),
+              &((*(subject))->refcount__gc), sizeof((*(subject))->refcount__gc),
+              &((*(subject))->type), sizeof((*(subject))->type),
+              &((*(subject))->is_ref__gc), sizeof((*(subject))->is_ref__gc),
+              &((*result).refcount__gc), sizeof((*result).refcount__gc),
+              &((*result).is_ref__gc), sizeof((*result).is_ref__gc),
+              &((**(subject)).refcount__gc), sizeof((**(subject)).refcount__gc),
+              &((**(subject)).is_ref__gc), sizeof((**(subject)).is_ref__gc)))
         return;
 
       break;
@@ -38225,9 +38642,7 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
     }
     {
       long long __temp49 = ((**subject).type != 6);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       49)) {
+      switch (__choose("__SWITCH49")) {
       case 0: {
 
         break;
@@ -38236,13 +38651,30 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
       case 1: {
         __temp49 =
             (((**subject).type != 6) ||
-             __is_neg("49-1", 2, (int *){replace_len, case_sensitivity}, 0, 0,
-                      8,
-                      (void **){subject, result, search, replace, replace_value,
-                                search_entry, replace_entry, replace_count},
-                      0, 0, "replace_len", "case_sensitivity", "subject",
-                      "result", "search", "replace", "replace_value",
-                      "search_entry", "replace_entry", "replace_count"));
+             __is_neg(
+                 "49-1", 25, &(subject), sizeof(subject), &((*subject)->type),
+                 sizeof((*subject)->type), &((**subject).type),
+                 sizeof((**subject).type), &((**(subject)).type),
+                 sizeof((**(subject)).type), &(result), sizeof(result),
+                 &((*result).type), sizeof((*result).type), &(search),
+                 sizeof(search), &(replace), sizeof(replace), &(replace_value),
+                 sizeof(replace_value), &(replace_len), sizeof(replace_len),
+                 &(search_entry), sizeof(search_entry), &(replace_entry),
+                 sizeof(replace_entry), &(case_sensitivity),
+                 sizeof(case_sensitivity), &(replace_count),
+                 sizeof(replace_count), &((*subject)->refcount__gc),
+                 sizeof((*subject)->refcount__gc), &((*subject)->is_ref__gc),
+                 sizeof((*subject)->is_ref__gc), &((**subject).refcount__gc),
+                 sizeof((**subject).refcount__gc), &((**subject).is_ref__gc),
+                 sizeof((**subject).is_ref__gc), &((*(subject))->refcount__gc),
+                 sizeof((*(subject))->refcount__gc), &((*(subject))->type),
+                 sizeof((*(subject))->type), &((*(subject))->is_ref__gc),
+                 sizeof((*(subject))->is_ref__gc), &((*result).refcount__gc),
+                 sizeof((*result).refcount__gc), &((*result).is_ref__gc),
+                 sizeof((*result).is_ref__gc), &((**(subject)).refcount__gc),
+                 sizeof((**(subject)).refcount__gc),
+                 &((**(subject)).is_ref__gc),
+                 sizeof((**(subject)).is_ref__gc)));
 
         break;
       }
@@ -38252,20 +38684,35 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
         __temp49 =
             (((**subject).type != 6) &&
              !__is_neg(
-                 "49-2", 2, (int *){replace_len, case_sensitivity}, 0, 0, 8,
-                 (void **){subject, result, search, replace, replace_value,
-                           search_entry, replace_entry, replace_count},
-                 0, 0, "replace_len", "case_sensitivity", "subject", "result",
-                 "search", "replace", "replace_value", "search_entry",
-                 "replace_entry", "replace_count"));
+                 "49-2", 25, &(subject), sizeof(subject), &((*subject)->type),
+                 sizeof((*subject)->type), &((**subject).type),
+                 sizeof((**subject).type), &((**(subject)).type),
+                 sizeof((**(subject)).type), &(result), sizeof(result),
+                 &((*result).type), sizeof((*result).type), &(search),
+                 sizeof(search), &(replace), sizeof(replace), &(replace_value),
+                 sizeof(replace_value), &(replace_len), sizeof(replace_len),
+                 &(search_entry), sizeof(search_entry), &(replace_entry),
+                 sizeof(replace_entry), &(case_sensitivity),
+                 sizeof(case_sensitivity), &(replace_count),
+                 sizeof(replace_count), &((*subject)->refcount__gc),
+                 sizeof((*subject)->refcount__gc), &((*subject)->is_ref__gc),
+                 sizeof((*subject)->is_ref__gc), &((**subject).refcount__gc),
+                 sizeof((**subject).refcount__gc), &((**subject).is_ref__gc),
+                 sizeof((**subject).is_ref__gc), &((*(subject))->refcount__gc),
+                 sizeof((*(subject))->refcount__gc), &((*(subject))->type),
+                 sizeof((*(subject))->type), &((*(subject))->is_ref__gc),
+                 sizeof((*(subject))->is_ref__gc), &((*result).refcount__gc),
+                 sizeof((*result).refcount__gc), &((*result).is_ref__gc),
+                 sizeof((*result).is_ref__gc), &((**(subject)).refcount__gc),
+                 sizeof((**(subject)).refcount__gc),
+                 &((**(subject)).is_ref__gc),
+                 sizeof((**(subject)).is_ref__gc)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       50)) {
+      switch (__choose("__SWITCH50")) {
       case 0: {
         if (__temp49) {
           if (!zval_isref_p(*subject)) {
@@ -38300,13 +38747,29 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
 #ifdef COMPILE_4002
       case 1: {
         // GuardKind
-        if (!__is_neg("50-1", 2, (int *){replace_len, case_sensitivity}, 0, 0,
-                      8,
-                      (void **){subject, result, search, replace, replace_value,
-                                search_entry, replace_entry, replace_count},
-                      0, 0, "replace_len", "case_sensitivity", "subject",
-                      "result", "search", "replace", "replace_value",
-                      "search_entry", "replace_entry", "replace_count"))
+        if (!__is_neg(
+                "50-1", 25, &(subject), sizeof(subject), &((*subject)->type),
+                sizeof((*subject)->type), &((**subject).type),
+                sizeof((**subject).type), &((**(subject)).type),
+                sizeof((**(subject)).type), &(result), sizeof(result),
+                &((*result).type), sizeof((*result).type), &(search),
+                sizeof(search), &(replace), sizeof(replace), &(replace_value),
+                sizeof(replace_value), &(replace_len), sizeof(replace_len),
+                &(search_entry), sizeof(search_entry), &(replace_entry),
+                sizeof(replace_entry), &(case_sensitivity),
+                sizeof(case_sensitivity), &(replace_count),
+                sizeof(replace_count), &((*subject)->refcount__gc),
+                sizeof((*subject)->refcount__gc), &((*subject)->is_ref__gc),
+                sizeof((*subject)->is_ref__gc), &((**subject).refcount__gc),
+                sizeof((**subject).refcount__gc), &((**subject).is_ref__gc),
+                sizeof((**subject).is_ref__gc), &((*(subject))->refcount__gc),
+                sizeof((*(subject))->refcount__gc), &((*(subject))->type),
+                sizeof((*(subject))->type), &((*(subject))->is_ref__gc),
+                sizeof((*(subject))->is_ref__gc), &((*result).refcount__gc),
+                sizeof((*result).refcount__gc), &((*result).is_ref__gc),
+                sizeof((*result).is_ref__gc), &((**(subject)).refcount__gc),
+                sizeof((**(subject)).refcount__gc), &((**(subject)).is_ref__gc),
+                sizeof((**(subject)).is_ref__gc)))
           if ((**subject).type != 6) {
             if (!zval_isref_p(*subject)) {
               do {
@@ -38341,13 +38804,29 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
 #ifdef COMPILE_4003
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("50-2", 2, (int *){replace_len, case_sensitivity}, 0, 0,
-                      8,
-                      (void **){subject, result, search, replace, replace_value,
-                                search_entry, replace_entry, replace_count},
-                      0, 0, "replace_len", "case_sensitivity", "subject",
-                      "result", "search", "replace", "replace_value",
-                      "search_entry", "replace_entry", "replace_count") &&
+        if (!__is_neg(
+                "50-2", 25, &(subject), sizeof(subject), &((*subject)->type),
+                sizeof((*subject)->type), &((**subject).type),
+                sizeof((**subject).type), &((**(subject)).type),
+                sizeof((**(subject)).type), &(result), sizeof(result),
+                &((*result).type), sizeof((*result).type), &(search),
+                sizeof(search), &(replace), sizeof(replace), &(replace_value),
+                sizeof(replace_value), &(replace_len), sizeof(replace_len),
+                &(search_entry), sizeof(search_entry), &(replace_entry),
+                sizeof(replace_entry), &(case_sensitivity),
+                sizeof(case_sensitivity), &(replace_count),
+                sizeof(replace_count), &((*subject)->refcount__gc),
+                sizeof((*subject)->refcount__gc), &((*subject)->is_ref__gc),
+                sizeof((*subject)->is_ref__gc), &((**subject).refcount__gc),
+                sizeof((**subject).refcount__gc), &((**subject).is_ref__gc),
+                sizeof((**subject).is_ref__gc), &((*(subject))->refcount__gc),
+                sizeof((*(subject))->refcount__gc), &((*(subject))->type),
+                sizeof((*(subject))->type), &((*(subject))->is_ref__gc),
+                sizeof((*(subject))->is_ref__gc), &((*result).refcount__gc),
+                sizeof((*result).refcount__gc), &((*result).is_ref__gc),
+                sizeof((*result).is_ref__gc), &((**(subject)).refcount__gc),
+                sizeof((**(subject)).refcount__gc), &((**(subject)).is_ref__gc),
+                sizeof((**(subject)).is_ref__gc)) &&
             ((**subject).type != 6)) {
           if (!zval_isref_p(*subject)) {
             do {
@@ -38384,9 +38863,7 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
   }
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     51)) {
+    switch (__choose("__SWITCH51")) {
     case 0:
       break;
 #ifdef COMPILE_4004
@@ -40882,21 +41359,37 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
 #ifdef COMPILE_4274
     case 271: {
       // IfExitKind
-      if (__is_neg("51-271", 2, (int *){replace_len, case_sensitivity}, 0, 0, 8,
-                   (void **){result, subject, search, replace, replace_value,
-                             search_entry, replace_entry, replace_count},
-                   0, 0, "replace_len", "case_sensitivity", "result", "subject",
-                   "search", "replace", "replace_value", "search_entry",
-                   "replace_entry", "replace_count"))
+      if (__is_neg(
+              "51-271", 27, &(result), sizeof(result), &((*result).type),
+              sizeof((*result).type), &(subject), sizeof(subject),
+              &((*subject)->type), sizeof((*subject)->type),
+              &((**subject).type), sizeof((**subject).type),
+              &((**subject).value.str.len), sizeof((**subject).value.str.len),
+              &((**(subject)).type), sizeof((**(subject)).type), &(search),
+              sizeof(search), &(replace), sizeof(replace), &(replace_value),
+              sizeof(replace_value), &(replace_len), sizeof(replace_len),
+              &(search_entry), sizeof(search_entry), &(replace_entry),
+              sizeof(replace_entry), &(case_sensitivity),
+              sizeof(case_sensitivity), &(replace_count), sizeof(replace_count),
+              &((**subject).value.str.val), sizeof((**subject).value.str.val),
+              &((*subject)->refcount__gc), sizeof((*subject)->refcount__gc),
+              &((*subject)->is_ref__gc), sizeof((*subject)->is_ref__gc),
+              &((**subject).refcount__gc), sizeof((**subject).refcount__gc),
+              &((**subject).is_ref__gc), sizeof((**subject).is_ref__gc),
+              &((*(subject))->refcount__gc), sizeof((*(subject))->refcount__gc),
+              &((*(subject))->type), sizeof((*(subject))->type),
+              &((*(subject))->is_ref__gc), sizeof((*(subject))->is_ref__gc),
+              &((*result).refcount__gc), sizeof((*result).refcount__gc),
+              &((*result).is_ref__gc), sizeof((*result).is_ref__gc),
+              &((**(subject)).refcount__gc), sizeof((**(subject)).refcount__gc),
+              &((**(subject)).is_ref__gc), sizeof((**(subject)).is_ref__gc)))
         return;
 
       break;
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     52)) {
+    switch (__choose("__SWITCH52")) {
     case 0: {
       Z_TYPE_P(result) = IS_STRING;
 
@@ -40905,12 +41398,30 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
 #ifdef COMPILE_4275
     case 1: {
       // GuardKind
-      if (!__is_neg("52-1", 2, (int *){replace_len, case_sensitivity}, 0, 0, 8,
-                    (void **){result, subject, search, replace, replace_value,
-                              search_entry, replace_entry, replace_count},
-                    0, 0, "replace_len", "case_sensitivity", "result",
-                    "subject", "search", "replace", "replace_value",
-                    "search_entry", "replace_entry", "replace_count"))
+      if (!__is_neg(
+              "52-1", 27, &(result), sizeof(result), &((*result).type),
+              sizeof((*result).type), &(subject), sizeof(subject),
+              &((*subject)->type), sizeof((*subject)->type),
+              &((**subject).type), sizeof((**subject).type),
+              &((**subject).value.str.len), sizeof((**subject).value.str.len),
+              &((**(subject)).type), sizeof((**(subject)).type), &(search),
+              sizeof(search), &(replace), sizeof(replace), &(replace_value),
+              sizeof(replace_value), &(replace_len), sizeof(replace_len),
+              &(search_entry), sizeof(search_entry), &(replace_entry),
+              sizeof(replace_entry), &(case_sensitivity),
+              sizeof(case_sensitivity), &(replace_count), sizeof(replace_count),
+              &((**subject).value.str.val), sizeof((**subject).value.str.val),
+              &((*subject)->refcount__gc), sizeof((*subject)->refcount__gc),
+              &((*subject)->is_ref__gc), sizeof((*subject)->is_ref__gc),
+              &((**subject).refcount__gc), sizeof((**subject).refcount__gc),
+              &((**subject).is_ref__gc), sizeof((**subject).is_ref__gc),
+              &((*(subject))->refcount__gc), sizeof((*(subject))->refcount__gc),
+              &((*(subject))->type), sizeof((*(subject))->type),
+              &((*(subject))->is_ref__gc), sizeof((*(subject))->is_ref__gc),
+              &((*result).refcount__gc), sizeof((*result).refcount__gc),
+              &((*result).is_ref__gc), sizeof((*result).is_ref__gc),
+              &((**(subject)).refcount__gc), sizeof((**(subject)).refcount__gc),
+              &((**(subject)).is_ref__gc), sizeof((**(subject)).is_ref__gc)))
         (*result).type = 6;
 
       break;
@@ -40944,9 +41455,7 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
   }
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     53)) {
+    switch (__choose("__SWITCH53")) {
     case 0:
       break;
 #ifdef COMPILE_4279
@@ -43466,12 +43975,25 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
 #ifdef COMPILE_4552
     case 274: {
       // IfExitKind
-      if (__is_neg("53-274", 2, (int *){replace_len, case_sensitivity}, 0, 0, 8,
-                   (void **){subject, result, search, replace, replace_value,
-                             search_entry, replace_entry, replace_count},
-                   0, 0, "replace_len", "case_sensitivity", "subject", "result",
-                   "search", "replace", "replace_value", "search_entry",
-                   "replace_entry", "replace_count"))
+      if (__is_neg(
+              "53-274", 21, &(subject), sizeof(subject),
+              &((**subject).value.str.len), sizeof((**subject).value.str.len),
+              &(result), sizeof(result), &((*result).type),
+              sizeof((*result).type), &((**subject).type),
+              sizeof((**subject).type), &(search), sizeof(search), &(replace),
+              sizeof(replace), &(replace_value), sizeof(replace_value),
+              &(replace_len), sizeof(replace_len), &(search_entry),
+              sizeof(search_entry), &(replace_entry), sizeof(replace_entry),
+              &(case_sensitivity), sizeof(case_sensitivity), &(replace_count),
+              sizeof(replace_count), &((**subject).value.str.val),
+              sizeof((**subject).value.str.val), &((**subject).refcount__gc),
+              sizeof((**subject).refcount__gc), &((**subject).is_ref__gc),
+              sizeof((**subject).is_ref__gc), &((result)->refcount__gc),
+              sizeof((result)->refcount__gc), &((result)->type),
+              sizeof((result)->type), &((result)->is_ref__gc),
+              sizeof((result)->is_ref__gc), &((*result).refcount__gc),
+              sizeof((*result).refcount__gc), &((*result).is_ref__gc),
+              sizeof((*result).is_ref__gc)))
         return;
 
       break;
@@ -43480,9 +44002,7 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
     }
     {
       long long __temp54 = ((**subject).value.str.len == 0);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       54)) {
+      switch (__choose("__SWITCH54")) {
       case 0: {
 
         break;
@@ -43491,13 +44011,26 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
       case 1: {
         __temp54 =
             (((**subject).value.str.len == 0) ||
-             __is_neg("54-1", 2, (int *){replace_len, case_sensitivity}, 0, 0,
-                      8,
-                      (void **){subject, result, search, replace, replace_value,
-                                search_entry, replace_entry, replace_count},
-                      0, 0, "replace_len", "case_sensitivity", "subject",
-                      "result", "search", "replace", "replace_value",
-                      "search_entry", "replace_entry", "replace_count"));
+             __is_neg(
+                 "54-1", 21, &(subject), sizeof(subject),
+                 &((**subject).value.str.len),
+                 sizeof((**subject).value.str.len), &(result), sizeof(result),
+                 &((*result).type), sizeof((*result).type), &((**subject).type),
+                 sizeof((**subject).type), &(search), sizeof(search),
+                 &(replace), sizeof(replace), &(replace_value),
+                 sizeof(replace_value), &(replace_len), sizeof(replace_len),
+                 &(search_entry), sizeof(search_entry), &(replace_entry),
+                 sizeof(replace_entry), &(case_sensitivity),
+                 sizeof(case_sensitivity), &(replace_count),
+                 sizeof(replace_count), &((**subject).value.str.val),
+                 sizeof((**subject).value.str.val), &((**subject).refcount__gc),
+                 sizeof((**subject).refcount__gc), &((**subject).is_ref__gc),
+                 sizeof((**subject).is_ref__gc), &((result)->refcount__gc),
+                 sizeof((result)->refcount__gc), &((result)->type),
+                 sizeof((result)->type), &((result)->is_ref__gc),
+                 sizeof((result)->is_ref__gc), &((*result).refcount__gc),
+                 sizeof((*result).refcount__gc), &((*result).is_ref__gc),
+                 sizeof((*result).is_ref__gc)));
 
         break;
       }
@@ -43507,26 +44040,35 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
         __temp54 =
             (((**subject).value.str.len == 0) &&
              !__is_neg(
-                 "54-2", 2, (int *){replace_len, case_sensitivity}, 0, 0, 8,
-                 (void **){subject, result, search, replace, replace_value,
-                           search_entry, replace_entry, replace_count},
-                 0, 0, "replace_len", "case_sensitivity", "subject", "result",
-                 "search", "replace", "replace_value", "search_entry",
-                 "replace_entry", "replace_count"));
+                 "54-2", 21, &(subject), sizeof(subject),
+                 &((**subject).value.str.len),
+                 sizeof((**subject).value.str.len), &(result), sizeof(result),
+                 &((*result).type), sizeof((*result).type), &((**subject).type),
+                 sizeof((**subject).type), &(search), sizeof(search),
+                 &(replace), sizeof(replace), &(replace_value),
+                 sizeof(replace_value), &(replace_len), sizeof(replace_len),
+                 &(search_entry), sizeof(search_entry), &(replace_entry),
+                 sizeof(replace_entry), &(case_sensitivity),
+                 sizeof(case_sensitivity), &(replace_count),
+                 sizeof(replace_count), &((**subject).value.str.val),
+                 sizeof((**subject).value.str.val), &((**subject).refcount__gc),
+                 sizeof((**subject).refcount__gc), &((**subject).is_ref__gc),
+                 sizeof((**subject).is_ref__gc), &((result)->refcount__gc),
+                 sizeof((result)->refcount__gc), &((result)->type),
+                 sizeof((result)->type), &((result)->is_ref__gc),
+                 sizeof((result)->is_ref__gc), &((*result).refcount__gc),
+                 sizeof((*result).refcount__gc), &((*result).is_ref__gc),
+                 sizeof((*result).is_ref__gc)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       59)) {
+      switch (__choose("__SWITCH59")) {
       case 0: {
         if (__temp54) {
           {
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             55)) {
+            switch (__choose("__SWITCH55")) {
             case 0:
               break;
 #ifdef COMPILE_4555
@@ -46074,23 +46616,32 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
 #ifdef COMPILE_4825
             case 271: {
               // IfExitKind
-              if (__is_neg("55-271", 2, (int *){replace_len, case_sensitivity},
-                           0, 0, 8,
-                           (void **){result, subject, search, replace,
-                                     replace_value, search_entry, replace_entry,
-                                     replace_count},
-                           0, 0, "replace_len", "case_sensitivity", "result",
-                           "subject", "search", "replace", "replace_value",
-                           "search_entry", "replace_entry", "replace_count"))
+              if (__is_neg(
+                      "55-271", 18, &(result), sizeof(result), &(subject),
+                      sizeof(subject), &((**subject).value.str.len),
+                      sizeof((**subject).value.str.len), &((**subject).type),
+                      sizeof((**subject).type), &(search), sizeof(search),
+                      &(replace), sizeof(replace), &(replace_value),
+                      sizeof(replace_value), &(replace_len),
+                      sizeof(replace_len), &(search_entry),
+                      sizeof(search_entry), &(replace_entry),
+                      sizeof(replace_entry), &(case_sensitivity),
+                      sizeof(case_sensitivity), &(replace_count),
+                      sizeof(replace_count), &((**subject).value.str.val),
+                      sizeof((**subject).value.str.val),
+                      &((**subject).refcount__gc),
+                      sizeof((**subject).refcount__gc),
+                      &((**subject).is_ref__gc), sizeof((**subject).is_ref__gc),
+                      &((result)->refcount__gc), sizeof((result)->refcount__gc),
+                      &((result)->type), sizeof((result)->type),
+                      &((result)->is_ref__gc), sizeof((result)->is_ref__gc)))
                 return;
 
               break;
             }
 #endif
             }
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             56)) {
+            switch (__choose("__SWITCH56")) {
             case 0: {
               ZVAL_STRINGL(result, "", 0, 1);
 
@@ -46099,14 +46650,25 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
 #ifdef COMPILE_4826
             case 1: {
               // GuardKind
-              if (!__is_neg("56-1", 2, (int *){replace_len, case_sensitivity},
-                            0, 0, 8,
-                            (void **){result, subject, search, replace,
-                                      replace_value, search_entry,
-                                      replace_entry, replace_count},
-                            0, 0, "replace_len", "case_sensitivity", "result",
-                            "subject", "search", "replace", "replace_value",
-                            "search_entry", "replace_entry", "replace_count"))
+              if (!__is_neg(
+                      "56-1", 18, &(result), sizeof(result), &(subject),
+                      sizeof(subject), &((**subject).value.str.len),
+                      sizeof((**subject).value.str.len), &((**subject).type),
+                      sizeof((**subject).type), &(search), sizeof(search),
+                      &(replace), sizeof(replace), &(replace_value),
+                      sizeof(replace_value), &(replace_len),
+                      sizeof(replace_len), &(search_entry),
+                      sizeof(search_entry), &(replace_entry),
+                      sizeof(replace_entry), &(case_sensitivity),
+                      sizeof(case_sensitivity), &(replace_count),
+                      sizeof(replace_count), &((**subject).value.str.val),
+                      sizeof((**subject).value.str.val),
+                      &((**subject).refcount__gc),
+                      sizeof((**subject).refcount__gc),
+                      &((**subject).is_ref__gc), sizeof((**subject).is_ref__gc),
+                      &((result)->refcount__gc), sizeof((result)->refcount__gc),
+                      &((result)->type), sizeof((result)->type),
+                      &((result)->is_ref__gc), sizeof((result)->is_ref__gc)))
                 do {
                   const char *__s = ("");
                   int __l = 0;
@@ -46123,9 +46685,7 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
             }
           }
           {
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             57)) {
+            switch (__choose("__SWITCH57")) {
             case 0:
               break;
 #ifdef COMPILE_4827
@@ -48665,23 +49225,25 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
 #ifdef COMPILE_5096
             case 270: {
               // IfExitKind
-              if (__is_neg("57-270", 2, (int *){replace_len, case_sensitivity},
-                           0, 0, 8,
-                           (void **){result, subject, search, replace,
-                                     replace_value, search_entry, replace_entry,
-                                     replace_count},
-                           0, 0, "replace_len", "case_sensitivity", "result",
-                           "subject", "search", "replace", "replace_value",
-                           "search_entry", "replace_entry", "replace_count"))
+              if (__is_neg("57-270", 13, &(result), sizeof(result), &(subject),
+                           sizeof(subject), &(search), sizeof(search),
+                           &(replace), sizeof(replace), &(replace_value),
+                           sizeof(replace_value), &(replace_len),
+                           sizeof(replace_len), &(search_entry),
+                           sizeof(search_entry), &(replace_entry),
+                           sizeof(replace_entry), &(case_sensitivity),
+                           sizeof(case_sensitivity), &(replace_count),
+                           sizeof(replace_count), &((result)->refcount__gc),
+                           sizeof((result)->refcount__gc), &((result)->type),
+                           sizeof((result)->type), &((result)->is_ref__gc),
+                           sizeof((result)->is_ref__gc)))
                 return;
 
               break;
             }
 #endif
             }
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             58)) {
+            switch (__choose("__SWITCH58")) {
             case 0: {
               return;
 
@@ -48690,14 +49252,18 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
 #ifdef COMPILE_5097
             case 1: {
               // GuardKind
-              if (!__is_neg("58-1", 2, (int *){replace_len, case_sensitivity},
-                            0, 0, 8,
-                            (void **){result, subject, search, replace,
-                                      replace_value, search_entry,
-                                      replace_entry, replace_count},
-                            0, 0, "replace_len", "case_sensitivity", "result",
-                            "subject", "search", "replace", "replace_value",
-                            "search_entry", "replace_entry", "replace_count"))
+              if (!__is_neg("58-1", 13, &(result), sizeof(result), &(subject),
+                            sizeof(subject), &(search), sizeof(search),
+                            &(replace), sizeof(replace), &(replace_value),
+                            sizeof(replace_value), &(replace_len),
+                            sizeof(replace_len), &(search_entry),
+                            sizeof(search_entry), &(replace_entry),
+                            sizeof(replace_entry), &(case_sensitivity),
+                            sizeof(case_sensitivity), &(replace_count),
+                            sizeof(replace_count), &((result)->refcount__gc),
+                            sizeof((result)->refcount__gc), &((result)->type),
+                            sizeof((result)->type), &((result)->is_ref__gc),
+                            sizeof((result)->is_ref__gc)))
                 return;
 
               break;
@@ -48712,13 +49278,17 @@ static void php_str_replace_in_subject(zval *search, zval *replace,
 #ifdef COMPILE_5098
       case 1: {
         // GuardKind
-        if (!__is_neg("59-1", 2, (int *){replace_len, case_sensitivity}, 0, 0,
-                      8,
-                      (void **){result, subject, search, replace, replace_value,
-                                search_entry, replace_entry, replace_count},
-                      0, 0, "replace_len", "case_sensitivity", "result",
-                      "subject", "search", "replace", "replace_value",
-                      "search_entry", "replace_entry", "replace_count"))
+        if (!__is_neg("59-1", 13, &(result), sizeof(result), &(subject),
+                      sizeof(subject), &(search), sizeof(search), &(replace),
+                      sizeof(replace), &(replace_value), sizeof(replace_value),
+                      &(replace_len), sizeof(replace_len), &(search_entry),
+                      sizeof(search_entry), &(replace_entry),
+                      sizeof(replace_entry), &(case_sensitivity),
+                      sizeof(case_sensitivity), &(replace_count),
+                      sizeof(replace_count), &((result)->refcount__gc),
+                      sizeof((result)->refcount__gc), &((result)->type),
+                      sizeof((result)->type), &((result)->is_ref__gc),
+                      sizeof((result)->is_ref__gc)))
           return;
 
         break;
@@ -48831,9 +49401,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     60)) {
+    switch (__choose("__SWITCH60")) {
     case 0:
       break;
 #ifdef COMPILE_5099
@@ -51032,13 +51600,15 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_5355
     case 257: {
       // IfExitKind
-      if (__is_neg("60-257", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                   0, 8,
-                   (void **){subject, search, replace, zcount, return_value,
-                             subject_entry, result, string_key},
-                   0, 0, "ht", "case_sensitivity", "count", "argc", "subject",
-                   "search", "replace", "zcount", "return_value",
-                   "subject_entry", "result", "string_key"))
+      if (__is_neg("60-257", 14, &(ht), sizeof(ht), &(subject), sizeof(subject),
+                   &(search), sizeof(search), &(replace), sizeof(replace),
+                   &(zcount), sizeof(zcount), &(return_value),
+                   sizeof(return_value), &(subject_entry),
+                   sizeof(subject_entry), &(result), sizeof(result),
+                   &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                   sizeof(count), &(argc), sizeof(argc), &(string_key),
+                   sizeof(string_key), &(string_key_len),
+                   sizeof(string_key_len), &(num_key), sizeof(num_key)))
         return;
 
       break;
@@ -51049,9 +51619,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
       long long __temp61 =
           (zend_parse_parameters((ht), "ZZZ|Z", &search, &replace, &subject,
                                  &zcount) == -1);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       61)) {
+      switch (__choose("__SWITCH61")) {
       case 0: {
 
         break;
@@ -51061,13 +51629,15 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
         __temp61 =
             ((zend_parse_parameters((ht), "ZZZ|Z", &search, &replace, &subject,
                                     &zcount) == -1) ||
-             __is_neg("61-1", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                      0, 8,
-                      (void **){subject, search, replace, zcount, return_value,
-                                subject_entry, result, string_key},
-                      0, 0, "ht", "case_sensitivity", "count", "argc",
-                      "subject", "search", "replace", "zcount", "return_value",
-                      "subject_entry", "result", "string_key"));
+             __is_neg("61-1", 14, &(ht), sizeof(ht), &(subject),
+                      sizeof(subject), &(search), sizeof(search), &(replace),
+                      sizeof(replace), &(zcount), sizeof(zcount),
+                      &(return_value), sizeof(return_value), &(subject_entry),
+                      sizeof(subject_entry), &(result), sizeof(result),
+                      &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                      sizeof(count), &(argc), sizeof(argc), &(string_key),
+                      sizeof(string_key), &(string_key_len),
+                      sizeof(string_key_len), &(num_key), sizeof(num_key)));
 
         break;
       }
@@ -51077,21 +51647,21 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
         __temp61 =
             ((zend_parse_parameters((ht), "ZZZ|Z", &search, &replace, &subject,
                                     &zcount) == -1) &&
-             !__is_neg("61-2", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                       0, 8,
-                       (void **){subject, search, replace, zcount, return_value,
-                                 subject_entry, result, string_key},
-                       0, 0, "ht", "case_sensitivity", "count", "argc",
-                       "subject", "search", "replace", "zcount", "return_value",
-                       "subject_entry", "result", "string_key"));
+             !__is_neg("61-2", 14, &(ht), sizeof(ht), &(subject),
+                       sizeof(subject), &(search), sizeof(search), &(replace),
+                       sizeof(replace), &(zcount), sizeof(zcount),
+                       &(return_value), sizeof(return_value), &(subject_entry),
+                       sizeof(subject_entry), &(result), sizeof(result),
+                       &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                       sizeof(count), &(argc), sizeof(argc), &(string_key),
+                       sizeof(string_key), &(string_key_len),
+                       sizeof(string_key_len), &(num_key), sizeof(num_key)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       62)) {
+      switch (__choose("__SWITCH62")) {
       case 0: {
         if (__temp61) {
           return;
@@ -51102,13 +51672,15 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_5358
       case 1: {
         // GuardKind
-        if (!__is_neg("62-1", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                      0, 8,
-                      (void **){subject, search, replace, zcount, return_value,
-                                subject_entry, result, string_key},
-                      0, 0, "ht", "case_sensitivity", "count", "argc",
-                      "subject", "search", "replace", "zcount", "return_value",
-                      "subject_entry", "result", "string_key"))
+        if (!__is_neg("62-1", 14, &(ht), sizeof(ht), &(subject),
+                      sizeof(subject), &(search), sizeof(search), &(replace),
+                      sizeof(replace), &(zcount), sizeof(zcount),
+                      &(return_value), sizeof(return_value), &(subject_entry),
+                      sizeof(subject_entry), &(result), sizeof(result),
+                      &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                      sizeof(count), &(argc), sizeof(argc), &(string_key),
+                      sizeof(string_key), &(string_key_len),
+                      sizeof(string_key_len), &(num_key), sizeof(num_key)))
           if (zend_parse_parameters((ht), "ZZZ|Z", &search, &replace, &subject,
                                     &zcount) == -1) {
             return;
@@ -51120,13 +51692,15 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_5359
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("62-2", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                      0, 8,
-                      (void **){subject, search, replace, zcount, return_value,
-                                subject_entry, result, string_key},
-                      0, 0, "ht", "case_sensitivity", "count", "argc",
-                      "subject", "search", "replace", "zcount", "return_value",
-                      "subject_entry", "result", "string_key") &&
+        if (!__is_neg("62-2", 14, &(ht), sizeof(ht), &(subject),
+                      sizeof(subject), &(search), sizeof(search), &(replace),
+                      sizeof(replace), &(zcount), sizeof(zcount),
+                      &(return_value), sizeof(return_value), &(subject_entry),
+                      sizeof(subject_entry), &(result), sizeof(result),
+                      &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                      sizeof(count), &(argc), sizeof(argc), &(string_key),
+                      sizeof(string_key), &(string_key_len),
+                      sizeof(string_key_len), &(num_key), sizeof(num_key)) &&
             (zend_parse_parameters((ht), "ZZZ|Z", &search, &replace, &subject,
                                    &zcount) == -1)) {
           return;
@@ -51141,9 +51715,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     63)) {
+    switch (__choose("__SWITCH63")) {
     case 0:
       break;
 #ifdef COMPILE_5360
@@ -53358,22 +53930,34 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_5618
     case 259: {
       // IfExitKind
-      if (__is_neg("63-259", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                   0, 8,
-                   (void **){search, replace, subject, zcount, return_value,
-                             subject_entry, result, string_key},
-                   0, 0, "ht", "case_sensitivity", "count", "argc", "search",
-                   "replace", "subject", "zcount", "return_value",
-                   "subject_entry", "result", "string_key"))
+      if (__is_neg(
+              "63-259", 26, &(search), sizeof(search), &((**(search)).type),
+              sizeof((**(search)).type), &(replace), sizeof(replace),
+              &((**(replace)).type), sizeof((**(replace)).type), &(subject),
+              sizeof(subject), &(ht), sizeof(ht), &(zcount), sizeof(zcount),
+              &(return_value), sizeof(return_value), &(subject_entry),
+              sizeof(subject_entry), &(result), sizeof(result),
+              &(case_sensitivity), sizeof(case_sensitivity), &(count),
+              sizeof(count), &(argc), sizeof(argc), &(string_key),
+              sizeof(string_key), &(string_key_len), sizeof(string_key_len),
+              &(num_key), sizeof(num_key), &((*(search))->refcount__gc),
+              sizeof((*(search))->refcount__gc), &((*(search))->type),
+              sizeof((*(search))->type), &((*(search))->is_ref__gc),
+              sizeof((*(search))->is_ref__gc), &((**(search)).refcount__gc),
+              sizeof((**(search)).refcount__gc), &((**(search)).is_ref__gc),
+              sizeof((**(search)).is_ref__gc), &((*(replace))->refcount__gc),
+              sizeof((*(replace))->refcount__gc), &((*(replace))->type),
+              sizeof((*(replace))->type), &((*(replace))->is_ref__gc),
+              sizeof((*(replace))->is_ref__gc), &((**(replace)).refcount__gc),
+              sizeof((**(replace)).refcount__gc), &((**(replace)).is_ref__gc),
+              sizeof((**(replace)).is_ref__gc)))
         return;
 
       break;
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     64)) {
+    switch (__choose("__SWITCH64")) {
     case 0: {
       SEPARATE_ZVAL(search);
 
@@ -53382,13 +53966,27 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_5619
     case 1: {
       // GuardKind
-      if (!__is_neg("64-1", 4, (int *){ht, case_sensitivity, count, argc}, 0, 0,
-                    8,
-                    (void **){search, replace, subject, zcount, return_value,
-                              subject_entry, result, string_key},
-                    0, 0, "ht", "case_sensitivity", "count", "argc", "search",
-                    "replace", "subject", "zcount", "return_value",
-                    "subject_entry", "result", "string_key"))
+      if (!__is_neg(
+              "64-1", 26, &(search), sizeof(search), &((**(search)).type),
+              sizeof((**(search)).type), &(replace), sizeof(replace),
+              &((**(replace)).type), sizeof((**(replace)).type), &(subject),
+              sizeof(subject), &(ht), sizeof(ht), &(zcount), sizeof(zcount),
+              &(return_value), sizeof(return_value), &(subject_entry),
+              sizeof(subject_entry), &(result), sizeof(result),
+              &(case_sensitivity), sizeof(case_sensitivity), &(count),
+              sizeof(count), &(argc), sizeof(argc), &(string_key),
+              sizeof(string_key), &(string_key_len), sizeof(string_key_len),
+              &(num_key), sizeof(num_key), &((*(search))->refcount__gc),
+              sizeof((*(search))->refcount__gc), &((*(search))->type),
+              sizeof((*(search))->type), &((*(search))->is_ref__gc),
+              sizeof((*(search))->is_ref__gc), &((**(search)).refcount__gc),
+              sizeof((**(search)).refcount__gc), &((**(search)).is_ref__gc),
+              sizeof((**(search)).is_ref__gc), &((*(replace))->refcount__gc),
+              sizeof((*(replace))->refcount__gc), &((*(replace))->type),
+              sizeof((*(replace))->type), &((*(replace))->is_ref__gc),
+              sizeof((*(replace))->is_ref__gc), &((**(replace)).refcount__gc),
+              sizeof((**(replace)).refcount__gc), &((**(replace)).is_ref__gc),
+              sizeof((**(replace)).is_ref__gc)))
         do {
           if (zval_refcount_p(*((search))) > 1) {
             zval *new_zv;
@@ -53417,9 +54015,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
   }
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     65)) {
+    switch (__choose("__SWITCH65")) {
     case 0:
       break;
 #ifdef COMPILE_5620
@@ -55634,22 +56230,40 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_5878
     case 259: {
       // IfExitKind
-      if (__is_neg("65-259", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                   0, 8,
-                   (void **){replace, subject, search, zcount, return_value,
-                             subject_entry, result, string_key},
-                   0, 0, "ht", "case_sensitivity", "count", "argc", "replace",
-                   "subject", "search", "zcount", "return_value",
-                   "subject_entry", "result", "string_key"))
+      if (__is_neg(
+              "65-259", 32, &(replace), sizeof(replace), &((**(replace)).type),
+              sizeof((**(replace)).type), &(subject), sizeof(subject),
+              &(search), sizeof(search), &((**(subject)).type),
+              sizeof((**(subject)).type), &((**(search)).type),
+              sizeof((**(search)).type), &(ht), sizeof(ht), &(zcount),
+              sizeof(zcount), &(return_value), sizeof(return_value),
+              &(subject_entry), sizeof(subject_entry), &(result),
+              sizeof(result), &(case_sensitivity), sizeof(case_sensitivity),
+              &(count), sizeof(count), &(argc), sizeof(argc), &(string_key),
+              sizeof(string_key), &(string_key_len), sizeof(string_key_len),
+              &(num_key), sizeof(num_key), &((*(subject))->refcount__gc),
+              sizeof((*(subject))->refcount__gc), &((*(subject))->type),
+              sizeof((*(subject))->type), &((*(subject))->is_ref__gc),
+              sizeof((*(subject))->is_ref__gc), &((**(subject)).refcount__gc),
+              sizeof((**(subject)).refcount__gc), &((**(subject)).is_ref__gc),
+              sizeof((**(subject)).is_ref__gc), &((*(search))->refcount__gc),
+              sizeof((*(search))->refcount__gc), &((*(search))->type),
+              sizeof((*(search))->type), &((*(search))->is_ref__gc),
+              sizeof((*(search))->is_ref__gc), &((**(search)).refcount__gc),
+              sizeof((**(search)).refcount__gc), &((**(search)).is_ref__gc),
+              sizeof((**(search)).is_ref__gc), &((*(replace))->refcount__gc),
+              sizeof((*(replace))->refcount__gc), &((*(replace))->type),
+              sizeof((*(replace))->type), &((*(replace))->is_ref__gc),
+              sizeof((*(replace))->is_ref__gc), &((**(replace)).refcount__gc),
+              sizeof((**(replace)).refcount__gc), &((**(replace)).is_ref__gc),
+              sizeof((**(replace)).is_ref__gc)))
         return;
 
       break;
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     66)) {
+    switch (__choose("__SWITCH66")) {
     case 0: {
       SEPARATE_ZVAL(replace);
 
@@ -55658,13 +56272,33 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_5879
     case 1: {
       // GuardKind
-      if (!__is_neg("66-1", 4, (int *){ht, case_sensitivity, count, argc}, 0, 0,
-                    8,
-                    (void **){replace, subject, search, zcount, return_value,
-                              subject_entry, result, string_key},
-                    0, 0, "ht", "case_sensitivity", "count", "argc", "replace",
-                    "subject", "search", "zcount", "return_value",
-                    "subject_entry", "result", "string_key"))
+      if (!__is_neg(
+              "66-1", 32, &(replace), sizeof(replace), &((**(replace)).type),
+              sizeof((**(replace)).type), &(subject), sizeof(subject),
+              &(search), sizeof(search), &((**(subject)).type),
+              sizeof((**(subject)).type), &((**(search)).type),
+              sizeof((**(search)).type), &(ht), sizeof(ht), &(zcount),
+              sizeof(zcount), &(return_value), sizeof(return_value),
+              &(subject_entry), sizeof(subject_entry), &(result),
+              sizeof(result), &(case_sensitivity), sizeof(case_sensitivity),
+              &(count), sizeof(count), &(argc), sizeof(argc), &(string_key),
+              sizeof(string_key), &(string_key_len), sizeof(string_key_len),
+              &(num_key), sizeof(num_key), &((*(subject))->refcount__gc),
+              sizeof((*(subject))->refcount__gc), &((*(subject))->type),
+              sizeof((*(subject))->type), &((*(subject))->is_ref__gc),
+              sizeof((*(subject))->is_ref__gc), &((**(subject)).refcount__gc),
+              sizeof((**(subject)).refcount__gc), &((**(subject)).is_ref__gc),
+              sizeof((**(subject)).is_ref__gc), &((*(search))->refcount__gc),
+              sizeof((*(search))->refcount__gc), &((*(search))->type),
+              sizeof((*(search))->type), &((*(search))->is_ref__gc),
+              sizeof((*(search))->is_ref__gc), &((**(search)).refcount__gc),
+              sizeof((**(search)).refcount__gc), &((**(search)).is_ref__gc),
+              sizeof((**(search)).is_ref__gc), &((*(replace))->refcount__gc),
+              sizeof((*(replace))->refcount__gc), &((*(replace))->type),
+              sizeof((*(replace))->type), &((*(replace))->is_ref__gc),
+              sizeof((*(replace))->is_ref__gc), &((**(replace)).refcount__gc),
+              sizeof((**(replace)).refcount__gc), &((**(replace)).is_ref__gc),
+              sizeof((**(replace)).is_ref__gc)))
         do {
           if (zval_refcount_p(*((replace))) > 1) {
             zval *new_zv;
@@ -55693,9 +56327,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
   }
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     67)) {
+    switch (__choose("__SWITCH67")) {
     case 0:
       break;
 #ifdef COMPILE_5880
@@ -57910,22 +58542,34 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_6138
     case 259: {
       // IfExitKind
-      if (__is_neg("67-259", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                   0, 8,
-                   (void **){subject, replace, search, zcount, return_value,
-                             subject_entry, result, string_key},
-                   0, 0, "ht", "case_sensitivity", "count", "argc", "subject",
-                   "replace", "search", "zcount", "return_value",
-                   "subject_entry", "result", "string_key"))
+      if (__is_neg(
+              "67-259", 26, &(subject), sizeof(subject), &((**(subject)).type),
+              sizeof((**(subject)).type), &(replace), sizeof(replace),
+              &((**(replace)).type), sizeof((**(replace)).type), &(search),
+              sizeof(search), &(ht), sizeof(ht), &(zcount), sizeof(zcount),
+              &(return_value), sizeof(return_value), &(subject_entry),
+              sizeof(subject_entry), &(result), sizeof(result),
+              &(case_sensitivity), sizeof(case_sensitivity), &(count),
+              sizeof(count), &(argc), sizeof(argc), &(string_key),
+              sizeof(string_key), &(string_key_len), sizeof(string_key_len),
+              &(num_key), sizeof(num_key), &((*(subject))->refcount__gc),
+              sizeof((*(subject))->refcount__gc), &((*(subject))->type),
+              sizeof((*(subject))->type), &((*(subject))->is_ref__gc),
+              sizeof((*(subject))->is_ref__gc), &((**(subject)).refcount__gc),
+              sizeof((**(subject)).refcount__gc), &((**(subject)).is_ref__gc),
+              sizeof((**(subject)).is_ref__gc), &((*(replace))->refcount__gc),
+              sizeof((*(replace))->refcount__gc), &((*(replace))->type),
+              sizeof((*(replace))->type), &((*(replace))->is_ref__gc),
+              sizeof((*(replace))->is_ref__gc), &((**(replace)).refcount__gc),
+              sizeof((**(replace)).refcount__gc), &((**(replace)).is_ref__gc),
+              sizeof((**(replace)).is_ref__gc)))
         return;
 
       break;
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     68)) {
+    switch (__choose("__SWITCH68")) {
     case 0: {
       SEPARATE_ZVAL(subject);
 
@@ -57934,13 +58578,27 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_6139
     case 1: {
       // GuardKind
-      if (!__is_neg("68-1", 4, (int *){ht, case_sensitivity, count, argc}, 0, 0,
-                    8,
-                    (void **){subject, replace, search, zcount, return_value,
-                              subject_entry, result, string_key},
-                    0, 0, "ht", "case_sensitivity", "count", "argc", "subject",
-                    "replace", "search", "zcount", "return_value",
-                    "subject_entry", "result", "string_key"))
+      if (!__is_neg(
+              "68-1", 26, &(subject), sizeof(subject), &((**(subject)).type),
+              sizeof((**(subject)).type), &(replace), sizeof(replace),
+              &((**(replace)).type), sizeof((**(replace)).type), &(search),
+              sizeof(search), &(ht), sizeof(ht), &(zcount), sizeof(zcount),
+              &(return_value), sizeof(return_value), &(subject_entry),
+              sizeof(subject_entry), &(result), sizeof(result),
+              &(case_sensitivity), sizeof(case_sensitivity), &(count),
+              sizeof(count), &(argc), sizeof(argc), &(string_key),
+              sizeof(string_key), &(string_key_len), sizeof(string_key_len),
+              &(num_key), sizeof(num_key), &((*(subject))->refcount__gc),
+              sizeof((*(subject))->refcount__gc), &((*(subject))->type),
+              sizeof((*(subject))->type), &((*(subject))->is_ref__gc),
+              sizeof((*(subject))->is_ref__gc), &((**(subject)).refcount__gc),
+              sizeof((**(subject)).refcount__gc), &((**(subject)).is_ref__gc),
+              sizeof((**(subject)).is_ref__gc), &((*(replace))->refcount__gc),
+              sizeof((*(replace))->refcount__gc), &((*(replace))->type),
+              sizeof((*(replace))->type), &((*(replace))->is_ref__gc),
+              sizeof((*(replace))->is_ref__gc), &((**(replace)).refcount__gc),
+              sizeof((**(replace)).refcount__gc), &((**(replace)).is_ref__gc),
+              sizeof((**(replace)).is_ref__gc)))
         do {
           if (zval_refcount_p(*((subject))) > 1) {
             zval *new_zv;
@@ -57971,9 +58629,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
   /* Make sure we're dealing with strings and do the replacement. */
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     69)) {
+    switch (__choose("__SWITCH69")) {
     case 0:
       break;
 #ifdef COMPILE_6140
@@ -60236,13 +60892,27 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_6404
     case 265: {
       // IfExitKind
-      if (__is_neg("69-265", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                   0, 8,
-                   (void **){search, replace, subject, return_value, zcount,
-                             subject_entry, result, string_key},
-                   0, 0, "ht", "case_sensitivity", "count", "argc", "search",
-                   "replace", "subject", "return_value", "zcount",
-                   "subject_entry", "result", "string_key"))
+      if (__is_neg(
+              "69-265", 26, &(search), sizeof(search), &((**search).type),
+              sizeof((**search).type), &((**(search)).type),
+              sizeof((**(search)).type), &((*search)->type),
+              sizeof((*search)->type), &(replace), sizeof(replace), &(subject),
+              sizeof(subject), &(ht), sizeof(ht), &(return_value),
+              sizeof(return_value), &(zcount), sizeof(zcount), &(subject_entry),
+              sizeof(subject_entry), &(result), sizeof(result),
+              &(case_sensitivity), sizeof(case_sensitivity), &(count),
+              sizeof(count), &(argc), sizeof(argc), &(string_key),
+              sizeof(string_key), &(string_key_len), sizeof(string_key_len),
+              &(num_key), sizeof(num_key), &((**search).refcount__gc),
+              sizeof((**search).refcount__gc), &((**search).is_ref__gc),
+              sizeof((**search).is_ref__gc), &((*(search))->refcount__gc),
+              sizeof((*(search))->refcount__gc), &((*(search))->type),
+              sizeof((*(search))->type), &((*(search))->is_ref__gc),
+              sizeof((*(search))->is_ref__gc), &((**(search)).refcount__gc),
+              sizeof((**(search)).refcount__gc), &((**(search)).is_ref__gc),
+              sizeof((**(search)).is_ref__gc), &((*search)->refcount__gc),
+              sizeof((*search)->refcount__gc), &((*search)->is_ref__gc),
+              sizeof((*search)->is_ref__gc)))
         return;
 
       break;
@@ -60251,9 +60921,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
     }
     {
       long long __temp70 = ((**search).type != 4);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       70)) {
+      switch (__choose("__SWITCH70")) {
       case 0: {
 
         break;
@@ -60262,13 +60930,28 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
       case 1: {
         __temp70 =
             (((**search).type != 4) ||
-             __is_neg("70-1", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                      0, 8,
-                      (void **){search, replace, subject, return_value, zcount,
-                                subject_entry, result, string_key},
-                      0, 0, "ht", "case_sensitivity", "count", "argc", "search",
-                      "replace", "subject", "return_value", "zcount",
-                      "subject_entry", "result", "string_key"));
+             __is_neg(
+                 "70-1", 26, &(search), sizeof(search), &((**search).type),
+                 sizeof((**search).type), &((**(search)).type),
+                 sizeof((**(search)).type), &((*search)->type),
+                 sizeof((*search)->type), &(replace), sizeof(replace),
+                 &(subject), sizeof(subject), &(ht), sizeof(ht),
+                 &(return_value), sizeof(return_value), &(zcount),
+                 sizeof(zcount), &(subject_entry), sizeof(subject_entry),
+                 &(result), sizeof(result), &(case_sensitivity),
+                 sizeof(case_sensitivity), &(count), sizeof(count), &(argc),
+                 sizeof(argc), &(string_key), sizeof(string_key),
+                 &(string_key_len), sizeof(string_key_len), &(num_key),
+                 sizeof(num_key), &((**search).refcount__gc),
+                 sizeof((**search).refcount__gc), &((**search).is_ref__gc),
+                 sizeof((**search).is_ref__gc), &((*(search))->refcount__gc),
+                 sizeof((*(search))->refcount__gc), &((*(search))->type),
+                 sizeof((*(search))->type), &((*(search))->is_ref__gc),
+                 sizeof((*(search))->is_ref__gc), &((**(search)).refcount__gc),
+                 sizeof((**(search)).refcount__gc), &((**(search)).is_ref__gc),
+                 sizeof((**(search)).is_ref__gc), &((*search)->refcount__gc),
+                 sizeof((*search)->refcount__gc), &((*search)->is_ref__gc),
+                 sizeof((*search)->is_ref__gc)));
 
         break;
       }
@@ -60277,27 +60960,38 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
       case 2: {
         __temp70 =
             (((**search).type != 4) &&
-             !__is_neg("70-2", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                       0, 8,
-                       (void **){search, replace, subject, return_value, zcount,
-                                 subject_entry, result, string_key},
-                       0, 0, "ht", "case_sensitivity", "count", "argc",
-                       "search", "replace", "subject", "return_value", "zcount",
-                       "subject_entry", "result", "string_key"));
+             !__is_neg(
+                 "70-2", 26, &(search), sizeof(search), &((**search).type),
+                 sizeof((**search).type), &((**(search)).type),
+                 sizeof((**(search)).type), &((*search)->type),
+                 sizeof((*search)->type), &(replace), sizeof(replace),
+                 &(subject), sizeof(subject), &(ht), sizeof(ht),
+                 &(return_value), sizeof(return_value), &(zcount),
+                 sizeof(zcount), &(subject_entry), sizeof(subject_entry),
+                 &(result), sizeof(result), &(case_sensitivity),
+                 sizeof(case_sensitivity), &(count), sizeof(count), &(argc),
+                 sizeof(argc), &(string_key), sizeof(string_key),
+                 &(string_key_len), sizeof(string_key_len), &(num_key),
+                 sizeof(num_key), &((**search).refcount__gc),
+                 sizeof((**search).refcount__gc), &((**search).is_ref__gc),
+                 sizeof((**search).is_ref__gc), &((*(search))->refcount__gc),
+                 sizeof((*(search))->refcount__gc), &((*(search))->type),
+                 sizeof((*(search))->type), &((*(search))->is_ref__gc),
+                 sizeof((*(search))->is_ref__gc), &((**(search)).refcount__gc),
+                 sizeof((**(search)).refcount__gc), &((**(search)).is_ref__gc),
+                 sizeof((**(search)).is_ref__gc), &((*search)->refcount__gc),
+                 sizeof((*search)->refcount__gc), &((*search)->is_ref__gc),
+                 sizeof((*search)->is_ref__gc)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       77)) {
+      switch (__choose("__SWITCH77")) {
       case 0: {
         if (__temp70) {
           {
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             71)) {
+            switch (__choose("__SWITCH71")) {
             case 0:
               break;
 #ifdef COMPILE_6407
@@ -62547,13 +63241,51 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_6667
             case 261: {
               // IfExitKind
-              if (__is_neg("71-261", 4,
-                           (int *){ht, case_sensitivity, count, argc}, 0, 0, 8,
-                           (void **){search, replace, subject, return_value,
-                                     zcount, subject_entry, result, string_key},
-                           0, 0, "ht", "case_sensitivity", "count", "argc",
-                           "search", "replace", "subject", "return_value",
-                           "zcount", "subject_entry", "result", "string_key"))
+              if (__is_neg(
+                      "71-261", 38, &(search), sizeof(search),
+                      &((**search).type), sizeof((**search).type),
+                      &((**(search)).type), sizeof((**(search)).type),
+                      &((*search)->type), sizeof((*search)->type), &(replace),
+                      sizeof(replace), &((**replace).type),
+                      sizeof((**replace).type), &((**(replace)).type),
+                      sizeof((**(replace)).type), &((*replace)->type),
+                      sizeof((*replace)->type), &(subject), sizeof(subject),
+                      &(return_value), sizeof(return_value), &(ht), sizeof(ht),
+                      &(zcount), sizeof(zcount), &(subject_entry),
+                      sizeof(subject_entry), &(result), sizeof(result),
+                      &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                      sizeof(count), &(argc), sizeof(argc), &(string_key),
+                      sizeof(string_key), &(string_key_len),
+                      sizeof(string_key_len), &(num_key), sizeof(num_key),
+                      &((**search).refcount__gc),
+                      sizeof((**search).refcount__gc), &((**search).is_ref__gc),
+                      sizeof((**search).is_ref__gc),
+                      &((*(search))->refcount__gc),
+                      sizeof((*(search))->refcount__gc), &((*(search))->type),
+                      sizeof((*(search))->type), &((*(search))->is_ref__gc),
+                      sizeof((*(search))->is_ref__gc),
+                      &((**(search)).refcount__gc),
+                      sizeof((**(search)).refcount__gc),
+                      &((**(search)).is_ref__gc),
+                      sizeof((**(search)).is_ref__gc),
+                      &((*search)->refcount__gc),
+                      sizeof((*search)->refcount__gc), &((*search)->is_ref__gc),
+                      sizeof((*search)->is_ref__gc),
+                      &((**replace).refcount__gc),
+                      sizeof((**replace).refcount__gc),
+                      &((**replace).is_ref__gc), sizeof((**replace).is_ref__gc),
+                      &((*(replace))->refcount__gc),
+                      sizeof((*(replace))->refcount__gc), &((*(replace))->type),
+                      sizeof((*(replace))->type), &((*(replace))->is_ref__gc),
+                      sizeof((*(replace))->is_ref__gc),
+                      &((**(replace)).refcount__gc),
+                      sizeof((**(replace)).refcount__gc),
+                      &((**(replace)).is_ref__gc),
+                      sizeof((**(replace)).is_ref__gc),
+                      &((*replace)->refcount__gc),
+                      sizeof((*replace)->refcount__gc),
+                      &((*replace)->is_ref__gc),
+                      sizeof((*replace)->is_ref__gc)))
                 return;
 
               break;
@@ -62562,10 +63294,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
             }
             {
               long long __temp72 = ((**search).type != 6);
-              switch (
-                  __choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                           "php-5a8c917-workdir/switch.txt",
-                           72)) {
+              switch (__choose("__SWITCH72")) {
               case 0: {
 
                 break;
@@ -62574,14 +63303,57 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
               case 1: {
                 __temp72 =
                     (((**search).type != 6) ||
-                     __is_neg(
-                         "72-1", 4, (int *){ht, case_sensitivity, count, argc},
-                         0, 0, 8,
-                         (void **){search, replace, subject, return_value,
-                                   zcount, subject_entry, result, string_key},
-                         0, 0, "ht", "case_sensitivity", "count", "argc",
-                         "search", "replace", "subject", "return_value",
-                         "zcount", "subject_entry", "result", "string_key"));
+                     __is_neg("72-1", 38, &(search), sizeof(search),
+                              &((**search).type), sizeof((**search).type),
+                              &((**(search)).type), sizeof((**(search)).type),
+                              &((*search)->type), sizeof((*search)->type),
+                              &(replace), sizeof(replace), &((**replace).type),
+                              sizeof((**replace).type), &((**(replace)).type),
+                              sizeof((**(replace)).type), &((*replace)->type),
+                              sizeof((*replace)->type), &(subject),
+                              sizeof(subject), &(return_value),
+                              sizeof(return_value), &(ht), sizeof(ht),
+                              &(zcount), sizeof(zcount), &(subject_entry),
+                              sizeof(subject_entry), &(result), sizeof(result),
+                              &(case_sensitivity), sizeof(case_sensitivity),
+                              &(count), sizeof(count), &(argc), sizeof(argc),
+                              &(string_key), sizeof(string_key),
+                              &(string_key_len), sizeof(string_key_len),
+                              &(num_key), sizeof(num_key),
+                              &((**search).refcount__gc),
+                              sizeof((**search).refcount__gc),
+                              &((**search).is_ref__gc),
+                              sizeof((**search).is_ref__gc),
+                              &((*(search))->refcount__gc),
+                              sizeof((*(search))->refcount__gc),
+                              &((*(search))->type), sizeof((*(search))->type),
+                              &((*(search))->is_ref__gc),
+                              sizeof((*(search))->is_ref__gc),
+                              &((**(search)).refcount__gc),
+                              sizeof((**(search)).refcount__gc),
+                              &((**(search)).is_ref__gc),
+                              sizeof((**(search)).is_ref__gc),
+                              &((*search)->refcount__gc),
+                              sizeof((*search)->refcount__gc),
+                              &((*search)->is_ref__gc),
+                              sizeof((*search)->is_ref__gc),
+                              &((**replace).refcount__gc),
+                              sizeof((**replace).refcount__gc),
+                              &((**replace).is_ref__gc),
+                              sizeof((**replace).is_ref__gc),
+                              &((*(replace))->refcount__gc),
+                              sizeof((*(replace))->refcount__gc),
+                              &((*(replace))->type), sizeof((*(replace))->type),
+                              &((*(replace))->is_ref__gc),
+                              sizeof((*(replace))->is_ref__gc),
+                              &((**(replace)).refcount__gc),
+                              sizeof((**(replace)).refcount__gc),
+                              &((**(replace)).is_ref__gc),
+                              sizeof((**(replace)).is_ref__gc),
+                              &((*replace)->refcount__gc),
+                              sizeof((*replace)->refcount__gc),
+                              &((*replace)->is_ref__gc),
+                              sizeof((*replace)->is_ref__gc)));
 
                 break;
               }
@@ -62591,22 +63363,62 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
                 __temp72 =
                     (((**search).type != 6) &&
                      !__is_neg(
-                         "72-2", 4, (int *){ht, case_sensitivity, count, argc},
-                         0, 0, 8,
-                         (void **){search, replace, subject, return_value,
-                                   zcount, subject_entry, result, string_key},
-                         0, 0, "ht", "case_sensitivity", "count", "argc",
-                         "search", "replace", "subject", "return_value",
-                         "zcount", "subject_entry", "result", "string_key"));
+                         "72-2", 38, &(search), sizeof(search),
+                         &((**search).type), sizeof((**search).type),
+                         &((**(search)).type), sizeof((**(search)).type),
+                         &((*search)->type), sizeof((*search)->type),
+                         &(replace), sizeof(replace), &((**replace).type),
+                         sizeof((**replace).type), &((**(replace)).type),
+                         sizeof((**(replace)).type), &((*replace)->type),
+                         sizeof((*replace)->type), &(subject), sizeof(subject),
+                         &(return_value), sizeof(return_value), &(ht),
+                         sizeof(ht), &(zcount), sizeof(zcount),
+                         &(subject_entry), sizeof(subject_entry), &(result),
+                         sizeof(result), &(case_sensitivity),
+                         sizeof(case_sensitivity), &(count), sizeof(count),
+                         &(argc), sizeof(argc), &(string_key),
+                         sizeof(string_key), &(string_key_len),
+                         sizeof(string_key_len), &(num_key), sizeof(num_key),
+                         &((**search).refcount__gc),
+                         sizeof((**search).refcount__gc),
+                         &((**search).is_ref__gc),
+                         sizeof((**search).is_ref__gc),
+                         &((*(search))->refcount__gc),
+                         sizeof((*(search))->refcount__gc),
+                         &((*(search))->type), sizeof((*(search))->type),
+                         &((*(search))->is_ref__gc),
+                         sizeof((*(search))->is_ref__gc),
+                         &((**(search)).refcount__gc),
+                         sizeof((**(search)).refcount__gc),
+                         &((**(search)).is_ref__gc),
+                         sizeof((**(search)).is_ref__gc),
+                         &((*search)->refcount__gc),
+                         sizeof((*search)->refcount__gc),
+                         &((*search)->is_ref__gc),
+                         sizeof((*search)->is_ref__gc),
+                         &((**replace).refcount__gc),
+                         sizeof((**replace).refcount__gc),
+                         &((**replace).is_ref__gc),
+                         sizeof((**replace).is_ref__gc),
+                         &((*(replace))->refcount__gc),
+                         sizeof((*(replace))->refcount__gc),
+                         &((*(replace))->type), sizeof((*(replace))->type),
+                         &((*(replace))->is_ref__gc),
+                         sizeof((*(replace))->is_ref__gc),
+                         &((**(replace)).refcount__gc),
+                         sizeof((**(replace)).refcount__gc),
+                         &((**(replace)).is_ref__gc),
+                         sizeof((**(replace)).is_ref__gc),
+                         &((*replace)->refcount__gc),
+                         sizeof((*replace)->refcount__gc),
+                         &((*replace)->is_ref__gc),
+                         sizeof((*replace)->is_ref__gc)));
 
                 break;
               }
 #endif
               }
-              switch (
-                  __choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                           "php-5a8c917-workdir/switch.txt",
-                           73)) {
+              switch (__choose("__SWITCH73")) {
               case 0: {
                 if (__temp72) {
                   if (!zval_isref_p(*search)) {
@@ -62642,13 +63454,52 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
               case 1: {
                 // GuardKind
                 if (!__is_neg(
-                        "73-1", 4, (int *){ht, case_sensitivity, count, argc},
-                        0, 0, 8,
-                        (void **){search, replace, subject, return_value,
-                                  zcount, subject_entry, result, string_key},
-                        0, 0, "ht", "case_sensitivity", "count", "argc",
-                        "search", "replace", "subject", "return_value",
-                        "zcount", "subject_entry", "result", "string_key"))
+                        "73-1", 38, &(search), sizeof(search),
+                        &((**search).type), sizeof((**search).type),
+                        &((**(search)).type), sizeof((**(search)).type),
+                        &((*search)->type), sizeof((*search)->type), &(replace),
+                        sizeof(replace), &((**replace).type),
+                        sizeof((**replace).type), &((**(replace)).type),
+                        sizeof((**(replace)).type), &((*replace)->type),
+                        sizeof((*replace)->type), &(subject), sizeof(subject),
+                        &(return_value), sizeof(return_value), &(ht),
+                        sizeof(ht), &(zcount), sizeof(zcount), &(subject_entry),
+                        sizeof(subject_entry), &(result), sizeof(result),
+                        &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                        sizeof(count), &(argc), sizeof(argc), &(string_key),
+                        sizeof(string_key), &(string_key_len),
+                        sizeof(string_key_len), &(num_key), sizeof(num_key),
+                        &((**search).refcount__gc),
+                        sizeof((**search).refcount__gc),
+                        &((**search).is_ref__gc), sizeof((**search).is_ref__gc),
+                        &((*(search))->refcount__gc),
+                        sizeof((*(search))->refcount__gc), &((*(search))->type),
+                        sizeof((*(search))->type), &((*(search))->is_ref__gc),
+                        sizeof((*(search))->is_ref__gc),
+                        &((**(search)).refcount__gc),
+                        sizeof((**(search)).refcount__gc),
+                        &((**(search)).is_ref__gc),
+                        sizeof((**(search)).is_ref__gc),
+                        &((*search)->refcount__gc),
+                        sizeof((*search)->refcount__gc),
+                        &((*search)->is_ref__gc), sizeof((*search)->is_ref__gc),
+                        &((**replace).refcount__gc),
+                        sizeof((**replace).refcount__gc),
+                        &((**replace).is_ref__gc),
+                        sizeof((**replace).is_ref__gc),
+                        &((*(replace))->refcount__gc),
+                        sizeof((*(replace))->refcount__gc),
+                        &((*(replace))->type), sizeof((*(replace))->type),
+                        &((*(replace))->is_ref__gc),
+                        sizeof((*(replace))->is_ref__gc),
+                        &((**(replace)).refcount__gc),
+                        sizeof((**(replace)).refcount__gc),
+                        &((**(replace)).is_ref__gc),
+                        sizeof((**(replace)).is_ref__gc),
+                        &((*replace)->refcount__gc),
+                        sizeof((*replace)->refcount__gc),
+                        &((*replace)->is_ref__gc),
+                        sizeof((*replace)->is_ref__gc)))
                   if ((**search).type != 6) {
                     if (!zval_isref_p(*search)) {
                       do {
@@ -62685,13 +63536,52 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
               case 2: {
                 // SpecialGuardKind
                 if (!__is_neg(
-                        "73-2", 4, (int *){ht, case_sensitivity, count, argc},
-                        0, 0, 8,
-                        (void **){search, replace, subject, return_value,
-                                  zcount, subject_entry, result, string_key},
-                        0, 0, "ht", "case_sensitivity", "count", "argc",
-                        "search", "replace", "subject", "return_value",
-                        "zcount", "subject_entry", "result", "string_key") &&
+                        "73-2", 38, &(search), sizeof(search),
+                        &((**search).type), sizeof((**search).type),
+                        &((**(search)).type), sizeof((**(search)).type),
+                        &((*search)->type), sizeof((*search)->type), &(replace),
+                        sizeof(replace), &((**replace).type),
+                        sizeof((**replace).type), &((**(replace)).type),
+                        sizeof((**(replace)).type), &((*replace)->type),
+                        sizeof((*replace)->type), &(subject), sizeof(subject),
+                        &(return_value), sizeof(return_value), &(ht),
+                        sizeof(ht), &(zcount), sizeof(zcount), &(subject_entry),
+                        sizeof(subject_entry), &(result), sizeof(result),
+                        &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                        sizeof(count), &(argc), sizeof(argc), &(string_key),
+                        sizeof(string_key), &(string_key_len),
+                        sizeof(string_key_len), &(num_key), sizeof(num_key),
+                        &((**search).refcount__gc),
+                        sizeof((**search).refcount__gc),
+                        &((**search).is_ref__gc), sizeof((**search).is_ref__gc),
+                        &((*(search))->refcount__gc),
+                        sizeof((*(search))->refcount__gc), &((*(search))->type),
+                        sizeof((*(search))->type), &((*(search))->is_ref__gc),
+                        sizeof((*(search))->is_ref__gc),
+                        &((**(search)).refcount__gc),
+                        sizeof((**(search)).refcount__gc),
+                        &((**(search)).is_ref__gc),
+                        sizeof((**(search)).is_ref__gc),
+                        &((*search)->refcount__gc),
+                        sizeof((*search)->refcount__gc),
+                        &((*search)->is_ref__gc), sizeof((*search)->is_ref__gc),
+                        &((**replace).refcount__gc),
+                        sizeof((**replace).refcount__gc),
+                        &((**replace).is_ref__gc),
+                        sizeof((**replace).is_ref__gc),
+                        &((*(replace))->refcount__gc),
+                        sizeof((*(replace))->refcount__gc),
+                        &((*(replace))->type), sizeof((*(replace))->type),
+                        &((*(replace))->is_ref__gc),
+                        sizeof((*(replace))->is_ref__gc),
+                        &((**(replace)).refcount__gc),
+                        sizeof((**(replace)).refcount__gc),
+                        &((**(replace)).is_ref__gc),
+                        sizeof((**(replace)).is_ref__gc),
+                        &((*replace)->refcount__gc),
+                        sizeof((*replace)->refcount__gc),
+                        &((*replace)->is_ref__gc),
+                        sizeof((*replace)->is_ref__gc)) &&
                     ((**search).type != 6)) {
                   if (!zval_isref_p(*search)) {
                     do {
@@ -62727,9 +63617,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
             }
           }
           {
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             74)) {
+            switch (__choose("__SWITCH74")) {
             case 0:
               break;
 #ifdef COMPILE_6672
@@ -64979,13 +65867,51 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_6932
             case 261: {
               // IfExitKind
-              if (__is_neg("74-261", 4,
-                           (int *){ht, case_sensitivity, count, argc}, 0, 0, 8,
-                           (void **){replace, search, subject, return_value,
-                                     zcount, subject_entry, result, string_key},
-                           0, 0, "ht", "case_sensitivity", "count", "argc",
-                           "replace", "search", "subject", "return_value",
-                           "zcount", "subject_entry", "result", "string_key"))
+              if (__is_neg(
+                      "74-261", 38, &(replace), sizeof(replace),
+                      &((**replace).type), sizeof((**replace).type),
+                      &((**(replace)).type), sizeof((**(replace)).type),
+                      &((*replace)->type), sizeof((*replace)->type), &(search),
+                      sizeof(search), &((**search).type),
+                      sizeof((**search).type), &((**(search)).type),
+                      sizeof((**(search)).type), &((*search)->type),
+                      sizeof((*search)->type), &(subject), sizeof(subject),
+                      &(return_value), sizeof(return_value), &(ht), sizeof(ht),
+                      &(zcount), sizeof(zcount), &(subject_entry),
+                      sizeof(subject_entry), &(result), sizeof(result),
+                      &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                      sizeof(count), &(argc), sizeof(argc), &(string_key),
+                      sizeof(string_key), &(string_key_len),
+                      sizeof(string_key_len), &(num_key), sizeof(num_key),
+                      &((**search).refcount__gc),
+                      sizeof((**search).refcount__gc), &((**search).is_ref__gc),
+                      sizeof((**search).is_ref__gc),
+                      &((*(search))->refcount__gc),
+                      sizeof((*(search))->refcount__gc), &((*(search))->type),
+                      sizeof((*(search))->type), &((*(search))->is_ref__gc),
+                      sizeof((*(search))->is_ref__gc),
+                      &((**(search)).refcount__gc),
+                      sizeof((**(search)).refcount__gc),
+                      &((**(search)).is_ref__gc),
+                      sizeof((**(search)).is_ref__gc),
+                      &((*search)->refcount__gc),
+                      sizeof((*search)->refcount__gc), &((*search)->is_ref__gc),
+                      sizeof((*search)->is_ref__gc),
+                      &((**replace).refcount__gc),
+                      sizeof((**replace).refcount__gc),
+                      &((**replace).is_ref__gc), sizeof((**replace).is_ref__gc),
+                      &((*(replace))->refcount__gc),
+                      sizeof((*(replace))->refcount__gc), &((*(replace))->type),
+                      sizeof((*(replace))->type), &((*(replace))->is_ref__gc),
+                      sizeof((*(replace))->is_ref__gc),
+                      &((**(replace)).refcount__gc),
+                      sizeof((**(replace)).refcount__gc),
+                      &((**(replace)).is_ref__gc),
+                      sizeof((**(replace)).is_ref__gc),
+                      &((*replace)->refcount__gc),
+                      sizeof((*replace)->refcount__gc),
+                      &((*replace)->is_ref__gc),
+                      sizeof((*replace)->is_ref__gc)))
                 return;
 
               break;
@@ -64994,10 +65920,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
             }
             {
               long long __temp75 = ((**replace).type != 6);
-              switch (
-                  __choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                           "php-5a8c917-workdir/switch.txt",
-                           75)) {
+              switch (__choose("__SWITCH75")) {
               case 0: {
 
                 break;
@@ -65006,14 +65929,57 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
               case 1: {
                 __temp75 =
                     (((**replace).type != 6) ||
-                     __is_neg(
-                         "75-1", 4, (int *){ht, case_sensitivity, count, argc},
-                         0, 0, 8,
-                         (void **){replace, search, subject, return_value,
-                                   zcount, subject_entry, result, string_key},
-                         0, 0, "ht", "case_sensitivity", "count", "argc",
-                         "replace", "search", "subject", "return_value",
-                         "zcount", "subject_entry", "result", "string_key"));
+                     __is_neg("75-1", 38, &(replace), sizeof(replace),
+                              &((**replace).type), sizeof((**replace).type),
+                              &((**(replace)).type), sizeof((**(replace)).type),
+                              &((*replace)->type), sizeof((*replace)->type),
+                              &(search), sizeof(search), &((**search).type),
+                              sizeof((**search).type), &((**(search)).type),
+                              sizeof((**(search)).type), &((*search)->type),
+                              sizeof((*search)->type), &(subject),
+                              sizeof(subject), &(return_value),
+                              sizeof(return_value), &(ht), sizeof(ht),
+                              &(zcount), sizeof(zcount), &(subject_entry),
+                              sizeof(subject_entry), &(result), sizeof(result),
+                              &(case_sensitivity), sizeof(case_sensitivity),
+                              &(count), sizeof(count), &(argc), sizeof(argc),
+                              &(string_key), sizeof(string_key),
+                              &(string_key_len), sizeof(string_key_len),
+                              &(num_key), sizeof(num_key),
+                              &((**search).refcount__gc),
+                              sizeof((**search).refcount__gc),
+                              &((**search).is_ref__gc),
+                              sizeof((**search).is_ref__gc),
+                              &((*(search))->refcount__gc),
+                              sizeof((*(search))->refcount__gc),
+                              &((*(search))->type), sizeof((*(search))->type),
+                              &((*(search))->is_ref__gc),
+                              sizeof((*(search))->is_ref__gc),
+                              &((**(search)).refcount__gc),
+                              sizeof((**(search)).refcount__gc),
+                              &((**(search)).is_ref__gc),
+                              sizeof((**(search)).is_ref__gc),
+                              &((*search)->refcount__gc),
+                              sizeof((*search)->refcount__gc),
+                              &((*search)->is_ref__gc),
+                              sizeof((*search)->is_ref__gc),
+                              &((**replace).refcount__gc),
+                              sizeof((**replace).refcount__gc),
+                              &((**replace).is_ref__gc),
+                              sizeof((**replace).is_ref__gc),
+                              &((*(replace))->refcount__gc),
+                              sizeof((*(replace))->refcount__gc),
+                              &((*(replace))->type), sizeof((*(replace))->type),
+                              &((*(replace))->is_ref__gc),
+                              sizeof((*(replace))->is_ref__gc),
+                              &((**(replace)).refcount__gc),
+                              sizeof((**(replace)).refcount__gc),
+                              &((**(replace)).is_ref__gc),
+                              sizeof((**(replace)).is_ref__gc),
+                              &((*replace)->refcount__gc),
+                              sizeof((*replace)->refcount__gc),
+                              &((*replace)->is_ref__gc),
+                              sizeof((*replace)->is_ref__gc)));
 
                 break;
               }
@@ -65023,22 +65989,62 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
                 __temp75 =
                     (((**replace).type != 6) &&
                      !__is_neg(
-                         "75-2", 4, (int *){ht, case_sensitivity, count, argc},
-                         0, 0, 8,
-                         (void **){replace, search, subject, return_value,
-                                   zcount, subject_entry, result, string_key},
-                         0, 0, "ht", "case_sensitivity", "count", "argc",
-                         "replace", "search", "subject", "return_value",
-                         "zcount", "subject_entry", "result", "string_key"));
+                         "75-2", 38, &(replace), sizeof(replace),
+                         &((**replace).type), sizeof((**replace).type),
+                         &((**(replace)).type), sizeof((**(replace)).type),
+                         &((*replace)->type), sizeof((*replace)->type),
+                         &(search), sizeof(search), &((**search).type),
+                         sizeof((**search).type), &((**(search)).type),
+                         sizeof((**(search)).type), &((*search)->type),
+                         sizeof((*search)->type), &(subject), sizeof(subject),
+                         &(return_value), sizeof(return_value), &(ht),
+                         sizeof(ht), &(zcount), sizeof(zcount),
+                         &(subject_entry), sizeof(subject_entry), &(result),
+                         sizeof(result), &(case_sensitivity),
+                         sizeof(case_sensitivity), &(count), sizeof(count),
+                         &(argc), sizeof(argc), &(string_key),
+                         sizeof(string_key), &(string_key_len),
+                         sizeof(string_key_len), &(num_key), sizeof(num_key),
+                         &((**search).refcount__gc),
+                         sizeof((**search).refcount__gc),
+                         &((**search).is_ref__gc),
+                         sizeof((**search).is_ref__gc),
+                         &((*(search))->refcount__gc),
+                         sizeof((*(search))->refcount__gc),
+                         &((*(search))->type), sizeof((*(search))->type),
+                         &((*(search))->is_ref__gc),
+                         sizeof((*(search))->is_ref__gc),
+                         &((**(search)).refcount__gc),
+                         sizeof((**(search)).refcount__gc),
+                         &((**(search)).is_ref__gc),
+                         sizeof((**(search)).is_ref__gc),
+                         &((*search)->refcount__gc),
+                         sizeof((*search)->refcount__gc),
+                         &((*search)->is_ref__gc),
+                         sizeof((*search)->is_ref__gc),
+                         &((**replace).refcount__gc),
+                         sizeof((**replace).refcount__gc),
+                         &((**replace).is_ref__gc),
+                         sizeof((**replace).is_ref__gc),
+                         &((*(replace))->refcount__gc),
+                         sizeof((*(replace))->refcount__gc),
+                         &((*(replace))->type), sizeof((*(replace))->type),
+                         &((*(replace))->is_ref__gc),
+                         sizeof((*(replace))->is_ref__gc),
+                         &((**(replace)).refcount__gc),
+                         sizeof((**(replace)).refcount__gc),
+                         &((**(replace)).is_ref__gc),
+                         sizeof((**(replace)).is_ref__gc),
+                         &((*replace)->refcount__gc),
+                         sizeof((*replace)->refcount__gc),
+                         &((*replace)->is_ref__gc),
+                         sizeof((*replace)->is_ref__gc)));
 
                 break;
               }
 #endif
               }
-              switch (
-                  __choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                           "php-5a8c917-workdir/switch.txt",
-                           76)) {
+              switch (__choose("__SWITCH76")) {
               case 0: {
                 if (__temp75) {
                   if (!zval_isref_p(*replace)) {
@@ -65074,13 +66080,52 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
               case 1: {
                 // GuardKind
                 if (!__is_neg(
-                        "76-1", 4, (int *){ht, case_sensitivity, count, argc},
-                        0, 0, 8,
-                        (void **){replace, search, subject, return_value,
-                                  zcount, subject_entry, result, string_key},
-                        0, 0, "ht", "case_sensitivity", "count", "argc",
-                        "replace", "search", "subject", "return_value",
-                        "zcount", "subject_entry", "result", "string_key"))
+                        "76-1", 38, &(replace), sizeof(replace),
+                        &((**replace).type), sizeof((**replace).type),
+                        &((**(replace)).type), sizeof((**(replace)).type),
+                        &((*replace)->type), sizeof((*replace)->type),
+                        &(search), sizeof(search), &((**search).type),
+                        sizeof((**search).type), &((**(search)).type),
+                        sizeof((**(search)).type), &((*search)->type),
+                        sizeof((*search)->type), &(subject), sizeof(subject),
+                        &(return_value), sizeof(return_value), &(ht),
+                        sizeof(ht), &(zcount), sizeof(zcount), &(subject_entry),
+                        sizeof(subject_entry), &(result), sizeof(result),
+                        &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                        sizeof(count), &(argc), sizeof(argc), &(string_key),
+                        sizeof(string_key), &(string_key_len),
+                        sizeof(string_key_len), &(num_key), sizeof(num_key),
+                        &((**search).refcount__gc),
+                        sizeof((**search).refcount__gc),
+                        &((**search).is_ref__gc), sizeof((**search).is_ref__gc),
+                        &((*(search))->refcount__gc),
+                        sizeof((*(search))->refcount__gc), &((*(search))->type),
+                        sizeof((*(search))->type), &((*(search))->is_ref__gc),
+                        sizeof((*(search))->is_ref__gc),
+                        &((**(search)).refcount__gc),
+                        sizeof((**(search)).refcount__gc),
+                        &((**(search)).is_ref__gc),
+                        sizeof((**(search)).is_ref__gc),
+                        &((*search)->refcount__gc),
+                        sizeof((*search)->refcount__gc),
+                        &((*search)->is_ref__gc), sizeof((*search)->is_ref__gc),
+                        &((**replace).refcount__gc),
+                        sizeof((**replace).refcount__gc),
+                        &((**replace).is_ref__gc),
+                        sizeof((**replace).is_ref__gc),
+                        &((*(replace))->refcount__gc),
+                        sizeof((*(replace))->refcount__gc),
+                        &((*(replace))->type), sizeof((*(replace))->type),
+                        &((*(replace))->is_ref__gc),
+                        sizeof((*(replace))->is_ref__gc),
+                        &((**(replace)).refcount__gc),
+                        sizeof((**(replace)).refcount__gc),
+                        &((**(replace)).is_ref__gc),
+                        sizeof((**(replace)).is_ref__gc),
+                        &((*replace)->refcount__gc),
+                        sizeof((*replace)->refcount__gc),
+                        &((*replace)->is_ref__gc),
+                        sizeof((*replace)->is_ref__gc)))
                   if ((**replace).type != 6) {
                     if (!zval_isref_p(*replace)) {
                       do {
@@ -65117,13 +66162,52 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
               case 2: {
                 // SpecialGuardKind
                 if (!__is_neg(
-                        "76-2", 4, (int *){ht, case_sensitivity, count, argc},
-                        0, 0, 8,
-                        (void **){replace, search, subject, return_value,
-                                  zcount, subject_entry, result, string_key},
-                        0, 0, "ht", "case_sensitivity", "count", "argc",
-                        "replace", "search", "subject", "return_value",
-                        "zcount", "subject_entry", "result", "string_key") &&
+                        "76-2", 38, &(replace), sizeof(replace),
+                        &((**replace).type), sizeof((**replace).type),
+                        &((**(replace)).type), sizeof((**(replace)).type),
+                        &((*replace)->type), sizeof((*replace)->type),
+                        &(search), sizeof(search), &((**search).type),
+                        sizeof((**search).type), &((**(search)).type),
+                        sizeof((**(search)).type), &((*search)->type),
+                        sizeof((*search)->type), &(subject), sizeof(subject),
+                        &(return_value), sizeof(return_value), &(ht),
+                        sizeof(ht), &(zcount), sizeof(zcount), &(subject_entry),
+                        sizeof(subject_entry), &(result), sizeof(result),
+                        &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                        sizeof(count), &(argc), sizeof(argc), &(string_key),
+                        sizeof(string_key), &(string_key_len),
+                        sizeof(string_key_len), &(num_key), sizeof(num_key),
+                        &((**search).refcount__gc),
+                        sizeof((**search).refcount__gc),
+                        &((**search).is_ref__gc), sizeof((**search).is_ref__gc),
+                        &((*(search))->refcount__gc),
+                        sizeof((*(search))->refcount__gc), &((*(search))->type),
+                        sizeof((*(search))->type), &((*(search))->is_ref__gc),
+                        sizeof((*(search))->is_ref__gc),
+                        &((**(search)).refcount__gc),
+                        sizeof((**(search)).refcount__gc),
+                        &((**(search)).is_ref__gc),
+                        sizeof((**(search)).is_ref__gc),
+                        &((*search)->refcount__gc),
+                        sizeof((*search)->refcount__gc),
+                        &((*search)->is_ref__gc), sizeof((*search)->is_ref__gc),
+                        &((**replace).refcount__gc),
+                        sizeof((**replace).refcount__gc),
+                        &((**replace).is_ref__gc),
+                        sizeof((**replace).is_ref__gc),
+                        &((*(replace))->refcount__gc),
+                        sizeof((*(replace))->refcount__gc),
+                        &((*(replace))->type), sizeof((*(replace))->type),
+                        &((*(replace))->is_ref__gc),
+                        sizeof((*(replace))->is_ref__gc),
+                        &((**(replace)).refcount__gc),
+                        sizeof((**(replace)).refcount__gc),
+                        &((**(replace)).is_ref__gc),
+                        sizeof((**(replace)).is_ref__gc),
+                        &((*replace)->refcount__gc),
+                        sizeof((*replace)->refcount__gc),
+                        &((*replace)->is_ref__gc),
+                        sizeof((*replace)->is_ref__gc)) &&
                     ((**replace).type != 6)) {
                   if (!zval_isref_p(*replace)) {
                     do {
@@ -65167,13 +66251,39 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_6937
       case 1: {
         // GuardKind
-        if (!__is_neg("77-1", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                      0, 8,
-                      (void **){replace, search, subject, return_value, zcount,
-                                subject_entry, result, string_key},
-                      0, 0, "ht", "case_sensitivity", "count", "argc",
-                      "replace", "search", "subject", "return_value", "zcount",
-                      "subject_entry", "result", "string_key"))
+        if (!__is_neg(
+                "77-1", 38, &(replace), sizeof(replace), &((**replace).type),
+                sizeof((**replace).type), &((**(replace)).type),
+                sizeof((**(replace)).type), &((*replace)->type),
+                sizeof((*replace)->type), &(search), sizeof(search),
+                &((**search).type), sizeof((**search).type),
+                &((**(search)).type), sizeof((**(search)).type),
+                &((*search)->type), sizeof((*search)->type), &(subject),
+                sizeof(subject), &(return_value), sizeof(return_value), &(ht),
+                sizeof(ht), &(zcount), sizeof(zcount), &(subject_entry),
+                sizeof(subject_entry), &(result), sizeof(result),
+                &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                sizeof(count), &(argc), sizeof(argc), &(string_key),
+                sizeof(string_key), &(string_key_len), sizeof(string_key_len),
+                &(num_key), sizeof(num_key), &((**search).refcount__gc),
+                sizeof((**search).refcount__gc), &((**search).is_ref__gc),
+                sizeof((**search).is_ref__gc), &((*(search))->refcount__gc),
+                sizeof((*(search))->refcount__gc), &((*(search))->type),
+                sizeof((*(search))->type), &((*(search))->is_ref__gc),
+                sizeof((*(search))->is_ref__gc), &((**(search)).refcount__gc),
+                sizeof((**(search)).refcount__gc), &((**(search)).is_ref__gc),
+                sizeof((**(search)).is_ref__gc), &((*search)->refcount__gc),
+                sizeof((*search)->refcount__gc), &((*search)->is_ref__gc),
+                sizeof((*search)->is_ref__gc), &((**replace).refcount__gc),
+                sizeof((**replace).refcount__gc), &((**replace).is_ref__gc),
+                sizeof((**replace).is_ref__gc), &((*(replace))->refcount__gc),
+                sizeof((*(replace))->refcount__gc), &((*(replace))->type),
+                sizeof((*(replace))->type), &((*(replace))->is_ref__gc),
+                sizeof((*(replace))->is_ref__gc), &((**(replace)).refcount__gc),
+                sizeof((**(replace)).refcount__gc), &((**(replace)).is_ref__gc),
+                sizeof((**(replace)).is_ref__gc), &((*replace)->refcount__gc),
+                sizeof((*replace)->refcount__gc), &((*replace)->is_ref__gc),
+                sizeof((*replace)->is_ref__gc)))
           if ((**replace).type != 6) {
             if (!zval_isref_p(*replace)) {
               do {
@@ -65208,13 +66318,39 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_6938
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("77-2", 4, (int *){ht, case_sensitivity, count, argc}, 0,
-                      0, 8,
-                      (void **){replace, search, subject, return_value, zcount,
-                                subject_entry, result, string_key},
-                      0, 0, "ht", "case_sensitivity", "count", "argc",
-                      "replace", "search", "subject", "return_value", "zcount",
-                      "subject_entry", "result", "string_key") &&
+        if (!__is_neg(
+                "77-2", 38, &(replace), sizeof(replace), &((**replace).type),
+                sizeof((**replace).type), &((**(replace)).type),
+                sizeof((**(replace)).type), &((*replace)->type),
+                sizeof((*replace)->type), &(search), sizeof(search),
+                &((**search).type), sizeof((**search).type),
+                &((**(search)).type), sizeof((**(search)).type),
+                &((*search)->type), sizeof((*search)->type), &(subject),
+                sizeof(subject), &(return_value), sizeof(return_value), &(ht),
+                sizeof(ht), &(zcount), sizeof(zcount), &(subject_entry),
+                sizeof(subject_entry), &(result), sizeof(result),
+                &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                sizeof(count), &(argc), sizeof(argc), &(string_key),
+                sizeof(string_key), &(string_key_len), sizeof(string_key_len),
+                &(num_key), sizeof(num_key), &((**search).refcount__gc),
+                sizeof((**search).refcount__gc), &((**search).is_ref__gc),
+                sizeof((**search).is_ref__gc), &((*(search))->refcount__gc),
+                sizeof((*(search))->refcount__gc), &((*(search))->type),
+                sizeof((*(search))->type), &((*(search))->is_ref__gc),
+                sizeof((*(search))->is_ref__gc), &((**(search)).refcount__gc),
+                sizeof((**(search)).refcount__gc), &((**(search)).is_ref__gc),
+                sizeof((**(search)).is_ref__gc), &((*search)->refcount__gc),
+                sizeof((*search)->refcount__gc), &((*search)->is_ref__gc),
+                sizeof((*search)->is_ref__gc), &((**replace).refcount__gc),
+                sizeof((**replace).refcount__gc), &((**replace).is_ref__gc),
+                sizeof((**replace).is_ref__gc), &((*(replace))->refcount__gc),
+                sizeof((*(replace))->refcount__gc), &((*(replace))->type),
+                sizeof((*(replace))->type), &((*(replace))->is_ref__gc),
+                sizeof((*(replace))->is_ref__gc), &((**(replace)).refcount__gc),
+                sizeof((**(replace)).refcount__gc), &((**(replace)).is_ref__gc),
+                sizeof((**(replace)).is_ref__gc), &((*replace)->refcount__gc),
+                sizeof((*replace)->refcount__gc), &((*replace)->is_ref__gc),
+                sizeof((*replace)->is_ref__gc)) &&
             ((**replace).type != 6)) {
           if (!zval_isref_p(*replace)) {
             do {
@@ -65253,9 +66389,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
   /* if subject is an array */
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     78)) {
+    switch (__choose("__SWITCH78")) {
     case 0:
       break;
 #ifdef COMPILE_6939
@@ -67546,13 +68680,18 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_7206
     case 268: {
       // IfExitKind
-      if (__is_neg("78-268", 4, (int *){case_sensitivity, count, argc, ht}, 0,
-                   0, 8,
-                   (void **){subject, return_value, replace, subject_entry,
-                             search, result, zcount, string_key},
-                   0, 0, "case_sensitivity", "count", "argc", "ht", "subject",
-                   "return_value", "replace", "subject_entry", "search",
-                   "result", "zcount", "string_key"))
+      if (__is_neg("78-268", 17, &(subject), sizeof(subject),
+                   &((**subject).type), sizeof((**subject).type),
+                   &(return_value), sizeof(return_value), &(replace),
+                   sizeof(replace), &(subject_entry), sizeof(subject_entry),
+                   &(search), sizeof(search), &(result), sizeof(result),
+                   &(case_sensitivity), sizeof(case_sensitivity), &(count),
+                   sizeof(count), &(argc), sizeof(argc), &(ht), sizeof(ht),
+                   &(zcount), sizeof(zcount), &(string_key), sizeof(string_key),
+                   &(string_key_len), sizeof(string_key_len), &(num_key),
+                   sizeof(num_key), &((**subject).refcount__gc),
+                   sizeof((**subject).refcount__gc), &((**subject).is_ref__gc),
+                   sizeof((**subject).is_ref__gc)))
         return;
 
       break;
@@ -67561,9 +68700,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
     }
     {
       long long __temp79 = ((**subject).type == 4);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       79)) {
+      switch (__choose("__SWITCH79")) {
       case 0: {
 
         break;
@@ -67572,13 +68709,18 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
       case 1: {
         __temp79 =
             (((**subject).type == 4) ||
-             __is_neg("79-1", 4, (int *){case_sensitivity, count, argc, ht}, 0,
-                      0, 8,
-                      (void **){subject, return_value, replace, subject_entry,
-                                search, result, zcount, string_key},
-                      0, 0, "case_sensitivity", "count", "argc", "ht",
-                      "subject", "return_value", "replace", "subject_entry",
-                      "search", "result", "zcount", "string_key"));
+             __is_neg(
+                 "79-1", 17, &(subject), sizeof(subject), &((**subject).type),
+                 sizeof((**subject).type), &(return_value),
+                 sizeof(return_value), &(replace), sizeof(replace),
+                 &(subject_entry), sizeof(subject_entry), &(search),
+                 sizeof(search), &(result), sizeof(result), &(case_sensitivity),
+                 sizeof(case_sensitivity), &(count), sizeof(count), &(argc),
+                 sizeof(argc), &(ht), sizeof(ht), &(zcount), sizeof(zcount),
+                 &(string_key), sizeof(string_key), &(string_key_len),
+                 sizeof(string_key_len), &(num_key), sizeof(num_key),
+                 &((**subject).refcount__gc), sizeof((**subject).refcount__gc),
+                 &((**subject).is_ref__gc), sizeof((**subject).is_ref__gc)));
 
         break;
       }
@@ -67587,21 +68729,24 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
       case 2: {
         __temp79 =
             (((**subject).type == 4) &&
-             !__is_neg("79-2", 4, (int *){case_sensitivity, count, argc, ht}, 0,
-                       0, 8,
-                       (void **){subject, return_value, replace, subject_entry,
-                                 search, result, zcount, string_key},
-                       0, 0, "case_sensitivity", "count", "argc", "ht",
-                       "subject", "return_value", "replace", "subject_entry",
-                       "search", "result", "zcount", "string_key"));
+             !__is_neg(
+                 "79-2", 17, &(subject), sizeof(subject), &((**subject).type),
+                 sizeof((**subject).type), &(return_value),
+                 sizeof(return_value), &(replace), sizeof(replace),
+                 &(subject_entry), sizeof(subject_entry), &(search),
+                 sizeof(search), &(result), sizeof(result), &(case_sensitivity),
+                 sizeof(case_sensitivity), &(count), sizeof(count), &(argc),
+                 sizeof(argc), &(ht), sizeof(ht), &(zcount), sizeof(zcount),
+                 &(string_key), sizeof(string_key), &(string_key_len),
+                 sizeof(string_key_len), &(num_key), sizeof(num_key),
+                 &((**subject).refcount__gc), sizeof((**subject).refcount__gc),
+                 &((**subject).is_ref__gc), sizeof((**subject).is_ref__gc)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       82)) {
+      switch (__choose("__SWITCH82")) {
       case 0: {
         if (__temp79) {
           array_init(return_value);
@@ -67642,9 +68787,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
           }
         } else { /* if subject is not an array */
           {
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             80)) {
+            switch (__choose("__SWITCH80")) {
             case 0:
               break;
 #ifdef COMPILE_7209
@@ -69862,22 +71005,23 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_7465
             case 257: {
               // IfExitKind
-              if (__is_neg("80-257", 4,
-                           (int *){case_sensitivity, count, argc, ht}, 0, 0, 8,
-                           (void **){return_value, subject, search, replace,
-                                     zcount, result, string_key, subject_entry},
-                           0, 0, "case_sensitivity", "count", "argc", "ht",
-                           "return_value", "subject", "search", "replace",
-                           "zcount", "result", "string_key", "subject_entry"))
+              if (__is_neg("80-257", 14, &(return_value), sizeof(return_value),
+                           &(case_sensitivity), sizeof(case_sensitivity),
+                           &(subject), sizeof(subject), &(search),
+                           sizeof(search), &(replace), sizeof(replace),
+                           &(count), sizeof(count), &(argc), sizeof(argc),
+                           &(zcount), sizeof(zcount), &(result), sizeof(result),
+                           &(num_key), sizeof(num_key), &(string_key),
+                           sizeof(string_key), &(string_key_len),
+                           sizeof(string_key_len), &(subject_entry),
+                           sizeof(subject_entry), &(ht), sizeof(ht)))
                 return;
 
               break;
             }
 #endif
             }
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             81)) {
+            switch (__choose("__SWITCH81")) {
             case 0: {
               php_str_replace_in_subject(*search, *replace, subject,
                                          return_value, case_sensitivity,
@@ -69942,14 +71086,16 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_7472
             case 7: {
               // GuardKind
-              if (!__is_neg("81-7", 4,
-                            (int *){case_sensitivity, count, argc, ht}, 0, 0, 8,
-                            (void **){return_value, subject, search, replace,
-                                      zcount, result, string_key,
-                                      subject_entry},
-                            0, 0, "case_sensitivity", "count", "argc", "ht",
-                            "return_value", "subject", "search", "replace",
-                            "zcount", "result", "string_key", "subject_entry"))
+              if (!__is_neg(
+                      "81-7", 14, &(return_value), sizeof(return_value),
+                      &(case_sensitivity), sizeof(case_sensitivity), &(subject),
+                      sizeof(subject), &(search), sizeof(search), &(replace),
+                      sizeof(replace), &(count), sizeof(count), &(argc),
+                      sizeof(argc), &(zcount), sizeof(zcount), &(result),
+                      sizeof(result), &(num_key), sizeof(num_key),
+                      &(string_key), sizeof(string_key), &(string_key_len),
+                      sizeof(string_key_len), &(subject_entry),
+                      sizeof(subject_entry), &(ht), sizeof(ht)))
                 php_str_replace_in_subject(*search, *replace, subject,
                                            return_value, case_sensitivity,
                                            (argc > 3) ? &count : ((void *)0));
@@ -70230,13 +71376,15 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_7500
       case 7: {
         // GuardKind
-        if (!__is_neg("82-7", 4, (int *){case_sensitivity, count, argc, ht}, 0,
-                      0, 8,
-                      (void **){return_value, subject, search, replace, zcount,
-                                result, string_key, subject_entry},
-                      0, 0, "case_sensitivity", "count", "argc", "ht",
-                      "return_value", "subject", "search", "replace", "zcount",
-                      "result", "string_key", "subject_entry"))
+        if (!__is_neg("82-7", 14, &(return_value), sizeof(return_value),
+                      &(case_sensitivity), sizeof(case_sensitivity), &(subject),
+                      sizeof(subject), &(search), sizeof(search), &(replace),
+                      sizeof(replace), &(count), sizeof(count), &(argc),
+                      sizeof(argc), &(zcount), sizeof(zcount), &(result),
+                      sizeof(result), &(num_key), sizeof(num_key),
+                      &(string_key), sizeof(string_key), &(string_key_len),
+                      sizeof(string_key_len), &(subject_entry),
+                      sizeof(subject_entry), &(ht), sizeof(ht)))
           php_str_replace_in_subject(*search, *replace, subject, return_value,
                                      case_sensitivity,
                                      (argc > 3) ? &count : ((void *)0));
@@ -70459,9 +71607,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
   }
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     83)) {
+    switch (__choose("__SWITCH83")) {
     case 0:
       break;
 #ifdef COMPILE_7522
@@ -72660,13 +73806,15 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_7778
     case 257: {
       // IfExitKind
-      if (__is_neg("83-257", 4, (int *){argc, case_sensitivity, count, ht}, 0,
-                   0, 8,
-                   (void **){zcount, return_value, subject, search, replace,
-                             result, string_key, subject_entry},
-                   0, 0, "argc", "case_sensitivity", "count", "ht", "zcount",
-                   "return_value", "subject", "search", "replace", "result",
-                   "string_key", "subject_entry"))
+      if (__is_neg("83-257", 14, &(argc), sizeof(argc), &(zcount),
+                   sizeof(zcount), &(return_value), sizeof(return_value),
+                   &(case_sensitivity), sizeof(case_sensitivity), &(subject),
+                   sizeof(subject), &(search), sizeof(search), &(replace),
+                   sizeof(replace), &(count), sizeof(count), &(result),
+                   sizeof(result), &(num_key), sizeof(num_key), &(string_key),
+                   sizeof(string_key), &(string_key_len),
+                   sizeof(string_key_len), &(subject_entry),
+                   sizeof(subject_entry), &(ht), sizeof(ht)))
         return;
 
       break;
@@ -72675,9 +73823,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
     }
     {
       long long __temp84 = (argc > 3);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       84)) {
+      switch (__choose("__SWITCH84")) {
       case 0: {
 
         break;
@@ -72686,13 +73832,15 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
       case 1: {
         __temp84 =
             ((argc > 3) ||
-             __is_neg("84-1", 4, (int *){argc, case_sensitivity, count, ht}, 0,
-                      0, 8,
-                      (void **){zcount, return_value, subject, search, replace,
-                                result, string_key, subject_entry},
-                      0, 0, "argc", "case_sensitivity", "count", "ht", "zcount",
-                      "return_value", "subject", "search", "replace", "result",
-                      "string_key", "subject_entry"));
+             __is_neg("84-1", 14, &(argc), sizeof(argc), &(zcount),
+                      sizeof(zcount), &(return_value), sizeof(return_value),
+                      &(case_sensitivity), sizeof(case_sensitivity), &(subject),
+                      sizeof(subject), &(search), sizeof(search), &(replace),
+                      sizeof(replace), &(count), sizeof(count), &(result),
+                      sizeof(result), &(num_key), sizeof(num_key),
+                      &(string_key), sizeof(string_key), &(string_key_len),
+                      sizeof(string_key_len), &(subject_entry),
+                      sizeof(subject_entry), &(ht), sizeof(ht)));
 
         break;
       }
@@ -72701,21 +73849,21 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
       case 2: {
         __temp84 =
             ((argc > 3) &&
-             !__is_neg("84-2", 4, (int *){argc, case_sensitivity, count, ht}, 0,
-                       0, 8,
-                       (void **){zcount, return_value, subject, search, replace,
-                                 result, string_key, subject_entry},
-                       0, 0, "argc", "case_sensitivity", "count", "ht",
-                       "zcount", "return_value", "subject", "search", "replace",
-                       "result", "string_key", "subject_entry"));
+             !__is_neg("84-2", 14, &(argc), sizeof(argc), &(zcount),
+                       sizeof(zcount), &(return_value), sizeof(return_value),
+                       &(case_sensitivity), sizeof(case_sensitivity),
+                       &(subject), sizeof(subject), &(search), sizeof(search),
+                       &(replace), sizeof(replace), &(count), sizeof(count),
+                       &(result), sizeof(result), &(num_key), sizeof(num_key),
+                       &(string_key), sizeof(string_key), &(string_key_len),
+                       sizeof(string_key_len), &(subject_entry),
+                       sizeof(subject_entry), &(ht), sizeof(ht)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       85)) {
+      switch (__choose("__SWITCH85")) {
       case 0: {
         if (__temp84) {
           zval_dtor(*zcount);
@@ -72727,13 +73875,15 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_7781
       case 1: {
         // GuardKind
-        if (!__is_neg("85-1", 4, (int *){argc, case_sensitivity, count, ht}, 0,
-                      0, 8,
-                      (void **){zcount, return_value, subject, search, replace,
-                                result, string_key, subject_entry},
-                      0, 0, "argc", "case_sensitivity", "count", "ht", "zcount",
-                      "return_value", "subject", "search", "replace", "result",
-                      "string_key", "subject_entry"))
+        if (!__is_neg("85-1", 14, &(argc), sizeof(argc), &(zcount),
+                      sizeof(zcount), &(return_value), sizeof(return_value),
+                      &(case_sensitivity), sizeof(case_sensitivity), &(subject),
+                      sizeof(subject), &(search), sizeof(search), &(replace),
+                      sizeof(replace), &(count), sizeof(count), &(result),
+                      sizeof(result), &(num_key), sizeof(num_key),
+                      &(string_key), sizeof(string_key), &(string_key_len),
+                      sizeof(string_key_len), &(subject_entry),
+                      sizeof(subject_entry), &(ht), sizeof(ht)))
           if (argc > 3) {
             _zval_dtor((*zcount));
             {
@@ -72749,13 +73899,15 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 #ifdef COMPILE_7782
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("85-2", 4, (int *){argc, case_sensitivity, count, ht}, 0,
-                      0, 8,
-                      (void **){zcount, return_value, subject, search, replace,
-                                result, string_key, subject_entry},
-                      0, 0, "argc", "case_sensitivity", "count", "ht", "zcount",
-                      "return_value", "subject", "search", "replace", "result",
-                      "string_key", "subject_entry") &&
+        if (!__is_neg("85-2", 14, &(argc), sizeof(argc), &(zcount),
+                      sizeof(zcount), &(return_value), sizeof(return_value),
+                      &(case_sensitivity), sizeof(case_sensitivity), &(subject),
+                      sizeof(subject), &(search), sizeof(search), &(replace),
+                      sizeof(replace), &(count), sizeof(count), &(result),
+                      sizeof(result), &(num_key), sizeof(num_key),
+                      &(string_key), sizeof(string_key), &(string_key_len),
+                      sizeof(string_key_len), &(subject_entry),
+                      sizeof(subject_entry), &(ht), sizeof(ht)) &&
             (argc > 3)) {
           _zval_dtor((*zcount));
           {
@@ -72780,9 +73932,7 @@ static void php_str_replace_common(INTERNAL_FUNCTION_PARAMETERS,
 PHP_FUNCTION(str_replace) {
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     86)) {
+    switch (__choose("__SWITCH86")) {
     case 0:
       break;
 #ifdef COMPILE_7783
@@ -73679,19 +74829,17 @@ PHP_FUNCTION(str_replace) {
 #ifdef COMPILE_7888
     case 106: {
       // IfExitKind
-      if (__is_neg("86-106", 2, (int *){ht, return_value_used}, 0, 0, 3,
-                   (void **){return_value, return_value_ptr, this_ptr}, 0, 0,
-                   "ht", "return_value_used", "return_value",
-                   "return_value_ptr", "this_ptr"))
+      if (__is_neg("86-106", 5, &(ht), sizeof(ht), &(return_value),
+                   sizeof(return_value), &(return_value_ptr),
+                   sizeof(return_value_ptr), &(this_ptr), sizeof(this_ptr),
+                   &(return_value_used), sizeof(return_value_used)))
         return;
 
       break;
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     87)) {
+    switch (__choose("__SWITCH87")) {
     case 0: {
       php_str_replace_common(INTERNAL_FUNCTION_PARAM_PASSTHRU, 1);
 
@@ -73817,10 +74965,10 @@ PHP_FUNCTION(str_replace) {
 #ifdef COMPILE_7902
     case 14: {
       // GuardKind
-      if (!__is_neg("87-14", 2, (int *){ht, return_value_used}, 0, 0, 3,
-                    (void **){return_value, return_value_ptr, this_ptr}, 0, 0,
-                    "ht", "return_value_used", "return_value",
-                    "return_value_ptr", "this_ptr"))
+      if (!__is_neg("87-14", 5, &(ht), sizeof(ht), &(return_value),
+                    sizeof(return_value), &(return_value_ptr),
+                    sizeof(return_value_ptr), &(this_ptr), sizeof(this_ptr),
+                    &(return_value_used), sizeof(return_value_used)))
         php_str_replace_common(ht, return_value, return_value_ptr, this_ptr,
                                return_value_used, 1);
 
@@ -75432,9 +76580,7 @@ PHP_FUNCTION(substr_compare) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     88)) {
+    switch (__choose("__SWITCH88")) {
     case 0:
       break;
 #ifdef COMPILE_7908
@@ -76453,9 +77599,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8027
     case 120: {
       // IfExitKind
-      if (__is_neg("88-120", 3, (int *){ht, s1_len, s2_len}, 0, 0, 3,
-                   (void **){s1, s2, return_value}, 0, 0, "ht", "s1_len",
-                   "s2_len", "s1", "s2", "return_value"))
+      if (__is_neg("88-120", 10, &(ht), sizeof(ht), &(s1), sizeof(s1), &(s2),
+                   sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                   sizeof(s2_len), &(offset), sizeof(offset), &(len),
+                   sizeof(len), &(cs), sizeof(cs), &(return_value),
+                   sizeof(return_value), &(cmp_len), sizeof(cmp_len)))
         return;
 
       break;
@@ -76466,9 +77614,7 @@ PHP_FUNCTION(substr_compare) {
       long long __temp89 =
           (zend_parse_parameters((ht), "ssl|lb", &s1, &s1_len, &s2, &s2_len,
                                  &offset, &len, &cs) == -1);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       89)) {
+      switch (__choose("__SWITCH89")) {
       case 0: {
 
         break;
@@ -76478,9 +77624,11 @@ PHP_FUNCTION(substr_compare) {
         __temp89 =
             ((zend_parse_parameters((ht), "ssl|lb", &s1, &s1_len, &s2, &s2_len,
                                     &offset, &len, &cs) == -1) ||
-             __is_neg("89-1", 3, (int *){ht, s1_len, s2_len}, 0, 0, 3,
-                      (void **){s1, s2, return_value}, 0, 0, "ht", "s1_len",
-                      "s2_len", "s1", "s2", "return_value"));
+             __is_neg("89-1", 10, &(ht), sizeof(ht), &(s1), sizeof(s1), &(s2),
+                      sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                      sizeof(s2_len), &(offset), sizeof(offset), &(len),
+                      sizeof(len), &(cs), sizeof(cs), &(return_value),
+                      sizeof(return_value), &(cmp_len), sizeof(cmp_len)));
 
         break;
       }
@@ -76490,17 +77638,17 @@ PHP_FUNCTION(substr_compare) {
         __temp89 =
             ((zend_parse_parameters((ht), "ssl|lb", &s1, &s1_len, &s2, &s2_len,
                                     &offset, &len, &cs) == -1) &&
-             !__is_neg("89-2", 3, (int *){ht, s1_len, s2_len}, 0, 0, 3,
-                       (void **){s1, s2, return_value}, 0, 0, "ht", "s1_len",
-                       "s2_len", "s1", "s2", "return_value"));
+             !__is_neg("89-2", 10, &(ht), sizeof(ht), &(s1), sizeof(s1), &(s2),
+                       sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                       sizeof(s2_len), &(offset), sizeof(offset), &(len),
+                       sizeof(len), &(cs), sizeof(cs), &(return_value),
+                       sizeof(return_value), &(cmp_len), sizeof(cmp_len)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       90)) {
+      switch (__choose("__SWITCH90")) {
       case 0: {
         if (__temp89) {
           RETURN_FALSE;
@@ -76511,9 +77659,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8030
       case 1: {
         // GuardKind
-        if (!__is_neg("90-1", 3, (int *){ht, s1_len, s2_len}, 0, 0, 3,
-                      (void **){s1, s2, return_value}, 0, 0, "ht", "s1_len",
-                      "s2_len", "s1", "s2", "return_value"))
+        if (!__is_neg("90-1", 10, &(ht), sizeof(ht), &(s1), sizeof(s1), &(s2),
+                      sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                      sizeof(s2_len), &(offset), sizeof(offset), &(len),
+                      sizeof(len), &(cs), sizeof(cs), &(return_value),
+                      sizeof(return_value), &(cmp_len), sizeof(cmp_len)))
           if (zend_parse_parameters((ht), "ssl|lb", &s1, &s1_len, &s2, &s2_len,
                                     &offset, &len, &cs) == -1) {
             {
@@ -76532,9 +77682,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8031
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("90-2", 3, (int *){ht, s1_len, s2_len}, 0, 0, 3,
-                      (void **){s1, s2, return_value}, 0, 0, "ht", "s1_len",
-                      "s2_len", "s1", "s2", "return_value") &&
+        if (!__is_neg("90-2", 10, &(ht), sizeof(ht), &(s1), sizeof(s1), &(s2),
+                      sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                      sizeof(s2_len), &(offset), sizeof(offset), &(len),
+                      sizeof(len), &(cs), sizeof(cs), &(return_value),
+                      sizeof(return_value), &(cmp_len), sizeof(cmp_len)) &&
             (zend_parse_parameters((ht), "ssl|lb", &s1, &s1_len, &s2, &s2_len,
                                    &offset, &len, &cs) == -1)) {
           {
@@ -76556,9 +77708,7 @@ PHP_FUNCTION(substr_compare) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     91)) {
+    switch (__choose("__SWITCH91")) {
     case 0:
       break;
 #ifdef COMPILE_8032
@@ -77577,9 +78727,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8151
     case 120: {
       // IfExitKind
-      if (__is_neg("91-120", 3, (int *){ht, s1_len, s2_len}, 0, 0, 3,
-                   (void **){return_value, s1, s2}, 0, 0, "ht", "s1_len",
-                   "s2_len", "return_value", "s1", "s2"))
+      if (__is_neg("91-120", 10, &(ht), sizeof(ht), &(len), sizeof(len),
+                   &(return_value), sizeof(return_value), &(s1), sizeof(s1),
+                   &(s2), sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                   sizeof(s2_len), &(offset), sizeof(offset), &(cs), sizeof(cs),
+                   &(cmp_len), sizeof(cmp_len)))
         return;
 
       break;
@@ -77588,9 +78740,7 @@ PHP_FUNCTION(substr_compare) {
     }
     {
       long long __temp92 = ((ht) >= 4 && len <= 0);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       92)) {
+      switch (__choose("__SWITCH92")) {
       case 0: {
 
         break;
@@ -77599,9 +78749,11 @@ PHP_FUNCTION(substr_compare) {
       case 1: {
         __temp92 =
             ((((ht) >= 4) ||
-              __is_neg("92-1", 3, (int *){ht, s1_len, s2_len}, 0, 0, 3,
-                       (void **){return_value, s1, s2}, 0, 0, "ht", "s1_len",
-                       "s2_len", "return_value", "s1", "s2")) &&
+              __is_neg("92-1", 10, &(ht), sizeof(ht), &(len), sizeof(len),
+                       &(return_value), sizeof(return_value), &(s1), sizeof(s1),
+                       &(s2), sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                       sizeof(s2_len), &(offset), sizeof(offset), &(cs),
+                       sizeof(cs), &(cmp_len), sizeof(cmp_len))) &&
              len <= 0);
 
         break;
@@ -77609,28 +78761,32 @@ PHP_FUNCTION(substr_compare) {
 #endif
 #ifdef COMPILE_8153
       case 2: {
-        __temp92 = (((ht) >= 4 && len <= 0) ||
-                    __is_neg("92-2", 3, (int *){ht, s1_len, s2_len}, 0, 0, 3,
-                             (void **){return_value, s1, s2}, 0, 0, "ht",
-                             "s1_len", "s2_len", "return_value", "s1", "s2"));
+        __temp92 =
+            (((ht) >= 4 && len <= 0) ||
+             __is_neg("92-2", 10, &(ht), sizeof(ht), &(len), sizeof(len),
+                      &(return_value), sizeof(return_value), &(s1), sizeof(s1),
+                      &(s2), sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                      sizeof(s2_len), &(offset), sizeof(offset), &(cs),
+                      sizeof(cs), &(cmp_len), sizeof(cmp_len)));
 
         break;
       }
 #endif
 #ifdef COMPILE_8154
       case 3: {
-        __temp92 = (((ht) >= 4 && len <= 0) &&
-                    !__is_neg("92-3", 3, (int *){ht, s1_len, s2_len}, 0, 0, 3,
-                              (void **){return_value, s1, s2}, 0, 0, "ht",
-                              "s1_len", "s2_len", "return_value", "s1", "s2"));
+        __temp92 =
+            (((ht) >= 4 && len <= 0) &&
+             !__is_neg("92-3", 10, &(ht), sizeof(ht), &(len), sizeof(len),
+                       &(return_value), sizeof(return_value), &(s1), sizeof(s1),
+                       &(s2), sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                       sizeof(s2_len), &(offset), sizeof(offset), &(cs),
+                       sizeof(cs), &(cmp_len), sizeof(cmp_len)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       93)) {
+      switch (__choose("__SWITCH93")) {
       case 0: {
         if (__temp92) {
           php_error_docref(NULL TSRMLS_CC, E_WARNING,
@@ -77643,9 +78799,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8155
       case 1: {
         // GuardKind
-        if (!__is_neg("93-1", 3, (int *){ht, s1_len, s2_len}, 0, 0, 3,
-                      (void **){return_value, s1, s2}, 0, 0, "ht", "s1_len",
-                      "s2_len", "return_value", "s1", "s2"))
+        if (!__is_neg("93-1", 10, &(ht), sizeof(ht), &(len), sizeof(len),
+                      &(return_value), sizeof(return_value), &(s1), sizeof(s1),
+                      &(s2), sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                      sizeof(s2_len), &(offset), sizeof(offset), &(cs),
+                      sizeof(cs), &(cmp_len), sizeof(cmp_len)))
           if ((ht) >= 4 && len <= 0) {
             php_error_docref0(((void *)0), (1 << 1L),
                               "The length must be greater than zero");
@@ -77665,9 +78823,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8156
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("93-2", 3, (int *){ht, s1_len, s2_len}, 0, 0, 3,
-                      (void **){return_value, s1, s2}, 0, 0, "ht", "s1_len",
-                      "s2_len", "return_value", "s1", "s2") &&
+        if (!__is_neg("93-2", 10, &(ht), sizeof(ht), &(len), sizeof(len),
+                      &(return_value), sizeof(return_value), &(s1), sizeof(s1),
+                      &(s2), sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                      sizeof(s2_len), &(offset), sizeof(offset), &(cs),
+                      sizeof(cs), &(cmp_len), sizeof(cmp_len)) &&
             ((ht) >= 4 && len <= 0)) {
           php_error_docref0(((void *)0), (1 << 1L),
                             "The length must be greater than zero");
@@ -77690,9 +78850,7 @@ PHP_FUNCTION(substr_compare) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     94)) {
+    switch (__choose("__SWITCH94")) {
     case 0:
       break;
 #ifdef COMPILE_8157
@@ -78711,9 +79869,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8276
     case 120: {
       // IfExitKind
-      if (__is_neg("94-120", 3, (int *){s1_len, ht, s2_len}, 0, 0, 3,
-                   (void **){return_value, s1, s2}, 0, 0, "s1_len", "ht",
-                   "s2_len", "return_value", "s1", "s2"))
+      if (__is_neg("94-120", 10, &(offset), sizeof(offset), &(s1_len),
+                   sizeof(s1_len), &(return_value), sizeof(return_value), &(ht),
+                   sizeof(ht), &(len), sizeof(len), &(s1), sizeof(s1), &(s2),
+                   sizeof(s2), &(s2_len), sizeof(s2_len), &(cs), sizeof(cs),
+                   &(cmp_len), sizeof(cmp_len)))
         return;
 
       break;
@@ -78722,37 +79882,39 @@ PHP_FUNCTION(substr_compare) {
     }
     {
       long long __temp95 = (offset < 0);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       95)) {
+      switch (__choose("__SWITCH95")) {
       case 0: {
 
         break;
       }
 #ifdef COMPILE_8277
       case 1: {
-        __temp95 = ((offset < 0) ||
-                    __is_neg("95-1", 3, (int *){s1_len, ht, s2_len}, 0, 0, 3,
-                             (void **){return_value, s1, s2}, 0, 0, "s1_len",
-                             "ht", "s2_len", "return_value", "s1", "s2"));
+        __temp95 =
+            ((offset < 0) ||
+             __is_neg("95-1", 10, &(offset), sizeof(offset), &(s1_len),
+                      sizeof(s1_len), &(return_value), sizeof(return_value),
+                      &(ht), sizeof(ht), &(len), sizeof(len), &(s1), sizeof(s1),
+                      &(s2), sizeof(s2), &(s2_len), sizeof(s2_len), &(cs),
+                      sizeof(cs), &(cmp_len), sizeof(cmp_len)));
 
         break;
       }
 #endif
 #ifdef COMPILE_8278
       case 2: {
-        __temp95 = ((offset < 0) &&
-                    !__is_neg("95-2", 3, (int *){s1_len, ht, s2_len}, 0, 0, 3,
-                              (void **){return_value, s1, s2}, 0, 0, "s1_len",
-                              "ht", "s2_len", "return_value", "s1", "s2"));
+        __temp95 =
+            ((offset < 0) &&
+             !__is_neg("95-2", 10, &(offset), sizeof(offset), &(s1_len),
+                       sizeof(s1_len), &(return_value), sizeof(return_value),
+                       &(ht), sizeof(ht), &(len), sizeof(len), &(s1),
+                       sizeof(s1), &(s2), sizeof(s2), &(s2_len), sizeof(s2_len),
+                       &(cs), sizeof(cs), &(cmp_len), sizeof(cmp_len)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       96)) {
+      switch (__choose("__SWITCH96")) {
       case 0: {
         if (__temp95) {
           offset = s1_len + offset;
@@ -78764,9 +79926,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8279
       case 1: {
         // GuardKind
-        if (!__is_neg("96-1", 3, (int *){s1_len, ht, s2_len}, 0, 0, 3,
-                      (void **){return_value, s1, s2}, 0, 0, "s1_len", "ht",
-                      "s2_len", "return_value", "s1", "s2"))
+        if (!__is_neg("96-1", 10, &(offset), sizeof(offset), &(s1_len),
+                      sizeof(s1_len), &(return_value), sizeof(return_value),
+                      &(ht), sizeof(ht), &(len), sizeof(len), &(s1), sizeof(s1),
+                      &(s2), sizeof(s2), &(s2_len), sizeof(s2_len), &(cs),
+                      sizeof(cs), &(cmp_len), sizeof(cmp_len)))
           if (offset < 0) {
             offset = s1_len + offset;
             offset = (offset < 0) ? 0 : offset;
@@ -78781,9 +79945,7 @@ PHP_FUNCTION(substr_compare) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     97)) {
+    switch (__choose("__SWITCH97")) {
     case 0:
       break;
 #ifdef COMPILE_8280
@@ -79802,9 +80964,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8399
     case 120: {
       // IfExitKind
-      if (__is_neg("97-120", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                   (void **){return_value, s1, s2}, 0, 0, "s1_len", "s2_len",
-                   "ht", "return_value", "s1", "s2"))
+      if (__is_neg("97-120", 10, &(s1_len), sizeof(s1_len), &(offset),
+                   sizeof(offset), &(return_value), sizeof(return_value),
+                   &(len), sizeof(len), &(s2_len), sizeof(s2_len), &(cmp_len),
+                   sizeof(cmp_len), &(ht), sizeof(ht), &(cs), sizeof(cs), &(s1),
+                   sizeof(s1), &(s2), sizeof(s2)))
         return;
 
       break;
@@ -79813,37 +80977,39 @@ PHP_FUNCTION(substr_compare) {
     }
     {
       long long __temp98 = (offset >= s1_len);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       98)) {
+      switch (__choose("__SWITCH98")) {
       case 0: {
 
         break;
       }
 #ifdef COMPILE_8400
       case 1: {
-        __temp98 = ((offset >= s1_len) ||
-                    __is_neg("98-1", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                             (void **){return_value, s1, s2}, 0, 0, "s1_len",
-                             "s2_len", "ht", "return_value", "s1", "s2"));
+        __temp98 =
+            ((offset >= s1_len) ||
+             __is_neg("98-1", 10, &(s1_len), sizeof(s1_len), &(offset),
+                      sizeof(offset), &(return_value), sizeof(return_value),
+                      &(len), sizeof(len), &(s2_len), sizeof(s2_len),
+                      &(cmp_len), sizeof(cmp_len), &(ht), sizeof(ht), &(cs),
+                      sizeof(cs), &(s1), sizeof(s1), &(s2), sizeof(s2)));
 
         break;
       }
 #endif
 #ifdef COMPILE_8401
       case 2: {
-        __temp98 = ((offset >= s1_len) &&
-                    !__is_neg("98-2", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                              (void **){return_value, s1, s2}, 0, 0, "s1_len",
-                              "s2_len", "ht", "return_value", "s1", "s2"));
+        __temp98 =
+            ((offset >= s1_len) &&
+             !__is_neg("98-2", 10, &(s1_len), sizeof(s1_len), &(offset),
+                       sizeof(offset), &(return_value), sizeof(return_value),
+                       &(len), sizeof(len), &(s2_len), sizeof(s2_len),
+                       &(cmp_len), sizeof(cmp_len), &(ht), sizeof(ht), &(cs),
+                       sizeof(cs), &(s1), sizeof(s1), &(s2), sizeof(s2)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       99)) {
+      switch (__choose("__SWITCH99")) {
       case 0: {
         if (__temp98) {
           php_error_docref(
@@ -79857,9 +81023,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8402
       case 1: {
         // GuardKind
-        if (!__is_neg("99-1", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                      (void **){return_value, s1, s2}, 0, 0, "s1_len", "s2_len",
-                      "ht", "return_value", "s1", "s2"))
+        if (!__is_neg("99-1", 10, &(s1_len), sizeof(s1_len), &(offset),
+                      sizeof(offset), &(return_value), sizeof(return_value),
+                      &(len), sizeof(len), &(s2_len), sizeof(s2_len),
+                      &(cmp_len), sizeof(cmp_len), &(ht), sizeof(ht), &(cs),
+                      sizeof(cs), &(s1), sizeof(s1), &(s2), sizeof(s2)))
           if (offset >= s1_len) {
             php_error_docref0(
                 ((void *)0), (1 << 1L),
@@ -79880,9 +81048,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8403
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("99-2", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                      (void **){return_value, s1, s2}, 0, 0, "s1_len", "s2_len",
-                      "ht", "return_value", "s1", "s2") &&
+        if (!__is_neg("99-2", 10, &(s1_len), sizeof(s1_len), &(offset),
+                      sizeof(offset), &(return_value), sizeof(return_value),
+                      &(len), sizeof(len), &(s2_len), sizeof(s2_len),
+                      &(cmp_len), sizeof(cmp_len), &(ht), sizeof(ht), &(cs),
+                      sizeof(cs), &(s1), sizeof(s1), &(s2), sizeof(s2)) &&
             (offset >= s1_len)) {
           php_error_docref0(
               ((void *)0), (1 << 1L),
@@ -79906,9 +81076,7 @@ PHP_FUNCTION(substr_compare) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     100)) {
+    switch (__choose("__SWITCH100")) {
     case 0:
       break;
 #ifdef COMPILE_8404
@@ -80927,9 +82095,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8523
     case 120: {
       // IfExitKind
-      if (__is_neg("100-120", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                   (void **){return_value, s1, s2}, 0, 0, "s1_len", "s2_len",
-                   "ht", "return_value", "s1", "s2"))
+      if (__is_neg("100-120", 10, &(s1_len), sizeof(s1_len), &(offset),
+                   sizeof(offset), &(len), sizeof(len), &(return_value),
+                   sizeof(return_value), &(s2_len), sizeof(s2_len), &(cmp_len),
+                   sizeof(cmp_len), &(cs), sizeof(cs), &(s1), sizeof(s1), &(s2),
+                   sizeof(s2), &(ht), sizeof(ht)))
         return;
 
       break;
@@ -80938,43 +82108,43 @@ PHP_FUNCTION(substr_compare) {
     }
     {
       long long __temp101 = (len > s1_len - offset);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       101)) {
+      switch (__choose("__SWITCH101")) {
       case 0: {
 
         break;
       }
 #ifdef COMPILE_8524
       case 1: {
-        __temp101 = ((len > s1_len - offset) ||
-                     __is_neg("101-1", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                              (void **){return_value, s1, s2}, 0, 0, "s1_len",
-                              "s2_len", "ht", "return_value", "s1", "s2"));
+        __temp101 =
+            ((len > s1_len - offset) ||
+             __is_neg("101-1", 10, &(s1_len), sizeof(s1_len), &(offset),
+                      sizeof(offset), &(len), sizeof(len), &(return_value),
+                      sizeof(return_value), &(s2_len), sizeof(s2_len),
+                      &(cmp_len), sizeof(cmp_len), &(cs), sizeof(cs), &(s1),
+                      sizeof(s1), &(s2), sizeof(s2), &(ht), sizeof(ht)));
 
         break;
       }
 #endif
 #ifdef COMPILE_8525
       case 2: {
-        __temp101 = ((len > s1_len - offset) &&
-                     !__is_neg("101-2", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                               (void **){return_value, s1, s2}, 0, 0, "s1_len",
-                               "s2_len", "ht", "return_value", "s1", "s2"));
+        __temp101 =
+            ((len > s1_len - offset) &&
+             !__is_neg("101-2", 10, &(s1_len), sizeof(s1_len), &(offset),
+                       sizeof(offset), &(len), sizeof(len), &(return_value),
+                       sizeof(return_value), &(s2_len), sizeof(s2_len),
+                       &(cmp_len), sizeof(cmp_len), &(cs), sizeof(cs), &(s1),
+                       sizeof(s1), &(s2), sizeof(s2), &(ht), sizeof(ht)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       104)) {
+      switch (__choose("__SWITCH104")) {
       case 0: {
         if (__temp101) {
           {
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             102)) {
+            switch (__choose("__SWITCH102")) {
             case 0:
               break;
 #ifdef COMPILE_8526
@@ -82005,18 +83175,19 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8645
             case 120: {
               // IfExitKind
-              if (__is_neg("102-120", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                           (void **){return_value, s1, s2}, 0, 0, "s1_len",
-                           "s2_len", "ht", "return_value", "s1", "s2"))
+              if (__is_neg("102-120", 10, &(s1_len), sizeof(s1_len), &(offset),
+                           sizeof(offset), &(len), sizeof(len), &(s2_len),
+                           sizeof(s2_len), &(cmp_len), sizeof(cmp_len),
+                           &(return_value), sizeof(return_value), &(cs),
+                           sizeof(cs), &(s1), sizeof(s1), &(s2), sizeof(s2),
+                           &(ht), sizeof(ht)))
                 return;
 
               break;
             }
 #endif
             }
-            switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                             "php-5a8c917-workdir/switch.txt",
-                             103)) {
+            switch (__choose("__SWITCH103")) {
             case 0: {
               len = s1_len - offset;
 
@@ -82025,9 +83196,12 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8646
             case 1: {
               // GuardKind
-              if (!__is_neg("103-1", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                            (void **){return_value, s1, s2}, 0, 0, "s1_len",
-                            "s2_len", "ht", "return_value", "s1", "s2"))
+              if (!__is_neg("103-1", 10, &(s1_len), sizeof(s1_len), &(offset),
+                            sizeof(offset), &(len), sizeof(len), &(s2_len),
+                            sizeof(s2_len), &(cmp_len), sizeof(cmp_len),
+                            &(return_value), sizeof(return_value), &(cs),
+                            sizeof(cs), &(s1), sizeof(s1), &(s2), sizeof(s2),
+                            &(ht), sizeof(ht)))
                 len = s1_len - offset;
 
               break;
@@ -82042,9 +83216,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8647
       case 1: {
         // GuardKind
-        if (!__is_neg("104-1", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                      (void **){return_value, s1, s2}, 0, 0, "s1_len", "s2_len",
-                      "ht", "return_value", "s1", "s2"))
+        if (!__is_neg("104-1", 10, &(s1_len), sizeof(s1_len), &(offset),
+                      sizeof(offset), &(len), sizeof(len), &(s2_len),
+                      sizeof(s2_len), &(cmp_len), sizeof(cmp_len),
+                      &(return_value), sizeof(return_value), &(cs), sizeof(cs),
+                      &(s1), sizeof(s1), &(s2), sizeof(s2), &(ht), sizeof(ht)))
           len = s1_len - offset;
 
         break;
@@ -82056,9 +83232,7 @@ PHP_FUNCTION(substr_compare) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     105)) {
+    switch (__choose("__SWITCH105")) {
     case 0:
       break;
 #ifdef COMPILE_8648
@@ -83077,18 +84251,18 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8767
     case 120: {
       // IfExitKind
-      if (__is_neg("105-120", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                   (void **){return_value, s1, s2}, 0, 0, "s1_len", "s2_len",
-                   "ht", "return_value", "s1", "s2"))
+      if (__is_neg("105-120", 10, &(s1_len), sizeof(s1_len), &(s2_len),
+                   sizeof(s2_len), &(offset), sizeof(offset), &(len),
+                   sizeof(len), &(cmp_len), sizeof(cmp_len), &(cs), sizeof(cs),
+                   &(return_value), sizeof(return_value), &(s1), sizeof(s1),
+                   &(s2), sizeof(s2), &(ht), sizeof(ht)))
         return;
 
       break;
     }
 #endif
     }
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     106)) {
+    switch (__choose("__SWITCH106")) {
     case 0: {
       cmp_len = (uint)(len ? len : MAX(s2_len, (s1_len - offset)));
 
@@ -83097,9 +84271,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8768
     case 1: {
       // GuardKind
-      if (!__is_neg("106-1", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                    (void **){return_value, s1, s2}, 0, 0, "s1_len", "s2_len",
-                    "ht", "return_value", "s1", "s2"))
+      if (!__is_neg("106-1", 10, &(s1_len), sizeof(s1_len), &(s2_len),
+                    sizeof(s2_len), &(offset), sizeof(offset), &(len),
+                    sizeof(len), &(cmp_len), sizeof(cmp_len), &(cs), sizeof(cs),
+                    &(return_value), sizeof(return_value), &(s1), sizeof(s1),
+                    &(s2), sizeof(s2), &(ht), sizeof(ht)))
         cmp_len = (uint)(len ? len
                              : (((s2_len) > ((s1_len - offset)))
                                     ? (s2_len)
@@ -83113,9 +84289,7 @@ PHP_FUNCTION(substr_compare) {
 
   // prophet generated patch
   {
-    switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                     "php-5a8c917-workdir/switch.txt",
-                     107)) {
+    switch (__choose("__SWITCH107")) {
     case 0:
       break;
 #ifdef COMPILE_8769
@@ -84134,9 +85308,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8888
     case 120: {
       // IfExitKind
-      if (__is_neg("107-120", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                   (void **){return_value, s1, s2}, 0, 0, "s1_len", "s2_len",
-                   "ht", "return_value", "s1", "s2"))
+      if (__is_neg("107-120", 10, &(cs), sizeof(cs), &(return_value),
+                   sizeof(return_value), &(s1), sizeof(s1), &(s2), sizeof(s2),
+                   &(s1_len), sizeof(s1_len), &(s2_len), sizeof(s2_len),
+                   &(offset), sizeof(offset), &(cmp_len), sizeof(cmp_len),
+                   &(len), sizeof(len), &(ht), sizeof(ht)))
         return;
 
       break;
@@ -84145,9 +85321,7 @@ PHP_FUNCTION(substr_compare) {
     }
     {
       long long __temp108 = (!cs);
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       108)) {
+      switch (__choose("__SWITCH108")) {
       case 0: {
 
         break;
@@ -84155,27 +85329,31 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8889
       case 1: {
         __temp108 =
-            ((!cs) || __is_neg("108-1", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                               (void **){return_value, s1, s2}, 0, 0, "s1_len",
-                               "s2_len", "ht", "return_value", "s1", "s2"));
+            ((!cs) ||
+             __is_neg("108-1", 10, &(cs), sizeof(cs), &(return_value),
+                      sizeof(return_value), &(s1), sizeof(s1), &(s2),
+                      sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                      sizeof(s2_len), &(offset), sizeof(offset), &(cmp_len),
+                      sizeof(cmp_len), &(len), sizeof(len), &(ht), sizeof(ht)));
 
         break;
       }
 #endif
 #ifdef COMPILE_8890
       case 2: {
-        __temp108 = ((!cs) &&
-                     !__is_neg("108-2", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                               (void **){return_value, s1, s2}, 0, 0, "s1_len",
-                               "s2_len", "ht", "return_value", "s1", "s2"));
+        __temp108 =
+            ((!cs) && !__is_neg("108-2", 10, &(cs), sizeof(cs), &(return_value),
+                                sizeof(return_value), &(s1), sizeof(s1), &(s2),
+                                sizeof(s2), &(s1_len), sizeof(s1_len),
+                                &(s2_len), sizeof(s2_len), &(offset),
+                                sizeof(offset), &(cmp_len), sizeof(cmp_len),
+                                &(len), sizeof(len), &(ht), sizeof(ht)));
 
         break;
       }
 #endif
       }
-      switch (__choose("/root/project/prophet-gpl/build/php-case-5a8c917/"
-                       "php-5a8c917-workdir/switch.txt",
-                       109)) {
+      switch (__choose("__SWITCH109")) {
       case 0: {
         if (__temp108) {
           RETURN_LONG(zend_binary_strncmp(s1 + offset, (s1_len - offset), s2,
@@ -84190,9 +85368,11 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8891
       case 1: {
         // GuardKind
-        if (!__is_neg("109-1", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                      (void **){return_value, s1, s2}, 0, 0, "s1_len", "s2_len",
-                      "ht", "return_value", "s1", "s2"))
+        if (!__is_neg("109-1", 10, &(cs), sizeof(cs), &(return_value),
+                      sizeof(return_value), &(s1), sizeof(s1), &(s2),
+                      sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                      sizeof(s2_len), &(offset), sizeof(offset), &(cmp_len),
+                      sizeof(cmp_len), &(len), sizeof(len), &(ht), sizeof(ht)))
           if (!cs) {
             {
               {
@@ -84221,9 +85401,12 @@ PHP_FUNCTION(substr_compare) {
 #ifdef COMPILE_8892
       case 2: {
         // SpecialGuardKind
-        if (!__is_neg("109-2", 3, (int *){s1_len, s2_len, ht}, 0, 0, 3,
-                      (void **){return_value, s1, s2}, 0, 0, "s1_len", "s2_len",
-                      "ht", "return_value", "s1", "s2") &&
+        if (!__is_neg("109-2", 10, &(cs), sizeof(cs), &(return_value),
+                      sizeof(return_value), &(s1), sizeof(s1), &(s2),
+                      sizeof(s2), &(s1_len), sizeof(s1_len), &(s2_len),
+                      sizeof(s2_len), &(offset), sizeof(offset), &(cmp_len),
+                      sizeof(cmp_len), &(len), sizeof(len), &(ht),
+                      sizeof(ht)) &&
             (!cs)) {
           {
             {

@@ -26,6 +26,7 @@
 #include <unistd.h>
 #include <sstream>
 #include <fstream>
+#include <string>
 #include <llvm/Support/raw_ostream.h>
 
 #include <dirent.h>
@@ -114,13 +115,13 @@ static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroS
 }
 
 BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
-        bool no_clean_up,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),
+        bool no_clean_up,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),failMacros(),
         caseNum(caseNum),switchInfo(workDirPath) {
     Init(workDirPath, no_clean_up);
 }
 
 BenchProgram::BenchProgram(const std::string &workDirPath,int switchId,int caseNum)
-    : config(workDirPath + "/" + CONFIG_FILE_PATH),count(0),switchId(switchId),caseNum(caseNum),switchInfo(workDirPath) {
+    : config(workDirPath + "/" + CONFIG_FILE_PATH),count(0),switchId(switchId),caseNum(caseNum),switchInfo(workDirPath),failMacros() {
     Init(workDirPath, true);
 }
 
@@ -312,6 +313,20 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
     this->prophet_src=getFullPath(config.getStr("tools_dir"))+"/../src";
     this->afl_cmd=getFullPath(config.getStr("tools_dir"))+"/run-afl.py";
     this->localization_filename = work_dir + "/" + LOCALIZATION_RESULT;
+    this->conditionNum=false;
+
+    std::string fails=config.getStr("fail_macros");
+    if (fails!=""){
+        size_t current=0;
+        size_t pos;
+        std::string remain=fails;
+        while ((pos=remain.find(","))!=std::string::npos){
+            std::string sub=remain.substr(0,pos);
+            failMacros.push_back(stoi(sub));
+            remain=remain.substr(pos+1);
+        }
+        failMacros.push_back(stoi(remain));
+    }
 
     // The files for controling timeout stuff
     total_repair_build_time = 0;
@@ -662,6 +677,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     compileErrorMacros.clear();
     std::set<long long> fail;
     fail.clear();
+    for (size_t i=0;i<failMacros.size();i++)
+        fail.insert(failMacros[i]);
     std::vector<long long> succ_id;
     while(!succ){
         succ_id.clear();
@@ -822,7 +839,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             }
         }
         //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
-        if (fail.size()>=2){
+        if (compileErrorMacros.size()>=2 || linkErrorMacros.size()>=2){
             std::string candidateMacro="'";
             for (std::set<long long>::iterator it=fail.begin();it!=fail.end();it++){
                 candidateMacro+=std::to_string(*it)+",";
@@ -879,6 +896,27 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                 }
                 if (!include) succ_id.push_back(it->first);
             }
+        }
+        else{
+            for (std::set<long long>::iterator it=linkErrorMacros.begin();it!=linkErrorMacros.end();it++){
+                fail.insert(*it);
+            }
+            for (std::set<long long>::iterator it=compileErrorMacros.begin();it!=compileErrorMacros.end();it++){
+                fail.insert(*it);
+            }
+
+            succ_id.clear();
+            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                bool include=false;
+                for (std::set<long long>::iterator it2=fail.begin();it2!=fail.end();it2++){
+                    if (*it2==it->first) {
+                        include=true;
+                        break;
+                    }
+                }
+                if (!include) succ_id.push_back(it->first);
+            }
+
         }
 
         outlog_printf(2,"Building final program...\n");

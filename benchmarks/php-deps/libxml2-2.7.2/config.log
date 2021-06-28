@@ -27,8 +27,6 @@ uname -v = #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH: /root/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/bin
-PATH: /root/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/bin
 PATH: /usr/local/sbin
 PATH: /usr/local/bin
 PATH: /usr/sbin
@@ -2978,7 +2976,7 @@ PYTHON_VERSION='2.7'
 RANLIB='ranlib'
 RDL_LIBS=''
 READER_TEST='Readertests'
-RELDATE='Tue May 11 2021'
+RELDATE='Mon Jun 28 2021'
 RM='/bin/rm'
 SED='/bin/sed'
 SET_MAKE=''

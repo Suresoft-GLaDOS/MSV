@@ -244,8 +244,10 @@ private:
     int count;
 
     // For testing with specific switch id and case, instead of using AFL
-    int switchId;
-    int caseNum;
+    size_t switchId;
+    size_t caseNum;
+    size_t conditionNum;
+    std::vector<long long> failMacros;
 
     TestCache *cache;
 
@@ -269,7 +271,7 @@ private:
 
     void deleteLibraryFile(const std::map<std::string, std::string> &fileCodeMap);
 public:
-
+    bool isCondition;
     // We create the work dir from a configuration file, and we will put workdir
     // in the workDirPath path. If it is empty string, we will create a work dir
     // with an empty directory
@@ -334,15 +336,25 @@ public:
 
     std::string normalizePath(const std::string &);
 
-    void setSwitch(int id,int caseNumber){
+    void setSwitch(size_t id,size_t caseNumber){
         this->switchId=id;
         this->caseNum=caseNumber;
     }
-    std::pair<int,int> getSwitch(){
+    std::pair<size_t,size_t> getSwitch(){
         return std::make_pair(switchId,caseNum);
+    }
+    size_t getConditionNum(){
+        return conditionNum;
+    }
+    void setConditionNum(size_t num){
+        conditionNum=num;
+        isCondition=true;
     }
     std::string getProphetSrc(){
         return prophet_src;
+    }
+    void addFailMacros(long long macro){
+        failMacros.push_back(macro);
     }
 
     //void setArgFile(const std::string &fixtest_argfile);

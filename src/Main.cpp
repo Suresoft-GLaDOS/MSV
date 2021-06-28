@@ -124,10 +124,19 @@ int main(int argc, char* argv[]) {
     }
     if (SwitchCaseDebug.getValue()!=""){
         std::string switchCase=SwitchCaseDebug.getValue();
-        std::string switchId=switchCase.substr(0,switchCase.find("-"));
-        std::string caseNum=switchCase.substr(switchCase.find("-")+1,switchCase.size());
+        size_t firstDash=switchCase.find("-");
+        std::string switchId=switchCase.substr(0,firstDash);
+
+        size_t secondDash=switchCase.find("-",firstDash+1);
+        if (secondDash==std::string::npos) secondDash=switchCase.size();
+
+        std::string caseNum=switchCase.substr(firstDash+1,secondDash);
 
         P->setSwitch(std::stoi(switchId),std::stoi(caseNum));
+
+        if(secondDash!=std::string::npos){
+            P->setConditionNum(std::stoi(switchCase.substr(secondDash+1)));
+        }
     }
 
 

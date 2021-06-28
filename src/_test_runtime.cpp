@@ -293,6 +293,7 @@ extern "C" int __is_neg(const char *location,int count, ...) {
                 }
             }
         }
+        
         // fprintf(stderr, "here1\n");
         va_list ap;
         va_start(ap, count);

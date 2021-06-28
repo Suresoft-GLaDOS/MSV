@@ -156,7 +156,8 @@ long checkV(const std::map<unsigned long, std::vector< std::vector< long long> >
             it != negative_cases.end(); ++it) {
         std::map<unsigned long, std::vector< std::vector< long long> > >::const_iterator cit;
         cit = caseVMap.find(*it);
-        assert( cit != caseVMap.end());
+        // assert( cit != caseVMap.end());
+        if (cit == caseVMap.end()) continue;
         std::map<unsigned long, std::vector<unsigned long> >::const_iterator nit;
         nit = negative_records.find(*it);
         if (cit->second.size() != nit->second.size()) {
@@ -2066,14 +2067,20 @@ class TestBatcher {
         std::string source=T->createLibrarySource();
         rewriteCondition(newConds,P.getWorkdir(),P.getProphetSrc()+"/../tools",T->tempCtxt);
 
-        // if (P.getSwitch().first==-1 && P.getSwitch().second==-1)
-        //     result_init=T->test(testEnv,0,true);
-        // else
-        //     result_init=T->test(testEnv,0,false);
+        if (P.getSwitch().first==0 && P.getSwitch().second==0)
+            result_init=T->test(testEnv,0,true);
+        else{
+            BenchProgram::EnvMapTy tempEnv=testEnv;
+            if (P.isCondition==true){
+                std::string condEnv="__CONDITION_"+std::to_string(P.getSwitch().first)+"_"+std::to_string(P.getSwitch().second);
+                tempEnv[condEnv]=std::to_string(P.getConditionNum());
+            }
+            result_init=T->test(tempEnv,0,false);
+        }
 
-        std::string rollbackCmd="rm -f "+P.getProphetSrc()+"/.libs/libtest_runtime.so.0.0.0";
+        std::string rollbackCmd="rm -f /usr/local/lib/libtest_runtime.so.0.0.0";
         system(rollbackCmd.c_str());
-        std::string copyCmd="mv "+P.getProphetSrc()+"/.libs/libtest_runtime_bak.so.0.0.0 "+P.getProphetSrc()+"/.libs/libtest_runtime.so.0.0.0";
+        std::string copyCmd="mv /usr/local/lib/libtest_runtime_bak.so.0.0.0 /usr/local/lib/libtest_runtime.so.0.0.0";
         system(copyCmd.c_str());
 
         std::map<NewCodeMapTy, double> newCode;

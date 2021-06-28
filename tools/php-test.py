@@ -75,14 +75,14 @@ if __name__ == "__main__":
             if "OUTIFFAIL" in os.environ:
                 outf = work_dir + "/__cleantests/"
                 if temp_dir!="":
-                    outf+=temp_dir+"/"
+                    outf+=temp_dir+"_tests/"
                 outf += ids[0] + ".out";
                 if os.path.exists(outf):
                     system("cp -rf " + outf + " " + os.environ["OUTIFFAIL"]);
             if "EXPIFFAIL" in os.environ:
                 expf = work_dir + "/__cleantests/"
                 if temp_dir!="":
-                    outf+=temp_dir+"/"
+                    outf+=temp_dir+"_tests/"
                 outf += ids[0] + ".exp";
                 if os.path.exists(expf):
                     system("cp -rf " + expf + " " + os.environ["EXPIFFAIL"]);
