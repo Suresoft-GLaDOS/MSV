@@ -63,7 +63,17 @@ if __name__ == "__main__":
             ret.add('6947')
         if '20' in ids:
             ret.add('20')
-        
+        if '2246' in ids:
+            ret.add('2246')
+        if '7369' in ids:
+            ret.add('7369')
+        if '9390' in ids:
+            ret.add('9390')
+        if '9934' in ids:
+            ret.add('9934')
+        if '9937' in ids:
+            ret.add('9937')
+            
         for i in ret:
             print i,
         # print "test"
