@@ -356,7 +356,7 @@ class php_tester:
     def prepare_test(self, s = None):
         self.tmptest_dir = self.work_dir + "/__cleantests";
         if self.temp_dir!="":
-            self.tmptest_dir+="/"+self.temp_dir
+            self.tmptest_dir+="/"+self.temp_dir+"_tests"
         if (path.exists(self.tmptest_dir)):
             shutil.rmtree(self.tmptest_dir);
         #print "Preparing clean test dir..."
