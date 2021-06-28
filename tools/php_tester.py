@@ -336,6 +336,7 @@ class php_tester:
                 if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
                     ret.add(the_idx);
                 cnt = cnt + 1;
+                test_section=False
             elif (test_section == True) and (tokens[0] == "Fatal"):
                 the_idx = new_s[0];
                 new_s.remove(the_idx);
