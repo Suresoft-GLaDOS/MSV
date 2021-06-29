@@ -25,12 +25,14 @@ libtiff-tests2: libtiff-tests
 	cp -f $(srcdir)/libtiff-myscript/rewrite_tag.c libtiff-tests2/
 
 gmp-src:
-	hg clone https://gmplib.org/repo/gmp gmp-src
+	wget -nc https://ftp.gnu.org/gnu/gmp/gmp-5.0.2.tar.gz
+	tar xvzf gmp-5.0.2.tar.gz
+	rm -rf gmp-src
+	mv ./gmp-5.0.2 ./gmp-src
 
 gmp-tests: gmp-src
-	cp -rf gmp-src gmp-src-tmp
-	cd gmp-src-tmp && hg update -r 14177 -C
-	$(abs_top_srcdir)/tools/gmp-build.py gmp-src-tmp
+	cp -rf ./gmp-src ./gmp-src-tmp
+	cd gmp-src-tmp && ./configure && make
 	cp -rf gmp-src-tmp/tests gmp-tests
 	rm -rf gmp-src-tmp
 
@@ -60,7 +62,7 @@ python-src:
 
 python-tests: python-src
 	cp -rf python-src python-src-tmp
-	cd python-src-tmp 
+	cd python-src-tmp && hg update -r 70300 -C
 	cp -rf python-src-tmp/Lib/test python-tests
 	rm -rf python-src-tmp
 
