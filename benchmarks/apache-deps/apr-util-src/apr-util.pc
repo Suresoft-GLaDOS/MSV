@@ -1,4 +1,4 @@
-prefix=/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-build
+prefix=/root/project/MSV/benchmarks/apache-deps/apr-util-build
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 APRUTIL_MAJOR_VERSION=1

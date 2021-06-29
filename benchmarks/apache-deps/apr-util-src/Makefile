@@ -10,9 +10,9 @@ APRUTIL_DOTTED_VERSION=1.5.5
 srcdir = .
 
 
-INCLUDES = -I/root/project/MSV/benchmarks/apache-deps/apr-util-src/include -I/root/project/MSV/benchmarks/apache-deps/apr-util-src/include/private  -I/root/project/prophet-gpl/benchmarks/apache-deps/apr-build/include/apr-1  
+INCLUDES = -I/root/project/MSV/benchmarks/apache-deps/apr-util-src/include -I/root/project/MSV/benchmarks/apache-deps/apr-util-src/include/private  -I/root/project/MSV/benchmarks/apache-deps/apr-build/include/apr-1  
 APRUTIL_LDFLAGS = 
-APRUTIL_LIBS = -lexpat /root/project/prophet-gpl/benchmarks/apache-deps/apr-build/lib/libapr-1.la -lrt -lcrypt -lpthread -ldl
+APRUTIL_LIBS = -lexpat /root/project/MSV/benchmarks/apache-deps/apr-build/lib/libapr-1.la -lrt -lcrypt -lpthread -ldl
 
 TARGET_LIB = libaprutil-${APRUTIL_MAJOR_VERSION}.la
 INSTALL_SUBDIRS =  
@@ -63,7 +63,7 @@ EXTRACLEAN_TARGETS = configure aclocal.m4 include/private/apu_config.h.in \
 	build/apr_common.m4 build/find_apr.m4 build/install.sh \
 	build/config.guess build/config.sub
 
-prefix=/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-build
+prefix=/root/project/MSV/benchmarks/apache-deps/apr-util-build
 exec_prefix=${prefix}
 bindir=${exec_prefix}/bin
 libdir=${exec_prefix}/lib

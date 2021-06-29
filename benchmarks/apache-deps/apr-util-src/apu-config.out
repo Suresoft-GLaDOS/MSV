@@ -21,7 +21,7 @@
 APRUTIL_MAJOR_VERSION="1"
 APRUTIL_DOTTED_VERSION="1.5.5"
 
-prefix="/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-build"
+prefix="/root/project/MSV/benchmarks/apache-deps/apr-util-build"
 exec_prefix="${prefix}"
 bindir="${exec_prefix}/bin"
 libdir="${exec_prefix}/lib"
