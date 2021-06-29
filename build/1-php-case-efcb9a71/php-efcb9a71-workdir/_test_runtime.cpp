@@ -3205,7 +3205,7 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 4);
+return (v== 6);
 }
 case 6:{
 va_list ap;
@@ -3217,7 +3217,7 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 5);
+return (v== 11);
 }
 case 7:{
 va_list ap;
@@ -3229,7 +3229,7 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 6);
+return (v== 32);
 }
 case 8:{
 va_list ap;
@@ -3241,7 +3241,7 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 14);
+return (v== 64);
 }
 case 9:{
 va_list ap;
@@ -3253,7 +3253,7 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 32);
+return (v== 128);
 }
 case 10:{
 va_list ap;
@@ -3265,69 +3265,9 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 42);
-}
-case 11:{
-va_list ap;
-va_start(ap, count);
-void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<2+1;__i++){
-p = va_arg(ap, void*);
-sz = va_arg(ap, unsigned long);
-}
-if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
-else return 0;
-return (v== 64);
-}
-case 12:{
-va_list ap;
-va_start(ap, count);
-void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<2+1;__i++){
-p = va_arg(ap, void*);
-sz = va_arg(ap, unsigned long);
-}
-if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
-else return 0;
-return (v== 128);
-}
-case 13:{
-va_list ap;
-va_start(ap, count);
-void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<2+1;__i++){
-p = va_arg(ap, void*);
-sz = va_arg(ap, unsigned long);
-}
-if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
-else return 0;
 return (v== 192);
 }
-case 14:{
-va_list ap;
-va_start(ap, count);
-void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<2+1;__i++){
-p = va_arg(ap, void*);
-sz = va_arg(ap, unsigned long);
-}
-if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
-else return 0;
-return (v== 256);
-}
-case 15:{
-va_list ap;
-va_start(ap, count);
-void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<2+1;__i++){
-p = va_arg(ap, void*);
-sz = va_arg(ap, unsigned long);
-}
-if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
-else return 0;
-return (v== 320);
-}
-case 16:{
+case 11:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
@@ -3339,7 +3279,7 @@ if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
 return (v== 0);
 }
-case 17:{
+case 12:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
@@ -3351,7 +3291,7 @@ if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
 return (v== 33);
 }
-case 18:{
+case 13:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
@@ -3363,7 +3303,7 @@ if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
 return (v== 49);
 }
-case 19:{
+case 14:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
@@ -3373,9 +3313,9 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 61);
+return (v== 65);
 }
-case 20:{
+case 15:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
@@ -3386,6 +3326,66 @@ sz = va_arg(ap, unsigned long);
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
 return (v== 81);
+}
+case 16:{
+va_list ap;
+va_start(ap, count);
+void *p;unsigned long sz;long long v = 0;
+for (size_t __i=0;__i<3+1;__i++){
+p = va_arg(ap, void*);
+sz = va_arg(ap, unsigned long);
+}
+if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
+else return 0;
+return (v== 113);
+}
+case 17:{
+va_list ap;
+va_start(ap, count);
+void *p;unsigned long sz;long long v = 0;
+for (size_t __i=0;__i<3+1;__i++){
+p = va_arg(ap, void*);
+sz = va_arg(ap, unsigned long);
+}
+if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
+else return 0;
+return (v== 769);
+}
+case 18:{
+va_list ap;
+va_start(ap, count);
+void *p;unsigned long sz;long long v = 0;
+for (size_t __i=0;__i<4+1;__i++){
+p = va_arg(ap, void*);
+sz = va_arg(ap, unsigned long);
+}
+if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
+else return 0;
+return (v== 0);
+}
+case 19:{
+va_list ap;
+va_start(ap, count);
+void *p;unsigned long sz;long long v = 0;
+for (size_t __i=0;__i<4+1;__i++){
+p = va_arg(ap, void*);
+sz = va_arg(ap, unsigned long);
+}
+if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
+else return 0;
+return (v== 1);
+}
+case 20:{
+va_list ap;
+va_start(ap, count);
+void *p;unsigned long sz;long long v = 0;
+for (size_t __i=0;__i<4+1;__i++){
+p = va_arg(ap, void*);
+sz = va_arg(ap, unsigned long);
+}
+if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
+else return 0;
+return (v== 48);
 }
 }
 }
