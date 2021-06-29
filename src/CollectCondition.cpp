@@ -136,7 +136,7 @@ void CollectCondition::record(std::pair<size_t,size_t> currentPatch,int outPipe)
                 std::vector<unsigned long> tmp_v = parseBranchRecord(tmp_file);
                 // FIXME: strange error in wireshark, we just ignore right now
                 if (tmp_v.size() == 0) {
-                    outlog_printf(0, "Strange error or non-deterministic behavior!\n");
+                    outlog_printf(0, "Strange error or non-deterministic behavior! %u %u\n",currentPatch.first,currentPatch.second);
                     exit(0);
                 }
                 assert(tmp_v.size() != 0);

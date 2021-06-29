@@ -128,13 +128,13 @@ int main(int argc, char* argv[]) {
         std::string switchId=switchCase.substr(0,firstDash);
 
         size_t secondDash=switchCase.find("-",firstDash+1);
-        if (secondDash==std::string::npos) secondDash=switchCase.size();
-
-        std::string caseNum=switchCase.substr(firstDash+1,secondDash);
-
-        P->setSwitch(std::stoi(switchId),std::stoi(caseNum));
-
-        if(secondDash!=std::string::npos){
+        if (secondDash==std::string::npos){
+            std::string caseNum=switchCase.substr(firstDash+1);
+            P->setSwitch(std::stoi(switchId),std::stoi(caseNum));
+        }
+        else{
+            std::string caseNum=switchCase.substr(firstDash+1,secondDash);
+            P->setSwitch(std::stoi(switchId),std::stoi(caseNum));
             P->setConditionNum(std::stoi(switchCase.substr(secondDash+1)));
         }
     }
