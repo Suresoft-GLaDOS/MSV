@@ -10,7 +10,7 @@ srcdir = .
 #   programs such as sockperf, that have to be invoked in a special sequence
 #   or with special parameters
 
-INCLUDES = -I/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/include -I/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/include/private  -I/root/project/prophet-gpl/benchmarks/apache-deps/apr-build/include/apr-1  
+INCLUDES = -I/root/project/MSV/benchmarks/apache-deps/apr-util-src/include -I/root/project/MSV/benchmarks/apache-deps/apr-util-src/include/private  -I/root/project/prophet-gpl/benchmarks/apache-deps/apr-build/include/apr-1  
 
 STDTEST_PORTABLE = dbd testall
 
@@ -28,7 +28,7 @@ LOCAL_LIBS = ../libaprutil-${APRUTIL_MAJOR_VERSION}1.la
 CLEAN_TARGETS = manyfile.bin testfile.txt data/sqlite*.db
 
 # bring in rules.mk for standard functionality
-include /root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/build/rules.mk
+include /root/project/MSV/benchmarks/apache-deps/apr-util-src/build/rules.mk
 APRUTIL_LIBS = -lexpat /root/project/prophet-gpl/benchmarks/apache-deps/apr-build/lib/libapr-1.la -lrt -lcrypt -lpthread -ldl
 APRUTIL_LDFLAGS = $(ALL_LDFLAGS) -no-install 
 

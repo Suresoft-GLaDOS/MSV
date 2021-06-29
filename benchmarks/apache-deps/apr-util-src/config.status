@@ -430,7 +430,7 @@ Copyright (C) 2020 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src'
+ac_pwd='/root/project/MSV/benchmarks/apache-deps/apr-util-src'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 test -n "$AWK" || AWK=awk
@@ -618,13 +618,12 @@ echo 'BEGIN {' >"$ac_tmp/subs1.awk" &&
 cat >>"$ac_tmp/subs1.awk" <<\_ACAWK &&
 S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
-S["INCLUDE_OUTPUTS"]="include /root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/build-outputs.mk"
-S["INCLUDE_RULES"]="include /root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/build/rules.mk"
+S["INCLUDE_OUTPUTS"]="include /root/project/MSV/benchmarks/apache-deps/apr-util-src/build-outputs.mk"
+S["INCLUDE_RULES"]="include /root/project/MSV/benchmarks/apache-deps/apr-util-src/build/rules.mk"
 S["APRUTIL_LIBS"]="-lexpat /root/project/prophet-gpl/benchmarks/apache-deps/apr-build/lib/libapr-1.la -lrt -lcrypt -lpthread -ldl"
 S["APRUTIL_LDFLAGS"]=""
 S["APRUTIL_INCLUDES"]=""
-S["APRUTIL_PRIV_INCLUDES"]="-I/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/include -I/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/include/priv"\
-"ate"
+S["APRUTIL_PRIV_INCLUDES"]="-I/root/project/MSV/benchmarks/apache-deps/apr-util-src/include -I/root/project/MSV/benchmarks/apache-deps/apr-util-src/include/private"
 S["APRUTIL_EXPORT_LIBS"]="-lexpat"
 S["EXTRA_OBJECTS"]=""
 S["APU_MODULES"]="  dbd/apr_dbd_sqlite3.la"
@@ -712,9 +711,9 @@ S["CC"]="gcc"
 S["APU_LTVERSION"]="-version-info 5:5:5"
 S["APRUTIL_MAJOR_VERSION"]="1"
 S["APRUTIL_DOTTED_VERSION"]="1.5.5"
-S["abs_builddir"]="/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src"
-S["abs_srcdir"]="/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src"
-S["top_builddir"]="/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src"
+S["abs_builddir"]="/root/project/MSV/benchmarks/apache-deps/apr-util-src"
+S["abs_srcdir"]="/root/project/MSV/benchmarks/apache-deps/apr-util-src"
+S["top_builddir"]="/root/project/MSV/benchmarks/apache-deps/apr-util-src"
 S["LT_NO_INSTALL"]="-no-install"
 S["INSTALL_DATA"]="${INSTALL} -m 644"
 S["INSTALL_SCRIPT"]="${INSTALL}"

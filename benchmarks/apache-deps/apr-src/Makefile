@@ -1,8 +1,8 @@
 
 srcdir=.
 
-top_srcdir=/root/project/prophet-gpl/benchmarks/apache-deps/apr-src
-top_blddir=/root/project/prophet-gpl/benchmarks/apache-deps/apr-src
+top_srcdir=/root/project/MSV/benchmarks/apache-deps/apr-src
+top_blddir=/root/project/MSV/benchmarks/apache-deps/apr-src
 
 #
 # APR (Apache Portable Runtime) library Makefile.
@@ -41,8 +41,8 @@ TARGETS = $(TARGET_LIB) include/private/apr_escape_test_char.h apr.exp apr-confi
 LT_VERSION = -version-info 5:3:5
 
 # bring in rules.mk for standard functionality
-include /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/build/apr_rules.mk
-include /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/build-outputs.mk
+include /root/project/MSV/benchmarks/apache-deps/apr-src/build/apr_rules.mk
+include /root/project/MSV/benchmarks/apache-deps/apr-src/build-outputs.mk
 
 CLEAN_TARGETS = apr-config.out apr.exp exports.c export_vars.c .make.dirs \
 	build/apr_rules.out tools/gen_test_char \

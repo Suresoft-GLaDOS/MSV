@@ -10,7 +10,7 @@ APRUTIL_DOTTED_VERSION=1.5.5
 srcdir = .
 
 
-INCLUDES = -I/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/include -I/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/include/private  -I/root/project/prophet-gpl/benchmarks/apache-deps/apr-build/include/apr-1  
+INCLUDES = -I/root/project/MSV/benchmarks/apache-deps/apr-util-src/include -I/root/project/MSV/benchmarks/apache-deps/apr-util-src/include/private  -I/root/project/prophet-gpl/benchmarks/apache-deps/apr-build/include/apr-1  
 APRUTIL_LDFLAGS = 
 APRUTIL_LIBS = -lexpat /root/project/prophet-gpl/benchmarks/apache-deps/apr-build/lib/libapr-1.la -lrt -lcrypt -lpthread -ldl
 
@@ -47,8 +47,8 @@ LDADD_crypto_nss =
 TARGETS = $(TARGET_LIB) aprutil.exp apu-config.out $(APU_MODULES)
 
 # bring in rules.mk for standard functionality
-include /root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/build/rules.mk
-include /root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src/build-outputs.mk
+include /root/project/MSV/benchmarks/apache-deps/apr-util-src/build/rules.mk
+include /root/project/MSV/benchmarks/apache-deps/apr-util-src/build-outputs.mk
 
 CLEAN_SUBDIRS = test  
 
@@ -68,8 +68,8 @@ exec_prefix=${prefix}
 bindir=${exec_prefix}/bin
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include/apr-${APRUTIL_MAJOR_VERSION}
-top_srcdir=/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src
-top_blddir=/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-src
+top_srcdir=/root/project/MSV/benchmarks/apache-deps/apr-util-src
+top_blddir=/root/project/MSV/benchmarks/apache-deps/apr-util-src
 
 # Create apu-config script suitable for the install tree
 apu-config.out: $(APU_CONFIG)

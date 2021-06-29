@@ -430,7 +430,7 @@ Copyright (C) 2020 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/root/project/prophet-gpl/benchmarks/apache-deps/apr-src'
+ac_pwd='/root/project/MSV/benchmarks/apache-deps/apr-src'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 AWK='mawk'
@@ -827,8 +827,8 @@ echo 'BEGIN {' >"$ac_tmp/subs1.awk" &&
 cat >>"$ac_tmp/subs1.awk" <<\_ACAWK &&
 S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
-S["INCLUDE_OUTPUTS"]="include /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/build-outputs.mk"
-S["INCLUDE_RULES"]="include /root/project/prophet-gpl/benchmarks/apache-deps/apr-src/build/apr_rules.mk"
+S["INCLUDE_OUTPUTS"]="include /root/project/MSV/benchmarks/apache-deps/apr-src/build-outputs.mk"
+S["INCLUDE_RULES"]="include /root/project/MSV/benchmarks/apache-deps/apr-src/build/apr_rules.mk"
 S["LT_NO_INSTALL"]="-no-install"
 S["LIBTOOL_LIBS"]=""
 S["DEFAULT_OSDIR"]="unix"
@@ -1039,11 +1039,11 @@ S["CFLAGS"]=""
 S["CC"]="gcc"
 S["APR_MAJOR_VERSION"]="1"
 S["APR_DOTTED_VERSION"]="1.5.3"
-S["apr_builders"]="/root/project/prophet-gpl/benchmarks/apache-deps/apr-src/build"
-S["top_builddir"]="/root/project/prophet-gpl/benchmarks/apache-deps/apr-src"
+S["apr_builders"]="/root/project/MSV/benchmarks/apache-deps/apr-src/build"
+S["top_builddir"]="/root/project/MSV/benchmarks/apache-deps/apr-src"
 S["APR_CONFIG_LOCATION"]="source"
-S["apr_builddir"]="/root/project/prophet-gpl/benchmarks/apache-deps/apr-src"
-S["apr_srcdir"]="/root/project/prophet-gpl/benchmarks/apache-deps/apr-src"
+S["apr_builddir"]="/root/project/MSV/benchmarks/apache-deps/apr-src"
+S["apr_srcdir"]="/root/project/MSV/benchmarks/apache-deps/apr-src"
 S["target_os"]="linux-gnu"
 S["target_vendor"]="pc"
 S["target_cpu"]="x86_64"
