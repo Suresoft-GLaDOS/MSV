@@ -5,7 +5,7 @@
 #define CLANG_CMD "/usr/local/bin/clang"
 
 /* the location of the wrapper for instrument the file */
-#define CLANG_WRAP_PATH "/root/project/prophet-gpl/wrap"
+#define CLANG_WRAP_PATH "/root/project/MSV/wrap"
 
 /* the extra include path arguments that need to pass to clang when build AST
    tree */

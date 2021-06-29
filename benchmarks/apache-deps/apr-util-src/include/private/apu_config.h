@@ -8,7 +8,7 @@
 #define APU_DSO_BUILD 1
 
 /* Define to be absolute path to DSO directory */
-#define APU_DSO_LIBDIR "/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-build/lib/apr-util-1"
+#define APU_DSO_LIBDIR "/root/project/MSV/benchmarks/apache-deps/apr-util-build/lib/apr-util-1"
 
 /* Define if the inbuf parm to iconv() is const char ** */
 /* #undef APU_ICONV_INBUF_CONST */

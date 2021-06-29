@@ -6,6 +6,6 @@ CATEGORY="application"
 VENDOR="Apache Software Foundation"
 EMAIL="dev@apr.apache.org"
 PSTAMP="dev@apr.apache.org"
-BASEDIR="/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-build"
+BASEDIR="/root/project/MSV/benchmarks/apache-deps/apr-util-build"
 CLASSES="none"
 

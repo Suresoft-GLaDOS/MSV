@@ -164,7 +164,7 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/build-aux/install-sh \
 	$(top_srcdir)/build-aux/ltmain.sh \
 	$(top_srcdir)/build-aux/missing COPYING TODO build-aux/compile \
-	build-aux/config.guess build-aux/config.sub build-aux/depcomp \
+	build-aux/config.guess build-aux/config.sub \
 	build-aux/install-sh build-aux/ltmain.sh build-aux/missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
@@ -208,13 +208,13 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /root/project/prophet-gpl/build-aux/missing aclocal-1.15
+ACLOCAL = ${SHELL} /root/project/MSV/build-aux/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
-AUTOCONF = ${SHELL} /root/project/prophet-gpl/build-aux/missing autoconf
-AUTOHEADER = ${SHELL} /root/project/prophet-gpl/build-aux/missing autoheader
-AUTOMAKE = ${SHELL} /root/project/prophet-gpl/build-aux/missing automake-1.15
+AUTOCONF = ${SHELL} /root/project/MSV/build-aux/missing autoconf
+AUTOHEADER = ${SHELL} /root/project/MSV/build-aux/missing autoheader
+AUTOMAKE = ${SHELL} /root/project/MSV/build-aux/missing automake-1.15
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -251,7 +251,7 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-MAKEINFO = ${SHELL} /root/project/prophet-gpl/build-aux/missing makeinfo
+MAKEINFO = ${SHELL} /root/project/MSV/build-aux/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -274,10 +274,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.1
-abs_builddir = /root/project/prophet-gpl
-abs_srcdir = /root/project/prophet-gpl
-abs_top_builddir = /root/project/prophet-gpl
-abs_top_srcdir = /root/project/prophet-gpl
+abs_builddir = /root/project/MSV
+abs_srcdir = /root/project/MSV
+abs_top_builddir = /root/project/MSV
+abs_top_srcdir = /root/project/MSV
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_CXX = g++
@@ -307,7 +307,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /root/project/prophet-gpl/build-aux/install-sh
+install_sh = ${SHELL} /root/project/MSV/build-aux/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale

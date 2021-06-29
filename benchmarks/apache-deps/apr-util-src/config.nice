@@ -3,6 +3,6 @@
 # Created by configure
 
 "./configure" \
-"--prefix=/root/project/prophet-gpl/benchmarks/apache-deps/apr-util-build" \
-"--with-apr=/root/project/prophet-gpl/benchmarks/apache-deps/apr-build" \
+"--prefix=/root/project/MSV/benchmarks/apache-deps/apr-util-build" \
+"--with-apr=/root/project/MSV/benchmarks/apache-deps/apr-build" \
 "$@"

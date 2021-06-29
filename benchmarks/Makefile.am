@@ -60,7 +60,7 @@ python-src:
 
 python-tests: python-src
 	cp -rf python-src python-src-tmp
-	cd python-src-tmp && hg update -r 70300 -C
+	cd python-src-tmp 
 	cp -rf python-src-tmp/Lib/test python-tests
 	rm -rf python-src-tmp
 
