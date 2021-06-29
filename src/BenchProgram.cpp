@@ -922,11 +922,11 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         outlog_printf(2,"Building final program...\n");
         // Get fail case and create final macros
         outlog_printf(2,"Total success macros: %d\n",succ_id.size());
-        std::ofstream finalMacros("succ_macro.txt",std::ofstream::out);
-        for (long long i=0;i<succ_id.size();i++){
-            finalMacros << i << "\n";
-        }
-        finalMacros.close();
+        // std::ofstream finalMacros("succ_macro.txt",std::ofstream::out);
+        // for (long long i=0;i<succ_id.size();i++){
+        //     finalMacros << i << "\n";
+        // }
+        // finalMacros.close();
 
         // Build final build
         succ = buildFull("src", 0,false,succ_id,files);
