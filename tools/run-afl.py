@@ -155,12 +155,12 @@ def main(argv):
                 else:
                     print(f"fuzzer{fuzz.fid} finished!")
                     (out, err) = fuzz.fuzzer.communicate()
-                    print(out)
-                    result = result_checker(out)
+                    result = result_checker(fuzz)
                     print(f"result: {result} fuzz_queue: {fuzz_queue}")
                     fuzz.set_result(result)
                     result_map[fuzz.switch] = fuzz
                     fuzz_queue.pop(i)
+                    break
     succ_switches = []
     for i in range(switch_num):
         if i in result_map:
