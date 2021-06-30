@@ -1069,6 +1069,17 @@ protected:
         // P.getSwitchInfo().caseCluster=caseCluster;
         P.getSwitchInfo().scoreInfo=scores;
 
+        std::vector<std::vector<std::string>> atomString;
+        atomString.clear();
+        for (size_t _=0;_<idAndCase.size();_++) atomString.push_back(std::vector<std::string>());
+
+        for (std::map<size_t,std::vector<Expr *>>::iterator it=switchAtoms.begin();it!=switchAtoms.end();it++){
+            ASTContext *ctxt=M.getSourceContext(switchLoc[it->first].filename);
+            for (size_t i=0;i<it->second.size();i++){
+                atomString[it->first].push_back(stmtToString(*ctxt,it->second[i]));
+            }
+        }
+        P.getSwitchInfo().atoms=atomString;
         // P.getSwitchInfo().save();
     }
 
@@ -2106,6 +2117,7 @@ class TestBatcher {
 
         std::string source=T->createLibrarySource();
         std::vector<Information> infos=rewriteCondition(newConds,P.getWorkdir(),P.getProphetSrc()+"/../tools",T->tempCtxt);
+        system(std::string("clang-format -i "+P.getWorkdir()+"/_test_runtime.cpp").c_str());
         T->updateInformation(infos);
 
         // if (P.getSwitch().first==0 && P.getSwitch().second==0)

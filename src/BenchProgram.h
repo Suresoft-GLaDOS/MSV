@@ -22,6 +22,7 @@
 #include "cJSON/cJSON.h"
 
 #include <clang/Frontend/ASTUnit.h>
+#include <clang/AST/Expr.h>
 #include <string>
 #include <vector>
 #include <set>
@@ -133,6 +134,7 @@ private:
         // std::map<int,std::list<std::list<int>>> caseCluster;
         std::vector<std::set<size_t>> scoreInfo;
         std::vector<std::pair<size_t,size_t>> conditionSwitches;
+        std::vector<std::vector<std::string>> atoms;
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
         std::vector<std::vector<Information>> infos;
     public:
@@ -182,7 +184,20 @@ private:
                 cJSON_AddItemToArray(eachSwitch,cJSON_CreateNumber(conditionSwitches[i].second));
                 cJSON_AddItemToArray(conditionArray,eachSwitch);
             }
-            cJSON_AddItemToObject(json,"condition_switch",conditionArray);
+            cJSON_AddItemToObject(json,std::string("condition_switch").c_str(),conditionArray);
+
+            // Save condition atoms
+            cJSON *atomArray=cJSON_CreateArray();
+            for (std::vector<std::vector<std::string>>::iterator it=atoms.begin();it!=atoms.end();it++){
+
+                cJSON *exprArray=cJSON_CreateArray();
+                for (size_t i=0;i<it->size();i++){
+                    cJSON *expr=cJSON_CreateString((*it)[i].c_str());
+                    cJSON_AddItemToArray(exprArray,expr);
+                }
+                cJSON_AddItemToArray(atomArray,exprArray);
+            }
+            cJSON_AddItemToObject(json,std::string("atoms").c_str(),atomArray);
 
             // Save each patch rules
             cJSON *ruleArray=cJSON_CreateArray();
