@@ -269,6 +269,17 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	33,
+				"switch":	0,
+				"case":	44,
+				"type":	"IfExitKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"(*zvalue).type",
 				"constant":	6
@@ -278,6 +289,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"!=",
 				"variable":	"(*zvalue).type",
 				"constant":	4
@@ -287,6 +299,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	3,
 				"operator":	"!=",
 				"variable":	"(*zvalue).type",
 				"constant":	5
@@ -296,6 +309,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	4,
 				"operator":	"!=",
 				"variable":	"(*zvalue).type",
 				"constant":	7
@@ -305,6 +319,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	5,
 				"operator":	"!=",
 				"variable":	"(*zvalue).type",
 				"constant":	32
@@ -314,6 +329,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	6,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	0
@@ -323,6 +339,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	7,
 				"operator":	"!=",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	1
@@ -332,6 +349,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	8,
 				"operator":	"!=",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	2
@@ -341,6 +359,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	9,
 				"operator":	"==",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	0
@@ -350,6 +369,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	10,
 				"operator":	"!=",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	1
@@ -359,6 +379,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	11,
 				"operator":	"==",
 				"variable":	"zvalue->refcount__gc",
 				"constant":	0
@@ -368,6 +389,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	12,
 				"operator":	"!=",
 				"variable":	"zvalue->refcount__gc",
 				"constant":	1
@@ -377,6 +399,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	13,
 				"operator":	"!=",
 				"variable":	"zvalue->refcount__gc",
 				"constant":	2
@@ -386,6 +409,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	14,
 				"operator":	"==",
 				"variable":	"zvalue->type",
 				"constant":	6
@@ -395,6 +419,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	15,
 				"operator":	"!=",
 				"variable":	"zvalue->type",
 				"constant":	4
@@ -404,6 +429,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	16,
 				"operator":	"!=",
 				"variable":	"zvalue->type",
 				"constant":	5
@@ -413,6 +439,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	17,
 				"operator":	"!=",
 				"variable":	"zvalue->type",
 				"constant":	7
@@ -422,6 +449,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	18,
 				"operator":	"!=",
 				"variable":	"zvalue->type",
 				"constant":	32
@@ -431,6 +459,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	19,
 				"operator":	"==",
 				"variable":	"zvalue->is_ref__gc",
 				"constant":	0
@@ -440,6 +469,7 @@
 				"case":	44,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	20,
 				"operator":	"!=",
 				"variable":	"zvalue->is_ref__gc",
 				"constant":	1
@@ -671,6 +701,17 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	38,
+				"switch":	1,
+				"case":	38,
+				"type":	"IfExitKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"compiler_globals.active_class_entry",
 				"constant":	0
@@ -680,6 +721,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc",
 				"constant":	0
@@ -689,6 +731,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	3,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc_len",
 				"constant":	0
@@ -698,6 +741,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	4,
 				"operator":	"==",
 				"variable":	"compiler_globals.short_tags",
 				"constant":	1
@@ -707,6 +751,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	5,
 				"operator":	"==",
 				"variable":	"compiler_globals.asp_tags",
 				"constant":	0
@@ -716,6 +761,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	6,
 				"operator":	"==",
 				"variable":	"compiler_globals.unclean_shutdown",
 				"constant":	0
@@ -725,6 +771,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	7,
 				"operator":	"==",
 				"variable":	"compiler_globals.ini_parser_unbuffered_errors",
 				"constant":	1
@@ -734,6 +781,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	8,
 				"operator":	"==",
 				"variable":	"compiler_globals.catch_begin",
 				"constant":	0
@@ -743,6 +791,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	9,
 				"operator":	"==",
 				"variable":	"compiler_globals.interactive",
 				"constant":	0
@@ -752,6 +801,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	10,
 				"operator":	"==",
 				"variable":	"compiler_globals.increment_lineno",
 				"constant":	0
@@ -761,6 +811,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	11,
 				"operator":	"==",
 				"variable":	"compiler_globals.access_type",
 				"constant":	0
@@ -770,6 +821,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	12,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment",
 				"constant":	0
@@ -779,6 +831,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	13,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment_len",
 				"constant":	0
@@ -788,6 +841,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	14,
 				"operator":	"==",
 				"variable":	"compiler_globals.compiler_options",
 				"constant":	2
@@ -797,6 +851,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	15,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_namespace",
 				"constant":	0
@@ -806,6 +861,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	16,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_import",
 				"constant":	0
@@ -815,6 +871,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	17,
 				"operator":	"==",
 				"variable":	"compiler_globals.in_namespace",
 				"constant":	0
@@ -824,6 +881,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	18,
 				"operator":	"==",
 				"variable":	"compiler_globals.has_bracketed_namespaces",
 				"constant":	0
@@ -833,6 +891,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	19,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list",
 				"constant":	0
@@ -842,6 +901,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	20,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list_size",
 				"constant":	0
@@ -851,6 +911,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	21,
 				"operator":	"==",
 				"variable":	"compiler_globals.multibyte",
 				"constant":	0
@@ -860,6 +921,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	22,
 				"operator":	"==",
 				"variable":	"compiler_globals.detect_unicode",
 				"constant":	1
@@ -869,6 +931,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	23,
 				"operator":	"==",
 				"variable":	"compiler_globals.encoding_declared",
 				"constant":	0
@@ -878,6 +941,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	24,
 				"operator":	"==",
 				"variable":	"zvalue->type",
 				"constant":	6
@@ -887,6 +951,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	25,
 				"operator":	"==",
 				"variable":	"compiler_globals.active_class_entry",
 				"constant":	0
@@ -896,6 +961,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	26,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc",
 				"constant":	0
@@ -905,6 +971,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	27,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc_len",
 				"constant":	0
@@ -914,6 +981,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	28,
 				"operator":	"==",
 				"variable":	"compiler_globals.short_tags",
 				"constant":	1
@@ -923,6 +991,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	29,
 				"operator":	"==",
 				"variable":	"compiler_globals.asp_tags",
 				"constant":	0
@@ -932,6 +1001,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	30,
 				"operator":	"==",
 				"variable":	"compiler_globals.unclean_shutdown",
 				"constant":	0
@@ -941,6 +1011,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	31,
 				"operator":	"==",
 				"variable":	"compiler_globals.ini_parser_unbuffered_errors",
 				"constant":	1
@@ -950,6 +1021,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	32,
 				"operator":	"==",
 				"variable":	"compiler_globals.catch_begin",
 				"constant":	0
@@ -959,6 +1031,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	33,
 				"operator":	"==",
 				"variable":	"compiler_globals.interactive",
 				"constant":	0
@@ -968,6 +1041,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	34,
 				"operator":	"==",
 				"variable":	"compiler_globals.increment_lineno",
 				"constant":	0
@@ -977,6 +1051,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	35,
 				"operator":	"==",
 				"variable":	"compiler_globals.access_type",
 				"constant":	0
@@ -986,6 +1061,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	36,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment",
 				"constant":	0
@@ -995,6 +1071,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	37,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment_len",
 				"constant":	0
@@ -1004,6 +1081,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	38,
 				"operator":	"==",
 				"variable":	"compiler_globals.compiler_options",
 				"constant":	2
@@ -1013,6 +1091,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	39,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_namespace",
 				"constant":	0
@@ -1022,6 +1101,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	40,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_import",
 				"constant":	0
@@ -1031,6 +1111,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	41,
 				"operator":	"==",
 				"variable":	"compiler_globals.in_namespace",
 				"constant":	0
@@ -1040,6 +1121,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	42,
 				"operator":	"==",
 				"variable":	"compiler_globals.has_bracketed_namespaces",
 				"constant":	0
@@ -1049,6 +1131,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	43,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list",
 				"constant":	0
@@ -1058,6 +1141,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	44,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list_size",
 				"constant":	0
@@ -1067,6 +1151,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	45,
 				"operator":	"==",
 				"variable":	"compiler_globals.multibyte",
 				"constant":	0
@@ -1076,6 +1161,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	46,
 				"operator":	"==",
 				"variable":	"compiler_globals.detect_unicode",
 				"constant":	1
@@ -1085,6 +1171,7 @@
 				"case":	38,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	47,
 				"operator":	"==",
 				"variable":	"compiler_globals.encoding_declared",
 				"constant":	0
@@ -1094,6 +1181,17 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	38,
+				"switch":	2,
+				"case":	3,
+				"type":	"TightenConditionKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"compiler_globals.active_class_entry",
 				"constant":	0
@@ -1103,6 +1201,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"compiler_globals.compiled_filename",
 				"constant":	0
@@ -1112,6 +1211,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	3,
 				"operator":	"==",
 				"variable":	"compiler_globals.zend_lineno",
 				"constant":	0
@@ -1121,6 +1221,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	4,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc",
 				"constant":	0
@@ -1130,6 +1231,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	5,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc_len",
 				"constant":	0
@@ -1139,6 +1241,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	6,
 				"operator":	"==",
 				"variable":	"compiler_globals.active_op_array",
 				"constant":	0
@@ -1148,6 +1251,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	7,
 				"operator":	"==",
 				"variable":	"compiler_globals.in_compilation",
 				"constant":	0
@@ -1157,6 +1261,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	8,
 				"operator":	"==",
 				"variable":	"compiler_globals.short_tags",
 				"constant":	1
@@ -1166,6 +1271,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	9,
 				"operator":	"==",
 				"variable":	"compiler_globals.asp_tags",
 				"constant":	0
@@ -1175,6 +1281,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	10,
 				"operator":	"==",
 				"variable":	"compiler_globals.unclean_shutdown",
 				"constant":	0
@@ -1184,6 +1291,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	11,
 				"operator":	"==",
 				"variable":	"compiler_globals.ini_parser_unbuffered_errors",
 				"constant":	1
@@ -1193,6 +1301,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	12,
 				"operator":	"==",
 				"variable":	"compiler_globals.catch_begin",
 				"constant":	0
@@ -1202,6 +1311,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	13,
 				"operator":	"==",
 				"variable":	"compiler_globals.interactive",
 				"constant":	0
@@ -1211,6 +1321,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	14,
 				"operator":	"==",
 				"variable":	"compiler_globals.increment_lineno",
 				"constant":	0
@@ -1220,6 +1331,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	15,
 				"operator":	"==",
 				"variable":	"compiler_globals.access_type",
 				"constant":	0
@@ -1229,6 +1341,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	16,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment",
 				"constant":	0
@@ -1238,6 +1351,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	17,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment_len",
 				"constant":	0
@@ -1247,6 +1361,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	18,
 				"operator":	"==",
 				"variable":	"compiler_globals.compiler_options",
 				"constant":	2
@@ -1256,6 +1371,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	19,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_namespace",
 				"constant":	0
@@ -1265,6 +1381,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	20,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_import",
 				"constant":	0
@@ -1274,6 +1391,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	21,
 				"operator":	"==",
 				"variable":	"compiler_globals.in_namespace",
 				"constant":	0
@@ -1283,6 +1401,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	22,
 				"operator":	"==",
 				"variable":	"compiler_globals.has_bracketed_namespaces",
 				"constant":	0
@@ -1292,6 +1411,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	23,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list",
 				"constant":	0
@@ -1301,6 +1421,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	24,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list_size",
 				"constant":	0
@@ -1310,6 +1431,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	25,
 				"operator":	"==",
 				"variable":	"compiler_globals.multibyte",
 				"constant":	0
@@ -1319,6 +1441,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	26,
 				"operator":	"==",
 				"variable":	"compiler_globals.detect_unicode",
 				"constant":	1
@@ -1328,6 +1451,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	27,
 				"operator":	"==",
 				"variable":	"compiler_globals.encoding_declared",
 				"constant":	0
@@ -1337,6 +1461,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	28,
 				"operator":	"==",
 				"variable":	"zvalue->type",
 				"constant":	6
@@ -1346,6 +1471,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	29,
 				"operator":	"==",
 				"variable":	"compiler_globals.active_class_entry",
 				"constant":	0
@@ -1355,6 +1481,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	30,
 				"operator":	"==",
 				"variable":	"compiler_globals.compiled_filename",
 				"constant":	0
@@ -1364,6 +1491,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	31,
 				"operator":	"==",
 				"variable":	"compiler_globals.zend_lineno",
 				"constant":	0
@@ -1373,6 +1501,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	32,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc",
 				"constant":	0
@@ -1382,6 +1511,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	33,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc_len",
 				"constant":	0
@@ -1391,6 +1521,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	34,
 				"operator":	"==",
 				"variable":	"compiler_globals.active_op_array",
 				"constant":	0
@@ -1400,6 +1531,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	35,
 				"operator":	"==",
 				"variable":	"compiler_globals.in_compilation",
 				"constant":	0
@@ -1409,6 +1541,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	36,
 				"operator":	"==",
 				"variable":	"compiler_globals.short_tags",
 				"constant":	1
@@ -1418,6 +1551,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	37,
 				"operator":	"==",
 				"variable":	"compiler_globals.asp_tags",
 				"constant":	0
@@ -1427,6 +1561,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	38,
 				"operator":	"==",
 				"variable":	"compiler_globals.unclean_shutdown",
 				"constant":	0
@@ -1436,6 +1571,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	39,
 				"operator":	"==",
 				"variable":	"compiler_globals.ini_parser_unbuffered_errors",
 				"constant":	1
@@ -1445,6 +1581,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	40,
 				"operator":	"==",
 				"variable":	"compiler_globals.catch_begin",
 				"constant":	0
@@ -1454,6 +1591,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	41,
 				"operator":	"==",
 				"variable":	"compiler_globals.interactive",
 				"constant":	0
@@ -1463,6 +1601,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	42,
 				"operator":	"==",
 				"variable":	"compiler_globals.increment_lineno",
 				"constant":	0
@@ -1472,6 +1611,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	43,
 				"operator":	"==",
 				"variable":	"compiler_globals.access_type",
 				"constant":	0
@@ -1481,6 +1621,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	44,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment",
 				"constant":	0
@@ -1490,6 +1631,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	45,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment_len",
 				"constant":	0
@@ -1499,6 +1641,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	46,
 				"operator":	"==",
 				"variable":	"compiler_globals.compiler_options",
 				"constant":	2
@@ -1508,6 +1651,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	47,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_namespace",
 				"constant":	0
@@ -1517,6 +1661,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	48,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_import",
 				"constant":	0
@@ -1526,6 +1671,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	49,
 				"operator":	"==",
 				"variable":	"compiler_globals.in_namespace",
 				"constant":	0
@@ -1535,6 +1681,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	50,
 				"operator":	"==",
 				"variable":	"compiler_globals.has_bracketed_namespaces",
 				"constant":	0
@@ -1544,6 +1691,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	51,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list",
 				"constant":	0
@@ -1553,6 +1701,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	52,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list_size",
 				"constant":	0
@@ -1562,6 +1711,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	53,
 				"operator":	"==",
 				"variable":	"compiler_globals.multibyte",
 				"constant":	0
@@ -1571,6 +1721,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	54,
 				"operator":	"==",
 				"variable":	"compiler_globals.detect_unicode",
 				"constant":	1
@@ -1580,6 +1731,7 @@
 				"case":	3,
 				"type":	"TightenConditionKind",
 				"is_condition":	true,
+				"condition":	55,
 				"operator":	"==",
 				"variable":	"compiler_globals.encoding_declared",
 				"constant":	0
@@ -1589,6 +1741,17 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	38,
+				"switch":	3,
+				"case":	1,
+				"type":	"GuardKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"compiler_globals.active_class_entry",
 				"constant":	0
@@ -1598,6 +1761,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc",
 				"constant":	0
@@ -1607,6 +1771,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	3,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc_len",
 				"constant":	0
@@ -1616,6 +1781,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	4,
 				"operator":	"==",
 				"variable":	"compiler_globals.short_tags",
 				"constant":	1
@@ -1625,6 +1791,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	5,
 				"operator":	"==",
 				"variable":	"compiler_globals.asp_tags",
 				"constant":	0
@@ -1634,6 +1801,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	6,
 				"operator":	"==",
 				"variable":	"compiler_globals.unclean_shutdown",
 				"constant":	0
@@ -1643,6 +1811,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	7,
 				"operator":	"==",
 				"variable":	"compiler_globals.ini_parser_unbuffered_errors",
 				"constant":	1
@@ -1652,6 +1821,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	8,
 				"operator":	"==",
 				"variable":	"compiler_globals.catch_begin",
 				"constant":	0
@@ -1661,6 +1831,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	9,
 				"operator":	"==",
 				"variable":	"compiler_globals.interactive",
 				"constant":	0
@@ -1670,6 +1841,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	10,
 				"operator":	"==",
 				"variable":	"compiler_globals.increment_lineno",
 				"constant":	0
@@ -1679,6 +1851,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	11,
 				"operator":	"==",
 				"variable":	"compiler_globals.access_type",
 				"constant":	0
@@ -1688,6 +1861,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	12,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment",
 				"constant":	0
@@ -1697,6 +1871,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	13,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment_len",
 				"constant":	0
@@ -1706,6 +1881,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	14,
 				"operator":	"==",
 				"variable":	"compiler_globals.compiler_options",
 				"constant":	2
@@ -1715,6 +1891,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	15,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_namespace",
 				"constant":	0
@@ -1724,6 +1901,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	16,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_import",
 				"constant":	0
@@ -1733,6 +1911,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	17,
 				"operator":	"==",
 				"variable":	"compiler_globals.in_namespace",
 				"constant":	0
@@ -1742,6 +1921,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	18,
 				"operator":	"==",
 				"variable":	"compiler_globals.has_bracketed_namespaces",
 				"constant":	0
@@ -1751,6 +1931,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	19,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list",
 				"constant":	0
@@ -1760,6 +1941,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	20,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list_size",
 				"constant":	0
@@ -1769,6 +1951,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	21,
 				"operator":	"==",
 				"variable":	"compiler_globals.multibyte",
 				"constant":	0
@@ -1778,6 +1961,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	22,
 				"operator":	"==",
 				"variable":	"compiler_globals.detect_unicode",
 				"constant":	1
@@ -1787,6 +1971,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	23,
 				"operator":	"==",
 				"variable":	"compiler_globals.encoding_declared",
 				"constant":	0
@@ -1796,6 +1981,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	24,
 				"operator":	"==",
 				"variable":	"zvalue->type",
 				"constant":	6
@@ -1805,6 +1991,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	25,
 				"operator":	"==",
 				"variable":	"compiler_globals.active_class_entry",
 				"constant":	0
@@ -1814,6 +2001,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	26,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc",
 				"constant":	0
@@ -1823,6 +2011,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	27,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc_len",
 				"constant":	0
@@ -1832,6 +2021,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	28,
 				"operator":	"==",
 				"variable":	"compiler_globals.short_tags",
 				"constant":	1
@@ -1841,6 +2031,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	29,
 				"operator":	"==",
 				"variable":	"compiler_globals.asp_tags",
 				"constant":	0
@@ -1850,6 +2041,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	30,
 				"operator":	"==",
 				"variable":	"compiler_globals.unclean_shutdown",
 				"constant":	0
@@ -1859,6 +2051,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	31,
 				"operator":	"==",
 				"variable":	"compiler_globals.ini_parser_unbuffered_errors",
 				"constant":	1
@@ -1868,6 +2061,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	32,
 				"operator":	"==",
 				"variable":	"compiler_globals.catch_begin",
 				"constant":	0
@@ -1877,6 +2071,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	33,
 				"operator":	"==",
 				"variable":	"compiler_globals.interactive",
 				"constant":	0
@@ -1886,6 +2081,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	34,
 				"operator":	"==",
 				"variable":	"compiler_globals.increment_lineno",
 				"constant":	0
@@ -1895,6 +2091,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	35,
 				"operator":	"==",
 				"variable":	"compiler_globals.access_type",
 				"constant":	0
@@ -1904,6 +2101,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	36,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment",
 				"constant":	0
@@ -1913,6 +2111,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	37,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment_len",
 				"constant":	0
@@ -1922,6 +2121,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	38,
 				"operator":	"==",
 				"variable":	"compiler_globals.compiler_options",
 				"constant":	2
@@ -1931,6 +2131,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	39,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_namespace",
 				"constant":	0
@@ -1940,6 +2141,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	40,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_import",
 				"constant":	0
@@ -1949,6 +2151,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	41,
 				"operator":	"==",
 				"variable":	"compiler_globals.in_namespace",
 				"constant":	0
@@ -1958,6 +2161,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	42,
 				"operator":	"==",
 				"variable":	"compiler_globals.has_bracketed_namespaces",
 				"constant":	0
@@ -1967,6 +2171,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	43,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list",
 				"constant":	0
@@ -1976,6 +2181,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	44,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list_size",
 				"constant":	0
@@ -1985,6 +2191,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	45,
 				"operator":	"==",
 				"variable":	"compiler_globals.multibyte",
 				"constant":	0
@@ -1994,6 +2201,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	46,
 				"operator":	"==",
 				"variable":	"compiler_globals.detect_unicode",
 				"constant":	1
@@ -2003,6 +2211,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	47,
 				"operator":	"==",
 				"variable":	"compiler_globals.encoding_declared",
 				"constant":	0
@@ -2012,6 +2221,17 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	38,
+				"switch":	3,
+				"case":	2,
+				"type":	"SpecialGuardKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"compiler_globals.active_class_entry",
 				"constant":	0
@@ -2021,6 +2241,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc",
 				"constant":	0
@@ -2030,6 +2251,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	3,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc_len",
 				"constant":	0
@@ -2039,6 +2261,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	4,
 				"operator":	"==",
 				"variable":	"compiler_globals.short_tags",
 				"constant":	1
@@ -2048,6 +2271,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	5,
 				"operator":	"==",
 				"variable":	"compiler_globals.asp_tags",
 				"constant":	0
@@ -2057,6 +2281,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	6,
 				"operator":	"==",
 				"variable":	"compiler_globals.unclean_shutdown",
 				"constant":	0
@@ -2066,6 +2291,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	7,
 				"operator":	"==",
 				"variable":	"compiler_globals.ini_parser_unbuffered_errors",
 				"constant":	1
@@ -2075,6 +2301,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	8,
 				"operator":	"==",
 				"variable":	"compiler_globals.catch_begin",
 				"constant":	0
@@ -2084,6 +2311,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	9,
 				"operator":	"==",
 				"variable":	"compiler_globals.interactive",
 				"constant":	0
@@ -2093,6 +2321,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	10,
 				"operator":	"==",
 				"variable":	"compiler_globals.increment_lineno",
 				"constant":	0
@@ -2102,6 +2331,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	11,
 				"operator":	"==",
 				"variable":	"compiler_globals.access_type",
 				"constant":	0
@@ -2111,6 +2341,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	12,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment",
 				"constant":	0
@@ -2120,6 +2351,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	13,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment_len",
 				"constant":	0
@@ -2129,6 +2361,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	14,
 				"operator":	"==",
 				"variable":	"compiler_globals.compiler_options",
 				"constant":	2
@@ -2138,6 +2371,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	15,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_namespace",
 				"constant":	0
@@ -2147,6 +2381,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	16,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_import",
 				"constant":	0
@@ -2156,6 +2391,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	17,
 				"operator":	"==",
 				"variable":	"compiler_globals.in_namespace",
 				"constant":	0
@@ -2165,6 +2401,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	18,
 				"operator":	"==",
 				"variable":	"compiler_globals.has_bracketed_namespaces",
 				"constant":	0
@@ -2174,6 +2411,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	19,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list",
 				"constant":	0
@@ -2183,6 +2421,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	20,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list_size",
 				"constant":	0
@@ -2192,6 +2431,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	21,
 				"operator":	"==",
 				"variable":	"compiler_globals.multibyte",
 				"constant":	0
@@ -2201,6 +2441,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	22,
 				"operator":	"==",
 				"variable":	"compiler_globals.detect_unicode",
 				"constant":	1
@@ -2210,6 +2451,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	23,
 				"operator":	"==",
 				"variable":	"compiler_globals.encoding_declared",
 				"constant":	0
@@ -2219,6 +2461,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	24,
 				"operator":	"==",
 				"variable":	"zvalue->type",
 				"constant":	6
@@ -2228,6 +2471,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	25,
 				"operator":	"==",
 				"variable":	"compiler_globals.active_class_entry",
 				"constant":	0
@@ -2237,6 +2481,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	26,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc",
 				"constant":	0
@@ -2246,6 +2491,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	27,
 				"operator":	"==",
 				"variable":	"compiler_globals.heredoc_len",
 				"constant":	0
@@ -2255,6 +2501,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	28,
 				"operator":	"==",
 				"variable":	"compiler_globals.short_tags",
 				"constant":	1
@@ -2264,6 +2511,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	29,
 				"operator":	"==",
 				"variable":	"compiler_globals.asp_tags",
 				"constant":	0
@@ -2273,6 +2521,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	30,
 				"operator":	"==",
 				"variable":	"compiler_globals.unclean_shutdown",
 				"constant":	0
@@ -2282,6 +2531,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	31,
 				"operator":	"==",
 				"variable":	"compiler_globals.ini_parser_unbuffered_errors",
 				"constant":	1
@@ -2291,6 +2541,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	32,
 				"operator":	"==",
 				"variable":	"compiler_globals.catch_begin",
 				"constant":	0
@@ -2300,6 +2551,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	33,
 				"operator":	"==",
 				"variable":	"compiler_globals.interactive",
 				"constant":	0
@@ -2309,6 +2561,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	34,
 				"operator":	"==",
 				"variable":	"compiler_globals.increment_lineno",
 				"constant":	0
@@ -2318,6 +2571,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	35,
 				"operator":	"==",
 				"variable":	"compiler_globals.access_type",
 				"constant":	0
@@ -2327,6 +2581,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	36,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment",
 				"constant":	0
@@ -2336,6 +2591,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	37,
 				"operator":	"==",
 				"variable":	"compiler_globals.doc_comment_len",
 				"constant":	0
@@ -2345,6 +2601,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	38,
 				"operator":	"==",
 				"variable":	"compiler_globals.compiler_options",
 				"constant":	2
@@ -2354,6 +2611,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	39,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_namespace",
 				"constant":	0
@@ -2363,6 +2621,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	40,
 				"operator":	"==",
 				"variable":	"compiler_globals.current_import",
 				"constant":	0
@@ -2372,6 +2631,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	41,
 				"operator":	"==",
 				"variable":	"compiler_globals.in_namespace",
 				"constant":	0
@@ -2381,6 +2641,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	42,
 				"operator":	"==",
 				"variable":	"compiler_globals.has_bracketed_namespaces",
 				"constant":	0
@@ -2390,6 +2651,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	43,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list",
 				"constant":	0
@@ -2399,6 +2661,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	44,
 				"operator":	"==",
 				"variable":	"compiler_globals.script_encoding_list_size",
 				"constant":	0
@@ -2408,6 +2671,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	45,
 				"operator":	"==",
 				"variable":	"compiler_globals.multibyte",
 				"constant":	0
@@ -2417,6 +2681,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	46,
 				"operator":	"==",
 				"variable":	"compiler_globals.detect_unicode",
 				"constant":	1
@@ -2426,6 +2691,7 @@
 				"case":	2,
 				"type":	"SpecialGuardKind",
 				"is_condition":	true,
+				"condition":	47,
 				"operator":	"==",
 				"variable":	"compiler_globals.encoding_declared",
 				"constant":	0
@@ -3863,6 +4129,17 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	54,
+				"switch":	13,
+				"case":	39,
+				"type":	"IfExitKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"(*zvalue).type",
 				"constant":	5
@@ -3872,6 +4149,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"!=",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	0
@@ -3881,6 +4159,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	3,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	1
@@ -3890,6 +4169,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	4,
 				"operator":	"==",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	0
@@ -3899,6 +4179,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	5,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handle",
 				"constant":	1
@@ -3908,6 +4189,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	6,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handle",
 				"constant":	2
@@ -3917,6 +4199,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	7,
 				"operator":	"!=",
 				"variable":	"(*zvalue).value.obj.handle",
 				"constant":	1
@@ -3926,6 +4209,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	8,
 				"operator":	"!=",
 				"variable":	"(*zvalue).value.obj.handle",
 				"constant":	2
@@ -3935,6 +4219,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	9,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handlers->get",
 				"constant":	0
@@ -3944,6 +4229,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	10,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handlers->set",
 				"constant":	0
@@ -3953,6 +4239,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	11,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handlers->call_method",
 				"constant":	0
@@ -3962,6 +4249,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	12,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handlers->count_elements",
 				"constant":	0
@@ -3971,6 +4259,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	13,
 				"operator":	"!=",
 				"variable":	"zvalue->refcount__gc",
 				"constant":	0
@@ -3980,6 +4269,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	14,
 				"operator":	"==",
 				"variable":	"zvalue->refcount__gc",
 				"constant":	1
@@ -3989,6 +4279,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	15,
 				"operator":	"==",
 				"variable":	"zvalue->type",
 				"constant":	5
@@ -3998,6 +4289,7 @@
 				"case":	39,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	16,
 				"operator":	"==",
 				"variable":	"zvalue->is_ref__gc",
 				"constant":	0
@@ -4289,6 +4581,17 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	54,
+				"switch":	14,
+				"case":	46,
+				"type":	"GuardKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"(*zvalue).type",
 				"constant":	5
@@ -4298,6 +4601,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"!=",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	0
@@ -4307,6 +4611,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	3,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	1
@@ -4316,6 +4621,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	4,
 				"operator":	"==",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	0
@@ -4325,6 +4631,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	5,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handle",
 				"constant":	1
@@ -4334,6 +4641,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	6,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handle",
 				"constant":	2
@@ -4343,6 +4651,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	7,
 				"operator":	"!=",
 				"variable":	"(*zvalue).value.obj.handle",
 				"constant":	1
@@ -4352,6 +4661,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	8,
 				"operator":	"!=",
 				"variable":	"(*zvalue).value.obj.handle",
 				"constant":	2
@@ -4361,6 +4671,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	9,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handlers->get",
 				"constant":	0
@@ -4370,6 +4681,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	10,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handlers->set",
 				"constant":	0
@@ -4379,6 +4691,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	11,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handlers->call_method",
 				"constant":	0
@@ -4388,6 +4701,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	12,
 				"operator":	"==",
 				"variable":	"(*zvalue).value.obj.handlers->count_elements",
 				"constant":	0
@@ -4397,6 +4711,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	13,
 				"operator":	"!=",
 				"variable":	"zvalue->refcount__gc",
 				"constant":	0
@@ -4406,6 +4721,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	14,
 				"operator":	"==",
 				"variable":	"zvalue->refcount__gc",
 				"constant":	1
@@ -4415,6 +4731,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	15,
 				"operator":	"==",
 				"variable":	"zvalue->type",
 				"constant":	5
@@ -4424,6 +4741,7 @@
 				"case":	46,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	16,
 				"operator":	"==",
 				"variable":	"zvalue->is_ref__gc",
 				"constant":	0
@@ -5207,6 +5525,17 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	33,
+				"switch":	19,
+				"case":	1,
+				"type":	"GuardKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"(*zvalue).type",
 				"constant":	0
@@ -5216,6 +5545,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	0
@@ -5225,6 +5555,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	3,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	1
@@ -5234,6 +5565,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	4,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	3
@@ -5243,6 +5575,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	5,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	11
@@ -5252,6 +5585,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	6,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	14
@@ -5261,6 +5595,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	7,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	21
@@ -5270,6 +5605,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	8,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	32
@@ -5279,6 +5615,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	9,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	64
@@ -5288,6 +5625,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	10,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	128
@@ -5297,6 +5635,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	11,
 				"operator":	"==",
 				"variable":	"(*zvalue).refcount__gc",
 				"constant":	320
@@ -5306,6 +5645,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	12,
 				"operator":	"==",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	0
@@ -5315,6 +5655,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	13,
 				"operator":	"==",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	10
@@ -5324,6 +5665,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	14,
 				"operator":	"==",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	33
@@ -5333,6 +5675,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	15,
 				"operator":	"==",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	49
@@ -5342,6 +5685,17 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	16,
+				"operator":	"==",
+				"variable":	"(*zvalue).is_ref__gc",
+				"constant":	65
+			}, {
+				"line":	33,
+				"switch":	19,
+				"case":	1,
+				"type":	"GuardKind",
+				"is_condition":	true,
+				"condition":	17,
 				"operator":	"==",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	81
@@ -5351,6 +5705,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	18,
 				"operator":	"==",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	113
@@ -5360,6 +5715,7 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	19,
 				"operator":	"==",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	129
@@ -5369,18 +5725,10 @@
 				"case":	1,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	20,
 				"operator":	"==",
 				"variable":	"(*zvalue).is_ref__gc",
 				"constant":	257
-			}, {
-				"line":	33,
-				"switch":	19,
-				"case":	1,
-				"type":	"GuardKind",
-				"is_condition":	true,
-				"operator":	"==",
-				"variable":	"(*zvalue).is_ref__gc",
-				"constant":	641
 			}], [{
 				"line":	78,
 				"switch":	20,
@@ -11069,6 +11417,17 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	220,
+				"switch":	53,
+				"case":	208,
+				"type":	"GuardKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"(*tmp).type",
 				"constant":	1
@@ -11078,6 +11437,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"(*tmp).type",
 				"constant":	6
@@ -11087,6 +11447,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	3,
 				"operator":	"!=",
 				"variable":	"(*tmp).type",
 				"constant":	1
@@ -11096,6 +11457,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	4,
 				"operator":	"!=",
 				"variable":	"(*tmp).type",
 				"constant":	6
@@ -11105,6 +11467,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	5,
 				"operator":	"==",
 				"variable":	"(**p).type",
 				"constant":	1
@@ -11114,6 +11477,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	6,
 				"operator":	"==",
 				"variable":	"(**p).type",
 				"constant":	6
@@ -11123,6 +11487,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	7,
 				"operator":	"!=",
 				"variable":	"(**p).type",
 				"constant":	1
@@ -11132,6 +11497,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	8,
 				"operator":	"==",
 				"variable":	"is_ref",
 				"constant":	0
@@ -11141,6 +11507,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	9,
 				"operator":	"==",
 				"variable":	"(tmp)->refcount__gc",
 				"constant":	1
@@ -11150,6 +11517,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	10,
 				"operator":	"==",
 				"variable":	"(tmp)->type",
 				"constant":	1
@@ -11159,6 +11527,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	11,
 				"operator":	"==",
 				"variable":	"(tmp)->type",
 				"constant":	6
@@ -11168,6 +11537,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	12,
 				"operator":	"==",
 				"variable":	"(tmp)->is_ref__gc",
 				"constant":	0
@@ -11177,6 +11547,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	13,
 				"operator":	"==",
 				"variable":	"(*p)->refcount__gc",
 				"constant":	2
@@ -11186,6 +11557,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	14,
 				"operator":	"==",
 				"variable":	"(*p)->type",
 				"constant":	1
@@ -11195,6 +11567,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	15,
 				"operator":	"==",
 				"variable":	"(*p)->type",
 				"constant":	6
@@ -11204,6 +11577,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	16,
 				"operator":	"==",
 				"variable":	"(*p)->is_ref__gc",
 				"constant":	1
@@ -11213,6 +11587,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	17,
 				"operator":	"==",
 				"variable":	"(*tmp).refcount__gc",
 				"constant":	1
@@ -11222,6 +11597,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	18,
 				"operator":	"==",
 				"variable":	"(*tmp).is_ref__gc",
 				"constant":	0
@@ -11231,6 +11607,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	19,
 				"operator":	"==",
 				"variable":	"(**p).refcount__gc",
 				"constant":	2
@@ -11240,6 +11617,7 @@
 				"case":	208,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	20,
 				"operator":	"==",
 				"variable":	"(**p).is_ref__gc",
 				"constant":	1
@@ -13181,6 +13559,17 @@
 				"case":	1,
 				"type":	"LoosenConditionKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	229,
+				"switch":	61,
+				"case":	1,
+				"type":	"LoosenConditionKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"key->nKeyLength",
 				"constant":	2
@@ -13190,6 +13579,7 @@
 				"case":	1,
 				"type":	"LoosenConditionKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"is_ref",
 				"constant":	0
@@ -13487,6 +13877,17 @@
 				"case":	49,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	230,
+				"switch":	62,
+				"case":	49,
+				"type":	"IfExitKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"key->nKeyLength",
 				"constant":	2
@@ -13496,6 +13897,7 @@
 				"case":	49,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"is_ref",
 				"constant":	0
@@ -13505,6 +13907,17 @@
 				"case":	51,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	230,
+				"switch":	62,
+				"case":	51,
+				"type":	"IfExitKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"key->nKeyLength",
 				"constant":	2
@@ -13514,6 +13927,7 @@
 				"case":	51,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"is_ref",
 				"constant":	0
@@ -13523,6 +13937,17 @@
 				"case":	53,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	230,
+				"switch":	62,
+				"case":	53,
+				"type":	"IfExitKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"key->nKeyLength",
 				"constant":	2
@@ -13532,6 +13957,7 @@
 				"case":	53,
 				"type":	"IfExitKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"is_ref",
 				"constant":	0
@@ -13811,6 +14237,17 @@
 				"case":	45,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	230,
+				"switch":	63,
+				"case":	45,
+				"type":	"GuardKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"key->nKeyLength",
 				"constant":	2
@@ -13820,6 +14257,7 @@
 				"case":	45,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"is_ref",
 				"constant":	0
@@ -14099,6 +14537,17 @@
 				"case":	45,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	0,
+				"operator":	"1",
+				"variable":	"",
+				"constant":	1
+			}, {
+				"line":	229,
+				"switch":	64,
+				"case":	45,
+				"type":	"GuardKind",
+				"is_condition":	true,
+				"condition":	1,
 				"operator":	"==",
 				"variable":	"key->nKeyLength",
 				"constant":	2
@@ -14108,6 +14557,7 @@
 				"case":	45,
 				"type":	"GuardKind",
 				"is_condition":	true,
+				"condition":	2,
 				"operator":	"==",
 				"variable":	"is_ref",
 				"constant":	0

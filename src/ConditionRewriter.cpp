@@ -41,6 +41,16 @@ public:
 
             code+="case 0:\n";
             code+="return 1;\n";
+            Information info;
+            info.currentSwitch=it->first.first;
+            info.currentCase=it->first.second;
+            info.isCondition=true;
+            info.condition=0;
+            info.oper="1";
+            info.variable="";
+            info.constant=1;
+            infos.push_back(info);
+
 
             for (size_t i=0;i<it->second.size();i++){
                 for (size_t j=0;j<it->second[i].size();j++){
@@ -68,6 +78,7 @@ public:
                     Expr *currentCond=it->second[i][j];
                     BinaryOperator *bo=llvm::dyn_cast<BinaryOperator>(currentCond);
                     if (bo){
+                        info.condition=count;
                         info.oper=bo->getOpcodeStr().str();
                         info.variable=stmtToString(*ctxt,bo->getLHS());
                         info.constant=stoi(stmtToString(*ctxt,bo->getRHS()));

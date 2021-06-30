@@ -6,9 +6,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -30,9 +30,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -54,9 +54,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -78,9 +78,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -103,9 +103,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -128,9 +128,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -152,9 +152,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -176,9 +176,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -200,9 +200,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -224,9 +224,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -248,9 +248,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -272,9 +272,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -296,9 +296,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -320,9 +320,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -344,9 +344,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -369,33 +369,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
-Begin building test
-Total macros: 2085
-Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
-Preprocessing test...
-Trying to build with all macros...
-1th build...
-2th build...
-Build Success!
-Build failed, Trying to find fail macros...
-Building final program...
-Total success macros: 2081
-Success to build final program!
-Recording bit vectors for condition synthesizing...
-Initialize the program!
-Skip verify!
-Generating repair candidates!
-Processing Zend/zend_variables.c
-Total 2026 different repair schemas!!!!
-Patch Candidates Generated!
-Candidates size: 2026
-Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
-Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -418,59 +394,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
-Begin building test
-Total macros: 2085
-Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
-Preprocessing test...
-Trying to build with all macros...
-1th build...
-2th build...
-Build Success!
-Build failed, Trying to find fail macros...
-Building final program...
-Total success macros: 2081
-Success to build final program!
-Recording bit vectors for condition synthesizing...
-Passed with all 1: 3 1
-Initialize the program!
-Skip verify!
-Generating repair candidates!
-Processing Zend/zend_variables.c
-Total 2026 different repair schemas!!!!
-Patch Candidates Generated!
-Candidates size: 2026
-Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
-Generating patches...
-[79] BasicTester, a patch instance with id 0:
-Begin building test
-Total macros: 2085
-Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
-Preprocessing test...
-Trying to build with all macros...
-1th build...
-2th build...
-Build Success!
-Build failed, Trying to find fail macros...
-Building final program...
-Total success macros: 2081
-Success to build final program!
-Recording bit vectors for condition synthesizing...
-Passed with all 1: 3 2
-Initialize the program!
-Skip verify!
-Generating repair candidates!
-Processing Zend/zend_variables.c
-Total 2026 different repair schemas!!!!
-Patch Candidates Generated!
-Candidates size: 2026
-Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
-Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -493,9 +419,83 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
+Begin building test
+Total macros: 2085
+Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
+Preprocessing test...
+Trying to build with all macros...
+1th build...
+2th build...
+Build Success!
+Build failed, Trying to find fail macros...
+Building final program...
+Total success macros: 2081
+Success to build final program!
+Recording bit vectors for condition synthesizing...
+Passed with all 1: 3 2
+Initialize the program!
+Skip verify!
+Generating repair candidates!
+Processing Zend/zend_variables.c
+Total 2026 different repair schemas!!!!
+Patch Candidates Generated!
+Candidates size: 2026
+Generating meta-program...
+[82] Preprocess the following candidate with BasicTester: 2026
+Generating patches...
+[82] BasicTester, a patch instance with id 0:
+Begin building test
+Total macros: 2085
+Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
+Preprocessing test...
+Trying to build with all macros...
+1th build...
+2th build...
+Build Success!
+Build failed, Trying to find fail macros...
+Building final program...
+Total success macros: 2081
+Success to build final program!
+Recording bit vectors for condition synthesizing...
+Passed with all 1: 3 1
+Initialize the program!
+Skip verify!
+Generating repair candidates!
+Processing Zend/zend_variables.c
+Total 2026 different repair schemas!!!!
+Patch Candidates Generated!
+Candidates size: 2026
+Generating meta-program...
+[82] Preprocess the following candidate with BasicTester: 2026
+Generating patches...
+[82] BasicTester, a patch instance with id 0:
+Begin building test
+Total macros: 2085
+Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
+Preprocessing test...
+Trying to build with all macros...
+1th build...
+2th build...
+Build Success!
+Build failed, Trying to find fail macros...
+Building final program...
+Total success macros: 2081
+Success to build final program!
+Recording bit vectors for condition synthesizing...
+Initialize the program!
+Skip verify!
+Generating repair candidates!
+Processing Zend/zend_variables.c
+Total 2026 different repair schemas!!!!
+Patch Candidates Generated!
+Candidates size: 2026
+Generating meta-program...
+[82] Preprocess the following candidate with BasicTester: 2026
+Generating patches...
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -518,9 +518,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -542,9 +542,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -566,9 +566,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -590,9 +590,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -614,9 +614,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -638,9 +638,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -662,9 +662,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -686,9 +686,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -710,9 +710,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -734,9 +734,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -758,9 +758,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -782,9 +782,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -806,9 +806,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -830,9 +830,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -854,9 +854,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -878,9 +878,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -902,9 +902,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -926,9 +926,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -950,9 +950,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -974,9 +974,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -998,9 +998,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1022,9 +1022,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1046,9 +1046,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1070,9 +1070,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1094,9 +1094,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1118,9 +1118,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1142,9 +1142,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1166,9 +1166,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1190,9 +1190,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1214,9 +1214,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1238,9 +1238,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1262,9 +1262,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1286,9 +1286,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1310,9 +1310,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1334,9 +1334,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1358,9 +1358,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1382,9 +1382,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1406,9 +1406,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1430,9 +1430,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1454,9 +1454,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1478,9 +1478,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1502,9 +1502,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1526,9 +1526,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1550,9 +1550,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1574,9 +1574,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1598,9 +1598,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1622,9 +1622,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1646,9 +1646,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1670,9 +1670,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1694,9 +1694,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1718,9 +1718,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1742,9 +1742,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1766,9 +1766,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1790,9 +1790,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1814,9 +1814,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1838,9 +1838,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1862,9 +1862,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1886,9 +1886,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1910,9 +1910,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1934,9 +1934,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1958,9 +1958,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -1982,9 +1982,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2006,9 +2006,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2030,9 +2030,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2054,9 +2054,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2078,9 +2078,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2102,9 +2102,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2126,9 +2126,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2150,9 +2150,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2174,9 +2174,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2198,9 +2198,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2222,9 +2222,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2246,9 +2246,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2270,9 +2270,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2294,9 +2294,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2318,9 +2318,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2342,9 +2342,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2366,9 +2366,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2390,9 +2390,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2414,9 +2414,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2438,9 +2438,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2463,9 +2463,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2487,9 +2487,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2511,9 +2511,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2535,9 +2535,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2559,9 +2559,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2583,9 +2583,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2607,9 +2607,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2631,9 +2631,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2655,9 +2655,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2679,9 +2679,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2703,9 +2703,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2727,9 +2727,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2751,9 +2751,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2775,9 +2775,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2799,9 +2799,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2823,9 +2823,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2847,9 +2847,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2871,9 +2871,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2895,9 +2895,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2919,9 +2919,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2943,9 +2943,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2968,9 +2968,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -2993,9 +2993,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3018,9 +3018,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3043,9 +3043,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3068,9 +3068,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3093,9 +3093,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3117,9 +3117,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3141,9 +3141,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3165,9 +3165,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3189,9 +3189,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3213,9 +3213,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3237,9 +3237,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3261,9 +3261,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3285,9 +3285,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3310,9 +3310,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3336,9 +3336,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3363,9 +3363,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3391,9 +3391,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3420,9 +3420,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3450,9 +3450,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3481,9 +3481,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3513,9 +3513,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3546,9 +3546,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3580,9 +3580,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3615,9 +3615,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3651,9 +3651,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3688,9 +3688,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3726,9 +3726,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
@@ -3765,9 +3765,9 @@ Total 2026 different repair schemas!!!!
 Patch Candidates Generated!
 Candidates size: 2026
 Generating meta-program...
-[78] Preprocess the following candidate with BasicTester: 2026
+[82] Preprocess the following candidate with BasicTester: 2026
 Generating patches...
-[79] BasicTester, a patch instance with id 0:
+[82] BasicTester, a patch instance with id 0:
 Begin building test
 Total macros: 2085
 Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
