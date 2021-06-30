@@ -4395,7 +4395,7 @@ extern "C" int __is_neg(const char *location, int count, ...) {
         memcpy(&v, p, sz);
       } else
         return 0;
-      return (v == 81);
+      return (v == 65);
     }
     case 17: {
       va_list ap;
@@ -4411,7 +4411,7 @@ extern "C" int __is_neg(const char *location, int count, ...) {
         memcpy(&v, p, sz);
       } else
         return 0;
-      return (v == 113);
+      return (v == 81);
     }
     case 18: {
       va_list ap;
@@ -4427,7 +4427,7 @@ extern "C" int __is_neg(const char *location, int count, ...) {
         memcpy(&v, p, sz);
       } else
         return 0;
-      return (v == 129);
+      return (v == 113);
     }
     case 19: {
       va_list ap;
@@ -4443,7 +4443,7 @@ extern "C" int __is_neg(const char *location, int count, ...) {
         memcpy(&v, p, sz);
       } else
         return 0;
-      return (v == 257);
+      return (v == 129);
     }
     case 20: {
       va_list ap;
@@ -4459,7 +4459,7 @@ extern "C" int __is_neg(const char *location, int count, ...) {
         memcpy(&v, p, sz);
       } else
         return 0;
-      return (v == 641);
+      return (v == 257);
     }
     }
   }
