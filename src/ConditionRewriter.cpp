@@ -85,8 +85,6 @@ public:
         std::ofstream output(workDir+"/_test_runtime.cpp");
         output << finalCode << std::endl;
         output.close();
-
-        // system(std::string("clang-format -i "+workDir+"/_test_runtime.cpp").c_str());
     }
 
     void build(std::string tools_dir){
