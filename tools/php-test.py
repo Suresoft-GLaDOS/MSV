@@ -32,6 +32,7 @@ if __name__ == "__main__":
     total_switch=0
     choose_switch=0
     choose_case=0
+    choose_condition = 0
     temp_dir=""
     for o, a in opts:
         if o == "-p":
@@ -44,6 +45,8 @@ if __name__ == "__main__":
             switches=a.split('-')
             choose_switch=int(switches[0])
             choose_case=int(switches[1])
+            if len(switches) > 2:
+                choose_condition = int(switches[2])
         elif o=="-i":
             temp_dir=a
 
@@ -53,7 +56,7 @@ if __name__ == "__main__":
         
     if len(args) > 3:
         ids = args[3:];
-        a = php_tester(work_dir, src_dir, test_dir,total_switch,choose_switch,choose_case,temp_dir);
+        a = php_tester(work_dir, src_dir, test_dir,total_switch,choose_switch,choose_case,choose_condition,temp_dir);
         s = [];
         for i in ids:
             s.append(int(i));
