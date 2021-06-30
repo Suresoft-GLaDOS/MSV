@@ -1362,20 +1362,22 @@ public:
     void saveConditionInfo(std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> &conds){
         std::vector<std::pair<size_t,size_t>> conditionSwitches;
         conditionSwitches.clear();
+        std::map<std::pair<size_t,size_t>,size_t> conditionCounts;
+        conditionCounts.clear();
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
         // conditionCases.clear();
         for (std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>>::iterator it=conds.begin();it!=conds.end();it++){
             conditionSwitches.push_back(it->first);
-        //     size_t count=0;
+            size_t count=0;
 
-            // for (size_t i=0;i<it->second.size();i++){
-            //     count+=it->second[i].size();
-            // }
-            // conditionCases[it->first]=count+1;
+            for (size_t i=0;i<it->second.size();i++){
+                count+=it->second[i].size();
+            }
+            conditionCounts[it->first]=count+1;
         }
 
         P.getSwitchInfo().conditionSwitches=conditionSwitches;
-        // P.getSwitchInfo().conditionCases=conditionCases;
+        P.getSwitchInfo().conditionCounts=conditionCounts;
 
         // P.getSwitchInfo().save();
     }

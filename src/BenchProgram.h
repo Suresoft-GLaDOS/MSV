@@ -136,6 +136,7 @@ private:
         // std::map<int,std::list<std::list<int>>> caseCluster;
         std::vector<std::set<size_t>> scoreInfo;
         std::vector<std::pair<size_t,size_t>> conditionSwitches;
+        std::map<std::pair<size_t,size_t>,size_t> conditionCounts;
         std::vector<std::vector<std::string>> atoms;
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
         std::vector<std::vector<Information>> infos;
@@ -184,6 +185,7 @@ private:
                 cJSON *eachSwitch=cJSON_CreateArray();
                 cJSON_AddItemToArray(eachSwitch,cJSON_CreateNumber(conditionSwitches[i].first));
                 cJSON_AddItemToArray(eachSwitch,cJSON_CreateNumber(conditionSwitches[i].second));
+                cJSON_AddItemToArray(eachSwitch,cJSON_CreateNumber(conditionCounts[conditionSwitches[i]]));
                 cJSON_AddItemToArray(conditionArray,eachSwitch);
             }
             cJSON_AddItemToObject(json,std::string("condition_switch").c_str(),conditionArray);
