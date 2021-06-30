@@ -303,8 +303,8 @@ std::string toString(RepairAction action){
             return "ExprMutationKind";
     }
 }
-std::string toString(RepairCandidate candidate){
-    switch(candidate.kind){
+std::string toString(RepairCandidate::CandidateKind kind){
+    switch(kind){
         case RepairCandidate::TightenConditionKind:
             return "TightenConditionKind";
         case RepairCandidate::LoosenConditionKind:
@@ -458,7 +458,7 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
             if (stmtToString(*ctxt,S).substr(0,8)=="__is_neg") continue;
 
             if (rc[j].actions[i].kind == RepairAction::ReplaceMutationKind){
-                std::string newStmt="//"+toString(rc[j])+"\n";
+                std::string newStmt="//"+toString(rc[j].kind)+"\n";
                 if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind){
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
@@ -473,13 +473,13 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
                 }
             }
             else if (rc[j].actions[i].kind == RepairAction::InsertMutationKind){
-                std::string newStmt="//"+toString(rc[j])+"\n"+stmtToString(*ctxt,S);
+                std::string newStmt="//"+toString(rc[j].kind)+"\n"+stmtToString(*ctxt,S);
                 if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                     newStmt += ";\n";
                 insertCodes.insert(std::pair<std::string,RepairCandidate::CandidateKind>(newStmt,rc[j].kind));
             }
             else if (rc[j].actions[i].kind == RepairAction::InsertAfterMutationKind){
-                std::string newStmt="//"+toString(rc[j])+"\n"+stmtToString(*ctxt,S);
+                std::string newStmt="//"+toString(rc[j].kind)+"\n"+stmtToString(*ctxt,S);
                 if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                     newStmt += ";\n";
                 insertAfterCodes.insert(std::pair<std::string,RepairCandidate::CandidateKind>(newStmt,rc[j].kind));
@@ -512,6 +512,9 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     // outlog_printf(2,"Location: %d %d\n",start,end);
     std::vector<size_t> currentSwitches;
     currentSwitches.clear();
+    ASTContext *ctxt=sourceManager.getSourceContext(loc.filename);
+    SourceManager &manager=ctxt->getSourceManager();
+    size_t currentLine=manager.getExpansionLineNumber(loc.stmt->getBeginLoc());
 
     int case_count=0;
     // assert( end >= last_end);
@@ -525,6 +528,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
     // Insert before
     if(res1[currentCandidate[currentIndex]][2].size()>0){
+        case_count=0;
         currentSwitches.push_back(counter);
         switchCluster[2].push_back(counter);
 
@@ -544,7 +548,9 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="\nbreak;\n}\n";
             body+="#endif\n";
 
+            std::pair<size_t,size_t> currentPatch(counter,case_count);
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
+            patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
             index++;
             caseKind[patch_it->second].push_back(case_count);
@@ -561,14 +567,15 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
         switchGroup.push_back(counter);
         switchLoc[loc].push_back(counter);
+        switchLine[counter]=currentLine;
         counter++;
     }
 
     size_t conditionCounter=counter;
-    ASTContext *ctxt = sourceManager.getSourceContext(loc.filename);
     // Condition Synthesize
     if(res1[currentCandidate[currentIndex]][1].size()>0){
         case_count=0;
+        casePatch.clear();
         currentSwitches.push_back(counter);
         switchCluster[1].push_back(counter);
 
@@ -595,7 +602,9 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="\nbreak;\n}\n";
             body+="#endif\n";
 
+            std::pair<size_t,size_t> currentPatch(counter,case_count);
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
+            patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
             index++;
             // caseKind[patch_it->second].push_back(case_count);
@@ -612,6 +621,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
         switchGroup.push_back(counter);
         switchLoc[loc].push_back(counter);
+        switchLine[counter]=currentLine;
         counter++;
     }
 
@@ -648,6 +658,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     // Normal replace
     if(res1[currentCandidate[currentIndex]][0].size()>0 && origBody!="break;\n"){
         case_count=0;
+        casePatch.clear();
         currentSwitches.push_back(counter);
         switchCluster[0].push_back(counter);
 
@@ -668,7 +679,9 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="\nbreak;\n}\n";
             body+="#endif\n";
 
+            std::pair<size_t,size_t> currentPatch(counter,case_count);
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
+            patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
             index++;
             // caseKind[patch_it->second].push_back(case_count);
@@ -685,6 +698,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
         switchGroup.push_back(counter);
         switchLoc[loc].push_back(counter);
+        switchLine[counter]=currentLine;
         counter++;
     }
     else{
@@ -697,6 +711,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     // Insert after
     if(res1[currentCandidate[currentIndex]][3].size()>0){
         case_count=0;
+        casePatch.clear();
         currentSwitches.push_back(counter);
         switchCluster[3].push_back(counter);
 
@@ -716,7 +731,9 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="\nbreak;\n}\n";
             body+="#endif\n";
 
+            std::pair<size_t,size_t> currentPatch(counter,case_count);
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
+            patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
             index++;
             // caseKind[patch_it->second].push_back(case_count);
@@ -733,12 +750,13 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
         switchGroup.push_back(counter);
         switchLoc[loc].push_back(counter);
+        switchLine[counter]=currentLine;
         counter++;
     }
     
     std::pair<size_t,size_t> eachLine(line[loc].first,line[loc].second);
     for (size_t i=0;i<currentSwitches.size();i++){
-        switchLineMap[loc.filename][eachLine].push_back(currentSwitches[i]);
+        patchLines[loc.filename][eachLine].push_back(currentSwitches[i]);
     }
 
     return body+"}\n";
@@ -850,10 +868,11 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     switchCluster.clear();
     switchLoc.clear();
     switchAtoms.clear();
+    patchTypes.clear();
     for (size_t i=0;i<4;i++){
         switchCluster.push_back(std::list<size_t>());
     }
-    switchLineMap.clear();
+    patchLines.clear();
     index=0;
     counter=0;
     for (std::map<std::string,std::vector<std::pair<size_t,size_t>>>::iterator

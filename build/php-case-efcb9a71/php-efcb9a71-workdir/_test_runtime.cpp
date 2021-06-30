@@ -3205,7 +3205,7 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 6);
+return (v== 3);
 }
 case 6:{
 va_list ap;
@@ -3217,7 +3217,7 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 11);
+return (v== 8);
 }
 case 7:{
 va_list ap;
@@ -3229,7 +3229,7 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 32);
+return (v== 9);
 }
 case 8:{
 va_list ap;
@@ -3241,7 +3241,7 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 64);
+return (v== 10);
 }
 case 9:{
 va_list ap;
@@ -3253,7 +3253,7 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 128);
+return (v== 32);
 }
 case 10:{
 va_list ap;
@@ -3265,79 +3265,79 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 192);
+return (v== 42);
 }
 case 11:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<3+1;__i++){
+for (size_t __i=0;__i<2+1;__i++){
 p = va_arg(ap, void*);
 sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 0);
+return (v== 43);
 }
 case 12:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<3+1;__i++){
+for (size_t __i=0;__i<2+1;__i++){
 p = va_arg(ap, void*);
 sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 33);
+return (v== 48);
 }
 case 13:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<3+1;__i++){
+for (size_t __i=0;__i<2+1;__i++){
 p = va_arg(ap, void*);
 sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 49);
+return (v== 64);
 }
 case 14:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<3+1;__i++){
+for (size_t __i=0;__i<2+1;__i++){
 p = va_arg(ap, void*);
 sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 65);
+return (v== 128);
 }
 case 15:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<3+1;__i++){
+for (size_t __i=0;__i<2+1;__i++){
 p = va_arg(ap, void*);
 sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 81);
+return (v== 256);
 }
 case 16:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<3+1;__i++){
+for (size_t __i=0;__i<2+1;__i++){
 p = va_arg(ap, void*);
 sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 113);
+return (v== 320);
 }
 case 17:{
 va_list ap;
@@ -3349,43 +3349,43 @@ sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 769);
+return (v== 0);
 }
 case 18:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<4+1;__i++){
+for (size_t __i=0;__i<3+1;__i++){
 p = va_arg(ap, void*);
 sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 0);
+return (v== 2);
 }
 case 19:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<4+1;__i++){
+for (size_t __i=0;__i<3+1;__i++){
 p = va_arg(ap, void*);
 sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 1);
+return (v== 33);
 }
 case 20:{
 va_list ap;
 va_start(ap, count);
 void *p;unsigned long sz;long long v = 0;
-for (size_t __i=0;__i<4+1;__i++){
+for (size_t __i=0;__i<3+1;__i++){
 p = va_arg(ap, void*);
 sz = va_arg(ap, unsigned long);
 }
 if (isGoodAddr(p, sz)) {memcpy(&v, p, sz);}
 else return 0;
-return (v== 48);
+return (v== 49);
 }
 }
 }

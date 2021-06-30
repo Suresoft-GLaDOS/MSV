@@ -987,6 +987,9 @@ protected:
 
     std::vector<std::pair<std::string,size_t>> &scores;
     std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> locations;
+    std::vector<std::vector<Information>> switchInfos;
+    std::map<size_t,size_t> switchLine;
+    std::map<std::pair<size_t,size_t>,std::string> patchTypes;
 
     // For condition synthesizing
     std::vector<std::pair<size_t,size_t>> conditionLocation;
@@ -1058,10 +1061,7 @@ protected:
         std::map<size_t,size_t> switchCase;
         int i=0;
         for (std::map<int,std::map<int,std::string>>::iterator it=idAndCase.begin();it!=idAndCase.end();it++){
-            for (std::map<int,std::string>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
-                i=it2->first;
-            }
-            switchCase[it->first]=i;
+            switchCase[it->first]=idAndCase[it->first].size();
         }
         P.getSwitchInfo().caseNum=switchCase;
 
@@ -1090,7 +1090,7 @@ public:
     negative_cases(P.getNegativeCaseSet()),
     positive_cases(P.getPositiveCaseSet()),
     candidates(),conditionLocation(),records(),
-    failed_cases(),
+    failed_cases(),switchInfos(),switchLine(),
     functionLoc(functionLoc),locations(),tempCtxt(NULL),
     naive(naive) {}
 
@@ -1157,7 +1157,7 @@ public:
             }
         }
 
-        locations=R.getSwitchLine();
+        locations=R.getPatchLines();
         // Sort lines
         std::map<std::string,std::vector<std::pair<size_t,size_t>>> sortedLines;
         sortedLines.clear();
@@ -1218,6 +1218,33 @@ public:
                             break;
                         }
                     }
+                }
+            }
+        }
+
+        // Create rules
+        switchInfos.clear();
+        for (size_t i=0;i<count;i++) {
+            std::vector<Information> temp;
+            temp.clear();
+            switchInfos.push_back(temp);
+        }
+        switchLine=R.getSwitchLine();
+        patchTypes=R.getPatchTypes();
+        for (std::map<int,std::map<int,std::string>>::iterator it=idAndCase.begin();it!=idAndCase.end();it++){
+            for (std::map<int,std::string>::iterator caseIt=it->second.begin();caseIt!=it->second.end();caseIt++){
+                std::pair<size_t,size_t> currentPatch(it->first,caseIt->first);
+
+                if (patchTypes[currentPatch]!="TightenConditionKind" && patchTypes[currentPatch]!="LoosenConditionKind"
+                        && patchTypes[currentPatch]!="GuardKind" && patchTypes[currentPatch]!="SpecialGuardKind" && patchTypes[currentPatch]!="IfExitKind"){
+                    Information info;
+                    info.line=switchLine[currentPatch.first];
+                    info.currentSwitch=currentPatch.first;
+                    info.currentCase=currentPatch.second;
+                    info.type=patchTypes[currentPatch];
+                    info.isCondition=false;
+
+                    switchInfos[currentPatch.first].push_back(info);
                 }
             }
         }
@@ -1324,21 +1351,34 @@ public:
     void saveConditionInfo(std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> &conds){
         std::vector<std::pair<size_t,size_t>> conditionSwitches;
         conditionSwitches.clear();
-        std::map<std::pair<size_t,size_t>,size_t> conditionCases;
-        conditionCases.clear();
+        // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
+        // conditionCases.clear();
         for (std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>>::iterator it=conds.begin();it!=conds.end();it++){
             conditionSwitches.push_back(it->first);
-            size_t count=0;
+        //     size_t count=0;
 
-            for (size_t i=0;i<it->second.size();i++){
-                count+=it->second[i].size();
-            }
-            conditionCases[it->first]=count+1;
+            // for (size_t i=0;i<it->second.size();i++){
+            //     count+=it->second[i].size();
+            // }
+            // conditionCases[it->first]=count+1;
         }
 
         P.getSwitchInfo().conditionSwitches=conditionSwitches;
-        P.getSwitchInfo().conditionCases=conditionCases;
+        // P.getSwitchInfo().conditionCases=conditionCases;
 
+        // P.getSwitchInfo().save();
+    }
+
+    void updateInformation(std::vector<Information> infoList){
+        for (size_t i=0;i<infoList.size();i++){
+            Information info=infoList[i];
+            info.line=switchLine[info.currentSwitch];
+            info.type=patchTypes[std::pair<size_t,size_t>(info.currentSwitch,info.currentCase)];
+            
+            switchInfos[info.currentSwitch].push_back(info);
+        }
+
+        P.getSwitchInfo().infos=switchInfos;
         P.getSwitchInfo().save();
     }
 
@@ -2065,18 +2105,19 @@ class TestBatcher {
         T->saveConditionInfo(newConds);
 
         std::string source=T->createLibrarySource();
-        rewriteCondition(newConds,P.getWorkdir(),P.getProphetSrc()+"/../tools",T->tempCtxt);
+        std::vector<Information> infos=rewriteCondition(newConds,P.getWorkdir(),P.getProphetSrc()+"/../tools",T->tempCtxt);
+        T->updateInformation(infos);
 
-        if (P.getSwitch().first==0 && P.getSwitch().second==0)
-            result_init=T->test(testEnv,0,true);
-        else{
-            BenchProgram::EnvMapTy tempEnv=testEnv;
-            if (P.isCondition==true){
-                std::string condEnv="__CONDITION_"+std::to_string(P.getSwitch().first)+"_"+std::to_string(P.getSwitch().second);
-                tempEnv[condEnv]=std::to_string(P.getConditionNum());
-            }
-            result_init=T->test(tempEnv,0,false);
-        }
+        // if (P.getSwitch().first==0 && P.getSwitch().second==0)
+        //     result_init=T->test(testEnv,0,true);
+        // else{
+        //     BenchProgram::EnvMapTy tempEnv=testEnv;
+        //     if (P.isCondition==true){
+        //         std::string condEnv="__CONDITION_"+std::to_string(P.getSwitch().first)+"_"+std::to_string(P.getSwitch().second);
+        //         tempEnv[condEnv]=std::to_string(P.getConditionNum());
+        //     }
+        //     result_init=T->test(tempEnv,0,false);
+        // }
 
         std::string rollbackCmd="rm -f /usr/local/lib/libtest_runtime.so.0.0.0";
         system(rollbackCmd.c_str());

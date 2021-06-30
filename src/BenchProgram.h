@@ -101,6 +101,23 @@ public:
     }
 };
 
+struct Information{
+    size_t line;
+    size_t currentSwitch;
+    size_t currentCase;
+    std::string type;
+    bool isCondition;
+    std::string oper;
+    std::string variable;
+    int constant;
+
+    Information(){
+        isCondition=false;
+        oper="";
+        variable="";
+        constant=1001;
+    }
+};
 
 class BenchProgram {
 public:
@@ -116,7 +133,8 @@ private:
         // std::map<int,std::list<std::list<int>>> caseCluster;
         std::vector<std::set<size_t>> scoreInfo;
         std::vector<std::pair<size_t,size_t>> conditionSwitches;
-        std::map<std::pair<size_t,size_t>,size_t> conditionCases;
+        // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
+        std::vector<std::vector<Information>> infos;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
         void save(){
@@ -134,7 +152,7 @@ private:
             }
             cJSON_AddItemToObject(json,std::string("case_num").c_str(),switchCase);
 
-            // // Add switch cluster
+            // Add switch cluster
             cJSON *switchClusterArray=cJSON_CreateArray();
             for (std::vector<std::list<size_t>>::iterator it=switchCluster.begin();it!=switchCluster.end();it++){
                 cJSON *switchGroup=cJSON_CreateArray();
@@ -144,21 +162,6 @@ private:
                 cJSON_AddItemToArray(switchClusterArray,switchGroup);
             }
             cJSON_AddItemToObject(json,std::string("switch_cluster").c_str(),switchClusterArray);
-
-            // // Add case cluster
-            // cJSON *caseClusterArray=cJSON_CreateArray();
-            // for (std::map<int,std::list<std::list<int>>>::iterator it=caseCluster.begin();it!=caseCluster.end();it++){
-            //     cJSON *caseBySwitch=cJSON_CreateArray();
-            //     for (std::list<std::list<int>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
-            //         cJSON *caseInSwitch=cJSON_CreateArray();
-            //         for (std::list<int>::iterator it3=it2->begin();it3!=it2->end();it3++){
-            //             cJSON_AddItemToArray(caseInSwitch,cJSON_CreateNumber(*it3));
-            //         }
-            //         cJSON_AddItemToArray(caseBySwitch,caseInSwitch);
-            //     }
-            //     cJSON_AddItemToArray(caseClusterArray,caseBySwitch);
-            // }
-            // cJSON_AddItemToObject(json,std::string("case_cluster").c_str(),caseClusterArray);
 
             // Save scores
             cJSON *scoreArray=cJSON_CreateArray();
@@ -181,12 +184,32 @@ private:
             }
             cJSON_AddItemToObject(json,"condition_switch",conditionArray);
 
-            // Save condition counts
-            cJSON *conditionCount=cJSON_CreateObject();
-            for (std::map<std::pair<size_t,size_t>,size_t>::iterator it=conditionCases.begin();it!=conditionCases.end();it++){
-                cJSON_AddNumberToObject(conditionCount,std::string(std::to_string(it->first.first)+"-"+std::to_string(it->first.second)).c_str(),it->second);
+            // Save each patch rules
+            cJSON *ruleArray=cJSON_CreateArray();
+            for (size_t i=0;i<infos.size();i++){
+                cJSON *ruleSwitch=cJSON_CreateArray();
+                for (size_t j=0;j<infos[i].size();j++){
+                    Information info=infos[i][j];
+                    cJSON *rule=cJSON_CreateObject();
+
+                    cJSON_AddNumberToObject(rule,std::string("line").c_str(),info.line);
+                    cJSON_AddNumberToObject(rule,std::string("switch").c_str(),info.currentSwitch);
+                    cJSON_AddNumberToObject(rule,std::string("case").c_str(),info.currentCase);
+                    cJSON_AddStringToObject(rule,std::string("type").c_str(),info.type.c_str());
+                    
+                    if (info.isCondition==true) {
+                        cJSON_AddItemToObject(rule,std::string("is_condition").c_str(),cJSON_CreateTrue());
+                        cJSON_AddStringToObject(rule,std::string("operator").c_str(),info.oper.c_str());
+                        cJSON_AddStringToObject(rule,std::string("variable").c_str(),info.variable.c_str());
+                        cJSON_AddNumberToObject(rule,std::string("constant").c_str(),info.constant);
+                    }
+                    else cJSON_AddItemToObject(rule,std::string("is_condition").c_str(),cJSON_CreateFalse());
+
+                    cJSON_AddItemToArray(ruleSwitch,rule);
+                }
+                cJSON_AddItemToArray(ruleArray,ruleSwitch);
             }
-            cJSON_AddItemToObject(json,"condition_count",conditionCount);
+            cJSON_AddItemToObject(json,"rules",ruleArray);
 
             // Save JSON to file
             char *jsonString=cJSON_Print(json);

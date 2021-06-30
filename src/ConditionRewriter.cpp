@@ -10,6 +10,7 @@ private:
     std::string workDir;
     ASTContext *ctxt;
 public:
+    std::vector<Information> infos;
     ConditionRewriter(std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> newExprs,std::string workDir,ASTContext *ctxt):newExprs(newExprs),workDir(workDir),ctxt(ctxt) {}
     void rewrite(){
         std::string source="";
@@ -20,6 +21,7 @@ public:
             source+="\n";
         }
         file.close();
+        infos.clear();
 
         size_t start=source.find("__is_neg");
         start=source.find("{",start);
@@ -56,7 +58,21 @@ public:
                     if (op==std::string::npos) op=patch.find(" >");
                     if (op==std::string::npos) op=patch.find(" <");
                     std::string keep=patch.substr(op);
-                    code+="return (v"+keep+");\n}\n"; 
+                    code+="return (v"+keep+");\n}\n";
+
+                    Information info;
+                    info.currentSwitch=it->first.first;
+                    info.currentCase=it->first.second;
+                    info.isCondition=true;
+
+                    Expr *currentCond=it->second[i][j];
+                    BinaryOperator *bo=llvm::dyn_cast<BinaryOperator>(currentCond);
+                    if (bo){
+                        info.oper=bo->getOpcodeStr().str();
+                        info.variable=stmtToString(*ctxt,bo->getLHS());
+                        info.constant=stoi(stmtToString(*ctxt,bo->getRHS()));
+                    }
+                    infos.push_back(info);
 
                     count++;
                 }
@@ -80,10 +96,11 @@ public:
     }
 };
 
-void rewriteCondition(std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> newExprs,std::string workDir,std::string toolsDir,ASTContext *ctxt){
+std::vector<Information> rewriteCondition(std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> newExprs,std::string workDir,std::string toolsDir,ASTContext *ctxt){
     ConditionRewriter cond(newExprs,workDir,ctxt);
     outlog_printf(2,"Generating condition patches...\n");
     cond.rewrite();
     cond.build(toolsDir);
+    return cond.infos;
 }
 }

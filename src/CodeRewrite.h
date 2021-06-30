@@ -46,7 +46,10 @@ class CodeRewriter {
     std::vector<std::list<size_t>> switchCluster;
     std::string workDir;
 
-    std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> switchLineMap;
+    std::map<size_t,size_t> switchLine;
+    std::map<std::pair<size_t,size_t>,std::string> patchTypes;
+
+    std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> patchLines;
 
     void addIsNeg(size_t id,size_t case_num,std::string code);
 public:
@@ -93,14 +96,20 @@ public:
     std::map<long long,std::string> getMacroCode(){
         return macroCode;
     }
-    std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> getSwitchLine(){
-        return switchLineMap;
+    std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> getPatchLines(){
+        return patchLines;
     }
     std::map<size_t,std::vector<clang::Expr *>> getSwitchAtoms(){
         return switchAtoms;
     }
     std::map<ASTLocTy,std::vector<size_t>> getSwitchLoc(){
         return switchLoc;
+    }
+    std::map<size_t,size_t> getSwitchLine(){
+        return switchLine;
+    }
+    std::map<std::pair<size_t,size_t>,std::string> getPatchTypes(){
+        return patchTypes;
     }
 };
 
