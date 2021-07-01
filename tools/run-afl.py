@@ -4,6 +4,7 @@ import sys
 import subprocess
 import json
 import time
+import hashlib
 
 
 class Fuzzer:
@@ -25,25 +26,37 @@ class Fuzzer:
 
 
 class Config:
-    def __init__(self, line: int, switch: int, case: int, conf_type: str, is_condition: bool) -> None:
-        self.line = line
+    def __init__(self, switch: int, case: int, condition: int = 0, is_condition: bool = False, line: int = -1, conf_type: str = "") -> None:
         self.switch = switch
         self.case = case
-        self.conf_type = conf_type
+        self.condition = condition
         self.is_condition = is_condition
-        self.condition = 0
+        self.conf_type = conf_type
+        self.line = line
         self.operator = ""
         self.variable = ""
         self.constant = 0
 
     def set_condition(self, condition: int, operator: str, variable: str, constant: int) -> None:
+        self.is_condition = True
         self.condition = condition
         self.operator = operator
         self.variable = variable
         self.constant = constant
+    
+    def __str__(self) -> str:
+        return f"{self.switch}, {self.case}, {self.condition}({self.is_condition}): {self.line}, {self.conf_type}"
 
     def __hash__(self) -> int:
-        self.switch
+        hashstr = f"{self.switch}+{self.case}+{self.condition}"
+        a = hashlib.md5(hashstr.encode('utf-8'))
+        return int(a.hexdigest(), 16)
+    
+    def __eq__(self, o: object) -> bool:
+        equal = self.switch == o.switch
+        equal = equal and self.case == o.case
+        equal = equal and self.condition == o.condition
+        return equal
 
 
 class ConfigGenerator:
@@ -51,11 +64,24 @@ class ConfigGenerator:
         self.switches = list(range(switch_num))
         self.generated = 0
         self.switch_json = switch_json
-        self.switches = [53, 23, 0, 14, 4, 7, 9]
+        self.rules = dict()
+        self.results = dict()
+    
+    def init_rules(self) -> None:
+        root = self.switch_json["rules"][0]
+        for rule in root:
+            conf: Config = None
+            if rule["is_condition"]:
+                conf = Config(rule["switch"], rule["case"], rule["condition"], True, rule["line"], rule["type"])
+                conf.set_condition(rule["condition"], rule["operator"], rule["variable"], rule["constant"])
+            else:
+                conf = Config(rule["switch"], rule["case"], 0, False, rule["line"], rule["type"])
+            self.rules[conf] = conf
+            self.results[conf] = False
 
     def config_generator(self) -> int:
         self.generated += 1
-        if self.generated > 4:
+        if len(self.switches) == 0:
             return -1
         return self.switches.pop(0)
 
@@ -65,9 +91,14 @@ class ConfigGenerator:
             if arf is None:
                 return False
             lines = arf.readlines()
+            is_passed = False
             for line in lines:
-                tokens = line.split(",")
-        return False
+                tokens = line.strip().split(",")
+                conf = Config(int(tokens[0]), int(tokens[1]), int(tokens[2]))
+                self.results[conf] = (tokens[3] == "PASS")
+                if self.results[conf]:
+                    is_passed = True
+        return is_passed
 
 
 def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, switch: int) -> subprocess.Popen:
@@ -139,6 +170,7 @@ def main(argv):
     result_map = dict()
     fid = 0
     confgen = ConfigGenerator(switch_num, switch_json)
+    confgen.init_rules()
     flag = True
     # Test for negative case
     while True:
@@ -150,6 +182,7 @@ def main(argv):
             fuzzer = Fuzzer(run_afl(arg_dict['w'], conf_dict['tools_dir'], timeout,
                                     "fuzzer" + str(fid), selected_switch), fid, selected_switch, arg_dict['w'])
             fuzz_queue.append(fuzzer)
+            print(f"append fuzzer{fid}")
             fid += 1
         elif flag == False and len(fuzz_queue) == 0:
             break
@@ -167,7 +200,7 @@ def main(argv):
                     print(f"fuzzer{fuzz.fid} finished!")
                     (out, err) = fuzz.fuzzer.communicate()
                     result = confgen.result_analyzer(fuzz)
-                    print(f"result: {result} fuzz_queue: {fuzz_queue}")
+                    print(f"result: {result}")
                     fuzz.set_result(result)
                     result_map[fuzz.switch] = fuzz
                     fuzz_queue.pop(i)
