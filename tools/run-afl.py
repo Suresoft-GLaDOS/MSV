@@ -7,34 +7,70 @@ import time
 
 
 class Fuzzer:
-    def __init__(self, fuzzer, fid, switch, workdir):
+    def __init__(self, fuzzer: subprocess.Popen, fid: int, switch: int, workdir: str) -> None:
         self.fuzzer = fuzzer
         self.fid = fid
         self.switch = switch
         self.result = False
         self.afl_result_file = os.path.join(workdir, "out", "fuzzer" + str(fid), "afl-result.csv")
 
-    def set_result(self, result):
+    def set_result(self, result: bool) -> None:
         self.result = result
+
+    def is_alive(self) -> bool:
+        return self.fuzzer.poll() is None
     
     def __str__(self) -> str:
         return f"fuzzer{self.fid}: sw{self.switch}, file: {self.afl_result_file}, result: {self.result}"
 
 
+class Config:
+    def __init__(self, line: int, switch: int, case: int, conf_type: str, is_condition: bool) -> None:
+        self.line = line
+        self.switch = switch
+        self.case = case
+        self.conf_type = conf_type
+        self.is_condition = is_condition
+        self.condition = 0
+        self.operator = ""
+        self.variable = ""
+        self.constant = 0
+
+    def set_condition(self, condition: int, operator: str, variable: str, constant: int) -> None:
+        self.condition = condition
+        self.operator = operator
+        self.variable = variable
+        self.constant = constant
+
+    def __hash__(self) -> int:
+        self.switch
+
+
 class ConfigGenerator:
-    def __init__(self, switch_num, switch_json):
+    def __init__(self, switch_num: int, switch_json: dict) -> None:
         self.switches = list(range(switch_num))
         self.generated = 0
         self.switch_json = switch_json
+        self.switches = [53, 23, 0, 14, 4, 7, 9]
 
-    def config_generator(self):
+    def config_generator(self) -> int:
         self.generated += 1
         if self.generated > 4:
             return -1
-        return 0
+        return self.switches.pop(0)
+
+    # switch, case, condition, result
+    def result_analyzer(self, fuzz: Fuzzer) -> bool:
+        with open(fuzz.afl_result_file, "r") as arf:
+            if arf is None:
+                return False
+            lines = arf.readlines()
+            for line in lines:
+                tokens = line.split(",")
+        return False
 
 
-def run_afl(workdir, tools_dir, timeout, fuzzer_id, switch):
+def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, switch: int) -> subprocess.Popen:
     afl_cmd = ["afl-fuzz", "-o", workdir + "/out", "-m", "none", "-g", str(switch), "-d", "-n", "-t",
                str(timeout * 1000), "-w", workdir, "-S", fuzzer_id]
     afl_cmd += ["--", os.path.join(tools_dir, "php-test.py"), os.path.join(workdir, "src"),
@@ -42,34 +78,6 @@ def run_afl(workdir, tools_dir, timeout, fuzzer_id, switch):
     print("Run afl-fuzz " + fuzzer_id)
     print(afl_cmd)
     return subprocess.Popen(afl_cmd)
-
-
-def result_checker(fuzz):
-    with open(fuzz.afl_result_file, "r") as arf:
-        lines = arf.readlines()
-    return True
-    lines = out.splitlines()
-    # print(lines)
-    # lines=out.split(['\\n'])
-    test_section = False
-    is_passed = False
-    for line in lines:
-        tokens = line.split()
-        if len(tokens) == 0:
-            continue
-        if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
-            test_section = True
-        elif (tokens[0][0:6] == "======") and (test_section == True):
-            test_section = False
-        elif (test_section == True):
-            if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
-                print("PASS!")
-                is_passed = True
-            elif (tokens[0] == "Fatal") or (tokens[0] == "FAIL"):
-                print("Fail!")
-            else:
-                print("Fail...")
-    return is_passed
 
 
 def main(argv):
@@ -146,16 +154,19 @@ def main(argv):
         elif flag == False and len(fuzz_queue) == 0:
             break
         else:
-            print(f"fuzz_queue: {fuzz_queue}")
+            fqstr = ""
+            for fuzz in fuzz_queue:
+                fqstr += f"fuzzer{fuzz.fid}:{fuzz.switch}, "            
+            print(f"fuzz_queue: [{fqstr}]")
             for i in range(len(fuzz_queue)):
-                fuzz = fuzz_queue[i]
-                if fuzz.fuzzer.poll() is None:
+                fuzz: Fuzzer = fuzz_queue[i]
+                if fuzz.is_alive():
                     print(f"fuzzer{fuzz.fid} did not end...")
                     time.sleep(2)
                 else:
                     print(f"fuzzer{fuzz.fid} finished!")
                     (out, err) = fuzz.fuzzer.communicate()
-                    result = result_checker(fuzz)
+                    result = confgen.result_analyzer(fuzz)
                     print(f"result: {result} fuzz_queue: {fuzz_queue}")
                     fuzz.set_result(result)
                     result_map[fuzz.switch] = fuzz
