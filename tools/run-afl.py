@@ -79,11 +79,15 @@ class ConfigGenerator:
             self.rules[conf] = conf
             self.results[conf] = False
 
-    def config_generator(self) -> int:
+    def config_generator(self, total) -> str:
+        rng = len(self.switches) // total
+        if self.generated >= total:
+            return ""
+        start = rng * self.generated
+        end = min(rng * (self.generated + 1) - 1, len(self.switches) - 1)
+        confstr = f"{start}-{end}" 
         self.generated += 1
-        if len(self.switches) == 0:
-            return -1
-        return self.switches.pop(0)
+        return confstr
 
     # switch, case, condition, result
     def result_analyzer(self, fuzz: Fuzzer) -> bool:
@@ -101,8 +105,8 @@ class ConfigGenerator:
         return is_passed
 
 
-def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, switch: int) -> subprocess.Popen:
-    afl_cmd = ["afl-fuzz", "-o", workdir + "/out", "-m", "none", "-g", str(switch), "-d", "-n", "-t",
+def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, switch: str) -> subprocess.Popen:
+    afl_cmd = ["afl-fuzz", "-o", workdir + "/out", "-m", "none", "-g", switch, "-d", "-n", "-t",
                str(timeout * 1000), "-w", workdir, "-S", fuzzer_id]
     afl_cmd += ["--", os.path.join(tools_dir, "php-test.py"), os.path.join(workdir, "src"),
                 os.path.join(workdir, "tests"), workdir]
@@ -175,13 +179,14 @@ def main(argv):
     # Test for negative case
     while True:
         if len(fuzz_queue) < parallel_count and flag:
-            selected_switch = confgen.config_generator()
-            if selected_switch < 0:
+            selected_switch = confgen.config_generator(parallel_count)
+            if len(selected_switch) == 0:
                 flag = False
                 continue
             fuzzer = Fuzzer(run_afl(arg_dict['w'], conf_dict['tools_dir'], timeout,
                                     "fuzzer" + str(fid), selected_switch), fid, selected_switch, arg_dict['w'])
             fuzz_queue.append(fuzzer)
+            time.sleep(2)
             print(f"append fuzzer{fid}")
             fid += 1
         elif flag == False and len(fuzz_queue) == 0:
