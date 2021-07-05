@@ -341,5 +341,39 @@ extern "C" int __is_neg(const char *location,int count, ...) {
         else
             return 0;
     }
+    else if (strcmp(is_neg, "RUN") == 0){
+        if (strcmp(getenv("__OPERATOR"),"1")==0) return 1;
+        unsigned long var=atoi(getenv("__VARIABLE"));
+        char oper=atoi(getenv("__OPERATOR"));
+        long long constant=atoi(getenv("__CONSTANT"));
+        long long value=0;
+
+        va_list ap;
+        va_start(ap, count);
+        for (unsigned long i = 0; i < (unsigned long)count; i++) {
+            void* p = va_arg(ap, void*);
+            unsigned long sz = va_arg(ap, unsigned long);
+            assert( sz <= 8 );
+            if (isGoodAddr(p, sz)) {
+                memcpy(&value, p, sz);
+            }
+            else {
+                value = MAGIC_NUMBER;
+            }
+
+            if (i==var) break;
+        }
+
+        if (value==MAGIC_NUMBER) return 0;
+        else{
+            switch(oper){
+                case 1: return (value !=constant); // NE
+                case 2: return (value > constant); // GT
+                case 3: return (value < constant); // LT
+                default: return (value == constant); // EQ
+            }
+        }
+
+    }
     return 0;
 }

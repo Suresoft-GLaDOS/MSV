@@ -45,10 +45,6 @@ public:
             info.currentSwitch=it->first.first;
             info.currentCase=it->first.second;
             info.isCondition=true;
-            info.condition=0;
-            info.oper="1";
-            info.variable="";
-            info.constant=1;
             infos.push_back(info);
 
 
@@ -78,10 +74,6 @@ public:
                     Expr *currentCond=it->second[i][j];
                     BinaryOperator *bo=llvm::dyn_cast<BinaryOperator>(currentCond);
                     if (bo){
-                        info.condition=count;
-                        info.oper=bo->getOpcodeStr().str();
-                        info.variable=stmtToString(*ctxt,bo->getLHS());
-                        info.constant=stoi(stmtToString(*ctxt,bo->getRHS()));
                     }
                     infos.push_back(info);
 

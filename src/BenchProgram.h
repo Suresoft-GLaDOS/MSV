@@ -108,17 +108,9 @@ struct Information{
     size_t currentCase;
     std::string type;
     bool isCondition;
-    size_t condition;
-    std::string oper;
-    std::string variable;
-    int constant;
 
     Information(){
         isCondition=false;
-        condition=0;
-        oper="";
-        variable="";
-        constant=1001;
     }
 };
 
@@ -218,10 +210,6 @@ private:
                     
                     if (info.isCondition==true) {
                         cJSON_AddItemToObject(rule,std::string("is_condition").c_str(),cJSON_CreateTrue());
-                        cJSON_AddNumberToObject(rule,std::string("condition").c_str(),info.condition);
-                        cJSON_AddStringToObject(rule,std::string("operator").c_str(),info.oper.c_str());
-                        cJSON_AddStringToObject(rule,std::string("variable").c_str(),info.variable.c_str());
-                        cJSON_AddNumberToObject(rule,std::string("constant").c_str(),info.constant);
                     }
                     else cJSON_AddItemToObject(rule,std::string("is_condition").c_str(),cJSON_CreateFalse());
 

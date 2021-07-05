@@ -1080,7 +1080,8 @@ protected:
             }
         }
         P.getSwitchInfo().atoms=atomString;
-        // P.getSwitchInfo().save();
+        P.getSwitchInfo().infos=switchInfos;
+        P.getSwitchInfo().save();
     }
 
     bool fuzzTest(size_t timeout){
@@ -1245,18 +1246,17 @@ public:
         for (std::map<int,std::map<int,std::string>>::iterator it=idAndCase.begin();it!=idAndCase.end();it++){
             for (std::map<int,std::string>::iterator caseIt=it->second.begin();caseIt!=it->second.end();caseIt++){
                 std::pair<size_t,size_t> currentPatch(it->first,caseIt->first);
-
+                Information info;
+                info.line=switchLine[currentPatch.first];
+                info.currentSwitch=currentPatch.first;
+                info.currentCase=currentPatch.second;
+                info.type=patchTypes[currentPatch];
                 if (patchTypes[currentPatch]!="TightenConditionKind" && patchTypes[currentPatch]!="LoosenConditionKind"
-                        && patchTypes[currentPatch]!="GuardKind" && patchTypes[currentPatch]!="SpecialGuardKind" && patchTypes[currentPatch]!="IfExitKind"){
-                    Information info;
-                    info.line=switchLine[currentPatch.first];
-                    info.currentSwitch=currentPatch.first;
-                    info.currentCase=currentPatch.second;
-                    info.type=patchTypes[currentPatch];
+                        && patchTypes[currentPatch]!="GuardKind" && patchTypes[currentPatch]!="SpecialGuardKind" && patchTypes[currentPatch]!="IfExitKind")
                     info.isCondition=false;
+                else info.isCondition=true;
 
-                    switchInfos[currentPatch.first].push_back(info);
-                }
+                switchInfos[currentPatch.first].push_back(info);
             }
         }
 
@@ -2112,15 +2112,15 @@ class TestBatcher {
         std::map<std::pair<size_t,size_t>,std::map<unsigned long,std::vector<std::vector<long long>>>> conditionValues;
         BenchProgram::EnvMapTy testEnv;
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
-        T->runCond(testEnv,conditionValues);
-        std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> newConds;
-        newConds=T->synthesizeCondition();
-        T->saveConditionInfo(newConds);
+        // T->runCond(testEnv,conditionValues);
+        // std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> newConds;
+        // newConds=T->synthesizeCondition();
+        // T->saveConditionInfo(newConds);
 
-        std::string source=T->createLibrarySource();
-        std::vector<Information> infos=rewriteCondition(newConds,P.getWorkdir(),P.getProphetSrc()+"/../tools",T->tempCtxt);
-        system(std::string("clang-format -i "+P.getWorkdir()+"/_test_runtime.cpp").c_str());
-        T->updateInformation(infos);
+        // std::string source=T->createLibrarySource();
+        // std::vector<Information> infos=rewriteCondition(newConds,P.getWorkdir(),P.getProphetSrc()+"/../tools",T->tempCtxt);
+        // system(std::string("clang-format -i "+P.getWorkdir()+"/_test_runtime.cpp").c_str());
+        // T->updateInformation(infos);
 
         // if (P.getSwitch().first==0 && P.getSwitch().second==0)
         //     result_init=T->test(testEnv,0,true);
@@ -2133,10 +2133,10 @@ class TestBatcher {
         //     result_init=T->test(tempEnv,0,false);
         // }
 
-        std::string rollbackCmd="rm -f /usr/local/lib/libtest_runtime.so.0.0.0";
-        system(rollbackCmd.c_str());
-        std::string copyCmd="mv /usr/local/lib/libtest_runtime_bak.so.0.0.0 /usr/local/lib/libtest_runtime.so.0.0.0";
-        system(copyCmd.c_str());
+        // std::string rollbackCmd="rm -f /usr/local/lib/libtest_runtime.so.0.0.0";
+        // system(rollbackCmd.c_str());
+        // std::string copyCmd="mv /usr/local/lib/libtest_runtime_bak.so.0.0.0 /usr/local/lib/libtest_runtime.so.0.0.0";
+        // system(copyCmd.c_str());
 
         std::map<NewCodeMapTy, double> newCode;
         newCode.clear();

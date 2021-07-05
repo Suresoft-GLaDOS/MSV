@@ -230,19 +230,13 @@ class php_initializer:
         return ret;
 
 class php_tester:
-    def __init__(self, work_dir, repo_dir, test_dir,total_switch=0,choose_switch=0,choose_case=0,choose_condition=0,temp_dir=""):
+    def __init__(self, work_dir, repo_dir, test_dir,env=environ,temp_dir=""):
         self.repo_dir = repo_dir;
         self.test_dir = test_dir;
         self.work_dir = work_dir;
         self.temp_dir=temp_dir
+        self.env=env
 
-        self.env=environ
-        for i in range(total_switch):
-            self.env['__SWITCH'+str(i)]='0'
-        if choose_case != 0:
-            self.env['__SWITCH'+str(choose_switch)]=str(choose_case)
-        if choose_condition != 0:
-            self.env['__CONDITION_' + str(choose_switch) + '_' + str(choose_case)] = str(choose_condition)
         f = open(test_dir + "/testfile.log", "r");
         line = f.readline();
         f.close();
