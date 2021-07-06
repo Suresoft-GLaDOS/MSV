@@ -26,13 +26,11 @@
 #include "DuplicateDetector.h"
 #include "FeatureParameter.h"
 #include "cJSON/cJSON.h"
-#include "CollectCondition.h"
 
 #include "llvm/Support/CommandLine.h"
 #include "clang/AST/Expr.h"
 #include "clang/AST/Stmt.h"
 #include "clang/AST/ASTContext.h"
-#include "ConditionRewriter.h"
 #include <iostream>
 
 using namespace clang;
@@ -987,7 +985,6 @@ protected:
 
     std::vector<std::pair<std::string,size_t>> &scores;
     std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> locations;
-    std::vector<std::vector<Information>> switchInfos;
     std::map<size_t,size_t> switchLine;
     std::map<std::pair<size_t,size_t>,std::string> patchTypes;
 
@@ -1056,7 +1053,7 @@ protected:
         }
         return false;
     }
-    void savePatchInfo(std::vector<std::set<size_t>> scores){
+    void savePatchInfo(std::vector<std::set<size_t>> &scores,std::vector<File> &infos){
         // Add case number of each switch
         std::map<size_t,size_t> switchCase;
         int i=0;
@@ -1080,7 +1077,7 @@ protected:
             }
         }
         P.getSwitchInfo().atoms=atomString;
-        P.getSwitchInfo().infos=switchInfos;
+        P.getSwitchInfo().infos=infos;
         P.getSwitchInfo().save();
     }
 
@@ -1102,7 +1099,7 @@ public:
     negative_cases(P.getNegativeCaseSet()),
     positive_cases(P.getPositiveCaseSet()),
     candidates(),conditionLocation(),records(),
-    failed_cases(),switchInfos(),switchLine(),
+    failed_cases(),switchLine(),
     functionLoc(functionLoc),locations(),tempCtxt(NULL),
     naive(naive) {}
 
@@ -1235,32 +1232,9 @@ public:
         }
 
         // Create rules
-        switchInfos.clear();
-        for (size_t i=0;i<count;i++) {
-            std::vector<Information> temp;
-            temp.clear();
-            switchInfos.push_back(temp);
-        }
-        switchLine=R.getSwitchLine();
-        patchTypes=R.getPatchTypes();
-        for (std::map<int,std::map<int,std::string>>::iterator it=idAndCase.begin();it!=idAndCase.end();it++){
-            for (std::map<int,std::string>::iterator caseIt=it->second.begin();caseIt!=it->second.end();caseIt++){
-                std::pair<size_t,size_t> currentPatch(it->first,caseIt->first);
-                Information info;
-                info.line=switchLine[currentPatch.first];
-                info.currentSwitch=currentPatch.first;
-                info.currentCase=currentPatch.second;
-                info.type=patchTypes[currentPatch];
-                if (patchTypes[currentPatch]!="TightenConditionKind" && patchTypes[currentPatch]!="LoosenConditionKind"
-                        && patchTypes[currentPatch]!="GuardKind" && patchTypes[currentPatch]!="SpecialGuardKind" && patchTypes[currentPatch]!="IfExitKind")
-                    info.isCondition=false;
-                else info.isCondition=true;
+        std::vector<File> rules=R.rules;        
 
-                switchInfos[currentPatch.first].push_back(info);
-            }
-        }
-
-        savePatchInfo(finalScore);
+        savePatchInfo(finalScore,rules);
         {
             outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu:\n", get_timer(),
                     codes.size());
@@ -1274,14 +1248,6 @@ public:
 
         conditionLocation=R.getIsNegLocation();
         return res;
-    }
-    void runCond(BenchProgram::EnvMapTy env,std::map<std::pair<size_t,size_t>,std::map<unsigned long,std::vector<std::vector<long long>>>> &temp){
-        CollectCondition cond(env,conditionLocation,idAndCase.size(),P,negative_cases,positive_cases,20);
-        cond.getConditionRecord();
-        cond.collectValues(temp);
-
-        records=cond.getRecords();
-        values=temp;
     }
 
     virtual clang::Expr* getFillExpr(size_t id) {
@@ -1318,98 +1284,6 @@ public:
             }
             return ret;
         }
-    }
-
-    std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> synthesizeCondition(){
-        std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> result;
-        result.clear();
-        for (std::map<std::pair<size_t,size_t>,std::map<size_t,std::vector<size_t>>>::iterator it=records.begin();it!=records.end();it++){
-            std::pair<size_t,size_t> currentSwitch=it->first;
-            std::map<unsigned long, std::vector<size_t> > negative_records=records[currentSwitch];
-            std::map<unsigned long, std::vector< std::vector< long long> > > caseVMap=values[currentSwitch];
-            std::vector<Expr *> atoms=switchAtoms[currentSwitch.first];
-            ASTContext *ctxt=M.getSourceContext(switchLoc[currentSwitch.first].filename);
-            if (tempCtxt==NULL) tempCtxt=ctxt;
-
-            std::vector<Expr *> tempExpr=synthesizeResultSPR(atoms,negative_records,caseVMap,negative_cases,positive_cases,ctxt);
-
-            std::vector<std::vector<Expr *>> newExprs;
-            newExprs.clear();
-            for (size_t i=0;i<atoms.size();i++){
-                Expr *current=atoms[i];
-                std::vector<Expr *> currentExprs;
-                currentExprs.clear();
-
-                for (size_t j=0;j<tempExpr.size();j++){
-                    BinaryOperator *temp=llvm::dyn_cast<BinaryOperator>(tempExpr[j]);
-                    if (temp!=NULL && temp->getLHS()==current)
-                        currentExprs.push_back(tempExpr[j]);
-                }
-                newExprs.push_back(currentExprs);
-            }
-            result[currentSwitch]=newExprs;
-
-            // outlog_printf(2,"%u %u:\n",currentSwitch.first,currentSwitch.second);
-            // for (size_t i=0;i<newExprs.size();i++)
-            //     for (size_t j=0;j<newExprs[i].size();j++)
-            //         outlog_printf(2,"%s\n",stmtToString(*ctxt,newExprs[i][j]).c_str());
-            // outlog_printf(2,"\n");
-        }
-
-        return result;
-    }
-
-    void saveConditionInfo(std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> &conds){
-        std::vector<std::pair<size_t,size_t>> conditionSwitches;
-        conditionSwitches.clear();
-        std::map<std::pair<size_t,size_t>,size_t> conditionCounts;
-        conditionCounts.clear();
-        // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
-        // conditionCases.clear();
-        for (std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>>::iterator it=conds.begin();it!=conds.end();it++){
-            conditionSwitches.push_back(it->first);
-            size_t count=0;
-
-            for (size_t i=0;i<it->second.size();i++){
-                count+=it->second[i].size();
-            }
-            conditionCounts[it->first]=count+1;
-        }
-
-        P.getSwitchInfo().conditionSwitches=conditionSwitches;
-        P.getSwitchInfo().conditionCounts=conditionCounts;
-
-        // P.getSwitchInfo().save();
-    }
-
-    void updateInformation(std::vector<Information> infoList){
-        for (size_t i=0;i<infoList.size();i++){
-            Information info=infoList[i];
-            info.line=switchLine[info.currentSwitch];
-            info.type=patchTypes[std::pair<size_t,size_t>(info.currentSwitch,info.currentCase)];
-            
-            switchInfos[info.currentSwitch].push_back(info);
-        }
-
-        P.getSwitchInfo().infos=switchInfos;
-        P.getSwitchInfo().save();
-    }
-
-    std::string createLibrarySource(){
-        std::string copyCmd="cp ";
-        copyCmd+=P.getProphetSrc()+"/_test_runtime.cpp ";
-        copyCmd+=P.getWorkdir()+"/_test_runtime.cpp ";
-        system(copyCmd.c_str());
-
-        std::string source="";
-        std::ifstream file(P.getWorkdir()+"/_test_runtime.cpp");
-        std::string temp;
-        while (std::getline(file,temp)){
-            source+=temp;
-            source+="\n";
-        }
-        file.close();
-        return source;
     }
 
     virtual std::map<NewCodeMapTy, double> getResults(unsigned long id) {
@@ -2109,27 +1983,13 @@ class TestBatcher {
         // This should success
         P.saveFixedFiles(combined,fixedFile);
         
-        std::map<std::pair<size_t,size_t>,std::map<unsigned long,std::vector<std::vector<long long>>>> conditionValues;
         BenchProgram::EnvMapTy testEnv;
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
-        // T->runCond(testEnv,conditionValues);
-        // std::map<std::pair<size_t,size_t>,std::vector<std::vector<Expr *>>> newConds;
-        // newConds=T->synthesizeCondition();
-        // T->saveConditionInfo(newConds);
-
-        // std::string source=T->createLibrarySource();
-        // std::vector<Information> infos=rewriteCondition(newConds,P.getWorkdir(),P.getProphetSrc()+"/../tools",T->tempCtxt);
-        // system(std::string("clang-format -i "+P.getWorkdir()+"/_test_runtime.cpp").c_str());
-        // T->updateInformation(infos);
+        // bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
 
         // if (P.getSwitch().first==0 && P.getSwitch().second==0)
         //     result_init=T->test(testEnv,0,true);
         // else{
         //     BenchProgram::EnvMapTy tempEnv=testEnv;
-        //     if (P.isCondition==true){
-        //         std::string condEnv="__CONDITION_"+std::to_string(P.getSwitch().first)+"_"+std::to_string(P.getSwitch().second);
-        //         tempEnv[condEnv]=std::to_string(P.getConditionNum());
-        //     }
         //     result_init=T->test(tempEnv,0,false);
         // }
 

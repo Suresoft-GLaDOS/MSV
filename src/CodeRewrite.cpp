@@ -515,6 +515,16 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     ASTContext *ctxt=sourceManager.getSourceContext(loc.filename);
     SourceManager &manager=ctxt->getSourceManager();
     size_t currentLine=manager.getExpansionLineNumber(loc.stmt->getBeginLoc());
+    Line lineObject;
+    bool hasLine=false;
+    for (size_t i=0;i<lines.size();i++){
+        if (currentLine==lines[i].line){
+            lineObject=lines[i];
+            hasLine=true;
+            break;
+        }
+    }
+    lineObject.line=currentLine;
 
     int case_count=0;
     // assert( end >= last_end);
@@ -531,6 +541,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         case_count=0;
         currentSwitches.push_back(counter);
         switchCluster[2].push_back(counter);
+        Switch switchObject;
+        switchObject.switchNum=counter;
 
         body+="switch(__choose(\"__SWITCH"+std::to_string(counter)+"\"))\n{\n";
         body+="case "+std::to_string(case_count++)+": \n";
@@ -552,6 +564,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
+            switchObject.types[patch_it->second].cases.push_back(case_count);
+
             index++;
             caseKind[patch_it->second].push_back(case_count);
 
@@ -568,6 +582,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         switchGroup.push_back(counter);
         switchLoc[loc].push_back(counter);
         switchLine[counter]=currentLine;
+        lineObject.switches.push_back(switchObject);
         counter++;
     }
 
@@ -578,6 +593,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         casePatch.clear();
         currentSwitches.push_back(counter);
         switchCluster[1].push_back(counter);
+        Switch switchObject;
+        switchObject.switchNum=counter;
 
         std::string subPatch=stmtToString(*ctxt,loc.stmt);
         std::pair<size_t,size_t> conditionLoc=getConditionLocation(subPatch);
@@ -606,6 +623,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
+            switchObject.types[patch_it->second].cases.push_back(case_count);
+
             index++;
             // caseKind[patch_it->second].push_back(case_count);
 
@@ -622,6 +641,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         switchGroup.push_back(counter);
         switchLoc[loc].push_back(counter);
         switchLine[counter]=currentLine;
+        lineObject.switches.push_back(switchObject);
         counter++;
     }
 
@@ -661,6 +681,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         casePatch.clear();
         currentSwitches.push_back(counter);
         switchCluster[0].push_back(counter);
+        Switch switchObject;
+        switchObject.switchNum=counter;
 
         body+="switch(__choose(\"__SWITCH"+std::to_string(counter)+"\"))\n{\n";
         body+="case "+std::to_string(case_count++)+": {\n";
@@ -683,6 +705,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
+            switchObject.types[patch_it->second].cases.push_back(case_count);
+
             index++;
             // caseKind[patch_it->second].push_back(case_count);
 
@@ -699,6 +723,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         switchGroup.push_back(counter);
         switchLoc[loc].push_back(counter);
         switchLine[counter]=currentLine;
+        lineObject.switches.push_back(switchObject);
         counter++;
     }
     else{
@@ -714,6 +739,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         casePatch.clear();
         currentSwitches.push_back(counter);
         switchCluster[3].push_back(counter);
+        Switch switchObject;
+        switchObject.switchNum=counter;
 
         body+="switch(__choose(\"__SWITCH"+std::to_string(counter)+"\"))\n{\n";
         body+="case "+std::to_string(case_count++)+": {\n";
@@ -735,6 +762,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
+            switchObject.types[patch_it->second].cases.push_back(case_count);
+
             index++;
             // caseKind[patch_it->second].push_back(case_count);
 
@@ -751,8 +780,16 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         switchGroup.push_back(counter);
         switchLoc[loc].push_back(counter);
         switchLine[counter]=currentLine;
+        lineObject.switches.push_back(switchObject);
         counter++;
     }
+
+    if (hasLine){
+        for (size_t i=0;i<lines.size();i++){
+            if (lines[i].line==currentLine) lines[i]=lineObject;
+        }
+    }
+    else lines.push_back(lineObject);
     
     std::pair<size_t,size_t> eachLine(line[loc].first,line[loc].second);
     for (size_t i=0;i<currentSwitches.size();i++){
@@ -869,6 +906,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     switchLoc.clear();
     switchAtoms.clear();
     patchTypes.clear();
+    rules.clear();
     for (size_t i=0;i<4;i++){
         switchCluster.push_back(std::list<size_t>());
     }
@@ -890,6 +928,9 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         long long cur_start = -1;
         long long cur_end = -1;
         long long last_end = 0;
+        File currentFile;
+        currentFile.fileName=src_file;
+        lines.clear();
         for (size_t i=0;i<it->second.size();i++) {
         // for (std::map<std::pair<size_t, size_t>, ASTLocTy>::iterator it2=it->second.begin();
         //         it2!=it->second.end();it2++) {
@@ -921,6 +962,9 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             resPatches[src_file].push_back(body);
             resCodeSegs[src_file].push_back(code.substr(end));
         }
+        
+        currentFile.lines=lines;
+        rules.push_back(currentFile);
     }
 
     for (size_t i=0;i<rc.size();i++){

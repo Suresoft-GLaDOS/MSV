@@ -17,6 +17,7 @@
 // along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 #include "ExprSynthesizer.h"
+#include "BenchProgram.h"
 #include <string>
 
 class SourceContextManager;
@@ -51,9 +52,11 @@ class CodeRewriter {
 
     std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> patchLines;
 
+    std::vector<Line> lines;
     void addIsNeg(size_t id,size_t case_num,std::string code);
 public:
     int index;
+    std::vector<File> rules;
     CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,
             std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc=std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>>(),std::string work_dir="");
 

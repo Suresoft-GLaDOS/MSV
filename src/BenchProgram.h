@@ -18,6 +18,7 @@
 #pragma once
 #include "ErrorLocalizer.h"
 #include "ProfileErrorLocalizer.h"
+#include "RepairCandidateGenerator.h"
 #include "ConfigFile.h"
 #include "cJSON/cJSON.h"
 
@@ -102,16 +103,68 @@ public:
     }
 };
 
-struct Information{
-    size_t line;
-    size_t currentSwitch;
-    size_t currentCase;
-    std::string type;
-    bool isCondition;
+struct Kind{
+    RepairCandidate::CandidateKind kind;
+    std::vector<size_t> cases;
+};
+struct Switch{
+    size_t switchNum;
+    std::map<RepairCandidate::CandidateKind,Kind> types;
+    Switch(){
+        types.clear();
+        Kind kind;
+        kind.kind=RepairCandidate::CandidateKind::TightenConditionKind;
+        kind.cases=std::vector<size_t>();
+        types[kind.kind]=kind;
 
-    Information(){
-        isCondition=false;
+        Kind kind2;
+        kind2.kind=RepairCandidate::CandidateKind::LoosenConditionKind;
+        kind2.cases=std::vector<size_t>();
+        types[kind2.kind]=kind2;
+
+        Kind kind3;
+        kind3.kind=RepairCandidate::CandidateKind::GuardKind;
+        kind3.cases=std::vector<size_t>();
+        types[kind3.kind]=kind3;
+
+        Kind kind4;
+        kind4.kind=RepairCandidate::CandidateKind::SpecialGuardKind;
+        kind4.cases=std::vector<size_t>();
+        types[kind4.kind]=kind4;
+
+        Kind kind5;
+        kind5.kind=RepairCandidate::CandidateKind::IfExitKind;
+        kind5.cases=std::vector<size_t>();
+        types[kind5.kind]=kind5;
+
+        Kind kind6;
+        kind6.kind=RepairCandidate::CandidateKind::AddInitKind;
+        kind6.cases=std::vector<size_t>();
+        types[kind6.kind]=kind6;
+
+        Kind kind7;
+        kind7.kind=RepairCandidate::CandidateKind::ReplaceKind;
+        kind7.cases=std::vector<size_t>();
+        types[kind7.kind]=kind7;
+
+        Kind kind8;
+        kind8.kind=RepairCandidate::CandidateKind::ReplaceStringKind;
+        kind8.cases=std::vector<size_t>();
+        types[kind8.kind]=kind8;
+
+        Kind kind9;
+        kind9.kind=RepairCandidate::CandidateKind::AddAndReplaceKind;
+        kind9.cases=std::vector<size_t>();
+        types[kind9.kind]=kind9;
     }
+};
+struct Line{
+    size_t line;
+    std::vector<Switch> switches;
+};
+struct File{
+    std::string fileName;
+    std::vector<Line> lines;
 };
 
 class BenchProgram {
@@ -131,7 +184,7 @@ private:
         std::map<std::pair<size_t,size_t>,size_t> conditionCounts;
         std::vector<std::vector<std::string>> atoms;
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
-        std::vector<std::vector<Information>> infos;
+        std::vector<File> infos;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
         void save(){
@@ -197,25 +250,43 @@ private:
 
             // Save each patch rules
             cJSON *ruleArray=cJSON_CreateArray();
-            for (size_t i=0;i<infos.size();i++){
-                cJSON *ruleSwitch=cJSON_CreateArray();
-                for (size_t j=0;j<infos[i].size();j++){
-                    Information info=infos[i][j];
-                    cJSON *rule=cJSON_CreateObject();
+            for (std::vector<File>::iterator it=infos.begin();it!=infos.end();it++){
+                cJSON *fileObject=cJSON_CreateObject();
+                cJSON_AddStringToObject(fileObject,"file_name",it->fileName.c_str());
 
-                    cJSON_AddNumberToObject(rule,std::string("line").c_str(),info.line);
-                    cJSON_AddNumberToObject(rule,std::string("switch").c_str(),info.currentSwitch);
-                    cJSON_AddNumberToObject(rule,std::string("case").c_str(),info.currentCase);
-                    cJSON_AddStringToObject(rule,std::string("type").c_str(),info.type.c_str());
-                    
-                    if (info.isCondition==true) {
-                        cJSON_AddItemToObject(rule,std::string("is_condition").c_str(),cJSON_CreateTrue());
+                cJSON *lineArray=cJSON_CreateArray();
+                for (std::vector<Line>::iterator it2=it->lines.begin();it2!=it->lines.end();it2++){
+                    cJSON *infoObject=cJSON_CreateObject();
+                    cJSON_AddNumberToObject(infoObject,std::string("line").c_str(),it2->line);
+
+                    cJSON *switchArray=cJSON_CreateArray();
+                    for (size_t i=0;i<it2->switches.size();i++){
+                        Switch currentSwitch=it2->switches[i];
+
+                        cJSON *typeArray=cJSON_CreateArray();
+                        cJSON *switchObject=cJSON_CreateObject();
+                        cJSON_AddNumberToObject(switchObject,"switch",currentSwitch.switchNum);
+                        for (std::map<RepairCandidate::CandidateKind,Kind>::iterator j=currentSwitch.types.begin();j!=currentSwitch.types.end();j++){
+                            Kind currentType=j->second;
+
+                            cJSON *caseArray=cJSON_CreateArray();
+                            for (size_t k=0;k<currentType.cases.size();k++){
+                                size_t currentCase=currentType.cases[k];
+                                cJSON_AddItemToArray(caseArray,cJSON_CreateNumber(currentCase));
+                            }
+
+                            cJSON_AddItemToArray(typeArray,caseArray);
+                        }
+                        cJSON_AddItemToObject(switchObject,"types",typeArray);
+                        cJSON_AddItemToArray(switchArray,switchObject);
                     }
-                    else cJSON_AddItemToObject(rule,std::string("is_condition").c_str(),cJSON_CreateFalse());
+                    cJSON_AddItemToObject(infoObject,"switches",switchArray);
 
-                    cJSON_AddItemToArray(ruleSwitch,rule);
+                    cJSON_AddItemToArray(lineArray,infoObject);
                 }
-                cJSON_AddItemToArray(ruleArray,ruleSwitch);
+                cJSON_AddItemToObject(fileObject,"lines",lineArray);
+
+                cJSON_AddItemToArray(ruleArray,fileObject);
             }
             cJSON_AddItemToObject(json,"rules",ruleArray);
 
