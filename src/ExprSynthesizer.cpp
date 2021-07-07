@@ -1053,7 +1053,7 @@ protected:
         }
         return false;
     }
-    void savePatchInfo(std::vector<std::set<size_t>> &scores,std::vector<File> &infos){
+    void savePatchInfo(std::vector<File> &infos){
         // Add case number of each switch
         std::map<size_t,size_t> switchCase;
         int i=0;
@@ -1064,7 +1064,17 @@ protected:
 
         P.getSwitchInfo().switchCluster=switchCluster;
         // P.getSwitchInfo().caseCluster=caseCluster;
-        P.getSwitchInfo().scoreInfo=scores;
+        std::set<std::pair<std::string,size_t>> found;
+        found.clear();
+        std::vector<std::pair<std::string,size_t>> removedDuplicate;
+        removedDuplicate.clear();
+        for (size_t i=0;i<scores.size();i++){
+            if (found.find(scores[i])==found.end()){
+                removedDuplicate.push_back(scores[i]);
+                found.insert(scores[i]);
+            }
+        }
+        P.getSwitchInfo().scoreInfo=removedDuplicate;
 
         std::vector<std::vector<std::string>> atomString;
         atomString.clear();
@@ -1166,75 +1176,10 @@ public:
             }
         }
 
-        locations=R.getPatchLines();
-        // Sort lines
-        std::map<std::string,std::vector<std::pair<size_t,size_t>>> sortedLines;
-        sortedLines.clear();
-        for (std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>>::iterator it=locations.begin();it!=locations.end();it++){
-            std::vector<std::pair<size_t,size_t>> sorted;
-            sorted.clear();
-
-            for (std::map<std::pair<size_t,size_t>,std::vector<size_t>>::iterator switchIt=it->second.begin();switchIt!=it->second.end();switchIt++)
-                sorted.push_back(switchIt->first);
-            
-            for (size_t i=1;i<sorted.size();i++) {
-                std::pair<size_t,size_t> temp=sorted[i];
-                size_t j;
-                for (j=i;j>=1;j--){
-                    if (sorted[j-1].second==temp.second)
-                        if (sorted[j-1].first<temp.first)
-                            break;
-                    else if (sorted[j-1].second<temp.second)
-                        break;
-                    sorted[j]=sorted[j-1];
-                }
-                sorted[j]=temp;
-            }
-
-            sortedLines[it->first]=sorted;
-        }
-
-        // Get priority of switches with localization!
-        std::vector<std::set<size_t>> finalScore;
-        finalScore.clear();
-        std::set<size_t> duplicated;
-        duplicated.clear();
-        
-        for (size_t i=0;i<scores.size();i++){
-            for (std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>>::iterator it=locations.begin();it!=locations.end();it++){
-                std::string currentFile=it->first;
-                std::vector<std::pair<size_t,size_t>> switchLoc=sortedLines[currentFile];
-
-                for (std::vector<std::pair<size_t,size_t>>::iterator switchIt=switchLoc.begin();switchIt!=switchLoc.end();switchIt++){
-                    std::set<size_t> switches;
-                    std::set<size_t> condSwitches;
-                    switches.clear();
-                    condSwitches.clear();
-                    if (scores[i].first==it->first &&
-                            ((scores[i].second)>=(switchIt->first)) && ((scores[i].second)<=(switchIt->second))){
-                        for (size_t j=0;j<it->second[*switchIt].size();j++)
-                            if (duplicated.count(it->second[*switchIt][j])==0){
-                                duplicated.insert(it->second[*switchIt][j]);
-                                if (std::find(switchCluster[1].begin(),switchCluster[1].end(),it->second[*switchIt][j])!=switchCluster[1].end())
-                                    condSwitches.insert(it->second[*switchIt][j]);
-                                else
-                                    switches.insert(it->second[*switchIt][j]);
-                            }
-                        if (condSwitches.size()>0)
-                            finalScore.push_back(condSwitches);
-                        if(switches.size()>0){
-                            finalScore.push_back(switches);
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
         // Create rules
         std::vector<File> rules=R.rules;        
 
-        savePatchInfo(finalScore,rules);
+        savePatchInfo(rules);
         {
             outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu:\n", get_timer(),
                     codes.size());
