@@ -1,8 +1,0 @@
-#! /bin/sh
-#
-# Created by configure
-
-"./configure" \
-"--prefix=/root/project/MSV/benchmarks/apache-deps/apr-util-build" \
-"--with-apr=/root/project/MSV/benchmarks/apache-deps/apr-build" \
-"$@"
