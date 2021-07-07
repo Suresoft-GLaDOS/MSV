@@ -531,64 +531,6 @@ void BenchProgram::popEnvMap(const EnvMapTy &envMap) {
     ori_env_map.clear();
 }
 
-bool BenchProgram::runDG(std::vector<std::string> files,std::map<std::string,std::set<unsigned>> lines){
-    bool result=true;
-
-    // TODO: This is for only php, need generalize
-    std::vector<std::string> php_dep;
-    php_dep.clear();
-    php_dep.push_back(src_dir+"/Zend");
-    php_dep.push_back(src_dir+"/TSRM");
-    php_dep.push_back(src_dir+"/main");
-
-    for (std::string file:files){
-        std::string irFile=clang::createIRFile(file,php_dep);
-        if (irFile=="")
-            return false;
-
-        llvm::LLVMContext context;
-        llvm::SMDiagnostic SMD;
-
-        std::unique_ptr<llvm::Module> module(llvm::parseIRFile(irFile, SMD, context));
-        if (!module){
-            SMD.print("Module Creation", llvm::errs());
-        }
-        if (!module){
-            outlog_printf(2,"Create Module error\n");
-            result=false;
-            continue;
-        }
-        else{
-            for (llvm::Module::iterator it=module->begin();it!=module->end();it++){
-                llvm::LLVMContext context2;
-                llvm::SMDiagnostic SMD2;
-                std::unique_ptr<llvm::Module> module2(llvm::parseIRFile(irFile,SMD2, context2));
-                if (!module2){
-                    SMD2.print("Module Creation", llvm::errs());
-                }
-                if (!module2){
-                    outlog_printf(2,"Create Module error\n");
-                    result=false;
-                    continue;
-                }
-                clang::printModuleStats(module2.get());
-
-                std::cout << "Slice entry: " << it->getName().str() << std::endl;
-                clang::Slicer slicer=clang::Slicer::createSlicer(module2.get(),it->getName());
-                slicer.createEmptyMain();
-                result=slicer.buildDG();
-
-                std::set<dg::LLVMNode *> criterias=slicer.getCriteria(lines[file]);
-                slicer.mark(criterias);
-                result=slicer.slice();
-
-                clang::printModuleStats(module2.get());
-            }
-        }
-    }
-    return result;
-}
-
 bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wrapScript,
         const EnvMapTy &envMap,std::vector<long long> compile_macro) {
     pushEnvMap(envMap);

@@ -149,77 +149,12 @@ am_libtest_runtime_la_OBJECTS = _test_runtime.lo
 libtest_runtime_la_OBJECTS = $(am_libtest_runtime_la_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = dg/BBlockBase.$(OBJEXT) dg/Debug.$(OBJEXT) \
-	dg/Offset.$(OBJEXT) dg/ControlDependence/NTSCD.$(OBJEXT) \
-	dg/MemorySSA/Definitions.$(OBJEXT) \
-	dg/MemorySSA/MemorySSA.$(OBJEXT) dg/MemorySSA/ModRef.$(OBJEXT) \
-	dg/PointerAnalysis/Pointer.$(OBJEXT) \
-	dg/PointerAnalysis/PointerAnalysis.$(OBJEXT) \
-	dg/PointerAnalysis/PointerGraph.$(OBJEXT) \
-	dg/PointerAnalysis/PointerGraphOptimizations.$(OBJEXT) \
-	dg/PointerAnalysis/PointerGraphValidator.$(OBJEXT) \
-	dg/PointerAnalysis/PointsToSet.$(OBJEXT) \
-	dg/ReadWriteGraph/ReadWriteGraph.$(OBJEXT) \
-	dg/SystemDependenceGraph/DependenceGraph.$(OBJEXT) \
-	dg/llvm/LLVMDependenceGraph.$(OBJEXT) \
-	dg/llvm/LLVMDGVerifier.$(OBJEXT) dg/llvm/LLVMNode.$(OBJEXT) \
-	dg/llvm/LLVMSlicerCriteria.$(OBJEXT) \
-	dg/llvm/ControlDependence/ControlDependence.$(OBJEXT) \
-	dg/llvm/ControlDependence/InterproceduralCD.$(OBJEXT) \
-	dg/llvm/ControlDependence/SCD.$(OBJEXT) \
-	dg/llvm/ControlDependence/legacy/Block.$(OBJEXT) \
-	dg/llvm/ControlDependence/legacy/Function.$(OBJEXT) \
-	dg/llvm/ControlDependence/legacy/GraphBuilder.$(OBJEXT) \
-	dg/llvm/ControlDependence/legacy/NTSCD.$(OBJEXT) \
-	dg/llvm/DataDependenceAnalysis/LLVMDataDependenceAnalysis.$(OBJEXT) \
-	dg/llvm/DefUse/DefUse.$(OBJEXT) \
-	dg/llvm/Dominators/PostDominators.$(OBJEXT) \
-	dg/llvm/ForkJoin/ForkJoin.$(OBJEXT) \
-	dg/llvm/PointerAnalysis/Block.$(OBJEXT) \
-	dg/llvm/PointerAnalysis/Calls.$(OBJEXT) \
-	dg/llvm/PointerAnalysis/Constants.$(OBJEXT) \
-	dg/llvm/PointerAnalysis/Globals.$(OBJEXT) \
-	dg/llvm/PointerAnalysis/Instructions.$(OBJEXT) \
-	dg/llvm/PointerAnalysis/Interprocedural.$(OBJEXT) \
-	dg/llvm/PointerAnalysis/PointerAnalysis.$(OBJEXT) \
-	dg/llvm/PointerAnalysis/PointerGraph.$(OBJEXT) \
-	dg/llvm/PointerAnalysis/PointerGraphValidator.$(OBJEXT) \
-	dg/llvm/PointerAnalysis/Structure.$(OBJEXT) \
-	dg/llvm/PointerAnalysis/Threads.$(OBJEXT) \
-	dg/llvm/ReadWriteGraph/Calls.$(OBJEXT) \
-	dg/llvm/ReadWriteGraph/Instructions.$(OBJEXT) \
-	dg/llvm/ReadWriteGraph/LLVMReadWriteGraphBuilder.$(OBJEXT) \
-	dg/llvm/SystemDependenceGraph/Dependencies.$(OBJEXT) \
-	dg/llvm/SystemDependenceGraph/SDG2Dot.$(OBJEXT) \
-	dg/llvm/SystemDependenceGraph/SystemDependenceGraph.$(OBJEXT) \
-	dg/llvm/ThreadRegions/MayHappenInParallel.$(OBJEXT) \
-	dg/llvm/ThreadRegions/ThreadRegion.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Graphs/BlockGraph.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Graphs/ControlFlowGraph.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Graphs/CriticalSectionsBuilder.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Graphs/FunctionGraph.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Graphs/GraphBuilder.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Graphs/ThreadRegionsBuilder.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/CallFuncPtrNode.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/CallNode.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/CallReturnNode.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/EntryNode.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/ExitNode.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/ForkNode.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/GeneralNode.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/JoinNode.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/LockNode.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/Node.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/NodeIterator.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/ReturnNode.$(OBJEXT) \
-	dg/llvm/ThreadRegions/Nodes/UnlockNode.$(OBJEXT)
 am_learner_OBJECTS = learner.$(OBJEXT) FeatureExtract.$(OBJEXT) \
 	SourceContextManager.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
 	GlobalAnalyzer.$(OBJEXT) ASTUtils.$(OBJEXT) \
 	BenchProgram.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
-	Utils.$(OBJEXT) CodeRewrite.$(OBJEXT) DGController.$(OBJEXT) \
-	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT) \
-	$(am__objects_1)
+	Utils.$(OBJEXT) CodeRewrite.$(OBJEXT) \
+	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT)
 learner_OBJECTS = $(am_learner_OBJECTS)
 am__DEPENDENCIES_1 =
 learner_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -231,18 +166,16 @@ am_pdiffer_OBJECTS = pdiffer.$(OBJEXT) Utils.$(OBJEXT) \
 	LocalAnalyzer.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
 	ASTUtils.$(OBJEXT) BenchProgram.$(OBJEXT) \
 	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
-	FeatureExtract.$(OBJEXT) DGController.$(OBJEXT) \
-	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT) \
-	$(am__objects_1)
+	FeatureExtract.$(OBJEXT) cJSON/cJSON_Utils.$(OBJEXT) \
+	cJSON/cJSON.$(OBJEXT)
 pdiffer_OBJECTS = $(am_pdiffer_OBJECTS)
 pdiffer_DEPENDENCIES = $(am__DEPENDENCIES_1)
 pdiffer_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(pdiffer_LDFLAGS) $(LDFLAGS) -o $@
 am_playground_OBJECTS = PlayGround.$(OBJEXT) Utils.$(OBJEXT) \
-	BenchProgram.$(OBJEXT) DGController.$(OBJEXT) \
-	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT) \
-	$(am__objects_1)
+	BenchProgram.$(OBJEXT) cJSON/cJSON_Utils.$(OBJEXT) \
+	cJSON/cJSON.$(OBJEXT)
 playground_OBJECTS = $(am_playground_OBJECTS)
 playground_DEPENDENCIES = $(am__DEPENDENCIES_1)
 playground_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -255,9 +188,8 @@ am_prophet_OBJECTS = Main.$(OBJEXT) Utils.$(OBJEXT) \
 	SourceContextManager.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
 	DuplicateDetector.$(OBJEXT) ExprSynthesizer.$(OBJEXT) \
 	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
-	FeatureExtract.$(OBJEXT) DGController.$(OBJEXT) \
-	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT) \
-	$(am__objects_1)
+	FeatureExtract.$(OBJEXT) cJSON/cJSON_Utils.$(OBJEXT) \
+	cJSON/cJSON.$(OBJEXT)
 prophet_OBJECTS = $(am_prophet_OBJECTS)
 prophet_DEPENDENCIES = $(am__DEPENDENCIES_1)
 prophet_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -528,88 +460,26 @@ ClangLDADD = -lclangTooling -lclangFrontendTool -lclangFrontend \
 	-lLLVMMC -lLLVMDebugInfoCodeView -lLLVMDebugInfoMSF \
 	-lLLVMBinaryFormat -lLLVMAArch64Utils -lLLVMAArch64Info \
 	-lLLVMSupport -lLLVMDemangle -lz -lcurses
-DG_SRC = dg/BBlockBase.cpp dg/Debug.cpp dg/Offset.cpp \
-	dg/ControlDependence/NTSCD.cpp dg/MemorySSA/Definitions.cpp \
-	dg/MemorySSA/MemorySSA.cpp dg/MemorySSA/ModRef.cpp \
-	dg/PointerAnalysis/Pointer.cpp \
-	dg/PointerAnalysis/PointerAnalysis.cpp \
-	dg/PointerAnalysis/PointerGraph.cpp \
-	dg/PointerAnalysis/PointerGraphOptimizations.cpp \
-	dg/PointerAnalysis/PointerGraphValidator.cpp \
-	dg/PointerAnalysis/PointsToSet.cpp \
-	dg/ReadWriteGraph/ReadWriteGraph.cpp \
-	dg/SystemDependenceGraph/DependenceGraph.cpp \
-	dg/llvm/LLVMDependenceGraph.cpp dg/llvm/LLVMDGVerifier.cpp \
-	dg/llvm/LLVMNode.cpp dg/llvm/LLVMSlicerCriteria.cpp \
-	dg/llvm/ControlDependence/ControlDependence.cpp \
-	dg/llvm/ControlDependence/InterproceduralCD.cpp \
-	dg/llvm/ControlDependence/SCD.cpp \
-	dg/llvm/ControlDependence/legacy/Block.cpp \
-	dg/llvm/ControlDependence/legacy/Function.cpp \
-	dg/llvm/ControlDependence/legacy/GraphBuilder.cpp \
-	dg/llvm/ControlDependence/legacy/NTSCD.cpp \
-	dg/llvm/DataDependenceAnalysis/LLVMDataDependenceAnalysis.cpp \
-	dg/llvm/DefUse/DefUse.cpp \
-	dg/llvm/Dominators/PostDominators.cpp \
-	dg/llvm/ForkJoin/ForkJoin.cpp \
-	dg/llvm/PointerAnalysis/Block.cpp \
-	dg/llvm/PointerAnalysis/Calls.cpp \
-	dg/llvm/PointerAnalysis/Constants.cpp \
-	dg/llvm/PointerAnalysis/Globals.cpp \
-	dg/llvm/PointerAnalysis/Instructions.cpp \
-	dg/llvm/PointerAnalysis/Interprocedural.cpp \
-	dg/llvm/PointerAnalysis/PointerAnalysis.cpp \
-	dg/llvm/PointerAnalysis/PointerGraph.cpp \
-	dg/llvm/PointerAnalysis/PointerGraphValidator.cpp \
-	dg/llvm/PointerAnalysis/Structure.cpp \
-	dg/llvm/PointerAnalysis/Threads.cpp \
-	dg/llvm/ReadWriteGraph/Calls.cpp \
-	dg/llvm/ReadWriteGraph/Instructions.cpp \
-	dg/llvm/ReadWriteGraph/LLVMReadWriteGraphBuilder.cpp \
-	dg/llvm/SystemDependenceGraph/Dependencies.cpp \
-	dg/llvm/SystemDependenceGraph/SDG2Dot.cpp \
-	dg/llvm/SystemDependenceGraph/SystemDependenceGraph.cpp \
-	dg/llvm/ThreadRegions/MayHappenInParallel.cpp \
-	dg/llvm/ThreadRegions/ThreadRegion.cpp \
-	dg/llvm/ThreadRegions/Graphs/BlockGraph.cpp \
-	dg/llvm/ThreadRegions/Graphs/ControlFlowGraph.cpp \
-	dg/llvm/ThreadRegions/Graphs/CriticalSectionsBuilder.cpp \
-	dg/llvm/ThreadRegions/Graphs/FunctionGraph.cpp \
-	dg/llvm/ThreadRegions/Graphs/GraphBuilder.cpp \
-	dg/llvm/ThreadRegions/Graphs/ThreadRegionsBuilder.cpp \
-	dg/llvm/ThreadRegions/Nodes/CallFuncPtrNode.cpp \
-	dg/llvm/ThreadRegions/Nodes/CallNode.cpp \
-	dg/llvm/ThreadRegions/Nodes/CallReturnNode.cpp \
-	dg/llvm/ThreadRegions/Nodes/EntryNode.cpp \
-	dg/llvm/ThreadRegions/Nodes/ExitNode.cpp \
-	dg/llvm/ThreadRegions/Nodes/ForkNode.cpp \
-	dg/llvm/ThreadRegions/Nodes/GeneralNode.cpp \
-	dg/llvm/ThreadRegions/Nodes/JoinNode.cpp \
-	dg/llvm/ThreadRegions/Nodes/LockNode.cpp \
-	dg/llvm/ThreadRegions/Nodes/Node.cpp \
-	dg/llvm/ThreadRegions/Nodes/NodeIterator.cpp \
-	dg/llvm/ThreadRegions/Nodes/ReturnNode.cpp \
-	dg/llvm/ThreadRegions/Nodes/UnlockNode.cpp
 pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp DGController.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c $(DG_SRC)
+				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 
 pdiffer_LDFLAGS = `llvm-config --ldflags`
 pdiffer_LDADD = $(ClangLDADD) -lexplain
 learner_SOURCES = learner.cpp FeatureExtract.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  Utils.cpp CodeRewrite.cpp DGController.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c $(DG_SRC)
+				  Utils.cpp CodeRewrite.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 
 learner_LDFLAGS = `llvm-config --ldflags`
 learner_LDADD = $(ClangLDADD) -lexplain
 prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp BenchProgram.cpp ASTUtils.cpp \
 				  ErrorLocalizer.cpp LocalAnalyzer.cpp ProfileErrorLocalizer.cpp SourceContextManager.cpp \
 				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp DGController.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c $(DG_SRC)
+				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 
 prophet_LDFLAGS = `llvm-config --ldflags`
 prophet_LDADD = $(ClangLDADD) -lexplain
-playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp DGController.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c $(DG_SRC)
+playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 playground_LDFLAGS = `llvm-config --ldflags`
 playground_LDADD = $(ClangLDADD) -lexplain
 libprofiler_la_SOURCES = ProfilerAction.cpp
@@ -754,310 +624,6 @@ cJSON/cJSON_Utils.$(OBJEXT): cJSON/$(am__dirstamp) \
 	cJSON/$(DEPDIR)/$(am__dirstamp)
 cJSON/cJSON.$(OBJEXT): cJSON/$(am__dirstamp) \
 	cJSON/$(DEPDIR)/$(am__dirstamp)
-dg/$(am__dirstamp):
-	@$(MKDIR_P) dg
-	@: > dg/$(am__dirstamp)
-dg/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/$(DEPDIR)
-	@: > dg/$(DEPDIR)/$(am__dirstamp)
-dg/BBlockBase.$(OBJEXT): dg/$(am__dirstamp) \
-	dg/$(DEPDIR)/$(am__dirstamp)
-dg/Debug.$(OBJEXT): dg/$(am__dirstamp) dg/$(DEPDIR)/$(am__dirstamp)
-dg/Offset.$(OBJEXT): dg/$(am__dirstamp) dg/$(DEPDIR)/$(am__dirstamp)
-dg/ControlDependence/$(am__dirstamp):
-	@$(MKDIR_P) dg/ControlDependence
-	@: > dg/ControlDependence/$(am__dirstamp)
-dg/ControlDependence/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/ControlDependence/$(DEPDIR)
-	@: > dg/ControlDependence/$(DEPDIR)/$(am__dirstamp)
-dg/ControlDependence/NTSCD.$(OBJEXT):  \
-	dg/ControlDependence/$(am__dirstamp) \
-	dg/ControlDependence/$(DEPDIR)/$(am__dirstamp)
-dg/MemorySSA/$(am__dirstamp):
-	@$(MKDIR_P) dg/MemorySSA
-	@: > dg/MemorySSA/$(am__dirstamp)
-dg/MemorySSA/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/MemorySSA/$(DEPDIR)
-	@: > dg/MemorySSA/$(DEPDIR)/$(am__dirstamp)
-dg/MemorySSA/Definitions.$(OBJEXT): dg/MemorySSA/$(am__dirstamp) \
-	dg/MemorySSA/$(DEPDIR)/$(am__dirstamp)
-dg/MemorySSA/MemorySSA.$(OBJEXT): dg/MemorySSA/$(am__dirstamp) \
-	dg/MemorySSA/$(DEPDIR)/$(am__dirstamp)
-dg/MemorySSA/ModRef.$(OBJEXT): dg/MemorySSA/$(am__dirstamp) \
-	dg/MemorySSA/$(DEPDIR)/$(am__dirstamp)
-dg/PointerAnalysis/$(am__dirstamp):
-	@$(MKDIR_P) dg/PointerAnalysis
-	@: > dg/PointerAnalysis/$(am__dirstamp)
-dg/PointerAnalysis/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/PointerAnalysis/$(DEPDIR)
-	@: > dg/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/PointerAnalysis/Pointer.$(OBJEXT):  \
-	dg/PointerAnalysis/$(am__dirstamp) \
-	dg/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/PointerAnalysis/PointerAnalysis.$(OBJEXT):  \
-	dg/PointerAnalysis/$(am__dirstamp) \
-	dg/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/PointerAnalysis/PointerGraph.$(OBJEXT):  \
-	dg/PointerAnalysis/$(am__dirstamp) \
-	dg/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/PointerAnalysis/PointerGraphOptimizations.$(OBJEXT):  \
-	dg/PointerAnalysis/$(am__dirstamp) \
-	dg/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/PointerAnalysis/PointerGraphValidator.$(OBJEXT):  \
-	dg/PointerAnalysis/$(am__dirstamp) \
-	dg/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/PointerAnalysis/PointsToSet.$(OBJEXT):  \
-	dg/PointerAnalysis/$(am__dirstamp) \
-	dg/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/ReadWriteGraph/$(am__dirstamp):
-	@$(MKDIR_P) dg/ReadWriteGraph
-	@: > dg/ReadWriteGraph/$(am__dirstamp)
-dg/ReadWriteGraph/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/ReadWriteGraph/$(DEPDIR)
-	@: > dg/ReadWriteGraph/$(DEPDIR)/$(am__dirstamp)
-dg/ReadWriteGraph/ReadWriteGraph.$(OBJEXT):  \
-	dg/ReadWriteGraph/$(am__dirstamp) \
-	dg/ReadWriteGraph/$(DEPDIR)/$(am__dirstamp)
-dg/SystemDependenceGraph/$(am__dirstamp):
-	@$(MKDIR_P) dg/SystemDependenceGraph
-	@: > dg/SystemDependenceGraph/$(am__dirstamp)
-dg/SystemDependenceGraph/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/SystemDependenceGraph/$(DEPDIR)
-	@: > dg/SystemDependenceGraph/$(DEPDIR)/$(am__dirstamp)
-dg/SystemDependenceGraph/DependenceGraph.$(OBJEXT):  \
-	dg/SystemDependenceGraph/$(am__dirstamp) \
-	dg/SystemDependenceGraph/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm
-	@: > dg/llvm/$(am__dirstamp)
-dg/llvm/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/$(DEPDIR)
-	@: > dg/llvm/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/LLVMDependenceGraph.$(OBJEXT): dg/llvm/$(am__dirstamp) \
-	dg/llvm/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/LLVMDGVerifier.$(OBJEXT): dg/llvm/$(am__dirstamp) \
-	dg/llvm/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/LLVMNode.$(OBJEXT): dg/llvm/$(am__dirstamp) \
-	dg/llvm/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/LLVMSlicerCriteria.$(OBJEXT): dg/llvm/$(am__dirstamp) \
-	dg/llvm/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ControlDependence/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ControlDependence
-	@: > dg/llvm/ControlDependence/$(am__dirstamp)
-dg/llvm/ControlDependence/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ControlDependence/$(DEPDIR)
-	@: > dg/llvm/ControlDependence/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ControlDependence/ControlDependence.$(OBJEXT):  \
-	dg/llvm/ControlDependence/$(am__dirstamp) \
-	dg/llvm/ControlDependence/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ControlDependence/InterproceduralCD.$(OBJEXT):  \
-	dg/llvm/ControlDependence/$(am__dirstamp) \
-	dg/llvm/ControlDependence/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ControlDependence/SCD.$(OBJEXT):  \
-	dg/llvm/ControlDependence/$(am__dirstamp) \
-	dg/llvm/ControlDependence/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ControlDependence/legacy/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ControlDependence/legacy
-	@: > dg/llvm/ControlDependence/legacy/$(am__dirstamp)
-dg/llvm/ControlDependence/legacy/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ControlDependence/legacy/$(DEPDIR)
-	@: > dg/llvm/ControlDependence/legacy/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ControlDependence/legacy/Block.$(OBJEXT):  \
-	dg/llvm/ControlDependence/legacy/$(am__dirstamp) \
-	dg/llvm/ControlDependence/legacy/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ControlDependence/legacy/Function.$(OBJEXT):  \
-	dg/llvm/ControlDependence/legacy/$(am__dirstamp) \
-	dg/llvm/ControlDependence/legacy/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ControlDependence/legacy/GraphBuilder.$(OBJEXT):  \
-	dg/llvm/ControlDependence/legacy/$(am__dirstamp) \
-	dg/llvm/ControlDependence/legacy/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ControlDependence/legacy/NTSCD.$(OBJEXT):  \
-	dg/llvm/ControlDependence/legacy/$(am__dirstamp) \
-	dg/llvm/ControlDependence/legacy/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/DataDependenceAnalysis/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/DataDependenceAnalysis
-	@: > dg/llvm/DataDependenceAnalysis/$(am__dirstamp)
-dg/llvm/DataDependenceAnalysis/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/DataDependenceAnalysis/$(DEPDIR)
-	@: > dg/llvm/DataDependenceAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/DataDependenceAnalysis/LLVMDataDependenceAnalysis.$(OBJEXT):  \
-	dg/llvm/DataDependenceAnalysis/$(am__dirstamp) \
-	dg/llvm/DataDependenceAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/DefUse/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/DefUse
-	@: > dg/llvm/DefUse/$(am__dirstamp)
-dg/llvm/DefUse/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/DefUse/$(DEPDIR)
-	@: > dg/llvm/DefUse/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/DefUse/DefUse.$(OBJEXT): dg/llvm/DefUse/$(am__dirstamp) \
-	dg/llvm/DefUse/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/Dominators/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/Dominators
-	@: > dg/llvm/Dominators/$(am__dirstamp)
-dg/llvm/Dominators/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/Dominators/$(DEPDIR)
-	@: > dg/llvm/Dominators/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/Dominators/PostDominators.$(OBJEXT):  \
-	dg/llvm/Dominators/$(am__dirstamp) \
-	dg/llvm/Dominators/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ForkJoin/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ForkJoin
-	@: > dg/llvm/ForkJoin/$(am__dirstamp)
-dg/llvm/ForkJoin/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ForkJoin/$(DEPDIR)
-	@: > dg/llvm/ForkJoin/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ForkJoin/ForkJoin.$(OBJEXT): dg/llvm/ForkJoin/$(am__dirstamp) \
-	dg/llvm/ForkJoin/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/PointerAnalysis
-	@: > dg/llvm/PointerAnalysis/$(am__dirstamp)
-dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/PointerAnalysis/$(DEPDIR)
-	@: > dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/Block.$(OBJEXT):  \
-	dg/llvm/PointerAnalysis/$(am__dirstamp) \
-	dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/Calls.$(OBJEXT):  \
-	dg/llvm/PointerAnalysis/$(am__dirstamp) \
-	dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/Constants.$(OBJEXT):  \
-	dg/llvm/PointerAnalysis/$(am__dirstamp) \
-	dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/Globals.$(OBJEXT):  \
-	dg/llvm/PointerAnalysis/$(am__dirstamp) \
-	dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/Instructions.$(OBJEXT):  \
-	dg/llvm/PointerAnalysis/$(am__dirstamp) \
-	dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/Interprocedural.$(OBJEXT):  \
-	dg/llvm/PointerAnalysis/$(am__dirstamp) \
-	dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/PointerAnalysis.$(OBJEXT):  \
-	dg/llvm/PointerAnalysis/$(am__dirstamp) \
-	dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/PointerGraph.$(OBJEXT):  \
-	dg/llvm/PointerAnalysis/$(am__dirstamp) \
-	dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/PointerGraphValidator.$(OBJEXT):  \
-	dg/llvm/PointerAnalysis/$(am__dirstamp) \
-	dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/Structure.$(OBJEXT):  \
-	dg/llvm/PointerAnalysis/$(am__dirstamp) \
-	dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/PointerAnalysis/Threads.$(OBJEXT):  \
-	dg/llvm/PointerAnalysis/$(am__dirstamp) \
-	dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ReadWriteGraph/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ReadWriteGraph
-	@: > dg/llvm/ReadWriteGraph/$(am__dirstamp)
-dg/llvm/ReadWriteGraph/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ReadWriteGraph/$(DEPDIR)
-	@: > dg/llvm/ReadWriteGraph/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ReadWriteGraph/Calls.$(OBJEXT):  \
-	dg/llvm/ReadWriteGraph/$(am__dirstamp) \
-	dg/llvm/ReadWriteGraph/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ReadWriteGraph/Instructions.$(OBJEXT):  \
-	dg/llvm/ReadWriteGraph/$(am__dirstamp) \
-	dg/llvm/ReadWriteGraph/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ReadWriteGraph/LLVMReadWriteGraphBuilder.$(OBJEXT):  \
-	dg/llvm/ReadWriteGraph/$(am__dirstamp) \
-	dg/llvm/ReadWriteGraph/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/SystemDependenceGraph/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/SystemDependenceGraph
-	@: > dg/llvm/SystemDependenceGraph/$(am__dirstamp)
-dg/llvm/SystemDependenceGraph/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/SystemDependenceGraph/$(DEPDIR)
-	@: > dg/llvm/SystemDependenceGraph/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/SystemDependenceGraph/Dependencies.$(OBJEXT):  \
-	dg/llvm/SystemDependenceGraph/$(am__dirstamp) \
-	dg/llvm/SystemDependenceGraph/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/SystemDependenceGraph/SDG2Dot.$(OBJEXT):  \
-	dg/llvm/SystemDependenceGraph/$(am__dirstamp) \
-	dg/llvm/SystemDependenceGraph/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/SystemDependenceGraph/SystemDependenceGraph.$(OBJEXT):  \
-	dg/llvm/SystemDependenceGraph/$(am__dirstamp) \
-	dg/llvm/SystemDependenceGraph/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ThreadRegions
-	@: > dg/llvm/ThreadRegions/$(am__dirstamp)
-dg/llvm/ThreadRegions/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ThreadRegions/$(DEPDIR)
-	@: > dg/llvm/ThreadRegions/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/MayHappenInParallel.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/ThreadRegion.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Graphs/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ThreadRegions/Graphs
-	@: > dg/llvm/ThreadRegions/Graphs/$(am__dirstamp)
-dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ThreadRegions/Graphs/$(DEPDIR)
-	@: > dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Graphs/BlockGraph.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Graphs/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Graphs/ControlFlowGraph.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Graphs/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Graphs/CriticalSectionsBuilder.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Graphs/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Graphs/FunctionGraph.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Graphs/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Graphs/GraphBuilder.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Graphs/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Graphs/ThreadRegionsBuilder.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Graphs/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ThreadRegions/Nodes
-	@: > dg/llvm/ThreadRegions/Nodes/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) dg/llvm/ThreadRegions/Nodes/$(DEPDIR)
-	@: > dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/CallFuncPtrNode.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/CallNode.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/CallReturnNode.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/EntryNode.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/ExitNode.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/ForkNode.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/GeneralNode.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/JoinNode.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/LockNode.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/Node.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/NodeIterator.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/ReturnNode.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-dg/llvm/ThreadRegions/Nodes/UnlockNode.$(OBJEXT):  \
-	dg/llvm/ThreadRegions/Nodes/$(am__dirstamp) \
-	dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
 
 learner$(EXEEXT): $(learner_OBJECTS) $(learner_DEPENDENCIES) $(EXTRA_learner_DEPENDENCIES) 
 	@rm -f learner$(EXEEXT)
@@ -1078,25 +644,6 @@ prophet$(EXEEXT): $(prophet_OBJECTS) $(prophet_DEPENDENCIES) $(EXTRA_prophet_DEP
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f cJSON/*.$(OBJEXT)
-	-rm -f dg/*.$(OBJEXT)
-	-rm -f dg/ControlDependence/*.$(OBJEXT)
-	-rm -f dg/MemorySSA/*.$(OBJEXT)
-	-rm -f dg/PointerAnalysis/*.$(OBJEXT)
-	-rm -f dg/ReadWriteGraph/*.$(OBJEXT)
-	-rm -f dg/SystemDependenceGraph/*.$(OBJEXT)
-	-rm -f dg/llvm/*.$(OBJEXT)
-	-rm -f dg/llvm/ControlDependence/*.$(OBJEXT)
-	-rm -f dg/llvm/ControlDependence/legacy/*.$(OBJEXT)
-	-rm -f dg/llvm/DataDependenceAnalysis/*.$(OBJEXT)
-	-rm -f dg/llvm/DefUse/*.$(OBJEXT)
-	-rm -f dg/llvm/Dominators/*.$(OBJEXT)
-	-rm -f dg/llvm/ForkJoin/*.$(OBJEXT)
-	-rm -f dg/llvm/PointerAnalysis/*.$(OBJEXT)
-	-rm -f dg/llvm/ReadWriteGraph/*.$(OBJEXT)
-	-rm -f dg/llvm/SystemDependenceGraph/*.$(OBJEXT)
-	-rm -f dg/llvm/ThreadRegions/*.$(OBJEXT)
-	-rm -f dg/llvm/ThreadRegions/Graphs/*.$(OBJEXT)
-	-rm -f dg/llvm/ThreadRegions/Nodes/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -1105,7 +652,6 @@ include ./$(DEPDIR)/ASTDiffer.Po
 include ./$(DEPDIR)/ASTUtils.Po
 include ./$(DEPDIR)/BenchProgram.Po
 include ./$(DEPDIR)/CodeRewrite.Po
-include ./$(DEPDIR)/DGController.Po
 include ./$(DEPDIR)/DuplicateDetector.Po
 include ./$(DEPDIR)/ErrorLocalizer.Po
 include ./$(DEPDIR)/ExprSynthesizer.Po
@@ -1126,74 +672,6 @@ include ./$(DEPDIR)/learner.Po
 include ./$(DEPDIR)/pdiffer.Po
 include cJSON/$(DEPDIR)/cJSON.Po
 include cJSON/$(DEPDIR)/cJSON_Utils.Po
-include dg/$(DEPDIR)/BBlockBase.Po
-include dg/$(DEPDIR)/Debug.Po
-include dg/$(DEPDIR)/Offset.Po
-include dg/ControlDependence/$(DEPDIR)/NTSCD.Po
-include dg/MemorySSA/$(DEPDIR)/Definitions.Po
-include dg/MemorySSA/$(DEPDIR)/MemorySSA.Po
-include dg/MemorySSA/$(DEPDIR)/ModRef.Po
-include dg/PointerAnalysis/$(DEPDIR)/Pointer.Po
-include dg/PointerAnalysis/$(DEPDIR)/PointerAnalysis.Po
-include dg/PointerAnalysis/$(DEPDIR)/PointerGraph.Po
-include dg/PointerAnalysis/$(DEPDIR)/PointerGraphOptimizations.Po
-include dg/PointerAnalysis/$(DEPDIR)/PointerGraphValidator.Po
-include dg/PointerAnalysis/$(DEPDIR)/PointsToSet.Po
-include dg/ReadWriteGraph/$(DEPDIR)/ReadWriteGraph.Po
-include dg/SystemDependenceGraph/$(DEPDIR)/DependenceGraph.Po
-include dg/llvm/$(DEPDIR)/LLVMDGVerifier.Po
-include dg/llvm/$(DEPDIR)/LLVMDependenceGraph.Po
-include dg/llvm/$(DEPDIR)/LLVMNode.Po
-include dg/llvm/$(DEPDIR)/LLVMSlicerCriteria.Po
-include dg/llvm/ControlDependence/$(DEPDIR)/ControlDependence.Po
-include dg/llvm/ControlDependence/$(DEPDIR)/InterproceduralCD.Po
-include dg/llvm/ControlDependence/$(DEPDIR)/SCD.Po
-include dg/llvm/ControlDependence/legacy/$(DEPDIR)/Block.Po
-include dg/llvm/ControlDependence/legacy/$(DEPDIR)/Function.Po
-include dg/llvm/ControlDependence/legacy/$(DEPDIR)/GraphBuilder.Po
-include dg/llvm/ControlDependence/legacy/$(DEPDIR)/NTSCD.Po
-include dg/llvm/DataDependenceAnalysis/$(DEPDIR)/LLVMDataDependenceAnalysis.Po
-include dg/llvm/DefUse/$(DEPDIR)/DefUse.Po
-include dg/llvm/Dominators/$(DEPDIR)/PostDominators.Po
-include dg/llvm/ForkJoin/$(DEPDIR)/ForkJoin.Po
-include dg/llvm/PointerAnalysis/$(DEPDIR)/Block.Po
-include dg/llvm/PointerAnalysis/$(DEPDIR)/Calls.Po
-include dg/llvm/PointerAnalysis/$(DEPDIR)/Constants.Po
-include dg/llvm/PointerAnalysis/$(DEPDIR)/Globals.Po
-include dg/llvm/PointerAnalysis/$(DEPDIR)/Instructions.Po
-include dg/llvm/PointerAnalysis/$(DEPDIR)/Interprocedural.Po
-include dg/llvm/PointerAnalysis/$(DEPDIR)/PointerAnalysis.Po
-include dg/llvm/PointerAnalysis/$(DEPDIR)/PointerGraph.Po
-include dg/llvm/PointerAnalysis/$(DEPDIR)/PointerGraphValidator.Po
-include dg/llvm/PointerAnalysis/$(DEPDIR)/Structure.Po
-include dg/llvm/PointerAnalysis/$(DEPDIR)/Threads.Po
-include dg/llvm/ReadWriteGraph/$(DEPDIR)/Calls.Po
-include dg/llvm/ReadWriteGraph/$(DEPDIR)/Instructions.Po
-include dg/llvm/ReadWriteGraph/$(DEPDIR)/LLVMReadWriteGraphBuilder.Po
-include dg/llvm/SystemDependenceGraph/$(DEPDIR)/Dependencies.Po
-include dg/llvm/SystemDependenceGraph/$(DEPDIR)/SDG2Dot.Po
-include dg/llvm/SystemDependenceGraph/$(DEPDIR)/SystemDependenceGraph.Po
-include dg/llvm/ThreadRegions/$(DEPDIR)/MayHappenInParallel.Po
-include dg/llvm/ThreadRegions/$(DEPDIR)/ThreadRegion.Po
-include dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/BlockGraph.Po
-include dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/ControlFlowGraph.Po
-include dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/CriticalSectionsBuilder.Po
-include dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/FunctionGraph.Po
-include dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/GraphBuilder.Po
-include dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/ThreadRegionsBuilder.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/CallFuncPtrNode.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/CallNode.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/CallReturnNode.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/EntryNode.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/ExitNode.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/ForkNode.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/GeneralNode.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/JoinNode.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/LockNode.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/Node.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/NodeIterator.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/ReturnNode.Po
-include dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/UnlockNode.Po
 
 .c.o:
 	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -1368,44 +846,6 @@ distclean-generic:
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
 	-rm -f cJSON/$(DEPDIR)/$(am__dirstamp)
 	-rm -f cJSON/$(am__dirstamp)
-	-rm -f dg/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/$(am__dirstamp)
-	-rm -f dg/ControlDependence/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/ControlDependence/$(am__dirstamp)
-	-rm -f dg/MemorySSA/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/MemorySSA/$(am__dirstamp)
-	-rm -f dg/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/PointerAnalysis/$(am__dirstamp)
-	-rm -f dg/ReadWriteGraph/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/ReadWriteGraph/$(am__dirstamp)
-	-rm -f dg/SystemDependenceGraph/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/SystemDependenceGraph/$(am__dirstamp)
-	-rm -f dg/llvm/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/$(am__dirstamp)
-	-rm -f dg/llvm/ControlDependence/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/ControlDependence/$(am__dirstamp)
-	-rm -f dg/llvm/ControlDependence/legacy/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/ControlDependence/legacy/$(am__dirstamp)
-	-rm -f dg/llvm/DataDependenceAnalysis/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/DataDependenceAnalysis/$(am__dirstamp)
-	-rm -f dg/llvm/DefUse/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/DefUse/$(am__dirstamp)
-	-rm -f dg/llvm/Dominators/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/Dominators/$(am__dirstamp)
-	-rm -f dg/llvm/ForkJoin/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/ForkJoin/$(am__dirstamp)
-	-rm -f dg/llvm/PointerAnalysis/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/PointerAnalysis/$(am__dirstamp)
-	-rm -f dg/llvm/ReadWriteGraph/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/ReadWriteGraph/$(am__dirstamp)
-	-rm -f dg/llvm/SystemDependenceGraph/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/SystemDependenceGraph/$(am__dirstamp)
-	-rm -f dg/llvm/ThreadRegions/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/ThreadRegions/$(am__dirstamp)
-	-rm -f dg/llvm/ThreadRegions/Graphs/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/ThreadRegions/Graphs/$(am__dirstamp)
-	-rm -f dg/llvm/ThreadRegions/Nodes/$(DEPDIR)/$(am__dirstamp)
-	-rm -f dg/llvm/ThreadRegions/Nodes/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -1416,7 +856,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libLTLIBRARIES \
 	clean-libtool mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) cJSON/$(DEPDIR) dg/$(DEPDIR) dg/ControlDependence/$(DEPDIR) dg/MemorySSA/$(DEPDIR) dg/PointerAnalysis/$(DEPDIR) dg/ReadWriteGraph/$(DEPDIR) dg/SystemDependenceGraph/$(DEPDIR) dg/llvm/$(DEPDIR) dg/llvm/ControlDependence/$(DEPDIR) dg/llvm/ControlDependence/legacy/$(DEPDIR) dg/llvm/DataDependenceAnalysis/$(DEPDIR) dg/llvm/DefUse/$(DEPDIR) dg/llvm/Dominators/$(DEPDIR) dg/llvm/ForkJoin/$(DEPDIR) dg/llvm/PointerAnalysis/$(DEPDIR) dg/llvm/ReadWriteGraph/$(DEPDIR) dg/llvm/SystemDependenceGraph/$(DEPDIR) dg/llvm/ThreadRegions/$(DEPDIR) dg/llvm/ThreadRegions/Graphs/$(DEPDIR) dg/llvm/ThreadRegions/Nodes/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) cJSON/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -1462,7 +902,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) cJSON/$(DEPDIR) dg/$(DEPDIR) dg/ControlDependence/$(DEPDIR) dg/MemorySSA/$(DEPDIR) dg/PointerAnalysis/$(DEPDIR) dg/ReadWriteGraph/$(DEPDIR) dg/SystemDependenceGraph/$(DEPDIR) dg/llvm/$(DEPDIR) dg/llvm/ControlDependence/$(DEPDIR) dg/llvm/ControlDependence/legacy/$(DEPDIR) dg/llvm/DataDependenceAnalysis/$(DEPDIR) dg/llvm/DefUse/$(DEPDIR) dg/llvm/Dominators/$(DEPDIR) dg/llvm/ForkJoin/$(DEPDIR) dg/llvm/PointerAnalysis/$(DEPDIR) dg/llvm/ReadWriteGraph/$(DEPDIR) dg/llvm/SystemDependenceGraph/$(DEPDIR) dg/llvm/ThreadRegions/$(DEPDIR) dg/llvm/ThreadRegions/Graphs/$(DEPDIR) dg/llvm/ThreadRegions/Nodes/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) cJSON/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

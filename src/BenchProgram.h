@@ -29,8 +29,6 @@
 #include <set>
 #include <map>
 
-#include "DGController.h"
-
 class ConfigFile;
 
 class LocationIndex;
