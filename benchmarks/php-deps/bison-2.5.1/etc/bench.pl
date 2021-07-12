@@ -20,7 +20,7 @@
 use IO::File;
 use Benchmark qw (:all);
 
-my $bison = $ENV{'BISON'} || '/root/project/prophet-gpl/benchmarks/php-deps/bison-2.5.1/tests/bison';
+my $bison = $ENV{'BISON'} || '/root/project/MSV/benchmarks/php-deps/bison-2.5.1/tests/bison';
 my $cc = $ENV{'CC'} || 'gcc';
 
 ##################################################################

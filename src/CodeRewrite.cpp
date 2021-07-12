@@ -524,7 +524,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             break;
         }
     }
-    lineObject.line=currentLine;
+    lineObject.line=currentLine-1;
 
     int case_count=0;
     // assert( end >= last_end);

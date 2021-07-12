@@ -3,6 +3,6 @@
 # Wrapper around a non installed bison to make it work as an installed one.
 
 # Use the shipped files, not those installed.
-BISON_PKGDATADIR='/root/project/prophet-gpl/benchmarks/php-deps/bison-2.2/tests/../data'
+BISON_PKGDATADIR='/root/project/MSV/benchmarks/php-deps/bison-2.2/tests/../data'
 export BISON_PKGDATADIR
-exec $PREBISON '/root/project/prophet-gpl/benchmarks/php-deps/bison-2.2/tests/.././src/bison' ${1+"$@"}
+exec $PREBISON '/root/project/MSV/benchmarks/php-deps/bison-2.2/tests/.././src/bison' ${1+"$@"}

@@ -30,7 +30,7 @@ sedtmp=/tmp/acups.$$
 # For debugging.
 #sedtmp=/tmp/acups
 show_version=no
-test -z "${AC_MACRODIR}" && AC_MACRODIR=/root/project/prophet-gpl/benchmarks/php-deps/autoconf-2.13-build/share/autoconf
+test -z "${AC_MACRODIR}" && AC_MACRODIR=/root/project/MSV/benchmarks/php-deps/autoconf-2.13-build/share/autoconf
 
 while test $# -gt 0 ; do
    case "${1}" in 

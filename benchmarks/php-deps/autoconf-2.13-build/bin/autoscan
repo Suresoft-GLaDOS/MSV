@@ -21,7 +21,7 @@
 
 require "find.pl";
 
-$datadir = $ENV{"AC_MACRODIR"} || "/root/project/prophet-gpl/benchmarks/php-deps/autoconf-2.13-build/share/autoconf";
+$datadir = $ENV{"AC_MACRODIR"} || "/root/project/MSV/benchmarks/php-deps/autoconf-2.13-build/share/autoconf";
 $verbose = 0;
 # Reference these variables to pacify perl -w.
 undef %identifiers_macros;
