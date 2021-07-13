@@ -299,13 +299,6 @@ class php_tester:
         chdir(ori_dir);
         (out, err) = p.communicate();
 
-        if path.exists(self.work_dir+'/temp.out'):
-            remove(self.work_dir+'/temp.out')
-        for i in s:
-            output=self.work_dir+'/__cleantest/'+str(i).zfill(5)+'.out'
-            if path.exists(output):
-                shutil.copyfile(self.work_dir+'/__cleantest/'+str(i).zfill(5)+'.out',self.work_dir+'/temp.out')
-        
         # print out
         # print err
         lines = out.split("\n");
