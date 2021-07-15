@@ -27,15 +27,13 @@ if __name__ == "__main__":
         print "Usage: php-tester.py <src_dir> <test_dir> <work_dir> [cases]";
         exit(1);
 
-    opts, args = getopt.getopt(argv[1:], "p:fi:");
+    opts, args = getopt.getopt(argv[1:], "p:i:");
     profile_dir = "";
     
     temp_dir=""
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
-        elif o=="-f":
-            is_fuzz=True
         elif o=="-i":
             temp_dir=a
     

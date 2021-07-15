@@ -641,7 +641,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             }
             if (!include) succ_id.push_back(it->first);
         }
-        if (buildCount==6) break;
         outlog_printf(2,"%uth build...\n",++buildCount);
         if (buildCount==1)
             succ=buildFull("src", 0,false,succ_id,files);
@@ -720,66 +719,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     if (true)
     {
         outlog_printf(2,"Build failed, Trying to find fail macros...\n");
-        if (!succ){
-            std::vector<size_t> macros;
-            macros.clear();
-            fail.clear();
-            for (std::set<long long>::iterator it=linkErrorMacros.begin();it!=linkErrorMacros.end();it++){
-                fail.insert(*it);
-            }
-            for (std::set<long long>::iterator it=compileErrorMacros.begin();it!=compileErrorMacros.end();it++){
-                fail.insert(*it);
-            }
-
-            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                bool include=false;
-                for (std::set<long long>::iterator it2=fail.begin();it2!=fail.end();it2++){
-                    if (*it2==it->first) {
-                        include=true;
-                        break;
-                    }
-                }
-                if (!include) macros.push_back(it->first);
-            }
-
-            std::string candidateMacro="'";
-            for (std::vector<size_t>::iterator it=macros.begin();it!=macros.end();it++){
-                candidateMacro+=std::to_string(*it)+",";
-            }
-
-            if (candidateMacro!="'"){
-                candidateMacro.pop_back();
-            }
-            candidateMacro+="'";
-
-            ExecutionTimer timer;
-            std::string src_dir = getFullPath(work_dir + "/src");
-            std::string cmd;
-            cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+candidateMacro;
-            // cmd+=" -t "+build_cmd;
-            if (dep_dir!="") cmd+=" -p "+dep_dir;
-            cmd+=" -w ";
-            for (int i=0;i<files.size();i++){
-                if (i!=0) cmd+=":";
-                cmd+=files[i];
-            }
-            cmd+=" -j 10 ";
-            // cmd+=" > DD.log";
-            ret = system(cmd.c_str());
-
-            char *home;
-            home=getenv("HOME");
-            // We have to cover Windows!
-            if (home==NULL)
-                home=getenv("HOMEPATH");
-            std::string resultPath=std::string(home)+"/__dd_test.log";
-            char eachResult[100];
-            std::ifstream result(resultPath.c_str(),std::ifstream::in);
-            // assert(result.is_open());
-            while(result.getline(eachResult,100)){
-                fail.insert(stoll(std::string(eachResult)));
-            }
-        }
         //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
         if (compileErrorMacros.size()>=2 || linkErrorMacros.size()>=2){
             std::string candidateMacro="'";
