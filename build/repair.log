@@ -1,0 +1,31 @@
+Initialize the program!
+Skip verify!
+Building profile to localizing
+Generating repair candidates!
+Processing Zend/zend_variables.c
+Total 2661 different repair schemas!!!!
+Patch Candidates Generated!
+Candidates size: 2661
+Generating meta-program...
+[1034] Preprocess the following candidate with BasicTester: 2661
+Generating patches...
+[1034] BasicTester, a patch instance with id 0:
+Begin building test
+Total macros: 2560
+Saving this fix to: /root/project/MSV/build/php-case-efcb9a71/php-efcb9a71-workdir/fixed_zend_variables.c
+Preprocessing test...
+Trying to build with all macros...
+1th build...
+2th build...
+Build Success!
+Build failed, Trying to find fail macros...
+Building final program...
+Total success macros: 2556
+Success to build final program!
+The total number of explored concrete patches: 0
+Repair process ends successfully!
+Total 2661 different repair schemas!!!!
+Total 9059 different repair candidate templates for scoring!!!
+Total 6587 different partial repair candidate templates!!
+Total number of compiles: 1
+Total number of test eval: 378

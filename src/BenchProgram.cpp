@@ -625,7 +625,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     for (size_t i=0;i<failMacros.size();i++)
         fail.insert(failMacros[i]);
     std::vector<long long> succ_id;
-    while(!succ){
+    while(!succ && fileCodeMap.size()<=1){
         succ_id.clear();
         for (std::set<long long>::iterator it=linkErrorMacros.begin();it!=linkErrorMacros.end();it++){
             fail.insert(*it);
