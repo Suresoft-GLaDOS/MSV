@@ -702,7 +702,10 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             std::getline(buildLog,line);
                             line=stripLine(line);
                             for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                                if (it->second.find(line)!=std::string::npos){
+                                line.erase(remove(line.begin(), line.end(), ' '), line.end());
+                                std::string codeLine=it->second;
+                                codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
+                                if (codeLine.find(line)!=std::string::npos){
                                     compileErrorMacros.insert(it->first);
                                 }
                             }
