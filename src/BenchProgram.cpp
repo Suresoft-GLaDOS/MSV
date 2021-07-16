@@ -289,6 +289,7 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
                 }
                 ret = system(cmd.c_str());
                 assert( ret == 0);
+                cnt++;
             }
             fin.close();
             cmd = "rm -rf " + work_dir + "/" + SOURCECODE_BACKUP_LOG;
@@ -605,7 +606,9 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         std::ofstream fout(target_file.c_str(), std::ofstream::out);
         fout << it->second;
         fout.close();
-        // system(std::string("clang-format -i "+target_file).c_str());
+
+        // Formatting meta-program, for find error berrer
+        system(std::string("clang-format -i "+target_file).c_str());
     }
     fout2.close();
     deleteLibraryFile(fileCodeMap);
