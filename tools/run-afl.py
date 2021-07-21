@@ -5,6 +5,8 @@ import subprocess
 import json
 import time
 import hashlib
+import getopt
+import afl_plot
 
 
 class Fuzzer:
@@ -13,10 +15,21 @@ class Fuzzer:
         self.fid = fid
         self.switch = switch
         self.result = False
+        self.last_line = 0
         self.afl_result_file = os.path.join(workdir, "out", "fuzzer" + str(fid), "afl-result.csv")
 
     def set_result(self, result: bool) -> None:
         self.result = result
+
+    def append_result(self, result_file: str) -> None:
+        if not os.path.exists(self.afl_result_file):
+            return
+        with open(self.afl_result_file, "r") as arf:
+            res = arf.readlines()
+            lines = res[self.last_line:]
+            self.last_line = len(res)
+            with open(result_file, "a") as rf:
+                rf.writelines(lines)
 
     def is_alive(self) -> bool:
         return self.fuzzer.poll() is None
@@ -26,10 +39,9 @@ class Fuzzer:
 
 
 class Config:
-    def __init__(self, switch: int, case: int, condition: int = 0, is_condition: bool = False, line: int = -1, conf_type: str = "") -> None:
+    def __init__(self, switch: int, case: int, is_condition: bool = False, line: int = -1, conf_type: str = "") -> None:
         self.switch = switch
         self.case = case
-        self.condition = condition
         self.is_condition = is_condition
         self.conf_type = conf_type
         self.line = line
@@ -37,35 +49,38 @@ class Config:
         self.variable = ""
         self.constant = 0
 
-    def set_condition(self, condition: int, operator: str, variable: str, constant: int) -> None:
+    def set_condition(self, operator: str, variable: str, constant: int) -> None:
         self.is_condition = True
-        self.condition = condition
         self.operator = operator
         self.variable = variable
         self.constant = constant
     
     def __str__(self) -> str:
-        return f"{self.switch}, {self.case}, {self.condition}({self.is_condition}): {self.line}, {self.conf_type}"
+        return f"{self.switch}, {self.case}({self.is_condition}): {self.line}, {self.conf_type}"
 
     def __hash__(self) -> int:
-        hashstr = f"{self.switch}+{self.case}+{self.condition}"
+        hashstr = f"{self.switch}+{self.case}"
         a = hashlib.md5(hashstr.encode('utf-8'))
         return int(a.hexdigest(), 16)
     
     def __eq__(self, o: object) -> bool:
         equal = self.switch == o.switch
         equal = equal and self.case == o.case
-        equal = equal and self.condition == o.condition
         return equal
 
 
 class ConfigGenerator:
-    def __init__(self, switch_num: int, switch_json: dict) -> None:
+    def __init__(self, arg_dict: dict, switch_num: int, switch_json: dict) -> None:
         self.switches = list(range(switch_num))
         self.generated = 0
         self.switch_json = switch_json
         self.rules = dict()
         self.results = dict()
+        self.result_dir = os.path.join(arg_dict["w"], "out", "afl-master")
+        self.result_file = os.path.join(self.result_dir, "afl-result.csv")
+        os.makedirs(self.result_dir, exist_ok=True)
+        with open(os.path.join(self.result_dir, "is_main_node"), "w") as main_node:
+            main_node.write("Sync from this!")
     
     def init_rules(self) -> None:
         root = self.switch_json["rules"][0]
@@ -85,6 +100,8 @@ class ConfigGenerator:
             return ""
         start = rng * self.generated
         end = min(rng * (self.generated + 1) - 1, len(self.switches) - 1)
+        if self.generated == total - 1:
+            end = len(self.switches) - 1
         confstr = f"{start}-{end}" 
         self.generated += 1
         return confstr
@@ -98,16 +115,16 @@ class ConfigGenerator:
             is_passed = False
             for line in lines:
                 tokens = line.strip().split(",")
-                conf = Config(int(tokens[0]), int(tokens[1]), int(tokens[2]))
-                self.results[conf] = (tokens[3] == "PASS")
+                conf = Config(int(tokens[1]), int(tokens[2]))
+                self.results[conf] = (tokens[3] == "1")
                 if self.results[conf]:
                     is_passed = True
         return is_passed
 
 
-def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, switch: str) -> subprocess.Popen:
+def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, switch: str, strategy: str) -> subprocess.Popen:
     afl_cmd = ["afl-fuzz", "-o", workdir + "/out", "-m", "none", "-g", switch, "-d", "-n", "-t",
-               str(timeout * 1000), "-w", workdir, "-S", fuzzer_id]
+               str(timeout * 1000), "-w", workdir, "-S", fuzzer_id, "-y", strategy]
     afl_cmd += ["--", os.path.join(tools_dir, "php-test.py"), os.path.join(workdir, "src"),
                 os.path.join(workdir, "tests"), workdir]
     print("Run afl-fuzz " + fuzzer_id)
@@ -119,13 +136,17 @@ def main(argv):
     print("run-afl.py!!!")
     arg_dict = dict()
     parallel_count = 1
-    for i in range(len(argv)):
-        if argv[i] == "-w":
-            arg_dict["w"] = argv[i + 1]
-        elif argv[i] == "-t":
-            arg_dict["t"] = argv[i + 1]
-        elif argv[i] == '-j':
-            parallel_count = int(argv[i + 1])
+    opts, args = getopt.getopt(argv[1:], "w:t:j:s:")
+    arg_dict["s"] = "random"
+    for o, a in opts:
+        if o == "-w":
+            arg_dict["w"] = a
+        elif o == "-t":
+            arg_dict["t"] = a
+        elif o == "-j":
+            parallel_count = int(a)
+        elif o == "-s":
+            arg_dict["s"] = a
 
     conf_dict = dict()
     with open(os.path.join(arg_dict["w"], "repair.conf")) as conf_file:
@@ -168,13 +189,13 @@ def main(argv):
     fuzzer = []
     fuzzer_out = []
     fuzzer_err = []
-    os.system("rm -rf " + arg_dict['w'] + "/out")
+    #os.system("rm -rf " + arg_dict['w'] + "/out")
 
     fuzz_queue = []
     result_map = dict()
     fid = 0
-    confgen = ConfigGenerator(switch_num, switch_json)
-    confgen.init_rules()
+    confgen = ConfigGenerator(arg_dict, switch_num, switch_json)
+    #confgen.init_rules()
     flag = True
     # Test for negative case
     while True:
@@ -184,7 +205,8 @@ def main(argv):
                 flag = False
                 continue
             fuzzer = Fuzzer(run_afl(arg_dict['w'], conf_dict['tools_dir'], timeout,
-                                    "fuzzer" + str(fid), selected_switch), fid, selected_switch, arg_dict['w'])
+                                    "fuzzer" + str(fid), selected_switch, arg_dict["s"]), 
+                                    fid, selected_switch, arg_dict['w'])
             fuzz_queue.append(fuzzer)
             time.sleep(2)
             print(f"append fuzzer{fid}")
@@ -200,10 +222,12 @@ def main(argv):
                 fuzz: Fuzzer = fuzz_queue[i]
                 if fuzz.is_alive():
                     print(f"fuzzer{fuzz.fid} did not end...")
+                    fuzz.append_result(confgen.result_file)
                     time.sleep(2)
                 else:
                     print(f"fuzzer{fuzz.fid} finished!")
                     (out, err) = fuzz.fuzzer.communicate()
+                    fuzz.append_result(confgen.result_file)
                     result = confgen.result_analyzer(fuzz)
                     print(f"result: {result}")
                     fuzz.set_result(result)
@@ -217,6 +241,7 @@ def main(argv):
             if fuzz.result:
                 succ_switches.append(i)
     print(succ_switches)
+    afl_plot.afl_plot(confgen.result_file, "", arg_dict["s"], True)
     # Test for positive cases
     if len(succ_switches) > 0:
         exit(0)
