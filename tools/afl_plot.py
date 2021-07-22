@@ -5,7 +5,7 @@ import getopt
 import matplotlib.pyplot as plt
 
 
-def afl_plot(in_file: str, out_file: str, strategy: str, ignore_iteration: bool = False) -> None:
+def afl_plot(in_file: str, out_file: str, title: str, ignore_iteration: bool = False) -> None:
     iter_list = list()
     result_list = list()
     index = 0
@@ -28,16 +28,17 @@ def afl_plot(in_file: str, out_file: str, strategy: str, ignore_iteration: bool 
 
     print(f"total {total}")
     plt.plot(iter_list, result_list, 'r')
-    plt.title(strategy)
+    plt.title(title)
     plt.xlabel("iteration")
     plt.ylabel("pass")
+    plt.grid(True)
     if len(out_file) == 0:
         out_file = os.path.join(os.path.dirname(in_file), "plot.png")
     plt.savefig(out_file)
 
 
 def main(argv):
-    opts, args = getopt.getopt(argv[1:], "i:o:s:n")
+    opts, args = getopt.getopt(argv[1:], "i:o:t:n")
     result_file = ""
     output_file = ""
     strategy = ""
@@ -47,12 +48,12 @@ def main(argv):
             result_file = a
         elif o == "-o":
             output_file = a
-        elif o == "-s":
-            strategy = a
+        elif o == "-t":
+            title = a
         elif o == "-n":
             ignore = True
 
-    afl_plot(result_file, output_file, strategy, ignore)
+    afl_plot(result_file, output_file, title, ignore)
     return 0
 
 

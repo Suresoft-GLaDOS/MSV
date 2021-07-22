@@ -115,9 +115,11 @@ class ConfigGenerator:
         return is_passed
 
 
-def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, strategy: str) -> subprocess.Popen:
+def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, strategy: str, afl_master_dir: str, iteration_limit: int) -> subprocess.Popen:
     afl_cmd = ["afl-fuzz", "-o", workdir + "/out", "-m", "none", "-d", "-n", "-t",
-               str(timeout * 1000), "-w", workdir, "-S", fuzzer_id, "-y", strategy]
+               str(timeout * 1000), "-w", workdir, "-S", fuzzer_id, "-y", strategy, "-k", afl_master_dir]
+    if iteration_limit > 0:
+        afl_cmd += ["-l", str(iteration_limit)]
     afl_cmd += ["--", os.path.join(tools_dir, "php-test.py"), os.path.join(workdir, "src"),
                 os.path.join(workdir, "tests"), workdir]
     print("Run afl-fuzz " + fuzzer_id)
@@ -129,7 +131,8 @@ def main(argv):
     print("run-afl.py!!!")
     arg_dict = dict()
     parallel_count = 1
-    opts, args = getopt.getopt(argv[1:], "w:t:j:s:")
+    iteration_limit = -1
+    opts, args = getopt.getopt(argv[1:], "w:t:j:s:l:")
     arg_dict["s"] = "random"
     for o, a in opts:
         if o == "-w":
@@ -140,6 +143,8 @@ def main(argv):
             parallel_count = int(a)
         elif o == "-s":
             arg_dict["s"] = a
+        elif o == "-l":
+            iteration_limit = int(a)
 
     conf_dict = dict()
     with open(os.path.join(arg_dict["w"], "repair.conf")) as conf_file:
@@ -177,11 +182,6 @@ def main(argv):
     os.environ["AFL_FAST_CAL"] = "1"
     timeout = (int(arg_dict["t"]) // 1000) + 1
     # os.chdir(os.path.join(arg_dict["w"], "src"))
-
-    fuzzer_name = 'fuzzer'
-    fuzzer = []
-    fuzzer_out = []
-    fuzzer_err = []
     #os.system("rm -rf " + arg_dict['w'] + "/out")
 
     fuzz_queue = []
@@ -198,10 +198,11 @@ def main(argv):
                 flag = False
                 continue
             running_fuzzer = run_afl(
-                arg_dict['w'], conf_dict['tools_dir'], timeout, fuzzer_id, arg_dict["s"])
+                arg_dict['w'], conf_dict['tools_dir'], timeout, 
+                fuzzer_id, arg_dict["s"], confgen.result_dir, iteration_limit)
             fuzzer = Fuzzer(running_fuzzer, fid, parallel_count, arg_dict['w'])
             fuzz_queue.append(fuzzer)
-            time.sleep(2)
+            time.sleep(1)
             print(f"append fuzzer{fid}")
             fid += 1
         elif flag == False and len(fuzz_queue) == 0:
@@ -234,7 +235,10 @@ def main(argv):
             if fuzz.result:
                 succ_switches.append(i)
     print(succ_switches)
-    afl_plot.afl_plot(confgen.result_file, "", arg_dict["s"], True)
+    title = f"{arg_dict['s']} -j {parallel_count}"
+    if iteration_limit > 0:
+        title += " -l " + str(iteration_limit)
+    afl_plot.afl_plot(confgen.result_file, "", title, True)
     # Test for positive cases
     if len(succ_switches) > 0:
         exit(0)
