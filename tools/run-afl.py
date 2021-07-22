@@ -10,10 +10,10 @@ import afl_plot
 
 
 class Fuzzer:
-    def __init__(self, fuzzer: subprocess.Popen, fid: int, switch: int, workdir: str) -> None:
+    def __init__(self, fuzzer: subprocess.Popen, fid: int, total: int, workdir: str) -> None:
         self.fuzzer = fuzzer
         self.fid = fid
-        self.switch = switch
+        self.total = total
         self.result = False
         self.last_line = 0
         self.afl_result_file = os.path.join(workdir, "out", "fuzzer" + str(fid), "afl-result.csv")
@@ -35,7 +35,7 @@ class Fuzzer:
         return self.fuzzer.poll() is None
     
     def __str__(self) -> str:
-        return f"fuzzer{self.fid}: sw{self.switch}, file: {self.afl_result_file}, result: {self.result}"
+        return f"fuzzer{self.fid}: {self.fid}/{self.total}, file: {self.afl_result_file}, result: {self.result}"
 
 
 class Config:
@@ -72,7 +72,6 @@ class Config:
 class ConfigGenerator:
     def __init__(self, arg_dict: dict, switch_num: int, switch_json: dict) -> None:
         self.switches = list(range(switch_num))
-        self.generated = 0
         self.switch_json = switch_json
         self.rules = dict()
         self.results = dict()
@@ -94,16 +93,10 @@ class ConfigGenerator:
             self.rules[conf] = conf
             self.results[conf] = False
 
-    def config_generator(self, total) -> str:
-        rng = len(self.switches) // total
-        if self.generated >= total:
+    def fuzzer_id_generator(self, fid, total) -> str:
+        if fid >= total:
             return ""
-        start = rng * self.generated
-        end = min(rng * (self.generated + 1) - 1, len(self.switches) - 1)
-        if self.generated == total - 1:
-            end = len(self.switches) - 1
-        confstr = f"{start}-{end}" 
-        self.generated += 1
+        confstr = f"fuzzer{fid}:{fid}/{total}" 
         return confstr
 
     # switch, case, condition, result
@@ -122,8 +115,8 @@ class ConfigGenerator:
         return is_passed
 
 
-def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, switch: str, strategy: str) -> subprocess.Popen:
-    afl_cmd = ["afl-fuzz", "-o", workdir + "/out", "-m", "none", "-g", switch, "-d", "-n", "-t",
+def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, strategy: str) -> subprocess.Popen:
+    afl_cmd = ["afl-fuzz", "-o", workdir + "/out", "-m", "none", "-d", "-n", "-t",
                str(timeout * 1000), "-w", workdir, "-S", fuzzer_id, "-y", strategy]
     afl_cmd += ["--", os.path.join(tools_dir, "php-test.py"), os.path.join(workdir, "src"),
                 os.path.join(workdir, "tests"), workdir]
@@ -200,13 +193,13 @@ def main(argv):
     # Test for negative case
     while True:
         if len(fuzz_queue) < parallel_count and flag:
-            selected_switch = confgen.config_generator(parallel_count)
-            if len(selected_switch) == 0:
+            fuzzer_id = confgen.fuzzer_id_generator(fid, parallel_count)
+            if len(fuzzer_id) == 0:
                 flag = False
                 continue
-            fuzzer = Fuzzer(run_afl(arg_dict['w'], conf_dict['tools_dir'], timeout,
-                                    "fuzzer" + str(fid), selected_switch, arg_dict["s"]), 
-                                    fid, selected_switch, arg_dict['w'])
+            running_fuzzer = run_afl(
+                arg_dict['w'], conf_dict['tools_dir'], timeout, fuzzer_id, arg_dict["s"])
+            fuzzer = Fuzzer(running_fuzzer, fid, parallel_count, arg_dict['w'])
             fuzz_queue.append(fuzzer)
             time.sleep(2)
             print(f"append fuzzer{fid}")
@@ -216,7 +209,7 @@ def main(argv):
         else:
             fqstr = ""
             for fuzz in fuzz_queue:
-                fqstr += f"fuzzer{fuzz.fid}:{fuzz.switch}, "            
+                fqstr += f"fuzzer{fuzz.fid}/{fuzz.total}, "            
             print(f"fuzz_queue: [{fqstr}]")
             for i in range(len(fuzz_queue)):
                 fuzz: Fuzzer = fuzz_queue[i]
@@ -231,7 +224,7 @@ def main(argv):
                     result = confgen.result_analyzer(fuzz)
                     print(f"result: {result}")
                     fuzz.set_result(result)
-                    result_map[fuzz.switch] = fuzz
+                    result_map[fuzz.fid] = fuzz
                     fuzz_queue.pop(i)
                     break
     succ_switches = []
