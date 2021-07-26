@@ -676,7 +676,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     }
 
     // Normal replace
-    if(res1[currentCandidate[currentIndex]][0].size()>0 && origBody!="break;\n"){
+    if(res1[currentCandidate[currentIndex]][0].size()>0 && origBody!="break;\n" && origBody.substr(0,4)!="case" && origBody.substr(0,8)!="default:"){
         case_count=0;
         casePatch.clear();
         currentSwitches.push_back(counter);

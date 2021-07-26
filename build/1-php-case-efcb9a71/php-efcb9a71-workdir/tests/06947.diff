@@ -1,0 +1,5 @@
+007+ Segmentation fault (core dumped)
+008+ terminated after 1000 iterations
+009+ string(0) ""
+007- %unicode|string%(5) "yay!
+008- "

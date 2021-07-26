@@ -66,7 +66,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             # clean up things
             subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
             # create configure file
-            ret = subprocess.call(["./buildconf"], env = my_env,shell=True);
+            ret = subprocess.call(["./buildconf --force"], env = my_env,shell=True);
             if ret != 0:
                 print "Failed to create config, check autoconf version!";
                 chdir(ori_dir);
