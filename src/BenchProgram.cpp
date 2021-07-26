@@ -86,7 +86,7 @@ static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroS
             lineNum++;
 
             if (line.find("#ifdef COMPILE")!=std::string::npos){
-                size_t macro=std::atoi(line.substr(line.find("_")+1).c_str());
+                size_t macro=std::stoi(line.substr(line.find("_")+1));
                 size_t start=lineNum;
                 size_t end=lineNum;
                 unsigned ifCount=0;
@@ -569,7 +569,7 @@ void BenchProgram::saveFixedFiles(const std::map<std::string, std::string> &file
         std::ofstream fout_bak(std::string(work_dir+"/"+backupName).c_str(),std::ofstream::out);
         fout_bak << it->second;
         fout_bak.close();
-        system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
+        // system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
     }
 }
 
@@ -608,7 +608,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         fout.close();
 
         // Formatting meta-program, for find error berrer
-        system(std::string("clang-format -i "+target_file).c_str());
+        // system(std::string("clang-format -i "+target_file).c_str());
     }
     fout2.close();
     deleteLibraryFile(fileCodeMap);
@@ -699,16 +699,33 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 
                         }
                         else{
-                            std::getline(buildLog,line);
-                            line=stripLine(line);
-                            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                                line.erase(remove(line.begin(), line.end(), ' '), line.end());
-                                std::string codeLine=it->second;
-                                codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
-                                if (codeLine.find(line)!=std::string::npos){
-                                    compileErrorMacros.insert(it->first);
+                            size_t start=line.find(":");
+                            size_t end=line.find(":",start+1);
+                            unsigned long lineNum=stoi(line.substr(start+1,end-start-1));
+                            lineNum=lineNum-succ_id.size()-1;
+                            printf("%lu ",lineNum);
+                            std::string currentCode=fileCodeMap.at(fileName);
+
+                            std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
+                            unsigned long failMacro=0;
+                            for (std::map<size_t,std::pair<size_t,size_t>>::iterator macro_it=macroLine.begin();macro_it!=macroLine.end();macro_it++){
+                                if(macro_it->second.first<=lineNum && macro_it->second.second>=lineNum){
+                                    failMacro=macro_it->first;
+                                    printf("%lu\n",failMacro);
+                                    compileErrorMacros.insert(failMacro);
+                                    break;
                                 }
                             }
+                            // std::getline(buildLog,line);
+                            // line=stripLine(line);
+                            // for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                            //     line.erase(remove(line.begin(), line.end(), ' '), line.end());
+                            //     std::string codeLine=it->second;
+                            //     codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
+                            //     if (codeLine.find(line)!=std::string::npos){
+                            //         compileErrorMacros.insert(it->first);
+                            //     }
+                            // }
                         }
                     }
                 }

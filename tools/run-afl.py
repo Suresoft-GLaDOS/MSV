@@ -117,7 +117,7 @@ class ConfigGenerator:
 
 def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, strategy: str, afl_master_dir: str, iteration_limit: int) -> subprocess.Popen:
     afl_cmd = ["afl-fuzz", "-o", workdir + "/out", "-m", "none", "-d", "-n", "-t",
-               str(timeout * 1000), "-w", workdir, "-S", fuzzer_id, "-y", strategy, "-k", afl_master_dir]
+               str(timeout*1000), "-w", workdir, "-S", fuzzer_id, "-y", strategy, "-k", afl_master_dir]
     if iteration_limit > 0:
         afl_cmd += ["-l", str(iteration_limit)]
     afl_cmd += ["--", os.path.join(tools_dir, "php-test.py"), os.path.join(workdir, "src"),
