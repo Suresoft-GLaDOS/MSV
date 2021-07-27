@@ -40,7 +40,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
     chdir(out_dir);
     my_env = environ;
     my_env["PATH"] = php_deps_dir + "/bison-2.5.1-build/bin:" + my_env["PATH"];
-    my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"];
+    # my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"];
     my_env["PATH"] = php_deps_dir + "/flex-2.5.4-build/bin:" + my_env["PATH"];
     # switch to the revision
     if revision != "":

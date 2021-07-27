@@ -1,0 +1,17698 @@
+int __get_mutant(); int __is_neg(const char *location,int count, ...); int __abst_hole(); int __choose(const char *);void* memset(void*, int, unsigned long); 
+/*
+   +----------------------------------------------------------------------+
+   | Zend Engine                                                          |
+   +----------------------------------------------------------------------+
+   | Copyright (c) 1998-2011 Zend Technologies Ltd. (http://www.zend.com) |
+   +----------------------------------------------------------------------+
+   | This source file is subject to version 2.00 of the Zend license,     |
+   | that is bundled with this package in the file LICENSE, and is        | 
+   | available through the world-wide-web at the following url:           |
+   | http://www.zend.com/license/2_00.txt.                                |
+   | If you did not receive a copy of the Zend license and are unable to  |
+   | obtain it through the world-wide-web, please send a note to          |
+   | license@zend.com so we can mail you a copy immediately.              |
+   +----------------------------------------------------------------------+
+   | Authors: Andi Gutmans <andi@zend.com>                                |
+   |          Zeev Suraski <zeev@zend.com>                                |
+   +----------------------------------------------------------------------+
+*/
+
+/* $Id$ */
+
+#include <stdio.h>
+#include "zend.h"
+#include "zend_API.h"
+#include "zend_globals.h"
+#include "zend_constants.h"
+#include "zend_list.h"
+
+
+ZEND_API void _zval_dtor_func(zval *zvalue ZEND_FILE_LINE_DC)
+{
+	//prophet generated patch
+	{
+	switch(__choose("__SWITCH0"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_0
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_3
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_4
+	case 5: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_5
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_6
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_7
+	case 8: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_8
+	case 9: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_9
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_10
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_11
+	case 12: {
+	//AddAndReplaceKind
+	_zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_12
+	case 13: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_13
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_14
+	case 15: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_15
+	case 16: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_16
+	case 17: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_17
+	case 18: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_18
+	case 19: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_19
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_20
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_21
+	case 22: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_22
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_23
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+	    zend_hash_destroy(zvalue->value.ht);
+	    _efree((zvalue->value.ht));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_24
+	case 25: {
+	//AddAndReplaceKind
+	if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_25
+	case 26: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_26
+	case 27: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_27
+	case 28: {
+	//AddAndReplaceKind
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_28
+	case 29: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_29
+	case 30: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_30
+	case 31: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_31
+	case 32: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_32
+	case 33: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_33
+	case 34: {
+	//AddInitKind
+	memset(&(*zvalue), 0, sizeof (*(&(*zvalue))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_34
+	case 35: {
+	//AddInitKind
+	memset(&(*zvalue).value, 0, sizeof (*(&(*zvalue).value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_35
+	case 36: {
+	//AddInitKind
+	memset(&(*zvalue).value.obj, 0, sizeof (*(&(*zvalue).value.obj)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_36
+	case 37: {
+	//AddInitKind
+	memset(&compiler_globals, 0, sizeof (*(&compiler_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_37
+	case 38: {
+	//AddInitKind
+	memset(&executor_globals, 0, sizeof (*(&executor_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_38
+	case 39: {
+	//AddInitKind
+	memset(&executor_globals.symbol_table, 0, sizeof (*(&executor_globals.symbol_table)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_39
+	case 40: {
+	//AddInitKind
+	memset(&zvalue->value, 0, sizeof (*(&zvalue->value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_40
+	case 41: {
+	//AddInitKind
+	memset(&zvalue->value.str, 0, sizeof (*(&zvalue->value.str)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_41
+	case 42: {
+	//AddInitKind
+	memset((*zvalue).value.obj.handlers, 0, sizeof (*((*zvalue).value.obj.handlers)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_42
+	case 43: {
+	//AddInitKind
+	memset(zvalue, 0, sizeof (*(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_43
+	case 44: {
+	//IfExitKind
+	if (__is_neg("0-44", 7, &(zvalue), sizeof (zvalue), &((*zvalue).type), sizeof ((*zvalue).type), &((*zvalue).refcount__gc), sizeof ((*zvalue).refcount__gc), &((*zvalue).is_ref__gc), sizeof ((*zvalue).is_ref__gc), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH19"))
+	{
+	case 0: {
+	switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+			case IS_STRING:
+			case IS_CONSTANT:
+			case IS_CLASS:
+				CHECK_ZVAL_STRING_REL(zvalue);
+				{
+	switch(__choose("__SWITCH1"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_44
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_45
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_46
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_47
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_48
+	case 5: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_49
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_50
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_51
+	case 8: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_52
+	case 9: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_53
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_54
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_55
+	case 12: {
+	//AddAndReplaceKind
+	_zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_56
+	case 13: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_57
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_58
+	case 15: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_59
+	case 16: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_60
+	case 17: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_61
+	case 18: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_62
+	case 19: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_63
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_64
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_65
+	case 22: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_66
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_67
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+	    zend_hash_destroy(zvalue->value.ht);
+	    _efree((zvalue->value.ht));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_68
+	case 25: {
+	//AddAndReplaceKind
+	if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_69
+	case 26: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_70
+	case 27: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_71
+	case 28: {
+	//AddAndReplaceKind
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_72
+	case 29: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_73
+	case 30: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_74
+	case 31: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_75
+	case 32: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_76
+	case 33: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_77
+	case 34: {
+	//AddInitKind
+	memset(&compiler_globals, 0, sizeof (*(&compiler_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_78
+	case 35: {
+	//AddInitKind
+	memset(&zvalue->value, 0, sizeof (*(&zvalue->value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_79
+	case 36: {
+	//AddInitKind
+	memset(&zvalue->value.str, 0, sizeof (*(&zvalue->value.str)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_80
+	case 37: {
+	//AddInitKind
+	memset(zvalue, 0, sizeof (*(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_81
+	case 38: {
+	//IfExitKind
+	if (__is_neg("1-38", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	{
+	long long __temp2=(zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) ;
+	switch(__choose("__SWITCH2"))
+	{
+	case 0: {
+	
+	break;
+	}
+	#ifdef COMPILE_82
+	case 1: {
+	__temp2= (((zvalue->value.str.val) || __is_neg("2-1", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared))) && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_83
+	case 2: {
+	__temp2= ((zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) || __is_neg("2-2", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_84
+	case 3: {
+	__temp2= ((zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) && !__is_neg("2-3", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)));
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH3"))
+	{
+	case 0: {
+	if (__temp2) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#ifdef COMPILE_85
+	case 1: {
+	//GuardKind
+	if (!__is_neg("3-1", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)))
+	    if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	        _efree((zvalue->value.str.val));
+	    }
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_86
+	case 2: {
+	//SpecialGuardKind
+	if (!__is_neg("3-2", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)) && (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end))))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	}
+	}
+	}
+				{
+	switch(__choose("__SWITCH4"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_87
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_88
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_89
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_90
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_91
+	case 5: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_92
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_93
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_94
+	case 8: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_95
+	case 9: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_96
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_97
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_98
+	case 12: {
+	//AddAndReplaceKind
+	_zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_99
+	case 13: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_100
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_101
+	case 15: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_102
+	case 16: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_103
+	case 17: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_104
+	case 18: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_105
+	case 19: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_106
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_107
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_108
+	case 22: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_109
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_110
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+	    zend_hash_destroy(zvalue->value.ht);
+	    _efree((zvalue->value.ht));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_111
+	case 25: {
+	//AddAndReplaceKind
+	if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_112
+	case 26: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_113
+	case 27: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_114
+	case 28: {
+	//AddAndReplaceKind
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_115
+	case 29: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_116
+	case 30: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_117
+	case 31: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_118
+	case 32: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_119
+	case 33: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_120
+	case 34: {
+	//IfExitKind
+	if (__is_neg("4-34", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	break;
+	}
+			case IS_ARRAY:
+			case IS_CONSTANT_ARRAY: {
+					TSRMLS_FETCH();
+	
+					{
+	switch(__choose("__SWITCH5"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_121
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_122
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_123
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_124
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_125
+	case 5: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_126
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_127
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_128
+	case 8: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_129
+	case 9: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_130
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_131
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_132
+	case 12: {
+	//AddAndReplaceKind
+	_zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_133
+	case 13: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_134
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_135
+	case 15: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_136
+	case 16: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_137
+	case 17: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_138
+	case 18: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_139
+	case 19: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_140
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_141
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_142
+	case 22: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_143
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_144
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+	    zend_hash_destroy(zvalue->value.ht);
+	    _efree((zvalue->value.ht));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_145
+	case 25: {
+	//AddAndReplaceKind
+	if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_146
+	case 26: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_147
+	case 27: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_148
+	case 28: {
+	//AddAndReplaceKind
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_149
+	case 29: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_150
+	case 30: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_151
+	case 31: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_152
+	case 32: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_153
+	case 33: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_154
+	case 34: {
+	//AddInitKind
+	memset(&executor_globals, 0, sizeof (*(&executor_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_155
+	case 35: {
+	//AddInitKind
+	memset(&executor_globals.symbol_table, 0, sizeof (*(&executor_globals.symbol_table)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_156
+	case 36: {
+	//AddInitKind
+	memset(&zvalue->value, 0, sizeof (*(&zvalue->value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_157
+	case 37: {
+	//AddInitKind
+	memset(zvalue, 0, sizeof (*(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_158
+	case 38: {
+	//IfExitKind
+	if (__is_neg("5-38", 106, &(zvalue), sizeof (zvalue), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.symbol_table.nTableSize), sizeof (executor_globals.symbol_table.nTableSize), &(executor_globals.symbol_table.nTableMask), sizeof (executor_globals.symbol_table.nTableMask), &(executor_globals.symbol_table.nNumOfElements), sizeof (executor_globals.symbol_table.nNumOfElements), &(executor_globals.symbol_table.nNextFreeElement), sizeof (executor_globals.symbol_table.nNextFreeElement), &(executor_globals.symbol_table.pInternalPointer), sizeof (executor_globals.symbol_table.pInternalPointer), &(executor_globals.symbol_table.pListHead), sizeof (executor_globals.symbol_table.pListHead), &(executor_globals.symbol_table.pListTail), sizeof (executor_globals.symbol_table.pListTail), &(executor_globals.symbol_table.arBuckets), sizeof (executor_globals.symbol_table.arBuckets), &(executor_globals.symbol_table.pDestructor), sizeof (executor_globals.symbol_table.pDestructor), &(executor_globals.symbol_table.persistent), sizeof (executor_globals.symbol_table.persistent), &(executor_globals.symbol_table.nApplyCount), sizeof (executor_globals.symbol_table.nApplyCount), &(executor_globals.symbol_table.bApplyProtection), sizeof (executor_globals.symbol_table.bApplyProtection), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	{
+	long long __temp6=(zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) ;
+	switch(__choose("__SWITCH6"))
+	{
+	case 0: {
+	
+	break;
+	}
+	#ifdef COMPILE_159
+	case 1: {
+	__temp6= (((zvalue->value.ht) || __is_neg("6-1", 106, &(zvalue), sizeof (zvalue), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.symbol_table.nTableSize), sizeof (executor_globals.symbol_table.nTableSize), &(executor_globals.symbol_table.nTableMask), sizeof (executor_globals.symbol_table.nTableMask), &(executor_globals.symbol_table.nNumOfElements), sizeof (executor_globals.symbol_table.nNumOfElements), &(executor_globals.symbol_table.nNextFreeElement), sizeof (executor_globals.symbol_table.nNextFreeElement), &(executor_globals.symbol_table.pInternalPointer), sizeof (executor_globals.symbol_table.pInternalPointer), &(executor_globals.symbol_table.pListHead), sizeof (executor_globals.symbol_table.pListHead), &(executor_globals.symbol_table.pListTail), sizeof (executor_globals.symbol_table.pListTail), &(executor_globals.symbol_table.arBuckets), sizeof (executor_globals.symbol_table.arBuckets), &(executor_globals.symbol_table.pDestructor), sizeof (executor_globals.symbol_table.pDestructor), &(executor_globals.symbol_table.persistent), sizeof (executor_globals.symbol_table.persistent), &(executor_globals.symbol_table.nApplyCount), sizeof (executor_globals.symbol_table.nApplyCount), &(executor_globals.symbol_table.bApplyProtection), sizeof (executor_globals.symbol_table.bApplyProtection), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw))) && (zvalue->value.ht != &(executor_globals.symbol_table)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_160
+	case 2: {
+	__temp6= ((zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) || __is_neg("6-2", 106, &(zvalue), sizeof (zvalue), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.symbol_table.nTableSize), sizeof (executor_globals.symbol_table.nTableSize), &(executor_globals.symbol_table.nTableMask), sizeof (executor_globals.symbol_table.nTableMask), &(executor_globals.symbol_table.nNumOfElements), sizeof (executor_globals.symbol_table.nNumOfElements), &(executor_globals.symbol_table.nNextFreeElement), sizeof (executor_globals.symbol_table.nNextFreeElement), &(executor_globals.symbol_table.pInternalPointer), sizeof (executor_globals.symbol_table.pInternalPointer), &(executor_globals.symbol_table.pListHead), sizeof (executor_globals.symbol_table.pListHead), &(executor_globals.symbol_table.pListTail), sizeof (executor_globals.symbol_table.pListTail), &(executor_globals.symbol_table.arBuckets), sizeof (executor_globals.symbol_table.arBuckets), &(executor_globals.symbol_table.pDestructor), sizeof (executor_globals.symbol_table.pDestructor), &(executor_globals.symbol_table.persistent), sizeof (executor_globals.symbol_table.persistent), &(executor_globals.symbol_table.nApplyCount), sizeof (executor_globals.symbol_table.nApplyCount), &(executor_globals.symbol_table.bApplyProtection), sizeof (executor_globals.symbol_table.bApplyProtection), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_161
+	case 3: {
+	__temp6= ((zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) && !__is_neg("6-3", 106, &(zvalue), sizeof (zvalue), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.symbol_table.nTableSize), sizeof (executor_globals.symbol_table.nTableSize), &(executor_globals.symbol_table.nTableMask), sizeof (executor_globals.symbol_table.nTableMask), &(executor_globals.symbol_table.nNumOfElements), sizeof (executor_globals.symbol_table.nNumOfElements), &(executor_globals.symbol_table.nNextFreeElement), sizeof (executor_globals.symbol_table.nNextFreeElement), &(executor_globals.symbol_table.pInternalPointer), sizeof (executor_globals.symbol_table.pInternalPointer), &(executor_globals.symbol_table.pListHead), sizeof (executor_globals.symbol_table.pListHead), &(executor_globals.symbol_table.pListTail), sizeof (executor_globals.symbol_table.pListTail), &(executor_globals.symbol_table.arBuckets), sizeof (executor_globals.symbol_table.arBuckets), &(executor_globals.symbol_table.pDestructor), sizeof (executor_globals.symbol_table.pDestructor), &(executor_globals.symbol_table.persistent), sizeof (executor_globals.symbol_table.persistent), &(executor_globals.symbol_table.nApplyCount), sizeof (executor_globals.symbol_table.nApplyCount), &(executor_globals.symbol_table.bApplyProtection), sizeof (executor_globals.symbol_table.bApplyProtection), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)));
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH11"))
+	{
+	case 0: {
+	if (__temp6) {
+						{
+	switch(__choose("__SWITCH7"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_162
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_163
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_164
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_165
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_166
+	case 5: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_167
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_168
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_169
+	case 8: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_170
+	case 9: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_171
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_172
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_173
+	case 12: {
+	//AddAndReplaceKind
+	_zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_174
+	case 13: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_175
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_176
+	case 15: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_177
+	case 16: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_178
+	case 17: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_179
+	case 18: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_180
+	case 19: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_181
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_182
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_183
+	case 22: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_184
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_185
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+	    zend_hash_destroy(zvalue->value.ht);
+	    _efree((zvalue->value.ht));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_186
+	case 25: {
+	//AddAndReplaceKind
+	if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_187
+	case 26: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_188
+	case 27: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_189
+	case 28: {
+	//AddAndReplaceKind
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_190
+	case 29: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_191
+	case 30: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_192
+	case 31: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_193
+	case 32: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_194
+	case 33: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_195
+	case 34: {
+	//AddInitKind
+	memset(&zvalue->value, 0, sizeof (*(&zvalue->value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_196
+	case 35: {
+	//AddInitKind
+	memset(zvalue, 0, sizeof (*(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_197
+	case 36: {
+	//IfExitKind
+	if (__is_neg("7-36", 106, &(zvalue), sizeof (zvalue), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.symbol_table.nTableSize), sizeof (executor_globals.symbol_table.nTableSize), &(executor_globals.symbol_table.nTableMask), sizeof (executor_globals.symbol_table.nTableMask), &(executor_globals.symbol_table.nNumOfElements), sizeof (executor_globals.symbol_table.nNumOfElements), &(executor_globals.symbol_table.nNextFreeElement), sizeof (executor_globals.symbol_table.nNextFreeElement), &(executor_globals.symbol_table.pInternalPointer), sizeof (executor_globals.symbol_table.pInternalPointer), &(executor_globals.symbol_table.pListHead), sizeof (executor_globals.symbol_table.pListHead), &(executor_globals.symbol_table.pListTail), sizeof (executor_globals.symbol_table.pListTail), &(executor_globals.symbol_table.arBuckets), sizeof (executor_globals.symbol_table.arBuckets), &(executor_globals.symbol_table.pDestructor), sizeof (executor_globals.symbol_table.pDestructor), &(executor_globals.symbol_table.persistent), sizeof (executor_globals.symbol_table.persistent), &(executor_globals.symbol_table.nApplyCount), sizeof (executor_globals.symbol_table.nApplyCount), &(executor_globals.symbol_table.bApplyProtection), sizeof (executor_globals.symbol_table.bApplyProtection), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH8"))
+	{
+	case 0: {
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#ifdef COMPILE_198
+	case 1: {
+	//AddAndReplaceKind
+	zend_destroy_rsrc_list(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_199
+	case 2: {
+	//AddAndReplaceKind
+	zend_hash_clean(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_200
+	case 3: {
+	//AddAndReplaceKind
+	zend_hash_graceful_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_201
+	case 4: {
+	//AddAndReplaceKind
+	zend_hash_graceful_reverse_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_202
+	case 5: {
+	//AddAndReplaceKind
+	zend_hash_rehash(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_203
+	case 6: {
+	//AddAndReplaceKind
+	zend_reset_all_cv(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_204
+	case 7: {
+	//GuardKind
+	if (!__is_neg("8-7", 106, &(zvalue), sizeof (zvalue), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.symbol_table.nTableSize), sizeof (executor_globals.symbol_table.nTableSize), &(executor_globals.symbol_table.nTableMask), sizeof (executor_globals.symbol_table.nTableMask), &(executor_globals.symbol_table.nNumOfElements), sizeof (executor_globals.symbol_table.nNumOfElements), &(executor_globals.symbol_table.nNextFreeElement), sizeof (executor_globals.symbol_table.nNextFreeElement), &(executor_globals.symbol_table.pInternalPointer), sizeof (executor_globals.symbol_table.pInternalPointer), &(executor_globals.symbol_table.pListHead), sizeof (executor_globals.symbol_table.pListHead), &(executor_globals.symbol_table.pListTail), sizeof (executor_globals.symbol_table.pListTail), &(executor_globals.symbol_table.arBuckets), sizeof (executor_globals.symbol_table.arBuckets), &(executor_globals.symbol_table.pDestructor), sizeof (executor_globals.symbol_table.pDestructor), &(executor_globals.symbol_table.persistent), sizeof (executor_globals.symbol_table.persistent), &(executor_globals.symbol_table.nApplyCount), sizeof (executor_globals.symbol_table.nApplyCount), &(executor_globals.symbol_table.bApplyProtection), sizeof (executor_globals.symbol_table.bApplyProtection), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_205
+	case 8: {
+	//ReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	}
+	}
+						{
+	switch(__choose("__SWITCH9"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_206
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_207
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_208
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_209
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_210
+	case 5: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_211
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_212
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_213
+	case 8: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_214
+	case 9: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_215
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_216
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_217
+	case 12: {
+	//AddAndReplaceKind
+	_zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_218
+	case 13: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_219
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_220
+	case 15: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_221
+	case 16: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_222
+	case 17: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_223
+	case 18: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_224
+	case 19: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_225
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_226
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_227
+	case 22: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_228
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_229
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+	    zend_hash_destroy(zvalue->value.ht);
+	    _efree((zvalue->value.ht));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_230
+	case 25: {
+	//AddAndReplaceKind
+	if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_231
+	case 26: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_232
+	case 27: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_233
+	case 28: {
+	//AddAndReplaceKind
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_234
+	case 29: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_235
+	case 30: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_236
+	case 31: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_237
+	case 32: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_238
+	case 33: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_239
+	case 34: {
+	//AddInitKind
+	memset(&zvalue->value, 0, sizeof (*(&zvalue->value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_240
+	case 35: {
+	//AddInitKind
+	memset(zvalue, 0, sizeof (*(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_241
+	case 36: {
+	//IfExitKind
+	if (__is_neg("9-36", 4, &(zvalue), sizeof (zvalue), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH10"))
+	{
+	case 0: {
+	FREE_HASHTABLE(zvalue->value.ht);
+	
+	break;
+	}
+	#ifdef COMPILE_242
+	case 1: {
+	//AddAndReplaceKind
+	_zend_mem_block_size((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_243
+	case 2: {
+	//AddAndReplaceKind
+	dlclose((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_244
+	case 3: {
+	//AddAndReplaceKind
+	free((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_245
+	case 4: {
+	//AddAndReplaceKind
+	list_entry_destructor((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_246
+	case 5: {
+	//AddAndReplaceKind
+	plist_entry_destructor((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_247
+	case 6: {
+	//AddAndReplaceKind
+	zend_vm_stack_free((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_248
+	case 7: {
+	//AddAndReplaceKind
+	zend_vm_stack_free_int((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_249
+	case 8: {
+	//AddAndReplaceKind
+	zend_vm_stack_push((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_250
+	case 9: {
+	//AddAndReplaceKind
+	zend_vm_stack_push_nocheck((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_251
+	case 10: {
+	//GuardKind
+	if (!__is_neg("10-10", 4, &(zvalue), sizeof (zvalue), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc)))
+	    _efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_252
+	case 11: {
+	//ReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	}
+	}
+					}
+	
+	break;
+	}
+	#ifdef COMPILE_253
+	case 1: {
+	//AddAndReplaceKind
+	_zend_mem_block_size((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_254
+	case 2: {
+	//AddAndReplaceKind
+	dlclose((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_255
+	case 3: {
+	//AddAndReplaceKind
+	free((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_256
+	case 4: {
+	//AddAndReplaceKind
+	list_entry_destructor((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_257
+	case 5: {
+	//AddAndReplaceKind
+	plist_entry_destructor((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_258
+	case 6: {
+	//AddAndReplaceKind
+	zend_vm_stack_free((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_259
+	case 7: {
+	//AddAndReplaceKind
+	zend_vm_stack_free_int((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_260
+	case 8: {
+	//AddAndReplaceKind
+	zend_vm_stack_push((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_261
+	case 9: {
+	//AddAndReplaceKind
+	zend_vm_stack_push_nocheck((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_262
+	case 10: {
+	//GuardKind
+	if (!__is_neg("11-10", 4, &(zvalue), sizeof (zvalue), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc)))
+	    _efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_263
+	case 11: {
+	//ReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	}
+	}
+	}
+				}
+				{
+	switch(__choose("__SWITCH12"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_264
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_265
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_266
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_267
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_268
+	case 5: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_269
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_270
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_271
+	case 8: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_272
+	case 9: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_273
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_274
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_275
+	case 12: {
+	//AddAndReplaceKind
+	_zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_276
+	case 13: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_277
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_278
+	case 15: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_279
+	case 16: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_280
+	case 17: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_281
+	case 18: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_282
+	case 19: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_283
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_284
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_285
+	case 22: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_286
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_287
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+	    zend_hash_destroy(zvalue->value.ht);
+	    _efree((zvalue->value.ht));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_288
+	case 25: {
+	//AddAndReplaceKind
+	if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_289
+	case 26: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_290
+	case 27: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_291
+	case 28: {
+	//AddAndReplaceKind
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_292
+	case 29: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_293
+	case 30: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_294
+	case 31: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_295
+	case 32: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_296
+	case 33: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_297
+	case 34: {
+	//IfExitKind
+	if (__is_neg("12-34", 1, &(zvalue), sizeof (zvalue)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	break;
+	}
+			case IS_OBJECT:
+				{
+					TSRMLS_FETCH();
+	
+					{
+	switch(__choose("__SWITCH13"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_298
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_299
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_300
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_301
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_302
+	case 5: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_303
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_304
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_305
+	case 8: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_306
+	case 9: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_307
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_308
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_309
+	case 12: {
+	//AddAndReplaceKind
+	_zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_310
+	case 13: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_311
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_312
+	case 15: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_313
+	case 16: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_314
+	case 17: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_315
+	case 18: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_316
+	case 19: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_317
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_318
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_319
+	case 22: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_320
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_321
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+	    zend_hash_destroy(zvalue->value.ht);
+	    _efree((zvalue->value.ht));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_322
+	case 25: {
+	//AddAndReplaceKind
+	if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_323
+	case 26: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_324
+	case 27: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_325
+	case 28: {
+	//AddAndReplaceKind
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_326
+	case 29: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_327
+	case 30: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_328
+	case 31: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_329
+	case 32: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_330
+	case 33: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_331
+	case 34: {
+	//AddInitKind
+	memset(&(*zvalue), 0, sizeof (*(&(*zvalue))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_332
+	case 35: {
+	//AddInitKind
+	memset(&(*zvalue).value, 0, sizeof (*(&(*zvalue).value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_333
+	case 36: {
+	//AddInitKind
+	memset(&(*zvalue).value.obj, 0, sizeof (*(&(*zvalue).value.obj)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_334
+	case 37: {
+	//AddInitKind
+	memset((*zvalue).value.obj.handlers, 0, sizeof (*((*zvalue).value.obj.handlers)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_335
+	case 38: {
+	//AddInitKind
+	memset(zvalue, 0, sizeof (*(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_336
+	case 39: {
+	//IfExitKind
+	if (__is_neg("13-39", 34, &(zvalue), sizeof (zvalue), &((*zvalue).value.obj.handlers), sizeof ((*zvalue).value.obj.handlers), &((*zvalue).value.obj.handlers->del_ref), sizeof ((*zvalue).value.obj.handlers->del_ref), &((*zvalue).type), sizeof ((*zvalue).type), &((*zvalue).refcount__gc), sizeof ((*zvalue).refcount__gc), &((*zvalue).is_ref__gc), sizeof ((*zvalue).is_ref__gc), &((*zvalue).value.obj.handle), sizeof ((*zvalue).value.obj.handle), &((*zvalue).value.obj.handlers->add_ref), sizeof ((*zvalue).value.obj.handlers->add_ref), &((*zvalue).value.obj.handlers->clone_obj), sizeof ((*zvalue).value.obj.handlers->clone_obj), &((*zvalue).value.obj.handlers->read_property), sizeof ((*zvalue).value.obj.handlers->read_property), &((*zvalue).value.obj.handlers->write_property), sizeof ((*zvalue).value.obj.handlers->write_property), &((*zvalue).value.obj.handlers->read_dimension), sizeof ((*zvalue).value.obj.handlers->read_dimension), &((*zvalue).value.obj.handlers->write_dimension), sizeof ((*zvalue).value.obj.handlers->write_dimension), &((*zvalue).value.obj.handlers->get_property_ptr_ptr), sizeof ((*zvalue).value.obj.handlers->get_property_ptr_ptr), &((*zvalue).value.obj.handlers->get), sizeof ((*zvalue).value.obj.handlers->get), &((*zvalue).value.obj.handlers->set), sizeof ((*zvalue).value.obj.handlers->set), &((*zvalue).value.obj.handlers->has_property), sizeof ((*zvalue).value.obj.handlers->has_property), &((*zvalue).value.obj.handlers->unset_property), sizeof ((*zvalue).value.obj.handlers->unset_property), &((*zvalue).value.obj.handlers->has_dimension), sizeof ((*zvalue).value.obj.handlers->has_dimension), &((*zvalue).value.obj.handlers->unset_dimension), sizeof ((*zvalue).value.obj.handlers->unset_dimension), &((*zvalue).value.obj.handlers->get_properties), sizeof ((*zvalue).value.obj.handlers->get_properties), &((*zvalue).value.obj.handlers->get_method), sizeof ((*zvalue).value.obj.handlers->get_method), &((*zvalue).value.obj.handlers->call_method), sizeof ((*zvalue).value.obj.handlers->call_method), &((*zvalue).value.obj.handlers->get_constructor), sizeof ((*zvalue).value.obj.handlers->get_constructor), &((*zvalue).value.obj.handlers->get_class_entry), sizeof ((*zvalue).value.obj.handlers->get_class_entry), &((*zvalue).value.obj.handlers->get_class_name), sizeof ((*zvalue).value.obj.handlers->get_class_name), &((*zvalue).value.obj.handlers->compare_objects), sizeof ((*zvalue).value.obj.handlers->compare_objects), &((*zvalue).value.obj.handlers->cast_object), sizeof ((*zvalue).value.obj.handlers->cast_object), &((*zvalue).value.obj.handlers->count_elements), sizeof ((*zvalue).value.obj.handlers->count_elements), &((*zvalue).value.obj.handlers->get_debug_info), sizeof ((*zvalue).value.obj.handlers->get_debug_info), &((*zvalue).value.obj.handlers->get_closure), sizeof ((*zvalue).value.obj.handlers->get_closure), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH14"))
+	{
+	case 0: {
+	Z_OBJ_HT_P(zvalue)->del_ref(zvalue TSRMLS_CC);
+	
+	break;
+	}
+	#ifdef COMPILE_337
+	case 1: {
+	//AddAndReplaceKind
+	_convert_to_string(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_338
+	case 2: {
+	//AddAndReplaceKind
+	_object_init(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_339
+	case 3: {
+	//AddAndReplaceKind
+	_zval_copy_ctor(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_340
+	case 4: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_341
+	case 5: {
+	//AddAndReplaceKind
+	_zval_dtor(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_342
+	case 6: {
+	//AddAndReplaceKind
+	_zval_dtor_func(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_343
+	case 7: {
+	//AddAndReplaceKind
+	_zval_dtor_wrapper(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_344
+	case 8: {
+	//AddAndReplaceKind
+	_zval_internal_dtor(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_345
+	case 9: {
+	//AddAndReplaceKind
+	add_next_index_null(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_346
+	case 10: {
+	//AddAndReplaceKind
+	convert_scalar_to_number(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_347
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_array(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_348
+	case 12: {
+	//AddAndReplaceKind
+	convert_to_boolean(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_349
+	case 13: {
+	//AddAndReplaceKind
+	convert_to_double(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_350
+	case 14: {
+	//AddAndReplaceKind
+	convert_to_long(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_351
+	case 15: {
+	//AddAndReplaceKind
+	convert_to_null(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_352
+	case 16: {
+	//AddAndReplaceKind
+	convert_to_object(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_353
+	case 17: {
+	//AddAndReplaceKind
+	decrement_function(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_354
+	case 18: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_355
+	case 19: {
+	//AddAndReplaceKind
+	gc_zobj_possible_root(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_356
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_357
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_358
+	case 22: {
+	//AddAndReplaceKind
+	i_zend_is_true(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_359
+	case 23: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_360
+	case 24: {
+	//AddAndReplaceKind
+	increment_function(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_361
+	case 25: {
+	//AddAndReplaceKind
+	lex_scan(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_362
+	case 26: {
+	//AddAndReplaceKind
+	safe_free_zval_ptr_rel(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_363
+	case 27: {
+	//AddAndReplaceKind
+	zend_is_true(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_364
+	case 28: {
+	//AddAndReplaceKind
+	zend_locale_sprintf_double(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_365
+	case 29: {
+	//AddAndReplaceKind
+	zend_object_store_ctor_failed(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_366
+	case 30: {
+	//AddAndReplaceKind
+	zend_objects_clone_obj(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_367
+	case 31: {
+	//AddAndReplaceKind
+	zend_objects_store_add_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_368
+	case 32: {
+	//AddAndReplaceKind
+	zend_objects_store_clone_obj(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_369
+	case 33: {
+	//AddAndReplaceKind
+	zend_objects_store_del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_370
+	case 34: {
+	//AddAndReplaceKind
+	zend_objects_store_get_refcount(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_371
+	case 35: {
+	//AddAndReplaceKind
+	zend_print_flat_zval_r(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_372
+	case 36: {
+	//AddAndReplaceKind
+	zend_print_variable(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_373
+	case 37: {
+	//AddAndReplaceKind
+	zend_std_get_constructor(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_374
+	case 38: {
+	//AddAndReplaceKind
+	zend_std_get_properties(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_375
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_376
+	case 40: {
+	//AddAndReplaceKind
+	zval_delref_p(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_377
+	case 41: {
+	//AddAndReplaceKind
+	zval_is_true(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_378
+	case 42: {
+	//AddAndReplaceKind
+	zval_isref_p(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_379
+	case 43: {
+	//AddAndReplaceKind
+	zval_refcount_p(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_380
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_381
+	case 45: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_382
+	case 46: {
+	//GuardKind
+	if (!__is_neg("14-46", 34, &(zvalue), sizeof (zvalue), &((*zvalue).value.obj.handlers), sizeof ((*zvalue).value.obj.handlers), &((*zvalue).value.obj.handlers->del_ref), sizeof ((*zvalue).value.obj.handlers->del_ref), &((*zvalue).type), sizeof ((*zvalue).type), &((*zvalue).refcount__gc), sizeof ((*zvalue).refcount__gc), &((*zvalue).is_ref__gc), sizeof ((*zvalue).is_ref__gc), &((*zvalue).value.obj.handle), sizeof ((*zvalue).value.obj.handle), &((*zvalue).value.obj.handlers->add_ref), sizeof ((*zvalue).value.obj.handlers->add_ref), &((*zvalue).value.obj.handlers->clone_obj), sizeof ((*zvalue).value.obj.handlers->clone_obj), &((*zvalue).value.obj.handlers->read_property), sizeof ((*zvalue).value.obj.handlers->read_property), &((*zvalue).value.obj.handlers->write_property), sizeof ((*zvalue).value.obj.handlers->write_property), &((*zvalue).value.obj.handlers->read_dimension), sizeof ((*zvalue).value.obj.handlers->read_dimension), &((*zvalue).value.obj.handlers->write_dimension), sizeof ((*zvalue).value.obj.handlers->write_dimension), &((*zvalue).value.obj.handlers->get_property_ptr_ptr), sizeof ((*zvalue).value.obj.handlers->get_property_ptr_ptr), &((*zvalue).value.obj.handlers->get), sizeof ((*zvalue).value.obj.handlers->get), &((*zvalue).value.obj.handlers->set), sizeof ((*zvalue).value.obj.handlers->set), &((*zvalue).value.obj.handlers->has_property), sizeof ((*zvalue).value.obj.handlers->has_property), &((*zvalue).value.obj.handlers->unset_property), sizeof ((*zvalue).value.obj.handlers->unset_property), &((*zvalue).value.obj.handlers->has_dimension), sizeof ((*zvalue).value.obj.handlers->has_dimension), &((*zvalue).value.obj.handlers->unset_dimension), sizeof ((*zvalue).value.obj.handlers->unset_dimension), &((*zvalue).value.obj.handlers->get_properties), sizeof ((*zvalue).value.obj.handlers->get_properties), &((*zvalue).value.obj.handlers->get_method), sizeof ((*zvalue).value.obj.handlers->get_method), &((*zvalue).value.obj.handlers->call_method), sizeof ((*zvalue).value.obj.handlers->call_method), &((*zvalue).value.obj.handlers->get_constructor), sizeof ((*zvalue).value.obj.handlers->get_constructor), &((*zvalue).value.obj.handlers->get_class_entry), sizeof ((*zvalue).value.obj.handlers->get_class_entry), &((*zvalue).value.obj.handlers->get_class_name), sizeof ((*zvalue).value.obj.handlers->get_class_name), &((*zvalue).value.obj.handlers->compare_objects), sizeof ((*zvalue).value.obj.handlers->compare_objects), &((*zvalue).value.obj.handlers->cast_object), sizeof ((*zvalue).value.obj.handlers->cast_object), &((*zvalue).value.obj.handlers->count_elements), sizeof ((*zvalue).value.obj.handlers->count_elements), &((*zvalue).value.obj.handlers->get_debug_info), sizeof ((*zvalue).value.obj.handlers->get_debug_info), &((*zvalue).value.obj.handlers->get_closure), sizeof ((*zvalue).value.obj.handlers->get_closure), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc)))
+	    (*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_383
+	case 47: {
+	//ReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_384
+	case 48: {
+	//ReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	}
+	}
+				}
+				{
+	switch(__choose("__SWITCH15"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_385
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_386
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_387
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_388
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_389
+	case 5: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_390
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_391
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_392
+	case 8: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_393
+	case 9: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_394
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_395
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_396
+	case 12: {
+	//AddAndReplaceKind
+	_zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_397
+	case 13: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_398
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_399
+	case 15: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_400
+	case 16: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_401
+	case 17: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_402
+	case 18: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_403
+	case 19: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_404
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_405
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_406
+	case 22: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_407
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_408
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+	    zend_hash_destroy(zvalue->value.ht);
+	    _efree((zvalue->value.ht));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_409
+	case 25: {
+	//AddAndReplaceKind
+	if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_410
+	case 26: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_411
+	case 27: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_412
+	case 28: {
+	//AddAndReplaceKind
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_413
+	case 29: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_414
+	case 30: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_415
+	case 31: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_416
+	case 32: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_417
+	case 33: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_418
+	case 34: {
+	//IfExitKind
+	if (__is_neg("15-34", 1, &(zvalue), sizeof (zvalue)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	break;
+	}
+			case IS_RESOURCE:
+				{
+					TSRMLS_FETCH();
+	
+					/* destroy resource */
+					{
+	switch(__choose("__SWITCH16"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_419
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_420
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_421
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_422
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_423
+	case 5: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_424
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_425
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_426
+	case 8: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_427
+	case 9: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_428
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_429
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_430
+	case 12: {
+	//AddAndReplaceKind
+	_zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_431
+	case 13: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_432
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_433
+	case 15: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_434
+	case 16: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_435
+	case 17: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_436
+	case 18: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_437
+	case 19: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_438
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_439
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_440
+	case 22: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_441
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_442
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+	    zend_hash_destroy(zvalue->value.ht);
+	    _efree((zvalue->value.ht));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_443
+	case 25: {
+	//AddAndReplaceKind
+	if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_444
+	case 26: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_445
+	case 27: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_446
+	case 28: {
+	//AddAndReplaceKind
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_447
+	case 29: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_448
+	case 30: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_449
+	case 31: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_450
+	case 32: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_451
+	case 33: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_452
+	case 34: {
+	//AddInitKind
+	memset(&zvalue->value, 0, sizeof (*(&zvalue->value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_453
+	case 35: {
+	//AddInitKind
+	memset(zvalue, 0, sizeof (*(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_454
+	case 36: {
+	//IfExitKind
+	if (__is_neg("16-36", 4, &(zvalue), sizeof (zvalue), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH17"))
+	{
+	case 0: {
+	zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#ifdef COMPILE_455
+	case 1: {
+	//AddAndReplaceKind
+	_Exit(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_456
+	case 2: {
+	//AddAndReplaceKind
+	_zend_list_addref(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_457
+	case 3: {
+	//AddAndReplaceKind
+	abs(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_458
+	case 4: {
+	//AddAndReplaceKind
+	clean_module_constants(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_459
+	case 5: {
+	//AddAndReplaceKind
+	exit(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_460
+	case 6: {
+	//AddAndReplaceKind
+	ffs(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_461
+	case 7: {
+	//AddAndReplaceKind
+	get_binary_op(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_462
+	case 8: {
+	//AddAndReplaceKind
+	get_unary_op(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_463
+	case 9: {
+	//AddAndReplaceKind
+	multi_convert_to_double_ex(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_464
+	case 10: {
+	//AddAndReplaceKind
+	multi_convert_to_long_ex(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_465
+	case 11: {
+	//AddAndReplaceKind
+	multi_convert_to_string_ex(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_466
+	case 12: {
+	//AddAndReplaceKind
+	putchar(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_467
+	case 13: {
+	//AddAndReplaceKind
+	putchar_unlocked(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_468
+	case 14: {
+	//AddAndReplaceKind
+	quick_exit(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_469
+	case 15: {
+	//AddAndReplaceKind
+	strerror(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_470
+	case 16: {
+	//AddAndReplaceKind
+	strsignal(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_471
+	case 17: {
+	//AddAndReplaceKind
+	zend_clean_module_rsrc_dtors(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_472
+	case 18: {
+	//AddAndReplaceKind
+	zend_get_parameters_ex(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_473
+	case 19: {
+	//AddAndReplaceKind
+	zend_get_type_by_const(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_474
+	case 20: {
+	//AddAndReplaceKind
+	zend_memory_peak_usage(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_475
+	case 21: {
+	//AddAndReplaceKind
+	zend_memory_usage(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_476
+	case 22: {
+	//AddAndReplaceKind
+	zend_rsrc_list_get_rsrc_type(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_477
+	case 23: {
+	//AddAndReplaceKind
+	zend_timeout(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_478
+	case 24: {
+	//AddAndReplaceKind
+	zend_vm_stack_extend(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_479
+	case 25: {
+	//AddAndReplaceKind
+	zend_vm_stack_get_arg(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_480
+	case 26: {
+	//AddAndReplaceKind
+	zend_vm_stack_new_page(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_481
+	case 27: {
+	//AddAndReplaceKind
+	zend_vm_stack_push_args(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_482
+	case 28: {
+	//GuardKind
+	if (!__is_neg("17-28", 4, &(zvalue), sizeof (zvalue), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc)))
+	    _zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_483
+	case 29: {
+	//ReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	}
+	}
+				}
+				{
+	switch(__choose("__SWITCH18"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_484
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_485
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_486
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->del_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_487
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_488
+	case 5: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_489
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_490
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_491
+	case 8: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_492
+	case 9: {
+	//AddAndReplaceKind
+	_efree((zvalue->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_493
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_494
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_495
+	case 12: {
+	//AddAndReplaceKind
+	_zend_list_delete(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_496
+	case 13: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_497
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_498
+	case 15: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_499
+	case 16: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_500
+	case 17: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_501
+	case 18: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_502
+	case 19: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_503
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_504
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_505
+	case 22: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_506
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_507
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht && (zvalue->value.ht != &(executor_globals.symbol_table))) {
+	    zend_hash_destroy(zvalue->value.ht);
+	    _efree((zvalue->value.ht));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_508
+	case 25: {
+	//AddAndReplaceKind
+	if (zvalue->value.str.val && !(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    _efree((zvalue->value.str.val));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_509
+	case 26: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_510
+	case 27: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_511
+	case 28: {
+	//AddAndReplaceKind
+	zend_hash_destroy(zvalue->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_512
+	case 29: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_513
+	case 30: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_514
+	case 31: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_515
+	case 32: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_516
+	case 33: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_517
+	case 34: {
+	//IfExitKind
+	if (__is_neg("18-34", 1, &(zvalue), sizeof (zvalue)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	break;
+	}
+			case IS_LONG:
+			case IS_DOUBLE:
+			case IS_BOOL:
+			case IS_NULL:
+			default:
+				return;
+				break;
+		}
+	
+	break;
+	}
+	#ifdef COMPILE_518
+	case 1: {
+	//GuardKind
+	if (!__is_neg("19-1", 1, &(zvalue), sizeof (zvalue)))
+	    break;
+	
+	break;
+	}
+	#endif
+	}
+	}
+}
+
+
+ZEND_API void _zval_internal_dtor(zval *zvalue ZEND_FILE_LINE_DC)
+{
+	//prophet generated patch
+	{
+	switch(__choose("__SWITCH20"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_519
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_520
+	case 2: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_521
+	case 3: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_522
+	case 4: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_523
+	case 5: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_524
+	case 6: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_525
+	case 7: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_526
+	case 8: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_527
+	case 9: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_528
+	case 10: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_529
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_530
+	case 12: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_531
+	case 13: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_532
+	case 14: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_533
+	case 15: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_534
+	case 16: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_535
+	case 17: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_536
+	case 18: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_537
+	case 19: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_538
+	case 20: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_539
+	case 21: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_540
+	case 22: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_541
+	case 23: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_542
+	case 24: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_543
+	case 25: {
+	//AddInitKind
+	memset(&(*zvalue), 0, sizeof (*(&(*zvalue))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_544
+	case 26: {
+	//AddInitKind
+	memset(&compiler_globals, 0, sizeof (*(&compiler_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_545
+	case 27: {
+	//AddInitKind
+	memset(&zvalue->value, 0, sizeof (*(&zvalue->value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_546
+	case 28: {
+	//AddInitKind
+	memset(&zvalue->value.str, 0, sizeof (*(&zvalue->value.str)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_547
+	case 29: {
+	//AddInitKind
+	memset(zvalue, 0, sizeof (*(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_548
+	case 30: {
+	//IfExitKind
+	if (__is_neg("20-30", 7, &(zvalue), sizeof (zvalue), &((*zvalue).type), sizeof ((*zvalue).type), &((*zvalue).refcount__gc), sizeof ((*zvalue).refcount__gc), &((*zvalue).is_ref__gc), sizeof ((*zvalue).is_ref__gc), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH24"))
+	{
+	case 0: {
+	switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+			case IS_STRING:
+			case IS_CONSTANT:
+				CHECK_ZVAL_STRING_REL(zvalue);
+				{
+	switch(__choose("__SWITCH21"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_549
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_550
+	case 2: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_551
+	case 3: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_552
+	case 4: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_553
+	case 5: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_554
+	case 6: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_555
+	case 7: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_556
+	case 8: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_557
+	case 9: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_558
+	case 10: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_559
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_560
+	case 12: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_561
+	case 13: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_562
+	case 14: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_563
+	case 15: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_564
+	case 16: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_565
+	case 17: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_566
+	case 18: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_567
+	case 19: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_568
+	case 20: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_569
+	case 21: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_570
+	case 22: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_571
+	case 23: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_572
+	case 24: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_573
+	case 25: {
+	//AddInitKind
+	memset(&compiler_globals, 0, sizeof (*(&compiler_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_574
+	case 26: {
+	//AddInitKind
+	memset(&zvalue->value, 0, sizeof (*(&zvalue->value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_575
+	case 27: {
+	//AddInitKind
+	memset(&zvalue->value.str, 0, sizeof (*(&zvalue->value.str)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_576
+	case 28: {
+	//AddInitKind
+	memset(zvalue, 0, sizeof (*(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_577
+	case 29: {
+	//IfExitKind
+	if (__is_neg("21-29", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH22"))
+	{
+	case 0: {
+	str_free(zvalue->value.str.val);
+	
+	break;
+	}
+	#ifdef COMPILE_578
+	case 1: {
+	//GuardKind
+	if (!__is_neg("22-1", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)))
+	    do {
+	        if (!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	            free(zvalue->value.str.val);
+	        }
+	    } while (0);
+	
+	break;
+	}
+	#endif
+	}
+	}
+				{
+	switch(__choose("__SWITCH23"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_579
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_580
+	case 2: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_581
+	case 3: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_582
+	case 4: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_583
+	case 5: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_584
+	case 6: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_585
+	case 7: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_586
+	case 8: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_587
+	case 9: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_588
+	case 10: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_589
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_590
+	case 12: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_591
+	case 13: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_592
+	case 14: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_593
+	case 15: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_594
+	case 16: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_595
+	case 17: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_596
+	case 18: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_597
+	case 19: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_598
+	case 20: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_599
+	case 21: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_600
+	case 22: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_601
+	case 23: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_602
+	case 24: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_603
+	case 25: {
+	//IfExitKind
+	if (__is_neg("23-25", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	break;
+	}
+			case IS_ARRAY:
+			case IS_CONSTANT_ARRAY:
+			case IS_OBJECT:
+			case IS_RESOURCE:
+				zend_error(E_CORE_ERROR, "Internal zval's can't be arrays, objects or resources");
+				break;
+			case IS_LONG:
+			case IS_DOUBLE:
+			case IS_BOOL:
+			case IS_NULL:
+			default:
+				break;
+		}
+	
+	break;
+	}
+	#ifdef COMPILE_604
+	case 1: {
+	//GuardKind
+	if (!__is_neg("24-1", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)))
+	    break;
+	
+	break;
+	}
+	#endif
+	}
+	}
+}
+
+
+ZEND_API void zval_add_ref(zval **p)
+{
+	Z_ADDREF_PP(p);
+}
+
+
+ZEND_API void _zval_copy_ctor_func(zval *zvalue ZEND_FILE_LINE_DC)
+{
+	//prophet generated patch
+	{
+	switch(__choose("__SWITCH25"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_605
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->add_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_606
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->add_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_607
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->add_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_608
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_609
+	case 5: {
+	//AddAndReplaceKind
+	(zvalue)->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_610
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_611
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_612
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_613
+	case 9: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_614
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_615
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_616
+	case 12: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_617
+	case 13: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_618
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_619
+	case 15: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_620
+	case 16: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_621
+	case 17: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_622
+	case 18: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_623
+	case 19: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_624
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_625
+	case 21: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_626
+	case 22: {
+	//AddAndReplaceKind
+	if (!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_627
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_628
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht == &(executor_globals.symbol_table)) {
+	    return;
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_629
+	case 25: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_630
+	case 26: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_631
+	case 27: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_632
+	case 28: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_633
+	case 29: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_634
+	case 30: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_635
+	case 31: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_636
+	case 32: {
+	//AddAndReplaceKind
+	zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_637
+	case 33: {
+	//AddInitKind
+	memset(&(*zvalue), 0, sizeof (*(&(*zvalue))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_638
+	case 34: {
+	//AddInitKind
+	memset(&(*zvalue).value, 0, sizeof (*(&(*zvalue).value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_639
+	case 35: {
+	//AddInitKind
+	memset(&(*zvalue).value.obj, 0, sizeof (*(&(*zvalue).value.obj)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_640
+	case 36: {
+	//AddInitKind
+	memset(&compiler_globals, 0, sizeof (*(&compiler_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_641
+	case 37: {
+	//AddInitKind
+	memset(&executor_globals, 0, sizeof (*(&executor_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_642
+	case 38: {
+	//AddInitKind
+	memset(&executor_globals.symbol_table, 0, sizeof (*(&executor_globals.symbol_table)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_643
+	case 39: {
+	//AddInitKind
+	memset(&zvalue->value, 0, sizeof (*(&zvalue->value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_644
+	case 40: {
+	//AddInitKind
+	memset(&zvalue->value.str, 0, sizeof (*(&zvalue->value.str)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_645
+	case 41: {
+	//AddInitKind
+	memset((*zvalue).value.obj.handlers, 0, sizeof (*((*zvalue).value.obj.handlers)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_646
+	case 42: {
+	//AddInitKind
+	memset(zvalue, 0, sizeof (*(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_647
+	case 43: {
+	//IfExitKind
+	if (__is_neg("25-43", 7, &(zvalue), sizeof (zvalue), &((*zvalue).type), sizeof ((*zvalue).type), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &((*zvalue).refcount__gc), sizeof ((*zvalue).refcount__gc), &((*zvalue).is_ref__gc), sizeof ((*zvalue).is_ref__gc)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH30"))
+	{
+	case 0: {
+	switch (Z_TYPE_P(zvalue) & IS_CONSTANT_TYPE_MASK) {
+			case IS_RESOURCE: {
+					TSRMLS_FETCH();
+	
+					zend_list_addref(zvalue->value.lval);
+				}
+				break;
+			case IS_BOOL:
+			case IS_LONG:
+			case IS_NULL:
+				break;
+			case IS_CONSTANT:
+			case IS_STRING:
+				CHECK_ZVAL_STRING_REL(zvalue);
+				{
+	switch(__choose("__SWITCH26"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_648
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->add_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_649
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->add_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_650
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->add_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_651
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_652
+	case 5: {
+	//AddAndReplaceKind
+	(zvalue)->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_653
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_654
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_655
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_656
+	case 9: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_657
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_658
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_659
+	case 12: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_660
+	case 13: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_661
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_662
+	case 15: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_663
+	case 16: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_664
+	case 17: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_665
+	case 18: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_666
+	case 19: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_667
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_668
+	case 21: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_669
+	case 22: {
+	//AddAndReplaceKind
+	if (!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_670
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_671
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht == &(executor_globals.symbol_table)) {
+	    return;
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_672
+	case 25: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_673
+	case 26: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_674
+	case 27: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_675
+	case 28: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_676
+	case 29: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_677
+	case 30: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_678
+	case 31: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_679
+	case 32: {
+	//AddAndReplaceKind
+	zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_680
+	case 33: {
+	//AddInitKind
+	memset(&compiler_globals, 0, sizeof (*(&compiler_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_681
+	case 34: {
+	//AddInitKind
+	memset(&zvalue->value, 0, sizeof (*(&zvalue->value)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_682
+	case 35: {
+	//AddInitKind
+	memset(&zvalue->value.str, 0, sizeof (*(&zvalue->value.str)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_683
+	case 36: {
+	//AddInitKind
+	memset(zvalue, 0, sizeof (*(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_684
+	case 37: {
+	//IfExitKind
+	if (__is_neg("26-37", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	{
+	long long __temp27=(!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) ;
+	switch(__choose("__SWITCH27"))
+	{
+	case 0: {
+	
+	break;
+	}
+	#ifdef COMPILE_685
+	case 1: {
+	__temp27= ((!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) || __is_neg("27-1", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_686
+	case 2: {
+	__temp27= ((!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) && !__is_neg("27-2", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)));
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH28"))
+	{
+	case 0: {
+	if (__temp27) {
+					zvalue->value.str.val = (char *) estrndup_rel(zvalue->value.str.val, zvalue->value.str.len);
+				}
+	
+	break;
+	}
+	#ifdef COMPILE_687
+	case 1: {
+	//GuardKind
+	if (!__is_neg("28-1", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)))
+	    if (!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	        zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
+	    }
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_688
+	case 2: {
+	//SpecialGuardKind
+	if (!__is_neg("28-2", 78, &(zvalue), sizeof (zvalue), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.val), sizeof (zvalue->value.str.val), &(compiler_globals.interned_strings_start), sizeof (compiler_globals.interned_strings_start), &(compiler_globals.interned_strings_end), sizeof (compiler_globals.interned_strings_end), &(zvalue->value.str.len), sizeof (zvalue->value.str.len), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared), &(zvalue->refcount__gc), sizeof (zvalue->refcount__gc), &(zvalue->type), sizeof (zvalue->type), &(zvalue->is_ref__gc), sizeof (zvalue->is_ref__gc), &(compiler_globals.active_class_entry), sizeof (compiler_globals.active_class_entry), &(compiler_globals.compiled_filename), sizeof (compiler_globals.compiled_filename), &(compiler_globals.zend_lineno), sizeof (compiler_globals.zend_lineno), &(compiler_globals.heredoc), sizeof (compiler_globals.heredoc), &(compiler_globals.heredoc_len), sizeof (compiler_globals.heredoc_len), &(compiler_globals.active_op_array), sizeof (compiler_globals.active_op_array), &(compiler_globals.function_table), sizeof (compiler_globals.function_table), &(compiler_globals.class_table), sizeof (compiler_globals.class_table), &(compiler_globals.auto_globals), sizeof (compiler_globals.auto_globals), &(compiler_globals.in_compilation), sizeof (compiler_globals.in_compilation), &(compiler_globals.short_tags), sizeof (compiler_globals.short_tags), &(compiler_globals.asp_tags), sizeof (compiler_globals.asp_tags), &(compiler_globals.unclean_shutdown), sizeof (compiler_globals.unclean_shutdown), &(compiler_globals.ini_parser_unbuffered_errors), sizeof (compiler_globals.ini_parser_unbuffered_errors), &(compiler_globals.catch_begin), sizeof (compiler_globals.catch_begin), &(compiler_globals.ini_parser_param), sizeof (compiler_globals.ini_parser_param), &(compiler_globals.interactive), sizeof (compiler_globals.interactive), &(compiler_globals.start_lineno), sizeof (compiler_globals.start_lineno), &(compiler_globals.increment_lineno), sizeof (compiler_globals.increment_lineno), &(compiler_globals.access_type), sizeof (compiler_globals.access_type), &(compiler_globals.doc_comment), sizeof (compiler_globals.doc_comment), &(compiler_globals.doc_comment_len), sizeof (compiler_globals.doc_comment_len), &(compiler_globals.compiler_options), sizeof (compiler_globals.compiler_options), &(compiler_globals.current_namespace), sizeof (compiler_globals.current_namespace), &(compiler_globals.current_import), sizeof (compiler_globals.current_import), &(compiler_globals.in_namespace), sizeof (compiler_globals.in_namespace), &(compiler_globals.has_bracketed_namespaces), sizeof (compiler_globals.has_bracketed_namespaces), &(compiler_globals.interned_strings_top), sizeof (compiler_globals.interned_strings_top), &(compiler_globals.interned_strings_snapshot_top), sizeof (compiler_globals.interned_strings_snapshot_top), &(compiler_globals.script_encoding_list), sizeof (compiler_globals.script_encoding_list), &(compiler_globals.script_encoding_list_size), sizeof (compiler_globals.script_encoding_list_size), &(compiler_globals.multibyte), sizeof (compiler_globals.multibyte), &(compiler_globals.detect_unicode), sizeof (compiler_globals.detect_unicode), &(compiler_globals.encoding_declared), sizeof (compiler_globals.encoding_declared)) && (!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end))))) {
+	    zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
+	}
+	
+	break;
+	}
+	#endif
+	}
+	}
+	}
+				{
+	switch(__choose("__SWITCH29"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_689
+	case 1: {
+	//AddAndReplaceKind
+	(*(zvalue)).value.obj.handlers->add_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_690
+	case 2: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->add_ref((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_691
+	case 3: {
+	//AddAndReplaceKind
+	(*zvalue).value.obj.handlers->add_ref(zvalue);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_692
+	case 4: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_693
+	case 5: {
+	//AddAndReplaceKind
+	(zvalue)->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_694
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_695
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_696
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((zvalue)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_697
+	case 9: {
+	//AddAndReplaceKind
+	_zend_list_addref((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_698
+	case 10: {
+	//AddAndReplaceKind
+	_zend_list_addref(zvalue->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_699
+	case 11: {
+	//AddAndReplaceKind
+	_zend_list_delete((zvalue)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_700
+	case 12: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_701
+	case 13: {
+	//AddAndReplaceKind
+	_zval_dtor(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_702
+	case 14: {
+	//AddAndReplaceKind
+	_zval_dtor_func((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_703
+	case 15: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_704
+	case 16: {
+	//AddAndReplaceKind
+	convert_to_boolean((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_705
+	case 17: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_706
+	case 18: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_707
+	case 19: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((zvalue)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_708
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_709
+	case 21: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_710
+	case 22: {
+	//AddAndReplaceKind
+	if (!(((zvalue->value.str.val) >= (compiler_globals.interned_strings_start)) && ((zvalue->value.str.val) < (compiler_globals.interned_strings_end)))) {
+	    zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_711
+	case 23: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_712
+	case 24: {
+	//AddAndReplaceKind
+	if (zvalue->value.ht == &(executor_globals.symbol_table)) {
+	    return;
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_713
+	case 25: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_714
+	case 26: {
+	//AddAndReplaceKind
+	zend_hash_destroy((zvalue)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_715
+	case 27: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_716
+	case 28: {
+	//AddAndReplaceKind
+	zval_addref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_717
+	case 29: {
+	//AddAndReplaceKind
+	zval_set_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_718
+	case 30: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((zvalue), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_719
+	case 31: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((zvalue));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_720
+	case 32: {
+	//AddAndReplaceKind
+	zvalue->value.str.val = (char *)_estrndup((zvalue->value.str.val), (zvalue->value.str.len));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_721
+	case 33: {
+	//IfExitKind
+	if (__is_neg("29-33", 1, &(zvalue), sizeof (zvalue)))
+	    return;
+	
+	break;
+	}
+	#endif
+	}
+	break;
+	}
+			case IS_ARRAY:
+			case IS_CONSTANT_ARRAY: {
+					zval *tmp;
+					HashTable *original_ht = zvalue->value.ht;
+					HashTable *tmp_ht = NULL;
+					TSRMLS_FETCH();
+	
+					if (zvalue->value.ht == &EG(symbol_table)) {
+						return; /* do nothing */
+					}
+					ALLOC_HASHTABLE_REL(tmp_ht);
+					zend_hash_init(tmp_ht, zend_hash_num_elements(original_ht), NULL, ZVAL_PTR_DTOR, 0);
+					zend_hash_copy(tmp_ht, original_ht, (copy_ctor_func_t) zval_add_ref, (void *) &tmp, sizeof(zval *));
+					zvalue->value.ht = tmp_ht;
+				}
+				break;
+			case IS_OBJECT:
+				{
+					TSRMLS_FETCH();
+					Z_OBJ_HT_P(zvalue)->add_ref(zvalue TSRMLS_CC);
+				}
+				break;
+		}
+	
+	break;
+	}
+	#ifdef COMPILE_722
+	case 1: {
+	//GuardKind
+	if (!__is_neg("30-1", 1, &(zvalue), sizeof (zvalue)))
+	    break;
+	
+	break;
+	}
+	#endif
+	}
+	}
+}
+
+
+ZEND_API int zend_print_variable(zval *var) 
+{
+	//prophet generated patch
+	{
+	switch(__choose("__SWITCH31"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_723
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_724
+	case 2: {
+	//AddAndReplaceKind
+	_efree(((var)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_725
+	case 3: {
+	//AddAndReplaceKind
+	_efree(((var)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_726
+	case 4: {
+	//AddAndReplaceKind
+	_efree(((var)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_727
+	case 5: {
+	//AddAndReplaceKind
+	_zend_list_addref((var)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_728
+	case 6: {
+	//AddAndReplaceKind
+	_zend_list_delete((var)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_729
+	case 7: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((var));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_730
+	case 8: {
+	//AddAndReplaceKind
+	_zval_dtor(((var)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_731
+	case 9: {
+	//AddAndReplaceKind
+	_zval_dtor_func((var));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_732
+	case 10: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(var)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_733
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_boolean((var));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_734
+	case 12: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_735
+	case 13: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((var));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_736
+	case 14: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((var)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_737
+	case 15: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((var));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_738
+	case 16: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((var));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_739
+	case 17: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_740
+	case 18: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_741
+	case 19: {
+	//AddAndReplaceKind
+	zend_hash_destroy((var)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_742
+	case 20: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_743
+	case 21: {
+	//AddAndReplaceKind
+	zval_addref_p((var));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_744
+	case 22: {
+	//AddAndReplaceKind
+	zval_set_isref_p((var));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_745
+	case 23: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((var), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_746
+	case 24: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((var));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_747
+	case 25: {
+	//IfExitKind
+	if (__is_neg("31-25", 1, &(var), sizeof (var)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH32"))
+	{
+	case 0: {
+	return zend_print_zval(var, 0);
+	
+	break;
+	}
+	#ifdef COMPILE_748
+	case 1: {
+	//GuardKind
+	if (!__is_neg("32-1", 1, &(var), sizeof (var)))
+	    return zend_print_zval(var, 0);
+	
+	break;
+	}
+	#endif
+	}
+	}
+}
+
+
+ZEND_API void _zval_dtor_wrapper(zval *zvalue)
+{
+	TSRMLS_FETCH();
+
+	GC_REMOVE_ZVAL_FROM_BUFFER(zvalue);
+	zval_dtor(zvalue);
+}
+
+
+#if ZEND_DEBUG
+ZEND_API void _zval_copy_ctor_wrapper(zval *zvalue)
+{
+	zval_copy_ctor(zvalue);
+}
+
+
+ZEND_API void _zval_internal_dtor_wrapper(zval *zvalue)
+{
+	zval_internal_dtor(zvalue);
+}
+
+
+ZEND_API void _zval_ptr_dtor_wrapper(zval **zval_ptr)
+{
+	zval_ptr_dtor(zval_ptr);
+}
+
+
+ZEND_API void _zval_internal_ptr_dtor_wrapper(zval **zval_ptr)
+{
+	zval_internal_ptr_dtor(zval_ptr);
+}
+#endif
+
+ZEND_API int zval_copy_static_var(zval **p TSRMLS_DC, int num_args, va_list args, zend_hash_key *key) /* {{{ */
+{
+	HashTable *target = va_arg(args, HashTable*);
+	zend_bool is_ref;
+	zval *tmp;
+  
+	//prophet generated patch
+	{
+	switch(__choose("__SWITCH33"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_749
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_750
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_751
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_752
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_753
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_754
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_755
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_756
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_757
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_758
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_759
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_760
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_761
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_762
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_763
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_764
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_765
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_766
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_767
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_768
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_769
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_770
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_771
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_772
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_773
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_774
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_775
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_776
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_777
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_778
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_779
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_780
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_781
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_782
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_783
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_784
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_785
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_786
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_787
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_788
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_789
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_790
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_791
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_792
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_793
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_794
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_795
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_796
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_797
+	case 49: {
+	//AddInitKind
+	memset(&((zval_gc_info *)(tmp))->u, 0, sizeof (*(&((zval_gc_info *)(tmp))->u)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_798
+	case 50: {
+	//AddInitKind
+	memset(&(**(p)), 0, sizeof (*(&(**(p)))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_799
+	case 51: {
+	//AddInitKind
+	memset(&(**p), 0, sizeof (*(&(**p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_800
+	case 52: {
+	//AddInitKind
+	memset(&(*tmp), 0, sizeof (*(&(*tmp))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_801
+	case 53: {
+	//AddInitKind
+	memset(&executor_globals, 0, sizeof (*(&executor_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_802
+	case 54: {
+	//AddInitKind
+	memset(((zval_gc_info *)(tmp)), 0, sizeof (*(((zval_gc_info *)(tmp)))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_803
+	case 55: {
+	//AddInitKind
+	memset((*(p)), 0, sizeof (*((*(p)))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_804
+	case 56: {
+	//AddInitKind
+	memset((*p), 0, sizeof (*((*p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_805
+	case 57: {
+	//AddInitKind
+	memset((tmp), 0, sizeof (*((tmp))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_806
+	case 58: {
+	//AddInitKind
+	memset(key, 0, sizeof (*(key)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_807
+	case 59: {
+	//IfExitKind
+	if (__is_neg("33-59", 9, &(p), sizeof (p), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_808
+	case 60: {
+	//IfExitKind
+	if (__is_neg("33-60", 9, &(p), sizeof (p), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_809
+	case 61: {
+	//IfExitKind
+	if (__is_neg("33-61", 9, &(p), sizeof (p), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_810
+	case 62: {
+	//IfExitKind
+	if (__is_neg("33-62", 9, &(p), sizeof (p), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_811
+	case 63: {
+	//IfExitKind
+	if (__is_neg("33-63", 9, &(p), sizeof (p), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	{
+	long long __temp34=((**p).type & (32 | 64)) ;
+	switch(__choose("__SWITCH34"))
+	{
+	case 0: {
+	
+	break;
+	}
+	#ifdef COMPILE_812
+	case 1: {
+	__temp34= (((**p).type & (32 | 64)) || __is_neg("34-1", 9, &(p), sizeof (p), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_813
+	case 2: {
+	__temp34= (((**p).type & (32 | 64)) && !__is_neg("34-2", 9, &(p), sizeof (p), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)));
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH59"))
+	{
+	case 0: {
+	if (__temp34) {
+			{
+	switch(__choose("__SWITCH35"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_814
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_815
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_816
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_817
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_818
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_819
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_820
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_821
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_822
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_823
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_824
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_825
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_826
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_827
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_828
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_829
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_830
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_831
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_832
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_833
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_834
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_835
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_836
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_837
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_838
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_839
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_840
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_841
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_842
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_843
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_844
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_845
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_846
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_847
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_848
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_849
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_850
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_851
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_852
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_853
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_854
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_855
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_856
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_857
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_858
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_859
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_860
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_861
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_862
+	case 49: {
+	//AddInitKind
+	memset(&(**p), 0, sizeof (*(&(**p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_863
+	case 50: {
+	//IfExitKind
+	if (__is_neg("35-50", 9, &(p), sizeof (p), &(is_ref), sizeof (is_ref), &((**p).type), sizeof ((**p).type), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_864
+	case 51: {
+	//IfExitKind
+	if (__is_neg("35-51", 9, &(p), sizeof (p), &(is_ref), sizeof (is_ref), &((**p).type), sizeof ((**p).type), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_865
+	case 52: {
+	//IfExitKind
+	if (__is_neg("35-52", 9, &(p), sizeof (p), &(is_ref), sizeof (is_ref), &((**p).type), sizeof ((**p).type), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_866
+	case 53: {
+	//IfExitKind
+	if (__is_neg("35-53", 9, &(p), sizeof (p), &(is_ref), sizeof (is_ref), &((**p).type), sizeof ((**p).type), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_867
+	case 54: {
+	//IfExitKind
+	if (__is_neg("35-54", 9, &(p), sizeof (p), &(is_ref), sizeof (is_ref), &((**p).type), sizeof ((**p).type), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH36"))
+	{
+	case 0: {
+	is_ref = Z_TYPE_PP(p) & IS_LEXICAL_REF;
+	
+	break;
+	}
+	#ifdef COMPILE_868
+	case 1: {
+	//GuardKind
+	if (!__is_neg("36-1", 9, &(p), sizeof (p), &(is_ref), sizeof (is_ref), &((**p).type), sizeof ((**p).type), &(args), sizeof (args), &(key), sizeof (key), &(tmp), sizeof (tmp), &(target), sizeof (target), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_869
+	case 2: {
+	//ReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	}
+	}
+	    
+			{
+	switch(__choose("__SWITCH37"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_870
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_871
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_872
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_873
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_874
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_875
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_876
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_877
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_878
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_879
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_880
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_881
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_882
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_883
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_884
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_885
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_886
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_887
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_888
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_889
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_890
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_891
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_892
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_893
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_894
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_895
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_896
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_897
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_898
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_899
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_900
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_901
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_902
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_903
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_904
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_905
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_906
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_907
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_908
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_909
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_910
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_911
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_912
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_913
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_914
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_915
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_916
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_917
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_918
+	case 49: {
+	//AddInitKind
+	memset(&executor_globals, 0, sizeof (*(&executor_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_919
+	case 50: {
+	//IfExitKind
+	if (__is_neg("37-50", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_920
+	case 51: {
+	//IfExitKind
+	if (__is_neg("37-51", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_921
+	case 52: {
+	//IfExitKind
+	if (__is_neg("37-52", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_922
+	case 53: {
+	//IfExitKind
+	if (__is_neg("37-53", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_923
+	case 54: {
+	//IfExitKind
+	if (__is_neg("37-54", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	{
+	long long __temp38=(!(executor_globals.active_symbol_table)) ;
+	switch(__choose("__SWITCH38"))
+	{
+	case 0: {
+	
+	break;
+	}
+	#ifdef COMPILE_924
+	case 1: {
+	__temp38= ((!(executor_globals.active_symbol_table)) || __is_neg("38-1", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_925
+	case 2: {
+	__temp38= ((!(executor_globals.active_symbol_table)) && !__is_neg("38-2", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)));
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH41"))
+	{
+	case 0: {
+	if (__temp38) {
+				{
+	switch(__choose("__SWITCH39"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_926
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_927
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_928
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_929
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_930
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_931
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_932
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_933
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_934
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_935
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_936
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_937
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_938
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_939
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_940
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_941
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_942
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_943
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_944
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_945
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_946
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_947
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_948
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_949
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_950
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_951
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_952
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_953
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_954
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_955
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_956
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_957
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_958
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_959
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_960
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_961
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_962
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_963
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_964
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_965
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_966
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_967
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_968
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_969
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_970
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_971
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_972
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_973
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_974
+	case 49: {
+	//IfExitKind
+	if (__is_neg("39-49", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(key), sizeof (key), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_975
+	case 50: {
+	//IfExitKind
+	if (__is_neg("39-50", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(key), sizeof (key), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_976
+	case 51: {
+	//IfExitKind
+	if (__is_neg("39-51", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(key), sizeof (key), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_977
+	case 52: {
+	//IfExitKind
+	if (__is_neg("39-52", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(key), sizeof (key), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_978
+	case 53: {
+	//IfExitKind
+	if (__is_neg("39-53", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(key), sizeof (key), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH40"))
+	{
+	case 0: {
+	zend_rebuild_symbol_table(TSRMLS_C);
+	
+	break;
+	}
+	#ifdef COMPILE_979
+	case 1: {
+	//GuardKind
+	if (!__is_neg("40-1", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(key), sizeof (key), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	}
+	}
+			}
+	
+	break;
+	}
+	#ifdef COMPILE_980
+	case 1: {
+	//GuardKind
+	if (!__is_neg("41-1", 96, &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(p), sizeof (p), &(key), sizeof (key), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(args), sizeof (args), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	}
+	}
+	}
+			{
+	switch(__choose("__SWITCH42"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_981
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_982
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_983
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_984
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_985
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_986
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_987
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_988
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_989
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_990
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_991
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_992
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_993
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_994
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_995
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_996
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_997
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_998
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_999
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1000
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1001
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1002
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1003
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1004
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1005
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1006
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1007
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1008
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1009
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1010
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1011
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1012
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1013
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1014
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1015
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1016
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1017
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1018
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1019
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1020
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1021
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1022
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1023
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1024
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1025
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1026
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1027
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1028
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1029
+	case 49: {
+	//AddInitKind
+	memset(&((zval_gc_info *)(tmp))->u, 0, sizeof (*(&((zval_gc_info *)(tmp))->u)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1030
+	case 50: {
+	//AddInitKind
+	memset(&(**(p)), 0, sizeof (*(&(**(p)))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1031
+	case 51: {
+	//AddInitKind
+	memset(&(**p), 0, sizeof (*(&(**p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1032
+	case 52: {
+	//AddInitKind
+	memset(&(*tmp), 0, sizeof (*(&(*tmp))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1033
+	case 53: {
+	//AddInitKind
+	memset(&executor_globals, 0, sizeof (*(&executor_globals)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1034
+	case 54: {
+	//AddInitKind
+	memset(((zval_gc_info *)(tmp)), 0, sizeof (*(((zval_gc_info *)(tmp)))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1035
+	case 55: {
+	//AddInitKind
+	memset((*(p)), 0, sizeof (*((*(p)))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1036
+	case 56: {
+	//AddInitKind
+	memset((*p), 0, sizeof (*((*p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1037
+	case 57: {
+	//AddInitKind
+	memset((tmp), 0, sizeof (*((tmp))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1038
+	case 58: {
+	//AddInitKind
+	memset(key, 0, sizeof (*(key)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1039
+	case 59: {
+	//IfExitKind
+	if (__is_neg("42-59", 99, &(p), sizeof (p), &(key), sizeof (key), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(args), sizeof (args), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1040
+	case 60: {
+	//IfExitKind
+	if (__is_neg("42-60", 99, &(p), sizeof (p), &(key), sizeof (key), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(args), sizeof (args), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1041
+	case 61: {
+	//IfExitKind
+	if (__is_neg("42-61", 99, &(p), sizeof (p), &(key), sizeof (key), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(args), sizeof (args), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1042
+	case 62: {
+	//IfExitKind
+	if (__is_neg("42-62", 99, &(p), sizeof (p), &(key), sizeof (key), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(args), sizeof (args), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1043
+	case 63: {
+	//IfExitKind
+	if (__is_neg("42-63", 99, &(p), sizeof (p), &(key), sizeof (key), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(args), sizeof (args), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	{
+	long long __temp43=(zend_hash_quick_find((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **)&p) == -1) ;
+	switch(__choose("__SWITCH43"))
+	{
+	case 0: {
+	
+	break;
+	}
+	#ifdef COMPILE_1044
+	case 1: {
+	__temp43= ((zend_hash_quick_find((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **)&p) == -1) || __is_neg("43-1", 99, &(p), sizeof (p), &(key), sizeof (key), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(args), sizeof (args), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1045
+	case 2: {
+	__temp43= ((zend_hash_quick_find((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, (void **)&p) == -1) && !__is_neg("43-2", 99, &(p), sizeof (p), &(key), sizeof (key), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(executor_globals.active_symbol_table), sizeof (executor_globals.active_symbol_table), &(is_ref), sizeof (is_ref), &(tmp), sizeof (tmp), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(executor_globals.uninitialized_zval_ptr), sizeof (executor_globals.uninitialized_zval_ptr), &(args), sizeof (args), &(target), sizeof (target), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw), &(executor_globals.return_value_ptr_ptr), sizeof (executor_globals.return_value_ptr_ptr), &(executor_globals.error_zval_ptr), sizeof (executor_globals.error_zval_ptr), &(executor_globals.symtable_cache_limit), sizeof (executor_globals.symtable_cache_limit), &(executor_globals.symtable_cache_ptr), sizeof (executor_globals.symtable_cache_ptr), &(executor_globals.opline_ptr), sizeof (executor_globals.opline_ptr), &(executor_globals.bailout), sizeof (executor_globals.bailout), &(executor_globals.error_reporting), sizeof (executor_globals.error_reporting), &(executor_globals.orig_error_reporting), sizeof (executor_globals.orig_error_reporting), &(executor_globals.exit_status), sizeof (executor_globals.exit_status), &(executor_globals.active_op_array), sizeof (executor_globals.active_op_array), &(executor_globals.function_table), sizeof (executor_globals.function_table), &(executor_globals.class_table), sizeof (executor_globals.class_table), &(executor_globals.zend_constants), sizeof (executor_globals.zend_constants), &(executor_globals.scope), sizeof (executor_globals.scope), &(executor_globals.called_scope), sizeof (executor_globals.called_scope), &(executor_globals.This), sizeof (executor_globals.This), &(executor_globals.precision), sizeof (executor_globals.precision), &(executor_globals.ticks_count), sizeof (executor_globals.ticks_count), &(executor_globals.in_execution), sizeof (executor_globals.in_execution), &(executor_globals.in_autoload), sizeof (executor_globals.in_autoload), &(executor_globals.autoload_func), sizeof (executor_globals.autoload_func), &(executor_globals.full_tables_cleanup), sizeof (executor_globals.full_tables_cleanup), &(executor_globals.no_extensions), sizeof (executor_globals.no_extensions), &(executor_globals.argument_stack), sizeof (executor_globals.argument_stack), &(executor_globals.user_error_handler_error_reporting), sizeof (executor_globals.user_error_handler_error_reporting), &(executor_globals.user_error_handler), sizeof (executor_globals.user_error_handler), &(executor_globals.user_exception_handler), sizeof (executor_globals.user_exception_handler), &(executor_globals.error_handling), sizeof (executor_globals.error_handling), &(executor_globals.exception_class), sizeof (executor_globals.exception_class), &(executor_globals.timeout_seconds), sizeof (executor_globals.timeout_seconds), &(executor_globals.lambda_count), sizeof (executor_globals.lambda_count), &(executor_globals.ini_directives), sizeof (executor_globals.ini_directives), &(executor_globals.modified_ini_directives), sizeof (executor_globals.modified_ini_directives), &(executor_globals.error_reporting_ini_entry), sizeof (executor_globals.error_reporting_ini_entry), &(executor_globals.exception), sizeof (executor_globals.exception), &(executor_globals.prev_exception), sizeof (executor_globals.prev_exception), &(executor_globals.opline_before_exception), sizeof (executor_globals.opline_before_exception), &(executor_globals.current_execute_data), sizeof (executor_globals.current_execute_data), &(executor_globals.current_module), sizeof (executor_globals.current_module), &(executor_globals.active), sizeof (executor_globals.active), &(executor_globals.start_op), sizeof (executor_globals.start_op), &(executor_globals.saved_fpu_cw_ptr), sizeof (executor_globals.saved_fpu_cw_ptr), &(executor_globals.saved_fpu_cw), sizeof (executor_globals.saved_fpu_cw)));
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH58"))
+	{
+	case 0: {
+	if (__temp43) {
+				if (is_ref) {        
+					ALLOC_INIT_ZVAL(tmp);
+					Z_SET_ISREF_P(tmp);
+					zend_hash_quick_add(EG(active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval*), (void**)&p);
+				} else {
+					tmp = EG(uninitialized_zval_ptr);
+					zend_error(E_NOTICE,"Undefined variable: %s", key->arKey);
+				}
+			} else {
+				{
+	switch(__choose("__SWITCH44"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_1046
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1047
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1048
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1049
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1050
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1051
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1052
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1053
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1054
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1055
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1056
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1057
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1058
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1059
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1060
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1061
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1062
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1063
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1064
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1065
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1066
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1067
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1068
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1069
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1070
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1071
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1072
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1073
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1074
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1075
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1076
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1077
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1078
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1079
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1080
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1081
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1082
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1083
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1084
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1085
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1086
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1087
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1088
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1089
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1090
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1091
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1092
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1093
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1094
+	case 49: {
+	//AddInitKind
+	memset(&((zval_gc_info *)(tmp))->u, 0, sizeof (*(&((zval_gc_info *)(tmp))->u)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1095
+	case 50: {
+	//AddInitKind
+	memset(&(**(p)), 0, sizeof (*(&(**(p)))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1096
+	case 51: {
+	//AddInitKind
+	memset(&(**p), 0, sizeof (*(&(**p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1097
+	case 52: {
+	//AddInitKind
+	memset(&(*tmp), 0, sizeof (*(&(*tmp))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1098
+	case 53: {
+	//AddInitKind
+	memset(((zval_gc_info *)(tmp)), 0, sizeof (*(((zval_gc_info *)(tmp)))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1099
+	case 54: {
+	//AddInitKind
+	memset((*(p)), 0, sizeof (*((*(p)))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1100
+	case 55: {
+	//AddInitKind
+	memset((*p), 0, sizeof (*((*p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1101
+	case 56: {
+	//AddInitKind
+	memset((tmp), 0, sizeof (*((tmp))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1102
+	case 57: {
+	//IfExitKind
+	if (__is_neg("44-57", 12, &(is_ref), sizeof (is_ref), &(p), sizeof (p), &((**(p)).type), sizeof ((**(p)).type), &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((*(p))->refcount__gc), sizeof ((*(p))->refcount__gc), &((*(p))->type), sizeof ((*(p))->type), &((*(p))->is_ref__gc), sizeof ((*(p))->is_ref__gc), &((**(p)).refcount__gc), sizeof ((**(p)).refcount__gc), &((**(p)).is_ref__gc), sizeof ((**(p)).is_ref__gc)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1103
+	case 58: {
+	//IfExitKind
+	if (__is_neg("44-58", 12, &(is_ref), sizeof (is_ref), &(p), sizeof (p), &((**(p)).type), sizeof ((**(p)).type), &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((*(p))->refcount__gc), sizeof ((*(p))->refcount__gc), &((*(p))->type), sizeof ((*(p))->type), &((*(p))->is_ref__gc), sizeof ((*(p))->is_ref__gc), &((**(p)).refcount__gc), sizeof ((**(p)).refcount__gc), &((**(p)).is_ref__gc), sizeof ((**(p)).is_ref__gc)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1104
+	case 59: {
+	//IfExitKind
+	if (__is_neg("44-59", 12, &(is_ref), sizeof (is_ref), &(p), sizeof (p), &((**(p)).type), sizeof ((**(p)).type), &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((*(p))->refcount__gc), sizeof ((*(p))->refcount__gc), &((*(p))->type), sizeof ((*(p))->type), &((*(p))->is_ref__gc), sizeof ((*(p))->is_ref__gc), &((**(p)).refcount__gc), sizeof ((**(p)).refcount__gc), &((**(p)).is_ref__gc), sizeof ((**(p)).is_ref__gc)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1105
+	case 60: {
+	//IfExitKind
+	if (__is_neg("44-60", 12, &(is_ref), sizeof (is_ref), &(p), sizeof (p), &((**(p)).type), sizeof ((**(p)).type), &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((*(p))->refcount__gc), sizeof ((*(p))->refcount__gc), &((*(p))->type), sizeof ((*(p))->type), &((*(p))->is_ref__gc), sizeof ((*(p))->is_ref__gc), &((**(p)).refcount__gc), sizeof ((**(p)).refcount__gc), &((**(p)).is_ref__gc), sizeof ((**(p)).is_ref__gc)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1106
+	case 61: {
+	//IfExitKind
+	if (__is_neg("44-61", 12, &(is_ref), sizeof (is_ref), &(p), sizeof (p), &((**(p)).type), sizeof ((**(p)).type), &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((*(p))->refcount__gc), sizeof ((*(p))->refcount__gc), &((*(p))->type), sizeof ((*(p))->type), &((*(p))->is_ref__gc), sizeof ((*(p))->is_ref__gc), &((**(p)).refcount__gc), sizeof ((**(p)).refcount__gc), &((**(p)).is_ref__gc), sizeof ((**(p)).is_ref__gc)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	{
+	long long __temp45=(is_ref) ;
+	switch(__choose("__SWITCH45"))
+	{
+	case 0: {
+	
+	break;
+	}
+	#ifdef COMPILE_1107
+	case 1: {
+	__temp45= ((is_ref) || __is_neg("45-1", 12, &(is_ref), sizeof (is_ref), &(p), sizeof (p), &((**(p)).type), sizeof ((**(p)).type), &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((*(p))->refcount__gc), sizeof ((*(p))->refcount__gc), &((*(p))->type), sizeof ((*(p))->type), &((*(p))->is_ref__gc), sizeof ((*(p))->is_ref__gc), &((**(p)).refcount__gc), sizeof ((**(p)).refcount__gc), &((**(p)).is_ref__gc), sizeof ((**(p)).is_ref__gc)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1108
+	case 2: {
+	__temp45= ((is_ref) && !__is_neg("45-2", 12, &(is_ref), sizeof (is_ref), &(p), sizeof (p), &((**(p)).type), sizeof ((**(p)).type), &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((*(p))->refcount__gc), sizeof ((*(p))->refcount__gc), &((*(p))->type), sizeof ((*(p))->type), &((*(p))->is_ref__gc), sizeof ((*(p))->is_ref__gc), &((**(p)).refcount__gc), sizeof ((**(p)).refcount__gc), &((**(p)).is_ref__gc), sizeof ((**(p)).is_ref__gc)));
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH57"))
+	{
+	case 0: {
+	if (__temp45) {
+					SEPARATE_ZVAL_TO_MAKE_IS_REF(p);
+					tmp = *p;
+				} else {
+	switch(__choose("__SWITCH46"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_1109
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1110
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1111
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1112
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1113
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1114
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1115
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1116
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1117
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1118
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1119
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1120
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1121
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1122
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1123
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1124
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1125
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1126
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1127
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1128
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1129
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1130
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1131
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1132
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1133
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1134
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1135
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1136
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1137
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1138
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1139
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1140
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1141
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1142
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1143
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1144
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1145
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1146
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1147
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1148
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1149
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1150
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1151
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1152
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1153
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1154
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1155
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1156
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1157
+	case 49: {
+	//AddInitKind
+	memset(&((zval_gc_info *)(tmp))->u, 0, sizeof (*(&((zval_gc_info *)(tmp))->u)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1158
+	case 50: {
+	//AddInitKind
+	memset(&(**p), 0, sizeof (*(&(**p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1159
+	case 51: {
+	//AddInitKind
+	memset(&(*tmp), 0, sizeof (*(&(*tmp))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1160
+	case 52: {
+	//AddInitKind
+	memset(((zval_gc_info *)(tmp)), 0, sizeof (*(((zval_gc_info *)(tmp)))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1161
+	case 53: {
+	//AddInitKind
+	memset((*p), 0, sizeof (*((*p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1162
+	case 54: {
+	//AddInitKind
+	memset((tmp), 0, sizeof (*((tmp))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1163
+	case 55: {
+	//IfExitKind
+	if (__is_neg("46-55", 12, &(p), sizeof (p), &(tmp), sizeof (tmp), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1164
+	case 56: {
+	//IfExitKind
+	if (__is_neg("46-56", 12, &(p), sizeof (p), &(tmp), sizeof (tmp), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1165
+	case 57: {
+	//IfExitKind
+	if (__is_neg("46-57", 12, &(p), sizeof (p), &(tmp), sizeof (tmp), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1166
+	case 58: {
+	//IfExitKind
+	if (__is_neg("46-58", 12, &(p), sizeof (p), &(tmp), sizeof (tmp), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1167
+	case 59: {
+	//IfExitKind
+	if (__is_neg("46-59", 12, &(p), sizeof (p), &(tmp), sizeof (tmp), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	{
+	long long __temp47=(zval_isref_p(*(p))) ;
+	switch(__choose("__SWITCH47"))
+	{
+	case 0: {
+	
+	break;
+	}
+	#ifdef COMPILE_1168
+	case 1: {
+	__temp47= ((zval_isref_p(*(p))) || __is_neg("47-1", 12, &(p), sizeof (p), &(tmp), sizeof (tmp), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1169
+	case 2: {
+	__temp47= ((zval_isref_p(*(p))) && !__is_neg("47-2", 12, &(p), sizeof (p), &(tmp), sizeof (tmp), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)));
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH56"))
+	{
+	case 0: {
+	if (__temp47) {
+					{
+	switch(__choose("__SWITCH48"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_1170
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1171
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1172
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1173
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1174
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1175
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1176
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1177
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1178
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1179
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1180
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1181
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1182
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1183
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1184
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1185
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1186
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1187
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1188
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1189
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1190
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1191
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1192
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1193
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1194
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1195
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1196
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1197
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1198
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1199
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1200
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1201
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1202
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1203
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1204
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1205
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1206
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1207
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1208
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1209
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1210
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1211
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1212
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1213
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1214
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1215
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1216
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1217
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1218
+	case 49: {
+	//AddInitKind
+	memset(&((zval_gc_info *)(tmp))->u, 0, sizeof (*(&((zval_gc_info *)(tmp))->u)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1219
+	case 50: {
+	//AddInitKind
+	memset(((zval_gc_info *)(tmp)), 0, sizeof (*(((zval_gc_info *)(tmp)))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1220
+	case 51: {
+	//AddInitKind
+	memset((tmp), 0, sizeof (*((tmp))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1221
+	case 52: {
+	//IfExitKind
+	if (__is_neg("48-52", 21, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1222
+	case 53: {
+	//IfExitKind
+	if (__is_neg("48-53", 21, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1223
+	case 54: {
+	//IfExitKind
+	if (__is_neg("48-54", 21, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1224
+	case 55: {
+	//IfExitKind
+	if (__is_neg("48-55", 21, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1225
+	case 56: {
+	//IfExitKind
+	if (__is_neg("48-56", 21, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH49"))
+	{
+	case 0: {
+	ALLOC_INIT_ZVAL(tmp);
+	
+	break;
+	}
+	#ifdef COMPILE_1226
+	case 1: {
+	//GuardKind
+	if (!__is_neg("49-1", 21, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    do {
+	        (tmp) = (zval *)_emalloc((sizeof(zval_gc_info)));
+	        ((zval_gc_info *)(tmp))->u.buffered = ((void *)0);
+	    } while (0);
+	
+	break;
+	}
+	#endif
+	}
+	}
+					{
+	switch(__choose("__SWITCH50"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_1227
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1228
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1229
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1230
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1231
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1232
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1233
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1234
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1235
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1236
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1237
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1238
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1239
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1240
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1241
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1242
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1243
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1244
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1245
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1246
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1247
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1248
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1249
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1250
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1251
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1252
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1253
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1254
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1255
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1256
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1257
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1258
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1259
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1260
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1261
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1262
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1263
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1264
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1265
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1266
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1267
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1268
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1269
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1270
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1271
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1272
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1273
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1274
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1275
+	case 49: {
+	//AddInitKind
+	memset(&(**p), 0, sizeof (*(&(**p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1276
+	case 50: {
+	//AddInitKind
+	memset(&(*tmp), 0, sizeof (*(&(*tmp))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1277
+	case 51: {
+	//AddInitKind
+	memset((*p), 0, sizeof (*((*p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1278
+	case 52: {
+	//AddInitKind
+	memset((tmp), 0, sizeof (*((tmp))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1279
+	case 53: {
+	//IfExitKind
+	if (__is_neg("50-53", 21, &(p), sizeof (p), &(tmp), sizeof (tmp), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1280
+	case 54: {
+	//IfExitKind
+	if (__is_neg("50-54", 21, &(p), sizeof (p), &(tmp), sizeof (tmp), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1281
+	case 55: {
+	//IfExitKind
+	if (__is_neg("50-55", 21, &(p), sizeof (p), &(tmp), sizeof (tmp), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1282
+	case 56: {
+	//IfExitKind
+	if (__is_neg("50-56", 21, &(p), sizeof (p), &(tmp), sizeof (tmp), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1283
+	case 57: {
+	//IfExitKind
+	if (__is_neg("50-57", 21, &(p), sizeof (p), &(tmp), sizeof (tmp), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH51"))
+	{
+	case 0: {
+	ZVAL_COPY_VALUE(tmp, *p);
+	
+	break;
+	}
+	#ifdef COMPILE_1284
+	case 1: {
+	//GuardKind
+	if (!__is_neg("51-1", 21, &(p), sizeof (p), &(tmp), sizeof (tmp), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc), &(zval_used_for_init.refcount__gc), sizeof (zval_used_for_init.refcount__gc), &(zval_used_for_init.type), sizeof (zval_used_for_init.type), &(zval_used_for_init.is_ref__gc), sizeof (zval_used_for_init.is_ref__gc)))
+	    do {
+	        (tmp)->value = (*p)->value;
+	        (*tmp).type = (**p).type;
+	    } while (0);
+	
+	break;
+	}
+	#endif
+	}
+	}
+					{
+	switch(__choose("__SWITCH52"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_1285
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1286
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1287
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1288
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1289
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1290
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1291
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1292
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1293
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1294
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1295
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1296
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1297
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1298
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1299
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1300
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1301
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1302
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1303
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1304
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1305
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1306
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1307
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1308
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1309
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1310
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1311
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1312
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1313
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1314
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1315
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1316
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1317
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1318
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1319
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1320
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1321
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1322
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1323
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1324
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1325
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1326
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1327
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1328
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1329
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1330
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1331
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1332
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1333
+	case 49: {
+	//IfExitKind
+	if (__is_neg("52-49", 18, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1334
+	case 50: {
+	//IfExitKind
+	if (__is_neg("52-50", 18, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1335
+	case 51: {
+	//IfExitKind
+	if (__is_neg("52-51", 18, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1336
+	case 52: {
+	//IfExitKind
+	if (__is_neg("52-52", 18, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1337
+	case 53: {
+	//IfExitKind
+	if (__is_neg("52-53", 18, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH53"))
+	{
+	case 0: {
+	Z_SET_REFCOUNT_P(tmp, 0);
+	
+	break;
+	}
+	#ifdef COMPILE_1338
+	case 1: {
+	//AddAndReplaceKind
+	__overflow(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1339
+	case 2: {
+	//AddAndReplaceKind
+	__sigsetjmp(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1340
+	case 3: {
+	//AddAndReplaceKind
+	__stpcpy(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1341
+	case 4: {
+	//AddAndReplaceKind
+	__zend_realloc(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1342
+	case 5: {
+	//AddAndReplaceKind
+	_array_init(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1343
+	case 6: {
+	//AddAndReplaceKind
+	_estrndup(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1344
+	case 7: {
+	//AddAndReplaceKind
+	_longjmp(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1345
+	case 8: {
+	//AddAndReplaceKind
+	_object_init_ex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1346
+	case 9: {
+	//AddAndReplaceKind
+	_zend_bailout(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1347
+	case 10: {
+	//AddAndReplaceKind
+	_zend_mm_alloc(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1348
+	case 11: {
+	//AddAndReplaceKind
+	_zend_mm_block_size(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1349
+	case 12: {
+	//AddAndReplaceKind
+	_zend_mm_free(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1350
+	case 13: {
+	//AddAndReplaceKind
+	add_index_null(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1351
+	case 14: {
+	//AddAndReplaceKind
+	add_next_index_bool(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1352
+	case 15: {
+	//AddAndReplaceKind
+	add_next_index_long(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1353
+	case 16: {
+	//AddAndReplaceKind
+	add_next_index_resource(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1354
+	case 17: {
+	//AddAndReplaceKind
+	add_next_index_zval(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1355
+	case 18: {
+	//AddAndReplaceKind
+	add_trait_alias(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1356
+	case 19: {
+	//AddAndReplaceKind
+	bitwise_not_function(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1357
+	case 20: {
+	//AddAndReplaceKind
+	boolean_not_function(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1358
+	case 21: {
+	//AddAndReplaceKind
+	bzero(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1359
+	case 22: {
+	//AddAndReplaceKind
+	compile_file(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1360
+	case 23: {
+	//AddAndReplaceKind
+	compile_string(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1361
+	case 24: {
+	//AddAndReplaceKind
+	convert_to_long_base(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1362
+	case 25: {
+	//AddAndReplaceKind
+	dlopen(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1363
+	case 26: {
+	//AddAndReplaceKind
+	dlsym(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1364
+	case 27: {
+	//AddAndReplaceKind
+	drand48_r(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1365
+	case 28: {
+	//AddAndReplaceKind
+	execute_internal(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1366
+	case 29: {
+	//AddAndReplaceKind
+	explicit_bzero(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1367
+	case 30: {
+	//AddAndReplaceKind
+	fgetpos(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1368
+	case 31: {
+	//AddAndReplaceKind
+	fopen(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1369
+	case 32: {
+	//AddAndReplaceKind
+	fprintf(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1370
+	case 33: {
+	//AddAndReplaceKind
+	fputs(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1371
+	case 34: {
+	//AddAndReplaceKind
+	fscanf(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1372
+	case 35: {
+	//AddAndReplaceKind
+	fsetpos(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1373
+	case 36: {
+	//AddAndReplaceKind
+	getloadavg(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1374
+	case 37: {
+	//AddAndReplaceKind
+	index(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1375
+	case 38: {
+	//AddAndReplaceKind
+	init_trait_alias_list(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1376
+	case 39: {
+	//AddAndReplaceKind
+	instanceof_function(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1377
+	case 40: {
+	//AddAndReplaceKind
+	lcong48_r(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1378
+	case 41: {
+	//AddAndReplaceKind
+	longjmp(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1379
+	case 42: {
+	//AddAndReplaceKind
+	lrand48_r(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1380
+	case 43: {
+	//AddAndReplaceKind
+	mblen(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1381
+	case 44: {
+	//AddAndReplaceKind
+	mkstemps(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1382
+	case 45: {
+	//AddAndReplaceKind
+	mrand48_r(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1383
+	case 46: {
+	//AddAndReplaceKind
+	object_properties_init(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1384
+	case 47: {
+	//AddAndReplaceKind
+	on_exit(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1385
+	case 48: {
+	//AddAndReplaceKind
+	open_memstream(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1386
+	case 49: {
+	//AddAndReplaceKind
+	popen(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1387
+	case 50: {
+	//AddAndReplaceKind
+	print_op_array(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1388
+	case 51: {
+	//AddAndReplaceKind
+	printf(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1389
+	case 52: {
+	//AddAndReplaceKind
+	random_r(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1390
+	case 53: {
+	//AddAndReplaceKind
+	realloc(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1391
+	case 54: {
+	//AddAndReplaceKind
+	realpath(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1392
+	case 55: {
+	//AddAndReplaceKind
+	rename(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1393
+	case 56: {
+	//AddAndReplaceKind
+	rindex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1394
+	case 57: {
+	//AddAndReplaceKind
+	scanf(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1395
+	case 58: {
+	//AddAndReplaceKind
+	seed48_r(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1396
+	case 59: {
+	//AddAndReplaceKind
+	setbuf(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1397
+	case 60: {
+	//AddAndReplaceKind
+	setstate_r(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1398
+	case 61: {
+	//AddAndReplaceKind
+	siglongjmp(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1399
+	case 62: {
+	//AddAndReplaceKind
+	sprintf(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1400
+	case 63: {
+	//AddAndReplaceKind
+	sscanf(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1401
+	case 64: {
+	//AddAndReplaceKind
+	stpcpy(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1402
+	case 65: {
+	//AddAndReplaceKind
+	strcasecmp(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1403
+	case 66: {
+	//AddAndReplaceKind
+	strcat(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1404
+	case 67: {
+	//AddAndReplaceKind
+	strchr(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1405
+	case 68: {
+	//AddAndReplaceKind
+	strcmp(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1406
+	case 69: {
+	//AddAndReplaceKind
+	strcoll(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1407
+	case 70: {
+	//AddAndReplaceKind
+	strcpy(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1408
+	case 71: {
+	//AddAndReplaceKind
+	strcspn(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1409
+	case 72: {
+	//AddAndReplaceKind
+	strndup(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1410
+	case 73: {
+	//AddAndReplaceKind
+	strnlen(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1411
+	case 74: {
+	//AddAndReplaceKind
+	strpbrk(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1412
+	case 75: {
+	//AddAndReplaceKind
+	strrchr(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1413
+	case 76: {
+	//AddAndReplaceKind
+	strsep(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1414
+	case 77: {
+	//AddAndReplaceKind
+	strspn(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1415
+	case 78: {
+	//AddAndReplaceKind
+	strstr(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1416
+	case 79: {
+	//AddAndReplaceKind
+	strtod(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1417
+	case 80: {
+	//AddAndReplaceKind
+	strtof(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1418
+	case 81: {
+	//AddAndReplaceKind
+	strtok(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1419
+	case 82: {
+	//AddAndReplaceKind
+	strtold(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1420
+	case 83: {
+	//AddAndReplaceKind
+	tempnam(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1421
+	case 84: {
+	//AddAndReplaceKind
+	vprintf(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1422
+	case 85: {
+	//AddAndReplaceKind
+	vscanf(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1423
+	case 86: {
+	//AddAndReplaceKind
+	wctomb(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1424
+	case 87: {
+	//AddAndReplaceKind
+	zend_add_literal(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1425
+	case 88: {
+	//AddAndReplaceKind
+	zend_add_to_list(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1426
+	case 89: {
+	//AddAndReplaceKind
+	zend_atoi(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1427
+	case 90: {
+	//AddAndReplaceKind
+	zend_atol(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1428
+	case 91: {
+	//AddAndReplaceKind
+	zend_binary_zval_strcasecmp(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1429
+	case 92: {
+	//AddAndReplaceKind
+	zend_binary_zval_strcmp(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1430
+	case 93: {
+	//AddAndReplaceKind
+	zend_call_function(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1431
+	case 94: {
+	//AddAndReplaceKind
+	zend_check_protected(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1432
+	case 95: {
+	//AddAndReplaceKind
+	zend_class_implements(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1433
+	case 96: {
+	//AddAndReplaceKind
+	zend_compare_file_handles(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1434
+	case 97: {
+	//AddAndReplaceKind
+	zend_copy_constants(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1435
+	case 98: {
+	//AddAndReplaceKind
+	zend_delete_global_variable(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1436
+	case 99: {
+	//AddAndReplaceKind
+	zend_dirname(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1437
+	case 100: {
+	//AddAndReplaceKind
+	zend_disable_class(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1438
+	case 101: {
+	//AddAndReplaceKind
+	zend_disable_function(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1439
+	case 102: {
+	//AddAndReplaceKind
+	zend_do_begin_class_member_function_call(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1440
+	case 103: {
+	//AddAndReplaceKind
+	zend_do_begin_dynamic_function_call(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1441
+	case 104: {
+	//AddAndReplaceKind
+	zend_do_begin_function_call(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1442
+	case 105: {
+	//AddAndReplaceKind
+	zend_do_begin_namespace(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1443
+	case 106: {
+	//AddAndReplaceKind
+	zend_do_begin_new_object(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1444
+	case 107: {
+	//AddAndReplaceKind
+	zend_do_begin_qm_op(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1445
+	case 108: {
+	//AddAndReplaceKind
+	zend_do_boolean_and_begin(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1446
+	case 109: {
+	//AddAndReplaceKind
+	zend_do_boolean_or_begin(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1447
+	case 110: {
+	//AddAndReplaceKind
+	zend_do_case_after_statement(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1448
+	case 111: {
+	//AddAndReplaceKind
+	zend_do_clone(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1449
+	case 112: {
+	//AddAndReplaceKind
+	zend_do_declare_class_constant(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1450
+	case 113: {
+	//AddAndReplaceKind
+	zend_do_declare_constant(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1451
+	case 114: {
+	//AddAndReplaceKind
+	zend_do_declare_stmt(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1452
+	case 115: {
+	//AddAndReplaceKind
+	zend_do_default_before_statement(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1453
+	case 116: {
+	//AddAndReplaceKind
+	zend_do_end_class_declaration(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1454
+	case 117: {
+	//AddAndReplaceKind
+	zend_do_exit(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1455
+	case 118: {
+	//AddAndReplaceKind
+	zend_do_fetch_class(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1456
+	case 119: {
+	//AddAndReplaceKind
+	zend_do_fetch_lexical_variable(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1457
+	case 120: {
+	//AddAndReplaceKind
+	zend_do_fetch_static_member(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1458
+	case 121: {
+	//AddAndReplaceKind
+	zend_do_for_before_statement(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1459
+	case 122: {
+	//AddAndReplaceKind
+	zend_do_for_cond(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1460
+	case 123: {
+	//AddAndReplaceKind
+	zend_do_foreach_end(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1461
+	case 124: {
+	//AddAndReplaceKind
+	zend_do_if_after_statement(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1462
+	case 125: {
+	//AddAndReplaceKind
+	zend_do_if_cond(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1463
+	case 126: {
+	//AddAndReplaceKind
+	zend_do_implement_interface(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1464
+	case 127: {
+	//AddAndReplaceKind
+	zend_do_implement_trait(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1465
+	case 128: {
+	//AddAndReplaceKind
+	zend_do_inherit_interfaces(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1466
+	case 129: {
+	//AddAndReplaceKind
+	zend_do_inheritance(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1467
+	case 130: {
+	//AddAndReplaceKind
+	zend_do_list_end(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1468
+	case 131: {
+	//AddAndReplaceKind
+	zend_do_mark_last_catch(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1469
+	case 132: {
+	//AddAndReplaceKind
+	zend_do_print(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1470
+	case 133: {
+	//AddAndReplaceKind
+	zend_do_return(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1471
+	case 134: {
+	//AddAndReplaceKind
+	zend_do_shell_exec(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1472
+	case 135: {
+	//AddAndReplaceKind
+	zend_do_verify_access_types(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1473
+	case 136: {
+	//AddAndReplaceKind
+	zend_do_while_cond(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1474
+	case 137: {
+	//AddAndReplaceKind
+	zend_do_while_end(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1475
+	case 138: {
+	//AddAndReplaceKind
+	zend_fcall_info_argn(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1476
+	case 139: {
+	//AddAndReplaceKind
+	zend_fcall_info_args(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1477
+	case 140: {
+	//AddAndReplaceKind
+	zend_fcall_info_args_clear(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1478
+	case 141: {
+	//AddAndReplaceKind
+	zend_get_class_fetch_type(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1479
+	case 142: {
+	//AddAndReplaceKind
+	zend_get_compiled_variable_value(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1480
+	case 143: {
+	//AddAndReplaceKind
+	zend_get_hash_value(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1481
+	case 144: {
+	//AddAndReplaceKind
+	zend_hash_apply(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1482
+	case 145: {
+	//AddAndReplaceKind
+	zend_hash_func(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1483
+	case 146: {
+	//AddAndReplaceKind
+	zend_hash_get_current_key_type_ex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1484
+	case 147: {
+	//AddAndReplaceKind
+	zend_hash_get_pointer(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1485
+	case 148: {
+	//AddAndReplaceKind
+	zend_hash_index_exists(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1486
+	case 149: {
+	//AddAndReplaceKind
+	zend_hash_internal_pointer_end_ex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1487
+	case 150: {
+	//AddAndReplaceKind
+	zend_hash_internal_pointer_reset_ex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1488
+	case 151: {
+	//AddAndReplaceKind
+	zend_hash_move_backwards_ex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1489
+	case 152: {
+	//AddAndReplaceKind
+	zend_hash_move_forward_ex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1490
+	case 153: {
+	//AddAndReplaceKind
+	zend_hash_reverse_apply(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1491
+	case 154: {
+	//AddAndReplaceKind
+	zend_hash_set_pointer(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1492
+	case 155: {
+	//AddAndReplaceKind
+	zend_hex_strtod(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1493
+	case 156: {
+	//AddAndReplaceKind
+	zend_init_list(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1494
+	case 157: {
+	//AddAndReplaceKind
+	zend_initialize_class_data(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1495
+	case 158: {
+	//AddAndReplaceKind
+	zend_inline_hash_func(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1496
+	case 159: {
+	//AddAndReplaceKind
+	zend_is_auto_global(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1497
+	case 160: {
+	//AddAndReplaceKind
+	zend_iterator_unwrap(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1498
+	case 161: {
+	//AddAndReplaceKind
+	zend_list_insert(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1499
+	case 162: {
+	//AddAndReplaceKind
+	zend_llist_add_element(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1500
+	case 163: {
+	//AddAndReplaceKind
+	zend_llist_apply(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1501
+	case 164: {
+	//AddAndReplaceKind
+	zend_llist_apply_with_del(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1502
+	case 165: {
+	//AddAndReplaceKind
+	zend_llist_copy(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1503
+	case 166: {
+	//AddAndReplaceKind
+	zend_llist_get_first_ex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1504
+	case 167: {
+	//AddAndReplaceKind
+	zend_llist_get_last_ex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1505
+	case 168: {
+	//AddAndReplaceKind
+	zend_llist_get_next_ex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1506
+	case 169: {
+	//AddAndReplaceKind
+	zend_llist_get_prev_ex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1507
+	case 170: {
+	//AddAndReplaceKind
+	zend_llist_prepend_element(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1508
+	case 171: {
+	//AddAndReplaceKind
+	zend_llist_sort(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1509
+	case 172: {
+	//AddAndReplaceKind
+	zend_make_callable(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1510
+	case 173: {
+	//AddAndReplaceKind
+	zend_multibyte_set_script_encoding(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1511
+	case 174: {
+	//AddAndReplaceKind
+	zend_multibyte_set_script_encoding_by_string(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1512
+	case 175: {
+	//AddAndReplaceKind
+	zend_object_create_proxy(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1513
+	case 176: {
+	//AddAndReplaceKind
+	zend_object_std_init(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1514
+	case 177: {
+	//AddAndReplaceKind
+	zend_object_store_set_object(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1515
+	case 178: {
+	//AddAndReplaceKind
+	zend_objects_destroy_object(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1516
+	case 179: {
+	//AddAndReplaceKind
+	zend_objects_new(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1517
+	case 180: {
+	//AddAndReplaceKind
+	zend_objects_store_init(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1518
+	case 181: {
+	//AddAndReplaceKind
+	zend_oct_strtod(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1519
+	case 182: {
+	//AddAndReplaceKind
+	zend_print_zval(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1520
+	case 183: {
+	//AddAndReplaceKind
+	zend_print_zval_r(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1521
+	case 184: {
+	//AddAndReplaceKind
+	zend_ptr_stack_apply(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1522
+	case 185: {
+	//AddAndReplaceKind
+	zend_ptr_stack_init_ex(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1523
+	case 186: {
+	//AddAndReplaceKind
+	zend_ptr_stack_n_pop(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1524
+	case 187: {
+	//AddAndReplaceKind
+	zend_ptr_stack_n_push(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1525
+	case 188: {
+	//AddAndReplaceKind
+	zend_ptr_stack_push(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1526
+	case 189: {
+	//AddAndReplaceKind
+	zend_quick_get_constant(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1527
+	case 190: {
+	//AddAndReplaceKind
+	zend_resolve_non_class_name(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1528
+	case 191: {
+	//AddAndReplaceKind
+	zend_stack_top(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1529
+	case 192: {
+	//AddAndReplaceKind
+	zend_startup(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1530
+	case 193: {
+	//AddAndReplaceKind
+	zend_std_get_debug_info(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1531
+	case 194: {
+	//AddAndReplaceKind
+	zend_str_tolower(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1532
+	case 195: {
+	//AddAndReplaceKind
+	zend_str_tolower_dup(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1533
+	case 196: {
+	//AddAndReplaceKind
+	zend_stream_open(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1534
+	case 197: {
+	//AddAndReplaceKind
+	zend_string_to_double(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1535
+	case 198: {
+	//AddAndReplaceKind
+	zend_strndup(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1536
+	case 199: {
+	//AddAndReplaceKind
+	zend_strtod(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1537
+	case 200: {
+	//AddAndReplaceKind
+	zend_ts_hash_apply(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1538
+	case 201: {
+	//AddAndReplaceKind
+	zend_ts_hash_func(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1539
+	case 202: {
+	//AddAndReplaceKind
+	zend_ts_hash_index_exists(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1540
+	case 203: {
+	//AddAndReplaceKind
+	zend_ts_hash_reverse_apply(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1541
+	case 204: {
+	//AddAndReplaceKind
+	zval_set_isref_to_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1542
+	case 205: {
+	//AddAndReplaceKind
+	zval_update_constant(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1543
+	case 206: {
+	//AddAndReplaceKind
+	zval_update_constant_inline_change(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1544
+	case 207: {
+	//AddAndReplaceKind
+	zval_update_constant_no_inline_change(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1545
+	case 208: {
+	//GuardKind
+	if (!__is_neg("53-208", 18, &(tmp), sizeof (tmp), &(p), sizeof (p), &((*tmp).type), sizeof ((*tmp).type), &((**p).type), sizeof ((**p).type), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args), &((tmp)->refcount__gc), sizeof ((tmp)->refcount__gc), &((tmp)->type), sizeof ((tmp)->type), &((tmp)->is_ref__gc), sizeof ((tmp)->is_ref__gc), &((*p)->refcount__gc), sizeof ((*p)->refcount__gc), &((*p)->type), sizeof ((*p)->type), &((*p)->is_ref__gc), sizeof ((*p)->is_ref__gc), &((*tmp).refcount__gc), sizeof ((*tmp).refcount__gc), &((*tmp).is_ref__gc), sizeof ((*tmp).is_ref__gc), &((**p).refcount__gc), sizeof ((**p).refcount__gc), &((**p).is_ref__gc), sizeof ((**p).is_ref__gc)))
+	    zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1546
+	case 209: {
+	//ReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	}
+	}
+					{
+	switch(__choose("__SWITCH54"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_1547
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1548
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1549
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1550
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1551
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1552
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1553
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1554
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1555
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1556
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1557
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1558
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1559
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1560
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1561
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1562
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1563
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1564
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1565
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1566
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1567
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1568
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1569
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1570
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1571
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1572
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1573
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1574
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1575
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1576
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1577
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1578
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1579
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1580
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1581
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1582
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1583
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1584
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1585
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1586
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1587
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1588
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1589
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1590
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1591
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1592
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1593
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1594
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1595
+	case 49: {
+	//IfExitKind
+	if (__is_neg("54-49", 6, &(tmp), sizeof (tmp), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1596
+	case 50: {
+	//IfExitKind
+	if (__is_neg("54-50", 6, &(tmp), sizeof (tmp), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1597
+	case 51: {
+	//IfExitKind
+	if (__is_neg("54-51", 6, &(tmp), sizeof (tmp), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1598
+	case 52: {
+	//IfExitKind
+	if (__is_neg("54-52", 6, &(tmp), sizeof (tmp), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1599
+	case 53: {
+	//IfExitKind
+	if (__is_neg("54-53", 6, &(tmp), sizeof (tmp), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH55"))
+	{
+	case 0: {
+	Z_UNSET_ISREF_P(tmp);
+	
+	break;
+	}
+	#ifdef COMPILE_1600
+	case 1: {
+	//AddAndReplaceKind
+	_convert_to_string(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1601
+	case 2: {
+	//AddAndReplaceKind
+	_object_init(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1602
+	case 3: {
+	//AddAndReplaceKind
+	_zval_copy_ctor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1603
+	case 4: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1604
+	case 5: {
+	//AddAndReplaceKind
+	_zval_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1605
+	case 6: {
+	//AddAndReplaceKind
+	_zval_dtor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1606
+	case 7: {
+	//AddAndReplaceKind
+	_zval_dtor_wrapper(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1607
+	case 8: {
+	//AddAndReplaceKind
+	_zval_internal_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1608
+	case 9: {
+	//AddAndReplaceKind
+	add_next_index_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1609
+	case 10: {
+	//AddAndReplaceKind
+	convert_scalar_to_number(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1610
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_array(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1611
+	case 12: {
+	//AddAndReplaceKind
+	convert_to_boolean(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1612
+	case 13: {
+	//AddAndReplaceKind
+	convert_to_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1613
+	case 14: {
+	//AddAndReplaceKind
+	convert_to_long(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1614
+	case 15: {
+	//AddAndReplaceKind
+	convert_to_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1615
+	case 16: {
+	//AddAndReplaceKind
+	convert_to_object(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1616
+	case 17: {
+	//AddAndReplaceKind
+	decrement_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1617
+	case 18: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1618
+	case 19: {
+	//AddAndReplaceKind
+	gc_zobj_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1619
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1620
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1621
+	case 22: {
+	//AddAndReplaceKind
+	i_zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1622
+	case 23: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1623
+	case 24: {
+	//AddAndReplaceKind
+	increment_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1624
+	case 25: {
+	//AddAndReplaceKind
+	lex_scan(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1625
+	case 26: {
+	//AddAndReplaceKind
+	safe_free_zval_ptr_rel(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1626
+	case 27: {
+	//AddAndReplaceKind
+	zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1627
+	case 28: {
+	//AddAndReplaceKind
+	zend_locale_sprintf_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1628
+	case 29: {
+	//AddAndReplaceKind
+	zend_object_store_ctor_failed(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1629
+	case 30: {
+	//AddAndReplaceKind
+	zend_objects_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1630
+	case 31: {
+	//AddAndReplaceKind
+	zend_objects_store_add_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1631
+	case 32: {
+	//AddAndReplaceKind
+	zend_objects_store_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1632
+	case 33: {
+	//AddAndReplaceKind
+	zend_objects_store_del_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1633
+	case 34: {
+	//AddAndReplaceKind
+	zend_objects_store_get_refcount(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1634
+	case 35: {
+	//AddAndReplaceKind
+	zend_print_flat_zval_r(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1635
+	case 36: {
+	//AddAndReplaceKind
+	zend_print_variable(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1636
+	case 37: {
+	//AddAndReplaceKind
+	zend_std_get_constructor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1637
+	case 38: {
+	//AddAndReplaceKind
+	zend_std_get_properties(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1638
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1639
+	case 40: {
+	//AddAndReplaceKind
+	zval_delref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1640
+	case 41: {
+	//AddAndReplaceKind
+	zval_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1641
+	case 42: {
+	//AddAndReplaceKind
+	zval_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1642
+	case 43: {
+	//AddAndReplaceKind
+	zval_refcount_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1643
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1644
+	case 45: {
+	//GuardKind
+	if (!__is_neg("55-45", 6, &(tmp), sizeof (tmp), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args)))
+	    zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1645
+	case 46: {
+	//ReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	}
+	}
+				} else {
+					tmp = *p;
+				}
+	
+	break;
+	}
+	#ifdef COMPILE_1646
+	case 1: {
+	//AddAndReplaceKind
+	_convert_to_string(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1647
+	case 2: {
+	//AddAndReplaceKind
+	_object_init(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1648
+	case 3: {
+	//AddAndReplaceKind
+	_zval_copy_ctor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1649
+	case 4: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1650
+	case 5: {
+	//AddAndReplaceKind
+	_zval_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1651
+	case 6: {
+	//AddAndReplaceKind
+	_zval_dtor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1652
+	case 7: {
+	//AddAndReplaceKind
+	_zval_dtor_wrapper(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1653
+	case 8: {
+	//AddAndReplaceKind
+	_zval_internal_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1654
+	case 9: {
+	//AddAndReplaceKind
+	add_next_index_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1655
+	case 10: {
+	//AddAndReplaceKind
+	convert_scalar_to_number(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1656
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_array(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1657
+	case 12: {
+	//AddAndReplaceKind
+	convert_to_boolean(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1658
+	case 13: {
+	//AddAndReplaceKind
+	convert_to_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1659
+	case 14: {
+	//AddAndReplaceKind
+	convert_to_long(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1660
+	case 15: {
+	//AddAndReplaceKind
+	convert_to_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1661
+	case 16: {
+	//AddAndReplaceKind
+	convert_to_object(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1662
+	case 17: {
+	//AddAndReplaceKind
+	decrement_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1663
+	case 18: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1664
+	case 19: {
+	//AddAndReplaceKind
+	gc_zobj_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1665
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1666
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1667
+	case 22: {
+	//AddAndReplaceKind
+	i_zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1668
+	case 23: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1669
+	case 24: {
+	//AddAndReplaceKind
+	increment_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1670
+	case 25: {
+	//AddAndReplaceKind
+	lex_scan(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1671
+	case 26: {
+	//AddAndReplaceKind
+	safe_free_zval_ptr_rel(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1672
+	case 27: {
+	//AddAndReplaceKind
+	zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1673
+	case 28: {
+	//AddAndReplaceKind
+	zend_locale_sprintf_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1674
+	case 29: {
+	//AddAndReplaceKind
+	zend_object_store_ctor_failed(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1675
+	case 30: {
+	//AddAndReplaceKind
+	zend_objects_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1676
+	case 31: {
+	//AddAndReplaceKind
+	zend_objects_store_add_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1677
+	case 32: {
+	//AddAndReplaceKind
+	zend_objects_store_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1678
+	case 33: {
+	//AddAndReplaceKind
+	zend_objects_store_del_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1679
+	case 34: {
+	//AddAndReplaceKind
+	zend_objects_store_get_refcount(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1680
+	case 35: {
+	//AddAndReplaceKind
+	zend_print_flat_zval_r(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1681
+	case 36: {
+	//AddAndReplaceKind
+	zend_print_variable(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1682
+	case 37: {
+	//AddAndReplaceKind
+	zend_std_get_constructor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1683
+	case 38: {
+	//AddAndReplaceKind
+	zend_std_get_properties(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1684
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1685
+	case 40: {
+	//AddAndReplaceKind
+	zval_delref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1686
+	case 41: {
+	//AddAndReplaceKind
+	zval_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1687
+	case 42: {
+	//AddAndReplaceKind
+	zval_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1688
+	case 43: {
+	//AddAndReplaceKind
+	zval_refcount_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1689
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1690
+	case 45: {
+	//GuardKind
+	if (!__is_neg("56-45", 6, &(tmp), sizeof (tmp), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args)))
+	    zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1691
+	case 46: {
+	//ReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	}
+	}
+	}
+	
+	break;
+	}
+	#ifdef COMPILE_1692
+	case 1: {
+	//AddAndReplaceKind
+	_convert_to_string(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1693
+	case 2: {
+	//AddAndReplaceKind
+	_object_init(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1694
+	case 3: {
+	//AddAndReplaceKind
+	_zval_copy_ctor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1695
+	case 4: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1696
+	case 5: {
+	//AddAndReplaceKind
+	_zval_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1697
+	case 6: {
+	//AddAndReplaceKind
+	_zval_dtor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1698
+	case 7: {
+	//AddAndReplaceKind
+	_zval_dtor_wrapper(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1699
+	case 8: {
+	//AddAndReplaceKind
+	_zval_internal_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1700
+	case 9: {
+	//AddAndReplaceKind
+	add_next_index_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1701
+	case 10: {
+	//AddAndReplaceKind
+	convert_scalar_to_number(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1702
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_array(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1703
+	case 12: {
+	//AddAndReplaceKind
+	convert_to_boolean(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1704
+	case 13: {
+	//AddAndReplaceKind
+	convert_to_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1705
+	case 14: {
+	//AddAndReplaceKind
+	convert_to_long(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1706
+	case 15: {
+	//AddAndReplaceKind
+	convert_to_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1707
+	case 16: {
+	//AddAndReplaceKind
+	convert_to_object(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1708
+	case 17: {
+	//AddAndReplaceKind
+	decrement_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1709
+	case 18: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1710
+	case 19: {
+	//AddAndReplaceKind
+	gc_zobj_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1711
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1712
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1713
+	case 22: {
+	//AddAndReplaceKind
+	i_zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1714
+	case 23: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1715
+	case 24: {
+	//AddAndReplaceKind
+	increment_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1716
+	case 25: {
+	//AddAndReplaceKind
+	lex_scan(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1717
+	case 26: {
+	//AddAndReplaceKind
+	safe_free_zval_ptr_rel(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1718
+	case 27: {
+	//AddAndReplaceKind
+	zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1719
+	case 28: {
+	//AddAndReplaceKind
+	zend_locale_sprintf_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1720
+	case 29: {
+	//AddAndReplaceKind
+	zend_object_store_ctor_failed(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1721
+	case 30: {
+	//AddAndReplaceKind
+	zend_objects_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1722
+	case 31: {
+	//AddAndReplaceKind
+	zend_objects_store_add_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1723
+	case 32: {
+	//AddAndReplaceKind
+	zend_objects_store_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1724
+	case 33: {
+	//AddAndReplaceKind
+	zend_objects_store_del_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1725
+	case 34: {
+	//AddAndReplaceKind
+	zend_objects_store_get_refcount(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1726
+	case 35: {
+	//AddAndReplaceKind
+	zend_print_flat_zval_r(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1727
+	case 36: {
+	//AddAndReplaceKind
+	zend_print_variable(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1728
+	case 37: {
+	//AddAndReplaceKind
+	zend_std_get_constructor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1729
+	case 38: {
+	//AddAndReplaceKind
+	zend_std_get_properties(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1730
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1731
+	case 40: {
+	//AddAndReplaceKind
+	zval_delref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1732
+	case 41: {
+	//AddAndReplaceKind
+	zval_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1733
+	case 42: {
+	//AddAndReplaceKind
+	zval_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1734
+	case 43: {
+	//AddAndReplaceKind
+	zval_refcount_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1735
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1736
+	case 45: {
+	//GuardKind
+	if (!__is_neg("57-45", 6, &(tmp), sizeof (tmp), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args)))
+	    zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1737
+	case 46: {
+	//ReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	}
+	}
+	}
+			}
+	
+	break;
+	}
+	#ifdef COMPILE_1738
+	case 1: {
+	//AddAndReplaceKind
+	_convert_to_string(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1739
+	case 2: {
+	//AddAndReplaceKind
+	_object_init(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1740
+	case 3: {
+	//AddAndReplaceKind
+	_zval_copy_ctor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1741
+	case 4: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1742
+	case 5: {
+	//AddAndReplaceKind
+	_zval_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1743
+	case 6: {
+	//AddAndReplaceKind
+	_zval_dtor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1744
+	case 7: {
+	//AddAndReplaceKind
+	_zval_dtor_wrapper(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1745
+	case 8: {
+	//AddAndReplaceKind
+	_zval_internal_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1746
+	case 9: {
+	//AddAndReplaceKind
+	add_next_index_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1747
+	case 10: {
+	//AddAndReplaceKind
+	convert_scalar_to_number(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1748
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_array(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1749
+	case 12: {
+	//AddAndReplaceKind
+	convert_to_boolean(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1750
+	case 13: {
+	//AddAndReplaceKind
+	convert_to_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1751
+	case 14: {
+	//AddAndReplaceKind
+	convert_to_long(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1752
+	case 15: {
+	//AddAndReplaceKind
+	convert_to_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1753
+	case 16: {
+	//AddAndReplaceKind
+	convert_to_object(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1754
+	case 17: {
+	//AddAndReplaceKind
+	decrement_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1755
+	case 18: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1756
+	case 19: {
+	//AddAndReplaceKind
+	gc_zobj_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1757
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1758
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1759
+	case 22: {
+	//AddAndReplaceKind
+	i_zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1760
+	case 23: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1761
+	case 24: {
+	//AddAndReplaceKind
+	increment_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1762
+	case 25: {
+	//AddAndReplaceKind
+	lex_scan(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1763
+	case 26: {
+	//AddAndReplaceKind
+	safe_free_zval_ptr_rel(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1764
+	case 27: {
+	//AddAndReplaceKind
+	zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1765
+	case 28: {
+	//AddAndReplaceKind
+	zend_locale_sprintf_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1766
+	case 29: {
+	//AddAndReplaceKind
+	zend_object_store_ctor_failed(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1767
+	case 30: {
+	//AddAndReplaceKind
+	zend_objects_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1768
+	case 31: {
+	//AddAndReplaceKind
+	zend_objects_store_add_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1769
+	case 32: {
+	//AddAndReplaceKind
+	zend_objects_store_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1770
+	case 33: {
+	//AddAndReplaceKind
+	zend_objects_store_del_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1771
+	case 34: {
+	//AddAndReplaceKind
+	zend_objects_store_get_refcount(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1772
+	case 35: {
+	//AddAndReplaceKind
+	zend_print_flat_zval_r(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1773
+	case 36: {
+	//AddAndReplaceKind
+	zend_print_variable(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1774
+	case 37: {
+	//AddAndReplaceKind
+	zend_std_get_constructor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1775
+	case 38: {
+	//AddAndReplaceKind
+	zend_std_get_properties(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1776
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1777
+	case 40: {
+	//AddAndReplaceKind
+	zval_delref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1778
+	case 41: {
+	//AddAndReplaceKind
+	zval_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1779
+	case 42: {
+	//AddAndReplaceKind
+	zval_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1780
+	case 43: {
+	//AddAndReplaceKind
+	zval_refcount_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1781
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1782
+	case 45: {
+	//GuardKind
+	if (!__is_neg("58-45", 6, &(tmp), sizeof (tmp), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args)))
+	    zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1783
+	case 46: {
+	//ReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	}
+	}
+	}
+		} else {
+			tmp = *p;
+		}
+	
+	break;
+	}
+	#ifdef COMPILE_1784
+	case 1: {
+	//AddAndReplaceKind
+	_convert_to_string(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1785
+	case 2: {
+	//AddAndReplaceKind
+	_object_init(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1786
+	case 3: {
+	//AddAndReplaceKind
+	_zval_copy_ctor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1787
+	case 4: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1788
+	case 5: {
+	//AddAndReplaceKind
+	_zval_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1789
+	case 6: {
+	//AddAndReplaceKind
+	_zval_dtor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1790
+	case 7: {
+	//AddAndReplaceKind
+	_zval_dtor_wrapper(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1791
+	case 8: {
+	//AddAndReplaceKind
+	_zval_internal_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1792
+	case 9: {
+	//AddAndReplaceKind
+	add_next_index_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1793
+	case 10: {
+	//AddAndReplaceKind
+	convert_scalar_to_number(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1794
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_array(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1795
+	case 12: {
+	//AddAndReplaceKind
+	convert_to_boolean(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1796
+	case 13: {
+	//AddAndReplaceKind
+	convert_to_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1797
+	case 14: {
+	//AddAndReplaceKind
+	convert_to_long(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1798
+	case 15: {
+	//AddAndReplaceKind
+	convert_to_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1799
+	case 16: {
+	//AddAndReplaceKind
+	convert_to_object(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1800
+	case 17: {
+	//AddAndReplaceKind
+	decrement_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1801
+	case 18: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1802
+	case 19: {
+	//AddAndReplaceKind
+	gc_zobj_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1803
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1804
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1805
+	case 22: {
+	//AddAndReplaceKind
+	i_zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1806
+	case 23: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1807
+	case 24: {
+	//AddAndReplaceKind
+	increment_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1808
+	case 25: {
+	//AddAndReplaceKind
+	lex_scan(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1809
+	case 26: {
+	//AddAndReplaceKind
+	safe_free_zval_ptr_rel(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1810
+	case 27: {
+	//AddAndReplaceKind
+	zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1811
+	case 28: {
+	//AddAndReplaceKind
+	zend_locale_sprintf_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1812
+	case 29: {
+	//AddAndReplaceKind
+	zend_object_store_ctor_failed(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1813
+	case 30: {
+	//AddAndReplaceKind
+	zend_objects_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1814
+	case 31: {
+	//AddAndReplaceKind
+	zend_objects_store_add_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1815
+	case 32: {
+	//AddAndReplaceKind
+	zend_objects_store_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1816
+	case 33: {
+	//AddAndReplaceKind
+	zend_objects_store_del_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1817
+	case 34: {
+	//AddAndReplaceKind
+	zend_objects_store_get_refcount(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1818
+	case 35: {
+	//AddAndReplaceKind
+	zend_print_flat_zval_r(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1819
+	case 36: {
+	//AddAndReplaceKind
+	zend_print_variable(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1820
+	case 37: {
+	//AddAndReplaceKind
+	zend_std_get_constructor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1821
+	case 38: {
+	//AddAndReplaceKind
+	zend_std_get_properties(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1822
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1823
+	case 40: {
+	//AddAndReplaceKind
+	zval_delref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1824
+	case 41: {
+	//AddAndReplaceKind
+	zval_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1825
+	case 42: {
+	//AddAndReplaceKind
+	zval_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1826
+	case 43: {
+	//AddAndReplaceKind
+	zval_refcount_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1827
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1828
+	case 45: {
+	//GuardKind
+	if (!__is_neg("59-45", 6, &(tmp), sizeof (tmp), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(key), sizeof (key), &(target), sizeof (target), &(args), sizeof (args)))
+	    zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1829
+	case 46: {
+	//ReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	}
+	}
+	}
+	//prophet generated patch
+	{
+	switch(__choose("__SWITCH60"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_1830
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1831
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1832
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1833
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1834
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1835
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1836
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1837
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1838
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1839
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1840
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1841
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1842
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1843
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1844
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1845
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1846
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1847
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1848
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1849
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1850
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1851
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1852
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1853
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1854
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1855
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1856
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1857
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1858
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1859
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1860
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1861
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1862
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1863
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1864
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1865
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1866
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1867
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1868
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1869
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1870
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1871
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1872
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1873
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1874
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1875
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1876
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1877
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1878
+	case 49: {
+	//AddInitKind
+	memset(key, 0, sizeof (*(key)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1879
+	case 50: {
+	//IfExitKind
+	if (__is_neg("60-50", 9, &(key), sizeof (key), &(target), sizeof (target), &(tmp), sizeof (tmp), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1880
+	case 51: {
+	//IfExitKind
+	if (__is_neg("60-51", 9, &(key), sizeof (key), &(target), sizeof (target), &(tmp), sizeof (tmp), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1881
+	case 52: {
+	//IfExitKind
+	if (__is_neg("60-52", 9, &(key), sizeof (key), &(target), sizeof (target), &(tmp), sizeof (tmp), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1882
+	case 53: {
+	//IfExitKind
+	if (__is_neg("60-53", 9, &(key), sizeof (key), &(target), sizeof (target), &(tmp), sizeof (tmp), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1883
+	case 54: {
+	//IfExitKind
+	if (__is_neg("60-54", 9, &(key), sizeof (key), &(target), sizeof (target), &(tmp), sizeof (tmp), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	{
+	long long __temp61=(_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) ;
+	switch(__choose("__SWITCH61"))
+	{
+	case 0: {
+	
+	break;
+	}
+	#ifdef COMPILE_1884
+	case 1: {
+	__temp61= ((_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) || __is_neg("61-1", 9, &(key), sizeof (key), &(target), sizeof (target), &(tmp), sizeof (tmp), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1885
+	case 2: {
+	__temp61= ((_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) && !__is_neg("61-2", 9, &(key), sizeof (key), &(target), sizeof (target), &(tmp), sizeof (tmp), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)));
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH64"))
+	{
+	case 0: {
+	if (__temp61) {
+			{
+	switch(__choose("__SWITCH62"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_1886
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1887
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1888
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1889
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1890
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1891
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1892
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1893
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1894
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1895
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1896
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1897
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1898
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1899
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1900
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1901
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1902
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1903
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1904
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1905
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1906
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1907
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1908
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1909
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1910
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1911
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1912
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1913
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1914
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1915
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1916
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1917
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1918
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1919
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1920
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1921
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1922
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1923
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1924
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1925
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1926
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1927
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1928
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1929
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1930
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1931
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1932
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1933
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1934
+	case 49: {
+	//IfExitKind
+	if (__is_neg("62-49", 9, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1935
+	case 50: {
+	//IfExitKind
+	if (__is_neg("62-50", 9, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1936
+	case 51: {
+	//IfExitKind
+	if (__is_neg("62-51", 9, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1937
+	case 52: {
+	//IfExitKind
+	if (__is_neg("62-52", 9, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1938
+	case 53: {
+	//IfExitKind
+	if (__is_neg("62-53", 9, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH63"))
+	{
+	case 0: {
+	Z_ADDREF_P(tmp);
+	
+	break;
+	}
+	#ifdef COMPILE_1939
+	case 1: {
+	//AddAndReplaceKind
+	_convert_to_string(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1940
+	case 2: {
+	//AddAndReplaceKind
+	_object_init(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1941
+	case 3: {
+	//AddAndReplaceKind
+	_zval_copy_ctor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1942
+	case 4: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1943
+	case 5: {
+	//AddAndReplaceKind
+	_zval_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1944
+	case 6: {
+	//AddAndReplaceKind
+	_zval_dtor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1945
+	case 7: {
+	//AddAndReplaceKind
+	_zval_dtor_wrapper(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1946
+	case 8: {
+	//AddAndReplaceKind
+	_zval_internal_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1947
+	case 9: {
+	//AddAndReplaceKind
+	add_next_index_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1948
+	case 10: {
+	//AddAndReplaceKind
+	convert_scalar_to_number(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1949
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_array(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1950
+	case 12: {
+	//AddAndReplaceKind
+	convert_to_boolean(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1951
+	case 13: {
+	//AddAndReplaceKind
+	convert_to_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1952
+	case 14: {
+	//AddAndReplaceKind
+	convert_to_long(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1953
+	case 15: {
+	//AddAndReplaceKind
+	convert_to_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1954
+	case 16: {
+	//AddAndReplaceKind
+	convert_to_object(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1955
+	case 17: {
+	//AddAndReplaceKind
+	decrement_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1956
+	case 18: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1957
+	case 19: {
+	//AddAndReplaceKind
+	gc_zobj_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1958
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1959
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1960
+	case 22: {
+	//AddAndReplaceKind
+	i_zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1961
+	case 23: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1962
+	case 24: {
+	//AddAndReplaceKind
+	increment_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1963
+	case 25: {
+	//AddAndReplaceKind
+	lex_scan(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1964
+	case 26: {
+	//AddAndReplaceKind
+	safe_free_zval_ptr_rel(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1965
+	case 27: {
+	//AddAndReplaceKind
+	zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1966
+	case 28: {
+	//AddAndReplaceKind
+	zend_locale_sprintf_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1967
+	case 29: {
+	//AddAndReplaceKind
+	zend_object_store_ctor_failed(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1968
+	case 30: {
+	//AddAndReplaceKind
+	zend_objects_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1969
+	case 31: {
+	//AddAndReplaceKind
+	zend_objects_store_add_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1970
+	case 32: {
+	//AddAndReplaceKind
+	zend_objects_store_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1971
+	case 33: {
+	//AddAndReplaceKind
+	zend_objects_store_del_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1972
+	case 34: {
+	//AddAndReplaceKind
+	zend_objects_store_get_refcount(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1973
+	case 35: {
+	//AddAndReplaceKind
+	zend_print_flat_zval_r(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1974
+	case 36: {
+	//AddAndReplaceKind
+	zend_print_variable(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1975
+	case 37: {
+	//AddAndReplaceKind
+	zend_std_get_constructor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1976
+	case 38: {
+	//AddAndReplaceKind
+	zend_std_get_properties(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1977
+	case 39: {
+	//AddAndReplaceKind
+	zval_delref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1978
+	case 40: {
+	//AddAndReplaceKind
+	zval_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1979
+	case 41: {
+	//AddAndReplaceKind
+	zval_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1980
+	case 42: {
+	//AddAndReplaceKind
+	zval_refcount_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1981
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1982
+	case 44: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1983
+	case 45: {
+	//GuardKind
+	if (!__is_neg("63-45", 9, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1984
+	case 46: {
+	//ReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	}
+	}
+		}
+	
+	break;
+	}
+	#ifdef COMPILE_1985
+	case 1: {
+	//AddAndReplaceKind
+	_convert_to_string(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1986
+	case 2: {
+	//AddAndReplaceKind
+	_object_init(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1987
+	case 3: {
+	//AddAndReplaceKind
+	_zval_copy_ctor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1988
+	case 4: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1989
+	case 5: {
+	//AddAndReplaceKind
+	_zval_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1990
+	case 6: {
+	//AddAndReplaceKind
+	_zval_dtor_func(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1991
+	case 7: {
+	//AddAndReplaceKind
+	_zval_dtor_wrapper(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1992
+	case 8: {
+	//AddAndReplaceKind
+	_zval_internal_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1993
+	case 9: {
+	//AddAndReplaceKind
+	add_next_index_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1994
+	case 10: {
+	//AddAndReplaceKind
+	convert_scalar_to_number(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1995
+	case 11: {
+	//AddAndReplaceKind
+	convert_to_array(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1996
+	case 12: {
+	//AddAndReplaceKind
+	convert_to_boolean(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1997
+	case 13: {
+	//AddAndReplaceKind
+	convert_to_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1998
+	case 14: {
+	//AddAndReplaceKind
+	convert_to_long(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_1999
+	case 15: {
+	//AddAndReplaceKind
+	convert_to_null(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2000
+	case 16: {
+	//AddAndReplaceKind
+	convert_to_object(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2001
+	case 17: {
+	//AddAndReplaceKind
+	decrement_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2002
+	case 18: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2003
+	case 19: {
+	//AddAndReplaceKind
+	gc_zobj_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2004
+	case 20: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2005
+	case 21: {
+	//AddAndReplaceKind
+	gc_zval_possible_root(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2006
+	case 22: {
+	//AddAndReplaceKind
+	i_zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2007
+	case 23: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2008
+	case 24: {
+	//AddAndReplaceKind
+	increment_function(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2009
+	case 25: {
+	//AddAndReplaceKind
+	lex_scan(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2010
+	case 26: {
+	//AddAndReplaceKind
+	safe_free_zval_ptr_rel(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2011
+	case 27: {
+	//AddAndReplaceKind
+	zend_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2012
+	case 28: {
+	//AddAndReplaceKind
+	zend_locale_sprintf_double(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2013
+	case 29: {
+	//AddAndReplaceKind
+	zend_object_store_ctor_failed(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2014
+	case 30: {
+	//AddAndReplaceKind
+	zend_objects_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2015
+	case 31: {
+	//AddAndReplaceKind
+	zend_objects_store_add_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2016
+	case 32: {
+	//AddAndReplaceKind
+	zend_objects_store_clone_obj(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2017
+	case 33: {
+	//AddAndReplaceKind
+	zend_objects_store_del_ref(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2018
+	case 34: {
+	//AddAndReplaceKind
+	zend_objects_store_get_refcount(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2019
+	case 35: {
+	//AddAndReplaceKind
+	zend_print_flat_zval_r(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2020
+	case 36: {
+	//AddAndReplaceKind
+	zend_print_variable(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2021
+	case 37: {
+	//AddAndReplaceKind
+	zend_std_get_constructor(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2022
+	case 38: {
+	//AddAndReplaceKind
+	zend_std_get_properties(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2023
+	case 39: {
+	//AddAndReplaceKind
+	zval_delref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2024
+	case 40: {
+	//AddAndReplaceKind
+	zval_is_true(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2025
+	case 41: {
+	//AddAndReplaceKind
+	zval_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2026
+	case 42: {
+	//AddAndReplaceKind
+	zval_refcount_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2027
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2028
+	case 44: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2029
+	case 45: {
+	//GuardKind
+	if (!__is_neg("64-45", 9, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(key->arKey), sizeof (key->arKey), &(key->nKeyLength), sizeof (key->nKeyLength), &(key->h), sizeof (key->h), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2030
+	case 46: {
+	//ReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	}
+	}
+	}
+	//prophet generated patch
+	{
+	switch(__choose("__SWITCH65"))
+	{
+	case 0: 
+	break;
+	#ifdef COMPILE_2031
+	case 1: {
+	//AddAndReplaceKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2032
+	case 2: {
+	//AddAndReplaceKind
+	(tmp) = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2033
+	case 3: {
+	//AddAndReplaceKind
+	(tmp) = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2034
+	case 4: {
+	//AddAndReplaceKind
+	*(tmp) = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2035
+	case 5: {
+	//AddAndReplaceKind
+	*tmp = zval_used_for_init;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2036
+	case 6: {
+	//AddAndReplaceKind
+	_efree(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2037
+	case 7: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.ht));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2038
+	case 8: {
+	//AddAndReplaceKind
+	_efree(((tmp)->value.str.val));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2039
+	case 9: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), (key)->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2040
+	case 10: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, (key)->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2041
+	case 11: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, (key)->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2042
+	case 12: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &(tmp), sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2043
+	case 13: {
+	//AddAndReplaceKind
+	_zend_hash_quick_add_or_update((executor_globals.active_symbol_table), key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), (void **)&p, (1 << 1));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2044
+	case 14: {
+	//AddAndReplaceKind
+	_zend_list_addref((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2045
+	case 15: {
+	//AddAndReplaceKind
+	_zend_list_delete((tmp)->value.lval);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2046
+	case 16: {
+	//AddAndReplaceKind
+	_zval_copy_ctor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2047
+	case 17: {
+	//AddAndReplaceKind
+	_zval_dtor(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2048
+	case 18: {
+	//AddAndReplaceKind
+	_zval_dtor_func((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2049
+	case 19: {
+	//AddAndReplaceKind
+	_zval_ptr_dtor((&(tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2050
+	case 20: {
+	//AddAndReplaceKind
+	convert_to_boolean((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2051
+	case 21: {
+	//AddAndReplaceKind
+	exit(1);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2052
+	case 22: {
+	//AddAndReplaceKind
+	gc_remove_zval_from_buffer((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2053
+	case 23: {
+	//AddAndReplaceKind
+	gc_zval_check_possible_root(((tmp)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2054
+	case 24: {
+	//AddAndReplaceKind
+	gc_zval_possible_root((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2055
+	case 25: {
+	//AddAndReplaceKind
+	i_zval_ptr_dtor((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2056
+	case 26: {
+	//AddAndReplaceKind
+	if (!(executor_globals.active_symbol_table)) {
+	    zend_rebuild_symbol_table();
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2057
+	case 27: {
+	//AddAndReplaceKind
+	if (_zend_hash_quick_add_or_update(target, key->arKey, key->nKeyLength, key->h, &tmp, sizeof(zval *), ((void *)0), (1 << 1)) == 0) {
+	    zval_addref_p(tmp);
+	}
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2058
+	case 28: {
+	//AddAndReplaceKind
+	is_ref = (**(p)).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2059
+	case 29: {
+	//AddAndReplaceKind
+	is_ref = (**p).type & 64;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2060
+	case 30: {
+	//AddAndReplaceKind
+	tmp = (executor_globals.uninitialized_zval_ptr);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2061
+	case 31: {
+	//AddAndReplaceKind
+	tmp = *(p);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2062
+	case 32: {
+	//AddAndReplaceKind
+	tmp = *p;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2063
+	case 33: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2064
+	case 34: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", (key)->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2065
+	case 35: {
+	//AddAndReplaceKind
+	zend_error((1 << 3L), "Undefined variable: %s", key->arKey);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2066
+	case 36: {
+	//AddAndReplaceKind
+	zend_hash_destroy((tmp)->value.ht);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2067
+	case 37: {
+	//AddAndReplaceKind
+	zend_rebuild_symbol_table();
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2068
+	case 38: {
+	//AddAndReplaceKind
+	zval_addref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2069
+	case 39: {
+	//AddAndReplaceKind
+	zval_addref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2070
+	case 40: {
+	//AddAndReplaceKind
+	zval_addref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2071
+	case 41: {
+	//AddAndReplaceKind
+	zval_set_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2072
+	case 42: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*(((p))));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2073
+	case 43: {
+	//AddAndReplaceKind
+	zval_set_isref_p(*((p)));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2074
+	case 44: {
+	//AddAndReplaceKind
+	zval_set_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2075
+	case 45: {
+	//AddAndReplaceKind
+	zval_set_refcount_p((tmp), 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2076
+	case 46: {
+	//AddAndReplaceKind
+	zval_set_refcount_p(tmp, 0);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2077
+	case 47: {
+	//AddAndReplaceKind
+	zval_unset_isref_p((tmp));
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2078
+	case 48: {
+	//AddAndReplaceKind
+	zval_unset_isref_p(tmp);
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2079
+	case 49: {
+	//IfExitKind
+	if (__is_neg("65-49", 6, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2080
+	case 50: {
+	//IfExitKind
+	if (__is_neg("65-50", 6, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 1;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2081
+	case 51: {
+	//IfExitKind
+	if (__is_neg("65-51", 6, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 32;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2082
+	case 52: {
+	//IfExitKind
+	if (__is_neg("65-52", 6, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 3;
+	
+	break;
+	}
+	#endif
+	#ifdef COMPILE_2083
+	case 53: {
+	//IfExitKind
+	if (__is_neg("65-53", 6, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 64;
+	
+	break;
+	}
+	#endif
+	}
+	switch(__choose("__SWITCH66"))
+	{
+	case 0: {
+	return ZEND_HASH_APPLY_KEEP;
+	
+	break;
+	}
+	#ifdef COMPILE_2084
+	case 1: {
+	//GuardKind
+	if (!__is_neg("66-1", 6, &(tmp), sizeof (tmp), &(key), sizeof (key), &(target), sizeof (target), &(p), sizeof (p), &(is_ref), sizeof (is_ref), &(args), sizeof (args)))
+	    return 0;
+	
+	break;
+	}
+	#endif
+	}
+	}
+}
+/* }}} */
+
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * indent-tabs-mode: t
+ * End:
+ */
