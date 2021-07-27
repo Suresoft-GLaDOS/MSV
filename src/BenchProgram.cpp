@@ -425,7 +425,7 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
             readCodeToString(files[i],code);
             std::string sep="// compile_fin";
             if (code.find(sep)!=std::string::npos)
-                code=code.substr(code.find(sep)+14);
+                code=code.substr(code.find(sep)+15);
             std::string macroDefine="";
             for (long long macro: compile_macro){
                 macroDefine+="#define COMPILE_";
@@ -625,7 +625,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     for (size_t i=0;i<failMacros.size();i++)
         fail.insert(failMacros[i]);
     std::vector<long long> succ_id;
-    while(!succ && fileCodeMap.size()<=1){
+    while(!succ){
         succ_id.clear();
         for (std::set<long long>::iterator it=linkErrorMacros.begin();it!=linkErrorMacros.end();it++){
             fail.insert(*it);
@@ -703,7 +703,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             size_t end=line.find(":",start+1);
                             unsigned long lineNum=stoi(line.substr(start+1,end-start-1));
                             lineNum=lineNum-succ_id.size()-1;
-                            printf("%lu ",lineNum);
+                            // printf("%lu ",lineNum);
                             std::string currentCode=fileCodeMap.at(fileName);
 
                             std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
@@ -711,7 +711,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             for (std::map<size_t,std::pair<size_t,size_t>>::iterator macro_it=macroLine.begin();macro_it!=macroLine.end();macro_it++){
                                 if(macro_it->second.first<=lineNum && macro_it->second.second>=lineNum){
                                     failMacro=macro_it->first;
-                                    printf("%lu\n",failMacro);
+                                    // printf("%lu\n",failMacro);
                                     compileErrorMacros.insert(failMacro);
                                     break;
                                 }
@@ -743,9 +743,9 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     {
         outlog_printf(2,"Build failed, Trying to find fail macros...\n");
         //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
-        if (compileErrorMacros.size()>=2 || linkErrorMacros.size()>=2){
+        if (linkErrorMacros.size()>=2){
             std::string candidateMacro="'";
-            for (std::set<long long>::iterator it=fail.begin();it!=fail.end();it++){
+            for (std::set<long long>::iterator it=linkErrorMacros.begin();it!=linkErrorMacros.end();it++){
                 candidateMacro+=std::to_string(*it)+",";
             }
 
@@ -785,8 +785,12 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             char eachResult[100];
             std::ifstream result(resultPath.c_str(),std::ifstream::in);
             // assert(result.is_open());
+            fail.clear();
             while(result.getline(eachResult,100)){
                 fail.insert(stoll(std::string(eachResult)));
+            }
+            for (std::set<long long>::iterator it=compileErrorMacros.begin();it!=compileErrorMacros.end();it++){
+                fail.insert(*it);
             }
 
             succ_id.clear();

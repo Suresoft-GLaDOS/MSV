@@ -1009,7 +1009,8 @@ if __name__ == '__main__':
                 file_in=open(file,"r")
                 code=file_in.read()
                 code_seg=code.split("// compile_fin\n")
-                code=code_seg[1]
+                if len(code_seg)>1:
+                    code=code_seg[1]
                 file_in.close()
 
                 macro_define=""

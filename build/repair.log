@@ -1,0 +1,31 @@
+Initialize the program!
+Skip verify!
+Generating repair candidates!
+Processing ext/date/php_date.c
+Total 41197 different repair schemas!!!!
+Patch Candidates Generated!
+Candidates size: 41197
+Generating meta-program...
+[83] Preprocess the following candidate with BasicTester: 41197
+Generating patches...
+[85] BasicTester, a patch instance with id 0:
+Begin building test
+Total macros: 31435
+Saving this fix to: /root/project/MSV/build/php-case-1e91069/php-1e91069-workdir/fixed_php_date.c
+Preprocessing test...
+Trying to build with all macros...
+1th build...
+2th build...
+3th build...
+Build Success!
+Build failed, Trying to find fail macros...
+Building final program...
+Total success macros: 30488
+Success to build final program!
+The total number of explored concrete patches: 0
+Repair process ends successfully!
+Total 41197 different repair schemas!!!!
+Total 54301 different repair candidate templates for scoring!!!
+Total 13734 different partial repair candidate templates!!
+Total number of compiles: 1
+Total number of test eval: 0
