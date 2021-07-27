@@ -258,8 +258,16 @@ static std::pair<size_t, size_t> getStartEndOffset(SourceContextManager &M,
         const std::string &src_file, const ASTLocTy &loc) {
     ASTContext *Context = M.getSourceContext(loc.filename);
     SourceManager &manager = Context->getSourceManager();
-    unsigned start_idx = manager.getFileOffset(manager.getExpansionLoc(loc.stmt->getBeginLoc()));
-    unsigned end_idx = manager.getFileOffset(manager.getExpansionLoc(loc.stmt->getEndLoc()));
+    unsigned start_idx,end_idx;
+    if(!loc.stmt->getBeginLoc().isMacroID()){
+        start_idx = manager.getFileOffset(manager.getExpansionLoc(loc.stmt->getBeginLoc()));
+        end_idx = manager.getFileOffset(manager.getExpansionLoc(loc.stmt->getEndLoc()));
+    }
+    else{
+        CharSourceRange range=manager.getExpansionRange(loc.stmt->getBeginLoc());
+        start_idx=manager.getFileOffset(range.getBegin());
+        end_idx=manager.getFileOffset(range.getEnd());
+    }
     std::string code = M.getSourceCode(loc.src_file);
     while (end_idx < code.size()) {
         if (code[end_idx] == '\n') {
@@ -652,8 +660,9 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     bodyCodes.clear();
     if (res1[currentCandidate[indexBackup]][1].size()>0 && code.substr(start,2)!="if")
         bodyCodes.push_back(stmtToString(*ctxt,loc.stmt));
-    else
+    else{
         bodyCodes.push_back(code.substr(start,end-start));
+    }
     size_t beforeEnd=start;
     while (currentIndex+1<currentLocation.size() && currentLocation[currentIndex+1].second<=end){
         currentIndex++;
