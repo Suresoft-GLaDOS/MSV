@@ -662,6 +662,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                     if (line.find("undefined reference to")!=std::string::npos){
                         size_t pos=line.find("undefined reference to");
                         size_t start=line.find("'",pos);
+                        if (start==line.size()-1) start=line.find("`",pos);
                         size_t end=line.find("'",start+1);
                         std::string errorFunc=line.substr(start+1,end-start-1);
 
