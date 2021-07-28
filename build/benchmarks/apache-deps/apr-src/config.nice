@@ -1,7 +1,0 @@
-#! /bin/sh
-#
-# Created by configure
-
-"./configure" \
-"--prefix=/home/fanl/Workspace/prophet/build/benchmarks/apache-deps/apr-build" \
-"$@"
