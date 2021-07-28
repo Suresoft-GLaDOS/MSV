@@ -658,21 +658,24 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             std::string line;
             
             while(std::getline(buildLog,line)){
-                if (line.find("error: ")!=std::string::npos){
-                    if (line.find("undefined reference to")!=std::string::npos){
-                        size_t pos=line.find("undefined reference to");
-                        size_t start=line.find("'",pos);
-                        if (start==line.size()-1) start=line.find("`",pos);
-                        size_t end=line.find("'",start+1);
-                        std::string errorFunc=line.substr(start+1,end-start-1);
+                if (line.find("undefined reference to") != std::string::npos) {
+                    size_t pos = line.find("undefined reference to");
+                    size_t start = line.find("'", pos);
+                    if (start == line.length() || start == line.length() - 1 || start == line.length() - 2)
+                        start = line.find("`", pos);
+                    size_t end = line.find("'", start + 1);
+                    std::string errorFunc = line.substr(start + 1, end - start - 1);
 
-                        for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                            if (it->second.find(errorFunc)!=std::string::npos){
-                                linkErrorMacros.insert(it->first);
-                            }
+                    for (std::map<long long, std::string>::iterator it = macroWithCode.begin(); it != macroWithCode.end(); it++)
+                    {
+                        if (it->second.find(errorFunc) != std::string::npos)
+                        {
+                            linkErrorMacros.insert(it->first);
                         }
                     }
-                    else if (line.find("linker command")==std::string::npos){
+                }
+                if (line.find("error: ")!=std::string::npos){
+                    if (line.find("linker command")==std::string::npos){
                         std::string fileName;
                         size_t location=line.find(".c:");
                         bool isC=true;

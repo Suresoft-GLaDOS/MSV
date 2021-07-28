@@ -94,11 +94,18 @@ def afl_plot(in_file: str, title: str, out_file: str='',ignore_iteration: bool =
     plt.savefig(out_file)
 
 
+def get_average(in_dir: str, out_file: str) -> None:
+    for id in os.listdir(in_dir):
+        if os.path.isfile(id):
+            with open(id, "r") as csv:
+                lines = csv.readlines()
+
+
 def main(argv):
     opts, args = getopt.getopt(argv[1:], "i:o:t:n")
     result_file = ""
     output_file = ""
-    strategy = ""
+    title = ""
     ignore = False
     for o, a in opts:
         if o == "-i":
