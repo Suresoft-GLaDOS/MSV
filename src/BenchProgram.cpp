@@ -569,7 +569,7 @@ void BenchProgram::saveFixedFiles(const std::map<std::string, std::string> &file
         std::ofstream fout_bak(std::string(work_dir+"/"+backupName).c_str(),std::ofstream::out);
         fout_bak << it->second;
         fout_bak.close();
-        // system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
+        system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
     }
 }
 

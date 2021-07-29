@@ -22,6 +22,7 @@
 #include "clang/AST/ASTContext.h"
 #include "llvm/Support/raw_ostream.h"
 #include <string>
+#include <iostream>
 
 using namespace clang;
 
@@ -167,7 +168,7 @@ NewCodeMapTy combineCode(const CodeSegTy &codeSegs, const CodeSegTy &patch) {
         std::string indent_str = "";
         for (size_t i = 0; i < patch_vec.size(); i++) {
             getTrailingIndent(seg_vec[i], indent_str);
-            //ret[src_file] += std::string("bool count=true;\nif (count==true){\n");
+            // ret[src_file] += std::string("bool count=true;\nif (count==true){\n");
             ret[src_file] += indentPatch(std::string("//prophet generated patch\n") +
                     patch_vec[i], indent_str) /* +std::string("}\n")*/ +seg_vec[i+1];
         }
@@ -940,6 +941,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         File currentFile;
         currentFile.fileName=src_file;
         lines.clear();
+        size_t seg_start=0;
         for (size_t i=0;i<it->second.size();i++) {
         // for (std::map<std::pair<size_t, size_t>, ASTLocTy>::iterator it2=it->second.begin();
         //         it2!=it->second.end();it2++) {
@@ -958,11 +960,9 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             std::map<RepairCandidate::CandidateKind,std::list<int>> caseKind;
             caseKind.clear();
             
-            std::string last_code=resCodeSegs[src_file][resCodeSegs[src_file].size()-1];
+            std::string last_code=resCodeSegs[src_file].back();
             resCodeSegs[src_file].pop_back();
             assert(code.find(last_code)!=std::string::npos);
-            size_t seg_start=code.find(last_code);
-
             resCodeSegs[src_file].push_back(code.substr(seg_start,start-seg_start));
 
             std::string body=applyPatch(i,currentLocation,currentCandidate,res1,line[src_file],code);
@@ -970,6 +970,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             // Add patch code to code
             resPatches[src_file].push_back(body);
             resCodeSegs[src_file].push_back(code.substr(end));
+
+            seg_start=end;
         }
         
         currentFile.lines=lines;
