@@ -972,11 +972,9 @@ protected:
     std::vector<RepairCandidate> candidates;
     CodeSegTy codes;
     PatchListTy patches;
-    TestCaseSetTy failed_cases;
     bool naive;
     long long total_macro;
     int count;
-    std::map<long long,std::pair<int,int>> macroMap;
     std::map<int,std::map<int,std::string>> idAndCase;
     std::vector<std::list<size_t>> switchCluster;
     // std::map<int,std::list<std::list<int>>> caseCluster;
@@ -984,16 +982,6 @@ protected:
     std::map<long long,std::string> macroCode;
 
     std::vector<std::pair<std::string,size_t>> &scores;
-    std::map<std::string,std::map<std::pair<size_t,size_t>,std::vector<size_t>>> locations;
-    std::map<size_t,size_t> switchLine;
-    std::map<std::pair<size_t,size_t>,std::string> patchTypes;
-
-    // For condition synthesizing
-    std::vector<std::pair<size_t,size_t>> conditionLocation;
-    std::map<std::pair<size_t,size_t>,std::map<size_t,std::vector<size_t>>> records;
-    std::map<size_t,std::vector<Expr *>> switchAtoms;
-    std::map<std::pair<size_t,size_t>,std::map<unsigned long,std::vector<std::vector<long long>>>> values;
-    std::map<size_t,ASTLocTy> switchLoc;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, idAndCase.size(),P.getSwitch().first,P.getSwitch().second);
@@ -1013,20 +1001,20 @@ protected:
 
     bool testPositiveCases(const BenchProgram::EnvMapTy &env) {
         bool result=true;
-        for (TestCaseSetTy::iterator it = failed_cases.begin();
-                it != failed_cases.end(); it++) {
-            if (!testOneCase(env, *it)) {
-                outlog_printf(2, "Failed positive case %lu\n", *it);
-                result=false;
-            }
-        }
+        // for (TestCaseSetTy::iterator it = failed_cases.begin();
+        //         it != failed_cases.end(); it++) {
+        //     if (!testOneCase(env, *it)) {
+        //         outlog_printf(2, "Failed positive case %lu\n", *it);
+        //         result=false;
+        //     }
+        // }
         for (TestCaseSetTy::iterator it = positive_cases.begin();
                 it != positive_cases.end(); it++) {
-            if (failed_cases.count(*it) != 0)
-                continue;
+            // if (failed_cases.count(*it) != 0)
+            //     continue;
             if (!testOneCase(env, *it)) {
                 outlog_printf(2, "Failed positive case %lu\n", *it);
-                failed_cases.insert(*it);
+                // failed_cases.insert(*it);
                 result=false;
             }
         }
@@ -1076,17 +1064,6 @@ protected:
         }
         P.getSwitchInfo().scoreInfo=removedDuplicate;
 
-        std::vector<std::vector<std::string>> atomString;
-        atomString.clear();
-        for (size_t _=0;_<idAndCase.size();_++) atomString.push_back(std::vector<std::string>());
-
-        for (std::map<size_t,std::vector<Expr *>>::iterator it=switchAtoms.begin();it!=switchAtoms.end();it++){
-            ASTContext *ctxt=M.getSourceContext(switchLoc[it->first].filename);
-            for (size_t i=0;i<it->second.size();i++){
-                atomString[it->first].push_back(stmtToString(*ctxt,it->second[i]));
-            }
-        }
-        P.getSwitchInfo().atoms=atomString;
         P.getSwitchInfo().infos=infos;
         P.getSwitchInfo().save();
     }
@@ -1108,9 +1085,8 @@ public:
     P(P), learning(learning), M(M), scores(scores),
     negative_cases(P.getNegativeCaseSet()),
     positive_cases(P.getPositiveCaseSet()),
-    candidates(),conditionLocation(),records(),
-    failed_cases(),switchLine(),
-    functionLoc(functionLoc),locations(),tempCtxt(NULL),
+    candidates(),
+    functionLoc(functionLoc),tempCtxt(NULL),
     naive(naive) {}
 
     virtual ~BasicTester() { }
@@ -1126,11 +1102,12 @@ public:
     virtual CodeSegTy getPatches() {
         return patches;
     }
-    virtual long long getMacroCount(){
-        return total_macro;
-    }
     std::map<long long,std::string> getMacroCode(){
         return macroCode;
+    }
+
+    virtual long long getMacroCount(){
+        return total_macro;
     }
     size_t getSwitchCount(){
         return idAndCase.size();
@@ -1159,22 +1136,12 @@ public:
         CodeRewriter R(M, candidate, &infos,functionLoc,P.getWorkdir());
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
-        macroMap=R.getMacroMap();
         idAndCase=R.getIdAndCase();
         count=R.getIdCount();
         total_macro=R.index;
         switchCluster=R.getSwitchCluster();
-        // caseCluster=R.getCaseCluster();
         macroCode=R.getMacroCode();
-        switchAtoms=R.getSwitchAtoms();
-
-        switchLoc.clear();
-        std::map<ASTLocTy,std::vector<size_t>> locs=R.getSwitchLoc();
-        for (std::map<ASTLocTy,std::vector<size_t>>::iterator it=locs.begin();it!=locs.end();it++){
-            for (size_t i=0;i<it->second.size();i++){
-                switchLoc[it->second[i]]=it->first;
-            }
-        }
+        // caseCluster=R.getCaseCluster();
 
         // Create rules
         std::vector<File> rules=R.rules;        
@@ -1191,7 +1158,6 @@ public:
         patches=a_patch;
         res.push_back((unsigned long)codes.size());
 
-        conditionLocation=R.getIsNegLocation();
         return res;
     }
 
@@ -1420,7 +1386,6 @@ public:
         CodeRewriter R(M, candidate, &the_infos,functionLoc,P.getWorkdir());
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
-        macroMap=R.getMacroMap();
         idAndCase=R.getIdAndCase();
         count=R.getIdCount();
         total_macro=R.index;
@@ -1900,7 +1865,6 @@ class TestBatcher {
     typedef std::map<CodeSegTy, std::vector<CandidateEntry> > CandidateMapTy;
     std::map<NewCodeMapTy, double> res;
     std::vector<RepairCandidate> succCandidates;
-    CandidateMapTy candidateMap;
     size_t cur_size;
     unsigned long total_cnt;
 
@@ -1917,12 +1881,12 @@ class TestBatcher {
         else
             buildEnv["COMPILE_CMD"] = CLANG_CMD;
         buildEnv=T->initEnv(buildEnv);
-        for (size_t i=0;i<T->getSwitchCount();i++)
-            buildEnv["__SWITCH"+std::to_string(i)]="0";
+        // for (size_t i=0;i<T->getSwitchCount();i++)
+        //     buildEnv["__SWITCH"+std::to_string(i)]="0";
         
         buildEnv["LD_LIBRARY_PATH"]=P.getProphetSrc()+"/.libs:"+std::string(getenv("LD_LIBRARY_PATH"));
         buildEnv["LIBRARY_PATH"]=P.getProphetSrc()+"/.libs:"+std::string(getenv("LIBRARY_PATH"));
-        const std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
+        std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
 
         // Create source file with fix
         // This should success
@@ -1952,7 +1916,7 @@ class TestBatcher {
 public:
     TestBatcher(BenchProgram &P, bool naive,
             bool learning, FeatureParameter *FP,std::string fixedFile):
-        P(P), naive(naive), learning(learning && !naive), FP(FP), fixedFile(fixedFile),res(), succCandidates(), candidateMap(), cur_size(0),
+        P(P), naive(naive), learning(learning && !naive), FP(FP), fixedFile(fixedFile),res(), succCandidates(),cur_size(0),
     total_cnt(0) { }
 
     // This is a lazy test routine, we are only going to decode it without

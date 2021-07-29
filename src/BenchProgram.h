@@ -178,9 +178,6 @@ private:
         std::vector<std::list<size_t>> switchCluster;
         // std::map<int,std::list<std::list<int>>> caseCluster;
         std::vector<std::pair<std::string,size_t>> scoreInfo;
-        std::vector<std::pair<size_t,size_t>> conditionSwitches;
-        std::map<std::pair<size_t,size_t>,size_t> conditionCounts;
-        std::vector<std::vector<std::string>> atoms;
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
         std::vector<File> infos;
     public:
@@ -220,30 +217,6 @@ private:
                 cJSON_AddItemToArray(scoreArray,localize);
             }
             cJSON_AddItemToObject(json,std::string("priority").c_str(),scoreArray);
-
-            // Save condition switches
-            cJSON *conditionArray=cJSON_CreateArray();
-            for (size_t i=0;i<conditionSwitches.size();i++){
-                cJSON *eachSwitch=cJSON_CreateArray();
-                cJSON_AddItemToArray(eachSwitch,cJSON_CreateNumber(conditionSwitches[i].first));
-                cJSON_AddItemToArray(eachSwitch,cJSON_CreateNumber(conditionSwitches[i].second));
-                cJSON_AddItemToArray(eachSwitch,cJSON_CreateNumber(conditionCounts[conditionSwitches[i]]));
-                cJSON_AddItemToArray(conditionArray,eachSwitch);
-            }
-            cJSON_AddItemToObject(json,std::string("condition_switch").c_str(),conditionArray);
-
-            // Save condition atoms
-            cJSON *atomArray=cJSON_CreateArray();
-            for (std::vector<std::vector<std::string>>::iterator it=atoms.begin();it!=atoms.end();it++){
-
-                cJSON *exprArray=cJSON_CreateArray();
-                for (size_t i=0;i<it->size();i++){
-                    cJSON *expr=cJSON_CreateString((*it)[i].c_str());
-                    cJSON_AddItemToArray(exprArray,expr);
-                }
-                cJSON_AddItemToArray(atomArray,exprArray);
-            }
-            cJSON_AddItemToObject(json,std::string("atoms").c_str(),atomArray);
 
             // Save each patch rules
             cJSON *ruleArray=cJSON_CreateArray();
@@ -406,7 +379,7 @@ public:
     bool buildSubDir(const std::string &subDir, const std::string &wrapScript,
             const EnvMapTy &envMap,std::vector<long long> compile_macro=std::vector<long long>());
     
-    void saveFixedFiles(const std::map<std::string, std::string> &fileCodeMap,std::string output_name);
+    void saveFixedFiles(std::map<std::string, std::string> &fileCodeMap,std::string output_name);
 
     bool buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
             const std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,

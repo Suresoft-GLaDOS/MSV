@@ -556,8 +556,8 @@ bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wra
     popEnvMap(envMap);
     return succ;
 }
-void BenchProgram::saveFixedFiles(const std::map<std::string, std::string> &fileCodeMap,std::string output_name){
-    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
+void BenchProgram::saveFixedFiles(std::map<std::string, std::string> &fileCodeMap,std::string output_name){
+    for (std::map<std::string, std::string>::iterator it = fileCodeMap.begin();
             it != fileCodeMap.end(); ++it) {
         std::string backupName=output_name;
         if (count!=0)
@@ -565,11 +565,12 @@ void BenchProgram::saveFixedFiles(const std::map<std::string, std::string> &file
         count++;
         std::vector<std::string> split=splitPath(it->first);
         backupName+=split[split.size()-1];
-        outlog_printf(2,"Saving this fix to: %s\n",std::string(work_dir+"/"+backupName).c_str());
         std::ofstream fout_bak(std::string(work_dir+"/"+backupName).c_str(),std::ofstream::out);
         fout_bak << it->second;
         fout_bak.close();
-        system(std::string("clang-format -i "+(work_dir+"/"+backupName)).c_str());
+        // system(std::string("clang-format -i "+work_dir+"/"+backupName).c_str());
+
+        outlog_printf(2,"Saving this fix to: %s\n",std::string(work_dir+"/"+backupName).c_str());
     }
 }
 
@@ -691,7 +692,10 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                         }
 
                         if (line.find("static declaration of")!=std::string::npos){
+                            size_t pos=line.find("static declaration of");
                             size_t first=line.find("'");
+                            if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                                first = line.find("`", pos);
                             size_t last=line.find("'",first+1);
                             std::string function=line.substr(first+1,last-first-1);
 
@@ -702,12 +706,29 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             }
 
                         }
+                        else if (line.find("conflicting types for")!=std::string::npos){
+                            size_t pos=line.find("conflicting types for");
+                            size_t first=line.find("'");
+                            if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                                first = line.find("`", pos);
+                            size_t last=line.find("'",first+1);
+                            std::string function=line.substr(first+1,last-first-1);
+
+                            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                if (it->second.find(function)!=std::string::npos){
+                                    compileErrorMacros.insert(it->first);
+                                }
+                            }
+
+                        }
+
                         else{
                             size_t start=line.find(":");
                             size_t end=line.find(":",start+1);
                             unsigned long lineNum=stoi(line.substr(start+1,end-start-1));
                             lineNum=lineNum-succ_id.size()-1;
                             // printf("%lu ",lineNum);
+                            if (fileCodeMap.count(fileName)==0) continue;
                             std::string currentCode=fileCodeMap.at(fileName);
 
                             std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
