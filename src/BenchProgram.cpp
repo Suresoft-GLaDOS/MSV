@@ -758,8 +758,9 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                                     if(macro_it->second.first<=lineNum && macro_it->second.second>=lineNum){
                                         failMacro=macro_it->first;
                                         // printf("%lu\n",failMacro);
+                                        if(compileErrorMacros.find(failMacro)==compileErrorMacros.end())
+                                            found=true;
                                         compileErrorMacros.insert(failMacro);
-                                        found=true;
                                         break;
                                     }
                                 }
