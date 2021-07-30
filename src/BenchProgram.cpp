@@ -680,15 +680,30 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                         std::string fileName;
                         size_t location=line.find(".c:");
                         bool isC=true;
+                        bool isRe=false;
+                        if (location==std::string::npos) {
+                            location=line.find(".re:");
+                            isRe=true;
+                        }
                         if (location==std::string::npos) {
                             location=line.find(".cpp:");
+                            isRe=false;
                             isC=false;
                         }
-                        if (isC) {
-                            fileName=line.substr(src_dir.size()+1,location-src_dir.size()-1+2);
+                        if(isRe){
+                            if (line.find(src_dir)!=std::string::npos)
+                                fileName=line.substr(src_dir.size()+1,location-src_dir.size())+".c";
+                            else fileName=line.substr(0,location)+".c";
+                        }
+                        else if (isC) {
+                            if (line.find(src_dir)!=std::string::npos)
+                                fileName=line.substr(src_dir.size()+1,location-src_dir.size()-1+2);
+                            else fileName=line.substr(0,location+2);
                         }
                         else{
-                            fileName=line.substr(src_dir.size()+1,location-src_dir.size()-1+4);
+                            if (line.find(src_dir)!=std::string::npos)
+                                fileName=line.substr(src_dir.size()+1,location-src_dir.size()-1+4);
+                            else fileName=line.substr(0,location+4);
                         }
 
                         if (line.find("static declaration of")!=std::string::npos){
@@ -723,34 +738,45 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                         }
 
                         else{
-                            size_t start=line.find(":");
-                            size_t end=line.find(":",start+1);
-                            unsigned long lineNum=stoi(line.substr(start+1,end-start-1));
-                            lineNum=lineNum-succ_id.size()-1;
-                            // printf("%lu ",lineNum);
-                            if (fileCodeMap.count(fileName)==0) continue;
-                            std::string currentCode=fileCodeMap.at(fileName);
+                            if (!isRe){
+                                size_t start=line.find(":");
+                                size_t end=line.find(":",start+1);
+                                unsigned long lineNum=stoi(line.substr(start+1,end-start-1));
+                                lineNum=lineNum-succ_id.size()-1;
+                                // printf("%lu ",lineNum);
+                                if (fileCodeMap.count(fileName)==0) {
+                                    size_t dot=fileName.find(".");
+                                    fileName=fileName.substr(0,dot);
+                                    fileName+=".c";
+                                }
+                                std::string currentCode=fileCodeMap.at(fileName);
 
-                            std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
-                            unsigned long failMacro=0;
-                            for (std::map<size_t,std::pair<size_t,size_t>>::iterator macro_it=macroLine.begin();macro_it!=macroLine.end();macro_it++){
-                                if(macro_it->second.first<=lineNum && macro_it->second.second>=lineNum){
-                                    failMacro=macro_it->first;
-                                    // printf("%lu\n",failMacro);
-                                    compileErrorMacros.insert(failMacro);
-                                    break;
+                                std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
+                                unsigned long failMacro=0;
+                                bool found=false;
+                                for (std::map<size_t,std::pair<size_t,size_t>>::iterator macro_it=macroLine.begin();macro_it!=macroLine.end();macro_it++){
+                                    if(macro_it->second.first<=lineNum && macro_it->second.second>=lineNum){
+                                        failMacro=macro_it->first;
+                                        // printf("%lu\n",failMacro);
+                                        compileErrorMacros.insert(failMacro);
+                                        found=true;
+                                        break;
+                                    }
+                                }
+                                if(!found) isRe=true;
+                            }
+                            if (isRe){
+                                std::getline(buildLog,line);
+                                line=stripLine(line);
+                                for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                    line.erase(remove(line.begin(), line.end(), ' '), line.end());
+                                    std::string codeLine=it->second;
+                                    codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
+                                    if (codeLine.find(line)!=std::string::npos){
+                                        compileErrorMacros.insert(it->first);
+                                    }
                                 }
                             }
-                            // std::getline(buildLog,line);
-                            // line=stripLine(line);
-                            // for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                            //     line.erase(remove(line.begin(), line.end(), ' '), line.end());
-                            //     std::string codeLine=it->second;
-                            //     codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
-                            //     if (codeLine.find(line)!=std::string::npos){
-                            //         compileErrorMacros.insert(it->first);
-                            //     }
-                            // }
                         }
                     }
                 }
@@ -770,6 +796,9 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
         if (linkErrorMacros.size()>=2){
             std::string candidateMacro="'";
+            for (std::set<long long>::iterator it=compileErrorMacros.begin();it!=compileErrorMacros.end();it++){
+                candidateMacro+=std::to_string(*it)+",";
+            }
             for (std::set<long long>::iterator it=linkErrorMacros.begin();it!=linkErrorMacros.end();it++){
                 candidateMacro+=std::to_string(*it)+",";
             }

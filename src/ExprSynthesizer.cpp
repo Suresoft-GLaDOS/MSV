@@ -1890,7 +1890,7 @@ class TestBatcher {
 
         // Create source file with fix
         // This should success
-        P.saveFixedFiles(combined,fixedFile);
+        // P.saveFixedFiles(combined,fixedFile);
         
         BenchProgram::EnvMapTy testEnv;
         bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);

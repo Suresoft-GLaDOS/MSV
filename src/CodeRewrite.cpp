@@ -631,7 +631,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             std::pair<size_t,size_t> currentPatch(counter,case_count);
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             patchTypes[currentPatch]=toString(patch_it->second);
-            macroCode[index]=currentBody;
+            macroCode[index]="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
             switchObject.types[patch_it->second].cases.push_back(case_count);
 
             index++;
