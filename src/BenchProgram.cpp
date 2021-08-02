@@ -85,8 +85,8 @@ static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroS
         while(std::getline(str,line)){
             lineNum++;
 
-            if (line.find("#ifdef COMPILE")!=std::string::npos){
-                size_t macro=std::stoi(line.substr(line.find("_")+1));
+            if (line.find("#ifdef __COMPILE")!=std::string::npos){
+                size_t macro=std::stoi(line.substr(line.find("#ifdef __COMPILE_")+17));
                 size_t start=lineNum;
                 size_t end=lineNum;
                 unsigned ifCount=0;
@@ -428,7 +428,7 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
                 code=code.substr(code.find(sep)+15);
             std::string macroDefine="";
             for (long long macro: compile_macro){
-                macroDefine+="#define COMPILE_";
+                macroDefine+="#define __COMPILE_";
                 macroDefine+=std::to_string(macro);
                 macroDefine+="\n";
             }

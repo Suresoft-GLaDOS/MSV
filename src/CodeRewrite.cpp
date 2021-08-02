@@ -561,7 +561,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 patch_it!=res1[currentCandidate[currentIndex]][2].end();patch_it++){
             addIsNeg(counter,case_count,patch_it->first);
 
-            body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
+            body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
             body+=currentBody;
@@ -618,7 +618,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 patch_it!=res1[currentCandidate[currentIndex]][1].end();patch_it++){
             addIsNeg(counter,case_count,patch_it->first);
 
-            body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
+            body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
             std::pair<size_t,size_t> conditionLoc=getConditionLocation(currentBody);
@@ -703,7 +703,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 patch_it!=res1[currentCandidate[indexBackup]][0].end();patch_it++){
             addIsNeg(counter,case_count,patch_it->first);
 
-            body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
+            body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
             body+=currentBody;
@@ -760,7 +760,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 patch_it!=res1[currentCandidate[indexBackup]][3].end();patch_it++){
             addIsNeg(counter,case_count,patch_it->first);
 
-            body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
+            body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
             body+=currentBody;

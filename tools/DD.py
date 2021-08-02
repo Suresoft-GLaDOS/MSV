@@ -1015,7 +1015,7 @@ if __name__ == '__main__':
 
                 macro_define=""
                 for i in c:
-                    macro_define+="#define COMPILE_"
+                    macro_define+="#define __COMPILE_"
                     macro_define+=str(i)
                     macro_define+="\n"
                 macro_define+="// compile_fin\n"
