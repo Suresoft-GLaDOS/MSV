@@ -686,7 +686,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     }
 
     // Normal replace
-    if(res1[currentCandidate[currentIndex]][0].size()>0 && origBody!="break;\n" && origBody.substr(0,4)!="case" && origBody.substr(0,8)!="default:"){
+    if(res1[currentCandidate[indexBackup]][0].size()>0 && origBody!="break;\n" && origBody.substr(0,4)!="case" && origBody.substr(0,8)!="default:"){
         case_count=0;
         casePatch.clear();
         currentSwitches.push_back(counter);
@@ -699,8 +699,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         body+=origBody;
         body+="\nbreak;\n}\n";
 
-        for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[currentIndex]][0].begin();
-                patch_it!=res1[currentCandidate[currentIndex]][0].end();patch_it++){
+        for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[indexBackup]][0].begin();
+                patch_it!=res1[currentCandidate[indexBackup]][0].end();patch_it++){
             addIsNeg(counter,case_count,patch_it->first);
 
             body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
@@ -744,7 +744,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     }
 
     // Insert after
-    if(res1[currentCandidate[currentIndex]][3].size()>0){
+    if(res1[currentCandidate[indexBackup]][3].size()>0){
         case_count=0;
         casePatch.clear();
         currentSwitches.push_back(counter);
@@ -756,8 +756,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         body+="case "+std::to_string(case_count++)+": {\n";
         body+="\nbreak;\n}\n";
 
-        for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[currentIndex]][3].begin();
-                patch_it!=res1[currentCandidate[currentIndex]][3].end();patch_it++){
+        for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[indexBackup]][3].begin();
+                patch_it!=res1[currentCandidate[indexBackup]][3].end();patch_it++){
             addIsNeg(counter,case_count,patch_it->first);
 
             body+="#ifdef COMPILE_"+std::to_string(index)+"\n";
