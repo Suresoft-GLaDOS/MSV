@@ -765,7 +765,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                                     fileName=fileName.substr(0,dot);
                                     fileName+=".c";
                                 }
-                                std::string currentCode=fileCodeMap.at(fileName);
 
                                 std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
                                 unsigned long failMacro=0;
