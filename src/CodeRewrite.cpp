@@ -516,6 +516,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     // if (currentLocation[currentIndex].second==0) return "";
     size_t start = currentLocation[currentIndex].first;
     size_t end = currentLocation[currentIndex].second;
+    std::string currentCode=code.substr(start,end-start);
+    if (currentCode.find("zend_try")!=std::string::npos || currentCode.find("zend_catch")!=std::string::npos || currentCode.find("zend_end_try")!=std::string::npos) return currentCode;
     ASTLocTy loc=currentCandidate[currentIndex];
     switchLoc[loc].clear();
     // outlog_printf(2,"Location: %d %d\n",start,end);
@@ -664,6 +666,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     else{
         bodyCodes.push_back(code.substr(start,end-start));
     }
+
     size_t beforeEnd=start;
     while (currentIndex+1<currentLocation.size() && currentLocation[currentIndex+1].second<=end){
         currentIndex++;

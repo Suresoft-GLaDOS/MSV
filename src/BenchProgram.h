@@ -382,7 +382,7 @@ public:
     void saveFixedFiles(std::map<std::string, std::string> &fileCodeMap,std::string output_name);
 
     bool buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-            const std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
+            std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
             std::string output_name="");
 
     TestCaseSetTy testSet(const std::string &subDir, const TestCaseSetTy &case_set,

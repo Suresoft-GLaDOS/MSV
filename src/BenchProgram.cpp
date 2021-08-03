@@ -575,7 +575,7 @@ void BenchProgram::saveFixedFiles(std::map<std::string, std::string> &fileCodeMa
 }
 
 bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-        const std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,std::string output_name) {
+        std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,std::string output_name) {
     compile_cnt ++;
     // This is to backup the changed sourcefile, in case something broken
     // the workdir, and we want to just resume
@@ -589,7 +589,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     pushWrapPath(CLANG_WRAP_PATH, wrapScript);
 
     outlog_printf(2,"Preprocessing test...\n");
-    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
+    for (std::map<std::string, std::string>::iterator it = fileCodeMap.begin();
             it != fileCodeMap.end(); ++it) {
         std::string target_file = it->first;
         if (target_file[0] != '/')
@@ -616,7 +616,12 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         outlog_printf(2,"Saved fixed file at: %s\n",bak_file.c_str());
 
         // Formatting meta-program, for find error berrer
-        // system(std::string("clang-format -i "+target_file).c_str());
+        system(std::string("clang-format -i "+target_file).c_str());
+        system(std::string("clang-format -i "+bak_file).c_str());
+
+        std::ifstream fin(target_file.c_str());
+        std::getline(fin,it->second,'\0');
+        fin.close();
     }
     fout2.close();
     deleteLibraryFile(fileCodeMap);
@@ -664,6 +669,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             // Analyze result message to reduce search space
             std::ifstream buildLog(build_log_file);
             std::string line;
+            bool added=false;
             
             while(std::getline(buildLog,line)){
                 if (line.find("undefined reference to") != std::string::npos) {
@@ -679,6 +685,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                         if (it->second.find(errorFunc) != std::string::npos)
                         {
                             linkErrorMacros.insert(it->first);
+                            added=true;
                         }
                     }
                 }
@@ -724,6 +731,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
                                     compileErrorMacros.insert(it->first);
+                                    added=true;
                                 }
                             }
 
@@ -739,6 +747,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
                                     compileErrorMacros.insert(it->first);
+                                    added=true;
                                 }
                             }
 
@@ -768,6 +777,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                                         if(compileErrorMacros.find(failMacro)==compileErrorMacros.end())
                                             found=true;
                                         compileErrorMacros.insert(failMacro);
+                                        added=true;
                                         break;
                                     }
                                 }
@@ -782,6 +792,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                                     codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
                                     if (codeLine.find(line)!=std::string::npos){
                                         compileErrorMacros.insert(it->first);
+                                        added=true;
                                     }
                                 }
                             }
@@ -790,6 +801,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                 }
             }
             buildLog.close();
+
+            if (!added) break;
         }
     }
     // Run Binary-Search to find fail cases
@@ -797,6 +810,64 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     if (repair_build_cnt > 10)
         timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
     int ret=1;
+
+    if (!succ){
+        outlog_printf(2,"Fail to find with log, search all macros!\n");
+        std::string candidateMacro="'";
+        for (std::vector<long long>::iterator it=succ_id.begin();it!=succ_id.end();it++){
+            candidateMacro+=std::to_string(*it)+",";
+        }
+
+        if (candidateMacro!="'"){
+            candidateMacro.pop_back();
+        }
+        candidateMacro+="'";
+
+        ExecutionTimer timer;
+        std::string src_dir = getFullPath(work_dir + "/src");
+        std::string cmd;
+        cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+candidateMacro;
+        // cmd+=" -t "+build_cmd;
+        if (dep_dir!="") cmd+=" -p "+dep_dir;
+        cmd+=" -w ";
+        for (int i=0;i<files.size();i++){
+            if (i!=0) cmd+=":";
+            cmd+=files[i];
+        }
+        cmd+=" -j 10 ";
+        // cmd+=" > DD.log";
+        ret = system(cmd.c_str());
+
+        if (ret==0) {
+            total_repair_build_time += timer.getSeconds();
+            repair_build_cnt ++;
+        }
+        // deleteLibraryFile(fileCodeMap);
+
+        char *home;
+        home=getenv("HOME");
+        // We have to cover Windows!
+        if (home==NULL)
+            home=getenv("HOMEPATH");
+
+        std::string resultPath=std::string(home)+"/__dd_test.log";
+        char eachResult[100];
+        std::ifstream result(resultPath.c_str(),std::ifstream::in);
+        // assert(result.is_open());
+        fail.clear();
+        while(result.getline(eachResult,100)){
+            fail.insert(stoll(std::string(eachResult)));
+        }
+
+        for (std::vector<long long>::iterator it=succ_id.begin();it!=succ_id.end();it){
+            if (fail.find(*it)!=fail.end()) {
+                std::vector<long long>::iterator temp=it;
+                it++;
+                succ_id.erase(temp);
+            }
+            else it++;
+        }
+    }
 
     if (true)
     {
@@ -850,9 +921,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             fail.clear();
             while(result.getline(eachResult,100)){
                 fail.insert(stoll(std::string(eachResult)));
-            }
-            for (std::set<long long>::iterator it=compileErrorMacros.begin();it!=compileErrorMacros.end();it++){
-                fail.insert(*it);
             }
 
             succ_id.clear();
