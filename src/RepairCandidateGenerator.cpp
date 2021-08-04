@@ -474,6 +474,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
     std::map<FunctionDecl*,std::pair<unsigned,unsigned>> functionLocation;
     std::vector<Stmt*> stmt_stack;
     InternalHandlerInfo hinfo;
+    std::set<FunctionDecl *> processed;
     // This is a hacky tmp list for fix is_first + is_func_block
     std::vector<size_t> tmp_memo;
     bool naive;
@@ -554,6 +555,11 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         rc.kind = RepairCandidate::TightenConditionKind;
         rc.original=n;
         q.push_back(rc);
+
+        if (processed.count(L->getCurrentFunction())==0) {
+            genVarMutation(L->getCurrentFunction());
+            processed.insert(L->getCurrentFunction());
+        }
     }
 
     void genLooseCondition(IfStmt *n) {
@@ -747,6 +753,11 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 q.push_back(rc);
             }
         }
+
+        if (processed.count(L->getCurrentFunction())==0) {
+            genVarMutation(L->getCurrentFunction());
+            processed.insert(L->getCurrentFunction());
+        }
     }
 
     // TODO: Remove strange templates (e.g. --this, _M_...(), ...)
@@ -851,6 +862,11 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 tmp_memo.push_back(q.size());
             q.push_back(it->second);
         }
+
+        if (processed.count(L->getCurrentFunction())==0) {
+            genVarMutation(L->getCurrentFunction());
+            processed.insert(L->getCurrentFunction());
+        }
     }
 
     void genAddIfGuard(Stmt* n, bool is_first) {
@@ -920,6 +936,11 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 rc.is_first = is_first;
                 q.push_back(rc);
             }
+
+        if (processed.count(L->getCurrentFunction())==0) {
+            genVarMutation(L->getCurrentFunction());
+            processed.insert(L->getCurrentFunction());
+        }
     }
 
     void genDeclStmtChange(DeclStmt *n) {
@@ -1087,6 +1108,40 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             rc.is_first = is_first;
             q.push_back(rc);
         }
+
+        if (processed.count(curFD)==0) {
+            genVarMutation(curFD);
+            processed.insert(curFD);
+        }
+    }
+
+    bool genVarMutation(FunctionDecl *decl){
+        Stmt *body=decl->getBody();
+        if (body){
+            CompoundStmt *comp=llvm::dyn_cast<CompoundStmt>(body);
+            if (comp){
+                Stmt *first=comp->body_front();
+                ASTLocTy loc = getNowLocation(first);
+                LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+                ExprListTy exprs=L->getCandidateLValueExpr();
+                ExprListTy candidates;
+                candidates.clear();
+                for (size_t i=0;i<exprs.size();i++){
+                    if (exprs[i]->getType()==ctxt->IntTy)
+                        candidates.push_back(exprs[i]);
+                }
+
+                RepairCandidate rc;
+                rc.actions.clear();
+                RepairAction action(loc,RepairAction::InsertMutationKind,nullptr);
+                action.candidate_atoms=candidates;
+                rc.kind=RepairCandidate::AddVarMutation;
+                rc.score=0;
+                rc.actions.push_back(action);
+                rc.original=first;
+                q.push_back(rc);
+            }
+        }
     }
 
 public:
@@ -1097,6 +1152,7 @@ public:
         hinfo(M.getInternalHandlerInfo(ctxt)), naive(naive), learning(learning) {
         compound_counter.clear();
         stmt_stack.clear();
+        processed.clear();
         q.clear();
         in_yacc_func = false;
         GeoP = 0.01;

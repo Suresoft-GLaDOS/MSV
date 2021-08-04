@@ -35,6 +35,7 @@ NewCodeMapTy combineCode(const CodeSegTy &codeSegs, const CodeSegTy &patch);
 class CodeRewriter {
     CodeSegTy resCodeSegs, resPatches;
     int counter;
+    size_t varMutationCounter=0;
     SourceContextManager &sourceManager;
 
     std::map<long long,std::pair<int,int>> macroMap;

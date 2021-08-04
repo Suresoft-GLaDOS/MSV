@@ -438,6 +438,54 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
     for (size_t j=0;j<rc.size();j++){
         if (DeclStmt::classof(rc[j].original)) continue;
 
+        if (rc[j].kind==RepairCandidate::AddVarMutation){
+            std::map<std::string,RepairCandidate::CandidateKind> insertVarMutation;
+            insertVarMutation.clear();
+            ExprListTy exprs=rc[j].actions[0].candidate_atoms;
+            ASTContext *ctxt=M.getSourceContext(rc[j].actions[0].loc.filename);
+
+            for (size_t i=0;i<exprs.size();i++){
+                std::string newStmt="";
+                newStmt+=stmtToString(*ctxt,exprs[i]);
+                newStmt+=" = __choose(\"__CONSTANT\");\n";
+                insertVarMutation[newStmt]=RepairCandidate::AddVarMutation;
+
+                newStmt="";
+                newStmt+=stmtToString(*ctxt,exprs[i]);
+                newStmt+=" += __choose(\"__CONSTANT\");\n";
+                insertVarMutation[newStmt]=RepairCandidate::AddVarMutation;
+
+                newStmt="";
+                newStmt+=stmtToString(*ctxt,exprs[i]);
+                newStmt+=" -= __choose(\"__CONSTANT\");\n";
+                insertVarMutation[newStmt]=RepairCandidate::AddVarMutation;
+
+                newStmt="";
+                newStmt+=stmtToString(*ctxt,exprs[i]);
+                newStmt+=" *= __choose(\"__CONSTANT\");\n";
+                insertVarMutation[newStmt]=RepairCandidate::AddVarMutation;
+
+                newStmt="";
+                newStmt+=stmtToString(*ctxt,exprs[i]);
+                newStmt+=" /= __choose(\"__CONSTANT\");\n";
+                insertVarMutation[newStmt]=RepairCandidate::AddVarMutation;
+            }
+
+            if (ret[rc[j].actions[0].loc].size()==0){
+                ret[rc[j].actions[0].loc].push_back(std::map<std::string,RepairCandidate::CandidateKind>());
+                ret[rc[j].actions[0].loc].push_back(std::map<std::string,RepairCandidate::CandidateKind>());
+                ret[rc[j].actions[0].loc].push_back(std::map<std::string,RepairCandidate::CandidateKind>());
+                ret[rc[j].actions[0].loc].push_back(std::map<std::string,RepairCandidate::CandidateKind>());
+                ret[rc[j].actions[0].loc].push_back(insertVarMutation);
+            }
+            else{
+                // assert(ret[rootLoc].size()==4);
+                ret[rc[j].actions[0].loc][4].insert(insertVarMutation.begin(),insertVarMutation.end());
+            }
+
+            continue;
+        }
+
         const ASTLocTy rootLoc = rc[j].actions[0].loc;
         std::map<std::string,RepairCandidate::CandidateKind> replaceCodes;
         std::map<std::string,RepairCandidate::CandidateKind> conditionCodes;
@@ -499,9 +547,10 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
             ret[rootLoc].push_back(conditionCodes);
             ret[rootLoc].push_back(insertCodes);
             ret[rootLoc].push_back(insertAfterCodes);
+            ret[rootLoc].push_back(std::map<std::string,RepairCandidate::CandidateKind>());
         }
         else{
-            assert(ret[rootLoc].size()==4);
+            // assert(ret[rootLoc].size()==4);
             ret[rootLoc][0].insert(replaceCodes.begin(),replaceCodes.end());
             ret[rootLoc][1].insert(conditionCodes.begin(),conditionCodes.end());
             ret[rootLoc][2].insert(insertCodes.begin(),insertCodes.end());
@@ -514,6 +563,29 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
 std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<size_t,size_t>> &currentLocation,std::vector<ASTLocTy> &currentCandidate,
         std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,const std::string code){
     // if (currentLocation[currentIndex].second==0) return "";
+    // TODO: Handle AddVerMutation
+    // Insert Var Mutation
+    int case_count=0;
+    std::string body="";
+    if(res1[currentCandidate[currentIndex]][4].size()>0){
+        case_count=0;
+
+        body+="switch(__choose(\"__MUTATE_"+std::to_string(varMutationCounter)+"\"))\n{\n";
+        body+="case "+std::to_string(case_count++)+": \n";
+        body+="break;\n";
+
+        for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[currentIndex]][4].begin();
+                patch_it!=res1[currentCandidate[currentIndex]][4].end();patch_it++){
+            body+="case "+std::to_string(case_count)+": {\n";
+            body+=patch_it->first;
+            body+="\nbreak;\n}\n";
+
+            case_count++;
+        }
+        body+="}\n";
+        varMutationCounter++;
+    }
+
     size_t start = currentLocation[currentIndex].first;
     size_t end = currentLocation[currentIndex].second;
     std::string currentCode=code.substr(start,end-start);
@@ -537,7 +609,6 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     }
     lineObject.line=currentLine-1;
 
-    int case_count=0;
     // assert( end >= last_end);
     std::map<int,std::string> casePatch;
     casePatch.clear();
@@ -545,7 +616,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     caseKind.clear();
     std::list<int> switchGroup;
     switchGroup.clear();
-    std::string body="{\n";
+    body+="{\n";
 
     // Insert before
     if(res1[currentCandidate[currentIndex]][2].size()>0){

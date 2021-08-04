@@ -616,8 +616,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         outlog_printf(2,"Saved fixed file at: %s\n",bak_file.c_str());
 
         // Formatting meta-program, for find error berrer
-        system(std::string("clang-format -i "+target_file).c_str());
-        system(std::string("clang-format -i "+bak_file).c_str());
+        // system(std::string("clang-format -i "+target_file).c_str());
+        // system(std::string("clang-format -i "+bak_file).c_str());
 
         std::ifstream fin(target_file.c_str());
         std::getline(fin,it->second,'\0');
@@ -765,7 +765,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                                     fileName=fileName.substr(0,dot);
                                     fileName+=".c";
                                 }
-                                std::string currentCode=fileCodeMap.at(fileName);
+                                // std::string currentCode=fileCodeMap.at(fileName);
 
                                 std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
                                 unsigned long failMacro=0;
