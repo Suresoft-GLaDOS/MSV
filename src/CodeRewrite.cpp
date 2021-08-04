@@ -472,12 +472,34 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                         newStmt += ";\n";
+                    
+                    size_t pos=newStmt.find("__is_neg");
+                    while (true){
+                        for (size_t j=0;j<6 || pos!=std::string::npos;j++){
+                            pos=newStmt.find(",",pos+1);
+                        }
+                        if (pos==std::string::npos) break;
+                        newStmt.insert(pos,"\n\t\t\t");
+                    }
+
                     conditionCodes.insert(std::pair<std::string,RepairCandidate::CandidateKind>(newStmt,rc[j].kind));
                 }
                 else{
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                         newStmt += ";\n";
+
+                    if(newStmt.find("__is_neg")!=std::string::npos){
+                        size_t pos=newStmt.find("__is_neg");
+                        while (true){
+                            for (size_t j=0;j<6 || pos!=std::string::npos;j++){
+                                pos=newStmt.find(",",pos+1);
+                            }
+                            if (pos==std::string::npos) break;
+                            newStmt.insert(pos,"\n\t\t\t");
+                        }
+                    }
+
                     replaceCodes.insert(std::pair<std::string,RepairCandidate::CandidateKind>(newStmt,rc[j].kind));
                 }
             }
@@ -485,6 +507,18 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
                 std::string newStmt="//"+toString(rc[j].kind)+"\n"+stmtToString(*ctxt,S);
                 if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                     newStmt += ";\n";
+
+                if(newStmt.find("__is_neg")!=std::string::npos){
+                    size_t pos=newStmt.find("__is_neg");
+                    while (true){
+                        for (size_t j=0;j<6 || pos!=std::string::npos;j++){
+                            pos=newStmt.find(",",pos+1);
+                        }
+                        if (pos==std::string::npos) break;
+                        newStmt.insert(pos,"\n\t\t\t");
+                    }
+                }
+
                 insertCodes.insert(std::pair<std::string,RepairCandidate::CandidateKind>(newStmt,rc[j].kind));
             }
             else if (rc[j].actions[i].kind == RepairAction::InsertAfterMutationKind){
