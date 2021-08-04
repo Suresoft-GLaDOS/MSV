@@ -685,7 +685,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                         if (it->second.find(errorFunc) != std::string::npos)
                         {
                             linkErrorMacros.insert(it->first);
-                            added=true;
+                            if(linkErrorMacros.find(it->first)==linkErrorMacros.end())
+                                added=true;
                         }
                     }
                 }
@@ -731,7 +732,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
                                     compileErrorMacros.insert(it->first);
-                                    added=true;
+                                    if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                        added=true;
                                 }
                             }
 
@@ -747,7 +749,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
                                     compileErrorMacros.insert(it->first);
-                                    added=true;
+                                    if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                        added=true;
                                 }
                             }
 
@@ -765,7 +768,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                                     fileName=fileName.substr(0,dot);
                                     fileName+=".c";
                                 }
-                                // std::string currentCode=fileCodeMap.at(fileName);
 
                                 std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
                                 unsigned long failMacro=0;
@@ -792,7 +794,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                                     codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
                                     if (codeLine.find(line)!=std::string::npos){
                                         compileErrorMacros.insert(it->first);
-                                        added=true;
+                                        if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                            added=true;
                                     }
                                 }
                             }
