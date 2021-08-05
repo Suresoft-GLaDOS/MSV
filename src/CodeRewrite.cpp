@@ -475,11 +475,11 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
                     
                     size_t pos=newStmt.find("__is_neg");
                     while (true){
-                        for (size_t j=0;j<6 || pos!=std::string::npos;j++){
+                        for (size_t j=0;j<6 && pos!=std::string::npos;j++){
                             pos=newStmt.find(",",pos+1);
                         }
                         if (pos==std::string::npos) break;
-                        newStmt.insert(pos,"\n\t\t\t");
+                        newStmt.insert(pos+1,"\n\t\t\t");
                     }
 
                     conditionCodes.insert(std::pair<std::string,RepairCandidate::CandidateKind>(newStmt,rc[j].kind));
@@ -492,11 +492,11 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
                     if(newStmt.find("__is_neg")!=std::string::npos){
                         size_t pos=newStmt.find("__is_neg");
                         while (true){
-                            for (size_t j=0;j<6 || pos!=std::string::npos;j++){
+                            for (size_t j=0;j<6 && pos!=std::string::npos;j++){
                                 pos=newStmt.find(",",pos+1);
                             }
                             if (pos==std::string::npos) break;
-                            newStmt.insert(pos,"\n\t\t\t");
+                            newStmt.insert(pos+1,"\n\t\t\t");
                         }
                     }
 
@@ -511,11 +511,11 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
                 if(newStmt.find("__is_neg")!=std::string::npos){
                     size_t pos=newStmt.find("__is_neg");
                     while (true){
-                        for (size_t j=0;j<6 || pos!=std::string::npos;j++){
+                        for (size_t j=0;j<6 && pos!=std::string::npos;j++){
                             pos=newStmt.find(",",pos+1);
                         }
                         if (pos==std::string::npos) break;
-                        newStmt.insert(pos,"\n\t\t\t");
+                        newStmt.insert(pos+1,"\n\t\t\t");
                     }
                 }
 

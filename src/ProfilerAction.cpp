@@ -146,8 +146,7 @@ class ProfilerGenConsumer : public ASTConsumer {
     };
 
 public:
-    // Change 1
-    ProfilerGenConsumer(const std::string &outfile, const std::string &indexfile): outfile(outfile), LI(indexfile) {
+    explicit ProfilerGenConsumer(const std::string &outfile, const std::string &indexfile): outfile(outfile), LI(indexfile) {
         rewriteTextMap.clear();
     }
 
@@ -176,7 +175,7 @@ class ProfilerGenAction : public PluginASTAction {
     std::string indexfile;
 public:
     // Change 2
-    virtual bool ParseArgs(const CompilerInstance &CI,
+    bool ParseArgs(const CompilerInstance &CI,
             const std::vector<std::string> &args) {
         if (args.size() >= 1)
             outfile = args[0];
@@ -311,8 +310,7 @@ class ProfilerRewriteConsumer : public ASTConsumer {
     };
 
 public:
-    // Change 3
-    ProfilerRewriteConsumer(const std::string textfile, const std::string outfile): outfile(outfile) {
+    explicit ProfilerRewriteConsumer(const std::string textfile, const std::string outfile): outfile(outfile) {
         M.clear();
         std::ifstream fin(textfile.c_str(), std::ifstream::in);
         size_t n;
@@ -353,8 +351,7 @@ class ProfilerRewriteAction : public PluginASTAction {
     std::string textfile;
     std::string outfile;
 public:
-    // Change 4
-    virtual bool ParseArgs(const CompilerInstance &CI,
+    bool ParseArgs(const CompilerInstance &CI,
             const std::vector<std::string> &args) {
         if (args.size() >= 1)
             textfile = args[0];
