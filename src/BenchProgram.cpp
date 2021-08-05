@@ -684,13 +684,13 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                     {
                         if (it->second.find(errorFunc) != std::string::npos)
                         {
-                            linkErrorMacros.insert(it->first);
                             if(linkErrorMacros.find(it->first)==linkErrorMacros.end())
                                 added=true;
+                            linkErrorMacros.insert(it->first);
                         }
                     }
                 }
-                if (line.find("error: ")!=std::string::npos){
+                else if (line.find("error: ")!=std::string::npos){
                     if (line.find("linker command")==std::string::npos){
                         std::string fileName;
                         size_t location=line.find(".c:");
@@ -731,9 +731,9 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 
                             for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
-                                    compileErrorMacros.insert(it->first);
                                     if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
                                         added=true;
+                                    compileErrorMacros.insert(it->first);
                                 }
                             }
 
@@ -748,9 +748,9 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
 
                             for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
-                                    compileErrorMacros.insert(it->first);
                                     if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
                                         added=true;
+                                    compileErrorMacros.insert(it->first);
                                 }
                             }
 
@@ -793,9 +793,9 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                                     std::string codeLine=it->second;
                                     codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
                                     if (codeLine.find(line)!=std::string::npos){
-                                        compileErrorMacros.insert(it->first);
                                         if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
                                             added=true;
+                                        compileErrorMacros.insert(it->first);
                                     }
                                 }
                             }
@@ -878,10 +878,15 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
         if (linkErrorMacros.size()>=2){
             std::string candidateMacro="'";
+            std::set<long long> fail_temp;
+            fail_temp.clear();
             for (std::set<long long>::iterator it=compileErrorMacros.begin();it!=compileErrorMacros.end();it++){
-                candidateMacro+=std::to_string(*it)+",";
+                fail_temp.insert(*it);
             }
             for (std::set<long long>::iterator it=linkErrorMacros.begin();it!=linkErrorMacros.end();it++){
+                fail_temp.insert(*it);
+            }
+            for (std::set<long long>::iterator it=fail_temp.begin();it!=fail_temp.end();it++){
                 candidateMacro+=std::to_string(*it)+",";
             }
 
