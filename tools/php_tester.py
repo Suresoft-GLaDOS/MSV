@@ -39,7 +39,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
         php_deps_dir = deps_dir;
     chdir(out_dir);
     my_env = environ;
-    my_env["PATH"] = php_deps_dir + "/bison-2.5.1-build/bin:" + my_env["PATH"];
+    my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"];
     # my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"];
     my_env["PATH"] = php_deps_dir + "/flex-2.5.4-build/bin:" + my_env["PATH"];
     # switch to the revision
@@ -85,7 +85,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
                     my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"];
                 elif is_due_to_bison_v(err):
                     print "Failed to configure, use bison 2.2 to try again";
-                    my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"];
+                    my_env["PATH"] = php_deps_dir + "/bison-2.5.1-build/bin:" + my_env["PATH"];
                 else:
                     print "Failed to configure due to unknown reason";
                     chdir(ori_dir);

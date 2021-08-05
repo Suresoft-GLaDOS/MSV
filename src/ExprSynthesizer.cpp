@@ -983,6 +983,9 @@ protected:
 
     std::vector<std::pair<std::string,size_t>> &scores;
 
+    std::map<size_t,std::vector<std::pair<std::string,std::string>>> mutatable; // available mutation of each switch
+    std::map<std::string,size_t> mutatableFunction; // mutation switch of each function
+
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, idAndCase.size(),P.getSwitch().first,P.getSwitch().second);
     }
@@ -1051,6 +1054,8 @@ protected:
         P.getSwitchInfo().caseNum=switchCase;
 
         P.getSwitchInfo().switchCluster=switchCluster;
+        P.getSwitchInfo().mutatable=mutatable;
+        P.getSwitchInfo().mutatableFunction=mutatableFunction;
         // P.getSwitchInfo().caseCluster=caseCluster;
         std::set<std::pair<std::string,size_t>> found;
         found.clear();
@@ -1142,6 +1147,8 @@ public:
         switchCluster=R.getSwitchCluster();
         macroCode=R.getMacroCode();
         // caseCluster=R.getCaseCluster();
+        mutatable=R.getMutatable();
+        mutatableFunction=R.getMutatableFunction();
 
         // Create rules
         std::vector<File> rules=R.rules;        

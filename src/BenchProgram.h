@@ -180,6 +180,8 @@ private:
         std::vector<std::pair<std::string,size_t>> scoreInfo;
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
         std::vector<File> infos;
+        std::map<size_t,std::vector<std::pair<std::string,std::string>>> mutatable; // available mutation of each switch
+        std::map<std::string,size_t> mutatableFunction; // mutation switch of each function
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
         void save(){
@@ -207,6 +209,25 @@ private:
                 cJSON_AddItemToArray(switchClusterArray,switchGroup);
             }
             cJSON_AddItemToObject(json,std::string("switch_cluster").c_str(),switchClusterArray);
+
+            // Save mutations
+            cJSON *mutationFuncArray=cJSON_CreateArray();
+            for (std::map<std::string,size_t>::iterator it=mutatableFunction.begin();it!=mutatableFunction.end();it++){
+                cJSON *mutationFunc=cJSON_CreateObject();
+                cJSON_AddStringToObject(mutationFunc,std::string("function").c_str(),it->first.c_str());
+                cJSON_AddNumberToObject(mutationFunc,std::string("switch").c_str(),it->second);
+
+                cJSON *mutationArray=cJSON_CreateArray();
+                for (size_t i=0;i<mutatable[it->second].size();i++){
+                    cJSON *mutation=cJSON_CreateObject();
+                    cJSON_AddStringToObject(mutation,"operator",mutatable[it->second][i].second.c_str());
+                    cJSON_AddStringToObject(mutation,"variable",mutatable[it->second][i].first.c_str());
+                    cJSON_AddItemToArray(mutationArray,mutation);
+                }
+                cJSON_AddItemToObject(mutationFunc,std::string("mutations").c_str(),mutationArray);
+                cJSON_AddItemToArray(mutationFuncArray,mutationFunc);
+            }
+            cJSON_AddItemToObject(json,std::string("mutations").c_str(),mutationFuncArray);
 
             // Save scores
             cJSON *scoreArray=cJSON_CreateArray();
