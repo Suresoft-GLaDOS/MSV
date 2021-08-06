@@ -295,7 +295,7 @@ class php_tester:
         # TODO: afl_cmd=["afl_fuzz","-w",self.work_dir,"-p",self.repo_dir+"/sapi/cli/php","-h",test_prog] + arg_list
         # -t(timeout) can be optional
         cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=self.env);
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,env=self.env);
         chdir(ori_dir);
         (out, err) = p.communicate();
 

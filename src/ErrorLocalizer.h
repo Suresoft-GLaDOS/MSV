@@ -103,7 +103,7 @@ public:
                 loc_v.push_back(loc);
             }
             fin.close();
-            system("cat /tmp/__index.loc");
+            // system("cat /tmp/__index.loc");
             old_cnt = loc_v.size();
         }
     }
