@@ -585,7 +585,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
 
         if (processed.count(L->getCurrentFunction())==0) {
             genVarMutation(L->getCurrentFunction());
-            genProfileWriter(L->getCurrentFunction());
+            genProfileWriter(n);
             processed.insert(L->getCurrentFunction());
         }
     }
@@ -784,7 +784,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
 
         if (processed.count(L->getCurrentFunction())==0) {
             genVarMutation(L->getCurrentFunction());
-            genProfileWriter(L->getCurrentFunction());
+            genProfileWriter(n);
             processed.insert(L->getCurrentFunction());
         }
     }
@@ -894,7 +894,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
 
         if (processed.count(L->getCurrentFunction())==0) {
             genVarMutation(L->getCurrentFunction());
-            genProfileWriter(L->getCurrentFunction());
+            genProfileWriter(n);
             processed.insert(L->getCurrentFunction());
         }
     }
@@ -969,7 +969,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
 
         if (processed.count(L->getCurrentFunction())==0) {
             genVarMutation(L->getCurrentFunction());
-            genProfileWriter(L->getCurrentFunction());
+            genProfileWriter(n);
             processed.insert(L->getCurrentFunction());
         }
     }
@@ -1142,7 +1142,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
 
         if (processed.count(curFD)==0) {
             genVarMutation(curFD);
-            genProfileWriter(curFD);
+            genProfileWriter(n);
             processed.insert(curFD);
         }
     }
@@ -1176,25 +1176,44 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
-    bool genProfileWriter(FunctionDecl *decl){
-        Stmt *body=decl->getBody();
-        if (body){
-            CompoundStmt *comp=llvm::dyn_cast<CompoundStmt>(body);
-            if (comp){
-                Stmt *first=comp->body_back();
-                ASTLocTy loc = getNowLocation(first);
-                LocalAnalyzer *L = M.getLocalAnalyzer(loc);
-                ExprListTy exprs=L->getCandidateLocalVars(QualType());
+    bool genProfileWriter(Stmt *stmt){
+        ASTLocTy loc = getNowLocation(stmt);
+        LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        if (ReturnStmt::classof(stmt)){
+            ReturnStmt *returnStmt=llvm::dyn_cast<ReturnStmt>(stmt);
+            ExprListTy exprs=L->getCandidateLocalVars(QualType());
 
-                RepairCandidate rc;
-                rc.actions.clear();
-                RepairAction action(loc,RepairAction::InsertMutationKind,createProfileWriter(M,ctxt,exprs,decl->getNameInfo().getAsString()));
-                action.candidate_atoms=exprs;
-                rc.kind=RepairCandidate::AddProfileWriter;
-                rc.score=0;
-                rc.actions.push_back(action);
-                rc.original=first;
-                q.push_back(rc);
+            RepairCandidate rc;
+            rc.actions.clear();
+            RepairAction action(loc,RepairAction::InsertMutationKind,createProfileWriter(M,ctxt,exprs,L->getCurrentFunction()->getNameInfo().getAsString()));
+            action.candidate_atoms=exprs;
+            rc.kind=RepairCandidate::AddProfileWriter;
+            rc.score=0;
+            rc.actions.push_back(action);
+            rc.original=stmt;
+            q.push_back(rc);
+        }
+        else{
+            FunctionDecl *decl=L->getCurrentFunction();
+            Stmt *body=decl->getBody();
+            if (body){
+                CompoundStmt *comp=llvm::dyn_cast<CompoundStmt>(body);
+                if (comp){
+                    Stmt *last=comp->body_back();
+                    loc = getNowLocation(last);
+                    L = M.getLocalAnalyzer(loc);
+                    ExprListTy exprs=L->getCandidateLocalVars(QualType());
+
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    RepairAction action(loc,RepairAction::InsertAfterMutationKind,createProfileWriter(M,ctxt,exprs,decl->getNameInfo().getAsString()));
+                    action.candidate_atoms=exprs;
+                    rc.kind=RepairCandidate::AddProfileWriter;
+                    rc.score=0;
+                    rc.actions.push_back(action);
+                    rc.original=last;
+                    q.push_back(rc);
+                }
             }
         }
     }
@@ -1290,6 +1309,15 @@ public:
                     genAddStatement(n, is_first, stmt_stack.size() == 2);
                 }
             }
+        }
+        return true;
+    }
+
+    bool VisitReturnStmt(ReturnStmt *stmt){
+        ASTLocTy loc = getNowLocation(stmt);
+        LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        if (processed.count(L->getCurrentFunction())>0){
+            genProfileWriter(stmt);
         }
         return true;
     }
