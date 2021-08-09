@@ -437,6 +437,11 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
     ret.clear();
     for (size_t j=0;j<rc.size();j++){
         if (DeclStmt::classof(rc[j].original)) continue;
+        if (ret[rc[j].actions[0].loc].size()==0){
+            for (size_t _=0;_<6;_++){
+                ret[rc[j].actions[0].loc].push_back(std::map<std::string,RepairCandidate::CandidateKind>());
+            }
+        }
 
         if (rc[j].kind==RepairCandidate::AddVarMutation){
             std::map<std::string,RepairCandidate::CandidateKind> insertVarMutation;
@@ -471,18 +476,17 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
                 insertVarMutation[newStmt]=RepairCandidate::AddVarMutation;
             }
 
-            if (ret[rc[j].actions[0].loc].size()==0){
-                ret[rc[j].actions[0].loc].push_back(std::map<std::string,RepairCandidate::CandidateKind>());
-                ret[rc[j].actions[0].loc].push_back(std::map<std::string,RepairCandidate::CandidateKind>());
-                ret[rc[j].actions[0].loc].push_back(std::map<std::string,RepairCandidate::CandidateKind>());
-                ret[rc[j].actions[0].loc].push_back(std::map<std::string,RepairCandidate::CandidateKind>());
-                ret[rc[j].actions[0].loc].push_back(insertVarMutation);
-            }
-            else{
-                // assert(ret[rootLoc].size()==4);
-                ret[rc[j].actions[0].loc][4].insert(insertVarMutation.begin(),insertVarMutation.end());
-            }
+            // assert(ret[rootLoc].size()==4);
+            ret[rc[j].actions[0].loc][4].insert(insertVarMutation.begin(),insertVarMutation.end());
 
+            continue;
+        }
+        else if (rc[j].kind==RepairCandidate::AddProfileWriter){
+            ASTContext *ctxt=M.getSourceContext(rc[j].actions[0].loc.filename);
+            std::map<std::string,RepairCandidate::CandidateKind> insertProfileWriter;
+            insertProfileWriter.clear();
+            insertProfileWriter.insert(std::make_pair(stmtToString(*ctxt,(Stmt *)rc[j].actions[0].ast_node),RepairCandidate::AddProfileWriter));
+            ret[rc[j].actions[0].loc][5]=insertProfileWriter;
             continue;
         }
 
@@ -576,20 +580,11 @@ std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateK
                 insertAfterCodes.insert(std::pair<std::string,RepairCandidate::CandidateKind>(newStmt,rc[j].kind));
             }
         }
-        if (ret[rootLoc].size()==0){
-            ret[rootLoc].push_back(replaceCodes);
-            ret[rootLoc].push_back(conditionCodes);
-            ret[rootLoc].push_back(insertCodes);
-            ret[rootLoc].push_back(insertAfterCodes);
-            ret[rootLoc].push_back(std::map<std::string,RepairCandidate::CandidateKind>());
-        }
-        else{
-            // assert(ret[rootLoc].size()==4);
-            ret[rootLoc][0].insert(replaceCodes.begin(),replaceCodes.end());
-            ret[rootLoc][1].insert(conditionCodes.begin(),conditionCodes.end());
-            ret[rootLoc][2].insert(insertCodes.begin(),insertCodes.end());
-            ret[rootLoc][3].insert(insertAfterCodes.begin(),insertAfterCodes.end());
-        }
+        // assert(ret[rootLoc].size()==4);
+        ret[rootLoc][0].insert(replaceCodes.begin(),replaceCodes.end());
+        ret[rootLoc][1].insert(conditionCodes.begin(),conditionCodes.end());
+        ret[rootLoc][2].insert(insertCodes.begin(),insertCodes.end());
+        ret[rootLoc][3].insert(insertAfterCodes.begin(),insertAfterCodes.end());
     }
     return ret;
 }
@@ -922,6 +917,12 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         switchLine[counter]=currentLine;
         lineObject.switches.push_back(switchObject);
         counter++;
+    }
+
+    // Insert profile writer
+    if(res1[currentCandidate[indexBackup]][5].size()>0){
+        std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[indexBackup]][5].begin();
+        body+=patch_it->first+";\n";
     }
 
     if (hasLine){

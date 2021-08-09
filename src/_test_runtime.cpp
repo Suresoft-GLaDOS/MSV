@@ -120,6 +120,36 @@ extern "C" int __choose(const char *switch_id) {
 
 #define MAGIC_NUMBER -123456789
 
+extern "C" void __write_profile(const char *func_name,int count, ...){
+    int pid=__choose("__PID");
+    char tmp_file[100];
+    sprintf(tmp_file,"/tmp/%d_profile.log",pid);
+
+    va_list ap;
+    va_start(ap, count);
+    FILE *f = fopen(tmp_file, "a");
+    fprintf(f, "*%s ", tmp_file);
+    fprintf(f, "%lu\n", (unsigned long)count);
+    // fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
+    for (unsigned long i = 0; i < (unsigned long)count; i++) {
+        char *name=va_arg(ap,char *);
+        void* p = va_arg(ap, void*);
+        unsigned long sz = va_arg(ap, unsigned long);
+        assert( sz <= 8 );
+        long long v = 0;
+        if (isGoodAddr(p, sz)) {
+            memcpy(&v, p, sz);
+        }
+        else {
+            v = MAGIC_NUMBER;
+        }
+        fprintf(f, "%s=%lld\n", name,v);
+        // fprintf(stderr, "i %lu %lld\n", i, v);
+    }
+    fprintf(f, "\n");
+    fclose(f);
+}
+
 extern "C" int __is_neg(const char *location,int count, ...) {
     // fprintf(stderr, "fuck\n");
     if (!enable) return 0;

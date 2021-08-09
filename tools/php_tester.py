@@ -230,12 +230,11 @@ class php_initializer:
         return ret;
 
 class php_tester:
-    def __init__(self, work_dir, repo_dir, test_dir,env=environ,temp_dir=""):
+    def __init__(self, work_dir, repo_dir, test_dir,temp_dir=""):
         self.repo_dir = repo_dir;
         self.test_dir = test_dir;
         self.work_dir = work_dir;
         self.temp_dir=temp_dir
-        self.env=env
 
         f = open(test_dir + "/testfile.log", "r");
         line = f.readline();
@@ -295,7 +294,7 @@ class php_tester:
         # TODO: afl_cmd=["afl_fuzz","-w",self.work_dir,"-p",self.repo_dir+"/sapi/cli/php","-h",test_prog] + arg_list
         # -t(timeout) can be optional
         cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=self.env);
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE);
         chdir(ori_dir);
         (out, err) = p.communicate();
 

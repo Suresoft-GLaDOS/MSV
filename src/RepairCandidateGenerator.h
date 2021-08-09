@@ -93,7 +93,8 @@ struct RepairCandidate {
         ReplaceKind,
         ReplaceStringKind,
         AddAndReplaceKind,
-        AddVarMutation // 9
+        AddVarMutation, // 9
+        AddProfileWriter
     } CandidateKind;
     CandidateKind kind;
     bool is_first; // start of a block? not including condition changes

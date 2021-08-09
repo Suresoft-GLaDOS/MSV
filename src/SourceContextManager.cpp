@@ -31,6 +31,7 @@ const char* HANDLER_PREFIX =
     "int __get_mutant(); "
     "int __is_neg(const char *location,int count, ...); "
     "int __abst_hole(); "
+    "void __write_profile(const char*,int, ...); "
     "int __choose(const char *);";
 const char* MEMSET_PREFIX =
     "void* memset(void*, int, unsigned long); ";
@@ -133,6 +134,8 @@ void SourceContextManager::fetch(const std::string &file) {
             if (FD && FD->getDeclName().isIdentifier()) {
                 if (FD->getName() == IS_NEG_HANDLER)
                     internalHandlerMap[&ctxt].abstract_cond = createFExpr(ctxt, FD);
+                if (FD->getName() == WRITE_PROFILE)
+                    internalHandlerMap[&ctxt].write_profile=createFExpr(ctxt,FD);
                 if (FD->getName() == "memset")
                     internalHandlerMap[&ctxt].sys_memset = createFExpr(ctxt, FD);
                 if (FD->getName() == UNKNOWN_HOOK)
@@ -202,6 +205,8 @@ std::string SourceContextManager::newSourceFile(const std::string &projDir, cons
         if (FD && FD->getDeclName().isIdentifier()) {
             if (FD->getName() == IS_NEG_HANDLER)
                 internalHandlerMap[&ctxt].abstract_cond = createFExpr(ctxt, FD);
+            if (FD->getName() == WRITE_PROFILE)
+                internalHandlerMap[&ctxt].write_profile=createFExpr(ctxt,FD);
             if (FD->getName() == "memset")
                 internalHandlerMap[&ctxt].sys_memset = createFExpr(ctxt, FD);
             if (FD->getName() == UNKNOWN_HOOK)
@@ -251,6 +256,10 @@ LocalAnalyzer* SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc) {
 // FIXME: This stupid shit should go somewhere else
 Expr* SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType QT,int id,std::map<Expr *,unsigned long> atoms) {
     return getInternalHandlerInfo(ctxt).abstract_cond;
+}
+
+clang::Expr* SourceContextManager::getWriteProfile(clang::ASTContext *ctxt){
+    return getInternalHandlerInfo(ctxt).write_profile;
 }
 
 Expr* SourceContextManager::getUnknownExpr(ASTContext *ctxt, ExprListTy candidate_atoms) {
