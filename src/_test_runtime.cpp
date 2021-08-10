@@ -135,9 +135,9 @@ extern "C" void __write_profile(const char *func_name,int count, ...){
         char *name=va_arg(ap,char *);
         void* p = va_arg(ap, void*);
         unsigned long sz = va_arg(ap, unsigned long);
-        assert( sz <= 8 );
         long long v = 0;
-        if (isGoodAddr(p, sz)) {
+
+        if (sz <= 8 && isGoodAddr(p, sz)) {
             memcpy(&v, p, sz);
         }
         else {

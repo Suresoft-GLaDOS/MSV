@@ -489,7 +489,18 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
             ASTContext *ctxt=M.getSourceContext(rc[j].actions[0].loc.filename);
             std::map<std::string,RepairCandidate::CandidateKind> insertProfileWriter;
             insertProfileWriter.clear();
-            insertProfileWriter.insert(std::make_pair(stmtToString(*ctxt,(Stmt *)rc[j].actions[0].ast_node),RepairCandidate::AddProfileWriter));
+            std::string temp=stmtToString(*ctxt,(Stmt *)rc[j].actions[0].ast_node);
+
+            size_t pos=temp.find("__write_profile");
+            while (true){
+                for (size_t j=0;j<6 && pos!=std::string::npos;j++){
+                    pos=temp.find(",",pos+1);
+                }
+                if (pos==std::string::npos) break;
+                temp.insert(pos+1,"\n\t\t\t");
+            }
+
+            insertProfileWriter.insert(std::make_pair(temp,RepairCandidate::AddProfileWriter));
             if (rc[j].actions[0].kind==RepairAction::InsertAfterMutationKind)
                 ret[rc[j].actions[0].loc][ProfileWriterEnd]=insertProfileWriter;
             else
@@ -931,6 +942,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         counter++;
     }
 
+    body+="}\n";
+
     // Insert profile writer
     if(res1[currentCandidate[indexBackup]][ProfileWriterEnd].size()>0){
         std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[indexBackup]][ProfileWriterEnd].begin();
@@ -949,7 +962,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         patchLines[loc.filename][eachLine].push_back(currentSwitches[i]);
     }
 
-    return body+"}\n";
+    return body;
 }
 
 CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,std::string work_dir):sourceManager(M),switchCluster() {
