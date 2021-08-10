@@ -580,8 +580,23 @@ void BenchProgram::saveFixedFiles(std::map<std::string, std::string> &fileCodeMa
     }
 }
 
+void removeMacros(std::map<std::string, std::string> fileMap,std::string srcDir){
+    for (std::map<std::string, std::string>::iterator it=fileMap.begin();it!=fileMap.end();it++){
+        std::string code;
+        readCodeToString(srcDir+"/"+it->first,code);
+        std::string sep="// compile_fin";
+        if (code.find(sep)!=std::string::npos)
+            code=code.substr(code.find(sep)+15);
+
+        std::ofstream fout(srcDir+"/"+it->first,std::ofstream::out);
+        fout << code;
+        fout.close();
+    }
+}
+
 bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-        std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,std::string output_name) {
+            std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
+            std::map<std::string,std::vector<long long>> macroFile,std::string output_name) {
     compile_cnt ++;
     // This is to backup the changed sourcefile, in case something broken
     // the workdir, and we want to just resume
@@ -883,7 +898,6 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         outlog_printf(2,"Build failed, Trying to find fail macros...\n");
         //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
         if (linkErrorMacros.size()>=2){
-            std::string candidateMacro="'";
             std::set<long long> fail_temp;
             fail_temp.clear();
             for (std::set<long long>::iterator it=compileErrorMacros.begin();it!=compileErrorMacros.end();it++){
@@ -892,49 +906,54 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             for (std::set<long long>::iterator it=linkErrorMacros.begin();it!=linkErrorMacros.end();it++){
                 fail_temp.insert(*it);
             }
-            for (std::set<long long>::iterator it=fail_temp.begin();it!=fail_temp.end();it++){
-                candidateMacro+=std::to_string(*it)+",";
-            }
 
-            if (candidateMacro!="'"){
-                candidateMacro.pop_back();
-            }
-            candidateMacro+="'";
-
-            ExecutionTimer timer;
-            std::string src_dir = getFullPath(work_dir + "/src");
-            std::string cmd;
-            cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+candidateMacro;
-            // cmd+=" -t "+build_cmd;
-            if (dep_dir!="") cmd+=" -p "+dep_dir;
-            cmd+=" -w ";
-            for (int i=0;i<files.size();i++){
-                if (i!=0) cmd+=":";
-                cmd+=files[i];
-            }
-            cmd+=" -j 10 ";
-            // cmd+=" > DD.log";
-            ret = system(cmd.c_str());
-
-            if (ret==0) {
-                total_repair_build_time += timer.getSeconds();
-                repair_build_cnt ++;
-            }
-            // deleteLibraryFile(fileCodeMap);
-
-            char *home;
-            home=getenv("HOME");
-            // We have to cover Windows!
-            if (home==NULL)
-                home=getenv("HOMEPATH");
-
-            std::string resultPath=std::string(home)+"/__dd_test.log";
-            char eachResult[100];
-            std::ifstream result(resultPath.c_str(),std::ifstream::in);
-            // assert(result.is_open());
             fail.clear();
-            while(result.getline(eachResult,100)){
-                fail.insert(stoll(std::string(eachResult)));
+            for (std::map<std::string,std::vector<long long>>::iterator it=macroFile.begin();it!=macroFile.end();it++){
+                std::string candidateMacro="'";
+                for (std::set<long long>::iterator it2=fail_temp.begin();it2!=fail_temp.end();it2++){
+                    if (std::find(it->second.begin(),it->second.end(),*it2)!=it->second.end());
+                        candidateMacro+=std::to_string(*it2)+",";
+                }
+
+                if (candidateMacro!="'"){
+                    candidateMacro.pop_back();
+                }
+                else continue; // No fail macro in this file, skip it!
+                candidateMacro+="'";
+
+                outlog_printf(2,"Search %s!\n",it->first.c_str());
+
+                ExecutionTimer timer;
+                std::string src_dir = getFullPath(work_dir + "/src");
+                removeMacros(fileCodeMap,src_dir);
+                std::string cmd;
+                cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+candidateMacro;
+                // cmd+=" -t "+build_cmd;
+                if (dep_dir!="") cmd+=" -p "+dep_dir;
+                cmd+=" -w "+src_dir+"/"+it->first;
+                cmd+=" -j 10 ";
+                // cmd+=" > DD.log";
+                ret = system(cmd.c_str());
+
+                if (ret==0) {
+                    total_repair_build_time += timer.getSeconds();
+                    repair_build_cnt ++;
+                }
+                // deleteLibraryFile(fileCodeMap);
+
+                char *home;
+                home=getenv("HOME");
+                // We have to cover Windows!
+                if (home==NULL)
+                    home=getenv("HOMEPATH");
+
+                std::string resultPath=std::string(home)+"/__dd_test.log";
+                char eachResult[100];
+                std::ifstream result(resultPath.c_str(),std::ifstream::in);
+                // assert(result.is_open());
+                while(result.getline(eachResult,100)){
+                    fail.insert(stoll(std::string(eachResult)));
+                }
             }
 
             succ_id.clear();
