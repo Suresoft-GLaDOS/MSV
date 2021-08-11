@@ -311,14 +311,17 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::genExprAtoms(QualType QT, bool allow_lo
     // Global direct variables
     if (allow_glob) {
         for (std::set<VarDecl*>::const_iterator it = GlobalVarDecls.begin(); it != GlobalVarDecls.end(); ++it) {
-            QualType globalQT = (*it)->getType();
-            if (typeMatch(globalQT, QT)) {
-                DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
-                        SourceLocation(), *it, false, SourceLocation(), globalQT, VK_LValue);
-                if (lvalue)
-                    ret.push_back(DRE);
-                else
-                    ret.push_back(castToRValue(DRE));
+            SourceManager &manager=ctxt->getSourceManager();
+            if (manager.getFileOffset(manager.getExpansionLoc((*it)->getBeginLoc()))<manager.getFileOffset(manager.getExpansionLoc(loc.stmt->getBeginLoc()))){
+                QualType globalQT = (*it)->getType();
+                if (typeMatch(globalQT, QT)) {
+                    DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
+                            SourceLocation(), *it, false, SourceLocation(), globalQT, VK_LValue);
+                    if (lvalue)
+                        ret.push_back(DRE);
+                    else
+                        ret.push_back(castToRValue(DRE));
+                }
             }
         }
     }
@@ -358,34 +361,39 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::genExprAtoms(QualType QT, bool allow_lo
             }
         }
         // Form global variables
-        for (std::set<VarDecl*>::iterator it = GlobalVarDecls.begin(); it != GlobalVarDecls.end(); ++it) {
-            VarDecl *VD = *it;
-            QualType T = VD->getType();
-            bool is_arrow = false;
-            const RecordType *RT = NULL;
-            if (T->isPointerType()) {
-                RT = T->getPointeeType()->getAsStructureType();
-                is_arrow = true;
-            }
-            else
-                RT = T->getAsStructureType();
-            if (RT) {
-                RecordDecl *RD = RT->getDecl();
-                if (RD) {
-                    for (RecordDecl::decl_iterator dit = RD->decls_begin(); dit != RD->decls_end(); ++dit) {
-                        FieldDecl *FD = llvm::dyn_cast<FieldDecl>(*dit);
-                        if (FD) {
-                            if (typeMatch(FD->getType(), QT)) {
-                                DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
-                                            SourceLocation(), VD, false, SourceLocation(), T, VK_LValue);
-                                MemberExpr *ME = MemberExpr::Create(*ctxt,DRE, is_arrow, SourceLocation(),
-					NestedNameSpecifierLoc(),SourceLocation(),FD,DeclAccessPair::make(FD,FD->getAccess()),
-                                        DeclarationNameInfo(FD->getDeclName(), FD->getLocation()),
-                                        nullptr,FD->getType(), VK_LValue, OK_Ordinary,NonOdrUseReason::NOUR_None);
-                                if (lvalue)
-                                    ret.push_back(ME);
-                                else
-                                    ret.push_back(castToRValue(ME));
+        if (allow_glob){
+            for (std::set<VarDecl*>::iterator it = GlobalVarDecls.begin(); it != GlobalVarDecls.end(); ++it) {
+                SourceManager &manager=ctxt->getSourceManager();
+                if (manager.getFileOffset(manager.getExpansionLoc((*it)->getBeginLoc()))<manager.getFileOffset(manager.getExpansionLoc(loc.stmt->getBeginLoc()))){
+                    VarDecl *VD = *it;
+                    QualType T = VD->getType();
+                    bool is_arrow = false;
+                    const RecordType *RT = NULL;
+                    if (T->isPointerType()) {
+                        RT = T->getPointeeType()->getAsStructureType();
+                        is_arrow = true;
+                    }
+                    else
+                        RT = T->getAsStructureType();
+                    if (RT) {
+                        RecordDecl *RD = RT->getDecl();
+                        if (RD) {
+                            for (RecordDecl::decl_iterator dit = RD->decls_begin(); dit != RD->decls_end(); ++dit) {
+                                FieldDecl *FD = llvm::dyn_cast<FieldDecl>(*dit);
+                                if (FD) {
+                                    if (typeMatch(FD->getType(), QT)) {
+                                        DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
+                                                    SourceLocation(), VD, false, SourceLocation(), T, VK_LValue);
+                                        MemberExpr *ME = MemberExpr::Create(*ctxt,DRE, is_arrow, SourceLocation(),
+                            NestedNameSpecifierLoc(),SourceLocation(),FD,DeclAccessPair::make(FD,FD->getAccess()),
+                                                DeclarationNameInfo(FD->getDeclName(), FD->getLocation()),
+                                                nullptr,FD->getType(), VK_LValue, OK_Ordinary,NonOdrUseReason::NOUR_None);
+                                        if (lvalue)
+                                            ret.push_back(ME);
+                                        else
+                                            ret.push_back(castToRValue(ME));
+                                    }
+                                }
                             }
                         }
                     }
