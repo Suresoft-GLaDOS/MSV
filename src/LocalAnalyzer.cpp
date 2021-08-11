@@ -254,11 +254,6 @@ ctxt(ctxt), loc(loc), G(G), curFunc(NULL), LocalVarDecls(), MemberStems(), naive
         }
     }
 
-    if (ctxt->getSourceManager().getExpansionLineNumber(loc.stmt->getBeginLoc())==627){
-        for (size_t i = 0; i < stmtStack.size() - 1; i++ ) {
-            stmtStack[i]->dumpColor();
-        }
-    }
     LocalActiveVarVisitor visitor2(stmtStack, curFunc);
     visitor2.TraverseDecl(TransUnit);
     LocalVarDecls = visitor2.getValidLocalVarDeclSet();
