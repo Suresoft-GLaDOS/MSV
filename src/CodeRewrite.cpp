@@ -669,6 +669,9 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     // outlog_printf(2,"Location: %d %d\n",start,end);
     std::vector<size_t> currentSwitches;
     currentSwitches.clear();
+    if (macroFile.find(loc.filename)==macroFile.end())
+        macroFile[loc.filename]=std::vector<long long>();
+    
     ASTContext *ctxt=sourceManager.getSourceContext(loc.filename);
     SourceManager &manager=ctxt->getSourceManager();
     size_t currentLine=manager.getExpansionLineNumber(loc.stmt->getBeginLoc());
@@ -717,6 +720,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="#endif\n";
 
             std::pair<size_t,size_t> currentPatch(counter,case_count);
+            macroFile[loc.filename].push_back(index);
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
@@ -776,6 +780,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="#endif\n";
 
             std::pair<size_t,size_t> currentPatch(counter,case_count);
+            macroFile[loc.filename].push_back(index);
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
@@ -860,6 +865,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="#endif\n";
 
             std::pair<size_t,size_t> currentPatch(counter,case_count);
+            macroFile[loc.filename].push_back(index);
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
@@ -917,6 +923,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="#endif\n";
 
             std::pair<size_t,size_t> currentPatch(counter,case_count);
+            macroFile[loc.filename].push_back(index);
             macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
@@ -1068,6 +1075,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     resCodeSegs.clear();
     resPatches.clear();
     macroMap.clear();
+    macroFile.clear();
     idAndCase.clear();
     switchCluster.clear();
     switchLoc.clear();

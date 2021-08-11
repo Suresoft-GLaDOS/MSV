@@ -1085,6 +1085,7 @@ protected:
 
 public:
     ASTContext *tempCtxt;
+    std::map<std::string,std::vector<long long>> macroFile;
     BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
             std::vector<std::pair<std::string,size_t>> &scores):
     P(P), learning(learning), M(M), scores(scores),
@@ -1146,6 +1147,7 @@ public:
         total_macro=R.index;
         switchCluster=R.getSwitchCluster();
         macroCode=R.getMacroCode();
+        macroFile=R.getMacroFile();
         // caseCluster=R.getCaseCluster();
         mutatable=R.getMutatable();
         mutatableFunction=R.getMutatableFunction();
@@ -1543,7 +1545,7 @@ public:
             buildEnv["COMPILE_CMD"] = "clang++";
         else
             buildEnv["COMPILE_CMD"] = GCC_CMD;
-        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,macroCode);
+        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,macroCode,macroFile);
         if (!build_succ) {
             outlog_printf(2, "Build failed!");
             return std::map<NewCodeMapTy, double>();
@@ -1900,7 +1902,7 @@ class TestBatcher {
         // P.saveFixedFiles(combined,fixedFile);
         
         BenchProgram::EnvMapTy testEnv;
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),fixedFile);
+        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
 
         // if (P.getSwitch().first==0 && P.getSwitch().second==0)
         //     result_init=T->test(testEnv,0,true);

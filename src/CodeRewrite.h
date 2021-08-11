@@ -49,6 +49,7 @@ class CodeRewriter {
 
     std::map<long long,std::pair<int,int>> macroMap;
     std::map<long long,std::string> macroCode;
+    std::map<std::string,std::vector<long long>> macroFile;
     std::vector<std::pair<size_t,size_t>> isNegLocation;
     std::map<int,std::map<int,std::string>> idAndCase;
     std::map<size_t,std::vector<clang::Expr *>> switchAtoms;
@@ -134,6 +135,9 @@ public:
     }
     std::map<std::string,size_t> getMutatableFunction(){
         return mutatableFunction;
+    }
+    std::map<std::string,std::vector<long long>> getMacroFile(){
+        return macroFile;
     }
 };
 

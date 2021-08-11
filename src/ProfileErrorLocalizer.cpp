@@ -78,7 +78,7 @@ std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileRes
                 tmploc = LI->getProfileLocation(idx);
                 // std::cout << "Previous filepath: " << tmploc.expFilename  << "\n";
                 tmploc.expFilename = P.normalizePath(tmploc.expFilename);
-                // std::cout << "Trimed filepath: " << tmploc.expFilename << "\n";
+                // std::cout << "Trimed filepath: " << tmploc.expFilename << " " << tmploc.expLine << "\n";
                 tmploc.spellFilename = P.normalizePath(tmploc.spellFilename);
             }
             long long cnt, cnt2;
@@ -162,7 +162,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         llvm::errs() << "Neg Processing: "<< *it << "\n";
         ProfileLocationMapTy res;
         clearProfileResult();
-        bool tmp = P.test("profile", *it, testEnv, 0);
+        bool tmp = P.test("profile", *it, testEnv, 0,0,0,0,true);
         res = parseProfileResult();
         // llvm::errs() << "Finish!" << "\n";
 
@@ -170,7 +170,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         if (*it > max_id) max_id = *it;
         assert( !tmp || 1);
         for (ProfileLocationMapTy::iterator iit = res.begin(); iit != res.end(); ++iit) {
-            //llvm::errs() << iit->first.expFilename << " "<< iit->first.expLine << "\n";
+            // llvm::errs() << iit->first.expFilename << " "<< iit->first.expLine << "\n";
             if (negative_mark.count(iit->first) != 0) {
                 negative_mark[iit->first].execution_cnt ++;
                 if (negative_mark[iit->first].beforeend_cnt < iit->second.beforeend_cnt) {
@@ -197,7 +197,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         llvm::errs() << "Processing: " << cnt << " : " << *it << "\n";
         ProfileLocationMapTy res;
         clearProfileResult();
-        bool tmp = P.test("profile", *it, testEnv, true);
+        bool tmp = P.test("profile", *it, testEnv, 0,0,0,0,true);
         res = parseProfileResult();
         // outlog_printf(2,"Result: %d\n",res.size());
         cnt ++;
