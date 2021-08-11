@@ -1181,7 +1181,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         if (ReturnStmt::classof(stmt)){
             ReturnStmt *returnStmt=llvm::dyn_cast<ReturnStmt>(stmt);
-            ExprListTy exprs=L->genExprAtoms(QualType(),true,true,false,false,true);
+            ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,true);
 
             RepairCandidate rc;
             rc.actions.clear();
@@ -1202,7 +1202,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     Stmt *last=comp->body_back();
                     loc = getNowLocation(last);
                     L = M.getLocalAnalyzer(loc);
-                    ExprListTy exprs=L->genExprAtoms(QualType(),true,true,false,false,true);
+                    ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,true);
 
                     RepairCandidate rc;
                     rc.actions.clear();

@@ -113,32 +113,49 @@ public:
 
 class MemberExprStemVisitor : public RecursiveASTVisitor<MemberExprStemVisitor> {
     std::map<std::string, Expr*> res;
+    StmtStackTy &stackStmt;
     ASTContext *ctxt;
+    bool valid;
 public:
-    MemberExprStemVisitor(ASTContext *ctxt): res(), ctxt(ctxt) {}
+    MemberExprStemVisitor(ASTContext *ctxt,StmtStackTy &stackStmt): res(), ctxt(ctxt),stackStmt(stackStmt),valid(true) {}
     ~MemberExprStemVisitor() {}
     virtual bool VisitMemberExpr(MemberExpr *ME) {
-        // FIXME: This should maybe apply to all Expr, not just MemberExpr
-        QualType QT = ME->getType();
-        if (QT->isStructureType()) {
-            // FIXME: a function for this!!
-            std::string tmp = stripLine(stmtToString(*ctxt, ME));
+        if (valid){
+            // FIXME: This should maybe apply to all Expr, not just MemberExpr
+            QualType QT = ME->getType();
+            if (QT->isStructureType()) {
+                // FIXME: a function for this!!
+                std::string tmp = stripLine(stmtToString(*ctxt, ME));
+                if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
+                    res[tmp] = ME;
+            }
+            Expr *base = ME->getBase();
+            assert(base);
+    /*            const clang::RecordType *RecT = 0;
+            if (!ME->isArrow())
+                RecT = base->getType()->getAsStructureType();
+            else {
+                const PointerType *PT = llvm::dyn_cast<PointerType>(base->getType());
+                RecT = llvm::dyn_cast<RecordType>(PT->getPointeeType().getTypePtr());
+            }*/
+            std::string tmp = stripLine(stmtToString(*ctxt, base));
             if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
-                res[tmp] = ME;
-        }
-        Expr *base = ME->getBase();
-        assert(base);
-/*            const clang::RecordType *RecT = 0;
-        if (!ME->isArrow())
-            RecT = base->getType()->getAsStructureType();
-        else {
-            const PointerType *PT = llvm::dyn_cast<PointerType>(base->getType());
-            RecT = llvm::dyn_cast<RecordType>(PT->getPointeeType().getTypePtr());
-        }*/
-        std::string tmp = stripLine(stmtToString(*ctxt, base));
-        if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
-            res[tmp] = base;
+                res[tmp] = base;
+            }
         return true;
+    }
+
+    virtual bool TraverseStmt(Stmt *stmt){
+        if (stmt == NULL) return true;
+        if (valid)
+            if (!llvm::isa<DeclStmt>(stmt) && (std::find(stackStmt.begin(),stackStmt.end(),stmt)==stackStmt.end())) {
+                valid = false;
+                bool ret = RecursiveASTVisitor<MemberExprStemVisitor>::TraverseStmt(stmt);
+                valid = true;
+                return ret;
+            }
+        return RecursiveASTVisitor<MemberExprStemVisitor>::TraverseStmt(stmt);
+
     }
 
     virtual std::set<Expr*> getStemExprSet() {
@@ -237,13 +254,18 @@ ctxt(ctxt), loc(loc), G(G), curFunc(NULL), LocalVarDecls(), MemberStems(), naive
         }
     }
 
+    if (ctxt->getSourceManager().getExpansionLineNumber(loc.stmt->getBeginLoc())==627){
+        for (size_t i = 0; i < stmtStack.size() - 1; i++ ) {
+            stmtStack[i]->dumpColor();
+        }
+    }
     LocalActiveVarVisitor visitor2(stmtStack, curFunc);
     visitor2.TraverseDecl(TransUnit);
     LocalVarDecls = visitor2.getValidLocalVarDeclSet();
     /*for (std::set<VarDecl*>::iterator it = LocalVarDecls.begin(); it != LocalVarDecls.end(); ++it)
         (*it)->dump();*/
 
-    MemberExprStemVisitor visitor3(ctxt);
+    MemberExprStemVisitor visitor3(ctxt,stmtStack);
     visitor3.TraverseFunctionDecl(curFunc);
     MemberStems = visitor3.getStemExprSet();
 
