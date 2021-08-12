@@ -592,21 +592,20 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         Switch switchObject;
         switchObject.switchNum=counter;
 
-        body+="switch(__choose(\"__SWITCH"+std::to_string(counter)+"\"))\n{\n";
-        body+="case "+std::to_string(case_count++)+": \n";
-        body+="break;\n";
+        body+="int __choose"+std::to_string(counter)+" = __choose(\"__SWITCH"+std::to_string(counter)+"\");\n";
+        body+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
+        case_count++;
 
         for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[currentIndex]][2].begin();
                 patch_it!=res1[currentCandidate[currentIndex]][2].end();patch_it++){
             addIsNeg(counter,case_count,patch_it->first);
 
             body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
-            body+="case "+std::to_string(case_count)+": {\n";
+            body+="else if (__choose"+std::to_string(counter)+" == "+std::to_string(case_count)+")\n{\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
             body+=currentBody;
             casePatch[case_count]=currentBody;
-            body+="\nbreak;\n}\n";
-            body+="#endif\n";
+            body+="}\n#endif\n";
 
             std::pair<size_t,size_t> currentPatch(counter,case_count);
             macroFile[loc.filename].push_back(index);
@@ -620,7 +619,6 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
             case_count++;
         }
-        body+="}\n";
 
         idAndCase[counter]=casePatch;
         // for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
@@ -648,25 +646,23 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         std::string subPatch=stmtToString(*ctxt,loc.stmt);
         std::pair<size_t,size_t> conditionLoc=getConditionLocation(subPatch);
         // body+="{\n"+conditionTypes[currentCandidate[currentIndex]].getAsString()+" __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
-        body+="{\nlong long __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
-        body+="switch(__choose(\"__SWITCH"+std::to_string(counter)+"\"))\n{\n";
-        body+="case "+std::to_string(case_count++)+": {\n";
-        // body+="__temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
-        body+="\nbreak;\n}\n";
+        body+="int __choose"+std::to_string(counter)+" = __choose(\"__SWITCH"+std::to_string(counter)+"\");\n";
+        body+="{\nint __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
+        body+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
+        case_count++;
 
         for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[currentIndex]][1].begin();
                 patch_it!=res1[currentCandidate[currentIndex]][1].end();patch_it++){
             addIsNeg(counter,case_count,patch_it->first);
 
             body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
-            body+="case "+std::to_string(case_count)+": {\n";
+            body+="else if (__choose"+std::to_string(counter)+" == "+std::to_string(case_count)+")\n{\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
             std::pair<size_t,size_t> conditionLoc=getConditionLocation(currentBody);
             body+="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
             // outlog_printf(2,"%s\n\n",currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1).c_str());
             casePatch[case_count]=currentBody;
-            body+="\nbreak;\n}\n";
-            body+="#endif\n";
+            body+="}\n#endif\n";
 
             std::pair<size_t,size_t> currentPatch(counter,case_count);
             macroFile[loc.filename].push_back(index);
@@ -680,7 +676,6 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
             case_count++;
         }
-        body+="}\n";
 
         idAndCase[counter]=casePatch;
         // for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
@@ -736,21 +731,22 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         Switch switchObject;
         switchObject.switchNum=counter;
 
-        body+="switch(__choose(\"__SWITCH"+std::to_string(counter)+"\"))\n{\n";
-        body+="case "+std::to_string(case_count++)+": {\n";
+        body+="int __choose"+std::to_string(counter)+" = __choose(\"__SWITCH"+std::to_string(counter)+"\");\n";
+        body+="if (__choose"+std::to_string(counter)+" == 0)\n{\n";
         body+=origBody;
-        body+="\nbreak;\n}\n";
+        body+="\n}\n";
+        case_count++;
 
         for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[indexBackup]][0].begin();
                 patch_it!=res1[currentCandidate[indexBackup]][0].end();patch_it++){
             addIsNeg(counter,case_count,patch_it->first);
 
             body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
-            body+="case "+std::to_string(case_count)+": {\n";
+            body+="else if (__choose"+std::to_string(counter)+" == "+std::to_string(case_count)+")\n{\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
             body+=currentBody;
             casePatch[case_count]=currentBody;
-            body+="\nbreak;\n}\n";
+            body+="\n}\n";
             body+="#endif\n";
 
             std::pair<size_t,size_t> currentPatch(counter,case_count);
@@ -765,7 +761,6 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
             case_count++;
         }
-        body+="}\n";
 
         idAndCase[counter]=casePatch;
         // for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
@@ -795,20 +790,20 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         Switch switchObject;
         switchObject.switchNum=counter;
 
-        body+="switch(__choose(\"__SWITCH"+std::to_string(counter)+"\"))\n{\n";
-        body+="case "+std::to_string(case_count++)+": {\n";
-        body+="\nbreak;\n}\n";
+        body+="int __choose"+std::to_string(counter)+" = __choose(\"__SWITCH"+std::to_string(counter)+"\");\n";
+        body+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
+        case_count++;
 
         for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[indexBackup]][3].begin();
                 patch_it!=res1[currentCandidate[indexBackup]][3].end();patch_it++){
             addIsNeg(counter,case_count,patch_it->first);
 
             body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
-            body+="case "+std::to_string(case_count)+": {\n";
+            body+="else if (__choose"+std::to_string(counter)+" == "+std::to_string(case_count)+")\n{\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
             body+=currentBody;
             casePatch[case_count]=currentBody;
-            body+="\nbreak;\n}\n";
+            body+="\n}\n";
             body+="#endif\n";
 
             std::pair<size_t,size_t> currentPatch(counter,case_count);
@@ -823,7 +818,6 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
             case_count++;
         }
-        body+="}\n";
 
         idAndCase[counter]=casePatch;
         // for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
