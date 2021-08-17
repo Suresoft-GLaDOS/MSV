@@ -32,6 +32,7 @@ const char* HANDLER_PREFIX =
     "int __is_neg(const char *location,int count, ...); "
     "int __abst_hole(); "
     "void __write_profile(const char*,int, ...); "
+    "long long __mutate(const long long,const char *,const char *); "
     "int __choose(const char *);";
 const char* MEMSET_PREFIX =
     "void* memset(void*, int, unsigned long); ";
@@ -140,6 +141,8 @@ void SourceContextManager::fetch(const std::string &file) {
                     internalHandlerMap[&ctxt].sys_memset = createFExpr(ctxt, FD);
                 if (FD->getName() == UNKNOWN_HOOK)
                     internalHandlerMap[&ctxt].abstract_hole = createFExpr(ctxt, FD);
+                if (FD->getName()==MUTATE)
+                    internalHandlerMap[&ctxt].mutator=createFExpr(ctxt,FD);
             }
         }
     }

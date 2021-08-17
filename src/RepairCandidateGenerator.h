@@ -54,6 +54,8 @@ struct RepairAction {
     } ExprTagTy;
     ExprTagTy tag;
 
+    size_t mutationId; // This is for only var mutation
+
     RepairAction(const ASTLocTy &loc, RepairActionKind kind, clang::Stmt* new_stmt)
         : kind(kind), loc(loc), ast_node((void*)new_stmt),
         candidate_atoms(), tag(InvalidTag) { }

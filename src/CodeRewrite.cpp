@@ -437,6 +437,7 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
     ret.clear();
     for (size_t j=0;j<rc.size();j++){
         if (DeclStmt::classof(rc[j].original)) continue;
+        if (rc[j].actions.size()==0) continue;
         if (ret[rc[j].actions[0].loc].size()==0){
             ret[rc[j].actions[0].loc][NormalReplace]=std::map<std::string,RepairCandidate::CandidateKind>();
             ret[rc[j].actions[0].loc][ConditionSynthesize]=std::map<std::string,RepairCandidate::CandidateKind>();
@@ -450,34 +451,12 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
         if (rc[j].kind==RepairCandidate::AddVarMutation){
             std::map<std::string,RepairCandidate::CandidateKind> insertVarMutation;
             insertVarMutation.clear();
-            ExprListTy exprs=rc[j].actions[0].candidate_atoms;
             ASTContext *ctxt=M.getSourceContext(rc[j].actions[0].loc.filename);
 
-            for (size_t i=0;i<exprs.size();i++){
-                std::string newStmt="";
-                newStmt+=stmtToString(*ctxt,exprs[i]);
-                newStmt+=" = __choose(\"__CONSTANT\");\n";
-                insertVarMutation[newStmt]=RepairCandidate::AddVarMutation;
-
-                newStmt="";
-                newStmt+=stmtToString(*ctxt,exprs[i]);
-                newStmt+=" += __choose(\"__CONSTANT\");\n";
-                insertVarMutation[newStmt]=RepairCandidate::AddVarMutation;
-
-                newStmt="";
-                newStmt+=stmtToString(*ctxt,exprs[i]);
-                newStmt+=" -= __choose(\"__CONSTANT\");\n";
-                insertVarMutation[newStmt]=RepairCandidate::AddVarMutation;
-
-                newStmt="";
-                newStmt+=stmtToString(*ctxt,exprs[i]);
-                newStmt+=" *= __choose(\"__CONSTANT\");\n";
-                insertVarMutation[newStmt]=RepairCandidate::AddVarMutation;
-
-                newStmt="";
-                newStmt+=stmtToString(*ctxt,exprs[i]);
-                newStmt+=" /= __choose(\"__CONSTANT\");\n";
-                insertVarMutation[newStmt]=RepairCandidate::AddVarMutation;
+            for (size_t i=0;i<rc[j].actions.size();i++){
+                std::string body("if (__choose(\"__MUTATE_"+std::to_string(rc[j].actions[i].mutationId)+"\"))\n\t");
+                body+=stmtToString(*ctxt,(Expr *)rc[j].actions[i].ast_node)+";\n";
+                insertVarMutation[body]=RepairCandidate::AddVarMutation;
             }
 
             // assert(ret[rootLoc].size()==4);
@@ -618,43 +597,10 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
     std::string body="";
     if(res1[currentCandidate[currentIndex]][VarMutation].size()>0){
-        std::map<FunctionDecl*,std::pair<unsigned,unsigned>> currentFuncs=functionLoc[loc.filename];
-        for (std::map<FunctionDecl*,std::pair<unsigned,unsigned>>::iterator it=currentFuncs.begin();it!=currentFuncs.end();it++){
-            if (it->second.first<=start && it->second.second>=end){
-                mutatableFunction[it->first->getNameInfo().getAsString()]=varMutationCounter;
-                break;
-            }
-        }
-
-        std::vector<std::pair<std::string,std::string>> currentMutations;
-        currentMutations.clear();
-        case_count=0;
-
-        body+="switch(__choose(\"__MUTATE_"+std::to_string(varMutationCounter)+"\"))\n{\n";
-        body+="case "+std::to_string(case_count++)+": \n";
-        body+="break;\n";
-
         for (std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[currentIndex]][VarMutation].begin();
                 patch_it!=res1[currentCandidate[currentIndex]][VarMutation].end();patch_it++){
-            body+="case "+std::to_string(case_count)+": {\n";
             body+=patch_it->first;
-            body+="\nbreak;\n}\n";
-
-            std::vector<std::string> answer;
-            std::stringstream ss(patch_it->first);
-            std::string temp;
-        
-            while (std::getline(ss, temp, ' ')) {
-                answer.push_back(temp);
-            }
-            currentMutations.push_back(std::make_pair(answer[0],answer[1]));
-
-            case_count++;
         }
-        body+="}\n";
-
-        mutatable[varMutationCounter]=currentMutations;
-        varMutationCounter++;
     }
 
     // Insert profile writer, if original is ReturnStmt
@@ -1151,7 +1097,6 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     switchAtoms.clear();
     patchTypes.clear();
     rules.clear();
-    mutatable.clear();
     for (size_t i=0;i<4;i++){
         switchCluster.push_back(std::list<size_t>());
     }

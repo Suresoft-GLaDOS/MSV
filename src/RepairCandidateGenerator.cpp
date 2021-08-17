@@ -489,6 +489,7 @@ bool hasCallExpr(Stmt *S) {
 
 }
 
+static size_t currentMutationVar=0;
 class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateGeneratorImpl> {
     ASTContext *ctxt;
     SourceContextManager &M;
@@ -498,6 +499,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
     std::map<Stmt*, unsigned long> loc_map1;
     std::map<CompoundStmt*, size_t> compound_counter;
     std::map<FunctionDecl*,std::pair<unsigned,unsigned>> functionLocation;
+    std::map<std::string,std::map<size_t,std::string>> mutationInfo;
     std::vector<Stmt*> stmt_stack;
     InternalHandlerInfo hinfo;
     std::set<FunctionDecl *> processed;
@@ -1168,21 +1170,37 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 Stmt *first=comp->body_front();
                 ASTLocTy loc = getNowLocation(first);
                 LocalAnalyzer *L = M.getLocalAnalyzer(loc);
-                ExprListTy exprs=L->getCandidateLValueExpr();
-                ExprListTy candidates;
-                candidates.clear();
+                ExprListTy exprs=L->genExprAtoms(QualType(),true,false,true,false);
+                ExprListTy temp;
+                temp.clear();
                 for (size_t i=0;i<exprs.size();i++){
-                    if (exprs[i]->getType()==ctxt->IntTy)
-                        candidates.push_back(exprs[i]);
+                    if (exprs[i]->getType().getTypePtr()->isIntegralType(*ctxt)){
+                        temp.push_back(exprs[i]);
+                    }
                 }
+                Expr *function=M.getMutator(ctxt);
 
+                if (mutationInfo.find(L->getCurrentFunction()->getNameAsString())==mutationInfo.end()) mutationInfo[L->getCurrentFunction()->getNameAsString()]=std::map<size_t,std::string>();
                 RepairCandidate rc;
                 rc.actions.clear();
-                RepairAction action(loc,RepairAction::InsertMutationKind,nullptr);
-                action.candidate_atoms=candidates;
                 rc.kind=RepairCandidate::AddVarMutation;
                 rc.score=0;
-                rc.actions.push_back(action);
+                for (size_t i=0;i<temp.size();i++){
+                    std::vector<Expr *> args;
+                    args.clear();
+                    args.push_back(temp[i]);
+                    args.push_back(StringLiteral::Create(*ctxt,"__MUTATE_OPER_"+std::to_string(currentMutationVar),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation()));
+                    args.push_back(StringLiteral::Create(*ctxt,"__MUTATE_CONST_"+std::to_string(currentMutationVar),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation()));
+
+                    CallExpr *call=CallExpr::Create(*ctxt,function,args,ctxt->LongLongTy,ExprValueKind::VK_RValue,SourceLocation());
+                    ImplicitCastExpr *cast=ImplicitCastExpr::Create(*ctxt,temp[i]->getType(),CastKind::CK_IntegralCast,call,nullptr,ExprValueKind::VK_RValue);
+                    BinaryOperator *assign=BinaryOperator::Create(*ctxt,exprs[i],cast,BinaryOperator::Opcode::BO_Assign,exprs[i]->getType(),ExprValueKind::VK_RValue,ExprObjectKind::OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                    RepairAction action(loc,RepairAction::InsertMutationKind,assign);
+                    action.mutationId=currentMutationVar;
+                    rc.actions.push_back(action);
+                    mutationInfo[L->getCurrentFunction()->getNameAsString()][currentMutationVar]=stmtToString(*ctxt,assign);
+                    currentMutationVar++;
+                }
                 rc.original=first;
                 q.push_back(rc);
             }
@@ -1241,6 +1259,7 @@ public:
         stmt_stack.clear();
         processed.clear();
         q.clear();
+        mutationInfo.clear();
         in_yacc_func = false;
         GeoP = 0.01;
         loc_map1 = loc_map;

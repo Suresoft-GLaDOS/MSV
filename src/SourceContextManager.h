@@ -27,6 +27,7 @@
 #define IS_NEG_HANDLER "__is_neg"
 #define UNKNOWN_HOOK "__abst_hole"
 #define WRITE_PROFILE "__write_profile"
+#define MUTATE "__mutate"
 
 class LocalAnalyzer;
 class BenchProgram;
@@ -46,6 +47,7 @@ struct InternalHandlerInfo {
     clang::Expr* abstract_cond;
     clang::Expr* abstract_hole;
     clang::Expr* write_profile;
+    clang::Expr* mutator;
     clang::Expr* sys_memset;
 };
 
@@ -128,6 +130,10 @@ public:
     clang::Expr* getExprPlaceholder(clang::ASTContext *ctxt, clang::QualType QT,int id,std::map<clang::Expr *,unsigned long> atoms);
 
     clang::Expr* getWriteProfile(clang::ASTContext *ctxt);
+
+    clang::Expr* getMutator(clang::ASTContext *ctxt){
+        return getInternalHandlerInfo(ctxt).mutator;
+    }
 
     clang::Expr* getUnknownExpr(clang::ASTContext *ctxt, ExprListTy candidate_atoms);
 

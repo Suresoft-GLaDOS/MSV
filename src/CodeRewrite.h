@@ -68,8 +68,6 @@ class CodeRewriter {
 
     // For mutation
     std::map<std::string,std::map<clang::FunctionDecl *,std::pair<unsigned,unsigned>>> functionLoc; // function locations
-    std::map<size_t,std::vector<std::pair<std::string,std::string>>> mutatable; // available mutation of each switch
-    std::map<std::string,size_t> mutatableFunction; // mutation switch of each function
 public:
     int index;
     std::vector<File> rules;
@@ -129,12 +127,6 @@ public:
     }
     std::map<std::pair<size_t,size_t>,std::string> getPatchTypes(){
         return patchTypes;
-    }
-    std::map<size_t,std::vector<std::pair<std::string,std::string>>> getMutatable(){
-        return mutatable;
-    }
-    std::map<std::string,size_t> getMutatableFunction(){
-        return mutatableFunction;
     }
     std::map<std::string,std::vector<long long>> getMacroFile(){
         return macroFile;

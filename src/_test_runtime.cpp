@@ -407,3 +407,16 @@ extern "C" int __is_neg(const char *location,int count, ...) {
     }
     return 0;
 }
+
+extern "C" long long __mutate(const long long value,const char *oper_env,const char *const_env){
+    int oper=__choose(oper_env);
+    int constant=__choose(const_env);
+    switch(oper){
+        case 0: return constant;
+        case 1: return value + constant;
+        case 2: return value - constant;
+        case 3: return value * constant;
+        case 4: return value / constant;
+        default: return constant;
+    }
+}
