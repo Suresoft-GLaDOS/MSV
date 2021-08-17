@@ -608,7 +608,7 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
 }
 
 std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<size_t,size_t>> &currentLocation,std::vector<ASTLocTy> &currentCandidate,
-        std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,const std::string code){
+        std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,std::map<ASTLocTy,std::string> &profileWriters,const std::string code){
     // if (currentLocation[currentIndex].second==0) return "";
     // Insert Var Mutation
     int case_count=0;
@@ -714,6 +714,19 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
+
+            size_t returnLoc=currentBody.find("return");
+            if (returnLoc!=std::string::npos){
+                while (currentBody[returnLoc-1]!=' ' && currentBody[returnLoc-1]!='\t' && currentBody[returnLoc-1]!='\n'){
+                    returnLoc=currentBody.find("return",returnLoc+1);
+                    if (returnLoc==std::string::npos) break;
+                }
+            }
+            if (returnLoc!=std::string::npos){
+                size_t finish=currentBody.find(";",returnLoc+5);
+                currentBody.insert(finish+1,"\n}\n");
+                currentBody.insert(returnLoc,"{\n\t"+profileWriters[loc]+";\n\t");
+            }
             body+=currentBody;
             casePatch[case_count]=currentBody;
             body+="\nbreak;\n}\n";
@@ -821,15 +834,48 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     while (currentIndex+1<currentLocation.size() && currentLocation[currentIndex+1].second<=end){
         currentIndex++;
         size_t beforeIndex=currentIndex;
-        std::string subPatch=applyPatch(currentIndex,currentLocation,currentCandidate,res1,line,code);
+        std::string subPatch=applyPatch(currentIndex,currentLocation,currentCandidate,res1,line,profileWriters,code);
 
         std::string last=bodyCodes[bodyCodes.size()-1];
         bodyCodes.pop_back();
-        bodyCodes.push_back(last.substr(0,currentLocation[beforeIndex].first-beforeEnd));
+        std::string begin=last.substr(0,currentLocation[beforeIndex].first-beforeEnd);
+
+        size_t returnLoc=begin.find("return");
+        while (returnLoc!=std::string::npos){
+            while (begin[returnLoc-1]!=' ' && begin[returnLoc-1]!='\t' && begin[returnLoc-1]!='\n'){
+                returnLoc=begin.find("return",returnLoc+1);
+                if (returnLoc==std::string::npos) break;
+            }
+            if (returnLoc!=std::string::npos){
+                size_t finish=begin.find(";",returnLoc+5);
+                begin.insert(finish+1,"\n}\n");
+                begin.insert(returnLoc,"{\n\t"+profileWriters[loc]+";\n\t");
+                returnLoc=begin.find("return",returnLoc+profileWriters[loc].size()+14);
+            }
+        }
+
+        bodyCodes.push_back(begin);
         bodyCodes.push_back(subPatch);
         bodyCodes.push_back(last.substr(currentLocation[beforeIndex].second-beforeEnd));
         beforeEnd=currentLocation[beforeIndex].second;
     }
+
+    std::string &begin=bodyCodes.back();
+    size_t returnLoc=begin.find("return");
+
+    while (returnLoc!=std::string::npos){
+        while (begin[returnLoc-1]!=' ' && begin[returnLoc-1]!='\t' && begin[returnLoc-1]!='\n'){
+            returnLoc=begin.find("return",returnLoc+1);
+            if (returnLoc==std::string::npos) break;
+        }
+        if (returnLoc!=std::string::npos){
+            size_t finish=begin.find(";",returnLoc+5);
+            begin.insert(finish+1,"\n}\n");
+            begin.insert(returnLoc,"{\n\t"+profileWriters[loc]+";\n\t");
+            returnLoc=begin.find("return",returnLoc+profileWriters[loc].size()+14);
+        }
+    }
+
     for (size_t i=0;i<bodyCodes.size();i++){
         origBody+=bodyCodes[i];
     }
@@ -859,6 +905,21 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
+
+            size_t returnLoc=currentBody.find("return");
+            while (returnLoc!=std::string::npos){
+                while (currentBody[returnLoc-1]!=' ' && currentBody[returnLoc-1]!='\t' && currentBody[returnLoc-1]!='\n'){
+                    returnLoc=currentBody.find("return",returnLoc+1);
+                    if (returnLoc==std::string::npos) break;
+                }
+                if (returnLoc!=std::string::npos){
+                    assert(profileWriters.find(loc)!=profileWriters.end());
+                    size_t finish=currentBody.find(";",returnLoc+5);
+                    currentBody.insert(finish+1,"\n}\n").insert(returnLoc,"{\n\t"+profileWriters[loc]+";\n\t");
+                    returnLoc=currentBody.find("return",returnLoc+profileWriters[loc].size()+14);
+                }
+            }
+
             body+=currentBody;
             casePatch[case_count]=currentBody;
             body+="\nbreak;\n}\n";
@@ -1009,6 +1070,13 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
 
     // Create string with whole candidate vector 
     std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate::CandidateKind>>> res1=eliminateAllNewLoc(M, rc1,original_str);
+    std::map<ASTLocTy,std::string> profileWriters;
+    profileWriters.clear();
+    for (size_t i=0;i<rc.size();i++){
+        if (rc[i].profileWriter!=NULL){
+            profileWriters[rc[i].actions[0].loc]=stmtToString(*M.getSourceContext(rc[i].actions[0].loc.filename),rc[i].profileWriter);
+        }
+    }
     // We then categorize location based on the src_file and their offset
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > res2;
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > tmp_loc;
@@ -1070,6 +1138,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             candidate[it->first]=valueVec;
         }
     }
+    
     outlog_printf(2,"Generating patches...\n");
     // Then we handle each source file saperately
     resCodeSegs.clear();
@@ -1131,7 +1200,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             assert(code.find(last_code)!=std::string::npos);
             resCodeSegs[src_file].push_back(code.substr(seg_start,start-seg_start));
 
-            std::string body=applyPatch(i,currentLocation,currentCandidate,res1,line[src_file],code);
+            std::string body=applyPatch(i,currentLocation,currentCandidate,res1,line[src_file],profileWriters,code);
 
             // Add patch code to code
             resPatches[src_file].push_back(body);

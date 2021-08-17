@@ -80,7 +80,7 @@ public:
         const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str);
 
     std::string applyPatch(size_t &currentIndex,std::vector<std::pair<size_t,size_t>> &currentLocation,std::vector<ASTLocTy> &currentCandidate,
-        std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,const std::string code);
+        std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,std::map<ASTLocTy,std::string> &profileWriters,const std::string code);
 
 
     CodeSegTy getCodeSegments() {

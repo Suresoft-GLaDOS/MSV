@@ -356,6 +356,33 @@ public:
     }
 };
 
+Expr* createProfileWriter(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs,const std::string funcName) {
+    std::vector<Expr*> tmp_argv;
+    tmp_argv.clear();
+    StringLiteral *str=StringLiteral::Create(*ctxt,llvm::StringRef(funcName),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
+    tmp_argv.push_back(str);
+    tmp_argv.push_back(getNewIntegerLiteral(ctxt, exprs.size()));
+    for (size_t i = 0; i < exprs.size(); ++i) {
+        StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,exprs[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
+        tmp_argv.push_back(exprStr);
+
+        ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
+        UnaryOperator *AddrsOf = 
+            UnaryOperator::Create(*ctxt,ParenE1, UO_AddrOf, ctxt->getPointerType(exprs[i]->getType()),
+                    VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+        tmp_argv.push_back(AddrsOf);
+
+        ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
+        UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
+            UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
+        tmp_argv.push_back(SizeofE);
+    }
+    Expr *abstract_cond = M.getInternalHandlerInfo(ctxt).write_profile;
+    CallExpr *CE = CallExpr::Create(*ctxt, abstract_cond, tmp_argv,
+            ctxt->IntTy, VK_RValue, SourceLocation());
+    return CE;
+}
+
 ASTLocTy newStatementLoc(const ASTLocTy &loc, Stmt *n) {
     ASTLocTy ret = loc;
     ret.stmt = n;
@@ -438,34 +465,6 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, ASTContext *ctxt,cons
             ctxt->IntTy, VK_RValue, SourceLocation());
     return CE;
 }
-
-Expr* createProfileWriter(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs,const std::string funcName) {
-    std::vector<Expr*> tmp_argv;
-    tmp_argv.clear();
-    StringLiteral *str=StringLiteral::Create(*ctxt,llvm::StringRef(funcName),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
-    tmp_argv.push_back(str);
-    tmp_argv.push_back(getNewIntegerLiteral(ctxt, exprs.size()));
-    for (size_t i = 0; i < exprs.size(); ++i) {
-        StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,exprs[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
-        tmp_argv.push_back(exprStr);
-
-        ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
-        UnaryOperator *AddrsOf = 
-            UnaryOperator::Create(*ctxt,ParenE1, UO_AddrOf, ctxt->getPointerType(exprs[i]->getType()),
-                    VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
-        tmp_argv.push_back(AddrsOf);
-
-        ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), exprs[i]);
-        UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
-            UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
-        tmp_argv.push_back(SizeofE);
-    }
-    Expr *abstract_cond = M.getInternalHandlerInfo(ctxt).write_profile;
-    CallExpr *CE = CallExpr::Create(*ctxt, abstract_cond, tmp_argv,
-            ctxt->IntTy, VK_RValue, SourceLocation());
-    return CE;
-}
-
 
 class CallVisitor : public RecursiveASTVisitor<CallVisitor> {
     bool found;
@@ -708,6 +707,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (naive) return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,true),L->getCurrentFunction()->getNameAsString());
         // OK, we limit replacement to expr only statement to avoid stupid redundent
         // changes to an compound statement/if statement
         if (llvm::isa<Expr>(n)) {
@@ -726,6 +726,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                         rc.score = getPriority(n) + PRIORITY_ALPHA/2;
                     rc.kind = RepairCandidate::ReplaceKind;
                     rc.original=n;
+                    rc.profileWriter=writer;
                     rc.is_first = is_first;
                     rc.oldRExpr = V.getOldRExpr(*it);
                     rc.newRExpr = V.getNewRExpr(*it);
@@ -755,6 +756,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                         rc.score = getPriority(n) + PRIORITY_ALPHA + PRIORITY_ALPHA/2;
                     rc.kind = RepairCandidate::ReplaceStringKind;
                     rc.original=n;
+                    rc.profileWriter=writer;
                     q.push_back(rc);
                 }
             }
@@ -775,6 +777,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     rc.score = getPriority(n) + PRIORITY_ALPHA;
                 rc.kind = RepairCandidate::AddAndReplaceKind;
                 rc.original=n;
+                rc.profileWriter=writer;
                 rc.is_first = is_first;
                 rc.oldRExpr = V2.getOldRExpr(*it);
                 rc.newRExpr = V2.getNewRExpr(*it);
@@ -796,6 +799,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         std::set<Expr*> exprs = L->getGlobalCandidateExprs();
+        Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,true),L->getCurrentFunction()->getNameAsString());
         std::map<std::string, RepairCandidate> tmp_map;
         tmp_map.clear();
         for (std::set<Expr*>::iterator it = exprs.begin(); it != exprs.end(); ++it) {
@@ -829,6 +833,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 }
                 rc.kind = RepairCandidate::AddAndReplaceKind;
                 rc.original=n;
+                rc.profileWriter=writer;
                 rc.is_first = is_first;
                 tmp_map[stmtToString(*ctxt, *it2)] = rc;
             }
@@ -850,6 +855,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 }
                 rc.kind = RepairCandidate::AddAndReplaceKind;
                 rc.original=n;
+                rc.profileWriter=writer;
                 rc.is_first = is_first;
                 tmp_map[stmtToString(*ctxt, *it)] = rc;
             }
@@ -878,6 +884,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 }
                 rc.kind = RepairCandidate::AddAndReplaceKind;
                 rc.original=n;
+                rc.profileWriter=writer;
                 rc.is_first = is_first;
                 tmp_map[stmtToString(*ctxt, *it)] = rc;
             }
@@ -919,6 +926,8 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
         IfStmt *new_IF = IfStmt::Create(*ctxt, SourceLocation(), false,NULL, nullptr,UO, n);
+        Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,true),L->getCurrentFunction()->getNameAsString());
+
         RepairCandidate rc;
         rc.actions.clear();
         rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, new_IF));
@@ -934,6 +943,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         rc.kind = RepairCandidate::GuardKind;
         rc.original=n;
         rc.is_first = is_first;
+        rc.profileWriter=writer;
         q.push_back(rc);
         if (naive) return;
 
@@ -950,6 +960,8 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 BinaryOperator *BO = BinaryOperator::Create(*ctxt,UO, ParenE, BO_LAnd, ctxt->IntTy,
                         VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
                 IfStmt *new_IF = duplicateIfStmt(ctxt, IfS, BO);
+                Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,true),L->getCurrentFunction()->getNameAsString());
+
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, new_IF));
@@ -963,6 +975,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     rc.score = getPriority(n) + PRIORITY_ALPHA;
                 rc.kind = RepairCandidate::SpecialGuardKind;
                 rc.original=n;
+                rc.profileWriter=writer;
                 rc.is_first = is_first;
                 q.push_back(rc);
             }
