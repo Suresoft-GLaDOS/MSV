@@ -143,6 +143,7 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                 continue;
         }
         outlog_printf(1, "Processing %s\n", file.c_str());
+        reset_timer();
 
         std::string code = M.getSourceCode(file);
         clang::ASTContext *ctxt = M.getSourceContext(file);
@@ -171,6 +172,8 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
             }
             functionLoc[file]=G.getFunctionLocations();
         }
+
+        outlog_printf(0,"%s processed in %llus!\n",file.c_str(),get_timer());
     }
 
     size_t schema_cnt = q.size();
