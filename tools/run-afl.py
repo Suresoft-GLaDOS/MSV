@@ -108,8 +108,8 @@ class ConfigGenerator:
             is_passed = False
             for line in lines:
                 tokens = line.strip().split(",")
-                conf = Config(int(tokens[1]), int(tokens[2]))
-                self.results[conf] = (tokens[3] == "1")
+                conf = Config(int(tokens[2]), int(tokens[3]))
+                self.results[conf] = (tokens[4] == "1")
                 if self.results[conf]:
                     is_passed = True
         return is_passed
@@ -217,7 +217,7 @@ def main(argv):
                 if fuzz.is_alive():
                     print(f"fuzzer{fuzz.fid} did not end...")
                     fuzz.append_result(confgen.result_file)
-                    time.sleep(2)
+                    time.sleep(0.5)
                 else:
                     print(f"fuzzer{fuzz.fid} finished!")
                     (out, err) = fuzz.fuzzer.communicate()
@@ -238,7 +238,7 @@ def main(argv):
     title = f"{arg_dict['s']} -j {parallel_count}"
     if iteration_limit > 0:
         title += " -l " + str(iteration_limit)
-    afl_plot.afl_plot(confgen.result_file, "", title, True)
+    afl_plot.afl_plot_one(confgen.result_file, title,  "", True)
     # Test for positive cases
     if len(succ_switches) > 0:
         exit(0)
