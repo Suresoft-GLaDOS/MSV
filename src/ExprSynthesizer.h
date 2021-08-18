@@ -44,6 +44,7 @@ class ExprSynthesizer {
     unsigned long long timeout_limit;
     std::string fixedFile;
     std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
+    std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
     std::vector<std::pair<std::string,size_t>> &scores;
 public:
     ExprSynthesizer(BenchProgram &P, SourceContextManager &M,
@@ -52,6 +53,10 @@ public:
             bool naive, bool learning, FeatureParameter *FP):
         P(P), M(M), tested_cnt(0), q(q), fixedFile(fixedFile),naive(naive), learning(learning && !naive), FP(FP),functionLoc(functionLoc),
         timeout_limit(0),scores(scores) { }
+    
+    void setMutationInfo(std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> &info){
+        mutationInfo=info;
+    }
 
     bool workUntil(size_t candidate_limit,
             size_t time_limit, ExprSynthesizerResultTy &res,

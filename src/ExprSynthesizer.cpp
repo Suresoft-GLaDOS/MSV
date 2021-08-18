@@ -979,6 +979,7 @@ protected:
     std::vector<std::list<size_t>> switchCluster;
     // std::map<int,std::list<std::list<int>>> caseCluster;
     std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
+    std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
     std::map<long long,std::string> macroCode;
 
     std::vector<std::pair<std::string,size_t>> &scores;
@@ -1063,6 +1064,7 @@ protected:
             }
         }
         P.getSwitchInfo().scoreInfo=removedDuplicate;
+        P.getSwitchInfo().mutationInfo=mutationInfo;
 
         P.getSwitchInfo().infos=infos;
         P.getSwitchInfo().save();
@@ -1094,6 +1096,10 @@ public:
 
     virtual bool canHandle(const RepairCandidate &candidate) {
         return true;
+    }
+
+    void setMutationInfo(std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> &info){
+        mutationInfo=info;
     }
 
     virtual CodeSegTy getCodeSegs() {
@@ -2014,6 +2020,7 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     outlog_printf(2,"Generating meta-program...\n");
     // for (int i=0;i<testers.size();i++)
     // result= TB.test(candidate, testers[0]);
+    testers[1]->setMutationInfo(mutationInfo);
     result= TB.test(candidate, testers[1]);
 
     outlog_printf(0, "The total number of explored concrete patches: %lu\n", patch_explored);

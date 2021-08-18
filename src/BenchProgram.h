@@ -179,6 +179,7 @@ private:
         // std::map<int,std::list<std::list<int>>> caseCluster;
         std::vector<std::pair<std::string,size_t>> scoreInfo;
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
+        std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
         std::vector<File> infos;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
@@ -217,6 +218,33 @@ private:
                 cJSON_AddItemToArray(scoreArray,localize);
             }
             cJSON_AddItemToObject(json,std::string("priority").c_str(),scoreArray);
+
+            // Save mutation infos
+            cJSON *mutationArray=cJSON_CreateArray();
+            for(std::map<std::string,std::map<std::string,std::map<size_t,std::string>>>::iterator it=mutationInfo.begin();it!=mutationInfo.end();it++){
+                cJSON *mutationObject=cJSON_CreateObject();
+                cJSON_AddStringToObject(mutationObject,std::string("file").c_str(),it->first.c_str());
+
+                cJSON *funcArray=cJSON_CreateArray();
+                for (std::map<std::string,std::map<size_t,std::string>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
+                    cJSON *funcObject=cJSON_CreateObject();
+                    cJSON_AddStringToObject(funcObject,std::string("function").c_str(),it2->first.c_str());
+
+                    cJSON *varArray=cJSON_CreateArray();
+                    for (std::map<size_t,std::string>::iterator it3=it2->second.begin();it3!=it2->second.end();it3++){
+                        cJSON *varObject=cJSON_CreateObject();
+                        cJSON_AddNumberToObject(varObject,std::string("number").c_str(),it3->first);
+                        cJSON_AddStringToObject(varObject,std::string("variable").c_str(),it3->second.c_str());
+
+                        cJSON_AddItemToArray(varArray,varObject);
+                    }
+                    cJSON_AddItemToObject(funcObject,std::string("variables").c_str(),varArray);
+                    cJSON_AddItemToArray(funcArray,funcObject);
+                }
+                cJSON_AddItemToObject(mutationObject,std::string("functions").c_str(),funcArray);
+                cJSON_AddItemToArray(mutationArray,mutationObject);
+            }
+            cJSON_AddItemToObject(json,std::string("mutation_info").c_str(),mutationArray);
 
             // Save each patch rules
             cJSON *ruleArray=cJSON_CreateArray();

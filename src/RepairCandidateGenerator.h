@@ -171,4 +171,5 @@ public:
 
     std::vector<RepairCandidate> run();
     std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>> getFunctionLocations();
+    std::map<std::string,std::map<size_t,std::string>> getMutationInfo();
 };

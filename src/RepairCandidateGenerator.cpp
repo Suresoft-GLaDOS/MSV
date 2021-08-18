@@ -709,7 +709,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (naive) return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
-        Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,true),L->getCurrentFunction()->getNameAsString());
+        Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,false),L->getCurrentFunction()->getNameAsString());
         // OK, we limit replacement to expr only statement to avoid stupid redundent
         // changes to an compound statement/if statement
         if (llvm::isa<Expr>(n)) {
@@ -801,7 +801,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         std::set<Expr*> exprs = L->getGlobalCandidateExprs();
-        Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,true),L->getCurrentFunction()->getNameAsString());
+        Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,false),L->getCurrentFunction()->getNameAsString());
         std::map<std::string, RepairCandidate> tmp_map;
         tmp_map.clear();
         for (std::set<Expr*>::iterator it = exprs.begin(); it != exprs.end(); ++it) {
@@ -928,7 +928,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
         IfStmt *new_IF = IfStmt::Create(*ctxt, SourceLocation(), false,NULL, nullptr,UO, n);
-        Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,true),L->getCurrentFunction()->getNameAsString());
+        Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,false),L->getCurrentFunction()->getNameAsString());
 
         RepairCandidate rc;
         rc.actions.clear();
@@ -962,7 +962,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 BinaryOperator *BO = BinaryOperator::Create(*ctxt,UO, ParenE, BO_LAnd, ctxt->IntTy,
                         VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
                 IfStmt *new_IF = duplicateIfStmt(ctxt, IfS, BO);
-                Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,true),L->getCurrentFunction()->getNameAsString());
+                Expr *writer=createProfileWriter(M,ctxt,L->genExprAtoms(QualType(),true,false,true,false,false),L->getCurrentFunction()->getNameAsString());
 
                 RepairCandidate rc;
                 rc.actions.clear();
@@ -1170,12 +1170,21 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 Stmt *first=comp->body_front();
                 ASTLocTy loc = getNowLocation(first);
                 LocalAnalyzer *L = M.getLocalAnalyzer(loc);
-                ExprListTy exprs=L->genExprAtoms(QualType(),true,false,true,false);
+                ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,true);
                 ExprListTy temp;
                 temp.clear();
                 for (size_t i=0;i<exprs.size();i++){
-                    if (exprs[i]->getType().getTypePtr()->isIntegralType(*ctxt)){
-                        temp.push_back(exprs[i]);
+                    if (!exprs[i]->getType().getTypePtr()->isPointerType() && exprs[i]->getType().getTypePtr()->isIntegralType(*ctxt) && !exprs[i]->getType().isConstant(*ctxt)){ 
+                        if (MemberExpr::classof(exprs[i])){
+                            MemberExpr *child=llvm::dyn_cast<MemberExpr>(exprs[i]);
+                            if (child){
+                                Expr *parent=child->getBase();
+                                if (!parent->getType().isConstant(*ctxt))
+                                    temp.push_back(exprs[i]);
+                            }
+                        }
+                        else
+                            temp.push_back(exprs[i]);
                     }
                 }
                 Expr *function=M.getMutator(ctxt);
@@ -1193,12 +1202,11 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     args.push_back(StringLiteral::Create(*ctxt,"__MUTATE_CONST_"+std::to_string(currentMutationVar),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation()));
 
                     CallExpr *call=CallExpr::Create(*ctxt,function,args,ctxt->LongLongTy,ExprValueKind::VK_RValue,SourceLocation());
-                    ImplicitCastExpr *cast=ImplicitCastExpr::Create(*ctxt,temp[i]->getType(),CastKind::CK_IntegralCast,call,nullptr,ExprValueKind::VK_RValue);
-                    BinaryOperator *assign=BinaryOperator::Create(*ctxt,exprs[i],cast,BinaryOperator::Opcode::BO_Assign,exprs[i]->getType(),ExprValueKind::VK_RValue,ExprObjectKind::OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                    BinaryOperator *assign=BinaryOperator::Create(*ctxt,temp[i],call,BinaryOperator::Opcode::BO_Assign,temp[i]->getType(),ExprValueKind::VK_RValue,ExprObjectKind::OK_Ordinary,SourceLocation(),FPOptionsOverride());
                     RepairAction action(loc,RepairAction::InsertMutationKind,assign);
                     action.mutationId=currentMutationVar;
                     rc.actions.push_back(action);
-                    mutationInfo[L->getCurrentFunction()->getNameAsString()][currentMutationVar]=stmtToString(*ctxt,assign);
+                    mutationInfo[L->getCurrentFunction()->getNameAsString()][currentMutationVar]=stmtToString(*ctxt,temp[i]);
                     currentMutationVar++;
                 }
                 rc.original=first;
@@ -1212,7 +1220,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         if (ReturnStmt::classof(stmt)){
             ReturnStmt *returnStmt=llvm::dyn_cast<ReturnStmt>(stmt);
-            ExprListTy exprs=L->genExprAtoms(QualType(),true,false,true,false,true);
+            ExprListTy exprs=L->genExprAtoms(QualType(),true,false,true,false,false);
 
             RepairCandidate rc;
             rc.actions.clear();
@@ -1233,7 +1241,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     Stmt *last=comp->body_back();
                     loc = getNowLocation(last);
                     L = M.getLocalAnalyzer(loc);
-                    ExprListTy exprs=L->genExprAtoms(QualType(),true,false,true,false,true);
+                    ExprListTy exprs=L->genExprAtoms(QualType(),true,false,true,false,false);
 
                     RepairCandidate rc;
                     rc.actions.clear();
@@ -1263,6 +1271,10 @@ public:
         in_yacc_func = false;
         GeoP = 0.01;
         loc_map1 = loc_map;
+    }
+
+    std::map<std::string,std::map<size_t,std::string>> getMutationInfo(){
+        return mutationInfo;
     }
 
     void setFlipP(double GeoP) {
@@ -1496,4 +1508,7 @@ void RepairCandidateGenerator::setFlipP(double GeoP) {
 }
 std::map<FunctionDecl*,std::pair<unsigned,unsigned>> RepairCandidateGenerator::getFunctionLocations(){
     return impl->getFunctionLocations();
+}
+std::map<std::string,std::map<size_t,std::string>> RepairCandidateGenerator::getMutationInfo(){
+    return impl->getMutationInfo();
 }
