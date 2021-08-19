@@ -351,6 +351,9 @@ private:
 
     TestCache *cache;
 
+    std::map<std::string,std::string> build_dir_save;
+    std::map<std::string,std::vector<std::string>> build_args_save;
+
     void Init(const std::string &workDirPath, bool no_clean_up);
 
     bool buildFull(const std::string &subDir, time_t timeout_limit = 0, bool force_reconf = false,std::vector<long long> compile_macro=std::vector<long long>(),std::vector<std::string> files=std::vector<std::string>());
@@ -359,15 +362,9 @@ private:
 
     EnvMapTy ori_env_map;
 
-    void pushEnvMap(const EnvMapTy &envMap);
-
-    void popEnvMap(const EnvMapTy &envMap);
 
     std::string ori_path_for_wrap_path;
 
-    void pushWrapPath(const std::string &wrapPath, const std::string &cc_path);
-
-    void popWrapPath();
 
     void deleteLibraryFile(const std::map<std::string, std::string> &fileCodeMap);
 public:
@@ -398,8 +395,16 @@ public:
 
     void addExistingSrcClone(const std::string &subDir, bool built);
 
+    void pushEnvMap(const EnvMapTy &envMap);
+
+    void popEnvMap(const EnvMapTy &envMap);
+
+    void pushWrapPath(const std::string &wrapPath, const std::string &cc_path);
+
+    void popWrapPath();
+
     std::unique_ptr<clang::ASTUnit> buildClangASTUnit(const std::string &src_file,
-            const std::string &code);
+            const std::string &code,std::vector<long long> macros=std::vector<long long>());
 
     // bool runDG(std::vector<ASTLocTy> criteriaLocation);
     bool runDG(std::vector<std::string> files,std::map<std::string,std::set<unsigned>> lines);
@@ -409,7 +414,10 @@ public:
     
     void saveFixedFiles(std::map<std::string, std::string> &fileCodeMap,std::string output_name);
 
-    bool buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
+    void applyRepairedCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap,std::string wrapScript);
+    void rollbackOriginalCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap);
+
+    std::vector<long long> buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
             std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
             std::map<std::string,std::vector<long long>> macroFile,
             std::string output_name="");

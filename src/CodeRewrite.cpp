@@ -443,8 +443,6 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
             ret[rc[j].actions[0].loc][NormalInsert]=std::map<std::string,RepairCandidate::CandidateKind>();
             ret[rc[j].actions[0].loc][AfterInsert]=std::map<std::string,RepairCandidate::CandidateKind>();
             ret[rc[j].actions[0].loc][VarMutation]=std::map<std::string,RepairCandidate::CandidateKind>();
-            ret[rc[j].actions[0].loc][ProfileWriterEnd]=std::map<std::string,RepairCandidate::CandidateKind>();
-            ret[rc[j].actions[0].loc][ProfileWriterReturn]=std::map<std::string,RepairCandidate::CandidateKind>();
         }
 
         if (rc[j].kind==RepairCandidate::AddVarMutation){
@@ -461,28 +459,6 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
             // assert(ret[rootLoc].size()==4);
             ret[rc[j].actions[0].loc][VarMutation].insert(insertVarMutation.begin(),insertVarMutation.end());
 
-            continue;
-        }
-        else if (rc[j].kind==RepairCandidate::AddProfileWriter){
-            ASTContext *ctxt=M.getSourceContext(rc[j].actions[0].loc.filename);
-            std::map<std::string,RepairCandidate::CandidateKind> insertProfileWriter;
-            insertProfileWriter.clear();
-            std::string temp=stmtToString(*ctxt,(Stmt *)rc[j].actions[0].ast_node);
-
-            size_t pos=temp.find("__write_profile");
-            while (true){
-                for (size_t j=0;j<6 && pos!=std::string::npos;j++){
-                    pos=temp.find(",",pos+1);
-                }
-                if (pos==std::string::npos) break;
-                temp.insert(pos+1,"\n\t\t\t");
-            }
-
-            insertProfileWriter.insert(std::make_pair(temp,RepairCandidate::AddProfileWriter));
-            if (rc[j].actions[0].kind==RepairAction::InsertAfterMutationKind)
-                ret[rc[j].actions[0].loc][ProfileWriterEnd]=insertProfileWriter;
-            else
-                ret[rc[j].actions[0].loc][ProfileWriterReturn]=insertProfileWriter;
             continue;
         }
         if (DeclStmt::classof(rc[j].original)) continue;
@@ -587,7 +563,7 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
 }
 
 std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<size_t,size_t>> &currentLocation,std::vector<ASTLocTy> &currentCandidate,
-        std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,std::map<ASTLocTy,std::string> &profileWriters,const std::string code){
+        std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,const std::string code){
     // if (currentLocation[currentIndex].second==0) return "";
     // Insert Var Mutation
     int case_count=0;
@@ -602,13 +578,6 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+=patch_it->first;
         }
     }
-
-    // Insert profile writer, if original is ReturnStmt
-    if (res1[currentCandidate[currentIndex]][ProfileWriterReturn].size()>0){
-        std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[currentIndex]][ProfileWriterReturn].begin();
-        body+=patch_it->first+";\n";
-    }
-
     // if(res1[currentCandidate[currentIndex]][NormalInsert].size()==0 && res1[currentCandidate[currentIndex]][NormalReplace].size()==0 && res1[currentCandidate[currentIndex]][ConditionSynthesize].size()==0 && res1[currentCandidate[currentIndex]][AfterInsert].size()==0) {
     //     return body+code.substr(start,end-start);
     // }
@@ -664,20 +633,6 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
-
-            size_t returnLoc=currentBody.find("return");
-            if (returnLoc!=std::string::npos){
-                while (currentBody[returnLoc-1]!=' ' && currentBody[returnLoc-1]!='\t' && currentBody[returnLoc-1]!='\n' &&
-                        (currentBody[returnLoc+6]==';' || (currentBody[returnLoc+6]==' ' && currentBody[returnLoc+7]>='0' && currentBody[returnLoc+7]<='9'))){
-                    returnLoc=currentBody.find("return",returnLoc+1);
-                    if (returnLoc==std::string::npos) break;
-                }
-            }
-            if (returnLoc!=std::string::npos){
-                size_t finish=currentBody.find(";",returnLoc+5);
-                currentBody.insert(finish+1,"\n}\n");
-                currentBody.insert(returnLoc,"{\n\t"+profileWriters[loc]+";\n\t");
-            }
             body+=currentBody;
             casePatch[case_count]=currentBody;
             body+="\nbreak;\n}\n";
@@ -785,48 +740,15 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     while (currentIndex+1<currentLocation.size() && currentLocation[currentIndex+1].second<=end){
         currentIndex++;
         size_t beforeIndex=currentIndex;
-        std::string subPatch=applyPatch(currentIndex,currentLocation,currentCandidate,res1,line,profileWriters,code);
+        std::string subPatch=applyPatch(currentIndex,currentLocation,currentCandidate,res1,line,code);
 
         std::string last=bodyCodes[bodyCodes.size()-1];
         bodyCodes.pop_back();
         std::string begin=last.substr(0,currentLocation[beforeIndex].first-beforeEnd);
-
-        size_t returnLoc=begin.find("return");
-        while (returnLoc!=std::string::npos){
-            while (begin[returnLoc-1]!=' ' && begin[returnLoc-1]!='\t' && begin[returnLoc-1]!='\n' &&
-                        (begin[returnLoc+6]==';' || (begin[returnLoc+6]==' ' && begin[returnLoc+7]>='0' && begin[returnLoc+7]<='9'))){
-                returnLoc=begin.find("return",returnLoc+1);
-                if (returnLoc==std::string::npos) break;
-            }
-            if (returnLoc!=std::string::npos){
-                size_t finish=begin.find(";",returnLoc+5);
-                begin.insert(finish+1,"\n}\n");
-                begin.insert(returnLoc,"{\n\t"+profileWriters[loc]+";\n\t");
-                returnLoc=begin.find("return",returnLoc+profileWriters[loc].size()+14);
-            }
-        }
-
         bodyCodes.push_back(begin);
         bodyCodes.push_back(subPatch);
         bodyCodes.push_back(last.substr(currentLocation[beforeIndex].second-beforeEnd));
         beforeEnd=currentLocation[beforeIndex].second;
-    }
-
-    std::string &begin=bodyCodes.back();
-    size_t returnLoc=begin.find("return");
-
-    while (returnLoc!=std::string::npos){
-        while (begin[returnLoc-1]!=' ' && begin[returnLoc-1]!='\t' && begin[returnLoc-1]!='\n' &&
-                        (begin[returnLoc+6]==';' || (begin[returnLoc+6]==' ' && begin[returnLoc+7]>='0' && begin[returnLoc+7]<='9'))){
-            returnLoc=begin.find("return",returnLoc+1);
-            if (returnLoc==std::string::npos) break;
-        }
-        if (returnLoc!=std::string::npos){
-            size_t finish=begin.find(";",returnLoc+5);
-            begin.insert(finish+1,"\n}\n");
-            begin.insert(returnLoc,"{\n\t"+profileWriters[loc]+";\n\t");
-            returnLoc=begin.find("return",returnLoc+profileWriters[loc].size()+14);
-        }
     }
 
     for (size_t i=0;i<bodyCodes.size();i++){
@@ -858,22 +780,6 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
             body+="case "+std::to_string(case_count)+": {\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
-
-            size_t returnLoc=currentBody.find("return");
-            while (returnLoc!=std::string::npos){
-                while (currentBody[returnLoc-1]!=' ' && currentBody[returnLoc-1]!='\t' && currentBody[returnLoc-1]!='\n' &&
-                        (currentBody[returnLoc+6]==';' || (currentBody[returnLoc+6]==' ' && currentBody[returnLoc+7]>='0' && currentBody[returnLoc+7]<='9'))){
-                    returnLoc=currentBody.find("return",returnLoc+1);
-                    if (returnLoc==std::string::npos) break;
-                }
-                if (returnLoc!=std::string::npos){
-                    assert(profileWriters.find(loc)!=profileWriters.end());
-                    size_t finish=currentBody.find(";",returnLoc+5);
-                    currentBody.insert(finish+1,"\n}\n").insert(returnLoc,"{\n\t"+profileWriters[loc]+";\n\t");
-                    returnLoc=currentBody.find("return",returnLoc+profileWriters[loc].size()+14);
-                }
-            }
-
             body+=currentBody;
             casePatch[case_count]=currentBody;
             body+="\nbreak;\n}\n";
@@ -966,12 +872,6 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
     body+="\n";
 
-    // Insert profile writer
-    if(res1[currentCandidate[indexBackup]][ProfileWriterEnd].size()>0){
-        std::map<std::string,RepairCandidate::CandidateKind>::iterator patch_it=res1[currentCandidate[indexBackup]][ProfileWriterEnd].begin();
-        body+=patch_it->first+";\n";
-    }
-
     if (hasLine){
         for (size_t i=0;i<lines.size();i++){
             if (lines[i].line==currentLine) lines[i]=lineObject;
@@ -1024,13 +924,6 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
 
     // Create string with whole candidate vector 
     std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate::CandidateKind>>> res1=eliminateAllNewLoc(M, rc1,original_str);
-    std::map<ASTLocTy,std::string> profileWriters;
-    profileWriters.clear();
-    for (size_t i=0;i<rc.size();i++){
-        if (rc[i].profileWriter!=NULL){
-            profileWriters[rc[i].actions[0].loc]=stmtToString(*M.getSourceContext(rc[i].actions[0].loc.filename),rc[i].profileWriter);
-        }
-    }
     // We then categorize location based on the src_file and their offset
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > res2;
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > tmp_loc;
@@ -1153,7 +1046,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
             assert(code.find(last_code)!=std::string::npos);
             resCodeSegs[src_file].push_back(code.substr(seg_start,start-seg_start));
 
-            std::string body=applyPatch(i,currentLocation,currentCandidate,res1,line[src_file],profileWriters,code);
+            std::string body=applyPatch(i,currentLocation,currentCandidate,res1,line[src_file],code);
 
             // Add patch code to code
             resPatches[src_file].push_back(body);

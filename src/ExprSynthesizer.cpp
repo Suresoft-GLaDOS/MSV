@@ -26,6 +26,7 @@
 #include "DuplicateDetector.h"
 #include "FeatureParameter.h"
 #include "cJSON/cJSON.h"
+#include "ProfileWriter.h"
 
 #include "llvm/Support/CommandLine.h"
 #include "clang/AST/Expr.h"
@@ -1544,8 +1545,8 @@ public:
             buildEnv["COMPILE_CMD"] = "clang++";
         else
             buildEnv["COMPILE_CMD"] = GCC_CMD;
-        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,macroCode,macroFile);
-        if (!build_succ) {
+        std::vector<long long> build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,macroCode,macroFile);
+        if (build_succ.size()==0) {
             outlog_printf(2, "Build failed!");
             return std::map<NewCodeMapTy, double>();
         }
@@ -1856,6 +1857,7 @@ size_t getElementCount(std::vector<T> vector,T target){
 
 class TestBatcher {
     BenchProgram &P;
+    SourceContextManager &manager;
     bool naive;
     bool learning;
     FeatureParameter *FP;
@@ -1901,7 +1903,15 @@ class TestBatcher {
         // P.saveFixedFiles(combined,fixedFile);
         
         BenchProgram::EnvMapTy testEnv;
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
+        P.applyRepairedCode(combined,buildEnv,CLANG_TEST_WRAP);
+        std::vector<long long> succ_macros=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
+
+        outlog_printf(2,"Adding profile writers...\n");
+        addProfileWriter(P,manager,combined,succ_macros,fixedFile);
+        outlog_printf(2,"Trying build...\n");
+        bool final=P.buildSubDir("src",CLANG_TEST_WRAP,buildEnv,succ_macros);
+        if (final) printf("Pass to build final program\n");
+        P.rollbackOriginalCode(combined,buildEnv);
 
         // if (P.getSwitch().first==0 && P.getSwitch().second==0)
         //     result_init=T->test(testEnv,0,true);
@@ -1923,9 +1933,9 @@ class TestBatcher {
 
 public:
     TestBatcher(BenchProgram &P, bool naive,
-            bool learning, FeatureParameter *FP,std::string fixedFile):
+            bool learning, FeatureParameter *FP,std::string fixedFile,SourceContextManager &M):
         P(P), naive(naive), learning(learning && !naive), FP(FP), fixedFile(fixedFile),res(), succCandidates(),cur_size(0),
-    total_cnt(0) { }
+    total_cnt(0),manager(M) { }
 
     // This is a lazy test routine, we are only going to decode it without
     // actually doing the test in the most of the time
@@ -1986,7 +1996,7 @@ public:
 bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
         ExprSynthesizerResultTy &res, bool full_synthesis, bool quit_with_any) {
     the_timeout_limit = this->timeout_limit;
-    TestBatcher TB(P, naive, learning, FP,fixedFile);
+    TestBatcher TB(P, naive, learning, FP,fixedFile,M);
     std::vector<BasicTester*> testers;
     testers.clear();
     // testers.push_back(new ConditionSynthesisTester(P, learning, M, full_synthesis,functionLoc,scores));

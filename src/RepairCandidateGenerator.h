@@ -95,14 +95,12 @@ struct RepairCandidate {
         ReplaceKind,
         ReplaceStringKind,
         AddAndReplaceKind,
-        AddVarMutation, // 9
-        AddProfileWriter
+        AddVarMutation // 9
     } CandidateKind;
     CandidateKind kind;
     bool is_first; // start of a block? not including condition changes
     clang::Expr *oldRExpr, *newRExpr; // info for replace only
     clang::Stmt *original;
-    clang::Expr *profileWriter;
     // This should be the human localization score for learning
     // or the pre-fixed score if not using learning
     double score;
@@ -125,7 +123,7 @@ struct RepairCandidate {
         }
     }*/
 
-    RepairCandidate(): actions(), kind(), is_first(false), oldRExpr(NULL), newRExpr(NULL), original(NULL), score(0), scoreMap(),profileWriter(NULL) { }
+    RepairCandidate(): actions(), kind(), is_first(false), oldRExpr(NULL), newRExpr(NULL), original(NULL), score(0), scoreMap() { }
 
     std::set<clang::Expr*> getCandidateAtoms() const {
         std::set<clang::Expr*> ret;

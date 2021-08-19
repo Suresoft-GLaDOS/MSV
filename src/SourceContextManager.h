@@ -120,7 +120,7 @@ public:
 
     //void popChanges(RepairCandidate &candidate);
 
-    LocalAnalyzer* getLocalAnalyzer(const ASTLocTy &loc);
+    LocalAnalyzer* getLocalAnalyzer(const ASTLocTy &loc,clang::ASTContext *ctxt=NULL);
 
     bool isNewStmt(clang::Stmt* s) {
         return existing_stmts.count(s) == 0;

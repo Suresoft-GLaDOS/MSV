@@ -373,24 +373,34 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
         buildFull("src");
         src_dirs["src"] = true;
     }
-    std::string cmd;
-    if (dep_dir != "")
-        cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
-        // cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args "+ " 2>&1";
-    else
-        cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
-        // cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args " +  " 2>&1";
-    int sys_ret = explain_system_on_error(cmd.c_str());
 
-    assert( sys_ret == 0 );
-    parseArgFile("__args", build_dir, build_args);
-    sys_ret = explain_system_on_error("rm -rf __args");
-    if (sys_ret != 0)
-        fprintf(stderr, "Remove __args failed!\n");
-    src_dirs["src"] = true;
-/*    fprintf(stderr, "Arguments we get:\n");
-    for (size_t i = 0; i < build_args.size(); ++i)
-        fprintf(stderr, "\"%s\"\n", build_args[i].c_str());*/
+    if (build_dir_save.find(src_file)!=build_dir_save.end()){
+        build_dir=build_dir_save[src_file];
+        build_args=build_args_save[src_file];
+    }
+    else{
+        std::string cmd;
+        if (dep_dir != "")
+            cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
+            // cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args "+ " 2>&1";
+        else
+            cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
+            // cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args " +  " 2>&1";
+        int sys_ret = explain_system_on_error(cmd.c_str());
+
+        assert( sys_ret == 0 );
+        parseArgFile("__args", build_dir, build_args);
+        sys_ret = explain_system_on_error("rm -rf __args");
+        if (sys_ret != 0)
+            fprintf(stderr, "Remove __args failed!\n");
+        src_dirs["src"] = true;
+
+        build_dir_save[src_file]=build_dir;
+        build_args_save[src_file]=build_args;
+    /*    fprintf(stderr, "Arguments we get:\n");
+        for (size_t i = 0; i < build_args.size(); ++i)
+            fprintf(stderr, "\"%s\"\n", build_args[i].c_str());*/
+    }
 }
 
 bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log) {
@@ -594,17 +604,10 @@ void removeMacros(std::map<std::string, std::string> fileMap,std::string srcDir)
     }
 }
 
-bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-            std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
-            std::map<std::string,std::vector<long long>> macroFile,std::string output_name) {
-    compile_cnt ++;
-    // This is to backup the changed sourcefile, in case something broken
-    // the workdir, and we want to just resume
-    std::vector<std::string> files;
-    files.clear();
+void BenchProgram::applyRepairedCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap,std::string wrapScript){
     std::ofstream fout2((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ofstream::out);
     size_t cnt = 0;
-    bool succ;
+
     pushEnvMap(envMap);
 
     pushWrapPath(CLANG_WRAP_PATH, wrapScript);
@@ -616,7 +619,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         if (target_file[0] != '/')
             target_file = src_dir + "/" + target_file;
         // Copy the backup
-        files.push_back(target_file);
+        // files.push_back(target_file);
         std::ostringstream sout;
         sout << "cp -f " << target_file << " " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
         std::string cmd = sout.str();
@@ -630,7 +633,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         fout.close();
 
         size_t filePos=target_file.rfind("/");
-        std::string bak_file=work_dir+"/"+output_name+target_file.substr(filePos+1);
+        std::string bak_file=work_dir+"/temp_1_"+target_file.substr(filePos+1);
         std::ofstream fout_bak(bak_file.c_str(), std::ofstream::out);
         fout_bak << it->second;
         fout_bak.close();
@@ -646,6 +649,64 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     }
     fout2.close();
     deleteLibraryFile(fileCodeMap);
+}
+
+void BenchProgram::rollbackOriginalCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap){
+    popWrapPath();
+
+    popEnvMap(envMap);
+    // Remove temporary backup file, because we have done it
+    size_t cnt = 0;
+    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
+            it != fileCodeMap.end(); ++ it) {
+        std::string target_file = it->first;
+        if (target_file[0] != '/')
+            target_file = src_dir + "/" + it->first;
+        else
+            target_file = it->first;
+        std::ostringstream sout;
+        sout << "mv -f " << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << target_file;
+        std::string cmd = sout.str();
+        execute_cmd_until_succ(cmd);
+        cnt ++;
+        // Make sure it refresh the build system to avoid cause problem
+        cmd = std::string("touch ") + target_file;
+        execute_cmd_until_succ(cmd);
+        // remove the .o and .lo files to force recompile next time
+        {
+            std::string tmp = replace_ext(target_file, ".o");
+            std::string cmd = "rm -f "  + tmp;
+            execute_cmd_until_succ(cmd);
+        }
+        {
+            std::string tmp = replace_ext(target_file, ".lo");
+            std::string cmd = "rm -f "  + tmp;
+            execute_cmd_until_succ(cmd);
+        }
+    }
+
+    std::string cmd = "rm -rf " + work_dir + "/__backup.log";
+    execute_cmd_until_succ(cmd);
+}
+
+std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
+            std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
+            std::map<std::string,std::vector<long long>> macroFile,std::string output_name) {
+    compile_cnt ++;
+    // This is to backup the changed sourcefile, in case something broken
+    // the workdir, and we want to just resume
+    std::vector<std::string> files;
+    files.clear();
+    bool succ;
+
+    for (std::map<std::string, std::string>::iterator it = fileCodeMap.begin();
+            it != fileCodeMap.end(); ++it) {
+        std::string target_file = it->first;
+        if (target_file[0] != '/')
+            target_file = src_dir + "/" + target_file;
+        // Copy the backup
+        files.push_back(target_file);
+    }
 
     outlog_printf(2,"Trying to build with all macros...\n");
     size_t buildCount=0;
@@ -1002,43 +1063,11 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         // Build final build
         succ = buildFull("src", 0,false,succ_id,files);
         if (succ) outlog_printf(2,"Success to build final program!\n");
-        popWrapPath();
-
-        popEnvMap(envMap);
-    }
-    // Remove temporary backup file, because we have done it
-    cnt = 0;
-    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
-            it != fileCodeMap.end(); ++ it) {
-        std::string target_file = it->first;
-        if (target_file[0] != '/')
-            target_file = src_dir + "/" + it->first;
-        else
-            target_file = it->first;
-        std::ostringstream sout;
-        sout << "mv -f " << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << target_file;
-        std::string cmd = sout.str();
-        execute_cmd_until_succ(cmd);
-        cnt ++;
-        // Make sure it refresh the build system to avoid cause problem
-        cmd = std::string("touch ") + target_file;
-        execute_cmd_until_succ(cmd);
-        // remove the .o and .lo files to force recompile next time
-        {
-            std::string tmp = replace_ext(target_file, ".o");
-            std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
-        }
-        {
-            std::string tmp = replace_ext(target_file, ".lo");
-            std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
-        }
     }
 
-    std::string cmd = "rm -rf " + work_dir + "/__backup.log";
-    execute_cmd_until_succ(cmd);
-    return succ;
+    if(succ)
+        return succ_id;
+    else return std::vector<long long>();
 }
 
 /*void BenchProgram::prepare_test() {
@@ -1288,7 +1317,7 @@ std::string BenchProgram::normalizePath(const std::string &str) {
     use_arg_file = true;
 }*/
 
-std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::string &file, const std::string &code) {
+std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::string &file, const std::string &code,std::vector<long long> macros) {
     std::string build_dir;
     std::vector<std::string> args;
     this->getCompileMisc(file, build_dir, args);
@@ -1307,6 +1336,10 @@ std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::strin
     assert( idx != std::string::npos);
     tmpArgs.push_back("-I");
     tmpArgs.push_back(full_key_path.substr(0, idx));
+    for (size_t i=0;i<macros.size();i++){
+        tmpArgs.push_back("-D");
+        tmpArgs.push_back("__COMPILE_"+std::to_string(macros[i]));
+    }
     tmpArgs.insert(tmpArgs.end(), args.begin(), args.end());
 
     int ret = chdir(target.c_str());

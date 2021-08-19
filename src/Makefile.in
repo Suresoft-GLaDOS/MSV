@@ -150,11 +150,12 @@ libtest_runtime_la_OBJECTS = $(am_libtest_runtime_la_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_learner_OBJECTS = learner.$(OBJEXT) FeatureExtract.$(OBJEXT) \
-	SourceContextManager.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
-	GlobalAnalyzer.$(OBJEXT) ASTUtils.$(OBJEXT) \
-	BenchProgram.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
-	Utils.$(OBJEXT) CodeRewrite.$(OBJEXT) \
-	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT)
+	ProfileWriter.$(OBJEXT) SourceContextManager.$(OBJEXT) \
+	LocalAnalyzer.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
+	ASTUtils.$(OBJEXT) BenchProgram.$(OBJEXT) \
+	RepairCandidateGenerator.$(OBJEXT) Utils.$(OBJEXT) \
+	CodeRewrite.$(OBJEXT) cJSON/cJSON_Utils.$(OBJEXT) \
+	cJSON/cJSON.$(OBJEXT)
 learner_OBJECTS = $(am_learner_OBJECTS)
 am__DEPENDENCIES_1 =
 learner_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -162,12 +163,12 @@ learner_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(learner_LDFLAGS) $(LDFLAGS) -o $@
 am_pdiffer_OBJECTS = pdiffer.$(OBJEXT) Utils.$(OBJEXT) \
-	ASTDiffer.$(OBJEXT) SourceContextManager.$(OBJEXT) \
-	LocalAnalyzer.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
-	ASTUtils.$(OBJEXT) BenchProgram.$(OBJEXT) \
-	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
-	FeatureExtract.$(OBJEXT) cJSON/cJSON_Utils.$(OBJEXT) \
-	cJSON/cJSON.$(OBJEXT)
+	ASTDiffer.$(OBJEXT) ProfileWriter.$(OBJEXT) \
+	SourceContextManager.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
+	GlobalAnalyzer.$(OBJEXT) ASTUtils.$(OBJEXT) \
+	BenchProgram.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
+	CodeRewrite.$(OBJEXT) FeatureExtract.$(OBJEXT) \
+	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT)
 pdiffer_OBJECTS = $(am_pdiffer_OBJECTS)
 pdiffer_DEPENDENCIES = $(am__DEPENDENCIES_1)
 pdiffer_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -182,14 +183,14 @@ playground_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(playground_LDFLAGS) $(LDFLAGS) -o $@
 am_prophet_OBJECTS = Main.$(OBJEXT) Utils.$(OBJEXT) \
-	RepairSearchEngine.$(OBJEXT) BenchProgram.$(OBJEXT) \
-	ASTUtils.$(OBJEXT) ErrorLocalizer.$(OBJEXT) \
-	LocalAnalyzer.$(OBJEXT) ProfileErrorLocalizer.$(OBJEXT) \
-	SourceContextManager.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
-	DuplicateDetector.$(OBJEXT) ExprSynthesizer.$(OBJEXT) \
-	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
-	FeatureExtract.$(OBJEXT) cJSON/cJSON_Utils.$(OBJEXT) \
-	cJSON/cJSON.$(OBJEXT)
+	RepairSearchEngine.$(OBJEXT) ProfileWriter.$(OBJEXT) \
+	BenchProgram.$(OBJEXT) ASTUtils.$(OBJEXT) \
+	ErrorLocalizer.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
+	ProfileErrorLocalizer.$(OBJEXT) SourceContextManager.$(OBJEXT) \
+	GlobalAnalyzer.$(OBJEXT) DuplicateDetector.$(OBJEXT) \
+	ExprSynthesizer.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
+	CodeRewrite.$(OBJEXT) FeatureExtract.$(OBJEXT) \
+	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT)
 prophet_OBJECTS = $(am_prophet_OBJECTS)
 prophet_DEPENDENCIES = $(am__DEPENDENCIES_1)
 prophet_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -460,19 +461,19 @@ ClangLDADD = -lclangTooling -lclangFrontendTool -lclangFrontend \
 	-lLLVMMC -lLLVMDebugInfoCodeView -lLLVMDebugInfoMSF \
 	-lLLVMBinaryFormat -lLLVMAArch64Utils -lLLVMAArch64Info \
 	-lLLVMSupport -lLLVMDemangle -lz -lcurses
-pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
+pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp ProfileWriter.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
 				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 
 pdiffer_LDFLAGS = `llvm-config --ldflags`
 pdiffer_LDADD = $(ClangLDADD) -lexplain
-learner_SOURCES = learner.cpp FeatureExtract.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
+learner_SOURCES = learner.cpp FeatureExtract.cpp ProfileWriter.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
 				  Utils.cpp CodeRewrite.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 
 learner_LDFLAGS = `llvm-config --ldflags`
 learner_LDADD = $(ClangLDADD) -lexplain
-prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp BenchProgram.cpp ASTUtils.cpp \
+prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp ProfileWriter.cpp BenchProgram.cpp ASTUtils.cpp \
 				  ErrorLocalizer.cpp LocalAnalyzer.cpp ProfileErrorLocalizer.cpp SourceContextManager.cpp \
 				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp \
 				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
@@ -661,6 +662,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PlayGround.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ProfileErrorLocalizer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ProfileWriter.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ProfilerAction.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RepairCandidateGenerator.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RepairSearchEngine.Po@am__quote@

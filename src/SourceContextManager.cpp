@@ -234,9 +234,11 @@ void SourceContextManager::popChanges(RepairCandidate &candidate) {
             &StmtList[0], StmtList.size());
 }*/
 
-LocalAnalyzer* SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc) {
+LocalAnalyzer* SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc,clang::ASTContext *ctxt) {
     if (localAnalyzerMap.count(loc) == 0) {
-        ASTContext *C = getSourceContext(loc.filename);
+        ASTContext *C;
+        if (ctxt==NULL) C = getSourceContext(loc.filename);
+        else C=ctxt;
         //llvm::errs() << "Location " << loc.filename << ":" << getExpLineNumber(*C, loc.stmt) << "\n";
         //loc.stmt->printPretty(llvm::errs(), 0, C->getPrintingPolicy());
         localAnalyzerMap[loc] = new LocalAnalyzer(C, globalAnalyzerMap[C], loc, naive);
