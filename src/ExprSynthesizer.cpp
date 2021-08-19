@@ -1909,7 +1909,7 @@ class TestBatcher {
         outlog_printf(2,"Adding profile writers...\n");
         addProfileWriter(P,manager,combined,succ_macros,fixedFile);
         outlog_printf(2,"Trying build...\n");
-        bool final=P.buildSubDir("src",CLANG_TEST_WRAP,buildEnv,succ_macros);
+        bool final=P.buildSubDir("src",CLANG_TEST_WRAP,buildEnv);
         if (final) printf("Pass to build final program\n");
         P.rollbackOriginalCode(combined,buildEnv);
 

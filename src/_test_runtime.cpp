@@ -44,6 +44,9 @@ static unsigned long current_cnt = 0;
 static unsigned long records[MAXSZ];
 static unsigned long records_sz;
 
+static char runned_func[100][MAXSZ];
+static unsigned runned_func_cnt=0;
+
 static void __attribute((constructor)) _init() {
     memset(records, 0, sizeof(records));
     records_sz = 0;
@@ -122,32 +125,39 @@ extern "C" int __choose(const char *switch_id) {
 
 extern "C" void __write_profile(const char *func_name,int count, ...){
     int pid=__choose("__PID");
-    char tmp_file[100];
-    sprintf(tmp_file,"/tmp/%d_profile.log",pid);
+    char tmp_file[200];
+    sprintf(tmp_file,"/tmp/%d_%s_profile.log",pid,func_name);
 
     va_list ap;
     va_start(ap, count);
-    FILE *f = fopen(tmp_file, "a");
+    FILE *f = fopen(tmp_file, "w");
     fprintf(f, "*%s ", func_name);
     fprintf(f, "%lu\n", (unsigned long)count);
     // fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
     for (unsigned long i = 0; i < (unsigned long)count; i++) {
         char *name=va_arg(ap,char *);
-        void* p = va_arg(ap, void*);
-        unsigned long sz = va_arg(ap, unsigned long);
-        long long v = 0;
-
-        if (sz <= 8 && isGoodAddr(p, sz)) {
-            memcpy(&v, p, sz);
-        }
-        else {
-            v = MAGIC_NUMBER;
-        }
-        fprintf(f, "%s=%lld\n", name,v);
+        long long value = va_arg(ap, long long);
+        fprintf(f, "%s=%lld\n", name,value);
         // fprintf(stderr, "i %lu %lld\n", i, v);
     }
     fprintf(f, "\n");
     fclose(f);
+
+    int runned=0;
+    for (unsigned i=0;i<runned_func_cnt;i++){
+        if (strcmp(func_name,runned_func[i])==0) {
+            runned=1;
+            break;
+        }
+    }
+    if (!runned){
+        char log_file[100];
+        sprintf(log_file,"/tmp/%d_profile.log",pid);
+        FILE *log=fopen(log_file,"a");
+        fprintf(log,"%s\n",func_name);
+        fclose(log);
+        strcpy(runned_func[runned_func_cnt++],func_name);
+    }
 }
 
 extern "C" int __is_neg(const char *location,int count, ...) {

@@ -632,12 +632,12 @@ void BenchProgram::applyRepairedCode(std::map<std::string, std::string> &fileCod
         fout << it->second;
         fout.close();
 
-        size_t filePos=target_file.rfind("/");
-        std::string bak_file=work_dir+"/temp_1_"+target_file.substr(filePos+1);
-        std::ofstream fout_bak(bak_file.c_str(), std::ofstream::out);
-        fout_bak << it->second;
-        fout_bak.close();
-        outlog_printf(2,"Saved fixed file at: %s\n",bak_file.c_str());
+        // size_t filePos=target_file.rfind("/");
+        // std::string bak_file=work_dir+"/temp_1_"+target_file.substr(filePos+1);
+        // std::ofstream fout_bak(bak_file.c_str(), std::ofstream::out);
+        // fout_bak << it->second;
+        // fout_bak.close();
+        // outlog_printf(2,"Saved fixed file at: %s\n",bak_file.c_str());
 
         // Formatting meta-program, for find error berrer
         // system(std::string("clang-format -i "+target_file).c_str());

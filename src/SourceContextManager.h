@@ -66,8 +66,6 @@ class SourceContextManager {
     // some hacky flag we need to pass to local analyzer, wth
     bool naive;
 
-    void fetch(const std::string &file);
-
 public:
 
     SourceContextManager() : P(NULL), naive(false) {
@@ -89,6 +87,8 @@ public:
     }
 
     ~SourceContextManager();
+
+    void fetch(const std::string &file);
 
     std::string newSourceFile(const std::string &projDir, const std::string &srcFile,
             const std::string &buildDir, const std::vector<std::string> &buildArgs);
