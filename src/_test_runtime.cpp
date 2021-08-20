@@ -131,7 +131,6 @@ extern "C" void __write_profile(const char *func_name,int count, ...){
     va_list ap;
     va_start(ap, count);
     FILE *f = fopen(tmp_file, "w");
-    fprintf(f, "*%s ", func_name);
     fprintf(f, "%lu\n", (unsigned long)count);
     // fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
     for (unsigned long i = 0; i < (unsigned long)count; i++) {
