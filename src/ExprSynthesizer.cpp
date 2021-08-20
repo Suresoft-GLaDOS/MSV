@@ -1911,6 +1911,11 @@ class TestBatcher {
         outlog_printf(2,"Trying build...\n");
         bool final=P.buildSubDir("src",CLANG_TEST_WRAP,buildEnv);
         if (final) printf("Pass to build final program\n");
+        else{
+            printf("\033[0;31m");
+            printf("\nFail to build with profile writer, check build.log!\n");
+            printf("\033[0m");
+        }
         P.rollbackOriginalCode(combined,buildEnv);
 
         // if (P.getSwitch().first==0 && P.getSwitch().second==0)

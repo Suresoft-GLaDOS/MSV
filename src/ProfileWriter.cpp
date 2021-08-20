@@ -25,30 +25,143 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
         return ASTLocTy(file, src_file, parent_stmt, n);
     }
 
-    Expr* createProfileWriter(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs,const std::string funcName) {
+    Stmt* createProfileWriter(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs,const std::string funcName) {
         std::vector<Expr*> tmp_argv;
         tmp_argv.clear();
         StringLiteral *str=StringLiteral::Create(*ctxt,llvm::StringRef(funcName),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
         tmp_argv.push_back(str);
+        IntegerLiteral *modeArg=getNewIntegerLiteral(ctxt,0);
+        tmp_argv.push_back(modeArg);
 
         std::vector<Expr *> temp;
         temp.clear();
+        std::map<Expr *,std::vector<Expr *>> arrowMembers;
+        arrowMembers.clear();
+        std::vector<UnaryOperator *> pointers;
+        pointers.clear();
+        std::map<Expr *,std::vector<UnaryOperator *>> arrowPointers;
+        arrowPointers.clear();
         for (size_t i = 0; i < exprs.size(); ++i) {
-            if (exprs[i]->getType().getTypePtr()->isIntegralType(*ctxt) && !exprs[i]->getType().getTypePtr()->isPointerType())
-                temp.push_back(exprs[i]);
+            ImplicitCastExpr *tempExpr=llvm::dyn_cast<ImplicitCastExpr>(exprs[i]);
+            // First, we use integral types(e.g. int, long, unsigned) only, without pointers
+            if (tempExpr->getSubExpr()->getType().getTypePtr()->isIntegralType(*ctxt) && !tempExpr->getSubExpr()->getType().getTypePtr()->isPointerType()){
+                if (MemberExpr::classof(tempExpr->getSubExpr())){
+                    MemberExpr *member=llvm::dyn_cast<MemberExpr>(tempExpr->getSubExpr());
+
+                    // If member is arrow
+                    if (member->isArrow()){
+                        Expr *base=nullptr;
+                        for (std::map<Expr *,std::vector<Expr *>>::iterator it=arrowMembers.begin();it!=arrowMembers.end();it++){
+                            if(stmtToString(*ctxt,it->first)==stmtToString(*ctxt,member->getBase())){
+                                base=it->first;
+                                break;
+                            }
+                        }
+                        if (base==nullptr){
+                            arrowMembers[member->getBase()]=std::vector<Expr *>();
+                            base=member->getBase();
+                        }
+                        arrowMembers[base].push_back(tempExpr);
+                    }
+
+                    else
+                        temp.push_back(exprs[i]);
+                }
+                else temp.push_back(exprs[i]);
+            }
+
+            // Then, we handle pointer of integral types, without member
+            // Add null checker
+            else if (tempExpr->getSubExpr()->getType().getTypePtr()->isPointerType()){
+                // We ignore pointer of pointer
+                if (MemberExpr::classof(tempExpr->getSubExpr())){
+                    MemberExpr *member=llvm::dyn_cast<MemberExpr>(tempExpr->getSubExpr());
+                    if (member->isArrow()){
+                        Expr *base=nullptr;
+                        for (std::map<Expr *,std::vector<UnaryOperator *>>::iterator it=arrowPointers.begin();it!=arrowPointers.end();it++){
+                            if(stmtToString(*ctxt,it->first)==stmtToString(*ctxt,member->getBase())){
+                                base=it->first;
+                                break;
+                            }
+                        }
+                        if (base==nullptr){
+                            arrowPointers[member->getBase()]=std::vector<UnaryOperator *>();
+                            base=member->getBase();
+                        }
+                        // This member is pointer, so dereference is needed
+                        UnaryOperator *deref=UnaryOperator::Create(*ctxt,member,UO_Deref,member->getType().getTypePtr()->getPointeeType(),VK_RValue,OK_Ordinary,SourceLocation(),false,FPOptionsOverride());
+                        arrowPointers[base].push_back(deref);
+                    }
+                    else if (tempExpr->getSubExpr()->getType().getTypePtr()->getPointeeType().getTypePtr()->isIntegralType(*ctxt) && !tempExpr->getSubExpr()->getType().getTypePtr()->getPointeeType().getTypePtr()->isPointerType()){
+                        UnaryOperator *deref=UnaryOperator::Create(*ctxt,member,UO_Deref,member->getType().getTypePtr()->getPointeeType(),VK_RValue,OK_Ordinary,SourceLocation(),false,FPOptionsOverride());
+                        pointers.push_back(deref);
+                    }
+                }
+                else if (tempExpr->getSubExpr()->getType().getTypePtr()->getPointeeType().getTypePtr()->isIntegralType(*ctxt) && !tempExpr->getSubExpr()->getType().getTypePtr()->getPointeeType().getTypePtr()->isPointerType()){
+                    UnaryOperator *deref=UnaryOperator::Create(*ctxt,exprs[i],UO_Deref,exprs[i]->getType().getTypePtr()->getPointeeType(),VK_RValue,OK_Ordinary,SourceLocation(),false,FPOptionsOverride());
+                    pointers.push_back(deref);
+                }
+            }
         }
 
+        std::vector<Stmt *> finalStmts;
+        finalStmts.clear();
+        // Add basic types, without pointer and arrow member
         tmp_argv.push_back(getNewIntegerLiteral(ctxt, temp.size()));
         for (size_t i = 0; i < temp.size(); ++i) {
             StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,temp[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
             tmp_argv.push_back(exprStr);
-
             tmp_argv.push_back(temp[i]);
-
         }
         CallExpr *CE = CallExpr::Create(*ctxt, writer, tmp_argv,
                 ctxt->IntTy, VK_RValue, SourceLocation());
-        return CE;
+        finalStmts.push_back(CE);
+
+        // Add pointers of integral types
+        IntegerLiteral *modeOne=getNewIntegerLiteral(ctxt,1);
+        IntegerLiteral *null=getNewIntegerLiteral(ctxt,0);
+        for (size_t i=0;i<pointers.size();i++){
+            BinaryOperator *check=BinaryOperator::Create(*ctxt,pointers[i]->getSubExpr(),null,BO_NE,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+
+            std::vector<Expr *> pointerArgs;
+            pointerArgs.clear();
+            pointerArgs.push_back(str);
+            pointerArgs.push_back(modeOne);
+            pointerArgs.push_back(modeOne);
+
+            StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,pointers[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
+            pointerArgs.push_back(exprStr);
+            pointerArgs.push_back(pointers[i]);
+
+            CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
+            IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
+            finalStmts.push_back(checker);
+        }
+
+        // Add arrow member
+        for (std::map<Expr *,std::vector<Expr *>>::iterator it=arrowMembers.begin();it!=arrowMembers.end();it++){
+            BinaryOperator *check=BinaryOperator::Create(*ctxt,it->first,null,BO_NE,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+
+            std::vector<Expr *> pointerArgs;
+            pointerArgs.clear();
+            pointerArgs.push_back(str);
+            pointerArgs.push_back(modeOne);
+            pointerArgs.push_back(getNewIntegerLiteral(ctxt,it->second.size()));
+
+            for (size_t i=0;i<it->second.size();i++){
+                StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,it->second[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
+                pointerArgs.push_back(exprStr);
+                pointerArgs.push_back(it->second[i]);
+            }
+
+            CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
+            IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
+            finalStmts.push_back(checker);
+
+        }
+
+        CompoundStmt *finalStmt=CompoundStmt::Create(*ctxt,finalStmts,SourceLocation(),SourceLocation());
+        return finalStmt;
     }
 
 public:

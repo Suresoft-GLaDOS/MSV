@@ -123,15 +123,19 @@ extern "C" int __choose(const char *switch_id) {
 
 #define MAGIC_NUMBER -123456789
 
-extern "C" void __write_profile(const char *func_name,int count, ...){
+extern "C" void __write_profile(const char *func_name,int mode,int count, ...){
     int pid=__choose("__PID");
     char tmp_file[200];
     sprintf(tmp_file,"/tmp/%d_%s_profile.log",pid,func_name);
 
     va_list ap;
     va_start(ap, count);
-    FILE *f = fopen(tmp_file, "w");
-    fprintf(f, "%lu\n", (unsigned long)count);
+    FILE *f;
+    if (mode==0)
+        f = fopen(tmp_file, "w");
+    else
+        f = fopen(tmp_file, "a");
+    fprintf(f, "-%lu\n", (unsigned long)count);
     // fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
     for (unsigned long i = 0; i < (unsigned long)count; i++) {
         char *name=va_arg(ap,char *);
@@ -142,20 +146,22 @@ extern "C" void __write_profile(const char *func_name,int count, ...){
     fprintf(f, "\n");
     fclose(f);
 
-    int runned=0;
-    for (unsigned i=0;i<runned_func_cnt;i++){
-        if (strcmp(func_name,runned_func[i])==0) {
-            runned=1;
-            break;
+    if (mode==0){
+        int runned=0;
+        for (unsigned i=0;i<runned_func_cnt;i++){
+            if (strcmp(func_name,runned_func[i])==0) {
+                runned=1;
+                break;
+            }
         }
-    }
-    if (!runned){
-        char log_file[100];
-        sprintf(log_file,"/tmp/%d_profile.log",pid);
-        FILE *log=fopen(log_file,"a");
-        fprintf(log,"%s\n",func_name);
-        fclose(log);
-        strcpy(runned_func[runned_func_cnt++],func_name);
+        if (!runned){
+            char log_file[100];
+            sprintf(log_file,"/tmp/%d_profile.log",pid);
+            FILE *log=fopen(log_file,"a");
+            fprintf(log,"%s\n",func_name);
+            fclose(log);
+            strcpy(runned_func[runned_func_cnt++],func_name);
+        }
     }
 }
 
