@@ -247,6 +247,9 @@ public:
                     stmt_stack.pop_back();
                 }
             }
+            else{
+                newBody.push_back(tempBody);
+            }
             CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newBody,ctxt->getSourceManager().getExpansionLoc(tempBody->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(tempBody->getEndLoc()));
             stmt->setThen(newStmt);
         }
@@ -282,6 +285,10 @@ public:
                     stmt_stack.pop_back();
                 }
             }
+            else{
+                newBody.push_back(tempBody);
+            }
+
             CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newBody,ctxt->getSourceManager().getExpansionLoc(tempElse->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(tempElse->getEndLoc()));
             stmt->setElse(newStmt);
         }
