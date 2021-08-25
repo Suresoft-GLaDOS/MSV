@@ -29,7 +29,7 @@ typedef std::vector<Stmt*> StmtStackTy;
 
 class StmtStackVisitor : public clang::RecursiveASTVisitor<StmtStackVisitor> {
     ASTLocTy loc;
-    StmtStackTy curStmtStack, resStmtStack;
+    StmtStackTy curStmtStack,resStmtStack;
     FunctionDecl *curFunc, *resFunc;
 public:
     StmtStackVisitor(ASTLocTy loc): loc(loc), curStmtStack(),
@@ -37,7 +37,8 @@ public:
     ~StmtStackVisitor() {}
     virtual bool TraverseFunctionDecl(FunctionDecl *FD) {
         curFunc = FD;
-        return RecursiveASTVisitor<StmtStackVisitor>::TraverseFunctionDecl(FD);
+        bool ret= RecursiveASTVisitor<StmtStackVisitor>::TraverseFunctionDecl(FD);
+        return ret;
     }
     virtual bool TraverseStmt(Stmt *S) {
         curStmtStack.push_back(S);
@@ -264,6 +265,7 @@ ctxt(ctxt), loc(loc), G(G), curFunc(NULL), LocalVarDecls(), MemberStems(), naive
 
     LocalActiveVarVisitor visitor2(stmtStack, curFunc);
     visitor2.TraverseDecl(TransUnit);
+    // visitor2.TraverseFunctionDecl(curFunc);
     LocalVarDecls = visitor2.getValidLocalVarDeclSet();
     /*for (std::set<VarDecl*>::iterator it = LocalVarDecls.begin(); it != LocalVarDecls.end(); ++it)
         (*it)->dump();*/
@@ -317,7 +319,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::genExprAtoms(QualType QT, bool allow_lo
             SourceManager &manager=ctxt->getSourceManager();
             if (manager.getFileOffset(manager.getExpansionLoc((*it)->getBeginLoc()))<manager.getFileOffset(manager.getExpansionLoc(loc.stmt->getBeginLoc()))){
                 QualType globalQT = (*it)->getType();
-                if (typeMatch(globalQT, QT)) {
+                if (typeMatch(globalQT, QT) && isBehind(ctxt,(*it)->getLocation(),loc.stmt->getBeginLoc())) {
                     DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
                             SourceLocation(), *it, false, SourceLocation(), globalQT, VK_LValue);
                     if (lvalue)

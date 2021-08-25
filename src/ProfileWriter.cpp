@@ -228,6 +228,9 @@ public:
                 newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
                 newBody.push_back(tempBody);
                 stmt_stack.pop_back();
+
+                CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newBody,ctxt->getSourceManager().getExpansionLoc(tempBody->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(tempBody->getEndLoc()));
+                stmt->setThen(newStmt);
             }
             else if (CompoundStmt::classof(tempBody)){
                 CompoundStmt *body=llvm::dyn_cast<CompoundStmt>(tempBody);
@@ -246,12 +249,10 @@ public:
                     }
                     stmt_stack.pop_back();
                 }
+
+                CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newBody,ctxt->getSourceManager().getExpansionLoc(tempBody->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(tempBody->getEndLoc()));
+                stmt->setThen(newStmt);
             }
-            else{
-                newBody.push_back(tempBody);
-            }
-            CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newBody,ctxt->getSourceManager().getExpansionLoc(tempBody->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(tempBody->getEndLoc()));
-            stmt->setThen(newStmt);
         }
 
         Stmt *tempElse=stmt->getElse();
@@ -266,6 +267,9 @@ public:
                 newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
                 newBody.push_back(tempElse);
                 stmt_stack.pop_back();
+
+                CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newBody,ctxt->getSourceManager().getExpansionLoc(tempElse->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(tempElse->getEndLoc()));
+                stmt->setElse(newStmt);
             }
             else if (CompoundStmt::classof(tempElse)){
                 CompoundStmt *body=llvm::dyn_cast<CompoundStmt>(tempElse);
@@ -284,13 +288,10 @@ public:
                     }
                     stmt_stack.pop_back();
                 }
-            }
-            else{
-                newBody.push_back(tempBody);
-            }
 
-            CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newBody,ctxt->getSourceManager().getExpansionLoc(tempElse->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(tempElse->getEndLoc()));
-            stmt->setElse(newStmt);
+                CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newBody,ctxt->getSourceManager().getExpansionLoc(tempElse->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(tempElse->getEndLoc()));
+                stmt->setElse(newStmt);
+            }
         }
 
         return res;
@@ -423,9 +424,9 @@ public:
 
 };
 
-bool addProfileWriter(BenchProgram &P,SourceContextManager &manager,std::map<std::string, std::string> &fileCode,std::vector<long long> &macros,std::string output_file){
+bool addProfileWriter(BenchProgram &P,std::map<std::string, std::string> &fileCode,std::vector<long long> &macros,std::string output_file){
+    SourceContextManager manager(P,false);
     for (std::map<std::string, std::string>::iterator it=fileCode.begin();it!=fileCode.end();it++){
-        manager.fetch(it->first);
         ASTContext *ctxt=manager.getSourceContext(it->first);
         AddProfileWriter writer(P,manager,ctxt,it->first);
         writer.TraverseTranslationUnitDecl(ctxt->getTranslationUnitDecl());

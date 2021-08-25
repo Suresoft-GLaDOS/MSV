@@ -1907,7 +1907,7 @@ class TestBatcher {
         std::vector<long long> succ_macros=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
 
         outlog_printf(2,"Adding profile writers...\n");
-        addProfileWriter(P,manager,combined,succ_macros,fixedFile);
+        addProfileWriter(P,combined,succ_macros,fixedFile);
         outlog_printf(2,"Trying build...\n");
         bool final=P.buildSubDir("src",CLANG_TEST_WRAP,buildEnv);
         if (final) printf("Pass to build final program\n");
