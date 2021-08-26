@@ -136,7 +136,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
 
             CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
             IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
-            // finalStmts.push_back(checker);
+            finalStmts.push_back(checker);
         }
 
         // Add arrow member
@@ -157,7 +157,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
 
             CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
             IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
-            // finalStmts.push_back(checker);
+            finalStmts.push_back(checker);
 
         }
 
@@ -430,6 +430,20 @@ public:
         return ret;
     }
 
+    bool TraverseVarDecl(VarDecl *decl){
+        if (!decl->hasInit()){
+            if (decl->getType().getTypePtr()->isPointerType()){
+                IntegerLiteral *nullLiteral=getNewIntegerLiteral(ctxt,0);
+                CStyleCastExpr *cast=CStyleCastExpr::Create(*ctxt,ctxt->VoidPtrTy,VK_RValue,CK_IntegralToPointer,nullLiteral,nullptr,ctxt->CreateTypeSourceInfo(ctxt->VoidPtrTy),SourceLocation(),SourceLocation());
+                decl->setInit(cast);
+            }
+            else if (decl->getType().getTypePtr()->isIntegralType(*ctxt)){
+                IntegerLiteral *nullLiteral=getNewIntegerLiteral(ctxt,0);
+                decl->setInit(nullLiteral);
+            }
+        }
+        return RecursiveASTVisitor<AddProfileWriter>::TraverseVarDecl(decl);
+    }
 };
 
 bool addProfileWriter(BenchProgram &P,std::map<std::string, std::string> &fileCode,std::vector<long long> &macros,std::string output_file){
