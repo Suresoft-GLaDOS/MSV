@@ -15,6 +15,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
     ImplicitCastExpr *writer;
 
     std::vector<Stmt*> stmt_stack;
+    std::vector<FunctionDecl *> added_function;
 
     ASTLocTy getNowLocation(Stmt *n) {
         assert( stmt_stack.size() > 1 );
@@ -135,7 +136,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
 
             CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
             IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
-            finalStmts.push_back(checker);
+            // finalStmts.push_back(checker);
         }
 
         // Add arrow member
@@ -156,7 +157,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
 
             CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
             IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
-            finalStmts.push_back(checker);
+            // finalStmts.push_back(checker);
 
         }
 
@@ -165,7 +166,10 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
     }
 
 public:
-    AddProfileWriter(BenchProgram &p,SourceContextManager &m,ASTContext *ctxt,std::string file): program(p),manager(m),ctxt(ctxt),file(file) {}
+    AddProfileWriter(BenchProgram &p,SourceContextManager &m,ASTContext *ctxt,std::string file): program(p),manager(m),ctxt(ctxt),file(file),added_function() {}
+    std::vector<FunctionDecl *> getProcessedFunc(){
+        return added_function;
+    }
     bool TraverseFunctionDecl(FunctionDecl *decl){
         bool res=RecursiveASTVisitor<AddProfileWriter>::TraverseFunctionDecl(decl);
         if (decl->getNameAsString()=="__write_profile"){
@@ -207,6 +211,8 @@ public:
             CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newBody,ctxt->getSourceManager().getExpansionLoc(body->getLBracLoc()),ctxt->getSourceManager().getExpansionLoc(body->getRBracLoc()));
             decl->setBody(newStmt);
             stmt_stack.pop_back();
+
+            added_function.push_back(decl);
         }
         return res;
     }
@@ -333,6 +339,7 @@ public:
                             ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
 
                             newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
+                            newCase.push_back(caseStmt->getSubStmt());
 
                             stmt_stack.pop_back();
                             CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getEndLoc()));
@@ -376,6 +383,7 @@ public:
                             ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
 
                             newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
+                            newCase.push_back(caseStmt->getSubStmt());
 
                             stmt_stack.pop_back();
                             CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getEndLoc()));
@@ -428,19 +436,69 @@ bool addProfileWriter(BenchProgram &P,std::map<std::string, std::string> &fileCo
     SourceContextManager manager(P,false);
     for (std::map<std::string, std::string>::iterator it=fileCode.begin();it!=fileCode.end();it++){
         ASTContext *ctxt=manager.getSourceContext(it->first);
+        it->second=manager.getSourceCode(it->first);
+        SourceManager &m=ctxt->getSourceManager();
+
         AddProfileWriter writer(P,manager,ctxt,it->first);
         writer.TraverseTranslationUnitDecl(ctxt->getTranslationUnitDecl());
-        std::error_code temp;
-        llvm::raw_fd_ostream fout(P.getSrcdir()+"/"+it->first,temp);
-        // printf(temp.message().c_str());
-        ctxt->getTranslationUnitDecl()->print(fout);
-        fout.close();
+        
+        std::vector<FunctionDecl *> processed=writer.getProcessedFunc();
+        std::string backup=it->second;
+        std::vector<std::string> codeSegs;
+        std::vector<std::string> patches;
+        codeSegs.push_back(it->second);
+        size_t beforeLast=0;
+
+        for (size_t i=0;i<processed.size();i++){
+            if (m.getFilename(m.getExpansionLoc(processed[i]->getLocation()))==it->first){
+                size_t start=m.getFileOffset(m.getExpansionLoc(processed[i]->getBeginLoc()));
+                size_t end=m.getFileOffset(m.getExpansionLoc(processed[i]->getEndLoc()))+1;
+                // while (end < backup.size()) {
+                //     if (backup[end] == '\n') {
+                //         end ++;
+                //         break;
+                //     }
+                //     end ++;
+                // }
+
+                std::string lastSeg=codeSegs.back();
+                codeSegs.pop_back();
+
+                std::string first=lastSeg.substr(0,start-beforeLast);
+                codeSegs.push_back(first);
+                std::string func;
+                llvm::raw_string_ostream patch(func);
+                processed[i]->print(patch);
+                
+                patches.push_back(func);
+                codeSegs.push_back(backup.substr(end));
+                beforeLast=end;
+            }
+        }
+
+        std::string finalCode="";
+        for (size_t i=0;i<patches.size();i++){
+            finalCode+=codeSegs[i];
+            finalCode+=patches[i];
+        }
+        finalCode+=codeSegs.back();
+        it->second=finalCode;
+        // std::error_code temp;
+        // llvm::raw_fd_ostream fout(P.getSrcdir()+"/"+it->first,temp);
+        // // printf(temp.message().c_str());
+        // ctxt->getTranslationUnitDecl()->print(fout);
+        // fout.close();
+        std::string fileName=P.getSrcdir()+"/"+it->first;
+        std::ofstream fo(fileName.c_str());
+        fo << it->second;
+        fo.close();
 
         size_t filePos=it->first.rfind("/");
         std::string bak_file=P.getWorkdir()+"/"+output_file+it->first.substr(filePos+1);
-        llvm::raw_fd_ostream bak_out(bak_file,temp);
-        ctxt->getTranslationUnitDecl()->print(bak_out);
-        bak_out.close();
+        std::ofstream bak_fo(bak_file.c_str());
+        bak_fo << it->second;
+        bak_fo.close();
+
         outlog_printf(2,"Saved fixed file at: %s\n",bak_file.c_str());
     }
     return true;
