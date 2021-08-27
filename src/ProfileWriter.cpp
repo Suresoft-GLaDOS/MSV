@@ -15,7 +15,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
     ImplicitCastExpr *writer;
 
     std::vector<Stmt*> stmt_stack;
-    std::vector<FunctionDecl *> added_function;
+    std::vector<Stmt *> added_function;
 
     ASTLocTy getNowLocation(Stmt *n) {
         assert( stmt_stack.size() > 1 );
@@ -112,7 +112,17 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
         for (size_t i = 0; i < temp.size(); ++i) {
             StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,temp[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
             tmp_argv.push_back(exprStr);
-            tmp_argv.push_back(temp[i]);
+
+            ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), temp[i]);
+            UnaryOperator *AddrsOf = 
+                    UnaryOperator::Create(*ctxt,ParenE1, UO_AddrOf, ctxt->getPointerType(temp[i]->getType()),
+                            VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+            tmp_argv.push_back(AddrsOf);
+
+            ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), temp[i]);
+            UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
+                    UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
+            tmp_argv.push_back(SizeofE);
         }
         CallExpr *CE = CallExpr::Create(*ctxt, writer, tmp_argv,
                 ctxt->IntTy, VK_RValue, SourceLocation());
@@ -121,8 +131,9 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
         // Add pointers of integral types
         IntegerLiteral *modeOne=getNewIntegerLiteral(ctxt,1);
         IntegerLiteral *null=getNewIntegerLiteral(ctxt,0);
+        CStyleCastExpr *cast=CStyleCastExpr::Create(*ctxt,ctxt->VoidPtrTy,VK_RValue,CK_IntegralToPointer,null,nullptr,ctxt->CreateTypeSourceInfo(ctxt->VoidPtrTy),SourceLocation(),SourceLocation());
         for (size_t i=0;i<pointers.size();i++){
-            BinaryOperator *check=BinaryOperator::Create(*ctxt,pointers[i]->getSubExpr(),null,BO_NE,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+            BinaryOperator *check=BinaryOperator::Create(*ctxt,pointers[i]->getSubExpr(),cast,BO_NE,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
 
             std::vector<Expr *> pointerArgs;
             pointerArgs.clear();
@@ -132,7 +143,17 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
 
             StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,pointers[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
             pointerArgs.push_back(exprStr);
-            pointerArgs.push_back(pointers[i]);
+
+            ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), pointers[i]);
+            UnaryOperator *AddrsOf = 
+                    UnaryOperator::Create(*ctxt,ParenE1, UO_AddrOf, ctxt->getPointerType(pointers[i]->getType()),
+                            VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+            pointerArgs.push_back(AddrsOf);
+
+            ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), pointers[i]);
+            UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
+                    UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
+            pointerArgs.push_back(SizeofE);
 
             CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
             IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
@@ -141,7 +162,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
 
         // Add arrow member
         for (std::map<Expr *,std::vector<Expr *>>::iterator it=arrowMembers.begin();it!=arrowMembers.end();it++){
-            BinaryOperator *check=BinaryOperator::Create(*ctxt,it->first,null,BO_NE,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+            BinaryOperator *check=BinaryOperator::Create(*ctxt,it->first,cast,BO_NE,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
 
             std::vector<Expr *> pointerArgs;
             pointerArgs.clear();
@@ -152,13 +173,22 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
             for (size_t i=0;i<it->second.size();i++){
                 StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,it->second[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
                 pointerArgs.push_back(exprStr);
-                pointerArgs.push_back(it->second[i]);
+
+                ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), it->second[i]);
+                UnaryOperator *AddrsOf = 
+                        UnaryOperator::Create(*ctxt,ParenE1, UO_AddrOf, ctxt->getPointerType(it->second[i]->getType()),
+                                VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+                pointerArgs.push_back(AddrsOf);
+
+                ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), it->second[i]);
+                UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
+                        UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
+                pointerArgs.push_back(SizeofE);
             }
 
             CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
             IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
             finalStmts.push_back(checker);
-
         }
 
         CompoundStmt *finalStmt=CompoundStmt::Create(*ctxt,finalStmts,SourceLocation(),SourceLocation());
@@ -167,7 +197,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
 
 public:
     AddProfileWriter(BenchProgram &p,SourceContextManager &m,ASTContext *ctxt,std::string file): program(p),manager(m),ctxt(ctxt),file(file),added_function() {}
-    std::vector<FunctionDecl *> getProcessedFunc(){
+    std::vector<Stmt *> getProcessedFuncBody(){
         return added_function;
     }
     bool TraverseFunctionDecl(FunctionDecl *decl){
@@ -193,7 +223,7 @@ public:
                     stmt_stack.push_back(*it);
                     ASTLocTy loc=getNowLocation(*it);
                     LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                    ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
+                    ExprListTy exprs=L->getProfileWriterExpr();
                     newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
                     stmt_stack.pop_back();
                 }
@@ -203,7 +233,7 @@ public:
                 stmt_stack.push_back(body->body_back());
                 ASTLocTy loc=getNowLocation(body->body_back());
                 LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
+                ExprListTy exprs=L->getProfileWriterExpr();
                 newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
                 stmt_stack.pop_back();
             }
@@ -212,12 +242,14 @@ public:
             decl->setBody(newStmt);
             stmt_stack.pop_back();
 
-            added_function.push_back(decl);
+            added_function.push_back(decl->getBody());
         }
         return res;
     }
     bool TraverseIfStmt(IfStmt *stmt){
         bool res=RecursiveASTVisitor<AddProfileWriter>::TraverseIfStmt(stmt);
+        // return res;
+
         ASTLocTy temp_loc=getNowLocation(stmt);
         LocalAnalyzer *temp_L = manager.getLocalAnalyzer(temp_loc);
         if (ctxt->getSourceManager().getFilename(temp_L->getCurrentFunction()->getLocation())!=file) return res;
@@ -230,7 +262,7 @@ public:
                 stmt_stack.push_back(tempBody);
                 ASTLocTy loc=getNowLocation(tempBody);
                 LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
+                ExprListTy exprs=L->getProfileWriterExpr();
                 newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
                 newBody.push_back(tempBody);
                 stmt_stack.pop_back();
@@ -247,7 +279,7 @@ public:
                             stmt_stack.push_back(*it);
                             ASTLocTy loc=getNowLocation(*it);
                             LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                            ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
+                            ExprListTy exprs=L->getProfileWriterExpr();
                             newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
                             stmt_stack.pop_back();
                         }
@@ -269,7 +301,7 @@ public:
                 stmt_stack.push_back(tempElse);
                 ASTLocTy loc=getNowLocation(tempElse);
                 LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
+                ExprListTy exprs=L->getProfileWriterExpr();
                 newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
                 newBody.push_back(tempElse);
                 stmt_stack.pop_back();
@@ -286,7 +318,7 @@ public:
                             stmt_stack.push_back(*it);
                             ASTLocTy loc=getNowLocation(*it);
                             LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                            ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
+                            ExprListTy exprs=L->getProfileWriterExpr();
                             newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
                             stmt_stack.pop_back();
                         }
@@ -305,6 +337,8 @@ public:
 
     bool TraverseSwitchStmt(SwitchStmt *stmt){
         bool res=RecursiveASTVisitor<AddProfileWriter>::TraverseSwitchStmt(stmt);
+        // return res;
+
         ASTLocTy temp_loc=getNowLocation(stmt);
         LocalAnalyzer *temp_L = manager.getLocalAnalyzer(temp_loc);
         if (ctxt->getSourceManager().getFilename(temp_L->getCurrentFunction()->getLocation())!=file) return res;
@@ -320,7 +354,7 @@ public:
                     stmt_stack.push_back(*it);
                     ASTLocTy loc=getNowLocation(*it);
                     LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                    ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
+                    ExprListTy exprs=L->getProfileWriterExpr();
 
                     newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
                     newBody.push_back(*it);
@@ -336,10 +370,10 @@ public:
                             newCase.clear();
                             ASTLocTy loc=getNowLocation(caseStmt->getSubStmt());
                             LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                            ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
+                            ExprListTy exprs=L->getProfileWriterExpr();
 
                             newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
-                            newCase.push_back(caseStmt->getSubStmt());
+                            newBody.push_back(caseStmt->getSubStmt());
 
                             stmt_stack.pop_back();
                             CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getEndLoc()));
@@ -356,7 +390,7 @@ public:
                                         stmt_stack.push_back(*it);
                                         ASTLocTy loc=getNowLocation(*it);
                                         LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                                        ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
+                                        ExprListTy exprs=L->getProfileWriterExpr();
                                         newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
                                         stmt_stack.pop_back();
                                     }
@@ -380,10 +414,10 @@ public:
                             newCase.clear();
                             ASTLocTy loc=getNowLocation(caseStmt->getSubStmt());
                             LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                            ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
+                            ExprListTy exprs=L->getProfileWriterExpr();
 
                             newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
-                            newCase.push_back(caseStmt->getSubStmt());
+                            newBody.push_back(caseStmt->getSubStmt());
 
                             stmt_stack.pop_back();
                             CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getEndLoc()));
@@ -400,7 +434,7 @@ public:
                                         stmt_stack.push_back(*it);
                                         ASTLocTy loc=getNowLocation(*it);
                                         LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                                        ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,false);
+                                        ExprListTy exprs=L->getProfileWriterExpr();
                                         newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
                                         stmt_stack.pop_back();
                                     }
@@ -429,21 +463,6 @@ public:
         stmt_stack.pop_back();
         return ret;
     }
-
-    bool TraverseVarDecl(VarDecl *decl){
-        if (!decl->hasInit()){
-            if (decl->getType().getTypePtr()->isPointerType()){
-                IntegerLiteral *nullLiteral=getNewIntegerLiteral(ctxt,0);
-                CStyleCastExpr *cast=CStyleCastExpr::Create(*ctxt,ctxt->VoidPtrTy,VK_RValue,CK_IntegralToPointer,nullLiteral,nullptr,ctxt->CreateTypeSourceInfo(ctxt->VoidPtrTy),SourceLocation(),SourceLocation());
-                decl->setInit(cast);
-            }
-            else if (decl->getType().getTypePtr()->isIntegralType(*ctxt)){
-                IntegerLiteral *nullLiteral=getNewIntegerLiteral(ctxt,0);
-                decl->setInit(nullLiteral);
-            }
-        }
-        return RecursiveASTVisitor<AddProfileWriter>::TraverseVarDecl(decl);
-    }
 };
 
 bool addProfileWriter(BenchProgram &P,std::map<std::string, std::string> &fileCode,std::vector<long long> &macros,std::string output_file){
@@ -456,7 +475,7 @@ bool addProfileWriter(BenchProgram &P,std::map<std::string, std::string> &fileCo
         AddProfileWriter writer(P,manager,ctxt,it->first);
         writer.TraverseTranslationUnitDecl(ctxt->getTranslationUnitDecl());
         
-        std::vector<FunctionDecl *> processed=writer.getProcessedFunc();
+        std::vector<Stmt *> processed=writer.getProcessedFuncBody();
         std::string backup=it->second;
         std::vector<std::string> codeSegs;
         std::vector<std::string> patches;
@@ -464,7 +483,7 @@ bool addProfileWriter(BenchProgram &P,std::map<std::string, std::string> &fileCo
         size_t beforeLast=0;
 
         for (size_t i=0;i<processed.size();i++){
-            if (m.getFilename(m.getExpansionLoc(processed[i]->getLocation()))==it->first){
+            if (m.getFilename(m.getExpansionLoc(processed[i]->getBeginLoc()))==it->first){
                 size_t start=m.getFileOffset(m.getExpansionLoc(processed[i]->getBeginLoc()));
                 size_t end=m.getFileOffset(m.getExpansionLoc(processed[i]->getEndLoc()))+1;
                 // while (end < backup.size()) {
@@ -480,9 +499,7 @@ bool addProfileWriter(BenchProgram &P,std::map<std::string, std::string> &fileCo
 
                 std::string first=lastSeg.substr(0,start-beforeLast);
                 codeSegs.push_back(first);
-                std::string func;
-                llvm::raw_string_ostream patch(func);
-                processed[i]->print(patch);
+                std::string func=stmtToString(*ctxt,processed[i]);
                 
                 patches.push_back(func);
                 codeSegs.push_back(backup.substr(end));
