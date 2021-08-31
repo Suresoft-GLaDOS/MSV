@@ -108,6 +108,10 @@ public:
         return genExprAtoms(clang::QualType(), true, true, true, false);
     }
 
+    ExprListTy getProfileWriterExpr(){
+        return genExprAtoms(clang::QualType(), true, true, true, false,false);
+    }
+
     ExprListTy getCandidateCalleeFunction(clang::CallExpr *CE, bool result_not_used);
 
     ExprListTy getCandidatePointerForMemset(size_t max_dis);

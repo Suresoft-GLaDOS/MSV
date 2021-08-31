@@ -612,7 +612,12 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     caseKind.clear();
     std::list<int> switchGroup;
     switchGroup.clear();
-    body+="\n";
+
+    if (res1[currentCandidate[currentIndex]][NormalInsert].size()==0 && res1[currentCandidate[currentIndex]][ConditionSynthesize].size()==0 &&
+            res1[currentCandidate[currentIndex]][NormalReplace].size()==0 && res1[currentCandidate[currentIndex]][AfterInsert].size()==0)
+        body+="\n";
+    else
+        body+="{\n";
 
     // Insert before
     if(res1[currentCandidate[currentIndex]][NormalInsert].size()>0){
@@ -870,7 +875,11 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         counter++;
     }
 
-    body+="\n";
+    if (res1[currentCandidate[indexBackup]][NormalInsert].size()==0 && res1[currentCandidate[indexBackup]][ConditionSynthesize].size()==0 &&
+                res1[currentCandidate[indexBackup]][NormalReplace].size()==0 && res1[currentCandidate[indexBackup]][AfterInsert].size()==0)
+        body+="\n";
+    else
+        body+="}\n";
 
     if (hasLine){
         for (size_t i=0;i<lines.size();i++){
