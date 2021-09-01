@@ -428,11 +428,11 @@ extern "C" long long __mutate(const long long value,const char *oper_env,const c
     int oper=__choose(oper_env);
     int constant=__choose(const_env);
     switch(oper){
-        case 0: return constant;
-        case 1: return value + constant;
-        case 2: return value - constant;
-        case 3: return value * constant;
-        case 4: return value / constant;
-        default: return constant;
+        case 0: return constant; // assign
+        case 1: return value + constant; // add
+        case 2: return value - constant; // sub
+        case 3: return value * constant; // mult
+        case 4: return value / constant; // div
+        default: return constant; // assign (default)
     }
 }
