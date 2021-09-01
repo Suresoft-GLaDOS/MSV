@@ -958,7 +958,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
     {
         outlog_printf(2,"Build failed, Trying to find fail macros...\n");
         //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
-        if (linkErrorMacros.size()>=2){
+        if (linkErrorMacros.size()>=2 || compileErrorMacros.size()>=2){
             std::set<long long> fail_temp;
             fail_temp.clear();
             for (std::set<long long>::iterator it=compileErrorMacros.begin();it!=compileErrorMacros.end();it++){

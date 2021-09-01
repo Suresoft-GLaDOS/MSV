@@ -121,8 +121,9 @@ extern "C" int __choose(const char *switch_id) {
 #define MAGIC_NUMBER -123456789
 
 extern "C" void __write_profile(const char *func_name,int mode,int count, ...){
+    // fprintf(stderr,"write profile\n");
     int pid=__choose("__PID");
-    char tmp_file[200];
+    char tmp_file[500];
     sprintf(tmp_file,"/tmp/%d_%s_profile.log",pid,func_name);
 
     // fprintf(stderr, "\n%s: %d\n", func_name,count);
@@ -133,8 +134,7 @@ extern "C" void __write_profile(const char *func_name,int mode,int count, ...){
         f = fopen(tmp_file, "w");
     else
         f = fopen(tmp_file, "a");
-    fprintf(f, "-%lu\n", (unsigned long)count);
-    // fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
+    // fprintf(f, "-%lu\n", (unsigned long)count);
     for (unsigned long i = 0; i < (unsigned long)count; i++) {
         char *name=va_arg(ap, char*);
         void* p = va_arg(ap, void*);
