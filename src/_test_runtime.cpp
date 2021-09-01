@@ -388,10 +388,12 @@ extern "C" int __is_neg(const char *location,int count, ...) {
             return 0;
     }
     else if (strcmp(is_neg, "RUN") == 0){
-        if (strcmp(getenv("__OPERATOR"),"1")==0) return 1;
-        unsigned long var=atoi(getenv("__VARIABLE"));
-        char oper=atoi(getenv("__OPERATOR"));
-        long long constant=atoi(getenv("__CONSTANT"));
+        // If operator is ALL_1, return 1
+        if (strcmp(getenv("__OPERATOR"),"4")==0) return 1;
+
+        int var=atoi(getenv("__VARIABLE"));
+        int oper=atoi(getenv("__OPERATOR"));
+        int constant=atoi(getenv("__CONSTANT"));
         long long value=0;
 
         va_list ap;
@@ -400,14 +402,16 @@ extern "C" int __is_neg(const char *location,int count, ...) {
             void* p = va_arg(ap, void*);
             unsigned long sz = va_arg(ap, unsigned long);
             assert( sz <= 8 );
-            if (isGoodAddr(p, sz)) {
-                memcpy(&value, p, sz);
-            }
-            else {
-                value = MAGIC_NUMBER;
-            }
 
-            if (i==var) break;
+            if (i==var){
+                if (isGoodAddr(p, sz)) {
+                    memcpy(&value, p, sz);
+                }
+                else {
+                    value = MAGIC_NUMBER;
+                }
+                break;
+            }
         }
 
         if (value==MAGIC_NUMBER) return 0;

@@ -23,9 +23,10 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
         for line in csv.readlines():
             tokens = line.strip().split(",")
             iter = int(tokens[0])
-            sw = int(tokens[1])
-            cs = int(tokens[2])
-            result = tokens[3] == "1"
+            tm = int(tokens[1])
+            sw = int(tokens[2])
+            cs = int(tokens[3])
+            result = tokens[4] == "1"
             if result:
                 total += 1
                 max_success += 1
@@ -44,9 +45,10 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
         for line in csv.readlines():
             tokens = line.strip().split(",")
             iter = int(tokens[0])
-            sw = int(tokens[1])
-            cs = int(tokens[2])
-            result = tokens[3] == "1"
+            tm = int(tokens[1])
+            sw = int(tokens[2])
+            cs = int(tokens[3])
+            result = tokens[4] == "1"
             if result:
                 total += 1
                 temp_success += 1
@@ -67,9 +69,10 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
         for line in csv.readlines():
             tokens = line.strip().split(",")
             iter = int(tokens[0])
-            sw = int(tokens[1])
-            cs = int(tokens[2])
-            result = tokens[3] == "1"
+            tm = int(tokens[1])
+            sw = int(tokens[2])
+            cs = int(tokens[3])
+            result = tokens[4] == "1"
             if result:
                 total += 1
                 temp_success += 1
@@ -109,9 +112,10 @@ def afl_plot_one(in_file: str, title: str, out_file: str, ignore_iteration: bool
         for line in csv.readlines():
             tokens = line.strip().split(",")
             iter = int(tokens[0])
-            sw = int(tokens[1])
-            cs = int(tokens[2])
-            result = tokens[3] == "1"
+            tm = int(tokens[1])
+            sw = int(tokens[2])
+            cs = int(tokens[3])
+            result = tokens[4] == "1"
             if result:
                 total += 1
             if ignore_iteration:
@@ -149,9 +153,10 @@ def afl_barchart(in_file: str, title: str, out_file: str, ignore_iteration: bool
         for line in csv.readlines():
             tokens = line.strip().split(",")
             iter = int(tokens[0])
-            sw = int(tokens[1])
-            cs = int(tokens[2])
-            result = tokens[3] == "1"
+            tm = int(tokens[1])
+            sw = int(tokens[2])
+            cs = int(tokens[3])
+            result = tokens[4] == "1"
             if result:
                 pass_list[sw] += 1
                 total += 1
