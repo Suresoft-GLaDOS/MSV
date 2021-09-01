@@ -242,7 +242,7 @@ public:
             decl->setBody(newStmt);
             stmt_stack.pop_back();
 
-            CharSourceRange range=ctxt->getSourceManager().getExpansionRange(decl->getBody()->getBeginLoc());
+            // CharSourceRange range=ctxt->getSourceManager().getExpansionRange(decl->getBody()->getBeginLoc());
             // size_t start=ctxt->getSourceManager().getFileOffset(range.getBegin());
             // size_t end=ctxt->getSourceManager().getFileOffset(range.getEnd());
             size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(decl->getBody()->getBeginLoc()));
@@ -340,6 +340,101 @@ public:
         return res;
     }
 
+    bool TraverseCaseStmt(CaseStmt *stmt){
+        bool res=RecursiveASTVisitor<AddProfileWriter>::TraverseCaseStmt(stmt);
+
+        stmt_stack.push_back(stmt);
+        if (stmt->getSubStmt()!=NULL){
+            if (ReturnStmt::classof(stmt->getSubStmt())){
+                stmt_stack.push_back(stmt->getSubStmt());
+                std::vector<Stmt *> newCase;
+                newCase.clear();
+                ASTLocTy loc=getNowLocation(stmt->getSubStmt());
+                LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                ExprListTy exprs=L->getProfileWriterExpr();
+
+                newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
+                newCase.push_back(stmt->getSubStmt());
+
+                stmt_stack.pop_back();
+                CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getEndLoc()));
+                stmt->setSubStmt(newStmt);
+            }
+            else if (CompoundStmt::classof(stmt->getSubStmt())){
+                CompoundStmt *body=llvm::dyn_cast<CompoundStmt>(stmt->getSubStmt());
+                if (body){
+                    stmt_stack.push_back(body);
+                    std::vector<Stmt *> newCase;
+                    newCase.clear();
+                    for (CompoundStmt::body_iterator it=body->body_begin();it!=body->body_end();it++){
+                        if (ReturnStmt::classof(*it)){
+                            stmt_stack.push_back(*it);
+                            ASTLocTy loc=getNowLocation(*it);
+                            LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                            ExprListTy exprs=L->getProfileWriterExpr();
+                            newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
+                            stmt_stack.pop_back();
+                        }
+                        newCase.push_back(*it);
+                    }
+                    stmt_stack.pop_back();
+                    CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getEndLoc()));
+                    stmt->setSubStmt(newStmt);
+                }
+            }
+        }
+        stmt_stack.pop_back();
+
+        return res;
+    }
+
+    bool TraverseDefaultStmt(DefaultStmt *stmt){
+        bool res=RecursiveASTVisitor<AddProfileWriter>::TraverseDefaultStmt(stmt);
+
+        stmt_stack.push_back(stmt);
+        if (stmt->getSubStmt()!=NULL){
+            if (ReturnStmt::classof(stmt->getSubStmt())){
+                stmt_stack.push_back(stmt->getSubStmt());
+                std::vector<Stmt *> newCase;
+                newCase.clear();
+                ASTLocTy loc=getNowLocation(stmt->getSubStmt());
+                LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                ExprListTy exprs=L->getProfileWriterExpr();
+
+                newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
+                newCase.push_back(stmt->getSubStmt());
+
+                stmt_stack.pop_back();
+                CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getEndLoc()));
+                stmt->setSubStmt(newStmt);
+            }
+            else if (CompoundStmt::classof(stmt->getSubStmt())){
+                CompoundStmt *body=llvm::dyn_cast<CompoundStmt>(stmt->getSubStmt());
+                if (body){
+                    stmt_stack.push_back(body);
+                    std::vector<Stmt *> newCase;
+                    newCase.clear();
+                    for (CompoundStmt::body_iterator it=body->body_begin();it!=body->body_end();it++){
+                        if (ReturnStmt::classof(*it)){
+                            stmt_stack.push_back(*it);
+                            ASTLocTy loc=getNowLocation(*it);
+                            LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                            ExprListTy exprs=L->getProfileWriterExpr();
+                            newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
+                            stmt_stack.pop_back();
+                        }
+                        newCase.push_back(*it);
+                    }
+                    stmt_stack.pop_back();
+                    CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getEndLoc()));
+                    stmt->setSubStmt(newStmt);
+                }
+            }
+        }
+        stmt_stack.pop_back();
+
+        return res;
+    }
     bool TraverseSwitchStmt(SwitchStmt *stmt){
         bool res=RecursiveASTVisitor<AddProfileWriter>::TraverseSwitchStmt(stmt);
         // return res;
@@ -365,99 +460,13 @@ public:
                     newBody.push_back(*it);
                     stmt_stack.pop_back();
                 }
-                else if (CaseStmt::classof(*it)){
-                    stmt_stack.push_back(*it);
-                    CaseStmt *caseStmt=llvm::dyn_cast<CaseStmt>(*it);
-                    if (caseStmt->getSubStmt()!=NULL){
-                        if (ReturnStmt::classof(caseStmt->getSubStmt())){
-                            stmt_stack.push_back(caseStmt->getSubStmt());
-                            std::vector<Stmt *> newCase;
-                            newCase.clear();
-                            ASTLocTy loc=getNowLocation(caseStmt->getSubStmt());
-                            LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                            ExprListTy exprs=L->getProfileWriterExpr();
-
-                            newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
-                            newCase.push_back(caseStmt->getSubStmt());
-
-                            stmt_stack.pop_back();
-                            CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getEndLoc()));
-                            caseStmt->setSubStmt(newStmt);
-                        }
-                        else if (CompoundStmt::classof(caseStmt->getSubStmt())){
-                            CompoundStmt *body=llvm::dyn_cast<CompoundStmt>(caseStmt->getSubStmt());
-                            if (body){
-                                stmt_stack.push_back(body);
-                                std::vector<Stmt *> newCase;
-                                newCase.clear();
-                                for (CompoundStmt::body_iterator it=body->body_begin();it!=body->body_end();it++){
-                                    if (ReturnStmt::classof(*it)){
-                                        stmt_stack.push_back(*it);
-                                        ASTLocTy loc=getNowLocation(*it);
-                                        LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                                        ExprListTy exprs=L->getProfileWriterExpr();
-                                        newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
-                                        stmt_stack.pop_back();
-                                    }
-                                    newCase.push_back(*it);
-                                }
-                                stmt_stack.pop_back();
-                                CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getEndLoc()));
-                                caseStmt->setSubStmt(newStmt);
-                            }
-                        }
-                    }
-                    stmt_stack.pop_back();
-                }
-                else if (DefaultStmt::classof(*it)){
-                    stmt_stack.push_back(*it);
-                    DefaultStmt *caseStmt=llvm::dyn_cast<DefaultStmt>(*it);
-                    if (caseStmt->getSubStmt()!=NULL){
-                        if (ReturnStmt::classof(caseStmt->getSubStmt())){
-                            stmt_stack.push_back(caseStmt->getSubStmt());
-                            std::vector<Stmt *> newCase;
-                            newCase.clear();
-                            ASTLocTy loc=getNowLocation(caseStmt->getSubStmt());
-                            LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                            ExprListTy exprs=L->getProfileWriterExpr();
-
-                            newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
-                            newCase.push_back(caseStmt->getSubStmt());
-
-                            stmt_stack.pop_back();
-                            CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getEndLoc()));
-                            caseStmt->setSubStmt(newStmt);
-                        }
-                        else if (CompoundStmt::classof(caseStmt->getSubStmt())){
-                            CompoundStmt *body=llvm::dyn_cast<CompoundStmt>(caseStmt->getSubStmt());
-                            if (body){
-                                stmt_stack.push_back(body);
-                                std::vector<Stmt *> newCase;
-                                newCase.clear();
-                                for (CompoundStmt::body_iterator it=body->body_begin();it!=body->body_end();it++){
-                                    if (ReturnStmt::classof(*it)){
-                                        stmt_stack.push_back(*it);
-                                        ASTLocTy loc=getNowLocation(*it);
-                                        LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                                        ExprListTy exprs=L->getProfileWriterExpr();
-                                        newCase.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
-                                        stmt_stack.pop_back();
-                                    }
-                                    newCase.push_back(*it);
-                                }
-                                stmt_stack.pop_back();
-                                CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newCase,ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(caseStmt->getSubStmt()->getEndLoc()));
-                                caseStmt->setSubStmt(newStmt);
-                            }
-                        }
-                    }
-                    stmt_stack.pop_back();
-                }
                 else{
                     newBody.push_back(*it);
                 }
             }
             stmt_stack.pop_back();
+            CompoundStmt *newSwitch=CompoundStmt::Create(*ctxt,newBody,ctxt->getSourceManager().getExpansionLoc(tempBody->getBeginLoc()),ctxt->getSourceManager().getExpansionLoc(tempBody->getEndLoc()));
+            stmt->setBody(newSwitch);
         }
         return res;
     }
