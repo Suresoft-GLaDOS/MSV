@@ -159,9 +159,29 @@ extern "C" void __write_profile(const char *func_name,int mode,int count, ...){
         int runned=0;
         char log_file[1024];
         sprintf(log_file,"/tmp/%s_profile.log",pid);
-        FILE *log=fopen(log_file,"a");
-        fprintf(log,"%s\n",func_name);
-        fclose(log);
+        
+        int included=0;
+        FILE *log_r=fopen(log_file,"r");
+        if (log_r==NULL)
+            log_r=fopen(log_file,"w");
+        else{
+            char *line;
+            size_t length;
+            while (getline(&line,&length,log_r)!=-1){
+                line[strlen(line)-1]='\0';
+                if (strcmp(line,func_name)==0){
+                    included=1;
+                    break;
+                }
+            }
+        }
+        fclose(log_r);
+
+        if (!included){
+            FILE *log=fopen(log_file,"a");
+            fprintf(log,"%s\n",func_name);
+            fclose(log);
+        }
     }
     // fprintf(stderr, "exit\n");
 }
