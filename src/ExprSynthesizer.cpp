@@ -1132,8 +1132,8 @@ public:
         std::vector<std::set<ExprFillInfo> *> infos;
         infos.clear();
 
-        outlog_printf(2, "[%llu] Preprocess the following candidate with BasicTester: %d\n", get_timer(),
-            candidate.size());
+        reset_timer();
+
         for (size_t i=0;i<candidate.size();i++){
             // We are going to create a set of binding ExprFillInfos
             infos.push_back(enumerateExprBindings(M, candidate[i], -1));
@@ -1157,8 +1157,7 @@ public:
 
         savePatchInfo(rules);
         {
-            outlog_printf(2, "[%llu] BasicTester, a patch instance with id %lu:\n", get_timer(),
-                    codes.size());
+            outlog_printf(0, "Meta-program preprocessed in %llus!\n",get_timer());
             out_codes(a_code, a_patch);
         }
         for (size_t i=0;i<candidate.size();i++)
@@ -1176,7 +1175,6 @@ public:
 
     virtual bool test(BenchProgram::EnvMapTy &env, unsigned long id,bool isFuzz) {
         {
-            outlog_printf(2, "[%llu] BasicTester, Testing instance id %lu:\n", get_timer(), id);
             out_codes(codes, patches);
         }
         
@@ -1195,7 +1193,7 @@ public:
             outlog_printf(2, "Testing positive cases!\n");
             ret = testPositiveCases(env);
             if (ret)
-                outlog_printf(2, "[%llu] Passed!\n", get_timer());
+                outlog_printf(2, "Passed in %llus!\n", get_timer());
             else {
                 // We are going to clear out stuff tested, to avoid memory usage.
                 outlog_printf(2,"Fail to test with success patch\n");
@@ -1905,6 +1903,7 @@ class TestBatcher {
         BenchProgram::EnvMapTy testEnv;
         P.applyRepairedCode(combined,buildEnv,CLANG_TEST_WRAP);
         std::vector<long long> succ_macros=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
+        outlog_printf(0,"Meta-program generated in %llus!\n",get_timer());
 
         outlog_printf(2,"Adding profile writers...\n");
         addProfileWriter(P,combined,succ_macros,fixedFile);

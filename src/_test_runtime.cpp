@@ -137,7 +137,6 @@ extern "C" void __write_profile(const char *func_name,int mode,int count, ...){
     else
         f = fopen(tmp_file, "a");
     fprintf(f, "-%lu\n", (unsigned long)count);
-    // fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
     for (unsigned long i = 0; i < (unsigned long)count; i++) {
         char *name=va_arg(ap, char*);
         void* p = va_arg(ap, void*);
@@ -160,9 +159,29 @@ extern "C" void __write_profile(const char *func_name,int mode,int count, ...){
         int runned=0;
         char log_file[1024];
         sprintf(log_file,"/tmp/%s_profile.log",pid);
-        FILE *log=fopen(log_file,"a");
-        fprintf(log,"%s\n",func_name);
-        fclose(log);
+        
+        int included=0;
+        FILE *log_r=fopen(log_file,"r");
+        if (log_r==NULL)
+            log_r=fopen(log_file,"w");
+        else{
+            char *line;
+            size_t length;
+            while (getline(&line,&length,log_r)!=-1){
+                line[strlen(line)-1]='\0';
+                if (strcmp(line,func_name)==0){
+                    included=1;
+                    break;
+                }
+            }
+        }
+        fclose(log_r);
+
+        if (!included){
+            FILE *log=fopen(log_file,"a");
+            fprintf(log,"%s\n",func_name);
+            fclose(log);
+        }
     }
     // fprintf(stderr, "exit\n");
 }
@@ -389,10 +408,12 @@ extern "C" int __is_neg(const char *location,int count, ...) {
             return 0;
     }
     else if (strcmp(is_neg, "RUN") == 0){
-        if (strcmp(getenv("__OPERATOR"),"1")==0) return 1;
-        unsigned long var=atoi(getenv("__VARIABLE"));
-        char oper=atoi(getenv("__OPERATOR"));
-        long long constant=atoi(getenv("__CONSTANT"));
+        // If operator is ALL_1, return 1
+        if (strcmp(getenv("__OPERATOR"),"4")==0) return 1;
+
+        int var=atoi(getenv("__VARIABLE"));
+        int oper=atoi(getenv("__OPERATOR"));
+        int constant=atoi(getenv("__CONSTANT"));
         long long value=0;
 
         va_list ap;
@@ -401,14 +422,16 @@ extern "C" int __is_neg(const char *location,int count, ...) {
             void* p = va_arg(ap, void*);
             unsigned long sz = va_arg(ap, unsigned long);
             assert( sz <= 8 );
-            if (isGoodAddr(p, sz)) {
-                memcpy(&value, p, sz);
-            }
-            else {
-                value = MAGIC_NUMBER;
-            }
 
-            if (i==var) break;
+            if (i==var){
+                if (isGoodAddr(p, sz)) {
+                    memcpy(&value, p, sz);
+                }
+                else {
+                    value = MAGIC_NUMBER;
+                }
+                break;
+            }
         }
 
         if (value==MAGIC_NUMBER) return 0;
@@ -429,11 +452,11 @@ extern "C" long long __mutate(const long long value,const char *oper_env,const c
     int oper=__choose(oper_env);
     int constant=__choose(const_env);
     switch(oper){
-        case 0: return constant;
-        case 1: return value + constant;
-        case 2: return value - constant;
-        case 3: return value * constant;
-        case 4: return value / constant;
-        default: return constant;
+        case 0: return constant; // assign
+        case 1: return value + constant; // add
+        case 2: return value - constant; // sub
+        case 3: return value * constant; // mult
+        case 4: return value / constant; // div
+        default: return constant; // assign (default)
     }
 }

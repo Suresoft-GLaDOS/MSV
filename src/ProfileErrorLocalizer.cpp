@@ -119,6 +119,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         const std::set<std::string> &bugged_files, bool skip_build):
     P(P), negative_cases(P.getNegativeCaseSet()), positive_cases(P.getPositiveCaseSet()) {
     LI = NULL;
+    reset_timer();
     if (skip_build) {
         P.addExistingSrcClone("profile", true);
     }
@@ -274,6 +275,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         candidateResults.push_back(tmpv2[i]);
 
     printResult(P.getLocalizationResultFilename());
+    outlog_printf(0,"Localizing Finished in %llus!\n",get_timer());
 }
 
 std::vector<SourcePositionTy> ProfileErrorLocalizer::getCandidateLocations() {
