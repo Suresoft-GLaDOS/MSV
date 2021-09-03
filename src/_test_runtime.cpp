@@ -152,7 +152,6 @@ extern "C" void __write_profile(const char *func_name,int mode,int count, ...){
         fprintf(f, "%s=%lld\n", name,v);
         // fprintf(stderr, "%s=%lld\n", name, v);
     }
-    fprintf(f, "\n");
     fclose(f);
 
     if (mode==0){
