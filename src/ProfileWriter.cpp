@@ -229,13 +229,23 @@ public:
                 }
                 newBody.push_back(*it);
             }
-            if (decl->getReturnType()==ctxt->VoidTy && !ReturnStmt::classof(body->body_back())){
-                stmt_stack.push_back(body->body_back());
-                ASTLocTy loc=getNowLocation(body->body_back());
-                LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
-                ExprListTy exprs=L->getProfileWriterExpr();
-                newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
-                stmt_stack.pop_back();
+            if (decl->getReturnType()==ctxt->VoidTy){
+                if (body->body_empty()){
+                    stmt_stack.push_back(body);
+                    ASTLocTy loc=getNowLocation(body);
+                    LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                    ExprListTy exprs=L->getProfileWriterExpr();
+                    newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
+                    stmt_stack.pop_back();
+                }
+                else if (!ReturnStmt::classof(body->body_back())){
+                    stmt_stack.push_back(body->body_back());
+                    ASTLocTy loc=getNowLocation(body->body_back());
+                    LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                    ExprListTy exprs=L->getProfileWriterExpr();
+                    newBody.push_back(createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString()));
+                    stmt_stack.pop_back();
+                }
             }
 
             CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,newBody,ctxt->getSourceManager().getExpansionLoc(body->getLBracLoc()),ctxt->getSourceManager().getExpansionLoc(body->getRBracLoc()));

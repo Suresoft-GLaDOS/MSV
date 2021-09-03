@@ -136,7 +136,7 @@ extern "C" void __write_profile(const char *func_name,int mode,int count, ...){
         f = fopen(tmp_file, "w");
     else
         f = fopen(tmp_file, "a");
-    // fprintf(f, "-%lu\n", (unsigned long)count);
+    fprintf(f, "-%lu\n", (unsigned long)count);
     for (unsigned long i = 0; i < (unsigned long)count; i++) {
         char *name=va_arg(ap, char*);
         void* p = va_arg(ap, void*);
