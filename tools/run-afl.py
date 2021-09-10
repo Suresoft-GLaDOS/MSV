@@ -99,7 +99,7 @@ class ConfigGenerator:
         confstr = f"fuzzer{fid}:{fid}/{total}" 
         return confstr
 
-    # switch, case, condition, result
+    # cycle, time, switch, case, result, [operator, variable, constant]
     def result_analyzer(self, fuzz: Fuzzer) -> bool:
         with open(fuzz.afl_result_file, "r") as arf:
             if arf is None:
@@ -115,9 +115,11 @@ class ConfigGenerator:
         return is_passed
 
 
-def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, strategy: str, afl_master_dir: str, iteration_limit: int) -> subprocess.Popen:
+def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, strategy: str, afl_master_dir: str, iteration_limit: int, previous_afl_result_file: str = "") -> subprocess.Popen:
     afl_cmd = ["afl-fuzz", "-o", workdir + "/out", "-m", "none", "-d", "-n", "-t",
                str(timeout*1000), "-w", workdir, "-S", fuzzer_id, "-y", strategy, "-k", afl_master_dir]
+    if strategy == "positive":
+        afl_cmd = afl_cmd + ["-u", previous_afl_result_file]
     if iteration_limit > 0:
         afl_cmd += ["-l", str(iteration_limit)]
     afl_cmd += ["--", os.path.join(tools_dir, "php-test.py"), os.path.join(workdir, "src"),
@@ -132,8 +134,8 @@ def main(argv):
     arg_dict = dict()
     parallel_count = 1
     iteration_limit = -1
-    opts, args = getopt.getopt(argv[1:], "w:t:j:s:l:")
-    arg_dict["s"] = "random"
+    opts, args = getopt.getopt(argv[1:], "w:t:j:s:l:u:")
+    arg_dict["s"] = "guided"
     for o, a in opts:
         if o == "-w":
             arg_dict["w"] = a
@@ -145,6 +147,8 @@ def main(argv):
             arg_dict["s"] = a
         elif o == "-l":
             iteration_limit = int(a)
+        elif o == "-u":
+            arg_dict["u"] = a
 
     conf_dict = dict()
     with open(os.path.join(arg_dict["w"], "repair.conf")) as conf_file:
@@ -197,9 +201,12 @@ def main(argv):
             if len(fuzzer_id) == 0:
                 flag = False
                 continue
+            previous_afl_result_file = ""
+            if "u" in arg_dict:
+                previous_afl_result_file = arg_dict["u"]
             running_fuzzer = run_afl(
                 arg_dict['w'], conf_dict['tools_dir'], timeout, 
-                fuzzer_id, arg_dict["s"], confgen.result_dir, iteration_limit)
+                fuzzer_id, arg_dict["s"], confgen.result_dir, iteration_limit, previous_afl_result_file)
             fuzzer = Fuzzer(running_fuzzer, fid, parallel_count, arg_dict['w'])
             fuzz_queue.append(fuzzer)
             time.sleep(1)
