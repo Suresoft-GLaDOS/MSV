@@ -240,6 +240,8 @@ public:
 // Compare source is begind from target
 bool isBehind(ASTContext *ctxt,SourceLocation source,SourceLocation target){
     SourceManager &manager=ctxt->getSourceManager();
+    if (manager.getFilename(manager.getExpansionLoc(source))!=manager.getFilename(manager.getExpansionLoc(target)))
+        return true;
     size_t sourceOffset=manager.getFileOffset(manager.getExpansionLoc(source));
     size_t targetOffset=manager.getFileOffset(manager.getExpansionLoc(target));
     return (sourceOffset<targetOffset);
@@ -303,7 +305,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::genExprAtoms(QualType QT, bool allow_lo
     if (allow_local) {
         for (std::set<VarDecl*>::iterator it = LocalVarDecls.begin(); it != LocalVarDecls.end(); ++it) {
             QualType localQT = (*it)->getType();
-            if (typeMatch(localQT, QT) && isBehind(ctxt,(*it)->getLocation(),loc.stmt->getBeginLoc())) {
+            if (typeMatch(localQT, QT) && isBehind(ctxt,(*it)->getBeginLoc(),loc.stmt->getBeginLoc())) {
                 DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
                         SourceLocation(), *it, false, SourceLocation(), localQT, VK_LValue);
                 if (lvalue)
@@ -319,7 +321,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::genExprAtoms(QualType QT, bool allow_lo
             SourceManager &manager=ctxt->getSourceManager();
             if (manager.getFileOffset(manager.getExpansionLoc((*it)->getBeginLoc()))<manager.getFileOffset(manager.getExpansionLoc(loc.stmt->getBeginLoc()))){
                 QualType globalQT = (*it)->getType();
-                if (typeMatch(globalQT, QT) && isBehind(ctxt,(*it)->getLocation(),loc.stmt->getBeginLoc())) {
+                if (typeMatch(globalQT, QT) && isBehind(ctxt,(*it)->getBeginLoc(),loc.stmt->getBeginLoc())) {
                     DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
                             SourceLocation(), *it, false, SourceLocation(), globalQT, VK_LValue);
                     if (lvalue)
@@ -350,7 +352,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::genExprAtoms(QualType QT, bool allow_lo
                     for (RecordDecl::decl_iterator dit = RD->decls_begin(); dit != RD->decls_end(); ++dit) {
                         FieldDecl *FD = llvm::dyn_cast<FieldDecl>(*dit);
                         if (FD) {
-                            if (typeMatch(FD->getType(), QT) && isBehind(ctxt,dit->getLocation(),loc.stmt->getBeginLoc())) {
+                            if (typeMatch(FD->getType(), QT) && isBehind(ctxt,dit->getBeginLoc(),loc.stmt->getBeginLoc())) {
                                 MemberExpr *ME = MemberExpr::Create(*ctxt,E, is_arrow, SourceLocation(),
 					NestedNameSpecifierLoc(),SourceLocation(),FD,DeclAccessPair::make(FD,FD->getAccess()),
                                         DeclarationNameInfo(FD->getDeclName(), FD->getLocation()),
@@ -386,7 +388,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::genExprAtoms(QualType QT, bool allow_lo
                             for (RecordDecl::decl_iterator dit = RD->decls_begin(); dit != RD->decls_end(); ++dit) {
                                 FieldDecl *FD = llvm::dyn_cast<FieldDecl>(*dit);
                                 if (FD) {
-                                    if (typeMatch(FD->getType(), QT) && isBehind(ctxt,(*it)->getLocation(),loc.stmt->getBeginLoc())) {
+                                    if (typeMatch(FD->getType(), QT) && isBehind(ctxt,(*it)->getBeginLoc(),loc.stmt->getBeginLoc())) {
                                         DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
                                                     SourceLocation(), VD, false, SourceLocation(), T, VK_LValue);
                                         MemberExpr *ME = MemberExpr::Create(*ctxt,DRE, is_arrow, SourceLocation(),

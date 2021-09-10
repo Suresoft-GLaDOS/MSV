@@ -120,7 +120,7 @@ extern "C" int __choose(const char *switch_id) {
 
 #define MAGIC_NUMBER -123456789
 
-extern "C" void __write_profile(const char *func_name,int mode,int count, ...){
+extern "C" void __write_profile(const char *func_name,int mode,const char *var_name,void *var_addr,int size){
     char * pid = getenv("__PID");
     if (pid == NULL || strlen(pid) == 0) {
         pid = "0";
@@ -129,43 +129,37 @@ extern "C" void __write_profile(const char *func_name,int mode,int count, ...){
     sprintf(tmp_file,"/tmp/%s_%s_profile.log",pid,func_name);
 
     // fprintf(stderr, "\n%s: %d\n", func_name,count);
-    va_list ap;
-    va_start(ap, count);
     FILE *f;
     if (mode==0)
         f = fopen(tmp_file, "w");
     else
         f = fopen(tmp_file, "a");
-    fprintf(f, "-%lu\n", (unsigned long)count);
-    for (unsigned long i = 0; i < (unsigned long)count; i++) {
-        char *name=va_arg(ap, char*);
-        void* p = va_arg(ap, void*);
-        unsigned long sz = va_arg(ap, unsigned long);
-        // assert( sz <= 8 );
-        long long v = 0;
-        if (sz<=8 && isGoodAddr(p, sz)) {
-            memcpy(&v, p, sz);
-        }
-        else {
-            v = MAGIC_NUMBER;
-        }
-        fprintf(f, "%s=%lld\n", name,v);
-        // fprintf(stderr, "%s=%lld\n", name, v);
+    // assert( sz <= 8 );
+    long long v = 0;
+    if (size<=8 && isGoodAddr(var_addr, size)) {
+        memcpy(&v, var_addr, size);
     }
+    else {
+        v = MAGIC_NUMBER;
+    }
+    fprintf(f, "%s=%lld\n", var_name,v);
+    // fprintf(stderr, "%s=%lld\n", name, v);
     fclose(f);
 
     if (mode==0){
         int runned=0;
         char log_file[1024];
         sprintf(log_file,"/tmp/%s_profile.log",pid);
+        // fprintf(stderr, "good pid\n");
         
         int included=0;
         FILE *log_r=fopen(log_file,"r");
         if (log_r==NULL)
             log_r=fopen(log_file,"w");
         else{
-            char *line;
-            size_t length;
+            char *line=NULL;
+            size_t length=0;
+            // fprintf(stderr, "before getline\n");
             while (getline(&line,&length,log_r)!=-1){
                 line[strlen(line)-1]='\0';
                 if (strcmp(line,func_name)==0){
@@ -173,6 +167,8 @@ extern "C" void __write_profile(const char *func_name,int mode,int count, ...){
                     break;
                 }
             }
+            // fprintf(stderr, "after getline\n");
+            free(line);
         }
         fclose(log_r);
 

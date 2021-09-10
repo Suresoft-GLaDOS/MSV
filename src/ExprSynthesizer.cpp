@@ -1906,10 +1906,12 @@ class TestBatcher {
         outlog_printf(0,"Meta-program generated in %llus!\n",get_timer());
 
         outlog_printf(2,"Adding profile writers...\n");
-        addProfileWriter(P,combined,succ_macros,fixedFile);
+        std::map<long long,std::string> macroCode;
+        macroCode.clear();
+        std::map<std::string,std::vector<long long>> macroFile=addProfileWriter(P,combined,succ_macros,macroCode,fixedFile);
         outlog_printf(2,"Trying build...\n");
-        bool final=P.buildSubDir("src",CLANG_TEST_WRAP,buildEnv);
-        if (final) printf("Pass to build final program\n");
+        std::vector<long long> succ_macros2=P.buildWithRepairedCode(CLANG_TEST_WRAP,buildEnv,combined,macroCode,macroFile,fixedFile,succ_macros);
+        if (succ_macros.size()>0) printf("Pass to build final program\n");
         else{
             printf("\033[0;31m");
             printf("\nFail to build with profile writer, check build.log!\n");

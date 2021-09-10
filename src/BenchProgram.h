@@ -356,7 +356,8 @@ private:
 
     void Init(const std::string &workDirPath, bool no_clean_up);
 
-    bool buildFull(const std::string &subDir, time_t timeout_limit = 0, bool force_reconf = false,std::vector<long long> compile_macro=std::vector<long long>(),std::vector<std::string> files=std::vector<std::string>());
+    bool buildFull(const std::string &subDir, time_t timeout_limit = 0, bool force_reconf = false,std::vector<long long> compile_macro=std::vector<long long>(),std::vector<std::string> files=std::vector<std::string>(),
+                std::vector<long long> writer_macro=std::vector<long long>());
 
     void getCompileMisc(const std::string &src_file, std::string &build_dir, std::vector<std::string> &build_args);
 
@@ -420,7 +421,8 @@ public:
     std::vector<long long> buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
             std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
             std::map<std::string,std::vector<long long>> macroFile,
-            std::string output_name="");
+            std::string output_name="",
+            std::vector<long long> macros=std::vector<long long>());
 
     TestCaseSetTy testSet(const std::string &subDir, const TestCaseSetTy &case_set,
             const EnvMapTy &envMap, size_t totalSwitch=0,size_t chooseSwitch=0,size_t chooseCase=0,size_t pid=0,bool pass_basic_src_dir = false);
