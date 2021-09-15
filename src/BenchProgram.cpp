@@ -681,21 +681,21 @@ void BenchProgram::rollbackOriginalCode(std::map<std::string, std::string> &file
         std::ostringstream sout;
         sout << "mv -f " << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << target_file;
         std::string cmd = sout.str();
-        execute_cmd_until_succ(cmd);
+        system(cmd.c_str());
         cnt ++;
         // Make sure it refresh the build system to avoid cause problem
         cmd = std::string("touch ") + target_file;
-        execute_cmd_until_succ(cmd);
+        system(cmd.c_str());
         // remove the .o and .lo files to force recompile next time
         {
             std::string tmp = replace_ext(target_file, ".o");
             std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
+            system(cmd.c_str());
         }
         {
             std::string tmp = replace_ext(target_file, ".lo");
             std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
+            system(cmd.c_str());
         }
     }
 
