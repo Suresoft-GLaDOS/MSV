@@ -1920,8 +1920,8 @@ class TestBatcher {
             printf("\nFail to build with profile writer, check build.log!\n");
             printf("\033[0m");
         }
-        P.rollbackOriginalCode(combined,buildEnv);
         outlog_printf(0,"Final build finished in %llus!\n",get_timer());
+        P.rollbackOriginalCode(combined,buildEnv);
 
         // if (P.getSwitch().first==0 && P.getSwitch().second==0)
         //     result_init=T->test(testEnv,0,true);
