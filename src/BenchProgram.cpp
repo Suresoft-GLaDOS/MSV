@@ -384,10 +384,10 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
     else{
         std::string cmd;
         if (dep_dir != "")
-            cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
+            cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args "+ " 2>&1";
         else
-            cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
+            cmd = build_cmd + " -c -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args " +  " 2>&1";
         int sys_ret = explain_system_on_error(cmd.c_str());
 

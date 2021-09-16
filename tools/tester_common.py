@@ -105,7 +105,9 @@ def extract_arguments(out_dir, src_file):
             if line.find("Entering directory") != -1:
                 idx = line.find("Entering directory");
                 idx1 = line.find("`", idx);
-                idx2 = line.find("'", idx);
+                if idx1==-1:
+                    idx1=line.find("'")
+                idx2 = line.find("'", idx1+1);
                 directory = line[idx1 + 1:idx2];
 
             if line.find(file_name) != -1:
@@ -138,7 +140,9 @@ def extract_arguments(out_dir, src_file):
         if line.find("Entering directory") != -1:
             idx = line.find("Entering directory");
             idx1 = line.find("`", idx);
-            idx2 = line.find("'", idx);
+            if idx1==-1:
+                idx1=line.find("'")
+            idx2 = line.find("'", idx1+1);
             directory = line[idx1 + 1:idx2];
         if line.find(file_name) != -1:
             tokens = line.strip().split();
