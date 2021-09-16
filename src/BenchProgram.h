@@ -419,8 +419,8 @@ public:
     void rollbackOriginalCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap);
 
     std::vector<long long> buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-            std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
-            std::map<std::string,std::vector<long long>> macroFile,
+            const std::map<std::string, std::string> &fileCodeMap,const std::map<long long,std::string> &macroWithCode,
+            const std::map<std::string,std::vector<long long>> &macroFile,
             std::string output_name="",
             std::vector<long long> macros=std::vector<long long>());
 

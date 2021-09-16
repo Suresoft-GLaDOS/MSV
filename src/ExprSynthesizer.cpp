@@ -979,7 +979,7 @@ protected:
     std::map<int,std::map<int,std::string>> idAndCase;
     std::vector<std::list<size_t>> switchCluster;
     // std::map<int,std::list<std::list<int>>> caseCluster;
-    std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
+    std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> &functionLoc;
     std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
     std::map<long long,std::string> macroCode;
 
@@ -1084,7 +1084,7 @@ protected:
 public:
     ASTContext *tempCtxt;
     std::map<std::string,std::vector<long long>> macroFile;
-    BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
+    BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> &functionLoc,
             std::vector<std::pair<std::string,size_t>> &scores):
     P(P), learning(learning), M(M), scores(scores),
     negative_cases(P.getNegativeCaseSet()),
@@ -1908,8 +1908,11 @@ class TestBatcher {
         outlog_printf(2,"Adding profile writers...\n");
         std::map<long long,std::string> macroCode;
         macroCode.clear();
+        reset_timer();
         std::map<std::string,std::vector<long long>> macroFile=addProfileWriter(P,combined,succ_macros,macroCode,fixedFile);
+        outlog_printf(0,"Profile writer added in %llus!\n",get_timer());
         outlog_printf(2,"Trying build...\n");
+        reset_timer();
         std::vector<long long> succ_macros2=P.buildWithRepairedCode(CLANG_TEST_WRAP,buildEnv,combined,macroCode,macroFile,fixedFile,succ_macros);
         if (succ_macros.size()>0) printf("Pass to build final program\n");
         else{
@@ -1917,6 +1920,7 @@ class TestBatcher {
             printf("\nFail to build with profile writer, check build.log!\n");
             printf("\033[0m");
         }
+        outlog_printf(0,"Final build finished in %llus!\n",get_timer());
         P.rollbackOriginalCode(combined,buildEnv);
 
         // if (P.getSwitch().first==0 && P.getSwitch().second==0)

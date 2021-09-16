@@ -681,21 +681,21 @@ void BenchProgram::rollbackOriginalCode(std::map<std::string, std::string> &file
         std::ostringstream sout;
         sout << "mv -f " << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << target_file;
         std::string cmd = sout.str();
-        execute_cmd_until_succ(cmd);
+        system(cmd.c_str());
         cnt ++;
         // Make sure it refresh the build system to avoid cause problem
         cmd = std::string("touch ") + target_file;
-        execute_cmd_until_succ(cmd);
+        system(cmd.c_str());
         // remove the .o and .lo files to force recompile next time
         {
             std::string tmp = replace_ext(target_file, ".o");
             std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
+            system(cmd.c_str());
         }
         {
             std::string tmp = replace_ext(target_file, ".lo");
             std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
+            system(cmd.c_str());
         }
     }
 
@@ -704,8 +704,8 @@ void BenchProgram::rollbackOriginalCode(std::map<std::string, std::string> &file
 }
 
 std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-            std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
-            std::map<std::string,std::vector<long long>> macroFile,std::string output_name,std::vector<long long> macros) {
+            const std::map<std::string, std::string> &fileCodeMap,const std::map<long long,std::string> &macroWithCode,
+            const std::map<std::string,std::vector<long long>> &macroFile,std::string output_name,std::vector<long long> macros) {
     compile_cnt ++;
     // This is to backup the changed sourcefile, in case something broken
     // the workdir, and we want to just resume
@@ -713,7 +713,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
     files.clear();
     bool succ;
 
-    for (std::map<std::string, std::string>::iterator it = fileCodeMap.begin();
+    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
             it != fileCodeMap.end(); ++it) {
         std::string target_file = it->first;
         if (target_file[0] != '/')
@@ -746,7 +746,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
             fail.insert(*it);
         }
         
-        for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+        for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
             bool include=false;
             for (std::set<long long>::iterator it2=fail.begin();it2!=fail.end();it2++){
                 if (*it2==it->first) {
@@ -780,7 +780,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                     size_t end = line.find("'", start + 1);
                     std::string errorFunc = line.substr(start + 1, end - start - 1);
 
-                    for (std::map<long long, std::string>::iterator it = macroWithCode.begin(); it != macroWithCode.end(); it++)
+                    for (std::map<long long, std::string>::const_iterator it = macroWithCode.begin(); it != macroWithCode.end(); it++)
                     {
                         if (it->second.find(errorFunc) != std::string::npos)
                         {
@@ -829,7 +829,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                             size_t last=line.find("'",first+1);
                             std::string function=line.substr(first+1,last-first-1);
 
-                            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                            for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
                                     if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
                                         added=true;
@@ -846,7 +846,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                             size_t last=line.find("'",first+1);
                             std::string function=line.substr(first+1,last-first-1);
 
-                            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                            for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
                                     if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
                                         added=true;
@@ -888,7 +888,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                             if (isRe){
                                 std::getline(buildLog,line);
                                 line=stripLine(line);
-                                for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                     line.erase(remove(line.begin(), line.end(), ' '), line.end());
                                     std::string codeLine=it->second;
                                     codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
@@ -1001,7 +1001,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
             }
 
             fail.clear();
-            for (std::map<std::string,std::vector<long long>>::iterator it=macroFile.begin();it!=macroFile.end();it++){
+            for (std::map<std::string,std::vector<long long>>::const_iterator it=macroFile.begin();it!=macroFile.end();it++){
                 std::string candidateMacro="'";
                 for (std::set<long long>::iterator it2=fail_temp.begin();it2!=fail_temp.end();it2++){
                     if (std::find(it->second.begin(),it->second.end(),*it2)!=it->second.end());
@@ -1064,7 +1064,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
             }
 
             succ_id.clear();
-            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+            for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                 bool include=false;
                 for (std::set<long long>::iterator it2=fail.begin();it2!=fail.end();it2++){
                     if (*it2==it->first) {
@@ -1084,7 +1084,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
             }
 
             succ_id.clear();
-            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+            for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                 bool include=false;
                 for (std::set<long long>::iterator it2=fail.begin();it2!=fail.end();it2++){
                     if (*it2==it->first) {
