@@ -9,6 +9,7 @@ jpeg-9a-build:
 	./configure --prefix=$(abs_builddir)/jpeg-9a-build &&\
 	make -j 4 &&\
 	make install
+	ln -s $(abs_builddir)/jpeg-9a-build/lib/libjpeg.so.9.1.0 $(abs_builddir)/jpeg-9a-build/lib/libjpeg.so
 
 clean-local:
 	rm *.gz

@@ -274,7 +274,10 @@ class php_tester:
         assert(path.exists(self.repo_dir+"/run-tests.php"));
         # prog = self.repo_dir+"/sapi/cli/php";
         # helper = self.repo_dir+"/run-tests.php";
-        prog = "./sapi/cli/php";
+        prog = "./sapi/cli/php"
+        if (path.exists(self.work_dir + "/../php-src/sapi/cli/php")):
+            prog = self.work_dir + "/../php-src/sapi/cli/php";
+            
         helper = "./run-tests.php";
         ori_dir = getcwd();
         arg_list = []
@@ -285,7 +288,7 @@ class php_tester:
                 arg_list.append(self.tmptest_dir + "/" + str(i).zfill(5) + ".phpt");
         chdir(self.repo_dir);
         if (profile_dir == ""):
-            test_prog = prog;
+            test_prog = "./sapi/cli/php";
         else:
             if profile_dir[0] != "/":
                 test_prog = ori_dir + "/" + profile_dir + "/sapi/cli/php";
@@ -293,7 +296,8 @@ class php_tester:
                 test_prog = profile_dir + "/sapi/cli/php";
         # TODO: afl_cmd=["afl_fuzz","-w",self.work_dir,"-p",self.repo_dir+"/sapi/cli/php","-h",test_prog] + arg_list
         # -t(timeout) can be optional
-        cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list
+        cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list;
+        print str(cmd);
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE);
         chdir(ori_dir);
         (out, err) = p.communicate();
