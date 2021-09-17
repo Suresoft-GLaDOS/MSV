@@ -183,11 +183,14 @@ def num2testcase( case ):
         return 'SOME';
 
 if __name__ == "__main__":
-    opts, args = getopt.getopt(argv[1:], "p:");
+    opts, args = getopt.getopt(argv[1:], "p:i:");
     profile_dir = "";
+    temp_dir="my-test"
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
+        elif o=="-i":
+            temp_dir=a
 
     src_dir = args[0];
     test_dir = args[1];
@@ -199,11 +202,11 @@ if __name__ == "__main__":
         if (profile_dir != ""):
             cur_dir = profile_dir;
 
-        if (not path.exists(cur_dir + "/my-test")):
-            system("cp -rf " + test_dir + " " + cur_dir + "/my-test");
+        if (not path.exists(cur_dir + "/"+temp_dir)):
+            system("cp -rf " + test_dir + " " + cur_dir + "/"+temp_dir);
 
         ori_dir = getcwd();
-        chdir(cur_dir + "/my-test");
+        chdir(cur_dir + "/"+temp_dir);
         system("rm -rf o-*.tiff o-*.ps o-*.pdf")
 
         my_env = environ;
