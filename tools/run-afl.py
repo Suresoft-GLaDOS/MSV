@@ -178,6 +178,15 @@ def collect_result_validation(confgen: ConfigGenerator, fuzz_done: list):
                     positive_dict[conf_str] = (tokens[4] == "1")
 
 
+def collect_result_original(confgen: ConfigGenerator, fuzz_done: list):
+    for fuzz in fuzz_done:
+        with open(os.path.join(confgen.result_dir, "original-afl-result.csv"), "w") as org_result:
+            with open(os.path.dirname(fuzz.afl_result_file) + "/original-result.csv", "r") as ori_csv:
+                lines = ori_csv.readlines()
+                for line in lines:
+                    org_result.write(line)
+
+
 def main(argv):
     print("run-afl.py!!!")
     arg_dict = dict()
@@ -279,16 +288,13 @@ def main(argv):
                     print(f"fuzzer{fuzz.fid} finished!")
                     (out, err) = fuzz.fuzzer.communicate()
                     fuzz.append_result(confgen.result_file)
-                    result = confgen.result_analyzer(fuzz)
-                    print(f"result: {result}")
-                    fuzz.set_result(result)
-                    result_map[fuzz.fid] = fuzz
                     fuzz_done.append(fuzz_queue.pop(i))
                     break
     
     if arg_dict["s"] == "positive":
         collect_result_positive(confgen, fuzz_done)
-
+    elif arg_dict["s"] == "original":
+        collect_result_original((confgen, fuzz_done))
     title = f"{arg_dict['s']} -j {parallel_count}"
     if iteration_limit > 0:
         title += " -l " + str(iteration_limit)
