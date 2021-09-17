@@ -128,6 +128,64 @@ def run_afl(workdir: str, tools_dir: str, timeout: int, fuzzer_id: str, strategy
     print(afl_cmd)
     return subprocess.Popen(afl_cmd)
 
+def collect_result_positive(confgen: ConfigGenerator, fuzz_done: list):
+    positive_dict = dict()
+    for fuzz in fuzz_done:
+        with open(fuzz.afl_result_file, "r") as pos_csv:
+            lines = pos_csv.readlines()
+            for line in lines:
+                tokens = line.strip().split(",")
+                sw = tokens[2]
+                cs = tokens[3]
+                op = ""
+                var = ""
+                const = ""
+                conf_str = ""
+                if len(tokens) == 5:
+                    conf_str = f"{sw},{cs}"
+                if len(tokens) == 6:
+                    op = tokens[5]
+                    conf_str = f"{sw},{cs},{op}"
+                elif len(tokens) == 8:
+                    op = tokens[5]
+                    var = tokens[6]
+                    const = tokens[7]
+                    conf_str = f"{sw},{cs},{op},{var},{const}"
+                if conf_str in positive_dict:
+                    positive_dict[conf_str] = positive_dict[conf_str] and (tokens[4] == "1")
+                else:
+                    positive_dict[conf_str] = (tokens[4] == "1")
+    with open(os.path.join(confgen.result_dir, "positive-afl-result.csv"), "w") as pos_result:
+        for conf in positive_dict:
+            if positive_dict[conf]:
+                pos_result.write(conf + "$1\n")
+            else:
+                pos_result.write(conf + "$0\n")
+
+
+def collect_result_validation(confgen: ConfigGenerator, fuzz_done: list):
+    positive_dict = dict()
+    for fuzz in fuzz_done:
+        with open(os.path.dirname(fuzz.afl_result_file) + "/validation-afl-result.csv", "r") as val_csv:
+            lines = val_csv.readlines()
+            for line in lines:
+                parse = line.strip().split("$")
+                conf_str = parse[0].strip(",")
+                tokens = parse[1].strip(",").split(",")
+                if conf_str in positive_dict:
+                    positive_dict[conf_str] = positive_dict[conf_str]
+                else:
+                    positive_dict[conf_str] = (tokens[4] == "1")
+
+
+def collect_result_original(confgen: ConfigGenerator, fuzz_done: list):
+    for fuzz in fuzz_done:
+        with open(os.path.join(confgen.result_dir, "original-afl-result.csv"), "w") as org_result:
+            with open(os.path.dirname(fuzz.afl_result_file) + "/original-result.csv", "r") as ori_csv:
+                lines = ori_csv.readlines()
+                for line in lines:
+                    org_result.write(line)
+
 
 def main(argv):
     print("run-afl.py!!!")
@@ -189,6 +247,7 @@ def main(argv):
     #os.system("rm -rf " + arg_dict['w'] + "/out")
 
     fuzz_queue = []
+    fuzz_done = []
     result_map = dict()
     fid = 0
     confgen = ConfigGenerator(arg_dict, switch_num, switch_json)
@@ -229,28 +288,17 @@ def main(argv):
                     print(f"fuzzer{fuzz.fid} finished!")
                     (out, err) = fuzz.fuzzer.communicate()
                     fuzz.append_result(confgen.result_file)
-                    result = confgen.result_analyzer(fuzz)
-                    print(f"result: {result}")
-                    fuzz.set_result(result)
-                    result_map[fuzz.fid] = fuzz
-                    fuzz_queue.pop(i)
+                    fuzz_done.append(fuzz_queue.pop(i))
                     break
-    succ_switches = []
-    for i in range(switch_num):
-        if i in result_map:
-            fuzz = result_map[i]
-            if fuzz.result:
-                succ_switches.append(i)
-    print(succ_switches)
+    
+    if arg_dict["s"] == "positive":
+        collect_result_positive(confgen, fuzz_done)
+    elif arg_dict["s"] == "original":
+        collect_result_original((confgen, fuzz_done))
     title = f"{arg_dict['s']} -j {parallel_count}"
     if iteration_limit > 0:
         title += " -l " + str(iteration_limit)
     afl_plot.afl_plot_one(confgen.result_file, title,  "", True)
-    # Test for positive cases
-    if len(succ_switches) > 0:
-        exit(0)
-    else:
-        exit(1)
 
 
 if __name__ == "__main__":
