@@ -219,9 +219,9 @@ if __name__ == "__main__":
             ret = subprocess.call(["make check TESTS="+testcase+" >/dev/null  2>/dev/null"], shell=True, env = my_env);
             if ret==0:
                 print i,
-            chdir(cur_dir)
-            rmdir(cur_dir+'/'+temp_dir)
 
         print;
         chdir(ori_dir);
+        subprocess.call('rm -rf '+cur_dir+'/'+temp_dir,shell=True)
+
 

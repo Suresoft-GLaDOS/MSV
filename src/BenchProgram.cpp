@@ -821,6 +821,13 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                             else fileName=line.substr(0,location+4);
                         }
 
+                        for (std::map<std::string,std::string>::const_iterator it=fileCodeMap.begin();it!=fileCodeMap.end();it++){
+                            if (it->first.find(fileName)!=std::string::npos){
+                                fileName=it->first;
+                                break;
+                            }
+                        }
+
                         if (line.find("static declaration of")!=std::string::npos){
                             size_t pos=line.find("static declaration of");
                             size_t first=line.find("'");
