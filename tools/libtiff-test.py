@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
-from os import system, path, chdir, getcwd, environ
+from os import rmdir, system, path, chdir, getcwd, environ
 import subprocess
 import getopt
 
@@ -219,6 +219,8 @@ if __name__ == "__main__":
             ret = subprocess.call(["make check TESTS="+testcase+" >/dev/null  2>/dev/null"], shell=True, env = my_env);
             if ret==0:
                 print i,
+            chdir(cur_dir)
+            rmdir(cur_dir+'/'+temp_dir)
 
         print;
         chdir(ori_dir);
