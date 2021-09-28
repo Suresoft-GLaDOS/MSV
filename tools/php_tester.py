@@ -277,6 +277,7 @@ class php_tester:
         prog = "./sapi/cli/php"
         if (path.exists(self.work_dir + "/../php-src/sapi/cli/php")):
             prog = self.work_dir + "/../php-src/sapi/cli/php";
+            prog = path.abspath(prog);
 
         helper = "./run-tests.php";
         ori_dir = getcwd();
@@ -287,7 +288,7 @@ class php_tester:
             else:
                 arg_list.append(self.tmptest_dir + "/" + str(i).zfill(5) + ".phpt");
         chdir(self.repo_dir);
-        prog = path.abspath(prog);
+ 
         if (profile_dir == ""):
             test_prog = "./sapi/cli/php";
         else:
@@ -298,7 +299,8 @@ class php_tester:
         # TODO: afl_cmd=["afl_fuzz","-w",self.work_dir,"-p",self.repo_dir+"/sapi/cli/php","-h",test_prog] + arg_list
         # -t(timeout) can be optional
         cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list;
-        print >> sys.stderr, self.repo_dir
+        #print str(cmd);
+        #print >> sys.stderr, self.repo_dir
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE);
         chdir(ori_dir);
         (out, err) = p.communicate();
