@@ -33,8 +33,16 @@ bool canMerge(const CodeSegTy &codeSegs, const CodeSegTy &patches);
 NewCodeMapTy combineCode(const CodeSegTy &codeSegs, const CodeSegTy &patch);
 
 class CodeRewriter {
+    typedef enum{
+        NormalReplace=0,
+        ConditionSynthesize,
+        NormalInsert,
+        AfterInsert,
+        VarMutation,
+    } ActionType;
     CodeSegTy resCodeSegs, resPatches;
     int counter;
+    size_t varMutationCounter=0;
     SourceContextManager &sourceManager;
 
     std::map<long long,std::pair<int,int>> macroMap;
@@ -55,17 +63,20 @@ class CodeRewriter {
 
     std::vector<Line> lines;
     void addIsNeg(size_t id,size_t case_num,std::string code);
+
+    // For mutation
+    std::map<std::string,std::map<clang::FunctionDecl *,std::pair<unsigned,unsigned>>> functionLoc; // function locations
 public:
     int index;
     std::vector<File> rules;
     CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,
             std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc=std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>>(),std::string work_dir="");
 
-    std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateKind>>> eliminateAllNewLoc(SourceContextManager &M,
+    std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate::CandidateKind>>> eliminateAllNewLoc(SourceContextManager &M,
         const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str);
 
     std::string applyPatch(size_t &currentIndex,std::vector<std::pair<size_t,size_t>> &currentLocation,std::vector<ASTLocTy> &currentCandidate,
-        std::map<ASTLocTy, std::vector<std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,const std::string code);
+        std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate::CandidateKind>>> &res1,std::map<ASTLocTy,std::pair<size_t,size_t>> &line,const std::string code);
 
 
     CodeSegTy getCodeSegments() {

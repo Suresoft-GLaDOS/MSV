@@ -179,6 +179,7 @@ private:
         // std::map<int,std::list<std::list<int>>> caseCluster;
         std::vector<std::pair<std::string,size_t>> scoreInfo;
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
+        std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
         std::vector<File> infos;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
@@ -217,6 +218,33 @@ private:
                 cJSON_AddItemToArray(scoreArray,localize);
             }
             cJSON_AddItemToObject(json,std::string("priority").c_str(),scoreArray);
+
+            // Save mutation infos
+            cJSON *mutationArray=cJSON_CreateArray();
+            for(std::map<std::string,std::map<std::string,std::map<size_t,std::string>>>::iterator it=mutationInfo.begin();it!=mutationInfo.end();it++){
+                cJSON *mutationObject=cJSON_CreateObject();
+                cJSON_AddStringToObject(mutationObject,std::string("file").c_str(),it->first.c_str());
+
+                cJSON *funcArray=cJSON_CreateArray();
+                for (std::map<std::string,std::map<size_t,std::string>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
+                    cJSON *funcObject=cJSON_CreateObject();
+                    cJSON_AddStringToObject(funcObject,std::string("function").c_str(),it2->first.c_str());
+
+                    cJSON *varArray=cJSON_CreateArray();
+                    for (std::map<size_t,std::string>::iterator it3=it2->second.begin();it3!=it2->second.end();it3++){
+                        cJSON *varObject=cJSON_CreateObject();
+                        cJSON_AddNumberToObject(varObject,std::string("number").c_str(),it3->first);
+                        cJSON_AddStringToObject(varObject,std::string("variable").c_str(),it3->second.c_str());
+
+                        cJSON_AddItemToArray(varArray,varObject);
+                    }
+                    cJSON_AddItemToObject(funcObject,std::string("variables").c_str(),varArray);
+                    cJSON_AddItemToArray(funcArray,funcObject);
+                }
+                cJSON_AddItemToObject(mutationObject,std::string("functions").c_str(),funcArray);
+                cJSON_AddItemToArray(mutationArray,mutationObject);
+            }
+            cJSON_AddItemToObject(json,std::string("mutation_info").c_str(),mutationArray);
 
             // Save each patch rules
             cJSON *ruleArray=cJSON_CreateArray();
@@ -323,23 +351,21 @@ private:
 
     TestCache *cache;
 
+    std::map<std::string,std::string> build_dir_save;
+    std::map<std::string,std::vector<std::string>> build_args_save;
+
     void Init(const std::string &workDirPath, bool no_clean_up);
 
-    bool buildFull(const std::string &subDir, time_t timeout_limit = 0, bool force_reconf = false,std::vector<long long> compile_macro=std::vector<long long>(),std::vector<std::string> files=std::vector<std::string>());
+    bool buildFull(const std::string &subDir, time_t timeout_limit = 0, bool force_reconf = false,std::vector<long long> compile_macro=std::vector<long long>(),std::vector<std::string> files=std::vector<std::string>(),
+                std::vector<long long> writer_macro=std::vector<long long>());
 
     void getCompileMisc(const std::string &src_file, std::string &build_dir, std::vector<std::string> &build_args);
 
     EnvMapTy ori_env_map;
 
-    void pushEnvMap(const EnvMapTy &envMap);
-
-    void popEnvMap(const EnvMapTy &envMap);
 
     std::string ori_path_for_wrap_path;
 
-    void pushWrapPath(const std::string &wrapPath, const std::string &cc_path);
-
-    void popWrapPath();
 
     void deleteLibraryFile(const std::map<std::string, std::string> &fileCodeMap);
 public:
@@ -370,8 +396,16 @@ public:
 
     void addExistingSrcClone(const std::string &subDir, bool built);
 
+    void pushEnvMap(const EnvMapTy &envMap);
+
+    void popEnvMap(const EnvMapTy &envMap);
+
+    void pushWrapPath(const std::string &wrapPath, const std::string &cc_path);
+
+    void popWrapPath();
+
     std::unique_ptr<clang::ASTUnit> buildClangASTUnit(const std::string &src_file,
-            const std::string &code);
+            const std::string &code,std::vector<long long> macros=std::vector<long long>());
 
     // bool runDG(std::vector<ASTLocTy> criteriaLocation);
     bool runDG(std::vector<std::string> files,std::map<std::string,std::set<unsigned>> lines);
@@ -381,10 +415,14 @@ public:
     
     void saveFixedFiles(std::map<std::string, std::string> &fileCodeMap,std::string output_name);
 
-    bool buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-            std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
-            std::map<std::string,std::vector<long long>> macroFile,
-            std::string output_name="");
+    void applyRepairedCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap,std::string wrapScript);
+    void rollbackOriginalCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap);
+
+    std::vector<long long> buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
+            const std::map<std::string, std::string> &fileCodeMap,const std::map<long long,std::string> &macroWithCode,
+            const std::map<std::string,std::vector<long long>> &macroFile,
+            std::string output_name="",
+            std::vector<long long> macros=std::vector<long long>());
 
     TestCaseSetTy testSet(const std::string &subDir, const TestCaseSetTy &case_set,
             const EnvMapTy &envMap, size_t totalSwitch=0,size_t chooseSwitch=0,size_t chooseCase=0,size_t pid=0,bool pass_basic_src_dir = false);

@@ -19,7 +19,7 @@
 from php_tester import php_tester
 from sys import argv
 import getopt
-from os import environ, system
+from os import system
 import os
 
 if __name__ == "__main__":
@@ -36,8 +36,6 @@ if __name__ == "__main__":
             profile_dir = a;
         elif o=="-i":
             temp_dir=a
-    
-    env=environ
 
     src_dir = args[0];
     test_dir = args[1];
@@ -45,7 +43,7 @@ if __name__ == "__main__":
         
     if len(args) > 3:
         ids = args[3:];
-        a = php_tester(work_dir, src_dir, test_dir,env,temp_dir);
+        a = php_tester(work_dir, src_dir, test_dir,temp_dir);
         s = [];
         for i in ids:
             s.append(int(i));

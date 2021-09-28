@@ -120,6 +120,67 @@ extern "C" int __choose(const char *switch_id) {
 
 #define MAGIC_NUMBER -123456789
 
+extern "C" void __write_profile(const char *func_name,int mode,const char *var_name,void *var_addr,int size){
+    char * pid = getenv("__PID");
+    if (pid == NULL || strlen(pid) == 0) {
+        pid = "0";
+    }
+    char tmp_file[200];
+    sprintf(tmp_file,"/tmp/%s_%s_profile.log",pid,func_name);
+
+    // fprintf(stderr, "\n%s: %d\n", func_name,count);
+    FILE *f;
+    if (mode==0)
+        f = fopen(tmp_file, "w");
+    else
+        f = fopen(tmp_file, "a");
+    // assert( sz <= 8 );
+    long long v = 0;
+    if (size<=8 && isGoodAddr(var_addr, size)) {
+        memcpy(&v, var_addr, size);
+    }
+    else {
+        v = MAGIC_NUMBER;
+    }
+    fprintf(f, "%s=%lld\n", var_name,v);
+    // fprintf(stderr, "%s=%lld\n", name, v);
+    fclose(f);
+
+    if (mode==0){
+        int runned=0;
+        char log_file[1024];
+        sprintf(log_file,"/tmp/%s_profile.log",pid);
+        // fprintf(stderr, "good pid\n");
+        
+        int included=0;
+        FILE *log_r=fopen(log_file,"r");
+        if (log_r==NULL)
+            log_r=fopen(log_file,"w");
+        else{
+            char *line=NULL;
+            size_t length=0;
+            // fprintf(stderr, "before getline\n");
+            while (getline(&line,&length,log_r)!=-1){
+                line[strlen(line)-1]='\0';
+                if (strcmp(line,func_name)==0){
+                    included=1;
+                    break;
+                }
+            }
+            // fprintf(stderr, "after getline\n");
+            free(line);
+        }
+        fclose(log_r);
+
+        if (!included){
+            FILE *log=fopen(log_file,"a");
+            fprintf(log,"%s\n",func_name);
+            fclose(log);
+        }
+    }
+    // fprintf(stderr, "exit\n");
+}
+
 extern "C" int __is_neg(const char *location,int count, ...) {
     // fprintf(stderr, "fuck\n");
     if (!enable) return 0;
@@ -380,4 +441,17 @@ extern "C" int __is_neg(const char *location,int count, ...) {
 
     }
     return 0;
+}
+
+extern "C" long long __mutate(const long long value,const char *oper_env,const char *const_env){
+    int oper=__choose(oper_env);
+    int constant=__choose(const_env);
+    switch(oper){
+        case 0: return constant; // assign
+        case 1: return value + constant; // add
+        case 2: return value - constant; // sub
+        case 3: return value * constant; // mult
+        case 4: return value / constant; // div
+        default: return constant; // assign (default)
+    }
 }

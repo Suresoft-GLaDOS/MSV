@@ -124,7 +124,9 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
     size_t partial_candidate_cnt = 0;
     FeatureExtractor EX;
     std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
+    std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
 
+    reset_timer();
     for (size_t i = 0; i < files.size(); ++i) {
         std::string file = files[i];
         if (use_bugged_files) {
@@ -143,7 +145,6 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                 continue;
         }
         outlog_printf(1, "Processing %s\n", file.c_str());
-        reset_timer();
 
         std::string code = M.getSourceCode(file);
         clang::ASTContext *ctxt = M.getSourceContext(file);
@@ -171,10 +172,11 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                 q.push(std::make_pair(res[j], final_score));
             }
             functionLoc[file]=G.getFunctionLocations();
+            mutationInfo[file]=G.getMutationInfo();
         }
 
-        outlog_printf(0,"%s processed in %llus!\n",file.c_str(),get_timer());
     }
+    outlog_printf(0,"Patch candidate generated in %llus!\n",get_timer());
 
     size_t schema_cnt = q.size();
     outlog_printf(1, "Total %lu different repair schemas!!!!\n", schema_cnt);
@@ -304,6 +306,7 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         ExprSynthesizer ES(P, M, q, out_file,functionLoc,scores,naive, learning, FP);
         if (timeout_limit != 0)
             ES.setTimeoutLimit(timeout_limit);
+        ES.setMutationInfo(mutationInfo);
         size_t cnt = 0;
         std::vector<std::pair<double, size_t> > resList;
         resList.clear();

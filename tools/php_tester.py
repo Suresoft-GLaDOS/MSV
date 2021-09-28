@@ -39,7 +39,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
         php_deps_dir = deps_dir;
     chdir(out_dir);
     my_env = environ;
-    my_env["PATH"] = php_deps_dir + "/bison-2.5.1-build/bin:" + my_env["PATH"];
+    my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"];
     # my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"];
     my_env["PATH"] = php_deps_dir + "/flex-2.5.4-build/bin:" + my_env["PATH"];
     # switch to the revision
@@ -85,7 +85,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
                     my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"];
                 elif is_due_to_bison_v(err):
                     print "Failed to configure, use bison 2.2 to try again";
-                    my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"];
+                    my_env["PATH"] = php_deps_dir + "/bison-2.5.1-build/bin:" + my_env["PATH"];
                 else:
                     print "Failed to configure due to unknown reason";
                     chdir(ori_dir);
@@ -230,12 +230,11 @@ class php_initializer:
         return ret;
 
 class php_tester:
-    def __init__(self, work_dir, repo_dir, test_dir,env=environ,temp_dir=""):
+    def __init__(self, work_dir, repo_dir, test_dir,temp_dir=""):
         self.repo_dir = repo_dir;
         self.test_dir = test_dir;
         self.work_dir = work_dir;
         self.temp_dir=temp_dir
-        self.env=env
 
         f = open(test_dir + "/testfile.log", "r");
         line = f.readline();
@@ -275,7 +274,10 @@ class php_tester:
         assert(path.exists(self.repo_dir+"/run-tests.php"));
         # prog = self.repo_dir+"/sapi/cli/php";
         # helper = self.repo_dir+"/run-tests.php";
-        prog = "./sapi/cli/php";
+        prog = "./sapi/cli/php"
+        if (path.exists(self.work_dir + "/../php-src/sapi/cli/php")):
+            prog = self.work_dir + "/../php-src/sapi/cli/php";
+
         helper = "./run-tests.php";
         ori_dir = getcwd();
         arg_list = []
@@ -285,8 +287,9 @@ class php_tester:
             else:
                 arg_list.append(self.tmptest_dir + "/" + str(i).zfill(5) + ".phpt");
         chdir(self.repo_dir);
+        prog = path.abspath(prog);
         if (profile_dir == ""):
-            test_prog = prog;
+            test_prog = "./sapi/cli/php";
         else:
             if profile_dir[0] != "/":
                 test_prog = ori_dir + "/" + profile_dir + "/sapi/cli/php";
@@ -294,8 +297,9 @@ class php_tester:
                 test_prog = profile_dir + "/sapi/cli/php";
         # TODO: afl_cmd=["afl_fuzz","-w",self.work_dir,"-p",self.repo_dir+"/sapi/cli/php","-h",test_prog] + arg_list
         # -t(timeout) can be optional
-        cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,env=self.env);
+        cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list;
+        print >> sys.stderr, self.repo_dir
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE);
         chdir(ori_dir);
         (out, err) = p.communicate();
 

@@ -26,6 +26,8 @@
 
 #define IS_NEG_HANDLER "__is_neg"
 #define UNKNOWN_HOOK "__abst_hole"
+#define WRITE_PROFILE "__write_profile"
+#define MUTATE "__mutate"
 
 class LocalAnalyzer;
 class BenchProgram;
@@ -44,6 +46,8 @@ namespace clang {
 struct InternalHandlerInfo {
     clang::Expr* abstract_cond;
     clang::Expr* abstract_hole;
+    clang::Expr* write_profile;
+    clang::Expr* mutator;
     clang::Expr* sys_memset;
 };
 
@@ -61,8 +65,6 @@ class SourceContextManager {
     BenchProgram *P;
     // some hacky flag we need to pass to local analyzer, wth
     bool naive;
-
-    void fetch(const std::string &file);
 
 public:
 
@@ -85,6 +87,8 @@ public:
     }
 
     ~SourceContextManager();
+
+    void fetch(const std::string &file);
 
     std::string newSourceFile(const std::string &projDir, const std::string &srcFile,
             const std::string &buildDir, const std::vector<std::string> &buildArgs);
@@ -116,7 +120,7 @@ public:
 
     //void popChanges(RepairCandidate &candidate);
 
-    LocalAnalyzer* getLocalAnalyzer(const ASTLocTy &loc);
+    LocalAnalyzer* getLocalAnalyzer(const ASTLocTy &loc,clang::ASTContext *ctxt=NULL);
 
     bool isNewStmt(clang::Stmt* s) {
         return existing_stmts.count(s) == 0;
@@ -124,6 +128,12 @@ public:
 
     // FIXME: This stupid shit should go somewhere else
     clang::Expr* getExprPlaceholder(clang::ASTContext *ctxt, clang::QualType QT,int id,std::map<clang::Expr *,unsigned long> atoms);
+
+    clang::Expr* getWriteProfile(clang::ASTContext *ctxt);
+
+    clang::Expr* getMutator(clang::ASTContext *ctxt){
+        return getInternalHandlerInfo(ctxt).mutator;
+    }
 
     clang::Expr* getUnknownExpr(clang::ASTContext *ctxt, ExprListTy candidate_atoms);
 

@@ -44,19 +44,19 @@ ClangLDADD += -lLLVMXRay -lLLVMWindowsManifest -lLLVMTableGen -lLLVMSymbolize -l
 -lLLVMDebugInfoMSF -lLLVMBinaryFormat -lLLVMAArch64Utils -lLLVMAArch64Info -lLLVMSupport \
 -lLLVMDemangle -lz -lcurses
 
-pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
+pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp ProfileWriter.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
 				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 pdiffer_LDFLAGS = `llvm-config --ldflags`
 pdiffer_LDADD = $(ClangLDADD) -lexplain
 
-learner_SOURCES = learner.cpp FeatureExtract.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
+learner_SOURCES = learner.cpp FeatureExtract.cpp ProfileWriter.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
 				  Utils.cpp CodeRewrite.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 learner_LDFLAGS = `llvm-config --ldflags`
 learner_LDADD = $(ClangLDADD) -lexplain
 
-prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp BenchProgram.cpp ASTUtils.cpp \
+prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp ProfileWriter.cpp BenchProgram.cpp ASTUtils.cpp \
 				  ErrorLocalizer.cpp LocalAnalyzer.cpp ProfileErrorLocalizer.cpp SourceContextManager.cpp \
 				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp \
 				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c

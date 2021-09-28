@@ -26,6 +26,7 @@
 #include "DuplicateDetector.h"
 #include "FeatureParameter.h"
 #include "cJSON/cJSON.h"
+#include "ProfileWriter.h"
 
 #include "llvm/Support/CommandLine.h"
 #include "clang/AST/Expr.h"
@@ -978,7 +979,8 @@ protected:
     std::map<int,std::map<int,std::string>> idAndCase;
     std::vector<std::list<size_t>> switchCluster;
     // std::map<int,std::list<std::list<int>>> caseCluster;
-    std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
+    std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> &functionLoc;
+    std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
     std::map<long long,std::string> macroCode;
 
     std::vector<std::pair<std::string,size_t>> &scores;
@@ -1063,6 +1065,7 @@ protected:
             }
         }
         P.getSwitchInfo().scoreInfo=removedDuplicate;
+        P.getSwitchInfo().mutationInfo=mutationInfo;
 
         P.getSwitchInfo().infos=infos;
         P.getSwitchInfo().save();
@@ -1081,7 +1084,7 @@ protected:
 public:
     ASTContext *tempCtxt;
     std::map<std::string,std::vector<long long>> macroFile;
-    BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
+    BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> &functionLoc,
             std::vector<std::pair<std::string,size_t>> &scores):
     P(P), learning(learning), M(M), scores(scores),
     negative_cases(P.getNegativeCaseSet()),
@@ -1094,6 +1097,10 @@ public:
 
     virtual bool canHandle(const RepairCandidate &candidate) {
         return true;
+    }
+
+    void setMutationInfo(std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> &info){
+        mutationInfo=info;
     }
 
     virtual CodeSegTy getCodeSegs() {
@@ -1536,8 +1543,8 @@ public:
             buildEnv["COMPILE_CMD"] = "clang++";
         else
             buildEnv["COMPILE_CMD"] = GCC_CMD;
-        bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,macroCode,macroFile);
-        if (!build_succ) {
+        std::vector<long long> build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,macroCode,macroFile);
+        if (build_succ.size()==0) {
             outlog_printf(2, "Build failed!");
             return std::map<NewCodeMapTy, double>();
         }
@@ -1848,6 +1855,7 @@ size_t getElementCount(std::vector<T> vector,T target){
 
 class TestBatcher {
     BenchProgram &P;
+    SourceContextManager &manager;
     bool naive;
     bool learning;
     FeatureParameter *FP;
@@ -1893,9 +1901,27 @@ class TestBatcher {
         // P.saveFixedFiles(combined,fixedFile);
         
         BenchProgram::EnvMapTy testEnv;
-        reset_timer();
-        bool result_init=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
+        P.applyRepairedCode(combined,buildEnv,CLANG_TEST_WRAP);
+        std::vector<long long> succ_macros=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
         outlog_printf(0,"Meta-program generated in %llus!\n",get_timer());
+
+        outlog_printf(2,"Adding profile writers...\n");
+        std::map<long long,std::string> macroCode;
+        macroCode.clear();
+        reset_timer();
+        std::map<std::string,std::vector<long long>> macroFile=addProfileWriter(P,combined,succ_macros,macroCode,fixedFile);
+        outlog_printf(0,"Profile writer added in %llus!\n",get_timer());
+        outlog_printf(2,"Trying build...\n");
+        reset_timer();
+        std::vector<long long> succ_macros2=P.buildWithRepairedCode(CLANG_TEST_WRAP,buildEnv,combined,macroCode,macroFile,fixedFile,succ_macros);
+        if (succ_macros.size()>0) printf("Pass to build final program\n");
+        else{
+            printf("\033[0;31m");
+            printf("\nFail to build with profile writer, check build.log!\n");
+            printf("\033[0m");
+        }
+        outlog_printf(0,"Final build finished in %llus!\n",get_timer());
+        P.rollbackOriginalCode(combined,buildEnv);
 
         // if (P.getSwitch().first==0 && P.getSwitch().second==0)
         //     result_init=T->test(testEnv,0,true);
@@ -1917,9 +1943,9 @@ class TestBatcher {
 
 public:
     TestBatcher(BenchProgram &P, bool naive,
-            bool learning, FeatureParameter *FP,std::string fixedFile):
+            bool learning, FeatureParameter *FP,std::string fixedFile,SourceContextManager &M):
         P(P), naive(naive), learning(learning && !naive), FP(FP), fixedFile(fixedFile),res(), succCandidates(),cur_size(0),
-    total_cnt(0) { }
+    total_cnt(0),manager(M) { }
 
     // This is a lazy test routine, we are only going to decode it without
     // actually doing the test in the most of the time
@@ -1980,7 +2006,7 @@ public:
 bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
         ExprSynthesizerResultTy &res, bool full_synthesis, bool quit_with_any) {
     the_timeout_limit = this->timeout_limit;
-    TestBatcher TB(P, naive, learning, FP,fixedFile);
+    TestBatcher TB(P, naive, learning, FP,fixedFile,M);
     std::vector<BasicTester*> testers;
     testers.clear();
     // testers.push_back(new ConditionSynthesisTester(P, learning, M, full_synthesis,functionLoc,scores));
@@ -2014,6 +2040,7 @@ bool ExprSynthesizer::workUntil(size_t candidate_limit, size_t time_limit,
     outlog_printf(2,"Generating meta-program...\n");
     // for (int i=0;i<testers.size();i++)
     // result= TB.test(candidate, testers[0]);
+    testers[1]->setMutationInfo(mutationInfo);
     result= TB.test(candidate, testers[1]);
 
     outlog_printf(0, "The total number of explored concrete patches: %lu\n", patch_explored);

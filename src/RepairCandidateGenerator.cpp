@@ -356,6 +356,7 @@ public:
     }
 };
 
+
 ASTLocTy newStatementLoc(const ASTLocTy &loc, Stmt *n) {
     ASTLocTy ret = loc;
     ret.stmt = n;
@@ -439,7 +440,6 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, ASTContext *ctxt,cons
     return CE;
 }
 
-
 class CallVisitor : public RecursiveASTVisitor<CallVisitor> {
     bool found;
 public:
@@ -463,6 +463,7 @@ bool hasCallExpr(Stmt *S) {
 
 }
 
+static size_t currentMutationVar=0;
 class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateGeneratorImpl> {
     ASTContext *ctxt;
     SourceContextManager &M;
@@ -472,8 +473,10 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
     std::map<Stmt*, unsigned long> loc_map1;
     std::map<CompoundStmt*, size_t> compound_counter;
     std::map<FunctionDecl*,std::pair<unsigned,unsigned>> functionLocation;
+    std::map<std::string,std::map<size_t,std::string>> mutationInfo;
     std::vector<Stmt*> stmt_stack;
     InternalHandlerInfo hinfo;
+    std::set<FunctionDecl *> processed;
     // This is a hacky tmp list for fix is_first + is_func_block
     std::vector<size_t> tmp_memo;
     bool naive;
@@ -554,6 +557,11 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         rc.kind = RepairCandidate::TightenConditionKind;
         rc.original=n;
         q.push_back(rc);
+
+        if (processed.count(L->getCurrentFunction())==0) {
+            genVarMutation(L->getCurrentFunction());
+            processed.insert(L->getCurrentFunction());
+        }
     }
 
     void genLooseCondition(IfStmt *n) {
@@ -747,6 +755,11 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 q.push_back(rc);
             }
         }
+
+        if (processed.count(L->getCurrentFunction())==0) {
+            genVarMutation(L->getCurrentFunction());
+            processed.insert(L->getCurrentFunction());
+        }
     }
 
     // TODO: Remove strange templates (e.g. --this, _M_...(), ...)
@@ -851,6 +864,11 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 tmp_memo.push_back(q.size());
             q.push_back(it->second);
         }
+
+        if (processed.count(L->getCurrentFunction())==0) {
+            genVarMutation(L->getCurrentFunction());
+            processed.insert(L->getCurrentFunction());
+        }
     }
 
     void genAddIfGuard(Stmt* n, bool is_first) {
@@ -873,6 +891,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
         IfStmt *new_IF = IfStmt::Create(*ctxt, SourceLocation(), false,NULL, nullptr,UO, n);
+
         RepairCandidate rc;
         rc.actions.clear();
         rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, new_IF));
@@ -904,6 +923,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 BinaryOperator *BO = BinaryOperator::Create(*ctxt,UO, ParenE, BO_LAnd, ctxt->IntTy,
                         VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
                 IfStmt *new_IF = duplicateIfStmt(ctxt, IfS, BO);
+
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, new_IF));
@@ -920,6 +940,11 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 rc.is_first = is_first;
                 q.push_back(rc);
             }
+
+        if (processed.count(L->getCurrentFunction())==0) {
+            genVarMutation(L->getCurrentFunction());
+            processed.insert(L->getCurrentFunction());
+        }
     }
 
     void genDeclStmtChange(DeclStmt *n) {
@@ -1087,6 +1112,64 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             rc.is_first = is_first;
             q.push_back(rc);
         }
+
+        if (processed.count(curFD)==0) {
+            genVarMutation(curFD);
+            processed.insert(curFD);
+        }
+    }
+
+    bool genVarMutation(FunctionDecl *decl){
+        Stmt *body=decl->getBody();
+        if (body){
+            CompoundStmt *comp=llvm::dyn_cast<CompoundStmt>(body);
+            if (comp){
+                Stmt *first=comp->body_front();
+                ASTLocTy loc = getNowLocation(first);
+                LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+                ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,true);
+                ExprListTy temp;
+                temp.clear();
+                for (size_t i=0;i<exprs.size();i++){
+                    if (!exprs[i]->getType().getTypePtr()->isPointerType() && exprs[i]->getType().getTypePtr()->isIntegralType(*ctxt) && !exprs[i]->getType().isConstant(*ctxt)){ 
+                        if (MemberExpr::classof(exprs[i])){
+                            MemberExpr *child=llvm::dyn_cast<MemberExpr>(exprs[i]);
+                            if (child){
+                                Expr *parent=child->getBase();
+                                if (!parent->getType().isConstant(*ctxt))
+                                    temp.push_back(exprs[i]);
+                            }
+                        }
+                        else
+                            temp.push_back(exprs[i]);
+                    }
+                }
+                Expr *function=M.getMutator(ctxt);
+
+                if (mutationInfo.find(L->getCurrentFunction()->getNameAsString())==mutationInfo.end()) mutationInfo[L->getCurrentFunction()->getNameAsString()]=std::map<size_t,std::string>();
+                RepairCandidate rc;
+                rc.actions.clear();
+                rc.kind=RepairCandidate::AddVarMutation;
+                rc.score=0;
+                for (size_t i=0;i<temp.size();i++){
+                    std::vector<Expr *> args;
+                    args.clear();
+                    args.push_back(temp[i]);
+                    args.push_back(StringLiteral::Create(*ctxt,"__MUTATE_OPER_"+std::to_string(currentMutationVar),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation()));
+                    args.push_back(StringLiteral::Create(*ctxt,"__MUTATE_CONST_"+std::to_string(currentMutationVar),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation()));
+
+                    CallExpr *call=CallExpr::Create(*ctxt,function,args,ctxt->LongLongTy,ExprValueKind::VK_RValue,SourceLocation());
+                    BinaryOperator *assign=BinaryOperator::Create(*ctxt,temp[i],call,BinaryOperator::Opcode::BO_Assign,temp[i]->getType(),ExprValueKind::VK_RValue,ExprObjectKind::OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                    RepairAction action(loc,RepairAction::InsertMutationKind,assign);
+                    action.mutationId=currentMutationVar;
+                    rc.actions.push_back(action);
+                    mutationInfo[L->getCurrentFunction()->getNameAsString()][currentMutationVar]=stmtToString(*ctxt,temp[i]);
+                    currentMutationVar++;
+                }
+                rc.original=first;
+                q.push_back(rc);
+            }
+        }
     }
 
 public:
@@ -1097,10 +1180,16 @@ public:
         hinfo(M.getInternalHandlerInfo(ctxt)), naive(naive), learning(learning) {
         compound_counter.clear();
         stmt_stack.clear();
+        processed.clear();
         q.clear();
+        mutationInfo.clear();
         in_yacc_func = false;
         GeoP = 0.01;
         loc_map1 = loc_map;
+    }
+
+    std::map<std::string,std::map<size_t,std::string>> getMutationInfo(){
+        return mutationInfo;
     }
 
     void setFlipP(double GeoP) {
@@ -1325,4 +1414,7 @@ void RepairCandidateGenerator::setFlipP(double GeoP) {
 }
 std::map<FunctionDecl*,std::pair<unsigned,unsigned>> RepairCandidateGenerator::getFunctionLocations(){
     return impl->getFunctionLocations();
+}
+std::map<std::string,std::map<size_t,std::string>> RepairCandidateGenerator::getMutationInfo(){
+    return impl->getMutationInfo();
 }

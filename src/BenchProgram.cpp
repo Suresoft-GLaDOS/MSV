@@ -74,9 +74,12 @@ static std::vector<std::string> splitPath(std::string path){
     return result;
 }
 
-static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroStartEnd(const std::map<std::string, std::string> &fileCodeMap){
+static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroStartEnd(const std::map<std::string, std::string> &fileCodeMap,bool isWriter){
     std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> startEnd;
     startEnd.clear();
+    std::string ifdef;
+    if (isWriter) ifdef="#ifdef __PROFILE_";
+    else ifdef="#ifdef __COMPILE_";
 
     for (std::map<std::string, std::string>::const_iterator it=fileCodeMap.begin();it!=fileCodeMap.end();it++){
         std::istringstream str(it->second);
@@ -85,8 +88,8 @@ static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroS
         while(std::getline(str,line)){
             lineNum++;
 
-            if (line.find("#ifdef __COMPILE")!=std::string::npos){
-                size_t macro=std::stoi(line.substr(line.find("#ifdef __COMPILE_")+17));
+            if (line.find(ifdef)!=std::string::npos){
+                size_t macro=std::stoi(line.substr(line.find(ifdef)+17));
                 size_t start=lineNum;
                 size_t end=lineNum;
                 unsigned ifCount=0;
@@ -373,24 +376,34 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
         buildFull("src");
         src_dirs["src"] = true;
     }
-    std::string cmd;
-    if (dep_dir != "")
-        cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
-        // cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args "+ " 2>&1";
-    else
-        cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
-        // cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args " +  " 2>&1";
-    int sys_ret = explain_system_on_error(cmd.c_str());
 
-    assert( sys_ret == 0 );
-    parseArgFile("__args", build_dir, build_args);
-    sys_ret = explain_system_on_error("rm -rf __args");
-    if (sys_ret != 0)
-        fprintf(stderr, "Remove __args failed!\n");
-    src_dirs["src"] = true;
-/*    fprintf(stderr, "Arguments we get:\n");
-    for (size_t i = 0; i < build_args.size(); ++i)
-        fprintf(stderr, "\"%s\"\n", build_args[i].c_str());*/
+    if (build_dir_save.find(src_file)!=build_dir_save.end()){
+        build_dir=build_dir_save[src_file];
+        build_args=build_args_save[src_file];
+    }
+    else{
+        std::string cmd;
+        if (dep_dir != "")
+            cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
+            // cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args "+ " 2>&1";
+        else
+            cmd = build_cmd + " -c -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
+            // cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args " +  " 2>&1";
+        int sys_ret = explain_system_on_error(cmd.c_str());
+
+        assert( sys_ret == 0 );
+        parseArgFile("__args", build_dir, build_args);
+        sys_ret = explain_system_on_error("rm -rf __args");
+        if (sys_ret != 0)
+            fprintf(stderr, "Remove __args failed!\n");
+        src_dirs["src"] = true;
+
+        build_dir_save[src_file]=build_dir;
+        build_args_save[src_file]=build_args;
+    /*    fprintf(stderr, "Arguments we get:\n");
+        for (size_t i = 0; i < build_args.size(); ++i)
+            fprintf(stderr, "\"%s\"\n", build_args[i].c_str());*/
+    }
 }
 
 bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log) {
@@ -401,7 +414,7 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     assert(ret == 0);
     //FIXME: ugly for php
     ret = system("rm -rf ext/phar/phar.php");
-    assert(ret == 0);
+    // assert(ret == 0);
 
     if (timeout_limit == 0)
         ret = system((std::string("make >") + build_log + " 2>"+build_log).c_str());
@@ -415,31 +428,42 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     return succ;
 }
 
-bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bool force_reconf,std::vector<long long> compile_macro,std::vector<std::string> files) {
+bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bool force_reconf,std::vector<long long> compile_macro,std::vector<std::string> files,std::vector<long long> writer_macro) {
     assert(src_dirs.count(subDir) != 0);
     std::string src_dir = getFullPath(work_dir + "/" + subDir);
 
-    if (compile_macro.size()!=0){
-        for (int i=0;i<files.size();i++){
-            std::string code;
-            readCodeToString(files[i],code);
-            std::string sep="// compile_fin";
-            if (code.find(sep)!=std::string::npos)
-                code=code.substr(code.find(sep)+15);
-            std::string macroDefine="";
+    for (int i=0;i<files.size();i++){
+        std::string code;
+        readCodeToString(files[i],code);
+        std::string sep="// compile_fin";
+        if (code.find(sep)!=std::string::npos)
+            code=code.substr(code.find(sep)+15);
+        std::string macroDefine="";
+
+        if (compile_macro.size()!=0){
             for (long long macro: compile_macro){
                 macroDefine+="#define __COMPILE_";
                 macroDefine+=std::to_string(macro);
                 macroDefine+="\n";
             }
-            macroDefine+="// compile_fin\n";
-            macroDefine+=code;
-
-            std::ofstream fout(files[i],std::ofstream::out);
-            fout << macroDefine;
-            fout.close();
         }
+        if (writer_macro.size()!=0){
+            for (long long macro: writer_macro){
+                macroDefine+="#define __PROFILE_";
+                macroDefine+=std::to_string(macro);
+                macroDefine+="\n";
+            }
+        }
+
+        macroDefine+="// compile_fin\n";
+        macroDefine+=code;
+        
+
+        std::ofstream fout(files[i],std::ofstream::out);
+        fout << macroDefine;
+        fout.close();
     }
+
     if (force_reconf || !src_dirs[subDir]) {
         std::string cmd;
         if (dep_dir != ""){
@@ -482,26 +506,26 @@ void BenchProgram::pushWrapPath(const std::string &wrap_path, const std::string 
     std::string new_path = CLANG_WRAP_PATH;
     new_path += ":" + ori_path_for_wrap_path;
     int ret = setenv("PATH", new_path.c_str(), 1);
-    assert( ret == 0 );
+    // assert( ret == 0 );
 
     // Copy it to the wrap path
     std::string cmd = "cp -rf " + wrap_path + "/" + cc_path + " " + wrap_path + "/cc";
     ret = system(cmd.c_str());
-    assert( ret == 0);
+    // assert( ret == 0);
     cmd = "cp -rf " + wrap_path + "/" + cc_path + " " + wrap_path + "/gcc";
     ret = system(cmd.c_str());
-    assert( ret == 0);
+    // assert( ret == 0);
     // This is to copy g++
     cmd = "cp -rf " + wrap_path + "/" + cc_path + " " + wrap_path + "/g++";
     ret = system(cmd.c_str());
-    assert( ret == 0);
+    // assert( ret == 0);
     cmd = "rm -rf " + wrap_path + "/ld";
     ret = system(cmd.c_str());
-    assert( ret == 0);
+    // assert( ret == 0);
     if (wrap_ld) {
         cmd = "cp -rf " + wrap_path + "/" + std::string(LDBACKUP) + " " + wrap_path + "/ld";
         ret = system(cmd.c_str());
-        assert( ret == 0);
+        // assert( ret == 0);
     }
     /*cmd = "cp -rf " + wrap_path + "/" + cc_path + " " + wrap_path + "/ld";
     ret = system(cmd.c_str());
@@ -594,17 +618,10 @@ void removeMacros(std::map<std::string, std::string> fileMap,std::string srcDir)
     }
 }
 
-bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
-            std::map<std::string, std::string> &fileCodeMap,std::map<long long,std::string> macroWithCode,
-            std::map<std::string,std::vector<long long>> macroFile,std::string output_name) {
-    compile_cnt ++;
-    // This is to backup the changed sourcefile, in case something broken
-    // the workdir, and we want to just resume
-    std::vector<std::string> files;
-    files.clear();
+void BenchProgram::applyRepairedCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap,std::string wrapScript){
     std::ofstream fout2((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ofstream::out);
     size_t cnt = 0;
-    bool succ;
+
     pushEnvMap(envMap);
 
     pushWrapPath(CLANG_WRAP_PATH, wrapScript);
@@ -616,7 +633,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         if (target_file[0] != '/')
             target_file = src_dir + "/" + target_file;
         // Copy the backup
-        files.push_back(target_file);
+        // files.push_back(target_file);
         std::ostringstream sout;
         sout << "cp -f " << target_file << " " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
         std::string cmd = sout.str();
@@ -629,12 +646,12 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         fout << it->second;
         fout.close();
 
-        size_t filePos=target_file.rfind("/");
-        std::string bak_file=work_dir+"/"+output_name+target_file.substr(filePos+1);
-        std::ofstream fout_bak(bak_file.c_str(), std::ofstream::out);
-        fout_bak << it->second;
-        fout_bak.close();
-        outlog_printf(2,"Saved fixed file at: %s\n",bak_file.c_str());
+        // size_t filePos=target_file.rfind("/");
+        // std::string bak_file=work_dir+"/temp_1_"+target_file.substr(filePos+1);
+        // std::ofstream fout_bak(bak_file.c_str(), std::ofstream::out);
+        // fout_bak << it->second;
+        // fout_bak.close();
+        // outlog_printf(2,"Saved fixed file at: %s\n",bak_file.c_str());
 
         // Formatting meta-program, for find error berrer
         // system(std::string("clang-format -i "+target_file).c_str());
@@ -646,10 +663,71 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     }
     fout2.close();
     deleteLibraryFile(fileCodeMap);
+}
+
+void BenchProgram::rollbackOriginalCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap){
+    popWrapPath();
+
+    popEnvMap(envMap);
+    // Remove temporary backup file, because we have done it
+    size_t cnt = 0;
+    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
+            it != fileCodeMap.end(); ++ it) {
+        std::string target_file = it->first;
+        if (target_file[0] != '/')
+            target_file = src_dir + "/" + it->first;
+        else
+            target_file = it->first;
+        std::ostringstream sout;
+        sout << "mv -f " << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << target_file;
+        std::string cmd = sout.str();
+        system(cmd.c_str());
+        cnt ++;
+        // Make sure it refresh the build system to avoid cause problem
+        cmd = std::string("touch ") + target_file;
+        system(cmd.c_str());
+        // remove the .o and .lo files to force recompile next time
+        {
+            std::string tmp = replace_ext(target_file, ".o");
+            std::string cmd = "rm -f "  + tmp;
+            system(cmd.c_str());
+        }
+        {
+            std::string tmp = replace_ext(target_file, ".lo");
+            std::string cmd = "rm -f "  + tmp;
+            system(cmd.c_str());
+        }
+    }
+
+    std::string cmd = "rm -rf " + work_dir + "/__backup.log";
+    execute_cmd_until_succ(cmd);
+}
+
+std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
+            const std::map<std::string, std::string> &fileCodeMap,const std::map<long long,std::string> &macroWithCode,
+            const std::map<std::string,std::vector<long long>> &macroFile,std::string output_name,std::vector<long long> macros) {
+    compile_cnt ++;
+    // This is to backup the changed sourcefile, in case something broken
+    // the workdir, and we want to just resume
+    std::vector<std::string> files;
+    files.clear();
+    bool succ;
+
+    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
+            it != fileCodeMap.end(); ++it) {
+        std::string target_file = it->first;
+        if (target_file[0] != '/')
+            target_file = src_dir + "/" + target_file;
+        // Copy the backup
+        files.push_back(target_file);
+    }
 
     outlog_printf(2,"Trying to build with all macros...\n");
     size_t buildCount=0;
-    std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> macroLines=getMacroStartEnd(fileCodeMap);
+    std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> macroLines;
+    if (macros.size()==0)
+        macroLines=getMacroStartEnd(fileCodeMap,false);
+    else macroLines=getMacroStartEnd(fileCodeMap,true);
     std::set<long long> linkErrorMacros;
     linkErrorMacros.clear();
     std::set<long long> compileErrorMacros;
@@ -668,7 +746,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             fail.insert(*it);
         }
         
-        for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+        for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
             bool include=false;
             for (std::set<long long>::iterator it2=fail.begin();it2!=fail.end();it2++){
                 if (*it2==it->first) {
@@ -678,11 +756,12 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             }
             if (!include) succ_id.push_back(it->first);
         }
+
         outlog_printf(2,"%uth build...\n",++buildCount);
-        if (buildCount==1)
+        if (macros.size()==0)
             succ=buildFull("src", 0,false,succ_id,files);
         else
-            succ=buildFull("src", 0,false,succ_id,files);
+            succ=buildFull("src", 0,false,macros,files,succ_id);
         if (succ){
             outlog_printf(2,"Build Success!\n");
         }
@@ -693,25 +772,25 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             bool added=false;
             
             while(std::getline(buildLog,line)){
-                if (line.find("undefined reference to") != std::string::npos) {
-                    size_t pos = line.find("undefined reference to");
-                    size_t start = line.find("'", pos);
-                    if (start == line.length() || start == line.length() - 1 || start == line.length() - 2)
-                        start = line.find("`", pos);
-                    size_t end = line.find("'", start + 1);
-                    std::string errorFunc = line.substr(start + 1, end - start - 1);
+                // if (line.find("undefined reference to") != std::string::npos) {
+                //     size_t pos = line.find("undefined reference to");
+                //     size_t start = line.find("'", pos);
+                //     if (start == line.length() || start == line.length() - 1 || start == line.length() - 2)
+                //         start = line.find("`", pos);
+                //     size_t end = line.find("'", start + 1);
+                //     std::string errorFunc = line.substr(start + 1, end - start - 1);
 
-                    for (std::map<long long, std::string>::iterator it = macroWithCode.begin(); it != macroWithCode.end(); it++)
-                    {
-                        if (it->second.find(errorFunc) != std::string::npos)
-                        {
-                            if(linkErrorMacros.find(it->first)==linkErrorMacros.end())
-                                added=true;
-                            linkErrorMacros.insert(it->first);
-                        }
-                    }
-                }
-                else if (line.find("error: ")!=std::string::npos){
+                //     for (std::map<long long, std::string>::const_iterator it = macroWithCode.begin(); it != macroWithCode.end(); it++)
+                //     {
+                //         if (it->second.find(errorFunc) != std::string::npos)
+                //         {
+                //             if(linkErrorMacros.find(it->first)==linkErrorMacros.end())
+                //                 added=true;
+                //             linkErrorMacros.insert(it->first);
+                //         }
+                //     }
+                // }
+                if (line.find("error: ")!=std::string::npos){
                     if (line.find("linker command")==std::string::npos){
                         std::string fileName;
                         size_t location=line.find(".c:");
@@ -742,6 +821,13 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             else fileName=line.substr(0,location+4);
                         }
 
+                        for (std::map<std::string,std::string>::const_iterator it=fileCodeMap.begin();it!=fileCodeMap.end();it++){
+                            if (it->first.find(fileName)!=std::string::npos){
+                                fileName=it->first;
+                                break;
+                            }
+                        }
+
                         if (line.find("static declaration of")!=std::string::npos){
                             size_t pos=line.find("static declaration of");
                             size_t first=line.find("'");
@@ -750,7 +836,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             size_t last=line.find("'",first+1);
                             std::string function=line.substr(first+1,last-first-1);
 
-                            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                            for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
                                     if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
                                         added=true;
@@ -767,7 +853,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             size_t last=line.find("'",first+1);
                             std::string function=line.substr(first+1,last-first-1);
 
-                            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                            for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
                                     if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
                                         added=true;
@@ -809,7 +895,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                             if (isRe){
                                 std::getline(buildLog,line);
                                 line=stripLine(line);
-                                for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                     line.erase(remove(line.begin(), line.end(), ' '), line.end());
                                     std::string codeLine=it->second;
                                     codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
@@ -847,10 +933,24 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         }
         candidateMacro+="'";
 
+        std::string compile_macros="'";
+        if (macros.size()!=0){
+            for (std::vector<long long>::iterator it2=macros.begin();it2!=macros.end();it2++){
+                compile_macros+=std::to_string(*it2)+",";
+            }
+
+            if (compile_macros!="'"){
+                compile_macros.pop_back();
+            }
+            compile_macros+="'";
+        }
+
         ExecutionTimer timer;
         std::string src_dir = getFullPath(work_dir + "/src");
         std::string cmd;
         cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+candidateMacro;
+        if (macros.size()!=0)
+            cmd+=" -n "+compile_macros;
         // cmd+=" -t "+build_cmd;
         if (dep_dir!="") cmd+=" -p "+dep_dir;
         cmd+=" -w ";
@@ -897,7 +997,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
     {
         outlog_printf(2,"Build failed, Trying to find fail macros...\n");
         //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
-        if (linkErrorMacros.size()>=2){
+        if (linkErrorMacros.size()>=2 || compileErrorMacros.size()>=2){
             std::set<long long> fail_temp;
             fail_temp.clear();
             for (std::set<long long>::iterator it=compileErrorMacros.begin();it!=compileErrorMacros.end();it++){
@@ -908,7 +1008,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             }
 
             fail.clear();
-            for (std::map<std::string,std::vector<long long>>::iterator it=macroFile.begin();it!=macroFile.end();it++){
+            for (std::map<std::string,std::vector<long long>>::const_iterator it=macroFile.begin();it!=macroFile.end();it++){
                 std::string candidateMacro="'";
                 for (std::set<long long>::iterator it2=fail_temp.begin();it2!=fail_temp.end();it2++){
                     if (std::find(it->second.begin(),it->second.end(),*it2)!=it->second.end());
@@ -921,6 +1021,18 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                 else continue; // No fail macro in this file, skip it!
                 candidateMacro+="'";
 
+                std::string compile_macros="'";
+                if (macros.size()!=0){
+                    for (std::vector<long long>::iterator it2=macros.begin();it2!=macros.end();it2++){
+                        compile_macros+=std::to_string(*it2)+",";
+                    }
+
+                    if (compile_macros!="'"){
+                        compile_macros.pop_back();
+                    }
+                    compile_macros+="'";
+                }
+
                 outlog_printf(2,"Search %s!\n",it->first.c_str());
 
                 ExecutionTimer timer;
@@ -928,6 +1040,8 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
                 removeMacros(fileCodeMap,src_dir);
                 std::string cmd;
                 cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+candidateMacro;
+                if (macros.size()!=0)
+                    cmd+=" -n "+compile_macros;
                 // cmd+=" -t "+build_cmd;
                 if (dep_dir!="") cmd+=" -p "+dep_dir;
                 cmd+=" -w "+src_dir+"/"+it->first;
@@ -957,7 +1071,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             }
 
             succ_id.clear();
-            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+            for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                 bool include=false;
                 for (std::set<long long>::iterator it2=fail.begin();it2!=fail.end();it2++){
                     if (*it2==it->first) {
@@ -977,7 +1091,7 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
             }
 
             succ_id.clear();
-            for (std::map<long long,std::string>::iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+            for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                 bool include=false;
                 for (std::set<long long>::iterator it2=fail.begin();it2!=fail.end();it2++){
                     if (*it2==it->first) {
@@ -1000,45 +1114,16 @@ bool BenchProgram::buildWithRepairedCode(const std::string &wrapScript, const En
         // finalMacros.close();
 
         // Build final build
-        succ = buildFull("src", 0,false,succ_id,files);
-        if (succ) outlog_printf(2,"Success to build final program!\n");
-        popWrapPath();
-
-        popEnvMap(envMap);
-    }
-    // Remove temporary backup file, because we have done it
-    cnt = 0;
-    for (std::map<std::string, std::string>::const_iterator it = fileCodeMap.begin();
-            it != fileCodeMap.end(); ++ it) {
-        std::string target_file = it->first;
-        if (target_file[0] != '/')
-            target_file = src_dir + "/" + it->first;
+        if (macros.size()==0)
+            succ=buildFull("src", 0,false,succ_id,files);
         else
-            target_file = it->first;
-        std::ostringstream sout;
-        sout << "mv -f " << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << target_file;
-        std::string cmd = sout.str();
-        execute_cmd_until_succ(cmd);
-        cnt ++;
-        // Make sure it refresh the build system to avoid cause problem
-        cmd = std::string("touch ") + target_file;
-        execute_cmd_until_succ(cmd);
-        // remove the .o and .lo files to force recompile next time
-        {
-            std::string tmp = replace_ext(target_file, ".o");
-            std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
-        }
-        {
-            std::string tmp = replace_ext(target_file, ".lo");
-            std::string cmd = "rm -f "  + tmp;
-            execute_cmd_until_succ(cmd);
-        }
+            succ=buildFull("src", 0,false,macros,files,succ_id);
+        if (succ) outlog_printf(2,"Success to build final program!\n");
     }
 
-    std::string cmd = "rm -rf " + work_dir + "/__backup.log";
-    execute_cmd_until_succ(cmd);
-    return succ;
+    if(succ)
+        return succ_id;
+    else return std::vector<long long>();
 }
 
 /*void BenchProgram::prepare_test() {
@@ -1288,7 +1373,7 @@ std::string BenchProgram::normalizePath(const std::string &str) {
     use_arg_file = true;
 }*/
 
-std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::string &file, const std::string &code) {
+std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::string &file, const std::string &code,std::vector<long long> macros) {
     std::string build_dir;
     std::vector<std::string> args;
     this->getCompileMisc(file, build_dir, args);
@@ -1307,6 +1392,10 @@ std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::strin
     assert( idx != std::string::npos);
     tmpArgs.push_back("-I");
     tmpArgs.push_back(full_key_path.substr(0, idx));
+    for (size_t i=0;i<macros.size();i++){
+        tmpArgs.push_back("-D");
+        tmpArgs.push_back("__COMPILE_"+std::to_string(macros[i]));
+    }
     tmpArgs.insert(tmpArgs.end(), args.begin(), args.end());
 
     int ret = chdir(target.c_str());

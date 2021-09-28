@@ -881,6 +881,7 @@ class DD2(DD):
     run=0
     use_cal=True
     full_macros=[]
+    writer_macro=[]
 
     def __listminus(self, c1, c2):
 	"""Return a list of all elements of C1 that are not in C2."""
@@ -966,8 +967,9 @@ class DD2(DD):
     def search(self,c):
         self._search(c)
 
-    def __init__(self,full_macros):
+    def __init__(self,full_macros,writer_macro=[]):
         self.full_macros=full_macros
+        self.writer_macro=writer_macro
         DD.__init__(self)
 		    
 import os
@@ -976,11 +978,12 @@ import getopt
 from sys import argv
 
 if __name__ == '__main__':
-    opts, args = getopt.getopt(argv[1:], "l:s:m:p:w:j:")
+    opts, args = getopt.getopt(argv[1:], "l:s:m:p:w:j:n:")
     dep_dir = ""
     build_log_file = ""
     src_dir=""
     macros=[]
+    writer_macros=[]
     files=[]
     parallel=0
 
@@ -995,6 +998,11 @@ if __name__ == '__main__':
             macros_str=a.split(",")
             for i in macros_str:
                 macros.append(int(i))
+        elif o == "-n":
+            writer_str=a.split(",")
+            for i in writer_str:
+                writer_macros.append(int(i))
+
         elif o=="-w":
             files=a.split(":")
         elif o=="-j":
@@ -1014,10 +1022,21 @@ if __name__ == '__main__':
                 file_in.close()
 
                 macro_define=""
-                for i in c:
-                    macro_define+="#define __COMPILE_"
-                    macro_define+=str(i)
-                    macro_define+="\n"
+                if len(self.writer_macro)==0:
+                    for i in c:
+                        macro_define+="#define __COMPILE_"
+                        macro_define+=str(i)
+                        macro_define+="\n"
+                else:
+                    for i in self.writer_macro:
+                        macro_define+="#define __COMPILE_"
+                        macro_define+=str(i)
+                        macro_define+="\n"
+                    for i in c:
+                        macro_define+="#define __PROFILE_"
+                        macro_define+=str(i)
+                        macro_define+="\n"
+
                 macro_define+="// compile_fin\n"
                 macro_define+=code
                 file_out=open(file,"w")
@@ -1045,18 +1064,19 @@ if __name__ == '__main__':
                 return self.PASS
             else:
                 return self.UNRESOLVED
-        def __init__(self,full_macros,parallel=0):
+        def __init__(self,full_macros,parallel=0,compile_macros=[]):
             DD2.__init__(self,full_macros)
             # self.debug_dd=True
             self.use_cal=False
             self.parallel=parallel
+            self.writer_macro=compile_macros
 
-    dd_test=BuildTest(macros,parallel)
-    # (c,c1,c2)=dd_test.dd(macro_list)
+    dd_test=BuildTest(macros,parallel,writer_macros)
     dd_test.search(macros)
+    fail=macros
+    # (c,c1,c2)=dd_test.dd(macro_list)
     # print "Run with optimization:",dd_test.run
 
-    fail=macros
     for i in dd_test.success:
         fail.remove(i)
     print "Fail macros:",fail
