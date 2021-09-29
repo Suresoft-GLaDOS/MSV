@@ -370,6 +370,7 @@ private:
     void deleteLibraryFile(const std::map<std::string, std::string> &fileCodeMap);
 public:
     bool isCondition;
+    bool skip_profile;
     // We create the work dir from a configuration file, and we will put workdir
     // in the workDirPath path. If it is empty string, we will create a work dir
     // with an empty directory

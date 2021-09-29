@@ -1046,7 +1046,8 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                 if (dep_dir!="") cmd+=" -p "+dep_dir;
                 cmd+=" -w "+src_dir+"/"+it->first;
                 cmd+=" -j 10 ";
-                // cmd+=" > DD.log";
+                // cmd+=" > DD.log 2&>1";
+                printf("%s\n",cmd.c_str());
                 ret = system(cmd.c_str());
 
                 if (ret==0) {
