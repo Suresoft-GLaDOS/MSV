@@ -1909,12 +1909,13 @@ class TestBatcher {
                 std::ofstream bak_fo(bak_file.c_str());
                 bak_fo << it->second;
                 bak_fo.close();
+                outlog_printf(2,"Saved fixed file at: %s\n",bak_file.c_str());
             }
         }
         std::vector<long long> succ_macros=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
         outlog_printf(0,"Meta-program generated in %llus!\n",get_timer());
 
-        if (P.skip_profile){
+        if (!P.skip_profile){
             outlog_printf(2,"Adding profile writers...\n");
             std::map<long long,std::string> macroCode;
             macroCode.clear();

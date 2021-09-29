@@ -960,7 +960,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
         }
         cmd+=" -j 10 ";
         // cmd+=" > DD.log";
-        ret = system(cmd.c_str());
+        ret = explain_system_on_error(cmd.c_str());
 
         if (ret==0) {
             total_repair_build_time += timer.getSeconds();
