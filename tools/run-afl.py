@@ -155,12 +155,25 @@ def collect_result_positive(confgen: ConfigGenerator, fuzz_done: list):
                     positive_dict[conf_str] = positive_dict[conf_str] and (tokens[4] == "1")
                 else:
                     positive_dict[conf_str] = (tokens[4] == "1")
-    with open(os.path.join(confgen.result_dir, "positive-afl-result.csv"), "w") as pos_result:
+    with open(os.path.join(confgen.result_dir, "afl-result.csv"), "w") as pos_result:
+        temp_cycle = 0
+        temp_time = 1
         for conf in positive_dict:
+            parsed = conf.split(",")
+            num = len(parsed)
+            temp_cycle += 1
+            result_str = f"{temp_cycle},{temp_time},{parsed[0]},{parsed[1]},1"
             if positive_dict[conf]:
-                pos_result.write(conf + "$1\n")
+                result_str += ",1"
             else:
-                pos_result.write(conf + "$0\n")
+                result_str += ",0"
+            if num == 2:
+                result_str = result_str + "\n"
+            elif num == 3:
+                result_str = f"{result_str},{parsed[2]}\n"
+            elif num == 5:
+                result_str = f"{result_str},{parsed[2]},{parsed[3]},{parsed[4]}\n"
+            pos_result.write(result_str)
 
 
 def collect_result_validation(confgen: ConfigGenerator, fuzz_done: list):
