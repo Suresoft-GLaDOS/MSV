@@ -978,7 +978,7 @@ import getopt
 from sys import argv
 
 if __name__ == '__main__':
-    opts, args = getopt.getopt(argv[1:], "l:s:m:p:w:j:n:")
+    opts, args = getopt.getopt(argv[1:], "l:s:p:w:j:n")
     dep_dir = ""
     build_log_file = ""
     src_dir=""
@@ -986,6 +986,7 @@ if __name__ == '__main__':
     writer_macros=[]
     files=[]
     parallel=0
+    is_profile=False
 
     for o, a in opts:
         if o == "-p":
@@ -994,19 +995,31 @@ if __name__ == '__main__':
             build_log_file=a
         elif o == "-s":
             src_dir=a
-        elif o == "-m":
-            macros_str=a.split(",")
-            for i in macros_str:
-                macros.append(int(i))
-        elif o == "-n":
-            writer_str=a.split(",")
-            for i in writer_str:
-                writer_macros.append(int(i))
-
         elif o=="-w":
             files=a.split(":")
         elif o=="-j":
             parallel=int(a)
+        elif o=='-n':
+            is_profile=True
+    
+    macros_file="/tmp/macros.tmp"
+    tmp_file=open(macros_file,"r")
+    macros_str=tmp_file.readline()
+    # print macros_str
+    tmp_file.close()
+    macros_list=macros_str.split(",")
+    for macro in macros_list:
+        macros.append(int(macro))
+
+    if is_profile:
+        macros_file="/tmp/compile_macros.tmp"
+        tmp_file=open(macros_file,"r")
+        macros_str=tmp_file.readline()
+        # print macros_str
+        tmp_file.close()
+        macros_list=macros_str.split(",")
+        for macro in macros_list:
+            writer_macros.append(int(macro))
 
     # Test the outcome cache
     oc_test()

@@ -1009,28 +1009,27 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
 
             fail.clear();
             for (std::map<std::string,std::vector<long long>>::const_iterator it=macroFile.begin();it!=macroFile.end();it++){
-                std::string candidateMacro="'";
+                std::string candidateMacro="";
                 for (std::set<long long>::iterator it2=fail_temp.begin();it2!=fail_temp.end();it2++){
                     if (std::find(it->second.begin(),it->second.end(),*it2)!=it->second.end());
                         candidateMacro+=std::to_string(*it2)+",";
                 }
 
-                if (candidateMacro!="'"){
+                if (candidateMacro!=""){
                     candidateMacro.pop_back();
                 }
                 else continue; // No fail macro in this file, skip it!
-                candidateMacro+="'";
 
-                std::string compile_macros="'";
+                std::string compile_macros="";
                 if (macros.size()!=0){
                     for (std::vector<long long>::iterator it2=macros.begin();it2!=macros.end();it2++){
                         compile_macros+=std::to_string(*it2)+",";
                     }
 
-                    if (compile_macros!="'"){
+                    if (compile_macros!=""){
                         compile_macros.pop_back();
                     }
-                    compile_macros+="'";
+                    compile_macros+="";
                 }
 
                 outlog_printf(2,"Search %s!\n",it->first.c_str());
@@ -1039,16 +1038,23 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                 std::string src_dir = getFullPath(work_dir + "/src");
                 removeMacros(fileCodeMap,src_dir);
                 std::string cmd;
-                cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+candidateMacro;
-                if (macros.size()!=0)
-                    cmd+=" -n "+compile_macros;
+                cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir;
+                std::ofstream macroFile("/tmp/macros.tmp");
+                macroFile << candidateMacro;
+                macroFile.close();
+                if (macros.size()!=0){
+                    cmd+=" -n ";
+                    std::ofstream macroFile2("/tmp/compile_macros.tmp");
+                    macroFile2 << compile_macros;
+                    macroFile2.close();
+                }
+                    // cmd+=" -n "+compile_macros;
                 // cmd+=" -t "+build_cmd;
                 if (dep_dir!="") cmd+=" -p "+dep_dir;
                 cmd+=" -w "+src_dir+"/"+it->first;
                 cmd+=" -j 10 ";
                 // cmd+=" > DD.log 2&>1";
-                printf("%s\n",cmd.c_str());
-                ret = system(cmd.c_str());
+                ret = explain_system_on_error(cmd.c_str());
 
                 if (ret==0) {
                     total_repair_build_time += timer.getSeconds();
