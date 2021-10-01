@@ -1150,6 +1150,7 @@ public:
         switchCluster=R.getSwitchCluster();
         macroCode=R.getMacroCode();
         macroFile=R.getMacroFile();
+        P.getSwitchInfo().varSizes=R.getVarSizes();
         // caseCluster=R.getCaseCluster();
 
         // Create rules
