@@ -141,7 +141,7 @@ void BenchProgram::createSrcClone(const std::string &subDir) {
 
     cmd=copy;
     cmd+= ori_src_dir+"/.git "+work_dir+"/"+subDir;
-    system(cmd.c_str());
+    int res=system(cmd.c_str());
     src_dirs.insert(std::make_pair(subDir, false));
 }
 
