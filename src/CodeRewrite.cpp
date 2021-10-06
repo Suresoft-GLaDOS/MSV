@@ -654,7 +654,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 size_t comma=currentBody.find(",",endLoc+2);
                 size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
 
-                varSizes[std::to_string(counter)+"-"+std::to_string(case_count)]=varCount;
+                varSizes[std::make_pair(counter,case_count)]=varCount;
             }
 
             index++;
@@ -719,7 +719,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 size_t comma=currentBody.find(",",endLoc+2);
                 size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
 
-                varSizes[std::to_string(counter)+"-"+std::to_string(case_count)]=varCount;
+                varSizes[std::make_pair(counter,case_count)]=varCount;
             }
 
 
@@ -815,7 +815,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 size_t comma=currentBody.find(",",endLoc+2);
                 size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
 
-                varSizes[std::to_string(counter)+"-"+std::to_string(case_count)]=varCount;
+                varSizes[std::make_pair(counter,case_count)]=varCount;
             }
 
 
@@ -881,7 +881,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 size_t comma=currentBody.find(",",endLoc+2);
                 size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
 
-                varSizes[std::to_string(counter)+"-"+std::to_string(case_count)]=varCount;
+                varSizes[std::make_pair(counter,case_count)]=varCount;
             }
 
 

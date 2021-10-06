@@ -66,7 +66,7 @@ class CodeRewriter {
 
     // For mutation
     std::map<std::string,std::map<clang::FunctionDecl *,std::pair<unsigned,unsigned>>> functionLoc; // function locations
-    std::map<std::string,size_t> varSizes;
+    std::map<std::pair<size_t,size_t>,size_t> varSizes;
 public:
     int index;
     std::vector<File> rules;
@@ -130,7 +130,7 @@ public:
     std::map<std::string,std::vector<long long>> getMacroFile(){
         return macroFile;
     }
-    std::map<std::string,size_t> getVarSizes(){
+    std::map<std::pair<size_t,size_t>,size_t> getVarSizes(){
         return varSizes;
     }
 };

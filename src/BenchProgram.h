@@ -182,7 +182,7 @@ private:
         std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
         std::vector<File> infos;
 
-        std::map<std::string,size_t> varSizes;
+        std::map<std::pair<size_t,size_t>,size_t> varSizes;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
         void save(){
@@ -291,16 +291,11 @@ private:
             cJSON_AddItemToObject(json,"rules",ruleArray);
 
             cJSON *sizesArray=cJSON_CreateArray();
-            for (std::map<std::string,size_t>::iterator it=varSizes.begin();it!=varSizes.end();it++){
+            for (std::map<std::pair<size_t,size_t>,size_t>::iterator it=varSizes.begin();it!=varSizes.end();it++){
                 cJSON *sizeObject=cJSON_CreateObject();
-                std::string config=it->first;
-                char configStr[50];
-                config.copy(configStr,config.size());
-                std::string switchNum=strtok(configStr,"-");
-                std::string caseNum=strtok(NULL," ");
 
-                cJSON_AddNumberToObject(sizeObject,"switch",stoi(switchNum));
-                cJSON_AddNumberToObject(sizeObject,"case",stoi(caseNum));
+                cJSON_AddNumberToObject(sizeObject,"switch",it->first.first);
+                cJSON_AddNumberToObject(sizeObject,"case",it->first.second);
                 cJSON_AddNumberToObject(sizeObject,"size",it->second);
                 cJSON_AddItemToArray(sizesArray,sizeObject);
             }
