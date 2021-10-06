@@ -27,9 +27,7 @@ def tobuild(src_dir):
     print "Path env: ", environ["PATH"];
     chdir(src_dir);
 
-    print src_dir
-    if path.isfile("./CMakeLists.txt"):
-        subprocess.call(["cmake","."],shell=True)
+    ret = subprocess.call("make clean",shell=True)
     ret = subprocess.call(["make"],shell=True);
     chdir(ori_dir);
 
