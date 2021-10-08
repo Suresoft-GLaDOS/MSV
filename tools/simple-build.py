@@ -26,13 +26,15 @@ def tobuild(src_dir):
     ori_dir = getcwd();
     print "Path env: ", environ["PATH"];
     chdir(src_dir);
-    ret = subprocess.call("make");
+
+    ret = subprocess.call("make clean",shell=True)
+    ret = subprocess.call(["make"],shell=True);
     chdir(ori_dir);
 
     return ret == 0;
 
 if __name__ == "__main__":
-    opts, args = getopt.getopt(argv[1:], "cd:hx");
+    opts, args = getopt.getopt(argv[1:], "cd:hxj:");
     dryrun_src = "";
     compile_only = False;
     print_usage = False;
@@ -46,7 +48,10 @@ if __name__ == "__main__":
             compile_only = True;
         elif o == "-h":
             print_usage = True;
+        elif o=="-j":
+            continue
 
+    print "simple-build"
     if config_only:
         exit(0);
 

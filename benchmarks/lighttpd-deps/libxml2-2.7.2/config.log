@@ -27,16 +27,8 @@ uname -v = #131-Ubuntu SMP Wed Dec 9 06:57:35 UTC 2020
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH: /angelix/build/criu/criu
-PATH: /angelix/build/criu/crit
-PATH: /angelix/build/perl/bin
-PATH: /angelix/build/bin/
-PATH: /angelix/src/tools
-PATH: /angelix/build/z3_2_19/bin/
-PATH: /angelix/build/z3/build/
-PATH: /angelix/src/klee/Release+Asserts/bin/
-PATH: /angelix/build/llvm-2.9/Release+Asserts/bin/
-PATH: /angelix/build/llvm-gcc4.2-2.9-x86_64-linux/bin/
+PATH: /root/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/bin
+PATH: /root/.vscode-server/bin/cfa2e218100323074ac1948c885448fdf4de2a7f/bin
 PATH: /usr/local/sbin
 PATH: /usr/local/bin
 PATH: /usr/sbin
@@ -185,7 +177,8 @@ configure:4245: checking for wget
 configure:4263: found /usr/bin/wget
 configure:4276: result: /usr/bin/wget
 configure:4286: checking for xmllint
-configure:4317: result: /usr/bin/xmllint
+configure:4304: found /usr/local/bin/xmllint
+configure:4317: result: /usr/local/bin/xmllint
 configure:4327: checking for xsltproc
 configure:4345: found /usr/bin/xsltproc
 configure:4358: result: /usr/bin/xsltproc
@@ -454,7 +447,7 @@ configure: failed program was:
 |       end
 configure:7069: result: no
 configure:7099: checking the maximum length of command line arguments
-configure:7211: result: 3458764513820540925
+configure:7211: result: 1572864
 configure:7223: checking command to parse /usr/bin/nm -B output from gcc object
 configure:7328: gcc -c -g -O2  conftest.c >&5
 configure:7331: $? = 0
@@ -1606,8 +1599,7 @@ configure:25974: $? = 0
 configure:25992: result: yes
 configure:25912: checking for isnand
 configure:25968: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccikbufG.o: In function `main':
-/root/project/prophet-gpl/benchmarks/lighttpd-deps/libxml2-2.7.2/conftest.c:94: undefined reference to `isnand'
+conftest.c:94: error: undefined reference to 'isnand'
 collect2: error: ld returned 1 exit status
 configure:25974: $? = 1
 configure: failed program was:
@@ -1711,8 +1703,7 @@ configure: failed program was:
 configure:25992: result: no
 configure:25912: checking for fp_class
 configure:25968: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccicjOPM.o: In function `main':
-/root/project/prophet-gpl/benchmarks/lighttpd-deps/libxml2-2.7.2/conftest.c:94: undefined reference to `fp_class'
+conftest.c:94: error: undefined reference to 'fp_class'
 collect2: error: ld returned 1 exit status
 configure:25974: $? = 1
 configure: failed program was:
@@ -1816,8 +1807,7 @@ configure: failed program was:
 configure:25992: result: no
 configure:25912: checking for class
 configure:25968: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccO3YM8X.o: In function `main':
-/root/project/prophet-gpl/benchmarks/lighttpd-deps/libxml2-2.7.2/conftest.c:94: undefined reference to `class'
+conftest.c:94: error: undefined reference to 'class'
 collect2: error: ld returned 1 exit status
 configure:25974: $? = 1
 configure: failed program was:
@@ -1921,8 +1911,7 @@ configure: failed program was:
 configure:25992: result: no
 configure:25912: checking for fpclass
 configure:25968: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccaoAWr5.o: In function `main':
-/root/project/prophet-gpl/benchmarks/lighttpd-deps/libxml2-2.7.2/conftest.c:94: undefined reference to `fpclass'
+conftest.c:94: error: undefined reference to 'fpclass'
 collect2: error: ld returned 1 exit status
 configure:25974: $? = 1
 configure: failed program was:
@@ -2044,8 +2033,7 @@ configure:26167: $? = 0
 configure:26185: result: yes
 configure:26105: checking for _stat
 configure:26161: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccxEZiyH.o: In function `main':
-/root/project/prophet-gpl/benchmarks/lighttpd-deps/libxml2-2.7.2/conftest.c:99: undefined reference to `_stat'
+conftest.c:99: error: undefined reference to '_stat'
 collect2: error: ld returned 1 exit status
 configure:26167: $? = 1
 configure: failed program was:
@@ -2268,8 +2256,7 @@ conftest.c:103:1: warning: function declaration isn't a prototype [-Wstrict-prot
 conftest.c:112:1: warning: function declaration isn't a prototype [-Wstrict-prototypes]
  main ()
  ^~~~
-/tmp/ccfbDeI8.o: In function `main':
-/root/project/prophet-gpl/benchmarks/lighttpd-deps/libxml2-2.7.2/conftest.c:114: undefined reference to `shl_load'
+conftest.c:114: error: undefined reference to 'shl_load'
 collect2: error: ld returned 1 exit status
 configure:27760: $? = 1
 configure: failed program was:
@@ -2399,7 +2386,8 @@ conftest.c:87:1: warning: function declaration isn't a prototype [-Wstrict-proto
 conftest.c:89:1: warning: function declaration isn't a prototype [-Wstrict-prototypes]
  main ()
  ^~~~
-/usr/bin/ld: cannot find -ldld
+/usr/bin/ld: error: cannot find -ldld
+conftest.c:91: error: undefined reference to 'shl_load'
 collect2: error: ld returned 1 exit status
 configure:27824: $? = 1
 configure: failed program was:
@@ -2506,8 +2494,7 @@ conftest.c:103:1: warning: function declaration isn't a prototype [-Wstrict-prot
 conftest.c:112:1: warning: function declaration isn't a prototype [-Wstrict-prototypes]
  main ()
  ^~~~
-/tmp/ccxziyAo.o: In function `main':
-/root/project/prophet-gpl/benchmarks/lighttpd-deps/libxml2-2.7.2/conftest.c:114: undefined reference to `dlopen'
+conftest.c:114: error: undefined reference to 'dlopen'
 collect2: error: ld returned 1 exit status
 configure:27912: $? = 1
 configure: failed program was:
@@ -2725,6 +2712,7 @@ config.status:794: creating libxml-2.0.pc
 config.status:794: creating libxml-2.0-uninstalled.pc
 config.status:794: creating python/setup.py
 config.status:794: creating config.h
+config.status:1092: config.h is unchanged
 config.status:1139: executing depfiles commands
 
 ## ---------------- ##
@@ -2849,7 +2837,7 @@ ac_cv_path_PYTHON=/usr/bin/python
 ac_cv_path_RM=/bin/rm
 ac_cv_path_TAR=/bin/tar
 ac_cv_path_WGET=/usr/bin/wget
-ac_cv_path_XMLLINT=/usr/bin/xmllint
+ac_cv_path_XMLLINT=/usr/local/bin/xmllint
 ac_cv_path_XSLTPROC=/usr/bin/xsltproc
 ac_cv_path_install='/usr/bin/install -c'
 ac_cv_path_mkdir=/bin/mkdir
@@ -2889,7 +2877,7 @@ lt_cv_prog_gnu_ldcxx=yes
 lt_cv_sys_global_symbol_pipe='sed -n -e '\''s/^.*[ 	]\([ABCDGIRSTW][ABCDGIRSTW]*\)[ 	][ 	]*\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2 \2/p'\'''
 lt_cv_sys_global_symbol_to_c_name_address='sed -n -e '\''s/^: \([^ ]*\) $/  {\"\1\", (lt_ptr) 0},/p'\'' -e '\''s/^[BCDEGRST] \([^ ]*\) \([^ ]*\)$/  {"\2", (lt_ptr) \&\2},/p'\'''
 lt_cv_sys_global_symbol_to_cdecl='sed -n -e '\''s/^. .* \(.*\)$/extern int \1;/p'\'''
-lt_cv_sys_max_cmd_len=3458764513820540925
+lt_cv_sys_max_cmd_len=1572864
 lt_lt_cv_prog_compiler_c_o='"yes"'
 lt_lt_cv_prog_compiler_c_o_CXX='"yes"'
 lt_lt_cv_sys_global_symbol_pipe='"sed -n -e '\''s/^.*[ 	]\\([ABCDGIRSTW][ABCDGIRSTW]*\\)[ 	][ 	]*\\([_A-Za-z][_A-Za-z0-9]*\\)\$/\\1 \\2 \\2/p'\''"'
@@ -2991,7 +2979,7 @@ PYTHON_VERSION='2.7'
 RANLIB='ranlib'
 RDL_LIBS=''
 READER_TEST='Readertests'
-RELDATE='Fri Jan 22 2021'
+RELDATE='Tue May 11 2021'
 RM='/bin/rm'
 SED='/bin/sed'
 SET_MAKE=''
@@ -3060,7 +3048,7 @@ WITH_XPATH='1'
 WITH_XPTR='1'
 WITH_ZLIB='1'
 XINCLUDE_OBJ='xinclude.o'
-XMLLINT='/usr/bin/xmllint'
+XMLLINT='/usr/local/bin/xmllint'
 XML_CFLAGS=''
 XML_INCLUDEDIR='-I${includedir}/libxml2'
 XML_LIBDIR='-L${libdir}'

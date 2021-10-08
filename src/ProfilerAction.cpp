@@ -174,6 +174,7 @@ class ProfilerGenAction : public PluginASTAction {
     std::string outfile;
     std::string indexfile;
 public:
+    // Change 2
     bool ParseArgs(const CompilerInstance &CI,
             const std::vector<std::string> &args) {
         if (args.size() >= 1)

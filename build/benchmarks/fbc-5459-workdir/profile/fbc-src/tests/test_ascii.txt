@@ -1,4 +1,0 @@
-"Hello_","World!",1234,5.678
-Hello_
-World!
- 1234 5.678

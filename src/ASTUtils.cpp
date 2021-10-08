@@ -472,7 +472,7 @@ public:
     virtual bool TraverseIfStmt(IfStmt *IFS) {
         bool _force_rebuilt = force_rebuilt;
         force_rebuilt = false;
-        //IFS->dump();
+        // IFS->dump();
         bool ret = RecursiveASTVisitor::TraverseIfStmt(IFS);
         Stmt* thenS = IFS->getThen();
         Stmt* elseS = IFS->getElse();
@@ -543,6 +543,9 @@ public:
             RM[BO] = BO;
         return ret;
     }
+    virtual bool TraverseBinaryOperator(BinaryOperator *BO){
+        return TraverseBinaryOperatorImpl(BO);
+    }
 
 #define OPERATOR(NAME) \
     virtual bool TraverseBin##NAME(BinaryOperator *n) { \
@@ -552,6 +555,7 @@ public:
 #undef OPERATOR
 
     virtual bool TraverseUnaryOperatorImpl(UnaryOperator *UO) {
+        // UO->dump();
         bool _force_rebuilt = force_rebuilt;
         force_rebuilt = false;
         bool ret = RecursiveASTVisitor::TraverseUnaryOperator(UO);
@@ -564,6 +568,9 @@ public:
         else
             RM[UO] = UO;
         return ret;
+    }
+    virtual bool TraverseUnaryOperator(UnaryOperator *UO){
+        return TraverseUnaryOperatorImpl(UO);
     }
 
 #define OPERATOR(NAME) \

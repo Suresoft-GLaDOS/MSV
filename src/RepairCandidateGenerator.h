@@ -24,6 +24,7 @@
 namespace clang {
     class Stmt;
     class Expr;
+    class FunctionDecl;
 }
 
 typedef std::vector<clang::Stmt*> StmtListTy;
@@ -52,6 +53,8 @@ struct RepairAction {
         StringConstantTag,
     } ExprTagTy;
     ExprTagTy tag;
+
+    size_t mutationId; // This is for only var mutation
 
     RepairAction(const ASTLocTy &loc, RepairActionKind kind, clang::Stmt* new_stmt)
         : kind(kind), loc(loc), ast_node((void*)new_stmt),
@@ -91,11 +94,13 @@ struct RepairCandidate {
         AddInitKind,
         ReplaceKind,
         ReplaceStringKind,
-        AddAndReplaceKind
+        AddAndReplaceKind,
+        AddVarMutation // 9
     } CandidateKind;
     CandidateKind kind;
     bool is_first; // start of a block? not including condition changes
     clang::Expr *oldRExpr, *newRExpr; // info for replace only
+    clang::Stmt *original;
     // This should be the human localization score for learning
     // or the pre-fixed score if not using learning
     double score;
@@ -118,7 +123,7 @@ struct RepairCandidate {
         }
     }*/
 
-    RepairCandidate(): actions(), kind(), is_first(false), oldRExpr(NULL), newRExpr(NULL), score(0), scoreMap() { }
+    RepairCandidate(): actions(), kind(), is_first(false), oldRExpr(NULL), newRExpr(NULL), original(NULL), score(0), scoreMap() { }
 
     std::set<clang::Expr*> getCandidateAtoms() const {
         std::set<clang::Expr*> ret;
@@ -163,4 +168,6 @@ public:
     ~RepairCandidateGenerator();
 
     std::vector<RepairCandidate> run();
+    std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>> getFunctionLocations();
+    std::map<std::string,std::map<size_t,std::string>> getMutationInfo();
 };

@@ -34,12 +34,7 @@ struct ProfileInfoTy {
 };
 
 class ProfileErrorLocalizer : public ErrorLocalizer {
-    typedef std::set<unsigned long> TestCaseSetTy;
-
-    BenchProgram &P;
-
-    TestCaseSetTy negative_cases, positive_cases;
-
+public:
     class ResRecordTy {
     public:
         long long primeScore;
@@ -47,6 +42,13 @@ class ProfileErrorLocalizer : public ErrorLocalizer {
         SourcePositionTy loc;
         std::string pid;
     };
+
+private:
+    typedef std::set<unsigned long> TestCaseSetTy;
+
+    BenchProgram &P;
+
+    TestCaseSetTy negative_cases, positive_cases;
 
     std::vector<ResRecordTy> candidateResults;
 
@@ -63,6 +65,8 @@ public:
             bool skip_build);
 
     virtual std::vector<SourcePositionTy> getCandidateLocations();
+
+    std::vector<ResRecordTy> getCandidates(){return candidateResults;}
 
     virtual void printResult(const std::string &outfile);
 

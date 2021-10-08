@@ -148,11 +148,14 @@ libtest_runtime_la_LIBADD =
 am_libtest_runtime_la_OBJECTS = _test_runtime.lo
 libtest_runtime_la_OBJECTS = $(am_libtest_runtime_la_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
+am__dirstamp = $(am__leading_dot)dirstamp
 am_learner_OBJECTS = learner.$(OBJEXT) FeatureExtract.$(OBJEXT) \
-	SourceContextManager.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
-	GlobalAnalyzer.$(OBJEXT) ASTUtils.$(OBJEXT) \
-	BenchProgram.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
-	Utils.$(OBJEXT) CodeRewrite.$(OBJEXT)
+	ProfileWriter.$(OBJEXT) SourceContextManager.$(OBJEXT) \
+	LocalAnalyzer.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
+	ASTUtils.$(OBJEXT) BenchProgram.$(OBJEXT) \
+	RepairCandidateGenerator.$(OBJEXT) Utils.$(OBJEXT) \
+	CodeRewrite.$(OBJEXT) cJSON/cJSON_Utils.$(OBJEXT) \
+	cJSON/cJSON.$(OBJEXT)
 learner_OBJECTS = $(am_learner_OBJECTS)
 am__DEPENDENCIES_1 =
 learner_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -160,31 +163,34 @@ learner_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(learner_LDFLAGS) $(LDFLAGS) -o $@
 am_pdiffer_OBJECTS = pdiffer.$(OBJEXT) Utils.$(OBJEXT) \
-	ASTDiffer.$(OBJEXT) SourceContextManager.$(OBJEXT) \
-	LocalAnalyzer.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
-	ASTUtils.$(OBJEXT) BenchProgram.$(OBJEXT) \
-	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
-	FeatureExtract.$(OBJEXT)
+	ASTDiffer.$(OBJEXT) ProfileWriter.$(OBJEXT) \
+	SourceContextManager.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
+	GlobalAnalyzer.$(OBJEXT) ASTUtils.$(OBJEXT) \
+	BenchProgram.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
+	CodeRewrite.$(OBJEXT) FeatureExtract.$(OBJEXT) \
+	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT)
 pdiffer_OBJECTS = $(am_pdiffer_OBJECTS)
 pdiffer_DEPENDENCIES = $(am__DEPENDENCIES_1)
 pdiffer_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(pdiffer_LDFLAGS) $(LDFLAGS) -o $@
 am_playground_OBJECTS = PlayGround.$(OBJEXT) Utils.$(OBJEXT) \
-	BenchProgram.$(OBJEXT)
+	BenchProgram.$(OBJEXT) cJSON/cJSON_Utils.$(OBJEXT) \
+	cJSON/cJSON.$(OBJEXT)
 playground_OBJECTS = $(am_playground_OBJECTS)
 playground_DEPENDENCIES = $(am__DEPENDENCIES_1)
 playground_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(playground_LDFLAGS) $(LDFLAGS) -o $@
 am_prophet_OBJECTS = Main.$(OBJEXT) Utils.$(OBJEXT) \
-	RepairSearchEngine.$(OBJEXT) BenchProgram.$(OBJEXT) \
-	ASTUtils.$(OBJEXT) ErrorLocalizer.$(OBJEXT) \
-	LocalAnalyzer.$(OBJEXT) ProfileErrorLocalizer.$(OBJEXT) \
-	SourceContextManager.$(OBJEXT) GlobalAnalyzer.$(OBJEXT) \
-	DuplicateDetector.$(OBJEXT) ExprSynthesizer.$(OBJEXT) \
-	RepairCandidateGenerator.$(OBJEXT) CodeRewrite.$(OBJEXT) \
-	FeatureExtract.$(OBJEXT)
+	RepairSearchEngine.$(OBJEXT) ProfileWriter.$(OBJEXT) \
+	BenchProgram.$(OBJEXT) ASTUtils.$(OBJEXT) \
+	ErrorLocalizer.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
+	ProfileErrorLocalizer.$(OBJEXT) SourceContextManager.$(OBJEXT) \
+	GlobalAnalyzer.$(OBJEXT) DuplicateDetector.$(OBJEXT) \
+	ExprSynthesizer.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
+	CodeRewrite.$(OBJEXT) FeatureExtract.$(OBJEXT) \
+	cJSON/cJSON_Utils.$(OBJEXT) cJSON/cJSON.$(OBJEXT)
 prophet_OBJECTS = $(am_prophet_OBJECTS)
 prophet_DEPENDENCIES = $(am__DEPENDENCIES_1)
 prophet_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -206,6 +212,24 @@ DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
+	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+	$(AM_CFLAGS) $(CFLAGS)
+AM_V_CC = $(am__v_CC_$(V))
+am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))
+am__v_CC_0 = @echo "  CC      " $@;
+am__v_CC_1 = 
+CCLD = $(CC)
+LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+AM_V_CCLD = $(am__v_CCLD_$(V))
+am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))
+am__v_CCLD_0 = @echo "  CCLD    " $@;
+am__v_CCLD_1 = 
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 LTCXXCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -258,13 +282,13 @@ CTAGS = ctags
 am__DIST_COMMON = $(srcdir)/Makefile.in \
 	$(top_srcdir)/build-aux/depcomp
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /root/project/prophet-gpl/build-aux/missing aclocal-1.15
+ACLOCAL = ${SHELL} /root/project/MSV/build-aux/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
-AUTOCONF = ${SHELL} /root/project/prophet-gpl/build-aux/missing autoconf
-AUTOHEADER = ${SHELL} /root/project/prophet-gpl/build-aux/missing autoheader
-AUTOMAKE = ${SHELL} /root/project/prophet-gpl/build-aux/missing automake-1.15
+AUTOCONF = ${SHELL} /root/project/MSV/build-aux/missing autoconf
+AUTOHEADER = ${SHELL} /root/project/MSV/build-aux/missing autoheader
+AUTOMAKE = ${SHELL} /root/project/MSV/build-aux/missing automake-1.15
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -301,7 +325,7 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-MAKEINFO = ${SHELL} /root/project/prophet-gpl/build-aux/missing makeinfo
+MAKEINFO = ${SHELL} /root/project/MSV/build-aux/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -324,10 +348,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.1
-abs_builddir = /root/project/prophet-gpl/src
-abs_srcdir = /root/project/prophet-gpl/src
-abs_top_builddir = /root/project/prophet-gpl
-abs_top_srcdir = /root/project/prophet-gpl
+abs_builddir = /root/project/MSV/src
+abs_srcdir = /root/project/MSV/src
+abs_top_builddir = /root/project/MSV
+abs_top_srcdir = /root/project/MSV
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_CXX = g++
@@ -357,7 +381,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /root/project/prophet-gpl/build-aux/install-sh
+install_sh = ${SHELL} /root/project/MSV/build-aux/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -380,6 +404,7 @@ top_builddir = ..
 top_srcdir = ..
 AM_CXXFLAGS = -fopenmp `llvm-config --cxxflags` -Wall -Wno-unknown-pragmas -fno-strict-aliasing
 lib_LTLIBRARIES = libprofiler.la libprofile_runtime.la libtest_runtime.la
+AM_CPPFLAGS = -I../include
 ClangLDADD = -lclangTooling -lclangFrontendTool -lclangFrontend \
 	-lclangDriver -lclangSerialization -lclangCodeGen -lclangParse \
 	-lclangSema -lclangStaticAnalyzerFrontend \
@@ -436,26 +461,26 @@ ClangLDADD = -lclangTooling -lclangFrontendTool -lclangFrontend \
 	-lLLVMMC -lLLVMDebugInfoCodeView -lLLVMDebugInfoMSF \
 	-lLLVMBinaryFormat -lLLVMAArch64Utils -lLLVMAArch64Info \
 	-lLLVMSupport -lLLVMDemangle -lz -lcurses
-pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
+pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp ProfileWriter.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp
+				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 
 pdiffer_LDFLAGS = `llvm-config --ldflags`
 pdiffer_LDADD = $(ClangLDADD) -lexplain
-learner_SOURCES = learner.cpp FeatureExtract.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
+learner_SOURCES = learner.cpp FeatureExtract.cpp ProfileWriter.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  Utils.cpp CodeRewrite.cpp
+				  Utils.cpp CodeRewrite.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 
 learner_LDFLAGS = `llvm-config --ldflags`
 learner_LDADD = $(ClangLDADD) -lexplain
-prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp BenchProgram.cpp ASTUtils.cpp \
+prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp ProfileWriter.cpp BenchProgram.cpp ASTUtils.cpp \
 				  ErrorLocalizer.cpp LocalAnalyzer.cpp ProfileErrorLocalizer.cpp SourceContextManager.cpp \
 				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp
+				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 
 prophet_LDFLAGS = `llvm-config --ldflags`
 prophet_LDADD = $(ClangLDADD) -lexplain
-playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp
+playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 playground_LDFLAGS = `llvm-config --ldflags`
 playground_LDADD = $(ClangLDADD) -lexplain
 libprofiler_la_SOURCES = ProfilerAction.cpp
@@ -467,7 +492,7 @@ libtest_runtime_la_SOURCES = _test_runtime.cpp
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .cpp .lo .o .obj
+.SUFFIXES: .c .cpp .lo .o .obj
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -590,6 +615,16 @@ clean-binPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+cJSON/$(am__dirstamp):
+	@$(MKDIR_P) cJSON
+	@: > cJSON/$(am__dirstamp)
+cJSON/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) cJSON/$(DEPDIR)
+	@: > cJSON/$(DEPDIR)/$(am__dirstamp)
+cJSON/cJSON_Utils.$(OBJEXT): cJSON/$(am__dirstamp) \
+	cJSON/$(DEPDIR)/$(am__dirstamp)
+cJSON/cJSON.$(OBJEXT): cJSON/$(am__dirstamp) \
+	cJSON/$(DEPDIR)/$(am__dirstamp)
 
 learner$(EXEEXT): $(learner_OBJECTS) $(learner_DEPENDENCIES) $(EXTRA_learner_DEPENDENCIES) 
 	@rm -f learner$(EXEEXT)
@@ -609,6 +644,7 @@ prophet$(EXEEXT): $(prophet_OBJECTS) $(prophet_DEPENDENCIES) $(EXTRA_prophet_DEP
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
+	-rm -f cJSON/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -626,6 +662,7 @@ include ./$(DEPDIR)/LocalAnalyzer.Po
 include ./$(DEPDIR)/Main.Po
 include ./$(DEPDIR)/PlayGround.Po
 include ./$(DEPDIR)/ProfileErrorLocalizer.Po
+include ./$(DEPDIR)/ProfileWriter.Po
 include ./$(DEPDIR)/ProfilerAction.Plo
 include ./$(DEPDIR)/RepairCandidateGenerator.Po
 include ./$(DEPDIR)/RepairSearchEngine.Po
@@ -635,24 +672,53 @@ include ./$(DEPDIR)/_prophet_profile.Plo
 include ./$(DEPDIR)/_test_runtime.Plo
 include ./$(DEPDIR)/learner.Po
 include ./$(DEPDIR)/pdiffer.Po
+include cJSON/$(DEPDIR)/cJSON.Po
+include cJSON/$(DEPDIR)/cJSON_Utils.Po
+
+.c.o:
+	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Po
+#	$(AM_V_CC)source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(COMPILE) -c -o $@ $<
+
+.c.obj:
+	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Po
+#	$(AM_V_CC)source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+
+.c.lo:
+	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
+	$(LTCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Plo
+#	$(AM_V_CC)source='$<' object='$@' libtool=yes \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(LTCOMPILE) -c -o $@ $<
 
 .cpp.o:
-	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Po
 #	$(AM_V_CXX)source='$<' object='$@' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ $<
 
 .cpp.obj:
-	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Po
 #	$(AM_V_CXX)source='$<' object='$@' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 .cpp.lo:
-	$(AM_V_CXX)$(LTCXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
+	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
+	$(LTCXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Plo
 #	$(AM_V_CXX)source='$<' object='$@' libtool=yes \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(LTCXXCOMPILE) -c -o $@ $<
@@ -780,6 +846,8 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-rm -f cJSON/$(DEPDIR)/$(am__dirstamp)
+	-rm -f cJSON/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -790,7 +858,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libLTLIBRARIES \
 	clean-libtool mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR)
+	-rm -rf ./$(DEPDIR) cJSON/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -836,7 +904,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR)
+	-rm -rf ./$(DEPDIR) cJSON/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

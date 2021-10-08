@@ -29,8 +29,11 @@
 
 const char* HANDLER_PREFIX =
     "int __get_mutant(); "
-    "int __is_neg(int, ...); "
-    "int __abst_hole(); ";
+    "int __is_neg(const char *location,int count, ...); "
+    "int __abst_hole(); "
+    "void __write_profile(const char*,int,const char*,void*,int); "
+    "long long __mutate(const long long,const char *,const char *); "
+    "int __choose(const char *);";
 const char* MEMSET_PREFIX =
     "void* memset(void*, int, unsigned long); ";
 
@@ -132,10 +135,14 @@ void SourceContextManager::fetch(const std::string &file) {
             if (FD && FD->getDeclName().isIdentifier()) {
                 if (FD->getName() == IS_NEG_HANDLER)
                     internalHandlerMap[&ctxt].abstract_cond = createFExpr(ctxt, FD);
+                if (FD->getName() == WRITE_PROFILE)
+                    internalHandlerMap[&ctxt].write_profile=createFExpr(ctxt,FD);
                 if (FD->getName() == "memset")
                     internalHandlerMap[&ctxt].sys_memset = createFExpr(ctxt, FD);
                 if (FD->getName() == UNKNOWN_HOOK)
                     internalHandlerMap[&ctxt].abstract_hole = createFExpr(ctxt, FD);
+                if (FD->getName()==MUTATE)
+                    internalHandlerMap[&ctxt].mutator=createFExpr(ctxt,FD);
             }
         }
     }
@@ -201,6 +208,8 @@ std::string SourceContextManager::newSourceFile(const std::string &projDir, cons
         if (FD && FD->getDeclName().isIdentifier()) {
             if (FD->getName() == IS_NEG_HANDLER)
                 internalHandlerMap[&ctxt].abstract_cond = createFExpr(ctxt, FD);
+            if (FD->getName() == WRITE_PROFILE)
+                internalHandlerMap[&ctxt].write_profile=createFExpr(ctxt,FD);
             if (FD->getName() == "memset")
                 internalHandlerMap[&ctxt].sys_memset = createFExpr(ctxt, FD);
             if (FD->getName() == UNKNOWN_HOOK)
@@ -225,9 +234,11 @@ void SourceContextManager::popChanges(RepairCandidate &candidate) {
             &StmtList[0], StmtList.size());
 }*/
 
-LocalAnalyzer* SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc) {
+LocalAnalyzer* SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc,clang::ASTContext *ctxt) {
     if (localAnalyzerMap.count(loc) == 0) {
-        ASTContext *C = getSourceContext(loc.filename);
+        ASTContext *C;
+        if (ctxt==NULL) C = getSourceContext(loc.filename);
+        else C=ctxt;
         //llvm::errs() << "Location " << loc.filename << ":" << getExpLineNumber(*C, loc.stmt) << "\n";
         //loc.stmt->printPretty(llvm::errs(), 0, C->getPrintingPolicy());
         localAnalyzerMap[loc] = new LocalAnalyzer(C, globalAnalyzerMap[C], loc, naive);
@@ -248,15 +259,17 @@ LocalAnalyzer* SourceContextManager::getLocalAnalyzer(const ASTLocTy &loc) {
 }
 
 // FIXME: This stupid shit should go somewhere else
-Expr* SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType QT) {
-    Expr *abstract_cond = getInternalHandlerInfo(ctxt).abstract_cond;
-    return CallExpr::Create(*ctxt, abstract_cond, std::vector<Expr*>(),
-            QT, VK_RValue, SourceLocation());
+Expr* SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType QT,int id,std::map<Expr *,unsigned long> atoms) {
+    return getInternalHandlerInfo(ctxt).abstract_cond;
+}
+
+clang::Expr* SourceContextManager::getWriteProfile(clang::ASTContext *ctxt){
+    return getInternalHandlerInfo(ctxt).write_profile;
 }
 
 Expr* SourceContextManager::getUnknownExpr(ASTContext *ctxt, ExprListTy candidate_atoms) {
     Expr *abstract_hole = getInternalHandlerInfo(ctxt).abstract_hole;
-    return CallExpr::Create(*ctxt, abstract_hole, candidate_atoms,
+    return clang::CallExpr::Create(*ctxt, abstract_hole, candidate_atoms,
         ctxt->IntTy, VK_RValue, SourceLocation());
 }
 

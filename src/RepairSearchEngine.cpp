@@ -82,6 +82,11 @@ void dumpSignificantInVec(FILE* fout, FeatureParameter *FP, const FeatureVector 
         }
 }
 
+template<typename Base, typename T>
+inline bool instanceof(T*) {
+   return std::is_base_of<Base, T>::value;
+}
+
 int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         bool print_fix_only, bool full_synthesis) {
     RepairCandidateQueue q;
@@ -115,10 +120,13 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                 break;
         }
     }
-
     size_t candidate_cnt = 0;
     size_t partial_candidate_cnt = 0;
     FeatureExtractor EX;
+    std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc;
+    std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
+
+    reset_timer();
     for (size_t i = 0; i < files.size(); ++i) {
         std::string file = files[i];
         if (use_bugged_files) {
@@ -163,13 +171,17 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                 double final_score = computeScores(M, FP, EX, res[j], learning, random);
                 q.push(std::make_pair(res[j], final_score));
             }
+            functionLoc[file]=G.getFunctionLocations();
+            mutationInfo[file]=G.getMutationInfo();
         }
+
     }
+    outlog_printf(0,"Patch candidate generated in %llus!\n",get_timer());
 
     size_t schema_cnt = q.size();
     outlog_printf(1, "Total %lu different repair schemas!!!!\n", schema_cnt);
-    outlog_printf(1, "Total %lu different repair candidate templates for scoring!!!\n", candidate_cnt);
-    outlog_printf(1, "Total %lu different partial repair candidate templates!!\n", partial_candidate_cnt);
+    // outlog_printf(1, "Total %lu different repair candidate templates for scoring!!!\n", candidate_cnt);
+    // outlog_printf(1, "Total %lu different partial repair candidate templates!!\n", partial_candidate_cnt);
     if (print_fix_only) {
         outlog_printf(1, "Print candidate templates...\n");
         FILE *fout = fopen(out_file.c_str(), "w");
@@ -244,10 +256,57 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         return 0;
     }
     else {
-        outlog_printf(1, "Trying different candidates!\n");
-        ExprSynthesizer ES(P, M, q, naive, learning, FP);
+        // Run DG to slice files with candidates location
+        std::set<std::string> dgFilesSet;
+        dgFilesSet.clear();
+        std::map<std::string,std::set<unsigned>> candidates;
+        candidates.clear();
+        for (SourcePositionTy codes:L->getCandidateLocations()){
+            if (codes.expFilename[0]=='/' || is_header(codes.expFilename)) continue;
+            std::string fullFile=P.getSrcdir()+"/"+codes.expFilename;
+            bool includeFile=false;
+            for (std::string file:files){
+                if (file==codes.expFilename && (!use_bugged_files || bugged_files.count(file)!=0)){
+                    includeFile=true;
+                    dgFilesSet.insert(fullFile);
+                    break;
+                }
+            }
+            if (!includeFile) continue;
+
+            if (candidates.find(fullFile)==candidates.end())
+                candidates[fullFile]=std::set<unsigned>();
+            candidates[fullFile].insert(codes.expLine);
+        }
+
+        std::vector<std::string> dgFiles;
+        dgFiles.clear();
+        for (std::string file:dgFilesSet){
+            // outlog_printf(2,"%s\n",file.c_str());
+            dgFiles.push_back(file);
+        }
+        
+        // bool dgResult=P.runDG(dgFiles,candidates);
+        // if (dgResult){
+        //     outlog_printf(2,"DG success\n");
+        // }
+
+        // Create localize score data
+        std::vector<std::pair<std::string,size_t>> scores;
+        scores.clear();
+        if (!naive){
+            ProfileErrorLocalizer *profileError=(ProfileErrorLocalizer *)L;
+            std::vector<ProfileErrorLocalizer::ResRecordTy> errors=profileError->getCandidates();
+
+            for (std::vector<ProfileErrorLocalizer::ResRecordTy>::iterator it=errors.begin();it!=errors.end();it++){
+                scores.push_back(std::make_pair(it->loc.expFilename,it->loc.expLine));
+            }
+        }
+
+        ExprSynthesizer ES(P, M, q, out_file,functionLoc,scores,naive, learning, FP);
         if (timeout_limit != 0)
             ES.setTimeoutLimit(timeout_limit);
+        ES.setMutationInfo(mutationInfo);
         size_t cnt = 0;
         std::vector<std::pair<double, size_t> > resList;
         resList.clear();
@@ -262,37 +321,6 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                 outlog_printf(1, "Total %lu different repair schemas!!!!\n", schema_cnt);
                 outlog_printf(1, "Total %lu different repair candidate templates for scoring!!!\n", candidate_cnt);
                 return 1;
-            }
-            else {
-                std::string prefix_name = out_file;
-                if ((out_file.size() >= 2) && (out_file.substr(out_file.size() - 2) == ".c"))
-                    prefix_name = out_file.substr(0, out_file.size() - 2);
-                for (ExprSynthesizerResultTy::iterator it2 = res.begin(); it2 != res.end();
-                        ++it2) {
-                    std::map<std::string, std::string> new_codes = it2->first;
-                    for (std::map<std::string, std::string>::iterator it = new_codes.begin();
-                            it != new_codes.end(); ++it) {
-                        std::ostringstream sout;
-                        // Here prefix_name is just a prefix
-                        sout << prefix_name << replaceSlash(it->first);
-                        if (cnt != 0)
-                            sout << "-" << cnt;
-                        outlog_printf(1, "Found a fix! Store to: %s\n", sout.str().c_str());
-                        std::ofstream fout(sout.str().c_str(), std::ofstream::out);
-                        fout << it->second;
-                        fout.close();
-                    }
-                    resList.push_back(std::make_pair(-it2->second, cnt));
-                    cnt ++;
-                }
-                // We are just going to rewrite the summary file
-                if (summaryFile != "") {
-                    sort(resList.begin(), resList.end());
-                    std::ofstream fout(summaryFile.c_str(), std::ofstream::out);
-                    for (size_t i = 0; i < resList.size(); i++)
-                        fout << i << ": " << resList[i].second << " " << -resList[i].first << "\n";
-                    fout.close();
-                }
             }
             if (((timeout_limit > 0) && (get_timer() > timeout_limit))) {
                 outlog_printf(1, "[%llu] Timeout! The limit is %llu!\n", get_timer(), timeout_limit);

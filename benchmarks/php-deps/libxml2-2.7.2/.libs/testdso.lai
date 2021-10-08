@@ -32,4 +32,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/root/project/prophet-gpl/benchmarks/php-deps/libxml2-2.7.2-build/lib'
+libdir='/root/project/MSV/benchmarks/php-deps/libxml2-2.7.2-build/lib'

@@ -36,6 +36,7 @@ if __name__=="__main__":
     paraj = 0
     print_fix_log = False
     print_usage = False
+    switch_id=0
     for o, a in opts:
         if o == "-d":
             dryrun_src = a
@@ -57,7 +58,6 @@ if __name__=="__main__":
     if (len(args) < 1) or (print_usage):
         print("Usage: php-build.py <directory> [-r revision | -d src_file | -l] [-h]")
         exit(1)
-    print "Building..."
     out_dir = args[0]
     # fetch from github if the directory does not exist
     if path.exists(out_dir):
@@ -86,9 +86,13 @@ if __name__=="__main__":
             (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
             if len(args) > 1:
                 out_file = open(args[1], "w")
-                print(out_file, builddir)
-                print(out_file, buildargs)
+                out_file.write(builddir)
+                out_file.write("\n")
+                out_file.write(buildargs)
+                out_file.write("\n")
+                # print(out_file, builddir)
+                # print(out_file, buildargs)
                 out_file.close()
-            else:
-                print(builddir)
-                print(buildargs)
+            # else:
+            #     print(builddir)
+            #     print(buildargs)

@@ -1,5 +1,0 @@
-dim/mod_common/submod.bmk : TEST_MODE=MULTI_MODULE_OK
-/home/fanl/Workspace/prophet/build/benchmarks/fbc-5459-workdir/profile/fbc-src/tests/../../fbc-root/bin/fbc  -lang fb -g -w 0  -m dim/mod_common/submod_a -c dim/mod_common/submod_a.bas -o dim/mod_common/submod_a.o
-/home/fanl/Workspace/prophet/build/benchmarks/fbc-5459-workdir/profile/fbc-src/tests/../../fbc-root/bin/fbc  -lang fb -g -w 0  -m dim/mod_common/submod_a -c dim/mod_common/submod_b.bas -o dim/mod_common/submod_b.o
-/home/fanl/Workspace/prophet/build/benchmarks/fbc-5459-workdir/profile/fbc-src/tests/../../fbc-root/bin/fbc  -g dim/mod_common/submod_a.o dim/mod_common/submod_b.o -x dim/mod_common/submod_a
-dim/mod_common/submod.bmk : RESULT=PASSED

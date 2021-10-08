@@ -17,7 +17,7 @@ def print_defect():
                                             "init", "prophet", "replace-ext", "cond-ext", \
                                             "full-dump", "timeout=", "compare-space", "no-sema", "no-mod", \
                                             "random", "baseline", "ssvm", "dest=", "pass=", "print-fix-only=",
-                                            "feature-dump"]);
+                                            "feature-dump","switch-id="]);
 nof = True;
 nloc = 200;
 geop = "0.02";
@@ -38,6 +38,8 @@ password = "";
 print_fix_only = "";
 timeout = 0;
 feature_dump = False;
+skip_build=False
+switch_id=""
 for o, a in opts:
     if o == "--geop":
         geop = a;
@@ -82,6 +84,10 @@ for o, a in opts:
         print_fix_only = a;
     elif o == "--feature-dump":
         feature_dump = True;
+    elif o=="--skip-build":
+        skip_build=True
+    elif o=="--switch-id":
+        switch_id=a
 
 scenario_addr = "http://www.cs.toronto.edu/~fanl/program_repair/scenarios/";
 
@@ -119,7 +125,7 @@ if (not found) or (defect_token == ""):
     print_defect();
     exit(1);
 
-if (not os.path.exists(defect_token)):
+if (False and not os.path.exists(defect_token)):
     cmd = "wget " + scenario_addr + defect_token;
     ret = system(cmd);
     if (ret != 0):
@@ -128,11 +134,11 @@ if (not os.path.exists(defect_token)):
 else:
     print "Work with existing tarball";
 
-cmd = "rm -rf " + app + "-case*";
-system(cmd);
-cmd = "tar xvzf " + defect_token;
-system(cmd);
-system("rm -rf *fix*");
+# cmd = "rm -rf " + app + "-case*";
+# system(cmd);
+# cmd = "tar xvzf " + defect_token;
+# system(cmd);
+# system("rm -rf *fix*");
 glob_res = glob.glob(app + "-case-*");
 assert( len(glob_res) > 0);
 case_dir = glob_res[0];
@@ -169,7 +175,7 @@ elif parse_space:
         cmd += " --bug-file";
     system(cmd);
 else:
-    cmd = "prophet -r " + work_dir+" -skip-verify";
+    cmd = "prophet -r " + work_dir +" -skip-verify ";
     if timeout != 0:
         cmd += " -timeout " + str(timeout);
     cmd = "time " + cmd;
@@ -202,10 +208,14 @@ else:
         cmd += " -cond-ext";
     if full_dump:
         cmd += " -full-explore -full-synthesis -dump-passed-candidate __candidate";
+    if skip_build:
+        cmd += " -skip-profile-build "
     if print_fix_only != "":
         cmd += " -print-fix-only " + print_fix_only;
         if feature_dump:
             cmd += " -dump-feature";
+    if switch_id!="":
+        cmd+=" -switch-id "+switch_id
     if dest != "":
         system("rm -rf *fix* out.log repair.log __candidate*");
         cmd += " > out.log";

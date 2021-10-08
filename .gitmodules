@@ -1,0 +1,4 @@
+[submodule "AFLplusplus"]
+	path = AFLplusplus
+	url = https://github.com/PLaSE-at-UNIST/AFLplusplus.git
+	branch = dev

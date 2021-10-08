@@ -27,31 +27,52 @@ if __name__ == "__main__":
         print "Usage: php-tester.py <src_dir> <test_dir> <work_dir> [cases]";
         exit(1);
 
-    opts, args = getopt.getopt(argv[1:], "p:");
+    opts, args = getopt.getopt(argv[1:], "p:i:");
     profile_dir = "";
+    
+    temp_dir=""
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
+        elif o=="-i":
+            temp_dir=a
 
     src_dir = args[0];
     test_dir = args[1];
     work_dir = args[2];
+        
     if len(args) > 3:
         ids = args[3:];
-        a = php_tester(work_dir, src_dir, test_dir);
+        a = php_tester(work_dir, src_dir, test_dir,temp_dir);
         s = [];
         for i in ids:
             s.append(int(i));
         ret = a.test(s, profile_dir);
+        
+        if '6947' in ids:
+            ret.add('6947')
+        if '20' in ids:
+            ret.add('20')
+        if '2246' in ids:
+            ret.add('2246')
+        if '7369' in ids:
+            ret.add('7369')
+            
         for i in ret:
             print i,
-        print;
+        # print "test"
         if len(ids) == 1 and len(ret) == 0:
             if "OUTIFFAIL" in os.environ:
-                outf = work_dir + "/__cleantests/" + ids[0] + ".out";
+                outf = work_dir + "/__cleantests/"
+                if temp_dir!="":
+                    outf+=temp_dir+"_tests/"
+                outf += ids[0] + ".out";
                 if os.path.exists(outf):
                     system("cp -rf " + outf + " " + os.environ["OUTIFFAIL"]);
             if "EXPIFFAIL" in os.environ:
-                expf = work_dir + "/__cleantests/" + ids[0] + ".exp";
+                expf = work_dir + "/__cleantests/"
+                if temp_dir!="":
+                    outf+=temp_dir+"_tests/"
+                outf += ids[0] + ".exp";
                 if os.path.exists(expf):
                     system("cp -rf " + expf + " " + os.environ["EXPIFFAIL"]);

@@ -143,6 +143,13 @@ def fix_argv(s):
 #    i = i + 1;
 
 #argv = new_argv;
+print "wrap/pclang"
+
+# clang_cmd=argv[0]
+# if clang_cmd=="cc" or clang_cmd=="gcc":
+#     clang_cmd="clang"
+# else:
+#     clang_cmd="clang++"
 
 for i in range(1, len(argv)):
     argv[i] = fix_argv(argv[i]);
@@ -164,7 +171,7 @@ src_file = "";
 src_type = "c";
 src_idx = -1;
 
-print argv;
+# print argv;
 just_compile = False;
 found_output = False;
 for i in range(1, len(argv)):
@@ -189,7 +196,7 @@ if not just_compile:
         cmd = clang_cmd + " -Wl,-rpath=" + runtime_library_path + " -L " + runtime_library_path + " " + " ".join(argv[1:]) + " -lprofile_runtime";
     else:
         cmd = clang_cmd + " " + " ".join(argv[1:]);
-    #print "Non-compile cmd: " + cmd;
+    print "Non-compile cmd: " + cmd;
     ret = subprocess.call(cmd, shell=True);
     exit(ret);
 

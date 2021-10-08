@@ -173,6 +173,7 @@ bool is_header(const std::string &str) {
 }
 
 std::string getFullPath(const std::string &path) {
+    // printf("Path: %s\n",path.c_str());
     char tmp[PATH_MAX];
     char * ret = realpath(path.c_str(), tmp);
     assert( ret != 0);

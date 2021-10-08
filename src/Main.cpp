@@ -88,6 +88,11 @@ llvm::cl::opt<double> GeoP("geop", llvm::cl::value_desc("flip probability"),
 llvm::cl::opt<unsigned int> Timeout("timeout", llvm::cl::init(0), llvm::cl::desc("Soft timeout limit in hours"));
 llvm::cl::opt<bool> ForCPP("cpp", llvm::cl::init(false));
 
+llvm::cl::opt<std::string> SwitchCaseDebug("switch-id",llvm::cl::value_desc("<switch id>-<case>"),
+        llvm::cl::init(""),llvm::cl::desc("Test with specific switch id and case instead of AFL"));
+llvm::cl::opt<bool> SkipProfile("skip-profile",
+        llvm::cl::desc("Skip adding profile writer"),llvm::cl::init(false));
+
 int main(int argc, char* argv[]) {
     llvm::cl::ParseCommandLineOptions(argc, argv);
 
@@ -119,6 +124,23 @@ int main(int argc, char* argv[]) {
     else{
         P = new BenchProgram(run_work_dir);
     }
+    if (SwitchCaseDebug.getValue()!=""){
+        std::string switchCase=SwitchCaseDebug.getValue();
+        size_t firstDash=switchCase.find("-");
+        std::string switchId=switchCase.substr(0,firstDash);
+
+        size_t secondDash=switchCase.find("-",firstDash+1);
+        if (secondDash==std::string::npos){
+            std::string caseNum=switchCase.substr(firstDash+1);
+            P->setSwitch(std::stoi(switchId),std::stoi(caseNum));
+        }
+        else{
+            std::string caseNum=switchCase.substr(firstDash+1,secondDash);
+            P->setSwitch(std::stoi(switchId),std::stoi(caseNum));
+            P->setConditionNum(std::stoi(switchCase.substr(secondDash+1)));
+        }
+    }
+    P->skip_profile=SkipProfile.getValue();
 
     if (!SkipVerify) {
         outlog_printf(1, "Verify Test Cases\n");
@@ -128,6 +150,9 @@ int main(int argc, char* argv[]) {
             exit(1);
         }
         outlog_printf(1, "Done Verification\n");
+    }
+    else{
+        outlog_printf(2,"Skip verify!\n");
     }
 
     ConfigFile *config = P->getCurrentConfig();

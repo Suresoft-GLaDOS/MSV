@@ -29,7 +29,7 @@ typedef std::vector<Stmt*> StmtStackTy;
 
 class StmtStackVisitor : public clang::RecursiveASTVisitor<StmtStackVisitor> {
     ASTLocTy loc;
-    StmtStackTy curStmtStack, resStmtStack;
+    StmtStackTy curStmtStack,resStmtStack;
     FunctionDecl *curFunc, *resFunc;
 public:
     StmtStackVisitor(ASTLocTy loc): loc(loc), curStmtStack(),
@@ -37,7 +37,8 @@ public:
     ~StmtStackVisitor() {}
     virtual bool TraverseFunctionDecl(FunctionDecl *FD) {
         curFunc = FD;
-        return RecursiveASTVisitor<StmtStackVisitor>::TraverseFunctionDecl(FD);
+        bool ret= RecursiveASTVisitor<StmtStackVisitor>::TraverseFunctionDecl(FD);
+        return ret;
     }
     virtual bool TraverseStmt(Stmt *S) {
         curStmtStack.push_back(S);
@@ -113,32 +114,49 @@ public:
 
 class MemberExprStemVisitor : public RecursiveASTVisitor<MemberExprStemVisitor> {
     std::map<std::string, Expr*> res;
+    StmtStackTy &stackStmt;
     ASTContext *ctxt;
+    bool valid;
 public:
-    MemberExprStemVisitor(ASTContext *ctxt): res(), ctxt(ctxt) {}
+    MemberExprStemVisitor(ASTContext *ctxt,StmtStackTy &stackStmt): res(), ctxt(ctxt),stackStmt(stackStmt),valid(true) {}
     ~MemberExprStemVisitor() {}
     virtual bool VisitMemberExpr(MemberExpr *ME) {
-        // FIXME: This should maybe apply to all Expr, not just MemberExpr
-        QualType QT = ME->getType();
-        if (QT->isStructureType()) {
-            // FIXME: a function for this!!
-            std::string tmp = stripLine(stmtToString(*ctxt, ME));
+        if (valid){
+            // FIXME: This should maybe apply to all Expr, not just MemberExpr
+            QualType QT = ME->getType();
+            if (QT->isStructureType()) {
+                // FIXME: a function for this!!
+                std::string tmp = stripLine(stmtToString(*ctxt, ME));
+                if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
+                    res[tmp] = ME;
+            }
+            Expr *base = ME->getBase();
+            assert(base);
+    /*            const clang::RecordType *RecT = 0;
+            if (!ME->isArrow())
+                RecT = base->getType()->getAsStructureType();
+            else {
+                const PointerType *PT = llvm::dyn_cast<PointerType>(base->getType());
+                RecT = llvm::dyn_cast<RecordType>(PT->getPointeeType().getTypePtr());
+            }*/
+            std::string tmp = stripLine(stmtToString(*ctxt, base));
             if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
-                res[tmp] = ME;
-        }
-        Expr *base = ME->getBase();
-        assert(base);
-/*            const clang::RecordType *RecT = 0;
-        if (!ME->isArrow())
-            RecT = base->getType()->getAsStructureType();
-        else {
-            const PointerType *PT = llvm::dyn_cast<PointerType>(base->getType());
-            RecT = llvm::dyn_cast<RecordType>(PT->getPointeeType().getTypePtr());
-        }*/
-        std::string tmp = stripLine(stmtToString(*ctxt, base));
-        if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
-            res[tmp] = base;
+                res[tmp] = base;
+            }
         return true;
+    }
+
+    virtual bool TraverseStmt(Stmt *stmt){
+        if (stmt == NULL) return true;
+        if (valid)
+            if (!llvm::isa<DeclStmt>(stmt) && (std::find(stackStmt.begin(),stackStmt.end(),stmt)==stackStmt.end())) {
+                valid = false;
+                bool ret = RecursiveASTVisitor<MemberExprStemVisitor>::TraverseStmt(stmt);
+                valid = true;
+                return ret;
+            }
+        return RecursiveASTVisitor<MemberExprStemVisitor>::TraverseStmt(stmt);
+
     }
 
     virtual std::set<Expr*> getStemExprSet() {
@@ -219,6 +237,16 @@ public:
 
 }
 
+// Compare source is begind from target
+bool isBehind(ASTContext *ctxt,SourceLocation source,SourceLocation target){
+    SourceManager &manager=ctxt->getSourceManager();
+    if (manager.getFilename(manager.getExpansionLoc(source))!=manager.getFilename(manager.getExpansionLoc(target)))
+        return true;
+    size_t sourceOffset=manager.getFileOffset(manager.getExpansionLoc(source));
+    size_t targetOffset=manager.getFileOffset(manager.getExpansionLoc(target));
+    return (sourceOffset<targetOffset);
+}
+
 LocalAnalyzer::LocalAnalyzer(ASTContext *ctxt, GlobalAnalyzer *G, ASTLocTy loc, bool naive):
 ctxt(ctxt), loc(loc), G(G), curFunc(NULL), LocalVarDecls(), MemberStems(), naive(naive) {
     StmtStackVisitor visitor1(loc);
@@ -239,11 +267,12 @@ ctxt(ctxt), loc(loc), G(G), curFunc(NULL), LocalVarDecls(), MemberStems(), naive
 
     LocalActiveVarVisitor visitor2(stmtStack, curFunc);
     visitor2.TraverseDecl(TransUnit);
+    // visitor2.TraverseFunctionDecl(curFunc);
     LocalVarDecls = visitor2.getValidLocalVarDeclSet();
     /*for (std::set<VarDecl*>::iterator it = LocalVarDecls.begin(); it != LocalVarDecls.end(); ++it)
         (*it)->dump();*/
 
-    MemberExprStemVisitor visitor3(ctxt);
+    MemberExprStemVisitor visitor3(ctxt,stmtStack);
     visitor3.TraverseFunctionDecl(curFunc);
     MemberStems = visitor3.getStemExprSet();
 
@@ -276,7 +305,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::genExprAtoms(QualType QT, bool allow_lo
     if (allow_local) {
         for (std::set<VarDecl*>::iterator it = LocalVarDecls.begin(); it != LocalVarDecls.end(); ++it) {
             QualType localQT = (*it)->getType();
-            if (typeMatch(localQT, QT)) {
+            if (typeMatch(localQT, QT) && isBehind(ctxt,(*it)->getBeginLoc(),loc.stmt->getBeginLoc())) {
                 DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
                         SourceLocation(), *it, false, SourceLocation(), localQT, VK_LValue);
                 if (lvalue)
@@ -289,14 +318,17 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::genExprAtoms(QualType QT, bool allow_lo
     // Global direct variables
     if (allow_glob) {
         for (std::set<VarDecl*>::const_iterator it = GlobalVarDecls.begin(); it != GlobalVarDecls.end(); ++it) {
-            QualType globalQT = (*it)->getType();
-            if (typeMatch(globalQT, QT)) {
-                DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
-                        SourceLocation(), *it, false, SourceLocation(), globalQT, VK_LValue);
-                if (lvalue)
-                    ret.push_back(DRE);
-                else
-                    ret.push_back(castToRValue(DRE));
+            SourceManager &manager=ctxt->getSourceManager();
+            if (manager.getFileOffset(manager.getExpansionLoc((*it)->getBeginLoc()))<manager.getFileOffset(manager.getExpansionLoc(loc.stmt->getBeginLoc()))){
+                QualType globalQT = (*it)->getType();
+                if (typeMatch(globalQT, QT) && isBehind(ctxt,(*it)->getBeginLoc(),loc.stmt->getBeginLoc())) {
+                    DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
+                            SourceLocation(), *it, false, SourceLocation(), globalQT, VK_LValue);
+                    if (lvalue)
+                        ret.push_back(DRE);
+                    else
+                        ret.push_back(castToRValue(DRE));
+                }
             }
         }
     }
@@ -320,7 +352,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::genExprAtoms(QualType QT, bool allow_lo
                     for (RecordDecl::decl_iterator dit = RD->decls_begin(); dit != RD->decls_end(); ++dit) {
                         FieldDecl *FD = llvm::dyn_cast<FieldDecl>(*dit);
                         if (FD) {
-                            if (typeMatch(FD->getType(), QT)) {
+                            if (typeMatch(FD->getType(), QT) && isBehind(ctxt,dit->getBeginLoc(),loc.stmt->getBeginLoc())) {
                                 MemberExpr *ME = MemberExpr::Create(*ctxt,E, is_arrow, SourceLocation(),
 					NestedNameSpecifierLoc(),SourceLocation(),FD,DeclAccessPair::make(FD,FD->getAccess()),
                                         DeclarationNameInfo(FD->getDeclName(), FD->getLocation()),
@@ -336,34 +368,39 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::genExprAtoms(QualType QT, bool allow_lo
             }
         }
         // Form global variables
-        for (std::set<VarDecl*>::iterator it = GlobalVarDecls.begin(); it != GlobalVarDecls.end(); ++it) {
-            VarDecl *VD = *it;
-            QualType T = VD->getType();
-            bool is_arrow = false;
-            const RecordType *RT = NULL;
-            if (T->isPointerType()) {
-                RT = T->getPointeeType()->getAsStructureType();
-                is_arrow = true;
-            }
-            else
-                RT = T->getAsStructureType();
-            if (RT) {
-                RecordDecl *RD = RT->getDecl();
-                if (RD) {
-                    for (RecordDecl::decl_iterator dit = RD->decls_begin(); dit != RD->decls_end(); ++dit) {
-                        FieldDecl *FD = llvm::dyn_cast<FieldDecl>(*dit);
-                        if (FD) {
-                            if (typeMatch(FD->getType(), QT)) {
-                                DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
-                                            SourceLocation(), VD, false, SourceLocation(), T, VK_LValue);
-                                MemberExpr *ME = MemberExpr::Create(*ctxt,DRE, is_arrow, SourceLocation(),
-					NestedNameSpecifierLoc(),SourceLocation(),FD,DeclAccessPair::make(FD,FD->getAccess()),
-                                        DeclarationNameInfo(FD->getDeclName(), FD->getLocation()),
-                                        nullptr,FD->getType(), VK_LValue, OK_Ordinary,NonOdrUseReason::NOUR_None);
-                                if (lvalue)
-                                    ret.push_back(ME);
-                                else
-                                    ret.push_back(castToRValue(ME));
+        if (allow_glob){
+            for (std::set<VarDecl*>::iterator it = GlobalVarDecls.begin(); it != GlobalVarDecls.end(); ++it) {
+                SourceManager &manager=ctxt->getSourceManager();
+                if (manager.getFileOffset(manager.getExpansionLoc((*it)->getBeginLoc()))<manager.getFileOffset(manager.getExpansionLoc(loc.stmt->getBeginLoc()))){
+                    VarDecl *VD = *it;
+                    QualType T = VD->getType();
+                    bool is_arrow = false;
+                    const RecordType *RT = NULL;
+                    if (T->isPointerType()) {
+                        RT = T->getPointeeType()->getAsStructureType();
+                        is_arrow = true;
+                    }
+                    else
+                        RT = T->getAsStructureType();
+                    if (RT) {
+                        RecordDecl *RD = RT->getDecl();
+                        if (RD) {
+                            for (RecordDecl::decl_iterator dit = RD->decls_begin(); dit != RD->decls_end(); ++dit) {
+                                FieldDecl *FD = llvm::dyn_cast<FieldDecl>(*dit);
+                                if (FD) {
+                                    if (typeMatch(FD->getType(), QT) && isBehind(ctxt,(*it)->getBeginLoc(),loc.stmt->getBeginLoc())) {
+                                        DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
+                                                    SourceLocation(), VD, false, SourceLocation(), T, VK_LValue);
+                                        MemberExpr *ME = MemberExpr::Create(*ctxt,DRE, is_arrow, SourceLocation(),
+                            NestedNameSpecifierLoc(),SourceLocation(),FD,DeclAccessPair::make(FD,FD->getAccess()),
+                                                DeclarationNameInfo(FD->getDeclName(), FD->getLocation()),
+                                                nullptr,FD->getType(), VK_LValue, OK_Ordinary,NonOdrUseReason::NOUR_None);
+                                        if (lvalue)
+                                            ret.push_back(ME);
+                                        else
+                                            ret.push_back(castToRValue(ME));
+                                    }
+                                }
                             }
                         }
                     }
@@ -550,6 +587,30 @@ class StmtChecker : public RecursiveASTVisitor<StmtChecker> {
     GlobalAnalyzer *G;
     std::set<VarDecl*> inside;
     std::set<Expr*> invalidExprs;
+    bool isMemberMethod(CXXRecordDecl *record,FunctionDecl *func){
+        if (!llvm::isa<CXXMethodDecl>(func)) return false;
+        bool isMember=false;
+        for (CXXRecordDecl::method_iterator it=record->method_begin();
+                it!=record->method_end();it++){
+            if (*it==func) {
+                isMember=true;
+                break;
+            }
+        }
+        return isMember;
+    }
+    bool isMemberField(RecordDecl *record,FieldDecl *field){
+        bool isMember=false;
+        for (RecordDecl::field_iterator it=record->field_begin();
+                it!=record->field_end();it++){
+            if (*it==field) {
+                isMember=true;
+                break;
+            }
+        }
+        return isMember;
+    }
+
 public:
     StmtChecker(LocalAnalyzer *L, GlobalAnalyzer *G): L(L), G(G) {
         inside.clear();
@@ -560,13 +621,20 @@ public:
         inside.insert(VD);
         return true;
     }
+    virtual bool VisitCXXThisExpr(CXXThisExpr *expr){
+        // Check current function is C++ method
+        // C++ 'this' can only be in class/struct method
+        FunctionDecl *current=L->getCurrentFunction();
+        if (!llvm::isa<CXXMethodDecl>(current)) invalidExprs.insert(expr);
+        return true;
+    }
 
     virtual bool VisitDeclRefExpr(DeclRefExpr *DRE) {
         ValueDecl *VD = DRE->getDecl();
-        if (llvm::isa<FieldDecl>(VD)) return true;
         if (llvm::isa<EnumConstantDecl>(VD)) return true;
 
         bool found = false;
+        // If variable not declared, this is invalid
         VarDecl *VarD = llvm::dyn_cast<VarDecl>(VD);
         if (VarD) {
             if (L->getLocalVarDecls().count(VarD) != 0)
@@ -576,6 +644,8 @@ public:
             if (inside.count(VarD) != 0)
                 found = true;
         }
+
+        // If function not declared, this is invalid
         FunctionDecl *FuncD = llvm::dyn_cast<FunctionDecl>(VD);
         if (FuncD) {
             if (G->getFuncDecls().count(FuncD) != 0)
@@ -718,8 +788,10 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL)
         }
     }
     sort(tmp_v.begin(), tmp_v.end());
-    for (size_t i = 0; i < tmp_v.size(); i++)
-        ret.push_back(tmp_v[i].second);
+    for (size_t i = 0; i < tmp_v.size(); i++){
+        if (ctxt->getTypeSize(tmp_v[i].second->getType())<=64)
+            ret.push_back(tmp_v[i].second);
+    }
     return ret;
 }
 

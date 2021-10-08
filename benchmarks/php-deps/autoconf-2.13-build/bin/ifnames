@@ -27,7 +27,7 @@ usage="\
 Usage: ifnames [-h] [--help] [-m dir] [--macrodir=dir] [--version] [file...]"
 show_version=no
 
-: ${AC_MACRODIR=/root/project/prophet-gpl/benchmarks/php-deps/autoconf-2.13-build/share/autoconf}
+: ${AC_MACRODIR=/root/project/MSV/benchmarks/php-deps/autoconf-2.13-build/share/autoconf}
 
 while test $# -gt 0; do
   case "$1" in 

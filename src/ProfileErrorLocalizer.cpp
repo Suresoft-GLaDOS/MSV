@@ -62,11 +62,10 @@ std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileRes
         // We get an empty pid, FIXME investigate why this will happen
         if (pid == "") {
             fprintf(stderr, "Cannot get pid value, assume 0.");
-            llvm::errs() << nstr << "\n";
+            // llvm::errs() << nstr << "\n";
             assert(0);
             pid = "0";
         }
-        printf("nstr: %s\n",nstr.c_str());
         
         while (std::getline(fin, line1)) {
             if (line1 == "") break;
@@ -77,9 +76,9 @@ std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileRes
                 unsigned long idx;
                 sin >> idx;
                 tmploc = LI->getProfileLocation(idx);
-                std::cout << "Previous filepath: " << tmploc.expFilename  << "\n";
+                // std::cout << "Previous filepath: " << tmploc.expFilename  << "\n";
                 tmploc.expFilename = P.normalizePath(tmploc.expFilename);
-                std::cout << "Trimed filepath: " << tmploc.expFilename << "\n";
+                // std::cout << "Trimed filepath: " << tmploc.expFilename << " " << tmploc.expLine << "\n";
                 tmploc.spellFilename = P.normalizePath(tmploc.spellFilename);
             }
             long long cnt, cnt2;
@@ -120,10 +119,12 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         const std::set<std::string> &bugged_files, bool skip_build):
     P(P), negative_cases(P.getNegativeCaseSet()), positive_cases(P.getPositiveCaseSet()) {
     LI = NULL;
+    reset_timer();
     if (skip_build) {
         P.addExistingSrcClone("profile", true);
     }
     else {
+        outlog_printf(2,"Building profile to localizing\n");
         P.clearSrcClone("profile");
         P.createSrcClone("profile");
         BenchProgram::EnvMapTy envMap;
@@ -134,7 +135,11 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
             envMap["COMPILE_CMD"] = CLANG_CMD;
         envMap["INDEX_FILE"] = INDEX_FILE;
         clearTmpDirectory();
-        P.buildSubDir("profile", CLANG_PROFILE_WRAP, envMap);
+        bool result=P.buildSubDir("profile", CLANG_PROFILE_WRAP, envMap);
+        if (!result){
+            outlog_printf(0,"Profile build failed!\n");
+            exit(1);
+        }
     }
 
     typedef std::map<SourcePositionTy, ProfileInfoTy> ProfileLocationMapTy;
@@ -158,14 +163,15 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         llvm::errs() << "Neg Processing: "<< *it << "\n";
         ProfileLocationMapTy res;
         clearProfileResult();
-        bool tmp = P.test("profile", *it, testEnv, true);
+        bool tmp = P.test("profile", *it, testEnv, 0,0,0,0,true);
         res = parseProfileResult();
+        // llvm::errs() << "Finish!" << "\n";
 
         if (*it < min_id) min_id = *it;
         if (*it > max_id) max_id = *it;
         assert( !tmp || 1);
         for (ProfileLocationMapTy::iterator iit = res.begin(); iit != res.end(); ++iit) {
-            //llvm::errs() << iit->first.expFilename << " "<< iit->first.expLine << "\n";
+            // llvm::errs() << iit->first.expFilename << " "<< iit->first.expLine << "\n";
             if (negative_mark.count(iit->first) != 0) {
                 negative_mark[iit->first].execution_cnt ++;
                 if (negative_mark[iit->first].beforeend_cnt < iit->second.beforeend_cnt) {
@@ -192,8 +198,9 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         llvm::errs() << "Processing: " << cnt << " : " << *it << "\n";
         ProfileLocationMapTy res;
         clearProfileResult();
-        bool tmp = P.test("profile", *it, testEnv, true);
+        bool tmp = P.test("profile", *it, testEnv, 0,0,0,0,true);
         res = parseProfileResult();
+        // outlog_printf(2,"Result: %d\n",res.size());
         cnt ++;
         if (!tmp) {
             fprintf(stderr, "Profile version failed on this, maybe because of timeout due to overhead!\n");
@@ -220,6 +227,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         // FIXME: this is really hacky
         if (bugged_files.size() != 0)
             if (bugged_files.count(it->first.expFilename) == 1) {
+                // outlog_printf(2,"Bugged file: %s\n",it->first.expFilename.c_str());
                 Q2.push(std::make_pair( std::make_pair(-(it->second.execution_cnt * SIGMA - positive_mark[it->first]),
                     (it->second.beforeend_cnt)), std::make_pair(it->first, it->second.pid) ));
                 while (Q2.size() > LOC2_LIMIT)
@@ -267,6 +275,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         candidateResults.push_back(tmpv2[i]);
 
     printResult(P.getLocalizationResultFilename());
+    outlog_printf(0,"Localizing Finished in %llus!\n",get_timer());
 }
 
 std::vector<SourcePositionTy> ProfileErrorLocalizer::getCandidateLocations() {

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -23,37 +23,39 @@ import subprocess
 #FIXME: this is very hacky, should properly handle the quote case
 def fix_argv(s):
     if (s[0:2] == "-D") and (s.find('="') != -1):
-        idx2 = s.find('="');
-        idx3 = s.find('"', idx2 + 2);
-        return s[0:idx2] + '=\'"' + s[idx2 + 2: idx3] + '"\'' + s[idx3 + 1:];
+        idx2 = s.find('="')
+        idx3 = s.find('"', idx2 + 2)
+        return s[0:idx2] + '=\'"' + s[idx2 + 2: idx3] + '"\'' + s[idx3 + 1:]
     elif (s.find('(') != -1) or (s.find(')') != -1):
-        return '"' + s + '"';
+        return '"' + s + '"'
     else:
-        return s;
+        return s
 
+print("wrap/tclang")
 for i in range(1, len(argv)):
-    argv[i] = fix_argv(argv[i]);
+    argv[i] = fix_argv(argv[i])
 
-compile_cmd = environ.get("COMPILE_CMD");
-assert(compile_cmd != None);
-fulldir = path.abspath(path.dirname(argv[0]));
+compile_cmd = environ.get("COMPILE_CMD")
+assert(compile_cmd != None)
+fulldir = path.abspath(path.dirname(argv[0]))
 runtime_library_path = fulldir + "/../src/.libs"
 
-just_compile = False;
+just_compile = False
 for i in range(1, len(argv)):
     if argv[i] == "-c":
-        just_compile = True;
+        just_compile = True
 
 # This is a link command, I am going to link the library
 if not just_compile:
     if (len(argv) > 1 and argv[1].find("-print-prog-name") != 0):
-        cmd = compile_cmd + " -Wl,-rpath=" + runtime_library_path + " -L " + runtime_library_path + " " + " ".join(argv[1:]) + " -ltest_runtime";
+        # cmd = compile_cmd + " -Wl,-rpath=" + runtime_library_path + " -L" + runtime_library_path + " -l:"+runtime_library_path+"/libtest_runtime.so"+" -ferror-limit=0 " + " ".join(argv[1:]);
+        cmd = compile_cmd + " -Wl,-rpath=" + runtime_library_path + " -L" + runtime_library_path + " -l"+"test_runtime"+" -ferror-limit=0 " + " ".join(argv[1:])
     else:
-        cmd = compile_cmd + " " + " ".join(argv[1:]);
+        cmd = compile_cmd + " -ferror-limit=0 " + " ".join(argv[1:])
     # print "Linkcmd: " + cmd;
-    ret = subprocess.call(cmd, shell=True);
-    exit(ret);
+    ret = subprocess.call(cmd, shell=True)
+    exit(ret)
 
-cmd = compile_cmd + " " + " ".join(argv[1:]);
-ret = subprocess.call(cmd, shell=True);
-exit(ret);
+cmd = compile_cmd + " -ferror-limit=0 " + " ".join(argv[1:])
+ret = subprocess.call(cmd, shell=True)
+exit(ret)
