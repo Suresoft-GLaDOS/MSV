@@ -514,7 +514,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             return -((double)it->second);*/
     }
 
-    double getLocScore(Stmt *n) {
+    double getLocScore(Stmt *n) { // score A
         assert( loc_map1.count(n) > 0);
         double score = log(1-GeoP) * loc_map1[n] + log(GeoP);
         if (llvm::isa<LabelStmt>(n))

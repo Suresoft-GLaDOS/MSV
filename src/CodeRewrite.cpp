@@ -648,6 +648,14 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
             switchObject.types[patch_it->second].cases.push_back(case_count);
+            if (currentBody.find("__is_neg")!=std::string::npos){
+                size_t location=currentBody.find("__is_neg");
+                size_t endLoc=currentBody.find(", ",location);
+                size_t comma=currentBody.find(",",endLoc+2);
+                size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
+
+                varSizes[std::make_pair(counter,case_count)]=varCount;
+            }
 
             index++;
             caseKind[patch_it->second].push_back(case_count);
@@ -705,6 +713,15 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
             switchObject.types[patch_it->second].cases.push_back(case_count);
+            if (currentBody.find("__is_neg")!=std::string::npos){
+                size_t location=currentBody.find("__is_neg");
+                size_t endLoc=currentBody.find(", ",location);
+                size_t comma=currentBody.find(",",endLoc+2);
+                size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
+
+                varSizes[std::make_pair(counter,case_count)]=varCount;
+            }
+
 
             index++;
             // caseKind[patch_it->second].push_back(case_count);
@@ -792,6 +809,15 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
             switchObject.types[patch_it->second].cases.push_back(case_count);
+            if (currentBody.find("__is_neg")!=std::string::npos){
+                size_t location=currentBody.find("__is_neg");
+                size_t endLoc=currentBody.find(", ",location);
+                size_t comma=currentBody.find(",",endLoc+2);
+                size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
+
+                varSizes[std::make_pair(counter,case_count)]=varCount;
+            }
+
 
             index++;
             // caseKind[patch_it->second].push_back(case_count);
@@ -849,6 +875,15 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             patchTypes[currentPatch]=toString(patch_it->second);
             macroCode[index]=currentBody;
             switchObject.types[patch_it->second].cases.push_back(case_count);
+            if (currentBody.find("__is_neg")!=std::string::npos){
+                size_t location=currentBody.find("__is_neg");
+                size_t endLoc=currentBody.find(", ",location);
+                size_t comma=currentBody.find(",",endLoc+2);
+                size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
+
+                varSizes[std::make_pair(counter,case_count)]=varCount;
+            }
+
 
             index++;
             // caseKind[patch_it->second].push_back(case_count);

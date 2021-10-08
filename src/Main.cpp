@@ -90,6 +90,8 @@ llvm::cl::opt<bool> ForCPP("cpp", llvm::cl::init(false));
 
 llvm::cl::opt<std::string> SwitchCaseDebug("switch-id",llvm::cl::value_desc("<switch id>-<case>"),
         llvm::cl::init(""),llvm::cl::desc("Test with specific switch id and case instead of AFL"));
+llvm::cl::opt<bool> SkipProfile("skip-profile",
+        llvm::cl::desc("Skip adding profile writer"),llvm::cl::init(false));
 
 int main(int argc, char* argv[]) {
     llvm::cl::ParseCommandLineOptions(argc, argv);
@@ -138,7 +140,7 @@ int main(int argc, char* argv[]) {
             P->setConditionNum(std::stoi(switchCase.substr(secondDash+1)));
         }
     }
-
+    P->skip_profile=SkipProfile.getValue();
 
     if (!SkipVerify) {
         outlog_printf(1, "Verify Test Cases\n");

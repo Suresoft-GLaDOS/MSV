@@ -1150,6 +1150,7 @@ public:
         switchCluster=R.getSwitchCluster();
         macroCode=R.getMacroCode();
         macroFile=R.getMacroFile();
+        P.getSwitchInfo().varSizes=R.getVarSizes();
         // caseCluster=R.getCaseCluster();
 
         // Create rules
@@ -1902,26 +1903,38 @@ class TestBatcher {
         
         BenchProgram::EnvMapTy testEnv;
         P.applyRepairedCode(combined,buildEnv,CLANG_TEST_WRAP);
+        if (P.skip_profile){
+            for (std::map<std::string, std::string>::iterator it=combined.begin();it!=combined.end();it++){
+                size_t filePos=it->first.rfind("/");
+                std::string bak_file=P.getWorkdir()+"/"+fixedFile+it->first.substr(filePos+1);
+                std::ofstream bak_fo(bak_file.c_str());
+                bak_fo << it->second;
+                bak_fo.close();
+                outlog_printf(2,"Saved fixed file at: %s\n",bak_file.c_str());
+            }
+        }
         std::vector<long long> succ_macros=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
         outlog_printf(0,"Meta-program generated in %llus!\n",get_timer());
 
-        outlog_printf(2,"Adding profile writers...\n");
-        std::map<long long,std::string> macroCode;
-        macroCode.clear();
-        reset_timer();
-        std::map<std::string,std::vector<long long>> macroFile=addProfileWriter(P,combined,succ_macros,macroCode,fixedFile);
-        outlog_printf(0,"Profile writer added in %llus!\n",get_timer());
-        outlog_printf(2,"Trying build...\n");
-        reset_timer();
-        std::vector<long long> succ_macros2=P.buildWithRepairedCode(CLANG_TEST_WRAP,buildEnv,combined,macroCode,macroFile,fixedFile,succ_macros);
-        if (succ_macros.size()>0) printf("Pass to build final program\n");
-        else{
-            printf("\033[0;31m");
-            printf("\nFail to build with profile writer, check build.log!\n");
-            printf("\033[0m");
+        if (!P.skip_profile){
+            outlog_printf(2,"Adding profile writers...\n");
+            std::map<long long,std::string> macroCode;
+            macroCode.clear();
+            reset_timer();
+            std::map<std::string,std::vector<long long>> macroFile=addProfileWriter(P,combined,succ_macros,macroCode,fixedFile);
+            outlog_printf(0,"Profile writer added in %llus!\n",get_timer());
+            outlog_printf(2,"Trying build...\n");
+            reset_timer();
+            std::vector<long long> succ_macros2=P.buildWithRepairedCode(CLANG_TEST_WRAP,buildEnv,combined,macroCode,macroFile,fixedFile,succ_macros);
+            if (succ_macros.size()>0) printf("Pass to build final program\n");
+            else{
+                printf("\033[0;31m");
+                printf("\nFail to build with profile writer, check build.log!\n");
+                printf("\033[0m");
+            }
+            outlog_printf(0,"Final build finished in %llus!\n",get_timer());
         }
-        outlog_printf(0,"Final build finished in %llus!\n",get_timer());
-        P.rollbackOriginalCode(combined,buildEnv);
+        // P.rollbackOriginalCode(combined,buildEnv);
 
         // if (P.getSwitch().first==0 && P.getSwitch().second==0)
         //     result_init=T->test(testEnv,0,true);

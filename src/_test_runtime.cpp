@@ -404,7 +404,57 @@ extern "C" int __is_neg(const char *location,int count, ...) {
     }
     else if (strcmp(is_neg, "RUN") == 0){
         // If operator is ALL_1, return 1
-        if (strcmp(getenv("__OPERATOR"),"4")==0) return 1;
+        char* tmp_file = getenv("TMP_FILE");
+        if (!init) {
+            // fprintf(stderr,"Initing 1!\n");
+            init = true;
+            FILE *f = fopen(tmp_file, "r");
+            if (f == NULL) {
+                records_sz = 0;
+                current_cnt = 0;
+            }
+            else {
+                unsigned long n;
+                int ret = fscanf(f, "%lu", &n);
+                assert( ret == 1);
+                records_sz = 0;
+                for (unsigned long i = 0; i < n; i++) {
+                    unsigned long v;
+                    ret = fscanf(f, "%lu", &v);
+                    assert( ret == 1);
+                    records[records_sz ++ ] = v;
+                }
+                fclose(f);
+                current_cnt = records_sz;
+            }
+        }
+        
+
+        if (strcmp(getenv("__OPERATOR"),"4")==0) {
+            if (records_sz < MAXSZ){
+                records[records_sz++] = 1;
+            }
+            current_cnt ++;
+
+            // fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
+            // We write back immediate
+            FILE *f = fopen(tmp_file, "w");
+            assert( f != NULL );
+            fprintf(f, "%lu ", records_sz);
+            // fprintf(stderr, "Size: %lu\n",records_sz);
+            // fprintf(stderr, "Record: ");
+            for (unsigned long i = 0; i < records_sz; i++) {
+                fprintf(f, "%lu", records[i]);
+                // fprintf(stderr, "%lu ",records[i]);
+                if (i != records_sz - 1)
+                    fprintf(f, " ");
+            }
+            // fprintf(stderr, "\n");
+            fclose(f);
+
+
+            return 1;
+        }
 
         int var=atoi(getenv("__VARIABLE"));
         int oper=atoi(getenv("__OPERATOR"));
@@ -432,11 +482,43 @@ extern "C" int __is_neg(const char *location,int count, ...) {
         if (value==MAGIC_NUMBER) return 0;
         else{
             switch(oper){
-                case 1: return (value !=constant); // NE
-                case 2: return (value > constant); // GT
-                case 3: return (value < constant); // LT
-                default: return (value == constant); // EQ
+                case 1: 
+                    if (records_sz < MAXSZ){
+                        records[records_sz++] = (value !=constant);
+                    }
+                case 2: 
+                    if (records_sz < MAXSZ){
+                        records[records_sz++] = (value >constant);
+                    }
+                case 3: 
+                    if (records_sz < MAXSZ){
+                        records[records_sz++] = (value <constant);
+                    }
+                default: 
+                    if (records_sz < MAXSZ){
+                        records[records_sz++] = (value ==constant);
+                    }
             }
+
+            current_cnt ++;
+
+            // fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
+            // We write back immediate
+            FILE *f = fopen(tmp_file, "w");
+            assert( f != NULL );
+            fprintf(f, "%lu ", records_sz);
+            // fprintf(stderr, "Size: %lu\n",records_sz);
+            // fprintf(stderr, "Record: ");
+            for (unsigned long i = 0; i < records_sz; i++) {
+                fprintf(f, "%lu", records[i]);
+                // fprintf(stderr, "%lu ",records[i]);
+                if (i != records_sz - 1)
+                    fprintf(f, " ");
+            }
+            // fprintf(stderr, "\n");
+            fclose(f);
+
+            return records[records_sz-1];
         }
 
     }

@@ -181,6 +181,8 @@ private:
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
         std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
         std::vector<File> infos;
+
+        std::map<std::pair<size_t,size_t>,size_t> varSizes;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
         void save(){
@@ -288,6 +290,17 @@ private:
             }
             cJSON_AddItemToObject(json,"rules",ruleArray);
 
+            cJSON *sizesArray=cJSON_CreateArray();
+            for (std::map<std::pair<size_t,size_t>,size_t>::iterator it=varSizes.begin();it!=varSizes.end();it++){
+                cJSON *sizeObject=cJSON_CreateObject();
+
+                cJSON_AddNumberToObject(sizeObject,"switch",it->first.first);
+                cJSON_AddNumberToObject(sizeObject,"case",it->first.second);
+                cJSON_AddNumberToObject(sizeObject,"size",it->second);
+                cJSON_AddItemToArray(sizesArray,sizeObject);
+            }
+            cJSON_AddItemToObject(json,"sizes",sizesArray);
+
             // Save JSON to file
             char *jsonString=cJSON_Print(json);
             std::ofstream fout(fileName,std::ofstream::out);
@@ -370,6 +383,7 @@ private:
     void deleteLibraryFile(const std::map<std::string, std::string> &fileCodeMap);
 public:
     bool isCondition;
+    bool skip_profile;
     // We create the work dir from a configuration file, and we will put workdir
     // in the workDirPath path. If it is empty string, we will create a work dir
     // with an empty directory
