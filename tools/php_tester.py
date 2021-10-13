@@ -299,7 +299,7 @@ class php_tester:
         # TODO: afl_cmd=["afl_fuzz","-w",self.work_dir,"-p",self.repo_dir+"/sapi/cli/php","-h",test_prog] + arg_list
         # -t(timeout) can be optional
         cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list;
-        #print str(cmd);
+        # print str(cmd);
         #print >> sys.stderr, self.repo_dir
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE);
         chdir(ori_dir);

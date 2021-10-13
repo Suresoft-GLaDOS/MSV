@@ -486,18 +486,22 @@ extern "C" int __is_neg(const char *location,int count, ...) {
                     if (records_sz < MAXSZ){
                         records[records_sz++] = (value !=constant);
                     }
+                    break;
                 case 2: 
                     if (records_sz < MAXSZ){
                         records[records_sz++] = (value >constant);
                     }
+                    break;
                 case 3: 
                     if (records_sz < MAXSZ){
                         records[records_sz++] = (value <constant);
                     }
+                    break;
                 default: 
                     if (records_sz < MAXSZ){
                         records[records_sz++] = (value ==constant);
                     }
+                    break;
             }
 
             current_cnt ++;
@@ -515,7 +519,6 @@ extern "C" int __is_neg(const char *location,int count, ...) {
                 if (i != records_sz - 1)
                     fprintf(f, " ");
             }
-            // fprintf(stderr, "\n");
             fclose(f);
 
             return records[records_sz-1];

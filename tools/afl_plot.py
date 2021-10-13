@@ -325,9 +325,19 @@ def afl_plot_two(in_file: str, title: str, out_file: str = '', ignore_iteration:
         max_success = temp_success
 
     print(f"total {total}")
-    plt.plot(prophet_iter_list, prophet_result_list, 'r', random_iter_list,
-             random_result_list, 'b',[prophet_correct[0]],[prophet_correct[1]],'r*',
-             [random_correct[0]],[random_correct[1]],'b*')
+    if len(prophet_correct)>1 and len(random_correct)>1:
+        plt.plot(prophet_iter_list, prophet_result_list, 'r', random_iter_list,
+                random_result_list, 'b',[prophet_correct[0]],[prophet_correct[1]],'r*',
+                [random_correct[0]],[random_correct[1]],'b*')
+    elif len(prophet_correct)>1:
+        plt.plot(prophet_iter_list, prophet_result_list, 'r', random_iter_list,
+                random_result_list, 'b',[prophet_correct[0]],[prophet_correct[1]],'r*')
+    elif len(random_correct)>1:
+        plt.plot(prophet_iter_list, prophet_result_list, 'r', random_iter_list,
+                random_result_list, 'b',[random_correct[0]],[random_correct[1]],'b*')
+    else:
+        plt.plot(prophet_iter_list, prophet_result_list, 'r', random_iter_list,
+                random_result_list, 'b')
     plt.title(title)
     plt.xlabel("iteration")
     plt.ylabel("pass")
