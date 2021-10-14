@@ -186,7 +186,7 @@ AR = ar
 AUTOCONF = ${SHELL} /root/project/MSV/build-aux/missing autoconf
 AUTOHEADER = ${SHELL} /root/project/MSV/build-aux/missing autoheader
 AUTOMAKE = ${SHELL} /root/project/MSV/build-aux/missing automake-1.15
-AWK = gawk
+AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
