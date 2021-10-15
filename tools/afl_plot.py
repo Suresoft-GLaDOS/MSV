@@ -17,6 +17,9 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
     index = 0
 
     max_success = 0  # Just for graph design
+    prophet_correct=[]
+    random_correct=[]
+    guided_correct=[]
     with open(in_file+"/"+red+".csv", "r") as csv:
         total = 0
         i = 0
@@ -43,11 +46,13 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
                 prophet_iter_list.append(index)
                 index += 1
             else:
-                prophet_iter_list.append(i)
+                if use_time:
+                    prophet_iter_list.append(tm)
+                else:
+                    prophet_iter_list.append(i)
                 i += 1
             prophet_result_list.append(total)
 
-            prophet_correct=[]
             if len(correct_patch)==2 and oper==None and correct_patch[0]==sw and correct_patch[1]==cs:
                 if  use_time:
                     prophet_correct.append(tm)
@@ -61,6 +66,7 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
                     prophet_correct.append(i)
                 prophet_correct.append(total)
             elif len(correct_patch)>3 and correct_patch[0]==sw and correct_patch[1]==cs and correct_patch[2]==oper and correct_patch[3]==var and correct_patch[4]==const:
+                print('test')
                 if  use_time:
                     prophet_correct.append(tm)
                 else:
@@ -96,11 +102,13 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
                 random_iter_list.append(index)
                 index += 1
             else:
-                random_iter_list.append(i)
+                if use_time:
+                    random_iter_list.append(tm)
+                else:
+                    random_iter_list.append(i)
                 i += 1
             random_result_list.append(total)
 
-            random_correct=[]
             if len(correct_patch)==2 and oper==None and correct_patch[0]==sw and correct_patch[1]==cs:
                 if  use_time:
                     random_correct.append(tm)
@@ -151,11 +159,13 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
                 guided_iter_list.append(index)
                 index += 1
             else:
-                guided_iter_list.append(i)
+                if use_time:
+                    guided_iter_list.append(tm)
+                else:
+                    guided_iter_list.append(i)
                 i += 1
             guided_result_list.append(total)
 
-            guided_correct=[]
             if len(correct_patch)==2 and oper==None and correct_patch[0]==sw and correct_patch[1]==cs:
                 if  use_time:
                     guided_correct.append(tm)
@@ -272,6 +282,7 @@ def afl_plot_two(in_file: str, title: str, out_file: str = '', ignore_iteration:
 
     max_success = 0  # Just for graph design
     prophet_correct=[]
+    random_correct=[]
     with open(in_file+"/"+red+".csv", "r") as csv:
         total = 0
         i = 0
@@ -298,7 +309,10 @@ def afl_plot_two(in_file: str, title: str, out_file: str = '', ignore_iteration:
                 prophet_iter_list.append(index)
                 index += 1
             else:
-                prophet_iter_list.append(i)
+                if use_time:
+                    prophet_iter_list.append(tm)
+                else:
+                    prophet_iter_list.append(i)
                 i += 1
             prophet_result_list.append(total)
 
@@ -350,11 +364,13 @@ def afl_plot_two(in_file: str, title: str, out_file: str = '', ignore_iteration:
                 random_iter_list.append(index)
                 index += 1
             else:
-                random_iter_list.append(i)
+                if use_time:
+                    random_iter_list.append(tm)
+                else:
+                    random_iter_list.append(i)
                 i += 1
             random_result_list.append(total)
 
-            random_correct=[]
             if len(correct_patch)==2 and oper==None and correct_patch[0]==sw and correct_patch[1]==cs:
                 if  use_time:
                     random_correct.append(tm)
