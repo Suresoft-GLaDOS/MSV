@@ -7,7 +7,7 @@ from matplotlib.transforms import Bbox
 
 
 def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: bool = False,
-             red: str = "prophet", blue: str = "random", green: str = "guided",correct_patch=()) -> None:
+             red: str = "prophet", blue: str = "random", green: str = "guided",correct_patch=(),use_time=False) -> None:
     prophet_iter_list = list()
     random_iter_list = list()
     guided_iter_list = list()
@@ -23,16 +23,16 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
         for line in csv.readlines():
             tokens = line.strip().split(",")
             iter = int(tokens[0])
-            tm = int(tokens[1])
+            tm = int(tokens[1])/1000
             sw = int(tokens[2])
             cs = int(tokens[3])
             result = tokens[4] == "1"
             if len(tokens)==6:
-                oper=tokens[5]
+                oper=int(tokens[5])
             elif len(tokens)==8:
-                oper=tokens[5]
-                var=tokens[6]
-                const=tokens[7]
+                oper=int(tokens[5])
+                var=int(tokens[6])
+                const=int(tokens[7])
             else:
                 oper=None
             
@@ -49,13 +49,22 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
 
             prophet_correct=[]
             if len(correct_patch)==2 and oper==None and correct_patch[0]==sw and correct_patch[1]==cs:
-                prophet_correct.append(prophet_iter_list[len(prophet_iter_list)-1])
+                if  use_time:
+                    prophet_correct.append(tm)
+                else:
+                    prophet_correct.append(i)
                 prophet_correct.append(total)
             elif len(correct_patch)==3 and oper==4 and correct_patch[0]==sw and correct_patch[1]==cs:
-                prophet_correct.append(prophet_iter_list[len(prophet_iter_list)-1])
+                if  use_time:
+                    prophet_correct.append(tm)
+                else:
+                    prophet_correct.append(i)
                 prophet_correct.append(total)
             elif len(correct_patch)>3 and correct_patch[0]==sw and correct_patch[1]==cs and correct_patch[2]==oper and correct_patch[3]==var and correct_patch[4]==const:
-                prophet_correct.append(prophet_iter_list[len(prophet_iter_list)-1])
+                if  use_time:
+                    prophet_correct.append(tm)
+                else:
+                    prophet_correct.append(i)
                 prophet_correct.append(total)
 
         csv.close()
@@ -67,16 +76,16 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
         for line in csv.readlines():
             tokens = line.strip().split(",")
             iter = int(tokens[0])
-            tm = int(tokens[1])
+            tm = int(tokens[1])/1000
             sw = int(tokens[2])
             cs = int(tokens[3])
             result = tokens[4] == "1"
             if len(tokens)==6:
-                oper=tokens[5]
+                oper=int(tokens[5])
             elif len(tokens)==8:
-                oper=tokens[5]
-                var=tokens[6]
-                const=tokens[7]
+                oper=int(tokens[5])
+                var=int(tokens[6])
+                const=int(tokens[7])
             else:
                 oper=None
 
@@ -93,13 +102,22 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
 
             random_correct=[]
             if len(correct_patch)==2 and oper==None and correct_patch[0]==sw and correct_patch[1]==cs:
-                random_correct.append(random_iter_list[len(random_iter_list)-1])
+                if  use_time:
+                    random_correct.append(tm)
+                else:
+                    random_correct.append(i)
                 random_correct.append(total)
             elif len(correct_patch)==3 and oper==4 and correct_patch[0]==sw and correct_patch[1]==cs:
-                random_correct.append(random_iter_list[len(random_iter_list)-1])
+                if  use_time:
+                    random_correct.append(tm)
+                else:
+                    random_correct.append(i)
                 random_correct.append(total)
             elif len(correct_patch)>3 and correct_patch[0]==sw and correct_patch[1]==cs and correct_patch[2]==oper and correct_patch[3]==var and correct_patch[4]==const:
-                random_correct.append(random_iter_list[len(random_iter_list)-1])
+                if  use_time:
+                    random_correct.append(tm)
+                else:
+                    random_correct.append(i)
                 random_correct.append(total)
 
         csv.close()
@@ -113,16 +131,16 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
         for line in csv.readlines():
             tokens = line.strip().split(",")
             iter = int(tokens[0])
-            tm = int(tokens[1])
+            tm = int(tokens[1])/1000
             sw = int(tokens[2])
             cs = int(tokens[3])
             result = tokens[4] == "1"
             if len(tokens)==6:
-                oper=tokens[5]
+                oper=int(tokens[5])
             elif len(tokens)==8:
-                oper=tokens[5]
-                var=tokens[6]
-                const=tokens[7]
+                oper=int(tokens[5])
+                var=int(tokens[6])
+                const=int(tokens[7])
             else:
                 oper=None
 
@@ -139,13 +157,22 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
 
             guided_correct=[]
             if len(correct_patch)==2 and oper==None and correct_patch[0]==sw and correct_patch[1]==cs:
-                guided_correct.append(guided_iter_list[len(guided_iter_list)-1])
+                if  use_time:
+                    guided_correct.append(tm)
+                else:
+                    guided_correct.append(i)
                 guided_correct.append(total)
             elif len(correct_patch)==3 and oper==4 and correct_patch[0]==sw and correct_patch[1]==cs:
-                guided_correct.append(guided_iter_list[len(guided_iter_list)-1])
+                if  use_time:
+                    guided_correct.append(tm)
+                else:
+                    guided_correct.append(i)
                 guided_correct.append(total)
             elif len(correct_patch)>3 and correct_patch[0]==sw and correct_patch[1]==cs and correct_patch[2]==oper and correct_patch[3]==var and correct_patch[4]==const:
-                guided_correct.append(guided_iter_list[len(guided_iter_list)-1])
+                if  use_time:
+                    guided_correct.append(tm)
+                else:
+                    guided_correct.append(i)
                 guided_correct.append(total)
 
         csv.close()
@@ -154,10 +181,19 @@ def afl_plot(in_file: str, title: str, out_file: str = '', ignore_iteration: boo
 
     print(f"total {total}")
     plt.plot(prophet_iter_list, prophet_result_list, 'r', random_iter_list,
-             random_result_list, 'b', guided_iter_list, guided_result_list, 'g',[prophet_correct[0]],[prophet_correct[1]],'r*',
-             [random_correct[0]],[random_correct[1]],'b*',[guided_correct[0]],[guided_correct[1]],'g*',)
+             random_result_list, 'b', guided_iter_list, guided_result_list, 'g')
+    if len(prophet_correct)!=0:
+        plt.plot([prophet_correct[0]],[prophet_correct[1]],'r*')
+    if len(random_correct)!=0:
+        plt.plot([random_correct[0]],[random_correct[1]],'b*')
+    if len(guided_correct)!=0:
+        plt.plot([guided_correct[0]],[guided_correct[1]],'g*')
+
     plt.title(title)
-    plt.xlabel("iteration")
+    if use_time:
+        plt.xlabel('time(ms)')
+    else:
+        plt.xlabel("iteration")
     plt.ylabel("pass")
     plt.text(0, max_success, 'Red: '+red+'\nBlue: '+blue +
              '\nGreen: '+green, bbox={'facecolor': 'white'})
@@ -227,7 +263,7 @@ def afl_plot_one(in_file: str, title: str, out_file: str, ignore_iteration: bool
 
 
 def afl_plot_two(in_file: str, title: str, out_file: str = '', ignore_iteration: bool = False,
-             red: str = "prophet", blue: str = "random", correct_patch=()) -> None:
+             red: str = "prophet", blue: str = "random", correct_patch=(),use_time=False) -> None:
     prophet_iter_list = list()
     random_iter_list = list()
     prophet_result_list = list()
@@ -235,22 +271,23 @@ def afl_plot_two(in_file: str, title: str, out_file: str = '', ignore_iteration:
     index = 0
 
     max_success = 0  # Just for graph design
+    prophet_correct=[]
     with open(in_file+"/"+red+".csv", "r") as csv:
         total = 0
         i = 0
         for line in csv.readlines():
             tokens = line.strip().split(",")
             iter = int(tokens[0])
-            tm = int(tokens[1])
+            tm = int(tokens[1])/1000
             sw = int(tokens[2])
             cs = int(tokens[3])
             result = tokens[4] == "1"
             if len(tokens)==6:
-                oper=tokens[5]
+                oper=int(tokens[5])
             elif len(tokens)==8:
-                oper=tokens[5]
-                var=tokens[6]
-                const=tokens[7]
+                oper=int(tokens[5])
+                var=int(tokens[6])
+                const=int(tokens[7])
             else:
                 oper=None
             
@@ -265,15 +302,23 @@ def afl_plot_two(in_file: str, title: str, out_file: str = '', ignore_iteration:
                 i += 1
             prophet_result_list.append(total)
 
-            prophet_correct=[]
             if len(correct_patch)==2 and oper==None and correct_patch[0]==sw and correct_patch[1]==cs:
-                prophet_correct.append(prophet_iter_list[len(prophet_iter_list)-1])
+                if  use_time:
+                    prophet_correct.append(tm)
+                else:
+                    prophet_correct.append(i)
                 prophet_correct.append(total)
             elif len(correct_patch)==3 and oper==4 and correct_patch[0]==sw and correct_patch[1]==cs:
-                prophet_correct.append(prophet_iter_list[len(prophet_iter_list)-1])
+                if  use_time:
+                    prophet_correct.append(tm)
+                else:
+                    prophet_correct.append(i)
                 prophet_correct.append(total)
             elif len(correct_patch)>3 and correct_patch[0]==sw and correct_patch[1]==cs and correct_patch[2]==oper and correct_patch[3]==var and correct_patch[4]==const:
-                prophet_correct.append(prophet_iter_list[len(prophet_iter_list)-1])
+                if  use_time:
+                    prophet_correct.append(tm)
+                else:
+                    prophet_correct.append(i)
                 prophet_correct.append(total)
 
         csv.close()
@@ -285,16 +330,16 @@ def afl_plot_two(in_file: str, title: str, out_file: str = '', ignore_iteration:
         for line in csv.readlines():
             tokens = line.strip().split(",")
             iter = int(tokens[0])
-            tm = int(tokens[1])
+            tm = int(tokens[1])/1000
             sw = int(tokens[2])
             cs = int(tokens[3])
             result = tokens[4] == "1"
             if len(tokens)==6:
-                oper=tokens[5]
+                oper=int(tokens[5])
             elif len(tokens)==8:
-                oper=tokens[5]
-                var=tokens[6]
-                const=tokens[7]
+                oper=int(tokens[5])
+                var=int(tokens[6])
+                const=int(tokens[7])
             else:
                 oper=None
 
@@ -311,13 +356,22 @@ def afl_plot_two(in_file: str, title: str, out_file: str = '', ignore_iteration:
 
             random_correct=[]
             if len(correct_patch)==2 and oper==None and correct_patch[0]==sw and correct_patch[1]==cs:
-                random_correct.append(random_iter_list[len(random_iter_list)-1])
+                if  use_time:
+                    random_correct.append(tm)
+                else:
+                    random_correct.append(i)
                 random_correct.append(total)
             elif len(correct_patch)==3 and oper==4 and correct_patch[0]==sw and correct_patch[1]==cs:
-                random_correct.append(random_iter_list[len(random_iter_list)-1])
+                if  use_time:
+                    random_correct.append(tm)
+                else:
+                    random_correct.append(i)
                 random_correct.append(total)
             elif len(correct_patch)>3 and correct_patch[0]==sw and correct_patch[1]==cs and correct_patch[2]==oper and correct_patch[3]==var and correct_patch[4]==const:
-                random_correct.append(random_iter_list[len(random_iter_list)-1])
+                if  use_time:
+                    random_correct.append(tm)
+                else:
+                    random_correct.append(i)
                 random_correct.append(total)
 
         csv.close()
@@ -325,21 +379,18 @@ def afl_plot_two(in_file: str, title: str, out_file: str = '', ignore_iteration:
         max_success = temp_success
 
     print(f"total {total}")
-    if len(prophet_correct)>1 and len(random_correct)>1:
-        plt.plot(prophet_iter_list, prophet_result_list, 'r', random_iter_list,
-                random_result_list, 'b',[prophet_correct[0]],[prophet_correct[1]],'r*',
-                [random_correct[0]],[random_correct[1]],'b*')
-    elif len(prophet_correct)>1:
-        plt.plot(prophet_iter_list, prophet_result_list, 'r', random_iter_list,
-                random_result_list, 'b',[prophet_correct[0]],[prophet_correct[1]],'r*')
-    elif len(random_correct)>1:
-        plt.plot(prophet_iter_list, prophet_result_list, 'r', random_iter_list,
-                random_result_list, 'b',[random_correct[0]],[random_correct[1]],'b*')
-    else:
-        plt.plot(prophet_iter_list, prophet_result_list, 'r', random_iter_list,
+    plt.plot(prophet_iter_list, prophet_result_list, 'r', random_iter_list,
                 random_result_list, 'b')
+
+    if len(prophet_correct)>1:
+        plt.plot([prophet_correct[0]],[prophet_correct[1]],'r*')
+    if len(random_correct)>1:
+        plt.plot([random_correct[0]],[random_correct[1]],'b*')
     plt.title(title)
-    plt.xlabel("iteration")
+    if use_time:
+        plt.xlabel('time(ms)')
+    else:
+        plt.xlabel("iteration")
     plt.ylabel("pass")
     plt.text(0, max_success, 'Red: '+red+'\nBlue: '+blue, bbox={'facecolor': 'white'})
     plt.grid(True)
