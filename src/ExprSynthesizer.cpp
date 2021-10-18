@@ -1054,24 +1054,39 @@ protected:
 
         P.getSwitchInfo().switchCluster=switchCluster;
         // P.getSwitchInfo().caseCluster=caseCluster;
-        std::map<std::pair<std::string,size_t>,long long> removedDuplicate;
+        double max=negative_cases.size()*(double)1000;
+        std::set<std::pair<double,std::pair<std::string,size_t>>> removedDuplicate;
         removedDuplicate.clear();
         for (std::map<std::pair<std::string,size_t>,size_t>::iterator it=scores.begin();it!=scores.end();it++){
-            if (removedDuplicate.find(it->first)==removedDuplicate.end() || (removedDuplicate.find(it->first)->second<it->second)){
-                removedDuplicate[it->first]=it->second;
+            std::set<std::pair<double,std::pair<std::string,size_t>>>::iterator *current=nullptr;
+            for (std::set<std::pair<double,std::pair<std::string,size_t>>>::iterator it2=removedDuplicate.begin();it2!=removedDuplicate.end();it2++){
+                if (it2->second==it->first){
+                    current=&it2;
+                    break;
+                }
+            }
+
+            if (current==nullptr){
+                removedDuplicate.insert(std::make_pair(it->second/max-999,it->first));
+            }
+            else if ((*current)->first<it->second){
+                removedDuplicate.erase(*current);
+                removedDuplicate.insert(std::make_pair(it->second/max-999,it->first));
             }
         }
 
-        size_t sum=0;
-        for (std::map<std::pair<std::string,size_t>,long long>::iterator it=removedDuplicate.begin();it!=removedDuplicate.end();it++){
-            sum+=it->second;
+        double sum=0;
+        for (std::set<std::pair<double,std::pair<std::string,size_t>>>::iterator it=removedDuplicate.begin();it!=removedDuplicate.end();it++){
+            sum+=it->first;
         }
-        size_t average=sum/removedDuplicate.size();
-        for (std::map<std::pair<std::string,size_t>,long long>::iterator it=removedDuplicate.begin();it!=removedDuplicate.end();it++){
-            it->second-=average;
+        double average=sum/removedDuplicate.size();
+        std::set<std::pair<double,std::pair<std::string,size_t>>> final_score;
+        final_score.clear();
+        for (std::set<std::pair<double,std::pair<std::string,size_t>>>::iterator it=removedDuplicate.begin();it!=removedDuplicate.end();it++){
+            final_score.insert(std::make_pair(it->first-average,it->second));
         }
 
-        P.getSwitchInfo().scoreInfo=removedDuplicate;
+        P.getSwitchInfo().scoreInfo=final_score;
         P.getSwitchInfo().mutationInfo=mutationInfo;
 
         P.getSwitchInfo().infos=infos;
