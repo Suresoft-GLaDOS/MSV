@@ -497,34 +497,12 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                         newStmt += ";\n";
-                    
-                    size_t pos=newStmt.find("__is_neg");
-                    while (true){
-                        for (size_t j=0;j<6 && pos!=std::string::npos;j++){
-                            pos=newStmt.find(",",pos+1);
-                        }
-                        if (pos==std::string::npos) break;
-                        newStmt.insert(pos+1,"\n\t\t\t");
-                    }
-
                     conditionCodes.insert(std::pair<std::string,RepairCandidate::CandidateKind>(newStmt,rc[j].kind));
                 }
                 else{
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                         newStmt += ";\n";
-
-                    if(newStmt.find("__is_neg")!=std::string::npos){
-                        size_t pos=newStmt.find("__is_neg");
-                        while (true){
-                            for (size_t j=0;j<6 && pos!=std::string::npos;j++){
-                                pos=newStmt.find(",",pos+1);
-                            }
-                            if (pos==std::string::npos) break;
-                            newStmt.insert(pos+1,"\n\t\t\t");
-                        }
-                    }
-
                     replaceCodes.insert(std::pair<std::string,RepairCandidate::CandidateKind>(newStmt,rc[j].kind));
                 }
             }
@@ -638,6 +616,17 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
             body+="else if (__choose"+std::to_string(counter)+" == "+std::to_string(case_count)+")\n{\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
+            // std::pair<size_t,size_t> condLoc=getConditionLocation(currentBody);
+            // std::string newStmt=subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1);
+            // size_t pos=newStmt.find("__is_neg");
+            // while (true){
+            //     for (size_t j=0;j<6 && pos!=std::string::npos;j++){
+            //         pos=newStmt.find(",",pos+1);
+            //     }
+            //     if (pos==std::string::npos) break;
+            //     newStmt.insert(pos+1,"\n\t\t\t");
+            // }
+
             body+=currentBody;
             casePatch[case_count]=currentBody;
             body+="}\n#endif\n";
@@ -690,7 +679,17 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         std::pair<size_t,size_t> conditionLoc=getConditionLocation(subPatch);
         // body+="{\n"+conditionTypes[currentCandidate[currentIndex]].getAsString()+" __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
         body+="int __choose"+std::to_string(counter)+" = __choose(\"__SWITCH"+std::to_string(counter)+"\");\n";
-        body+="{\nint __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
+        std::string newStmt=subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1);
+        size_t pos=newStmt.find("__is_neg");
+        while (true){
+            for (size_t j=0;j<6 && pos!=std::string::npos;j++){
+                pos=newStmt.find(",",pos+1);
+            }
+            if (pos==std::string::npos) break;
+            newStmt.insert(pos+1,"\n\t\t\t");
+        }
+
+        body+="{\nint __temp"+std::to_string(counter)+"="+newStmt+";\n";
         body+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
         case_count++;
 

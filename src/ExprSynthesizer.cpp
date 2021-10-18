@@ -983,7 +983,7 @@ protected:
     std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
     std::map<long long,std::string> macroCode;
 
-    std::vector<std::pair<std::string,size_t>> &scores;
+    std::map<std::pair<std::string,size_t>,size_t> &scores;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, idAndCase.size(),P.getSwitch().first,P.getSwitch().second);
@@ -1054,16 +1054,23 @@ protected:
 
         P.getSwitchInfo().switchCluster=switchCluster;
         // P.getSwitchInfo().caseCluster=caseCluster;
-        std::set<std::pair<std::string,size_t>> found;
-        found.clear();
-        std::vector<std::pair<std::string,size_t>> removedDuplicate;
+        std::map<std::pair<std::string,size_t>,long long> removedDuplicate;
         removedDuplicate.clear();
-        for (size_t i=0;i<scores.size();i++){
-            if (found.find(scores[i])==found.end()){
-                removedDuplicate.push_back(scores[i]);
-                found.insert(scores[i]);
+        for (std::map<std::pair<std::string,size_t>,size_t>::iterator it=scores.begin();it!=scores.end();it++){
+            if (removedDuplicate.find(it->first)==removedDuplicate.end() || (removedDuplicate.find(it->first)->second<it->second)){
+                removedDuplicate[it->first]=it->second;
             }
         }
+
+        size_t sum=0;
+        for (std::map<std::pair<std::string,size_t>,long long>::iterator it=removedDuplicate.begin();it!=removedDuplicate.end();it++){
+            sum+=it->second;
+        }
+        size_t average=sum/removedDuplicate.size();
+        for (std::map<std::pair<std::string,size_t>,long long>::iterator it=removedDuplicate.begin();it!=removedDuplicate.end();it++){
+            it->second-=average;
+        }
+
         P.getSwitchInfo().scoreInfo=removedDuplicate;
         P.getSwitchInfo().mutationInfo=mutationInfo;
 
@@ -1085,7 +1092,7 @@ public:
     ASTContext *tempCtxt;
     std::map<std::string,std::vector<long long>> macroFile;
     BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> &functionLoc,
-            std::vector<std::pair<std::string,size_t>> &scores):
+            std::map<std::pair<std::string,size_t>,size_t> &scores):
     P(P), learning(learning), M(M), scores(scores),
     negative_cases(P.getNegativeCaseSet()),
     positive_cases(P.getPositiveCaseSet()),
@@ -1355,7 +1362,7 @@ class StringConstTester : public BasicTester {
 
 public:
     StringConstTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
-            std::vector<std::pair<std::string,size_t>> &scores):
+            std::map<std::pair<std::string,size_t>,size_t> &scores):
         BasicTester(P, learning, M, naive,functionLoc,scores), candidate_strs(), infos(),infos_set() { }
 
     virtual ~StringConstTester() { }

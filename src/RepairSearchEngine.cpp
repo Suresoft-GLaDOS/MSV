@@ -292,14 +292,14 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         // }
 
         // Create localize score data
-        std::vector<std::pair<std::string,size_t>> scores;
+        std::map<std::pair<std::string,size_t>,size_t> scores;
         scores.clear();
         if (!naive){
             ProfileErrorLocalizer *profileError=(ProfileErrorLocalizer *)L;
             std::vector<ProfileErrorLocalizer::ResRecordTy> errors=profileError->getCandidates();
 
             for (std::vector<ProfileErrorLocalizer::ResRecordTy>::iterator it=errors.begin();it!=errors.end();it++){
-                scores.push_back(std::make_pair(it->loc.expFilename,it->loc.expLine));
+                scores[std::make_pair(it->loc.expFilename,it->loc.expLine)]=it->primeScore;
             }
         }
 
