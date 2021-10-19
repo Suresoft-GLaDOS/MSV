@@ -13,13 +13,17 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
     SourceContextManager &manager;
     ASTContext *ctxt;
     std::string file;
+    ImplicitCastExpr *initer;
     ImplicitCastExpr *writer;
+    ImplicitCastExpr *closer;
     std::string code;
 
     std::vector<Stmt*> stmt_stack;
     std::map<std::pair<size_t,size_t>,std::string> profile_writer;
     std::map<long long,std::string> macroCode;
     std::vector<long long> macroFile;
+
+    size_t initCounter=0;
 
     ASTLocTy getNowLocation(Stmt *n) {
         assert( stmt_stack.size() > 1 );
@@ -29,6 +33,34 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
         std::string src_file = M.getFilename(exp_loc).str();
         return ASTLocTy(file, src_file, parent_stmt, n);
     }
+
+    std::string addFilePointer(std::string funcCall,size_t counter){
+        size_t position=funcCall.find("__write_profile");
+
+        if (position!=std::string::npos){
+            position=funcCall.find("\"\"",position);
+            funcCall=funcCall.erase(position,2);
+
+            std::string location;
+            location="__file"+std::to_string(counter);
+            funcCall=funcCall.insert(position,location);
+        }
+        return funcCall;
+    }
+    std::string addFilePointer2(std::string funcCall,size_t counter){
+        size_t position=funcCall.find("__profile_close");
+
+        if (position!=std::string::npos){
+            position=funcCall.find("\"\"",position);
+            funcCall=funcCall.erase(position,2);
+
+            std::string location;
+            location="__file"+std::to_string(counter);
+            funcCall=funcCall.insert(position,location);
+        }
+        return funcCall;
+    }
+
 
     std::string createProfileWriter(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs,const std::string funcName) {
         std::vector<Expr *> temp;
@@ -126,16 +158,21 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
         finalStmts.clear();
         std::string result="";
         StringLiteral *str=StringLiteral::Create(*ctxt,llvm::StringRef(funcName),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
+        StringLiteral *emptyStr=StringLiteral::Create(*ctxt,"",StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
+
+        std::vector<Expr *> initArg;
+        initArg.clear();
+        initArg.push_back(str);
+        CallExpr *initCall=CallExpr::Create(*ctxt, initer, initArg,
+                ctxt->getFILEType(), VK_RValue, SourceLocation());
+        result+="void *__file"+std::to_string(initCounter)+"="+stmtToString(*ctxt,initCall)+";\n";
+
         // Add basic types, without pointer and arrow member
         for (size_t i = 0; i < temp.size(); ++i) {
             std::vector<Expr*> tmp_argv;
             tmp_argv.clear();
-            tmp_argv.push_back(str);
-            IntegerLiteral *modeArg;
-            if (i==0)
-                modeArg=getNewIntegerLiteral(ctxt,0);
-            else modeArg=getNewIntegerLiteral(ctxt,1);
-            tmp_argv.push_back(modeArg);
+            
+            tmp_argv.push_back(emptyStr);
 
             StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,temp[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
             tmp_argv.push_back(exprStr);
@@ -154,11 +191,12 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
             CallExpr *CE = CallExpr::Create(*ctxt, writer, tmp_argv,
                 ctxt->IntTy, VK_RValue, SourceLocation());
 
+            std::string finalCode=addFilePointer(stmtToString(*ctxt,CE),initCounter);
             result+="\n#ifdef __PROFILE_"+std::to_string(count)+"\n";
-            result+=stmtToString(*ctxt,CE)+";\n";
+            result+=finalCode+";\n";
             result+="\n#endif\n";
             macroFile.push_back(count);
-            macroCode[count++]=stmtToString(*ctxt,CE);
+            macroCode[count++]=finalCode;
         }
 
         // Add pointers of integral types
@@ -170,8 +208,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
 
             std::vector<Expr *> pointerArgs;
             pointerArgs.clear();
-            pointerArgs.push_back(str);
-            pointerArgs.push_back(modeOne);
+            pointerArgs.push_back(emptyStr);
 
             StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,pointers[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
             pointerArgs.push_back(exprStr);
@@ -190,11 +227,12 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
             CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
             IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
             
+            std::string finalCode=addFilePointer(stmtToString(*ctxt,checker),initCounter);
             result+="\n#ifdef __PROFILE_"+std::to_string(count)+"\n";
-            result+=stmtToString(*ctxt,checker)+";\n";
+            result+=finalCode+";\n";
             result+="\n#endif\n";
             macroFile.push_back(count);
-            macroCode[count++]=stmtToString(*ctxt,checker);
+            macroCode[count++]=finalCode;
         }
 
         // Add arrow member
@@ -204,8 +242,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
             for (size_t i=0;i<it->second.size();i++){
                 std::vector<Expr *> pointerArgs;
                 pointerArgs.clear();
-                pointerArgs.push_back(str);
-                pointerArgs.push_back(modeOne);
+                pointerArgs.push_back(emptyStr);
 
                 StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,it->second[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
                 pointerArgs.push_back(exprStr);
@@ -224,14 +261,22 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
                 CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
                 IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
 
+                std::string finalCode=addFilePointer(stmtToString(*ctxt,checker),initCounter);
                 result+="\n#ifdef __PROFILE_"+std::to_string(count)+"\n";
-                result+=stmtToString(*ctxt,checker)+";\n";
+                result+=finalCode+";\n";
                 result+="\n#endif\n";
                 macroFile.push_back(count);
-                macroCode[count++]=stmtToString(*ctxt,checker);
+                macroCode[count++]=finalCode;
             }
         }
 
+        std::vector<Expr *> closeArg;
+        closeArg.clear();
+        closeArg.push_back(emptyStr);
+        CallExpr *close = CallExpr::Create(*ctxt, closer, closeArg, ctxt->IntTy, VK_RValue, SourceLocation());
+        result+=addFilePointer2(stmtToString(*ctxt,close),initCounter)+";\n";
+
+        initCounter++;
         return result;
     }
 
@@ -255,6 +300,21 @@ public:
                     FRef, 0, VK_RValue);
             return res;
         }
+        else if (decl->getNameAsString()=="__profile_init"){
+            DeclRefExpr *FRef = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(), SourceLocation(),
+                    decl, false, SourceLocation(), decl->getType(), VK_RValue);
+            initer= ImplicitCastExpr::Create(*ctxt, ctxt->getDecayedType(decl->getType()), CK_FunctionToPointerDecay,
+                    FRef, 0, VK_RValue);
+            return res;
+        }
+        else if (decl->getNameAsString()=="__profile_close"){
+            DeclRefExpr *FRef = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(), SourceLocation(),
+                    decl, false, SourceLocation(), decl->getType(), VK_RValue);
+            closer= ImplicitCastExpr::Create(*ctxt, ctxt->getDecayedType(decl->getType()), CK_FunctionToPointerDecay,
+                    FRef, 0, VK_RValue);
+            return res;
+        }
+
 
         if (!decl->doesThisDeclarationHaveABody() || ctxt->getSourceManager().getFilename(decl->getLocation())!=file) return res;
         Stmt *tempBody=decl->getBody();

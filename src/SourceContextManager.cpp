@@ -31,7 +31,9 @@ const char* HANDLER_PREFIX =
     "int __get_mutant(); "
     "int __is_neg(const char *location,int count, ...); "
     "int __abst_hole(); "
-    "void __write_profile(const char*,int,const char*,void*,int); "
+    "void *__profile_init(const char*);"
+    "void __write_profile(void *,const char *,void *,int); "
+    "__profile_close(void *);"
     "long long __mutate(const long long,const char *,const char *); "
     "int __choose(const char *);";
 const char* MEMSET_PREFIX =
