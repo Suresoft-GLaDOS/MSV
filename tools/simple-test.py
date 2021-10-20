@@ -17,19 +17,28 @@
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
-from os import system
+from os import system,mkdir,chdir,getcwd
 import getopt
+import shutil
 
 if __name__ == "__main__":
     if len(argv) < 4:
         print "Usage: php-tester.py <src_dir> <test_dir> <work_dir> [cases]";
         exit(1);
 
-    opts, args = getopt.getopt(argv[1:], "p:");
+    opts, args = getopt.getopt(argv[1:], "p:i:");
     profile_dir = "";
+    temp_dir="__temp_test"
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
+        elif o=='-i':
+            temp_dir=a
+
+    mkdir(temp_dir);
+    orig_dir=getcwd()
+    chdir(temp_dir)
+
 
     src_dir = args[0];
     test_dir = args[1];
@@ -42,6 +51,9 @@ if __name__ == "__main__":
     if len(args) > 3:
         ids = args[3:];
         for i in ids:
+            shutil.copyfile(test_dir + "/" + str(i) + ".in", "./" + str(i) + ".in")
+            shutil.copyfile(test_dir + "/" + str(i) + ".exp", "./" + str(i) + ".exp")
+
             if (i != "0"):
                 cmd = cur_dir +"/prog "+ test_dir + "/"+ i + ".in 1> __out";
             else:
@@ -54,3 +66,6 @@ if __name__ == "__main__":
                     print i,
             system("rm -rf __out");
         print;
+        
+    chdir(orig_dir)
+    shutil.rmtree(temp_dir)
