@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void func(int a, int b){
-  if (a > b) { // >=
+  if (a == 1 && b == 1) { // (a == 1 && b == 1) || b == 2
     printf("%d\n", 0);
   } else {
     printf("%d\n", 1);
