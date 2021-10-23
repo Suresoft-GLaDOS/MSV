@@ -1947,6 +1947,7 @@ class TestBatcher {
             outlog_printf(0,"Profile writer added in %llus!\n",get_timer());
             outlog_printf(2,"Trying build...\n");
             reset_timer();
+            buildEnv["TMP_FILE"]="tmp.log";
             std::vector<long long> succ_macros2=P.buildWithRepairedCode(CLANG_TEST_WRAP,buildEnv,combined,macroCode,macroFile,fixedFile,succ_macros);
             if (succ_macros.size()>0) printf("Pass to build final program\n");
             else{

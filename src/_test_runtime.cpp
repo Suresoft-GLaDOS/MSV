@@ -120,7 +120,7 @@ extern "C" int __choose(const char *switch_id) {
 
 #define MAGIC_NUMBER -123456789
 
-extern "C" void *__profile_init(const char *func_name){
+extern "C" void *__stat_write_init(const char *func_name){
     char * pid = getenv("__PID");
     if (pid == NULL || strlen(pid) == 0) {
         pid = "0";
@@ -164,7 +164,7 @@ extern "C" void *__profile_init(const char *func_name){
     f = fopen(tmp_file, "w");
     return f;
 }
-extern "C" void __write_profile(void *fp,const char *var_name,void *var_addr,int size){
+extern "C" void __write_stat(void *fp,const char *var_name,void *var_addr,int size){
     FILE *file=(FILE *)fp;
     long long v = 0;
     if (size<=8 && isGoodAddr(var_addr, size)) {
@@ -178,7 +178,7 @@ extern "C" void __write_profile(void *fp,const char *var_name,void *var_addr,int
     // fprintf(stderr, "exit\n");
 }
 
-extern "C" void __profile_close(void *fp){
+extern "C" void __stat_file_close(void *fp){
     FILE *file=(FILE *)fp;
     fclose(file);
 }
