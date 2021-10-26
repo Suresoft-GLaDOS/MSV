@@ -61,6 +61,15 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
         return funcCall;
     }
 
+    bool hasPatch(FunctionDecl *decl){
+        Stmt *body=decl->getBody();
+        if (body==nullptr) return false;
+        size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(body->getBeginLoc()));
+        size_t end=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(body->getEndLoc()));
+        std::string bodyStr=code.substr(start,end-start+1);
+        if (bodyStr.find("#ifdef __COMPILE")!=std::string::npos) return true;
+        else return false;
+    }
 
     std::string createProfileWriter(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs,const std::string funcName) {
         std::vector<Expr *> temp;
@@ -315,7 +324,7 @@ public:
             return res;
         }
 
-        if (!decl->doesThisDeclarationHaveABody() || ctxt->getSourceManager().getFilename(decl->getLocation())!=file) return res;
+        if (!decl->doesThisDeclarationHaveABody() || ctxt->getSourceManager().getFilename(decl->getLocation())!=file || !hasPatch(decl)) return res;
         Stmt *tempBody=decl->getBody();
         CompoundStmt *body=llvm::dyn_cast<CompoundStmt>(tempBody);
 
@@ -375,7 +384,7 @@ public:
 
         ASTLocTy temp_loc=getNowLocation(stmt);
         LocalAnalyzer *temp_L = manager.getLocalAnalyzer(temp_loc);
-        if (ctxt->getSourceManager().getFilename(temp_L->getCurrentFunction()->getLocation())!=file) return res;
+        if (ctxt->getSourceManager().getFilename(temp_L->getCurrentFunction()->getLocation())!=file || !hasPatch(temp_L->getCurrentFunction())) return res;
 
         Stmt *tempBody=stmt->getThen();
         if (tempBody){
@@ -456,6 +465,7 @@ public:
                 stmt_stack.push_back(stmt->getSubStmt());
                 ASTLocTy loc=getNowLocation(stmt->getSubStmt());
                 LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                if (!hasPatch(L->getCurrentFunction())) return res;
                 ExprListTy exprs=L->getProfileWriterExpr();
 
                 size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getBeginLoc()));
@@ -473,6 +483,7 @@ public:
                             stmt_stack.push_back(*it);
                             ASTLocTy loc=getNowLocation(*it);
                             LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                            if (!hasPatch(L->getCurrentFunction())) return res;
                             ExprListTy exprs=L->getProfileWriterExpr();
                             size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
                             size_t end=code.find(";",start)+1;
@@ -499,6 +510,7 @@ public:
                 stmt_stack.push_back(stmt->getSubStmt());
                 ASTLocTy loc=getNowLocation(stmt->getSubStmt());
                 LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                if (!hasPatch(L->getCurrentFunction())) return res;
                 ExprListTy exprs=L->getProfileWriterExpr();
 
                 size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getBeginLoc()));
@@ -516,6 +528,7 @@ public:
                             stmt_stack.push_back(*it);
                             ASTLocTy loc=getNowLocation(*it);
                             LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                            if (!hasPatch(L->getCurrentFunction())) return res;
                             ExprListTy exprs=L->getProfileWriterExpr();
                             size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
                             size_t end=code.find(";",start)+1;
@@ -538,7 +551,7 @@ public:
 
         ASTLocTy temp_loc=getNowLocation(stmt);
         LocalAnalyzer *temp_L = manager.getLocalAnalyzer(temp_loc);
-        if (ctxt->getSourceManager().getFilename(temp_L->getCurrentFunction()->getLocation())!=file) return res;
+        if (ctxt->getSourceManager().getFilename(temp_L->getCurrentFunction()->getLocation())!=file || !hasPatch(temp_L->getCurrentFunction())) return res;
 
         Stmt *tempBody=stmt->getBody();
         if (tempBody){
