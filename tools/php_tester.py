@@ -350,6 +350,8 @@ class php_tester:
     # clean-up required before running test()
     def prepare_test(self, s = None):
         self.tmptest_dir = self.work_dir + "/__cleantests";
+        if not path.exists(self.tmptest_dir):
+            mkdir(self.tmptest_dir)
         if self.temp_dir!="":
             self.tmptest_dir+="/"+self.temp_dir+"_tests"
         if (path.exists(self.tmptest_dir)):
@@ -373,6 +375,7 @@ class php_tester:
                 new_s = [];
         if len(new_s) != 0:
             ret = ret | self._test(new_s, profile_dir);
+        shutil.rmtree(self.tmptest_dir);
         return ret;
 
     # test the php build with all cases, and return set of passed id
@@ -392,5 +395,6 @@ class php_tester:
                 r = self._test(s)
                 i = i + 100;
             ret = ret | r;
+        shutil.rmtree(self.tmptest_dir);
         return ret;
 
