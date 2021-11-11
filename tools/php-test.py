@@ -59,7 +59,7 @@ if __name__ == "__main__":
             ret.add('7369')
             
         for i in ret:
-            print i,
+            print i
         # print "test"
         if len(ids) == 1 and len(ret) == 0:
             if "OUTIFFAIL" in os.environ:
