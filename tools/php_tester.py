@@ -296,55 +296,36 @@ class php_tester:
                 test_prog = ori_dir + "/" + profile_dir + "/sapi/cli/php";
             else:
                 test_prog = profile_dir + "/sapi/cli/php";
-        # TODO: afl_cmd=["afl_fuzz","-w",self.work_dir,"-p",self.repo_dir+"/sapi/cli/php","-h",test_prog] + arg_list
-        # -t(timeout) can be optional
-        cmd=[prog, helper, "-p", test_prog, "-q"] + arg_list;
-        # print str(cmd);
-        #print >> sys.stderr, self.repo_dir
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE);
-        chdir(ori_dir);
-        (out, err) = p.communicate();
 
-        # print out
-        # print err
-        lines = out.split("\n");
-        test_section = False;
-        cnt = 0;
-        n = len(s);
-        new_s = list(s);
+        processes=[]
+        for arg in arg_list:
+            cmd=[prog, helper, "-p", test_prog, "-q",arg];
+            processes.append(subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE))
+        chdir(ori_dir);
         ret = set();
-        for line in lines:
-            tokens = line.split();
-            if len(tokens) == 0:
-                continue;
-            if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
-                test_section = True;
-            elif (tokens[0][0:6] == "======") and (test_section == True):
-                test_section = False;
-            elif (test_section == True) and (_is_start(tokens[0])):
-                if cnt >= n:
-                    #print out;
-                    exit(0);
-                the_idx = new_s[0];
-                new_s.remove(the_idx);
-                assert(cnt < n);
-                if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
-                    ret.add(the_idx);
-                cnt = cnt + 1;
-                test_section=False
-            elif (test_section == True) and (tokens[0] == "Fatal"):
-                if len(new_s) <= 0:
-                    return ret;
-                the_idx = new_s[0];
-                new_s.remove(the_idx);
-                tmp = self._test(new_s);
-                return (ret | tmp);
-        if cnt != n:
-            # because the test uses php itself, if we completed destroied it, this will happen
-            if (cnt == 0):
-                return set();
-            tmp = self._test(new_s);
-            return (ret | tmp);
+
+        for i in range(len(processes)):
+            (out, err) = processes[i].communicate();
+            lines = out.split("\n");
+            test_section = False;
+            for line in lines:
+                tokens = line.split();
+                if len(tokens) == 0:
+                    continue;
+                if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
+                    test_section = True;
+                elif (tokens[0][0:6] == "======") and (test_section == True):
+                    test_section = False;
+                elif (test_section == True) and (_is_start(tokens[0])):
+                    if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
+                        ret.add(s[i]);
+                    break
+            # if cnt != n:
+            #     # because the test uses php itself, if we completed destroied it, this will happen
+            #     if (cnt == 0):
+            #         return set();
+            #     tmp = self._test(new_s);
+            #     return (ret | tmp);
         return ret;
 
     # clean-up required before running test()
