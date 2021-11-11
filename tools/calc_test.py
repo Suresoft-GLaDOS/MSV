@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -17,13 +17,14 @@
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
-from os import rmdir, system,mkdir,chdir,getcwd
+from os import rmdir, system,mkdir,chdir,getcwd,environ
 import getopt
 import shutil
+import subprocess
 
 if __name__ == "__main__":
     if len(argv) < 4:
-        print "Usage: calc_test.py <src_dir> <test_dir> <work_dir> [cases]";
+        print ("Usage: calc_test.py <src_dir> <test_dir> <work_dir> [cases]")
         exit(1);
 
     opts, args = getopt.getopt(argv[1:], "p:i:");
@@ -48,6 +49,7 @@ if __name__ == "__main__":
         cur_dir = profile_dir;
 
     if len(args) > 3:
+        processes=[]
         ids = args[3:];
         for i in ids:
             shutil.copyfile(test_dir + "/" + str(i) + ".in", "./" + str(i) + ".in")
@@ -57,19 +59,27 @@ if __name__ == "__main__":
             in_arg=in_file.readline()
             in_file.close()
 
-            if (i != "0"):
-                cmd = cur_dir +"/Calc "+in_arg+ " 1> __out";
-            else:
-                cmd = cur_dir + "/Calc 1> __out";
-            ret = system(cmd);
-            if (ret == 0):
-                cmd = "diff __out " + str(i) + ".exp 1> /dev/null";
-                ret = system(cmd);
-                if (ret == 0):
-                    print i,
-            system("rm -rf __out");
+            temp_env=environ.copy()
+            temp_env['__PID']=str(i)
+            system('rm -rf /tmp/'+str(i)+'_profile.log')
 
-        print;
+            if (i != "0"):
+                cmd = cur_dir +"/prog "+in_arg
+            else:
+                cmd = cur_dir + "/prog"
+            processes.append(subprocess.Popen(cmd,shell=True,env=temp_env,stdout=subprocess.PIPE,stderr=subprocess.PIPE))
+        
+        for i in range(len(ids)):
+            (out,err)=processes[i].communicate()
+            if (processes[i].returncode == 0):
+                expected_output=open("./"+str(ids[i]+".exp"),'r')
+                exp=expected_output.read()
+                expected_output.close()
+                out=out.decode('utf-8')
+
+                if (exp == out):
+                    print (ids[i])
+            system("rm -rf __out"+str(ids[i]));
         
     chdir(orig_dir)
     shutil.rmtree(temp_dir)
