@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -24,7 +24,7 @@ from tester_common import extract_arguments
 
 def tobuild(src_dir):
     ori_dir = getcwd();
-    print "Path env: ", environ["PATH"];
+    print ("Path env: ", environ["PATH"])
     chdir(src_dir);
 
     ret = subprocess.call("make clean",shell=True)
@@ -51,22 +51,22 @@ if __name__ == "__main__":
         elif o=="-j":
             continue
 
-    print "simple-build"
+    print ("simple-build")
     if config_only:
         exit(0);
 
     if ((len(args) < 1) or (print_usage)):
-        print "Usage: simple-build.py <dirctory> [-d src_file | -c] [-h]";
+        print ("Usage: simple-build.py <dirctory> [-d src_file | -c] [-h]")
         exit(0);
 
     out_dir = args[0];
     # fetch from github if the directory does not exist
     if (not path.exists(out_dir)):
-        print "Directory does not exist!";
+        print ("Directory does not exist!")
         exit(1);
 
     if (not tobuild(out_dir)):
-        print "Build failed!";
+        print ("Build failed!")
         exit(1);
 
     if dryrun_src != "":
@@ -77,5 +77,5 @@ if __name__ == "__main__":
             print >>out_file, build_args
             out_file.close();
         else:
-            print build_dir;
-            print build_args;
+            print (build_dir)
+            print (build_args)

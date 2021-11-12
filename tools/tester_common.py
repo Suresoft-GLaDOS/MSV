@@ -133,7 +133,7 @@ def extract_arguments(out_dir, src_file):
     subprocess.call(["touch", src_file]);
     p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE);
     (out, err) = p.communicate();
-    print out;
+    print (out)
     lines = out.strip().split("\n");
     directory = ".";
     for line in lines:

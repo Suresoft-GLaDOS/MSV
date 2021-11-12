@@ -22,32 +22,32 @@ import shutil
 from tester_common import get_fix_revisions
 
 def is_due_to_autoconf_v(config_out):
-    lines = config_out.rstrip("\n").split("\n");
-    last_line = lines[len(lines) - 1];
-    return last_line.find("Bad substitution") != -1;
+    lines = config_out.rstrip("\n").split("\n")
+    last_line = lines[len(lines) - 1]
+    return last_line.find("Bad substitution") != -1
 
 def is_due_to_bison_v(config_out):
-    lines = config_out.rstrip("\n").split("\n");
-    last_line = lines[len(lines) - 1];
-    return last_line.find("bison is required") != -1;
+    lines = config_out.rstrip("\n").split("\n")
+    last_line = lines[len(lines) - 1]
+    return last_line.find("bison is required") != -1
 
 def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, config_only = False, paraj = 0):
-    ori_dir = getcwd();
+    ori_dir = getcwd()
     if deps_dir[0] != "/":
-        php_deps_dir = ori_dir + "/" + deps_dir;
+        php_deps_dir = ori_dir + "/" + deps_dir
     else:
-        php_deps_dir = deps_dir;
-    chdir(out_dir);
-    my_env = environ;
-    my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"];
+        php_deps_dir = deps_dir
+    chdir(out_dir)
+    my_env = environ
+    my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"]
     # my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"];
-    my_env["PATH"] = php_deps_dir + "/flex-2.5.4-build/bin:" + my_env["PATH"];
+    my_env["PATH"] = php_deps_dir + "/flex-2.5.4-build/bin:" + my_env["PATH"]
     # switch to the revision
     if revision != "":
         assert(not compile_only);
         ret = subprocess.call(["git", "checkout", revision, "-f"], env = my_env);
         if ret != 0:
-            print "Failed to switch to the revision " + revision;
+            print ("Failed to switch to the revision " + revision)
             chdir(ori_dir);
             return False;
 
@@ -57,10 +57,10 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
         cnt = 0;
         subprocess.call(["make","clean"],env=my_env)
         while (True):
-            print "Current path: ", my_env["PATH"];
+            print ("Current path: ", my_env["PATH"])
             cnt = cnt + 1;
             if cnt > 3:
-                print "Failed to configure after " + str(cnt) + " times";
+                print ("Failed to configure after " + str(cnt) + " times")
                 chdir(ori_dir);
                 return False;
             # clean up things
@@ -68,7 +68,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             # create configure file
             ret = subprocess.call(["./buildconf --force"], env = my_env,shell=True);
             if ret != 0:
-                print "Failed to create config, check autoconf version!";
+                print ("Failed to create config, check autoconf version!")
                 chdir(ori_dir);
                 return False;
             # do the configure
@@ -81,13 +81,13 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
                 if is_due_to_autoconf_v(err):
                     # This is possible caused by wrong autoconf version, we can use
                     # autoconf 2.13 to try again!
-                    print "Failed to configure, use autoconf 2.13 to try again";
+                    print ("Failed to configure, use autoconf 2.13 to try again")
                     my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"];
                 elif is_due_to_bison_v(err):
-                    print "Failed to configure, use bison 2.2 to try again";
+                    print ("Failed to configure, use bison 2.2 to try again")
                     my_env["PATH"] = php_deps_dir + "/bison-2.5.1-build/bin:" + my_env["PATH"];
                 else:
-                    print "Failed to configure due to unknown reason";
+                    print ("Failed to configure due to unknown reason")
                     chdir(ori_dir);
                     return False;
             else:
@@ -105,7 +105,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             ret = subprocess.call(["make", "-j", str(paraj)], env = my_env);
         chdir(ori_dir);
         if ret != 0:
-            print "Failed to compile!";
+            print ("Failed to compile!")
             return False;
     return True;
 
@@ -127,7 +127,7 @@ def extract_test_cases(out_dir = "php-src-tests", repo_dir = ""):
         # we git clone the repository
         ret = system("git clone " + addr + " " + out_dir+"/php-src")
         if ret != 0:
-            print "git-clone failed, check your network connection!"
+            print ("git-clone failed, check your network connection!")
             shutil.rmtree(out_dir)
             return False;
         cleanup = True;
@@ -142,7 +142,7 @@ def extract_test_cases(out_dir = "php-src-tests", repo_dir = ""):
                 tmpf = open(root + "/" + file, "r");
                 s = tmpf.read();
                 if (s.find("REDIRECTTEST") < 0):
-                    print "Found: " + root + "/" + file
+                    print ("Found: " + root + "/" + file)
                     combined_name = root + "/" + file;
                     if (combined_name.find("ext/session/tests/003.phpt") != -1):
                         continue;
@@ -168,7 +168,7 @@ def extract_test_cases(out_dir = "php-src-tests", repo_dir = ""):
                         continue;
                     if (combined_name.find("ext/standard/tests/file/chroot_001.phpt") != -1):
                         continue;
-                    print "extract!"
+                    print ("extract!")
                     shutil.copyfile(root+"/"+file, out_dir + "/" + str(len(test_files)).zfill(5) + ".phpt")
                     test_files.append(root+"/"+file)
 
@@ -213,7 +213,7 @@ class php_initializer:
             shutil.rmtree(repo_dir);
         ret = system("git clone "+github_addr+" "+repo_dir);
         if ret != 0:
-            print "Failed to grab from github, check your network connection and make sure you have git!";
+            print ("Failed to grab from github, check your network connection and make sure you have git!")
             return False;
         f = open(log_file, "w");
         ret = get_fix_revisions(repo_dir);
@@ -248,7 +248,7 @@ class php_tester:
     # build a revision of php
     def set_revision(self, revision, deps_dir = ""):
         ori_dir = getcwd();
-        print self.repo_dir + " " + revision;
+        print (self.repo_dir + " " + revision)
         try:
             if (deps_dir == ""):
                 ret = switch_to(self.repo_dir, revision);
@@ -259,12 +259,12 @@ class php_tester:
         except:
             # It may changed the current directory due to failure
             chdir(ori_dir);
-            print "Build failed with exception: ", sys.exc_info()[0];
+            print ("Build failed with exception: ", sys.exc_info()[0])
             return False;
         if ret:
-            print "Done reset revision to " + revision;
+            print ("Done reset revision to " + revision)
         else:
-            print "Failed to build revision " + revision;
+            print ("Failed to build revision " + revision)
         return ret;
 
     # test the php build with testcases [test_id, test_id+n)
@@ -366,12 +366,12 @@ class php_tester:
         self.prepare_test();
         while i < self.n:
             if self.n - i < 100:
-                print "Testing [" + str(i) + "," + str(self.n) + ")";
+                print ("Testing [" + str(i) + "," + str(self.n) + ")")
                 s = list(i for i in range(i, self.n));
                 r = self._test(s);
                 i = self.n;
             else:
-                print "Testing [" + str(i) + "," + str(i + 100) + ")";
+                print ("Testing [" + str(i) + "," + str(i + 100) + ")")
                 s = list(i for i in range(i, i + 100));
                 r = self._test(s)
                 i = i + 100;

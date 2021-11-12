@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -23,7 +23,7 @@ import shutil
 
 if __name__ == "__main__":
     if len(argv) < 4:
-        print "Usage: php-tester.py <src_dir> <test_dir> <work_dir> [cases]";
+        print ("Usage: php-tester.py <src_dir> <test_dir> <work_dir> [cases]")
         exit(1);
 
     opts, args = getopt.getopt(argv[1:], "p:i:");
@@ -63,7 +63,7 @@ if __name__ == "__main__":
                 cmd = "diff __out " + test_dir + "/" + i + ".exp 1> /dev/null";
                 ret = system(cmd);
                 if (ret == 0):
-                    print i,
+                    print (i)
             system("rm -rf __out");
         print;
         
