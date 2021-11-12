@@ -27,15 +27,18 @@ if __name__ == "__main__":
         print "Usage: php-tester.py <src_dir> <test_dir> <work_dir> [cases]";
         exit(1);
 
-    opts, args = getopt.getopt(argv[1:], "p:i:");
+    opts, args = getopt.getopt(argv[1:], "p:i:t:");
     profile_dir = "";
     
     temp_dir=""
+    timeout=None
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
         elif o=="-i":
             temp_dir=a
+        elif o=='-t':
+            timeout=int(a)
 
     src_dir = args[0];
     test_dir = args[1];

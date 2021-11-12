@@ -27,14 +27,17 @@ if __name__ == "__main__":
         print ("Usage: calc_test.py <src_dir> <test_dir> <work_dir> [cases]")
         exit(1);
 
-    opts, args = getopt.getopt(argv[1:], "p:i:");
+    opts, args = getopt.getopt(argv[1:], "p:i:t:");
     profile_dir = "";
     temp_dir="__temp_test"
+    timeout=None
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
         elif o=='-i':
             temp_dir=a
+        elif o=='-t':
+            timeout=int(a)
     
     mkdir(temp_dir);
     orig_dir=getcwd()
@@ -47,7 +50,6 @@ if __name__ == "__main__":
         cur_dir = src_dir;
     else:
         cur_dir = profile_dir;
-
     if len(args) > 3:
         processes=[]
         ids = args[3:];
@@ -70,7 +72,7 @@ if __name__ == "__main__":
             processes.append(subprocess.Popen(cmd,shell=True,env=temp_env,stdout=subprocess.PIPE,stderr=subprocess.PIPE))
         
         for i in range(len(ids)):
-            (out,err)=processes[i].communicate()
+            (out,err)=processes[i].communicate(timeout=timeout)
             if (processes[i].returncode == 0):
                 expected_output=open("./"+str(ids[i]+".exp"),'r')
                 exp=expected_output.read()

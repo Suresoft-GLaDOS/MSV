@@ -230,7 +230,7 @@ class php_initializer:
         return ret;
 
 class php_tester:
-    def __init__(self, work_dir, repo_dir, test_dir,temp_dir=""):
+    def __init__(self, work_dir, repo_dir, test_dir,temp_dir="",timeout=None):
         self.repo_dir = repo_dir;
         self.test_dir = test_dir;
         self.work_dir = work_dir;
@@ -240,7 +240,7 @@ class php_tester:
         line = f.readline();
         f.close();
         self.n = int(line.strip("\n"));
-        self.time_out=1000000
+        self.time_out=timeout
 
     def getn(self):
         return self.n;
@@ -305,7 +305,7 @@ class php_tester:
         ret = set();
 
         for i in range(len(processes)):
-            (out, err) = processes[i].communicate();
+            (out, err) = processes[i].communicate(timeout=self.time_out);
             lines = out.split("\n");
             test_section = False;
             for line in lines:
