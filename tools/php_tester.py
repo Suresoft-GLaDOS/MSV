@@ -306,7 +306,8 @@ class php_tester:
 
         for i in range(len(processes)):
             (out, err) = processes[i].communicate(timeout=self.time_out);
-            lines = out.split("\n");
+            out=out.decode('utf-8')
+            lines = out.splitlines()
             test_section = False;
             for line in lines:
                 tokens = line.split();
@@ -319,7 +320,7 @@ class php_tester:
                 elif (test_section == True) and (_is_start(tokens[0])):
                     if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
                         ret.add(s[i]);
-                    break
+                        break
             # if cnt != n:
             #     # because the test uses php itself, if we completed destroied it, this will happen
             #     if (cnt == 0):
