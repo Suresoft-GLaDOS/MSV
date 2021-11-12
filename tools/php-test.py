@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from php_tester import php_tester
-from sys import argv
+from sys import argv,stderr
 import getopt
 from os import system
 import os

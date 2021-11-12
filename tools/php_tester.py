@@ -306,10 +306,13 @@ class php_tester:
 
         for i in range(len(processes)):
             (out, err) = processes[i].communicate(timeout=self.time_out);
-            out=out.decode('utf-8')
             lines = out.splitlines()
             test_section = False;
             for line in lines:
+                try:
+                    line=line.decode('utf-8')
+                except UnicodeDecodeError:
+                    continue
                 tokens = line.split();
                 if len(tokens) == 0:
                     continue;
