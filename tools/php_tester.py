@@ -78,12 +78,12 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
             # print out
             # print p.returncode
             if p.returncode != 0:
-                if is_due_to_autoconf_v(err):
+                if is_due_to_autoconf_v(err.decode('utf-8')):
                     # This is possible caused by wrong autoconf version, we can use
                     # autoconf 2.13 to try again!
                     print ("Failed to configure, use autoconf 2.13 to try again")
                     my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"];
-                elif is_due_to_bison_v(err):
+                elif is_due_to_bison_v(err.decode('utf-8')):
                     print ("Failed to configure, use bison 2.2 to try again")
                     my_env["PATH"] = php_deps_dir + "/bison-2.5.1-build/bin:" + my_env["PATH"];
                 else:
