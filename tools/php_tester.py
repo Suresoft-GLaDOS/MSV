@@ -297,11 +297,15 @@ class php_tester:
             else:
                 test_prog = profile_dir + "/sapi/cli/php";
 
-        ret = set()
-        for i in range(len(s)):
-            cmd=[prog, helper, "-p", test_prog, "-q",arg_list[i]];
-            process=subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-            (out, err) = process.communicate(timeout=self.time_out);
+        processes=[]
+        for arg in arg_list:
+            cmd=[prog, helper, "-p", test_prog, "-q",arg];
+            processes.append(subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE))
+        chdir(ori_dir);
+        ret = set();
+
+        for i in range(len(processes)):
+            (out, err) = processes[i].communicate(timeout=self.time_out);
             lines = out.splitlines()
             test_section = False;
             for line in lines:
@@ -320,9 +324,6 @@ class php_tester:
                     if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
                         ret.add(s[i]);
                         break
-
-        chdir(ori_dir);
-
             # if cnt != n:
             #     # because the test uses php itself, if we completed destroied it, this will happen
             #     if (cnt == 0):
