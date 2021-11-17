@@ -298,8 +298,8 @@ class php_tester:
                 test_prog = profile_dir + "/sapi/cli/php";
 
         ret = set()
-        for arg in arg_list:
-            cmd=[prog, helper, "-p", test_prog, "-q",arg];
+        for i in range(len(s)):
+            cmd=[prog, helper, "-p", test_prog, "-q",arg_list[i]];
             process=subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
             (out, err) = process.communicate(timeout=self.time_out);
             lines = out.splitlines()
