@@ -306,7 +306,6 @@ class php_tester:
                 arg=self.tmptest_dir + "/" + str(target[0]).zfill(5) + ".phpt"
 
             cmd=[prog, helper, "-p", test_prog, "-q",arg]
-            print ('run {0}'.format(target[0]))
             processes.append(subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE))
             current_test.append(target[0])
             is_finished.append(False)
@@ -371,7 +370,6 @@ class php_tester:
                         arg=self.tmptest_dir + "/" + str(target[0]).zfill(5) + ".phpt"
 
                     cmd=[prog, helper, "-p", test_prog, "-q",arg]
-                    print ('run {0}'.format(target[0]))
                     processes[i]=subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
                     current_test[i]=target[0]
                     del target[0]
