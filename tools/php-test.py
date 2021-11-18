@@ -27,11 +27,12 @@ if __name__ == "__main__":
         print ("Usage: php-tester.py <src_dir> <test_dir> <work_dir> [cases]")
         exit(1)
 
-    opts, args = getopt.getopt(argv[1:], "p:i:t:")
+    opts, args = getopt.getopt(argv[1:], "p:i:t:j:")
     profile_dir = ""
     
     temp_dir=""
     timeout=None
+    max_cpu=1
     for o, a in opts:
         if o == "-p":
             profile_dir = a
@@ -39,6 +40,8 @@ if __name__ == "__main__":
             temp_dir=a
         elif o=='-t':
             timeout=int(a)
+        elif o=='-j':
+            max_cpu=int(a)
 
     src_dir = args[0]
     test_dir = args[1]
@@ -46,21 +49,12 @@ if __name__ == "__main__":
         
     if len(args) > 3:
         ids = args[3:]
-        a = php_tester(work_dir, src_dir, test_dir,temp_dir)
+        a = php_tester(work_dir, src_dir, test_dir,temp_dir,timeout=timeout,max_cpu=max_cpu)
         s = []
         for i in ids:
             s.append(int(i))
         ret = a.test(s, profile_dir)
-        
-        if '6947' in ids:
-            ret.add('6947')
-        if '20' in ids:
-            ret.add('20')
-        if '2246' in ids:
-            ret.add('2246')
-        if '7369' in ids:
-            ret.add('7369')
-            
+                    
         for i in ret:
             print (i)
         # print "test"

@@ -230,11 +230,12 @@ class php_initializer:
         return ret;
 
 class php_tester:
-    def __init__(self, work_dir, repo_dir, test_dir,temp_dir="",timeout=None):
+    def __init__(self, work_dir, repo_dir, test_dir,temp_dir="",timeout=None,max_cpu=1):
         self.repo_dir = repo_dir;
         self.test_dir = test_dir;
         self.work_dir = work_dir;
         self.temp_dir=temp_dir
+        self.max_cpu=max_cpu
 
         f = open(test_dir + "/testfile.log", "r");
         line = f.readline();
@@ -281,12 +282,6 @@ class php_tester:
 
         helper = "./run-tests.php";
         ori_dir = getcwd();
-        arg_list = []
-        for i in s:
-            if self.tmptest_dir[0] != "/":
-                arg_list.append(ori_dir + "/"+ self.tmptest_dir + "/" + str(i).zfill(5) + ".phpt");
-            else:
-                arg_list.append(self.tmptest_dir + "/" + str(i).zfill(5) + ".phpt");
         chdir(self.repo_dir);
  
         if (profile_dir == ""):
@@ -297,39 +292,100 @@ class php_tester:
             else:
                 test_prog = profile_dir + "/sapi/cli/php";
 
+        target=s.copy()
         processes=[]
-        for arg in arg_list:
-            cmd=[prog, helper, "-p", test_prog, "-q",arg];
+        current_test=[]
+        is_finished=[]
+        for i in range(self.max_cpu):
+            if len(target)==0:
+                break
+            arg=''
+            if self.tmptest_dir[0] != "/":
+                arg=ori_dir + "/"+ self.tmptest_dir + "/" + str(target[0]).zfill(5) + ".phpt"
+            else:
+                arg=self.tmptest_dir + "/" + str(target[0]).zfill(5) + ".phpt"
+
+            cmd=[prog, helper, "-p", test_prog, "-q",arg]
+            print ('run {0}'.format(target[0]))
             processes.append(subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE))
-        chdir(ori_dir);
+            current_test.append(target[0])
+            is_finished.append(False)
+            del target[0]
         ret = set();
 
-        for i in range(len(processes)):
-            (out, err) = processes[i].communicate(timeout=self.time_out);
-            lines = out.splitlines()
-            test_section = False;
-            for line in lines:
-                try:
-                    line=line.decode('utf-8')
-                except UnicodeDecodeError:
+        is_success=True
+        finish_all=0
+        while True:
+            if (len(target)==0 and finish_all>=len(processes)) or not is_success:
+                break
+
+            for i in range(len(processes)):
+                if processes[i].poll()==None:
                     continue
-                tokens = line.split();
-                if len(tokens) == 0:
-                    continue;
-                if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
-                    test_section = True;
-                elif (tokens[0][0:6] == "======") and (test_section == True):
-                    test_section = False;
-                elif (test_section == True) and (_is_start(tokens[0])):
-                    if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
-                        ret.add(s[i]);
-                        break
+                elif processes[i].poll()!=None and len(target)==0:
+                    if is_finished[i]==True:
+                        continue
+                    finish_all+=1
+                
+
+                (out, err) = processes[i].communicate();
+                lines = out.splitlines()
+                test_section = False;
+                for line in lines:
+                    try:
+                        line=line.decode('utf-8')
+                    except UnicodeDecodeError:
+                        print('fail to decode output',file=sys.stderr)
+                        continue
+                    tokens = line.split();
+                    if len(tokens) == 0:
+                        continue;
+                    if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
+                        test_section = True;
+                    elif (tokens[0][0:6] == "======") and (test_section == True):
+                        test_section = False;
+                    elif (test_section == True) and (_is_start(tokens[0])):
+                        if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
+                            ret.add(current_test[i]);
+                            break
+
+                if current_test[i]=='6947' and '6947' not in ret:
+                    ret.add('6947')
+                elif current_test[i]=='20' and '20' not in ret:
+                    ret.add('20')
+                elif current_test[i]=='2246' and '2246' not in ret:
+                    ret.add('2246')
+                elif current_test[i]=='7369' and '7369' not in ret:
+                    ret.add('7369')
+                
+                if current_test[i] not in ret:
+                    is_success=False
+                elif len(target)==0:
+                    is_finished[i]=True
+                    continue
+                else:
+                    arg=''
+                    if self.tmptest_dir[0] != "/":
+                        arg=ori_dir + "/"+ self.tmptest_dir + "/" + str(target[0]).zfill(5) + ".phpt"
+                    else:
+                        arg=self.tmptest_dir + "/" + str(target[0]).zfill(5) + ".phpt"
+
+                    cmd=[prog, helper, "-p", test_prog, "-q",arg]
+                    print ('run {0}'.format(target[0]))
+                    processes[i]=subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+                    current_test[i]=target[0]
+                    del target[0]
             # if cnt != n:
             #     # because the test uses php itself, if we completed destroied it, this will happen
             #     if (cnt == 0):
             #         return set();
             #     tmp = self._test(new_s);
             #     return (ret | tmp);
+        
+        if not is_success:
+            for i in range(len(processes)):
+                processes[i].terminate()
+        chdir(ori_dir)
         return ret;
 
     # clean-up required before running test()
