@@ -21,8 +21,8 @@ sqlite3-build:
 	wget http://www.sqlite.org/2014/sqlite-autoconf-3080600.tar.gz
 	tar -xvzf sqlite-autoconf-3080600.tar.gz
 	cd sqlite-autoconf-3080600 &&\
-	./configure --prefix=$(abs_builddir)/sqlite3-build &&\
-	make -j 4 &&\
+	./configure --prefix=$(abs_builddir)/sqlite3-build
+	make
 	make install
 
 clean-local:
