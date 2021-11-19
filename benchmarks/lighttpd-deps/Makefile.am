@@ -26,6 +26,7 @@ sqlite3-build:
 	make install
 
 clean-local:
-	rm *.gz
+	rm libxml2-2.7.2.tar.gz
+	rm sqlite-autoconf-3080600.tar.gz
 	rm -rf *-build
 	rm -rf pcre-8.36
