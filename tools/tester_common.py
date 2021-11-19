@@ -25,7 +25,7 @@ def get_fix_revisions(out_dir):
     p = subprocess.Popen(["git", "log"], stdout=subprocess.PIPE);
     chdir(ori_dir);
     (out, err) = p.communicate();
-    lines = out.split("\n");
+    lines = out.decode('utf-8').split("\n");
     # parse git log to get bug-fix revision and previous revision
     cur_revision = "";
     last_fix_revision = "";
@@ -91,7 +91,7 @@ def extract_arguments(out_dir, src_file):
         file_name = src_file;
     p = subprocess.Popen(["make", "--debug=j"], stdout = subprocess.PIPE);
     (out, err) = p.communicate();
-    lines = out.strip().split("\n");
+    lines = out.decode('utf-8').strip().split("\n");
     directory = ".";
     last_line = "";
     for line in lines:
@@ -134,7 +134,7 @@ def extract_arguments(out_dir, src_file):
     p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE);
     (out, err) = p.communicate();
     print (out)
-    lines = out.strip().split("\n");
+    lines = out.decode('utf-8').strip().split("\n");
     directory = ".";
     for line in lines:
         if line.find("Entering directory") != -1:
