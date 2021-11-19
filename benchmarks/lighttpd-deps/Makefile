@@ -436,7 +436,6 @@ uninstall-am:
 all-local: pcre-8.36-build libxml2-2.7.2-build sqlite3-build
 
 pcre-8.36-build:
-	wget https://ftp.pcre.org/pub/pcre/pcre-8.36.tar.gz
 	tar xvzf pcre-8.36.tar.gz
 	cd pcre-8.36 &&\
 	./configure --prefix=$(abs_builddir)/pcre-8.36-build &&\
