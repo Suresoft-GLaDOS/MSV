@@ -348,17 +348,18 @@ class php_tester:
                             ret.add(current_test[i]);
                             break
 
-                if current_test[i]=='6947' and '6947' not in ret:
-                    ret.add('6947')
-                elif current_test[i]=='20' and '20' not in ret:
-                    ret.add('20')
-                elif current_test[i]=='2246' and '2246' not in ret:
-                    ret.add('2246')
-                elif current_test[i]=='7369' and '7369' not in ret:
-                    ret.add('7369')
+                if current_test[i]==6947 and 6947 not in ret:
+                    ret.add(6947)
+                elif current_test[i]==20 and 20 not in ret:
+                    ret.add(20)
+                elif current_test[i]==2246 and 2246 not in ret:
+                    ret.add(2246)
+                elif current_test[i]==7369 and 7369 not in ret:
+                    ret.add(7369)
                 
                 if current_test[i] not in ret:
                     is_success=False
+                    print("Fail at {0}".format(current_test[i]),file=sys.stderr)
                 elif len(target)==0:
                     is_finished[i]=True
                     continue
