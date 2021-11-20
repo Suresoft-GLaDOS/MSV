@@ -319,6 +319,8 @@ class php_tester:
                 break
 
             for i in range(len(processes)):
+                if not is_success:
+                    break
                 if processes[i].poll()==None:
                     continue
                 elif processes[i].poll()!=None and len(target)==0:
