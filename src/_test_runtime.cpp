@@ -123,7 +123,7 @@ extern "C" int __choose(const char *switch_id) {
 extern "C" void *__stat_write_init(const char *func_name){
     char * pid = getenv("__PID");
     if (pid == NULL || strlen(pid) == 0) {
-        pid = "0";
+        return NULL;
     }
 
     char log_file[1024];
@@ -165,6 +165,7 @@ extern "C" void *__stat_write_init(const char *func_name){
     return f;
 }
 extern "C" void __write_stat(void *fp,const char *var_name,void *var_addr,int size){
+    if (fp==NULL) return;
     FILE *file=(FILE *)fp;
     long long v = 0;
     if (size<=8 && isGoodAddr(var_addr, size)) {
@@ -179,6 +180,7 @@ extern "C" void __write_stat(void *fp,const char *var_name,void *var_addr,int si
 }
 
 extern "C" void __stat_file_close(void *fp){
+    if (fp==NULL) return;
     FILE *file=(FILE *)fp;
     fclose(file);
 }
@@ -407,6 +409,56 @@ extern "C" int __is_neg(const char *location,int count, ...) {
     else if (strcmp(is_neg, "RUN") == 0){
         // If operator is ALL_1, return 1
         char* tmp_file = getenv("TMP_FILE");
+        if (tmp_file==NULL){
+            if (strcmp(getenv("__OPERATOR"),"4")==0) {
+                return 1;
+            }
+
+            int var=atoi(getenv("__VARIABLE"));
+            int oper=atoi(getenv("__OPERATOR"));
+            int constant=atoi(getenv("__CONSTANT"));
+            long long value=0;
+
+            va_list ap;
+            va_start(ap, count);
+            for (unsigned long i = 0; i < (unsigned long)count; i++) {
+                void* p = va_arg(ap, void*);
+                unsigned long sz = va_arg(ap, unsigned long);
+                assert( sz <= 8 );
+
+                if (i==var){
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&value, p, sz);
+                    }
+                    else {
+                        value = MAGIC_NUMBER;
+                    }
+                    break;
+                }
+            }
+
+            int result;
+            if (value==MAGIC_NUMBER) return 0;
+            else{
+                switch(oper){
+                    case 1: 
+                        result = (value !=constant);
+                        break;
+                    case 2: 
+                        result = (value >constant);
+                        break;
+                    case 3: 
+                        result = (value <constant);
+                        break;
+                    default: 
+                        result = (value ==constant);
+                        break;
+                }
+
+                return result;
+            }
+        }
+        
         if (!init) {
             // fprintf(stderr,"Initing 1!\n");
             init = true;
