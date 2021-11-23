@@ -385,7 +385,7 @@ class php_tester:
         
         if not is_success:
             for i in range(len(processes)):
-                processes[i].terminate()
+                processes[i].kill()
         chdir(ori_dir)
         return ret;
 
