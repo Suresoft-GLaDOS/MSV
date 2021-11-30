@@ -409,7 +409,7 @@ extern "C" int __is_neg(const char *location,int count, ...) {
     else if (strcmp(is_neg, "RUN") == 0){
         // If operator is ALL_1, return 1
         char* tmp_file = getenv("TMP_FILE");
-        if (tmp_file==NULL){
+        if (tmp_file==NULL || strcmp(tmp_file,"")==0){
             if (strcmp(getenv("__OPERATOR"),"4")==0) {
                 return 1;
             }
