@@ -417,7 +417,7 @@ class php_tester:
                 new_s = [];
         if len(new_s) != 0:
             ret = ret | self._test(new_s, profile_dir);
-        shutil.rmtree(self.tmptest_dir);
+        # shutil.rmtree(self.tmptest_dir);
         return ret;
 
     # test the php build with all cases, and return set of passed id
