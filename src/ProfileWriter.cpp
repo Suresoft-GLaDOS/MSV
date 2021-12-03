@@ -81,6 +81,8 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
         std::map<Expr *,std::vector<UnaryOperator *>> arrowPointers;
         arrowPointers.clear();
         for (size_t i = 0; i < exprs.size(); ++i) {
+            if (stmtToString(*ctxt,exprs[i]).find("__choose")!=std::string::npos) continue;
+            
             ImplicitCastExpr *tempExpr=llvm::dyn_cast<ImplicitCastExpr>(exprs[i]);
 
             // First, we use integral types(e.g. int, long, unsigned) only, without pointers
