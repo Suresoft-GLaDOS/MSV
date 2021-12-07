@@ -408,15 +408,25 @@ extern "C" int __is_neg(const char *location,int count, ...) {
     }
     else if (strcmp(is_neg, "RUN") == 0){
         // If operator is ALL_1, return 1
+        char operator_temp[20];
+        strcpy(operator_temp,location);
+        strcat(operator_temp,"__OPERATOR");
+        char variable_temp[20];
+        strcpy(variable_temp,location);
+        strcat(variable_temp,"__VARIABLE");
+        char constant_temp[20];
+        strcpy(constant_temp,location);
+        strcat(constant_temp,"__CONSTANT");
+
         char* tmp_file = getenv("TMP_FILE");
         if (tmp_file==NULL || strcmp(tmp_file,"")==0){
-            if (strcmp(getenv("__OPERATOR"),"4")==0) {
+            if (strcmp(getenv(operator_temp),"4")==0) {
                 return 1;
             }
 
-            int var=atoi(getenv("__VARIABLE"));
-            int oper=atoi(getenv("__OPERATOR"));
-            int constant=atoi(getenv("__CONSTANT"));
+            int var=atoi(getenv(variable_temp));
+            int oper=atoi(getenv(operator_temp));
+            int constant=atoi(getenv(constant_temp));
             long long value=0;
 
             va_list ap;
@@ -484,7 +494,7 @@ extern "C" int __is_neg(const char *location,int count, ...) {
         }
         
 
-        if (strcmp(getenv("__OPERATOR"),"4")==0) {
+        if (strcmp(getenv(operator_temp),"4")==0) {
             if (records_sz < MAXSZ){
                 records[records_sz++] = 1;
             }
@@ -510,9 +520,9 @@ extern "C" int __is_neg(const char *location,int count, ...) {
             return 1;
         }
 
-        int var=atoi(getenv("__VARIABLE"));
-        int oper=atoi(getenv("__OPERATOR"));
-        int constant=atoi(getenv("__CONSTANT"));
+        int var=atoi(getenv(variable_temp));
+        int oper=atoi(getenv(operator_temp));
+        int constant=atoi(getenv(constant_temp));
         long long value=0;
 
         va_list ap;
