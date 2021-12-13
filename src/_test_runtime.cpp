@@ -407,15 +407,24 @@ extern "C" int __is_neg(const char *location,int count, ...) {
             return 0;
     }
     else if (strcmp(is_neg, "RUN") == 0){
+        char temp[20];
+        strcpy(temp,location);
+        char temp_location[40]="__";
+        char *temp2;
+        temp2=strtok(temp,"-");
+        strcat(temp_location,temp2);
+        strcat(temp_location,"_");
+        strcat(temp_location,strtok(NULL,"-"));
+
         // If operator is ALL_1, return 1
         char operator_temp[20];
-        strcpy(operator_temp,location);
+        strcpy(operator_temp,temp_location);
         strcat(operator_temp,"__OPERATOR");
         char variable_temp[20];
-        strcpy(variable_temp,location);
+        strcpy(variable_temp,temp_location);
         strcat(variable_temp,"__VARIABLE");
         char constant_temp[20];
-        strcpy(constant_temp,location);
+        strcpy(constant_temp,temp_location);
         strcat(constant_temp,"__CONSTANT");
 
         char* tmp_file = getenv("TMP_FILE");
@@ -523,6 +532,7 @@ extern "C" int __is_neg(const char *location,int count, ...) {
         int var=atoi(getenv(variable_temp));
         int oper=atoi(getenv(operator_temp));
         int constant=atoi(getenv(constant_temp));
+        fprintf(stderr,"%d %d %d\n",oper,var,constant);
         long long value=0;
 
         va_list ap;

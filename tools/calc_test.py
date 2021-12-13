@@ -16,7 +16,7 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
-from sys import argv
+from sys import argv, stderr
 from os import rmdir, system,mkdir,chdir,getcwd,environ
 import getopt
 import shutil
@@ -81,6 +81,8 @@ if __name__ == "__main__":
 
                 if (exp == out):
                     print (i)
+                else:
+                    print("failed at {0}".format(i),file=stderr)
 
                 system("rm -rf __out"+str(i))
         
