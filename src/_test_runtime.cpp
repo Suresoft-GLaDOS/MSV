@@ -532,7 +532,6 @@ extern "C" int __is_neg(const char *location,int count, ...) {
         int var=atoi(getenv(variable_temp));
         int oper=atoi(getenv(operator_temp));
         int constant=atoi(getenv(constant_temp));
-        fprintf(stderr,"%d %d %d\n",oper,var,constant);
         long long value=0;
 
         va_list ap;

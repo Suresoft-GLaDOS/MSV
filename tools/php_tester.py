@@ -312,22 +312,17 @@ class php_tester:
             del target[0]
         ret = set();
 
-        is_success=True
         finish_all=0
         while True:
-            if (len(target)==0 and finish_all>=len(processes)) or not is_success:
+            if (len(target)==0 and finish_all>=len(processes)):
                 break
 
             for i in range(len(processes)):
-                if not is_success:
-                    break
                 if processes[i].poll()==None:
                     continue
                 elif processes[i].poll()!=None and len(target)==0:
                     if is_finished[i]==True:
                         continue
-                    finish_all+=1
-                
 
                 (out, err) = processes[i].communicate();
                 lines = out.splitlines()
@@ -360,10 +355,11 @@ class php_tester:
                     ret.add(7369)
                 
                 if current_test[i] not in ret:
-                    is_success=False
                     print("Fail at {0}".format(current_test[i]),file=sys.stderr)
-                elif len(target)==0:
+
+                if len(target)==0:
                     is_finished[i]=True
+                    finish_all+=1
                     continue
                 else:
                     arg=''
@@ -383,9 +379,6 @@ class php_tester:
             #     tmp = self._test(new_s);
             #     return (ret | tmp);
         
-        if not is_success:
-            for i in range(len(processes)):
-                processes[i].kill()
         chdir(ori_dir)
         return ret;
 
