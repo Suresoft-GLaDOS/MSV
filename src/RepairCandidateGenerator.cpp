@@ -1120,6 +1120,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
     }
 
     bool genVarMutation(FunctionDecl *decl){
+        return true;
         Stmt *body=decl->getBody();
         if (body){
             CompoundStmt *comp=llvm::dyn_cast<CompoundStmt>(body);
