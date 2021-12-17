@@ -867,30 +867,34 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                             if (!isRe){
                                 size_t start=line.find(":");
                                 size_t end=line.find(":",start+1);
-                                unsigned long lineNum=stoi(line.substr(start+1,end-start-1));
-                                lineNum=lineNum-succ_id.size()-macros.size()-1;
-                                // printf("%lu ",lineNum);
-                                if (fileCodeMap.count(fileName)==0) {
-                                    size_t dot=fileName.find(".");
-                                    fileName=fileName.substr(0,dot);
-                                    fileName+=".c";
-                                }
-
-                                std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
-                                unsigned long failMacro=0;
-                                bool found=false;
-                                for (std::map<size_t,std::pair<size_t,size_t>>::iterator macro_it=macroLine.begin();macro_it!=macroLine.end();macro_it++){
-                                    if(macro_it->second.first<=lineNum && macro_it->second.second>=lineNum){
-                                        failMacro=macro_it->first;
-                                        // printf("%lu\n",failMacro);
-                                        if(compileErrorMacros.find(failMacro)==compileErrorMacros.end())
-                                            found=true;
-                                        compileErrorMacros.insert(failMacro);
-                                        added=true;
-                                        break;
+                                std::string lineStr=line.substr(start+1,end-start-1);
+                                if (lineStr[0]>='0' || lineStr[0]<='9'){
+                                    unsigned long lineNum=stoi(lineStr);
+                                    lineNum=lineNum-succ_id.size()-macros.size()-1;
+                                    // printf("%lu ",lineNum);
+                                    if (fileCodeMap.count(fileName)==0) {
+                                        size_t dot=fileName.find(".");
+                                        fileName=fileName.substr(0,dot);
+                                        fileName+=".c";
                                     }
+
+                                    std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
+                                    unsigned long failMacro=0;
+                                    bool found=false;
+                                    for (std::map<size_t,std::pair<size_t,size_t>>::iterator macro_it=macroLine.begin();macro_it!=macroLine.end();macro_it++){
+                                        if(macro_it->second.first<=lineNum && macro_it->second.second>=lineNum){
+                                            failMacro=macro_it->first;
+                                            // printf("%lu\n",failMacro);
+                                            if(compileErrorMacros.find(failMacro)==compileErrorMacros.end())
+                                                found=true;
+                                            compileErrorMacros.insert(failMacro);
+                                            added=true;
+                                            break;
+                                        }
+                                    }
+                                    if(!found) isRe=true;
                                 }
-                                if(!found) isRe=true;
+                                else isRe=true;
                             }
                             if (isRe){
                                 if (line.find("undefined reference to")!=std::string::npos){
