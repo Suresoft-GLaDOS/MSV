@@ -637,6 +637,43 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             }
     }
 
+    void genCondition(IfStmt *n) {
+        if (in_yacc_func) return;
+        Expr *ori_cond = n->getCond();
+        ASTLocTy loc = getNowLocation(n);
+        LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        //assert(ori_cond->getType()->isIntegerType());
+        Expr *placeholder;
+        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
+
+        if (naive)
+            placeholder = getNewIntegerLiteral(ctxt, 1);
+        else
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars);
+        IfStmt *S = duplicateIfStmt(ctxt, n, placeholder);
+        RepairCandidate rc;
+        rc.actions.clear();
+        rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, S));
+        if (!naive) {
+            rc.actions.push_back(RepairAction(newStatementLoc(loc, S), placeholder,
+                        candidateVars));
+        }
+        // FIXME: priority!
+        if (learning)
+            rc.score = getLocScore(n);
+        else
+            rc.score = 4*PRIORITY_ALPHA;
+        rc.kind = RepairCandidate::TightenConditionKind;
+        rc.original=n;
+        q.push_back(rc);
+
+        if (processed.count(L->getCurrentFunction())==0) {
+            genVarMutation(L->getCurrentFunction());
+            processed.insert(L->getCurrentFunction());
+        }
+    }
+
+
     void genAddMemset(Stmt* n, bool is_first) {
         if (in_yacc_func) return;
         if (naive) return;
@@ -1218,6 +1255,8 @@ public:
                 loc_map1[n] = loc_map1[ThenCS];
             if (loc_map1[n] > loc_map1[ElseCS])
                 loc_map1[n] = loc_map1[ElseCS];
+            
+            genCondition(n);
         }
         if (isTainted(n) || isTainted(ThenCS))
             genTightCondition(n);
