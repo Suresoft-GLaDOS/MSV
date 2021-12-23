@@ -42,7 +42,10 @@ if __name__ == "__main__":
         elif o=='-j':
             max_cpu=int(a)
     
-    mkdir(temp_dir);
+    try:
+        mkdir(temp_dir);
+    except:
+        pass
     orig_dir=getcwd()
     chdir(temp_dir)
 
@@ -64,7 +67,6 @@ if __name__ == "__main__":
             in_file.close()
 
             temp_env=environ.copy()
-            temp_env['__PID']=str(i)
             system('rm -rf /tmp/'+str(i)+'_profile.log')
 
             if (i != "0"):

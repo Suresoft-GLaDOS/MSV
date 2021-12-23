@@ -73,8 +73,8 @@ if __name__ == "__main__":
         build_dir, build_args = extract_arguments(out_dir, dryrun_src);
         if (len(args) > 1):
             out_file = open(args[1], "w");
-            print >>out_file, build_dir
-            print >>out_file, build_args
+            print (build_dir,file=out_file)
+            print (build_args,file=out_file)
             out_file.close();
         else:
             print (build_dir)

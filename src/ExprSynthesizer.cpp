@@ -1054,7 +1054,6 @@ protected:
 
         P.getSwitchInfo().switchCluster=switchCluster;
         // P.getSwitchInfo().caseCluster=caseCluster;
-        double max=negative_cases.size()*(double)1000;
         std::set<std::pair<double,std::pair<std::string,size_t>>> removedDuplicate;
         removedDuplicate.clear();
         for (std::map<std::pair<std::string,size_t>,size_t>::iterator it=scores.begin();it!=scores.end();it++){
@@ -1066,12 +1065,17 @@ protected:
                 }
             }
 
+            size_t naiveScore=it->second;
+            size_t million=naiveScore/1000000;
+            size_t unmillion=naiveScore%1000000%1000;
+            size_t finalScore=unmillion+million*1000;
             if (current==nullptr){
-                removedDuplicate.insert(std::make_pair(it->second/max-999,it->first));
+
+                removedDuplicate.insert(std::make_pair(finalScore,it->first));
             }
             else if ((*current)->first<it->second){
                 removedDuplicate.erase(*current);
-                removedDuplicate.insert(std::make_pair(it->second/max-999,it->first));
+                removedDuplicate.insert(std::make_pair(finalScore,it->first));
             }
         }
 
