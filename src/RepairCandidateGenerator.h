@@ -95,7 +95,8 @@ struct RepairCandidate {
         ReplaceKind,
         ReplaceStringKind,
         AddAndReplaceKind,
-        AddVarMutation // 9
+        ConditionKind,
+        AddVarMutation // 10
     } CandidateKind;
     CandidateKind kind;
     bool is_first; // start of a block? not including condition changes

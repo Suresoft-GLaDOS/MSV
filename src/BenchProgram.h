@@ -154,6 +154,11 @@ struct Switch{
         kind9.kind=RepairCandidate::CandidateKind::AddAndReplaceKind;
         kind9.cases=std::vector<size_t>();
         types[kind9.kind]=kind9;
+
+        Kind kind10;
+        kind10.kind=RepairCandidate::CandidateKind::ConditionKind;
+        kind10.cases=std::vector<size_t>();
+        types[kind10.kind]=kind10;
     }
 };
 struct Line{

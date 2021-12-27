@@ -330,6 +330,8 @@ std::string toString(RepairCandidate::CandidateKind kind){
             return "ReplaceKind";
         case RepairCandidate::ReplaceStringKind:
             return "ReplaceStringKind";
+        case RepairCandidate::ConditionKind:
+            return "ConditionKind";
         default:
             return "AddAndReplaceKind";
     }
@@ -493,7 +495,7 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
 
             if (rc[j].actions[i].kind == RepairAction::ReplaceMutationKind){
                 std::string newStmt="//"+toString(rc[j].kind)+"\n";
-                if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind){
+                if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind || rc[j].kind==RepairCandidate::ConditionKind){
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                         newStmt += ";\n";
@@ -1097,7 +1099,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     }
 
     for (size_t i=0;i<rc.size();i++){
-        if (rc[i].kind==RepairCandidate::TightenConditionKind || rc[i].kind==RepairCandidate::LoosenConditionKind || rc[i].kind==RepairCandidate::IfExitKind || rc[i].kind==RepairCandidate::GuardKind || rc[i].kind==RepairCandidate::SpecialGuardKind){
+        if (rc[i].kind==RepairCandidate::TightenConditionKind || rc[i].kind==RepairCandidate::LoosenConditionKind || rc[i].kind==RepairCandidate::IfExitKind || rc[i].kind==RepairCandidate::GuardKind || rc[i].kind==RepairCandidate::SpecialGuardKind || rc[i].kind==RepairCandidate::ConditionKind){
             std::vector<size_t> switches=switchLoc[rc[i].actions[0].loc];
             std::vector<Expr *> atoms=rc[i].actions[1].candidate_atoms;
             for (size_t j=0;j<switches.size();j++)
