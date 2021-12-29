@@ -417,10 +417,13 @@ Expr* createConditionVarNameList(ASTContext *ctxt,std::vector<std::string> names
 }
 
 
-Expr* createAbstractConditionExpr(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs) {
+Expr* createAbstractConditionExpr(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs,size_t lineNum) {
     std::vector<Expr*> tmp_argv;
     tmp_argv.clear();
     StringLiteral *str=StringLiteral::Create(*ctxt,"",StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
+    tmp_argv.push_back(str);
+
+    str=StringLiteral::Create(*ctxt,"L"+std::to_string(lineNum),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
     tmp_argv.push_back(str);
     tmp_argv.push_back(getNewIntegerLiteral(ctxt, exprs.size()));
     for (size_t i = 0; i < exprs.size(); ++i) {
@@ -535,7 +538,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars);
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(n->getBeginLoc()));
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ori_cond->getType(), VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
@@ -577,7 +580,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars);
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(n->getBeginLoc()));
         BinaryOperator *BO = BinaryOperator::Create(*ctxt,ParenE,
                 placeholder, BO_LOr, ctxt->IntTy, VK_RValue,
                 OK_Ordinary, SourceLocation(), FPOptionsOverride());
@@ -649,7 +652,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars);
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(n->getBeginLoc()));
         IfStmt *S = duplicateIfStmt(ctxt, n, placeholder);
         RepairCandidate rc;
         rc.actions.clear();
@@ -923,7 +926,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars);
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(n->getBeginLoc()));
         //clang::CallExpr *is_neg_call = L->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
@@ -1023,7 +1026,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars);
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(n->getBeginLoc()));
         
         //clang::CallExpr *is_neg_call = G->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
         //UnaryOperator *UO = new(*ctxt) UnaryOperator(hinfo.is_neg, UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation());

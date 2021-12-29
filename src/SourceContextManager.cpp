@@ -29,12 +29,15 @@
 
 const char* HANDLER_PREFIX =
     "int __get_mutant(); "
-    "int __is_neg(const char *location,int count, ...); "
+    "int __is_neg(const char *location,char *lid,int count, ...); "
     "int __abst_hole(); "
     "void *__stat_write_init(const char*);"
     "void __write_stat(void *,const char *,void *,int); "
     "void __stat_file_close(void *);"
     "long long __mutate(const long long,const char *,const char *); "
+    "int __trident_choice(char* lid, char* typestr,int* rvals, char** rvals_ids, int rvals_size,int** lvals, char** lvals_ids, int lvals_size);"
+    "int __trident_output(char* id, char* typestr, int value);"
+    "float fabs_trident(float a);"
     "int __choose(const char *);";
 const char* MEMSET_PREFIX =
     "void* memset(void*, int, unsigned long); ";
