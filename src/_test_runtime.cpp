@@ -125,7 +125,7 @@ extern "C" int __choose(const char *switch_id) {
 
 #define MAGIC_NUMBER -123456789
 
-extern "C" void *__stat_write_init(const char *func_name){
+extern "C" char *__stat_write_init(const char *func_name,char *str){
     char * pid = getenv("__PID");
     if (pid == NULL || strlen(pid) == 0) {
         return NULL;
@@ -161,17 +161,16 @@ extern "C" void *__stat_write_init(const char *func_name){
         fclose(log);
     }
 
-    char tmp_file[200];
-    sprintf(tmp_file,"/tmp/%s_%s_profile.log",pid,func_name);
-
-    // fprintf(stderr, "\n%s: %d\n", func_name,count);
-    FILE *f;
-    f = fopen(tmp_file, "w");
-    return f;
+    sprintf(str,"");
+    return str;
 }
-extern "C" void __write_stat(void *fp,const char *var_name,void *var_addr,int size){
-    if (fp==NULL) return;
-    FILE *file=(FILE *)fp;
+extern "C" void __write_stat(char *str,const char *var_name,void *var_addr,int size){
+    char * pid = getenv("__PID");
+    if (pid == NULL || strlen(pid) == 0) {
+        return;
+    }
+
+    if (str==NULL) return;
     long long v = 0;
     if (size<=8 && isGoodAddr(var_addr, size)) {
         memcpy(&v, var_addr, size);
@@ -179,15 +178,25 @@ extern "C" void __write_stat(void *fp,const char *var_name,void *var_addr,int si
     else {
         v = MAGIC_NUMBER;
     }
-    fprintf(file, "%s=%lld\n", var_name,v);
+    sprintf(str, "%s%s=%lld\n", str,var_name,v);
     // fprintf(stderr, "%s=%lld\n", name, v);
     // fprintf(stderr, "exit\n");
 }
 
-extern "C" void __stat_file_close(void *fp){
-    if (fp==NULL) return;
-    FILE *file=(FILE *)fp;
-    fclose(file);
+extern "C" void __stat_file_close(const char *func_name,char *str){
+    char * pid = getenv("__PID");
+    if (pid == NULL || strlen(pid) == 0) {
+        return;
+    }
+
+    if (str==NULL) return;
+    char tmp_file[200];
+    sprintf(tmp_file,"/tmp/%s_%s_profile.log",pid,func_name);
+
+    FILE *f;
+    f = fopen(tmp_file, "w");
+    fprintf(f,str);
+    fclose(f);
 }
 
 int table_miss = 1;
@@ -864,8 +873,10 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
         }
         int *rval[1];
         char *rval_id[1];
-        return __trident_choice(lid,"bool",lval,lval_id,count,rval, rval_id, 0);
-
+        // return __trident_choice(lid,"bool",lval,lval_id,count,rval, rval_id, 0);
+        int ret;
+        klee_make_symbolic(&ret,sizeof(int),"ret");
+        return ret;
     }
     return 0;
 }

@@ -5,11 +5,12 @@ autoconf
 automake --add-missing
 ./configure
 make -j 10 install
-cd AFLplusplus
-make -j 10 install
 
+export LLVM_COMPILER=clang
+export LLVM_CC_NAME=clang
+export LLVM_CXX_NAME=clang++
 # Generate llvm bit-code for runtime library, for symbolic execution
-cd ../src/.libs
+cd src/.libs
 wllvm++ -g -fPIC -O0 -c -o _test_runtime.o ../_test_runtime.cpp
 llvm-ar rcs libtest_runtime.a _test_runtime.o
 extract-bc libtest_runtime.a

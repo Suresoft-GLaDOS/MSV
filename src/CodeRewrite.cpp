@@ -642,6 +642,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             if (currentBody.find("__is_neg")!=std::string::npos){
                 size_t location=currentBody.find("__is_neg");
                 size_t endLoc=currentBody.find(", ",location);
+                endLoc=currentBody.find(", ",endLoc+1);
                 size_t comma=currentBody.find(",",endLoc+2);
                 size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
 
@@ -717,6 +718,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             if (currentBody.find("__is_neg")!=std::string::npos){
                 size_t location=currentBody.find("__is_neg");
                 size_t endLoc=currentBody.find(", ",location);
+                endLoc=currentBody.find(", ",endLoc+1);
                 size_t comma=currentBody.find(",",endLoc+2);
                 size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
 
@@ -813,6 +815,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             if (currentBody.find("__is_neg")!=std::string::npos){
                 size_t location=currentBody.find("__is_neg");
                 size_t endLoc=currentBody.find(", ",location);
+                endLoc=currentBody.find(", ",endLoc+1);
                 size_t comma=currentBody.find(",",endLoc+2);
                 size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
 
@@ -879,6 +882,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             if (currentBody.find("__is_neg")!=std::string::npos){
                 size_t location=currentBody.find("__is_neg");
                 size_t endLoc=currentBody.find(", ",location);
+                endLoc=currentBody.find(", ",endLoc+1);
                 size_t comma=currentBody.find(",",endLoc+2);
                 size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
 
