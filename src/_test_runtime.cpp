@@ -125,7 +125,7 @@ extern "C" int __choose(const char *switch_id) {
 
 #define MAGIC_NUMBER -123456789
 
-extern "C" char *__stat_write_init(const char *func_name,char *str){
+extern "C" char *__stat_write_init(const char *func_name){
     char * pid = getenv("__PID");
     if (pid == NULL || strlen(pid) == 0) {
         return NULL;
@@ -161,6 +161,7 @@ extern "C" char *__stat_write_init(const char *func_name,char *str){
         fclose(log);
     }
 
+    char *str=(char *)malloc(sizeof(char)*1000000);
     sprintf(str,"");
     return str;
 }

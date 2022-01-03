@@ -16,7 +16,6 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
     ImplicitCastExpr *initer;
     ImplicitCastExpr *writer;
     ImplicitCastExpr *closer;
-    ImplicitCastExpr *profile_str;
     std::string code;
 
     std::vector<Stmt*> stmt_stack;
@@ -203,7 +202,6 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
         std::vector<Expr *> initArg;
         initArg.clear();
         initArg.push_back(str);
-        initArg.push_back(profile_str);
         CallExpr *initCall=CallExpr::Create(*ctxt, initer, initArg,
                 ctxt->getFILEType(), VK_RValue, SourceLocation());
         result+="\n\tchar *__temp_profile_str"+std::to_string(initCounter)+"="+stmtToString(*ctxt,initCall)+";\n";
@@ -333,16 +331,6 @@ public:
     }
     std::vector<long long> getMacroFile(){
         return macroFile;
-    }
-    bool TraverseVarDecl(VarDecl *decl){
-        bool res=RecursiveASTVisitor<AddProfileWriter>::TraverseVarDecl(decl);
-        if (decl->getNameAsString()=="__profile_str"){
-            DeclRefExpr *FRef = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(), SourceLocation(),
-                    decl, false, SourceLocation(), decl->getType(), VK_RValue);
-            profile_str= ImplicitCastExpr::Create(*ctxt, ctxt->getDecayedType(decl->getType()), CK_ArrayToPointerDecay,
-                    FRef, 0, VK_RValue);
-            return res;
-        }
     }
     bool TraverseFunctionDecl(FunctionDecl *decl){
         bool res=RecursiveASTVisitor<AddProfileWriter>::TraverseFunctionDecl(decl);
