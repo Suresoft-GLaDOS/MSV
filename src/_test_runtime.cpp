@@ -198,6 +198,7 @@ extern "C" void __stat_file_close(const char *func_name,char *str){
     f = fopen(tmp_file, "w");
     fprintf(f,str);
     fclose(f);
+    free(str);
 }
 
 int table_miss = 1;
