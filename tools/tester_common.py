@@ -166,4 +166,3 @@ def extract_arguments(out_dir, src_file):
                 return directory, ret;
     chdir(ori_dir);
     return "","";
-

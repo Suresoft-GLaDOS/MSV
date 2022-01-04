@@ -57,7 +57,7 @@ def fix_conf(conffile):
             f.write(line);
     f.close();
 
-def compileit(out_dir, compile_only = False, config_only = False):
+def compileit(out_dir, compile_only = False, config_only = False,max_parallel=1):
     ori_dir = getcwd();
     chdir(out_dir);
 
@@ -82,7 +82,7 @@ def compileit(out_dir, compile_only = False, config_only = False):
             exit(1);
 
     if not config_only:
-        ret = subprocess.call(["make"], env = my_env);
+        ret = subprocess.call(["make",'-j'+str(max_parallel)], env = my_env);
         if ret != 0:
             print "Failed to make!";
             chdir(ori_dir);
@@ -95,12 +95,13 @@ if __name__ == "__main__":
 
     compile_only = False;
 
-    opts, args = getopt.getopt(argv[1:],'cd:hlp:r:x');
+    opts, args = getopt.getopt(argv[1:],'cd:hlp:r:xj:');
     dryrun_src = "";
 
     print_fix_log = False;
     print_usage = False;
     config_only = False;
+    max_parallel=1
     for o, a in opts:
         if o == "-d":
             dryrun_src = a;
@@ -117,6 +118,8 @@ if __name__ == "__main__":
             print_fix_log = True;
         elif o == "-h":
             print_usage = True;
+        elif o=='-j':
+            max_parallel=int(a)
 
     if (len(args) < 1) or (print_usage):
         print "Usage: gzip-build.py <directory> [-d src_file | -l] [-h]";
@@ -129,7 +132,7 @@ if __name__ == "__main__":
         print "Non-exist directory";
         exit(1);
 
-    compileit(out_dir, compile_only, config_only);
+    compileit(out_dir, compile_only, config_only,max_parallel);
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src);
         if len(args) > 1:

@@ -20,6 +20,7 @@ from sys import argv
 import getopt
 from os import chdir, getcwd, system, path, environ
 import subprocess
+import multiprocessing as mp
 
 cases = [
     "test_grammar",
@@ -353,12 +354,25 @@ cases = [
     "test_zipimport_support",
     "test_zlib"];
 
+def run_test(case_str):
+    ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str + " 1>/dev/null 2>/dev/null"], shell = True);
+    if (ret == 0):
+        print (i)
+
 if __name__ == "__main__":
-    opts, args = getopt.getopt(argv[1 :], "p:");
+    opts, args = getopt.getopt(argv[1 :], "p:t:j:i:");
     profile_dir = "";
+    timeout=None
+    max_parallel=1
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
+        elif o=='-t':
+            timeout=int(a)
+        elif o=='-j':
+            max_parallel=int(a)
+        elif o=='-i':
+            pass
 
     src_dir = args[0];
     test_dir = args[1];
@@ -378,9 +392,14 @@ if __name__ == "__main__":
         ori_dir = getcwd();
         chdir(cur_dir);
         my_env = environ;
+        result=[]
+        pool=mp.Pool(max_parallel)
         for i in ids:
-            case_str = cases[int(i) - 1];
-            ret = subprocess.call(["timeout 40s ./python Lib/test/regrtest.py " + case_str + " 1>/dev/null 2>/dev/null"], shell = True);
-            if (ret == 0):
-                print i,
+            case_str = cases[int(i) - 1]
+            result.append(pool.apply_async(run_test,(case_str)))
         chdir(ori_dir);
+
+        pool.close()
+        for r in result:
+            r.wait(timeout)
+        pool.join()

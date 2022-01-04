@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -20,17 +20,41 @@ from sys import argv
 from os import environ, system, path, getcwd, chdir
 import subprocess
 import getopt
+import multiprocessing as mp
+
+def run_test(testcase):
+    my_env["RUNTESTS"] = testcase;
+    ret = subprocess.call(["perl run-tests.pl 1> __out 2>/dev/null"], shell=True, env = my_env);
+    if ret != 0:
+        system("rm -rf __out");
+        return
+
+    with open("__out", "r") as fin:
+        outs = fin.readlines();
+
+    if ("Result: PASS\n" in outs):
+        print (i)
+    system("rm -rf __out");
 
 if __name__ == "__main__":
     if len(argv) < 4:
-        print "Usage: lighttpd-py <src_dir> <test_dir> <work_dir> [cases]"
+        print ("Usage: lighttpd-py <src_dir> <test_dir> <work_dir> [cases]")
         exit(1);
 
-    opts, args = getopt.getopt(argv[1:], "p:");
+    opts, args = getopt.getopt(argv[1:], "p:j:t:i:");
     profile_dir = "";
+    max_parallel=1
+    tempdir='my-tests'
+    timeout=None
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
+        elif o=='-j':
+            max_parallel=int(a)
+        elif o=='-t':
+            timeout=int(a)
+        elif o=='-i':
+            tempdir=a
 
     src_dir = args[0];
     test_dir = args[1];
@@ -41,35 +65,30 @@ if __name__ == "__main__":
         if (profile_dir != ""):
             cur_dir = profile_dir;
 
-        if (not path.exists(cur_dir+"/my-tests")):
-            system("cp -rf " + test_dir + " " + cur_dir + "/my-tests");
+        if (not path.exists(cur_dir+"/"+tempdir)):
+            system("cp -rf " + test_dir + " " + cur_dir + "/"+tempdir);
 
         system("killall -9 lighttpd > /dev/null 2> /dev/null");
 
         ori_dir = getcwd();
-        chdir(cur_dir + "/my-tests");
+        chdir(cur_dir + "/"+tempdir);
 
         ret = subprocess.call(["sh prepare.sh >/dev/null"], shell=True);
         if ret != 0:
-            print "Error on preparing";
+            print ("Error on preparing")
             assert(0);
 
         my_env = environ;
+        result=[]
+        pool=mp.Pool(max_parallel)
         for i in ids:
             testcase = str(i);
-            my_env["RUNTESTS"] = testcase;
-            ret = subprocess.call(["perl run-tests.pl 1> __out 2>/dev/null"], shell=True, env = my_env);
-            if ret != 0:
-                system("rm -rf __out");
-                continue;
-
-            with open("__out", "r") as fin:
-                outs = fin.readlines();
-
-            if ("Result: PASS\n" in outs):
-                print i,
-            system("rm -rf __out");
-        print;
+            result.append(pool.apply_async(run_test,(testcase)))
+        print();
+        pool.close()
+        for r in result:
+            r.wait(timeout)
+        pool.join()
 
         subprocess.call(["sh cleanup.sh > /dev/null"], shell=True);
 

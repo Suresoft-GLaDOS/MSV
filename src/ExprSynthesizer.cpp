@@ -982,6 +982,7 @@ protected:
     std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> &functionLoc;
     std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
     std::map<long long,std::string> macroCode;
+    std::map<size_t,std::map<size_t,std::vector<double>>> patchScores;
 
     std::map<std::pair<std::string,size_t>,size_t> &scores;
 
@@ -1043,6 +1044,23 @@ protected:
         }
         return false;
     }
+    std::map<RepairCandidate,std::vector<double>> getCandidateScores(){
+        std::map<RepairCandidate,std::vector<double>> result;
+        for (size_t i=0;i<candidates.size();i++){
+            std::vector<double> scores;
+            scores.clear();
+            if (candidates[i].actions.size()>1 && candidates[i].actions[1].kind==RepairAction::ExprMutationKind){
+                ExprListTy atoms=candidates[i].actions[1].candidate_atoms;
+                for (size_t j=0;j<atoms.size();j++){
+                    scores.push_back(computeFinalScore(learning,M,candidates[i],i,atoms[j]));
+                }
+            }
+            else
+                scores.push_back(computeFinalScore(learning,M,candidates[i],i,NULL));
+            result[candidates[i]]=scores;
+        }
+        return result;
+    }
     void savePatchInfo(std::vector<File> &infos){
         // Add case number of each switch
         std::map<size_t,size_t> switchCase;
@@ -1094,6 +1112,7 @@ protected:
         P.getSwitchInfo().mutationInfo=mutationInfo;
 
         P.getSwitchInfo().infos=infos;
+        P.getSwitchInfo().patchScores=patchScores;
         P.getSwitchInfo().save();
     }
 
@@ -1165,9 +1184,11 @@ public:
             infos.push_back(enumerateExprBindings(M, candidate[i], -1));
         }
 
+        std::map<RepairCandidate,std::vector<double>> candidateScores=getCandidateScores();
+
         std::vector<unsigned long> res;
         res.clear();
-        CodeRewriter R(M, candidate, &infos,functionLoc,P.getWorkdir());
+        CodeRewriter R(M, candidate, &infos,functionLoc,P.getWorkdir(),candidateScores);
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
         idAndCase=R.getIdAndCase();
@@ -1176,6 +1197,7 @@ public:
         switchCluster=R.getSwitchCluster();
         macroCode=R.getMacroCode();
         macroFile=R.getMacroFile();
+        patchScores=R.patchScores;
         P.getSwitchInfo().varSizes=R.getVarSizes();
         // caseCluster=R.getCaseCluster();
 

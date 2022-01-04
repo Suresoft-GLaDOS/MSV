@@ -192,6 +192,7 @@ private:
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
         std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
         std::vector<File> infos;
+        std::map<size_t,std::map<size_t,std::vector<double>>> patchScores;
 
         std::map<std::pair<size_t,size_t>,size_t> varSizes;
     public:
@@ -222,7 +223,7 @@ private:
             }
             cJSON_AddItemToObject(json,std::string("switch_cluster").c_str(),switchClusterArray);
 
-            // Save scores
+            // Save FL scores
             cJSON *scoreArray=cJSON_CreateArray();
             for (std::set<std::pair<double,std::pair<std::string,size_t>>>::reverse_iterator it=scoreInfo.rbegin();it!=scoreInfo.rend();it++){
                 cJSON *localize=cJSON_CreateObject();
@@ -290,6 +291,17 @@ private:
                             cJSON_AddItemToArray(typeArray,caseArray);
                         }
                         cJSON_AddItemToObject(switchObject,"types",typeArray);
+
+                        // Add Prophet score
+                        cJSON *prophetScoreArray=cJSON_CreateArray();
+                        for (size_t j=0;j<patchScores[currentSwitch.switchNum].size();j++){
+                            cJSON *caseScoreArray=cJSON_CreateArray();
+                            for (size_t k=0;k<patchScores[currentSwitch.switchNum][j].size();k++)
+                                cJSON_AddItemToArray(caseScoreArray,cJSON_CreateNumber(patchScores[currentSwitch.switchNum][j][k]));
+                            cJSON_AddItemToArray(prophetScoreArray,caseScoreArray);
+                        }
+                        cJSON_AddItemToObject(switchObject,"prophet_scores",prophetScoreArray);
+
                         cJSON_AddItemToArray(switchArray,switchObject);
                     }
                     cJSON_AddItemToObject(infoObject,"switches",switchArray);

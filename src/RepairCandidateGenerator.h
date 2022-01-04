@@ -139,6 +139,10 @@ struct RepairCandidate {
         return ret;
     }
 
+    bool operator<(const RepairCandidate a) const{
+        return true;
+    }
+
     std::string toString(SourceContextManager &M) const;
 
     void dump() const;

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -20,6 +20,7 @@ from sys import argv
 from os import rmdir, system, path, chdir, getcwd, environ
 import subprocess
 import getopt
+import multiprocessing as mp
 
 def num2testcase( case ):
     if case=="1":
@@ -179,18 +180,29 @@ def num2testcase( case ):
     elif case=="78":
         return "tiff2rgba-rgb-3c-8b.sh"
     else:
-        print "Error on case name"
+        print ("Error on case name")
         return 'SOME';
 
+def run_test(testcase):
+    ret = subprocess.call(["make check TESTS="+testcase+" >/dev/null  2>/dev/null"], shell=True, env = my_env);
+    if ret==0:
+        print (i)
+
 if __name__ == "__main__":
-    opts, args = getopt.getopt(argv[1:], "p:i:");
+    opts, args = getopt.getopt(argv[1:], "p:i:j:t:");
     profile_dir = "";
     temp_dir="my-test"
+    max_parallel=1
+    timeout=None
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
         elif o=="-i":
             temp_dir=a
+        elif o=='-j':
+            max_parallel=int(a)
+        elif o=='-t':
+            timeout=int(a)
 
     src_dir = args[0];
     test_dir = args[1];
@@ -212,15 +224,19 @@ if __name__ == "__main__":
         my_env = environ;
         my_env["GENEXPOUT"] = "0";
         my_env["CMPEXPOUT"] = "1";
+        result=[]
+        pool=mp.Pool(max_parallel)
         for i in ids:
             testcase = num2testcase(i);
             # print "Testing "+testcase;
+            result.append(pool.apply_async(run_test,(testcase)))
 
-            ret = subprocess.call(["make check TESTS="+testcase+" >/dev/null  2>/dev/null"], shell=True, env = my_env);
-            if ret==0:
-                print i,
+        print();
+        pool.close()
+        for r in result:
+            r.wait(timeout)
+        pool.join()
 
-        print;
         chdir(ori_dir);
         subprocess.call('rm -rf '+cur_dir+'/'+temp_dir,shell=True)
 
