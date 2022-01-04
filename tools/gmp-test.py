@@ -170,17 +170,17 @@ cases = [
     "tests/mpn/t-div",
     "tests/mpn/t-bdiv"];
 
-def run_test(test_file,subdir,ori_dir):
+def run_test(test_file,subdir,ori_dir,id):
     chdir(subdir);
-    print(test_file)
     system("rm -f " + test_file + ".log");
+    system(f'touch {test_file}.c')
     ret = subprocess.call(["make " + test_file + " >/dev/null 2>/dev/null"], shell = True);
     if (ret != 0):
         chdir(ori_dir);
         return;
     ret = subprocess.call(["./" + test_file + " >/dev/null 2>/dev/null"], shell = True);
     if (ret == 0):
-        print(i)
+        print(id)
     chdir(ori_dir);
 
 if __name__ == "__main__":
@@ -211,7 +211,8 @@ if __name__ == "__main__":
             cur_dir = profile_dir;
 
         if (not path.exists(cur_dir + "/"+temp_dir)):
-            system("cp -rf " + test_dir + " " + cur_dir + "/"+temp_dir);
+            system("cp -rf " + test_dir + " " + cur_dir + "/"+temp_dir)
+            system("cp -rf " + test_dir + "/.libs " + cur_dir + "/"+temp_dir);
 
         ori_dir = getcwd();
         my_env = environ;
@@ -228,7 +229,7 @@ if __name__ == "__main__":
                 assert(len(tokens) == 2);
                 subdir = cur_dir + "/"+temp_dir;
                 testfile = tokens[1];
-            result.append(pool.apply_async(run_test,(testfile,subdir,ori_dir)))
+            result.append(pool.apply_async(run_test,(testfile,subdir,ori_dir,i)))
 
         pool.close()
         for r in result:

@@ -334,6 +334,13 @@ public:
         Expr *callee = n->getCallee();
         ExprListTy tmp = L->getCandidateCalleeFunction(n, n == start_stmt);
         for (size_t i = 0; i < tmp.size(); i++) {
+            // Remove buggy code for gmp
+            std::string tmp_str=stmtToString(*ctxt,tmp[i]);
+            if (tmp_str.find("__gmpn_addmul_")!=std::string::npos || tmp_str.find("__gmpn_mul_")!=std::string::npos){
+                if (tmp_str.find("2")!=std::string::npos || tmp_str.find("3")!=std::string::npos||tmp_str.find("4")!=std::string::npos||tmp_str.find("5")!=std::string::npos||tmp_str.find("6")!=std::string::npos||tmp_str.find("7")!=std::string::npos||
+                                    tmp_str.find("8")!=std::string::npos||tmp_str.find("9")!=std::string::npos)
+                    continue;
+            }
             StmtReplacer R(ctxt, start_stmt);
             R.addRule(callee, tmp[i]);
             Stmt *S = R.getResult();

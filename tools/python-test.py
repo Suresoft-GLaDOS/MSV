@@ -356,6 +356,7 @@ cases = [
 
 def run_test(case_str):
     ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str + " 1>/dev/null 2>/dev/null"], shell = True);
+    # ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str], shell = True)
     if (ret == 0):
         print (i)
 
