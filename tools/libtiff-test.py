@@ -183,10 +183,10 @@ def num2testcase( case ):
         print ("Error on case name")
         return 'SOME';
 
-def run_test(testcase):
+def run_test(testcase,id):
     ret = subprocess.call(["make check TESTS="+testcase+" >/dev/null  2>/dev/null"], shell=True, env = my_env);
     if ret==0:
-        print (i)
+        print (id)
 
 if __name__ == "__main__":
     opts, args = getopt.getopt(argv[1:], "p:i:j:t:");
@@ -229,7 +229,7 @@ if __name__ == "__main__":
         for i in ids:
             testcase = num2testcase(i);
             # print "Testing "+testcase;
-            result.append(pool.apply_async(run_test,(testcase)))
+            result.append(pool.apply_async(run_test,(testcase,int(i),)))
 
         print();
         pool.close()

@@ -22,10 +22,10 @@ from os import chdir, getcwd, system, path, environ
 import subprocess
 import multiprocessing as mp
 
-def run_test(case_str):
+def run_test(case_str,id):
     ret = subprocess.call(["./mytest.sh " + case_str + " 1>/dev/null 2>/dev/null"], shell = True);
     if (ret == 0):
-        print (i)
+        print (id)
 
 if __name__ == "__main__":
     opts, args = getopt.getopt(argv[1 :], "p:t:i:j:");
@@ -64,7 +64,7 @@ if __name__ == "__main__":
         pool=mp.Pool(max_parallel)
         for i in ids:
             case_str = str(i)
-            result.append(pool.apply_async(run_test,(case_str)))
+            result.append(pool.apply_async(run_test,(case_str,int(i),)))
         chdir(ori_dir);
         pool.close()
         for r in result:

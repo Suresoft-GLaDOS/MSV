@@ -229,7 +229,7 @@ if __name__ == "__main__":
                 assert(len(tokens) == 2);
                 subdir = cur_dir + "/"+temp_dir;
                 testfile = tokens[1];
-            result.append(pool.apply_async(run_test,(testfile,subdir,ori_dir,i)))
+            result.append(pool.apply_async(run_test,(testfile,subdir,ori_dir,i,)))
 
         pool.close()
         for r in result:
