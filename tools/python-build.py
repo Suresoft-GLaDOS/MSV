@@ -56,17 +56,17 @@ def compileit(out_dir, compile_only = False, config_only = False, paraj = 0):
     my_env = environ;
 
     if not compile_only:
+        subprocess.call(["make", "clean"], env = my_env);
         system("rm -rf Modules/Setup Modules/config.c Makefile");
         if (path.exists("setup.py")):
             fix_setup_script("setup.py");
         if (path.exists("Parser/asdl_c.py")):
             fix_asdl_py("Parser/asdl_c.py");
-        ret = subprocess.call(["./configure"], shell = True, env = my_env);
+        ret = subprocess.call(["./configure","--with-pydebug"], shell = True, env = my_env);
         if (ret != 0):
             print "Failed to run configure!";
             chdir(ori_dir);
             exit(1);
-        subprocess.call(["make", "clean"], env = my_env);
 
     if not config_only:
         if paraj == 0:

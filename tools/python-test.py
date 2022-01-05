@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -354,11 +354,10 @@ cases = [
     "test_zipimport_support",
     "test_zlib"];
 
-def run_test(case_str):
+def run_test(case_str,id):
     ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str + " 1>/dev/null 2>/dev/null"], shell = True);
-    # ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str], shell = True)
     if (ret == 0):
-        print (i)
+        print (id)
 
 if __name__ == "__main__":
     opts, args = getopt.getopt(argv[1 :], "p:t:j:i:");
@@ -397,7 +396,7 @@ if __name__ == "__main__":
         pool=mp.Pool(max_parallel)
         for i in ids:
             case_str = cases[int(i) - 1]
-            result.append(pool.apply_async(run_test,(case_str)))
+            result.append(pool.apply_async(run_test,(case_str,int(i),)))
         chdir(ori_dir);
 
         pool.close()
