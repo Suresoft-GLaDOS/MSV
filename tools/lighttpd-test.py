@@ -24,6 +24,7 @@ import multiprocessing as mp
 
 def run_test(testcase):
     my_env["RUNTESTS"] = testcase;
+    # print("Running test case: " + testcase, flush=True)
     ret = subprocess.call(["perl run-tests.pl 1> __out 2>/dev/null"], shell=True, env = my_env);
     if ret != 0:
         system("rm -rf __out");
@@ -33,7 +34,7 @@ def run_test(testcase):
         outs = fin.readlines();
 
     if ("Result: PASS\n" in outs):
-        print (i)
+        print (testcase, flush=True)
     system("rm -rf __out");
 
 if __name__ == "__main__":
@@ -83,8 +84,8 @@ if __name__ == "__main__":
         pool=mp.Pool(max_parallel)
         for i in ids:
             testcase = str(i);
-            result.append(pool.apply_async(run_test,(testcase)))
-        print();
+            result.append(pool.apply_async(run_test, (testcase, )))
+        #print();
         pool.close()
         for r in result:
             r.wait(timeout)
