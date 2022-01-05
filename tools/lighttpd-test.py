@@ -25,17 +25,17 @@ import multiprocessing as mp
 def run_test(testcase):
     my_env["RUNTESTS"] = testcase;
     # print("Running test case: " + testcase, flush=True)
-    ret = subprocess.call(["perl run-tests.pl 1> __out 2>/dev/null"], shell=True, env = my_env);
+    ret = subprocess.call([f"perl run-tests.pl 1> __out{testcase} 2>/dev/null"], shell=True, env = my_env);
     if ret != 0:
-        system("rm -rf __out");
+        system(f"rm -rf __out{testcase}");
         return
 
-    with open("__out", "r") as fin:
+    with open(f"__out{testcase}", "r") as fin:
         outs = fin.readlines();
 
     if ("Result: PASS\n" in outs):
         print (testcase, flush=True)
-    system("rm -rf __out");
+    system(f"rm -rf __out{testcase}");
 
 if __name__ == "__main__":
     if len(argv) < 4:
