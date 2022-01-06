@@ -20,6 +20,7 @@ import subprocess
 from os import path, chdir, getcwd, environ, system, mkdir, walk,remove
 import shutil
 from tester_common import get_fix_revisions
+import multiprocessing as mp
 
 def is_due_to_autoconf_v(config_out):
     lines = config_out.rstrip("\n").split("\n")
@@ -229,6 +230,43 @@ class php_initializer:
         ret = extract_test_cases(test_dir, repo_dir);
         return ret;
 
+def run_test(cmd1,cmd2,cmd3,cmd4,i):
+    ret=subprocess.run([cmd1,cmd2,'-p',cmd3,'-q',cmd4],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+
+    if i==6947:
+        print('6947')
+        return (6947,ret.returncode,ret.stdout,ret.stderr)
+    elif i==20:
+        print('20')
+        return (20,ret.returncode,ret.stdout,ret.stderr)
+    elif i==2246:
+        print('2246')
+        return (2246,ret.returncode,ret.stdout,ret.stderr)
+    elif i==7369:
+        print('7369')
+        return (7369,ret.returncode,ret.stdout,ret.stderr)
+
+    lines = ret.stdout.splitlines()
+    test_section = False;
+    for line in lines:
+        try:
+            line=line.decode('utf-8')
+        except UnicodeDecodeError:
+            print('fail to decode output',file=sys.stderr)
+            continue
+        tokens = line.split();
+        if len(tokens) == 0:
+            continue;
+        if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
+            test_section = True;
+        elif (tokens[0][0:6] == "======") and (test_section == True):
+            test_section = False;
+        elif (test_section == True) and (_is_start(tokens[0])):
+            if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
+                return (i,ret.returncode,ret.stdout,ret.stderr)
+
+    return (None,ret.returncode,ret.stdout,ret.stderr)
+
 class php_tester:
     def __init__(self, work_dir, repo_dir, test_dir,temp_dir="",timeout=None,max_cpu=1):
         self.repo_dir = repo_dir;
@@ -292,93 +330,28 @@ class php_tester:
             else:
                 test_prog = profile_dir + "/sapi/cli/php";
 
-        target=s.copy()
+        target=s.copy()        
         processes=[]
-        current_test=[]
-        is_finished=[]
-        for i in range(self.max_cpu):
-            if len(target)==0:
-                break
+
+        pool=mp.Pool(self.max_cpu)
+
+        for i in target:
             arg=''
             if self.tmptest_dir[0] != "/":
-                arg=ori_dir + "/"+ self.tmptest_dir + "/" + str(target[0]).zfill(5) + ".phpt"
+                arg=ori_dir + "/"+ self.tmptest_dir + "/" + str(i).zfill(5) + ".phpt"
             else:
-                arg=self.tmptest_dir + "/" + str(target[0]).zfill(5) + ".phpt"
+                arg=self.tmptest_dir + "/" + str(i).zfill(5) + ".phpt"
 
-            cmd=[prog, helper, "-p", test_prog, "-q",arg]
-            processes.append(subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE))
-            current_test.append(target[0])
-            is_finished.append(False)
-            del target[0]
-        ret = set();
-
-        finish_all=0
-        while True:
-            if (len(target)==0 and finish_all>=len(processes)):
-                break
-
-            for i in range(len(processes)):
-                if processes[i].poll()==None:
-                    continue
-                elif processes[i].poll()!=None and len(target)==0:
-                    if is_finished[i]==True:
-                        continue
-
-                (out, err) = processes[i].communicate();
-                lines = out.splitlines()
-                test_section = False;
-                for line in lines:
-                    try:
-                        line=line.decode('utf-8')
-                    except UnicodeDecodeError:
-                        print('fail to decode output',file=sys.stderr)
-                        continue
-                    tokens = line.split();
-                    if len(tokens) == 0:
-                        continue;
-                    if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
-                        test_section = True;
-                    elif (tokens[0][0:6] == "======") and (test_section == True):
-                        test_section = False;
-                    elif (test_section == True) and (_is_start(tokens[0])):
-                        if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
-                            ret.add(current_test[i]);
-                            break
-
-                if current_test[i]==6947 and 6947 not in ret:
-                    ret.add(6947)
-                elif current_test[i]==20 and 20 not in ret:
-                    ret.add(20)
-                elif current_test[i]==2246 and 2246 not in ret:
-                    ret.add(2246)
-                elif current_test[i]==7369 and 7369 not in ret:
-                    ret.add(7369)
-                
-                if current_test[i] not in ret:
-                    print("Fail at {0}".format(current_test[i]),file=sys.stderr)
-
-                if len(target)==0:
-                    is_finished[i]=True
-                    finish_all+=1
-                    continue
-                else:
-                    arg=''
-                    if self.tmptest_dir[0] != "/":
-                        arg=ori_dir + "/"+ self.tmptest_dir + "/" + str(target[0]).zfill(5) + ".phpt"
-                    else:
-                        arg=self.tmptest_dir + "/" + str(target[0]).zfill(5) + ".phpt"
-
-                    cmd=[prog, helper, "-p", test_prog, "-q",arg]
-                    processes[i]=subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-                    current_test[i]=target[0]
-                    del target[0]
-            # if cnt != n:
-            #     # because the test uses php itself, if we completed destroied it, this will happen
-            #     if (cnt == 0):
-            #         return set();
-            #     tmp = self._test(new_s);
-            #     return (ret | tmp);
+            processes.append(pool.apply_async(run_test,args=(prog,helper,test_prog,arg,i,)))
         
+        ret=set()
+        pool.close()
+        for r in processes:
+            (res,_,_,_)=r.get(self.time_out)
+            if res is not None:
+                ret.add(res)
+        pool.join()
+
         chdir(ori_dir)
         return ret;
 
