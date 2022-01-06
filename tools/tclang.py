@@ -16,7 +16,7 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
-from sys import argv
+from sys import argv, stderr
 from os import environ, path
 import subprocess
 
@@ -31,7 +31,7 @@ def fix_argv(s):
     else:
         return s
 
-print("wrap/tclang")
+print("wrap/tclang",file=stderr)
 for i in range(1, len(argv)):
     argv[i] = fix_argv(argv[i])
 
