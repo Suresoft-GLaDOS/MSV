@@ -66,9 +66,9 @@ def compileit( out_dir, compile_only = False, config_only = False, paraj = 0):
 
     if not config_only:
         if (paraj == 0):
-            ret = subprocess.call(["make"], env = my_env);
+            ret = subprocess.call(["make","CFLAGS='-fPIC'"], env = my_env);
         else:
-            ret = subprocess.call(["make", "-j", str(paraj)], env = my_env);
+            ret = subprocess.call(["make", "-j", str(paraj),"CFLAGS='-fPIC'"], env = my_env);
         if ret != 0:
             print "Failed to make!";
             exit(1);
