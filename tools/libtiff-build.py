@@ -35,6 +35,20 @@ def fix_makefile_am(s):
         f.write(line);
     f.close();
 
+def fix_tif_jbig(s):
+    f = open(s, "r");
+    lines = f.readlines();
+    f.close();
+    f = open(s, "w");
+    for line in lines:
+        if (line.find("jbg_strerror(decodeStatus, JBG_EN)") == 0):
+            line.replace(', JBG_EN','')
+            f.write(line);
+        else:
+            f.write(line);
+    f.close();
+
+
 def compileit( out_dir, compile_only = False, config_only = False, paraj = 0):
     ori_dir = getcwd();
     chdir(out_dir);
@@ -46,6 +60,8 @@ def compileit( out_dir, compile_only = False, config_only = False, paraj = 0):
     if not compile_only:
         if path.exists("Makefile.am"):
             fix_makefile_am("Makefile.am");
+        if path.exists('libtiff/tif_jbig.c'):
+            fix_tif_jbig('libtiff/tif_jbig.c')
         system("git clean -f -d");
         ret = subprocess.call(["sh autogen.sh"], shell=True , env = my_env);
         if ret != 0:
