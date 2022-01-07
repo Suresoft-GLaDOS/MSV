@@ -41,7 +41,7 @@ def fix_tif_jbig(s):
     f.close();
     f = open(s, "w");
     for line in lines:
-        if (line.find("jbg_strerror(decodeStatus, JBG_EN)") == 0):
+        if (line.find("jbg_strerror(decodeStatus, JBG_EN)") >= 0):
             f.write(line.replace(', JBG_EN',''));
         else:
             f.write(line);
