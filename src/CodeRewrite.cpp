@@ -270,16 +270,22 @@ static std::pair<size_t, size_t> getStartEndOffset(SourceContextManager &M,
         end_idx=manager.getFileOffset(range.getEnd());
     }
     std::string code = M.getSourceCode(loc.src_file);
+    bool in_str_lit=false;
     while (end_idx < code.size()) {
-        if (code[end_idx] == '\n' && code[end_idx-1]!=',') {
-            end_idx ++;
-            break;
-        }
-        if (code[end_idx] == ';') {
-            end_idx ++;
-            if (end_idx < code.size() && code[end_idx] == '\n')
+        if (!in_str_lit && code[end_idx]=='"') in_str_lit=true;
+        else if (in_str_lit && code[end_idx]=='"' && code[end_idx-1]!='\\') in_str_lit=false;
+
+        if (!in_str_lit){
+            if (code[end_idx] == '\n' && code[end_idx-1]!=',') {
                 end_idx ++;
-            break;
+                break;
+            }
+            if (code[end_idx] == ';') {
+                end_idx ++;
+                if (end_idx < code.size() && code[end_idx] == '\n')
+                    end_idx ++;
+                break;
+            }
         }
         end_idx ++;
     }
