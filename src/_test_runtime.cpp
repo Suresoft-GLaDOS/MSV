@@ -670,13 +670,13 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
         strcat(temp_location,strtok(NULL,"-"));
 
         // If operator is ALL_1, return 1
-        char operator_temp[20];
+        char operator_temp[60];
         strcpy(operator_temp,temp_location);
         strcat(operator_temp,"__OPERATOR");
-        char variable_temp[20];
+        char variable_temp[60];
         strcpy(variable_temp,temp_location);
         strcat(variable_temp,"__VARIABLE");
-        char constant_temp[20];
+        char constant_temp[60];
         strcpy(constant_temp,temp_location);
         strcat(constant_temp,"__CONSTANT");
 
