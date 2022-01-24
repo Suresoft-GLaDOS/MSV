@@ -131,8 +131,13 @@ extern "C" char *__stat_write_init(const char *func_name){
         return NULL;
     }
 
+    char *tmp_dir = getenv("MSV_TMP_DIR");
+    if (tmp_dir == NULL || strlen(tmp_dir) == 0) {
+        tmp_dir = "/tmp";
+    }
+
     char log_file[1024];
-    sprintf(log_file,"/tmp/%s_profile.log",pid);
+    sprintf(log_file,"%s/%s_profile.log", tmp_dir, pid);
     // fprintf(stderr, "good pid\n");
     
     int included=0;
@@ -191,8 +196,13 @@ extern "C" void __stat_file_close(const char *func_name,char *str){
     }
 
     if (str==NULL) return;
-    char tmp_file[200];
-    sprintf(tmp_file,"/tmp/%s_%s_profile.log",pid,func_name);
+    char *tmp_dir = getenv("MSV_TMP_DIR");
+    if (tmp_dir == NULL || strlen(tmp_dir) == 0) {
+        tmp_dir = "/tmp";
+    }
+
+    char tmp_file[1024];
+    sprintf(tmp_file, "%s/%s_%s_profile.log", tmp_dir, pid, func_name);
 
     FILE *f;
     f = fopen(tmp_file, "w");
