@@ -195,6 +195,7 @@ private:
         std::map<size_t,std::map<size_t,std::vector<double>>> patchScores;
 
         std::map<std::pair<size_t,size_t>,size_t> varSizes;
+        std::map<std::string,std::map<std::string,std::pair<size_t,size_t>>> funcLocations;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
         void save(){
@@ -324,6 +325,24 @@ private:
                 cJSON_AddItemToArray(sizesArray,sizeObject);
             }
             cJSON_AddItemToObject(json,"sizes",sizesArray);
+
+            cJSON *fileArray=cJSON_CreateArray();
+            for (std::map<std::string,std::map<std::string,std::pair<size_t,size_t>>>::iterator it=funcLocations.begin();it!=funcLocations.end();it++){
+                cJSON *fileObject=cJSON_CreateObject();
+                cJSON_AddStringToObject(fileObject,"file",it->first.c_str());
+
+                cJSON *funcArray=cJSON_CreateArray();
+                for (std::map<std::string,std::pair<size_t,size_t>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
+                    cJSON *funcObject=cJSON_CreateObject();
+                    cJSON_AddStringToObject(funcObject,"function",it2->first.c_str());
+                    cJSON_AddNumberToObject(funcObject,"begin",it2->second.first);
+                    cJSON_AddNumberToObject(funcObject,"end",it2->second.second);
+                    cJSON_AddItemToArray(funcArray,funcObject);
+                }
+                cJSON_AddItemToObject(fileObject,"functions",funcArray);
+                cJSON_AddItemToArray(fileArray,fileObject);
+            }
+            cJSON_AddItemToObject(json,"func_locations",fileArray);
 
             // Save JSON to file
             char *jsonString=cJSON_Print(json);

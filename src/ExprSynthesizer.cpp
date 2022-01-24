@@ -1199,6 +1199,7 @@ public:
         macroFile=R.getMacroFile();
         patchScores=R.patchScores;
         P.getSwitchInfo().varSizes=R.getVarSizes();
+        P.getSwitchInfo().funcLocations=R.funcLocation;
         // caseCluster=R.getCaseCluster();
 
         // Create rules

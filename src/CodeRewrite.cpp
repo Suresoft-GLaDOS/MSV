@@ -26,6 +26,27 @@
 
 using namespace clang;
 
+class FuncLocater : public RecursiveASTVisitor<FuncLocater> {
+    std::map<std::string,std::pair<size_t,size_t>> locations;
+    ASTContext *ctxt;
+public:
+    FuncLocater(ASTContext *ctxt): locations(),ctxt(ctxt) { }
+
+    bool VisitFunctionDecl(FunctionDecl* decl) {
+        if (decl->hasBody()){
+            size_t start=ctxt->getSourceManager().getExpansionLineNumber(decl->getBeginLoc());
+            size_t end=ctxt->getSourceManager().getExpansionLineNumber(decl->getEndLoc());
+            locations[decl->getNameAsString()]=std::make_pair(start,end);
+        }
+        return true;
+    }
+
+    std::map<std::string,std::pair<size_t,size_t>> getResult(){
+        return locations;
+    }
+};
+
+
 static std::string getNextToken(const std::string &str, size_t idx, size_t &next_idx) {
     size_t i = idx;
     while ((str[i] == '\n') || (str[i] == ' ') || (str[i] == '\t'))
@@ -1067,6 +1088,10 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         resCodeSegs[src_file].clear();
         resPatches[src_file].clear();
         std::string code = M.getSourceCode(src_file);
+
+        FuncLocater locater(sourceManager.getSourceContext(src_file));
+        locater.TraverseTranslationUnitDecl(sourceManager.getSourceContext(src_file)->getTranslationUnitDecl());
+        funcLocation[src_file]=locater.getResult();
         // outlog_printf(2,"Code size: %d\n",code.size());
         resCodeSegs[src_file].push_back(code);
         std::vector<std::pair<size_t,size_t>> currentLocation=location[src_file];
