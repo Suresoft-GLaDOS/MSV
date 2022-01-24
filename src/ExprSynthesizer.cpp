@@ -1044,8 +1044,8 @@ protected:
         }
         return false;
     }
-    std::map<RepairCandidate,std::vector<double>> getCandidateScores(){
-        std::map<RepairCandidate,std::vector<double>> result;
+    std::map<void*,std::vector<double>> getCandidateScores(){
+        std::map<void*,std::vector<double>> result;
         for (size_t i=0;i<candidates.size();i++){
             std::vector<double> scores;
             scores.clear();
@@ -1057,7 +1057,7 @@ protected:
             }
             else
                 scores.push_back(computeFinalScore(learning,M,candidates[i],i,NULL));
-            result[candidates[i]]=scores;
+            result[candidates[i].actions[0].ast_node]=scores;
         }
         return result;
     }
@@ -1184,7 +1184,7 @@ public:
             infos.push_back(enumerateExprBindings(M, candidate[i], -1));
         }
 
-        std::map<RepairCandidate,std::vector<double>> candidateScores=getCandidateScores();
+        std::map<void*,std::vector<double>> candidateScores=getCandidateScores();
 
         std::vector<unsigned long> res;
         res.clear();

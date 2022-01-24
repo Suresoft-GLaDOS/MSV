@@ -295,11 +295,15 @@ private:
 
                         // Add Prophet score
                         cJSON *prophetScoreArray=cJSON_CreateArray();
-                        for (size_t j=0;j<patchScores[currentSwitch.switchNum].size();j++){
+                        for (std::map<size_t,std::vector<double>>::iterator it3=patchScores[currentSwitch.switchNum].begin();it3!=patchScores[currentSwitch.switchNum].end();it3++){
+                            cJSON *caseScoreObject=cJSON_CreateObject();
+                            cJSON_AddNumberToObject(caseScoreObject,"case",it3->first);
+
                             cJSON *caseScoreArray=cJSON_CreateArray();
-                            for (size_t k=0;k<patchScores[currentSwitch.switchNum][j].size();k++)
-                                cJSON_AddItemToArray(caseScoreArray,cJSON_CreateNumber(patchScores[currentSwitch.switchNum][j][k]));
-                            cJSON_AddItemToArray(prophetScoreArray,caseScoreArray);
+                            for (size_t k=0;k<it3->second.size();k++)
+                                cJSON_AddItemToArray(caseScoreArray,cJSON_CreateNumber(it3->second[k]));
+                            cJSON_AddItemToObject(caseScoreObject,"scores",caseScoreArray);
+                            cJSON_AddItemToArray(prophetScoreArray,caseScoreObject);
                         }
                         cJSON_AddItemToObject(switchObject,"prophet_scores",prophetScoreArray);
 

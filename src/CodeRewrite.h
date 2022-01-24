@@ -55,7 +55,7 @@ class CodeRewriter {
     // std::map<int,std::list<std::list<int>>> caseCluster;
     std::vector<std::list<size_t>> switchCluster;
     std::string workDir;
-    std::map<RepairCandidate,std::vector<double>> candidateScores;
+    std::map<void*,std::vector<double>> candidateScores;
 
     std::map<size_t,size_t> switchLine;
     std::map<std::pair<size_t,size_t>,std::string> patchTypes;
@@ -75,7 +75,7 @@ public:
     std::map<std::string,std::map<std::string,std::pair<size_t,size_t>>> funcLocation;
     CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,
             std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc=std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>>(),std::string work_dir="",
-            std::map<RepairCandidate,std::vector<double>> candScores=std::map<RepairCandidate,std::vector<double>>());
+            std::map<void*,std::vector<double>> candScores=std::map<void*,std::vector<double>>());
 
     std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate>>> eliminateAllNewLoc(SourceContextManager &M,
         const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str);

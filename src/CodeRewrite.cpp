@@ -677,7 +677,17 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 varSizes[std::make_pair(counter,case_count)]=varCount;
             }
             if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
-            patchScores[counter][case_count]=candidateScores[patch_it->second];
+            std::vector<double> finalScore;
+            finalScore.clear();
+            if (patch_it->second.actions.size()>=2 && patch_it->second.actions[1].kind==RepairAction::ExprMutationKind){
+                for (size_t i=0;i<patch_it->second.actions[1].candidate_atoms.size();i++){
+                    finalScore.push_back(patch_it->second.scoreMap[patch_it->second.actions[1].candidate_atoms[i]]);
+                }
+            }
+            else{
+                finalScore.push_back(patch_it->second.score);
+            }
+            patchScores[counter][case_count]=finalScore;
 
             index++;
             caseKind[patch_it->second.kind].push_back(case_count);
@@ -755,7 +765,17 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 varSizes[std::make_pair(counter,case_count)]=varCount;
             }
             if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
-            patchScores[counter][case_count]=candidateScores[patch_it->second];
+            std::vector<double> finalScore;
+            finalScore.clear();
+            if (patch_it->second.actions.size()>=2 && patch_it->second.actions[1].kind==RepairAction::ExprMutationKind){
+                for (size_t i=0;i<patch_it->second.actions[1].candidate_atoms.size();i++){
+                    finalScore.push_back(patch_it->second.scoreMap[patch_it->second.actions[1].candidate_atoms[i]]);
+                }
+            }
+            else{
+                finalScore.push_back(patch_it->second.score);
+            }
+            patchScores[counter][case_count]=finalScore;
 
             index++;
             // caseKind[patch_it->second].push_back(case_count);
@@ -853,7 +873,17 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 varSizes[std::make_pair(counter,case_count)]=varCount;
             }
             if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
-            patchScores[counter][case_count]=candidateScores[patch_it->second];
+            std::vector<double> finalScore;
+            finalScore.clear();
+            if (patch_it->second.actions.size()>=2 && patch_it->second.actions[1].kind==RepairAction::ExprMutationKind){
+                for (size_t i=0;i<patch_it->second.actions[1].candidate_atoms.size();i++){
+                    finalScore.push_back(patch_it->second.scoreMap[patch_it->second.actions[1].candidate_atoms[i]]);
+                }
+            }
+            else{
+                finalScore.push_back(patch_it->second.score);
+            }
+            patchScores[counter][case_count]=finalScore;
 
             index++;
             // caseKind[patch_it->second].push_back(case_count);
@@ -921,7 +951,17 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 varSizes[std::make_pair(counter,case_count)]=varCount;
             }
             if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
-            patchScores[counter][case_count]=candidateScores[patch_it->second];
+            std::vector<double> finalScore;
+            finalScore.clear();
+            if (patch_it->second.actions.size()>=2 && patch_it->second.actions[1].kind==RepairAction::ExprMutationKind){
+                for (size_t i=0;i<patch_it->second.actions[1].candidate_atoms.size();i++){
+                    finalScore.push_back(patch_it->second.scoreMap[patch_it->second.actions[1].candidate_atoms[i]]);
+                }
+            }
+            else{
+                finalScore.push_back(patch_it->second.score);
+            }
+            patchScores[counter][case_count]=finalScore;
 
             index++;
             // caseKind[patch_it->second].push_back(case_count);
@@ -963,43 +1003,41 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     return body;
 }
 
-CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,std::string work_dir,std::map<RepairCandidate,std::vector<double>> candScores):sourceManager(M),switchCluster(),candidateScores(candScores) {
+CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,std::string work_dir,std::map<void*,std::vector<double>> candScores):sourceManager(M),switchCluster(),candidateScores(candScores) {
     this->functionLoc=functionLoc;
     workDir=work_dir;
     std::map<ASTLocTy,std::string> original_str;
-    std::vector<RepairCandidate> rc1;
-    rc1.clear();
-    for (size_t i=0;i<rc.size();i++){
+    // for (size_t i=0;i<rc.size();i++){
 
-        std::vector<ExprFillInfo> temp((*pefi)[i]->begin(),(*pefi)[i]->end());
-        for(size_t k=0;k<temp.size();k++){
-            ExprFillInfo efi;
-            if (pefi !=nullptr){
-                efi = temp[k];
-            }
-            else {
-                efi.clear();
-                // We are going to replace it with all unknown expressions
-                for (size_t j = 0; j < rc[i].actions.size(); j++)
-                    if (rc[i].actions[j].kind == RepairAction::ExprMutationKind) {
-                        ASTContext *ctxt = M.getSourceContext(rc[i].actions[j].loc.filename);
-                        efi[j] = M.getUnknownExpr(ctxt, rc[i].actions[j].candidate_atoms);
-                    }
-            }
-            //rc.dump();
-            // We first the rid of all ExprMutationKind in rc
-            // rc1.push_back(replaceExprInCandidate(M, rc[i], efi));
-            //rc1.dump();
-            // We then eliminate ASTLocTy with new statements, and replace them with
-            // strings
-            //std::map<ASTLocTy, std::pair<std::string, bool> > tmp=eliminateAllNewLoc(M, rc[i]);
-            //res1.insert(tmp.begin(),tmp.end());
-        }
-        rc1.push_back(rc[i]);
-    }
+        // std::vector<ExprFillInfo> temp((*pefi)[i]->begin(),(*pefi)[i]->end());
+        // for(size_t k=0;k<temp.size();k++){
+        //     ExprFillInfo efi;
+        //     if (pefi !=nullptr){
+        //         efi = temp[k];
+        //     }
+        //     else {
+        //         efi.clear();
+        //         // We are going to replace it with all unknown expressions
+        //         for (size_t j = 0; j < rc[i].actions.size(); j++)
+        //             if (rc[i].actions[j].kind == RepairAction::ExprMutationKind) {
+        //                 ASTContext *ctxt = M.getSourceContext(rc[i].actions[j].loc.filename);
+        //                 efi[j] = M.getUnknownExpr(ctxt, rc[i].actions[j].candidate_atoms);
+        //             }
+        //     }
+        //     //rc.dump();
+        //     // We first the rid of all ExprMutationKind in rc
+        //     // rc1.push_back(replaceExprInCandidate(M, rc[i], efi));
+        //     //rc1.dump();
+        //     // We then eliminate ASTLocTy with new statements, and replace them with
+        //     // strings
+        //     //std::map<ASTLocTy, std::pair<std::string, bool> > tmp=eliminateAllNewLoc(M, rc[i]);
+        //     //res1.insert(tmp.begin(),tmp.end());
+        // }
+    //     rc1.push_back(rc[i]);
+    // }
 
     // Create string with whole candidate vector 
-    std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate>>> res1=eliminateAllNewLoc(M, rc1,original_str);
+    std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate>>> res1=eliminateAllNewLoc(M, rc,original_str);
     // We then categorize location based on the src_file and their offset
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > res2;
     std::map<std::string, std::map<std::pair<size_t, size_t>, ASTLocTy> > tmp_loc;
