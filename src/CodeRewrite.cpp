@@ -1082,11 +1082,11 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
         // for (std::map<std::pair<size_t, size_t>, ASTLocTy>::iterator it2=it->second.begin();
         //         it2!=it->second.end();it2++) {
             // if (it2->first.second==0) continue;
-            if (currentLocation[i].second==0) continue;
             // long long start = it2->first.second;
             // long long end = it2->first.first;
             size_t start = currentLocation[i].first;
             size_t end = currentLocation[i].second;
+            if (currentLocation[i].second==0 || seg_start > start) continue;
             // outlog_printf(2,"Location: %d %d\n",start,end);
 
             int case_count=0;
