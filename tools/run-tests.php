@@ -1152,6 +1152,23 @@ function binary_section($section)
 		);
 }
 
+function lev_dist($s,$t) {
+  $m = strlen($s);
+  $n = strlen($t);
+
+  for($i=0;$i<=$m;$i++) $d[$i][0] = $i;
+  for($j=0;$j<=$n;$j++) $d[0][$j] = $j;
+
+  for($i=1;$i<=$m;$i++) {
+    for($j=1;$j<=$n;$j++) {
+      $c = ($s[$i-1] == $t[$j-1])?0:1;
+      $d[$i][$j] = min($d[$i-1][$j]+1,$d[$i][$j-1]+1,$d[$i-1][$j-1]+$c);
+    }
+  }
+
+  return $d[$m][$n];
+}
+
 //
 //  Run an individual test case.
 //
@@ -1794,8 +1811,10 @@ COMMAND $cmd
 
 		$output_distance_file = getenv("MSV_OUTPUT_DISTANCE_FILE");
 		if ($output_distance_file) {
-			$diff_chars = similar_text($wanted, $output, $perc);
-			$dist = 100 - $perc;
+			#$diff_chars = similar_text($wanted, $output, $perc);
+			#$dist = 100 - $perc;
+			#$dist = levenshtein($wanted, $output);
+			$dist = lev_dist($wanted, $output);
 			file_put_contents($output_distance_file, $dist);
 		}
 
@@ -1896,8 +1915,9 @@ COMMAND $cmd
 		# TODO: Find distance
 		$output_distance_file = getenv("MSV_OUTPUT_DISTANCE_FILE");
 		if ($output_distance_file) {
-			$diff_chars = similar_text($wanted, $output, $perc);
-			$dist = 100 - $perc;
+			#$diff_chars = similar_text($wanted, $output, $perc);
+			#$dist = 100 - $perc;
+			$dist = lev_dist($wanted, $output);
 			file_put_contents($output_distance_file, $dist);
 		}
 
