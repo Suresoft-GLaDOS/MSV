@@ -17,25 +17,31 @@
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
-from os import environ, system, path, getcwd, chdir
+from os import environ, system, path, getcwd, chdir, remove
 import subprocess
 import getopt
 import multiprocessing as mp
 
 def run_test(testcase):
+    my_env = environ.copy()
     my_env["RUNTESTS"] = testcase;
     # print("Running test case: " + testcase, flush=True)
-    ret = subprocess.call([f"perl run-tests.pl 1> __out{testcase} 2>/dev/null"], shell=True, env = my_env);
+    out_file = f"__out_{testcase}"
+    if "__PID" in my_env:
+        out_file = f"__out_{my_env['__PID']}"
+    if path.exists(out_file):
+        remove(out_file)
+    ret = subprocess.call([f"perl run-tests.pl 1>{out_file}  2>/dev/null"], shell=True, env = my_env);
     if ret != 0:
-        system(f"rm -rf __out{testcase}");
+        system(f"rm -rf {out_file}");
         return
 
-    with open(f"__out{testcase}", "r") as fin:
+    with open(out_file, "r") as fin:
         outs = fin.readlines();
 
     if ("Result: PASS\n" in outs):
         print (testcase, flush=True)
-    system(f"rm -rf __out{testcase}");
+    system(f"rm -rf {out_file}");
 
 if __name__ == "__main__":
     if len(argv) < 4:
@@ -54,8 +60,8 @@ if __name__ == "__main__":
             max_parallel=int(a)
         elif o=='-t':
             timeout=int(a)
-        elif o=='-i':
-            tempdir=a
+        # elif o=='-i':
+        #     tempdir=a
 
     src_dir = args[0];
     test_dir = args[1];
@@ -79,7 +85,6 @@ if __name__ == "__main__":
             print ("Error on preparing")
             assert(0);
 
-        my_env = environ;
         result=[]
         pool=mp.Pool(max_parallel)
         for i in ids:

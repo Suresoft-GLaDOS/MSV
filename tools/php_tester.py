@@ -319,6 +319,8 @@ class php_tester:
             prog = path.abspath(prog);
 
         helper = "./run-tests.php";
+        if "MSV_PATH" in environ:
+            helper = path.join(environ["MSV_PATH"], "tools", "run-tests.php");
         ori_dir = getcwd();
         chdir(self.repo_dir);
  
