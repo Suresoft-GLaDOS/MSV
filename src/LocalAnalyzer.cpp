@@ -19,6 +19,7 @@
 #include "GlobalAnalyzer.h"
 #include "clang/AST/RecursiveASTVisitor.h"
 #include "ASTUtils.h"
+#include "clang/AST/OperationKinds.h"
 #include <map>
 
 using namespace clang;
@@ -587,6 +588,7 @@ class StmtChecker : public RecursiveASTVisitor<StmtChecker> {
     GlobalAnalyzer *G;
     std::set<VarDecl*> inside;
     std::set<Expr*> invalidExprs;
+    bool isLvalue;
     bool isMemberMethod(CXXRecordDecl *record,FunctionDecl *func){
         if (!llvm::isa<CXXMethodDecl>(func)) return false;
         bool isMember=false;
@@ -612,7 +614,7 @@ class StmtChecker : public RecursiveASTVisitor<StmtChecker> {
     }
 
 public:
-    StmtChecker(LocalAnalyzer *L, GlobalAnalyzer *G): L(L), G(G) {
+    StmtChecker(LocalAnalyzer *L, GlobalAnalyzer *G,bool isLvalue=false): L(L), G(G),isLvalue(isLvalue) {
         inside.clear();
         invalidExprs.clear();
     }
@@ -626,6 +628,29 @@ public:
         // C++ 'this' can only be in class/struct method
         FunctionDecl *current=L->getCurrentFunction();
         if (!llvm::isa<CXXMethodDecl>(current)) invalidExprs.insert(expr);
+        return true;
+    }
+
+    virtual bool VisitBinaryOperator(BinaryOperator *expr){
+        if (isLvalue){
+            invalidExprs.insert(expr);
+        }
+        return true;
+    }
+
+    virtual bool VisitUnaryOperator(UnaryOperator *expr){
+        if (isLvalue){
+            if (!expr->isPostfix()){
+                invalidExprs.insert(expr);
+                return true;
+            }
+            else{
+                if (expr->getOpcode()==UnaryOperator::Opcode::UO_Deref){
+                    invalidExprs.insert(expr);
+                    return true;
+                }
+            }
+        }
         return true;
     }
 
@@ -673,7 +698,7 @@ bool LocalAnalyzer::isValidStmt(Stmt* S, Expr** invalidE) {
     std::set<Expr*> res;
     // If this is binary operator, we must assume LHS is fine
     if (BO && (BO->getOpcode() == BO_Assign)) {
-        StmtChecker V(this, G);
+        StmtChecker V(this, G,true);
         V.TraverseStmt(BO->getLHS());
         res = V.getResult();
         if (res.size() != 0) {
