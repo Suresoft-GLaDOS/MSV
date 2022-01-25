@@ -38,7 +38,10 @@ const char* HANDLER_PREFIX =
     "int __trident_choice(char* lid, char* typestr,int* rvals, char** rvals_ids, int rvals_size,int** lvals, char** lvals_ids, int lvals_size);"
     "int __trident_output(char* id, char* typestr, int value);"
     "float fabs_trident(float a);"
-    "int __choose(const char *);";
+    "int __choose(const char *);"
+    "void *__var_select(unsigned int var_count,void *vars[]);"
+    "void *__var_select_2(unsigned int var_count,void *vars[]);"
+    "long long __const_select(unsigned int const_count,long long consts[]);";
 const char* MEMSET_PREFIX =
     "void* memset(void*, int, unsigned long); ";
 
