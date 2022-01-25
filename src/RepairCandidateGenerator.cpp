@@ -45,6 +45,7 @@ class AtomReplaceVisitor : public RecursiveASTVisitor<AtomReplaceVisitor> {
     std::set<clang::Stmt*> res;
     std::map<clang::Stmt*, std::pair<Expr*, Expr*> > resRExpr;
     bool replace_ext;
+    SourceContextManager &manager;
 
     ExprListTy secondOrderExprs(LocalAnalyzer *L, QualType QT) {
         ExprListTy ret;
@@ -109,8 +110,8 @@ class AtomReplaceVisitor : public RecursiveASTVisitor<AtomReplaceVisitor> {
     }
 
 public:
-    AtomReplaceVisitor(ASTContext *ctxt, LocalAnalyzer *L, clang::Stmt *start_stmt, bool replace_ext):
-    L(L), ctxt(ctxt), start_stmt(start_stmt), res(), resRExpr(), replace_ext(replace_ext) {
+    AtomReplaceVisitor(ASTContext *ctxt, LocalAnalyzer *L, SourceContextManager &manager,clang::Stmt *start_stmt, bool replace_ext):
+    L(L), ctxt(ctxt), start_stmt(start_stmt), res(), resRExpr(), replace_ext(replace_ext),manager(manager) {
         res.clear(); resRExpr.clear();
     }
 
@@ -732,7 +733,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         // OK, we limit replacement to expr only statement to avoid stupid redundent
         // changes to an compound statement/if statement
         if (llvm::isa<Expr>(n)) {
-            AtomReplaceVisitor V(ctxt, L, n, ReplaceExt.getValue());
+            AtomReplaceVisitor V(ctxt, L, M,n, ReplaceExt.getValue());
             V.TraverseStmt(n);
             std::set<Stmt*> res = V.getResult();
             for (std::set<Stmt*>::iterator it = res.begin(); it != res.end(); ++it) {
@@ -819,7 +820,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         std::map<std::string, RepairCandidate> tmp_map;
         tmp_map.clear();
         for (std::set<Expr*>::iterator it = exprs.begin(); it != exprs.end(); ++it) {
-            AtomReplaceVisitor V(ctxt, L, *it, false);
+            AtomReplaceVisitor V(ctxt, L, M,*it, false);
             V.TraverseStmt(*it);
             std::set<Stmt*> stmts = V.getResult();
             Expr *subExpr = NULL;

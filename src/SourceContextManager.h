@@ -49,6 +49,9 @@ struct InternalHandlerInfo {
     clang::Expr* write_profile;
     clang::Expr* mutator;
     clang::Expr* sys_memset;
+    clang::Expr* var_selecter_1;
+    clang::Expr* var_selecter_2;
+    clang::Expr* const_selecter;
 };
 
 typedef std::vector<clang::Expr*> ExprListTy;

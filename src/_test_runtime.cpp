@@ -908,3 +908,30 @@ extern "C" long long __mutate(const long long value,const char *oper_env,const c
         default: return constant; // assign (default)
     }
 }
+
+extern "C" void *__var_select(unsigned int var_count,void *vars[]){
+    char *var=getenv("__SELECT_VAR");
+    if (var==NULL) return vars[0];
+    else{
+        int index=atoi(var);
+        return vars[index];
+    }
+}
+
+extern "C" long long __const_select(unsigned int const_count,long long consts[]){
+    char *var=getenv("__SELECT_VAR");
+    if (var==NULL) return consts[0];
+    else{
+        int index=atoi(var);
+        return consts[index];
+    }
+}
+
+extern "C" void *__var_select_2(unsigned int var_count,void *vars[]){
+    char *var=getenv("__SELECT_VAR_2");
+    if (var==NULL) return vars[0];
+    else{
+        int index=atoi(var);
+        return vars[index];
+    }
+}
