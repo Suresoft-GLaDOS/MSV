@@ -165,6 +165,9 @@ extern "C" char *__stat_write_init(const char *func_name){
         fprintf(log,"%s\n",func_name);
         fclose(log);
     }
+    if (getenv("MSV_RUN_ORIGINAL")!=NULL){
+        return NULL;
+    }
 
     char *str=(char *)malloc(sizeof(char)*1000000);
     sprintf(str,"");
@@ -172,7 +175,7 @@ extern "C" char *__stat_write_init(const char *func_name){
 }
 extern "C" void __write_stat(char *str,const char *var_name,void *var_addr,int size){
     char * pid = getenv("__PID");
-    if (pid == NULL || strlen(pid) == 0) {
+    if (pid == NULL || strlen(pid) == 0 || getenv("MSV_RUN_ORIGINAL") != NULL) {
         return;
     }
 
@@ -191,7 +194,7 @@ extern "C" void __write_stat(char *str,const char *var_name,void *var_addr,int s
 
 extern "C" void __stat_file_close(const char *func_name,char *str){
     char * pid = getenv("__PID");
-    if (pid == NULL || strlen(pid) == 0) {
+    if (pid == NULL || strlen(pid) == 0 || getenv("MSV_RUN_ORIGINAL") != NULL) {
         return;
     }
 

@@ -31,7 +31,7 @@ if __name__ == "__main__":
     profile_dir = ""
     
     temp_dir=""
-    timeout=None
+    timeout: float = 10.0
     max_cpu=1
     for o, a in opts:
         if o == "-p":
@@ -39,7 +39,7 @@ if __name__ == "__main__":
         elif o=="-i":
             temp_dir=a
         elif o=='-t':
-            timeout=int(a)
+            timeout = float(a)
         elif o=='-j':
             max_cpu=int(a)
 
