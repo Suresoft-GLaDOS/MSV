@@ -382,18 +382,19 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
         build_args=build_args_save[src_file];
     }
     else{
+        std::string unique_id=std::to_string(time(NULL));
         std::string cmd;
         if (dep_dir != "")
-            cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
+            cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args "+ " 2>&1";
         else
-            cmd = build_cmd + " -c -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
+            cmd = build_cmd + " -c -d " + src_file + " " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args " +  " 2>&1";
         int sys_ret = explain_system_on_error(cmd.c_str());
 
         assert( sys_ret == 0 );
-        parseArgFile("__args", build_dir, build_args);
-        sys_ret = explain_system_on_error("rm -rf __args");
+        parseArgFile(unique_id+"__args", build_dir, build_args);
+        sys_ret = explain_system_on_error(std::string("rm -rf "+unique_id+"__args").c_str());
         if (sys_ret != 0)
             fprintf(stderr, "Remove __args failed!\n");
         src_dirs["src"] = true;
