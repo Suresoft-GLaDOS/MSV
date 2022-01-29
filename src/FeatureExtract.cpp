@@ -331,13 +331,13 @@ class FeatureExtractVisitor : public RecursiveASTVisitor<FeatureExtractVisitor> 
             putValueFeature(v, isReplace ? RStmtCallAF : StmtCallAF);
         }
         if (llvm::isa<WhileStmt>(S) || llvm::isa<ForStmt>(S)) {
-            assert(!isReplace);
+            //assert(!isReplace);
             putValueFeature(v, StmtLoopAF);
         }
         if (llvm::isa<BreakStmt>(S) || llvm::isa<ReturnStmt>(S) || llvm::isa<GotoStmt>(S))
             putValueFeature(v, isReplace ? RStmtControlAF : StmtControlAF);
         if (llvm::isa<LabelStmt>(S)) {
-            assert(!isReplace);
+            //assert(!isReplace);
             putValueFeature(v, StmtLabelAF);
         }
     }

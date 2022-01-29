@@ -922,7 +922,6 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
     void genAddIfGuard(Stmt* n, bool is_first) {
         if (in_yacc_func)
             return;
-        if (llvm::isa<WhileStmt>(n) || llvm::isa<ForStmt>(n) || llvm::isa<LabelStmt>(n)) return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         Expr* placeholder;
