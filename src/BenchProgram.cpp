@@ -382,7 +382,7 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
         build_args=build_args_save[src_file];
     }
     else{
-        std::string unique_id=std::to_string(time(NULL));
+        std::string unique_id=std::to_string(getpid());
         std::string cmd;
         if (dep_dir != "")
             cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
