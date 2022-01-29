@@ -915,12 +915,20 @@ extern "C" void *__var_select(unsigned int var_count,void *vars[]){
     }
 }
 
-extern "C" long long __const_select(unsigned int const_count,long long consts[]){
+extern "C" long long __const_select(unsigned int const_count, ...){
     char *var=getenv("__SELECT_VAR");
-    if (var==NULL) return consts[0];
+    va_list ap;
+    va_start(ap,const_count);
+
+    if (var==NULL) return 0;
     else{
         int index=atoi(var);
-        return consts[index];
+        long long result=0;
+        for (int i=0;i<index;i++){
+            va_arg(ap,long long);
+        }
+        result=va_arg(ap,long long);
+        return result;
     }
 }
 
