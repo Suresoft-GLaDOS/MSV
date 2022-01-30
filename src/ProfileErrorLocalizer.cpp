@@ -163,7 +163,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         llvm::errs() << "Neg Processing: "<< *it << "\n";
         ProfileLocationMapTy res;
         clearProfileResult();
-        bool tmp = P.test("profile", *it, testEnv, 0,0,0,0,true);
+        bool tmp = P.test("profile", *it, testEnv, 0,0,0,getpid(),true);
         res = parseProfileResult();
         // llvm::errs() << "Finish!" << "\n";
 
