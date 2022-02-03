@@ -234,16 +234,6 @@ def run_test(cmd1,cmd2,cmd3,cmd4,i):
     ret=subprocess.run([cmd1,cmd2,'-p',cmd3,'-q',cmd4],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     if "MSV_RUN_ORIGINAL" in environ:
         environ["__PID"] = f"{i}-{environ['__PID']}"
-    if i==6947:
-        return (6947,ret.returncode,ret.stdout,ret.stderr)
-    elif i==20:
-        return (20,ret.returncode,ret.stdout,ret.stderr)
-    elif i==2246:
-        return (2246,ret.returncode,ret.stdout,ret.stderr)
-    elif i==7369:
-        return (7369,ret.returncode,ret.stdout,ret.stderr)
-    elif i==3300:
-        return (3300,ret.returncode,ret.stdout,ret.stderr)
 
     lines = ret.stdout.splitlines()
     test_section = False;
