@@ -235,17 +235,15 @@ def run_test(cmd1,cmd2,cmd3,cmd4,i):
     if "MSV_RUN_ORIGINAL" in environ:
         environ["__PID"] = f"{i}-{environ['__PID']}"
     if i==6947:
-        print('6947')
         return (6947,ret.returncode,ret.stdout,ret.stderr)
     elif i==20:
-        print('20')
         return (20,ret.returncode,ret.stdout,ret.stderr)
     elif i==2246:
-        print('2246')
         return (2246,ret.returncode,ret.stdout,ret.stderr)
     elif i==7369:
-        print('7369')
         return (7369,ret.returncode,ret.stdout,ret.stderr)
+    elif i==3300:
+        return (3300,ret.returncode,ret.stdout,ret.stderr)
 
     lines = ret.stdout.splitlines()
     test_section = False;
