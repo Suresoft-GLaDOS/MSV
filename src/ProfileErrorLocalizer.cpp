@@ -25,6 +25,7 @@
 #include <queue>
 #include <fstream>
 #include <assert.h>
+#include <unistd.h>
 
 #include <dirent.h>
 
