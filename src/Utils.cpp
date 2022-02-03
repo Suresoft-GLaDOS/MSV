@@ -174,9 +174,10 @@ bool is_header(const std::string &str) {
 
 std::string getFullPath(const std::string &path) {
     // printf("Path: %s\n",path.c_str());
+    if (path[0]=='/') return path;
     char tmp[PATH_MAX];
     char * ret = realpath(path.c_str(), tmp);
-    if( ret != 0 ) printf(std::string("fail to get full path of "+path).c_str());
+    if( ret != 0 ) printf(std::string("fail to get full path of "+path+"\n").c_str());
     return std::string(tmp);
 }
 
