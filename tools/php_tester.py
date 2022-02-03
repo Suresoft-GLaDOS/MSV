@@ -230,29 +230,32 @@ class php_initializer:
         ret = extract_test_cases(test_dir, repo_dir);
         return ret;
 
-def run_test(cmd1,cmd2,cmd3,cmd4,i):
-    ret=subprocess.run([cmd1,cmd2,'-p',cmd3,'-q',cmd4],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-    if "MSV_RUN_ORIGINAL" in environ:
-        environ["__PID"] = f"{i}-{environ['__PID']}"
+def run_test(cmd1,cmd2,cmd3,cmd4,i,timeout):
+    try:
+        ret=subprocess.run([cmd1,cmd2,'-p',cmd3,'-q',cmd4],stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=timeout)
+        if "MSV_RUN_ORIGINAL" in environ:
+            environ["__PID"] = f"{i}-{environ['__PID']}"
 
-    lines = ret.stdout.splitlines()
-    test_section = False;
-    for line in lines:
-        try:
-            line=line.decode('utf-8')
-        except UnicodeDecodeError:
-            print('fail to decode output',file=sys.stderr)
-            continue
-        tokens = line.split();
-        if len(tokens) == 0:
-            continue;
-        if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
-            test_section = True;
-        elif (tokens[0][0:6] == "======") and (test_section == True):
-            test_section = False;
-        elif (test_section == True) and (_is_start(tokens[0])):
-            if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
-                return (i,ret.returncode,ret.stdout,ret.stderr)
+        lines = ret.stdout.splitlines()
+        test_section = False;
+        for line in lines:
+            try:
+                line=line.decode('utf-8')
+            except UnicodeDecodeError:
+                print('fail to decode output',file=sys.stderr)
+                continue
+            tokens = line.split();
+            if len(tokens) == 0:
+                continue;
+            if (len(tokens) > 2) and (tokens[0] == "Running") and (tokens[1] == "selected") and (tokens[2] == "tests."):
+                test_section = True;
+            elif (tokens[0][0:6] == "======") and (test_section == True):
+                test_section = False;
+            elif (test_section == True) and (_is_start(tokens[0])):
+                if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
+                    return (i,ret.returncode,ret.stdout,ret.stderr)
+    except subprocess.TimeoutExpired:
+        return (None,1,'','Timeout expired!')
 
     return (None,ret.returncode,ret.stdout,ret.stderr)
 
@@ -333,12 +336,12 @@ class php_tester:
             else:
                 arg=self.tmptest_dir + "/" + str(i).zfill(5) + ".phpt"
 
-            processes.append(pool.apply_async(run_test,args=(prog,helper,test_prog,arg,i,)))
+            processes.append(pool.apply_async(run_test,args=(prog,helper,test_prog,arg,i,self.time_out,)))
         
         ret=set()
         pool.close()
         for r in processes:
-            (res,_,_,_)=r.get(self.time_out)
+            (res,_,_,_)=r.get()
             if res is not None:
                 ret.add(res)
         pool.join()
