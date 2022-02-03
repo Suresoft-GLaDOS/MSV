@@ -134,6 +134,10 @@ public:
 
     clang::Expr* getWriteProfile(clang::ASTContext *ctxt);
 
+    clang::Expr *getVariableSelector(clang::ASTContext *ctxt,ExprListTy exprs);
+    clang::Expr *getVariableSelector2(clang::ASTContext *ctxt,ExprListTy exprs);
+    clang::Expr *getConstantSelector(clang::ASTContext *ctxt,ExprListTy exprs);
+
     clang::Expr* getMutator(clang::ASTContext *ctxt){
         return getInternalHandlerInfo(ctxt).mutator;
     }
