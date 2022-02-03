@@ -357,7 +357,7 @@ class php_tester:
         if self.temp_dir!="":
             self.tmptest_dir+="/"+self.temp_dir+"_tests"
         if (path.exists(self.tmptest_dir)):
-            shutil.rmtree(self.tmptest_dir);
+            os.removedirs(self.tmptest_dir);
         #print "Preparing clean test dir..."
         if (s == None):
             shutil.copytree(self.test_dir, self.tmptest_dir);
