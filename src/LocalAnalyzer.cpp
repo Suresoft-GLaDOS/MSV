@@ -128,8 +128,7 @@ public:
             if (QT.getTypePtr()->isStructureType()) {
                 // FIXME: a function for this!!
                 std::string tmp = stripLine(stmtToString(*ctxt, ME));
-                if (ME->isArrow())
-                    res[tmp] = ME;
+                res[tmp] = ME;
             }
             Expr *base = ME->getBase();
             assert(base);
@@ -144,8 +143,7 @@ public:
             if (MemberExpr::classof(base)){
                 MemberExpr *baseExpr=llvm::dyn_cast<MemberExpr>(base);
                 if (baseExpr)
-                    if (baseExpr->isArrow())
-                        res[tmp] = base;
+                    res[tmp] = base;
             }
         }
         return true;
