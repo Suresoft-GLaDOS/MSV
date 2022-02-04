@@ -147,17 +147,16 @@ public:
         return true;
     }
 
-    virtual bool TraverseStmt(Stmt *stmt){
+    virtual bool TraverseCompoundStmt(CompoundStmt *stmt){
         if (stmt == NULL) return true;
         if (valid)
-            if (!llvm::isa<DeclStmt>(stmt) && (std::find(stackStmt.begin(),stackStmt.end(),stmt)==stackStmt.end())) {
+            if ((std::find(stackStmt.begin(),stackStmt.end(),stmt)==stackStmt.end())) {
                 valid = false;
-                bool ret = RecursiveASTVisitor<MemberExprStemVisitor>::TraverseStmt(stmt);
+                bool ret = RecursiveASTVisitor<MemberExprStemVisitor>::TraverseCompoundStmt(stmt);
                 valid = true;
                 return ret;
             }
-        return RecursiveASTVisitor<MemberExprStemVisitor>::TraverseStmt(stmt);
-
+        return RecursiveASTVisitor<MemberExprStemVisitor>::TraverseCompoundStmt(stmt);
     }
 
     virtual std::set<Expr*> getStemExprSet() {
