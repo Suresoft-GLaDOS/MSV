@@ -232,11 +232,51 @@ class php_initializer:
 
 import psutil
 
-def run_test(cmd1,cmd2,cmd3,cmd4,i,timeout):
+def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
+    if temp_dir=='':
+        temp_dir=work_dir+'/__cleantests/'
+    else:
+        temp_dir=work_dir+'/__cleantests/'+temp_dir+'_tests'
+    cur_temp_dir=temp_dir+'/'+str(i)
+    mkdir(cur_temp_dir)
+    chdir(cur_temp_dir)
+    shutil.copyfile("../" + str(i).zfill(5) + ".phpt", "./" + str(i).zfill(5) + ".phpt")
+
+    #print "###############3php_tester: _test()"
+    assert(path.exists(src_dir+"/sapi/cli/php"));
+    assert(path.exists(src_dir+"/run-tests.php"));
+    # prog = self.repo_dir+"/sapi/cli/php";
+    # helper = self.repo_dir+"/run-tests.php";
+    prog = "./sapi/cli/php"
+    if (path.exists(work_dir + "/../php-src/sapi/cli/php")):
+        prog = work_dir + "/../php-src/sapi/cli/php";
+        prog = path.abspath(prog);
+
+    helper = "./run-tests.php";
+    if "MSV_PATH" in environ:
+        helper = path.join(environ["MSV_PATH"], "tools", "run-tests.php");
+    ori_dir = getcwd();
+    chdir(src_dir);
+
+    if (profile_dir == ""):
+        test_prog = "./sapi/cli/php";
+    else:
+        if profile_dir[0] != "/":
+            test_prog = ori_dir + "/" + profile_dir + "/sapi/cli/php";
+        else:
+            test_prog = profile_dir + "/sapi/cli/php";
+
+    arg=''
+    if cur_temp_dir[0] != "/":
+        arg= "./" + str(i).zfill(5) + ".phpt"
+    else:
+        arg=cur_temp_dir + "/" + str(i).zfill(5) + ".phpt"
+
+
     if "MSV_RUN_ORIGINAL" in environ:
         environ["__PID"] = f"{i}-{environ['__PID']}"
 
-    ret=subprocess.Popen([cmd1,cmd2,'-p',cmd3,'-q',cmd4],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    ret=subprocess.Popen([prog,helper,'-p',test_prog,'-q',arg],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     try:
         so,se=ret.communicate(timeout=timeout)
 
@@ -309,43 +349,14 @@ class php_tester:
 
     # test the php build with testcases [test_id, test_id+n)
     def _test(self, s, profile_dir = ""):
-        #print "###############3php_tester: _test()"
-        assert(path.exists(self.repo_dir+"/sapi/cli/php"));
-        assert(path.exists(self.repo_dir+"/run-tests.php"));
-        # prog = self.repo_dir+"/sapi/cli/php";
-        # helper = self.repo_dir+"/run-tests.php";
-        prog = "./sapi/cli/php"
-        if (path.exists(self.work_dir + "/../php-src/sapi/cli/php")):
-            prog = self.work_dir + "/../php-src/sapi/cli/php";
-            prog = path.abspath(prog);
-
-        helper = "./run-tests.php";
-        if "MSV_PATH" in environ:
-            helper = path.join(environ["MSV_PATH"], "tools", "run-tests.php");
-        ori_dir = getcwd();
-        chdir(self.repo_dir);
- 
-        if (profile_dir == ""):
-            test_prog = "./sapi/cli/php";
-        else:
-            if profile_dir[0] != "/":
-                test_prog = ori_dir + "/" + profile_dir + "/sapi/cli/php";
-            else:
-                test_prog = profile_dir + "/sapi/cli/php";
-
+        ori_dir=getcwd()
         target=s.copy()        
         processes=[]
 
         pool=mp.Pool(self.max_cpu)
 
         for i in target:
-            arg=''
-            if self.tmptest_dir[0] != "/":
-                arg=ori_dir + "/"+ self.tmptest_dir + "/" + str(i).zfill(5) + ".phpt"
-            else:
-                arg=self.tmptest_dir + "/" + str(i).zfill(5) + ".phpt"
-
-            processes.append(pool.apply_async(run_test,args=(prog,helper,test_prog,arg,i,self.time_out,)))
+            processes.append(pool.apply_async(run_test,args=(self.repo_dir,self.work_dir,profile_dir,i,self.time_out,self.temp_dir)))
         
         ret=set()
         pool.close()
