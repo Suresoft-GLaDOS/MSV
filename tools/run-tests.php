@@ -1155,6 +1155,41 @@ function binary_section($section)
 function lev_dist($s,$t) {
   $m = strlen($s);
   $n = strlen($t);
+	// echo "\nm !!!!!!!\n";
+	// echo $s;
+	// echo "\nn !!!!!!!!\n";
+	// echo $t;
+	// echo "\nm=$m n=$n\n";
+	if ($m == 0) return $n;
+	if ($n == 0) return $m;
+	if ($m * 4 < $n) return $n;
+	$max = $m > $n ? $m : $n;
+	$d0 = array();
+	$d1 = array();
+	for ($i = 0; $i <= $max; $i++) {
+		$d0[$i] = $i;
+	}
+	for ($i = 0; $i < $m; $i++) {
+		$d1[0] = $d0[0] + 1;
+		for ($j = 0; $j < $n; $j++) {
+			$c0 = $d0[$j] + (($s[$i] == $t[$j]) ? 0 : 1);
+			$c1 = $d0[$j + 1] + 1;
+			if ($c0 > $c1) {
+				$c0 = $c1;
+			}
+			$c2 = $d1[$j] + 1;
+			if ($c0 > $c2) {
+				$c0 = $c2;
+			}
+			$d1[$j + 1] = $c0;
+		}
+		$tmp = $d0;
+		$d0 = $d1;
+		$d1 = $tmp;
+	}
+	$dist = $d0[$max];
+	// echo "Output distance $dist\n";
+	return $dist;
 
   for($i=0;$i<=$m;$i++) $d[$i][0] = $i;
   for($j=0;$j<=$n;$j++) $d[0][$j] = $j;
@@ -1165,7 +1200,6 @@ function lev_dist($s,$t) {
       $d[$i][$j] = min($d[$i-1][$j]+1,$d[$i][$j-1]+1,$d[$i-1][$j-1]+$c);
     }
   }
-
   return $d[$m][$n];
 }
 
