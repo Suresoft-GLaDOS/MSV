@@ -125,10 +125,11 @@ public:
         if (valid){
             // FIXME: This should maybe apply to all Expr, not just MemberExpr
             QualType QT = ME->getType();
-            if (QT.getTypePtr()->isStructureType()) {
+            if (QT->isStructureType()) {
                 // FIXME: a function for this!!
                 std::string tmp = stripLine(stmtToString(*ctxt, ME));
-                res[tmp] = ME;
+                if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
+                    res[tmp] = ME;
             }
             Expr *base = ME->getBase();
             assert(base);
@@ -140,12 +141,9 @@ public:
                 RecT = llvm::dyn_cast<RecordType>(PT->getPointeeType().getTypePtr());
             }*/
             std::string tmp = stripLine(stmtToString(*ctxt, base));
-            if (MemberExpr::classof(base)){
-                MemberExpr *baseExpr=llvm::dyn_cast<MemberExpr>(base);
-                if (baseExpr)
-                    res[tmp] = base;
+            if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
+                res[tmp] = base;
             }
-        }
         return true;
     }
 
