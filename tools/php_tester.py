@@ -262,7 +262,7 @@ def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
         test_prog = "./sapi/cli/php";
     else:
         if profile_dir[0] != "/":
-            test_prog = ori_dir + "/" + profile_dir + "/sapi/cli/php";
+            test_prog = work_dir + "/" + profile_dir + "/sapi/cli/php";
         else:
             test_prog = profile_dir + "/sapi/cli/php";
 
