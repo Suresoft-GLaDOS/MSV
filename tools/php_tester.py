@@ -230,13 +230,17 @@ class php_initializer:
         ret = extract_test_cases(test_dir, repo_dir);
         return ret;
 
-def run_test(cmd1,cmd2,cmd3,cmd4,i,timeout):
-    try:
-        ret=subprocess.run([cmd1,cmd2,'-p',cmd3,'-q',cmd4],stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=timeout)
-        if "MSV_RUN_ORIGINAL" in environ:
-            environ["__PID"] = f"{i}-{environ['__PID']}"
+import psutil
 
-        lines = ret.stdout.splitlines()
+def run_test(cmd1,cmd2,cmd3,cmd4,i,timeout):
+    if "MSV_RUN_ORIGINAL" in environ:
+        environ["__PID"] = f"{i}-{environ['__PID']}"
+
+    ret=subprocess.Popen([cmd1,cmd2,'-p',cmd3,'-q',cmd4],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    try:
+        so,se=ret.communicate(timeout=timeout)
+
+        lines = so.splitlines()
         test_section = False;
         for line in lines:
             try:
@@ -253,11 +257,16 @@ def run_test(cmd1,cmd2,cmd3,cmd4,i,timeout):
                 test_section = False;
             elif (test_section == True) and (_is_start(tokens[0])):
                 if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
-                    return (i,ret.returncode,ret.stdout,ret.stderr)
+                    return (i,ret.returncode,so,se)
     except subprocess.TimeoutExpired:
+        pid=ret.pid
+        for child in psutil.Process(pid).children(True):
+            if psutil.pid_exists(child.pid):
+                child.kill()
+        ret.kill()
         return (None,1,'','Timeout expired!')
 
-    return (None,ret.returncode,ret.stdout,ret.stderr)
+    return (None,ret.returncode,'success','')
 
 class php_tester:
     def __init__(self, work_dir, repo_dir, test_dir,temp_dir="",timeout=None,max_cpu=1):
