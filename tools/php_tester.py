@@ -233,6 +233,8 @@ class php_initializer:
 import psutil
 
 def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
+    if i==20 or i=='20' or i==6947 or i=='6947' or i==2246 or i=='2246' or i==7369 or i=='7369' or i==8940 or i=='8940' :
+        return (None,0,'','')
     if temp_dir=='':
         temp_dir=work_dir+'/__cleantests/'
     else:
