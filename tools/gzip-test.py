@@ -94,9 +94,13 @@ if __name__ == "__main__":
                     if path.exists(tmp_exp_file):
                         with open(tmp_exp_file, "r") as f1:
                             exp = f1.read();
+                            #print("exp: " + exp)
+                        remove(tmp_exp_file);
                     if path.exists(tmp_out_file):
                         with open(tmp_out_file, "r") as f2:
                             out = f2.read();
+                            #print("out: " + out)
+                        remove(tmp_out_file);
                     dist = 100
                     dist = Levenshtein.distance(exp, out)
                     f.write(str(dist));
