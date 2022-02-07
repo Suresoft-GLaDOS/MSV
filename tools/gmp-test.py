@@ -212,7 +212,8 @@ if __name__ == "__main__":
 
         if (not path.exists(cur_dir + "/"+temp_dir)):
             system("cp -rf " + test_dir + " " + cur_dir + "/"+temp_dir)
-            system("cp -rf " + test_dir + "/.libs " + cur_dir + "/"+temp_dir);
+            if path.exists(path.join(test_dir, ".libs")):
+                system("cp -rf " + test_dir + "/.libs " + cur_dir + "/"+temp_dir);
 
         ori_dir = getcwd();
         my_env = environ;
