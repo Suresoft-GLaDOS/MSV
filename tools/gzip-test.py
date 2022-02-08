@@ -18,8 +18,10 @@
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
 import getopt
-from os import chdir, getcwd, system, path, environ
+from os import chdir, getcwd, system, path, environ, remove
 import subprocess
+import uuid
+import Levenshtein
 
 cases = [
     "helin-segv",
@@ -60,7 +62,12 @@ if __name__ == "__main__":
             cur_dir = profile_dir;
 
         if (not path.exists(cur_dir + "/"+temp_dir)):
-            system("cp -rf " + test_dir + " " + cur_dir + "/"+temp_dir);
+            if path.exists(f"{environ['MSV_PATH']}/benchmarks/gzip-tests"):
+                system("cp -rf " +
+                       f"{environ['MSV_PATH']}/benchmarks/gzip-tests " 
+                       + f"{cur_dir}/{temp_dir}");
+            else:
+                system("cp -rf " + test_dir + " " + cur_dir + "/"+temp_dir);
 
         if (not path.exists(cur_dir + "/build-aux/test-driver")):
             if (path.exists(test_dir + "/test-driver")):
@@ -71,7 +78,32 @@ if __name__ == "__main__":
         my_env = environ;
         for i in ids:
             case_str = cases[int(i) - 1];
+            tmp_id = uuid.uuid4();
+            tmp_exp_file = f"/tmp/{tmp_id}.exp";
+            tmp_out_file = f"/tmp{tmp_id}.out"
+            #print("exp: " + tmp_exp_file)
+            #print("out: " + tmp_out_file)
+            environ["MSV_TMP_EXP"] = tmp_exp_file;
+            environ["MSV_TMP_OUT"] = tmp_out_file;
+            #ret = subprocess.call(["make", log_file], timeout=timeout, shell = True);
             ret = subprocess.call(["./" + case_str + " 1>/dev/null 2>/dev/null"], shell = True,timeout=timeout);
+            if "MSV_OUTPUT_DISTANCE_FILE" in environ:
+                with open(environ["MSV_OUTPUT_DISTANCE_FILE"], "w") as f:
+                    exp = ""
+                    out = ""
+                    if path.exists(tmp_exp_file):
+                        with open(tmp_exp_file, "r") as f1:
+                            exp = f1.read();
+                            #print("exp: " + exp)
+                        remove(tmp_exp_file);
+                    if path.exists(tmp_out_file):
+                        with open(tmp_out_file, "r") as f2:
+                            out = f2.read();
+                            #print("out: " + out)
+                        remove(tmp_out_file);
+                    dist = 100
+                    dist = Levenshtein.distance(exp, out)
+                    f.write(str(dist));
             if (ret == 0):
                 print (i)
         chdir(ori_dir);

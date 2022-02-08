@@ -12,6 +12,7 @@ src/profile-matcher
 **/*.la
 benchmarks/*-src
 benchmarks/*-tests*
+!benchmarks/gzip-tests
 autom4te.cache
 *.tar.gz
 **/CMakeFiles/
