@@ -233,8 +233,17 @@ class php_initializer:
 import psutil
 
 def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
-    if i==20 or i=='20' or i==6947 or i=='6947' or i==2246 or i=='2246' or i==7369 or i=='7369' or i==8940 or i=='8940' or i==9710 or i=='9710':
+    if i==20 or i=='20' or i==6947 or i=='6947' or i==2246 or i=='2246' or i==7369 or i=='7369' or i==8940 or i=='8940' or i==9710 or i=='9710' or i==10416 or i=='10416':
         return (None,0,'','')
+    # # Remove too long tests, for efficiency
+    # elif i==6096 or i=='6096' or i==6133 or i=='6133' or i==6564 or i=='6564' or i==6572 or i=='6572' or i==6690 or i=='6690' or i==6767 or i=='6767' or i==6834 or i=='6834' or \
+    #                  i==6863 or i=='6863' or i==6871 or i=='6871' or i==6926 or i=='6926'or i==7018 or i=='7018'or i==7054 or i=='7054'or i==7133 or i=='7133'or i==7193 or i=='7193'or i==7200 or i=='7200'\
+    #                      or i==7279 or i=='7279'or i==7403 or i=='7403':
+    #     return (None,0,'','')
+    # Remove randomly failed test
+    elif i==9994 or i=='9994' or i==9962 or i=='9962' or i==10059 or i=='10059' or i==10061 or i=='10061' or i==9971 or i=='9971' or i==10198 or i=='10198' or i==10294 or i=='10294' or i==10072 or i=='10072':
+        return (None,0,'','')
+
     if temp_dir=='':
         temp_dir=work_dir+'/__cleantests/'
     else:
