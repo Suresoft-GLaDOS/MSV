@@ -241,6 +241,7 @@ if __name__ == "__main__":
         pool.join()
 
         system('rm -f common.sh')
+        system(f'killall --wait {cur_dir}/{temp_dir}/* > /dev/null 2>&1')
         system('mv common-bak.sh common.sh')
         chdir(ori_dir);
         subprocess.call('rm -rf '+cur_dir+'/'+temp_dir,shell=True)
