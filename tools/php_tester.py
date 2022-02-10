@@ -311,9 +311,13 @@ def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
                     return (i,ret.returncode,so,se)
     except subprocess.TimeoutExpired:
         pid=ret.pid
+        children=[]
         for child in psutil.Process(pid).children(True):
             if psutil.pid_exists(child.pid):
-                child.kill()
+                children.append(child)
+
+        for child in children:
+            child.kill()
         ret.kill()
         return (None,1,'','Timeout expired!')
 
@@ -377,6 +381,7 @@ class php_tester:
                 ret.add(res)
         pool.join()
 
+        system(f'killall --wait {self.repo_dir}/sapi/cli/php > /dev/null 2>&1')
         chdir(ori_dir)
         return ret;
 
