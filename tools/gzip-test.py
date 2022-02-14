@@ -21,7 +21,8 @@ import getopt
 from os import chdir, getcwd, system, path, environ, remove
 import subprocess
 import uuid
-import Levenshtein
+#import Levenshtein
+from difflib import SequenceMatcher
 
 cases = [
     "helin-segv",
@@ -81,8 +82,8 @@ if __name__ == "__main__":
             tmp_id = uuid.uuid4();
             tmp_exp_file = f"/tmp/{tmp_id}.exp";
             tmp_out_file = f"/tmp/{tmp_id}.out"
-            #print("exp: " + tmp_exp_file)
-            #print("out: " + tmp_out_file)
+            print("exp: " + tmp_exp_file)
+            print("out: " + tmp_out_file)
             environ["MSV_TMP_EXP"] = tmp_exp_file;
             environ["MSV_TMP_OUT"] = tmp_out_file;
             #ret = subprocess.call(["make", log_file], timeout=timeout, shell = True);
@@ -92,17 +93,19 @@ if __name__ == "__main__":
                     exp = ""
                     out = ""
                     if path.exists(tmp_exp_file):
-                        with open(tmp_exp_file, "r") as f1:
+                        with open(tmp_exp_file, "rb") as f1:
                             exp = f1.read();
                             #print("exp: " + exp)
-                        remove(tmp_exp_file);
+                        #remove(tmp_exp_file);
                     if path.exists(tmp_out_file):
-                        with open(tmp_out_file, "r") as f2:
+                        with open(tmp_out_file, "rb") as f2:
                             out = f2.read();
                             #print("out: " + out)
-                        remove(tmp_out_file);
-                    dist = 100
-                    dist = Levenshtein.distance(exp, out)
+                        #remove(tmp_out_file);
+                    seqMatch = SequenceMatcher(None, exp, out)
+                    match = seqMatch.find_longest_match(0, len(exp), 0, len(out)).size
+                    dist = max(len(out) - match, len(exp) - match)
+                    #dist = Levenshtein.distance(exp, out)
                     f.write(str(dist));
             if (ret == 0):
                 print (i)
