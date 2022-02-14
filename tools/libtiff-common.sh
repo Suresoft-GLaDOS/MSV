@@ -261,8 +261,10 @@ f_test_reader ()
   status=$?
   if [ $status != 0 ] ; then
     echo "Returned failed status $status!"
+    echo "1" > $MSV_OUTPUT_DISTANCE_FILE
     exit $status
   fi
+  echo "0" > $MSV_OUTPUT_DISTANCE_FILE
 }
 
 #
