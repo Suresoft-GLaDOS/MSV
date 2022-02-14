@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
-from os import rmdir, system, path, chdir, getcwd, environ
+from os import rmdir, system, path, chdir, getcwd, environ,mkdir
 import subprocess
 import getopt
 import multiprocessing as mp
@@ -183,10 +183,24 @@ def num2testcase( case ):
         print ("Error on case name")
         return 'SOME';
 
-def run_test(testcase,id):
-    ret = subprocess.call(["make check TESTS="+testcase+" >/dev/null  2>/dev/null"], shell=True, env = my_env);
-    if ret==0:
-        print (id)
+import psutil
+
+def run_test(testcase,id,timeout):
+    proc = subprocess.Popen(["make check TESTS="+testcase+" >/dev/null  2>/dev/null"], shell=True, env = my_env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    try:
+        so,se=proc.communicate(timeout=timeout)
+        if proc.returncode==0:
+            print (id)
+    except:
+        pid=proc.pid
+        children=[]
+        for child in psutil.Process(pid).children(True):
+            if psutil.pid_exists(child.pid):
+                children.append(child)
+
+        for child in children:
+            child.kill()
+        proc.kill()
 
 if __name__ == "__main__":
     opts, args = getopt.getopt(argv[1:], "p:i:j:t:");
@@ -214,10 +228,11 @@ if __name__ == "__main__":
         if (profile_dir != ""):
             cur_dir = profile_dir;
 
-        if (not path.exists(cur_dir + "/"+temp_dir)):
-            system("cp -rf " + test_dir + " " + cur_dir + "/"+temp_dir);
-
         ori_dir = getcwd();
+        if path.exists(cur_dir + "/"+temp_dir):
+            system("rm -rf " + cur_dir + "/"+temp_dir);
+        system("cp -rf " + test_dir + " " + cur_dir + "/"+temp_dir);
+
         chdir(cur_dir + "/"+temp_dir);
         system("rm -rf o-*.tiff o-*.ps o-*.pdf")
         system('mv common.sh common-bak.sh')
@@ -231,15 +246,14 @@ if __name__ == "__main__":
         for i in ids:
             testcase = num2testcase(i);
             # print "Testing "+testcase;
-            result.append(pool.apply_async(run_test,(testcase,int(i),)))
+            result.append(pool.apply_async(run_test,(testcase,int(i),timeout,)))
 
         print();
         pool.close()
-        for r in result:
-            r.wait(timeout)
         pool.join()
 
         system('rm -f common.sh')
+        system(f'killall --wait {cur_dir}/* > /dev/null 2>&1')
         system('mv common-bak.sh common.sh')
         chdir(ori_dir);
         subprocess.call('rm -rf '+cur_dir+'/'+temp_dir,shell=True)
