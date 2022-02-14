@@ -54,7 +54,7 @@ if __name__ == "__main__":
         if (not path.exists(cur_dir + "/oldtest")):
             system("mv " + cur_dir + "/test " + cur_dir + "/oldtest");
             system("cp -rf " + test_dir + " " + cur_dir + "/test");
-            system("cp -rf " + test_dir + "/mytest.sh " + cur_dir + "/mytest.sh");
+            system("cp -rf " + environ['MSV_PATH'] + "/tools/mytest.sh " + cur_dir + "/mytest.sh");
             system("cp -rf " + test_dir + "/services " + cur_dir + "/services");
 
         ori_dir = getcwd();
