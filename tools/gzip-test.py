@@ -80,7 +80,7 @@ if __name__ == "__main__":
             case_str = cases[int(i) - 1];
             tmp_id = uuid.uuid4();
             tmp_exp_file = f"/tmp/{tmp_id}.exp";
-            tmp_out_file = f"/tmp{tmp_id}.out"
+            tmp_out_file = f"/tmp/{tmp_id}.out"
             #print("exp: " + tmp_exp_file)
             #print("out: " + tmp_out_file)
             environ["MSV_TMP_EXP"] = tmp_exp_file;
