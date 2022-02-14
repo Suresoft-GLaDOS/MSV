@@ -174,11 +174,15 @@ def run_test(test_file,subdir,ori_dir,id):
     chdir(subdir);
     system("rm -f " + test_file + ".log");
     system(f'touch {test_file}.c')
-    ret = subprocess.call(["make " + test_file + " >/dev/null 2>/dev/null"], shell = True);
+    print(f"make {test_file}");
+    ret = subprocess.call([f"make {test_file}"], shell=True);
+    #ret = subprocess.call(["make " + test_file + " >/dev/null 2>/dev/null"], shell = True);
     if (ret != 0):
         chdir(ori_dir);
         return;
-    ret = subprocess.call(["./" + test_file + " >/dev/null 2>/dev/null"], shell = True);
+    print(f"./{test_file}");
+    ret = subprocess.call([f"./{test_file}"], shell = True);
+    #ret = subprocess.call(["./" + test_file + " >/dev/null 2>/dev/null"], shell = True);
     if (ret == 0):
         print(id)
     chdir(ori_dir);
@@ -236,4 +240,4 @@ if __name__ == "__main__":
         for r in result:
             r.wait(timeout)
         pool.join()
-        system('rm -rf '+temp_dir)
+        #system('rm -rf '+temp_dir)

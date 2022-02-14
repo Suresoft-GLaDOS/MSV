@@ -18,7 +18,7 @@
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
 import getopt
-from os import chdir, getcwd, system, path, environ
+from os import chdir, getcwd, system, path, environ, remove
 import subprocess
 import multiprocessing as mp
 import uuid
@@ -377,6 +377,7 @@ def run_test(case_str,id):
                 out = f.read()
             # print(f"cp {msv_tmp_out} {exp_file}")
             # system(f"cp {msv_tmp_out} {exp_file}")
+            remove(msv_tmp_out)
         dist = 0
         if len(exp) > 10000:
             dist = abs(len(exp) - len(out))
