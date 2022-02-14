@@ -259,7 +259,7 @@ clopts_step_invalid_interface() {
 		else
 			test_step_failed "Infos"
 			echo 'The capture session could not be initiated' > ./testexp.txt
-			python3 ./dist_tiff.py 1 ./testexp.txt ./testout.txt
+			python3 "$MSV_PATH/tools/dist_tiff.py" 1 ./testexp.txt ./testout.txt
 		fi
 	fi
 }
@@ -279,7 +279,7 @@ clopts_step_invalid_interface_index() {
 			echo "0" > $MSV_OUTPUT_DISTANCE_FILE
 		else
 			test_step_failed "Infos"
-			python3 ./dist_tiff.py 1 ./testexp.txt ./testout.txt
+			python3 "$MSV_PATH/tools/dist_tiff.py" 1 ./testexp.txt ./testout.txt
 		fi
 	fi
 }
@@ -336,7 +336,7 @@ io_step_input_file() {
 		$TSHARK -D
 		test_step_failed "No or not enough traffic captured. Probably the wrong interface: $TRAFFIC_CAPTURE_IFACE!"
 		echo 'Number of packets:' > ./testexp.txt
-		python3 ./dist_tiff.py 1 ./testexp.txt ./testout.txt
+		python3 "$MSV_PATH/tools/dist_tiff.py" 1 ./testexp.txt ./testout.txt
 	fi
 }
 
@@ -368,7 +368,7 @@ io_step_output_piping() {
 		cat ./testout.txt
 		cat ./testout2.txt
 		echo 'Number of packets:' > ./testexp2.txt
-		python3 ./dist_tiff.py 1 ./testexp2.txt ./testout2.txt
+		python3 "$MSV_PATH/tools/dist_tiff.py" 1 ./testexp2.txt ./testout2.txt
 
 		$TSHARK -D
 		test_step_failed "No or not enough traffic captured. Probably the wrong interface: $TRAFFIC_CAPTURE_IFACE!"
@@ -406,7 +406,7 @@ io_step_input_piping() {
 		cat ./testout.txt
 		cat ./testout2.txt
 		echo 'Number of packets:' > ./testexp2.txt
-		python3 ./dist_tiff.py 1 ./testexp2.txt ./testout2.txt
+		python3 "$MSV_PATH/tools/dist_tiff.py" 1 ./testexp2.txt ./testout2.txt
 		$TSHARK -D
 		test_step_failed "No or not enough traffic captured. Probably the wrong interface: $TRAFFIC_CAPTURE_IFACE!"
 	fi
@@ -543,7 +543,7 @@ capture_step_10packets() {
 		# part of the Prerequisite checks
 		# probably wrong interface, output the possible interfaces
 		echo 'Number of packets:' > ./testexp2.txt
-		python3 ./dist_tiff.py 1 ./testexp2.txt ./testout2.txt
+		python3 "$MSV_PATH/tools/dist_tiff.py" 1 ./testexp2.txt ./testout2.txt
 		$TSHARK -D
 		test_step_failed "No or not enough traffic captured. Probably the wrong interface: $TRAFFIC_CAPTURE_IFACE!"
 	fi
@@ -594,7 +594,7 @@ capture_step_10packets_stdout() {
 		cat ./testout.txt
 		cat ./testout2.txt
 		echo 'Number of packets:' > ./testexp2.txt
-		python3 ./dist_tiff.py 1 ./testexp2.txt ./testout2.txt
+		python3 "$MSV_PATH/tools/dist_tiff.py" 1 ./testexp2.txt ./testout2.txt
 		$TSHARK -D
 		test_step_failed "No or not enough traffic captured. Probably the wrong interface: $TRAFFIC_CAPTURE_IFACE!"
 	fi
@@ -633,7 +633,7 @@ capture_step_fifo() {
 		echo
 		cat ./testout.txt
 		echo 'Number of packets:' > ./testexp.txt
-		python3 ./dist_tiff.py 1 ./testexp.txt ./testout.txt
+		python3 "$MSV_PATH/tools/dist_tiff.py" 1 ./testexp.txt ./testout.txt
 		test_step_failed "No or not enough traffic captured."
 	fi
 }
@@ -686,7 +686,7 @@ capture_step_2multi_10packets() {
 		echo
 		cat ./testout.txt
 		echo 'Number of packets:' > ./testexp.txt
-		python3 ./dist_tiff.py 1 ./testexp.txt ./testout.txt
+		python3 "$MSV_PATH/tools/dist_tiff.py" 1 ./testexp.txt ./testout.txt
 		test_step_failed "Probably the wrong interface (no traffic captured)!"
 	fi
 }
@@ -740,7 +740,7 @@ capture_step_read_filter() {
 		echo
 		cat ./testout.txt
 		echo 'Number of packets:' > ./testexp.txt
-		python3 ./dist_tiff.py 1 ./testexp.txt ./testout.txt
+		python3 "$MSV_PATH/tools/dist_tiff.py" 1 ./testexp.txt ./testout.txt
 		test_step_failed "Capture file should contain zero packets!"
 	fi
 }
@@ -797,7 +797,7 @@ capture_step_snapshot() {
 		echo
 		cat ./testout.txt
 		echo 'Number of packets:' > ./testexp.txt
-		python3 ./dist_tiff.py 1 ./testexp.txt ./testout.txt
+		python3 "$MSV_PATH/tools/dist_tiff.py" 1 ./testexp.txt ./testout.txt
 		test_step_failed "Capture file should contain zero packets!"
 		return
 	fi
