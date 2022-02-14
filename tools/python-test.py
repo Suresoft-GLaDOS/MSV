@@ -21,6 +21,8 @@ import getopt
 from os import chdir, getcwd, system, path, environ
 import subprocess
 import multiprocessing as mp
+import uuid
+from difflib import SequenceMatcher
 
 cases = [
     "test_grammar",
@@ -355,9 +357,35 @@ cases = [
     "test_zlib"];
 
 def run_test(case_str,id):
+    #print(case_str)
+    msv_tmp_out = f"/tmp/{uuid.uuid4()}.out"
+    if "MSV_OUTPUT_DISTANCE_FILE" in environ:
+        environ["MSV_TMP_OUT"] = msv_tmp_out
     ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str + " 1>/dev/null 2>/dev/null"], shell = True);
+    # ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str], shell = True);
     if (ret == 0):
         print (id)
+    if "MSV_OUTPUT_DISTANCE_FILE" in environ:
+        exp_file = path.join(environ["MSV_PATH"], "benchmarks", "python-exp", str(id) + ".exp")
+        exp = ""
+        out = ""
+        if path.exists(exp_file):
+            with open(exp_file, "r") as f:
+                exp = f.read()
+        if path.exists(msv_tmp_out):
+            with open(msv_tmp_out, "r") as f:
+                out = f.read()
+            # print(f"cp {msv_tmp_out} {exp_file}")
+            # system(f"cp {msv_tmp_out} {exp_file}")
+        dist = 0
+        if len(exp) > 10000:
+            dist = abs(len(exp) - len(out))
+        else:
+            seqMatch = SequenceMatcher(None, exp, out)
+            match = seqMatch.find_longest_match(0, len(exp), 0, len(out)).size
+            dist = max(len(out) - match, len(exp) - match)
+        with open(environ["MSV_OUTPUT_DISTANCE_FILE"], "w") as myfile:
+            myfile.write(str(dist))
 
 if __name__ == "__main__":
     opts, args = getopt.getopt(argv[1 :], "p:t:j:i:");
@@ -377,6 +405,14 @@ if __name__ == "__main__":
     src_dir = args[0];
     test_dir = args[1];
     work_dir = args[2];
+    tdir = path.join(src_dir, "Lib", "test")
+    if (not path.exists(path.join(tdir, "msv-test.set"))):
+        system(f"rm -rf {tdir}")
+        system(f"cp -rf {test_dir} {tdir}")
+        system(f"rm -rf {path.join(src_dir, 'Lib', 'unittest')}")
+        system(f"cp -rf {path.join(environ['MSV_PATH'], 'benchmarks', 'python-unittest')} {path.join(src_dir, 'Lib', 'unittest')}")
+        with open(path.join(tdir, "msv-test.set"), "w") as f:
+            f.write("Initialized!")
 
     if (len(args) > 3):
         ids = args[3 :];
