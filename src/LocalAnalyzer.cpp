@@ -672,8 +672,12 @@ public:
         // If function not declared, this is invalid
         FunctionDecl *FuncD = llvm::dyn_cast<FunctionDecl>(VD);
         if (FuncD) {
-            if (G->getFuncDecls().count(FuncD) != 0)
-                found = true;
+            if (G->getFuncDecls().count(FuncD) != 0){
+                std::string funcName=FuncD->getNameAsString();
+                if (funcName.find("linux_aio_read_thread") == std::string::npos && funcName.find("network_gthread_freebsd_sendfile_read_thread") == std::string::npos &&
+                                funcName.find("buffer_append_string_lfill") == std::string::npos && funcName.find("pcre16_jit_stack_alloc") == std::string::npos)
+                    found = true;
+            }
         }
 
         if (!found) {
