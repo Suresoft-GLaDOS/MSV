@@ -1,0 +1,55 @@
+HTTP/1.0 200 OK
+BAR: foo
+Content-Type: text/html
+Content-Length: 1710
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:59 GMT
+Server: Apache 1.3.29
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title>Status</title>
+ </head>
+ <body>
+  <h1>lighttpd 1.5.0</h1>
+  <table summary="status" border="1">
+   <tr>
+    <th colspan="2">Server-Features</th>
+   </tr>
+   <tr>
+    <td><b>RegEx Conditionals</b></td>
+    <td>enabled</td>
+   </tr>
+   <tr>
+    <th colspan="2">Network Engine</th>
+   </tr>
+   <tr>
+    <td><b>fd-Event-Handler</b></td>
+    <td>linux-sysepoll</td>
+   </tr>
+   <tr>
+    <td><b>Supported fd-Event-Handlers</b></td>
+    <td>+ linux-sysepoll<br />+ poll<br />+ select<br />+ linux-rtsig<br />- solaris-devpoll<br />- freebsd-kqueue<br />- kqueue<br /></td>
+   </tr>
+   <tr>
+    <td><b>Network-Backend</b></td>
+    <td>linux-sendfile</td>
+   </tr>
+   <tr>
+    <td><b>Supported Network-Backends</b></td>
+    <td>+ linux-sendfile<br />- linux-aio-sendfile<br />- freebsd-sendfile<br />- solaris-sendfilev<br />- posix-aio<br />+ gthread-aio<br />+ gthread-sendfile<br />- gthread-freebsd-sendfile<br />+ writev<br />+ write<br />- win32-transmitfile<br />- win32-send<br />+ (mmap)<br /></td>
+   </tr>
+   <tr>
+    <th colspan="2">Config-File-Settings</th>
+   </tr>
+   <tr>
+    <td><b>Loaded Modules</b></td>
+    <td>indexfile<br />rewrite<br />setenv<br />access<br />auth<br />status<br />expire<br />simple_vhost<br />redirect<br />secdownload<br />ssi<br />mod_proxy_core<br />mod_proxy_backend_fastcgi<br />cgi<br />compress<br />userdir<br />accesslog<br />dirlisting<br />staticfile<br />chunked</td>
+   </tr>
+  </table>
+ </body>
+</html>
+
