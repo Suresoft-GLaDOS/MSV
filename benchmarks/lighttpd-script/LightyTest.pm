@@ -146,7 +146,6 @@ sub start_proc {
 
 sub handle_http {
 	open(my $out_fh, ">>", $ENV{"MSV_TMP_OUT"});
-	open(my $exp_fh, ">>", $ENV{"MSV_TMP_EXP"});
 	#say $out_fh "Starting lighttpd";
 	#close $out_fh;
 	my $self = shift;
@@ -338,7 +337,6 @@ sub handle_http {
 		}
 	}
 	close $out_fh;
-	close $exp_fh;
 
 	# we should have sucked up everything
 	if (defined $lines) {

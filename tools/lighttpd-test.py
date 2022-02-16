@@ -34,9 +34,7 @@ def run_test(testcase):
     if path.exists(out_file):
         remove(out_file)
     tmp_id = uuid.uuid4()
-    tmp_exp_file = f"/tmp/{tmp_id}.exp"
     tmp_out_file = f"/tmp/{tmp_id}.out"
-    my_env["MSV_TMP_EXP"] = tmp_exp_file
     my_env["MSV_TMP_OUT"] = tmp_out_file
     # print("exp: " + tmp_exp_file, flush=True)
     # print("out: " + tmp_out_file, flush=True)
@@ -48,10 +46,9 @@ def run_test(testcase):
         out = ""
         exp_file = path.join(my_env["MSV_PATH"], "benchmarks", "lighttpd-exp", str(testcase) + ".exp")
         try:
-            if path.exists(tmp_exp_file):
-                with open(tmp_exp_file, "r") as f1:
+            if path.exists(exp_file):
+                with open(exp_file, "r") as f1:
                     exp = f1.read()
-                #remove(tmp_exp_file)
             if path.exists(tmp_out_file):
                 with open(tmp_out_file, "r") as f2:
                     out = f2.read()
