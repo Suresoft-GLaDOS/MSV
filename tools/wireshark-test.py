@@ -21,11 +21,24 @@ import getopt
 from os import chdir, getcwd, system, path, environ
 import subprocess
 import multiprocessing as mp
+import psutil
 
 def run_test(case_str,id):
-    ret = subprocess.call(["./mytest.sh " + case_str + " 1>/dev/null 2>/dev/null"], shell = True);
-    if (ret == 0):
-        print (id)
+    proc = subprocess.Popen(["./mytest.sh " + case_str + " 1>/dev/null 2>/dev/null"],
+                           shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    try:
+        so, se = proc.communicate(timeout=timeout)
+        if proc.returncode == 0:
+            print(id)
+    except:
+        pid = proc.pid
+        children = []
+        for child in psutil.Process(pid).children(True):
+            if psutil.pid_exists(child.pid):
+                children.append(child)
+        for child in children:
+            child.kill()
+        proc.kill()
 
 if __name__ == "__main__":
     opts, args = getopt.getopt(argv[1 :], "p:t:i:j:");

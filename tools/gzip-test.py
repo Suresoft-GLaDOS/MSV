@@ -23,6 +23,7 @@ import subprocess
 import uuid
 #import Levenshtein
 from difflib import SequenceMatcher
+import psutil
 
 cases = [
     "helin-segv",
@@ -87,9 +88,21 @@ if __name__ == "__main__":
             environ["MSV_TMP_EXP"] = tmp_exp_file;
             environ["MSV_TMP_OUT"] = tmp_out_file;
             #ret = subprocess.call(["make", log_file], timeout=timeout, shell = True);
-            ret = subprocess.call(["./" + case_str + " 1>/dev/null 2>/dev/null"], shell = True,timeout=timeout);
-            if (ret == 0):
-                print (i)
+            proc = subprocess.Popen(["./" + case_str + " 1>/dev/null 2>/dev/null"],
+                                    shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            try:
+                so,se = proc.communicate(timeout=timeout)
+                if (proc.returncode == 0):
+                    print (i)
+            except:
+                pid = proc.pid
+                children = []
+                for child in psutil.Process(pid).children(True):
+                    if psutil.pid_exists(child.pid):
+                        children.append(child)
+                for child in children:
+                    child.kill()
+                proc.kill()
             if "MSV_OUTPUT_DISTANCE_FILE" in environ:
                 with open(environ["MSV_OUTPUT_DISTANCE_FILE"], "w") as f:
                     exp = ""

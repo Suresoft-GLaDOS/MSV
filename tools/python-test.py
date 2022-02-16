@@ -23,6 +23,7 @@ import subprocess
 import multiprocessing as mp
 import uuid
 from difflib import SequenceMatcher
+import psutil
 
 cases = [
     "test_grammar",
@@ -356,15 +357,27 @@ cases = [
     "test_zipimport_support",
     "test_zlib"];
 
-def run_test(case_str,id):
+def run_test(case_str,id,timeout):
     #print(case_str)
     msv_tmp_out = f"/tmp/{uuid.uuid4()}.out"
     if "MSV_OUTPUT_DISTANCE_FILE" in environ:
         environ["MSV_TMP_OUT"] = msv_tmp_out
-    ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str + " 1>/dev/null 2>/dev/null"], shell = True);
+    proc = subprocess.Popen(["./python Lib/test/regrtest.py " + case_str + " 1>/dev/null 2>/dev/null"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     # ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str], shell = True);
-    if (ret == 0):
-        print (id)
+    try:
+        so,se = proc.communicate(timeout=timeout)
+        if proc.returncode == 0:
+            print (id)
+    except:
+        pid = proc.pid
+        children = list()
+        for child in psutil.Process(pid).children(recursive=True):
+            if psutil.pid_exists(child.pid):
+                children.append(child.pid)
+        for child in children:
+            child.kill()
+        proc.kill()
+    
     if "MSV_OUTPUT_DISTANCE_FILE" in environ:
         exp_file = path.join(environ["MSV_PATH"], "benchmarks", "python-exp", str(id) + ".exp")
         exp = ""
@@ -433,7 +446,7 @@ if __name__ == "__main__":
         pool=mp.Pool(max_parallel)
         for i in ids:
             case_str = cases[int(i) - 1]
-            result.append(pool.apply_async(run_test,(case_str,int(i),)))
+            result.append(pool.apply_async(run_test,(case_str,int(i),timeout)))
         chdir(ori_dir);
 
         pool.close()

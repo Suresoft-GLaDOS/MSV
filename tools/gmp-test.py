@@ -21,6 +21,7 @@ import getopt
 from os import chdir, getcwd, system, path, environ,remove
 import subprocess
 import multiprocessing as mp
+import psutil
 
 cases = [
     "tests/t-bswap",

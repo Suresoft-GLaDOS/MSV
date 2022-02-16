@@ -23,8 +23,9 @@ import getopt
 import multiprocessing as mp
 import uuid
 from difflib import SequenceMatcher
+import psutil
 
-def run_test(testcase):
+def run_test(testcase, timeout):
     my_env = environ.copy()
     my_env["RUNTESTS"] = testcase;
     #print("Running test case: " + testcase, flush=True)
@@ -39,8 +40,21 @@ def run_test(testcase):
     # print("exp: " + tmp_exp_file, flush=True)
     # print("out: " + tmp_out_file, flush=True)
     # print(f"perl -I {path.join(my_env['MSV_PATH'], 'benchmarks', 'lighttpd-script')} run-tests.pl 1>{out_file}")
-    ret = subprocess.call([f"perl -I {path.join(my_env['MSV_PATH'], 'benchmarks', 'lighttpd-script')} run-tests.pl 1>{out_file} 2>/dev/null"], shell=True, env = my_env);
+    script = path.join(my_env['MSV_PATH'], 'benchmarks', 'lighttpd-script')
+    proc = subprocess.Popen([f"perl -I {script} run-tests.pl 1>{out_file} 2>/dev/null"],
+                            shell=True, env=my_env, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     #ret = subprocess.call([f"perl run-tests.pl 1>{out_file}  2>/dev/null"], shell=True, env = my_env);
+    try:
+        so,se = proc.communicate(timeout=timeout)
+    except:
+        pid = proc.pid
+        children = list()
+        for child in psutil.Process(pid).children(recursive=True):
+            if psutil.pid_exists(child.pid):
+                children.append(child)
+        for child in children:
+            child.kill()
+        proc.kill()
     if "MSV_OUTPUT_DISTANCE_FILE" in my_env:
         exp = ""
         out = ""
@@ -52,7 +66,7 @@ def run_test(testcase):
             if path.exists(tmp_out_file):
                 with open(tmp_out_file, "r") as f2:
                     out = f2.read()
-                #remove(tmp_out_file)
+                remove(tmp_out_file)
             with open(my_env["MSV_OUTPUT_DISTANCE_FILE"], "w") as f3:
                 seqMatch = SequenceMatcher(None, exp, out)
                 match = seqMatch.find_longest_match(0, len(exp), 0, len(out)).size
@@ -122,7 +136,7 @@ if __name__ == "__main__":
         pool=mp.Pool(max_parallel)
         for i in ids:
             testcase = str(i);
-            result.append(pool.apply_async(run_test, (testcase, )))
+            result.append(pool.apply_async(run_test, (testcase, timeout)))
         #print();
         pool.close()
         for r in result:
