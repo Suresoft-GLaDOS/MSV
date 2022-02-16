@@ -678,7 +678,7 @@ public:
                                 funcName.find("buffer_append_string_lfill") == std::string::npos && funcName.find("pcre16_jit_stack_alloc") == std::string::npos && 
                                 funcName.find("pcre32_jit_stack_alloc") == std::string::npos && funcName.find("ASN1_STRING_clear_free") == std::string::npos &&
                                 funcName.find("pcre16_config") == std::string::npos && funcName.find("pcre32_config") == std::string::npos &&
-                                funcName.find("bindresvport6") == std::string::npos && funcName.find("timer_getoverrun") == std::string::npos && funcName.find("timer_delete") == std::string::npos)) {
+                                funcName.find("bindresvport6") == std::string::npos && funcName.find("timer_getoverrun") == std::string::npos && funcName.find("timer_delete") == std::string::npos) {
                     found = true; 
                 }
             }
