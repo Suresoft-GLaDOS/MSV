@@ -519,6 +519,12 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
             
             // FIXME: Remove terrible Stmt starts with __is_neg, remove it at patch generation!
             if (stmtToString(*ctxt,S).substr(0,8)=="__is_neg") continue;
+            std::string funcName=stmtToString(*ctxt,S);
+            if (funcName.find("linux_aio_read_thread") != std::string::npos || funcName.find("network_gthread_freebsd_sendfile_read_thread") != std::string::npos ||
+                    funcName.find("buffer_append_string_lfill") != std::string::npos || funcName.find("ASN1_STRING_clear_free") != std::string::npos || 
+                    funcName.find("pcre16") != std::string::npos || funcName.find("pcre32") != std::string::npos ||
+                    funcName.find("bindresvport6") != std::string::npos || funcName.find("timer_getoverrun") != std::string::npos || funcName.find("timer_delete") != std::string::npos)
+                continue;
 
             if (rc[j].actions[i].kind == RepairAction::ReplaceMutationKind){
                 std::string newStmt="//"+toString(rc[j].kind)+"\n";
