@@ -676,7 +676,7 @@ public:
                 std::string funcName=FuncD->getNameAsString();
                 if (funcName.find("linux_aio_read_thread") == std::string::npos && funcName.find("network_gthread_freebsd_sendfile_read_thread") == std::string::npos &&
                     funcName.find("buffer_append_string_lfill") == std::string::npos && funcName.find("ASN1_STRING_clear_free") == std::string::npos && 
-                    funcName.find("pcre16") == std::string::npos && funcName.find("pcre32") == std::string::npos &&
+                    funcName.find("pcre16") == std::string::npos && funcName.find("pcre32") == std::string::npos && funcName.find("shm_unlink") == std::string::npos &&
                     funcName.find("bindresvport6") == std::string::npos && funcName.find("timer_getoverrun") == std::string::npos && funcName.find("timer_delete") == std::string::npos)
                 {
                     found = true;
