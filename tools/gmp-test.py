@@ -176,7 +176,7 @@ def write_out_dist(dist: float) -> None:
         with open(environ["MSV_OUTPUT_DISTANCE_FILE"], "w") as f:
             f.write(str(dist))
 
-def run_test(test_file,subdir,ori_dir,id):
+def run_test(test_file,subdir,ori_dir,id,timeout):
     chdir(subdir);
     system("rm -f " + test_file + ".log");
     system(f'touch {test_file}.c')
@@ -278,7 +278,7 @@ if __name__ == "__main__":
                 assert(len(tokens) == 2);
                 subdir = cur_dir + "/"+temp_dir;
                 testfile = tokens[1];
-            result.append(pool.apply_async(run_test,(testfile,subdir,ori_dir,i,)))
+            result.append(pool.apply_async(run_test,(testfile,subdir,ori_dir,i,timeout)))
 
         pool.close()
         for r in result:
