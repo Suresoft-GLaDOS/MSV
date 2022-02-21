@@ -171,21 +171,64 @@ cases = [
     "tests/mpn/t-div",
     "tests/mpn/t-bdiv"];
 
+def write_out_dist(dist: float) -> None:
+    if "MSV_OUTPUT_DISTANCE_FILE" in environ:
+        with open(environ["MSV_OUTPUT_DISTANCE_FILE"], "w") as f:
+            f.write(str(dist))
+
 def run_test(test_file,subdir,ori_dir,id):
     chdir(subdir);
     system("rm -f " + test_file + ".log");
     system(f'touch {test_file}.c')
-    print(f"make {test_file}");
-    ret = subprocess.call([f"make {test_file}"], shell=True);
+    DIST_MAX = 2000
+    DIST_DEFAULT = 1000
+    DIST_MIN = 0
+    #print(f"make {test_file}");
+    #ret = subprocess.call([f"make {test_file}"], shell=True);
+    proc = subprocess.Popen([f"make {test_file}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True);
+    try:
+        so, se = proc.communicate(timeout=timeout)
+        if (proc.returncode != 0):
+            write_out_dist(DIST_MAX)
+            chdir(ori_dir)
+            return
+    except:
+        write_out_dist(DIST_MAX)
+        pid = proc.pid
+        children = []
+        for child in psutil.Process(pid).children(True):
+            if psutil.pid_exists(child.pid):
+                children.append(child)
+
+        for child in children:
+            child.kill()
+        proc.kill()
+        chdir(ori_dir)
+        return
     #ret = subprocess.call(["make " + test_file + " >/dev/null 2>/dev/null"], shell = True);
-    if (ret != 0):
-        chdir(ori_dir);
-        return;
-    print(f"./{test_file}");
-    ret = subprocess.call([f"./{test_file}"], shell = True);
+
+    #print(f"./{test_file}");
+    #ret = subprocess.call([f"./{test_file}"], shell = True);
+    proc = subprocess.Popen([f"./{test_file}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True);
+    try:
+        so, se = proc.communicate(timeout=timeout)
+        if proc.returncode == 0:
+            print(id)
+            write_out_dist(DIST_MIN)
+    except:
+        write_out_dist(DIST_DEFAULT)
+        pid = proc.pid
+        children = []
+        for child in psutil.Process(pid).children(True):
+            if psutil.pid_exists(child.pid):
+                children.append(child)
+
+        for child in children:
+            child.kill()
+        proc.kill()
     #ret = subprocess.call(["./" + test_file + " >/dev/null 2>/dev/null"], shell = True);
-    if (ret == 0):
-        print(id)
+    # if (ret == 0):
+    #     print(id)
     chdir(ori_dir);
 
 if __name__ == "__main__":
