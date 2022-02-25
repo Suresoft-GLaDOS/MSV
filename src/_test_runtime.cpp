@@ -649,6 +649,10 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
         fclose(f);
 
         if (strcmp(is_neg, "RECORD1") == 0) {
+            if (current_cnt>=records_sz){
+                records[current_cnt]=0;
+                records_sz++;
+            }
             // We write back with additional int to note the end
             char* neg_arg = getenv("NEG_ARG");
             f = fopen(neg_arg, "w");
@@ -661,11 +665,11 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                 if (i != records_sz - 1)
                     fprintf(f, " ");
             }
-            fprintf(f, "%lu", current_cnt + 1);
+            // fprintf(f, "%lu", current_cnt + 1);
             // fprintf(stderr, "count: %d\n",current_cnt+1);
             fclose(f);
 
-            assert( current_cnt < records_sz);
+            // assert( current_cnt < records_sz);
             //fprintf(stderr, "fuck you %lu\n", records[current_cnt]);
             return records[current_cnt++];
         }
