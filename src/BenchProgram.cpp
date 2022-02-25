@@ -1208,6 +1208,8 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         cmd+=" -i ";
         cmd+=std::to_string(pid);
     }
+    testEnv["MSV_PATH"]=prophet_src+"/../";
+    testEnv["MSV_OUTPUT_DISTANCE_FILE"]="/dev/null";    
     // if (switchId>=0 && caseNum>=0)
     //     cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
 
