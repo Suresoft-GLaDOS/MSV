@@ -223,43 +223,46 @@ public:
         }
     }
 
-    virtual bool TraverseBinAssign(BinaryOperator *n) {
-        Expr* RHS = n->getRHS();
-        if (isIntegerConstant(RHS)) {
-            ExprListTy exprs = L->getCandidateConstantInType(RHS->getType());
-            for (size_t i = 0; i < exprs.size(); i++) {
-                StmtReplacer R(ctxt, start_stmt);
-                Expr *newE = getParenExpr(ctxt, exprs[i]);
-                R.addRule(RHS, newE);
-                Stmt *S = R.getResult();
-                res.insert(S);
-                resRExpr[S] = std::make_pair(RHS, newE);
+    virtual bool TraverseBinaryOperator(BinaryOperator *n) {
+        if (n->getOpcode()==BinaryOperator::Opcode::BO_Assign){
+            Expr* RHS = n->getRHS();
+            if (isIntegerConstant(RHS)) {
+                ExprListTy exprs = L->getCandidateConstantInType(RHS->getType());
+                for (size_t i = 0; i < exprs.size(); i++) {
+                    StmtReplacer R(ctxt, start_stmt);
+                    Expr *newE = getParenExpr(ctxt, exprs[i]);
+                    R.addRule(RHS, newE);
+                    Stmt *S = R.getResult();
+                    res.insert(S);
+                    resRExpr[S] = std::make_pair(RHS, newE);
+                }
             }
-        }
-        QualType QT = RHS->getType();
-        ExprListTy exprs = L->getCandidateLocalVars(QT);
-        if (exprs.size() != 0) {
-            for (size_t i = 0; i < exprs.size(); i++) {
-                StmtReplacer R(ctxt, start_stmt);
-                Expr *newE = getParenExpr(ctxt, exprs[i]);
-                R.addRule(RHS, newE);
-                Stmt *S = R.getResult();
-                res.insert(S);
-                resRExpr[S] = std::make_pair(RHS, newE);
+            QualType QT = RHS->getType();
+            ExprListTy exprs = L->getCandidateLocalVars(QT);
+            if (exprs.size() != 0) {
+                for (size_t i = 0; i < exprs.size(); i++) {
+                    StmtReplacer R(ctxt, start_stmt);
+                    Expr *newE = getParenExpr(ctxt, exprs[i]);
+                    R.addRule(RHS, newE);
+                    Stmt *S = R.getResult();
+                    res.insert(S);
+                    resRExpr[S] = std::make_pair(RHS, newE);
+                }
             }
-        }
-        if (QT->isIntegerType()) {
-            exprs = L->getCandidateConstantInType(QT);
-            for (size_t i = 0; i < exprs.size(); i++) {
-                StmtReplacer R(ctxt, start_stmt);
-                Expr *newE = getParenExpr(ctxt, exprs[i]);
-                R.addRule(RHS, newE);
-                Stmt *S = R.getResult();
-                res.insert(S);
-                resRExpr[S] = std::make_pair(RHS, newE);
+            if (QT->isIntegerType()) {
+                exprs = L->getCandidateConstantInType(QT);
+                for (size_t i = 0; i < exprs.size(); i++) {
+                    StmtReplacer R(ctxt, start_stmt);
+                    Expr *newE = getParenExpr(ctxt, exprs[i]);
+                    R.addRule(RHS, newE);
+                    Stmt *S = R.getResult();
+                    res.insert(S);
+                    resRExpr[S] = std::make_pair(RHS, newE);
+                }
             }
+            return TraverseStmt(RHS);
         }
-        return TraverseStmt(RHS);
+        else return RecursiveASTVisitor::TraverseBinaryOperator(n);
     }
 
     virtual std::set<Stmt*> getResult() {

@@ -606,6 +606,10 @@ MY_UNARYOP_LIST()
     MY_CAO_LIST()
 #undef OPERATOR
 
+    virtual bool TraverseCompoundAssignOperator(CompoundAssignOperator *CAO){
+        return TraverseCAOImpl(CAO);
+    }
+
     virtual bool TraverseReturnStmt(ReturnStmt *RS) {
         bool _force_rebuilt = force_rebuilt;
         force_rebuilt = false;
