@@ -471,14 +471,14 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
             if (subDir!="src")
                 cmd = build_cmd + " -p " + dep_dir + " "+src_dir + " > " + build_log_file + " 2>&1";
             else
-                cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " > " + build_log_file + " 2>&1";
+                cmd = build_cmd + " -p " + dep_dir + " -j 3 "+src_dir + " > " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " 2>&1";
         }
         else
             if (subDir!="src")
                 cmd = build_cmd + " " + src_dir + " > " + build_log_file + " 2>&1";
             else
-                cmd = build_cmd + " -j 10 " + src_dir + " > " + build_log_file + " 2>&1";
+                cmd = build_cmd + " -j 3 " + src_dir + " > " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 " +src_dir + " 2>&1";
         // outlog_printf(2,"Command: %s\n",cmd.c_str());
         int ret;
