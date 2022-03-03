@@ -266,7 +266,7 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
         this->work_dir = getFullPath(workDirPath);
         this->src_dir = getFullPath(work_dir + "/src");
         src_dirs.clear();
-        src_dirs.insert(std::make_pair("src", true));
+        // src_dirs.insert(std::make_pair("src", true));
 
         // If we just in middle of repair, we need to restore before we go on
         std::ifstream fin((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ifstream::in);
