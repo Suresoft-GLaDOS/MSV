@@ -588,12 +588,13 @@ bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wra
     return succ;
 }
 void BenchProgram::saveFixedFiles(std::map<std::string, std::string> &fileCodeMap,std::string output_name){
+    size_t file_count=0;
     for (std::map<std::string, std::string>::iterator it = fileCodeMap.begin();
             it != fileCodeMap.end(); ++it) {
         std::string backupName=output_name;
-        if (count!=0)
-            backupName=output_name+std::to_string(count)+"_";
-        count++;
+        if (file_count!=0)
+            backupName=output_name+std::to_string(file_count)+"_";
+        file_count++;
         std::vector<std::string> split=splitPath(it->first);
         backupName+=split[split.size()-1];
         std::ofstream fout_bak(std::string(work_dir+"/"+backupName).c_str(),std::ofstream::out);
