@@ -33,6 +33,12 @@ using namespace clang;
 
 llvm::cl::opt<bool> ReplaceExt("replace-ext", llvm::cl::init(false),
         llvm::cl::desc("Replace extension"));
+llvm::cl::opt<bool> NoVar("skip-replace-var", llvm::cl::init(false),
+        llvm::cl::desc("Do not replace variable in statement"));
+llvm::cl::opt<bool> NoFunc("skip-replace-func", llvm::cl::init(false),
+        llvm::cl::desc("Do not replace functionn call"));
+llvm::cl::opt<bool> NoAdd("skip-add-stmt", llvm::cl::init(false),
+        llvm::cl::desc("Do not copy and insert statement"));
 
 #define PRIORITY_ALPHA 5000
 
@@ -735,7 +741,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         // OK, we limit replacement to expr only statement to avoid stupid redundent
         // changes to an compound statement/if statement
-        if (llvm::isa<Expr>(n)) {
+        if (llvm::isa<Expr>(n) && !NoVar.getValue()) {
             AtomReplaceVisitor V(ctxt, L, M,n, ReplaceExt.getValue());
             V.TraverseStmt(n);
             std::set<Stmt*> res = V.getResult();
@@ -785,7 +791,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             }
         }
 
-        if (llvm::isa<Expr>(n)) {
+        if (llvm::isa<Expr>(n) && !NoFunc.getValue()) {
             CallExprReplaceVisitor V2(ctxt, L, n);
             V2.TraverseStmt(n);
             std::vector<Stmt*> res2 = V2.getResult();
@@ -1303,7 +1309,7 @@ public:
                 if (!llvm::isa<DeclStmt>(n) && !llvm::isa<LabelStmt>(n))
                     genAddIfGuard(n, is_first);
                 genAddMemset(n, is_first);
-                genAddStatement(n, is_first, stmt_stack.size() == 2);
+                if (!NoAdd.getValue()) genAddStatement(n, is_first, stmt_stack.size() == 2);
                 genAddIfExit(n, is_first, stmt_stack.size() == 2);
             }
             else if (llvm::isa<IfStmt>(n)) {
@@ -1319,7 +1325,7 @@ public:
                         loc_map1[n] = loc_map1[thenBlock];
                     else
                         loc_map1[n] = loc_map1[firstS];
-                    genAddStatement(n, is_first, stmt_stack.size() == 2);
+                    if (!NoAdd.getValue()) genAddStatement(n, is_first, stmt_stack.size() == 2);
                 }
             }
         }
