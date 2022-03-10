@@ -236,7 +236,7 @@ def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
     if i==20 or i=='20' or i==6947 or i=='6947' or i==2246 or i=='2246' or i==7369 or i=='7369' or i==9710 or i=='9710' or i==10416 or i=='10416':
         return (None,0,'','')
     # Remove randomly failed test
-    elif i==9994 or i=='9994' or i==9962 or i=='9962' or i==10059 or i=='10059' or i==10061 or i=='10061' or i==9971 or i=='9971' or i==10198 or i=='10198' or i==10294 or i=='10294' or i==10072 or i=='10072':
+    elif int(i)==6895 or int(i)==8677 or int(i)==8723 or i==9994 or i=='9994' or i==9962 or i=='9962' or i==10059 or i=='10059' or i==10061 or i=='10061' or i==9971 or i=='9971' or i==10198 or i=='10198' or i==10294 or i=='10294' or i==10072 or i=='10072':
         return (None,0,'','')
     elif 4350 <= int(i) < 4600 and int(i)!= 4470 and int(i)!= 4364:
         return (None,0,'','')
