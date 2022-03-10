@@ -266,7 +266,7 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
         this->work_dir = getFullPath(workDirPath);
         this->src_dir = getFullPath(work_dir + "/src");
         src_dirs.clear();
-        src_dirs.insert(std::make_pair("src", true));
+        // src_dirs.insert(std::make_pair("src", true));
 
         // If we just in middle of repair, we need to restore before we go on
         std::ifstream fin((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ifstream::in);
@@ -471,14 +471,14 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
             if (subDir!="src")
                 cmd = build_cmd + " -p " + dep_dir + " "+src_dir + " > " + build_log_file + " 2>&1";
             else
-                cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " > " + build_log_file + " 2>&1";
+                cmd = build_cmd + " -p " + dep_dir + " -j 3 "+src_dir + " > " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " 2>&1";
         }
         else
             if (subDir!="src")
                 cmd = build_cmd + " " + src_dir + " > " + build_log_file + " 2>&1";
             else
-                cmd = build_cmd + " -j 10 " + src_dir + " > " + build_log_file + " 2>&1";
+                cmd = build_cmd + " -j 3 " + src_dir + " > " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 " +src_dir + " 2>&1";
         // outlog_printf(2,"Command: %s\n",cmd.c_str());
         int ret;
@@ -588,12 +588,13 @@ bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wra
     return succ;
 }
 void BenchProgram::saveFixedFiles(std::map<std::string, std::string> &fileCodeMap,std::string output_name){
+    size_t file_count=0;
     for (std::map<std::string, std::string>::iterator it = fileCodeMap.begin();
             it != fileCodeMap.end(); ++it) {
         std::string backupName=output_name;
-        if (count!=0)
-            backupName=output_name+std::to_string(count)+"_";
-        count++;
+        if (file_count!=0)
+            backupName=output_name+std::to_string(file_count)+"_";
+        file_count++;
         std::vector<std::string> split=splitPath(it->first);
         backupName+=split[split.size()-1];
         std::ofstream fout_bak(std::string(work_dir+"/"+backupName).c_str(),std::ofstream::out);
