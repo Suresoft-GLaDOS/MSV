@@ -26,15 +26,15 @@ from difflib import SequenceMatcher
 import psutil
 
 def run_test(testcase, timeout):
+    tmp_id = uuid.uuid4()
     my_env = environ.copy()
     my_env["RUNTESTS"] = testcase;
     #print("Running test case: " + testcase, flush=True)
-    out_file = f"__out_{testcase}"
+    out_file = f"__out_{testcase}_{tmp_id}"
     if "__PID" in my_env:
         out_file = f"__out_{my_env['__PID']}"
     if path.exists(out_file):
         remove(out_file)
-    tmp_id = uuid.uuid4()
     tmp_out_file = f"/tmp/{tmp_id}.out"
     my_env["MSV_TMP_OUT"] = tmp_out_file
     # print("exp: " + tmp_exp_file, flush=True)
@@ -97,6 +97,7 @@ if __name__ == "__main__":
     max_parallel=1
     tempdir='my-tests'
     timeout=None
+    tmp_prefix = ""
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
@@ -105,7 +106,8 @@ if __name__ == "__main__":
         elif o=='-t':
             timeout=int(a)
         elif o=='-i':
-            tempdir=a
+            pass
+            #tempdir=a
 
     src_dir = args[0];
     test_dir = args[1];
@@ -120,7 +122,7 @@ if __name__ == "__main__":
         if (not path.exists(cur_dir+"/"+tempdir)):
             system("cp -rf " + test_dir + " " + cur_dir + "/"+tempdir);
             system("rm -f " + path.join(cur_dir, tempdir, "LightyTest.pm"))
-            system("cp -f " + path.join(environ["MSV_PATH"], "benchmarks", "lighttpd-script", "LightyTest.pm") + " " + path.join(cur_dir, tempdir, "LightyTest.pm"));
+        system("cp -f " + path.join(environ["MSV_PATH"], "benchmarks", "lighttpd-script", "LightyTest.pm") + " " + path.join(cur_dir, tempdir, "LightyTest.pm"));
 
         system("killall -9 lighttpd > /dev/null 2> /dev/null");
 
