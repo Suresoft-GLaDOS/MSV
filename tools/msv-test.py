@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from os import chdir, getcwd
+from os import chdir, getcwd,system
 import subprocess
 from yaml import safe_load, dump
 try:
@@ -18,15 +18,14 @@ def run_test(id,test,commands,timeout):
         cur_cmd=[]
         for arg in command:
             if arg=='"@testcase@"':
-                for splitted in test_splitted:
-                    cur_cmd.append(splitted)
+                cur_cmd.append(test)
             else:
                 cur_cmd.append(arg)
         final_commands.append(cur_cmd)
     
     failed=False
     for command in final_commands:
-        proc=subprocess.Popen(command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         try:
             so,se=proc.communicate(timeout=timeout)
             if proc.returncode!=0:
@@ -95,22 +94,25 @@ if __name__ == "__main__":
     is_list=False
     # Read test list or case
     if 'test-list' in vulcan_object.keys():
+        tests=vulcan_object['test-list'].splitlines()
         is_list=True
-        for test in vulcan_object['test-list']:
+        for test in tests:
             testcases.append(test)
     else:
-        for test in vulcan_object['test-case']:
+        tests=vulcan_object['test-case'].splitlines()
+        for test in tests:
             testcases.append(test)
 
     result=[]
     if (len(args) > 3):
         ids = args[3:]
-        pool=mp.Pool(max_parallel)
+        # pool=mp.Pool(max_parallel)
         for i in ids:
             # print "Testing "+testcase;
-            result.append(pool.apply_async(run_test,(int(i),testcases[int(i)],test_commands,timeout,)))
+            # result.append(pool.apply_async(run_test,(int(i),testcases[int(i)],test_commands,timeout,)))
+            run_test(int(i),testcases[int(i)],test_commands,timeout)
 
-        pool.close()
-        pool.join()
+        # pool.close()
+        # pool.join()
 
     chdir(ori_dir)
