@@ -111,18 +111,18 @@ f_test_convert ()
                   tail -n+5 $outf > 1.tmp
                   tail -n+5 ${outf}.exp > 2.tmp
                   diff 1.tmp 2.tmp
+                  diffstatus=$?
                   # TODO: get lev distance, and save
                   python3 $MSV_PATH/tools/dist_tiff.py 0 1.tmp 2.tmp
-                  diffstatus=$?
                   rm -rf 1.tmp 2.tmp
               else 
                   xxd $outf > 1.tmp
                   xxd ${outf}.exp > 2.tmp
                   diff 1.tmp 2.tmp > 3.tmp
-                  # TODO: get lev distance, and save
-                  python3 $MSV_PATH/tools/dist_tiff.py 0 1.tmp 2.tmp
                   $SRCDIR/smart-diff.py 3.tmp ${outf}.exp.tol
                   diffstatus=$?
+                  # TODO: get lev distance, and save
+                  python3 $MSV_PATH/tools/dist_tiff.py 0 1.tmp 2.tmp
                   rm -rf 1.tmp 2.tmp 3.tmp
               fi
               if [ $diffstatus != 0 ]; then
@@ -214,18 +214,18 @@ f_test_stdout ()
                   tail -n+5 $outf > 1.tmp
                   tail -n+5 ${outf}.exp > 2.tmp
                   diff 1.tmp 2.tmp
+                  diffstatus=$?
                   # TODO: get lev distance, and save
                   python3 $MSV_PATH/tools/dist_tiff.py 1 1.tmp 2.tmp
-                  diffstatus=$?
                   rm -rf 1.tmp 2.tmp
               else 
                   xxd $outf > 1.tmp
                   xxd ${outf}.exp > 2.tmp
                   diff 1.tmp 2.tmp > 3.tmp
-                  # TODO: get lev distance, and save
-                  python3 $MSV_PATH/tools/dist_tiff.py 1 1.tmp 2.tmp
                   $SRCDIR/smart-diff.py 3.tmp ${outf}.exp.tol
                   diffstatus=$?
+                  # TODO: get lev distance, and save
+                  python3 $MSV_PATH/tools/dist_tiff.py 1 1.tmp 2.tmp
                   rm -rf 1.tmp 2.tmp 3.tmp
               fi
               if [ $diffstatus != 0 ]; then

@@ -235,6 +235,8 @@ if __name__ == "__main__":
 
         chdir(cur_dir + "/"+temp_dir);
         system("rm -rf o-*.tiff o-*.ps o-*.pdf")
+        # system('mv common.sh common-bak.sh')
+        # system(f"cp -f {environ['MSV_PATH']}/tools/libtiff-common.sh ./common.sh")
 
         my_env = environ;
         my_env["GENEXPOUT"] = "0";
@@ -250,7 +252,9 @@ if __name__ == "__main__":
         pool.close()
         pool.join()
 
+        # system('rm -f common.sh')
         system(f'killall --wait {cur_dir}/* > /dev/null 2>&1')
+        # system('mv common-bak.sh common.sh')
         chdir(ori_dir);
         subprocess.call('rm -rf '+cur_dir+'/'+temp_dir,shell=True)
 
