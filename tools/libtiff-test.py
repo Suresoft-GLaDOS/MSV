@@ -186,7 +186,7 @@ def num2testcase( case ):
 import psutil
 
 def run_test(testcase,id,env,timeout):
-    proc = subprocess.Popen(["make check TESTS="+testcase+" >/dev/null  2>/dev/null"], shell=True, env = env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    proc = subprocess.Popen(["make", "check", "TESTS="+testcase], shell=True, env = env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     try:
         so,se=proc.communicate(timeout=timeout)
         if proc.returncode==0:
@@ -245,8 +245,8 @@ if __name__ == "__main__":
         pool=mp.Pool(max_parallel)
         for i in ids:
             testcase = num2testcase(i);
-            # print "Testing "+testcase;
-            result.append(pool.apply_async(run_test,(testcase,int(i),my_env,timeout,)))
+            run_test(testcase,int(i),my_env,timeout)
+            # result.append(pool.apply_async(run_test,(testcase,int(i),my_env,timeout,)))
 
         print();
         pool.close()
