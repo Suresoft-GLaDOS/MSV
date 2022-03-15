@@ -78,6 +78,7 @@ if __name__=="__main__":
         if returncode!=0:
             exit(returncode)
 
+    chdir(org_dir)
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
         if len(args) > 1:
