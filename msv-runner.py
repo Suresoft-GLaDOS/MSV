@@ -122,16 +122,46 @@ def create_dir_structure(src_dir:str,work_dir:str,msv_path:str):
 
     os.chdir(orig_dir)
 
+def generate_meta_program(work_dir:str,src_dir:str,feature_para:str=''):
+    if not os.path.isabs(src_dir):
+        src_dir=os.path.abspath(src_dir)
+    if not os.path.isabs(work_dir):
+        work_dir=os.path.abspath(work_dir)
+    src_name=src_dir.split('/')[-1]
+
+    proc=subprocess.run(['prophet', '-r', f'{work_dir}/{src_name}-workdir', '-skip-verify', '-skip-profile', '-replace-ext', '-first-n-loc', '100', '-consider-all'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+
+    output_file=open(f'{work_dir}/output.log','w')
+    output_file.write('stdout:\n')
+    try:
+        output=proc.stdout.decode('utf-8')
+        output_file.write(output+'\n')
+    except:
+        output_file.write(proc.stdout+'\n')
+
+    output_file.write('stderr:\n')
+    try:
+        output=proc.stderr.decode('utf-8')
+        output_file.write(output+'\n')
+    except:
+        output_file.write(proc.stderr+'\n')
+    output_file.close()
 
 if __name__=='__main__':
-    opts, args = getopt.getopt(argv[1:], "h")
+    opts, args = getopt.getopt(argv[1:], "hr")
+    run_prophet=False
     for o, a in opts:
         if o == "-h":
             print('usage: msv-runner.py <src_dir> <work_dir> <msv_path>')
             exit(0)
+        elif o=='-r':
+            run_prophet=True
 
     src_dir = args[0]
     work_dir = args[1]
     msv_path = args[2]
 
     create_dir_structure(src_dir,work_dir,msv_path)
+
+    if run_prophet:
+        generate_meta_program(work_dir,src_dir)
