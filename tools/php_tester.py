@@ -238,6 +238,10 @@ def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
     # Remove randomly failed test
     elif int(i)==8940 or int(i)==6895 or int(i)==8677 or int(i)==8723 or i==9994 or i=='9994' or i==9962 or i=='9962' or i==10059 or i=='10059' or i==10061 or i=='10061' or i==9971 or i=='9971' or i==10198 or i=='10198' or i==10294 or i=='10294' or i==10072 or i=='10072':
         return (None,0,'','')
+#    elif 4350 <= int(i) < 4600 and int(i)!= 4470 and int(i)!= 4364:
+#        return (None,0,'','')
+#    elif 8900 <= int(i) < 9000 and int(i)!= 8938 and int(i)!= 8945 and int(i)!= 8937 and int(i)!= 8903:
+#        return (None,0,'','')
 
     if temp_dir=='':
         temp_dir=work_dir+'/__cleantests/'

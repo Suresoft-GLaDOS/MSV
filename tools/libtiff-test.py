@@ -186,7 +186,7 @@ def num2testcase( case ):
 import psutil
 
 def run_test(testcase,id,env,timeout):
-    proc = subprocess.Popen(["make check TESTS="+testcase+" >/dev/null  2>/dev/null"], shell=True, env = env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    proc = subprocess.Popen(["make", "check", "TESTS="+testcase], env = env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     try:
         so,se=proc.communicate(timeout=timeout)
         if proc.returncode==0:
@@ -235,8 +235,8 @@ if __name__ == "__main__":
 
         chdir(cur_dir + "/"+temp_dir);
         system("rm -rf o-*.tiff o-*.ps o-*.pdf")
-        system('mv common.sh common-bak.sh')
-        system(f"cp -f {environ['MSV_PATH']}/tools/libtiff-common.sh ./common.sh")
+        # system('mv common.sh common-bak.sh')
+        # system(f"cp -f {environ['MSV_PATH']}/tools/libtiff-common.sh ./common.sh")
 
         my_env = environ;
         my_env["GENEXPOUT"] = "0";
@@ -245,16 +245,16 @@ if __name__ == "__main__":
         pool=mp.Pool(max_parallel)
         for i in ids:
             testcase = num2testcase(i);
-            # print "Testing "+testcase;
-            result.append(pool.apply_async(run_test,(testcase,int(i),my_env,timeout,)))
+            run_test(testcase,int(i),my_env,timeout)
+            # result.append(pool.apply_async(run_test,(testcase,int(i),my_env,timeout,)))
 
         print();
         pool.close()
         pool.join()
 
-        system('rm -f common.sh')
+        # system('rm -f common.sh')
         system(f'killall --wait {cur_dir}/* > /dev/null 2>&1')
-        system('mv common-bak.sh common.sh')
+        # system('mv common-bak.sh common.sh')
         chdir(ori_dir);
         subprocess.call('rm -rf '+cur_dir+'/'+temp_dir,shell=True)
 
