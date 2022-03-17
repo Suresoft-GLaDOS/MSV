@@ -259,8 +259,6 @@ def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
         prog = path.abspath(prog);
 
     helper = "./run-tests.php";
-    if "MSV_PATH" in environ:
-        helper = path.join(environ["MSV_PATH"], "tools", "run-tests.php");
     ori_dir = getcwd();
     chdir(src_dir);
 
@@ -363,6 +361,11 @@ class php_tester:
         target=s.copy()        
         processes=[]
 
+        if "MSV_PATH" in environ:
+            helper = path.join(environ["MSV_PATH"], "tools", "run-tests.php")
+            system(f'mv {self.repo_dir}/run-tests.php {self.repo_dir}/run-tests-bak.php')
+            system(f'cp -rf {helper} {self.repo_dir}/')
+
         pool=mp.Pool(self.max_cpu)
 
         for i in target:
@@ -378,6 +381,9 @@ class php_tester:
 
         system(f'killall --wait {self.repo_dir}/sapi/cli/php > /dev/null 2>&1')
         chdir(ori_dir)
+        if "MSV_PATH" in environ:
+            system(f'rm -rf {self.repo_dir}/run-tests.php')
+            system(f'mv {self.repo_dir}/run-tests-bak.php {self.repo_dir}/run-tests.php')
         return ret;
 
     # clean-up required before running test()
