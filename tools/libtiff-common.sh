@@ -113,16 +113,20 @@ f_test_convert ()
                   diff 1.tmp 2.tmp
                   diffstatus=$?
                   # TODO: get lev distance, and save
-                  python3 $MSV_PATH/tools/dist_tiff.py 0 1.tmp 2.tmp
+                  if [[ -v MSV_OUTPUT_DISTANCE_FILE ]]; then
+                      python3 $MSV_PATH/tools/dist_tiff.py 0 1.tmp 2.tmp
+                  fi
                   rm -rf 1.tmp 2.tmp
-              else 
+              else
                   xxd $outf > 1.tmp
                   xxd ${outf}.exp > 2.tmp
                   diff 1.tmp 2.tmp > 3.tmp
                   $SRCDIR/smart-diff.py 3.tmp ${outf}.exp.tol
                   diffstatus=$?
                   # TODO: get lev distance, and save
-                  python3 $MSV_PATH/tools/dist_tiff.py 0 1.tmp 2.tmp
+                  if [[ -v MSV_OUTPUT_DISTANCE_FILE ]]; then
+                      python3 $MSV_PATH/tools/dist_tiff.py 0 1.tmp 2.tmp
+                  fi
                   rm -rf 1.tmp 2.tmp 3.tmp
               fi
               if [ $diffstatus != 0 ]; then
@@ -216,16 +220,20 @@ f_test_stdout ()
                   diff 1.tmp 2.tmp
                   diffstatus=$?
                   # TODO: get lev distance, and save
-                  python3 $MSV_PATH/tools/dist_tiff.py 1 1.tmp 2.tmp
+                  if [[ -v MSV_OUTPUT_DISTANCE_FILE ]]; then
+                      python3 $MSV_PATH/tools/dist_tiff.py 1 1.tmp 2.tmp
+                  fi
                   rm -rf 1.tmp 2.tmp
-              else 
+              else
                   xxd $outf > 1.tmp
                   xxd ${outf}.exp > 2.tmp
                   diff 1.tmp 2.tmp > 3.tmp
                   $SRCDIR/smart-diff.py 3.tmp ${outf}.exp.tol
                   diffstatus=$?
                   # TODO: get lev distance, and save
-                  python3 $MSV_PATH/tools/dist_tiff.py 1 1.tmp 2.tmp
+                  if [[ -v MSV_OUTPUT_DISTANCE_FILE ]]; then
+                      python3 $MSV_PATH/tools/dist_tiff.py 1 1.tmp 2.tmp
+                  fi
                   rm -rf 1.tmp 2.tmp 3.tmp
               fi
               if [ $diffstatus != 0 ]; then
@@ -261,10 +269,15 @@ f_test_reader ()
   status=$?
   if [ $status != 0 ] ; then
     echo "Returned failed status $status!"
-    echo "1" > $MSV_OUTPUT_DISTANCE_FILE
+    if [[ -v MSV_OUTPUT_DISTANCE_FILE ]]; then
+        echo "1" > $MSV_OUTPUT_DISTANCE_FILE
+    fi
     exit $status
   fi
-  echo "0" > $MSV_OUTPUT_DISTANCE_FILE
+
+  if [[ -v MSV_OUTPUT_DISTANCE_FILE ]]; then
+      echo "0" > $MSV_OUTPUT_DISTANCE_FILE
+  fi
 }
 
 #
