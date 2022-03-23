@@ -186,7 +186,17 @@ def num2testcase( case ):
 import psutil
 
 def run_test(testcase,id,env,timeout):
-    proc = subprocess.Popen(["make", "check", "TESTS="+testcase], env = env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    test_script=open(testcase,'r')
+    lines=test_script.readlines()
+    test_script.close()
+    print(lines)
+    if lines[0]=='#!/bin/sh\n':
+        lines[0]='#!/bin/bash\n'
+    test_script=open(testcase,'w')
+    test_script.writelines(lines)
+    test_script.close()
+
+    proc = subprocess.Popen(["make", "check", "TESTS="+testcase],env = env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     try:
         so,se=proc.communicate(timeout=timeout)
         if proc.returncode==0:
@@ -256,6 +266,6 @@ if __name__ == "__main__":
         system(f'killall --wait {cur_dir}/* > /dev/null 2>&1')
         system('mv common-bak.sh common.sh')
         chdir(ori_dir);
-        # subprocess.call('rm -rf '+cur_dir+'/'+temp_dir,shell=True)
+        subprocess.call('rm -rf '+cur_dir+'/'+temp_dir,shell=True)
 
 
