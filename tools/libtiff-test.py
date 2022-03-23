@@ -189,7 +189,6 @@ def run_test(testcase,id,env,timeout):
     test_script=open(testcase,'r')
     lines=test_script.readlines()
     test_script.close()
-    print(lines)
     if lines[0]=='#!/bin/sh\n':
         lines[0]='#!/bin/bash\n'
     test_script=open(testcase,'w')
