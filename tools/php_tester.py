@@ -66,7 +66,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
                 chdir(ori_dir);
                 return False;
             # clean up things
-            subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
+            # subprocess.call(["git", "clean", "-f", "-d"], env = my_env);
             # create configure file
             ret = subprocess.call(["./buildconf --force"], env = my_env,shell=True);
             if ret != 0:

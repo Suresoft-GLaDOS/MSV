@@ -55,7 +55,7 @@ if __name__=="__main__":
             paraj = int(a)
 
     if (len(args) < 1) or (print_usage):
-        print("Usage: php-build.py <directory> [-r revision | -d src_file | -l] [-h]")
+        print("Usage: new-php-build.py <directory> [-r revision | -d src_file | -l] [-h]")
         exit(1)
     out_dir = args[0]
     # fetch from github if the directory does not exist
