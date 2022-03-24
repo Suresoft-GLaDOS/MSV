@@ -66,7 +66,8 @@ if __name__ == "__main__":
         result=[]
         pool=mp.Pool(max_cpu)
         for i in ids:
-            run_test(int(i),timeout)
+            pool.apply_async(run_test,(int(i),timeout,))
+            # run_test(int(i),timeout)
 
         pool.close()
         pool.join()
