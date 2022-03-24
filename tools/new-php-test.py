@@ -7,12 +7,8 @@ import multiprocessing as mp
 
 import psutil
 
-def run_test(id,timeout):
-    if result.returncode!=0:
-        print(result.stderr,file=stderr)
-        return
-    
-    subp=subprocess.Popen(['./php-run-tests',f'{id}'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+def run_test(id,timeout,workdir):
+    subp=subprocess.Popen([f'{workdir}/php-run-tests',f'{id}'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     try:
         so,se=subp.communicate(timeout=timeout)
         if subp.returncode==0:
@@ -68,8 +64,8 @@ if __name__ == "__main__":
         result=[]
         pool=mp.Pool(max_cpu)
         for i in ids:
-            pool.apply_async(run_test,(int(i),timeout,))
-            # run_test(int(i),timeout)
+            # pool.apply_async(run_test,(int(i),timeout,))
+            run_test(int(i),timeout,work_dir)
 
         pool.close()
         pool.join()
