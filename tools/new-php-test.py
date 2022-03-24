@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import getopt
 from os import chdir, getcwd, system
 import subprocess
@@ -7,7 +8,6 @@ import multiprocessing as mp
 import psutil
 
 def run_test(id,timeout):
-    result=subprocess.run(['gcc','-o','php-run-tests','php-run-tests.c'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     if result.returncode!=0:
         print(result.stderr,file=stderr)
         return
@@ -62,6 +62,8 @@ if __name__ == "__main__":
             cur_dir = profile_dir
 
         ori_dir = getcwd()
+        chdir(work_dir)
+        subprocess.run(['gcc','-o','php-run-tests','php-run-tests.c'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         chdir(cur_dir)
         result=[]
         pool=mp.Pool(max_cpu)
