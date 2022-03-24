@@ -42,7 +42,7 @@ ClangLDADD += -lLLVMXRay -lLLVMWindowsManifest -lLLVMTableGen -lLLVMSymbolize -l
 -lLLVMTextAPI -lLLVMBitReader -lLLVMCore -lLLVMRemarks -lLLVMBitstreamReader \
 -lLLVMAArch64AsmParser -lLLVMMCParser -lLLVMAArch64Desc -lLLVMMC -lLLVMDebugInfoCodeView \
 -lLLVMDebugInfoMSF -lLLVMBinaryFormat -lLLVMAArch64Utils -lLLVMAArch64Info -lLLVMSupport \
--lLLVMDemangle -lz -lcurses
+-lLLVMDemangle -lz
 
 pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp ProfileWriter.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
