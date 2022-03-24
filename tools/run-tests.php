@@ -1843,14 +1843,14 @@ COMMAND $cmd
 		show_file_block('exp', $wanted);
 		$wanted_re = preg_replace(b'/\r\n/', b"\n", $wanted);
 
-		$output_distance_file = getenv("MSV_OUTPUT_DISTANCE_FILE");
-		if ($output_distance_file) {
-			#$diff_chars = similar_text($wanted, $output, $perc);
-			#$dist = 100 - $perc;
-			#$dist = levenshtein($wanted, $output);
-			$dist = lev_dist($wanted, $output);
-			file_put_contents($output_distance_file, $dist);
-		}
+		// $output_distance_file = getenv("MSV_OUTPUT_DISTANCE_FILE");
+		// if ($output_distance_file) {
+		// 	#$diff_chars = similar_text($wanted, $output, $perc);
+		// 	#$dist = 100 - $perc;
+		// 	#$dist = levenshtein($wanted, $output);
+		// 	$dist = lev_dist($wanted, $output);
+		// 	file_put_contents($output_distance_file, $dist);
+		// }
 
 		if (isset($section_text['EXPECTF'])) {
 
@@ -1946,14 +1946,14 @@ COMMAND $cmd
 		$wanted = (binary) trim($section_text['EXPECT']);
 		$wanted = preg_replace(b'/\r\n/',b"\n", $wanted);
 		show_file_block('exp', $wanted);
-		# TODO: Find distance
-		$output_distance_file = getenv("MSV_OUTPUT_DISTANCE_FILE");
-		if ($output_distance_file) {
-			#$diff_chars = similar_text($wanted, $output, $perc);
-			#$dist = 100 - $perc;
-			$dist = lev_dist($wanted, $output);
-			file_put_contents($output_distance_file, $dist);
-		}
+		// # TODO: Find distance
+		// $output_distance_file = getenv("MSV_OUTPUT_DISTANCE_FILE");
+		// if ($output_distance_file) {
+		// 	#$diff_chars = similar_text($wanted, $output, $perc);
+		// 	#$dist = 100 - $perc;
+		// 	$dist = lev_dist($wanted, $output);
+		// 	file_put_contents($output_distance_file, $dist);
+		// }
 
 		// compare and leave on success
 		if (!strcmp($output, $wanted)) {

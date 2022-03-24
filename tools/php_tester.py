@@ -15,6 +15,7 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
+from genericpath import isfile
 import sys
 import subprocess
 from os import path, chdir, getcwd, environ, system, mkdir, walk,remove
@@ -231,6 +232,25 @@ class php_initializer:
         return ret;
 
 import psutil
+from Levenshtein import distance
+
+def output_test(id,temp_dir):
+    id_str=str(id).zfill(5)
+
+    exp_data=''
+    if isfile(temp_dir+'/'+id_str+'.exp'):
+        exp_file=open(temp_dir+'/'+id_str+'.exp')
+        exp_data=exp_file.read()
+        exp_file.close()
+    
+    out_data=''
+    if isfile(temp_dir+'/'+id_str+'.out'):
+        out_file=open(temp_dir+'/'+id_str+'.out','rb')
+        out_data=out_file.read()
+        out_file.close()
+    
+    out_data=out_data.decode('utf-8','ignore')
+    return distance(exp_data,out_data)
 
 def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
     if i==20 or i=='20' or i==6947 or i=='6947' or i==2246 or i=='2246' or i==7369 or i=='7369' or i==9710 or i=='9710' or i==10416 or i=='10416':
@@ -305,6 +325,9 @@ def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
                 test_section = False;
             elif (test_section == True) and (_is_start(tokens[0])):
                 if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
+                    if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
+                        with open(environ['MSV_OUTPUT_DISTANCE_FILE'],'w') as f:
+                            f.write('0\n')
                     return (i,ret.returncode,so,se)
     except subprocess.TimeoutExpired:
         pid=ret.pid
@@ -316,8 +339,15 @@ def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
         for child in children:
             child.kill()
         ret.kill()
+
+        if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
+            with open(environ['MSV_OUTPUT_DISTANCE_FILE'],'w') as f:
+                f.write(str(output_test(i,cur_temp_dir)))
         return (None,1,'','Timeout expired!')
 
+    if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
+        with open(environ['MSV_OUTPUT_DISTANCE_FILE'],'w') as f:
+            f.write(str(output_test(i,cur_temp_dir)))
     return (None,ret.returncode,'success','')
 
 class php_tester:
