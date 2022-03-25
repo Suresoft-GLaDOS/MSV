@@ -102,7 +102,7 @@ def switch_to(out_dir, revision, deps_dir = "php-deps", compile_only = False, co
         ret = subprocess.call(["rm", "-rf", "ext/phar/phar.php"], env = my_env);
         assert( ret == 0);
         if paraj == 0:
-            ret = subprocess.call(["make"], env = my_env);
+            ret = subprocess.call(["make"], env = my_env)
         else:
             ret = subprocess.call(["make", "-j", str(paraj)], env = my_env);
         chdir(ori_dir);

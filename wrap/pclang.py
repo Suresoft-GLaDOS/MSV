@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -16,7 +16,7 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
-from sys import argv, stderr
+from sys import argv
 from os import system, environ, path
 import random
 import subprocess
@@ -33,7 +33,7 @@ def preprocessGen(src_file, out_file, args, idx):
         if (new_args[i] == "-o"):
             has_dash_o = True;
             if (i == len(new_args) -1):
-                print("argument error, -o without filename",file=stderr)
+                print "argument error, -o without filename";
                 exit(1);
             new_args[i+1] = out_file;
     if (not has_dash_c):
@@ -43,7 +43,7 @@ def preprocessGen(src_file, out_file, args, idx):
         new_args.append(out_file);
 
     cmd = clang_cmd + " " + " ".join(new_args[1:]);
-    print("Invoking: " + cmd,file=stderr);
+    print "Invoking: " + cmd;
     ret = subprocess.call(cmd, shell=True);
     return ret;
 
@@ -59,7 +59,7 @@ def rewriteSourceGen(src_file, out_file, args, idx):
     cmd = clang_cmd + " -Xclang -load -Xclang " + profile_plugin_path + " -Xclang -plugin -Xclang err-profiler-gen " + \
         "-Xclang -plugin-arg-err-profiler-gen -Xclang " + out_file + \
         " -Xclang -plugin-arg-err-profiler-gen -Xclang " + index_file + " " + " ".join(new_args[1:]);
-    print("Invoking: " + cmd,file=stderr)
+    print "Invoking: " + cmd;
     ret = subprocess.call(cmd, shell=True);
     return ret;
 
@@ -69,7 +69,7 @@ def rewriteSource(src_file, out_file, text_file, args, idx):
     cmd = clang_cmd + " -Xclang -load -Xclang " + profile_plugin_path + " -Xclang -plugin -Xclang err-profiler-rewrite " + \
         " -Xclang -plugin-arg-err-profiler-rewrite -Xclang " + text_file + \
         " -Xclang -plugin-arg-err-profiler-rewrite -Xclang " + out_file + " " + " ".join(new_args[1:]);
-    print("Invoking: " + cmd,file=stderr)
+    print "Invoking: " + cmd;
     ret = subprocess.call(cmd, shell=True);
     return ret;
 
@@ -98,7 +98,7 @@ def finalCompile(src_file, args, idx):
     new_args[idx] = src_file;
     cmd = clang_cmd + " " + runtime_include_arg + " " + " ".join(new_args[1:]);
     ret = subprocess.call(cmd, shell = True);
-    print("invoking: " + cmd,file=stderr)
+    print "invoking: " + cmd;
     return ret;
 
 def cleanup_error(ret):
@@ -143,6 +143,7 @@ def fix_argv(s):
 #    i = i + 1;
 
 #argv = new_argv;
+print "wrap/pclang"
 
 # clang_cmd=argv[0]
 # if clang_cmd=="cc" or clang_cmd=="gcc":
@@ -158,7 +159,7 @@ assert(clang_cmd != None);
 index_file = environ.get("INDEX_FILE");
 assert(index_file != None);
 
-print("Invoking pclang here!\n",file=stderr)
+# print "Invoking pclang here!\n";
 
 fulldir = path.abspath(path.dirname(argv[0]));
 
@@ -195,12 +196,12 @@ if not just_compile:
         cmd = clang_cmd + " -Wl,-rpath=" + runtime_library_path + " -L " + runtime_library_path + " " + " ".join(argv[1:]) + " -lprofile_runtime";
     else:
         cmd = clang_cmd + " " + " ".join(argv[1:]);
-    print("Non-compile cmd: " + cmd,file=stderr)
+    print "Non-compile cmd: " + cmd;
     ret = subprocess.call(cmd, shell=True);
     exit(ret);
 
 if (src_idx == -1):
-    print("Cannot identify the c source, call original GCC",file=stderr)
+    print "Cannot identify the c source, call original GCC"
     cmd = "/usr/bin/gcc " + " ".join(argv[1:]);
     ret = subprocess.call(cmd, shell=True);
     exit(ret);
