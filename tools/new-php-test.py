@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 import getopt
-from os import chdir, getcwd, system
+from os import chdir, environ, getcwd, path, system
 import subprocess
 from sys import argv, stderr
 import multiprocessing as mp
+from Levenshtein import hamming
 
 import psutil
 
@@ -13,6 +14,40 @@ def run_test(id,timeout,workdir):
         so,se=subp.communicate(timeout=timeout)
         if subp.returncode==0:
             print(id)
+            if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
+                file_name=environ['MSV_OUTPUT_DISTANCE_FILE']
+                with open(file_name,'w') as file:
+                    file.write('0\n')
+        else:
+            if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
+                try:
+                    output=so.decode('utf-8')
+                    output=output.splitlines()
+                    for line in output:
+                        if 'FAIL' or 'PASS' in line:
+                            test_file=line[6:]
+                            test_file.removesuffix('.phpt')
+                            output_file=test_file+'.out'
+                            expect_file=test_file+'.exp'
+
+                            output=b''
+                            if path.isfile(output_file):
+                                with open(output_file,'r') as f:
+                                    output=f.read()
+                            expect=b''
+                            if path.isfile(expect_file):
+                                with open(expect_file,'r') as f:
+                                    expect=f.read()
+                            
+                            dist=hamming(output,expect)
+                            file_name=environ['MSV_OUTPUT_DISTANCE_FILE']
+                            with open(file_name,'w') as file:
+                                file.write(f'{dist}\n')
+                            break
+                            
+                except:
+                    pass
+
     except:
         pid=subp.pid
         children=[]
