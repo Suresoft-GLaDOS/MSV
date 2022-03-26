@@ -48,7 +48,7 @@ void ProfileErrorLocalizer::clearProfileResult() {
 
 std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileResult() {
     if (LI == NULL)
-        LI = new LocationIndex(INDEX_FILE);
+        LI = new LocationIndex(index_file);
     std::map<SourcePositionTy, ProfileInfoTy> M;
     M.clear();
     DIR* dp = opendir("/tmp");
@@ -118,7 +118,7 @@ void clearTmpDirectory() {
 
 ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         const std::set<std::string> &bugged_files, bool skip_build):
-    P(P), negative_cases(P.getNegativeCaseSet()), positive_cases(P.getPositiveCaseSet()) {
+    P(P), negative_cases(P.getNegativeCaseSet()), positive_cases(P.getPositiveCaseSet()),index_file("/tmp/__index"+std::to_string(getpid())+".loc") {
     LI = NULL;
     reset_timer();
     if (skip_build) {
@@ -134,7 +134,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
             envMap["COMPILE_CMD"] = "clang++";
         else
             envMap["COMPILE_CMD"] = CLANG_CMD;
-        envMap["INDEX_FILE"] = INDEX_FILE;
+        envMap["INDEX_FILE"] = index_file;
         clearTmpDirectory();
         bool result=P.buildSubDir("profile", CLANG_PROFILE_WRAP, envMap);
         if (!result){

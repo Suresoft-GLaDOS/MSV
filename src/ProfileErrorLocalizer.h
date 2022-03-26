@@ -23,8 +23,6 @@
 #include <set>
 #include <map>
 
-#define INDEX_FILE "/tmp/__index.loc"
-
 class BenchProgram;
 
 struct ProfileInfoTy {
@@ -47,6 +45,8 @@ private:
     typedef std::set<unsigned long> TestCaseSetTy;
 
     BenchProgram &P;
+
+    std::string index_file;
 
     TestCaseSetTy negative_cases, positive_cases;
 
