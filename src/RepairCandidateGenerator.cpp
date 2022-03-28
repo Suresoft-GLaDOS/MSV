@@ -1540,14 +1540,14 @@ public:
     }
 
     bool VisitReturnStmt(ReturnStmt *stmt){
-        if (isTainted(stmt)){
+        if (isTainted(stmt) && MsvExt.getValue()) {
             genReturnCondition(stmt);
         }
         return true;
     }
 
     bool VisitBinaryOperator(BinaryOperator *oper){
-        if (isTainted(oper)){
+        if (isTainted(oper) && MsvExt.getValue()) {
             genAssignCondition(oper);
         }
         return true;
