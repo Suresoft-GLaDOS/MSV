@@ -1930,8 +1930,13 @@ class TestBatcher {
                 outlog_printf(2,"Saved fixed file at: %s\n",bak_file.c_str());
             }
         }
-        std::vector<long long> succ_macros=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
-        outlog_printf(0,"Meta-program generated in %llus!\n",get_timer());
+
+        std::vector<long long> succ_macros;
+        succ_macros.clear();
+        if (!P.skip_build){
+            succ_macros=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
+            outlog_printf(0,"Meta-program generated in %llus!\n",get_timer());
+        }
 
         if (!P.skip_profile){
             outlog_printf(2,"Adding profile writers...\n");

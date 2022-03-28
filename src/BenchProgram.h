@@ -463,6 +463,7 @@ private:
 public:
     bool isCondition;
     bool skip_profile;
+    bool skip_build;
     // We create the work dir from a configuration file, and we will put workdir
     // in the workDirPath path. If it is empty string, we will create a work dir
     // with an empty directory
