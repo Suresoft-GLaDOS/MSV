@@ -188,7 +188,7 @@ private:
         std::map<size_t,size_t> caseNum;
         std::vector<std::list<size_t>> switchCluster;
         // std::map<int,std::list<std::list<int>>> caseCluster;
-        std::set<std::pair<double,std::pair<std::string,size_t>>> scoreInfo;
+        std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>> scoreInfo;
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
         std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
         std::vector<File> infos;
@@ -226,11 +226,12 @@ private:
 
             // Save FL scores
             cJSON *scoreArray=cJSON_CreateArray();
-            for (std::set<std::pair<double,std::pair<std::string,size_t>>>::reverse_iterator it=scoreInfo.rbegin();it!=scoreInfo.rend();it++){
+            for (std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>>::iterator it=scoreInfo.begin();it!=scoreInfo.end();it++){
                 cJSON *localize=cJSON_CreateObject();
-                cJSON_AddStringToObject(localize,"file",it->second.first.c_str());
-                cJSON_AddNumberToObject(localize,"line",it->second.second);
-                cJSON_AddNumberToObject(localize,"score",round_score(it->first));
+                cJSON_AddStringToObject(localize,"file",it->first.first.c_str());
+                cJSON_AddNumberToObject(localize,"line",it->first.second);
+                cJSON_AddNumberToObject(localize,"primary_score",it->second.first);
+                cJSON_AddNumberToObject(localize,"second_score",it->second.second);
                 cJSON_AddItemToArray(scoreArray,localize);
             }
             cJSON_AddItemToObject(json,std::string("priority").c_str(),scoreArray);
