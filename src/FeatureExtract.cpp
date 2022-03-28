@@ -662,7 +662,7 @@ FeatureSetTy extractValueFeature(const std::string &v_str, const RepairCandidate
         ret.insert(StringLiteralVF);
     // A special case, this should only happen when doing
     // string const replacement
-    if (isAbstractStub(E)) {
+    if (isAbstractStub(E) && rc.kind == RepairCandidate::ReplaceStringKind) {
         assert(rc.kind == RepairCandidate::ReplaceStringKind);
         ret.insert(ModifiedVF);
         ret.insert(StringLiteralVF);
