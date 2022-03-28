@@ -443,7 +443,6 @@ public:
     }
 };
 
-
 ASTLocTy newStatementLoc(const ASTLocTy &loc, Stmt *n) {
     ASTLocTy ret = loc;
     ret.stmt = n;
@@ -529,6 +528,37 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, ASTContext *ctxt,cons
             ctxt->IntTy, VK_RValue, SourceLocation());
     return CE;
 }
+
+class StmtConditionAdder: public RecursiveASTVisitor<StmtConditionAdder>{
+    LocalAnalyzer *L;
+    ASTContext *ctxt;
+    Stmt* start_stmt;
+    Expr *condExpr;
+    bool is_finish=false;
+    std::vector<Expr *> finalStmt;
+public:
+    StmtConditionAdder(ASTContext *ctxt, LocalAnalyzer *L, Stmt* start_stmt,Expr *condExpr):
+        L(L), ctxt(ctxt), start_stmt(start_stmt), condExpr(condExpr),finalStmt(NULL) {}
+    bool VisitBinaryOperator(BinaryOperator *oper){
+        if (!is_finish && (oper->getOpcode()==BO_NE || oper->getOpcode()==BO_EQ || oper->getOpcode()==BO_GT || oper->getOpcode()==BO_LT ||oper->getOpcode()==BO_GE || oper->getOpcode()==BO_LE ||
+                    oper->getOpcode()==BO_And ||oper->getOpcode()==BO_Or)){
+            is_finish=true;
+            
+            // Generate && !
+            UnaryOperator *notOper=UnaryOperator::Create(*ctxt,condExpr,UnaryOperatorKind::UO_LNot,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),false,FPOptionsOverride());
+            BinaryOperator *and_oper=BinaryOperator::Create(*ctxt,oper,notOper,BO_And,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+            finalStmt.push_back(and_oper);
+            // Generate ||
+            BinaryOperator *or_oper=BinaryOperator::Create(*ctxt,oper,condExpr,BO_Or,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+            finalStmt.push_back(or_oper);
+        }
+        return true;
+    }
+
+    std::vector<Expr *> getResult(){
+        return finalStmt;
+    }
+};
 
 class CallVisitor : public RecursiveASTVisitor<CallVisitor> {
     bool found;
@@ -763,6 +793,90 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    void genReturnCondition(ReturnStmt *stmt){
+        Expr *body=stmt->getRetValue();
+        if (body != NULL && BinaryOperator::classof(body)){
+            BinaryOperator *oper=llvm::dyn_cast<BinaryOperator>(body);
+            if (oper->getOpcode()==BO_NE || oper->getOpcode()==BO_EQ || oper->getOpcode()==BO_GT || oper->getOpcode()==BO_LT ||oper->getOpcode()==BO_GE || oper->getOpcode()==BO_LE ||
+                            oper->getOpcode()==BO_And ||oper->getOpcode()==BO_Or){
+                ASTLocTy loc = getNowLocation(stmt);
+                LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+                Expr *placeholder;
+                ExprListTy candidateVars = L->getCondCandidateVars(stmt->getEndLoc());
+
+                if (naive)
+                    placeholder = getNewIntegerLiteral(ctxt, 1);
+                else
+                    placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(stmt->getBeginLoc()));
+                
+                StmtConditionAdder adder(ctxt,L,oper,placeholder);
+                adder.TraverseBinaryOperator(oper);
+                std::vector<Expr *> result=adder.getResult();
+
+                for (size_t i=0;i<result.size();i++){
+                    ReturnStmt *newReturn=ReturnStmt::Create(*ctxt,SourceLocation(),result[i],NULL);
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newReturn));
+                    if (!naive) {
+                        rc.actions.push_back(RepairAction(newStatementLoc(loc, newReturn), placeholder,
+                                candidateVars));
+                    }
+                    if (learning)
+                        rc.score = getLocScore(stmt);
+                    else
+                        rc.score = 4*PRIORITY_ALPHA;
+                    rc.kind = RepairCandidate::MSVExtAddConditionKind;
+                    rc.original=stmt;
+                    q.push_back(rc);
+
+                }
+            }
+        }
+    }
+
+    void genAssignCondition(BinaryOperator *stmt){
+        if (stmt->getOpcode()!=BO_Assign) return;
+        Expr *body=stmt->getRHS();
+        if (body != NULL && BinaryOperator::classof(body)){
+            BinaryOperator *oper=llvm::dyn_cast<BinaryOperator>(body);
+            if (oper->getOpcode()==BO_NE || oper->getOpcode()==BO_EQ || oper->getOpcode()==BO_GT || oper->getOpcode()==BO_LT ||oper->getOpcode()==BO_GE || oper->getOpcode()==BO_LE ||
+                            oper->getOpcode()==BO_And ||oper->getOpcode()==BO_Or){
+                ASTLocTy loc = getNowLocation(stmt);
+                LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+                Expr *placeholder;
+                ExprListTy candidateVars = L->getCondCandidateVars(stmt->getEndLoc());
+
+                if (naive)
+                    placeholder = getNewIntegerLiteral(ctxt, 1);
+                else
+                    placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(stmt->getBeginLoc()));
+                
+                StmtConditionAdder adder(ctxt,L,oper,placeholder);
+                adder.TraverseBinaryOperator(oper);
+                std::vector<Expr *> result=adder.getResult();
+
+                for (size_t i=0;i<result.size();i++){
+                    BinaryOperator *newAssign=BinaryOperator::Create(*ctxt,stmt->getLHS(),result[i],BO_Assign,body->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newAssign));
+                    if (!naive) {
+                        rc.actions.push_back(RepairAction(newStatementLoc(loc, newAssign), placeholder,
+                                candidateVars));
+                    }
+                    if (learning)
+                        rc.score = getLocScore(stmt);
+                    else
+                        rc.score = 4*PRIORITY_ALPHA;
+                    rc.kind = RepairCandidate::MSVExtAddConditionKind;
+                    rc.original=stmt;
+                    q.push_back(rc);
+
+                }
+            }
+        }
+    }
 
     void genAddMemset(Stmt* n, bool is_first) {
         if (in_yacc_func) return;
@@ -1421,6 +1535,20 @@ public:
                     if (!NoAdd.getValue()) genAddStatement(n, is_first, stmt_stack.size() == 2);
                 }
             }
+        }
+        return true;
+    }
+
+    bool VisitReturnStmt(ReturnStmt *stmt){
+        if (isTainted(stmt)){
+            genReturnCondition(stmt);
+        }
+        return true;
+    }
+
+    bool VisitBinaryOperator(BinaryOperator *oper){
+        if (isTainted(oper)){
+            genAssignCondition(oper);
         }
         return true;
     }
