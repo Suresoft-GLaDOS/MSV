@@ -96,7 +96,8 @@ struct RepairCandidate {
         ReplaceStringKind,
         AddAndReplaceKind,
         ConditionKind,
-        AddVarMutation // 10
+        MSVExtFunctionReplaceKind, // 10
+        AddVarMutation
     } CandidateKind;
     CandidateKind kind;
     bool is_first; // start of a block? not including condition changes

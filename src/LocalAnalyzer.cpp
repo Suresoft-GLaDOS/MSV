@@ -515,6 +515,64 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidateCalleeFunction(CallExpr *CE
     return ret;
 }
 
+LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidateCalleeExtFunction(clang::CallExpr *CE, bool result_not_used){
+    ExprListTy ret;
+    ret.clear();
+    const std::set<FunctionDecl*> &FuncDecls = G->getFuncDecls();
+    for (std::set<FunctionDecl*>::const_iterator it = FuncDecls.begin(); it != FuncDecls.end(); ++it) {
+        FunctionDecl *FD = *it;
+        if (CE->getCalleeDecl() == FD) continue;
+        if (!FD->isVariadic()) {
+            if (CE->getNumArgs()+1 != FD->getNumParams())
+                continue;
+        }
+        else {
+            // We don't consider variadic function
+            continue;
+        }
+
+        QualType FT = FD->getType();
+        if (!FT->isFunctionProtoType())
+            continue;
+        //llvm::errs() << "checking name: " << FD->getName() << "\n";
+        const FunctionProtoType *FPT = FT->getAs<FunctionProtoType>();
+        if (!result_not_used)
+            if (!typeMatch(CE->getType(), FPT->getCallResultType(*ctxt)))
+                continue;
+        //llvm::errs() << "Result match!" << "\n";
+        size_t mismatch_cnt = 0;
+        for (size_t i = 0; i < CE->getNumArgs(); i++) {
+            if (i >= FD->getNumParams()) break;
+            Expr *ArgE = CE->getArg(i);
+            QualType argT = FPT->getParamType(i);
+            if (isZeroValue(ArgE) && (argT->isPointerType() || argT->isIntegerType()))
+                continue;
+            if (!typeMatch(argT, ArgE->getType())) {
+                mismatch_cnt ++;
+                if (!argT->isPointerType() || !ArgE->getType()->isPointerType()) {
+                    mismatch_cnt += 10;
+                    break;
+                }
+                //llvm::errs() << "Arg " << i << " mismatch:\n";
+                //ArgE->getType()->dump();
+                //argT->dump();
+            }
+        }
+
+        if (FPT->getParamType(CE->getNumArgs()).getTypePtr()->isIntegralType(*ctxt) || FPT->getParamType(CE->getNumArgs()).getTypePtr()->isPointerType())
+            // We only use integer/pointer type for additional parameter
+            if (mismatch_cnt < 2 && mismatch_cnt < CE->getNumArgs()) {
+                DeclRefExpr *DRE = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(),
+                    SourceLocation(), *it, false, SourceLocation(), FD->getType(), VK_RValue);
+                ImplicitCastExpr *ICE = ImplicitCastExpr::Create(*ctxt, ctxt->getDecayedType(FD->getType()),
+                        CK_FunctionToPointerDecay, DRE, 0, VK_RValue);
+                ret.push_back(ICE);
+            }
+    }
+
+    return ret;
+}
+
 LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidatePointerForMemset(size_t max_dis) {
     ExprListTy ret;
     ret.clear();

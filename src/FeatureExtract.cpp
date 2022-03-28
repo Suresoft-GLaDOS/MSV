@@ -581,8 +581,8 @@ FeatureProductSetTy crossMappingProduct(const ValueToFeatureMapTy &m1, const Val
     return ret;
 }
 
-const int kind_m[10] = {CondRepair, CondRepair, GuardRepair, GuardRepair,
-                    AddControlRepair, AddStmtRepair, ReplaceStmtRepair, ReplaceStmtRepair, AddStmtRepair,CondRepair};
+const int kind_m[] = {CondRepair, CondRepair, GuardRepair, GuardRepair,
+                    AddControlRepair, AddStmtRepair, ReplaceStmtRepair, ReplaceStmtRepair, AddStmtRepair,CondRepair,ReplaceStmtRepair};
 
 FeatureSetTy extractRepairFeatures(const RepairCandidate &rc) {
     FeatureSetTy ret;

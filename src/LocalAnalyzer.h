@@ -136,6 +136,12 @@ public:
 
     std::set<clang::Stmt*> getCandidateMacroExps();
 
+    ExprListTy getCandidateParamExprs(clang::QualType QT){
+        return genExprAtoms(QT,true,true,false,true,false);
+    }
+
+    ExprListTy getCandidateCalleeExtFunction(clang::CallExpr *CE, bool result_not_used);
+
     bool isValidStmt(clang::Stmt* S, clang::Expr** invalidSubExpr);
 
     ExprListTy getCandidateEnumConstant(clang::EnumConstantDecl *ECD);

@@ -33,6 +33,8 @@ using namespace clang;
 
 llvm::cl::opt<bool> ReplaceExt("replace-ext", llvm::cl::init(false),
         llvm::cl::desc("Replace extension"));
+llvm::cl::opt<bool> MsvExt("msv-ext", llvm::cl::init(false),
+        llvm::cl::desc("Extended templates for MSV"));
 llvm::cl::opt<bool> NoVar("skip-replace-var", llvm::cl::init(false),
         llvm::cl::desc("Do not replace variable in statement"));
 llvm::cl::opt<bool> NoFunc("skip-replace-func", llvm::cl::init(false),
@@ -356,6 +358,74 @@ public:
             Stmt *S = R.getResult();
             res.push_back(S);
             resRExpr[S] = std::make_pair(callee, tmp[i]);
+        }
+
+        return true;
+    }
+
+    virtual std::vector<Stmt*> getResult() {
+        return res;
+    }
+
+    Expr* getOldRExpr(Stmt *S) {
+        return resRExpr[S].first;
+    }
+
+    Expr* getNewRExpr(Stmt *S) {
+        return resRExpr[S].second;
+    }
+};
+
+class ExtFunctionCallVisitor : public RecursiveASTVisitor<ExtFunctionCallVisitor> {
+    LocalAnalyzer *L;
+    ASTContext *ctxt;
+    Stmt* start_stmt;
+    std::vector<Stmt*> res;
+    std::map<clang::Stmt*, std::pair<Expr*, Expr*> > resRExpr;
+public:
+    ExtFunctionCallVisitor(ASTContext *ctxt, LocalAnalyzer *L, Stmt* start_stmt):
+        L(L), ctxt(ctxt), start_stmt(start_stmt), res(), resRExpr() {
+            res.clear();
+            resRExpr.clear();
+        }
+
+    virtual bool VisitCallExpr(CallExpr *n) {
+        if (MsvExt.getValue()){
+            Expr *callee = n->getCallee();
+            ExprListTy tmp2=L->getCandidateCalleeExtFunction(n,n==start_stmt);
+            for (size_t i = 0; i < tmp2.size(); i++) {
+                std::string tmp_str=stmtToString(*ctxt,tmp2[i]);
+                if (tmp_str.find("__gmpn_addmul_")!=std::string::npos || tmp_str.find("__gmpn_mul_")!=std::string::npos){
+                    if (tmp_str.find("2")!=std::string::npos || tmp_str.find("3")!=std::string::npos||tmp_str.find("4")!=std::string::npos||tmp_str.find("5")!=std::string::npos||tmp_str.find("6")!=std::string::npos||tmp_str.find("7")!=std::string::npos||
+                                        tmp_str.find("8")!=std::string::npos||tmp_str.find("9")!=std::string::npos)
+                        continue;
+                }
+
+                if (ImplicitCastExpr::classof(tmp2[i])){
+                    ImplicitCastExpr *ice=llvm::dyn_cast<ImplicitCastExpr>(tmp2[i]);
+                    if (DeclRefExpr::classof(ice->getSubExpr())){
+                        DeclRefExpr *dre=llvm::dyn_cast<DeclRefExpr>(ice->getSubExpr());
+                        if (FunctionDecl::classof(dre->getDecl())){
+                            FunctionDecl *fd=llvm::dyn_cast<FunctionDecl>(dre->getDecl());
+                            QualType lastType=fd->getParamDecl(fd->getNumParams()-1)->getType();
+                            ExprListTy candParam=L->getCandidateParamExprs(lastType);
+
+                            Expr **tempParam=n->getArgs();
+                            std::vector<Expr *> curParam;
+                            for (size_t j=0;j<n->getNumArgs();j++)
+                                curParam.push_back(tempParam[j]);
+                            
+                            for (size_t j=0;j<candParam.size();j++){
+                                std::vector<Expr *> newParam(curParam);
+                                newParam.push_back(candParam[j]);
+                                CallExpr *newExpr=CallExpr::Create(*ctxt,tmp2[i],newParam,n->getType(),VK_RValue,SourceLocation());
+                                res.push_back(newExpr);
+                                resRExpr[newExpr]=std::make_pair(callee,tmp2[i]);
+                            }
+                        }
+                    }
+                }
+            }
         }
         return true;
     }
@@ -812,6 +882,29 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 q.push_back(rc);
             }
         }
+
+        if (llvm::isa<Expr>(n) && !NoFunc.getValue() && MsvExt.getValue()) {
+            ExtFunctionCallVisitor V2(ctxt, L, n);
+            V2.TraverseStmt(n);
+            std::vector<Stmt*> res2 = V2.getResult();
+            for (std::vector<Stmt*>::iterator it = res2.begin();
+                    it != res2.end(); ++ it) {
+                RepairCandidate rc;
+                rc.actions.clear();
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, *it));
+                if (learning)
+                    rc.score = getLocScore(n);
+                else
+                    rc.score = getPriority(n) + PRIORITY_ALPHA;
+                rc.kind = RepairCandidate::MSVExtFunctionReplaceKind;
+                rc.original=n;
+                rc.is_first = is_first;
+                rc.oldRExpr = V2.getOldRExpr(*it);
+                rc.newRExpr = V2.getNewRExpr(*it);
+                q.push_back(rc);
+            }
+        }
+
 
         if (processed.count(L->getCurrentFunction())==0) {
             genVarMutation(L->getCurrentFunction());
