@@ -457,6 +457,14 @@ std::pair<size_t,size_t> getConditionLocation(std::string ifCode){
     return std::pair<size_t,size_t>(start+nextLine,end+nextLine+1);
 }
 
+std::string getFunctionCall(std::string orig){
+    size_t finishLoc=orig.find('(');
+    if (finishLoc!=std::string::npos){
+        return orig.substr(0,finishLoc);
+    }
+    return "";
+}
+
 std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate>> > CodeRewriter::eliminateAllNewLoc(SourceContextManager &M,
         const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str) {
     original_str.clear();
@@ -852,6 +860,13 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         body+=origBody;
         body+="\n}\n";
         case_count++;
+        bool isFuncCall=false;
+        std::string origFunc="";
+        std::map<size_t,std::string> newFuncs;
+        if (origBody.find_first_of("\n")==std::string::npos || origBody.find_first_of("\n")==origBody.find_last_of("\n")){
+            isFuncCall=true;
+            origFunc=getFunctionCall(origBody);
+        }
 
         for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[indexBackup]][NormalReplace].begin();
                 patch_it!=res1[currentCandidate[indexBackup]][NormalReplace].end();patch_it++){
@@ -871,6 +886,12 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             patchTypes[currentPatch]=toString(patch_it->second.kind);
             macroCode[index]=currentBody;
             switchObject.types[patch_it->second.kind].cases.push_back(case_count);
+            if (isFuncCall && CallExpr::classof((Stmt *)patch_it->second.actions[0].ast_node)){
+                std::string funcCall=getFunctionCall(currentBody);
+                if (funcCall!=origFunc){
+                    newFuncs[case_count]=funcCall;
+                }
+            }
             if (currentBody.find("__is_neg")!=std::string::npos){
                 size_t location=currentBody.find("__is_neg");
                 size_t endLoc=currentBody.find(", ",location);
@@ -909,6 +930,11 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         switchLoc[loc].push_back(counter);
         switchLine[counter]=currentLine;
         lineObject.switches.push_back(switchObject);
+        FunctionReplaceInfo funcInfo;
+        funcInfo.originalName=origFunc;
+        funcInfo.newName=newFuncs;
+        funcInfo.switchNum=counter;
+        funcReplace.push_back(funcInfo);
         counter++;
     }
     else{

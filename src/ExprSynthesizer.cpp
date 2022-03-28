@@ -983,6 +983,7 @@ protected:
     std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
     std::map<long long,std::string> macroCode;
     std::map<size_t,std::map<size_t,std::vector<double>>> patchScores;
+    std::vector<FunctionReplaceInfo> functionReplaceInfo;
 
     std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>> &scores;
 
@@ -1074,6 +1075,7 @@ protected:
         // P.getSwitchInfo().caseCluster=caseCluster;
 
         P.getSwitchInfo().scoreInfo=scores;
+        P.getSwitchInfo().funcReplaceInfos=functionReplaceInfo;
         P.getSwitchInfo().mutationInfo=mutationInfo;
 
         P.getSwitchInfo().infos=infos;
@@ -1163,6 +1165,7 @@ public:
         macroCode=R.getMacroCode();
         macroFile=R.getMacroFile();
         patchScores=R.patchScores;
+        functionReplaceInfo=R.funcReplace;
         P.getSwitchInfo().varSizes=R.getVarSizes();
         P.getSwitchInfo().funcLocations=R.funcLocation;
         // caseCluster=R.getCaseCluster();

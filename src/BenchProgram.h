@@ -33,6 +33,12 @@ class ConfigFile;
 
 class LocationIndex;
 
+struct FunctionReplaceInfo{
+    std::string originalName;
+    std::map<size_t,std::string> newName;
+    size_t switchNum;
+};
+
 class TestCache {
     std::string cache_file;
     std::map<std::string, bool> cache;
@@ -183,6 +189,7 @@ public:
 private:
     class SwitchInfo{
         std::string fileName;
+        std::string funcFileName;
 
     public:
         std::map<size_t,size_t> caseNum;
@@ -196,8 +203,9 @@ private:
 
         std::map<std::pair<size_t,size_t>,size_t> varSizes;
         std::map<std::string,std::map<std::string,std::pair<size_t,size_t>>> funcLocations;
+        std::vector<FunctionReplaceInfo> funcReplaceInfos;
     public:
-        SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
+        SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json"),funcFileName(workdir+"/func-info.json") {}
         void save(){
             cJSON *json=cJSON_CreateObject();
 
@@ -235,6 +243,29 @@ private:
                 cJSON_AddItemToArray(scoreArray,localize);
             }
             cJSON_AddItemToObject(json,std::string("priority").c_str(),scoreArray);
+
+            // Save function infos
+            cJSON *funcArray=cJSON_CreateArray();
+            for (size_t i=0;i<funcReplaceInfos.size();i++){
+                cJSON *funcInfo=cJSON_CreateObject();
+                cJSON_AddStringToObject(funcInfo,"original_name",funcReplaceInfos[i].originalName.c_str());
+                cJSON_AddNumberToObject(funcInfo,"switch_number",funcReplaceInfos[i].switchNum);
+
+                cJSON *newFuncArray=cJSON_CreateArray();
+                for (std::map<size_t,std::string>::iterator it=funcReplaceInfos[i].newName.begin();it!=funcReplaceInfos[i].newName.end();it++){
+                    cJSON *newFunc=cJSON_CreateObject();
+                    cJSON_AddStringToObject(newFunc,"new_name",it->second.c_str());
+                    cJSON_AddNumberToObject(newFunc,"case_number",it->first);
+                    cJSON_AddItemToArray(newFuncArray,newFunc);
+                }
+                cJSON_AddItemToObject(funcInfo,"new_names",newFuncArray);
+                cJSON_AddItemToArray(funcArray,funcInfo);
+            }
+            char *fileString=cJSON_Print(funcArray);
+            std::ofstream ffout(funcFileName,std::ofstream::out);
+            ffout << fileString << "\n";
+            ffout.close();
+            cJSON_Delete(funcArray);
 
             // Save mutation infos
             cJSON *mutationArray=cJSON_CreateArray();
