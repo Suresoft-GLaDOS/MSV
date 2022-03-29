@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import getopt
 import json
-from os import getcwd, path
+from os import chdir, getcwd, path
 import subprocess
 from sys import argv
 from typing import List
@@ -52,6 +52,8 @@ if __name__=="__main__":
         exit(1)
 
     # Build it
+    orig_dir=getcwd()
+    chdir(out_dir)
     meta_file=open(f'{out_dir}/meta.json', 'r')
     meta_root=json.load(meta_file)
     meta_file.close()
@@ -72,7 +74,9 @@ if __name__=="__main__":
         result=subprocess.run(words,stderr=subprocess.PIPE,stdout=subprocess.PIPE)
         if result.returncode != 0:
             print(result.stderr.decode('utf-8'))
+            chdir(orig_dir)
             exit(1)
+    chdir(orig_dir)
 
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
