@@ -247,7 +247,7 @@ public:
         return RecursiveASTVisitor::TraverseIntegerLiteral(IL);
     }
 
-    bool TraverseBinaryOperatorImpl(BinaryOperator *BO) {
+    bool TraverseBinaryOperator(BinaryOperator *BO) {
         bool ret = RecursiveASTVisitor::TraverseBinaryOperator(BO);
         Expr *LHS = BO->getLHS();
         if (M.count(LHS) == 0) return ret;
@@ -297,15 +297,15 @@ public:
         return ret;
     }
 
-#define OPERATOR(NAME) \
-    virtual bool TraverseBin##NAME(BinaryOperator *BO) { \
-        return TraverseBinaryOperatorImpl(BO); \
-    }
+// #define OPERATOR(NAME) \
+//     virtual bool TraverseBin##NAME(BinaryOperator *BO) { \
+//         return TraverseBinaryOperatorImpl(BO); \
+//     }
 
-    MY_BINOP_LIST()
-#undef OPERATOR
+//     MY_BINOP_LIST()
+// #undef OPERATOR
 
-    bool TraverseUnaryOperatorImpl(UnaryOperator *UO) {
+    bool TraverseUnaryOperator(UnaryOperator *UO) {
         bool ret = RecursiveASTVisitor::TraverseUnaryOperator(UO);
         Expr *Sub = UO->getSubExpr();
         if (M.count(Sub) == 0) return ret;
@@ -326,13 +326,13 @@ public:
         return ret;
     }
 
-#define OPERATOR(NAME) \
-    virtual bool TraverseUnary##NAME(UnaryOperator *UO) { \
-        return TraverseUnaryOperatorImpl(UO); \
-    }
+// #define OPERATOR(NAME) \
+//     virtual bool TraverseUnary##NAME(UnaryOperator *UO) { \
+//         return TraverseUnaryOperatorImpl(UO); \
+//     }
 
-    MY_UNARYOP_LIST()
-#undef OPERATOR
+//     MY_UNARYOP_LIST()
+// #undef OPERATOR
 
     bool TraverseParenExpr(ParenExpr *PE) {
         bool ret = RecursiveASTVisitor::TraverseParenExpr(PE);

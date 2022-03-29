@@ -346,7 +346,7 @@ public:
     FeatureExtractVisitor(ASTContext *ast, std::map<std::string, Expr*> &valueExprInfo): ast(ast), res(),
         stmtStack(), isReplace(false), abst_v(NULL), is_replace_strconst(false), valueExprInfo(valueExprInfo) { }
 
-    virtual bool VisitBinaryOperatorImpl(BinaryOperator *BO) {
+    virtual bool VisitBinaryOperator(BinaryOperator *BO) {
         std::pair<HelperMapTy::const_iterator, HelperMapTy::const_iterator> range =
             binOpHelper.equal_range(BO->getOpcode());
         Expr* LHS = BO->getLHS();
@@ -367,15 +367,15 @@ public:
         return true;
     }
 
-#define OPERATOR(NAME) \
-    virtual bool VisitBin##NAME(BinaryOperator *BO) { \
-        return VisitBinaryOperatorImpl(BO); \
-    }
+// #define OPERATOR(NAME) \
+//     virtual bool VisitBin##NAME(BinaryOperator *BO) { \
+//         return VisitBinaryOperatorImpl(BO); \
+//     }
 
-    MY_BINOP_LIST()
-#undef OPERATOR
+//     MY_BINOP_LIST()
+// #undef OPERATOR
 
-    virtual bool VisitUnaryOperatorImpl(UnaryOperator *UO) {
+    virtual bool VisitUnaryOperator(UnaryOperator *UO) {
         std::pair<HelperMapTy::const_iterator, HelperMapTy::const_iterator> range =
             uOpHelper.equal_range(UO->getOpcode());
         Expr *subE = UO->getSubExpr();
@@ -384,15 +384,15 @@ public:
         return true;
     }
 
-#define OPERATOR(NAME) \
-    virtual bool VisitUnary##NAME(UnaryOperator *UO) { \
-        return VisitUnaryOperatorImpl(UO); \
-    }
+// #define OPERATOR(NAME) \
+//     virtual bool VisitUnary##NAME(UnaryOperator *UO) { \
+//         return VisitUnaryOperatorImpl(UO); \
+//     }
 
-    MY_UNARYOP_LIST()
-#undef OPERATOR
+//     MY_UNARYOP_LIST()
+// #undef OPERATOR
 
-    virtual bool VisitCompoundAssignOperatorImpl(CompoundAssignOperator *CAO) {
+    virtual bool VisitCompoundAssignOperator(CompoundAssignOperator *CAO) {
         std::pair<HelperMapTy::const_iterator, HelperMapTy::const_iterator> range =
             caOpHelper.equal_range(CAO->getOpcode());
         Expr *LHS = CAO->getLHS();
@@ -405,13 +405,13 @@ public:
         return true;
     }
 
-#define OPERATOR(NAME) \
-    virtual bool VisitBin##NAME##Assign(CompoundAssignOperator *CAO) { \
-        return VisitCompoundAssignOperatorImpl(CAO); \
-    }
+// #define OPERATOR(NAME) \
+//     virtual bool VisitBin##NAME##Assign(CompoundAssignOperator *CAO) { \
+//         return VisitCompoundAssignOperatorImpl(CAO); \
+//     }
 
-    MY_CAO_LIST()
-#undef OPERATOR
+//     MY_CAO_LIST()
+// #undef OPERATOR
 
     virtual bool VisitMemberExpr(MemberExpr *ME) {
         Expr *base = ME->getBase();
