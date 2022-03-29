@@ -707,6 +707,7 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
             int oper=atoi(getenv(operator_temp));
             int constant=atoi(getenv(constant_temp));
             long long value=0;
+            long long value2=0;
 
             va_list ap;
             va_start(ap, count);
@@ -722,7 +723,18 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                     else {
                         value = MAGIC_NUMBER;
                     }
-                    break;
+
+                    if (oper<=4)
+                        break;
+                }
+
+                else if (oper>=5 && i==constant){
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&value2, p, sz);
+                    }
+                    else {
+                        value2 = MAGIC_NUMBER;
+                    }
                 }
             }
 
@@ -738,6 +750,18 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                         break;
                     case 3: 
                         result = (value <constant);
+                        break;
+                    case 5:
+                        result = (value ==value2);
+                        break;
+                    case 6:
+                        result=(value!=value2);
+                        break;
+                    case 7:
+                        result=(value>value2);
+                        break;
+                    case 8:
+                        result=(value<value2);
                         break;
                     default: 
                         result = (value ==constant);
@@ -803,6 +827,7 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
         int oper=atoi(getenv(operator_temp));
         int constant=atoi(getenv(constant_temp));
         long long value=0;
+        long long value2=0;
 
         va_list ap;
         va_start(ap, count);
@@ -818,7 +843,18 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                 else {
                     value = MAGIC_NUMBER;
                 }
-                break;
+
+                if (oper<=4)
+                    break;
+            }
+
+            else if (oper>=5 && i==constant){
+                if (isGoodAddr(p, sz)) {
+                    memcpy(&value2, p, sz);
+                }
+                else {
+                    value2 = MAGIC_NUMBER;
+                }
             }
         }
 
@@ -838,6 +874,26 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                 case 3: 
                     if (records_sz < MAXSZ){
                         records[records_sz++] = (value <constant);
+                    }
+                    break;
+                case 5:
+                    if (records_sz < MAXSZ){
+                        records[records_sz++] = (value ==value2);
+                    }
+                    break;
+                case 6:
+                    if (records_sz < MAXSZ){
+                        records[records_sz++] = (value !=value2);
+                    }
+                    break;
+                case 7:
+                    if (records_sz < MAXSZ){
+                        records[records_sz++] = (value >value2);
+                    }
+                    break;
+                case 8:
+                    if (records_sz < MAXSZ){
+                        records[records_sz++] = (value <value2);
                     }
                     break;
                 default: 
