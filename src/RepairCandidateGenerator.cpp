@@ -1056,6 +1056,26 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    void genRemoveStatement(Stmt *n){
+        if (in_yacc_func) return;
+        if (naive) return;
+        if (MsvExt.getValue() && llvm::isa<Expr>(n)){
+            ASTLocTy loc = getNowLocation(n);
+            CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,std::vector<Stmt*>(),SourceLocation(),SourceLocation());
+            RepairCandidate rc;
+            rc.actions.clear();
+
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
+            if (learning)
+                rc.score = getLocScore(n);
+            else
+                rc.score = getPriority(n) + PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtRemoveStmtKind;
+            rc.original=n;
+            q.push_back(rc);
+        }
+    }
+
     // TODO: Remove strange templates (e.g. --this, _M_...(), ...)
     void genAddStatement(Stmt* n, bool is_first, bool is_func_block) {
         if (in_yacc_func) return;
@@ -1543,6 +1563,7 @@ public:
                     genDeclStmtChange(llvm::dyn_cast<DeclStmt>(n));
                 // This is to compute whether Stmt n is the first
                 // non-decl statement in a CompoundStmt
+                genRemoveStatement(n);
                 genReplaceStmt(n, is_first);
                 if (!llvm::isa<DeclStmt>(n) && !llvm::isa<LabelStmt>(n))
                     genAddIfGuard(n, is_first);

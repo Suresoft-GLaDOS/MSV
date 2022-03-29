@@ -99,6 +99,7 @@ struct RepairCandidate {
         MSVExtFunctionReplaceKind, // 10
         MSVExtAddConditionKind,
         MSVExtReplaceFunctionInConditionKind,
+        MSVExtRemoveStmtKind,
         AddVarMutation
     } CandidateKind;
     CandidateKind kind;

@@ -365,6 +365,8 @@ std::string toString(RepairCandidate::CandidateKind kind){
             return "MSVExtAddConditionKind";
         case RepairCandidate::MSVExtReplaceFunctionInConditionKind:
             return "MSVExtReplaceFunctionInConditionKind";
+        case RepairCandidate::MSVExtRemoveStmtKind:
+            return "MSVExtRemoveStmtKind";
         default:
             return "AddAndReplaceKind";
     }
