@@ -1026,6 +1026,36 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    void genReplceFunctionInCondition(IfStmt *stmt){
+        if (in_yacc_func) return;
+        if (MsvExt.getValue() && !NoFunc.getValue()) {
+            ASTLocTy loc = getNowLocation(stmt);
+            LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+            Expr *cond = stmt->getCond();
+
+            CallExprReplaceVisitor visitor(ctxt, L, cond);
+            visitor.TraverseStmt(cond);
+            std::vector<Stmt*> res2 = visitor.getResult();
+            for (std::vector<Stmt*>::iterator it = res2.begin();
+                    it != res2.end(); ++ it) {
+                RepairCandidate rc;
+                rc.actions.clear();
+
+                IfStmt *newIf=IfStmt::Create(*ctxt,SourceLocation(),stmt->isConstexpr(),stmt->getInit(),stmt->getConditionVariable(),(Expr *)*it,stmt->getThen(),SourceLocation(),stmt->getElse());
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, *it));
+                if (learning)
+                    rc.score = getLocScore(stmt);
+                else
+                    rc.score = getPriority(stmt) + PRIORITY_ALPHA;
+                rc.kind = RepairCandidate::MSVExtReplaceFunctionInConditionKind;
+                rc.original=stmt;
+                rc.oldRExpr = visitor.getOldRExpr(*it);
+                rc.newRExpr = visitor.getNewRExpr(*it);
+                q.push_back(rc);
+            }
+        }
+    }
+
     // TODO: Remove strange templates (e.g. --this, _M_...(), ...)
     void genAddStatement(Stmt* n, bool is_first, bool is_func_block) {
         if (in_yacc_func) return;
@@ -1484,6 +1514,7 @@ public:
                 loc_map1[n] = loc_map1[ElseCS];
             
             genCondition(n);
+            genReplceFunctionInCondition(n);
         }
         if (isTainted(n) || isTainted(ThenCS))
             genTightCondition(n);
