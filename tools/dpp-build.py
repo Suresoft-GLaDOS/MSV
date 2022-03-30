@@ -76,6 +76,8 @@ if __name__=="__main__":
             print(result.stderr.decode('utf-8'))
             chdir(orig_dir)
             exit(1)
+        else:
+            print(result.stdout.decode('utf-8'))
     chdir(orig_dir)
 
     if dryrun_src != "":
