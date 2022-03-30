@@ -114,7 +114,7 @@ def extract_arguments(out_dir, src_file):
                 tokens = line.strip().split();
                 idx = 0;
                 for i in range(0, len(tokens)):
-                    if tokens[i] == "cc" or tokens[i] == "gcc":
+                    if tokens[i] == "cc" or tokens[i] == "gcc" or tokens[i]=='g++':
                         idx = i + 1;
                         break;
                 ret = "";
