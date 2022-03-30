@@ -30,6 +30,25 @@ def get_test_name(id):
 
     return out_lines[id-1]
 
+import psutil
+
+def run_test(testcase,id,timeout):
+    proc = subprocess.Popen(["make", "test",f'TESTS={testcase}'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    try:
+        so,se=proc.communicate(timeout=timeout)
+        if proc.returncode==0:
+            print (id)
+    except:
+        pid=proc.pid
+        children=[]
+        for child in psutil.Process(pid).children(True):
+            if psutil.pid_exists(child.pid):
+                children.append(child)
+
+        for child in children:
+            child.kill()
+        proc.kill()
+
 if __name__ == "__main__":
     if len(argv) < 4:
         print ("Usage: openssl-test.py <src_dir> <test_dir> <work_dir> [cases]")
@@ -55,58 +74,16 @@ if __name__ == "__main__":
     src_dir = args[0];
     test_dir = args[1];
     work_dir = args[2];
-    chdir(src_dir
-    )
     if profile_dir == "":
         cur_dir = src_dir;
     else:
         cur_dir = profile_dir;
+
     if len(args) > 3:
         ids = args[3:]
-        target=ids.copy()
-        processes=[]
-        current_test=[]
-        is_finished=[]
-        for i in range(max_cpu):
-            if len(target)==0:
-                break
-
-            cmd=['make','TESTS="'+str(get_test_name(int(target[0])))+'"', 'test']
-            processes.append(subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE))
-            current_test.append(target[0])
-            is_finished.append(False)
-            del target[0]
-        ret = set();
-
-        finish_all=0
-        while True:
-            if len(target)==0 and finish_all>=len(processes):
-                break
-
-            for i in range(len(processes)):
-                if processes[i].poll()==None:
-                    continue
-                elif processes[i].poll()!=None and is_finished[i]==True:
-                    continue
-
-                (out, err) = processes[i].communicate();
-                if (processes[i].returncode==0):
-                    ret.add(current_test[i])
-                
-                if current_test[i] not in ret:
-                    print("Fail at {0}".format(current_test[i]),file=stderr)
-                
-                if len(target)>0:
-                    cmd=['make','TESTS="'+str(get_test_name(int(target[0])))+'"', 'test']
-                    processes[i]=subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-                    current_test[i]=target[0]
-                    del target[0]
-                else:
-                    is_finished[i]=True
-                    finish_all+=1
-                    continue
-        
-        for i in ret:
-            print(i)
+        chdir(cur_dir)
+        for i in ids:
+            testcase=get_test_name(int(i))
+            run_test(testcase,int(i),timeout)
 
     chdir(orig_dir)
