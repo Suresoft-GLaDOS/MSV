@@ -102,7 +102,7 @@ if __name__ == "__main__":
         result=[]
         pool=mp.Pool(max_parallel)
         for i in ids:
-            testcase = num2testcase(i);
+            testcase = num2testcase(int(i));
             run_test(testcase,int(i),timeout)
             # result.append(pool.apply_async(run_test,(testcase,int(i),my_env,timeout,)))
 
