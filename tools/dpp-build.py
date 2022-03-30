@@ -15,7 +15,7 @@ if __name__=="__main__":
     opts, args = getopt.getopt(argv[1:],'cd:hlj:p:r:x');
     dryrun_src = ""
 
-    paraj = 0
+    paraj = 1
 
     print_fix_log = False
     print_usage = False
@@ -54,7 +54,7 @@ if __name__=="__main__":
     # Build it
     orig_dir=getcwd()
     chdir(out_dir)
-    meta_file=open(f'{out_dir}/meta.json', 'r')
+    meta_file=open(f'{out_dir}/../meta.json', 'r')
     meta_root=json.load(meta_file)
     meta_file.close()
 
@@ -69,7 +69,7 @@ if __name__=="__main__":
             words.remove('@DPP_COMPILATION_DB_TOOL@')
         for i,word in enumerate(words.copy()):
             if '@DPP_PARALLEL_BUILD@' in word:
-                word.replace('@DPP_PARALLEL_BUILD@',str(paraj))
+                words[i]=word.replace('@DPP_PARALLEL_BUILD@',str(paraj))
 
         result=subprocess.run(words,stderr=subprocess.PIPE,stdout=subprocess.PIPE)
         if result.returncode != 0:
