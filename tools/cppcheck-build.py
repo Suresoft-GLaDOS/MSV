@@ -54,8 +54,8 @@ if __name__=="__main__":
 
     orig_dir=getcwd()
     chdir(out_dir)
-    result=subprocess.run(['make',f'-j{paraj}'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
-    chdir(orig_dir)
+    result=subprocess.run(['make','clean'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+    result=subprocess.run(['make','all',f'-j{paraj}'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
     if result.returncode != 0:
         print(result.stderr.decode('utf-8'))
 
