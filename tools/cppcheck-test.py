@@ -28,63 +28,84 @@ TEST_CASES=[
     'TestAstUtils',
     'TestAutoVariables',
     'TestBool',
+
+    'TestBoost',
     'TestBoost',
     'TestBufferOverrun',
-    'TestCharVar',
+    'TestBughuntingChecks',
+    'TestCharVar', # 10
+
+    'TestClangImport',
     'TestClass',
     'TestCmdlineParser',
     'TestCondition',
     'TestConstructors',
+
     'TestCppcheck',
     'TestErrorLogger',
     'TestExceptionSafety',
     'TestExprEngine',
-    'TestFileLister',
+    'TestFileLister', # 20
+
     'TestFunctions',
     'TestGarbage',
     'TestIO',
     'TestImportProject',
     'TestIncompleteStatement',
+
     'TestLeakAutoVar',
+    'TestLeakAutoVarRecursiveCountLimit',
+    'TestLeakAutoVarStrcpy',
     'TestLeakAutoVarWindows',
-    'TestLibrary',
+    'TestLibrary', # 30
+
     'TestMathLib',
     'TestMemleak',
     'TestMemleakInClass',
     'TestMemleakInFunction',
     'TestMemleakNoVar',
+
     'TestMemleakStructMember',
     'TestNullPointer',
     'TestOptions',
     'TestOther',
-    'TestPath',
+    'TestPath', # 40
+
     'TestPathMatch',
     'TestPlatform',
     'TestPostfixOperator',
     'TestPreprocessor',
     'TestSamples',
+
     'TestSimplifyTemplate',
     'TestSimplifyTokens',
     'TestSimplifyTypedef',
     'TestSimplifyUsing',
-    'TestSizeof',
+    'TestSizeof', # 50
+
     'TestStl',
     'TestString',
+    'TestSummaries',
     'TestSuppressions',
     'TestSymbolDatabase',
+
     'TestThreadExecutor',
     'TestTimer',
     'TestToken',
     'TestTokenList',
+    'TestTokenRange', # 60
+
     'TestTokenizer',
     'TestType',
     'TestUninitVar',
     'TestUnusedFunctions',
     'TestUnusedPrivateFunction',
+
     'TestUnusedVar',
+    'TestUtils',
     'TestVaarg',
     'TestValueFlow',
-    'TestVarID',
+    'TestVarID', # 70
 ]
 def num2testcase( case ):
     if case < 0 or case > len(TEST_CASES):
