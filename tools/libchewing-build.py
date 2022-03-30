@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import getopt
 from os import chdir, getcwd, path
 import subprocess

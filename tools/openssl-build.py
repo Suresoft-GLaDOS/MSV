@@ -1,65 +1,79 @@
 #!/usr/bin/env python3
-
-from os import chdir, getcwd
-import subprocess
 import getopt
-from sys import argv, setcheckinterval, stderr
+from os import chdir, getcwd, path
+import subprocess
+from sys import argv
+
+from tester_common import extract_arguments
+
 
 if __name__=="__main__":
-    opts, args = getopt.getopt(argv[1:], "cd:hxj:");
-    dryrun_src = "";
-    compile_only = False;
-    print_usage = False;
-    config_only = False;
-    parallel=1
+    compile_only = False
+
+    opts, args = getopt.getopt(argv[1:],'cd:hlj:p:r:x');
+    dryrun_src = ""
+
+    paraj = 1
+
+    print_fix_log = False
+    print_usage = False
+    config_only = False
     for o, a in opts:
-        if o == "-x":
-            config_only = True;
         if o == "-d":
-            dryrun_src = a;
+            dryrun_src = a
+        elif o == "-p":
+            if a[0] == "/":
+                deps_dir = a
+            else:
+                deps_dir = getcwd() + "/" + a
+        elif o == "-x":
+            config_only = True
         elif o == "-c":
-            compile_only = True;
+            compile_only = True
+        elif o == "-l":
+            print_fix_log = True
         elif o == "-h":
-            print_usage = True;
-        elif o=="-j":
-            parallel=int(a)
+            print_usage = True
+        elif o == "-j":
+            paraj = int(a)
+
+    if (len(args) < 1) or (print_usage):
+        print("Usage: openssl-build.py <directory> [-d src_file | -l] [-h]")
+        exit(0)
+
+    out_dir = args[0]
+    # fetch from github if the directory does not exist
+    if path.exists(out_dir):
+        print("Working with existing directory: " + out_dir)
+    else:
+        print("Non-exists directory")
+        exit(1)
 
     orig_dir=getcwd()
-    chdir(args[0])
-    result=subprocess.run("./Configure enable-unit-test",shell=True)
-    if result.returncode!=0:
-        print("Fail at configure!",file=stderr)
-        exit(1)
-
-    if config_only:
-        chdir(orig_dir)
-        exit(0)
+    chdir(out_dir)
+    if not compile_only:
+        result=subprocess.run(['./config'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        if result.returncode != 0:
+            print(result.stderr.decode('utf-8'))
+            exit(1)
+        elif config_only:
+            exit(0)
     
-    result=subprocess.run('make clean',shell=True)
-    if result.returncode!=0:
-        print("Fail at clean!",file=stderr)
-        exit(1)
-    result=subprocess.run('make -j'+str(parallel)+' depend',shell=True)
-    if result.returncode!=0:
-        print("Fail at make dependencies!",file=stderr)
-        exit(1)
-
-    result=subprocess.run('make -j'+str(parallel)+'',shell=True)
-    if result.returncode!=0:
-        print("Fail at make!",file=stderr)
-        exit(1)
-
+    result=subprocess.run(['make',f'-j{paraj}'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
     chdir(orig_dir)
-    if dryrun_src != "":
-        from tester_common import extract_arguments
+    if result.returncode != 0:
+        print(result.stderr.decode('utf-8'))
 
-        build_dir, build_args = extract_arguments(args[0], dryrun_src)
-        if (len(args) > 1):
+    if dryrun_src != "":
+        (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
+        if len(args) > 1:
             out_file = open(args[1], "w")
-            print(build_dir,file=out_file)
-            print (build_args,file=out_file)
+            print(out_file, builddir)
+            print(out_file, buildargs)
             out_file.close()
         else:
-            print (build_dir)
-            print (build_args)
+            print(builddir)
+            print(buildargs)
+
+    exit(result.returncode)
 
