@@ -27,6 +27,9 @@ def get_test_name(id):
     (list_out,list_err)=list_process.communicate()
     list_out=list_out.decode('utf-8')
     out_lines=list_out.splitlines()
+    for line in out_lines.copy():
+        if line[0:4]!='test':
+            out_lines.remove(line)
 
     return out_lines[id-1]
 
