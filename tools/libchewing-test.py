@@ -98,7 +98,6 @@ if __name__ == "__main__":
 
         ori_dir = getcwd();
         chdir(cur_dir);
-        system(f'cp -rf {work_dir}/libchewing-helper.h {cur_dir}/test/testhelper.h')
         system(f'cp -rf {work_dir}/libchewing-helper.c {cur_dir}/test/testhelper.c')
 
         result=[]
