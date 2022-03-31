@@ -129,7 +129,7 @@ def run_test(testcase,id,timeout):
         else:
             if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
                 try:
-                    output=so.decode('utf-8')
+                    output=se.decode('utf-8')
                     output=output.splitlines()
                     actual_output=''
                     is_actual=False
@@ -139,12 +139,12 @@ def run_test(testcase,id,timeout):
                         if 'Expected:' in line and not is_expect:
                             is_expect=True
                             is_actual=False
-                        elif is_expect:
+                        elif is_expect and not 'Actual:' not in line:
                             expect_output+=line+'\n'
                         elif 'Actual:' in line and not is_actual:
                             is_actual=True
                             is_expect=False
-                        elif is_actual:
+                        elif is_actual and not 'Actual:' not in line and not '_____' in line:
                             actual_output+=line+'\n'
                     
                     dist=distance(expect_output,actual_output)
