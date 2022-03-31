@@ -139,14 +139,13 @@ def run_test(testcase,id,timeout):
                         if 'Expected:' in line and not is_expect:
                             is_expect=True
                             is_actual=False
-                        elif is_expect and not 'Actual:' not in line:
+                        elif is_expect and 'Actual:' not in line:
                             expect_output+=line+'\n'
                         elif 'Actual:' in line and not is_actual:
                             is_actual=True
                             is_expect=False
-                        elif is_actual and not 'Actual:' not in line and not '_____' in line:
+                        elif is_actual and 'Actual:' not in line and not '_____' in line:
                             actual_output+=line+'\n'
-                    
                     dist=distance(expect_output,actual_output)
                     file_name=environ['MSV_OUTPUT_DISTANCE_FILE']
                     with open(file_name,'w') as file:
