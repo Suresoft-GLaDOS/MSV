@@ -4,7 +4,7 @@ from os import chdir, environ, getcwd, path, system
 import subprocess
 from sys import argv, stderr
 import multiprocessing as mp
-from Levenshtein import hamming,distance
+from Levenshtein import distance
 
 import psutil
 
@@ -24,7 +24,7 @@ def run_test(id,timeout,workdir):
                     output=output.splitlines()
                     for line in output:
                         if 'FAIL' or 'PASS' in line:
-                            test_file=line[6:-1]
+                            test_file=line[6:]
                             test_file=test_file.replace('.phpt','')
                             output_file=test_file+'.out'
                             expect_file=test_file+'.exp'
