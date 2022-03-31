@@ -20,12 +20,11 @@ def run_test(id,timeout,workdir):
                     file.write('0\n')
         else:
             if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
-                try:
                     output=so.decode('utf-8')
                     output=output.splitlines()
                     for line in output:
                         if 'FAIL' or 'PASS' in line:
-                            test_file=line[6:]
+                            test_file=line[6:-1]
                             test_file.removesuffix('.phpt')
                             output_file=test_file+'.out'
                             expect_file=test_file+'.exp'
@@ -45,8 +44,6 @@ def run_test(id,timeout,workdir):
                                 file.write(f'{dist}\n')
                             break
                             
-                except:
-                    pass
 
     except:
         pid=subp.pid
