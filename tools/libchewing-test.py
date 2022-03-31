@@ -98,6 +98,8 @@ if __name__ == "__main__":
 
         ori_dir = getcwd();
         chdir(cur_dir);
+        system(f'cp -rf {environ["MSV_PATH"]}/libchewing-helper.h {cur_dir}/test/testhelper.h')
+        system(f'cp -rf {environ["MSV_PATH"]}/libchewing-helper.c {cur_dir}/test/testhelper.c')
 
         result=[]
         pool=mp.Pool(max_parallel)
