@@ -399,7 +399,7 @@ def run_test(case_str,id,timeout):
                 out = f.read()
             # print(f"cp {msv_tmp_out} {exp_file}")
             # system(f"cp {msv_tmp_out} {exp_file}")
-            #remove(msv_tmp_out)
+            remove(msv_tmp_out)
         dist = 0
         if len(exp) > 10000:
             dist = abs(len(exp) - len(out))
