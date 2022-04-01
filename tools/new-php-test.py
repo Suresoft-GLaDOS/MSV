@@ -4,7 +4,7 @@ from os import chdir, environ, getcwd, path, system
 import subprocess
 from sys import argv, stderr
 import multiprocessing as mp
-from Levenshtein import hamming
+from Levenshtein import distance
 
 import psutil
 
@@ -20,33 +20,30 @@ def run_test(id,timeout,workdir):
                     file.write('0\n')
         else:
             if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
-                try:
                     output=so.decode('utf-8')
                     output=output.splitlines()
                     for line in output:
                         if 'FAIL' or 'PASS' in line:
                             test_file=line[6:]
-                            test_file.removesuffix('.phpt')
+                            test_file=test_file.replace('.phpt','')
                             output_file=test_file+'.out'
                             expect_file=test_file+'.exp'
 
                             output=b''
                             if path.isfile(output_file):
-                                with open(output_file,'r') as f:
+                                with open(output_file,'rb') as f:
                                     output=f.read()
                             expect=b''
                             if path.isfile(expect_file):
-                                with open(expect_file,'r') as f:
+                                with open(expect_file,'rb') as f:
                                     expect=f.read()
                             
-                            dist=hamming(output,expect)
+                            dist=distance(output,expect)
                             file_name=environ['MSV_OUTPUT_DISTANCE_FILE']
                             with open(file_name,'w') as file:
                                 file.write(f'{dist}\n')
                             break
                             
-                except:
-                    pass
 
     except:
         pid=subp.pid

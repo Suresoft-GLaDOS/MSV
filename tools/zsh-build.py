@@ -57,7 +57,22 @@ if __name__=="__main__":
             print(result.stderr.decode('utf-8'))
             exit(1)
 
-        result=subprocess.run(['./configure'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        result=subprocess.run(['./configure','--with-tcsetpgrp'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        if result.returncode != 0:
+            print(result.stderr.decode('utf-8'))
+            exit(1)
+
+        result=subprocess.run(['sed','-i','/^name=zsh\\/zpty/ s/link=no/link=static/','config.modules'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+        if result.returncode != 0:
+            print(result.stderr.decode('utf-8'))
+            exit(1)
+
+        result=subprocess.run(['make','clean'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+        if result.returncode != 0:
+            print(result.stderr.decode('utf-8'))
+            exit(1)
+
+        result=subprocess.run(['sed','-i','s|sleep 1;||','Test/Makefile'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
         if result.returncode != 0:
             print(result.stderr.decode('utf-8'))
             exit(1)
