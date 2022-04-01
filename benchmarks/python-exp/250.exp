@@ -1,25 +1,2 @@
-out <bound method PosixTests.trivial_signal_handler of <test.test_signal.PosixTests testMethod=test_getsignal>> == exp <bound method PosixTests.trivial_signal_handler of <test.test_signal.PosixTests testMethod=test_getsignal>>
-out 0 == exp 0
-True
-False
-True
-False
-True
-True
-True
-False
-False
-True
-True
-True
-True
-out (0.0, 0.0) == exp (0.0, 0.0)
-out True == exp True
-out True == exp True
-out (0.0, 0.0) == exp (0.0, 0.0)
-out True == exp True
-out {10} == exp {10}
-out {10} == exp {10}
-out {10} == exp {10}
-out set() == exp set()
-out 14 == exp 14
+[1/1] test_signal
+1 test OK.

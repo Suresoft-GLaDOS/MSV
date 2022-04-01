@@ -361,14 +361,20 @@ def run_test(case_str,id,timeout):
     if id == 243:
         print("243")
         return
-    #print(case_str)
+    # print(case_str)
     msv_tmp_out = f"/tmp/{uuid.uuid4()}.out"
     if "MSV_OUTPUT_DISTANCE_FILE" in environ:
         environ["MSV_TMP_OUT"] = msv_tmp_out
-    proc = subprocess.Popen(["./python Lib/test/regrtest.py " + case_str + " 1>/dev/null 2>/dev/null"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    proc = subprocess.Popen(["./python Lib/test/regrtest.py -w " + case_str], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     # ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str], shell = True);
     try:
         so,se = proc.communicate(timeout=timeout)
+        if "MSV_OUTPUT_DISTANCE_FILE" in environ:
+            with open(msv_tmp_out, "w") as f:
+                # print("so:" + so.decode("utf-8"))
+                # print("se:" + se.decode("utf-8"))
+                f.write(so.decode("utf-8"))
+                f.write(se.decode("utf-8"))
         if proc.returncode == 0:
             print (id)
     except:
@@ -393,7 +399,7 @@ def run_test(case_str,id,timeout):
                 out = f.read()
             # print(f"cp {msv_tmp_out} {exp_file}")
             # system(f"cp {msv_tmp_out} {exp_file}")
-            remove(msv_tmp_out)
+            #remove(msv_tmp_out)
         dist = 0
         if len(exp) > 10000:
             dist = abs(len(exp) - len(out))
@@ -423,14 +429,15 @@ if __name__ == "__main__":
     test_dir = args[1];
     work_dir = args[2];
     tdir = path.join(src_dir, "Lib", "test")
-    if (not path.exists(path.join(tdir, "msv-test.set"))):
-        system(f"rm -rf {tdir}")
-        system(f"cp -rf {test_dir} {tdir}")
-        system(f"rm -rf {path.join(src_dir, 'Lib', 'unittest')}")
-        system(f"cp -rf {path.join(environ['MSV_PATH'], 'benchmarks', 'python-unittest')} {path.join(src_dir, 'Lib', 'unittest')}")
-        with open(path.join(tdir, "msv-test.set"), "w") as f:
-            f.write("Initialized!")
-
+    # if (not path.exists(path.join(tdir, "msv-test.set"))):
+    #     system(f"rm -rf {tdir}")
+    #     system(f"cp -rf {test_dir} {tdir}")
+    #     system(f"rm -rf {path.join(src_dir, 'Lib', 'unittest')}")
+    #     system(f"cp -rf {path.join(environ['MSV_PATH'], 'benchmarks', 'python-unittest')} {path.join(src_dir, 'Lib', 'unittest')}")
+    #     with open(path.join(tdir, "msv-test.set"), "w") as f:
+    #         f.write("Initialized!")
+    # system(f"rm -rf {path.join(src_dir, 'Lib', 'unittest')}")
+    # system(f"cp -rf /root/project/MSV-experiment/benchmarks/python/python-case-69946/python-src/Lib/unittest {path.join(src_dir, 'Lib', 'unittest')}")
     if (len(args) > 3):
         ids = args[3 :];
         cur_dir = src_dir;
