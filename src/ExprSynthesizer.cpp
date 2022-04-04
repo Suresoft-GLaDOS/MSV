@@ -986,6 +986,7 @@ protected:
     std::vector<FunctionReplaceInfo> functionReplaceInfo;
 
     std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>> &scores;
+    std::map<size_t,std::pair<std::pair<size_t,size_t>,std::pair<size_t,size_t>>> originalLoc;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, idAndCase.size(),P.getSwitch().first,P.getSwitch().second);
@@ -1077,6 +1078,7 @@ protected:
         P.getSwitchInfo().scoreInfo=scores;
         P.getSwitchInfo().funcReplaceInfos=functionReplaceInfo;
         P.getSwitchInfo().mutationInfo=mutationInfo;
+        P.getSwitchInfo().originalLoc=originalLoc;
 
         P.getSwitchInfo().infos=infos;
         P.getSwitchInfo().patchScores=patchScores;
@@ -1166,6 +1168,7 @@ public:
         macroFile=R.getMacroFile();
         patchScores=R.patchScores;
         functionReplaceInfo=R.funcReplace;
+        originalLoc=R.originalLoc;
         P.getSwitchInfo().varSizes=R.getVarSizes();
         P.getSwitchInfo().funcLocations=R.funcLocation;
         // caseCluster=R.getCaseCluster();

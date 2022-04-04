@@ -204,6 +204,7 @@ private:
         std::map<std::pair<size_t,size_t>,size_t> varSizes;
         std::map<std::string,std::map<std::string,std::pair<size_t,size_t>>> funcLocations;
         std::vector<FunctionReplaceInfo> funcReplaceInfos;
+        std::map<size_t,std::pair<std::pair<size_t,size_t>,std::pair<size_t,size_t>>> originalLoc;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json"),funcFileName(workdir+"/func-info.json") {}
         void save(){
@@ -324,6 +325,10 @@ private:
                             cJSON_AddItemToArray(typeArray,caseArray);
                         }
                         cJSON_AddItemToObject(switchObject,"types",typeArray);
+                        cJSON_AddNumberToObject(switchObject,"begin_line",originalLoc[currentSwitch.switchNum].first.first);
+                        cJSON_AddNumberToObject(switchObject,"begin_column",originalLoc[currentSwitch.switchNum].first.second);
+                        cJSON_AddNumberToObject(switchObject,"end_line",originalLoc[currentSwitch.switchNum].second.first);
+                        cJSON_AddNumberToObject(switchObject,"end_column",originalLoc[currentSwitch.switchNum].second.second);
 
                         // Add Prophet score
                         cJSON *prophetScoreArray=cJSON_CreateArray();

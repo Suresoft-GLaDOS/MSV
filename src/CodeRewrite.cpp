@@ -700,6 +700,12 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
                 varSizes[std::make_pair(counter,case_count)]=varCount;
             }
+
+            if (originalLoc.count(counter)==0){
+                size_t begin_line=manager.getExpansionLineNumber(patch_it->second.original->getBeginLoc());
+                size_t begin_col=manager.getExpansionColumnNumber(patch_it->second.original->getBeginLoc());
+                originalLoc[counter]=std::make_pair(std::make_pair(begin_line,begin_col),std::make_pair(begin_line,begin_col));
+            }
             if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
             std::vector<double> finalScore;
             finalScore.clear();
@@ -788,6 +794,15 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
                 varSizes[std::make_pair(counter,case_count)]=varCount;
             }
+
+            if (originalLoc.count(counter)==0){
+                size_t begin_line=manager.getExpansionLineNumber(patch_it->second.original->getBeginLoc());
+                size_t begin_col=manager.getExpansionColumnNumber(patch_it->second.original->getBeginLoc());
+                size_t end_line=manager.getExpansionLineNumber(patch_it->second.original->getEndLoc());
+                size_t end_col=manager.getExpansionColumnNumber(patch_it->second.original->getEndLoc());
+                originalLoc[counter]=std::make_pair(std::make_pair(begin_line,begin_col),std::make_pair(end_line,end_col));
+            }
+
             if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
             std::vector<double> finalScore;
             finalScore.clear();
@@ -909,6 +924,22 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
                 varSizes[std::make_pair(counter,case_count)]=varCount;
             }
+
+            if (originalLoc.count(counter)==0){
+                size_t begin_line=manager.getExpansionLineNumber(patch_it->second.original->getBeginLoc());
+                size_t begin_col=manager.getExpansionColumnNumber(patch_it->second.original->getBeginLoc());
+                size_t end_line=manager.getExpansionLineNumber(patch_it->second.original->getEndLoc());
+                size_t end_col=manager.getExpansionColumnNumber(patch_it->second.original->getEndLoc());
+                if (patch_it->second.original->getBeginLoc().isMacroID()){
+                    CharSourceRange range=manager.getExpansionRange(patch_it->second.original->getBeginLoc());
+                    begin_line=manager.getExpansionLineNumber(range.getBegin());
+                    begin_col=manager.getExpansionColumnNumber(range.getBegin());
+                    end_line=manager.getExpansionLineNumber(range.getEnd());
+                    end_col=manager.getExpansionColumnNumber(range.getEnd());
+                }
+                originalLoc[counter]=std::make_pair(std::make_pair(begin_line,begin_col),std::make_pair(end_line,end_col));
+            }
+
             if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
             std::vector<double> finalScore;
             finalScore.clear();
