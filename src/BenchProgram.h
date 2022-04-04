@@ -205,6 +205,7 @@ private:
         std::map<std::string,std::map<std::string,std::pair<size_t,size_t>>> funcLocations;
         std::vector<FunctionReplaceInfo> funcReplaceInfos;
         std::map<size_t,std::pair<std::pair<size_t,size_t>,std::pair<size_t,size_t>>> originalLoc;
+        std::map<size_t,std::vector<std::string>> patchCodes;
     public:
         SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json"),funcFileName(workdir+"/func-info.json") {}
         void save(){
@@ -329,6 +330,12 @@ private:
                         cJSON_AddNumberToObject(switchObject,"begin_column",originalLoc[currentSwitch.switchNum].first.second);
                         cJSON_AddNumberToObject(switchObject,"end_line",originalLoc[currentSwitch.switchNum].second.first);
                         cJSON_AddNumberToObject(switchObject,"end_column",originalLoc[currentSwitch.switchNum].second.second);
+
+                        cJSON *patchArray=cJSON_CreateArray();
+                        for (size_t j=0;j<patchCodes[currentSwitch.switchNum].size();j++){
+                            cJSON_AddItemToArray(patchArray,cJSON_CreateString(patchCodes[currentSwitch.switchNum][j].c_str()));
+                        }
+                        cJSON_AddItemToObject(switchObject,"patch_codes",patchArray);
 
                         // Add Prophet score
                         cJSON *prophetScoreArray=cJSON_CreateArray();

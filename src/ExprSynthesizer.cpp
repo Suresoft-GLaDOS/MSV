@@ -1171,6 +1171,7 @@ public:
         originalLoc=R.originalLoc;
         P.getSwitchInfo().varSizes=R.getVarSizes();
         P.getSwitchInfo().funcLocations=R.funcLocation;
+        P.getSwitchInfo().patchCodes=R.patchCodes;
         // caseCluster=R.getCaseCluster();
 
         // Create rules
