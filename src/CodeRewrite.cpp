@@ -896,14 +896,9 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         body+=origBody;
         body+="\n}\n";
         case_count++;
-        bool isFuncCall=false;
         std::string origFunc="";
         std::map<size_t,std::string> newFuncs;
         std::vector<std::string> patches;
-        if (origBody.find_first_of("\n")==std::string::npos || origBody.find_first_of("\n")==origBody.find_last_of("\n")){
-            isFuncCall=true;
-            origFunc=getFunctionCall(origBody);
-        }
 
         for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[indexBackup]][NormalReplace].begin();
                 patch_it!=res1[currentCandidate[indexBackup]][NormalReplace].end();patch_it++){
@@ -923,9 +918,20 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             patchTypes[currentPatch]=toString(patch_it->second.kind);
             macroCode[index]=currentBody;
             switchObject.types[patch_it->second.kind].cases.push_back(case_count);
-            if (isFuncCall && CallExpr::classof((Stmt *)patch_it->second.actions[0].ast_node)){
+            if (CallExpr::classof(patch_it->second.original) && CallExpr::classof((Stmt *)patch_it->second.actions[0].ast_node)){
+                if (origFunc==""){
+                    CallExpr *expr=llvm::dyn_cast<CallExpr>(patch_it->second.original);
+                    ImplicitCastExpr *cast=llvm::dyn_cast<ImplicitCastExpr>(expr->getCallee());
+                    if (cast!=NULL){
+                        DeclRefExpr *decl=llvm::dyn_cast<DeclRefExpr>(cast->getSubExpr());
+                        if (decl!=NULL){
+                            origFunc=decl->getDecl()->getNameAsString();
+                        }
+                    }
+                }
+
                 std::string funcCall=getFunctionCall(currentBody);
-                if (funcCall!=origFunc){
+                if (funcCall!=origFunc && (currentBody.find("//AddAndReplaceKind")!=std::string::npos || currentBody.find("//MSVExtFunctionReplaceKind")!=std::string::npos)){
                     newFuncs[case_count]=funcCall;
                 }
             }
