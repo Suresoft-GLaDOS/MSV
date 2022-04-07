@@ -770,7 +770,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
         }
         else{
             // Analyze result message to reduce search space
-            std::ifstream buildLog(build_log_file);
+            std::ifstream buildLog(build_log_file+std::to_string(count-1));
             std::string line;
             bool added=false;
             
