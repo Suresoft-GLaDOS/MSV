@@ -407,7 +407,7 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
     }
 }
 
-bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log) {
+bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log,int count=0) {
     char ori_dir[1000];
     char* retc = getcwd(ori_dir, 1000);
     assert(retc != NULL);
@@ -418,10 +418,10 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     // assert(ret == 0);
 
     if (timeout_limit == 0)
-        ret = system((std::string("make >") + build_log + " 2>"+build_log).c_str());
+        ret = system((std::string("make >") + build_log + std::to_string(count)+" 2>&1").c_str());
         // ret = execute_with_timeout((std::string("make")), 60);
     else
-        ret = execute_with_timeout((std::string("make >") + build_log + " 2>" + build_log), timeout_limit);
+        ret = execute_with_timeout((std::string("make >") + build_log +std::to_string(count)+ " 2>&1"), timeout_limit);
         // ret = execute_with_timeout((std::string("make")), timeout_limit);
     bool succ = (ret == 0);
     ret = chdir(ori_dir);
@@ -469,9 +469,9 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
         std::string cmd;
         if (dep_dir != ""){
             if (subDir!="src")
-                cmd = build_cmd + " -p " + dep_dir + " "+src_dir + " > " + build_log_file + " 2>&1";
+                cmd = build_cmd + " -p " + dep_dir + " "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
             else
-                cmd = build_cmd + " -p " + dep_dir + " -j 3 "+src_dir + " > " + build_log_file + " 2>&1";
+                cmd = build_cmd + " -p " + dep_dir + " -j 3 "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
             // cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " 2>&1";
         }
         else
@@ -487,10 +487,11 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
         else
             ret = execute_with_timeout(cmd.c_str(), timeout_limit);
         src_dirs[subDir] = true;
+        count++;
         return ret == 0;
     }
     else {
-        return incrementalBuild(timeout_limit, src_dir, build_log_file);
+        return incrementalBuild(timeout_limit, src_dir, build_log_file,count++);
     }
 }
 
