@@ -94,9 +94,12 @@ struct RepairCandidate {
         AddInitKind,
         ReplaceKind,
         ReplaceStringKind,
-        AddAndReplaceKind,
+        ReplaceFunctionKind,
+        AddStmtKind,
+        AddStmtAndReplaceAtomKind, // 10
+        AddIfStmtKind,
         ConditionKind,
-        MSVExtFunctionReplaceKind, // 10
+        MSVExtFunctionReplaceKind,
         MSVExtAddConditionKind,
         MSVExtReplaceFunctionInConditionKind,
         MSVExtRemoveStmtKind,

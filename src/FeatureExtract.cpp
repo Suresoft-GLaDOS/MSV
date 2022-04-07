@@ -581,8 +581,25 @@ FeatureProductSetTy crossMappingProduct(const ValueToFeatureMapTy &m1, const Val
     return ret;
 }
 
-const int kind_m[] = {CondRepair, CondRepair, GuardRepair, GuardRepair,
-                    AddControlRepair, AddStmtRepair, ReplaceStmtRepair, ReplaceStmtRepair, AddStmtRepair,CondRepair,ReplaceStmtRepair,CondRepair,ReplaceStmtRepair,ReplaceStmtRepair};
+const int kind_m[] = {
+                        CondRepair, // TightenConditionKind
+                        CondRepair, // LoosenConditionKind
+                        GuardRepair, // GuardKind
+                        GuardRepair, // SpecialGuardKind
+                        AddControlRepair, // IfExitKind
+                        AddStmtRepair, // AddInitKind
+                        ReplaceStmtRepair, // ReplaceKind
+                        ReplaceStmtRepair,  // ReplaceStringKind
+                        AddStmtRepair, // ReplaceFunctionKind
+                        AddStmtRepair, // AddStmtKind
+                        AddStmtRepair, // AddStmtAndReplaceAtomKind
+                        AddStmtRepair, // AddIfStmtKind
+                        CondRepair, // ConditionKind
+                        ReplaceStmtRepair, // MSVExtFunctionReplaceKind
+                        CondRepair, // MSVExtAddConditionKind
+                        ReplaceStmtRepair, // MSVExtReplaceFunctionInConditionKind
+                        ReplaceStmtRepair // MSVExtRemoveStmtKind
+};
 
 FeatureSetTy extractRepairFeatures(const RepairCandidate &rc) {
     FeatureSetTy ret;

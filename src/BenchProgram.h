@@ -157,14 +157,50 @@ struct Switch{
         types[kind8.kind]=kind8;
 
         Kind kind9;
-        kind9.kind=RepairCandidate::CandidateKind::AddAndReplaceKind;
+        kind9.kind=RepairCandidate::CandidateKind::ReplaceFunctionKind;
         kind9.cases=std::vector<size_t>();
         types[kind9.kind]=kind9;
+
+        Kind kind91;
+        kind91.kind=RepairCandidate::CandidateKind::AddStmtKind;
+        kind91.cases=std::vector<size_t>();
+        types[kind91.kind]=kind91;
+
+        Kind kind92;
+        kind92.kind=RepairCandidate::CandidateKind::AddStmtAndReplaceAtomKind;
+        kind92.cases=std::vector<size_t>();
+        types[kind92.kind]=kind92;
+
+        Kind kind93;
+        kind93.kind=RepairCandidate::CandidateKind::AddIfStmtKind;
+        kind93.cases=std::vector<size_t>();
+        types[kind93.kind]=kind93;
 
         Kind kind10;
         kind10.kind=RepairCandidate::CandidateKind::ConditionKind;
         kind10.cases=std::vector<size_t>();
         types[kind10.kind]=kind10;
+
+        Kind kind101;
+        kind101.kind=RepairCandidate::CandidateKind::MSVExtFunctionReplaceKind;
+        kind101.cases=std::vector<size_t>();
+        types[kind101.kind]=kind101;
+
+        Kind kind102;
+        kind102.kind=RepairCandidate::CandidateKind::MSVExtAddConditionKind;
+        kind102.cases=std::vector<size_t>();
+        types[kind102.kind]=kind102;
+
+        Kind kind103;
+        kind103.kind=RepairCandidate::CandidateKind::MSVExtReplaceFunctionInConditionKind;
+        kind103.cases=std::vector<size_t>();
+        types[kind103.kind]=kind103;
+
+        Kind kind104;
+        kind104.kind=RepairCandidate::CandidateKind::MSVExtRemoveStmtKind;
+        kind104.cases=std::vector<size_t>();
+        types[kind104.kind]=kind104;
+
     }
 };
 struct Line{

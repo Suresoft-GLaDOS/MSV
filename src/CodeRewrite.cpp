@@ -357,6 +357,14 @@ std::string toString(RepairCandidate::CandidateKind kind){
             return "ReplaceKind";
         case RepairCandidate::ReplaceStringKind:
             return "ReplaceStringKind";
+        case RepairCandidate::ReplaceFunctionKind:
+            return "ReplaceFunctionKind";
+        case RepairCandidate::AddStmtKind:
+            return "AddStmtKind";
+        case RepairCandidate::AddStmtAndReplaceAtomKind:
+            return "AddStmtAndReplaceAtomKind";
+        case RepairCandidate::AddIfStmtKind:
+            return "AddIfStmtKind";
         case RepairCandidate::ConditionKind:
             return "ConditionKind";
         case RepairCandidate::MSVExtFunctionReplaceKind:
@@ -368,7 +376,7 @@ std::string toString(RepairCandidate::CandidateKind kind){
         case RepairCandidate::MSVExtRemoveStmtKind:
             return "MSVExtRemoveStmtKind";
         default:
-            return "AddAndReplaceKind";
+            return "TerribleKind";
     }
 }
 std::string removeComment(std::string code){
@@ -931,7 +939,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 }
 
                 std::string funcCall=getFunctionCall(currentBody);
-                if (funcCall!=origFunc && (currentBody.find("//AddAndReplaceKind")!=std::string::npos || currentBody.find("//MSVExtFunctionReplaceKind")!=std::string::npos)){
+                if (funcCall!=origFunc && (currentBody.find("//ReplaceFunctionKind")!=std::string::npos || currentBody.find("//MSVExtFunctionReplaceKind")!=std::string::npos)){
                     newFuncs[case_count]=funcCall;
                 }
             }

@@ -197,7 +197,10 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
             fprintf(fout, "Rank %lu", cnt);
             if (PrintBlowupInfo.getValue()) {
                 if (candidate.kind != RepairCandidate::AddInitKind &&
-                        candidate.kind != RepairCandidate::AddAndReplaceKind &&
+                        candidate.kind != RepairCandidate::ReplaceFunctionKind &&
+                        candidate.kind != RepairCandidate::AddStmtKind &&
+                        candidate.kind != RepairCandidate::AddStmtAndReplaceAtomKind &&
+                        candidate.kind != RepairCandidate::AddIfStmtKind &&
                         candidate.kind != RepairCandidate::ReplaceKind) {
                     std::set<Expr*> atoms = candidate.getCandidateAtoms();
                     blowup_cnt +=  atoms.size() * 2 - 1;
