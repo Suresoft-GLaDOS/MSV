@@ -19,9 +19,7 @@ public:
 
 public:
 
-    virtual std::vector<SourcePositionTy> getCandidateLocations() {
-        return result;
-    }
+    virtual std::vector<SourcePositionTy> getCandidateLocations();
 
     virtual void printResult(const std::string &outfile);
 

@@ -38,7 +38,7 @@ if __name__=="__main__":
             paraj = int(a)
 
     if (len(args) < 1) or (print_usage):
-        print("Usage: openssl-build.py <directory> [-d src_file | -l] [-h]")
+        print("Usage: libchewing-build.py <directory> [-d src_file | -l] [-h]")
         exit(0)
 
     out_dir = args[0]
@@ -52,7 +52,12 @@ if __name__=="__main__":
     orig_dir=getcwd()
     chdir(out_dir)
     if not compile_only:
-        result=subprocess.run(['./config'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        result=subprocess.run(['./autogen.sh'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        if result.returncode != 0:
+            print(result.stderr.decode('utf-8'))
+            exit(1)
+
+        result=subprocess.run(['./configure'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
         if result.returncode != 0:
             print(result.stderr.decode('utf-8'))
             exit(1)

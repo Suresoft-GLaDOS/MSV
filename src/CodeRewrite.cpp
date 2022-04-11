@@ -357,10 +357,26 @@ std::string toString(RepairCandidate::CandidateKind kind){
             return "ReplaceKind";
         case RepairCandidate::ReplaceStringKind:
             return "ReplaceStringKind";
+        case RepairCandidate::ReplaceFunctionKind:
+            return "ReplaceFunctionKind";
+        case RepairCandidate::AddStmtKind:
+            return "AddStmtKind";
+        case RepairCandidate::AddStmtAndReplaceAtomKind:
+            return "AddStmtAndReplaceAtomKind";
+        case RepairCandidate::AddIfStmtKind:
+            return "AddIfStmtKind";
         case RepairCandidate::ConditionKind:
             return "ConditionKind";
+        case RepairCandidate::MSVExtFunctionReplaceKind:
+            return "MSVExtFunctionReplaceKind";
+        case RepairCandidate::MSVExtAddConditionKind:
+            return "MSVExtAddConditionKind";
+        case RepairCandidate::MSVExtReplaceFunctionInConditionKind:
+            return "MSVExtReplaceFunctionInConditionKind";
+        case RepairCandidate::MSVExtRemoveStmtKind:
+            return "MSVExtRemoveStmtKind";
         default:
-            return "AddAndReplaceKind";
+            return "TerribleKind";
     }
 }
 std::string removeComment(std::string code){
@@ -457,6 +473,14 @@ std::pair<size_t,size_t> getConditionLocation(std::string ifCode){
     return std::pair<size_t,size_t>(start+nextLine,end+nextLine+1);
 }
 
+std::string getFunctionCall(std::string orig){
+    size_t finishLoc=orig.find('(');
+    if (finishLoc!=std::string::npos){
+        return orig.substr(0,finishLoc);
+    }
+    return "";
+}
+
 std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, RepairCandidate>> > CodeRewriter::eliminateAllNewLoc(SourceContextManager &M,
         const std::vector<RepairCandidate> &rc,std::map<ASTLocTy,std::string> &original_str) {
     original_str.clear();
@@ -530,7 +554,7 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
 
             if (rc[j].actions[i].kind == RepairAction::ReplaceMutationKind){
                 std::string newStmt="//"+toString(rc[j].kind)+"\n";
-                if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind || rc[j].kind==RepairCandidate::ConditionKind){
+                if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind || rc[j].kind==RepairCandidate::ConditionKind || rc[j].kind==RepairCandidate::MSVExtReplaceFunctionInConditionKind){
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                         newStmt += ";\n";
@@ -645,6 +669,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         body+="int __choose"+std::to_string(counter)+" = __choose(\"__SWITCH"+std::to_string(counter)+"\");\n";
         body+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
         case_count++;
+        std::vector<std::string> patches;
 
         for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[currentIndex]][NormalInsert].begin();
                 patch_it!=res1[currentCandidate[currentIndex]][NormalInsert].end();patch_it++){
@@ -684,6 +709,13 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
                 varSizes[std::make_pair(counter,case_count)]=varCount;
             }
+
+            if (originalLoc.count(counter)==0){
+                size_t begin_line=manager.getExpansionLineNumber(patch_it->second.original->getBeginLoc());
+                size_t begin_col=manager.getExpansionColumnNumber(patch_it->second.original->getBeginLoc())-2;
+                originalLoc[counter]=std::make_pair(std::make_pair(begin_line,begin_col),std::make_pair(begin_line,begin_col));
+            }
+            patches.push_back(stmtToString(*ctxt,(Stmt *)patch_it->second.actions[0].ast_node));
             if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
             std::vector<double> finalScore;
             finalScore.clear();
@@ -713,6 +745,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         switchLoc[loc].push_back(counter);
         switchLine[counter]=currentLine;
         lineObject.switches.push_back(switchObject);
+        patchCodes[counter]=patches;
         counter++;
     }
 
@@ -739,6 +772,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             if (pos==std::string::npos) break;
             newStmt.insert(pos+1,"\n\t\t\t");
         }
+        std::vector<std::string> patches;
 
         body+="{\nint __temp"+std::to_string(counter)+"="+newStmt+";\n";
         body+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
@@ -772,6 +806,23 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
                 varSizes[std::make_pair(counter,case_count)]=varCount;
             }
+
+            if (originalLoc.count(counter)==0){
+                size_t begin_line=manager.getExpansionLineNumber(patch_it->second.original->getBeginLoc());
+                size_t begin_col=manager.getExpansionColumnNumber(patch_it->second.original->getBeginLoc());
+                size_t end_line=manager.getExpansionLineNumber(patch_it->second.original->getEndLoc());
+                size_t end_col=manager.getExpansionColumnNumber(patch_it->second.original->getEndLoc());
+                if (patch_it->second.original->getBeginLoc().isMacroID()){
+                    CharSourceRange range=manager.getExpansionRange(patch_it->second.original->getBeginLoc());
+                    begin_line=manager.getExpansionLineNumber(range.getBegin());
+                    begin_col=manager.getExpansionColumnNumber(range.getBegin());
+                    end_line=manager.getExpansionLineNumber(range.getEnd());
+                    end_col=manager.getExpansionColumnNumber(range.getEnd());
+                }
+                originalLoc[counter]=std::make_pair(std::make_pair(begin_line,begin_col),std::make_pair(end_line,end_col));
+            }
+            patches.push_back(stmtToString(*ctxt,(Stmt *)patch_it->second.actions[0].ast_node));
+
             if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
             std::vector<double> finalScore;
             finalScore.clear();
@@ -801,6 +852,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         switchLoc[loc].push_back(counter);
         switchLine[counter]=currentLine;
         lineObject.switches.push_back(switchObject);
+        patchCodes[counter]=patches;
         counter++;
     }
 
@@ -852,6 +904,9 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         body+=origBody;
         body+="\n}\n";
         case_count++;
+        std::string origFunc="";
+        std::map<size_t,std::string> newFuncs;
+        std::vector<std::string> patches;
 
         for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[indexBackup]][NormalReplace].begin();
                 patch_it!=res1[currentCandidate[indexBackup]][NormalReplace].end();patch_it++){
@@ -871,6 +926,23 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             patchTypes[currentPatch]=toString(patch_it->second.kind);
             macroCode[index]=currentBody;
             switchObject.types[patch_it->second.kind].cases.push_back(case_count);
+            if (CallExpr::classof(patch_it->second.original) && CallExpr::classof((Stmt *)patch_it->second.actions[0].ast_node)){
+                if (origFunc==""){
+                    CallExpr *expr=llvm::dyn_cast<CallExpr>(patch_it->second.original);
+                    ImplicitCastExpr *cast=llvm::dyn_cast<ImplicitCastExpr>(expr->getCallee());
+                    if (cast!=NULL){
+                        DeclRefExpr *decl=llvm::dyn_cast<DeclRefExpr>(cast->getSubExpr());
+                        if (decl!=NULL){
+                            origFunc=decl->getDecl()->getNameAsString();
+                        }
+                    }
+                }
+
+                std::string funcCall=getFunctionCall(currentBody);
+                if (funcCall!=origFunc && (currentBody.find("//ReplaceFunctionKind")!=std::string::npos || currentBody.find("//MSVExtFunctionReplaceKind")!=std::string::npos)){
+                    newFuncs[case_count]=funcCall;
+                }
+            }
             if (currentBody.find("__is_neg")!=std::string::npos){
                 size_t location=currentBody.find("__is_neg");
                 size_t endLoc=currentBody.find(", ",location);
@@ -880,6 +952,23 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
                 varSizes[std::make_pair(counter,case_count)]=varCount;
             }
+
+            if (originalLoc.count(counter)==0){
+                size_t begin_line=manager.getExpansionLineNumber(patch_it->second.original->getBeginLoc());
+                size_t begin_col=manager.getExpansionColumnNumber(patch_it->second.original->getBeginLoc());
+                size_t end_line=manager.getExpansionLineNumber(patch_it->second.original->getEndLoc());
+                size_t end_col=manager.getExpansionColumnNumber(patch_it->second.original->getEndLoc());
+                if (patch_it->second.original->getBeginLoc().isMacroID()){
+                    CharSourceRange range=manager.getExpansionRange(patch_it->second.original->getBeginLoc());
+                    begin_line=manager.getExpansionLineNumber(range.getBegin());
+                    begin_col=manager.getExpansionColumnNumber(range.getBegin());
+                    end_line=manager.getExpansionLineNumber(range.getEnd());
+                    end_col=manager.getExpansionColumnNumber(range.getEnd());
+                }
+                originalLoc[counter]=std::make_pair(std::make_pair(begin_line,begin_col),std::make_pair(end_line,end_col));
+            }
+            patches.push_back(stmtToString(*ctxt,(Stmt *)patch_it->second.actions[0].ast_node));
+
             if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
             std::vector<double> finalScore;
             finalScore.clear();
@@ -909,6 +998,12 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         switchLoc[loc].push_back(counter);
         switchLine[counter]=currentLine;
         lineObject.switches.push_back(switchObject);
+        FunctionReplaceInfo funcInfo;
+        funcInfo.originalName=origFunc;
+        funcInfo.newName=newFuncs;
+        funcInfo.switchNum=counter;
+        funcReplace.push_back(funcInfo);
+        patchCodes[counter]=patches;
         counter++;
     }
     else{

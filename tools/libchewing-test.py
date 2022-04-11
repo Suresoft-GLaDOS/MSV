@@ -16,27 +16,45 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
-from sys import argv, stderr
-from os import rmdir, system,mkdir,chdir,getcwd,environ
-import getopt
-import shutil
+from sys import argv
+from os import rmdir, system, path, chdir, getcwd, environ,mkdir
 import subprocess
+import getopt
+import multiprocessing as mp
 
-def get_test_name(id):
-    list_process=subprocess.Popen('make list-tests',shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-    (list_out,list_err)=list_process.communicate()
-    list_out=list_out.decode('utf-8')
-    out_lines=list_out.splitlines()
-    for line in out_lines.copy():
-        if line[0:4]!='test':
-            out_lines.remove(line)
+TEST_CASES=[
+    'test-bopomofo',
+    'test-config',
+    'test-easy-symbol',
+    'test-error-handling',
+    'test-fullshape',
 
-    return out_lines[id-1]
+    'test-key2pho',
+    'test-keyboard',
+    'test-keyboardless',
+    'test-logger',
+    'test-mmap', # 10
+
+    'test-path',
+    'test-reset',
+    'test-regression',
+    'test-symbol',
+    'test-special-symbol',
+
+    'test-struct-size',
+    'test-userphrase',
+    'test-utf8'
+]
+def num2testcase( case ):
+    if case < 0 or case > len(TEST_CASES):
+        return 'nothing'
+    else:
+        return TEST_CASES[case]
 
 import psutil
 
 def run_test(testcase,id,timeout):
-    proc = subprocess.Popen(["make", "test",f'TESTS={testcase}'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    proc = subprocess.Popen(["make", "check",f'TESTS={testcase}'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     try:
         so,se=proc.communicate(timeout=timeout)
         if proc.returncode==0:
@@ -53,41 +71,46 @@ def run_test(testcase,id,timeout):
         proc.kill()
 
 if __name__ == "__main__":
-    if len(argv) < 4:
-        print ("Usage: openssl-test.py <src_dir> <test_dir> <work_dir> [cases]")
-        exit(1);
-
-    opts, args = getopt.getopt(argv[1:], "p:i:t:j:");
+    opts, args = getopt.getopt(argv[1:], "p:i:j:t:");
     profile_dir = "";
-    temp_dir="__temp_test"
+    temp_dir="my-test"
+    max_parallel=1
     timeout=None
-    max_cpu=1
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
-        elif o=='-i':
+        elif o=="-i":
             temp_dir=a
+        elif o=='-j':
+            max_parallel=int(a)
         elif o=='-t':
             timeout=int(a)
-        elif o=='-j':
-            max_cpu=int(a)
-    
-    orig_dir=getcwd()
 
     src_dir = args[0];
     test_dir = args[1];
     work_dir = args[2];
-    if profile_dir == "":
+
+    if (len(args) > 3):
+        ids = args[3:];
         cur_dir = src_dir;
-    else:
-        cur_dir = profile_dir;
+        if (profile_dir != ""):
+            cur_dir = profile_dir;
 
-    if len(args) > 3:
-        ids = args[3:]
-        chdir(cur_dir)
-        system(f'cp -rf {environ["MSV_PATH"]}/tools/openssl-helper.c {cur_dir}/test/testutil/tests.c')
+        ori_dir = getcwd();
+        chdir(cur_dir);
+        system(f'cp -rf {work_dir}/testhelper.c {cur_dir}/test/testhelper.c')
+
+        result=[]
+        pool=mp.Pool(max_parallel)
         for i in ids:
-            testcase=get_test_name(int(i))
+            testcase = num2testcase(int(i));
             run_test(testcase,int(i),timeout)
+            # result.append(pool.apply_async(run_test,(testcase,int(i),my_env,timeout,)))
 
-    chdir(orig_dir)
+        print();
+        pool.close()
+        pool.join()
+
+        chdir(ori_dir);
+
+

@@ -94,9 +94,16 @@ struct RepairCandidate {
         AddInitKind,
         ReplaceKind,
         ReplaceStringKind,
-        AddAndReplaceKind,
+        ReplaceFunctionKind,
+        AddStmtKind,
+        AddStmtAndReplaceAtomKind, // 10
+        AddIfStmtKind,
         ConditionKind,
-        AddVarMutation // 10
+        MSVExtFunctionReplaceKind,
+        MSVExtAddConditionKind,
+        MSVExtReplaceFunctionInConditionKind,
+        MSVExtRemoveStmtKind,
+        AddVarMutation
     } CandidateKind;
     CandidateKind kind;
     bool is_first; // start of a block? not including condition changes

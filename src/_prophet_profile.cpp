@@ -24,7 +24,7 @@
 #include <assert.h>
 #include <pthread.h>
 
-#define MAX_IDX 2048000
+#define MAX_IDX 200000000
 
 static unsigned long *M = 0;
 static unsigned long long *C = 0;

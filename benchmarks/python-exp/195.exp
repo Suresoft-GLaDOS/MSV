@@ -1,21 +1,2 @@
-out 1 == exp 1
-out 6 == exp 6
-out 1 == exp 1
-out 2 == exp 2
-out 2 == exp 2
-True
-out frozenset({1, 2, 3}) == exp frozenset({1, 2, 3})
-True
-out frozenset({'a', 'c', 'b'}) == exp frozenset({'a', 'c', 'b'})
-True
-out frozenset({1, None}) == exp frozenset({1, None})
-True
-out frozenset({(1, 2), 3, 4}) == exp frozenset({(1, 2), 3, 4})
-True
-out frozenset({1, 2, 3}) == exp frozenset({1, 2, 3})
-True
-True
-True
-True
-out 2 == exp 2
-True
+[1/1] test_peepholer
+1 test OK.

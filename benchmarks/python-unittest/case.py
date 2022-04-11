@@ -531,31 +531,28 @@ class TestCase(object):
         """Fail immediately, with the given message."""
         if "MSV_TMP_OUT" in os.environ:
             with open(os.environ["MSV_TMP_OUT"], "a") as f:
-                f.write("Fail!\n")
+                if msg is None:
+                    f.write("Fail!\n")
+                else:
+                    f.write("Fail: %s\n" % msg)
         raise self.failureException(msg)
 
     def assertFalse(self, expr, msg=None):
         """Check that the expression is false."""
-        if "MSV_TMP_OUT" in os.environ:
-            with open(os.environ["MSV_TMP_OUT"], "a") as f:
-                if expr:
-                    f.write("True\n")
-                else:
-                    f.write("False\n")
         if expr:
             msg = self._formatMessage(msg, "%s is not false" % safe_repr(expr))
+            if "MSV_TMP_OUT" in os.environ:
+                with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                    f.write(msg + "\n")
             raise self.failureException(msg)
 
     def assertTrue(self, expr, msg=None):
         """Check that the expression is true."""
-        if "MSV_TMP_OUT" in os.environ:
-            with open(os.environ["MSV_TMP_OUT"], "a") as f:
-                if expr:
-                    f.write("True\n")
-                else:
-                    f.write("False\n")
         if not expr:
             msg = self._formatMessage(msg, "%s is not true" % safe_repr(expr))
+            if "MSV_TMP_OUT" in os.environ:
+                with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                    f.write(msg + "\n")
             raise self.failureException(msg)
 
     def _formatMessage(self, msg, standardMsg):
@@ -674,9 +671,10 @@ class TestCase(object):
         """Fail if the two objects are unequal as determined by the '=='
            operator.
         """
-        if "MSV_TMP_OUT" in os.environ:
-            with open(os.environ["MSV_TMP_OUT"], "a") as f:
-                f.write("out " + str(first) + " == exp " + str(second) + "\n")
+        if first != second:
+            if "MSV_TMP_OUT" in os.environ:
+                with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                    f.write("out " + str(first) + " != exp " + str(second) + "\n")
         assertion_func = self._getAssertEqualityFunc(first, second)
         assertion_func(first, second, msg=msg)
 
@@ -684,12 +682,12 @@ class TestCase(object):
         """Fail if the two objects are equal as determined by the '=='
            operator.
         """
-        if "MSV_TMP_OUT" in os.environ:
-            with open(os.environ["MSV_TMP_OUT"], "a") as f:
-                f.write("out " + str(first) + " != exp " + str(second) + "\n")
         if not first != second:
             msg = self._formatMessage(msg, '%s == %s' % (safe_repr(first),
                                                           safe_repr(second)))
+            if "MSV_TMP_OUT" in os.environ:
+                with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                    f.write(msg + "\n")
             raise self.failureException(msg)
 
     def assertAlmostEqual(self, first, second, places=None, msg=None,
@@ -705,13 +703,13 @@ class TestCase(object):
            If the two objects compare equal then they will automatically
            compare almost equal.
         """
-        if "MSV_TMP_OUT" in os.environ:
-            with open(os.environ["MSV_TMP_OUT"], "a") as f:
-                f.write("out " + str(first) + " == exp " + str(second) + "\n")
         if first == second:
             # shortcut
             return
         if delta is not None and places is not None:
+            if "MSV_TMP_OUT" in os.environ:
+                with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                    f.write("specify delta or places not both\n")
             raise TypeError("specify delta or places not both")
 
         if delta is not None:
@@ -732,6 +730,9 @@ class TestCase(object):
                                                           safe_repr(second),
                                                           places)
         msg = self._formatMessage(msg, standardMsg)
+        if "MSV_TMP_OUT" in os.environ:
+            with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                f.write(msg + "\n")
         raise self.failureException(msg)
 
     def assertNotAlmostEqual(self, first, second, places=None, msg=None,
@@ -746,10 +747,10 @@ class TestCase(object):
 
            Objects that are equal automatically fail.
         """
-        if "MSV_TMP_OUT" in os.environ:
-            with open(os.environ["MSV_TMP_OUT"], "a") as f:
-                f.write("out " + str(first) + " != exp " + str(second) + "\n")
         if delta is not None and places is not None:
+            if "MSV_TMP_OUT" in os.environ:
+                with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                    f.write("specify delta or places not both\n")
             raise TypeError("specify delta or places not both")
         if delta is not None:
             if not (first == second) and abs(first - second) > delta:
@@ -765,8 +766,10 @@ class TestCase(object):
             standardMsg = '%s == %s within %r places' % (safe_repr(first),
                                                          safe_repr(second),
                                                          places)
-
         msg = self._formatMessage(msg, standardMsg)
+        if "MSV_TMP_OUT" in os.environ:
+            with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                f.write(msg + "\n")
         raise self.failureException(msg)
 
 
@@ -787,9 +790,17 @@ class TestCase(object):
         if seq_type != None:
             seq_type_name = seq_type.__name__
             if not isinstance(seq1, seq_type):
+                if "MSV_TMP_OUT" in os.environ:
+                    with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                        f.write('First sequence is not a %s: %s\n'
+                            % (seq_type_name, safe_repr(seq1)))
                 raise self.failureException('First sequence is not a %s: %s'
                                         % (seq_type_name, safe_repr(seq1)))
             if not isinstance(seq2, seq_type):
+                if "MSV_TMP_OUT" in os.environ:
+                    with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                        f.write('Second sequence is not a %s: %s\n'
+                                % (seq_type_name, safe_repr(seq2)))
                 raise self.failureException('Second sequence is not a %s: %s'
                                         % (seq_type_name, safe_repr(seq2)))
         else:
@@ -944,6 +955,9 @@ class TestCase(object):
                 lines.append(repr(item))
 
         standardMsg = '\n'.join(lines)
+        # if "MSV_TMP_OUT" in os.environ:
+        #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+        #         f.write(msg + "\n")
         self.fail(self._formatMessage(msg, standardMsg))
 
     def assertIn(self, member, container, msg=None):
@@ -951,6 +965,9 @@ class TestCase(object):
         if member not in container:
             standardMsg = '%s not found in %s' % (safe_repr(member),
                                                   safe_repr(container))
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertNotIn(self, member, container, msg=None):
@@ -958,6 +975,9 @@ class TestCase(object):
         if member in container:
             standardMsg = '%s unexpectedly found in %s' % (safe_repr(member),
                                                         safe_repr(container))
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertIs(self, expr1, expr2, msg=None):
@@ -965,12 +985,18 @@ class TestCase(object):
         if expr1 is not expr2:
             standardMsg = '%s is not %s' % (safe_repr(expr1),
                                              safe_repr(expr2))
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertIsNot(self, expr1, expr2, msg=None):
         """Just like self.assertTrue(a is not b), but with a nicer default message."""
         if expr1 is expr2:
             standardMsg = 'unexpectedly identical: %s' % (safe_repr(expr1),)
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertDictEqual(self, d1, d2, msg=None):
@@ -983,6 +1009,9 @@ class TestCase(object):
                            pprint.pformat(d1).splitlines(),
                            pprint.pformat(d2).splitlines())))
             standardMsg = self._truncateMessage(standardMsg, diff)
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertDictContainsSubset(self, subset, dictionary, msg=None):
@@ -1010,7 +1039,9 @@ class TestCase(object):
             if standardMsg:
                 standardMsg += '; '
             standardMsg += 'Mismatched values: %s' % ','.join(mismatched)
-
+        # if "MSV_TMP_OUT" in os.environ:
+        #         with open(os.environ["MSV_TMP_OUT"], "a") as f:
+        #             f.write(standardMsg + "\n")
         self.fail(self._formatMessage(msg, standardMsg))
 
 
@@ -1045,6 +1076,9 @@ class TestCase(object):
             diffMsg = '\n'.join(lines)
             standardMsg = self._truncateMessage(standardMsg, diffMsg)
             msg = self._formatMessage(msg, standardMsg)
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(msg + "\n")
             self.fail(msg)
 
     def assertMultiLineEqual(self, first, second, msg=None):
@@ -1066,42 +1100,63 @@ class TestCase(object):
                                         safe_repr(second, True))
             diff = '\n' + ''.join(difflib.ndiff(firstlines, secondlines))
             standardMsg = self._truncateMessage(standardMsg, diff)
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertLess(self, a, b, msg=None):
         """Just like self.assertTrue(a < b), but with a nicer default message."""
         if not a < b:
             standardMsg = '%s not less than %s' % (safe_repr(a), safe_repr(b))
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertLessEqual(self, a, b, msg=None):
         """Just like self.assertTrue(a <= b), but with a nicer default message."""
         if not a <= b:
             standardMsg = '%s not less than or equal to %s' % (safe_repr(a), safe_repr(b))
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertGreater(self, a, b, msg=None):
         """Just like self.assertTrue(a > b), but with a nicer default message."""
         if not a > b:
             standardMsg = '%s not greater than %s' % (safe_repr(a), safe_repr(b))
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertGreaterEqual(self, a, b, msg=None):
         """Just like self.assertTrue(a >= b), but with a nicer default message."""
         if not a >= b:
             standardMsg = '%s not greater than or equal to %s' % (safe_repr(a), safe_repr(b))
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertIsNone(self, obj, msg=None):
         """Same as self.assertTrue(obj is None), with a nicer default message."""
         if obj is not None:
             standardMsg = '%s is not None' % (safe_repr(obj),)
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertIsNotNone(self, obj, msg=None):
         """Included for symmetry with assertIsNone."""
         if obj is None:
             standardMsg = 'unexpectedly None'
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertIsInstance(self, obj, cls, msg=None):
@@ -1109,12 +1164,18 @@ class TestCase(object):
         default message."""
         if not isinstance(obj, cls):
             standardMsg = '%s is not an instance of %r' % (safe_repr(obj), cls)
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertNotIsInstance(self, obj, cls, msg=None):
         """Included for symmetry with assertIsInstance."""
         if isinstance(obj, cls):
             standardMsg = '%s is an instance of %r' % (safe_repr(obj), cls)
+            # if "MSV_TMP_OUT" in os.environ:
+            #     with open(os.environ["MSV_TMP_OUT"], "a") as f:
+            #         f.write(standardMsg + "\n")
             self.fail(self._formatMessage(msg, standardMsg))
 
     def assertRaisesRegex(self, expected_exception, expected_regex,
@@ -1165,6 +1226,9 @@ class TestCase(object):
         if not expected_regex.search(text):
             msg = msg or "Regex didn't match"
             msg = '%s: %r not found in %r' % (msg, expected_regex.pattern, text)
+            if "MSV_TMP_OUT" in os.environ:
+                with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                    f.write(msg + "\n")
             raise self.failureException(msg)
 
     def assertNotRegex(self, text, unexpected_regex, msg=None):
@@ -1178,6 +1242,9 @@ class TestCase(object):
                                                text[match.start():match.end()],
                                                unexpected_regex.pattern,
                                                text)
+            if "MSV_TMP_OUT" in os.environ:
+                with open(os.environ["MSV_TMP_OUT"], "a") as f:
+                    f.write(msg + "\n")
             raise self.failureException(msg)
 
 

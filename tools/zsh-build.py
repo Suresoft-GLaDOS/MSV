@@ -38,7 +38,7 @@ if __name__=="__main__":
             paraj = int(a)
 
     if (len(args) < 1) or (print_usage):
-        print("Usage: openssl-build.py <directory> [-d src_file | -l] [-h]")
+        print("Usage: zsh-build.py <directory> [-d src_file | -l] [-h]")
         exit(0)
 
     out_dir = args[0]
@@ -52,7 +52,27 @@ if __name__=="__main__":
     orig_dir=getcwd()
     chdir(out_dir)
     if not compile_only:
-        result=subprocess.run(['./config'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        result=subprocess.run(['./Util/preconfig'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        if result.returncode != 0:
+            print(result.stderr.decode('utf-8'))
+            exit(1)
+
+        result=subprocess.run(['./configure','--with-tcsetpgrp'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        if result.returncode != 0:
+            print(result.stderr.decode('utf-8'))
+            exit(1)
+
+        result=subprocess.run(['sed','-i','/^name=zsh\\/zpty/ s/link=no/link=static/','config.modules'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+        if result.returncode != 0:
+            print(result.stderr.decode('utf-8'))
+            exit(1)
+
+        result=subprocess.run(['make','clean'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+        if result.returncode != 0:
+            print(result.stderr.decode('utf-8'))
+            exit(1)
+
+        result=subprocess.run(['sed','-i','s|sleep 1;||','Test/Makefile'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
         if result.returncode != 0:
             print(result.stderr.decode('utf-8'))
             exit(1)

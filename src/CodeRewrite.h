@@ -33,6 +33,7 @@ bool canMerge(const CodeSegTy &codeSegs, const CodeSegTy &patches);
 NewCodeMapTy combineCode(const CodeSegTy &codeSegs, const CodeSegTy &patch);
 
 class CodeRewriter {
+private:
     typedef enum{
         NormalReplace=0,
         ConditionSynthesize,
@@ -73,6 +74,9 @@ public:
     std::vector<File> rules;
     std::map<size_t,std::map<size_t,std::vector<double>>> patchScores;
     std::map<std::string,std::map<std::string,std::pair<size_t,size_t>>> funcLocation;
+    std::vector<FunctionReplaceInfo> funcReplace;
+    std::map<size_t,std::pair<std::pair<size_t,size_t>,std::pair<size_t,size_t>>> originalLoc;
+    std::map<size_t,std::vector<std::string>> patchCodes;
     CodeRewriter(SourceContextManager &M, const std::vector<RepairCandidate> &rc, std::vector<std::set<ExprFillInfo> *> *pefi,
             std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc=std::map<std::string,std::map<clang::FunctionDecl*,std::pair<unsigned,unsigned>>>(),std::string work_dir="",
             std::map<void*,std::vector<double>> candScores=std::map<void*,std::vector<double>>());

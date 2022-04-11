@@ -33,6 +33,12 @@ class ConfigFile;
 
 class LocationIndex;
 
+struct FunctionReplaceInfo{
+    std::string originalName;
+    std::map<size_t,std::string> newName;
+    size_t switchNum;
+};
+
 class TestCache {
     std::string cache_file;
     std::map<std::string, bool> cache;
@@ -151,14 +157,50 @@ struct Switch{
         types[kind8.kind]=kind8;
 
         Kind kind9;
-        kind9.kind=RepairCandidate::CandidateKind::AddAndReplaceKind;
+        kind9.kind=RepairCandidate::CandidateKind::ReplaceFunctionKind;
         kind9.cases=std::vector<size_t>();
         types[kind9.kind]=kind9;
+
+        Kind kind91;
+        kind91.kind=RepairCandidate::CandidateKind::AddStmtKind;
+        kind91.cases=std::vector<size_t>();
+        types[kind91.kind]=kind91;
+
+        Kind kind92;
+        kind92.kind=RepairCandidate::CandidateKind::AddStmtAndReplaceAtomKind;
+        kind92.cases=std::vector<size_t>();
+        types[kind92.kind]=kind92;
+
+        Kind kind93;
+        kind93.kind=RepairCandidate::CandidateKind::AddIfStmtKind;
+        kind93.cases=std::vector<size_t>();
+        types[kind93.kind]=kind93;
 
         Kind kind10;
         kind10.kind=RepairCandidate::CandidateKind::ConditionKind;
         kind10.cases=std::vector<size_t>();
         types[kind10.kind]=kind10;
+
+        Kind kind101;
+        kind101.kind=RepairCandidate::CandidateKind::MSVExtFunctionReplaceKind;
+        kind101.cases=std::vector<size_t>();
+        types[kind101.kind]=kind101;
+
+        Kind kind102;
+        kind102.kind=RepairCandidate::CandidateKind::MSVExtAddConditionKind;
+        kind102.cases=std::vector<size_t>();
+        types[kind102.kind]=kind102;
+
+        Kind kind103;
+        kind103.kind=RepairCandidate::CandidateKind::MSVExtReplaceFunctionInConditionKind;
+        kind103.cases=std::vector<size_t>();
+        types[kind103.kind]=kind103;
+
+        Kind kind104;
+        kind104.kind=RepairCandidate::CandidateKind::MSVExtRemoveStmtKind;
+        kind104.cases=std::vector<size_t>();
+        types[kind104.kind]=kind104;
+
     }
 };
 struct Line{
@@ -183,12 +225,13 @@ public:
 private:
     class SwitchInfo{
         std::string fileName;
+        std::string funcFileName;
 
     public:
         std::map<size_t,size_t> caseNum;
         std::vector<std::list<size_t>> switchCluster;
         // std::map<int,std::list<std::list<int>>> caseCluster;
-        std::set<std::pair<double,std::pair<std::string,size_t>>> scoreInfo;
+        std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>> scoreInfo;
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
         std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
         std::vector<File> infos;
@@ -196,8 +239,11 @@ private:
 
         std::map<std::pair<size_t,size_t>,size_t> varSizes;
         std::map<std::string,std::map<std::string,std::pair<size_t,size_t>>> funcLocations;
+        std::vector<FunctionReplaceInfo> funcReplaceInfos;
+        std::map<size_t,std::pair<std::pair<size_t,size_t>,std::pair<size_t,size_t>>> originalLoc;
+        std::map<size_t,std::vector<std::string>> patchCodes;
     public:
-        SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
+        SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json"),funcFileName(workdir+"/func-info.json") {}
         void save(){
             cJSON *json=cJSON_CreateObject();
 
@@ -226,14 +272,38 @@ private:
 
             // Save FL scores
             cJSON *scoreArray=cJSON_CreateArray();
-            for (std::set<std::pair<double,std::pair<std::string,size_t>>>::reverse_iterator it=scoreInfo.rbegin();it!=scoreInfo.rend();it++){
+            for (std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>>::iterator it=scoreInfo.begin();it!=scoreInfo.end();it++){
                 cJSON *localize=cJSON_CreateObject();
-                cJSON_AddStringToObject(localize,"file",it->second.first.c_str());
-                cJSON_AddNumberToObject(localize,"line",it->second.second);
-                cJSON_AddNumberToObject(localize,"score",round_score(it->first));
+                cJSON_AddStringToObject(localize,"file",it->first.first.c_str());
+                cJSON_AddNumberToObject(localize,"line",it->first.second);
+                cJSON_AddNumberToObject(localize,"primary_score",it->second.first);
+                cJSON_AddNumberToObject(localize,"second_score",it->second.second);
                 cJSON_AddItemToArray(scoreArray,localize);
             }
             cJSON_AddItemToObject(json,std::string("priority").c_str(),scoreArray);
+
+            // Save function infos
+            cJSON *funcArray=cJSON_CreateArray();
+            for (size_t i=0;i<funcReplaceInfos.size();i++){
+                cJSON *funcInfo=cJSON_CreateObject();
+                cJSON_AddStringToObject(funcInfo,"original_name",funcReplaceInfos[i].originalName.c_str());
+                cJSON_AddNumberToObject(funcInfo,"switch_number",funcReplaceInfos[i].switchNum);
+
+                cJSON *newFuncArray=cJSON_CreateArray();
+                for (std::map<size_t,std::string>::iterator it=funcReplaceInfos[i].newName.begin();it!=funcReplaceInfos[i].newName.end();it++){
+                    cJSON *newFunc=cJSON_CreateObject();
+                    cJSON_AddStringToObject(newFunc,"new_name",it->second.c_str());
+                    cJSON_AddNumberToObject(newFunc,"case_number",it->first);
+                    cJSON_AddItemToArray(newFuncArray,newFunc);
+                }
+                cJSON_AddItemToObject(funcInfo,"new_names",newFuncArray);
+                cJSON_AddItemToArray(funcArray,funcInfo);
+            }
+            char *fileString=cJSON_Print(funcArray);
+            std::ofstream ffout(funcFileName,std::ofstream::out);
+            ffout << fileString << "\n";
+            ffout.close();
+            cJSON_Delete(funcArray);
 
             // Save mutation infos
             cJSON *mutationArray=cJSON_CreateArray();
@@ -292,6 +362,16 @@ private:
                             cJSON_AddItemToArray(typeArray,caseArray);
                         }
                         cJSON_AddItemToObject(switchObject,"types",typeArray);
+                        cJSON_AddNumberToObject(switchObject,"begin_line",originalLoc[currentSwitch.switchNum].first.first);
+                        cJSON_AddNumberToObject(switchObject,"begin_column",originalLoc[currentSwitch.switchNum].first.second);
+                        cJSON_AddNumberToObject(switchObject,"end_line",originalLoc[currentSwitch.switchNum].second.first);
+                        cJSON_AddNumberToObject(switchObject,"end_column",originalLoc[currentSwitch.switchNum].second.second);
+
+                        cJSON *patchArray=cJSON_CreateArray();
+                        for (size_t j=0;j<patchCodes[currentSwitch.switchNum].size();j++){
+                            cJSON_AddItemToArray(patchArray,cJSON_CreateString(patchCodes[currentSwitch.switchNum][j].c_str()));
+                        }
+                        cJSON_AddItemToObject(switchObject,"patch_codes",patchArray);
 
                         // Add Prophet score
                         cJSON *prophetScoreArray=cJSON_CreateArray();
@@ -431,6 +511,7 @@ private:
 public:
     bool isCondition;
     bool skip_profile;
+    bool skip_build;
     // We create the work dir from a configuration file, and we will put workdir
     // in the workDirPath path. If it is empty string, we will create a work dir
     // with an empty directory
