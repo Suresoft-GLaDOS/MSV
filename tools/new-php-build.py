@@ -77,6 +77,7 @@ if __name__=="__main__":
 
         if not compile_only:
             subprocess.run(['make','clean'])
+            subprocess.run(['git','clean','-f','-d','-e','*.phpt'])
             subprocess.run(['./buildconf','--force'])
             p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build","-enable-zip"], env = my_env)
             (out, err) = p.communicate()
