@@ -21,6 +21,7 @@
 #include "BenchProgram.h"
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/Support/CommandLine.h"
+#include "cJSON/cJSON.h"
 #include <map>
 #include <queue>
 #include <fstream>
@@ -111,6 +112,32 @@ std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileRes
     return M;
 }
 
+void saveExecutedLocations(BenchProgram &prog,std::map<unsigned long,std::vector<SourcePositionTy>> locations){
+    std::string workdir=prog.getWorkdir();
+    cJSON *rootArray=cJSON_CreateArray();
+
+    for (std::map<unsigned long,std::vector<SourcePositionTy>>::iterator it=locations.begin();it!=locations.end();it++){
+        cJSON *locationObject=cJSON_CreateObject();
+        cJSON_AddNumberToObject(locationObject,"test",it->first);
+
+        cJSON *locationArray=cJSON_CreateArray();
+        for (size_t i=0;i<it->second.size();i++){
+            cJSON *location=cJSON_CreateObject();
+            cJSON_AddStringToObject(location,"file",it->second[i].expFilename.c_str());
+            cJSON_AddNumberToObject(location,"line",it->second[i].expLine);
+            cJSON_AddItemToArray(locationArray,location);
+        }
+        cJSON_AddItemToObject(locationObject,"locations",locationArray);
+        cJSON_AddItemToArray(rootArray,locationObject);
+    }
+
+    char *str=cJSON_Print(rootArray);
+    std::ofstream fout(workdir+"/test-info.json",std::ofstream::out);
+    fout << str << "\n";
+    fout.close();
+    cJSON_Delete(rootArray);
+}
+
 void clearTmpDirectory() {
     int ret = system("rm -rf /tmp/__* /tmp/pclang*");
     assert(ret == 0);
@@ -160,6 +187,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
 
     unsigned long min_id = 1000000;
     unsigned long max_id = 0;
+    std::map<unsigned long, std::vector<SourcePositionTy>> executed_locs;
     for (TestCaseSetTy::const_iterator it = negative_cases.begin(); it != negative_cases.end(); ++it) {
         llvm::errs() << "Neg Processing: "<< *it << "\n";
         ProfileLocationMapTy res;
@@ -207,10 +235,14 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
             fprintf(stderr, "Profile version failed on this, maybe because of timeout due to overhead!\n");
             continue;
         }
+        std::vector<SourcePositionTy> executed_location;
         for (ProfileLocationMapTy::iterator iit = res.begin(); iit != res.end(); ++iit) {
             positive_mark[iit->first]++;//+= iit->second.first;
+            executed_location.push_back(iit->first);
         }
+        executed_locs[*it]=executed_location;
     }
+    saveExecutedLocations(P,executed_locs);
 
     typedef std::priority_queue<std::pair<std::pair<long long, long long>, std::pair<SourcePositionTy, std::string> > >
         PriorQueueTy;
