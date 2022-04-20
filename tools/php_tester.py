@@ -254,7 +254,7 @@ def output_test(id,temp_dir):
     return distance(exp_data,out_data)
 
 def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
-    if i==20 or i=='20' or i==6947 or i=='6947' or i==2246 or i=='2246' or i==7369 or i=='7369' or i==9710 or i=='9710' or i==10416 or i=='10416':
+    if i==20 or i=='20' or i==6947 or i=='6947' or i==2246 or i=='2246' or i==7369 or i=='7369' or i==9710 or i=='9710' or i==10416 or i=='10416' or i==7036 or i=='7036':
         return (None,0,'','')
     # Remove randomly failed test
     elif int(i)==8940 or int(i)==6895 or int(i)==8677 or int(i)==8723 or i==9994 or i=='9994' or i==9962 or i=='9962' or i==10059 or i=='10059' or i==10061 or i=='10061' or i==9971 or i=='9971' or i==10198 or i=='10198' or i==10294 or i=='10294' or i==10072 or i=='10072':

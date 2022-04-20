@@ -94,6 +94,8 @@ llvm::cl::opt<bool> SkipProfile("skip-profile",
         llvm::cl::desc("Skip adding profile writer"),llvm::cl::init(false));
 llvm::cl::opt<bool> SkipBuild("skip-meta-program-build",
         llvm::cl::desc("Skip building meta program"),llvm::cl::init(false));
+llvm::cl::opt<bool> ForceFL("force-fl",
+        llvm::cl::desc("Force to run FL, ignore cache FL scores"),llvm::cl::init(false));
 
 int main(int argc, char* argv[]) {
     llvm::cl::ParseCommandLineOptions(argc, argv);
@@ -167,7 +169,7 @@ int main(int argc, char* argv[]) {
     if (localizer == "")
         L = new NaiveErrorLocalizer(*P);
     else if (localizer == "profile") {
-        if (existFile(P->getLocalizationResultFilename()))
+        if (existFile(P->getLocalizationResultFilename()) && !ForceFL.getValue())
             L = new ProfileErrorLocalizer(*P, P->getLocalizationResultFilename());
         else if (SkipProfileBuild)
             L = new ProfileErrorLocalizer(*P, bugged_file, true);

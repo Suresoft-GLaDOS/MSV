@@ -72,13 +72,16 @@ if __name__=="__main__":
         chdir(out_dir)
         my_env = environ
         my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"]
-        my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"]
+        # my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"]
         my_env["PATH"] = php_deps_dir + "/flex-2.5.4-build/bin:" + my_env["PATH"]
 
         if not compile_only:
             subprocess.run(['make','clean'])
             subprocess.run(['git','clean','-f','-d','-e','*.phpt'])
-            subprocess.run(['./buildconf','--force'])
+            result=subprocess.run(['./buildconf','--force'])
+            if result.returncode != 0:
+                my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"]
+                result=subprocess.run(['./buildconf','--force'])
             p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build","-enable-zip"], env = my_env)
             (out, err) = p.communicate()
             subprocess.run(['make','clean'])
