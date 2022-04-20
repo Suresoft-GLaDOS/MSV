@@ -249,7 +249,8 @@ def output_test(id,temp_dir):
         out_data=out_file.read()
         out_file.close()
     
-    out_data=out_data.decode('utf-8','ignore')
+    if type(out_data)==bytes:
+        out_data=out_data.decode('utf-8','ignore')
     return distance(exp_data,out_data)
 
 def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
