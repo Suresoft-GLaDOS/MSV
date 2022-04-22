@@ -241,6 +241,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         cnt ++;
         if (!tmp) {
             fprintf(stderr, "Profile version failed on this, maybe because of timeout due to overhead!\n");
+            executed_locs[*it]=std::vector<SourcePositionTy>();
             continue;
         }
         std::vector<SourcePositionTy> executed_location;
