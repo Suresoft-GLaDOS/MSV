@@ -119,14 +119,14 @@ int main(int argc, char* argv[]) {
     BenchProgram *P;
     if (config_file_name != "") {
         P = new BenchProgram(config_file_name, run_work_dir,
-                InitOnly || NoCleanUp || (run_work_dir != ""));
+                InitOnly || NoCleanUp || (run_work_dir != ""),InitOnly.getValue());
         if (run_work_dir != "") {
             int ret = system((std::string("cp -f ") + config_file_name + " " + run_work_dir + "/repair.conf").c_str());
             assert( ret == 0);
         }
     }
     else{
-        P = new BenchProgram(run_work_dir);
+        P = new BenchProgram(run_work_dir,InitOnly.getValue());
     }
     if (SwitchCaseDebug.getValue()!=""){
         std::string switchCase=SwitchCaseDebug.getValue();

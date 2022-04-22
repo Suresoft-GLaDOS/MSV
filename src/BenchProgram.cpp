@@ -118,14 +118,14 @@ static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroS
 }
 
 BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
-        bool no_clean_up,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),failMacros(),
+        bool no_clean_up,bool init_only,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),failMacros(),
         caseNum(caseNum),switchInfo(workDirPath) {
-    Init(workDirPath, no_clean_up);
+    Init(workDirPath, no_clean_up,init_only);
 }
 
-BenchProgram::BenchProgram(const std::string &workDirPath,int switchId,int caseNum)
+BenchProgram::BenchProgram(const std::string &workDirPath,bool init_only,int switchId,int caseNum)
     : config(workDirPath + "/" + CONFIG_FILE_PATH),count(0),switchId(switchId),caseNum(caseNum),switchInfo(workDirPath),failMacros() {
-    Init(workDirPath, true);
+    Init(workDirPath, true,init_only);
 }
 
 ConfigFile* BenchProgram::getCurrentConfig() {
@@ -207,7 +207,7 @@ static void parseRevisionLog(const std::string& revision_file,
                            const std::string &build_cmd, const std::string &test_cmd,
                            const std::string &run_work_dir, bool using_ramfs,
                            bool no_clean_up, size_t case_timeout)*/
-void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
+void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool init_only)
 {
     compile_cnt = 0;
     test_cnt = 0;
@@ -269,35 +269,37 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
         // src_dirs.insert(std::make_pair("src", true));
 
         // If we just in middle of repair, we need to restore before we go on
-        std::ifstream fin((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ifstream::in);
-        if (fin.is_open()) {
-            std::string target_file;
-            char tmp[1000];
-            size_t cnt = 0;
-            int ret;
-            std::string cmd;
-            while (fin.getline(tmp, 1000)) {
-                target_file = tmp;
-                {
-                    std::ostringstream sout;
-                    sout << "cp -rf "  << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << src_dir << "/" << target_file;
-                    cmd = sout.str();
+        if (!init_only){
+            std::ifstream fin((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ifstream::in);
+            if (fin.is_open()) {
+                std::string target_file;
+                char tmp[1000];
+                size_t cnt = 0;
+                int ret;
+                std::string cmd;
+                while (fin.getline(tmp, 1000)) {
+                    target_file = tmp;
+                    {
+                        std::ostringstream sout;
+                        sout << "cp -rf "  << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << src_dir << "/" << target_file;
+                        cmd = sout.str();
+                    }
+                    ret = system(cmd.c_str());
+                    assert( ret == 0);
+                    {
+                        std::ostringstream sout;
+                        sout << "rm -rf " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
+                        cmd = sout.str();
+                    }
+                    ret = system(cmd.c_str());
+                    assert( ret == 0);
+                    cnt++;
                 }
+                fin.close();
+                cmd = "rm -rf " + work_dir + "/" + SOURCECODE_BACKUP_LOG;
                 ret = system(cmd.c_str());
                 assert( ret == 0);
-                {
-                    std::ostringstream sout;
-                    sout << "rm -rf " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
-                    cmd = sout.str();
-                }
-                ret = system(cmd.c_str());
-                assert( ret == 0);
-                cnt++;
             }
-            fin.close();
-            cmd = "rm -rf " + work_dir + "/" + SOURCECODE_BACKUP_LOG;
-            ret = system(cmd.c_str());
-            assert( ret == 0);
         }
     }
 

@@ -494,7 +494,7 @@ private:
     std::map<std::string,std::string> build_dir_save;
     std::map<std::string,std::vector<std::string>> build_args_save;
 
-    void Init(const std::string &workDirPath, bool no_clean_up);
+    void Init(const std::string &workDirPath, bool no_clean_up,bool init_only=false);
 
     bool buildFull(const std::string &subDir, time_t timeout_limit = 0, bool force_reconf = false,std::vector<long long> compile_macro=std::vector<long long>(),std::vector<std::string> files=std::vector<std::string>(),
                 std::vector<long long> writer_macro=std::vector<long long>());
@@ -516,9 +516,9 @@ public:
     // in the workDirPath path. If it is empty string, we will create a work dir
     // with an empty directory
     BenchProgram(const std::string &configFileName, const std::string &workDirPath,
-            bool no_clean_up = false,int switchId=-1,int caseNum=-1);
+            bool no_clean_up = false,bool init_only=false,int switchId=-1,int caseNum=-1);
 
-    BenchProgram(const std::string &workDirPath,int switchId=-1,int caseNum=-1);
+    BenchProgram(const std::string &workDirPath,bool init_only=false,int switchId=-1,int caseNum=-1);
 
     TestCaseSetTy getPositiveCaseSet() {
         return positive_cases;
