@@ -58,7 +58,8 @@ double computeScores(SourceContextManager &M, FeatureParameter *FP,
         double best = -1e+20;
         for (std::set<clang::Expr*>::iterator it = atoms.begin(); it != atoms.end(); ++it) {
             FeatureVector vec = EX.extractFeature(M, rc, *it);
-            double res = FP->dotProduct(vec) + rc.score;
+            double scoreB=FP->dotProduct(vec);
+            double res = scoreB + rc.score;
             // we are going to nuke the score if random is set
             if (random)
                 res = rand();

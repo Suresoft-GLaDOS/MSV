@@ -40,6 +40,8 @@ using namespace clang;
 #define LOC2_LIMIT 20
 
 extern llvm::cl::opt<bool> ForCPP;
+llvm::cl::opt<bool> NoWriteFLResult("no-save-fl-result", llvm::cl::init(false),
+        llvm::cl::desc("Do not save FL result to file"));
 
 void ProfileErrorLocalizer::clearProfileResult() {
     std::string cmd = "rm -rf /tmp/__run*.log";
@@ -307,7 +309,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
     for (long i = (long)tmpv2.size() - 1; i >= 0; --i)
         candidateResults.push_back(tmpv2[i]);
 
-    printResult(P.getLocalizationResultFilename());
+    if(!NoWriteFLResult.getValue()) printResult(P.getLocalizationResultFilename());
     outlog_printf(0,"Localizing Finished in %llus!\n",get_timer());
 }
 
