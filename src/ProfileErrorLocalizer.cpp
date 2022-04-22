@@ -42,6 +42,8 @@ using namespace clang;
 extern llvm::cl::opt<bool> ForCPP;
 llvm::cl::opt<bool> NoWriteFLResult("no-save-fl-result", llvm::cl::init(false),
         llvm::cl::desc("Do not save FL result to file"));
+llvm::cl::opt<bool> RunAllTest("run-all-test", llvm::cl::init(false),
+        llvm::cl::desc("Run all tests for FL, instead of +-200 tests from fail test"));
 
 void ProfileErrorLocalizer::clearProfileResult() {
     std::string cmd = "rm -rf /tmp/__run*.log";
@@ -189,6 +191,10 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
 
     unsigned long min_id = 1000000;
     unsigned long max_id = 0;
+    if (RunAllTest.getValue()){
+        min_id=0;
+        max_id=1000000;
+    }
     std::map<unsigned long, std::vector<SourcePositionTy>> executed_locs;
     for (TestCaseSetTy::const_iterator it = negative_cases.begin(); it != negative_cases.end(); ++it) {
         llvm::errs() << "Neg Processing: "<< *it << "\n";
