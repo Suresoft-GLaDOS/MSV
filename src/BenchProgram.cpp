@@ -1211,6 +1211,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         cmd+=std::to_string(pid);
     }
     testEnv["MSV_PATH"]=prophet_src+"/../";
+    std::string outFile="__res_"+std::to_string(getpid());
     // if (switchId>=0 && caseNum>=0)
     //     cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
 
@@ -1222,7 +1223,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     sout << cmd;
     for (TestCaseSetTy::const_iterator it = case_set.begin(); it != case_set.end(); it ++)
         sout << *it << " ";
-    sout <<  " > __res";
+    sout <<  " > " << outFile;
     cmd = sout.str();
     // printf("Command: %s\n",cmd.c_str());
     int res;
@@ -1244,7 +1245,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     ret.clear();
     // return value is zero, or just count as a total failure
     if (res == 0) {
-        FILE *in = fopen("__res", "r");
+        FILE *in = fopen(outFile.c_str(), "r");
         assert(in != NULL);
         unsigned long id;
         while (!feof(in)) {
@@ -1254,13 +1255,13 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         }
         fclose(in);
     }
-    else {
-        //FIXME:What the hell is this ?
-        res = system("rm -rf __clean*");
-        if (res != 0)
-            fprintf(stderr, "strange I/O problem!\n");
-    }
-    res = system("rm -rf __res");
+    // else {
+    //     //FIXME:What the hell is this ?
+    //     res = system("rm -rf __clean*");
+    //     if (res != 0)
+    //         fprintf(stderr, "strange I/O problem!\n");
+    // }
+    res = system(std::string("rm -rf "+outFile).c_str());
     if (res != 0)
         fprintf(stderr, "rm __res failed\n");
 
