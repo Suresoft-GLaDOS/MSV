@@ -58,9 +58,11 @@ std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileRes
     M.clear();
     DIR* dp = opendir("/tmp");
     struct dirent *dirp;
+    std::string pidStr=std::to_string(getpid());
+    size_t pidLength=pidStr.size();
     while ((dirp = readdir(dp))) {
         std::string nstr = dirp->d_name;
-        if ((nstr.substr(0,5) != "__run") || (nstr.substr(nstr.size() - 4, 4) != ".log"))
+        if ((nstr.substr(0,pidLength+5) != ("__run"+pidStr)) || (nstr.substr(nstr.size() - 4, 4) != ".log"))
             continue;
         std::ifstream fin(("/tmp/" + nstr).c_str(), std::ifstream::in);
         std::string line1, line2;
@@ -188,6 +190,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
     // We test with an unmodified environment
     BenchProgram::EnvMapTy testEnv;
     testEnv.clear();
+    testEnv["MSV_PID"]=std::to_string(getpid());
 
     unsigned long min_id = 1000000;
     unsigned long max_id = 0;
