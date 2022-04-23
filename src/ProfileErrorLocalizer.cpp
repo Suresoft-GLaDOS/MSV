@@ -151,9 +151,11 @@ void clearTmpDirectory() {
 
 ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         const std::set<std::string> &bugged_files, bool skip_build):
-    P(P), negative_cases(P.getNegativeCaseSet()), positive_cases(P.getPositiveCaseSet()),index_file("/tmp/__index"+std::to_string(getpid())+".loc") {
+    P(P), negative_cases(P.getNegativeCaseSet()), positive_cases(P.getPositiveCaseSet()),index_file("") {
     LI = NULL;
     reset_timer();
+    size_t dirName=P.getWorkdir().rfind("/");
+    index_file="/tmp/__index_"+P.getWorkdir().substr(dirName+1)+".log";
     if (skip_build) {
         P.addExistingSrcClone("profile", true);
     }

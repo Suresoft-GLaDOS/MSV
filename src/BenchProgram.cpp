@@ -1203,8 +1203,6 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
 
     // Prepare test script to generate test result
     EnvMapTy testEnv=env_pairs;
-    for (size_t i=0;i<totalSwitch;i++)
-        testEnv["__SWITCH"+std::to_string(i)]="0";
     if (chooseCase!=0)
         testEnv["__SWITCH"+std::to_string(chooseSwitch)]=std::to_string(chooseCase);
     std::string cmd=test_cmd;
@@ -1213,7 +1211,6 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         cmd+=std::to_string(pid);
     }
     testEnv["MSV_PATH"]=prophet_src+"/../";
-    testEnv["MSV_OUTPUT_DISTANCE_FILE"]="/dev/null";    
     // if (switchId>=0 && caseNum>=0)
     //     cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
 
@@ -1225,7 +1222,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     sout << cmd;
     for (TestCaseSetTy::const_iterator it = case_set.begin(); it != case_set.end(); it ++)
         sout << *it << " ";
-    sout <<  " > __res_"+std::to_string(pid);
+    sout <<  " > __res";
     cmd = sout.str();
     // printf("Command: %s\n",cmd.c_str());
     int res;
@@ -1247,7 +1244,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     ret.clear();
     // return value is zero, or just count as a total failure
     if (res == 0) {
-        FILE *in = fopen(std::string("__res_"+std::to_string(pid)).c_str(), "r");
+        FILE *in = fopen("__res", "r");
         assert(in != NULL);
         unsigned long id;
         while (!feof(in)) {
@@ -1263,7 +1260,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         if (res != 0)
             fprintf(stderr, "strange I/O problem!\n");
     }
-    res = system(std::string("rm -rf __res_"+std::to_string(pid)).c_str());
+    res = system("rm -rf __res");
     if (res != 0)
         fprintf(stderr, "rm __res failed\n");
 
