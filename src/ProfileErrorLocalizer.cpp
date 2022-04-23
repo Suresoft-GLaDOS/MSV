@@ -46,7 +46,7 @@ llvm::cl::opt<bool> RunAllTest("run-all-test", llvm::cl::init(false),
         llvm::cl::desc("Run all tests for FL, instead of +-200 tests from fail test"));
 
 void ProfileErrorLocalizer::clearProfileResult() {
-    std::string cmd = "rm -rf /tmp/__run*.log";
+    std::string cmd = "rm -rf /tmp/__run"+std::to_string(getpid())+"*.log";
     int res = system(cmd.c_str());
     assert(res == 0);
 }
@@ -168,7 +168,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         else
             envMap["COMPILE_CMD"] = CLANG_CMD;
         envMap["INDEX_FILE"] = index_file;
-        clearTmpDirectory();
+        // clearTmpDirectory();
         bool result=P.buildSubDir("profile", CLANG_PROFILE_WRAP, envMap);
         if (!result){
             outlog_printf(0,"Profile build failed!\n");
