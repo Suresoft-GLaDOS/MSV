@@ -91,7 +91,11 @@ if __name__ == "__main__":
 
         ori_dir = getcwd()
         chdir(work_dir)
+        # Modify php tester script in Manybugs
         subprocess.run(['sed','-i','s|/usr/bin/php|./sapi/cli/php|g','php-run-tests.c'])
+        subprocess.run(['sed','-i','-e','s|int killed = system("killall php &> /dev/null");||','php-run-tests.c'])
+        subprocess.run(['sed','-i','-e','s|if (killed == 0) {||','php-run-tests.c'])
+        subprocess.run(['sed','-i','-e','s|system("echo A php process was killed > A-PHP-Process-Was-Killed");    }||','php-run-tests.c'])
         subprocess.run(['gcc','-o','php-run-tests','php-run-tests.c'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         chdir(cur_dir)
         result=[]
