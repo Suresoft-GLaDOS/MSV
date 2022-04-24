@@ -118,30 +118,37 @@ std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileRes
     return M;
 }
 
-void saveExecutedLocations(BenchProgram &prog,std::map<unsigned long,std::vector<SourcePositionTy>> locations){
-    std::string workdir=prog.getWorkdir();
-    cJSON *rootArray=cJSON_CreateArray();
-
-    for (std::map<unsigned long,std::vector<SourcePositionTy>>::iterator it=locations.begin();it!=locations.end();it++){
-        cJSON *locationObject=cJSON_CreateObject();
-        cJSON_AddNumberToObject(locationObject,"test",it->first);
-
-        cJSON *locationArray=cJSON_CreateArray();
-        for (size_t i=0;i<it->second.size();i++){
-            cJSON *location=cJSON_CreateObject();
-            cJSON_AddStringToObject(location,"file",it->second[i].expFilename.c_str());
-            cJSON_AddNumberToObject(location,"line",it->second[i].expLine);
-            cJSON_AddItemToArray(locationArray,location);
-        }
-        cJSON_AddItemToObject(locationObject,"locations",locationArray);
-        cJSON_AddItemToArray(rootArray,locationObject);
-    }
-
-    char *str=cJSON_Print(rootArray);
-    std::ofstream fout(workdir+"/test-info.json",std::ofstream::out);
-    fout << str << "\n";
+void initSaveLocation(BenchProgram &P){
+    std::ofstream fout(P.getWorkdir()+"/test-info.json",std::ofstream::out);
+    fout << "[" << std::endl;
     fout.close();
-    cJSON_Delete(rootArray);
+}
+
+void saveExecutedLocations(BenchProgram &prog,size_t testNum,std::vector<SourcePositionTy> locations){
+    std::string workdir=prog.getWorkdir();
+    cJSON *locationObject=cJSON_CreateObject();
+    cJSON_AddNumberToObject(locationObject,"test",testNum);
+
+    cJSON *locationArray=cJSON_CreateArray();
+    for (size_t i=0;i<locations.size();i++){
+        cJSON *location=cJSON_CreateObject();
+        cJSON_AddStringToObject(location,"file",locations[i].expFilename.c_str());
+        cJSON_AddNumberToObject(location,"line",locations[i].expLine);
+        cJSON_AddItemToArray(locationArray,location);
+    }
+    cJSON_AddItemToObject(locationObject,"locations",locationArray);
+
+    char *str=cJSON_Print(locationObject);
+    std::ofstream fout(workdir+"/test-info.json",std::ofstream::out);
+    fout << str << "," << std::endl;
+    fout.close();
+    cJSON_Delete(locationObject);
+}
+
+void postSaveLocation(BenchProgram &P){
+    std::ofstream fout(P.getWorkdir()+"/test-info.json",std::ofstream::out);
+    fout << "]" << std::endl;
+    fout.close();
 }
 
 void clearTmpDirectory() {
@@ -236,6 +243,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
     TestCaseSetTy::const_iterator end_pos = positive_cases.upper_bound(max_id);
 
     size_t cnt = 0;
+    initSaveLocation(P);
     for (TestCaseSetTy::const_iterator it = begin_pos; it != end_pos; ++it) {
         llvm::errs() << "Processing: " << cnt << " : " << *it << "\n";
         ProfileLocationMapTy res;
@@ -246,7 +254,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         cnt ++;
         if (!tmp) {
             fprintf(stderr, "Profile version failed on this, maybe because of timeout due to overhead!\n");
-            executed_locs[*it]=std::vector<SourcePositionTy>();
+            saveExecutedLocations(P,*it,std::vector<SourcePositionTy>());
             continue;
         }
         std::vector<SourcePositionTy> executed_location;
@@ -254,9 +262,9 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
             positive_mark[iit->first]++;//+= iit->second.first;
             executed_location.push_back(iit->first);
         }
-        executed_locs[*it]=executed_location;
+        saveExecutedLocations(P,*it,executed_location);
     }
-    saveExecutedLocations(P,executed_locs);
+    postSaveLocation(P);
 
     typedef std::priority_queue<std::pair<std::pair<long long, long long>, std::pair<SourcePositionTy, std::string> > >
         PriorQueueTy;
