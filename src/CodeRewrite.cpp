@@ -474,6 +474,11 @@ std::pair<size_t,size_t> getConditionLocation(std::string ifCode){
 }
 
 std::string getFunctionCall(std::string orig){
+    size_t start=0;
+    if (orig[0]=='/' && orig[1]=='/'){
+        start=orig.find("\n")+1;
+    }
+    orig=orig.substr(start);
     size_t finishLoc=orig.find('(');
     if (finishLoc!=std::string::npos){
         return orig.substr(0,finishLoc);
@@ -939,7 +944,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
                 }
 
                 std::string funcCall=getFunctionCall(currentBody);
-                if (funcCall!=origFunc && (currentBody.find("//ReplaceFunctionKind")!=std::string::npos || currentBody.find("//MSVExtFunctionReplaceKind")!=std::string::npos)){
+                if (funcCall!=origFunc && (patch_it->second.kind==RepairCandidate::ReplaceFunctionKind || patch_it->second.kind==RepairCandidate::MSVExtFunctionReplaceKind || patch_it->second.kind==RepairCandidate::MSVExtReplaceFunctionInConditionKind)){
                     newFuncs[case_count]=funcCall;
                 }
             }
