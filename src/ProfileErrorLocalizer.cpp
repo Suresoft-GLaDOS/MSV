@@ -216,6 +216,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         clearProfileResult();
         bool tmp = P.test("profile", *it, testEnv, 0,0,0,getpid(),true);
         res = parseProfileResult();
+        printf("Executed locations: %lu\n",res.size());
         // llvm::errs() << "Finish!" << "\n";
 
         if (*it < min_id) min_id = *it;
@@ -252,7 +253,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         clearProfileResult();
         bool tmp = P.test("profile", *it, testEnv, 0,0,0,0,true);
         res = parseProfileResult();
-        // outlog_printf(2,"Result: %d\n",res.size());
+        printf("Executed locations: %lu\n",res.size());
         cnt ++;
         if (!tmp) {
             fprintf(stderr, "Profile version failed on this, maybe because of timeout due to overhead!\n");
