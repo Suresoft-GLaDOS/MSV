@@ -124,7 +124,7 @@ void initSaveLocation(BenchProgram &P){
     fout.close();
 }
 
-void saveExecutedLocations(BenchProgram &prog,size_t testNum,std::vector<SourcePositionTy> locations){
+void saveExecutedLocations(BenchProgram &prog,size_t testNum,std::vector<SourcePositionTy> locations,bool isStart=false){
     std::string workdir=prog.getWorkdir();
     cJSON *locationObject=cJSON_CreateObject();
     cJSON_AddNumberToObject(locationObject,"test",testNum);
@@ -139,14 +139,16 @@ void saveExecutedLocations(BenchProgram &prog,size_t testNum,std::vector<SourceP
     cJSON_AddItemToObject(locationObject,"locations",locationArray);
 
     char *str=cJSON_Print(locationObject);
-    std::ofstream fout(workdir+"/test-info.json",std::ofstream::out);
-    fout << str << "," << std::endl;
+    std::ofstream fout(workdir+"/test-info.json",std::ofstream::app);
+    if (!isStart)
+        fout << ",";
+    fout << str << std::endl;
     fout.close();
     cJSON_Delete(locationObject);
 }
 
 void postSaveLocation(BenchProgram &P){
-    std::ofstream fout(P.getWorkdir()+"/test-info.json",std::ofstream::out);
+    std::ofstream fout(P.getWorkdir()+"/test-info.json",std::ofstream::app);
     fout << "]" << std::endl;
     fout.close();
 }
@@ -254,7 +256,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         cnt ++;
         if (!tmp) {
             fprintf(stderr, "Profile version failed on this, maybe because of timeout due to overhead!\n");
-            saveExecutedLocations(P,*it,std::vector<SourcePositionTy>());
+            saveExecutedLocations(P,*it,std::vector<SourcePositionTy>(),it==begin_pos);
             continue;
         }
         std::vector<SourcePositionTy> executed_location;
@@ -262,7 +264,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
             positive_mark[iit->first]++;//+= iit->second.first;
             executed_location.push_back(iit->first);
         }
-        saveExecutedLocations(P,*it,executed_location);
+        saveExecutedLocations(P,*it,executed_location,it==begin_pos);
     }
     postSaveLocation(P);
 
