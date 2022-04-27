@@ -796,7 +796,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                 //     }
                 // }
                 if (line.find("error: ")!=std::string::npos || line.find("undefined reference to")!=std::string::npos){
-                    if (line.find("linker command")==std::string::npos && (line.find(".c:")!=std::string::npos || line.find(".re:")!=std::string::npos || line.find(".cpp:")!=std::string::npos)){
+                    if (line.find("linker command")==std::string::npos && (line.find(".c:")!=std::string::npos || line.find(".re:")!=std::string::npos || line.find(".cpp:")!=std::string::npos || line.find(".h:")!=std::string::npos)){
                         std::string fileName;
                         size_t location=line.find(".c:");
                         bool isC=true;
