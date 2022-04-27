@@ -566,6 +566,7 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
                     conditionCodes.insert(std::pair<std::string,RepairCandidate>(newStmt,rc[j]));
                 }
                 else{
+                    if (CaseStmt::classof(rc[j].original)) continue;
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                         newStmt += ";\n";
