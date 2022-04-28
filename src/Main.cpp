@@ -23,6 +23,7 @@
 #include "FeatureVector.h"
 #include "FeatureParameter.h"
 #include "ConfigFile.h"
+#include "SBFLLocalizer.h"
 #include "clang/Tooling/Tooling.h"
 #include "clang/Frontend/ASTUnit.h"
 #include "clang/AST/ASTContext.h"
@@ -96,6 +97,8 @@ llvm::cl::opt<bool> SkipBuild("skip-meta-program-build",
         llvm::cl::desc("Skip building meta program"),llvm::cl::init(false));
 llvm::cl::opt<bool> ForceFL("force-fl",
         llvm::cl::desc("Force to run FL, ignore cache FL scores"),llvm::cl::init(false));
+llvm::cl::opt<std::string> SBFLLocalize("use-sbfl",llvm::cl::init(""),
+        llvm::cl::desc("Use SBFL localizer result"));
 
 int main(int argc, char* argv[]) {
     llvm::cl::ParseCommandLineOptions(argc, argv);
@@ -168,6 +171,8 @@ int main(int argc, char* argv[]) {
     ErrorLocalizer *L = NULL;
     if (localizer == "")
         L = new NaiveErrorLocalizer(*P);
+    else if (SBFLLocalize.getValue()!="")
+        L=new SBFLLocalizer(SBFLLocalize.getValue(),P);
     else if (localizer == "profile") {
         if (existFile(P->getLocalizationResultFilename()) && !ForceFL.getValue())
             L = new ProfileErrorLocalizer(*P, P->getLocalizationResultFilename());
@@ -210,6 +215,7 @@ int main(int argc, char* argv[]) {
     }
 
     RepairSearchEngine E(*P, L, NaiveRepair.getValue(), learning, FP);
+    E.is_sbfl=(SBFLLocalize.getValue()!="");
     if (!ConsiderAll.getValue())
         if (bugged_file.size())
             E.setBuggedFile(bugged_file);
