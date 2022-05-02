@@ -85,7 +85,6 @@ if __name__ == "__main__":
     if len(args) > 3:
         ids = args[3:]
         chdir(cur_dir)
-        system(f'cp -rf {environ["MSV_PATH"]}/tools/openssl-helper.c {cur_dir}/test/testutil/tests.c')
         for i in ids:
             testcase=get_test_name(int(i))
             run_test(testcase,int(i),timeout)
