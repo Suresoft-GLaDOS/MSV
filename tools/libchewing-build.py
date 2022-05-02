@@ -69,6 +69,11 @@ if __name__=="__main__":
     if result.returncode != 0:
         print(result.stderr.decode('utf-8'))
 
+    result=subprocess.run(['make','check'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+    chdir(orig_dir)
+    if result.returncode != 0:
+        print(result.stderr.decode('utf-8'))
+
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
         if len(args) > 1:
