@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import getopt
-from os import chdir, getcwd, path
+from os import chdir, environ, getcwd, path
 import subprocess
 from sys import argv
 
@@ -49,6 +49,18 @@ if __name__=="__main__":
         print("Non-exists directory")
         exit(1)
 
+    paths=environ['PATH'].split(':')
+    wrap_path=''
+    if 'MSV/wrap' in paths[0]:
+        wrap_path=paths[0]
+        paths.remove(paths[0])
+
+    config_path=''
+    for path in paths:
+        config_path+=path+":"
+    config_path=config_path[:-1]
+    environ['PATH']=config_path
+    
     orig_dir=getcwd()
     chdir(out_dir)
     if not compile_only:
@@ -79,6 +91,7 @@ if __name__=="__main__":
         elif config_only:
             exit(0)
     
+    environ['PATH']=wrap_path+':'+environ['PATH']
     result=subprocess.run(['make',f'-j{paraj}'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
     chdir(orig_dir)
     if result.returncode != 0:
