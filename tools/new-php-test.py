@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import getopt
 from os import chdir, environ, getcwd, path, system
+import signal
 import subprocess
 from sys import argv, stderr
 import multiprocessing as mp
@@ -82,6 +83,9 @@ if __name__ == "__main__":
     src_dir = args[0]
     test_dir = args[1]
     work_dir = args[2]
+
+    # Some new php patches send SIGTTIN, just ignore for other phps
+    signal.signal(signal.SIGTTIN,signal.SIG_IGN)
 
     if (len(args) > 3):
         ids = args[3:]
