@@ -84,8 +84,8 @@ if __name__=="__main__":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
         if len(args) > 1:
             out_file = open(args[1], "w")
-            print(out_file, builddir)
-            print(out_file, buildargs)
+            out_file.write(builddir+"\n")
+            out_file.write(buildargs+"\n")
             out_file.close()
         else:
             print(builddir)
