@@ -4,6 +4,7 @@
 #include <iostream>
 #include "cJSON/cJSON.h"
 #include "SBFLLocalizer.h"
+#include "Utils.h"
 
 using namespace clang;
 
@@ -112,6 +113,7 @@ SBFLLocalizer::SBFLLocalizer(std::string fileName,BenchProgram *program): SBFLFi
     std::vector<std::pair<double,SourcePositionTy>> sortedResult;
     sortedResult.clear();
     for (std::map<std::string,std::map<unsigned int,double>>::iterator it=sbflResult.begin();it!=sbflResult.end();it++){
+        if (is_header(it->first)) continue; // Skip header files
         std::string fullPath=program->getSrcdir()+"/"+it->first;
         std::string code;
         readCodeToString(fullPath,code);
