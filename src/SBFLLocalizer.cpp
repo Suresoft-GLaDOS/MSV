@@ -113,14 +113,19 @@ SBFLLocalizer::SBFLLocalizer(std::string fileName,BenchProgram *program): SBFLFi
     std::vector<std::pair<double,SourcePositionTy>> sortedResult;
     sortedResult.clear();
     for (std::map<std::string,std::map<unsigned int,double>>::iterator it=sbflResult.begin();it!=sbflResult.end();it++){
-        if (is_header(it->first)) continue; // Skip header files
-        std::string fullPath=program->getSrcdir()+"/"+it->first;
+        std::string fileName=it->first;
+        if (fileName.find("//")!=std::string::npos){
+            size_t loc=fileName.find("//");
+            fileName=fileName.substr(loc+2);
+        }
+        if (is_header(fileName)) continue; // Skip header files
+        std::string fullPath=program->getSrcdir()+"/"+fileName;
         std::string code;
         readCodeToString(fullPath,code);
-        std::unique_ptr<ASTUnit> unit=program->buildClangASTUnit(it->first,code);
+        std::unique_ptr<ASTUnit> unit=program->buildClangASTUnit(fileName,code);
         
         ASTContext &ctxt=unit->getASTContext();
-        ProfileLocationParser parser(it->second,&ctxt,it->first);
+        ProfileLocationParser parser(it->second,&ctxt,fileName);
         TranslationUnitDecl *decl=ctxt.getTranslationUnitDecl();
         bool res=parser.TraverseDecl(decl);
 
