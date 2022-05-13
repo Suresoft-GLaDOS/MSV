@@ -5,13 +5,13 @@ import subprocess
 from sys import argv, stderr
 import multiprocessing as mp
 from Levenshtein import distance
-
+import signal
 import psutil
 
 def run_test(id,timeout,workdir):
-    subp=subprocess.Popen([f'{workdir}/php-run-tests',f'{id}'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    subp=subprocess.Popen([f'{workdir}/php-run-tests {id}'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True)
     try:
-        so,se=subp.communicate(timeout=timeout)
+        so,se=subp.communicate(timeout=timeout,input='some temp inputs')
         if subp.returncode==0:
             print(id)
             if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
@@ -82,6 +82,7 @@ if __name__ == "__main__":
     src_dir = args[0]
     test_dir = args[1]
     work_dir = args[2]
+    signal.signal(signal.SIGTTIN,signal.SIG_IGN)
 
     if (len(args) > 3):
         ids = args[3:]

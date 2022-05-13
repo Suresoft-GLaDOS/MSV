@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import getopt
-from os import chdir, getcwd, path
+from os import chdir, getcwd, path,environ
 import subprocess
 from sys import argv
 
@@ -51,18 +51,33 @@ if __name__=="__main__":
 
     orig_dir=getcwd()
     chdir(out_dir)
+
+    paths=environ['PATH'].split(':')
+    wrap_path=''
+    for path in paths.copy():
+        if 'MSV/wrap' in path:
+            wrap_path=path
+            paths.remove(path)
+            break
+    config_path=''
+    for path in paths:
+        config_path+=path+':'
+    config_path=config_path[:-1]
+    environ['PATH']=config_path
     if not compile_only:
-        result=subprocess.run(['./config'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        result=subprocess.run(['./config'],shell=True)
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
         elif config_only:
             exit(0)
     
-    result=subprocess.run(['make',f'-j{paraj}'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+    environ['PATH']=wrap_path+':'+environ['PATH']
+    result=subprocess.run(['make',f'-j{paraj}'])
+    if result.returncode!=0:
+        exit(result.returncode)
+
+    result=subprocess.run(['make','test'])
     chdir(orig_dir)
-    if result.returncode != 0:
-        print(result.stderr.decode('utf-8'))
 
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -46,7 +46,7 @@ def preprocessGen(src_file, out_file, args, idx):
 
     cmd = clang_cmd + " " + " ".join(new_args[1:]);
     # print "Invoking: " + cmd;
-    ret = subprocess.run(cmd.split(), shell=True);
+    ret = subprocess.call(cmd, shell=True);
     return ret;
 
 def rewriteSourceGen(src_file, out_file, args, idx):
@@ -62,7 +62,7 @@ def rewriteSourceGen(src_file, out_file, args, idx):
         "-Xclang -plugin-arg-err-profiler-gen -Xclang " + out_file + \
         " -Xclang -plugin-arg-err-profiler-gen -Xclang " + index_file + " " + " ".join(new_args[1:]);
     # print "Invoking: " + cmd;
-    ret = subprocess.run(cmd.split(), shell=True);
+    ret = subprocess.call(cmd, shell=True);
     return ret;
 
 def rewriteSource(src_file, out_file, text_file, args, idx):
@@ -72,7 +72,7 @@ def rewriteSource(src_file, out_file, text_file, args, idx):
         " -Xclang -plugin-arg-err-profiler-rewrite -Xclang " + text_file + \
         " -Xclang -plugin-arg-err-profiler-rewrite -Xclang " + out_file + " " + " ".join(new_args[1:]);
     # print "Invoking: " + cmd;
-    ret = subprocess.run(cmd.split(), shell=True);
+    ret = subprocess.call(cmd, shell=True);
     return ret;
 
 def fix_nonnull(src_file, out_file):
@@ -99,7 +99,7 @@ def finalCompile(src_file, args, idx):
     new_args = list(args);
     new_args[idx] = src_file;
     cmd = clang_cmd + " " + runtime_include_arg + " " + " ".join(new_args[1:]);
-    ret = subprocess.run(cmd.split(), shell = True);
+    ret = subprocess.call(cmd, shell = True);
     # print "invoking: " + cmd;
     return ret;
 
@@ -156,9 +156,9 @@ def fix_argv(s):
 for i in range(1, len(argv)):
     argv[i] = fix_argv(argv[i]);
 
-clang_cmd = environ["COMPILE_CMD"]
+clang_cmd = environ.get("COMPILE_CMD");
 assert(clang_cmd != None);
-index_file = environ["INDEX_FILE"]
+index_file = environ.get("INDEX_FILE");
 assert(index_file != None);
 
 # print "Invoking pclang here!\n";
@@ -199,13 +199,13 @@ if not just_compile:
     else:
         cmd = clang_cmd + " " + " ".join(argv[1:]);
     # print "Non-compile cmd: " + cmd;
-    ret = subprocess.run(cmd.split(), shell=True);
+    ret = subprocess.call(cmd, shell=True);
     exit(ret);
 
 if (src_idx == -1):
     # print "Cannot identify the c source, call original GCC"
     cmd = "/usr/bin/gcc " + " ".join(argv[1:]);
-    ret = subprocess.run(cmd.split(), shell=True);
+    ret = subprocess.call(cmd, shell=True);
     exit(ret);
 
 if found_output == False:

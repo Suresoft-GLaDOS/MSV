@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import getopt
-from os import chdir, getcwd, path
+from os import chdir, getcwd, path,system
 import subprocess
 from sys import argv
 
@@ -53,26 +53,29 @@ if __name__=="__main__":
     chdir(out_dir)
     if not compile_only:
         result=subprocess.run(['./autogen.sh'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        print(result.stderr.decode('utf-8'))
+        print(result.stdout.decode('utf-8'))
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
 
         result=subprocess.run(['./configure'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        print(result.stdout.decode('utf-8'))
+        print(result.stderr.decode('utf-8'))
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
         elif config_only:
             exit(0)
     
     result=subprocess.run(['make',f'-j{paraj}'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
-    chdir(orig_dir)
+    print(result.stdout.decode('utf-8'))
+    print(result.stderr.decode('utf-8'))
     if result.returncode != 0:
-        print(result.stderr.decode('utf-8'))
+        exit(1)
 
     result=subprocess.run(['make','check'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+    print(result.stdout.decode('utf-8'))
+    print(result.stderr.decode('utf-8'))
     chdir(orig_dir)
-    if result.returncode != 0:
-        print(result.stderr.decode('utf-8'))
 
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
@@ -85,5 +88,4 @@ if __name__=="__main__":
             print(builddir)
             print(buildargs)
 
-    exit(result.returncode)
 

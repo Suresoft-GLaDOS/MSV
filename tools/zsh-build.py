@@ -49,53 +49,48 @@ if __name__=="__main__":
         print("Non-exists directory")
         exit(1)
 
-    paths=environ['PATH'].split(':')
-    wrap_path=''
-    if 'MSV/wrap' in paths[0]:
-        wrap_path=paths[0]
-        paths.remove(paths[0])
+    # paths=environ['PATH'].split(':')
+    # wrap_path=''
+    # if 'MSV/wrap' in paths[0]:
+    #     wrap_path=paths[0]
+    #     paths.remove(paths[0])
 
-    config_path=''
-    for path in paths:
-        config_path+=path+":"
-    config_path=config_path[:-1]
-    environ['PATH']=config_path
+    # config_path=''
+    # for path in paths:
+    #     config_path+=path+":"
+    # config_path=config_path[:-1]
+    # environ['PATH']=config_path
     
     orig_dir=getcwd()
     chdir(out_dir)
     if not compile_only:
-        result=subprocess.run(['./Util/preconfig'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        result=subprocess.run(['./Util/preconfig'],shell=True)
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
 
-        result=subprocess.run(['./configure','--with-tcsetpgrp'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        result=subprocess.run(['./configure','--with-tcsetpgrp'],shell=True)
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
 
-        result=subprocess.run(['sed','-i','/^name=zsh\\/zpty/ s/link=no/link=static/','config.modules'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+        result=subprocess.run(['sed','-i','/^name=zsh\\/zpty/ s/link=no/link=static/','config.modules'])
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
 
-        result=subprocess.run(['make','clean'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+        result=subprocess.run(['make','clean'])
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
 
-        result=subprocess.run(['sed','-i','s|sleep 1;||','Test/Makefile'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+        result=subprocess.run(['sed','-i','s|sleep 1;||','Test/Makefile'])
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
         elif config_only:
             exit(0)
     
-    environ['PATH']=wrap_path+':'+environ['PATH']
-    result=subprocess.run(['make',f'-j{paraj}'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+    # environ['PATH']=wrap_path+':'+environ['PATH']
+    result=subprocess.run(['make',f'-j{paraj}'])
     chdir(orig_dir)
     if result.returncode != 0:
-        print(result.stderr.decode('utf-8'))
+        exit(1)
 
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
@@ -107,6 +102,4 @@ if __name__=="__main__":
         else:
             print(builddir)
             print(buildargs)
-
-    exit(result.returncode)
 
