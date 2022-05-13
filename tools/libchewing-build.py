@@ -63,10 +63,6 @@ if __name__=="__main__":
             exit(0)
     
     result=subprocess.run(['make',f'-j{paraj}'])
-    if result.returncode != 0:
-        exit(1)
-
-    result=subprocess.run(['make','check'])
     chdir(orig_dir)
 
     if dryrun_src != "":

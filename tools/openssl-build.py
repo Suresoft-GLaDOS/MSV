@@ -73,10 +73,6 @@ if __name__=="__main__":
     
     environ['PATH']=wrap_path+':'+environ['PATH']
     result=subprocess.run(['make',f'-j{paraj}'])
-    if result.returncode!=0:
-        exit(result.returncode)
-
-    result=subprocess.run(['make','test'])
     chdir(orig_dir)
 
     if dryrun_src != "":
