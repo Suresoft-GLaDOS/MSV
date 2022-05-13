@@ -128,6 +128,7 @@ def extract_arguments(out_dir, src_file):
                     if token.find(file_name) == -1:
                         token=token.replace("\\'","'")
                         token=token.replace("\\\"","\"")
+                        token=token.replace("\"\"",'"')
                         ret = ret + token + " ";
                 chdir(ori_dir);
                 return directory, ret;
@@ -164,6 +165,7 @@ def extract_arguments(out_dir, src_file):
                     if token.find(file_name) == -1:
                         token=token.replace("\\'","'")
                         token=token.replace("\\\"","\"")
+                        token=token.replace('""','"')
                         ret = ret + token + " ";
                 chdir(ori_dir);
                 return directory, ret;
