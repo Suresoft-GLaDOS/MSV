@@ -68,5 +68,3 @@ if __name__=="__main__":
             print(builddir)
             print(buildargs)
 
-    exit(result.returncode)
-

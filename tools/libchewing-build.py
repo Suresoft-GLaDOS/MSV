@@ -52,29 +52,21 @@ if __name__=="__main__":
     orig_dir=getcwd()
     chdir(out_dir)
     if not compile_only:
-        result=subprocess.run(['./autogen.sh'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
-        print(result.stderr.decode('utf-8'))
-        print(result.stdout.decode('utf-8'))
+        result=subprocess.run(['./autogen.sh'],shell=True)
         if result.returncode != 0:
             exit(1)
 
-        result=subprocess.run(['./configure'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
-        print(result.stdout.decode('utf-8'))
-        print(result.stderr.decode('utf-8'))
+        result=subprocess.run(['./configure'],shell=True)
         if result.returncode != 0:
             exit(1)
         elif config_only:
             exit(0)
     
-    result=subprocess.run(['make',f'-j{paraj}'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
-    print(result.stdout.decode('utf-8'))
-    print(result.stderr.decode('utf-8'))
+    result=subprocess.run(['make',f'-j{paraj}'])
     if result.returncode != 0:
         exit(1)
 
-    result=subprocess.run(['make','check'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
-    print(result.stdout.decode('utf-8'))
-    print(result.stderr.decode('utf-8'))
+    result=subprocess.run(['make','check'])
     chdir(orig_dir)
 
     if dryrun_src != "":
@@ -87,5 +79,4 @@ if __name__=="__main__":
         else:
             print(builddir)
             print(buildargs)
-
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import getopt
-from os import chdir, getcwd, path,environ
+from os import chdir, environ, getcwd, path
 import subprocess
 from sys import argv
 
@@ -89,6 +89,3 @@ if __name__=="__main__":
         else:
             print(builddir)
             print(buildargs)
-
-    exit(result.returncode)
-

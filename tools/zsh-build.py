@@ -48,18 +48,6 @@ if __name__=="__main__":
     else:
         print("Non-exists directory")
         exit(1)
-
-    # paths=environ['PATH'].split(':')
-    # wrap_path=''
-    # if 'MSV/wrap' in paths[0]:
-    #     wrap_path=paths[0]
-    #     paths.remove(paths[0])
-
-    # config_path=''
-    # for path in paths:
-    #     config_path+=path+":"
-    # config_path=config_path[:-1]
-    # environ['PATH']=config_path
     
     orig_dir=getcwd()
     chdir(out_dir)
@@ -102,4 +90,3 @@ if __name__=="__main__":
         else:
             print(builddir)
             print(buildargs)
-

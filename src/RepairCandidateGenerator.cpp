@@ -981,6 +981,8 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             std::vector<Stmt*> res2 = V2.getResult();
             for (std::vector<Stmt*>::iterator it = res2.begin();
                     it != res2.end(); ++ it) {
+                if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                    continue;
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, *it));
@@ -1003,6 +1005,8 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             std::vector<Stmt*> res2 = V2.getResult();
             for (std::vector<Stmt*>::iterator it = res2.begin();
                     it != res2.end(); ++ it) {
+                if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                    continue;
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, *it));
@@ -1038,6 +1042,8 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             std::vector<Stmt*> res2 = visitor.getResult();
             for (std::vector<Stmt*>::iterator it = res2.begin();
                     it != res2.end(); ++ it) {
+                if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                    continue;
                 RepairCandidate rc;
                 rc.actions.clear();
 
@@ -1099,6 +1105,8 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             for (std::set<Stmt*>::iterator it2 = stmts.begin(); it2 != stmts.end(); ++it2) {
                 bool valid_after_replace = L->isValidStmt(*it2, NULL);
                 if (!valid_after_replace) continue;
+                if (stmtToString(*ctxt,*it2).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                    continue;
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc,
@@ -1120,6 +1128,8 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 tmp_map[stmtToString(*ctxt, *it2)] = rc;
             }
             if (valid) {
+                if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                    continue;
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc,
@@ -1148,6 +1158,8 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         for (std::set<Stmt*>::iterator it = stmts.begin(); it != stmts.end(); ++it) {
             bool valid = L->isValidStmt(*it, NULL);
             if (valid) {
+                if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                    continue;
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc,
