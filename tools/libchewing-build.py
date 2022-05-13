@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import getopt
-from os import chdir, getcwd, path
+from os import chdir, getcwd, path,system
 import subprocess
 from sys import argv
 

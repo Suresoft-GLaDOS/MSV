@@ -51,18 +51,19 @@ if __name__=="__main__":
 
     orig_dir=getcwd()
     chdir(out_dir)
+
     paths=environ['PATH'].split(':')
     wrap_path=''
-    if 'MSV/wrap' in paths[0]:
-        wrap_path=paths[0]
-        paths.remove(paths[0])
-
+    for path in paths.copy():
+        if 'MSV/wrap' in path:
+            wrap_path=path
+            paths.remove(path)
+            break
     config_path=''
     for path in paths:
-        config_path+=path+":"
+        config_path+=path+':'
     config_path=config_path[:-1]
     environ['PATH']=config_path
-
     if not compile_only:
         result=subprocess.run(['./config'],shell=True)
         if result.returncode != 0:
@@ -72,6 +73,10 @@ if __name__=="__main__":
     
     environ['PATH']=wrap_path+':'+environ['PATH']
     result=subprocess.run(['make',f'-j{paraj}'])
+    if result.returncode!=0:
+        exit(result.returncode)
+
+    result=subprocess.run(['make','test'])
     chdir(orig_dir)
 
     if dryrun_src != "":

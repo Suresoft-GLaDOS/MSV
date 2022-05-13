@@ -74,8 +74,11 @@ if __name__=="__main__":
         elif config_only:
             exit(0)
     
+    # environ['PATH']=wrap_path+':'+environ['PATH']
     result=subprocess.run(['make',f'-j{paraj}'])
     chdir(orig_dir)
+    if result.returncode != 0:
+        exit(1)
 
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
