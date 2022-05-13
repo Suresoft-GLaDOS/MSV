@@ -99,10 +99,12 @@ SBFLLocalizer::SBFLLocalizer(std::string fileName,BenchProgram *program): SBFLFi
         unsigned int line=(unsigned int)cJSON_GetNumberValue(cJSON_GetArrayItem(location,1));
         double score=cJSON_GetNumberValue(cJSON_GetArrayItem(location,2));
 
-        if (sbflResult.count(file_name)==0)
-            sbflResult[file_name]=std::map<unsigned int,double>();
-        
-        sbflResult[file_name][line]=score;
+        if (score!=0.0){
+            if (sbflResult.count(file_name)==0)
+                sbflResult[file_name]=std::map<unsigned int,double>();
+            
+            sbflResult[file_name][line]=score;
+        }
     }
 
     // Get Profile location from sbfl
@@ -129,6 +131,8 @@ SBFLLocalizer::SBFLLocalizer(std::string fileName,BenchProgram *program): SBFLFi
     // Sort FL results
     std::sort(sortedResult.begin(),sortedResult.end(),std::greater<std::pair<double,SourcePositionTy>>());
     result=sortedResult;
+
+    printResult(program->getLocalizationResultFilename(),program->getLocalizationResultBackupFilename());
 }
 
 std::vector<SourcePositionTy> SBFLLocalizer::getCandidateLocations(){
@@ -152,10 +156,26 @@ std::vector<ProfileErrorLocalizer::ResRecordTy> SBFLLocalizer::getCandidates(){
     return ret;
 }
 
+void SBFLLocalizer::printResult(const std::string &outfile,const std::string backupFile){
+    std::string cmd;
+    cmd="cp -rf "+outfile+" "+backupFile;
+    system(cmd.c_str());
+
+    std::ofstream file(outfile);
+    for (size_t i=0;i<result.size();i++){
+        file<<result[i].second.expFilename<<" "<<result[i].second.expLine<<" "<<result[i].second.expColumn<<" "
+                <<result[i].second.spellFilename  <<" "<< result[i].second.spellLine <<" "<< result[i].second.spellColumn<<"\t\t"
+                <<(size_t)(result[i].first*1000000) << "\t\t" << 0 << "\t\t" << 0 << std::endl;
+    }
+    file.close();
+}
+
 void SBFLLocalizer::printResult(const std::string &outfile){
     std::ofstream file(outfile);
     for (size_t i=0;i<result.size();i++){
-        file<<result[i].second.expFilename<<" "<<result[i].second.expLine<<" "<<result[i].second.expColumn<<" "<<result[i].first<<"\n";
+        file<<result[i].second.expFilename<<" "<<result[i].second.expLine<<" "<<result[i].second.expColumn<<" "
+                <<result[i].second.spellFilename  <<" "<< result[i].second.spellLine <<" "<< result[i].second.spellColumn<<"\t\t"
+                <<(size_t)(result[i].first*1000000) << "\t\t" << 0 << "\t\t" << 0 << std::endl;
     }
     file.close();
 }

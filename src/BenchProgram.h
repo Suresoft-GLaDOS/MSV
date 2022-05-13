@@ -580,6 +580,7 @@ public:
     std::string getLocalizationResultFilename() {
         return localization_filename;
     }
+    std::string getLocalizationResultBackupFilename();
 
     std::string getWorkdir() { return work_dir; }
 

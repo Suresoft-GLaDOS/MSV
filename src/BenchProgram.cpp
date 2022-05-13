@@ -35,6 +35,7 @@
 #include <time.h>
 
 #define LOCALIZATION_RESULT "profile_localization.res"
+#define LOCALIZATION_RESULT_BACKUP "profile_localization_bak.res"
 #define CONFIG_FILE_PATH "repair.conf"
 #define SOURCECODE_BACKUP "__backup"
 #define SOURCECODE_BACKUP_LOG "__backup.log"
@@ -300,6 +301,15 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
                 ret = system(cmd.c_str());
                 assert( ret == 0);
             }
+
+            std::ifstream flBackup((work_dir+"/"+LOCALIZATION_RESULT_BACKUP).c_str(),std::ifstream::in);
+            if (flBackup.good()){
+                std::string cmd;
+                cmd="rm -rf "+work_dir+"/"+LOCALIZATION_RESULT;
+                system(cmd.c_str());
+                cmd="cp -rf "+work_dir+"/"+LOCALIZATION_RESULT_BACKUP+" "+work_dir+"/"+LOCALIZATION_RESULT;
+                system(cmd.c_str());
+            }
         }
     }
 
@@ -370,6 +380,10 @@ BenchProgram::~BenchProgram() {
     }
     if (cache != NULL)
         delete cache;
+}
+
+std::string BenchProgram::getLocalizationResultBackupFilename(){
+    return work_dir+"/"+LOCALIZATION_RESULT_BACKUP;
 }
 
 void BenchProgram::getCompileMisc(const std::string &src_file, std::string &build_dir,

@@ -98,7 +98,7 @@ llvm::cl::opt<bool> SkipBuild("skip-meta-program-build",
 llvm::cl::opt<bool> ForceFL("force-fl",
         llvm::cl::desc("Force to run FL, ignore cache FL scores"),llvm::cl::init(false));
 llvm::cl::opt<std::string> SBFLLocalize("use-sbfl",llvm::cl::init(""),
-        llvm::cl::desc("Use SBFL localizer result"));
+        llvm::cl::desc("Use SBFL localizer result if sbfl result is specified"));
 
 int main(int argc, char* argv[]) {
     llvm::cl::ParseCommandLineOptions(argc, argv);

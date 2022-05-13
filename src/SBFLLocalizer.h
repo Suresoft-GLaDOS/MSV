@@ -14,6 +14,7 @@ public:
     virtual std::vector<SourcePositionTy> getCandidateLocations();
     std::vector<ProfileErrorLocalizer::ResRecordTy> getCandidates();
 
+    virtual void printResult(const std::string &outfile,const std::string backupFile);
     virtual void printResult(const std::string &outfile);
 
     SBFLLocalizer(std::string fileName,BenchProgram *program);
