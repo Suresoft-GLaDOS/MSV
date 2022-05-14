@@ -80,6 +80,10 @@ public:
     }
 };
 
+bool skipFile(std::string &fileName){
+    return fileName=="crypto/des/ncbc_enc.c";
+}
+
 SBFLLocalizer::SBFLLocalizer(std::string fileName,BenchProgram *program): SBFLFile(fileName),program(program),result() {
     // Get sbfl result
     std::ifstream file(SBFLFile);
@@ -119,6 +123,7 @@ SBFLLocalizer::SBFLLocalizer(std::string fileName,BenchProgram *program): SBFLFi
             fileName=fileName.substr(loc+2);
         }
         if (is_header(fileName)) continue; // Skip header files
+        if (skipFile(fileName)) continue; // Skip invalid files
         std::string fullPath=program->getSrcdir()+"/"+fileName;
         std::string code;
         readCodeToString(fullPath,code);
