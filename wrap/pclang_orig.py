@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -45,9 +45,9 @@ def preprocessGen(src_file, out_file, args, idx):
         new_args.append(out_file);
 
     cmd = clang_cmd + " " + " ".join(new_args[1:]);
-    print ("Invoking: " + cmd)
-    ret = subprocess.run(cmd.split());
-    return ret.returncode
+    # print "Invoking: " + cmd;
+    ret = subprocess.call(cmd, shell=True);
+    return ret;
 
 def rewriteSourceGen(src_file, out_file, args, idx):
     new_args = list(args);
@@ -61,9 +61,9 @@ def rewriteSourceGen(src_file, out_file, args, idx):
     cmd = clang_cmd + " -Xclang -load -Xclang " + profile_plugin_path + " -Xclang -plugin -Xclang err-profiler-gen " + \
         "-Xclang -plugin-arg-err-profiler-gen -Xclang " + out_file + \
         " -Xclang -plugin-arg-err-profiler-gen -Xclang " + index_file + " " + " ".join(new_args[1:]);
-    print ("Invoking: " + cmd)
-    ret = subprocess.run(cmd.split());
-    return ret.returncode
+    # print "Invoking: " + cmd;
+    ret = subprocess.call(cmd, shell=True);
+    return ret;
 
 def rewriteSource(src_file, out_file, text_file, args, idx):
     new_args = list(args);
@@ -71,9 +71,9 @@ def rewriteSource(src_file, out_file, text_file, args, idx):
     cmd = clang_cmd + " -Xclang -load -Xclang " + profile_plugin_path + " -Xclang -plugin -Xclang err-profiler-rewrite " + \
         " -Xclang -plugin-arg-err-profiler-rewrite -Xclang " + text_file + \
         " -Xclang -plugin-arg-err-profiler-rewrite -Xclang " + out_file + " " + " ".join(new_args[1:]);
-    print("Invoking: " + cmd)
-    ret = subprocess.run(cmd.split());
-    return ret.returncode
+    # print "Invoking: " + cmd;
+    ret = subprocess.call(cmd, shell=True);
+    return ret;
 
 def fix_nonnull(src_file, out_file):
     f = open(src_file, "r");
@@ -99,9 +99,9 @@ def finalCompile(src_file, args, idx):
     new_args = list(args);
     new_args[idx] = src_file;
     cmd = clang_cmd + " " + runtime_include_arg + " " + " ".join(new_args[1:]);
-    ret = subprocess.run(cmd.split());
+    ret = subprocess.call(cmd, shell = True);
     # print "invoking: " + cmd;
-    return ret.returncode
+    return ret;
 
 def cleanup_error(ret):
     system("rm -rf " + tmpfile1);
@@ -127,7 +127,7 @@ def fix_argv(s):
     if (s[0:2] == "-D") and (s.find('="') != -1):
         idx2 = s.find('="');
         idx3 = s.find('"', idx2 + 2);
-        return s[0:idx2] + '="' + s[idx2 + 2: idx3] + '"' + s[idx3 + 1:];
+        return s[0:idx2] + '=\'"' + s[idx2 + 2: idx3] + '"\'' + s[idx3 + 1:];
     elif (s.find('(') != -1) or (s.find(')') != -1):
         return '"' + s + '"';
     else:
@@ -153,23 +153,12 @@ def fix_argv(s):
 # else:
 #     clang_cmd="clang++"
 
-print(f'argv: {argv}')
-if len(argv)==1 and ('gcc' in argv[0] or 'cc' in argv[0] or 'g++' in argv[0]):
-    print('Run only gcc!')
-    exit(0)
-
-if '.s' in argv[-1]:
-    argv[0]='/usr/bin/gcc'
-    print(f'Invoking {argv}')
-    ret=system(' '.join(argv))
-    exit(ret)
-
 for i in range(1, len(argv)):
     argv[i] = fix_argv(argv[i]);
 
-clang_cmd = environ["COMPILE_CMD"]
+clang_cmd = environ.get("COMPILE_CMD");
 assert(clang_cmd != None);
-index_file = environ["INDEX_FILE"]
+index_file = environ.get("INDEX_FILE");
 assert(index_file != None);
 
 # print "Invoking pclang here!\n";
@@ -210,14 +199,14 @@ if not just_compile:
     else:
         cmd = clang_cmd + " " + " ".join(argv[1:]);
     # print "Non-compile cmd: " + cmd;
-    ret = subprocess.run(cmd.split());
-    exit(ret.returncode);
+    ret = subprocess.call(cmd, shell=True);
+    exit(ret);
 
 if (src_idx == -1):
     # print "Cannot identify the c source, call original GCC"
     cmd = "/usr/bin/gcc " + " ".join(argv[1:]);
-    ret = subprocess.run(cmd.split(), shell=True);
-    exit(ret.returncode);
+    ret = subprocess.call(cmd, shell=True);
+    exit(ret);
 
 if found_output == False:
     argv.append("-o");
@@ -228,9 +217,7 @@ if found_output == False:
 tmpfile1 = genTmpFilename();
 tmpfile2 = genTmpFilename();
 tmpfile3 = genTmpFilename();
-ret=preprocessGen(src_file, tmpfile1, argv, src_idx);
-if ret != 0:
-    cleanup_error(ret)
+preprocessGen(src_file, tmpfile1, argv, src_idx);
 ret = rewriteSourceGen(src_file, tmpfile2, argv, src_idx);
 if (ret != 0):
     cleanup_error(ret);

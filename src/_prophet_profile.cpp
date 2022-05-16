@@ -37,7 +37,8 @@ static void prof_writeback() {
     sigfillset(&full);
     sigprocmask(SIG_BLOCK, &full, &oldset);
     pthread_mutex_lock(&global_mutex);
-    sprintf(buffer, "/tmp/__run%u.log", getpid());
+    char* msv_pid=getenv("MSV_PID");
+    sprintf(buffer, "/tmp/__run%s%u.log",msv_pid, getpid());
     FILE *f = fopen(buffer, "w");
     assert( f != NULL);
     /*size_t cnt = 0;

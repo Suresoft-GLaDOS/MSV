@@ -54,21 +54,17 @@ if __name__=="__main__":
 
     orig_dir=getcwd()
     chdir(out_dir)
-    result=subprocess.run(['make','clean'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
-    result=subprocess.run(['make','all',f'-j{paraj}'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
-    if result.returncode != 0:
-        print(result.stderr.decode('utf-8'))
+    result=subprocess.run(['make','clean'])
+    result=subprocess.run(['make','all',f'-j{paraj}'])
 
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
         if len(args) > 1:
             out_file = open(args[1], "w")
-            print(out_file, builddir)
-            print(out_file, buildargs)
+            out_file.write(builddir+"\n")
+            out_file.write(buildargs+"\n")
             out_file.close()
         else:
             print(builddir)
             print(buildargs)
-
-    exit(result.returncode)
 

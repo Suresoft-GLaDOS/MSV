@@ -68,9 +68,33 @@ if __name__=="__main__":
             print("Comment:")
             print(comment)
     else:
-        succ = switch_to(out_dir, "", php_deps_dir, compile_only, config_only, paraj)
-        if (not succ):
-            exit(1)
+        orig_dir=getcwd()
+        chdir(out_dir)
+        my_env = environ
+        my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"]
+        # my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"]
+        my_env["PATH"] = php_deps_dir + "/flex-2.5.4-build/bin:" + my_env["PATH"]
+
+        if not compile_only:
+            subprocess.run(['make','clean'])
+            subprocess.run(['git','clean','-f','-d','-e','*.phpt'])
+            result=subprocess.run(['./buildconf','--force'])
+            if result.returncode != 0:
+                my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"]
+                result=subprocess.run(['./buildconf','--force'])
+            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build","-enable-zip"], env = my_env)
+            (out, err) = p.communicate()
+            subprocess.run(['make','clean'])
+
+        if not config_only:
+            ret = subprocess.call(["rm", "-rf", "ext/phar/phar.php"], env = my_env)
+            assert( ret == 0)
+            if paraj == 0:
+                ret = subprocess.call(["make"], env = my_env)
+            else:
+                ret = subprocess.call(["make", "-j", str(paraj)], env = my_env)
+        chdir(orig_dir)
+
         if dryrun_src != "":
             (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
             if len(args) > 1:

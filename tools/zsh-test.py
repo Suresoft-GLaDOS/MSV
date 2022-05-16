@@ -156,7 +156,6 @@ if __name__ == "__main__":
 
         ori_dir = getcwd();
         chdir(cur_dir+'/Test');
-        system(f'cp -rf {environ["MSV_PATH"]}/tools/zsh-helper.zsh {cur_dir}/Test/ztst.zsh')
 
         result=[]
         pool=mp.Pool(max_parallel)

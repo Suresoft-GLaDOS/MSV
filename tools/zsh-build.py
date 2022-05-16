@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import getopt
-from os import chdir, getcwd, path
+from os import chdir, environ, getcwd, path
 import subprocess
 from sys import argv
 
@@ -48,52 +48,43 @@ if __name__=="__main__":
     else:
         print("Non-exists directory")
         exit(1)
-
+    
     orig_dir=getcwd()
     chdir(out_dir)
     if not compile_only:
-        result=subprocess.run(['./Util/preconfig'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        result=subprocess.run(['./Util/preconfig'],shell=True)
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
 
-        result=subprocess.run(['./configure','--with-tcsetpgrp'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        result=subprocess.run(['./configure','--with-tcsetpgrp'],shell=True)
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
 
-        result=subprocess.run(['sed','-i','/^name=zsh\\/zpty/ s/link=no/link=static/','config.modules'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+        result=subprocess.run(['sed','-i','/^name=zsh\\/zpty/ s/link=no/link=static/','config.modules'])
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
 
-        result=subprocess.run(['make','clean'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+        result=subprocess.run(['make','clean'])
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
 
-        result=subprocess.run(['sed','-i','s|sleep 1;||','Test/Makefile'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+        result=subprocess.run(['sed','-i','s|sleep 1;||','Test/Makefile'])
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
         elif config_only:
             exit(0)
     
-    result=subprocess.run(['make',f'-j{paraj}'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+    # environ['PATH']=wrap_path+':'+environ['PATH']
+    result=subprocess.run(['make',f'-j{paraj}'])
     chdir(orig_dir)
-    if result.returncode != 0:
-        print(result.stderr.decode('utf-8'))
 
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
         if len(args) > 1:
             out_file = open(args[1], "w")
-            print(out_file, builddir)
-            print(out_file, buildargs)
+            out_file.write(builddir+"\n")
+            out_file.write(buildargs+"\n")
             out_file.close()
         else:
             print(builddir)
             print(buildargs)
-
-    exit(result.returncode)
-

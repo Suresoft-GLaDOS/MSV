@@ -52,8 +52,9 @@ class RepairSearchEngine {
     unsigned long long timeout_limit;
 
 public:
+    bool is_sbfl;
     RepairSearchEngine(BenchProgram& P, ErrorLocalizer *L, bool naive, bool learning, FeatureParameter *FP)
-        : P(P), negative_cases(P.getNegativeCaseSet()), positive_cases(P.getPositiveCaseSet()), naive(naive),
+        : P(P), negative_cases(P.getNegativeCaseSet()), positive_cases(P.getPositiveCaseSet()), naive(naive),is_sbfl(false),
         learning(learning && !naive), FP(FP), GeoP(0.08), random(false), summaryFile(""), timeout_limit(0) {
         this->L = L;
         bugged_files.clear();

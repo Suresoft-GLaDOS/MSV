@@ -58,7 +58,7 @@ learner_LDADD = $(ClangLDADD) -lexplain
 
 prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp ProfileWriter.cpp BenchProgram.cpp ASTUtils.cpp \
 				  ErrorLocalizer.cpp LocalAnalyzer.cpp ProfileErrorLocalizer.cpp SourceContextManager.cpp \
-				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp \
+				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp SBFLLocalizer.cpp \
 				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 prophet_LDFLAGS = `llvm-config --ldflags`
 prophet_LDADD = $(ClangLDADD) -lexplain

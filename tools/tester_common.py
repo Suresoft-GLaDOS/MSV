@@ -126,6 +126,9 @@ def extract_arguments(out_dir, src_file):
                     if token.find("excess-precision") != -1:
                         continue;
                     if token.find(file_name) == -1:
+                        token=token.replace("\\'","'")
+                        token=token.replace("\\\"","\"")
+                        token=token.replace("\"\"",'"')
                         ret = ret + token + " ";
                 chdir(ori_dir);
                 return directory, ret;
@@ -133,7 +136,6 @@ def extract_arguments(out_dir, src_file):
     subprocess.call(["touch", src_file]);
     p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE);
     (out, err) = p.communicate();
-    print (out)
     lines = out.decode('utf-8').strip().split("\n");
     directory = ".";
     for line in lines:
@@ -161,6 +163,9 @@ def extract_arguments(out_dir, src_file):
                     if token.find("excess-precision") != -1:
                         continue;
                     if token.find(file_name) == -1:
+                        token=token.replace("\\'","'")
+                        token=token.replace("\\\"","\"")
+                        token=token.replace('""','"')
                         ret = ret + token + " ";
                 chdir(ori_dir);
                 return directory, ret;

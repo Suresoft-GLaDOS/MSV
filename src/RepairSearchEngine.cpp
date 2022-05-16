@@ -28,6 +28,7 @@
 #include "clang/AST/ASTContext.h"
 #include "FeatureVector.h"
 #include "FeatureParameter.h"
+#include "SBFLLocalizer.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <fstream>
@@ -58,7 +59,8 @@ double computeScores(SourceContextManager &M, FeatureParameter *FP,
         double best = -1e+20;
         for (std::set<clang::Expr*>::iterator it = atoms.begin(); it != atoms.end(); ++it) {
             FeatureVector vec = EX.extractFeature(M, rc, *it);
-            double res = FP->dotProduct(vec) + rc.score;
+            double scoreB=FP->dotProduct(vec);
+            double res = scoreB + rc.score;
             // we are going to nuke the score if random is set
             if (random)
                 res = rand();
@@ -298,13 +300,26 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>> scores;
         scores.clear();
         if (!naive){
-            ProfileErrorLocalizer *profileError=(ProfileErrorLocalizer *)L;
-            std::vector<ProfileErrorLocalizer::ResRecordTy> errors=profileError->getCandidates();
+            if (is_sbfl){
+                SBFLLocalizer *profileError=(SBFLLocalizer *)L;
+                std::vector<ProfileErrorLocalizer::ResRecordTy> errors=profileError->getCandidates();
 
-            for (std::vector<ProfileErrorLocalizer::ResRecordTy>::iterator it=errors.begin();it!=errors.end();it++){
-                std::pair<std::string,size_t> location=std::make_pair(it->loc.expFilename,it->loc.expLine);
-                if (scores.count(location)==0 || scores[location].first<it->primeScore || (scores[location].first==it->primeScore && scores[location].second<it->secondScore)){
-                    scores[location]=std::make_pair(it->primeScore,it->secondScore);
+                for (std::vector<ProfileErrorLocalizer::ResRecordTy>::iterator it=errors.begin();it!=errors.end();it++){
+                    std::pair<std::string,size_t> location=std::make_pair(it->loc.expFilename,it->loc.expLine);
+                    if (scores.count(location)==0 || scores[location].first<it->primeScore || (scores[location].first==it->primeScore && scores[location].second<it->secondScore)){
+                        scores[location]=std::make_pair(it->primeScore,it->secondScore);
+                    }
+                }
+            }
+            else{
+                ProfileErrorLocalizer *profileError=(ProfileErrorLocalizer *)L;
+                std::vector<ProfileErrorLocalizer::ResRecordTy> errors=profileError->getCandidates();
+
+                for (std::vector<ProfileErrorLocalizer::ResRecordTy>::iterator it=errors.begin();it!=errors.end();it++){
+                    std::pair<std::string,size_t> location=std::make_pair(it->loc.expFilename,it->loc.expLine);
+                    if (scores.count(location)==0 || scores[location].first<it->primeScore || (scores[location].first==it->primeScore && scores[location].second<it->secondScore)){
+                        scores[location]=std::make_pair(it->primeScore,it->secondScore);
+                    }
                 }
             }
         }

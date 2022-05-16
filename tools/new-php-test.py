@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 import getopt
 from os import chdir, environ, getcwd, path, system
+import signal
 import subprocess
 from sys import argv, stderr
 import multiprocessing as mp
 from Levenshtein import distance
-
+import signal
 import psutil
 
 def run_test(id,timeout,workdir):
-    subp=subprocess.Popen([f'{workdir}/php-run-tests',f'{id}'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    subp=subprocess.Popen([f'{workdir}/php-run-tests {id}'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True)
     try:
-        so,se=subp.communicate(timeout=timeout)
+        so,se=subp.communicate(timeout=timeout,input='some temp inputs')
         if subp.returncode==0:
             print(id)
             if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
@@ -67,7 +68,7 @@ if __name__ == "__main__":
     profile_dir = ""
     
     temp_dir=""
-    timeout: float = 10.0
+    timeout: float = 1000.0
     max_cpu=1
     for o, a in opts:
         if o == "-p":
@@ -82,6 +83,10 @@ if __name__ == "__main__":
     src_dir = args[0]
     test_dir = args[1]
     work_dir = args[2]
+    signal.signal(signal.SIGTTIN,signal.SIG_IGN)
+
+    # Some new php patches send SIGTTIN, just ignore for other phps
+    signal.signal(signal.SIGTTIN,signal.SIG_IGN)
 
     if (len(args) > 3):
         ids = args[3:]
@@ -91,7 +96,11 @@ if __name__ == "__main__":
 
         ori_dir = getcwd()
         chdir(work_dir)
+        # Modify php tester script in Manybugs
         subprocess.run(['sed','-i','s|/usr/bin/php|./sapi/cli/php|g','php-run-tests.c'])
+        subprocess.run(['sed','-i','-e','s|int killed = system("killall php &> /dev/null");||','php-run-tests.c'])
+        subprocess.run(['sed','-i','-e','s|if (killed == 0) {||','php-run-tests.c'])
+        subprocess.run(['sed','-i','-e','s|system("echo A php process was killed > A-PHP-Process-Was-Killed");    }||','php-run-tests.c'])
         subprocess.run(['gcc','-o','php-run-tests','php-run-tests.c'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         chdir(cur_dir)
         result=[]

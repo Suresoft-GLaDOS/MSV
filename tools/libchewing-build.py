@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import getopt
-from os import chdir, getcwd, path
+from os import chdir, getcwd, path,system
 import subprocess
 from sys import argv
 
@@ -52,33 +52,27 @@ if __name__=="__main__":
     orig_dir=getcwd()
     chdir(out_dir)
     if not compile_only:
-        result=subprocess.run(['./autogen.sh'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        result=subprocess.run(['./autogen.sh'],shell=True)
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
 
-        result=subprocess.run(['./configure'],stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
+        result=subprocess.run(['./configure'],shell=True)
         if result.returncode != 0:
-            print(result.stderr.decode('utf-8'))
             exit(1)
         elif config_only:
             exit(0)
     
-    result=subprocess.run(['make',f'-j{paraj}'],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+    result=subprocess.run(['make',f'-j{paraj}'])
     chdir(orig_dir)
-    if result.returncode != 0:
-        print(result.stderr.decode('utf-8'))
 
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
         if len(args) > 1:
             out_file = open(args[1], "w")
-            print(out_file, builddir)
-            print(out_file, buildargs)
+            out_file.write(builddir+"\n")
+            out_file.write(buildargs+"\n")
             out_file.close()
         else:
             print(builddir)
             print(buildargs)
-
-    exit(result.returncode)
 

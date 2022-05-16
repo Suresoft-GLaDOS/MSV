@@ -39,6 +39,8 @@ def run_test(testcase,id,timeout):
     proc = subprocess.Popen(["make", "test",f'TESTS={testcase}'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     try:
         so,se=proc.communicate(timeout=timeout)
+        print(so)
+        print(se)
         if proc.returncode==0:
             print (id)
     except:
@@ -85,7 +87,6 @@ if __name__ == "__main__":
     if len(args) > 3:
         ids = args[3:]
         chdir(cur_dir)
-        system(f'cp -rf {environ["MSV_PATH"]}/tools/openssl-helper.c {cur_dir}/test/testutil/tests.c')
         for i in ids:
             testcase=get_test_name(int(i))
             run_test(testcase,int(i),timeout)

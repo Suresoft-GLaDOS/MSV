@@ -4,25 +4,19 @@
 
 class SBFLLocalizer: public ErrorLocalizer{
 public:
-    class ResRecordTy {
-    public:
-        long long primeScore;
-        long long secondScore;
-        SourcePositionTy loc;
-        std::string pid;
-    };
-
     std::string SBFLFile;
-    std::vector<SourcePositionTy> result;
+    std::vector<std::pair<double,SourcePositionTy>> result;
     BenchProgram *program;
-    std::vector<ResRecordTy> candidateResults;
+    std::vector<ProfileErrorLocalizer::ResRecordTy> candidateResults;
 
 public:
 
     virtual std::vector<SourcePositionTy> getCandidateLocations();
+    std::vector<ProfileErrorLocalizer::ResRecordTy> getCandidates();
 
+    virtual void printResult(const std::string &outfile,const std::string backupFile);
     virtual void printResult(const std::string &outfile);
 
-    SBFLLocalizer(std::string fileName,BenchProgram *program): SBFLFile(fileName),program(program),result() {}
+    SBFLLocalizer(std::string fileName,BenchProgram *program);
     virtual ~SBFLLocalizer() { };
 };

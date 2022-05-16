@@ -35,6 +35,7 @@
 #include <time.h>
 
 #define LOCALIZATION_RESULT "profile_localization.res"
+#define LOCALIZATION_RESULT_BACKUP "profile_localization_bak.res"
 #define CONFIG_FILE_PATH "repair.conf"
 #define SOURCECODE_BACKUP "__backup"
 #define SOURCECODE_BACKUP_LOG "__backup.log"
@@ -118,14 +119,14 @@ static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroS
 }
 
 BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
-        bool no_clean_up,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),failMacros(),
+        bool no_clean_up,bool init_only,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),failMacros(),
         caseNum(caseNum),switchInfo(workDirPath) {
-    Init(workDirPath, no_clean_up);
+    Init(workDirPath, no_clean_up,init_only);
 }
 
-BenchProgram::BenchProgram(const std::string &workDirPath,int switchId,int caseNum)
+BenchProgram::BenchProgram(const std::string &workDirPath,bool init_only,int switchId,int caseNum)
     : config(workDirPath + "/" + CONFIG_FILE_PATH),count(0),switchId(switchId),caseNum(caseNum),switchInfo(workDirPath),failMacros() {
-    Init(workDirPath, true);
+    Init(workDirPath, true,init_only);
 }
 
 ConfigFile* BenchProgram::getCurrentConfig() {
@@ -207,7 +208,7 @@ static void parseRevisionLog(const std::string& revision_file,
                            const std::string &build_cmd, const std::string &test_cmd,
                            const std::string &run_work_dir, bool using_ramfs,
                            bool no_clean_up, size_t case_timeout)*/
-void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
+void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool init_only)
 {
     compile_cnt = 0;
     test_cnt = 0;
@@ -269,35 +270,46 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
         // src_dirs.insert(std::make_pair("src", true));
 
         // If we just in middle of repair, we need to restore before we go on
-        std::ifstream fin((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ifstream::in);
-        if (fin.is_open()) {
-            std::string target_file;
-            char tmp[1000];
-            size_t cnt = 0;
-            int ret;
-            std::string cmd;
-            while (fin.getline(tmp, 1000)) {
-                target_file = tmp;
-                {
-                    std::ostringstream sout;
-                    sout << "cp -rf "  << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << src_dir << "/" << target_file;
-                    cmd = sout.str();
+        if (!init_only){
+            std::ifstream fin((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ifstream::in);
+            if (fin.is_open()) {
+                std::string target_file;
+                char tmp[1000];
+                size_t cnt = 0;
+                int ret;
+                std::string cmd;
+                while (fin.getline(tmp, 1000)) {
+                    target_file = tmp;
+                    {
+                        std::ostringstream sout;
+                        sout << "cp -rf "  << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << src_dir << "/" << target_file;
+                        cmd = sout.str();
+                    }
+                    ret = system(cmd.c_str());
+                    assert( ret == 0);
+                    {
+                        std::ostringstream sout;
+                        sout << "rm -rf " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
+                        cmd = sout.str();
+                    }
+                    ret = system(cmd.c_str());
+                    assert( ret == 0);
+                    cnt++;
                 }
+                fin.close();
+                cmd = "rm -rf " + work_dir + "/" + SOURCECODE_BACKUP_LOG;
                 ret = system(cmd.c_str());
                 assert( ret == 0);
-                {
-                    std::ostringstream sout;
-                    sout << "rm -rf " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
-                    cmd = sout.str();
-                }
-                ret = system(cmd.c_str());
-                assert( ret == 0);
-                cnt++;
             }
-            fin.close();
-            cmd = "rm -rf " + work_dir + "/" + SOURCECODE_BACKUP_LOG;
-            ret = system(cmd.c_str());
-            assert( ret == 0);
+
+            std::ifstream flBackup((work_dir+"/"+LOCALIZATION_RESULT_BACKUP).c_str(),std::ifstream::in);
+            if (flBackup.good()){
+                std::string cmd;
+                cmd="rm -rf "+work_dir+"/"+LOCALIZATION_RESULT;
+                system(cmd.c_str());
+                cmd="cp -rf "+work_dir+"/"+LOCALIZATION_RESULT_BACKUP+" "+work_dir+"/"+LOCALIZATION_RESULT;
+                system(cmd.c_str());
+            }
         }
     }
 
@@ -368,6 +380,10 @@ BenchProgram::~BenchProgram() {
     }
     if (cache != NULL)
         delete cache;
+}
+
+std::string BenchProgram::getLocalizationResultBackupFilename(){
+    return work_dir+"/"+LOCALIZATION_RESULT_BACKUP;
 }
 
 void BenchProgram::getCompileMisc(const std::string &src_file, std::string &build_dir,
@@ -794,7 +810,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                 //     }
                 // }
                 if (line.find("error: ")!=std::string::npos || line.find("undefined reference to")!=std::string::npos){
-                    if (line.find("linker command")==std::string::npos && (line.find(".c:")!=std::string::npos || line.find(".re:")!=std::string::npos || line.find(".cpp:")!=std::string::npos)){
+                    if (line.find("linker command")==std::string::npos && (line.find(".c:")!=std::string::npos || line.find(".re:")!=std::string::npos || line.find(".cpp:")!=std::string::npos || line.find(".h:")!=std::string::npos)){
                         std::string fileName;
                         size_t location=line.find(".c:");
                         bool isC=true;
@@ -865,6 +881,22 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                             }
 
                         }
+                        else if (line.find("undefined reference to")!=std::string::npos){
+                            size_t pos=line.find("undefined reference to");
+                            size_t first=line.find("'");
+                            if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                                first = line.find("`", pos);
+                            size_t last=line.find("'",first+1);
+                            std::string function=line.substr(first+1,last-first-1);
+
+                            for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                if (it->second.find(function)!=std::string::npos){
+                                    if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                        added=true;
+                                    compileErrorMacros.insert(it->first);
+                                }
+                            }
+                        }
 
                         else{
                             if (!isRe){
@@ -900,34 +932,16 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                                 else isRe=true;
                             }
                             if (isRe){
-                                if (line.find("undefined reference to")!=std::string::npos){
-                                    size_t pos=line.find("undefined reference to");
-                                    size_t first=line.find("'");
-                                    if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
-                                        first = line.find("`", pos);
-                                    size_t last=line.find("'",first+1);
-                                    std::string function=line.substr(first+1,last-first-1);
-
-                                    for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                                        if (it->second.find(function)!=std::string::npos){
-                                            if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
-                                                added=true;
-                                            compileErrorMacros.insert(it->first);
-                                        }
-                                    }
-                                }
-                                else{
-                                    std::getline(buildLog,line);
-                                    line=stripLine(line);
-                                    for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                                        line.erase(remove(line.begin(), line.end(), ' '), line.end());
-                                        std::string codeLine=it->second;
-                                        codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
-                                        if (codeLine.find(line)!=std::string::npos){
-                                            if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
-                                                added=true;
-                                            compileErrorMacros.insert(it->first);
-                                        }
+                                std::getline(buildLog,line);
+                                line=stripLine(line);
+                                for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                    line.erase(remove(line.begin(), line.end(), ' '), line.end());
+                                    std::string codeLine=it->second;
+                                    codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
+                                    if (codeLine.find(line)!=std::string::npos){
+                                        if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                            added=true;
+                                        compileErrorMacros.insert(it->first);
                                     }
                                 }
                             }
@@ -1201,8 +1215,6 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
 
     // Prepare test script to generate test result
     EnvMapTy testEnv=env_pairs;
-    for (size_t i=0;i<totalSwitch;i++)
-        testEnv["__SWITCH"+std::to_string(i)]="0";
     if (chooseCase!=0)
         testEnv["__SWITCH"+std::to_string(chooseSwitch)]=std::to_string(chooseCase);
     std::string cmd=test_cmd;
@@ -1211,7 +1223,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         cmd+=std::to_string(pid);
     }
     testEnv["MSV_PATH"]=prophet_src+"/../";
-    testEnv["MSV_OUTPUT_DISTANCE_FILE"]="/dev/null";    
+    std::string outFile="__res_"+std::to_string(getpid());
     // if (switchId>=0 && caseNum>=0)
     //     cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
 
@@ -1223,7 +1235,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     sout << cmd;
     for (TestCaseSetTy::const_iterator it = case_set.begin(); it != case_set.end(); it ++)
         sout << *it << " ";
-    sout <<  " > __res_"+std::to_string(pid);
+    sout <<  " > " << outFile;
     cmd = sout.str();
     // printf("Command: %s\n",cmd.c_str());
     int res;
@@ -1245,7 +1257,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     ret.clear();
     // return value is zero, or just count as a total failure
     if (res == 0) {
-        FILE *in = fopen(std::string("__res_"+std::to_string(pid)).c_str(), "r");
+        FILE *in = fopen(outFile.c_str(), "r");
         assert(in != NULL);
         unsigned long id;
         while (!feof(in)) {
@@ -1255,13 +1267,13 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         }
         fclose(in);
     }
-    else {
-        //FIXME:What the hell is this ?
-        res = system("rm -rf __clean*");
-        if (res != 0)
-            fprintf(stderr, "strange I/O problem!\n");
-    }
-    res = system(std::string("rm -rf __res_"+std::to_string(pid)).c_str());
+    // else {
+    //     //FIXME:What the hell is this ?
+    //     res = system("rm -rf __clean*");
+    //     if (res != 0)
+    //         fprintf(stderr, "strange I/O problem!\n");
+    // }
+    res = system(std::string("rm -rf "+outFile).c_str());
     if (res != 0)
         fprintf(stderr, "rm __res failed\n");
 
