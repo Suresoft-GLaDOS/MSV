@@ -54,6 +54,7 @@ def num2testcase( case ):
 import psutil
 
 def run_test(testcase,id,timeout):
+    environ['PATH']='/root/project/MSV/wrap:'+environ['PATH']
     proc = subprocess.Popen(["make", "check",f'TESTS={testcase}'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     try:
         so,se=proc.communicate(timeout=timeout)
