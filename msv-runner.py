@@ -122,14 +122,18 @@ def create_dir_structure(src_dir:str,work_dir:str,msv_path:str):
 
     os.chdir(orig_dir)
 
-def generate_meta_program(work_dir:str,src_dir:str,feature_para:str=''):
+def generate_meta_program(work_dir:str,src_dir:str,feature_para:str='',sbfl_path:str=''):
     if not os.path.isabs(src_dir):
         src_dir=os.path.abspath(src_dir)
     if not os.path.isabs(work_dir):
         work_dir=os.path.abspath(work_dir)
     src_name=src_dir.split('/')[-1]
 
-    proc=subprocess.run(['prophet', '-r', f'{work_dir}/{src_name}-workdir', '-skip-verify', '-skip-profile', '-replace-ext', '-first-n-loc', '100', '-consider-all'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    cmd=['prophet', '-r', f'{work_dir}/{src_name}-workdir', '-skip-verify', '-skip-profile', '-replace-ext', '-first-n-loc', '100', '-consider-all']
+    if sbfl_path!='':
+        cmd.append('-use-sbfl')
+        cmd.append(sbfl_path)
+    proc=subprocess.run(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 
     output_file=open(f'{work_dir}/output.log','w')
     output_file.write('stdout:\n')
@@ -148,14 +152,17 @@ def generate_meta_program(work_dir:str,src_dir:str,feature_para:str=''):
     output_file.close()
 
 if __name__=='__main__':
-    opts, args = getopt.getopt(argv[1:], "hr")
+    opts, args = getopt.getopt(argv[1:], "hrs:")
     run_prophet=False
+    sbfl_path=''
     for o, a in opts:
         if o == "-h":
             print('usage: msv-runner.py <src_dir> <work_dir> <msv_path>')
             exit(0)
         elif o=='-r':
             run_prophet=True
+        elif o=='-s':
+            sbfl_path=a
 
     src_dir = args[0]
     work_dir = args[1]
@@ -164,4 +171,4 @@ if __name__=='__main__':
     create_dir_structure(src_dir,work_dir,msv_path)
 
     if run_prophet:
-        generate_meta_program(work_dir,src_dir)
+        generate_meta_program(work_dir,src_dir,sbfl_path=sbfl_path)
