@@ -461,8 +461,8 @@ std::pair<size_t,size_t> getConditionLocation(std::string ifCode){
     size_t count=0;
     size_t end=start;
     for (size_t i=start+1;i<ifCode.size();i++){
-        if (ifCode[i]=='(') count++;
-        else if (ifCode[i]==')'){
+        if (ifCode[i]=='(' && ifCode[i-1]!='\'') count++;
+        else if (ifCode[i]==')' && ifCode[i+1]!='\''){
             if (count>0) count--;
             else {
                 end=i;
