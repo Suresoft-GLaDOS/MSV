@@ -27,7 +27,7 @@
 #include <queue>
 #include <math.h>
 
-//#define DISABLE_IFSTMT_INSERT
+#define DISABLE_IFSTMT_INSERT
 
 using namespace clang;
 
