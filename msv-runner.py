@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 from yaml import safe_load, dump
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
@@ -133,7 +134,7 @@ def generate_meta_program(work_dir:str,src_dir:str,feature_para:str='',sbfl_path
     if sbfl_path!='':
         cmd.append('-use-sbfl')
         cmd.append(sbfl_path)
-    proc=subprocess.run(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    proc=subprocess.run(cmd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
 
     output_file=open(f'{work_dir}/output.log','w')
     output_file.write('stdout:\n')
@@ -143,13 +144,13 @@ def generate_meta_program(work_dir:str,src_dir:str,feature_para:str='',sbfl_path
     except:
         output_file.write(proc.stdout+'\n')
 
-    output_file.write('stderr:\n')
-    try:
-        output=proc.stderr.decode('utf-8')
-        output_file.write(output+'\n')
-    except:
-        output_file.write(proc.stderr+'\n')
     output_file.close()
+
+    if proc.returncode!=0:
+        print(f'Meta-program generation failed with return code: {proc.returncode}',file=sys.stderr)
+        print(f'Look {work_dir}/output.log for more details',file=sys.stderr)
+        sys.exit(proc.returncode)
+
 
 if __name__=='__main__':
     opts, args = getopt.getopt(argv[1:], "hrs:")
