@@ -79,6 +79,7 @@ def get_fix_revisions(out_dir):
     return ret;
 
 def extract_arguments(out_dir, src_file):
+    print(f'src file: {src_file}')
     ori_dir = getcwd();
     chdir(out_dir);
     # trigger the make again
@@ -131,6 +132,7 @@ def extract_arguments(out_dir, src_file):
                         token=token.replace("\"\"",'"')
                         ret = ret + token + " ";
                 chdir(ori_dir);
+                print(f'args: {ret}')
                 return directory, ret;
     # we try another way to get around it
     subprocess.call(["touch", src_file]);
@@ -168,6 +170,7 @@ def extract_arguments(out_dir, src_file):
                         token=token.replace('""','"')
                         ret = ret + token + " ";
                 chdir(ori_dir);
+                print(f'args: {ret}')
                 return directory, ret;
     chdir(ori_dir);
     return "","";
