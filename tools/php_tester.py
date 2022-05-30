@@ -15,7 +15,7 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
-from genericpath import isfile
+from genericpath import isdir, isfile
 import sys
 import subprocess
 from os import path, chdir, getcwd, environ, system, mkdir, walk,remove
@@ -269,6 +269,8 @@ def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
     else:
         temp_dir=work_dir+'/__cleantests/'+temp_dir+'_tests'
     cur_temp_dir=temp_dir+'/'+str(i)
+    if isdir(cur_temp_dir):
+        shutil.rmtree(cur_temp_dir)
     mkdir(cur_temp_dir)
     chdir(cur_temp_dir)
     shutil.copyfile("../" + str(i).zfill(5) + ".phpt", "./" + str(i).zfill(5) + ".phpt")
