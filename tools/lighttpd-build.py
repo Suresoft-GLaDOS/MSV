@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -54,22 +54,24 @@ def compile( out_dir, deps_dir, compile_only = False, config_only = False,max_pa
             fix_configure_file("configure.ac");
         if (path.exists("configure.in")):
             fix_configure_file("configure.in");
-        ret = subprocess.call(["sh autogen.sh"], shell=True, env = my_env);
-        if ret != 0:
-                print "Failed to run autogen.sh, Check automake version!";
+        ret = subprocess.run(["sh autogen.sh"], shell=True, env = my_env);
+        if ret.returncode != 0:
+                print("Failed to run autogen.sh, Check automake version!")
                 chdir(ori_dir);
                 exit(1);
         # ret = subprocess.call(["./configure","--disable-fast-install", "--with-ldap", "--with-bzip2", "--with-openssl", "--with-gdbm", "--with-memcache", "--with-webdav-props", "--with-webdav-locks", "--prefix=/home/fanl/Workspace/prophet/build/benchmarks/tmptest/lighttpd-build"], env = my_env);
-        ret = subprocess.call(["./configure","--disable-fast-install", "--with-ldap", "--with-bzip2", "--with-openssl", "--with-gdbm", "--with-memcache", "--with-webdav-props", "--with-webdav-locks"], env = my_env)
-        if ret != 0:
-                print "Configure Error!";
+        ret = subprocess.run(["./configure","--disable-fast-install", "--with-ldap", "--with-bzip2", "--with-openssl", "--with-gdbm", "--with-memcache", "--with-webdav-props", "--with-webdav-locks",
+                        f"LDFLAGS=-L{deps_dir}/libxml2-2.7.2-build/lib -L{deps_dir}/sqlite3-build/lib -L{deps_dir}/pcre-8.36-build/lib"], env = my_env)
+        if ret.returncode != 0:
+                print("Configure Error!")
                 chdir(ori_dir);
                 exit(1);
 
     if not config_only:
-        ret = subprocess.call(["make",'-j'+str(max_parallel),'CFLAGS="-fPIC"'], env = my_env);
-        if ret != 0:
-            print "Failed to compile!";
+        ret = subprocess.run(["make",'clean'], env = my_env);
+        ret = subprocess.run(["make",'-j'+str(max_parallel)], env = my_env);
+        if ret.returncode != 0:
+            print("Failed to compile!")
             exit(1);
     chdir(ori_dir);
 
@@ -111,15 +113,15 @@ if __name__=="__main__":
             max_parallel=int(a)
 
     if (len(args) < 1) or (print_usage):
-        print "Usage: lighttpd-build.py <directory> [-d src_file | -l] [-h]";
+        print("Usage: lighttpd-build.py <directory> [-d src_file | -l] [-h]")
         exit(0);
 
     out_dir = args[0];
     # fetch from github if the directory does not exist
     if path.exists(out_dir):
-        print "Working with existing directory: " + out_dir;
+        print("Working with existing directory: " + out_dir)
     else:
-        print "Non-exists directory";
+        print("Non-exists directory")
         exit(1);
 
     compile(out_dir, lighttpd_deps_dir, compile_only, config_only,max_parallel);
@@ -127,10 +129,10 @@ if __name__=="__main__":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src);
         if len(args) > 1:
             out_file = open(args[1], "w");
-            print >> out_file, builddir;
-            print >> out_file, buildargs;
+            print(builddir,file=out_file)
+            print(buildargs,file=out_file)
             out_file.close();
         else:
-            print builddir;
-            print buildargs;
+            print(builddir)
+            print(buildargs)
 
