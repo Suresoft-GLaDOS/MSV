@@ -96,6 +96,9 @@ public:
     virtual bool VisitVarDecl(VarDecl *VD) {
         if ((!valid) || (curFD != targetFD) || pass) {
             invalidDeclSet.insert(VD);
+            // if (VD->getNameAsString().find("timeout")!=std::string::npos){
+            //     printf("%s %s %s\n",VD->getNameAsString().c_str(),curFD->getNameAsString().c_str(),targetFD->getNameAsString().c_str());
+            // }
         }
         return true;
     }
@@ -843,7 +846,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidateEnumConstant(EnumConstantDe
     return G->getCandidateEnumConstant(ECD);
 }
 
-LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL) {
+LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL,bool isMSVExt) {
     SourceManager &SM = ctxt->getSourceManager();
     bool invalid = false;
     size_t line_number = SM.getExpansionLineNumber(SL, &invalid);
@@ -856,7 +859,10 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL)
     for (size_t i = 0; i < exprs.size(); i++) {
         //exprs[i]->dump();
         QualType QT = exprs[i]->getType();
-        if (!QT->isIntegerType() && !QT->isPointerType()) continue;
+        if (isMSVExt) // Use real type also for MSV extension
+            if (!QT->isIntegerType() && !QT->isPointerType() && !QT->isRealType()) continue;
+        else
+            if (!QT->isIntegerType() && !QT->isPointerType()) continue;
         //llvm::errs() << "Type correct!\n";
         MemberExpr *ME = llvm::dyn_cast<MemberExpr>(exprs[i]);
         if (ME) {
@@ -879,8 +885,9 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL)
     }
     sort(tmp_v.begin(), tmp_v.end());
     for (size_t i = 0; i < tmp_v.size(); i++){
-        if (ctxt->getTypeSize(tmp_v[i].second->getType())<=64)
+        if (ctxt->getTypeSize(tmp_v[i].second->getType())<=64){
             ret.push_back(tmp_v[i].second);
+        }
     }
     return ret;
 }

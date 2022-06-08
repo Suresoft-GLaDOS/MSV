@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -68,23 +68,23 @@ def compileit(out_dir, compile_only = False, config_only = False,max_parallel=1)
             fix_configure("configure.ac");
         if (path.exists("bootstrap.conf")):
             fix_conf("bootstrap.conf");
-        ret = subprocess.call(["./bootstrap"], shell = True, env = my_env);
-        if (ret != 0):
-            print "Failed to run bootstrap!!!";
+        ret = subprocess.run(["./bootstrap"], shell = True, env = my_env);
+        if (ret.returncode != 0):
+            print("Failed to run bootstrap!!!")
             chdir(ori_dir);
             exit(1);
         if (path.exists("lib/stdio.in.h")):
             fix_stdio("lib/stdio.in.h");
-        ret = subprocess.call(["./configure"], shell = True, env = my_env);
-        if (ret != 0):
-            print "Failed to run configure!";
+        ret = subprocess.run(["./configure"], shell = True, env = my_env);
+        if (ret.returncode != 0):
+            print("Failed to run configure!")
             chdir(ori_dir);
             exit(1);
 
     if not config_only:
-        ret = subprocess.call(["make",'-j'+str(max_parallel)], env = my_env);
-        if ret != 0:
-            print "Failed to make!";
+        ret = subprocess.run(["make",'-j'+str(max_parallel)], env = my_env);
+        if ret.returncode != 0:
+            print("Failed to make!")
             chdir(ori_dir);
             exit(1);
 
@@ -122,14 +122,14 @@ if __name__ == "__main__":
             max_parallel=int(a)
 
     if (len(args) < 1) or (print_usage):
-        print "Usage: gzip-build.py <directory> [-d src_file | -l] [-h]";
+        print("Usage: gzip-build.py <directory> [-d src_file | -l] [-h]")
         exit(0);
 
     out_dir = args[0];
     if (path.exists(out_dir)):
-        print "Working with existing directory: " + out_dir;
+        print("Working with existing directory: " + out_dir)
     else:
-        print "Non-exist directory";
+        print("Non-exist directory")
         exit(1);
 
     compileit(out_dir, compile_only, config_only,max_parallel);
@@ -137,9 +137,9 @@ if __name__ == "__main__":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src);
         if len(args) > 1:
             out_file = open(args[1], "w");
-            print >> out_file, builddir;
-            print >> out_file, buildargs;
+            print(builddir,file=out_file)
+            print(buildargs,file=out_file)
             out_file.close();
         else:
-            print builddir;
-            print buildargs;
+            print(builddir)
+            print(buildargs)

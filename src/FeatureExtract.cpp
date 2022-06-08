@@ -313,7 +313,7 @@ class FeatureExtractVisitor : public RecursiveASTVisitor<FeatureExtractVisitor> 
     }
 
     void putStmtType(Expr* v, Stmt *S) {
-        if (llvm::isa<IfStmt>(S)) {
+        if (IfStmt::classof(S)) {
             //if (isReplace)
             //    S->dump();
             //assert(!isReplace);
@@ -598,7 +598,8 @@ const int kind_m[] = {
                         ReplaceStmtRepair, // MSVExtFunctionReplaceKind
                         CondRepair, // MSVExtAddConditionKind
                         ReplaceStmtRepair, // MSVExtReplaceFunctionInConditionKind
-                        ReplaceStmtRepair // MSVExtRemoveStmtKind
+                        ReplaceStmtRepair, // MSVExtRemoveStmtKind
+                        CondRepair // MSVExtRemoveConditionKind
 };
 
 FeatureSetTy extractRepairFeatures(const RepairCandidate &rc) {

@@ -650,7 +650,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         //assert(ori_cond->getType()->isIntegerType());
         Expr *placeholder;
-        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
+        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
 
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
@@ -692,7 +692,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         //assert(ori_cond->getType()->isIntegerType());
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
         Expr* placeholder;
-        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
+        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
 
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
@@ -742,7 +742,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, S));
                 if (!naive) {
-                    ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
+                    ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
                     rc.actions.push_back(RepairAction(newStatementLoc(loc, S), placeholder,
                             candidateVars));
                 }
@@ -764,7 +764,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         //assert(ori_cond->getType()->isIntegerType());
         Expr *placeholder;
-        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
+        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
 
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
@@ -793,6 +793,217 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    void genRemoveCondition(IfStmt *stmt){
+        Expr *rootCond=stmt->getCond();
+        if (BinaryOperator::classof(rootCond)){
+            BinaryOperator *root=llvm::dyn_cast<BinaryOperator>(rootCond);
+            if (root->isLogicalOp()){
+                Expr *lhs=root->getLHS();
+                bool isModifiable=true;
+                if (BinaryOperator::classof(lhs)){
+                    // We don't remove LHS if && or ||
+                    BinaryOperator *lhsBO=llvm::dyn_cast<BinaryOperator>(lhs);
+                    if (lhsBO->isLogicalOp()){
+                        isModifiable=false;
+                    }
+                }
+                else if (ParenExpr::classof(lhs)){
+                    // We don't remove LHS if it is paren expr (e.g. (expr))
+                    isModifiable=false;
+                }
+
+                if (isModifiable){
+                    // We remove LHS
+                    ASTLocTy loc = getNowLocation(stmt);
+                    IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,root->getRHS());
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
+                    if (learning)
+                        rc.score = getLocScore(stmt);
+                    else
+                        rc.score = 4*PRIORITY_ALPHA;
+                    rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
+                    rc.original=stmt;
+                    q.push_back(rc);
+                }
+
+                // Now we try RHS
+                Expr *rhs=root->getRHS();
+                isModifiable=true;
+                if (BinaryOperator::classof(rhs)){
+                    // We don't remove RHS if && or ||
+                    BinaryOperator *rhsBO=llvm::dyn_cast<BinaryOperator>(rhs);
+                    if (rhsBO->isLogicalOp()){
+                        isModifiable=false;
+                    }
+                }
+                else if (ParenExpr::classof(rhs)){
+                    // We don't remove RHS if it is paren expr (e.g. (expr))
+                    isModifiable=false;
+                }
+
+                if (isModifiable){
+                    // We remove RHS
+                    ASTLocTy loc = getNowLocation(stmt);
+                    IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,root->getLHS());
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
+                    if (learning)
+                        rc.score = getLocScore(stmt);
+                    else
+                        rc.score = 4*PRIORITY_ALPHA;
+                    rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
+                    rc.original=stmt;
+                    q.push_back(rc);
+                }
+
+                // Now we try recursive
+                if (ParenExpr::classof(lhs)){
+                    ParenExpr *lhsParen=llvm::dyn_cast<ParenExpr>(lhs);
+                    if (BinaryOperator::classof(lhsParen->getSubExpr())){
+                        BinaryOperator *subExpr=llvm::dyn_cast<BinaryOperator>(lhsParen->getSubExpr());
+                        // LHS -> LHS
+                        Expr *subLhs=subExpr->getLHS();
+                        if (BinaryOperator::classof(subLhs)){
+                            // We don't remove LHS if && or ||
+                            BinaryOperator *lhsBO=llvm::dyn_cast<BinaryOperator>(subLhs);
+                            if (lhsBO->isLogicalOp()){
+                                isModifiable=false;
+                            }
+                        }
+                        else if (ParenExpr::classof(subLhs)){
+                            // We don't remove LHS if it is paren expr (e.g. (expr))
+                            isModifiable=false;
+                        }
+
+                        if (isModifiable){
+                            // We remove LHS
+                            ASTLocTy loc = getNowLocation(stmt);
+                            ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),subExpr->getRHS());
+                            BinaryOperator *newCond=BinaryOperator::Create(*ctxt,newParen,root->getRHS(),root->getOpcode(),ctxt->BoolTy,root->getValueKind(),root->getObjectKind(),SourceLocation(),FPOptionsOverride());
+                            IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,newCond);
+                            RepairCandidate rc;
+                            rc.actions.clear();
+                            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
+                            if (learning)
+                                rc.score = getLocScore(stmt);
+                            else
+                                rc.score = 4*PRIORITY_ALPHA;
+                            rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
+                            rc.original=stmt;
+                            q.push_back(rc);
+                        }
+
+                        // LHS -> RHS
+                        Expr *subRhs=subExpr->getRHS();
+                        if (BinaryOperator::classof(subRhs)){
+                            // We don't remove RHS if && or ||
+                            BinaryOperator *lhsBO=llvm::dyn_cast<BinaryOperator>(subRhs);
+                            if (lhsBO->isLogicalOp()){
+                                isModifiable=false;
+                            }
+                        }
+                        else if (ParenExpr::classof(subRhs)){
+                            // We don't remove RHS if it is paren expr (e.g. (expr))
+                            isModifiable=false;
+                        }
+
+                        if (isModifiable){
+                            // We remove RHS
+                            ASTLocTy loc = getNowLocation(stmt);
+                            ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),subExpr->getLHS());
+                            BinaryOperator *newCond=BinaryOperator::Create(*ctxt,newParen,root->getRHS(),root->getOpcode(),ctxt->BoolTy,root->getValueKind(),root->getObjectKind(),SourceLocation(),FPOptionsOverride());
+                            IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,newCond);
+                            RepairCandidate rc;
+                            rc.actions.clear();
+                            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
+                            if (learning)
+                                rc.score = getLocScore(stmt);
+                            else
+                                rc.score = 4*PRIORITY_ALPHA;
+                            rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
+                            rc.original=stmt;
+                            q.push_back(rc);
+                        }
+                    }
+                }
+
+                if (ParenExpr::classof(rhs)){
+                    // RHS -> LHS
+                    ParenExpr *rhsParen=llvm::dyn_cast<ParenExpr>(rhs);
+                    if (BinaryOperator::classof(rhsParen->getSubExpr())){
+                        BinaryOperator *subExpr=llvm::dyn_cast<BinaryOperator>(rhsParen->getSubExpr());
+                        Expr *subRhs=subExpr->getLHS();
+                        if (BinaryOperator::classof(subRhs)){
+                            // We don't remove LHS if && or ||
+                            BinaryOperator *rhsBO=llvm::dyn_cast<BinaryOperator>(rhs);
+                            if (rhsBO->isLogicalOp()){
+                                isModifiable=false;
+                            }
+                        }
+                        else if (ParenExpr::classof(subRhs)){
+                            // We don't remove LHS if it is paren expr (e.g. (expr))
+                            isModifiable=false;
+                        }
+
+                        if (isModifiable){
+                            // We remove LHS
+                            ASTLocTy loc = getNowLocation(stmt);
+                            ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),subExpr->getRHS());
+                            BinaryOperator *newCond=BinaryOperator::Create(*ctxt,newParen,root->getLHS(),root->getOpcode(),root->getType(),root->getValueKind(),root->getObjectKind(),root->getBeginLoc(),FPOptionsOverride());
+                            IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,newCond);
+                            RepairCandidate rc;
+                            rc.actions.clear();
+                            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
+                            if (learning)
+                                rc.score = getLocScore(stmt);
+                            else
+                                rc.score = 4*PRIORITY_ALPHA;
+                            rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
+                            rc.original=stmt;
+                            q.push_back(rc);
+                        }
+
+                        // RHS -> RHS
+                        subRhs=subExpr->getRHS();
+                        if (BinaryOperator::classof(subRhs)){
+                            // We don't remove RHS if && or ||
+                            BinaryOperator *lhsBO=llvm::dyn_cast<BinaryOperator>(subRhs);
+                            if (lhsBO->isLogicalOp()){
+                                isModifiable=false;
+                            }
+                        }
+                        else if (ParenExpr::classof(subRhs)){
+                            // We don't remove RHS if it is paren expr (e.g. (expr))
+                            isModifiable=false;
+                        }
+
+                        if (isModifiable){
+                            // We remove RHS
+                            ASTLocTy loc = getNowLocation(stmt);
+                            ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),subExpr->getLHS());
+                            BinaryOperator *newCond=BinaryOperator::Create(*ctxt,newParen,root->getLHS(),root->getOpcode(),ctxt->BoolTy,root->getValueKind(),root->getObjectKind(),SourceLocation(),FPOptionsOverride());
+                            IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,newCond);
+                            RepairCandidate rc;
+                            rc.actions.clear();
+                            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
+                            if (learning)
+                                rc.score = getLocScore(stmt);
+                            else
+                                rc.score = 4*PRIORITY_ALPHA;
+                            rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
+                            rc.original=stmt;
+                            q.push_back(rc);
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
     void genReturnCondition(ReturnStmt *stmt){
         Expr *body=stmt->getRetValue();
         if (body != NULL && BinaryOperator::classof(body)){
@@ -802,7 +1013,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 ASTLocTy loc = getNowLocation(stmt);
                 LocalAnalyzer *L = M.getLocalAnalyzer(loc);
                 Expr *placeholder;
-                ExprListTy candidateVars = L->getCondCandidateVars(stmt->getEndLoc());
+                ExprListTy candidateVars = L->getCondCandidateVars(stmt->getEndLoc(),MsvExt.getValue());
 
                 if (naive)
                     placeholder = getNewIntegerLiteral(ctxt, 1);
@@ -845,7 +1056,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 ASTLocTy loc = getNowLocation(stmt);
                 LocalAnalyzer *L = M.getLocalAnalyzer(loc);
                 Expr *placeholder;
-                ExprListTy candidateVars = L->getCondCandidateVars(stmt->getEndLoc());
+                ExprListTy candidateVars = L->getCondCandidateVars(stmt->getEndLoc(),MsvExt.getValue());
 
                 if (naive)
                     placeholder = getNewIntegerLiteral(ctxt, 1);
@@ -1203,7 +1414,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         Expr* placeholder;
-        ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+        ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
         std::map<Expr *,unsigned long> args;
         for (size_t i=0;i<candidateVars.size();i++){
             // args is sizeof candidateVars, used for memcpy
@@ -1253,7 +1464,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, new_IF));
-                ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+                ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
                 rc.actions.push_back(RepairAction(newStatementLoc(loc, new_IF), placeholder,
                             candidateVars));
                 // FIXME: priority!
@@ -1307,7 +1518,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         Expr* placeholder;
-        ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+        ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
 
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
@@ -1355,7 +1566,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc, RepairAction::InsertMutationKind, IFS));
                 if (!naive) {
-                    ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+                    ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
                     rc.actions.push_back(RepairAction(newStatementLoc(loc, IFS), placeholder,
                             candidateVars));
                 }
@@ -1386,7 +1597,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             IfStmt *IFS = IfStmt::Create(*ctxt, SourceLocation(), false,nullptr,0, placeholder, BS);
             rc.actions.clear();
             rc.actions.push_back(RepairAction(loc, RepairAction::InsertMutationKind, IFS));
-            ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+            ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
             rc.actions.push_back(RepairAction(newStatementLoc(loc, IFS), placeholder,
                         candidateVars));
             //FIXME: score
@@ -1418,7 +1629,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             IfStmt *IFS =IfStmt::Create(*ctxt, SourceLocation(), false,nullptr,0, placeholder, GS);
             rc.actions.clear();
             rc.actions.push_back(RepairAction(loc, RepairAction::InsertMutationKind, IFS));
-            ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+            ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
             rc.actions.push_back(RepairAction(newStatementLoc(loc, IFS), placeholder,
                         candidateVars));
             if (learning) {
@@ -1547,6 +1758,7 @@ public:
             
             genCondition(n);
             genReplceFunctionInCondition(n);
+            genRemoveCondition(n);
         }
         if (isTainted(n) || isTainted(ThenCS))
             genTightCondition(n);

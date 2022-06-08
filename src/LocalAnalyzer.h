@@ -152,7 +152,7 @@ public:
 
     //clang::CallExpr* getIsNegCall(clang::Expr* is_neg_fn, size_t line_number);
 
-    ExprListTy getCondCandidateVars(clang::SourceLocation SL);
+    ExprListTy getCondCandidateVars(clang::SourceLocation SL,bool isMSVExt=false);
 
 /*    clang::Expr* synthesizeResult(ExprListTy exps,
             const std::map<unsigned long, std::vector<unsigned long> > &negative_records,
