@@ -189,11 +189,9 @@ def run_test(test_file,subdir,ori_dir,id,timeout):
     try:
         so, se = proc.communicate(timeout=timeout)
         if (proc.returncode != 0):
-            write_out_dist(DIST_MAX)
             chdir(ori_dir)
             return
     except:
-        write_out_dist(DIST_MAX)
         pid = proc.pid
         children = []
         for child in psutil.Process(pid).children(True):
@@ -214,9 +212,7 @@ def run_test(test_file,subdir,ori_dir,id,timeout):
         so, se = proc.communicate(timeout=timeout)
         if proc.returncode == 0:
             print(id)
-            write_out_dist(DIST_MIN)
     except:
-        write_out_dist(DIST_DEFAULT)
         pid = proc.pid
         children = []
         for child in psutil.Process(pid).children(True):

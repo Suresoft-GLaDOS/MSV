@@ -41,7 +41,7 @@ def run_test(testcase, timeout):
     # print("out: " + tmp_out_file, flush=True)
     # print(f"perl -I {path.join(my_env['MSV_PATH'], 'benchmarks', 'lighttpd-script')} run-tests.pl 1>{out_file}")
     script = path.join(my_env['MSV_PATH'], 'benchmarks', 'lighttpd-script')
-    proc = subprocess.Popen([f"perl -I {script} run-tests.pl 1>{out_file} 2>/dev/null"],
+    proc = subprocess.Popen([f"perl run-tests.pl 1>{out_file} 2>/dev/null"],
                             shell=True, env=my_env, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     #ret = subprocess.call([f"perl run-tests.pl 1>{out_file}  2>/dev/null"], shell=True, env = my_env);
     try:
@@ -55,25 +55,6 @@ def run_test(testcase, timeout):
         for child in children:
             child.kill()
         proc.kill()
-    if "MSV_OUTPUT_DISTANCE_FILE" in my_env:
-        exp = ""
-        out = ""
-        exp_file = path.join(my_env["MSV_PATH"], "benchmarks", "lighttpd-exp", str(testcase) + ".exp")
-        try:
-            if path.exists(exp_file):
-                with open(exp_file, "r") as f1:
-                    exp = f1.read()
-            if path.exists(tmp_out_file):
-                with open(tmp_out_file, "r") as f2:
-                    out = f2.read()
-                remove(tmp_out_file)
-            with open(my_env["MSV_OUTPUT_DISTANCE_FILE"], "w") as f3:
-                seqMatch = SequenceMatcher(None, exp, out)
-                match = seqMatch.find_longest_match(0, len(exp), 0, len(out)).size
-                dist = max(len(out) - match, len(exp) - match)
-                f3.write(str(dist))
-        except:
-            pass
     if ret != 0:
         system(f"rm -rf {out_file}");
         return
@@ -122,9 +103,6 @@ if __name__ == "__main__":
         if (not path.exists(cur_dir+"/"+tempdir)):
             system("cp -rf " + test_dir + " " + cur_dir + "/"+tempdir);
             system("rm -f " + path.join(cur_dir, tempdir, "LightyTest.pm"))
-        system("cp -f " + path.join(environ["MSV_PATH"], "benchmarks", "lighttpd-script", "LightyTest.pm") + " " + path.join(cur_dir, tempdir, "LightyTest.pm"));
-
-        system("killall -9 lighttpd > /dev/null 2> /dev/null");
 
         ori_dir = getcwd();
         chdir(cur_dir + "/"+tempdir);
