@@ -1656,6 +1656,48 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    // var = cond ? (<var> != 0) : body
+    void genTernaryOperator(BinaryOperator *oper){
+        if (oper->getOpcode() != BO_Assign)
+            return;
+        
+        ASTLocTy loc = getNowLocation(oper);
+        LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        Expr* placeholder;
+        ExprListTy candidateVars = L->getCondCandidateVars(oper->getBeginLoc(),MsvExt.getValue());
+
+        Expr *rhs=oper->getRHS();
+        if (ConditionalOperator::classof(rhs)){
+            ConditionalOperator *CO = llvm::dyn_cast<ConditionalOperator>(rhs);
+
+            for (size_t i = 0; i < candidateVars.size(); i++) {
+                BinaryOperator *newTrueExpr=BinaryOperator::Create(*ctxt,candidateVars[i],getNewIntegerLiteral(ctxt,0),
+                            BinaryOperator::Opcode::BO_NE,ctxt->BoolTy,ExprValueKind::VK_RValue,ExprObjectKind::OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                ParenExpr *paren=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),newTrueExpr);
+
+                ConditionalOperator *newCO = new(*ctxt) ConditionalOperator(CO->getCond(),SourceLocation(),paren,
+                            CO->getQuestionLoc(),CO->getRHS(),CO->getType(),CO->getValueKind(),CO->getObjectKind());
+                BinaryOperator *newExpr=BinaryOperator::Create(*ctxt,oper->getLHS(),newCO,
+                            BinaryOperator::Opcode::BO_Assign,ctxt->BoolTy,ExprValueKind::VK_RValue,ExprObjectKind::OK_Ordinary,SourceLocation(),FPOptionsOverride());
+
+                RepairCandidate rc;
+                rc.actions.clear();
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newExpr)); 
+                if (learning)
+                    rc.score = getLocScore(oper);
+                else
+                    rc.score = getPriority(oper) + PRIORITY_ALPHA;
+                rc.kind = RepairCandidate::ReplaceKind; // TODO: Add new kind 
+                rc.original=oper;
+                rc.is_first = false;
+                rc.oldRExpr = NULL;
+                rc.newRExpr = NULL;
+                q.push_back(rc);
+
+            }
+        }
+    }
+
     bool genVarMutation(FunctionDecl *decl){
         return true;
         Stmt *body=decl->getBody();
@@ -1825,6 +1867,7 @@ public:
     bool VisitBinaryOperator(BinaryOperator *oper){
         if (isTainted(oper) && MsvExt.getValue()) {
             genAssignCondition(oper);
+            genTernaryOperator(oper);
         }
         return true;
     }
