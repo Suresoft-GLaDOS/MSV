@@ -1698,6 +1698,56 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    void genMoveOperator(IfStmt *stmt){
+        Expr *cond=stmt->getCond();
+
+        Expr *currentExpr=cond;
+        if (!BinaryOperator::classof(currentExpr))
+            return;
+        BinaryOperator *currentOper=llvm::dyn_cast<BinaryOperator>(currentExpr);
+        ASTLocTy loc = getNowLocation(stmt);
+        LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+
+        Expr *rhsExpr=currentOper->getRHS();
+        if (!BinaryOperator::classof(rhsExpr))
+            return;
+        BinaryOperator *rhsOper=llvm::dyn_cast<BinaryOperator>(rhsExpr);
+
+        if (rhsOper->isComparisonOp()){
+            Expr *lhs=rhsOper->getLHS();
+            Expr *rhs=rhsOper->getRHS();
+            if (BinaryOperator::classof(lhs)){
+                BinaryOperator *lhsOper=llvm::dyn_cast<BinaryOperator>(lhs);
+                if (lhsOper->isMultiplicativeOp()){
+                    BinaryOperator::Opcode opcode=lhsOper->getOpcode();
+                    Expr *var2=lhsOper->getRHS();
+
+                    Expr *newLhs=lhsOper->getLHS();
+                    Expr *newRhs=BinaryOperator::Create(*ctxt,rhs,var2,opcode,lhsOper->getType(),lhsOper->getValueKind(),lhsOper->getObjectKind(),SourceLocation(),FPOptionsOverride());
+
+                    BinaryOperator *newOper=BinaryOperator::Create(*ctxt,newLhs,newRhs,rhsOper->getOpcode(),rhsOper->getType(),rhsOper->getValueKind(),rhsOper->getObjectKind(),SourceLocation(),FPOptionsOverride());
+                    BinaryOperator *finalCondition=BinaryOperator::Create(*ctxt,currentOper->getLHS(),newOper,currentOper->getOpcode(),currentOper->getType(),currentOper->getValueKind(),currentOper->getObjectKind(),SourceLocation(),FPOptionsOverride());
+
+                    IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,finalCondition);
+
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt)); 
+                    if (learning)
+                        rc.score = getLocScore(stmt);
+                    else
+                        rc.score = getPriority(stmt) + PRIORITY_ALPHA;
+                    rc.kind = RepairCandidate::MSVExtRemoveConditionKind; // TODO: Add new kind 
+                    rc.original=stmt;
+                    rc.is_first = false;
+                    rc.oldRExpr = NULL;
+                    rc.newRExpr = NULL;
+                    q.push_back(rc);
+                }
+            }
+        }
+    }
+
     bool genVarMutation(FunctionDecl *decl){
         return true;
         Stmt *body=decl->getBody();
@@ -1799,8 +1849,11 @@ public:
                 loc_map1[n] = loc_map1[ElseCS];
             
             genCondition(n);
-            genReplceFunctionInCondition(n);
-            genRemoveCondition(n);
+            if (MsvExt.getValue()){
+                genReplceFunctionInCondition(n);
+                genRemoveCondition(n);
+                genMoveOperator(n);
+            }
         }
         if (isTainted(n) || isTainted(ThenCS))
             genTightCondition(n);
