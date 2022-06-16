@@ -812,6 +812,9 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 }
             }
 
+            // Give up if there's no && or || operation
+            if (condStack.size()==0) return;
+
             // Now remove each conditions
             for (size_t i=1;i<condStack.size();i++){
                 BinaryOperator *cond=condStack[i];
@@ -1613,6 +1616,61 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    void genStringReplace(CallExpr *expr){
+        Expr *callee=expr->getCallee();
+        if (ImplicitCastExpr::classof(callee)){
+            ImplicitCastExpr *ice=llvm::dyn_cast<ImplicitCastExpr>(callee);
+            Expr *sub=ice->getSubExpr();
+
+            if (DeclRefExpr::classof(sub)){
+                DeclRefExpr *dre=llvm::dyn_cast<DeclRefExpr>(sub);
+                if (FunctionDecl::classof(dre->getDecl())){
+                    Expr **argsTemp=expr->getArgs();
+                    std::vector<Expr *> args(expr->arg_begin(),expr->arg_end());
+
+                    for (size_t i = 0; i < args.size(); i++) {
+                        Expr *arg=args[i];
+                        if (ImplicitCastExpr::classof(arg)){
+                            ImplicitCastExpr *temp=llvm::dyn_cast<ImplicitCastExpr>(arg);
+                            if (ImplicitCastExpr::classof(temp->getSubExpr())){
+                                ImplicitCastExpr *subTemp=llvm::dyn_cast<ImplicitCastExpr>(temp->getSubExpr());
+                                if (StringLiteral::classof(subTemp->getSubExpr())){
+                                    StringLiteral *str=llvm::dyn_cast<StringLiteral>(subTemp->getSubExpr());
+
+                                    std::string value=str->getString().str();
+
+                                    value+=" or the directory does not exist";
+                                    StringLiteral *newStr=StringLiteral::Create(*ctxt,value,str->getKind(),str->isPascal(),str->getType(),SourceLocation());
+                                    ImplicitCastExpr *newTemp=ImplicitCastExpr::Create(*ctxt,subTemp->getType(),subTemp->getCastKind(),newStr,nullptr,subTemp->getValueKind());
+                                    ImplicitCastExpr *newTemp2=ImplicitCastExpr::Create(*ctxt,temp->getType(),temp->getCastKind(),newTemp,nullptr,temp->getValueKind());
+
+                                    std::vector<Expr *> newArgs(args);
+                                    newArgs[i]=newTemp2;
+                                    CallExpr *newCall=CallExpr::Create(*ctxt,expr->getCallee(),newArgs,expr->getType(),expr->getValueKind(),SourceLocation());
+                                    ASTLocTy loc = getNowLocation(expr);
+
+                                    RepairCandidate rc;
+                                    rc.actions.clear();
+                                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newCall)); 
+                                    if (learning)
+                                        rc.score = getLocScore(expr);
+                                    else
+                                        rc.score = getPriority(expr) + PRIORITY_ALPHA;
+                                    rc.kind = RepairCandidate::ReplaceKind; // TODO: Add new kind 
+                                    rc.original=expr;
+                                    rc.is_first = false;
+                                    rc.oldRExpr = NULL;
+                                    rc.newRExpr = NULL;
+                                    q.push_back(rc);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     bool genVarMutation(FunctionDecl *decl){
         return true;
         Stmt *body=decl->getBody();
@@ -1754,6 +1812,10 @@ public:
                 genAddMemset(n, is_first);
                 if (!NoAdd.getValue()) genAddStatement(n, is_first, stmt_stack.size() == 2);
                 genAddIfExit(n, is_first, stmt_stack.size() == 2);
+
+                if (CallExpr::classof(n) && MsvExt.getValue()){
+                    genStringReplace(llvm::dyn_cast<CallExpr>(n));
+                }
             }
             else if (llvm::isa<IfStmt>(n)) {
                 IfStmt *IFS = llvm::dyn_cast<IfStmt>(n);
