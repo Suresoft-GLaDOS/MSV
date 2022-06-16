@@ -796,209 +796,74 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
     void genRemoveCondition(IfStmt *stmt){
         Expr *rootCond=stmt->getCond();
         if (BinaryOperator::classof(rootCond)){
+            ASTLocTy loc = getNowLocation(stmt);
             BinaryOperator *root=llvm::dyn_cast<BinaryOperator>(rootCond);
-            if (root->isLogicalOp()){
-                Expr *lhs=root->getLHS();
-                bool isModifiable=true;
-                if (BinaryOperator::classof(lhs)){
-                    // We don't remove LHS if && or ||
-                    BinaryOperator *lhsBO=llvm::dyn_cast<BinaryOperator>(lhs);
-                    if (lhsBO->isLogicalOp()){
-                        isModifiable=false;
-                    }
+            std::vector<BinaryOperator *> condStack;
+            condStack.clear();
+            BinaryOperator *current=root;
+            std::vector<IfStmt *> result;
+
+            // Get all logical operations
+            while (current->isLogicalOp()){
+                condStack.push_back(current);
+                Expr *LHS=current->getLHS();
+                if (BinaryOperator::classof(LHS)){
+                    current=llvm::dyn_cast<BinaryOperator>(LHS);
                 }
-                else if (ParenExpr::classof(lhs)){
-                    // We don't remove LHS if it is paren expr (e.g. (expr))
-                    isModifiable=false;
+            }
+
+            // Now remove each conditions
+            for (size_t i=1;i<condStack.size();i++){
+                BinaryOperator *cond=condStack[i];
+
+                // Remove RHS first
+                Expr *LHS=cond->getLHS();
+                BinaryOperator* parent=condStack[i-1];
+                BinaryOperator *newOper=BinaryOperator::Create(*ctxt,LHS,parent->getRHS(),
+                        parent->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                        SourceLocation(),FPOptionsOverride());
+                for (long j=i-2;j>=0;j--){
+                    newOper=BinaryOperator::Create(*ctxt,newOper,condStack[j]->getRHS(),
+                            condStack[j]->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                            SourceLocation(),FPOptionsOverride());
                 }
+                // printf("%s\n",stmtToString(*ctxt,newOper).c_str());
+                IfStmt *newIf=duplicateIfStmt(ctxt,stmt,newOper);
+                result.push_back(newIf);
+            }
 
-                if (isModifiable){
-                    // We remove LHS
-                    ASTLocTy loc = getNowLocation(stmt);
-                    IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,root->getRHS());
-                    RepairCandidate rc;
-                    rc.actions.clear();
-                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
-                    if (learning)
-                        rc.score = getLocScore(stmt);
-                    else
-                        rc.score = 4*PRIORITY_ALPHA;
-                    rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
-                    rc.original=stmt;
-                    q.push_back(rc);
-                }
+            // Remove rhs of root
+            // printf("%s\n",stmtToString(*ctxt,condStack[0]->getLHS()).c_str());
+            IfStmt *newIf=duplicateIfStmt(ctxt,stmt,condStack[0]->getLHS());
+            result.push_back(newIf);
 
-                // Now we try RHS
-                Expr *rhs=root->getRHS();
-                isModifiable=true;
-                if (BinaryOperator::classof(rhs)){
-                    // We don't remove RHS if && or ||
-                    BinaryOperator *rhsBO=llvm::dyn_cast<BinaryOperator>(rhs);
-                    if (rhsBO->isLogicalOp()){
-                        isModifiable=false;
-                    }
-                }
-                else if (ParenExpr::classof(rhs)){
-                    // We don't remove RHS if it is paren expr (e.g. (expr))
-                    isModifiable=false;
-                }
+            // Remove LHS of last condition
+            BinaryOperator *cond=condStack[condStack.size()-1];
 
-                if (isModifiable){
-                    // We remove RHS
-                    ASTLocTy loc = getNowLocation(stmt);
-                    IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,root->getLHS());
-                    RepairCandidate rc;
-                    rc.actions.clear();
-                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
-                    if (learning)
-                        rc.score = getLocScore(stmt);
-                    else
-                        rc.score = 4*PRIORITY_ALPHA;
-                    rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
-                    rc.original=stmt;
-                    q.push_back(rc);
-                }
+            Expr *RHS=cond->getRHS();
+            BinaryOperator* parent=condStack[condStack.size()-2];
+            BinaryOperator *newOper=BinaryOperator::Create(*ctxt,RHS,parent->getRHS(),
+                    parent->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                    SourceLocation(),FPOptionsOverride());
+            for (long j=condStack.size()-3;j>=0;j--){
+                newOper=BinaryOperator::Create(*ctxt,newOper,condStack[j]->getRHS(),
+                        condStack[j]->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                        SourceLocation(),FPOptionsOverride());
+            }
+            newIf=duplicateIfStmt(ctxt,stmt,newOper);
+            result.push_back(newIf);
 
-                // Now we try recursive
-                if (ParenExpr::classof(lhs)){
-                    ParenExpr *lhsParen=llvm::dyn_cast<ParenExpr>(lhs);
-                    if (BinaryOperator::classof(lhsParen->getSubExpr())){
-                        BinaryOperator *subExpr=llvm::dyn_cast<BinaryOperator>(lhsParen->getSubExpr());
-                        // LHS -> LHS
-                        Expr *subLhs=subExpr->getLHS();
-                        if (BinaryOperator::classof(subLhs)){
-                            // We don't remove LHS if && or ||
-                            BinaryOperator *lhsBO=llvm::dyn_cast<BinaryOperator>(subLhs);
-                            if (lhsBO->isLogicalOp()){
-                                isModifiable=false;
-                            }
-                        }
-                        else if (ParenExpr::classof(subLhs)){
-                            // We don't remove LHS if it is paren expr (e.g. (expr))
-                            isModifiable=false;
-                        }
-
-                        if (isModifiable){
-                            // We remove LHS
-                            ASTLocTy loc = getNowLocation(stmt);
-                            ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),subExpr->getRHS());
-                            BinaryOperator *newCond=BinaryOperator::Create(*ctxt,newParen,root->getRHS(),root->getOpcode(),ctxt->BoolTy,root->getValueKind(),root->getObjectKind(),SourceLocation(),FPOptionsOverride());
-                            IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,newCond);
-                            RepairCandidate rc;
-                            rc.actions.clear();
-                            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
-                            if (learning)
-                                rc.score = getLocScore(stmt);
-                            else
-                                rc.score = 4*PRIORITY_ALPHA;
-                            rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
-                            rc.original=stmt;
-                            q.push_back(rc);
-                        }
-
-                        // LHS -> RHS
-                        Expr *subRhs=subExpr->getRHS();
-                        if (BinaryOperator::classof(subRhs)){
-                            // We don't remove RHS if && or ||
-                            BinaryOperator *lhsBO=llvm::dyn_cast<BinaryOperator>(subRhs);
-                            if (lhsBO->isLogicalOp()){
-                                isModifiable=false;
-                            }
-                        }
-                        else if (ParenExpr::classof(subRhs)){
-                            // We don't remove RHS if it is paren expr (e.g. (expr))
-                            isModifiable=false;
-                        }
-
-                        if (isModifiable){
-                            // We remove RHS
-                            ASTLocTy loc = getNowLocation(stmt);
-                            ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),subExpr->getLHS());
-                            BinaryOperator *newCond=BinaryOperator::Create(*ctxt,newParen,root->getRHS(),root->getOpcode(),ctxt->BoolTy,root->getValueKind(),root->getObjectKind(),SourceLocation(),FPOptionsOverride());
-                            IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,newCond);
-                            RepairCandidate rc;
-                            rc.actions.clear();
-                            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
-                            if (learning)
-                                rc.score = getLocScore(stmt);
-                            else
-                                rc.score = 4*PRIORITY_ALPHA;
-                            rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
-                            rc.original=stmt;
-                            q.push_back(rc);
-                        }
-                    }
-                }
-
-                if (ParenExpr::classof(rhs)){
-                    // RHS -> LHS
-                    ParenExpr *rhsParen=llvm::dyn_cast<ParenExpr>(rhs);
-                    if (BinaryOperator::classof(rhsParen->getSubExpr())){
-                        BinaryOperator *subExpr=llvm::dyn_cast<BinaryOperator>(rhsParen->getSubExpr());
-                        Expr *subRhs=subExpr->getLHS();
-                        if (BinaryOperator::classof(subRhs)){
-                            // We don't remove LHS if && or ||
-                            BinaryOperator *rhsBO=llvm::dyn_cast<BinaryOperator>(rhs);
-                            if (rhsBO->isLogicalOp()){
-                                isModifiable=false;
-                            }
-                        }
-                        else if (ParenExpr::classof(subRhs)){
-                            // We don't remove LHS if it is paren expr (e.g. (expr))
-                            isModifiable=false;
-                        }
-
-                        if (isModifiable){
-                            // We remove LHS
-                            ASTLocTy loc = getNowLocation(stmt);
-                            ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),subExpr->getRHS());
-                            BinaryOperator *newCond=BinaryOperator::Create(*ctxt,newParen,root->getLHS(),root->getOpcode(),root->getType(),root->getValueKind(),root->getObjectKind(),root->getBeginLoc(),FPOptionsOverride());
-                            IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,newCond);
-                            RepairCandidate rc;
-                            rc.actions.clear();
-                            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
-                            if (learning)
-                                rc.score = getLocScore(stmt);
-                            else
-                                rc.score = 4*PRIORITY_ALPHA;
-                            rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
-                            rc.original=stmt;
-                            q.push_back(rc);
-                        }
-
-                        // RHS -> RHS
-                        subRhs=subExpr->getRHS();
-                        if (BinaryOperator::classof(subRhs)){
-                            // We don't remove RHS if && or ||
-                            BinaryOperator *lhsBO=llvm::dyn_cast<BinaryOperator>(subRhs);
-                            if (lhsBO->isLogicalOp()){
-                                isModifiable=false;
-                            }
-                        }
-                        else if (ParenExpr::classof(subRhs)){
-                            // We don't remove RHS if it is paren expr (e.g. (expr))
-                            isModifiable=false;
-                        }
-
-                        if (isModifiable){
-                            // We remove RHS
-                            ASTLocTy loc = getNowLocation(stmt);
-                            ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),subExpr->getLHS());
-                            BinaryOperator *newCond=BinaryOperator::Create(*ctxt,newParen,root->getLHS(),root->getOpcode(),ctxt->BoolTy,root->getValueKind(),root->getObjectKind(),SourceLocation(),FPOptionsOverride());
-                            IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,newCond);
-                            RepairCandidate rc;
-                            rc.actions.clear();
-                            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
-                            if (learning)
-                                rc.score = getLocScore(stmt);
-                            else
-                                rc.score = 4*PRIORITY_ALPHA;
-                            rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
-                            rc.original=stmt;
-                            q.push_back(rc);
-                        }
-                    }
-                }
+            for (size_t i=0;i<result.size();i++){
+                RepairCandidate rc;
+                rc.actions.clear();
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, result[i]));
+                if (learning)
+                    rc.score = getLocScore(stmt);
+                else
+                    rc.score = 4*PRIORITY_ALPHA;
+                rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
+                rc.original=stmt;
+                q.push_back(rc);
 
             }
         }
@@ -1259,7 +1124,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 rc.actions.clear();
 
                 IfStmt *newIf=IfStmt::Create(*ctxt,SourceLocation(),stmt->isConstexpr(),stmt->getInit(),stmt->getConditionVariable(),(Expr *)*it,stmt->getThen(),SourceLocation(),stmt->getElse());
-                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, *it));
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newIf));
                 if (learning)
                     rc.score = getLocScore(stmt);
                 else
