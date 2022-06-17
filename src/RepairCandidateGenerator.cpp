@@ -648,6 +648,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         Expr *ori_cond = n->getCond();
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
         //assert(ori_cond->getType()->isIntegerType());
         Expr *placeholder;
         ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
@@ -689,6 +690,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         Expr *ori_cond = n->getCond();
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
         //assert(ori_cond->getType()->isIntegerType());
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
         Expr* placeholder;
@@ -762,6 +764,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         Expr *ori_cond = n->getCond();
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
         //assert(ori_cond->getType()->isIntegerType());
         Expr *placeholder;
         ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
@@ -880,6 +883,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                             oper->getOpcode()==BO_And ||oper->getOpcode()==BO_Or){
                 ASTLocTy loc = getNowLocation(stmt);
                 LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+                L->msvExt=false;
                 Expr *placeholder;
                 ExprListTy candidateVars = L->getCondCandidateVars(stmt->getEndLoc(),MsvExt.getValue());
 
@@ -923,6 +927,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                             oper->getOpcode()==BO_And ||oper->getOpcode()==BO_Or){
                 ASTLocTy loc = getNowLocation(stmt);
                 LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+                L->msvExt=false;
                 Expr *placeholder;
                 ExprListTy candidateVars = L->getCondCandidateVars(stmt->getEndLoc(),MsvExt.getValue());
 
@@ -963,6 +968,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (!hinfo.sys_memset) return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=MsvExt.getValue();
         ExprListTy exprs = L->getCandidatePointerForMemset(0);
         for (size_t i = 0; i < exprs.size(); i++) {
             // create sizeof() part
@@ -1002,6 +1008,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (naive) return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
         // OK, we limit replacement to expr only statement to avoid stupid redundent
         // changes to an compound statement/if statement
         if (llvm::isa<Expr>(n) && !NoVar.getValue()) {
@@ -1114,6 +1121,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (MsvExt.getValue() && !NoFunc.getValue()) {
             ASTLocTy loc = getNowLocation(stmt);
             LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+            L->msvExt=false;
             Expr *cond = stmt->getCond();
 
             CallExprReplaceVisitor visitor(ctxt, L, cond);
@@ -1167,6 +1175,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (naive) return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=MsvExt.getValue();
         std::set<Expr*> exprs = L->getGlobalCandidateExprs();
         std::map<std::string, RepairCandidate> tmp_map;
         tmp_map.clear();
@@ -1281,6 +1290,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
         Expr* placeholder;
         ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
         std::map<Expr *,unsigned long> args;
@@ -1385,6 +1395,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
         Expr* placeholder;
         ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
 
@@ -1531,6 +1542,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         
         ASTLocTy loc = getNowLocation(oper);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
         Expr* placeholder;
         ExprListTy candidateVars = L->getCondCandidateVars(oper->getBeginLoc(),MsvExt.getValue());
 
@@ -1575,6 +1587,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         BinaryOperator *currentOper=llvm::dyn_cast<BinaryOperator>(currentExpr);
         ASTLocTy loc = getNowLocation(stmt);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
 
         Expr *rhsExpr=currentOper->getRHS();
         if (!BinaryOperator::classof(rhsExpr))
@@ -1680,6 +1693,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 Stmt *first=comp->body_front();
                 ASTLocTy loc = getNowLocation(first);
                 LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+                L->msvExt=false;
                 ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,true);
                 ExprListTy temp;
                 temp.clear();

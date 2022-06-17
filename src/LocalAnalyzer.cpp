@@ -118,11 +118,12 @@ public:
 
 class MemberExprStemVisitor : public RecursiveASTVisitor<MemberExprStemVisitor> {
     std::map<std::string, Expr*> res;
+    std::map<std::string, Expr*> msvRes;
     StmtStackTy &stackStmt;
     ASTContext *ctxt;
     bool valid;
 public:
-    MemberExprStemVisitor(ASTContext *ctxt,StmtStackTy &stackStmt): res(), ctxt(ctxt),stackStmt(stackStmt),valid(true) {}
+    MemberExprStemVisitor(ASTContext *ctxt,StmtStackTy &stackStmt): res(), ctxt(ctxt),stackStmt(stackStmt),valid(true),msvRes() {}
     ~MemberExprStemVisitor() {}
     virtual bool VisitMemberExpr(MemberExpr *ME) {
         if (valid){
@@ -146,7 +147,20 @@ public:
             std::string tmp = stripLine(stmtToString(*ctxt, base));
             if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
                 res[tmp] = base;
+
+            ValueDecl *vDecl=ME->getMemberDecl();
+            DeclContext *DC=vDecl->getDeclContext();
+            if (DC->isRecord()) {
+                RecordDecl *RD=llvm::dyn_cast<RecordDecl>(DC);
+                for (RecordDecl::field_iterator it = RD->field_begin(); it != RD->field_end(); ++it) {
+                    FieldDecl *FD = *it;
+                    MemberExpr *newMember=MemberExpr::CreateImplicit(*ctxt,base,ME->isArrow(),FD,FD->getType(),ExprValueKind::VK_LValue,ExprObjectKind::OK_Ordinary);
+                    tmp = stripLine(stmtToString(*ctxt, newMember));
+                    if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
+                        msvRes[tmp] = newMember;
+                }
             }
+        }
         return true;
     }
 
@@ -169,6 +183,15 @@ public:
             ret.insert(it->second);
         return ret;
     }
+
+    virtual std::set<Expr*> getMsvStemExprSet() {
+        std::set<Expr*> ret;
+        ret.clear();
+        for (std::map<std::string, Expr*>::iterator it = msvRes.begin(); it != msvRes.end(); ++it)
+            ret.insert(it->second);
+        return ret;
+    }
+
 };
 
 class ExprDisVisitor: public RecursiveASTVisitor<ExprDisVisitor> {
@@ -251,7 +274,7 @@ bool isBehind(ASTContext *ctxt,SourceLocation source,SourceLocation target){
 }
 
 LocalAnalyzer::LocalAnalyzer(ASTContext *ctxt, GlobalAnalyzer *G, ASTLocTy loc, bool naive):
-ctxt(ctxt), loc(loc), G(G), curFunc(NULL), LocalVarDecls(), MemberStems(), naive(naive) {
+ctxt(ctxt), loc(loc), G(G), curFunc(NULL), LocalVarDecls(), MemberStems(), naive(naive),msvExt(false),msvMembers() {
     StmtStackVisitor visitor1(loc);
     TranslationUnitDecl *TransUnit = ctxt->getTranslationUnitDecl();
     visitor1.TraverseDecl(TransUnit);
@@ -278,6 +301,7 @@ ctxt(ctxt), loc(loc), G(G), curFunc(NULL), LocalVarDecls(), MemberStems(), naive
     MemberExprStemVisitor visitor3(ctxt,stmtStack);
     visitor3.TraverseFunctionDecl(curFunc);
     MemberStems = visitor3.getStemExprSet();
+    msvMembers=visitor3.getMsvStemExprSet();
 
     ExprDis.clear();
     ExprDisVisitor visitor4(ctxt, ExprDis, loc);
@@ -591,6 +615,22 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidatePointerForMemset(size_t max
             ret.push_back(UO);
         }
     }
+    if (msvExt){
+        for (std::set<Expr*>::iterator it = msvMembers.begin(); it != msvMembers.end(); ++it) {
+            Expr* E = *it;
+            printf("%s\n",stmtToString(*ctxt,E).c_str());
+            // if (getExprDistance(E, loc.stmt) > max_dis) continue;
+            QualType T = E->getType();
+            if (T->isPointerType())
+                ret.push_back(E);
+            // else {
+                UnaryOperator *UO = UnaryOperator::Create(*ctxt,E, UO_AddrOf,
+                        ctxt->getPointerType(T), VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+                ret.push_back(UO);
+            // }
+        }
+    }
+
     return ret;
 }
 
