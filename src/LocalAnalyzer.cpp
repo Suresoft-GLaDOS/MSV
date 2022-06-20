@@ -618,7 +618,6 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidatePointerForMemset(size_t max
     if (msvExt){
         for (std::set<Expr*>::iterator it = msvMembers.begin(); it != msvMembers.end(); ++it) {
             Expr* E = *it;
-            printf("%s\n",stmtToString(*ctxt,E).c_str());
             // if (getExprDistance(E, loc.stmt) > max_dis) continue;
             QualType T = E->getType();
             if (T->isPointerType())

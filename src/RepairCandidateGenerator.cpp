@@ -813,6 +813,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 if (BinaryOperator::classof(LHS)){
                     current=llvm::dyn_cast<BinaryOperator>(LHS);
                 }
+                else break;
             }
 
             // Give up if there's no && or || operation
@@ -844,20 +845,22 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             result.push_back(newIf);
 
             // Remove LHS of last condition
-            BinaryOperator *cond=condStack[condStack.size()-1];
+            if (condStack.size()>=2){
+                BinaryOperator *cond=condStack[condStack.size()-1];
 
-            Expr *RHS=cond->getRHS();
-            BinaryOperator* parent=condStack[condStack.size()-2];
-            BinaryOperator *newOper=BinaryOperator::Create(*ctxt,RHS,parent->getRHS(),
-                    parent->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
-                    SourceLocation(),FPOptionsOverride());
-            for (long j=condStack.size()-3;j>=0;j--){
-                newOper=BinaryOperator::Create(*ctxt,newOper,condStack[j]->getRHS(),
-                        condStack[j]->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                Expr *RHS=cond->getRHS();
+                BinaryOperator* parent=condStack[condStack.size()-2];
+                BinaryOperator *newOper=BinaryOperator::Create(*ctxt,RHS,parent->getRHS(),
+                        parent->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
                         SourceLocation(),FPOptionsOverride());
+                for (long j=condStack.size()-3;j>=0;j--){
+                    newOper=BinaryOperator::Create(*ctxt,newOper,condStack[j]->getRHS(),
+                            condStack[j]->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                            SourceLocation(),FPOptionsOverride());
+                }
+                newIf=duplicateIfStmt(ctxt,stmt,newOper);
+                result.push_back(newIf);
             }
-            newIf=duplicateIfStmt(ctxt,stmt,newOper);
-            result.push_back(newIf);
 
             for (size_t i=0;i<result.size();i++){
                 RepairCandidate rc;
@@ -957,6 +960,44 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     rc.original=stmt;
                     q.push_back(rc);
 
+                }
+            }
+        }
+    }
+
+    void genNewParen(IfStmt *stmt){
+        Expr *cond=stmt->getCond();
+        if (BinaryOperator::classof(cond)){
+            BinaryOperator *oper=llvm::dyn_cast<BinaryOperator>(cond);
+            BinaryOperator::Opcode oper1=oper->getOpcode();
+            if (ParenExpr::classof(oper->getRHS())){
+                ParenExpr *rhs=llvm::dyn_cast<ParenExpr>(oper->getRHS());
+                Expr *rhsExpr=rhs->getSubExpr();
+                if (BinaryOperator::classof(rhsExpr)){
+                    BinaryOperator *rhsOper=llvm::dyn_cast<BinaryOperator>(rhsExpr);
+                    if (rhsOper->isLogicalOp()){
+                        Expr *lhs2=rhsOper->getLHS();
+                        Expr *rhs2=rhsOper->getRHS();
+                        BinaryOperator::Opcode oper2=rhsOper->getOpcode();
+
+                        BinaryOperator *newOper1=BinaryOperator::Create(*ctxt,oper->getLHS(),lhs2,oper1,oper->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                        ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),newOper1);
+                        BinaryOperator *newOper2=BinaryOperator::Create(*ctxt,newParen,rhs2,oper2,rhsOper->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                        IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,newOper2);
+                        printf("%s\n",stmtToString(*ctxt,newOper2).c_str());
+
+                        ASTLocTy loc = getNowLocation(stmt);
+                        RepairCandidate rc;
+                        rc.actions.clear();
+                        rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
+                        if (learning)
+                            rc.score = getLocScore(stmt);
+                        else
+                            rc.score = getPriority(stmt) + PRIORITY_ALPHA;
+                        rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
+                        rc.original=stmt;
+                        q.push_back(rc);
+                    }
                 }
             }
         }
@@ -1790,6 +1831,7 @@ public:
                 genReplceFunctionInCondition(n);
                 genRemoveCondition(n);
                 genMoveOperator(n);
+                genNewParen(n);
             }
         }
         if (isTainted(n) || isTainted(ThenCS))
