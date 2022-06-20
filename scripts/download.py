@@ -31,6 +31,16 @@ def download(benchmark):
                 exit(1)
             break
 
+    if f'{benchmark}.c' in os.listdir('/root/project/MSV/scripts/meta-source'):
+        with open(f'/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(benchmark)}/{benchmarks.get_workdir(benchmark)}/repair.conf','r') as f:
+            lines=f.readlines()
+            for line in lines:
+                line=line.strip()
+                if line.startswith('bugged_file'):
+                    buggy_file=line.split('=')[1]
+                    result=subprocess.run(['cp','-rf',f'/root/project/MSV/scripts/meta-source/{benchmark}.c',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src/{buggy_file}'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+                    break
+
     os.chdir(orig_dir)
 
 for benchmark in benchmarks.BENCHMARKS:
