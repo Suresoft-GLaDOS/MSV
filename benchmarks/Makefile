@@ -299,7 +299,7 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-SUBDIRS = php-deps libtiff-deps lighttpd-deps apache-deps
+SUBDIRS = php-deps libtiff-deps lighttpd-deps
 all: all-recursive
 
 .SUFFIXES:
