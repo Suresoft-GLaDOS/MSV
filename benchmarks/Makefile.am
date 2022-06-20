@@ -1,1 +1,1 @@
-SUBDIRS = php-deps libtiff-deps lighttpd-deps apache-deps
+SUBDIRS = php-deps libtiff-deps lighttpd-deps
