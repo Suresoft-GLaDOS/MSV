@@ -5,6 +5,8 @@ import subprocess
 def download(benchmark):
     orig_dir=os.getcwd()
     subject=benchmarks.get_subject(benchmark)
+    if subject not in os.listdir('/root/project/MSV-experiment/benchmarks'):
+        subprocess.run(['mkdir',f'/root/project/MSV-experiment/benchmarks/{subject}'])
     os.chdir(f'/root/project/MSV-experiment/benchmarks/{subject}')
 
     if f'{benchmark}.tar.gz' not in os.listdir(f'/root/project/MSV-experiment/benchmarks/{subject}'):
