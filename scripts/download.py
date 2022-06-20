@@ -2,7 +2,7 @@ import benchmarks
 import os
 import subprocess
 
-def download(benchmark):
+def download(i,benchmark):
     orig_dir=os.getcwd()
     subject=benchmarks.get_subject(benchmark)
     if subject not in os.listdir('/root/project/MSV-experiment/benchmarks'):
@@ -10,12 +10,12 @@ def download(benchmark):
     os.chdir(f'/root/project/MSV-experiment/benchmarks/{subject}')
 
     if f'{benchmark}.tar.gz' not in os.listdir(f'/root/project/MSV-experiment/benchmarks/{subject}'):
-        result=subprocess.run(['wget',f'https://www.cs.toronto.edu/~fanl/program_repair/scenarios/{benchmark}.tar.gz'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+        result=subprocess.run(['wget',f'https://www.cs.toronto.edu/~fanl/program_repair/scenarios/{benchmarks.BENCHMARKS_URL[i]}.tar.gz'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         if result.returncode!=0:
             print(result.stdout.decode('utf-8'))
             exit(1)
     
-    result=subprocess.run(['tar','-xf',f'{benchmark}.tar.gz'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    result=subprocess.run(['tar','-xf',f'{benchmarks.BENCHMARKS_URL[i]}.tar.gz'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     if result.returncode!=0:
         print(result.stdout.decode('utf-8'))
         exit(1)
@@ -47,5 +47,5 @@ def download(benchmark):
 
     os.chdir(orig_dir)
 
-for benchmark in benchmarks.BENCHMARKS:
-    download(benchmark)
+for i,benchmark in enumerate(benchmarks.BENCHMARKS):
+    download(i,benchmark)
