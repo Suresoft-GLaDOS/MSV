@@ -33,6 +33,8 @@ def download(benchmark):
                 exit(1)
             break
 
+    if 'meta-source' not in os.listdir('/root/project/MSV/scripts'):
+        subprocess.run(['mkdir',f'/root/project/MSV/scripts/meta-source'])
     if f'{benchmark}.c' in os.listdir('/root/project/MSV/scripts/meta-source'):
         with open(f'/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(benchmark)}/{benchmarks.get_workdir(benchmark)}/repair.conf','r') as f:
             lines=f.readlines()
