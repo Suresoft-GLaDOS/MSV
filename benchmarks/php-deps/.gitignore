@@ -1,0 +1,5 @@
+autoconf*
+bison*
+flex*
+!flex-zip
+libxml2*

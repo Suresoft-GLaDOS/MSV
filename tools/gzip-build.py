@@ -82,6 +82,7 @@ def compileit(out_dir, compile_only = False, config_only = False,max_parallel=1)
             exit(1);
 
     if not config_only:
+        subprocess.run(['make','clean'],env=my_env)
         ret = subprocess.run(["make",'-j'+str(max_parallel)], env = my_env);
         if ret.returncode != 0:
             print("Failed to make!")
