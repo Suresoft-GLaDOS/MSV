@@ -103,7 +103,7 @@ def compileit(out_dir, compile_only = False, config_only = False, paraj = 0):
             print("Failed to run autogen.sh!")
             chdir(ori_dir);
             exit(1);
-        ret = subprocess.call(["./configure --disable-fast-install"], shell = True, env = my_env);
+        ret = subprocess.call(["./configure --disable-fast-install CFLAGS='-fPIC' LDFLAGS='-fPIC'"], shell = True, env = my_env);
         if (ret != 0):
             print("Failed to run configure!")
             chdir(ori_dir);
