@@ -15,10 +15,14 @@ def download(i,benchmark):
             print(result.stdout.decode('utf-8'))
             exit(1)
     
-    result=subprocess.run(['tar','-xf',f'{benchmarks.BENCHMARKS_URL[i]}.tar.gz'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-    if result.returncode!=0:
-        print(result.stdout.decode('utf-8'))
-        exit(1)
+        result=subprocess.run(['tar','-xf',f'{benchmarks.BENCHMARKS_URL[i]}.tar.gz'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+        if result.returncode!=0:
+            print(result.stdout.decode('utf-8'))
+            exit(1)
+        
+        if benchmark=='libtiff-tests-e0b51f3e':
+            result=subprocess.run(['mv',f'/root/project/MSV-experiment/benchmarks/libtiff/libtiff-case-tests-e0b51f3e/__backup0','/root/project/MSV-experiment/benchmarks/libtiff/libtiff-case-tests-e0b51f3e/src/tools/tools/tiffcp.c'])
+            result=subprocess.run(['rm',f'/root/project/MSV-experiment/benchmarks/libtiff/libtiff-case-tests-e0b51f3e/__backup0'])
     
     result=subprocess.run(['cp','-rf',f'/root/project/MSV-experiment/conf/{subject}/{benchmark}-repair.conf',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/repair.conf'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     if result.returncode!=0:
@@ -32,7 +36,7 @@ def download(i,benchmark):
                 print(result.stdout.decode('utf-8'))
                 exit(1)
             break
-
+    
     if 'meta-source' not in os.listdir('/root/project/MSV/scripts'):
         subprocess.run(['mkdir',f'/root/project/MSV/scripts/meta-source'])
     if f'{benchmark}.c' in os.listdir('/root/project/MSV/scripts/meta-source'):

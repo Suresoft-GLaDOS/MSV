@@ -12,7 +12,7 @@ BENCHMARKS=[
 "libtiff-tests-2e42d63f",
 "libtiff-tests-6b6496",
 "libtiff-tests-e0b51f3e",
-"libtiff-tests-bdba15c",
+# "libtiff-tests-bdba15c", # Meta-program fail
 "libtiff-tests2-0a36d7f",
 "libtiff-tests-eec7ec0",
 "libtiff-tests2-207c78a4",
@@ -29,7 +29,7 @@ BENCHMARKS=[
 "libtiff-tests2-e8a47d4^1-e8a47d4",
 "libtiff-tests2-eec4c06^1-eec4c06",
 "libtiff-tests2-f2d989d",
-"lighttpd-1795",
+# "lighttpd-1795", # Meta-program fail
 "lighttpd-1914",
 "lighttpd-1807",
 "lighttpd-1949",
@@ -55,12 +55,12 @@ BENCHMARKS=[
 "php-2a6968",
 "php-3acdca",
 "php-453c954^1-453c954",
-"php-478e5d1",
-"php-4756d7",
+# "php-478e5d1", # No patch in search space
+# "php-4756d7", # No patch in search space
 "php-5a8c917",
 "php-77ed819",
-"php-6f3148d",
-"php-5bb0a44",
+# "php-6f3148d", # No patch in search space
+# "php-5bb0a44", # No patch in search space
 "php-821d716",
 "php-8ba00176",
 "php-7f29372",
@@ -68,28 +68,28 @@ BENCHMARKS=[
 "php-991ba131",
 "php-93f65cd",
 "php-9bbc114",
-"php-a3a5157",
+# "php-a3a5157", # No patch in search space
 "php-b84967d",
 "php-b9b1fb1",
-"php-c2fe893",
-"php-b83e24",
+# "php-c2fe893", # No patch in search space
+# "php-b83e24", # No patch in search space
 "php-d1d61ce",
 "php-ecb9d80",
 "php-ee83270",
-"php-cebe2a213^1-cebe2a213",
+# "php-cebe2a213^1-cebe2a213", # No patch in search space
 "php-f2329f1",
 "php-f455f8^1-f455f8",
 "php-f7b7b6aa9",
 "python-69474-69470",
 "python-69372-69368",
-"python-69710",
+# "python-69710", # No patch in search space
 "python-69224",
 "php-efcb9a71",
 "python-69784",
 "python-69935",
 "python-70023-70019",
 "python-69946",
-"python-70101-70098",
+# "python-70101-70098", # No patch in search space
 "python-70059-70056",
 "wireshark-2d2815b^1-2d2815b",
 "wireshark-9a2ba01",
@@ -111,7 +111,7 @@ BENCHMARKS_URL=[
 "libtiff-tests-2e42d63f",
 "libtiff-tests-6b6496",
 "libtiff-tests-e0b51f3e",
-"libtiff-tests-bdba15c",
+# "libtiff-tests-bdba15c", # Meta-program fail
 "libtiff-tests2-0a36d7f",
 "libtiff-tests-eec7ec0",
 "libtiff-tests2-207c78a4",
@@ -128,7 +128,7 @@ BENCHMARKS_URL=[
 "libtiff-tests2-e8a47d4^1",
 "libtiff-tests2-eec4c06^1",
 "libtiff-tests2-f2d989d",
-"lighttpd-1795",
+# "lighttpd-1795", # Meta-program fail
 "lighttpd-1914",
 "lighttpd-1807",
 "lighttpd-1949",
@@ -154,12 +154,12 @@ BENCHMARKS_URL=[
 "php-2a6968",
 "php-3acdca",
 "php-453c954^1-453c954",
-"php-478e5d1",
-"php-4756d7",
+# "php-478e5d1", # No patch in search space
+# "php-4756d7", # No patch in search space
 "php-5a8c917",
 "php-77ed819",
-"php-6f3148d",
-"php-5bb0a44",
+# "php-6f3148d", # No patch in search space
+# "php-5bb0a44", # No patch in search space
 "php-821d716",
 "php-8ba00176",
 "php-7f29372",
@@ -167,28 +167,28 @@ BENCHMARKS_URL=[
 "php-991ba131",
 "php-93f65cd",
 "php-9bbc114",
-"php-a3a5157",
+# "php-a3a5157", # No patch in search space
 "php-b84967d",
 "php-b9b1fb1",
-"php-c2fe893",
-"php-b83e24",
+# "php-c2fe893", # No patch in search space
+# "php-b83e24", # No patch in search space
 "php-d1d61ce",
 "php-ecb9d80",
 "php-ee83270",
-"php-cebe2a213^1-cebe2a213",
+# "php-cebe2a213^1-cebe2a213", # No patch in search space
 "php-f2329f1",
 "php-f455f8^1-f455f8",
 "php-f7b7b6aa9",
 "python-69474",
 "python-69372",
-"python-69710",
+# "python-69710", # No patch in search space
 "python-69224",
 "php-efcb9a71",
 "python-69784",
 "python-69935",
 "python-70023",
 "python-69946",
-"python-70101-70098",
+# "python-70101-70098", # No patch in search space
 "python-70059-70056",
 "wireshark-2d2815b^1",
 "wireshark-9a2ba01",
