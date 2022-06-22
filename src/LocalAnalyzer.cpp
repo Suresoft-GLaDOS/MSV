@@ -504,6 +504,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidateCalleeFunction(CallExpr *CE
             if (CE->getNumArgs() < FD->getNumParams())
                 continue;
         }
+        if (FD->getNameAsString().find("__trident")!=std::string::npos) continue;
         QualType FT = FD->getType();
         if (!FT->isFunctionProtoType())
             continue;
@@ -557,6 +558,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidateCalleeExtFunction(clang::Ca
             // We don't consider variadic function
             continue;
         }
+        if (FD->getNameAsString().find("__trident")!=std::string::npos) continue;
 
         QualType FT = FD->getType();
         if (!FT->isFunctionProtoType())
