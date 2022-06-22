@@ -908,7 +908,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                                     lineNum=lineNum-succ_id.size()-macros.size()-1;
                                     // printf("%lu ",lineNum);
                                     if (fileCodeMap.count(fileName)==0) {
-                                        size_t dot=fileName.find(".");
+                                        size_t dot=fileName.find(".c");
                                         fileName=fileName.substr(0,dot);
                                         fileName+=".c";
                                     }
