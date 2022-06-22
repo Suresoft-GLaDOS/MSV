@@ -18,6 +18,17 @@ def copy_generated_file(benchmark):
     if result.returncode!=0:
         print(result.stdout.decode('utf-8'))
         exit(1)
+    
+    result=subprocess.run(['cp','-rf',f'/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(benchmark)}/{benchmarks.get_workdir(benchmark)}/switch-info.json',f'/root/project/MSV/scripts/meta-source/{benchmark}-switch-info.json'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    if result.returncode!=0:
+        print(result.stdout.decode('utf-8'))
+        exit(1)
+    
+    result=subprocess.run(['cp','-rf',f'/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(benchmark)}/{benchmarks.get_workdir(benchmark)}/func-info.json',f'/root/project/MSV/scripts/meta-source/{benchmark}-func-info.json'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    if result.returncode!=0:
+        print(result.stdout.decode('utf-8'))
+        exit(1)
 
-for benchmark in benchmarks.BENCHMARKS:
-    copy_generated_file(benchmark)
+if __name__=='__main__':
+    for benchmark in benchmarks.BENCHMARKS:
+        copy_generated_file(benchmark)

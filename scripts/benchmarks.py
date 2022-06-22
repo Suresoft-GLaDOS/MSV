@@ -248,3 +248,16 @@ def get_subject(benchmark):
 def get_workdir(benchmark:str):
     first_dash=benchmark.find('-')
     return benchmark[:first_dash]+'-case'+benchmark[first_dash:]+'/'+benchmark+'-workdir'
+
+def get_test_dir(benchmark:str):
+    workdir=get_workdir(benchmark)
+    test_dir=''
+    with open(f'/root/project/MSV-experiment/benchmarks/{get_subject(benchmark)}/{workdir}/repair.conf','r') as f:
+        lines=f.readlines()
+        for line in  lines:
+            if 'test_dir' in line:
+                test_dir=line.split('=')[1].strip()
+                break
+    
+    assert test_dir!=''
+    return test_dir
