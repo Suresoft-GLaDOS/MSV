@@ -912,6 +912,10 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                                         fileName=fileName.substr(0,dot);
                                         fileName+=".c";
                                     }
+                                    if (fileName[0]=='/') {
+                                        size_t dot=fileName.find("-workdir/src");
+                                        fileName=fileName.substr(dot+14);
+                                    }
 
                                     std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
                                     unsigned long failMacro=0;
