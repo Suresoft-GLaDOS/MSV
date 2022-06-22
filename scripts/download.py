@@ -10,8 +10,8 @@ def download(i,benchmark):
     os.chdir(f'/root/project/MSV-experiment/benchmarks/{subject}')
 
     if f'{benchmark}.tar.gz' not in os.listdir(f'/root/project/MSV-experiment/benchmarks/{subject}'):
-        print(f'Benchmark not downloaded, download it!')
-        result=subprocess.run(['wget',f'https://www.cs.toronto.edu/~fanl/program_repair/scenarios/{benchmarks.BENCHMARKS_URL[i]}.tar.gz'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+        print(f'{benchmark} not downloaded, download it!')
+        result=subprocess.run(['wget',f'https://www.cs.toronto.edu/~fanl/program_repair/scenarios/{benchmarks.BENCHMARKS_URL[i]}.tar.gz'])
         if result.returncode!=0:
             print(result.stdout.decode('utf-8'))
             exit(1)
@@ -33,19 +33,20 @@ def download(i,benchmark):
                 for i,line in enumerate(lines):
                     result=subprocess.run(['mv',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/__backup{i}',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src/{line.strip()}'])
 
+        print(f'Clean build {benchmark}!')
         if subject=='php':
-            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/php-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/php-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
         elif subject=='libtiff':
-            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/libtiff-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/libtiff-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
         elif subject=='lighttpd':
-            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/lighttpd-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/lighttpd-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
         else:
-            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
         if result.returncode!=0:
-            print(result.stdout.decode('utf-8'))
             exit(1)
+        print('Clean build success')
     else:
-        print('Benchmark is already downloaded, skip!')
+        print(f'{benchmark} is already downloaded, skip!')
 
     result=subprocess.run(['cp','-rf',f'/root/project/MSV-experiment/conf/{subject}/{benchmark}-repair.conf',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/repair.conf'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     if result.returncode!=0:
@@ -91,7 +92,9 @@ def download(i,benchmark):
 
                     result=subprocess.run(['cp','-rf',f'/root/project/MSV/scripts/meta-source/{benchmark}.c',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src/{buggy_file}'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
                     os.chdir(f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src')
-                    result=subprocess.run(['make'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+                    print(f'{benchmark} meta-program applied, build...')
+                    result=subprocess.run(['make'])
+                    print(f'Build finish!')
                     if result.returncode!=0:
                         print(result.stdout.decode('utf-8'))
                         exit(1)

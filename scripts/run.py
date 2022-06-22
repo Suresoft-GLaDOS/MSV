@@ -41,12 +41,12 @@ List of benchmarks are saved in benchmarks.py.""")
 
 def handle_checkout(version:str):
     if version=='all':
-        for i,v in benchmarks.BENCHMARKS:
+        for i,v in enumerate(benchmarks.BENCHMARKS):
             download.download(i,v)
         return
 
     index=-1
-    for i,v in benchmarks.BENCHMARKS:
+    for i,v in enumerate(benchmarks.BENCHMARKS):
         if version==v:
             index=i
             break
@@ -60,7 +60,7 @@ def handle_checkout(version:str):
 
 def handle_search(version:str):
     if version=='all':
-        for i,v in benchmarks.BENCHMARKS:
+        for i,v in enumerate(benchmarks.BENCHMARKS):
             result=subprocess.run(["-o",f"/root/project/MSV-experiment/{v}-out","-t","180000","-w",f"/root/project/MSV-experiment/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}","-p","/root/project/MSV","--use-pass-test","--use-exp-alpha", "--use-prophet-score","-T","21600",
                         "-m","guided","--",f"/root/project/MSV/tools/{benchmarks.get_subject(v)}-test.py",
                         f"/root/project/MSV-experiment/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}/src", f'{benchmarks.get_test_dir(v)}', f"/root/project/MSV-experiment/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
@@ -71,7 +71,7 @@ def handle_search(version:str):
         return
 
     index=-1
-    for i,v in benchmarks.BENCHMARKS:
+    for i,v in enumerate(benchmarks.BENCHMARKS):
         if version==v:
             index=i
             break
