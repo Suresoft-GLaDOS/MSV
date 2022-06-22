@@ -109,7 +109,7 @@ public:
         for (DeclContext::decl_iterator it = targetFD->decls_begin(); it != targetFD->decls_end(); ++it) {
             VarDecl *VD = llvm::dyn_cast<VarDecl>(*it);
             if (VD)
-                if (invalidDeclSet.count(VD) == 0)
+                if (invalidDeclSet.count(VD) == 0 && VD->getNameAsString()!="_PySys_ProfileFunc" && VD->getNameAsString()!="_PySys_TraceFunc")
                     ret.insert(VD);
         }
         return ret;
