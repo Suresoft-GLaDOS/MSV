@@ -93,7 +93,7 @@ BENCHMARKS=[
 "python-70059-70056",
 "wireshark-2d2815b^1-2d2815b",
 "wireshark-9a2ba01",
-"wireshark-b51eba6",
+# "wireshark-b51eba6", # Meta-program fail
 "wireshark-464486e^1-464486e",
 ]
 
@@ -192,7 +192,7 @@ BENCHMARKS_URL=[
 "python-70059-70056",
 "wireshark-2d2815b^1",
 "wireshark-9a2ba01",
-"wireshark-b51eba6",
+# "wireshark-b51eba6", # Meta-program fail
 "wireshark-464486e^1",
 ]
 
