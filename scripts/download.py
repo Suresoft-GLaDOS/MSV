@@ -95,6 +95,7 @@ def download(i,benchmark):
                     print(f'{benchmark} meta-program applied, build...')
                     env=os.environ.copy()
                     env['PATH']='/root/project/MSV/wrap:'+env['PATH']
+                    env['COMPILE_CMD']='clang'
                     result=subprocess.run(['make'],env=env)
                     print(f'Build finish!')
                     if result.returncode!=0:
