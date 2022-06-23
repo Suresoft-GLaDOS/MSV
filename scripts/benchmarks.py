@@ -37,7 +37,7 @@ BENCHMARKS=[
 "lighttpd-2259",
 "lighttpd-2331",
 "lighttpd-2662",
-"lighttpd-2786",
+# "lighttpd-2786", # Meta-program fail
 "php-09273098521913a",
 "php-09b990f",
 "php-1056c57f",
@@ -136,7 +136,7 @@ BENCHMARKS_URL=[
 "lighttpd-2259",
 "lighttpd-2331",
 "lighttpd-2662",
-"lighttpd-2786",
+# "lighttpd-2786", # Meta-program fail
 "php-09273098521913a",
 "php-09b990f",
 "php-1056c57f",

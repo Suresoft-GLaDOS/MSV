@@ -903,7 +903,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                                 size_t start=line.find(":");
                                 size_t end=line.find(":",start+1);
                                 std::string lineStr=line.substr(start+1,end-start-1);
-                                if (lineStr[0]>='0' || lineStr[0]<='9'){
+                                if (lineStr[0]>='0' && lineStr[0]<='9'){
                                     unsigned long lineNum=stoi(lineStr);
                                     lineNum=lineNum-succ_id.size()-macros.size()-1;
                                     // printf("%lu ",lineNum);
