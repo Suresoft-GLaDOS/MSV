@@ -93,7 +93,9 @@ def download(i,benchmark):
                     result=subprocess.run(['cp','-rf',f'/root/project/MSV/scripts/meta-source/{benchmark}.c',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src/{buggy_file}'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
                     os.chdir(f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src')
                     print(f'{benchmark} meta-program applied, build...')
-                    result=subprocess.run(['make'])
+                    env=os.environ.copy()
+                    env['PATH']='/root/project/MSV/wrap:'+env['PATH']
+                    result=subprocess.run(['make'],env=env)
                     print(f'Build finish!')
                     if result.returncode!=0:
                         print(result.stdout.decode('utf-8'))
