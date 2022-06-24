@@ -1,6 +1,6 @@
 BENCHMARKS=[
 "gmp-13421",
-"gmp-14167",
+# "gmp-14167", # Build fail
 "gzip-1204630c96e0c3",
 "gzip-118a107f2d3ae5",
 "gzip-39a362ae9d9b00",
@@ -99,7 +99,7 @@ BENCHMARKS=[
 
 BENCHMARKS_URL=[
 "gmp-13421",
-"gmp-14167",
+# "gmp-14167", # Build fail
 "gzip-1204630c96e0c3",
 "gzip-118a107f2d3ae5",
 "gzip-39a362ae9d9b00",
