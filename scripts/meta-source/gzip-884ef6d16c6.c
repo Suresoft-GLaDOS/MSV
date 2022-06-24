@@ -1391,6 +1391,7 @@
 #define __COMPILE_1390
 #define __COMPILE_1391
 #define __COMPILE_1392
+#define __COMPILE_1393
 #define __COMPILE_1394
 #define __COMPILE_1395
 #define __COMPILE_1396
@@ -1727,7 +1728,6 @@
 #define __COMPILE_1727
 #define __COMPILE_1728
 #define __COMPILE_1729
-#define __COMPILE_1730
 #define __COMPILE_1731
 #define __COMPILE_1732
 #define __COMPILE_1733
@@ -1867,6 +1867,7 @@
 #define __COMPILE_1867
 #define __COMPILE_1868
 #define __COMPILE_1869
+#define __COMPILE_1870
 #define __COMPILE_1871
 #define __COMPILE_1872
 #define __COMPILE_1873
@@ -2060,6 +2061,7 @@
 #define __COMPILE_2061
 #define __COMPILE_2062
 #define __COMPILE_2063
+#define __COMPILE_2064
 #define __COMPILE_2065
 #define __COMPILE_2066
 #define __COMPILE_2067
@@ -2202,7 +2204,6 @@
 #define __COMPILE_2204
 #define __COMPILE_2205
 #define __COMPILE_2206
-#define __COMPILE_2207
 #define __COMPILE_2208
 #define __COMPILE_2209
 #define __COMPILE_2210
@@ -2260,6 +2261,7 @@
 #define __COMPILE_2262
 #define __COMPILE_2263
 #define __COMPILE_2264
+#define __COMPILE_2265
 #define __COMPILE_2266
 #define __COMPILE_2267
 #define __COMPILE_2268
@@ -2395,7 +2397,6 @@
 #define __COMPILE_2398
 #define __COMPILE_2399
 #define __COMPILE_2400
-#define __COMPILE_2401
 #define __COMPILE_2402
 #define __COMPILE_2403
 #define __COMPILE_2404
@@ -2472,6 +2473,7 @@
 #define __COMPILE_2475
 #define __COMPILE_2476
 #define __COMPILE_2477
+#define __COMPILE_2478
 #define __COMPILE_2479
 #define __COMPILE_2480
 #define __COMPILE_2481
@@ -2572,6 +2574,7 @@
 #define __COMPILE_2576
 #define __COMPILE_2577
 #define __COMPILE_2578
+#define __COMPILE_2579
 #define __COMPILE_2580
 #define __COMPILE_2581
 #define __COMPILE_2582
@@ -2594,7 +2597,6 @@
 #define __COMPILE_2599
 #define __COMPILE_2600
 #define __COMPILE_2601
-#define __COMPILE_2602
 #define __COMPILE_2603
 #define __COMPILE_2604
 #define __COMPILE_2605
@@ -2747,6 +2749,7 @@
 #define __COMPILE_2752
 #define __COMPILE_2753
 #define __COMPILE_2754
+#define __COMPILE_2755
 #define __COMPILE_2756
 #define __COMPILE_2757
 #define __COMPILE_2758
@@ -2806,7 +2809,6 @@
 #define __COMPILE_2812
 #define __COMPILE_2813
 #define __COMPILE_2814
-#define __COMPILE_2815
 #define __COMPILE_2816
 #define __COMPILE_2817
 #define __COMPILE_2818
@@ -2849,6 +2851,7 @@
 #define __COMPILE_2855
 #define __COMPILE_2856
 #define __COMPILE_2857
+#define __COMPILE_2858
 #define __COMPILE_2859
 #define __COMPILE_2860
 #define __COMPILE_2861
@@ -2906,12 +2909,12 @@
 #define __COMPILE_2913
 #define __COMPILE_2914
 #define __COMPILE_2915
-#define __COMPILE_2916
 #define __COMPILE_2917
 #define __COMPILE_2918
 #define __COMPILE_2919
 #define __COMPILE_2920
 #define __COMPILE_2921
+#define __COMPILE_2922
 #define __COMPILE_2923
 #define __COMPILE_2924
 #define __COMPILE_2925
@@ -3074,13 +3077,13 @@
 #define __COMPILE_3082
 #define __COMPILE_3083
 #define __COMPILE_3084
+#define __COMPILE_3085
 #define __COMPILE_3086
 #define __COMPILE_3087
 #define __COMPILE_3088
 #define __COMPILE_3089
 #define __COMPILE_3090
 #define __COMPILE_3091
-#define __COMPILE_3092
 #define __COMPILE_3093
 #define __COMPILE_3094
 #define __COMPILE_3095
@@ -3150,6 +3153,7 @@
 #define __COMPILE_3159
 #define __COMPILE_3160
 #define __COMPILE_3161
+#define __COMPILE_3162
 #define __COMPILE_3163
 #define __COMPILE_3164
 #define __COMPILE_3165
@@ -3182,7 +3186,6 @@
 #define __COMPILE_3192
 #define __COMPILE_3193
 #define __COMPILE_3194
-#define __COMPILE_3195
 #define __COMPILE_3196
 #define __COMPILE_3197
 #define __COMPILE_3198
@@ -3246,7 +3249,6 @@
 #define __COMPILE_3256
 #define __COMPILE_3257
 #define __COMPILE_3258
-#define __COMPILE_3259
 #define __COMPILE_3260
 #define __COMPILE_3261
 #define __COMPILE_3262
@@ -3346,6 +3348,7 @@
 #define __COMPILE_3356
 #define __COMPILE_3357
 #define __COMPILE_3358
+#define __COMPILE_3359
 #define __COMPILE_3360
 #define __COMPILE_3361
 #define __COMPILE_3362
@@ -3408,7 +3411,6 @@
 #define __COMPILE_3419
 #define __COMPILE_3420
 #define __COMPILE_3421
-#define __COMPILE_3422
 #define __COMPILE_3423
 #define __COMPILE_3424
 #define __COMPILE_3425
@@ -3485,7 +3487,6 @@
 #define __COMPILE_3496
 #define __COMPILE_3497
 #define __COMPILE_3498
-#define __COMPILE_3499
 #define __COMPILE_3500
 #define __COMPILE_3501
 #define __COMPILE_3502
@@ -3552,6 +3553,7 @@
 #define __COMPILE_3563
 #define __COMPILE_3564
 #define __COMPILE_3565
+#define __COMPILE_3566
 #define __COMPILE_3567
 #define __COMPILE_3568
 #define __COMPILE_3569
@@ -3681,7 +3683,6 @@
 #define __COMPILE_3693
 #define __COMPILE_3694
 #define __COMPILE_3695
-#define __COMPILE_3696
 #define __COMPILE_3697
 #define __COMPILE_3698
 #define __COMPILE_3699
@@ -3737,6 +3738,7 @@
 #define __COMPILE_3749
 #define __COMPILE_3750
 #define __COMPILE_3751
+#define __COMPILE_3752
 #define __COMPILE_3753
 #define __COMPILE_3754
 #define __COMPILE_3755
@@ -3815,16 +3817,19 @@
 #define __COMPILE_3828
 #define __COMPILE_3829
 #define __COMPILE_3830
+#define __COMPILE_3831
 #define __COMPILE_3832
 #define __COMPILE_3833
 #define __COMPILE_3834
 #define __COMPILE_3835
 #define __COMPILE_3836
 #define __COMPILE_3837
+#define __COMPILE_3838
 #define __COMPILE_3839
 #define __COMPILE_3840
 #define __COMPILE_3841
 #define __COMPILE_3842
+#define __COMPILE_3843
 #define __COMPILE_3844
 #define __COMPILE_3845
 #define __COMPILE_3846
@@ -3884,7 +3889,6 @@
 #define __COMPILE_3900
 #define __COMPILE_3901
 #define __COMPILE_3902
-#define __COMPILE_3903
 #define __COMPILE_3904
 #define __COMPILE_3905
 #define __COMPILE_3906
@@ -3934,6 +3938,7 @@
 #define __COMPILE_3950
 #define __COMPILE_3951
 #define __COMPILE_3952
+#define __COMPILE_3953
 #define __COMPILE_3954
 #define __COMPILE_3955
 #define __COMPILE_3956
@@ -4006,6 +4011,338 @@
 #define __COMPILE_4023
 #define __COMPILE_4024
 #define __COMPILE_4025
+#define __COMPILE_4026
+#define __COMPILE_4027
+#define __COMPILE_4028
+#define __COMPILE_4029
+#define __COMPILE_4030
+#define __COMPILE_4031
+#define __COMPILE_4032
+#define __COMPILE_4033
+#define __COMPILE_4034
+#define __COMPILE_4035
+#define __COMPILE_4036
+#define __COMPILE_4037
+#define __COMPILE_4038
+#define __COMPILE_4039
+#define __COMPILE_4040
+#define __COMPILE_4041
+#define __COMPILE_4042
+#define __COMPILE_4043
+#define __COMPILE_4044
+#define __COMPILE_4045
+#define __COMPILE_4046
+#define __COMPILE_4047
+#define __COMPILE_4048
+#define __COMPILE_4049
+#define __COMPILE_4050
+#define __COMPILE_4051
+#define __COMPILE_4052
+#define __COMPILE_4053
+#define __COMPILE_4054
+#define __COMPILE_4055
+#define __COMPILE_4056
+#define __COMPILE_4057
+#define __COMPILE_4058
+#define __COMPILE_4059
+#define __COMPILE_4060
+#define __COMPILE_4061
+#define __COMPILE_4062
+#define __COMPILE_4063
+#define __COMPILE_4064
+#define __COMPILE_4065
+#define __COMPILE_4066
+#define __COMPILE_4067
+#define __COMPILE_4068
+#define __COMPILE_4069
+#define __COMPILE_4070
+#define __COMPILE_4071
+#define __COMPILE_4072
+#define __COMPILE_4073
+#define __COMPILE_4074
+#define __COMPILE_4075
+#define __COMPILE_4076
+#define __COMPILE_4077
+#define __COMPILE_4078
+#define __COMPILE_4079
+#define __COMPILE_4080
+#define __COMPILE_4081
+#define __COMPILE_4082
+#define __COMPILE_4083
+#define __COMPILE_4084
+#define __COMPILE_4085
+#define __COMPILE_4086
+#define __COMPILE_4087
+#define __COMPILE_4088
+#define __COMPILE_4090
+#define __COMPILE_4091
+#define __COMPILE_4092
+#define __COMPILE_4093
+#define __COMPILE_4094
+#define __COMPILE_4095
+#define __COMPILE_4096
+#define __COMPILE_4097
+#define __COMPILE_4098
+#define __COMPILE_4099
+#define __COMPILE_4100
+#define __COMPILE_4101
+#define __COMPILE_4102
+#define __COMPILE_4103
+#define __COMPILE_4104
+#define __COMPILE_4105
+#define __COMPILE_4106
+#define __COMPILE_4107
+#define __COMPILE_4108
+#define __COMPILE_4109
+#define __COMPILE_4110
+#define __COMPILE_4111
+#define __COMPILE_4112
+#define __COMPILE_4113
+#define __COMPILE_4114
+#define __COMPILE_4115
+#define __COMPILE_4116
+#define __COMPILE_4117
+#define __COMPILE_4118
+#define __COMPILE_4119
+#define __COMPILE_4120
+#define __COMPILE_4121
+#define __COMPILE_4122
+#define __COMPILE_4123
+#define __COMPILE_4124
+#define __COMPILE_4125
+#define __COMPILE_4126
+#define __COMPILE_4127
+#define __COMPILE_4128
+#define __COMPILE_4129
+#define __COMPILE_4130
+#define __COMPILE_4131
+#define __COMPILE_4132
+#define __COMPILE_4133
+#define __COMPILE_4134
+#define __COMPILE_4135
+#define __COMPILE_4136
+#define __COMPILE_4137
+#define __COMPILE_4138
+#define __COMPILE_4139
+#define __COMPILE_4140
+#define __COMPILE_4141
+#define __COMPILE_4142
+#define __COMPILE_4143
+#define __COMPILE_4144
+#define __COMPILE_4145
+#define __COMPILE_4146
+#define __COMPILE_4147
+#define __COMPILE_4148
+#define __COMPILE_4149
+#define __COMPILE_4150
+#define __COMPILE_4151
+#define __COMPILE_4152
+#define __COMPILE_4153
+#define __COMPILE_4154
+#define __COMPILE_4155
+#define __COMPILE_4156
+#define __COMPILE_4157
+#define __COMPILE_4158
+#define __COMPILE_4159
+#define __COMPILE_4160
+#define __COMPILE_4161
+#define __COMPILE_4162
+#define __COMPILE_4163
+#define __COMPILE_4164
+#define __COMPILE_4165
+#define __COMPILE_4166
+#define __COMPILE_4167
+#define __COMPILE_4169
+#define __COMPILE_4170
+#define __COMPILE_4171
+#define __COMPILE_4172
+#define __COMPILE_4173
+#define __COMPILE_4174
+#define __COMPILE_4176
+#define __COMPILE_4177
+#define __COMPILE_4178
+#define __COMPILE_4179
+#define __COMPILE_4181
+#define __COMPILE_4182
+#define __COMPILE_4183
+#define __COMPILE_4184
+#define __COMPILE_4185
+#define __COMPILE_4186
+#define __COMPILE_4187
+#define __COMPILE_4188
+#define __COMPILE_4189
+#define __COMPILE_4190
+#define __COMPILE_4191
+#define __COMPILE_4192
+#define __COMPILE_4193
+#define __COMPILE_4194
+#define __COMPILE_4195
+#define __COMPILE_4196
+#define __COMPILE_4197
+#define __COMPILE_4198
+#define __COMPILE_4199
+#define __COMPILE_4200
+#define __COMPILE_4201
+#define __COMPILE_4202
+#define __COMPILE_4203
+#define __COMPILE_4204
+#define __COMPILE_4205
+#define __COMPILE_4206
+#define __COMPILE_4207
+#define __COMPILE_4208
+#define __COMPILE_4209
+#define __COMPILE_4210
+#define __COMPILE_4211
+#define __COMPILE_4212
+#define __COMPILE_4213
+#define __COMPILE_4214
+#define __COMPILE_4215
+#define __COMPILE_4216
+#define __COMPILE_4217
+#define __COMPILE_4218
+#define __COMPILE_4219
+#define __COMPILE_4220
+#define __COMPILE_4221
+#define __COMPILE_4222
+#define __COMPILE_4223
+#define __COMPILE_4224
+#define __COMPILE_4225
+#define __COMPILE_4226
+#define __COMPILE_4227
+#define __COMPILE_4228
+#define __COMPILE_4229
+#define __COMPILE_4230
+#define __COMPILE_4231
+#define __COMPILE_4232
+#define __COMPILE_4233
+#define __COMPILE_4234
+#define __COMPILE_4235
+#define __COMPILE_4236
+#define __COMPILE_4237
+#define __COMPILE_4238
+#define __COMPILE_4239
+#define __COMPILE_4240
+#define __COMPILE_4241
+#define __COMPILE_4242
+#define __COMPILE_4243
+#define __COMPILE_4244
+#define __COMPILE_4245
+#define __COMPILE_4246
+#define __COMPILE_4247
+#define __COMPILE_4248
+#define __COMPILE_4249
+#define __COMPILE_4250
+#define __COMPILE_4251
+#define __COMPILE_4252
+#define __COMPILE_4253
+#define __COMPILE_4254
+#define __COMPILE_4255
+#define __COMPILE_4256
+#define __COMPILE_4257
+#define __COMPILE_4258
+#define __COMPILE_4259
+#define __COMPILE_4260
+#define __COMPILE_4261
+#define __COMPILE_4262
+#define __COMPILE_4263
+#define __COMPILE_4264
+#define __COMPILE_4265
+#define __COMPILE_4266
+#define __COMPILE_4267
+#define __COMPILE_4268
+#define __COMPILE_4269
+#define __COMPILE_4270
+#define __COMPILE_4271
+#define __COMPILE_4272
+#define __COMPILE_4273
+#define __COMPILE_4274
+#define __COMPILE_4275
+#define __COMPILE_4276
+#define __COMPILE_4277
+#define __COMPILE_4278
+#define __COMPILE_4279
+#define __COMPILE_4280
+#define __COMPILE_4281
+#define __COMPILE_4282
+#define __COMPILE_4283
+#define __COMPILE_4284
+#define __COMPILE_4285
+#define __COMPILE_4286
+#define __COMPILE_4287
+#define __COMPILE_4288
+#define __COMPILE_4289
+#define __COMPILE_4291
+#define __COMPILE_4292
+#define __COMPILE_4293
+#define __COMPILE_4294
+#define __COMPILE_4295
+#define __COMPILE_4296
+#define __COMPILE_4297
+#define __COMPILE_4298
+#define __COMPILE_4299
+#define __COMPILE_4300
+#define __COMPILE_4301
+#define __COMPILE_4302
+#define __COMPILE_4303
+#define __COMPILE_4304
+#define __COMPILE_4305
+#define __COMPILE_4306
+#define __COMPILE_4307
+#define __COMPILE_4308
+#define __COMPILE_4309
+#define __COMPILE_4310
+#define __COMPILE_4311
+#define __COMPILE_4312
+#define __COMPILE_4313
+#define __COMPILE_4314
+#define __COMPILE_4315
+#define __COMPILE_4316
+#define __COMPILE_4317
+#define __COMPILE_4318
+#define __COMPILE_4319
+#define __COMPILE_4320
+#define __COMPILE_4321
+#define __COMPILE_4322
+#define __COMPILE_4323
+#define __COMPILE_4324
+#define __COMPILE_4325
+#define __COMPILE_4326
+#define __COMPILE_4327
+#define __COMPILE_4328
+#define __COMPILE_4329
+#define __COMPILE_4330
+#define __COMPILE_4331
+#define __COMPILE_4332
+#define __COMPILE_4333
+#define __COMPILE_4334
+#define __COMPILE_4335
+#define __COMPILE_4336
+#define __COMPILE_4337
+#define __COMPILE_4338
+#define __COMPILE_4339
+#define __COMPILE_4340
+#define __COMPILE_4341
+#define __COMPILE_4342
+#define __COMPILE_4343
+#define __COMPILE_4344
+#define __COMPILE_4345
+#define __COMPILE_4346
+#define __COMPILE_4347
+#define __COMPILE_4348
+#define __COMPILE_4349
+#define __COMPILE_4350
+#define __COMPILE_4351
+#define __COMPILE_4352
+#define __COMPILE_4353
+#define __COMPILE_4354
+#define __COMPILE_4355
+#define __COMPILE_4356
+#define __COMPILE_4357
+#define __COMPILE_4358
+#define __COMPILE_4359
+#define __COMPILE_4360
+#define __COMPILE_4361
+#define __COMPILE_4362
 // compile_fin
 int __get_mutant(); int __is_neg(const char *location,char *lid,int count, ...); int __abst_hole(); char *__stat_write_init(const char *func_name);void __write_stat(char *str,const char *var_name,void *var_addr,int size); void __stat_file_close(const char *func_name,char *str);long long __mutate(const long long,const char *,const char *); int __trident_choice(char* lid, char* typestr,int* rvals, char** rvals_ids, int rvals_size,int** lvals, char** lvals_ids, int lvals_size);int __trident_output(char* id, char* typestr, int value);float fabs_trident(float a);int __choose(const char *);void *__var_select(unsigned int var_count,void *vars[]);void *__var_select_2(unsigned int var_count,void *vars[]);long long __const_select(unsigned int const_count, ...);void* memset(void*, int, unsigned long); 
 /* gzip (GNU zip) -- compress files with zip algorithm and 'compress' interface
@@ -11879,10 +12216,2469 @@ break;
                 program_name);
     }
 #endif
-    if ((z_len == 0 && !decompress) || z_len > MAX_SUFFIX) {
-        fprintf(stderr, "%s: incorrect suffix '%s'\n",
-                program_name, z_suffix);
-        do_exit(ERROR);
+    //prophet generated patch
+    {
+    int __choose4 = __choose("__SWITCH4");
+    if (__choose4 == 0)
+    {}
+    #ifdef __COMPILE_1003
+    else if (__choose4 == 1)
+    {
+    //AddStmtAndReplaceAtomKind
+    args = (argv);
+    }
+    #endif
+    #ifdef __COMPILE_1004
+    else if (__choose4 == 2)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_in = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1005
+    else if (__choose4 == 3)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_in = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1006
+    else if (__choose4 == 4)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_in = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1007
+    else if (__choose4 == 5)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_in = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1008
+    else if (__choose4 == 6)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_in = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1009
+    else if (__choose4 == 7)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_in = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1010
+    else if (__choose4 == 8)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1011
+    else if (__choose4 == 9)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1012
+    else if (__choose4 == 10)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1013
+    else if (__choose4 == 11)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1014
+    else if (__choose4 == 12)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1015
+    else if (__choose4 == 13)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1016
+    else if (__choose4 == 14)
+    {
+    //AddStmtAndReplaceAtomKind
+    env = add_envopt(&argc, &(argv), "GZIP");
+    }
+    #endif
+    #ifdef __COMPILE_1017
+    else if (__choose4 == 15)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1018
+    else if (__choose4 == 16)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1019
+    else if (__choose4 == 17)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1020
+    else if (__choose4 == 18)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1021
+    else if (__choose4 == 19)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1022
+    else if (__choose4 == 20)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1023
+    else if (__choose4 == 21)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1024
+    else if (__choose4 == 22)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1025
+    else if (__choose4 == 23)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1026
+    else if (__choose4 == 24)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1027
+    else if (__choose4 == 25)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1028
+    else if (__choose4 == 26)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1029
+    else if (__choose4 == 27)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1030
+    else if (__choose4 == 28)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1031
+    else if (__choose4 == 29)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1032
+    else if (__choose4 == 30)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1033
+    else if (__choose4 == 31)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1034
+    else if (__choose4 == 32)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1035
+    else if (__choose4 == 33)
+    {
+    //AddStmtAndReplaceAtomKind
+    file_count = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1036
+    else if (__choose4 == 34)
+    {
+    //AddStmtAndReplaceAtomKind
+    file_count = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1037
+    else if (__choose4 == 35)
+    {
+    //AddStmtAndReplaceAtomKind
+    file_count = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1038
+    else if (__choose4 == 36)
+    {
+    //AddStmtAndReplaceAtomKind
+    file_count = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1039
+    else if (__choose4 == 37)
+    {
+    //AddStmtAndReplaceAtomKind
+    file_count = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1040
+    else if (__choose4 == 38)
+    {
+    //AddStmtAndReplaceAtomKind
+    file_count = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1041
+    else if (__choose4 == 39)
+    {
+    //AddStmtAndReplaceAtomKind
+    file_count = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1042
+    else if (__choose4 == 40)
+    {
+    //AddStmtAndReplaceAtomKind
+    file_count = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1043
+    else if (__choose4 == 41)
+    {
+    //AddStmtAndReplaceAtomKind
+    file_count = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1044
+    else if (__choose4 == 42)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1045
+    else if (__choose4 == 43)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1046
+    else if (__choose4 == 44)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1047
+    else if (__choose4 == 45)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1048
+    else if (__choose4 == 46)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1049
+    else if (__choose4 == 47)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1050
+    else if (__choose4 == 48)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1051
+    else if (__choose4 == 49)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1052
+    else if (__choose4 == 50)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1053
+    else if (__choose4 == 51)
+    {
+    //AddStmtAndReplaceAtomKind
+    free((argv));
+    }
+    #endif
+    #ifdef __COMPILE_1054
+    else if (__choose4 == 52)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1055
+    else if (__choose4 == 53)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1056
+    else if (__choose4 == 54)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1057
+    else if (__choose4 == 55)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1058
+    else if (__choose4 == 56)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1059
+    else if (__choose4 == 57)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1060
+    else if (__choose4 == 58)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1061
+    else if (__choose4 == 59)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1062
+    else if (__choose4 == 60)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1063
+    else if (__choose4 == 61)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1064
+    else if (__choose4 == 62)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1065
+    else if (__choose4 == 63)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1066
+    else if (__choose4 == 64)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1067
+    else if (__choose4 == 65)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1068
+    else if (__choose4 == 66)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1069
+    else if (__choose4 == 67)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1070
+    else if (__choose4 == 68)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1071
+    else if (__choose4 == 69)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1072
+    else if (__choose4 == 70)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1073
+    else if (__choose4 == 71)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1074
+    else if (__choose4 == 72)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1075
+    else if (__choose4 == 73)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1076
+    else if (__choose4 == 74)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1077
+    else if (__choose4 == 75)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1078
+    else if (__choose4 == 76)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1079
+    else if (__choose4 == 77)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1080
+    else if (__choose4 == 78)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1081
+    else if (__choose4 == 79)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1082
+    else if (__choose4 == 80)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1083
+    else if (__choose4 == 81)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1084
+    else if (__choose4 == 82)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1085
+    else if (__choose4 == 83)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1086
+    else if (__choose4 == 84)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1087
+    else if (__choose4 == 85)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1088
+    else if (__choose4 == 86)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1089
+    else if (__choose4 == 87)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1090
+    else if (__choose4 == 88)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1091
+    else if (__choose4 == 89)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1092
+    else if (__choose4 == 90)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1093
+    else if (__choose4 == 91)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1094
+    else if (__choose4 == 92)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1095
+    else if (__choose4 == 93)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1096
+    else if (__choose4 == 94)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1097
+    else if (__choose4 == 95)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1098
+    else if (__choose4 == 96)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1099
+    else if (__choose4 == 97)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1100
+    else if (__choose4 == 98)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1101
+    else if (__choose4 == 99)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1102
+    else if (__choose4 == 100)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1103
+    else if (__choose4 == 101)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1104
+    else if (__choose4 == 102)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1105
+    else if (__choose4 == 103)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1106
+    else if (__choose4 == 104)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1107
+    else if (__choose4 == 105)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1108
+    else if (__choose4 == 106)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1109
+    else if (__choose4 == 107)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1110
+    else if (__choose4 == 108)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1111
+    else if (__choose4 == 109)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1112
+    else if (__choose4 == 110)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1113
+    else if (__choose4 == 111)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1114
+    else if (__choose4 == 112)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1115
+    else if (__choose4 == 113)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1116
+    else if (__choose4 == 114)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1117
+    else if (__choose4 == 115)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1118
+    else if (__choose4 == 116)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1119
+    else if (__choose4 == 117)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1120
+    else if (__choose4 == 118)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1121
+    else if (__choose4 == 119)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1122
+    else if (__choose4 == 120)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1123
+    else if (__choose4 == 121)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1124
+    else if (__choose4 == 122)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1125
+    else if (__choose4 == 123)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1126
+    else if (__choose4 == 124)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1127
+    else if (__choose4 == 125)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1128
+    else if (__choose4 == 126)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1129
+    else if (__choose4 == 127)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1130
+    else if (__choose4 == 128)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1131
+    else if (__choose4 == 129)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1132
+    else if (__choose4 == 130)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1133
+    else if (__choose4 == 131)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1134
+    else if (__choose4 == 132)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1135
+    else if (__choose4 == 133)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1136
+    else if (__choose4 == 134)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1137
+    else if (__choose4 == 135)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1138
+    else if (__choose4 == 136)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1139
+    else if (__choose4 == 137)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1140
+    else if (__choose4 == 138)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1141
+    else if (__choose4 == 139)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1142
+    else if (__choose4 == 140)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1143
+    else if (__choose4 == 141)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1144
+    else if (__choose4 == 142)
+    {
+    //AddStmtAndReplaceAtomKind
+    proglen = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1145
+    else if (__choose4 == 143)
+    {
+    //AddStmtAndReplaceAtomKind
+    proglen = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1146
+    else if (__choose4 == 144)
+    {
+    //AddStmtAndReplaceAtomKind
+    proglen = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1147
+    else if (__choose4 == 145)
+    {
+    //AddStmtAndReplaceAtomKind
+    proglen = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1148
+    else if (__choose4 == 146)
+    {
+    //AddStmtAndReplaceAtomKind
+    proglen = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1149
+    else if (__choose4 == 147)
+    {
+    //AddStmtAndReplaceAtomKind
+    proglen = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1150
+    else if (__choose4 == 148)
+    {
+    //AddStmtAndReplaceAtomKind
+    proglen = (proglen);
+    }
+    #endif
+    #ifdef __COMPILE_1151
+    else if (__choose4 == 149)
+    {
+    //AddStmtAndReplaceAtomKind
+    program_name = gzip_base_name((argv)[0]);
+    }
+    #endif
+    #ifdef __COMPILE_1152
+    else if (__choose4 == 150)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1153
+    else if (__choose4 == 151)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1154
+    else if (__choose4 == 152)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1155
+    else if (__choose4 == 153)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1156
+    else if (__choose4 == 154)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1157
+    else if (__choose4 == 155)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1158
+    else if (__choose4 == 156)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1159
+    else if (__choose4 == 157)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1160
+    else if (__choose4 == 158)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1161
+    else if (__choose4 == 159)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1162
+    else if (__choose4 == 160)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1163
+    else if (__choose4 == 161)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1164
+    else if (__choose4 == 162)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1165
+    else if (__choose4 == 163)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1166
+    else if (__choose4 == 164)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1167
+    else if (__choose4 == 165)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1168
+    else if (__choose4 == 166)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1169
+    else if (__choose4 == 167)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1170
+    else if (__choose4 == 168)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1171
+    else if (__choose4 == 169)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1172
+    else if (__choose4 == 170)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1173
+    else if (__choose4 == 171)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1174
+    else if (__choose4 == 172)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1175
+    else if (__choose4 == 173)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1176
+    else if (__choose4 == 174)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1177
+    else if (__choose4 == 175)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1178
+    else if (__choose4 == 176)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1179
+    else if (__choose4 == 177)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_nsec = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1180
+    else if (__choose4 == 178)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_nsec = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1181
+    else if (__choose4 == 179)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_nsec = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1182
+    else if (__choose4 == 180)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_nsec = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1183
+    else if (__choose4 == 181)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_nsec = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1184
+    else if (__choose4 == 182)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_nsec = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1185
+    else if (__choose4 == 183)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_sec = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1186
+    else if (__choose4 == 184)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_sec = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1187
+    else if (__choose4 == 185)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_sec = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1188
+    else if (__choose4 == 186)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_sec = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1189
+    else if (__choose4 == 187)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_sec = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1190
+    else if (__choose4 == 188)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_sec = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1191
+    else if (__choose4 == 189)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1192
+    else if (__choose4 == 190)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1193
+    else if (__choose4 == 191)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1194
+    else if (__choose4 == 192)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1195
+    else if (__choose4 == 193)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1196
+    else if (__choose4 == 194)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1197
+    else if (__choose4 == 195)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1198
+    else if (__choose4 == 196)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1199
+    else if (__choose4 == 197)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1200
+    else if (__choose4 == 198)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_in = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1201
+    else if (__choose4 == 199)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_in = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1202
+    else if (__choose4 == 200)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_in = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1203
+    else if (__choose4 == 201)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_in = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1204
+    else if (__choose4 == 202)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_in = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1205
+    else if (__choose4 == 203)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_in = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1206
+    else if (__choose4 == 204)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_out = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1207
+    else if (__choose4 == 205)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_out = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1208
+    else if (__choose4 == 206)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_out = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1209
+    else if (__choose4 == 207)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_out = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1210
+    else if (__choose4 == 208)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_out = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1211
+    else if (__choose4 == 209)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_out = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1212
+    else if (__choose4 == 210)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1213
+    else if (__choose4 == 211)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1214
+    else if (__choose4 == 212)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1215
+    else if (__choose4 == 213)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1216
+    else if (__choose4 == 214)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1217
+    else if (__choose4 == 215)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1218
+    else if (__choose4 == 216)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (argc);
+    }
+    #endif
+    #ifdef __COMPILE_1219
+    else if (__choose4 == 217)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (file_count);
+    }
+    #endif
+    #ifdef __COMPILE_1220
+    else if (__choose4 == 218)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (optc);
+    }
+    #endif
+    #ifdef __COMPILE_1221
+    else if (__choose4 == 219)
+    {
+    //AddStmtAndReplaceAtomKind
+    z_len = (-1);
+    }
+    #endif
+    #ifdef __COMPILE_1222
+    else if (__choose4 == 220)
+    {
+    //AddStmtAndReplaceAtomKind
+    z_len = (0);
+    }
+    #endif
+    #ifdef __COMPILE_1223
+    else if (__choose4 == 221)
+    {
+    //AddStmtAndReplaceAtomKind
+    z_len = (1);
+    }
+    #endif
+    #ifdef __COMPILE_1224
+    else if (__choose4 == 222)
+    {
+    //AddStmtAndReplaceAtomKind
+    z_len = (13);
+    }
+    #endif
+    #ifdef __COMPILE_1225
+    else if (__choose4 == 223)
+    {
+    //AddStmtAndReplaceAtomKind
+    z_len = (30);
+    }
+    #endif
+    #ifdef __COMPILE_1226
+    else if (__choose4 == 224)
+    {
+    //AddStmtAndReplaceAtomKind
+    z_len = (4);
+    }
+    #endif
+    #ifdef __COMPILE_1227
+    else if (__choose4 == 225)
+    {
+    //AddStmtAndReplaceAtomKind
+    z_len = (proglen);
+    }
+    #endif
+    #ifdef __COMPILE_1228
+    else if (__choose4 == 226)
+    {
+    //AddStmtKind
+    (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
+    }
+    #endif
+    #ifdef __COMPILE_1229
+    else if (__choose4 == 227)
+    {
+    //AddStmtKind
+    __printf__("                            ");
+    }
+    #endif
+    #ifdef __COMPILE_1230
+    else if (__choose4 == 228)
+    {
+    //AddStmtKind
+    __printf__(" ");
+    }
+    #endif
+    #ifdef __COMPILE_1231
+    else if (__choose4 == 229)
+    {
+    //AddStmtKind
+    __printf__(" %s\n", ofname);
+    }
+    #endif
+    #ifdef __COMPILE_1232
+    else if (__choose4 == 230)
+    {
+    //AddStmtKind
+    __printf__(" (totals)\n");
+    }
+    #endif
+    #ifdef __COMPILE_1233
+    else if (__choose4 == 231)
+    {
+    //AddStmtKind
+    __printf__("%s %s\n", program_name, "1.0");
+    }
+    #endif
+    #ifdef __COMPILE_1234
+    else if (__choose4 == 232)
+    {
+    //AddStmtKind
+    __printf__("??? ?? ??:?? ");
+    }
+    #endif
+    #ifdef __COMPILE_1235
+    else if (__choose4 == 233)
+    {
+    //AddStmtKind
+    __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
+    }
+    #endif
+    #ifdef __COMPILE_1236
+    else if (__choose4 == 234)
+    {
+    //AddStmtKind
+    __printf__("Written by Jean-loup Gailly.\n");
+    }
+    #endif
+    #ifdef __COMPILE_1237
+    else if (__choose4 == 235)
+    {
+    //AddStmtKind
+    __printf__("\n");
+    }
+    #endif
+    #ifdef __COMPILE_1238
+    else if (__choose4 == 236)
+    {
+    //AddStmtKind
+    __printf__("method  crc     date  time  ");
+    }
+    #endif
+    #ifdef __COMPILE_1239
+    else if (__choose4 == 237)
+    {
+    //AddStmtKind
+    _exit(2);
+    }
+    #endif
+    #ifdef __COMPILE_1240
+    else if (__choose4 == 238)
+    {
+    //AddStmtKind
+    args = ((void *)0);
+    }
+    #endif
+    #ifdef __COMPILE_1241
+    else if (__choose4 == 239)
+    {
+    //AddStmtKind
+    args = argv;
+    }
+    #endif
+    #ifdef __COMPILE_1242
+    else if (__choose4 == 240)
+    {
+    //AddStmtKind
+    atexit(close_stdin);
+    }
+    #endif
+    #ifdef __COMPILE_1243
+    else if (__choose4 == 241)
+    {
+    //AddStmtKind
+    bytes_in = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1244
+    else if (__choose4 == 242)
+    {
+    //AddStmtKind
+    bytes_in = ifile_size;
+    }
+    #endif
+    #ifdef __COMPILE_1245
+    else if (__choose4 == 243)
+    {
+    //AddStmtKind
+    bytes_out = -1L;
+    }
+    #endif
+    #ifdef __COMPILE_1246
+    else if (__choose4 == 244)
+    {
+    //AddStmtKind
+    bytes_out = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1247
+    else if (__choose4 == 245)
+    {
+    //AddStmtKind
+    bytes_out++;
+    }
+    #endif
+    #ifdef __COMPILE_1248
+    else if (__choose4 == 246)
+    {
+    //AddStmtKind
+    clear_bufs();
+    }
+    #endif
+    #ifdef __COMPILE_1249
+    else if (__choose4 == 247)
+    {
+    //AddStmtKind
+    close(ifd);
+    }
+    #endif
+    #ifdef __COMPILE_1250
+    else if (__choose4 == 248)
+    {
+    //AddStmtKind
+    copy_stat(&istat);
+    }
+    #endif
+    #ifdef __COMPILE_1251
+    else if (__choose4 == 249)
+    {
+    //AddStmtKind
+    do_exit(0);
+    }
+    #endif
+    #ifdef __COMPILE_1252
+    else if (__choose4 == 250)
+    {
+    //AddStmtKind
+    do_exit(1);
+    }
+    #endif
+    #ifdef __COMPILE_1253
+    else if (__choose4 == 251)
+    {
+    //AddStmtKind
+    do_exit(exit_code);
+    }
+    #endif
+    #ifdef __COMPILE_1254
+    else if (__choose4 == 252)
+    {
+    //AddStmtKind
+    do_list(-1, -1);
+    }
+    #endif
+    #ifdef __COMPILE_1255
+    else if (__choose4 == 253)
+    {
+    //AddStmtKind
+    do_list(ifd, method);
+    }
+    #endif
+    #ifdef __COMPILE_1256
+    else if (__choose4 == 254)
+    {
+    //AddStmtKind
+    env = ((void *)0);
+    }
+    #endif
+    #ifdef __COMPILE_1257
+    else if (__choose4 == 255)
+    {
+    //AddStmtKind
+    env = add_envopt(&argc, &argv, "GZIP");
+    }
+    #endif
+    #ifdef __COMPILE_1258
+    else if (__choose4 == 256)
+    {
+    //AddStmtKind
+    exit_code = 1;
+    }
+    #endif
+    #ifdef __COMPILE_1259
+    else if (__choose4 == 257)
+    {
+    //AddStmtKind
+    exit_code = 2;
+    }
+    #endif
+    #ifdef __COMPILE_1260
+    else if (__choose4 == 258)
+    {
+    //AddStmtKind
+    exiting_signal = quiet ? 13 : 0;
+    }
+    #endif
+    #ifdef __COMPILE_1261
+    else if (__choose4 == 259)
+    {
+    //AddStmtKind
+    foreground = 1;
+    }
+    #endif
+    #ifdef __COMPILE_1262
+    else if (__choose4 == 260)
+    {
+    //AddStmtKind
+    free(args);
+    }
+    #endif
+    #ifdef __COMPILE_1263
+    else if (__choose4 == 261)
+    {
+    //AddStmtKind
+    free(env);
+    }
+    #endif
+    #ifdef __COMPILE_1264
+    else if (__choose4 == 262)
+    {
+    //AddStmtKind
+    gzip_error("can't recover suffix\n");
+    }
+    #endif
+    #ifdef __COMPILE_1265
+    else if (__choose4 == 263)
+    {
+    //AddStmtKind
+    gzip_error("corrupted input -- file name too large");
+    }
+    #endif
+    #ifdef __COMPILE_1266
+    else if (__choose4 == 264)
+    {
+    //AddStmtKind
+    gzip_error("internal error in shorten_name");
+    }
+    #endif
+    #ifdef __COMPILE_1267
+    else if (__choose4 == 265)
+    {
+    //AddStmtKind
+    gzip_error("name too short");
+    }
+    #endif
+    #ifdef __COMPILE_1268
+    else if (__choose4 == 266)
+    {
+    //AddStmtKind
+    header_bytes = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1269
+    else if (__choose4 == 267)
+    {
+    //AddStmtKind
+    header_bytes = inptr + 2 * sizeof(long);
+    }
+    #endif
+    #ifdef __COMPILE_1270
+    else if (__choose4 == 268)
+    {
+    //AddStmtKind
+    ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
+    }
+    #endif
+    #ifdef __COMPILE_1271
+    else if (__choose4 == 269)
+    {
+    //AddStmtKind
+    inptr = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1272
+    else if (__choose4 == 270)
+    {
+    //AddStmtKind
+    inptr--;
+    }
+    #endif
+    #ifdef __COMPILE_1273
+    else if (__choose4 == 271)
+    {
+    //AddStmtKind
+    install_signal_handlers();
+    }
+    #endif
+    #ifdef __COMPILE_1274
+    else if (__choose4 == 272)
+    {
+    //AddStmtKind
+    last_member = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1275
+    else if (__choose4 == 273)
+    {
+    //AddStmtKind
+    last_member = 1;
+    }
+    #endif
+    #ifdef __COMPILE_1276
+    else if (__choose4 == 274)
+    {
+    //AddStmtKind
+    license();
+    }
+    #endif
+    #ifdef __COMPILE_1277
+    else if (__choose4 == 275)
+    {
+    //AddStmtKind
+    list = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1278
+    else if (__choose4 == 276)
+    {
+    //AddStmtKind
+    method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
+    }
+    #endif
+    #ifdef __COMPILE_1279
+    else if (__choose4 == 277)
+    {
+    //AddStmtKind
+    method = -1;
+    }
+    #endif
+    #ifdef __COMPILE_1280
+    else if (__choose4 == 278)
+    {
+    //AddStmtKind
+    method = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1281
+    else if (__choose4 == 279)
+    {
+    //AddStmtKind
+    method = 1;
+    }
+    #endif
+    #ifdef __COMPILE_1282
+    else if (__choose4 == 280)
+    {
+    //AddStmtKind
+    method = 2;
+    }
+    #endif
+    #ifdef __COMPILE_1283
+    else if (__choose4 == 281)
+    {
+    //AddStmtKind
+    method = 3;
+    }
+    #endif
+    #ifdef __COMPILE_1284
+    else if (__choose4 == 282)
+    {
+    //AddStmtKind
+    method = get_method(ifd);
+    }
+    #endif
+    #ifdef __COMPILE_1285
+    else if (__choose4 == 283)
+    {
+    //AddStmtKind
+    no_name = decompress;
+    }
+    #endif
+    #ifdef __COMPILE_1286
+    else if (__choose4 == 284)
+    {
+    //AddStmtKind
+    no_time = decompress;
+    }
+    #endif
+    #ifdef __COMPILE_1287
+    else if (__choose4 == 285)
+    {
+    //AddStmtKind
+    part_nb = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1288
+    else if (__choose4 == 286)
+    {
+    //AddStmtKind
+    part_nb++;
+    }
+    #endif
+    #ifdef __COMPILE_1289
+    else if (__choose4 == 287)
+    {
+    //AddStmtKind
+    perror(ifname);
+    }
+    #endif
+    #ifdef __COMPILE_1290
+    else if (__choose4 == 288)
+    {
+    //AddStmtKind
+    perror(ofname);
+    }
+    #endif
+    #ifdef __COMPILE_1291
+    else if (__choose4 == 289)
+    {
+    //AddStmtKind
+    progerror("standard input");
+    }
+    #endif
+    #ifdef __COMPILE_1292
+    else if (__choose4 == 290)
+    {
+    //AddStmtKind
+    progerror(ifname);
+    }
+    #endif
+    #ifdef __COMPILE_1293
+    else if (__choose4 == 291)
+    {
+    //AddStmtKind
+    progerror(ofname);
+    }
+    #endif
+    #ifdef __COMPILE_1294
+    else if (__choose4 == 292)
+    {
+    //AddStmtKind
+    proglen = strlen(program_name);
+    }
+    #endif
+    #ifdef __COMPILE_1295
+    else if (__choose4 == 293)
+    {
+    //AddStmtKind
+    program_name = gzip_base_name(argv[0]);
+    }
+    #endif
+    #ifdef __COMPILE_1296
+    else if (__choose4 == 294)
+    {
+    //AddStmtKind
+    quiet = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1297
+    else if (__choose4 == 295)
+    {
+    //AddStmtKind
+    read_error();
+    }
+    #endif
+    #ifdef __COMPILE_1298
+    else if (__choose4 == 296)
+    {
+    //AddStmtKind
+    remove_ofname_fd = -1;
+    }
+    #endif
+    #ifdef __COMPILE_1299
+    else if (__choose4 == 297)
+    {
+    //AddStmtKind
+    remove_output_file();
+    }
+    #endif
+    #ifdef __COMPILE_1300
+    else if (__choose4 == 298)
+    {
+    //AddStmtKind
+    save_orig_name = !no_name;
+    }
+    #endif
+    #ifdef __COMPILE_1301
+    else if (__choose4 == 299)
+    {
+    //AddStmtKind
+    save_orig_name = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1302
+    else if (__choose4 == 300)
+    {
+    //AddStmtKind
+    save_orig_name = 1;
+    }
+    #endif
+    #ifdef __COMPILE_1303
+    else if (__choose4 == 301)
+    {
+    //AddStmtKind
+    sigemptyset(&caught_signals);
+    }
+    #endif
+    #ifdef __COMPILE_1304
+    else if (__choose4 == 302)
+    {
+    //AddStmtKind
+    strcat(ifname, z_suffix);
+    }
+    #endif
+    #ifdef __COMPILE_1305
+    else if (__choose4 == 303)
+    {
+    //AddStmtKind
+    strcat(ofname, z_suffix);
+    }
+    #endif
+    #ifdef __COMPILE_1306
+    else if (__choose4 == 304)
+    {
+    //AddStmtKind
+    strcpy(ifname, "stdin");
+    }
+    #endif
+    #ifdef __COMPILE_1307
+    else if (__choose4 == 305)
+    {
+    //AddStmtKind
+    strcpy(ofname, "stdout");
+    }
+    #endif
+    #ifdef __COMPILE_1308
+    else if (__choose4 == 306)
+    {
+    //AddStmtKind
+    strcpy(ofname, ifname);
+    }
+    #endif
+    #ifdef __COMPILE_1309
+    else if (__choose4 == 307)
+    {
+    //AddStmtKind
+    time_stamp = get_stat_mtime(&istat);
+    }
+    #endif
+    #ifdef __COMPILE_1310
+    else if (__choose4 == 308)
+    {
+    //AddStmtKind
+    time_stamp.tv_nsec = -1;
+    }
+    #endif
+    #ifdef __COMPILE_1311
+    else if (__choose4 == 309)
+    {
+    //AddStmtKind
+    time_stamp.tv_nsec = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1312
+    else if (__choose4 == 310)
+    {
+    //AddStmtKind
+    to_stdout = 1;
+    }
+    #endif
+    #ifdef __COMPILE_1313
+    else if (__choose4 == 311)
+    {
+    //AddStmtKind
+    total_in = -1L;
+    }
+    #endif
+    #ifdef __COMPILE_1314
+    else if (__choose4 == 312)
+    {
+    //AddStmtKind
+    total_out = -1L;
+    }
+    #endif
+    #ifdef __COMPILE_1315
+    else if (__choose4 == 313)
+    {
+    //AddStmtKind
+    treat_stdin();
+    }
+    #endif
+    #ifdef __COMPILE_1316
+    else if (__choose4 == 314)
+    {
+    //AddStmtKind
+    try_help();
+    }
+    #endif
+    #ifdef __COMPILE_1317
+    else if (__choose4 == 315)
+    {
+    //AddStmtKind
+    verbose = 0;
+    }
+    #endif
+    #ifdef __COMPILE_1318
+    else if (__choose4 == 316)
+    {
+    //AddStmtKind
+    work = copy;
+    }
+    #endif
+    #ifdef __COMPILE_1319
+    else if (__choose4 == 317)
+    {
+    //AddStmtKind
+    work = lzw;
+    }
+    #endif
+    #ifdef __COMPILE_1320
+    else if (__choose4 == 318)
+    {
+    //AddStmtKind
+    work = unlzh;
+    }
+    #endif
+    #ifdef __COMPILE_1321
+    else if (__choose4 == 319)
+    {
+    //AddStmtKind
+    work = unlzw;
+    }
+    #endif
+    #ifdef __COMPILE_1322
+    else if (__choose4 == 320)
+    {
+    //AddStmtKind
+    work = unpack;
+    }
+    #endif
+    #ifdef __COMPILE_1323
+    else if (__choose4 == 321)
+    {
+    //AddStmtKind
+    work = unzip;
+    }
+    #endif
+    #ifdef __COMPILE_1324
+    else if (__choose4 == 322)
+    {
+    //AddStmtKind
+    write_error();
+    }
+    #endif
+    #ifdef __COMPILE_1325
+    else if (__choose4 == 323)
+    {
+    //AddStmtKind
+    xunlink(ofname);
+    }
+    #endif
+    #ifdef __COMPILE_1326
+    else if (__choose4 == 324)
+    {
+    //AddStmtKind
+    z_len = strlen(z_suffix);
+    }
+    #endif
+    #ifdef __COMPILE_1327
+    else if (__choose4 == 325)
+    {
+    //AddStmtKind
+    z_suffix = ".gz";
+    }
+    #endif
+    #ifdef __COMPILE_1328
+    else if (__choose4 == 326)
+    {
+    //IfExitKind
+    if (__is_neg("4-326", "L547", 36, &(decompress), sizeof (decompress), &(z_len),
+    			 sizeof (z_len), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(z_suffix),
+    			 sizeof (z_suffix), &(quiet), sizeof (quiet), &(ascii), sizeof (ascii), &(quiet),
+    			 sizeof (quiet), &(do_lzw), sizeof (do_lzw), &(work), sizeof (work), &(argc),
+    			 sizeof (argc), &(file_count), sizeof (file_count), &(no_name), sizeof (no_name), &(no_time),
+    			 sizeof (no_time), &(exiting_signal), sizeof (exiting_signal), &(optc), sizeof (optc), &(level),
+    			 sizeof (level), &(level), sizeof (level), &(test), sizeof (test), &(to_stdout),
+    			 sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(list), sizeof (list), &(test),
+    			 sizeof (test), &(argv), sizeof (argv), &(exit_code), sizeof (exit_code), &(exit_code),
+    			 sizeof (exit_code), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(recursive),
+    			 sizeof (recursive), &(presume_input_tty), sizeof (presume_input_tty), &(force), sizeof (force), &(maxbits),
+    			 sizeof (maxbits), &(maxbits), sizeof (maxbits), &(env), sizeof (env), &(args),
+    			 sizeof (args), &(proglen), sizeof (proglen)))
+        return -1;
+    }
+    #endif
+    #ifdef __COMPILE_1329
+    else if (__choose4 == 327)
+    {
+    //IfExitKind
+    if (__is_neg("4-327", "L547", 36, &(decompress), sizeof (decompress), &(z_len),
+    			 sizeof (z_len), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(z_suffix),
+    			 sizeof (z_suffix), &(quiet), sizeof (quiet), &(ascii), sizeof (ascii), &(quiet),
+    			 sizeof (quiet), &(do_lzw), sizeof (do_lzw), &(work), sizeof (work), &(argc),
+    			 sizeof (argc), &(file_count), sizeof (file_count), &(no_name), sizeof (no_name), &(no_time),
+    			 sizeof (no_time), &(exiting_signal), sizeof (exiting_signal), &(optc), sizeof (optc), &(level),
+    			 sizeof (level), &(level), sizeof (level), &(test), sizeof (test), &(to_stdout),
+    			 sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(list), sizeof (list), &(test),
+    			 sizeof (test), &(argv), sizeof (argv), &(exit_code), sizeof (exit_code), &(exit_code),
+    			 sizeof (exit_code), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(recursive),
+    			 sizeof (recursive), &(presume_input_tty), sizeof (presume_input_tty), &(force), sizeof (force), &(maxbits),
+    			 sizeof (maxbits), &(maxbits), sizeof (maxbits), &(env), sizeof (env), &(args),
+    			 sizeof (args), &(proglen), sizeof (proglen)))
+        return 0;
+    }
+    #endif
+    #ifdef __COMPILE_1330
+    else if (__choose4 == 328)
+    {
+    //IfExitKind
+    if (__is_neg("4-328", "L547", 36, &(decompress), sizeof (decompress), &(z_len),
+    			 sizeof (z_len), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(z_suffix),
+    			 sizeof (z_suffix), &(quiet), sizeof (quiet), &(ascii), sizeof (ascii), &(quiet),
+    			 sizeof (quiet), &(do_lzw), sizeof (do_lzw), &(work), sizeof (work), &(argc),
+    			 sizeof (argc), &(file_count), sizeof (file_count), &(no_name), sizeof (no_name), &(no_time),
+    			 sizeof (no_time), &(exiting_signal), sizeof (exiting_signal), &(optc), sizeof (optc), &(level),
+    			 sizeof (level), &(level), sizeof (level), &(test), sizeof (test), &(to_stdout),
+    			 sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(list), sizeof (list), &(test),
+    			 sizeof (test), &(argv), sizeof (argv), &(exit_code), sizeof (exit_code), &(exit_code),
+    			 sizeof (exit_code), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(recursive),
+    			 sizeof (recursive), &(presume_input_tty), sizeof (presume_input_tty), &(force), sizeof (force), &(maxbits),
+    			 sizeof (maxbits), &(maxbits), sizeof (maxbits), &(env), sizeof (env), &(args),
+    			 sizeof (args), &(proglen), sizeof (proglen)))
+        return 13;
+    }
+    #endif
+    #ifdef __COMPILE_1331
+    else if (__choose4 == 329)
+    {
+    //IfExitKind
+    if (__is_neg("4-329", "L547", 36, &(decompress), sizeof (decompress), &(z_len),
+    			 sizeof (z_len), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(z_suffix),
+    			 sizeof (z_suffix), &(quiet), sizeof (quiet), &(ascii), sizeof (ascii), &(quiet),
+    			 sizeof (quiet), &(do_lzw), sizeof (do_lzw), &(work), sizeof (work), &(argc),
+    			 sizeof (argc), &(file_count), sizeof (file_count), &(no_name), sizeof (no_name), &(no_time),
+    			 sizeof (no_time), &(exiting_signal), sizeof (exiting_signal), &(optc), sizeof (optc), &(level),
+    			 sizeof (level), &(level), sizeof (level), &(test), sizeof (test), &(to_stdout),
+    			 sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(list), sizeof (list), &(test),
+    			 sizeof (test), &(argv), sizeof (argv), &(exit_code), sizeof (exit_code), &(exit_code),
+    			 sizeof (exit_code), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(recursive),
+    			 sizeof (recursive), &(presume_input_tty), sizeof (presume_input_tty), &(force), sizeof (force), &(maxbits),
+    			 sizeof (maxbits), &(maxbits), sizeof (maxbits), &(env), sizeof (env), &(args),
+    			 sizeof (args), &(proglen), sizeof (proglen)))
+        return 1;
+    }
+    #endif
+    #ifdef __COMPILE_1332
+    else if (__choose4 == 330)
+    {
+    //IfExitKind
+    if (__is_neg("4-330", "L547", 36, &(decompress), sizeof (decompress), &(z_len),
+    			 sizeof (z_len), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(z_suffix),
+    			 sizeof (z_suffix), &(quiet), sizeof (quiet), &(ascii), sizeof (ascii), &(quiet),
+    			 sizeof (quiet), &(do_lzw), sizeof (do_lzw), &(work), sizeof (work), &(argc),
+    			 sizeof (argc), &(file_count), sizeof (file_count), &(no_name), sizeof (no_name), &(no_time),
+    			 sizeof (no_time), &(exiting_signal), sizeof (exiting_signal), &(optc), sizeof (optc), &(level),
+    			 sizeof (level), &(level), sizeof (level), &(test), sizeof (test), &(to_stdout),
+    			 sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(list), sizeof (list), &(test),
+    			 sizeof (test), &(argv), sizeof (argv), &(exit_code), sizeof (exit_code), &(exit_code),
+    			 sizeof (exit_code), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(recursive),
+    			 sizeof (recursive), &(presume_input_tty), sizeof (presume_input_tty), &(force), sizeof (force), &(maxbits),
+    			 sizeof (maxbits), &(maxbits), sizeof (maxbits), &(env), sizeof (env), &(args),
+    			 sizeof (args), &(proglen), sizeof (proglen)))
+        return 30;
+    }
+    #endif
+    #ifdef __COMPILE_1333
+    else if (__choose4 == 331)
+    {
+    //IfExitKind
+    if (__is_neg("4-331", "L547", 36, &(decompress), sizeof (decompress), &(z_len),
+    			 sizeof (z_len), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(z_suffix),
+    			 sizeof (z_suffix), &(quiet), sizeof (quiet), &(ascii), sizeof (ascii), &(quiet),
+    			 sizeof (quiet), &(do_lzw), sizeof (do_lzw), &(work), sizeof (work), &(argc),
+    			 sizeof (argc), &(file_count), sizeof (file_count), &(no_name), sizeof (no_name), &(no_time),
+    			 sizeof (no_time), &(exiting_signal), sizeof (exiting_signal), &(optc), sizeof (optc), &(level),
+    			 sizeof (level), &(level), sizeof (level), &(test), sizeof (test), &(to_stdout),
+    			 sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(list), sizeof (list), &(test),
+    			 sizeof (test), &(argv), sizeof (argv), &(exit_code), sizeof (exit_code), &(exit_code),
+    			 sizeof (exit_code), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(recursive),
+    			 sizeof (recursive), &(presume_input_tty), sizeof (presume_input_tty), &(force), sizeof (force), &(maxbits),
+    			 sizeof (maxbits), &(maxbits), sizeof (maxbits), &(env), sizeof (env), &(args),
+    			 sizeof (args), &(proglen), sizeof (proglen)))
+        return 4;
+    }
+    #endif
+    int __choose5 = __choose("__SWITCH5");
+    {
+    int __temp5=((z_len == 0 && !decompress) || z_len > 30) ;
+    if (__choose5 == 0)
+    {}
+    #ifdef __COMPILE_1334
+    else if (__choose5 == 1)
+    {
+    __temp5= (__is_neg("5-1", "L547", 36, &(decompress), sizeof (decompress), &(z_len), sizeof (z_len), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(z_suffix), sizeof (z_suffix), &(quiet), sizeof (quiet), &(ascii), sizeof (ascii), &(quiet), sizeof (quiet), &(do_lzw), sizeof (do_lzw), &(work), sizeof (work), &(argc), sizeof (argc), &(file_count), sizeof (file_count), &(no_name), sizeof (no_name), &(no_time), sizeof (no_time), &(exiting_signal), sizeof (exiting_signal), &(optc), sizeof (optc), &(level), sizeof (level), &(level), sizeof (level), &(test), sizeof (test), &(to_stdout), sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(list), sizeof (list), &(test), sizeof (test), &(argv), sizeof (argv), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(recursive), sizeof (recursive), &(presume_input_tty), sizeof (presume_input_tty), &(force), sizeof (force), &(maxbits), sizeof (maxbits), &(maxbits), sizeof (maxbits), &(env), sizeof (env), &(args), sizeof (args), &(proglen), sizeof (proglen)));
+    }
+    #endif
+    #ifdef __COMPILE_1335
+    else if (__choose5 == 2)
+    {
+    __temp5= (((z_len == 0 && !decompress) || z_len > 30) || __is_neg("5-2", "L547", 36, &(decompress), sizeof (decompress), &(z_len), sizeof (z_len), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(z_suffix), sizeof (z_suffix), &(quiet), sizeof (quiet), &(ascii), sizeof (ascii), &(quiet), sizeof (quiet), &(do_lzw), sizeof (do_lzw), &(work), sizeof (work), &(argc), sizeof (argc), &(file_count), sizeof (file_count), &(no_name), sizeof (no_name), &(no_time), sizeof (no_time), &(exiting_signal), sizeof (exiting_signal), &(optc), sizeof (optc), &(level), sizeof (level), &(level), sizeof (level), &(test), sizeof (test), &(to_stdout), sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(list), sizeof (list), &(test), sizeof (test), &(argv), sizeof (argv), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(recursive), sizeof (recursive), &(presume_input_tty), sizeof (presume_input_tty), &(force), sizeof (force), &(maxbits), sizeof (maxbits), &(maxbits), sizeof (maxbits), &(env), sizeof (env), &(args), sizeof (args), &(proglen), sizeof (proglen)));
+    }
+    #endif
+    #ifdef __COMPILE_1336
+    else if (__choose5 == 3)
+    {
+    __temp5= ((z_len == 0 && !decompress));
+    }
+    #endif
+    #ifdef __COMPILE_1337
+    else if (__choose5 == 4)
+    {
+    __temp5= (((z_len == 0 && !decompress) || z_len > 30) && !__is_neg("5-4", "L547", 36, &(decompress), sizeof (decompress), &(z_len), sizeof (z_len), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(z_suffix), sizeof (z_suffix), &(quiet), sizeof (quiet), &(ascii), sizeof (ascii), &(quiet), sizeof (quiet), &(do_lzw), sizeof (do_lzw), &(work), sizeof (work), &(argc), sizeof (argc), &(file_count), sizeof (file_count), &(no_name), sizeof (no_name), &(no_time), sizeof (no_time), &(exiting_signal), sizeof (exiting_signal), &(optc), sizeof (optc), &(level), sizeof (level), &(level), sizeof (level), &(test), sizeof (test), &(to_stdout), sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(list), sizeof (list), &(test), sizeof (test), &(argv), sizeof (argv), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(recursive), sizeof (recursive), &(presume_input_tty), sizeof (presume_input_tty), &(force), sizeof (force), &(maxbits), sizeof (maxbits), &(maxbits), sizeof (maxbits), &(env), sizeof (env), &(args), sizeof (args), &(proglen), sizeof (proglen)));
+    }
+    #endif
+    int __choose6 = __choose("__SWITCH6");
+    if (__choose6 == 0)
+    {
+    if (__temp5) {
+            fprintf(stderr, "%s: incorrect suffix '%s'\n",
+                    program_name, z_suffix);
+            do_exit(ERROR);
+        }
+    
+    }
+    #ifdef __COMPILE_1338
+    else if (__choose6 == 1)
+    {
+    //GuardKind
+    if (!__is_neg("6-1", "L547", 36, &(decompress), sizeof (decompress), &(z_len), sizeof (z_len), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(z_suffix), sizeof (z_suffix), &(quiet), sizeof (quiet), &(ascii), sizeof (ascii), &(quiet), sizeof (quiet), &(do_lzw), sizeof (do_lzw), &(work), sizeof (work), &(argc), sizeof (argc), &(file_count), sizeof (file_count), &(no_name), sizeof (no_name), &(no_time), sizeof (no_time), &(exiting_signal), sizeof (exiting_signal), &(optc), sizeof (optc), &(level), sizeof (level), &(level), sizeof (level), &(test), sizeof (test), &(to_stdout), sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(list), sizeof (list), &(test), sizeof (test), &(argv), sizeof (argv), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(recursive), sizeof (recursive), &(presume_input_tty), sizeof (presume_input_tty), &(force), sizeof (force), &(maxbits), sizeof (maxbits), &(maxbits), sizeof (maxbits), &(env), sizeof (env), &(args), sizeof (args), &(proglen), sizeof (proglen)))
+        if ((z_len == 0 && !decompress) || z_len > 30) {
+            rpl_fprintf(stderr, "%s: incorrect suffix '%s'\n", program_name, z_suffix);
+            do_exit(1);
+        }
+    
+    }
+    #endif
+    #ifdef __COMPILE_1339
+    else if (__choose6 == 2)
+    {
+    //SpecialGuardKind
+    if (!__is_neg("6-2", "L547", 36, &(decompress), sizeof (decompress), &(z_len), sizeof (z_len), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(z_suffix), sizeof (z_suffix), &(quiet), sizeof (quiet), &(ascii), sizeof (ascii), &(quiet), sizeof (quiet), &(do_lzw), sizeof (do_lzw), &(work), sizeof (work), &(argc), sizeof (argc), &(file_count), sizeof (file_count), &(no_name), sizeof (no_name), &(no_time), sizeof (no_time), &(exiting_signal), sizeof (exiting_signal), &(optc), sizeof (optc), &(level), sizeof (level), &(level), sizeof (level), &(test), sizeof (test), &(to_stdout), sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(list), sizeof (list), &(test), sizeof (test), &(argv), sizeof (argv), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(recursive), sizeof (recursive), &(presume_input_tty), sizeof (presume_input_tty), &(force), sizeof (force), &(maxbits), sizeof (maxbits), &(maxbits), sizeof (maxbits), &(env), sizeof (env), &(args), sizeof (args), &(proglen), sizeof (proglen)) && ((z_len == 0 && !decompress) || z_len > 30)) {
+        rpl_fprintf(stderr, "%s: incorrect suffix '%s'\n", program_name, z_suffix);
+        do_exit(1);
+    }
+    
+    }
+    #endif
+    }
     }
     if (do_lzw && !decompress) work = lzw;
 
@@ -12263,3269 +15059,3269 @@ local int create_outfile()
 
       //prophet generated patch
       {
-      int __choose4 = __choose("__SWITCH4");
-      if (__choose4 == 0)
+      int __choose7 = __choose("__SWITCH7");
+      if (__choose7 == 0)
       {}
-      #ifdef __COMPILE_1003
-      else if (__choose4 == 1)
+      #ifdef __COMPILE_1340
+      else if (__choose7 == 1)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (0);
       }
       #endif
-      #ifdef __COMPILE_1004
-      else if (__choose4 == 2)
+      #ifdef __COMPILE_1341
+      else if (__choose7 == 2)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (1);
       }
       #endif
-      #ifdef __COMPILE_1005
-      else if (__choose4 == 3)
+      #ifdef __COMPILE_1342
+      else if (__choose7 == 3)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (128);
       }
       #endif
-      #ifdef __COMPILE_1006
-      else if (__choose4 == 4)
+      #ifdef __COMPILE_1343
+      else if (__choose7 == 4)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (17);
       }
       #endif
-      #ifdef __COMPILE_1007
-      else if (__choose4 == 5)
+      #ifdef __COMPILE_1344
+      else if (__choose7 == 5)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (193);
       }
       #endif
-      #ifdef __COMPILE_1008
-      else if (__choose4 == 6)
+      #ifdef __COMPILE_1345
+      else if (__choose7 == 6)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (2);
       }
       #endif
-      #ifdef __COMPILE_1009
-      else if (__choose4 == 7)
+      #ifdef __COMPILE_1346
+      else if (__choose7 == 7)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (256);
       }
       #endif
-      #ifdef __COMPILE_1010
-      else if (__choose4 == 8)
+      #ifdef __COMPILE_1347
+      else if (__choose7 == 8)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (36);
       }
       #endif
-      #ifdef __COMPILE_1011
-      else if (__choose4 == 9)
+      #ifdef __COMPILE_1348
+      else if (__choose7 == 9)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (384);
       }
       #endif
-      #ifdef __COMPILE_1012
-      else if (__choose4 == 10)
+      #ifdef __COMPILE_1349
+      else if (__choose7 == 10)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (64);
       }
       #endif
-      #ifdef __COMPILE_1013
-      else if (__choose4 == 11)
+      #ifdef __COMPILE_1350
+      else if (__choose7 == 11)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (65);
       }
       #endif
-      #ifdef __COMPILE_1014
-      else if (__choose4 == 12)
+      #ifdef __COMPILE_1351
+      else if (__choose7 == 12)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (0);
       }
       #endif
-      #ifdef __COMPILE_1015
-      else if (__choose4 == 13)
+      #ifdef __COMPILE_1352
+      else if (__choose7 == 13)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (1);
       }
       #endif
-      #ifdef __COMPILE_1016
-      else if (__choose4 == 14)
+      #ifdef __COMPILE_1353
+      else if (__choose7 == 14)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (128);
       }
       #endif
-      #ifdef __COMPILE_1017
-      else if (__choose4 == 15)
+      #ifdef __COMPILE_1354
+      else if (__choose7 == 15)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (17);
       }
       #endif
-      #ifdef __COMPILE_1018
-      else if (__choose4 == 16)
+      #ifdef __COMPILE_1355
+      else if (__choose7 == 16)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (193);
       }
       #endif
-      #ifdef __COMPILE_1019
-      else if (__choose4 == 17)
+      #ifdef __COMPILE_1356
+      else if (__choose7 == 17)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (2);
       }
       #endif
-      #ifdef __COMPILE_1020
-      else if (__choose4 == 18)
+      #ifdef __COMPILE_1357
+      else if (__choose7 == 18)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (256);
       }
       #endif
-      #ifdef __COMPILE_1021
-      else if (__choose4 == 19)
+      #ifdef __COMPILE_1358
+      else if (__choose7 == 19)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (36);
       }
       #endif
-      #ifdef __COMPILE_1022
-      else if (__choose4 == 20)
+      #ifdef __COMPILE_1359
+      else if (__choose7 == 20)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (384);
       }
       #endif
-      #ifdef __COMPILE_1023
-      else if (__choose4 == 21)
+      #ifdef __COMPILE_1360
+      else if (__choose7 == 21)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (64);
       }
       #endif
-      #ifdef __COMPILE_1024
-      else if (__choose4 == 22)
+      #ifdef __COMPILE_1361
+      else if (__choose7 == 22)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (65);
       }
       #endif
-      #ifdef __COMPILE_1025
-      else if (__choose4 == 23)
+      #ifdef __COMPILE_1362
+      else if (__choose7 == 23)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (0);
       }
       #endif
-      #ifdef __COMPILE_1026
-      else if (__choose4 == 24)
+      #ifdef __COMPILE_1363
+      else if (__choose7 == 24)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (1);
       }
       #endif
-      #ifdef __COMPILE_1027
-      else if (__choose4 == 25)
+      #ifdef __COMPILE_1364
+      else if (__choose7 == 25)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (128);
       }
       #endif
-      #ifdef __COMPILE_1028
-      else if (__choose4 == 26)
+      #ifdef __COMPILE_1365
+      else if (__choose7 == 26)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (17);
       }
       #endif
-      #ifdef __COMPILE_1029
-      else if (__choose4 == 27)
+      #ifdef __COMPILE_1366
+      else if (__choose7 == 27)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (193);
       }
       #endif
-      #ifdef __COMPILE_1030
-      else if (__choose4 == 28)
+      #ifdef __COMPILE_1367
+      else if (__choose7 == 28)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (2);
       }
       #endif
-      #ifdef __COMPILE_1031
-      else if (__choose4 == 29)
+      #ifdef __COMPILE_1368
+      else if (__choose7 == 29)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (256);
       }
       #endif
-      #ifdef __COMPILE_1032
-      else if (__choose4 == 30)
+      #ifdef __COMPILE_1369
+      else if (__choose7 == 30)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (36);
       }
       #endif
-      #ifdef __COMPILE_1033
-      else if (__choose4 == 31)
+      #ifdef __COMPILE_1370
+      else if (__choose7 == 31)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (384);
       }
       #endif
-      #ifdef __COMPILE_1034
-      else if (__choose4 == 32)
+      #ifdef __COMPILE_1371
+      else if (__choose7 == 32)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (64);
       }
       #endif
-      #ifdef __COMPILE_1035
-      else if (__choose4 == 33)
+      #ifdef __COMPILE_1372
+      else if (__choose7 == 33)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (65);
       }
       #endif
-      #ifdef __COMPILE_1036
-      else if (__choose4 == 34)
+      #ifdef __COMPILE_1373
+      else if (__choose7 == 34)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (flags);
       }
       #endif
-      #ifdef __COMPILE_1037
-      else if (__choose4 == 35)
+      #ifdef __COMPILE_1374
+      else if (__choose7 == 35)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1038
-      else if (__choose4 == 36)
+      #ifdef __COMPILE_1375
+      else if (__choose7 == 36)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1039
-      else if (__choose4 == 37)
+      #ifdef __COMPILE_1376
+      else if (__choose7 == 37)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (0);
       }
       #endif
-      #ifdef __COMPILE_1040
-      else if (__choose4 == 38)
+      #ifdef __COMPILE_1377
+      else if (__choose7 == 38)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (1);
       }
       #endif
-      #ifdef __COMPILE_1041
-      else if (__choose4 == 39)
+      #ifdef __COMPILE_1378
+      else if (__choose7 == 39)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (128);
       }
       #endif
-      #ifdef __COMPILE_1042
-      else if (__choose4 == 40)
+      #ifdef __COMPILE_1379
+      else if (__choose7 == 40)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (17);
       }
       #endif
-      #ifdef __COMPILE_1043
-      else if (__choose4 == 41)
+      #ifdef __COMPILE_1380
+      else if (__choose7 == 41)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (193);
       }
       #endif
-      #ifdef __COMPILE_1044
-      else if (__choose4 == 42)
+      #ifdef __COMPILE_1381
+      else if (__choose7 == 42)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (2);
       }
       #endif
-      #ifdef __COMPILE_1045
-      else if (__choose4 == 43)
+      #ifdef __COMPILE_1382
+      else if (__choose7 == 43)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (256);
       }
       #endif
-      #ifdef __COMPILE_1046
-      else if (__choose4 == 44)
+      #ifdef __COMPILE_1383
+      else if (__choose7 == 44)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (36);
       }
       #endif
-      #ifdef __COMPILE_1047
-      else if (__choose4 == 45)
+      #ifdef __COMPILE_1384
+      else if (__choose7 == 45)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (384);
       }
       #endif
-      #ifdef __COMPILE_1048
-      else if (__choose4 == 46)
+      #ifdef __COMPILE_1385
+      else if (__choose7 == 46)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (64);
       }
       #endif
-      #ifdef __COMPILE_1049
-      else if (__choose4 == 47)
+      #ifdef __COMPILE_1386
+      else if (__choose7 == 47)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (65);
       }
       #endif
-      #ifdef __COMPILE_1050
-      else if (__choose4 == 48)
+      #ifdef __COMPILE_1387
+      else if (__choose7 == 48)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (flags);
       }
       #endif
-      #ifdef __COMPILE_1051
-      else if (__choose4 == 49)
+      #ifdef __COMPILE_1388
+      else if (__choose7 == 49)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1052
-      else if (__choose4 == 50)
+      #ifdef __COMPILE_1389
+      else if (__choose7 == 50)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1053
-      else if (__choose4 == 51)
+      #ifdef __COMPILE_1390
+      else if (__choose7 == 51)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (0);
       }
       #endif
-      #ifdef __COMPILE_1054
-      else if (__choose4 == 52)
+      #ifdef __COMPILE_1391
+      else if (__choose7 == 52)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (1);
       }
       #endif
-      #ifdef __COMPILE_1055
-      else if (__choose4 == 53)
+      #ifdef __COMPILE_1392
+      else if (__choose7 == 53)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (128);
       }
       #endif
-      #ifdef __COMPILE_1056
-      else if (__choose4 == 54)
+      #ifdef __COMPILE_1393
+      else if (__choose7 == 54)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (17);
       }
       #endif
-      #ifdef __COMPILE_1057
-      else if (__choose4 == 55)
+      #ifdef __COMPILE_1394
+      else if (__choose7 == 55)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (193);
       }
       #endif
-      #ifdef __COMPILE_1058
-      else if (__choose4 == 56)
+      #ifdef __COMPILE_1395
+      else if (__choose7 == 56)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (2);
       }
       #endif
-      #ifdef __COMPILE_1059
-      else if (__choose4 == 57)
+      #ifdef __COMPILE_1396
+      else if (__choose7 == 57)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (256);
       }
       #endif
-      #ifdef __COMPILE_1060
-      else if (__choose4 == 58)
+      #ifdef __COMPILE_1397
+      else if (__choose7 == 58)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (36);
       }
       #endif
-      #ifdef __COMPILE_1061
-      else if (__choose4 == 59)
+      #ifdef __COMPILE_1398
+      else if (__choose7 == 59)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (384);
       }
       #endif
-      #ifdef __COMPILE_1062
-      else if (__choose4 == 60)
+      #ifdef __COMPILE_1399
+      else if (__choose7 == 60)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (64);
       }
       #endif
-      #ifdef __COMPILE_1063
-      else if (__choose4 == 61)
+      #ifdef __COMPILE_1400
+      else if (__choose7 == 61)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (65);
       }
       #endif
-      #ifdef __COMPILE_1064
-      else if (__choose4 == 62)
+      #ifdef __COMPILE_1401
+      else if (__choose7 == 62)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (flags);
       }
       #endif
-      #ifdef __COMPILE_1065
-      else if (__choose4 == 63)
+      #ifdef __COMPILE_1402
+      else if (__choose7 == 63)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1066
-      else if (__choose4 == 64)
+      #ifdef __COMPILE_1403
+      else if (__choose7 == 64)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1067
-      else if (__choose4 == 65)
+      #ifdef __COMPILE_1404
+      else if (__choose7 == 65)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (0);
       }
       #endif
-      #ifdef __COMPILE_1068
-      else if (__choose4 == 66)
+      #ifdef __COMPILE_1405
+      else if (__choose7 == 66)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (1);
       }
       #endif
-      #ifdef __COMPILE_1069
-      else if (__choose4 == 67)
+      #ifdef __COMPILE_1406
+      else if (__choose7 == 67)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (128);
       }
       #endif
-      #ifdef __COMPILE_1070
-      else if (__choose4 == 68)
+      #ifdef __COMPILE_1407
+      else if (__choose7 == 68)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (17);
       }
       #endif
-      #ifdef __COMPILE_1071
-      else if (__choose4 == 69)
+      #ifdef __COMPILE_1408
+      else if (__choose7 == 69)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (193);
       }
       #endif
-      #ifdef __COMPILE_1072
-      else if (__choose4 == 70)
+      #ifdef __COMPILE_1409
+      else if (__choose7 == 70)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (2);
       }
       #endif
-      #ifdef __COMPILE_1073
-      else if (__choose4 == 71)
+      #ifdef __COMPILE_1410
+      else if (__choose7 == 71)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (256);
       }
       #endif
-      #ifdef __COMPILE_1074
-      else if (__choose4 == 72)
+      #ifdef __COMPILE_1411
+      else if (__choose7 == 72)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (36);
       }
       #endif
-      #ifdef __COMPILE_1075
-      else if (__choose4 == 73)
+      #ifdef __COMPILE_1412
+      else if (__choose7 == 73)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (384);
       }
       #endif
-      #ifdef __COMPILE_1076
-      else if (__choose4 == 74)
+      #ifdef __COMPILE_1413
+      else if (__choose7 == 74)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (64);
       }
       #endif
-      #ifdef __COMPILE_1077
-      else if (__choose4 == 75)
+      #ifdef __COMPILE_1414
+      else if (__choose7 == 75)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (65);
       }
       #endif
-      #ifdef __COMPILE_1078
-      else if (__choose4 == 76)
+      #ifdef __COMPILE_1415
+      else if (__choose7 == 76)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (0);
       }
       #endif
-      #ifdef __COMPILE_1079
-      else if (__choose4 == 77)
+      #ifdef __COMPILE_1416
+      else if (__choose7 == 77)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (1);
       }
       #endif
-      #ifdef __COMPILE_1080
-      else if (__choose4 == 78)
+      #ifdef __COMPILE_1417
+      else if (__choose7 == 78)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (128);
       }
       #endif
-      #ifdef __COMPILE_1081
-      else if (__choose4 == 79)
+      #ifdef __COMPILE_1418
+      else if (__choose7 == 79)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (17);
       }
       #endif
-      #ifdef __COMPILE_1082
-      else if (__choose4 == 80)
+      #ifdef __COMPILE_1419
+      else if (__choose7 == 80)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (193);
       }
       #endif
-      #ifdef __COMPILE_1083
-      else if (__choose4 == 81)
+      #ifdef __COMPILE_1420
+      else if (__choose7 == 81)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (2);
       }
       #endif
-      #ifdef __COMPILE_1084
-      else if (__choose4 == 82)
+      #ifdef __COMPILE_1421
+      else if (__choose7 == 82)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (256);
       }
       #endif
-      #ifdef __COMPILE_1085
-      else if (__choose4 == 83)
+      #ifdef __COMPILE_1422
+      else if (__choose7 == 83)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (36);
       }
       #endif
-      #ifdef __COMPILE_1086
-      else if (__choose4 == 84)
+      #ifdef __COMPILE_1423
+      else if (__choose7 == 84)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (384);
       }
       #endif
-      #ifdef __COMPILE_1087
-      else if (__choose4 == 85)
+      #ifdef __COMPILE_1424
+      else if (__choose7 == 85)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (64);
       }
       #endif
-      #ifdef __COMPILE_1088
-      else if (__choose4 == 86)
+      #ifdef __COMPILE_1425
+      else if (__choose7 == 86)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (65);
       }
       #endif
-      #ifdef __COMPILE_1089
-      else if (__choose4 == 87)
+      #ifdef __COMPILE_1426
+      else if (__choose7 == 87)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (flags);
       }
       #endif
-      #ifdef __COMPILE_1090
-      else if (__choose4 == 88)
+      #ifdef __COMPILE_1427
+      else if (__choose7 == 88)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1091
-      else if (__choose4 == 89)
+      #ifdef __COMPILE_1428
+      else if (__choose7 == 89)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1092
-      else if (__choose4 == 90)
+      #ifdef __COMPILE_1429
+      else if (__choose7 == 90)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (0);
       }
       #endif
-      #ifdef __COMPILE_1093
-      else if (__choose4 == 91)
+      #ifdef __COMPILE_1430
+      else if (__choose7 == 91)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (1);
       }
       #endif
-      #ifdef __COMPILE_1094
-      else if (__choose4 == 92)
+      #ifdef __COMPILE_1431
+      else if (__choose7 == 92)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (128);
       }
       #endif
-      #ifdef __COMPILE_1095
-      else if (__choose4 == 93)
+      #ifdef __COMPILE_1432
+      else if (__choose7 == 93)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (17);
       }
       #endif
-      #ifdef __COMPILE_1096
-      else if (__choose4 == 94)
+      #ifdef __COMPILE_1433
+      else if (__choose7 == 94)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (193);
       }
       #endif
-      #ifdef __COMPILE_1097
-      else if (__choose4 == 95)
+      #ifdef __COMPILE_1434
+      else if (__choose7 == 95)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (2);
       }
       #endif
-      #ifdef __COMPILE_1098
-      else if (__choose4 == 96)
+      #ifdef __COMPILE_1435
+      else if (__choose7 == 96)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (256);
       }
       #endif
-      #ifdef __COMPILE_1099
-      else if (__choose4 == 97)
+      #ifdef __COMPILE_1436
+      else if (__choose7 == 97)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (36);
       }
       #endif
-      #ifdef __COMPILE_1100
-      else if (__choose4 == 98)
+      #ifdef __COMPILE_1437
+      else if (__choose7 == 98)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (384);
       }
       #endif
-      #ifdef __COMPILE_1101
-      else if (__choose4 == 99)
+      #ifdef __COMPILE_1438
+      else if (__choose7 == 99)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (64);
       }
       #endif
-      #ifdef __COMPILE_1102
-      else if (__choose4 == 100)
+      #ifdef __COMPILE_1439
+      else if (__choose7 == 100)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (65);
       }
       #endif
-      #ifdef __COMPILE_1103
-      else if (__choose4 == 101)
+      #ifdef __COMPILE_1440
+      else if (__choose7 == 101)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (0);
       }
       #endif
-      #ifdef __COMPILE_1104
-      else if (__choose4 == 102)
+      #ifdef __COMPILE_1441
+      else if (__choose7 == 102)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (1);
       }
       #endif
-      #ifdef __COMPILE_1105
-      else if (__choose4 == 103)
+      #ifdef __COMPILE_1442
+      else if (__choose7 == 103)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (128);
       }
       #endif
-      #ifdef __COMPILE_1106
-      else if (__choose4 == 104)
+      #ifdef __COMPILE_1443
+      else if (__choose7 == 104)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (17);
       }
       #endif
-      #ifdef __COMPILE_1107
-      else if (__choose4 == 105)
+      #ifdef __COMPILE_1444
+      else if (__choose7 == 105)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (193);
       }
       #endif
-      #ifdef __COMPILE_1108
-      else if (__choose4 == 106)
+      #ifdef __COMPILE_1445
+      else if (__choose7 == 106)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (2);
       }
       #endif
-      #ifdef __COMPILE_1109
-      else if (__choose4 == 107)
+      #ifdef __COMPILE_1446
+      else if (__choose7 == 107)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (256);
       }
       #endif
-      #ifdef __COMPILE_1110
-      else if (__choose4 == 108)
+      #ifdef __COMPILE_1447
+      else if (__choose7 == 108)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (36);
       }
       #endif
-      #ifdef __COMPILE_1111
-      else if (__choose4 == 109)
+      #ifdef __COMPILE_1448
+      else if (__choose7 == 109)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (384);
       }
       #endif
-      #ifdef __COMPILE_1112
-      else if (__choose4 == 110)
+      #ifdef __COMPILE_1449
+      else if (__choose7 == 110)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (64);
       }
       #endif
-      #ifdef __COMPILE_1113
-      else if (__choose4 == 111)
+      #ifdef __COMPILE_1450
+      else if (__choose7 == 111)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (65);
       }
       #endif
-      #ifdef __COMPILE_1114
-      else if (__choose4 == 112)
+      #ifdef __COMPILE_1451
+      else if (__choose7 == 112)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (0);
       }
       #endif
-      #ifdef __COMPILE_1115
-      else if (__choose4 == 113)
+      #ifdef __COMPILE_1452
+      else if (__choose7 == 113)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (1);
       }
       #endif
-      #ifdef __COMPILE_1116
-      else if (__choose4 == 114)
+      #ifdef __COMPILE_1453
+      else if (__choose7 == 114)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (128);
       }
       #endif
-      #ifdef __COMPILE_1117
-      else if (__choose4 == 115)
+      #ifdef __COMPILE_1454
+      else if (__choose7 == 115)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (17);
       }
       #endif
-      #ifdef __COMPILE_1118
-      else if (__choose4 == 116)
+      #ifdef __COMPILE_1455
+      else if (__choose7 == 116)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (193);
       }
       #endif
-      #ifdef __COMPILE_1119
-      else if (__choose4 == 117)
+      #ifdef __COMPILE_1456
+      else if (__choose7 == 117)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (2);
       }
       #endif
-      #ifdef __COMPILE_1120
-      else if (__choose4 == 118)
+      #ifdef __COMPILE_1457
+      else if (__choose7 == 118)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (256);
       }
       #endif
-      #ifdef __COMPILE_1121
-      else if (__choose4 == 119)
+      #ifdef __COMPILE_1458
+      else if (__choose7 == 119)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (36);
       }
       #endif
-      #ifdef __COMPILE_1122
-      else if (__choose4 == 120)
+      #ifdef __COMPILE_1459
+      else if (__choose7 == 120)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (384);
       }
       #endif
-      #ifdef __COMPILE_1123
-      else if (__choose4 == 121)
+      #ifdef __COMPILE_1460
+      else if (__choose7 == 121)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (64);
       }
       #endif
-      #ifdef __COMPILE_1124
-      else if (__choose4 == 122)
+      #ifdef __COMPILE_1461
+      else if (__choose7 == 122)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (65);
       }
       #endif
-      #ifdef __COMPILE_1125
-      else if (__choose4 == 123)
+      #ifdef __COMPILE_1462
+      else if (__choose7 == 123)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (flags);
       }
       #endif
-      #ifdef __COMPILE_1126
-      else if (__choose4 == 124)
+      #ifdef __COMPILE_1463
+      else if (__choose7 == 124)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1127
-      else if (__choose4 == 125)
+      #ifdef __COMPILE_1464
+      else if (__choose7 == 125)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1128
-      else if (__choose4 == 126)
+      #ifdef __COMPILE_1465
+      else if (__choose7 == 126)
       {
       //AddStmtAndReplaceAtomKind
       list = (0);
       }
       #endif
-      #ifdef __COMPILE_1129
-      else if (__choose4 == 127)
+      #ifdef __COMPILE_1466
+      else if (__choose7 == 127)
       {
       //AddStmtAndReplaceAtomKind
       list = (1);
       }
       #endif
-      #ifdef __COMPILE_1130
-      else if (__choose4 == 128)
+      #ifdef __COMPILE_1467
+      else if (__choose7 == 128)
       {
       //AddStmtAndReplaceAtomKind
       list = (128);
       }
       #endif
-      #ifdef __COMPILE_1131
-      else if (__choose4 == 129)
+      #ifdef __COMPILE_1468
+      else if (__choose7 == 129)
       {
       //AddStmtAndReplaceAtomKind
       list = (17);
       }
       #endif
-      #ifdef __COMPILE_1132
-      else if (__choose4 == 130)
+      #ifdef __COMPILE_1469
+      else if (__choose7 == 130)
       {
       //AddStmtAndReplaceAtomKind
       list = (193);
       }
       #endif
-      #ifdef __COMPILE_1133
-      else if (__choose4 == 131)
+      #ifdef __COMPILE_1470
+      else if (__choose7 == 131)
       {
       //AddStmtAndReplaceAtomKind
       list = (2);
       }
       #endif
-      #ifdef __COMPILE_1134
-      else if (__choose4 == 132)
+      #ifdef __COMPILE_1471
+      else if (__choose7 == 132)
       {
       //AddStmtAndReplaceAtomKind
       list = (256);
       }
       #endif
-      #ifdef __COMPILE_1135
-      else if (__choose4 == 133)
+      #ifdef __COMPILE_1472
+      else if (__choose7 == 133)
       {
       //AddStmtAndReplaceAtomKind
       list = (36);
       }
       #endif
-      #ifdef __COMPILE_1136
-      else if (__choose4 == 134)
+      #ifdef __COMPILE_1473
+      else if (__choose7 == 134)
       {
       //AddStmtAndReplaceAtomKind
       list = (384);
       }
       #endif
-      #ifdef __COMPILE_1137
-      else if (__choose4 == 135)
+      #ifdef __COMPILE_1474
+      else if (__choose7 == 135)
       {
       //AddStmtAndReplaceAtomKind
       list = (64);
       }
       #endif
-      #ifdef __COMPILE_1138
-      else if (__choose4 == 136)
+      #ifdef __COMPILE_1475
+      else if (__choose7 == 136)
       {
       //AddStmtAndReplaceAtomKind
       list = (65);
       }
       #endif
-      #ifdef __COMPILE_1139
-      else if (__choose4 == 137)
+      #ifdef __COMPILE_1476
+      else if (__choose7 == 137)
       {
       //AddStmtAndReplaceAtomKind
       list = (flags);
       }
       #endif
-      #ifdef __COMPILE_1140
-      else if (__choose4 == 138)
+      #ifdef __COMPILE_1477
+      else if (__choose7 == 138)
       {
       //AddStmtAndReplaceAtomKind
       list = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1141
-      else if (__choose4 == 139)
+      #ifdef __COMPILE_1478
+      else if (__choose7 == 139)
       {
       //AddStmtAndReplaceAtomKind
       list = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1142
-      else if (__choose4 == 140)
+      #ifdef __COMPILE_1479
+      else if (__choose7 == 140)
       {
       //AddStmtAndReplaceAtomKind
       method = (0);
       }
       #endif
-      #ifdef __COMPILE_1143
-      else if (__choose4 == 141)
+      #ifdef __COMPILE_1480
+      else if (__choose7 == 141)
       {
       //AddStmtAndReplaceAtomKind
       method = (1);
       }
       #endif
-      #ifdef __COMPILE_1144
-      else if (__choose4 == 142)
+      #ifdef __COMPILE_1481
+      else if (__choose7 == 142)
       {
       //AddStmtAndReplaceAtomKind
       method = (128);
       }
       #endif
-      #ifdef __COMPILE_1145
-      else if (__choose4 == 143)
+      #ifdef __COMPILE_1482
+      else if (__choose7 == 143)
       {
       //AddStmtAndReplaceAtomKind
       method = (17);
       }
       #endif
-      #ifdef __COMPILE_1146
-      else if (__choose4 == 144)
+      #ifdef __COMPILE_1483
+      else if (__choose7 == 144)
       {
       //AddStmtAndReplaceAtomKind
       method = (193);
       }
       #endif
-      #ifdef __COMPILE_1147
-      else if (__choose4 == 145)
+      #ifdef __COMPILE_1484
+      else if (__choose7 == 145)
       {
       //AddStmtAndReplaceAtomKind
       method = (2);
       }
       #endif
-      #ifdef __COMPILE_1148
-      else if (__choose4 == 146)
+      #ifdef __COMPILE_1485
+      else if (__choose7 == 146)
       {
       //AddStmtAndReplaceAtomKind
       method = (256);
       }
       #endif
-      #ifdef __COMPILE_1149
-      else if (__choose4 == 147)
+      #ifdef __COMPILE_1486
+      else if (__choose7 == 147)
       {
       //AddStmtAndReplaceAtomKind
       method = (36);
       }
       #endif
-      #ifdef __COMPILE_1150
-      else if (__choose4 == 148)
+      #ifdef __COMPILE_1487
+      else if (__choose7 == 148)
       {
       //AddStmtAndReplaceAtomKind
       method = (384);
       }
       #endif
-      #ifdef __COMPILE_1151
-      else if (__choose4 == 149)
+      #ifdef __COMPILE_1488
+      else if (__choose7 == 149)
       {
       //AddStmtAndReplaceAtomKind
       method = (64);
       }
       #endif
-      #ifdef __COMPILE_1152
-      else if (__choose4 == 150)
+      #ifdef __COMPILE_1489
+      else if (__choose7 == 150)
       {
       //AddStmtAndReplaceAtomKind
       method = (65);
       }
       #endif
-      #ifdef __COMPILE_1153
-      else if (__choose4 == 151)
+      #ifdef __COMPILE_1490
+      else if (__choose7 == 151)
       {
       //AddStmtAndReplaceAtomKind
       method = (flags);
       }
       #endif
-      #ifdef __COMPILE_1154
-      else if (__choose4 == 152)
+      #ifdef __COMPILE_1491
+      else if (__choose7 == 152)
       {
       //AddStmtAndReplaceAtomKind
       method = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1155
-      else if (__choose4 == 153)
+      #ifdef __COMPILE_1492
+      else if (__choose7 == 153)
       {
       //AddStmtAndReplaceAtomKind
       method = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1156
-      else if (__choose4 == 154)
+      #ifdef __COMPILE_1493
+      else if (__choose7 == 154)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (0);
       }
       #endif
-      #ifdef __COMPILE_1157
-      else if (__choose4 == 155)
+      #ifdef __COMPILE_1494
+      else if (__choose7 == 155)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (1);
       }
       #endif
-      #ifdef __COMPILE_1158
-      else if (__choose4 == 156)
+      #ifdef __COMPILE_1495
+      else if (__choose7 == 156)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (128);
       }
       #endif
-      #ifdef __COMPILE_1159
-      else if (__choose4 == 157)
+      #ifdef __COMPILE_1496
+      else if (__choose7 == 157)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (17);
       }
       #endif
-      #ifdef __COMPILE_1160
-      else if (__choose4 == 158)
+      #ifdef __COMPILE_1497
+      else if (__choose7 == 158)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (193);
       }
       #endif
-      #ifdef __COMPILE_1161
-      else if (__choose4 == 159)
+      #ifdef __COMPILE_1498
+      else if (__choose7 == 159)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (2);
       }
       #endif
-      #ifdef __COMPILE_1162
-      else if (__choose4 == 160)
+      #ifdef __COMPILE_1499
+      else if (__choose7 == 160)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (256);
       }
       #endif
-      #ifdef __COMPILE_1163
-      else if (__choose4 == 161)
+      #ifdef __COMPILE_1500
+      else if (__choose7 == 161)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (36);
       }
       #endif
-      #ifdef __COMPILE_1164
-      else if (__choose4 == 162)
+      #ifdef __COMPILE_1501
+      else if (__choose7 == 162)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (384);
       }
       #endif
-      #ifdef __COMPILE_1165
-      else if (__choose4 == 163)
+      #ifdef __COMPILE_1502
+      else if (__choose7 == 163)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (64);
       }
       #endif
-      #ifdef __COMPILE_1166
-      else if (__choose4 == 164)
+      #ifdef __COMPILE_1503
+      else if (__choose7 == 164)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (65);
       }
       #endif
-      #ifdef __COMPILE_1167
-      else if (__choose4 == 165)
+      #ifdef __COMPILE_1504
+      else if (__choose7 == 165)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (flags);
       }
       #endif
-      #ifdef __COMPILE_1168
-      else if (__choose4 == 166)
+      #ifdef __COMPILE_1505
+      else if (__choose7 == 166)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1169
-      else if (__choose4 == 167)
+      #ifdef __COMPILE_1506
+      else if (__choose7 == 167)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1170
-      else if (__choose4 == 168)
+      #ifdef __COMPILE_1507
+      else if (__choose7 == 168)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (0);
       }
       #endif
-      #ifdef __COMPILE_1171
-      else if (__choose4 == 169)
+      #ifdef __COMPILE_1508
+      else if (__choose7 == 169)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (1);
       }
       #endif
-      #ifdef __COMPILE_1172
-      else if (__choose4 == 170)
+      #ifdef __COMPILE_1509
+      else if (__choose7 == 170)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (128);
       }
       #endif
-      #ifdef __COMPILE_1173
-      else if (__choose4 == 171)
+      #ifdef __COMPILE_1510
+      else if (__choose7 == 171)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (17);
       }
       #endif
-      #ifdef __COMPILE_1174
-      else if (__choose4 == 172)
+      #ifdef __COMPILE_1511
+      else if (__choose7 == 172)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (193);
       }
       #endif
-      #ifdef __COMPILE_1175
-      else if (__choose4 == 173)
+      #ifdef __COMPILE_1512
+      else if (__choose7 == 173)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (2);
       }
       #endif
-      #ifdef __COMPILE_1176
-      else if (__choose4 == 174)
+      #ifdef __COMPILE_1513
+      else if (__choose7 == 174)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (256);
       }
       #endif
-      #ifdef __COMPILE_1177
-      else if (__choose4 == 175)
+      #ifdef __COMPILE_1514
+      else if (__choose7 == 175)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (36);
       }
       #endif
-      #ifdef __COMPILE_1178
-      else if (__choose4 == 176)
+      #ifdef __COMPILE_1515
+      else if (__choose7 == 176)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (384);
       }
       #endif
-      #ifdef __COMPILE_1179
-      else if (__choose4 == 177)
+      #ifdef __COMPILE_1516
+      else if (__choose7 == 177)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (64);
       }
       #endif
-      #ifdef __COMPILE_1180
-      else if (__choose4 == 178)
+      #ifdef __COMPILE_1517
+      else if (__choose7 == 178)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (65);
       }
       #endif
-      #ifdef __COMPILE_1181
-      else if (__choose4 == 179)
+      #ifdef __COMPILE_1518
+      else if (__choose7 == 179)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (flags);
       }
       #endif
-      #ifdef __COMPILE_1182
-      else if (__choose4 == 180)
+      #ifdef __COMPILE_1519
+      else if (__choose7 == 180)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1183
-      else if (__choose4 == 181)
+      #ifdef __COMPILE_1520
+      else if (__choose7 == 181)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1184
-      else if (__choose4 == 182)
+      #ifdef __COMPILE_1521
+      else if (__choose7 == 182)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (0);
       }
       #endif
-      #ifdef __COMPILE_1185
-      else if (__choose4 == 183)
+      #ifdef __COMPILE_1522
+      else if (__choose7 == 183)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (1);
       }
       #endif
-      #ifdef __COMPILE_1186
-      else if (__choose4 == 184)
+      #ifdef __COMPILE_1523
+      else if (__choose7 == 184)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (128);
       }
       #endif
-      #ifdef __COMPILE_1187
-      else if (__choose4 == 185)
+      #ifdef __COMPILE_1524
+      else if (__choose7 == 185)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (17);
       }
       #endif
-      #ifdef __COMPILE_1188
-      else if (__choose4 == 186)
+      #ifdef __COMPILE_1525
+      else if (__choose7 == 186)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (193);
       }
       #endif
-      #ifdef __COMPILE_1189
-      else if (__choose4 == 187)
+      #ifdef __COMPILE_1526
+      else if (__choose7 == 187)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (2);
       }
       #endif
-      #ifdef __COMPILE_1190
-      else if (__choose4 == 188)
+      #ifdef __COMPILE_1527
+      else if (__choose7 == 188)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (256);
       }
       #endif
-      #ifdef __COMPILE_1191
-      else if (__choose4 == 189)
+      #ifdef __COMPILE_1528
+      else if (__choose7 == 189)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (36);
       }
       #endif
-      #ifdef __COMPILE_1192
-      else if (__choose4 == 190)
+      #ifdef __COMPILE_1529
+      else if (__choose7 == 190)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (384);
       }
       #endif
-      #ifdef __COMPILE_1193
-      else if (__choose4 == 191)
+      #ifdef __COMPILE_1530
+      else if (__choose7 == 191)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (64);
       }
       #endif
-      #ifdef __COMPILE_1194
-      else if (__choose4 == 192)
+      #ifdef __COMPILE_1531
+      else if (__choose7 == 192)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (65);
       }
       #endif
-      #ifdef __COMPILE_1195
-      else if (__choose4 == 193)
+      #ifdef __COMPILE_1532
+      else if (__choose7 == 193)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (flags);
       }
       #endif
-      #ifdef __COMPILE_1196
-      else if (__choose4 == 194)
+      #ifdef __COMPILE_1533
+      else if (__choose7 == 194)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1197
-      else if (__choose4 == 195)
+      #ifdef __COMPILE_1534
+      else if (__choose7 == 195)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1198
-      else if (__choose4 == 196)
+      #ifdef __COMPILE_1535
+      else if (__choose7 == 196)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (0);
       }
       #endif
-      #ifdef __COMPILE_1199
-      else if (__choose4 == 197)
+      #ifdef __COMPILE_1536
+      else if (__choose7 == 197)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (1);
       }
       #endif
-      #ifdef __COMPILE_1200
-      else if (__choose4 == 198)
+      #ifdef __COMPILE_1537
+      else if (__choose7 == 198)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (128);
       }
       #endif
-      #ifdef __COMPILE_1201
-      else if (__choose4 == 199)
+      #ifdef __COMPILE_1538
+      else if (__choose7 == 199)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (17);
       }
       #endif
-      #ifdef __COMPILE_1202
-      else if (__choose4 == 200)
+      #ifdef __COMPILE_1539
+      else if (__choose7 == 200)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (193);
       }
       #endif
-      #ifdef __COMPILE_1203
-      else if (__choose4 == 201)
+      #ifdef __COMPILE_1540
+      else if (__choose7 == 201)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (2);
       }
       #endif
-      #ifdef __COMPILE_1204
-      else if (__choose4 == 202)
+      #ifdef __COMPILE_1541
+      else if (__choose7 == 202)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (256);
       }
       #endif
-      #ifdef __COMPILE_1205
-      else if (__choose4 == 203)
+      #ifdef __COMPILE_1542
+      else if (__choose7 == 203)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (36);
       }
       #endif
-      #ifdef __COMPILE_1206
-      else if (__choose4 == 204)
+      #ifdef __COMPILE_1543
+      else if (__choose7 == 204)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (384);
       }
       #endif
-      #ifdef __COMPILE_1207
-      else if (__choose4 == 205)
+      #ifdef __COMPILE_1544
+      else if (__choose7 == 205)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (64);
       }
       #endif
-      #ifdef __COMPILE_1208
-      else if (__choose4 == 206)
+      #ifdef __COMPILE_1545
+      else if (__choose7 == 206)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (65);
       }
       #endif
-      #ifdef __COMPILE_1209
-      else if (__choose4 == 207)
+      #ifdef __COMPILE_1546
+      else if (__choose7 == 207)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (flags);
       }
       #endif
-      #ifdef __COMPILE_1210
-      else if (__choose4 == 208)
+      #ifdef __COMPILE_1547
+      else if (__choose7 == 208)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1211
-      else if (__choose4 == 209)
+      #ifdef __COMPILE_1548
+      else if (__choose7 == 209)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1212
-      else if (__choose4 == 210)
+      #ifdef __COMPILE_1549
+      else if (__choose7 == 210)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (0);
       }
       #endif
-      #ifdef __COMPILE_1213
-      else if (__choose4 == 211)
+      #ifdef __COMPILE_1550
+      else if (__choose7 == 211)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (1);
       }
       #endif
-      #ifdef __COMPILE_1214
-      else if (__choose4 == 212)
+      #ifdef __COMPILE_1551
+      else if (__choose7 == 212)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (128);
       }
       #endif
-      #ifdef __COMPILE_1215
-      else if (__choose4 == 213)
+      #ifdef __COMPILE_1552
+      else if (__choose7 == 213)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (17);
       }
       #endif
-      #ifdef __COMPILE_1216
-      else if (__choose4 == 214)
+      #ifdef __COMPILE_1553
+      else if (__choose7 == 214)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (193);
       }
       #endif
-      #ifdef __COMPILE_1217
-      else if (__choose4 == 215)
+      #ifdef __COMPILE_1554
+      else if (__choose7 == 215)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (2);
       }
       #endif
-      #ifdef __COMPILE_1218
-      else if (__choose4 == 216)
+      #ifdef __COMPILE_1555
+      else if (__choose7 == 216)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (256);
       }
       #endif
-      #ifdef __COMPILE_1219
-      else if (__choose4 == 217)
+      #ifdef __COMPILE_1556
+      else if (__choose7 == 217)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (36);
       }
       #endif
-      #ifdef __COMPILE_1220
-      else if (__choose4 == 218)
+      #ifdef __COMPILE_1557
+      else if (__choose7 == 218)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (384);
       }
       #endif
-      #ifdef __COMPILE_1221
-      else if (__choose4 == 219)
+      #ifdef __COMPILE_1558
+      else if (__choose7 == 219)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (64);
       }
       #endif
-      #ifdef __COMPILE_1222
-      else if (__choose4 == 220)
+      #ifdef __COMPILE_1559
+      else if (__choose7 == 220)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (65);
       }
       #endif
-      #ifdef __COMPILE_1223
-      else if (__choose4 == 221)
+      #ifdef __COMPILE_1560
+      else if (__choose7 == 221)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (flags);
       }
       #endif
-      #ifdef __COMPILE_1224
-      else if (__choose4 == 222)
+      #ifdef __COMPILE_1561
+      else if (__choose7 == 222)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1225
-      else if (__choose4 == 223)
+      #ifdef __COMPILE_1562
+      else if (__choose7 == 223)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1226
-      else if (__choose4 == 224)
+      #ifdef __COMPILE_1563
+      else if (__choose7 == 224)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (0);
       }
       #endif
-      #ifdef __COMPILE_1227
-      else if (__choose4 == 225)
+      #ifdef __COMPILE_1564
+      else if (__choose7 == 225)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (1);
       }
       #endif
-      #ifdef __COMPILE_1228
-      else if (__choose4 == 226)
+      #ifdef __COMPILE_1565
+      else if (__choose7 == 226)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (128);
       }
       #endif
-      #ifdef __COMPILE_1229
-      else if (__choose4 == 227)
+      #ifdef __COMPILE_1566
+      else if (__choose7 == 227)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (17);
       }
       #endif
-      #ifdef __COMPILE_1230
-      else if (__choose4 == 228)
+      #ifdef __COMPILE_1567
+      else if (__choose7 == 228)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (193);
       }
       #endif
-      #ifdef __COMPILE_1231
-      else if (__choose4 == 229)
+      #ifdef __COMPILE_1568
+      else if (__choose7 == 229)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (2);
       }
       #endif
-      #ifdef __COMPILE_1232
-      else if (__choose4 == 230)
+      #ifdef __COMPILE_1569
+      else if (__choose7 == 230)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (256);
       }
       #endif
-      #ifdef __COMPILE_1233
-      else if (__choose4 == 231)
+      #ifdef __COMPILE_1570
+      else if (__choose7 == 231)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (36);
       }
       #endif
-      #ifdef __COMPILE_1234
-      else if (__choose4 == 232)
+      #ifdef __COMPILE_1571
+      else if (__choose7 == 232)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (384);
       }
       #endif
-      #ifdef __COMPILE_1235
-      else if (__choose4 == 233)
+      #ifdef __COMPILE_1572
+      else if (__choose7 == 233)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (64);
       }
       #endif
-      #ifdef __COMPILE_1236
-      else if (__choose4 == 234)
+      #ifdef __COMPILE_1573
+      else if (__choose7 == 234)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (65);
       }
       #endif
-      #ifdef __COMPILE_1237
-      else if (__choose4 == 235)
+      #ifdef __COMPILE_1574
+      else if (__choose7 == 235)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (flags);
       }
       #endif
-      #ifdef __COMPILE_1238
-      else if (__choose4 == 236)
+      #ifdef __COMPILE_1575
+      else if (__choose7 == 236)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1239
-      else if (__choose4 == 237)
+      #ifdef __COMPILE_1576
+      else if (__choose7 == 237)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1240
-      else if (__choose4 == 238)
+      #ifdef __COMPILE_1577
+      else if (__choose7 == 238)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (0);
       }
       #endif
-      #ifdef __COMPILE_1241
-      else if (__choose4 == 239)
+      #ifdef __COMPILE_1578
+      else if (__choose7 == 239)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (1);
       }
       #endif
-      #ifdef __COMPILE_1242
-      else if (__choose4 == 240)
+      #ifdef __COMPILE_1579
+      else if (__choose7 == 240)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (128);
       }
       #endif
-      #ifdef __COMPILE_1243
-      else if (__choose4 == 241)
+      #ifdef __COMPILE_1580
+      else if (__choose7 == 241)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (17);
       }
       #endif
-      #ifdef __COMPILE_1244
-      else if (__choose4 == 242)
+      #ifdef __COMPILE_1581
+      else if (__choose7 == 242)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (193);
       }
       #endif
-      #ifdef __COMPILE_1245
-      else if (__choose4 == 243)
+      #ifdef __COMPILE_1582
+      else if (__choose7 == 243)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (2);
       }
       #endif
-      #ifdef __COMPILE_1246
-      else if (__choose4 == 244)
+      #ifdef __COMPILE_1583
+      else if (__choose7 == 244)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (256);
       }
       #endif
-      #ifdef __COMPILE_1247
-      else if (__choose4 == 245)
+      #ifdef __COMPILE_1584
+      else if (__choose7 == 245)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (36);
       }
       #endif
-      #ifdef __COMPILE_1248
-      else if (__choose4 == 246)
+      #ifdef __COMPILE_1585
+      else if (__choose7 == 246)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (384);
       }
       #endif
-      #ifdef __COMPILE_1249
-      else if (__choose4 == 247)
+      #ifdef __COMPILE_1586
+      else if (__choose7 == 247)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (64);
       }
       #endif
-      #ifdef __COMPILE_1250
-      else if (__choose4 == 248)
+      #ifdef __COMPILE_1587
+      else if (__choose7 == 248)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (65);
       }
       #endif
-      #ifdef __COMPILE_1251
-      else if (__choose4 == 249)
+      #ifdef __COMPILE_1588
+      else if (__choose7 == 249)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (flags);
       }
       #endif
-      #ifdef __COMPILE_1252
-      else if (__choose4 == 250)
+      #ifdef __COMPILE_1589
+      else if (__choose7 == 250)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1253
-      else if (__choose4 == 251)
+      #ifdef __COMPILE_1590
+      else if (__choose7 == 251)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1254
-      else if (__choose4 == 252)
+      #ifdef __COMPILE_1591
+      else if (__choose7 == 252)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (0);
       }
       #endif
-      #ifdef __COMPILE_1255
-      else if (__choose4 == 253)
+      #ifdef __COMPILE_1592
+      else if (__choose7 == 253)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (1);
       }
       #endif
-      #ifdef __COMPILE_1256
-      else if (__choose4 == 254)
+      #ifdef __COMPILE_1593
+      else if (__choose7 == 254)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (128);
       }
       #endif
-      #ifdef __COMPILE_1257
-      else if (__choose4 == 255)
+      #ifdef __COMPILE_1594
+      else if (__choose7 == 255)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (17);
       }
       #endif
-      #ifdef __COMPILE_1258
-      else if (__choose4 == 256)
+      #ifdef __COMPILE_1595
+      else if (__choose7 == 256)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (193);
       }
       #endif
-      #ifdef __COMPILE_1259
-      else if (__choose4 == 257)
+      #ifdef __COMPILE_1596
+      else if (__choose7 == 257)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (2);
       }
       #endif
-      #ifdef __COMPILE_1260
-      else if (__choose4 == 258)
+      #ifdef __COMPILE_1597
+      else if (__choose7 == 258)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (256);
       }
       #endif
-      #ifdef __COMPILE_1261
-      else if (__choose4 == 259)
+      #ifdef __COMPILE_1598
+      else if (__choose7 == 259)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (36);
       }
       #endif
-      #ifdef __COMPILE_1262
-      else if (__choose4 == 260)
+      #ifdef __COMPILE_1599
+      else if (__choose7 == 260)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (384);
       }
       #endif
-      #ifdef __COMPILE_1263
-      else if (__choose4 == 261)
+      #ifdef __COMPILE_1600
+      else if (__choose7 == 261)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (64);
       }
       #endif
-      #ifdef __COMPILE_1264
-      else if (__choose4 == 262)
+      #ifdef __COMPILE_1601
+      else if (__choose7 == 262)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (65);
       }
       #endif
-      #ifdef __COMPILE_1265
-      else if (__choose4 == 263)
+      #ifdef __COMPILE_1602
+      else if (__choose7 == 263)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (flags);
       }
       #endif
-      #ifdef __COMPILE_1266
-      else if (__choose4 == 264)
+      #ifdef __COMPILE_1603
+      else if (__choose7 == 264)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1267
-      else if (__choose4 == 265)
+      #ifdef __COMPILE_1604
+      else if (__choose7 == 265)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1268
-      else if (__choose4 == 266)
+      #ifdef __COMPILE_1605
+      else if (__choose7 == 266)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (0);
       }
       #endif
-      #ifdef __COMPILE_1269
-      else if (__choose4 == 267)
+      #ifdef __COMPILE_1606
+      else if (__choose7 == 267)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (1);
       }
       #endif
-      #ifdef __COMPILE_1270
-      else if (__choose4 == 268)
+      #ifdef __COMPILE_1607
+      else if (__choose7 == 268)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (128);
       }
       #endif
-      #ifdef __COMPILE_1271
-      else if (__choose4 == 269)
+      #ifdef __COMPILE_1608
+      else if (__choose7 == 269)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (17);
       }
       #endif
-      #ifdef __COMPILE_1272
-      else if (__choose4 == 270)
+      #ifdef __COMPILE_1609
+      else if (__choose7 == 270)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (193);
       }
       #endif
-      #ifdef __COMPILE_1273
-      else if (__choose4 == 271)
+      #ifdef __COMPILE_1610
+      else if (__choose7 == 271)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (2);
       }
       #endif
-      #ifdef __COMPILE_1274
-      else if (__choose4 == 272)
+      #ifdef __COMPILE_1611
+      else if (__choose7 == 272)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (256);
       }
       #endif
-      #ifdef __COMPILE_1275
-      else if (__choose4 == 273)
+      #ifdef __COMPILE_1612
+      else if (__choose7 == 273)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (36);
       }
       #endif
-      #ifdef __COMPILE_1276
-      else if (__choose4 == 274)
+      #ifdef __COMPILE_1613
+      else if (__choose7 == 274)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (384);
       }
       #endif
-      #ifdef __COMPILE_1277
-      else if (__choose4 == 275)
+      #ifdef __COMPILE_1614
+      else if (__choose7 == 275)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (64);
       }
       #endif
-      #ifdef __COMPILE_1278
-      else if (__choose4 == 276)
+      #ifdef __COMPILE_1615
+      else if (__choose7 == 276)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (65);
       }
       #endif
-      #ifdef __COMPILE_1279
-      else if (__choose4 == 277)
+      #ifdef __COMPILE_1616
+      else if (__choose7 == 277)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (flags);
       }
       #endif
-      #ifdef __COMPILE_1280
-      else if (__choose4 == 278)
+      #ifdef __COMPILE_1617
+      else if (__choose7 == 278)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1281
-      else if (__choose4 == 279)
+      #ifdef __COMPILE_1618
+      else if (__choose7 == 279)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1282
-      else if (__choose4 == 280)
+      #ifdef __COMPILE_1619
+      else if (__choose7 == 280)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (0);
       }
       #endif
-      #ifdef __COMPILE_1283
-      else if (__choose4 == 281)
+      #ifdef __COMPILE_1620
+      else if (__choose7 == 281)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (1);
       }
       #endif
-      #ifdef __COMPILE_1284
-      else if (__choose4 == 282)
+      #ifdef __COMPILE_1621
+      else if (__choose7 == 282)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (128);
       }
       #endif
-      #ifdef __COMPILE_1285
-      else if (__choose4 == 283)
+      #ifdef __COMPILE_1622
+      else if (__choose7 == 283)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (17);
       }
       #endif
-      #ifdef __COMPILE_1286
-      else if (__choose4 == 284)
+      #ifdef __COMPILE_1623
+      else if (__choose7 == 284)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (193);
       }
       #endif
-      #ifdef __COMPILE_1287
-      else if (__choose4 == 285)
+      #ifdef __COMPILE_1624
+      else if (__choose7 == 285)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (2);
       }
       #endif
-      #ifdef __COMPILE_1288
-      else if (__choose4 == 286)
+      #ifdef __COMPILE_1625
+      else if (__choose7 == 286)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (256);
       }
       #endif
-      #ifdef __COMPILE_1289
-      else if (__choose4 == 287)
+      #ifdef __COMPILE_1626
+      else if (__choose7 == 287)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (36);
       }
       #endif
-      #ifdef __COMPILE_1290
-      else if (__choose4 == 288)
+      #ifdef __COMPILE_1627
+      else if (__choose7 == 288)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (384);
       }
       #endif
-      #ifdef __COMPILE_1291
-      else if (__choose4 == 289)
+      #ifdef __COMPILE_1628
+      else if (__choose7 == 289)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (64);
       }
       #endif
-      #ifdef __COMPILE_1292
-      else if (__choose4 == 290)
+      #ifdef __COMPILE_1629
+      else if (__choose7 == 290)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (65);
       }
       #endif
-      #ifdef __COMPILE_1293
-      else if (__choose4 == 291)
+      #ifdef __COMPILE_1630
+      else if (__choose7 == 291)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (0);
       }
       #endif
-      #ifdef __COMPILE_1294
-      else if (__choose4 == 292)
+      #ifdef __COMPILE_1631
+      else if (__choose7 == 292)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (1);
       }
       #endif
-      #ifdef __COMPILE_1295
-      else if (__choose4 == 293)
+      #ifdef __COMPILE_1632
+      else if (__choose7 == 293)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (128);
       }
       #endif
-      #ifdef __COMPILE_1296
-      else if (__choose4 == 294)
+      #ifdef __COMPILE_1633
+      else if (__choose7 == 294)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (17);
       }
       #endif
-      #ifdef __COMPILE_1297
-      else if (__choose4 == 295)
+      #ifdef __COMPILE_1634
+      else if (__choose7 == 295)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (193);
       }
       #endif
-      #ifdef __COMPILE_1298
-      else if (__choose4 == 296)
+      #ifdef __COMPILE_1635
+      else if (__choose7 == 296)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (2);
       }
       #endif
-      #ifdef __COMPILE_1299
-      else if (__choose4 == 297)
+      #ifdef __COMPILE_1636
+      else if (__choose7 == 297)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (256);
       }
       #endif
-      #ifdef __COMPILE_1300
-      else if (__choose4 == 298)
+      #ifdef __COMPILE_1637
+      else if (__choose7 == 298)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (36);
       }
       #endif
-      #ifdef __COMPILE_1301
-      else if (__choose4 == 299)
+      #ifdef __COMPILE_1638
+      else if (__choose7 == 299)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (384);
       }
       #endif
-      #ifdef __COMPILE_1302
-      else if (__choose4 == 300)
+      #ifdef __COMPILE_1639
+      else if (__choose7 == 300)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (64);
       }
       #endif
-      #ifdef __COMPILE_1303
-      else if (__choose4 == 301)
+      #ifdef __COMPILE_1640
+      else if (__choose7 == 301)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (65);
       }
       #endif
-      #ifdef __COMPILE_1304
-      else if (__choose4 == 302)
+      #ifdef __COMPILE_1641
+      else if (__choose7 == 302)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (0);
       }
       #endif
-      #ifdef __COMPILE_1305
-      else if (__choose4 == 303)
+      #ifdef __COMPILE_1642
+      else if (__choose7 == 303)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (1);
       }
       #endif
-      #ifdef __COMPILE_1306
-      else if (__choose4 == 304)
+      #ifdef __COMPILE_1643
+      else if (__choose7 == 304)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (128);
       }
       #endif
-      #ifdef __COMPILE_1307
-      else if (__choose4 == 305)
+      #ifdef __COMPILE_1644
+      else if (__choose7 == 305)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (17);
       }
       #endif
-      #ifdef __COMPILE_1308
-      else if (__choose4 == 306)
+      #ifdef __COMPILE_1645
+      else if (__choose7 == 306)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (193);
       }
       #endif
-      #ifdef __COMPILE_1309
-      else if (__choose4 == 307)
+      #ifdef __COMPILE_1646
+      else if (__choose7 == 307)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (2);
       }
       #endif
-      #ifdef __COMPILE_1310
-      else if (__choose4 == 308)
+      #ifdef __COMPILE_1647
+      else if (__choose7 == 308)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (256);
       }
       #endif
-      #ifdef __COMPILE_1311
-      else if (__choose4 == 309)
+      #ifdef __COMPILE_1648
+      else if (__choose7 == 309)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (36);
       }
       #endif
-      #ifdef __COMPILE_1312
-      else if (__choose4 == 310)
+      #ifdef __COMPILE_1649
+      else if (__choose7 == 310)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (384);
       }
       #endif
-      #ifdef __COMPILE_1313
-      else if (__choose4 == 311)
+      #ifdef __COMPILE_1650
+      else if (__choose7 == 311)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (64);
       }
       #endif
-      #ifdef __COMPILE_1314
-      else if (__choose4 == 312)
+      #ifdef __COMPILE_1651
+      else if (__choose7 == 312)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (65);
       }
       #endif
-      #ifdef __COMPILE_1315
-      else if (__choose4 == 313)
+      #ifdef __COMPILE_1652
+      else if (__choose7 == 313)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (flags);
       }
       #endif
-      #ifdef __COMPILE_1316
-      else if (__choose4 == 314)
+      #ifdef __COMPILE_1653
+      else if (__choose7 == 314)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1317
-      else if (__choose4 == 315)
+      #ifdef __COMPILE_1654
+      else if (__choose7 == 315)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1318
-      else if (__choose4 == 316)
+      #ifdef __COMPILE_1655
+      else if (__choose7 == 316)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (0);
       }
       #endif
-      #ifdef __COMPILE_1319
-      else if (__choose4 == 317)
+      #ifdef __COMPILE_1656
+      else if (__choose7 == 317)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (1);
       }
       #endif
-      #ifdef __COMPILE_1320
-      else if (__choose4 == 318)
+      #ifdef __COMPILE_1657
+      else if (__choose7 == 318)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (128);
       }
       #endif
-      #ifdef __COMPILE_1321
-      else if (__choose4 == 319)
+      #ifdef __COMPILE_1658
+      else if (__choose7 == 319)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (17);
       }
       #endif
-      #ifdef __COMPILE_1322
-      else if (__choose4 == 320)
+      #ifdef __COMPILE_1659
+      else if (__choose7 == 320)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (193);
       }
       #endif
-      #ifdef __COMPILE_1323
-      else if (__choose4 == 321)
+      #ifdef __COMPILE_1660
+      else if (__choose7 == 321)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (2);
       }
       #endif
-      #ifdef __COMPILE_1324
-      else if (__choose4 == 322)
+      #ifdef __COMPILE_1661
+      else if (__choose7 == 322)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (256);
       }
       #endif
-      #ifdef __COMPILE_1325
-      else if (__choose4 == 323)
+      #ifdef __COMPILE_1662
+      else if (__choose7 == 323)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (36);
       }
       #endif
-      #ifdef __COMPILE_1326
-      else if (__choose4 == 324)
+      #ifdef __COMPILE_1663
+      else if (__choose7 == 324)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (384);
       }
       #endif
-      #ifdef __COMPILE_1327
-      else if (__choose4 == 325)
+      #ifdef __COMPILE_1664
+      else if (__choose7 == 325)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (64);
       }
       #endif
-      #ifdef __COMPILE_1328
-      else if (__choose4 == 326)
+      #ifdef __COMPILE_1665
+      else if (__choose7 == 326)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (65);
       }
       #endif
-      #ifdef __COMPILE_1329
-      else if (__choose4 == 327)
+      #ifdef __COMPILE_1666
+      else if (__choose7 == 327)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (0);
       }
       #endif
-      #ifdef __COMPILE_1330
-      else if (__choose4 == 328)
+      #ifdef __COMPILE_1667
+      else if (__choose7 == 328)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (1);
       }
       #endif
-      #ifdef __COMPILE_1331
-      else if (__choose4 == 329)
+      #ifdef __COMPILE_1668
+      else if (__choose7 == 329)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (128);
       }
       #endif
-      #ifdef __COMPILE_1332
-      else if (__choose4 == 330)
+      #ifdef __COMPILE_1669
+      else if (__choose7 == 330)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (17);
       }
       #endif
-      #ifdef __COMPILE_1333
-      else if (__choose4 == 331)
+      #ifdef __COMPILE_1670
+      else if (__choose7 == 331)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (193);
       }
       #endif
-      #ifdef __COMPILE_1334
-      else if (__choose4 == 332)
+      #ifdef __COMPILE_1671
+      else if (__choose7 == 332)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (2);
       }
       #endif
-      #ifdef __COMPILE_1335
-      else if (__choose4 == 333)
+      #ifdef __COMPILE_1672
+      else if (__choose7 == 333)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (256);
       }
       #endif
-      #ifdef __COMPILE_1336
-      else if (__choose4 == 334)
+      #ifdef __COMPILE_1673
+      else if (__choose7 == 334)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (36);
       }
       #endif
-      #ifdef __COMPILE_1337
-      else if (__choose4 == 335)
+      #ifdef __COMPILE_1674
+      else if (__choose7 == 335)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (384);
       }
       #endif
-      #ifdef __COMPILE_1338
-      else if (__choose4 == 336)
+      #ifdef __COMPILE_1675
+      else if (__choose7 == 336)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (64);
       }
       #endif
-      #ifdef __COMPILE_1339
-      else if (__choose4 == 337)
+      #ifdef __COMPILE_1676
+      else if (__choose7 == 337)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (65);
       }
       #endif
-      #ifdef __COMPILE_1340
-      else if (__choose4 == 338)
+      #ifdef __COMPILE_1677
+      else if (__choose7 == 338)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (0);
       }
       #endif
-      #ifdef __COMPILE_1341
-      else if (__choose4 == 339)
+      #ifdef __COMPILE_1678
+      else if (__choose7 == 339)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (1);
       }
       #endif
-      #ifdef __COMPILE_1342
-      else if (__choose4 == 340)
+      #ifdef __COMPILE_1679
+      else if (__choose7 == 340)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (128);
       }
       #endif
-      #ifdef __COMPILE_1343
-      else if (__choose4 == 341)
+      #ifdef __COMPILE_1680
+      else if (__choose7 == 341)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (17);
       }
       #endif
-      #ifdef __COMPILE_1344
-      else if (__choose4 == 342)
+      #ifdef __COMPILE_1681
+      else if (__choose7 == 342)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (193);
       }
       #endif
-      #ifdef __COMPILE_1345
-      else if (__choose4 == 343)
+      #ifdef __COMPILE_1682
+      else if (__choose7 == 343)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (2);
       }
       #endif
-      #ifdef __COMPILE_1346
-      else if (__choose4 == 344)
+      #ifdef __COMPILE_1683
+      else if (__choose7 == 344)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (256);
       }
       #endif
-      #ifdef __COMPILE_1347
-      else if (__choose4 == 345)
+      #ifdef __COMPILE_1684
+      else if (__choose7 == 345)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (36);
       }
       #endif
-      #ifdef __COMPILE_1348
-      else if (__choose4 == 346)
+      #ifdef __COMPILE_1685
+      else if (__choose7 == 346)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (384);
       }
       #endif
-      #ifdef __COMPILE_1349
-      else if (__choose4 == 347)
+      #ifdef __COMPILE_1686
+      else if (__choose7 == 347)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (64);
       }
       #endif
-      #ifdef __COMPILE_1350
-      else if (__choose4 == 348)
+      #ifdef __COMPILE_1687
+      else if (__choose7 == 348)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (65);
       }
       #endif
-      #ifdef __COMPILE_1351
-      else if (__choose4 == 349)
+      #ifdef __COMPILE_1688
+      else if (__choose7 == 349)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (flags);
       }
       #endif
-      #ifdef __COMPILE_1352
-      else if (__choose4 == 350)
+      #ifdef __COMPILE_1689
+      else if (__choose7 == 350)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1353
-      else if (__choose4 == 351)
+      #ifdef __COMPILE_1690
+      else if (__choose7 == 351)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1354
-      else if (__choose4 == 352)
+      #ifdef __COMPILE_1691
+      else if (__choose7 == 352)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (0);
       }
       #endif
-      #ifdef __COMPILE_1355
-      else if (__choose4 == 353)
+      #ifdef __COMPILE_1692
+      else if (__choose7 == 353)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (1);
       }
       #endif
-      #ifdef __COMPILE_1356
-      else if (__choose4 == 354)
+      #ifdef __COMPILE_1693
+      else if (__choose7 == 354)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (128);
       }
       #endif
-      #ifdef __COMPILE_1357
-      else if (__choose4 == 355)
+      #ifdef __COMPILE_1694
+      else if (__choose7 == 355)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (17);
       }
       #endif
-      #ifdef __COMPILE_1358
-      else if (__choose4 == 356)
+      #ifdef __COMPILE_1695
+      else if (__choose7 == 356)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (193);
       }
       #endif
-      #ifdef __COMPILE_1359
-      else if (__choose4 == 357)
+      #ifdef __COMPILE_1696
+      else if (__choose7 == 357)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (2);
       }
       #endif
-      #ifdef __COMPILE_1360
-      else if (__choose4 == 358)
+      #ifdef __COMPILE_1697
+      else if (__choose7 == 358)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (256);
       }
       #endif
-      #ifdef __COMPILE_1361
-      else if (__choose4 == 359)
+      #ifdef __COMPILE_1698
+      else if (__choose7 == 359)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (36);
       }
       #endif
-      #ifdef __COMPILE_1362
-      else if (__choose4 == 360)
+      #ifdef __COMPILE_1699
+      else if (__choose7 == 360)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (384);
       }
       #endif
-      #ifdef __COMPILE_1363
-      else if (__choose4 == 361)
+      #ifdef __COMPILE_1700
+      else if (__choose7 == 361)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (64);
       }
       #endif
-      #ifdef __COMPILE_1364
-      else if (__choose4 == 362)
+      #ifdef __COMPILE_1701
+      else if (__choose7 == 362)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (65);
       }
       #endif
-      #ifdef __COMPILE_1365
-      else if (__choose4 == 363)
+      #ifdef __COMPILE_1702
+      else if (__choose7 == 363)
       {
       //AddStmtKind
       (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
       }
       #endif
-      #ifdef __COMPILE_1366
-      else if (__choose4 == 364)
+      #ifdef __COMPILE_1703
+      else if (__choose7 == 364)
       {
       //AddStmtKind
       __printf__("                            ");
       }
       #endif
-      #ifdef __COMPILE_1367
-      else if (__choose4 == 365)
+      #ifdef __COMPILE_1704
+      else if (__choose7 == 365)
       {
       //AddStmtKind
       __printf__(" ");
       }
       #endif
-      #ifdef __COMPILE_1368
-      else if (__choose4 == 366)
+      #ifdef __COMPILE_1705
+      else if (__choose7 == 366)
       {
       //AddStmtKind
       __printf__(" %s\n", ofname);
       }
       #endif
-      #ifdef __COMPILE_1369
-      else if (__choose4 == 367)
+      #ifdef __COMPILE_1706
+      else if (__choose7 == 367)
       {
       //AddStmtKind
       __printf__(" (totals)\n");
       }
       #endif
-      #ifdef __COMPILE_1370
-      else if (__choose4 == 368)
+      #ifdef __COMPILE_1707
+      else if (__choose7 == 368)
       {
       //AddStmtKind
       __printf__("%s %s\n", program_name, "1.0");
       }
       #endif
-      #ifdef __COMPILE_1371
-      else if (__choose4 == 369)
+      #ifdef __COMPILE_1708
+      else if (__choose7 == 369)
       {
       //AddStmtKind
       __printf__("??? ?? ??:?? ");
       }
       #endif
-      #ifdef __COMPILE_1372
-      else if (__choose4 == 370)
+      #ifdef __COMPILE_1709
+      else if (__choose7 == 370)
       {
       //AddStmtKind
       __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
       }
       #endif
-      #ifdef __COMPILE_1373
-      else if (__choose4 == 371)
+      #ifdef __COMPILE_1710
+      else if (__choose7 == 371)
       {
       //AddStmtKind
       __printf__("Written by Jean-loup Gailly.\n");
       }
       #endif
-      #ifdef __COMPILE_1374
-      else if (__choose4 == 372)
+      #ifdef __COMPILE_1711
+      else if (__choose7 == 372)
       {
       //AddStmtKind
       __printf__("\n");
       }
       #endif
-      #ifdef __COMPILE_1375
-      else if (__choose4 == 373)
+      #ifdef __COMPILE_1712
+      else if (__choose7 == 373)
       {
       //AddStmtKind
       __printf__("method  crc     date  time  ");
       }
       #endif
-      #ifdef __COMPILE_1376
-      else if (__choose4 == 374)
+      #ifdef __COMPILE_1713
+      else if (__choose7 == 374)
       {
       //AddStmtKind
       _exit(2);
       }
       #endif
-      #ifdef __COMPILE_1377
-      else if (__choose4 == 375)
+      #ifdef __COMPILE_1714
+      else if (__choose7 == 375)
       {
       //AddStmtKind
       args = ((void *)0);
       }
       #endif
-      #ifdef __COMPILE_1378
-      else if (__choose4 == 376)
+      #ifdef __COMPILE_1715
+      else if (__choose7 == 376)
       {
       //AddStmtKind
       atexit(close_stdin);
       }
       #endif
-      #ifdef __COMPILE_1379
-      else if (__choose4 == 377)
+      #ifdef __COMPILE_1716
+      else if (__choose7 == 377)
       {
       //AddStmtKind
       bytes_in = 0;
       }
       #endif
-      #ifdef __COMPILE_1380
-      else if (__choose4 == 378)
+      #ifdef __COMPILE_1717
+      else if (__choose7 == 378)
       {
       //AddStmtKind
       bytes_in = ifile_size;
       }
       #endif
-      #ifdef __COMPILE_1381
-      else if (__choose4 == 379)
+      #ifdef __COMPILE_1718
+      else if (__choose7 == 379)
       {
       //AddStmtKind
       bytes_out = -1L;
       }
       #endif
-      #ifdef __COMPILE_1382
-      else if (__choose4 == 380)
+      #ifdef __COMPILE_1719
+      else if (__choose7 == 380)
       {
       //AddStmtKind
       bytes_out = 0;
       }
       #endif
-      #ifdef __COMPILE_1383
-      else if (__choose4 == 381)
+      #ifdef __COMPILE_1720
+      else if (__choose7 == 381)
       {
       //AddStmtKind
       bytes_out++;
       }
       #endif
-      #ifdef __COMPILE_1384
-      else if (__choose4 == 382)
+      #ifdef __COMPILE_1721
+      else if (__choose7 == 382)
       {
       //AddStmtKind
       clear_bufs();
       }
       #endif
-      #ifdef __COMPILE_1385
-      else if (__choose4 == 383)
+      #ifdef __COMPILE_1722
+      else if (__choose7 == 383)
       {
       //AddStmtKind
       close(ifd);
       }
       #endif
-      #ifdef __COMPILE_1386
-      else if (__choose4 == 384)
+      #ifdef __COMPILE_1723
+      else if (__choose7 == 384)
       {
       //AddStmtKind
       copy_stat(&istat);
       }
       #endif
-      #ifdef __COMPILE_1387
-      else if (__choose4 == 385)
+      #ifdef __COMPILE_1724
+      else if (__choose7 == 385)
       {
       //AddStmtKind
       do_exit(0);
       }
       #endif
-      #ifdef __COMPILE_1388
-      else if (__choose4 == 386)
+      #ifdef __COMPILE_1725
+      else if (__choose7 == 386)
       {
       //AddStmtKind
       do_exit(1);
       }
       #endif
-      #ifdef __COMPILE_1389
-      else if (__choose4 == 387)
+      #ifdef __COMPILE_1726
+      else if (__choose7 == 387)
       {
       //AddStmtKind
       do_exit(exit_code);
       }
       #endif
-      #ifdef __COMPILE_1390
-      else if (__choose4 == 388)
+      #ifdef __COMPILE_1727
+      else if (__choose7 == 388)
       {
       //AddStmtKind
       do_list(-1, -1);
       }
       #endif
-      #ifdef __COMPILE_1391
-      else if (__choose4 == 389)
+      #ifdef __COMPILE_1728
+      else if (__choose7 == 389)
       {
       //AddStmtKind
       do_list(ifd, method);
       }
       #endif
-      #ifdef __COMPILE_1392
-      else if (__choose4 == 390)
+      #ifdef __COMPILE_1729
+      else if (__choose7 == 390)
       {
       //AddStmtKind
       env = ((void *)0);
       }
       #endif
-      #ifdef __COMPILE_1393
-      else if (__choose4 == 391)
+      #ifdef __COMPILE_1730
+      else if (__choose7 == 391)
       {
       //AddStmtKind
       env = add_envopt(&argc, &argv, "GZIP");
       }
       #endif
-      #ifdef __COMPILE_1394
-      else if (__choose4 == 392)
+      #ifdef __COMPILE_1731
+      else if (__choose7 == 392)
       {
       //AddStmtKind
       exit_code = 1;
       }
       #endif
-      #ifdef __COMPILE_1395
-      else if (__choose4 == 393)
+      #ifdef __COMPILE_1732
+      else if (__choose7 == 393)
       {
       //AddStmtKind
       exit_code = 2;
       }
       #endif
-      #ifdef __COMPILE_1396
-      else if (__choose4 == 394)
+      #ifdef __COMPILE_1733
+      else if (__choose7 == 394)
       {
       //AddStmtKind
       exiting_signal = quiet ? 13 : 0;
       }
       #endif
-      #ifdef __COMPILE_1397
-      else if (__choose4 == 395)
+      #ifdef __COMPILE_1734
+      else if (__choose7 == 395)
       {
       //AddStmtKind
       foreground = 1;
       }
       #endif
-      #ifdef __COMPILE_1398
-      else if (__choose4 == 396)
+      #ifdef __COMPILE_1735
+      else if (__choose7 == 396)
       {
       //AddStmtKind
       free(args);
       }
       #endif
-      #ifdef __COMPILE_1399
-      else if (__choose4 == 397)
+      #ifdef __COMPILE_1736
+      else if (__choose7 == 397)
       {
       //AddStmtKind
       free(env);
       }
       #endif
-      #ifdef __COMPILE_1400
-      else if (__choose4 == 398)
+      #ifdef __COMPILE_1737
+      else if (__choose7 == 398)
       {
       //AddStmtKind
       gzip_error("can't recover suffix\n");
       }
       #endif
-      #ifdef __COMPILE_1401
-      else if (__choose4 == 399)
+      #ifdef __COMPILE_1738
+      else if (__choose7 == 399)
       {
       //AddStmtKind
       gzip_error("corrupted input -- file name too large");
       }
       #endif
-      #ifdef __COMPILE_1402
-      else if (__choose4 == 400)
+      #ifdef __COMPILE_1739
+      else if (__choose7 == 400)
       {
       //AddStmtKind
       gzip_error("internal error in shorten_name");
       }
       #endif
-      #ifdef __COMPILE_1403
-      else if (__choose4 == 401)
+      #ifdef __COMPILE_1740
+      else if (__choose7 == 401)
       {
       //AddStmtKind
       gzip_error("name too short");
       }
       #endif
-      #ifdef __COMPILE_1404
-      else if (__choose4 == 402)
+      #ifdef __COMPILE_1741
+      else if (__choose7 == 402)
       {
       //AddStmtKind
       header_bytes = 0;
       }
       #endif
-      #ifdef __COMPILE_1405
-      else if (__choose4 == 403)
+      #ifdef __COMPILE_1742
+      else if (__choose7 == 403)
       {
       //AddStmtKind
       header_bytes = inptr + 2 * sizeof(long);
       }
       #endif
-      #ifdef __COMPILE_1406
-      else if (__choose4 == 404)
+      #ifdef __COMPILE_1743
+      else if (__choose7 == 404)
       {
       //AddStmtKind
       ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
       }
       #endif
-      #ifdef __COMPILE_1407
-      else if (__choose4 == 405)
+      #ifdef __COMPILE_1744
+      else if (__choose7 == 405)
       {
       //AddStmtKind
       inptr = 0;
       }
       #endif
-      #ifdef __COMPILE_1408
-      else if (__choose4 == 406)
+      #ifdef __COMPILE_1745
+      else if (__choose7 == 406)
       {
       //AddStmtKind
       inptr--;
       }
       #endif
-      #ifdef __COMPILE_1409
-      else if (__choose4 == 407)
+      #ifdef __COMPILE_1746
+      else if (__choose7 == 407)
       {
       //AddStmtKind
       install_signal_handlers();
       }
       #endif
-      #ifdef __COMPILE_1410
-      else if (__choose4 == 408)
+      #ifdef __COMPILE_1747
+      else if (__choose7 == 408)
       {
       //AddStmtKind
       last_member = 0;
       }
       #endif
-      #ifdef __COMPILE_1411
-      else if (__choose4 == 409)
+      #ifdef __COMPILE_1748
+      else if (__choose7 == 409)
       {
       //AddStmtKind
       last_member = 1;
       }
       #endif
-      #ifdef __COMPILE_1412
-      else if (__choose4 == 410)
+      #ifdef __COMPILE_1749
+      else if (__choose7 == 410)
       {
       //AddStmtKind
       license();
       }
       #endif
-      #ifdef __COMPILE_1413
-      else if (__choose4 == 411)
+      #ifdef __COMPILE_1750
+      else if (__choose7 == 411)
       {
       //AddStmtKind
       list = 0;
       }
       #endif
-      #ifdef __COMPILE_1414
-      else if (__choose4 == 412)
+      #ifdef __COMPILE_1751
+      else if (__choose7 == 412)
       {
       //AddStmtKind
       method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
       }
       #endif
-      #ifdef __COMPILE_1415
-      else if (__choose4 == 413)
+      #ifdef __COMPILE_1752
+      else if (__choose7 == 413)
       {
       //AddStmtKind
       method = -1;
       }
       #endif
-      #ifdef __COMPILE_1416
-      else if (__choose4 == 414)
+      #ifdef __COMPILE_1753
+      else if (__choose7 == 414)
       {
       //AddStmtKind
       method = 0;
       }
       #endif
-      #ifdef __COMPILE_1417
-      else if (__choose4 == 415)
+      #ifdef __COMPILE_1754
+      else if (__choose7 == 415)
       {
       //AddStmtKind
       method = 1;
       }
       #endif
-      #ifdef __COMPILE_1418
-      else if (__choose4 == 416)
+      #ifdef __COMPILE_1755
+      else if (__choose7 == 416)
       {
       //AddStmtKind
       method = 2;
       }
       #endif
-      #ifdef __COMPILE_1419
-      else if (__choose4 == 417)
+      #ifdef __COMPILE_1756
+      else if (__choose7 == 417)
       {
       //AddStmtKind
       method = 3;
       }
       #endif
-      #ifdef __COMPILE_1420
-      else if (__choose4 == 418)
+      #ifdef __COMPILE_1757
+      else if (__choose7 == 418)
       {
       //AddStmtKind
       method = get_method(ifd);
       }
       #endif
-      #ifdef __COMPILE_1421
-      else if (__choose4 == 419)
+      #ifdef __COMPILE_1758
+      else if (__choose7 == 419)
       {
       //AddStmtKind
       name_shortened = 1;
       }
       #endif
-      #ifdef __COMPILE_1422
-      else if (__choose4 == 420)
+      #ifdef __COMPILE_1759
+      else if (__choose7 == 420)
       {
       //AddStmtKind
       no_name = decompress;
       }
       #endif
-      #ifdef __COMPILE_1423
-      else if (__choose4 == 421)
+      #ifdef __COMPILE_1760
+      else if (__choose7 == 421)
       {
       //AddStmtKind
       no_time = decompress;
       }
       #endif
-      #ifdef __COMPILE_1424
-      else if (__choose4 == 422)
+      #ifdef __COMPILE_1761
+      else if (__choose7 == 422)
       {
       //AddStmtKind
       ofd = open_safer(ofname, flags, (256 | 128));
       }
       #endif
-      #ifdef __COMPILE_1425
-      else if (__choose4 == 423)
+      #ifdef __COMPILE_1762
+      else if (__choose7 == 423)
       {
       //AddStmtKind
       open_errno = (*__errno_location());
       }
       #endif
-      #ifdef __COMPILE_1426
-      else if (__choose4 == 424)
+      #ifdef __COMPILE_1763
+      else if (__choose7 == 424)
       {
       //AddStmtKind
       part_nb = 0;
       }
       #endif
-      #ifdef __COMPILE_1427
-      else if (__choose4 == 425)
+      #ifdef __COMPILE_1764
+      else if (__choose7 == 425)
       {
       //AddStmtKind
       part_nb++;
       }
       #endif
-      #ifdef __COMPILE_1428
-      else if (__choose4 == 426)
+      #ifdef __COMPILE_1765
+      else if (__choose7 == 426)
       {
       //AddStmtKind
       perror(ifname);
       }
       #endif
-      #ifdef __COMPILE_1429
-      else if (__choose4 == 427)
+      #ifdef __COMPILE_1766
+      else if (__choose7 == 427)
       {
       //AddStmtKind
       perror(ofname);
       }
       #endif
-      #ifdef __COMPILE_1430
-      else if (__choose4 == 428)
+      #ifdef __COMPILE_1767
+      else if (__choose7 == 428)
       {
       //AddStmtKind
       progerror("standard input");
       }
       #endif
-      #ifdef __COMPILE_1431
-      else if (__choose4 == 429)
+      #ifdef __COMPILE_1768
+      else if (__choose7 == 429)
       {
       //AddStmtKind
       progerror(ifname);
       }
       #endif
-      #ifdef __COMPILE_1432
-      else if (__choose4 == 430)
+      #ifdef __COMPILE_1769
+      else if (__choose7 == 430)
       {
       //AddStmtKind
       progerror(ofname);
       }
       #endif
-      #ifdef __COMPILE_1433
-      else if (__choose4 == 431)
+      #ifdef __COMPILE_1770
+      else if (__choose7 == 431)
       {
       //AddStmtKind
       quiet = 0;
       }
       #endif
-      #ifdef __COMPILE_1434
-      else if (__choose4 == 432)
+      #ifdef __COMPILE_1771
+      else if (__choose7 == 432)
       {
       //AddStmtKind
       read_error();
       }
       #endif
-      #ifdef __COMPILE_1435
-      else if (__choose4 == 433)
+      #ifdef __COMPILE_1772
+      else if (__choose7 == 433)
       {
       //AddStmtKind
       remove_ofname_fd = -1;
       }
       #endif
-      #ifdef __COMPILE_1436
-      else if (__choose4 == 434)
+      #ifdef __COMPILE_1773
+      else if (__choose7 == 434)
       {
       //AddStmtKind
       remove_ofname_fd = open_safer(ofname, flags, (256 | 128));
       }
       #endif
-      #ifdef __COMPILE_1437
-      else if (__choose4 == 435)
+      #ifdef __COMPILE_1774
+      else if (__choose7 == 435)
       {
       //AddStmtKind
       remove_output_file();
       }
       #endif
-      #ifdef __COMPILE_1438
-      else if (__choose4 == 436)
+      #ifdef __COMPILE_1775
+      else if (__choose7 == 436)
       {
       //AddStmtKind
       save_orig_name = !no_name;
       }
       #endif
-      #ifdef __COMPILE_1439
-      else if (__choose4 == 437)
+      #ifdef __COMPILE_1776
+      else if (__choose7 == 437)
       {
       //AddStmtKind
       save_orig_name = 0;
       }
       #endif
-      #ifdef __COMPILE_1440
-      else if (__choose4 == 438)
+      #ifdef __COMPILE_1777
+      else if (__choose7 == 438)
       {
       //AddStmtKind
       save_orig_name = 1;
       }
       #endif
-      #ifdef __COMPILE_1441
-      else if (__choose4 == 439)
+      #ifdef __COMPILE_1778
+      else if (__choose7 == 439)
       {
       //AddStmtKind
       sigemptyset(&caught_signals);
       }
       #endif
-      #ifdef __COMPILE_1442
-      else if (__choose4 == 440)
+      #ifdef __COMPILE_1779
+      else if (__choose7 == 440)
       {
       //AddStmtKind
       sigprocmask(0, &caught_signals, &oldset);
       }
       #endif
-      #ifdef __COMPILE_1443
-      else if (__choose4 == 441)
+      #ifdef __COMPILE_1780
+      else if (__choose7 == 441)
       {
       //AddStmtKind
       sigprocmask(2, &oldset, ((void *)0));
       }
       #endif
-      #ifdef __COMPILE_1444
-      else if (__choose4 == 442)
+      #ifdef __COMPILE_1781
+      else if (__choose7 == 442)
       {
       //AddStmtKind
       strcat(ifname, z_suffix);
       }
       #endif
-      #ifdef __COMPILE_1445
-      else if (__choose4 == 443)
+      #ifdef __COMPILE_1782
+      else if (__choose7 == 443)
       {
       //AddStmtKind
       strcat(ofname, z_suffix);
       }
       #endif
-      #ifdef __COMPILE_1446
-      else if (__choose4 == 444)
+      #ifdef __COMPILE_1783
+      else if (__choose7 == 444)
       {
       //AddStmtKind
       strcpy(ifname, "stdin");
       }
       #endif
-      #ifdef __COMPILE_1447
-      else if (__choose4 == 445)
+      #ifdef __COMPILE_1784
+      else if (__choose7 == 445)
       {
       //AddStmtKind
       strcpy(ofname, "stdout");
       }
       #endif
-      #ifdef __COMPILE_1448
-      else if (__choose4 == 446)
+      #ifdef __COMPILE_1785
+      else if (__choose7 == 446)
       {
       //AddStmtKind
       strcpy(ofname, ifname);
       }
       #endif
-      #ifdef __COMPILE_1449
-      else if (__choose4 == 447)
+      #ifdef __COMPILE_1786
+      else if (__choose7 == 447)
       {
       //AddStmtKind
       time_stamp = get_stat_mtime(&istat);
       }
       #endif
-      #ifdef __COMPILE_1450
-      else if (__choose4 == 448)
+      #ifdef __COMPILE_1787
+      else if (__choose7 == 448)
       {
       //AddStmtKind
       time_stamp.tv_nsec = -1;
       }
       #endif
-      #ifdef __COMPILE_1451
-      else if (__choose4 == 449)
+      #ifdef __COMPILE_1788
+      else if (__choose7 == 449)
       {
       //AddStmtKind
       time_stamp.tv_nsec = 0;
       }
       #endif
-      #ifdef __COMPILE_1452
-      else if (__choose4 == 450)
+      #ifdef __COMPILE_1789
+      else if (__choose7 == 450)
       {
       //AddStmtKind
       to_stdout = 1;
       }
       #endif
-      #ifdef __COMPILE_1453
-      else if (__choose4 == 451)
+      #ifdef __COMPILE_1790
+      else if (__choose7 == 451)
       {
       //AddStmtKind
       total_in = -1L;
       }
       #endif
-      #ifdef __COMPILE_1454
-      else if (__choose4 == 452)
+      #ifdef __COMPILE_1791
+      else if (__choose7 == 452)
       {
       //AddStmtKind
       total_out = -1L;
       }
       #endif
-      #ifdef __COMPILE_1455
-      else if (__choose4 == 453)
+      #ifdef __COMPILE_1792
+      else if (__choose7 == 453)
       {
       //AddStmtKind
       treat_stdin();
       }
       #endif
-      #ifdef __COMPILE_1456
-      else if (__choose4 == 454)
+      #ifdef __COMPILE_1793
+      else if (__choose7 == 454)
       {
       //AddStmtKind
       try_help();
       }
       #endif
-      #ifdef __COMPILE_1457
-      else if (__choose4 == 455)
+      #ifdef __COMPILE_1794
+      else if (__choose7 == 455)
       {
       //AddStmtKind
       verbose = 0;
       }
       #endif
-      #ifdef __COMPILE_1458
-      else if (__choose4 == 456)
+      #ifdef __COMPILE_1795
+      else if (__choose7 == 456)
       {
       //AddStmtKind
       work = copy;
       }
       #endif
-      #ifdef __COMPILE_1459
-      else if (__choose4 == 457)
+      #ifdef __COMPILE_1796
+      else if (__choose7 == 457)
       {
       //AddStmtKind
       work = lzw;
       }
       #endif
-      #ifdef __COMPILE_1460
-      else if (__choose4 == 458)
+      #ifdef __COMPILE_1797
+      else if (__choose7 == 458)
       {
       //AddStmtKind
       work = unlzh;
       }
       #endif
-      #ifdef __COMPILE_1461
-      else if (__choose4 == 459)
+      #ifdef __COMPILE_1798
+      else if (__choose7 == 459)
       {
       //AddStmtKind
       work = unlzw;
       }
       #endif
-      #ifdef __COMPILE_1462
-      else if (__choose4 == 460)
+      #ifdef __COMPILE_1799
+      else if (__choose7 == 460)
       {
       //AddStmtKind
       work = unpack;
       }
       #endif
-      #ifdef __COMPILE_1463
-      else if (__choose4 == 461)
+      #ifdef __COMPILE_1800
+      else if (__choose7 == 461)
       {
       //AddStmtKind
       work = unzip;
       }
       #endif
-      #ifdef __COMPILE_1464
-      else if (__choose4 == 462)
+      #ifdef __COMPILE_1801
+      else if (__choose7 == 462)
       {
       //AddStmtKind
       write_error();
       }
       #endif
-      #ifdef __COMPILE_1465
-      else if (__choose4 == 463)
+      #ifdef __COMPILE_1802
+      else if (__choose7 == 463)
       {
       //AddStmtKind
       xunlink(ofname);
       }
       #endif
-      #ifdef __COMPILE_1466
-      else if (__choose4 == 464)
+      #ifdef __COMPILE_1803
+      else if (__choose7 == 464)
       {
       //AddStmtKind
       z_len = strlen(z_suffix);
       }
       #endif
-      #ifdef __COMPILE_1467
-      else if (__choose4 == 465)
+      #ifdef __COMPILE_1804
+      else if (__choose7 == 465)
       {
       //AddStmtKind
       z_suffix = ".gz";
       }
       #endif
-      #ifdef __COMPILE_1468
-      else if (__choose4 == 466)
+      #ifdef __COMPILE_1805
+      else if (__choose7 == 466)
       {
       //IfExitKind
-      if (__is_neg("4-466", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-466", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15534,11 +18330,11 @@ local int create_outfile()
           break;
       }
       #endif
-      #ifdef __COMPILE_1469
-      else if (__choose4 == 467)
+      #ifdef __COMPILE_1806
+      else if (__choose7 == 467)
       {
       //IfExitKind
-      if (__is_neg("4-467", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-467", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15547,11 +18343,11 @@ local int create_outfile()
           return 0;
       }
       #endif
-      #ifdef __COMPILE_1470
-      else if (__choose4 == 468)
+      #ifdef __COMPILE_1807
+      else if (__choose7 == 468)
       {
       //IfExitKind
-      if (__is_neg("4-468", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-468", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15560,11 +18356,11 @@ local int create_outfile()
           return 128;
       }
       #endif
-      #ifdef __COMPILE_1471
-      else if (__choose4 == 469)
+      #ifdef __COMPILE_1808
+      else if (__choose7 == 469)
       {
       //IfExitKind
-      if (__is_neg("4-469", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-469", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15573,11 +18369,11 @@ local int create_outfile()
           return 17;
       }
       #endif
-      #ifdef __COMPILE_1472
-      else if (__choose4 == 470)
+      #ifdef __COMPILE_1809
+      else if (__choose7 == 470)
       {
       //IfExitKind
-      if (__is_neg("4-470", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-470", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15586,11 +18382,11 @@ local int create_outfile()
           return 193;
       }
       #endif
-      #ifdef __COMPILE_1473
-      else if (__choose4 == 471)
+      #ifdef __COMPILE_1810
+      else if (__choose7 == 471)
       {
       //IfExitKind
-      if (__is_neg("4-471", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-471", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15599,11 +18395,11 @@ local int create_outfile()
           return 1;
       }
       #endif
-      #ifdef __COMPILE_1474
-      else if (__choose4 == 472)
+      #ifdef __COMPILE_1811
+      else if (__choose7 == 472)
       {
       //IfExitKind
-      if (__is_neg("4-472", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-472", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15612,11 +18408,11 @@ local int create_outfile()
           return 256;
       }
       #endif
-      #ifdef __COMPILE_1475
-      else if (__choose4 == 473)
+      #ifdef __COMPILE_1812
+      else if (__choose7 == 473)
       {
       //IfExitKind
-      if (__is_neg("4-473", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-473", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15625,11 +18421,11 @@ local int create_outfile()
           return 2;
       }
       #endif
-      #ifdef __COMPILE_1476
-      else if (__choose4 == 474)
+      #ifdef __COMPILE_1813
+      else if (__choose7 == 474)
       {
       //IfExitKind
-      if (__is_neg("4-474", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-474", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15638,11 +18434,11 @@ local int create_outfile()
           return 36;
       }
       #endif
-      #ifdef __COMPILE_1477
-      else if (__choose4 == 475)
+      #ifdef __COMPILE_1814
+      else if (__choose7 == 475)
       {
       //IfExitKind
-      if (__is_neg("4-475", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-475", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15651,11 +18447,11 @@ local int create_outfile()
           return 384;
       }
       #endif
-      #ifdef __COMPILE_1478
-      else if (__choose4 == 476)
+      #ifdef __COMPILE_1815
+      else if (__choose7 == 476)
       {
       //IfExitKind
-      if (__is_neg("4-476", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-476", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15664,11 +18460,11 @@ local int create_outfile()
           return 64;
       }
       #endif
-      #ifdef __COMPILE_1479
-      else if (__choose4 == 477)
+      #ifdef __COMPILE_1816
+      else if (__choose7 == 477)
       {
       //IfExitKind
-      if (__is_neg("4-477", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
+      if (__is_neg("7-477", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd),
       			 sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags),
       			 sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name),
@@ -15677,8 +18473,8 @@ local int create_outfile()
           return 65;
       }
       #endif
-      int __choose6 = __choose("__SWITCH6");
-      if (__choose6 == 0)
+      int __choose9 = __choose("__SWITCH9");
+      if (__choose9 == 0)
       {
       switch (open_errno)
               {
@@ -15696,3269 +18492,3269 @@ local int create_outfile()
                     return ERROR;
                   }
                 {
-      int __choose5 = __choose("__SWITCH5");
-      if (__choose5 == 0)
+      int __choose8 = __choose("__SWITCH8");
+      if (__choose8 == 0)
       {}
-      #ifdef __COMPILE_1480
-      else if (__choose5 == 1)
+      #ifdef __COMPILE_1817
+      else if (__choose8 == 1)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (0);
       }
       #endif
-      #ifdef __COMPILE_1481
-      else if (__choose5 == 2)
+      #ifdef __COMPILE_1818
+      else if (__choose8 == 2)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (1);
       }
       #endif
-      #ifdef __COMPILE_1482
-      else if (__choose5 == 3)
+      #ifdef __COMPILE_1819
+      else if (__choose8 == 3)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (128);
       }
       #endif
-      #ifdef __COMPILE_1483
-      else if (__choose5 == 4)
+      #ifdef __COMPILE_1820
+      else if (__choose8 == 4)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (17);
       }
       #endif
-      #ifdef __COMPILE_1484
-      else if (__choose5 == 5)
+      #ifdef __COMPILE_1821
+      else if (__choose8 == 5)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (193);
       }
       #endif
-      #ifdef __COMPILE_1485
-      else if (__choose5 == 6)
+      #ifdef __COMPILE_1822
+      else if (__choose8 == 6)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (2);
       }
       #endif
-      #ifdef __COMPILE_1486
-      else if (__choose5 == 7)
+      #ifdef __COMPILE_1823
+      else if (__choose8 == 7)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (256);
       }
       #endif
-      #ifdef __COMPILE_1487
-      else if (__choose5 == 8)
+      #ifdef __COMPILE_1824
+      else if (__choose8 == 8)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (36);
       }
       #endif
-      #ifdef __COMPILE_1488
-      else if (__choose5 == 9)
+      #ifdef __COMPILE_1825
+      else if (__choose8 == 9)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (384);
       }
       #endif
-      #ifdef __COMPILE_1489
-      else if (__choose5 == 10)
+      #ifdef __COMPILE_1826
+      else if (__choose8 == 10)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (64);
       }
       #endif
-      #ifdef __COMPILE_1490
-      else if (__choose5 == 11)
+      #ifdef __COMPILE_1827
+      else if (__choose8 == 11)
       {
       //AddStmtAndReplaceAtomKind
       bytes_in = (65);
       }
       #endif
-      #ifdef __COMPILE_1491
-      else if (__choose5 == 12)
+      #ifdef __COMPILE_1828
+      else if (__choose8 == 12)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (0);
       }
       #endif
-      #ifdef __COMPILE_1492
-      else if (__choose5 == 13)
+      #ifdef __COMPILE_1829
+      else if (__choose8 == 13)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (1);
       }
       #endif
-      #ifdef __COMPILE_1493
-      else if (__choose5 == 14)
+      #ifdef __COMPILE_1830
+      else if (__choose8 == 14)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (128);
       }
       #endif
-      #ifdef __COMPILE_1494
-      else if (__choose5 == 15)
+      #ifdef __COMPILE_1831
+      else if (__choose8 == 15)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (17);
       }
       #endif
-      #ifdef __COMPILE_1495
-      else if (__choose5 == 16)
+      #ifdef __COMPILE_1832
+      else if (__choose8 == 16)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (193);
       }
       #endif
-      #ifdef __COMPILE_1496
-      else if (__choose5 == 17)
+      #ifdef __COMPILE_1833
+      else if (__choose8 == 17)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (2);
       }
       #endif
-      #ifdef __COMPILE_1497
-      else if (__choose5 == 18)
+      #ifdef __COMPILE_1834
+      else if (__choose8 == 18)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (256);
       }
       #endif
-      #ifdef __COMPILE_1498
-      else if (__choose5 == 19)
+      #ifdef __COMPILE_1835
+      else if (__choose8 == 19)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (36);
       }
       #endif
-      #ifdef __COMPILE_1499
-      else if (__choose5 == 20)
+      #ifdef __COMPILE_1836
+      else if (__choose8 == 20)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (384);
       }
       #endif
-      #ifdef __COMPILE_1500
-      else if (__choose5 == 21)
+      #ifdef __COMPILE_1837
+      else if (__choose8 == 21)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (64);
       }
       #endif
-      #ifdef __COMPILE_1501
-      else if (__choose5 == 22)
+      #ifdef __COMPILE_1838
+      else if (__choose8 == 22)
       {
       //AddStmtAndReplaceAtomKind
       bytes_out = (65);
       }
       #endif
-      #ifdef __COMPILE_1502
-      else if (__choose5 == 23)
+      #ifdef __COMPILE_1839
+      else if (__choose8 == 23)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (0);
       }
       #endif
-      #ifdef __COMPILE_1503
-      else if (__choose5 == 24)
+      #ifdef __COMPILE_1840
+      else if (__choose8 == 24)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (1);
       }
       #endif
-      #ifdef __COMPILE_1504
-      else if (__choose5 == 25)
+      #ifdef __COMPILE_1841
+      else if (__choose8 == 25)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (128);
       }
       #endif
-      #ifdef __COMPILE_1505
-      else if (__choose5 == 26)
+      #ifdef __COMPILE_1842
+      else if (__choose8 == 26)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (17);
       }
       #endif
-      #ifdef __COMPILE_1506
-      else if (__choose5 == 27)
+      #ifdef __COMPILE_1843
+      else if (__choose8 == 27)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (193);
       }
       #endif
-      #ifdef __COMPILE_1507
-      else if (__choose5 == 28)
+      #ifdef __COMPILE_1844
+      else if (__choose8 == 28)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (2);
       }
       #endif
-      #ifdef __COMPILE_1508
-      else if (__choose5 == 29)
+      #ifdef __COMPILE_1845
+      else if (__choose8 == 29)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (256);
       }
       #endif
-      #ifdef __COMPILE_1509
-      else if (__choose5 == 30)
+      #ifdef __COMPILE_1846
+      else if (__choose8 == 30)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (36);
       }
       #endif
-      #ifdef __COMPILE_1510
-      else if (__choose5 == 31)
+      #ifdef __COMPILE_1847
+      else if (__choose8 == 31)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (384);
       }
       #endif
-      #ifdef __COMPILE_1511
-      else if (__choose5 == 32)
+      #ifdef __COMPILE_1848
+      else if (__choose8 == 32)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (64);
       }
       #endif
-      #ifdef __COMPILE_1512
-      else if (__choose5 == 33)
+      #ifdef __COMPILE_1849
+      else if (__choose8 == 33)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (65);
       }
       #endif
-      #ifdef __COMPILE_1513
-      else if (__choose5 == 34)
+      #ifdef __COMPILE_1850
+      else if (__choose8 == 34)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (flags);
       }
       #endif
-      #ifdef __COMPILE_1514
-      else if (__choose5 == 35)
+      #ifdef __COMPILE_1851
+      else if (__choose8 == 35)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1515
-      else if (__choose5 == 36)
+      #ifdef __COMPILE_1852
+      else if (__choose8 == 36)
       {
       //AddStmtAndReplaceAtomKind
       exit_code = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1516
-      else if (__choose5 == 37)
+      #ifdef __COMPILE_1853
+      else if (__choose8 == 37)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (0);
       }
       #endif
-      #ifdef __COMPILE_1517
-      else if (__choose5 == 38)
+      #ifdef __COMPILE_1854
+      else if (__choose8 == 38)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (1);
       }
       #endif
-      #ifdef __COMPILE_1518
-      else if (__choose5 == 39)
+      #ifdef __COMPILE_1855
+      else if (__choose8 == 39)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (128);
       }
       #endif
-      #ifdef __COMPILE_1519
-      else if (__choose5 == 40)
+      #ifdef __COMPILE_1856
+      else if (__choose8 == 40)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (17);
       }
       #endif
-      #ifdef __COMPILE_1520
-      else if (__choose5 == 41)
+      #ifdef __COMPILE_1857
+      else if (__choose8 == 41)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (193);
       }
       #endif
-      #ifdef __COMPILE_1521
-      else if (__choose5 == 42)
+      #ifdef __COMPILE_1858
+      else if (__choose8 == 42)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (2);
       }
       #endif
-      #ifdef __COMPILE_1522
-      else if (__choose5 == 43)
+      #ifdef __COMPILE_1859
+      else if (__choose8 == 43)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (256);
       }
       #endif
-      #ifdef __COMPILE_1523
-      else if (__choose5 == 44)
+      #ifdef __COMPILE_1860
+      else if (__choose8 == 44)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (36);
       }
       #endif
-      #ifdef __COMPILE_1524
-      else if (__choose5 == 45)
+      #ifdef __COMPILE_1861
+      else if (__choose8 == 45)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (384);
       }
       #endif
-      #ifdef __COMPILE_1525
-      else if (__choose5 == 46)
+      #ifdef __COMPILE_1862
+      else if (__choose8 == 46)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (64);
       }
       #endif
-      #ifdef __COMPILE_1526
-      else if (__choose5 == 47)
+      #ifdef __COMPILE_1863
+      else if (__choose8 == 47)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (65);
       }
       #endif
-      #ifdef __COMPILE_1527
-      else if (__choose5 == 48)
+      #ifdef __COMPILE_1864
+      else if (__choose8 == 48)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (flags);
       }
       #endif
-      #ifdef __COMPILE_1528
-      else if (__choose5 == 49)
+      #ifdef __COMPILE_1865
+      else if (__choose8 == 49)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1529
-      else if (__choose5 == 50)
+      #ifdef __COMPILE_1866
+      else if (__choose8 == 50)
       {
       //AddStmtAndReplaceAtomKind
       exiting_signal = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1530
-      else if (__choose5 == 51)
+      #ifdef __COMPILE_1867
+      else if (__choose8 == 51)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (0);
       }
       #endif
-      #ifdef __COMPILE_1531
-      else if (__choose5 == 52)
+      #ifdef __COMPILE_1868
+      else if (__choose8 == 52)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (1);
       }
       #endif
-      #ifdef __COMPILE_1532
-      else if (__choose5 == 53)
+      #ifdef __COMPILE_1869
+      else if (__choose8 == 53)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (128);
       }
       #endif
-      #ifdef __COMPILE_1533
-      else if (__choose5 == 54)
+      #ifdef __COMPILE_1870
+      else if (__choose8 == 54)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (17);
       }
       #endif
-      #ifdef __COMPILE_1534
-      else if (__choose5 == 55)
+      #ifdef __COMPILE_1871
+      else if (__choose8 == 55)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (193);
       }
       #endif
-      #ifdef __COMPILE_1535
-      else if (__choose5 == 56)
+      #ifdef __COMPILE_1872
+      else if (__choose8 == 56)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (2);
       }
       #endif
-      #ifdef __COMPILE_1536
-      else if (__choose5 == 57)
+      #ifdef __COMPILE_1873
+      else if (__choose8 == 57)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (256);
       }
       #endif
-      #ifdef __COMPILE_1537
-      else if (__choose5 == 58)
+      #ifdef __COMPILE_1874
+      else if (__choose8 == 58)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (36);
       }
       #endif
-      #ifdef __COMPILE_1538
-      else if (__choose5 == 59)
+      #ifdef __COMPILE_1875
+      else if (__choose8 == 59)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (384);
       }
       #endif
-      #ifdef __COMPILE_1539
-      else if (__choose5 == 60)
+      #ifdef __COMPILE_1876
+      else if (__choose8 == 60)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (64);
       }
       #endif
-      #ifdef __COMPILE_1540
-      else if (__choose5 == 61)
+      #ifdef __COMPILE_1877
+      else if (__choose8 == 61)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (65);
       }
       #endif
-      #ifdef __COMPILE_1541
-      else if (__choose5 == 62)
+      #ifdef __COMPILE_1878
+      else if (__choose8 == 62)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (flags);
       }
       #endif
-      #ifdef __COMPILE_1542
-      else if (__choose5 == 63)
+      #ifdef __COMPILE_1879
+      else if (__choose8 == 63)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1543
-      else if (__choose5 == 64)
+      #ifdef __COMPILE_1880
+      else if (__choose8 == 64)
       {
       //AddStmtAndReplaceAtomKind
       foreground = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1544
-      else if (__choose5 == 65)
+      #ifdef __COMPILE_1881
+      else if (__choose8 == 65)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (0);
       }
       #endif
-      #ifdef __COMPILE_1545
-      else if (__choose5 == 66)
+      #ifdef __COMPILE_1882
+      else if (__choose8 == 66)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (1);
       }
       #endif
-      #ifdef __COMPILE_1546
-      else if (__choose5 == 67)
+      #ifdef __COMPILE_1883
+      else if (__choose8 == 67)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (128);
       }
       #endif
-      #ifdef __COMPILE_1547
-      else if (__choose5 == 68)
+      #ifdef __COMPILE_1884
+      else if (__choose8 == 68)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (17);
       }
       #endif
-      #ifdef __COMPILE_1548
-      else if (__choose5 == 69)
+      #ifdef __COMPILE_1885
+      else if (__choose8 == 69)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (193);
       }
       #endif
-      #ifdef __COMPILE_1549
-      else if (__choose5 == 70)
+      #ifdef __COMPILE_1886
+      else if (__choose8 == 70)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (2);
       }
       #endif
-      #ifdef __COMPILE_1550
-      else if (__choose5 == 71)
+      #ifdef __COMPILE_1887
+      else if (__choose8 == 71)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (256);
       }
       #endif
-      #ifdef __COMPILE_1551
-      else if (__choose5 == 72)
+      #ifdef __COMPILE_1888
+      else if (__choose8 == 72)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (36);
       }
       #endif
-      #ifdef __COMPILE_1552
-      else if (__choose5 == 73)
+      #ifdef __COMPILE_1889
+      else if (__choose8 == 73)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (384);
       }
       #endif
-      #ifdef __COMPILE_1553
-      else if (__choose5 == 74)
+      #ifdef __COMPILE_1890
+      else if (__choose8 == 74)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (64);
       }
       #endif
-      #ifdef __COMPILE_1554
-      else if (__choose5 == 75)
+      #ifdef __COMPILE_1891
+      else if (__choose8 == 75)
       {
       //AddStmtAndReplaceAtomKind
       header_bytes = (65);
       }
       #endif
-      #ifdef __COMPILE_1555
-      else if (__choose5 == 76)
+      #ifdef __COMPILE_1892
+      else if (__choose8 == 76)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (0);
       }
       #endif
-      #ifdef __COMPILE_1556
-      else if (__choose5 == 77)
+      #ifdef __COMPILE_1893
+      else if (__choose8 == 77)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (1);
       }
       #endif
-      #ifdef __COMPILE_1557
-      else if (__choose5 == 78)
+      #ifdef __COMPILE_1894
+      else if (__choose8 == 78)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (128);
       }
       #endif
-      #ifdef __COMPILE_1558
-      else if (__choose5 == 79)
+      #ifdef __COMPILE_1895
+      else if (__choose8 == 79)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (17);
       }
       #endif
-      #ifdef __COMPILE_1559
-      else if (__choose5 == 80)
+      #ifdef __COMPILE_1896
+      else if (__choose8 == 80)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (193);
       }
       #endif
-      #ifdef __COMPILE_1560
-      else if (__choose5 == 81)
+      #ifdef __COMPILE_1897
+      else if (__choose8 == 81)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (2);
       }
       #endif
-      #ifdef __COMPILE_1561
-      else if (__choose5 == 82)
+      #ifdef __COMPILE_1898
+      else if (__choose8 == 82)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (256);
       }
       #endif
-      #ifdef __COMPILE_1562
-      else if (__choose5 == 83)
+      #ifdef __COMPILE_1899
+      else if (__choose8 == 83)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (36);
       }
       #endif
-      #ifdef __COMPILE_1563
-      else if (__choose5 == 84)
+      #ifdef __COMPILE_1900
+      else if (__choose8 == 84)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (384);
       }
       #endif
-      #ifdef __COMPILE_1564
-      else if (__choose5 == 85)
+      #ifdef __COMPILE_1901
+      else if (__choose8 == 85)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (64);
       }
       #endif
-      #ifdef __COMPILE_1565
-      else if (__choose5 == 86)
+      #ifdef __COMPILE_1902
+      else if (__choose8 == 86)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (65);
       }
       #endif
-      #ifdef __COMPILE_1566
-      else if (__choose5 == 87)
+      #ifdef __COMPILE_1903
+      else if (__choose8 == 87)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (flags);
       }
       #endif
-      #ifdef __COMPILE_1567
-      else if (__choose5 == 88)
+      #ifdef __COMPILE_1904
+      else if (__choose8 == 88)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1568
-      else if (__choose5 == 89)
+      #ifdef __COMPILE_1905
+      else if (__choose8 == 89)
       {
       //AddStmtAndReplaceAtomKind
       ifd = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1569
-      else if (__choose5 == 90)
+      #ifdef __COMPILE_1906
+      else if (__choose8 == 90)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (0);
       }
       #endif
-      #ifdef __COMPILE_1570
-      else if (__choose5 == 91)
+      #ifdef __COMPILE_1907
+      else if (__choose8 == 91)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (1);
       }
       #endif
-      #ifdef __COMPILE_1571
-      else if (__choose5 == 92)
+      #ifdef __COMPILE_1908
+      else if (__choose8 == 92)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (128);
       }
       #endif
-      #ifdef __COMPILE_1572
-      else if (__choose5 == 93)
+      #ifdef __COMPILE_1909
+      else if (__choose8 == 93)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (17);
       }
       #endif
-      #ifdef __COMPILE_1573
-      else if (__choose5 == 94)
+      #ifdef __COMPILE_1910
+      else if (__choose8 == 94)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (193);
       }
       #endif
-      #ifdef __COMPILE_1574
-      else if (__choose5 == 95)
+      #ifdef __COMPILE_1911
+      else if (__choose8 == 95)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (2);
       }
       #endif
-      #ifdef __COMPILE_1575
-      else if (__choose5 == 96)
+      #ifdef __COMPILE_1912
+      else if (__choose8 == 96)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (256);
       }
       #endif
-      #ifdef __COMPILE_1576
-      else if (__choose5 == 97)
+      #ifdef __COMPILE_1913
+      else if (__choose8 == 97)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (36);
       }
       #endif
-      #ifdef __COMPILE_1577
-      else if (__choose5 == 98)
+      #ifdef __COMPILE_1914
+      else if (__choose8 == 98)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (384);
       }
       #endif
-      #ifdef __COMPILE_1578
-      else if (__choose5 == 99)
+      #ifdef __COMPILE_1915
+      else if (__choose8 == 99)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (64);
       }
       #endif
-      #ifdef __COMPILE_1579
-      else if (__choose5 == 100)
+      #ifdef __COMPILE_1916
+      else if (__choose8 == 100)
       {
       //AddStmtAndReplaceAtomKind
       ifile_size = (65);
       }
       #endif
-      #ifdef __COMPILE_1580
-      else if (__choose5 == 101)
+      #ifdef __COMPILE_1917
+      else if (__choose8 == 101)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (0);
       }
       #endif
-      #ifdef __COMPILE_1581
-      else if (__choose5 == 102)
+      #ifdef __COMPILE_1918
+      else if (__choose8 == 102)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (1);
       }
       #endif
-      #ifdef __COMPILE_1582
-      else if (__choose5 == 103)
+      #ifdef __COMPILE_1919
+      else if (__choose8 == 103)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (128);
       }
       #endif
-      #ifdef __COMPILE_1583
-      else if (__choose5 == 104)
+      #ifdef __COMPILE_1920
+      else if (__choose8 == 104)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (17);
       }
       #endif
-      #ifdef __COMPILE_1584
-      else if (__choose5 == 105)
+      #ifdef __COMPILE_1921
+      else if (__choose8 == 105)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (193);
       }
       #endif
-      #ifdef __COMPILE_1585
-      else if (__choose5 == 106)
+      #ifdef __COMPILE_1922
+      else if (__choose8 == 106)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (2);
       }
       #endif
-      #ifdef __COMPILE_1586
-      else if (__choose5 == 107)
+      #ifdef __COMPILE_1923
+      else if (__choose8 == 107)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (256);
       }
       #endif
-      #ifdef __COMPILE_1587
-      else if (__choose5 == 108)
+      #ifdef __COMPILE_1924
+      else if (__choose8 == 108)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (36);
       }
       #endif
-      #ifdef __COMPILE_1588
-      else if (__choose5 == 109)
+      #ifdef __COMPILE_1925
+      else if (__choose8 == 109)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (384);
       }
       #endif
-      #ifdef __COMPILE_1589
-      else if (__choose5 == 110)
+      #ifdef __COMPILE_1926
+      else if (__choose8 == 110)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (64);
       }
       #endif
-      #ifdef __COMPILE_1590
-      else if (__choose5 == 111)
+      #ifdef __COMPILE_1927
+      else if (__choose8 == 111)
       {
       //AddStmtAndReplaceAtomKind
       inptr = (65);
       }
       #endif
-      #ifdef __COMPILE_1591
-      else if (__choose5 == 112)
+      #ifdef __COMPILE_1928
+      else if (__choose8 == 112)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (0);
       }
       #endif
-      #ifdef __COMPILE_1592
-      else if (__choose5 == 113)
+      #ifdef __COMPILE_1929
+      else if (__choose8 == 113)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (1);
       }
       #endif
-      #ifdef __COMPILE_1593
-      else if (__choose5 == 114)
+      #ifdef __COMPILE_1930
+      else if (__choose8 == 114)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (128);
       }
       #endif
-      #ifdef __COMPILE_1594
-      else if (__choose5 == 115)
+      #ifdef __COMPILE_1931
+      else if (__choose8 == 115)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (17);
       }
       #endif
-      #ifdef __COMPILE_1595
-      else if (__choose5 == 116)
+      #ifdef __COMPILE_1932
+      else if (__choose8 == 116)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (193);
       }
       #endif
-      #ifdef __COMPILE_1596
-      else if (__choose5 == 117)
+      #ifdef __COMPILE_1933
+      else if (__choose8 == 117)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (2);
       }
       #endif
-      #ifdef __COMPILE_1597
-      else if (__choose5 == 118)
+      #ifdef __COMPILE_1934
+      else if (__choose8 == 118)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (256);
       }
       #endif
-      #ifdef __COMPILE_1598
-      else if (__choose5 == 119)
+      #ifdef __COMPILE_1935
+      else if (__choose8 == 119)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (36);
       }
       #endif
-      #ifdef __COMPILE_1599
-      else if (__choose5 == 120)
+      #ifdef __COMPILE_1936
+      else if (__choose8 == 120)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (384);
       }
       #endif
-      #ifdef __COMPILE_1600
-      else if (__choose5 == 121)
+      #ifdef __COMPILE_1937
+      else if (__choose8 == 121)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (64);
       }
       #endif
-      #ifdef __COMPILE_1601
-      else if (__choose5 == 122)
+      #ifdef __COMPILE_1938
+      else if (__choose8 == 122)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (65);
       }
       #endif
-      #ifdef __COMPILE_1602
-      else if (__choose5 == 123)
+      #ifdef __COMPILE_1939
+      else if (__choose8 == 123)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (flags);
       }
       #endif
-      #ifdef __COMPILE_1603
-      else if (__choose5 == 124)
+      #ifdef __COMPILE_1940
+      else if (__choose8 == 124)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1604
-      else if (__choose5 == 125)
+      #ifdef __COMPILE_1941
+      else if (__choose8 == 125)
       {
       //AddStmtAndReplaceAtomKind
       last_member = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1605
-      else if (__choose5 == 126)
+      #ifdef __COMPILE_1942
+      else if (__choose8 == 126)
       {
       //AddStmtAndReplaceAtomKind
       list = (0);
       }
       #endif
-      #ifdef __COMPILE_1606
-      else if (__choose5 == 127)
+      #ifdef __COMPILE_1943
+      else if (__choose8 == 127)
       {
       //AddStmtAndReplaceAtomKind
       list = (1);
       }
       #endif
-      #ifdef __COMPILE_1607
-      else if (__choose5 == 128)
+      #ifdef __COMPILE_1944
+      else if (__choose8 == 128)
       {
       //AddStmtAndReplaceAtomKind
       list = (128);
       }
       #endif
-      #ifdef __COMPILE_1608
-      else if (__choose5 == 129)
+      #ifdef __COMPILE_1945
+      else if (__choose8 == 129)
       {
       //AddStmtAndReplaceAtomKind
       list = (17);
       }
       #endif
-      #ifdef __COMPILE_1609
-      else if (__choose5 == 130)
+      #ifdef __COMPILE_1946
+      else if (__choose8 == 130)
       {
       //AddStmtAndReplaceAtomKind
       list = (193);
       }
       #endif
-      #ifdef __COMPILE_1610
-      else if (__choose5 == 131)
+      #ifdef __COMPILE_1947
+      else if (__choose8 == 131)
       {
       //AddStmtAndReplaceAtomKind
       list = (2);
       }
       #endif
-      #ifdef __COMPILE_1611
-      else if (__choose5 == 132)
+      #ifdef __COMPILE_1948
+      else if (__choose8 == 132)
       {
       //AddStmtAndReplaceAtomKind
       list = (256);
       }
       #endif
-      #ifdef __COMPILE_1612
-      else if (__choose5 == 133)
+      #ifdef __COMPILE_1949
+      else if (__choose8 == 133)
       {
       //AddStmtAndReplaceAtomKind
       list = (36);
       }
       #endif
-      #ifdef __COMPILE_1613
-      else if (__choose5 == 134)
+      #ifdef __COMPILE_1950
+      else if (__choose8 == 134)
       {
       //AddStmtAndReplaceAtomKind
       list = (384);
       }
       #endif
-      #ifdef __COMPILE_1614
-      else if (__choose5 == 135)
+      #ifdef __COMPILE_1951
+      else if (__choose8 == 135)
       {
       //AddStmtAndReplaceAtomKind
       list = (64);
       }
       #endif
-      #ifdef __COMPILE_1615
-      else if (__choose5 == 136)
+      #ifdef __COMPILE_1952
+      else if (__choose8 == 136)
       {
       //AddStmtAndReplaceAtomKind
       list = (65);
       }
       #endif
-      #ifdef __COMPILE_1616
-      else if (__choose5 == 137)
+      #ifdef __COMPILE_1953
+      else if (__choose8 == 137)
       {
       //AddStmtAndReplaceAtomKind
       list = (flags);
       }
       #endif
-      #ifdef __COMPILE_1617
-      else if (__choose5 == 138)
+      #ifdef __COMPILE_1954
+      else if (__choose8 == 138)
       {
       //AddStmtAndReplaceAtomKind
       list = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1618
-      else if (__choose5 == 139)
+      #ifdef __COMPILE_1955
+      else if (__choose8 == 139)
       {
       //AddStmtAndReplaceAtomKind
       list = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1619
-      else if (__choose5 == 140)
+      #ifdef __COMPILE_1956
+      else if (__choose8 == 140)
       {
       //AddStmtAndReplaceAtomKind
       method = (0);
       }
       #endif
-      #ifdef __COMPILE_1620
-      else if (__choose5 == 141)
+      #ifdef __COMPILE_1957
+      else if (__choose8 == 141)
       {
       //AddStmtAndReplaceAtomKind
       method = (1);
       }
       #endif
-      #ifdef __COMPILE_1621
-      else if (__choose5 == 142)
+      #ifdef __COMPILE_1958
+      else if (__choose8 == 142)
       {
       //AddStmtAndReplaceAtomKind
       method = (128);
       }
       #endif
-      #ifdef __COMPILE_1622
-      else if (__choose5 == 143)
+      #ifdef __COMPILE_1959
+      else if (__choose8 == 143)
       {
       //AddStmtAndReplaceAtomKind
       method = (17);
       }
       #endif
-      #ifdef __COMPILE_1623
-      else if (__choose5 == 144)
+      #ifdef __COMPILE_1960
+      else if (__choose8 == 144)
       {
       //AddStmtAndReplaceAtomKind
       method = (193);
       }
       #endif
-      #ifdef __COMPILE_1624
-      else if (__choose5 == 145)
+      #ifdef __COMPILE_1961
+      else if (__choose8 == 145)
       {
       //AddStmtAndReplaceAtomKind
       method = (2);
       }
       #endif
-      #ifdef __COMPILE_1625
-      else if (__choose5 == 146)
+      #ifdef __COMPILE_1962
+      else if (__choose8 == 146)
       {
       //AddStmtAndReplaceAtomKind
       method = (256);
       }
       #endif
-      #ifdef __COMPILE_1626
-      else if (__choose5 == 147)
+      #ifdef __COMPILE_1963
+      else if (__choose8 == 147)
       {
       //AddStmtAndReplaceAtomKind
       method = (36);
       }
       #endif
-      #ifdef __COMPILE_1627
-      else if (__choose5 == 148)
+      #ifdef __COMPILE_1964
+      else if (__choose8 == 148)
       {
       //AddStmtAndReplaceAtomKind
       method = (384);
       }
       #endif
-      #ifdef __COMPILE_1628
-      else if (__choose5 == 149)
+      #ifdef __COMPILE_1965
+      else if (__choose8 == 149)
       {
       //AddStmtAndReplaceAtomKind
       method = (64);
       }
       #endif
-      #ifdef __COMPILE_1629
-      else if (__choose5 == 150)
+      #ifdef __COMPILE_1966
+      else if (__choose8 == 150)
       {
       //AddStmtAndReplaceAtomKind
       method = (65);
       }
       #endif
-      #ifdef __COMPILE_1630
-      else if (__choose5 == 151)
+      #ifdef __COMPILE_1967
+      else if (__choose8 == 151)
       {
       //AddStmtAndReplaceAtomKind
       method = (flags);
       }
       #endif
-      #ifdef __COMPILE_1631
-      else if (__choose5 == 152)
+      #ifdef __COMPILE_1968
+      else if (__choose8 == 152)
       {
       //AddStmtAndReplaceAtomKind
       method = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1632
-      else if (__choose5 == 153)
+      #ifdef __COMPILE_1969
+      else if (__choose8 == 153)
       {
       //AddStmtAndReplaceAtomKind
       method = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1633
-      else if (__choose5 == 154)
+      #ifdef __COMPILE_1970
+      else if (__choose8 == 154)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (0);
       }
       #endif
-      #ifdef __COMPILE_1634
-      else if (__choose5 == 155)
+      #ifdef __COMPILE_1971
+      else if (__choose8 == 155)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (1);
       }
       #endif
-      #ifdef __COMPILE_1635
-      else if (__choose5 == 156)
+      #ifdef __COMPILE_1972
+      else if (__choose8 == 156)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (128);
       }
       #endif
-      #ifdef __COMPILE_1636
-      else if (__choose5 == 157)
+      #ifdef __COMPILE_1973
+      else if (__choose8 == 157)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (17);
       }
       #endif
-      #ifdef __COMPILE_1637
-      else if (__choose5 == 158)
+      #ifdef __COMPILE_1974
+      else if (__choose8 == 158)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (193);
       }
       #endif
-      #ifdef __COMPILE_1638
-      else if (__choose5 == 159)
+      #ifdef __COMPILE_1975
+      else if (__choose8 == 159)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (2);
       }
       #endif
-      #ifdef __COMPILE_1639
-      else if (__choose5 == 160)
+      #ifdef __COMPILE_1976
+      else if (__choose8 == 160)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (256);
       }
       #endif
-      #ifdef __COMPILE_1640
-      else if (__choose5 == 161)
+      #ifdef __COMPILE_1977
+      else if (__choose8 == 161)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (36);
       }
       #endif
-      #ifdef __COMPILE_1641
-      else if (__choose5 == 162)
+      #ifdef __COMPILE_1978
+      else if (__choose8 == 162)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (384);
       }
       #endif
-      #ifdef __COMPILE_1642
-      else if (__choose5 == 163)
+      #ifdef __COMPILE_1979
+      else if (__choose8 == 163)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (64);
       }
       #endif
-      #ifdef __COMPILE_1643
-      else if (__choose5 == 164)
+      #ifdef __COMPILE_1980
+      else if (__choose8 == 164)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (65);
       }
       #endif
-      #ifdef __COMPILE_1644
-      else if (__choose5 == 165)
+      #ifdef __COMPILE_1981
+      else if (__choose8 == 165)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (flags);
       }
       #endif
-      #ifdef __COMPILE_1645
-      else if (__choose5 == 166)
+      #ifdef __COMPILE_1982
+      else if (__choose8 == 166)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1646
-      else if (__choose5 == 167)
+      #ifdef __COMPILE_1983
+      else if (__choose8 == 167)
       {
       //AddStmtAndReplaceAtomKind
       name_shortened = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1647
-      else if (__choose5 == 168)
+      #ifdef __COMPILE_1984
+      else if (__choose8 == 168)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (0);
       }
       #endif
-      #ifdef __COMPILE_1648
-      else if (__choose5 == 169)
+      #ifdef __COMPILE_1985
+      else if (__choose8 == 169)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (1);
       }
       #endif
-      #ifdef __COMPILE_1649
-      else if (__choose5 == 170)
+      #ifdef __COMPILE_1986
+      else if (__choose8 == 170)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (128);
       }
       #endif
-      #ifdef __COMPILE_1650
-      else if (__choose5 == 171)
+      #ifdef __COMPILE_1987
+      else if (__choose8 == 171)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (17);
       }
       #endif
-      #ifdef __COMPILE_1651
-      else if (__choose5 == 172)
+      #ifdef __COMPILE_1988
+      else if (__choose8 == 172)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (193);
       }
       #endif
-      #ifdef __COMPILE_1652
-      else if (__choose5 == 173)
+      #ifdef __COMPILE_1989
+      else if (__choose8 == 173)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (2);
       }
       #endif
-      #ifdef __COMPILE_1653
-      else if (__choose5 == 174)
+      #ifdef __COMPILE_1990
+      else if (__choose8 == 174)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (256);
       }
       #endif
-      #ifdef __COMPILE_1654
-      else if (__choose5 == 175)
+      #ifdef __COMPILE_1991
+      else if (__choose8 == 175)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (36);
       }
       #endif
-      #ifdef __COMPILE_1655
-      else if (__choose5 == 176)
+      #ifdef __COMPILE_1992
+      else if (__choose8 == 176)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (384);
       }
       #endif
-      #ifdef __COMPILE_1656
-      else if (__choose5 == 177)
+      #ifdef __COMPILE_1993
+      else if (__choose8 == 177)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (64);
       }
       #endif
-      #ifdef __COMPILE_1657
-      else if (__choose5 == 178)
+      #ifdef __COMPILE_1994
+      else if (__choose8 == 178)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (65);
       }
       #endif
-      #ifdef __COMPILE_1658
-      else if (__choose5 == 179)
+      #ifdef __COMPILE_1995
+      else if (__choose8 == 179)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (flags);
       }
       #endif
-      #ifdef __COMPILE_1659
-      else if (__choose5 == 180)
+      #ifdef __COMPILE_1996
+      else if (__choose8 == 180)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1660
-      else if (__choose5 == 181)
+      #ifdef __COMPILE_1997
+      else if (__choose8 == 181)
       {
       //AddStmtAndReplaceAtomKind
       no_name = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1661
-      else if (__choose5 == 182)
+      #ifdef __COMPILE_1998
+      else if (__choose8 == 182)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (0);
       }
       #endif
-      #ifdef __COMPILE_1662
-      else if (__choose5 == 183)
+      #ifdef __COMPILE_1999
+      else if (__choose8 == 183)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (1);
       }
       #endif
-      #ifdef __COMPILE_1663
-      else if (__choose5 == 184)
+      #ifdef __COMPILE_2000
+      else if (__choose8 == 184)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (128);
       }
       #endif
-      #ifdef __COMPILE_1664
-      else if (__choose5 == 185)
+      #ifdef __COMPILE_2001
+      else if (__choose8 == 185)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (17);
       }
       #endif
-      #ifdef __COMPILE_1665
-      else if (__choose5 == 186)
+      #ifdef __COMPILE_2002
+      else if (__choose8 == 186)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (193);
       }
       #endif
-      #ifdef __COMPILE_1666
-      else if (__choose5 == 187)
+      #ifdef __COMPILE_2003
+      else if (__choose8 == 187)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (2);
       }
       #endif
-      #ifdef __COMPILE_1667
-      else if (__choose5 == 188)
+      #ifdef __COMPILE_2004
+      else if (__choose8 == 188)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (256);
       }
       #endif
-      #ifdef __COMPILE_1668
-      else if (__choose5 == 189)
+      #ifdef __COMPILE_2005
+      else if (__choose8 == 189)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (36);
       }
       #endif
-      #ifdef __COMPILE_1669
-      else if (__choose5 == 190)
+      #ifdef __COMPILE_2006
+      else if (__choose8 == 190)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (384);
       }
       #endif
-      #ifdef __COMPILE_1670
-      else if (__choose5 == 191)
+      #ifdef __COMPILE_2007
+      else if (__choose8 == 191)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (64);
       }
       #endif
-      #ifdef __COMPILE_1671
-      else if (__choose5 == 192)
+      #ifdef __COMPILE_2008
+      else if (__choose8 == 192)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (65);
       }
       #endif
-      #ifdef __COMPILE_1672
-      else if (__choose5 == 193)
+      #ifdef __COMPILE_2009
+      else if (__choose8 == 193)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (flags);
       }
       #endif
-      #ifdef __COMPILE_1673
-      else if (__choose5 == 194)
+      #ifdef __COMPILE_2010
+      else if (__choose8 == 194)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1674
-      else if (__choose5 == 195)
+      #ifdef __COMPILE_2011
+      else if (__choose8 == 195)
       {
       //AddStmtAndReplaceAtomKind
       no_time = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1675
-      else if (__choose5 == 196)
+      #ifdef __COMPILE_2012
+      else if (__choose8 == 196)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (0);
       }
       #endif
-      #ifdef __COMPILE_1676
-      else if (__choose5 == 197)
+      #ifdef __COMPILE_2013
+      else if (__choose8 == 197)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (1);
       }
       #endif
-      #ifdef __COMPILE_1677
-      else if (__choose5 == 198)
+      #ifdef __COMPILE_2014
+      else if (__choose8 == 198)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (128);
       }
       #endif
-      #ifdef __COMPILE_1678
-      else if (__choose5 == 199)
+      #ifdef __COMPILE_2015
+      else if (__choose8 == 199)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (17);
       }
       #endif
-      #ifdef __COMPILE_1679
-      else if (__choose5 == 200)
+      #ifdef __COMPILE_2016
+      else if (__choose8 == 200)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (193);
       }
       #endif
-      #ifdef __COMPILE_1680
-      else if (__choose5 == 201)
+      #ifdef __COMPILE_2017
+      else if (__choose8 == 201)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (2);
       }
       #endif
-      #ifdef __COMPILE_1681
-      else if (__choose5 == 202)
+      #ifdef __COMPILE_2018
+      else if (__choose8 == 202)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (256);
       }
       #endif
-      #ifdef __COMPILE_1682
-      else if (__choose5 == 203)
+      #ifdef __COMPILE_2019
+      else if (__choose8 == 203)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (36);
       }
       #endif
-      #ifdef __COMPILE_1683
-      else if (__choose5 == 204)
+      #ifdef __COMPILE_2020
+      else if (__choose8 == 204)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (384);
       }
       #endif
-      #ifdef __COMPILE_1684
-      else if (__choose5 == 205)
+      #ifdef __COMPILE_2021
+      else if (__choose8 == 205)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (64);
       }
       #endif
-      #ifdef __COMPILE_1685
-      else if (__choose5 == 206)
+      #ifdef __COMPILE_2022
+      else if (__choose8 == 206)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (65);
       }
       #endif
-      #ifdef __COMPILE_1686
-      else if (__choose5 == 207)
+      #ifdef __COMPILE_2023
+      else if (__choose8 == 207)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (flags);
       }
       #endif
-      #ifdef __COMPILE_1687
-      else if (__choose5 == 208)
+      #ifdef __COMPILE_2024
+      else if (__choose8 == 208)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1688
-      else if (__choose5 == 209)
+      #ifdef __COMPILE_2025
+      else if (__choose8 == 209)
       {
       //AddStmtAndReplaceAtomKind
       ofd = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1689
-      else if (__choose5 == 210)
+      #ifdef __COMPILE_2026
+      else if (__choose8 == 210)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (0);
       }
       #endif
-      #ifdef __COMPILE_1690
-      else if (__choose5 == 211)
+      #ifdef __COMPILE_2027
+      else if (__choose8 == 211)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (1);
       }
       #endif
-      #ifdef __COMPILE_1691
-      else if (__choose5 == 212)
+      #ifdef __COMPILE_2028
+      else if (__choose8 == 212)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (128);
       }
       #endif
-      #ifdef __COMPILE_1692
-      else if (__choose5 == 213)
+      #ifdef __COMPILE_2029
+      else if (__choose8 == 213)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (17);
       }
       #endif
-      #ifdef __COMPILE_1693
-      else if (__choose5 == 214)
+      #ifdef __COMPILE_2030
+      else if (__choose8 == 214)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (193);
       }
       #endif
-      #ifdef __COMPILE_1694
-      else if (__choose5 == 215)
+      #ifdef __COMPILE_2031
+      else if (__choose8 == 215)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (2);
       }
       #endif
-      #ifdef __COMPILE_1695
-      else if (__choose5 == 216)
+      #ifdef __COMPILE_2032
+      else if (__choose8 == 216)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (256);
       }
       #endif
-      #ifdef __COMPILE_1696
-      else if (__choose5 == 217)
+      #ifdef __COMPILE_2033
+      else if (__choose8 == 217)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (36);
       }
       #endif
-      #ifdef __COMPILE_1697
-      else if (__choose5 == 218)
+      #ifdef __COMPILE_2034
+      else if (__choose8 == 218)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (384);
       }
       #endif
-      #ifdef __COMPILE_1698
-      else if (__choose5 == 219)
+      #ifdef __COMPILE_2035
+      else if (__choose8 == 219)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (64);
       }
       #endif
-      #ifdef __COMPILE_1699
-      else if (__choose5 == 220)
+      #ifdef __COMPILE_2036
+      else if (__choose8 == 220)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (65);
       }
       #endif
-      #ifdef __COMPILE_1700
-      else if (__choose5 == 221)
+      #ifdef __COMPILE_2037
+      else if (__choose8 == 221)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (flags);
       }
       #endif
-      #ifdef __COMPILE_1701
-      else if (__choose5 == 222)
+      #ifdef __COMPILE_2038
+      else if (__choose8 == 222)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1702
-      else if (__choose5 == 223)
+      #ifdef __COMPILE_2039
+      else if (__choose8 == 223)
       {
       //AddStmtAndReplaceAtomKind
       open_errno = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1703
-      else if (__choose5 == 224)
+      #ifdef __COMPILE_2040
+      else if (__choose8 == 224)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (0);
       }
       #endif
-      #ifdef __COMPILE_1704
-      else if (__choose5 == 225)
+      #ifdef __COMPILE_2041
+      else if (__choose8 == 225)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (1);
       }
       #endif
-      #ifdef __COMPILE_1705
-      else if (__choose5 == 226)
+      #ifdef __COMPILE_2042
+      else if (__choose8 == 226)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (128);
       }
       #endif
-      #ifdef __COMPILE_1706
-      else if (__choose5 == 227)
+      #ifdef __COMPILE_2043
+      else if (__choose8 == 227)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (17);
       }
       #endif
-      #ifdef __COMPILE_1707
-      else if (__choose5 == 228)
+      #ifdef __COMPILE_2044
+      else if (__choose8 == 228)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (193);
       }
       #endif
-      #ifdef __COMPILE_1708
-      else if (__choose5 == 229)
+      #ifdef __COMPILE_2045
+      else if (__choose8 == 229)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (2);
       }
       #endif
-      #ifdef __COMPILE_1709
-      else if (__choose5 == 230)
+      #ifdef __COMPILE_2046
+      else if (__choose8 == 230)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (256);
       }
       #endif
-      #ifdef __COMPILE_1710
-      else if (__choose5 == 231)
+      #ifdef __COMPILE_2047
+      else if (__choose8 == 231)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (36);
       }
       #endif
-      #ifdef __COMPILE_1711
-      else if (__choose5 == 232)
+      #ifdef __COMPILE_2048
+      else if (__choose8 == 232)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (384);
       }
       #endif
-      #ifdef __COMPILE_1712
-      else if (__choose5 == 233)
+      #ifdef __COMPILE_2049
+      else if (__choose8 == 233)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (64);
       }
       #endif
-      #ifdef __COMPILE_1713
-      else if (__choose5 == 234)
+      #ifdef __COMPILE_2050
+      else if (__choose8 == 234)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (65);
       }
       #endif
-      #ifdef __COMPILE_1714
-      else if (__choose5 == 235)
+      #ifdef __COMPILE_2051
+      else if (__choose8 == 235)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (flags);
       }
       #endif
-      #ifdef __COMPILE_1715
-      else if (__choose5 == 236)
+      #ifdef __COMPILE_2052
+      else if (__choose8 == 236)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1716
-      else if (__choose5 == 237)
+      #ifdef __COMPILE_2053
+      else if (__choose8 == 237)
       {
       //AddStmtAndReplaceAtomKind
       part_nb = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1717
-      else if (__choose5 == 238)
+      #ifdef __COMPILE_2054
+      else if (__choose8 == 238)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (0);
       }
       #endif
-      #ifdef __COMPILE_1718
-      else if (__choose5 == 239)
+      #ifdef __COMPILE_2055
+      else if (__choose8 == 239)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (1);
       }
       #endif
-      #ifdef __COMPILE_1719
-      else if (__choose5 == 240)
+      #ifdef __COMPILE_2056
+      else if (__choose8 == 240)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (128);
       }
       #endif
-      #ifdef __COMPILE_1720
-      else if (__choose5 == 241)
+      #ifdef __COMPILE_2057
+      else if (__choose8 == 241)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (17);
       }
       #endif
-      #ifdef __COMPILE_1721
-      else if (__choose5 == 242)
+      #ifdef __COMPILE_2058
+      else if (__choose8 == 242)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (193);
       }
       #endif
-      #ifdef __COMPILE_1722
-      else if (__choose5 == 243)
+      #ifdef __COMPILE_2059
+      else if (__choose8 == 243)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (2);
       }
       #endif
-      #ifdef __COMPILE_1723
-      else if (__choose5 == 244)
+      #ifdef __COMPILE_2060
+      else if (__choose8 == 244)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (256);
       }
       #endif
-      #ifdef __COMPILE_1724
-      else if (__choose5 == 245)
+      #ifdef __COMPILE_2061
+      else if (__choose8 == 245)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (36);
       }
       #endif
-      #ifdef __COMPILE_1725
-      else if (__choose5 == 246)
+      #ifdef __COMPILE_2062
+      else if (__choose8 == 246)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (384);
       }
       #endif
-      #ifdef __COMPILE_1726
-      else if (__choose5 == 247)
+      #ifdef __COMPILE_2063
+      else if (__choose8 == 247)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (64);
       }
       #endif
-      #ifdef __COMPILE_1727
-      else if (__choose5 == 248)
+      #ifdef __COMPILE_2064
+      else if (__choose8 == 248)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (65);
       }
       #endif
-      #ifdef __COMPILE_1728
-      else if (__choose5 == 249)
+      #ifdef __COMPILE_2065
+      else if (__choose8 == 249)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (flags);
       }
       #endif
-      #ifdef __COMPILE_1729
-      else if (__choose5 == 250)
+      #ifdef __COMPILE_2066
+      else if (__choose8 == 250)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1730
-      else if (__choose5 == 251)
+      #ifdef __COMPILE_2067
+      else if (__choose8 == 251)
       {
       //AddStmtAndReplaceAtomKind
       quiet = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1731
-      else if (__choose5 == 252)
+      #ifdef __COMPILE_2068
+      else if (__choose8 == 252)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (0);
       }
       #endif
-      #ifdef __COMPILE_1732
-      else if (__choose5 == 253)
+      #ifdef __COMPILE_2069
+      else if (__choose8 == 253)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (1);
       }
       #endif
-      #ifdef __COMPILE_1733
-      else if (__choose5 == 254)
+      #ifdef __COMPILE_2070
+      else if (__choose8 == 254)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (128);
       }
       #endif
-      #ifdef __COMPILE_1734
-      else if (__choose5 == 255)
+      #ifdef __COMPILE_2071
+      else if (__choose8 == 255)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (17);
       }
       #endif
-      #ifdef __COMPILE_1735
-      else if (__choose5 == 256)
+      #ifdef __COMPILE_2072
+      else if (__choose8 == 256)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (193);
       }
       #endif
-      #ifdef __COMPILE_1736
-      else if (__choose5 == 257)
+      #ifdef __COMPILE_2073
+      else if (__choose8 == 257)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (2);
       }
       #endif
-      #ifdef __COMPILE_1737
-      else if (__choose5 == 258)
+      #ifdef __COMPILE_2074
+      else if (__choose8 == 258)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (256);
       }
       #endif
-      #ifdef __COMPILE_1738
-      else if (__choose5 == 259)
+      #ifdef __COMPILE_2075
+      else if (__choose8 == 259)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (36);
       }
       #endif
-      #ifdef __COMPILE_1739
-      else if (__choose5 == 260)
+      #ifdef __COMPILE_2076
+      else if (__choose8 == 260)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (384);
       }
       #endif
-      #ifdef __COMPILE_1740
-      else if (__choose5 == 261)
+      #ifdef __COMPILE_2077
+      else if (__choose8 == 261)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (64);
       }
       #endif
-      #ifdef __COMPILE_1741
-      else if (__choose5 == 262)
+      #ifdef __COMPILE_2078
+      else if (__choose8 == 262)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (65);
       }
       #endif
-      #ifdef __COMPILE_1742
-      else if (__choose5 == 263)
+      #ifdef __COMPILE_2079
+      else if (__choose8 == 263)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (flags);
       }
       #endif
-      #ifdef __COMPILE_1743
-      else if (__choose5 == 264)
+      #ifdef __COMPILE_2080
+      else if (__choose8 == 264)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1744
-      else if (__choose5 == 265)
+      #ifdef __COMPILE_2081
+      else if (__choose8 == 265)
       {
       //AddStmtAndReplaceAtomKind
       remove_ofname_fd = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1745
-      else if (__choose5 == 266)
+      #ifdef __COMPILE_2082
+      else if (__choose8 == 266)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (0);
       }
       #endif
-      #ifdef __COMPILE_1746
-      else if (__choose5 == 267)
+      #ifdef __COMPILE_2083
+      else if (__choose8 == 267)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (1);
       }
       #endif
-      #ifdef __COMPILE_1747
-      else if (__choose5 == 268)
+      #ifdef __COMPILE_2084
+      else if (__choose8 == 268)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (128);
       }
       #endif
-      #ifdef __COMPILE_1748
-      else if (__choose5 == 269)
+      #ifdef __COMPILE_2085
+      else if (__choose8 == 269)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (17);
       }
       #endif
-      #ifdef __COMPILE_1749
-      else if (__choose5 == 270)
+      #ifdef __COMPILE_2086
+      else if (__choose8 == 270)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (193);
       }
       #endif
-      #ifdef __COMPILE_1750
-      else if (__choose5 == 271)
+      #ifdef __COMPILE_2087
+      else if (__choose8 == 271)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (2);
       }
       #endif
-      #ifdef __COMPILE_1751
-      else if (__choose5 == 272)
+      #ifdef __COMPILE_2088
+      else if (__choose8 == 272)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (256);
       }
       #endif
-      #ifdef __COMPILE_1752
-      else if (__choose5 == 273)
+      #ifdef __COMPILE_2089
+      else if (__choose8 == 273)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (36);
       }
       #endif
-      #ifdef __COMPILE_1753
-      else if (__choose5 == 274)
+      #ifdef __COMPILE_2090
+      else if (__choose8 == 274)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (384);
       }
       #endif
-      #ifdef __COMPILE_1754
-      else if (__choose5 == 275)
+      #ifdef __COMPILE_2091
+      else if (__choose8 == 275)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (64);
       }
       #endif
-      #ifdef __COMPILE_1755
-      else if (__choose5 == 276)
+      #ifdef __COMPILE_2092
+      else if (__choose8 == 276)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (65);
       }
       #endif
-      #ifdef __COMPILE_1756
-      else if (__choose5 == 277)
+      #ifdef __COMPILE_2093
+      else if (__choose8 == 277)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (flags);
       }
       #endif
-      #ifdef __COMPILE_1757
-      else if (__choose5 == 278)
+      #ifdef __COMPILE_2094
+      else if (__choose8 == 278)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1758
-      else if (__choose5 == 279)
+      #ifdef __COMPILE_2095
+      else if (__choose8 == 279)
       {
       //AddStmtAndReplaceAtomKind
       save_orig_name = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1759
-      else if (__choose5 == 280)
+      #ifdef __COMPILE_2096
+      else if (__choose8 == 280)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (0);
       }
       #endif
-      #ifdef __COMPILE_1760
-      else if (__choose5 == 281)
+      #ifdef __COMPILE_2097
+      else if (__choose8 == 281)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (1);
       }
       #endif
-      #ifdef __COMPILE_1761
-      else if (__choose5 == 282)
+      #ifdef __COMPILE_2098
+      else if (__choose8 == 282)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (128);
       }
       #endif
-      #ifdef __COMPILE_1762
-      else if (__choose5 == 283)
+      #ifdef __COMPILE_2099
+      else if (__choose8 == 283)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (17);
       }
       #endif
-      #ifdef __COMPILE_1763
-      else if (__choose5 == 284)
+      #ifdef __COMPILE_2100
+      else if (__choose8 == 284)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (193);
       }
       #endif
-      #ifdef __COMPILE_1764
-      else if (__choose5 == 285)
+      #ifdef __COMPILE_2101
+      else if (__choose8 == 285)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (2);
       }
       #endif
-      #ifdef __COMPILE_1765
-      else if (__choose5 == 286)
+      #ifdef __COMPILE_2102
+      else if (__choose8 == 286)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (256);
       }
       #endif
-      #ifdef __COMPILE_1766
-      else if (__choose5 == 287)
+      #ifdef __COMPILE_2103
+      else if (__choose8 == 287)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (36);
       }
       #endif
-      #ifdef __COMPILE_1767
-      else if (__choose5 == 288)
+      #ifdef __COMPILE_2104
+      else if (__choose8 == 288)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (384);
       }
       #endif
-      #ifdef __COMPILE_1768
-      else if (__choose5 == 289)
+      #ifdef __COMPILE_2105
+      else if (__choose8 == 289)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (64);
       }
       #endif
-      #ifdef __COMPILE_1769
-      else if (__choose5 == 290)
+      #ifdef __COMPILE_2106
+      else if (__choose8 == 290)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_nsec = (65);
       }
       #endif
-      #ifdef __COMPILE_1770
-      else if (__choose5 == 291)
+      #ifdef __COMPILE_2107
+      else if (__choose8 == 291)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (0);
       }
       #endif
-      #ifdef __COMPILE_1771
-      else if (__choose5 == 292)
+      #ifdef __COMPILE_2108
+      else if (__choose8 == 292)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (1);
       }
       #endif
-      #ifdef __COMPILE_1772
-      else if (__choose5 == 293)
+      #ifdef __COMPILE_2109
+      else if (__choose8 == 293)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (128);
       }
       #endif
-      #ifdef __COMPILE_1773
-      else if (__choose5 == 294)
+      #ifdef __COMPILE_2110
+      else if (__choose8 == 294)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (17);
       }
       #endif
-      #ifdef __COMPILE_1774
-      else if (__choose5 == 295)
+      #ifdef __COMPILE_2111
+      else if (__choose8 == 295)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (193);
       }
       #endif
-      #ifdef __COMPILE_1775
-      else if (__choose5 == 296)
+      #ifdef __COMPILE_2112
+      else if (__choose8 == 296)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (2);
       }
       #endif
-      #ifdef __COMPILE_1776
-      else if (__choose5 == 297)
+      #ifdef __COMPILE_2113
+      else if (__choose8 == 297)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (256);
       }
       #endif
-      #ifdef __COMPILE_1777
-      else if (__choose5 == 298)
+      #ifdef __COMPILE_2114
+      else if (__choose8 == 298)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (36);
       }
       #endif
-      #ifdef __COMPILE_1778
-      else if (__choose5 == 299)
+      #ifdef __COMPILE_2115
+      else if (__choose8 == 299)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (384);
       }
       #endif
-      #ifdef __COMPILE_1779
-      else if (__choose5 == 300)
+      #ifdef __COMPILE_2116
+      else if (__choose8 == 300)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (64);
       }
       #endif
-      #ifdef __COMPILE_1780
-      else if (__choose5 == 301)
+      #ifdef __COMPILE_2117
+      else if (__choose8 == 301)
       {
       //AddStmtAndReplaceAtomKind
       time_stamp.tv_sec = (65);
       }
       #endif
-      #ifdef __COMPILE_1781
-      else if (__choose5 == 302)
+      #ifdef __COMPILE_2118
+      else if (__choose8 == 302)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (0);
       }
       #endif
-      #ifdef __COMPILE_1782
-      else if (__choose5 == 303)
+      #ifdef __COMPILE_2119
+      else if (__choose8 == 303)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (1);
       }
       #endif
-      #ifdef __COMPILE_1783
-      else if (__choose5 == 304)
+      #ifdef __COMPILE_2120
+      else if (__choose8 == 304)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (128);
       }
       #endif
-      #ifdef __COMPILE_1784
-      else if (__choose5 == 305)
+      #ifdef __COMPILE_2121
+      else if (__choose8 == 305)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (17);
       }
       #endif
-      #ifdef __COMPILE_1785
-      else if (__choose5 == 306)
+      #ifdef __COMPILE_2122
+      else if (__choose8 == 306)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (193);
       }
       #endif
-      #ifdef __COMPILE_1786
-      else if (__choose5 == 307)
+      #ifdef __COMPILE_2123
+      else if (__choose8 == 307)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (2);
       }
       #endif
-      #ifdef __COMPILE_1787
-      else if (__choose5 == 308)
+      #ifdef __COMPILE_2124
+      else if (__choose8 == 308)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (256);
       }
       #endif
-      #ifdef __COMPILE_1788
-      else if (__choose5 == 309)
+      #ifdef __COMPILE_2125
+      else if (__choose8 == 309)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (36);
       }
       #endif
-      #ifdef __COMPILE_1789
-      else if (__choose5 == 310)
+      #ifdef __COMPILE_2126
+      else if (__choose8 == 310)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (384);
       }
       #endif
-      #ifdef __COMPILE_1790
-      else if (__choose5 == 311)
+      #ifdef __COMPILE_2127
+      else if (__choose8 == 311)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (64);
       }
       #endif
-      #ifdef __COMPILE_1791
-      else if (__choose5 == 312)
+      #ifdef __COMPILE_2128
+      else if (__choose8 == 312)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (65);
       }
       #endif
-      #ifdef __COMPILE_1792
-      else if (__choose5 == 313)
+      #ifdef __COMPILE_2129
+      else if (__choose8 == 313)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (flags);
       }
       #endif
-      #ifdef __COMPILE_1793
-      else if (__choose5 == 314)
+      #ifdef __COMPILE_2130
+      else if (__choose8 == 314)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1794
-      else if (__choose5 == 315)
+      #ifdef __COMPILE_2131
+      else if (__choose8 == 315)
       {
       //AddStmtAndReplaceAtomKind
       to_stdout = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1795
-      else if (__choose5 == 316)
+      #ifdef __COMPILE_2132
+      else if (__choose8 == 316)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (0);
       }
       #endif
-      #ifdef __COMPILE_1796
-      else if (__choose5 == 317)
+      #ifdef __COMPILE_2133
+      else if (__choose8 == 317)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (1);
       }
       #endif
-      #ifdef __COMPILE_1797
-      else if (__choose5 == 318)
+      #ifdef __COMPILE_2134
+      else if (__choose8 == 318)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (128);
       }
       #endif
-      #ifdef __COMPILE_1798
-      else if (__choose5 == 319)
+      #ifdef __COMPILE_2135
+      else if (__choose8 == 319)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (17);
       }
       #endif
-      #ifdef __COMPILE_1799
-      else if (__choose5 == 320)
+      #ifdef __COMPILE_2136
+      else if (__choose8 == 320)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (193);
       }
       #endif
-      #ifdef __COMPILE_1800
-      else if (__choose5 == 321)
+      #ifdef __COMPILE_2137
+      else if (__choose8 == 321)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (2);
       }
       #endif
-      #ifdef __COMPILE_1801
-      else if (__choose5 == 322)
+      #ifdef __COMPILE_2138
+      else if (__choose8 == 322)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (256);
       }
       #endif
-      #ifdef __COMPILE_1802
-      else if (__choose5 == 323)
+      #ifdef __COMPILE_2139
+      else if (__choose8 == 323)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (36);
       }
       #endif
-      #ifdef __COMPILE_1803
-      else if (__choose5 == 324)
+      #ifdef __COMPILE_2140
+      else if (__choose8 == 324)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (384);
       }
       #endif
-      #ifdef __COMPILE_1804
-      else if (__choose5 == 325)
+      #ifdef __COMPILE_2141
+      else if (__choose8 == 325)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (64);
       }
       #endif
-      #ifdef __COMPILE_1805
-      else if (__choose5 == 326)
+      #ifdef __COMPILE_2142
+      else if (__choose8 == 326)
       {
       //AddStmtAndReplaceAtomKind
       total_in = (65);
       }
       #endif
-      #ifdef __COMPILE_1806
-      else if (__choose5 == 327)
+      #ifdef __COMPILE_2143
+      else if (__choose8 == 327)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (0);
       }
       #endif
-      #ifdef __COMPILE_1807
-      else if (__choose5 == 328)
+      #ifdef __COMPILE_2144
+      else if (__choose8 == 328)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (1);
       }
       #endif
-      #ifdef __COMPILE_1808
-      else if (__choose5 == 329)
+      #ifdef __COMPILE_2145
+      else if (__choose8 == 329)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (128);
       }
       #endif
-      #ifdef __COMPILE_1809
-      else if (__choose5 == 330)
+      #ifdef __COMPILE_2146
+      else if (__choose8 == 330)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (17);
       }
       #endif
-      #ifdef __COMPILE_1810
-      else if (__choose5 == 331)
+      #ifdef __COMPILE_2147
+      else if (__choose8 == 331)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (193);
       }
       #endif
-      #ifdef __COMPILE_1811
-      else if (__choose5 == 332)
+      #ifdef __COMPILE_2148
+      else if (__choose8 == 332)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (2);
       }
       #endif
-      #ifdef __COMPILE_1812
-      else if (__choose5 == 333)
+      #ifdef __COMPILE_2149
+      else if (__choose8 == 333)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (256);
       }
       #endif
-      #ifdef __COMPILE_1813
-      else if (__choose5 == 334)
+      #ifdef __COMPILE_2150
+      else if (__choose8 == 334)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (36);
       }
       #endif
-      #ifdef __COMPILE_1814
-      else if (__choose5 == 335)
+      #ifdef __COMPILE_2151
+      else if (__choose8 == 335)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (384);
       }
       #endif
-      #ifdef __COMPILE_1815
-      else if (__choose5 == 336)
+      #ifdef __COMPILE_2152
+      else if (__choose8 == 336)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (64);
       }
       #endif
-      #ifdef __COMPILE_1816
-      else if (__choose5 == 337)
+      #ifdef __COMPILE_2153
+      else if (__choose8 == 337)
       {
       //AddStmtAndReplaceAtomKind
       total_out = (65);
       }
       #endif
-      #ifdef __COMPILE_1817
-      else if (__choose5 == 338)
+      #ifdef __COMPILE_2154
+      else if (__choose8 == 338)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (0);
       }
       #endif
-      #ifdef __COMPILE_1818
-      else if (__choose5 == 339)
+      #ifdef __COMPILE_2155
+      else if (__choose8 == 339)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (1);
       }
       #endif
-      #ifdef __COMPILE_1819
-      else if (__choose5 == 340)
+      #ifdef __COMPILE_2156
+      else if (__choose8 == 340)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (128);
       }
       #endif
-      #ifdef __COMPILE_1820
-      else if (__choose5 == 341)
+      #ifdef __COMPILE_2157
+      else if (__choose8 == 341)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (17);
       }
       #endif
-      #ifdef __COMPILE_1821
-      else if (__choose5 == 342)
+      #ifdef __COMPILE_2158
+      else if (__choose8 == 342)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (193);
       }
       #endif
-      #ifdef __COMPILE_1822
-      else if (__choose5 == 343)
+      #ifdef __COMPILE_2159
+      else if (__choose8 == 343)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (2);
       }
       #endif
-      #ifdef __COMPILE_1823
-      else if (__choose5 == 344)
+      #ifdef __COMPILE_2160
+      else if (__choose8 == 344)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (256);
       }
       #endif
-      #ifdef __COMPILE_1824
-      else if (__choose5 == 345)
+      #ifdef __COMPILE_2161
+      else if (__choose8 == 345)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (36);
       }
       #endif
-      #ifdef __COMPILE_1825
-      else if (__choose5 == 346)
+      #ifdef __COMPILE_2162
+      else if (__choose8 == 346)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (384);
       }
       #endif
-      #ifdef __COMPILE_1826
-      else if (__choose5 == 347)
+      #ifdef __COMPILE_2163
+      else if (__choose8 == 347)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (64);
       }
       #endif
-      #ifdef __COMPILE_1827
-      else if (__choose5 == 348)
+      #ifdef __COMPILE_2164
+      else if (__choose8 == 348)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (65);
       }
       #endif
-      #ifdef __COMPILE_1828
-      else if (__choose5 == 349)
+      #ifdef __COMPILE_2165
+      else if (__choose8 == 349)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (flags);
       }
       #endif
-      #ifdef __COMPILE_1829
-      else if (__choose5 == 350)
+      #ifdef __COMPILE_2166
+      else if (__choose8 == 350)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (name_shortened);
       }
       #endif
-      #ifdef __COMPILE_1830
-      else if (__choose5 == 351)
+      #ifdef __COMPILE_2167
+      else if (__choose8 == 351)
       {
       //AddStmtAndReplaceAtomKind
       verbose = (open_errno);
       }
       #endif
-      #ifdef __COMPILE_1831
-      else if (__choose5 == 352)
+      #ifdef __COMPILE_2168
+      else if (__choose8 == 352)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (0);
       }
       #endif
-      #ifdef __COMPILE_1832
-      else if (__choose5 == 353)
+      #ifdef __COMPILE_2169
+      else if (__choose8 == 353)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (1);
       }
       #endif
-      #ifdef __COMPILE_1833
-      else if (__choose5 == 354)
+      #ifdef __COMPILE_2170
+      else if (__choose8 == 354)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (128);
       }
       #endif
-      #ifdef __COMPILE_1834
-      else if (__choose5 == 355)
+      #ifdef __COMPILE_2171
+      else if (__choose8 == 355)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (17);
       }
       #endif
-      #ifdef __COMPILE_1835
-      else if (__choose5 == 356)
+      #ifdef __COMPILE_2172
+      else if (__choose8 == 356)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (193);
       }
       #endif
-      #ifdef __COMPILE_1836
-      else if (__choose5 == 357)
+      #ifdef __COMPILE_2173
+      else if (__choose8 == 357)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (2);
       }
       #endif
-      #ifdef __COMPILE_1837
-      else if (__choose5 == 358)
+      #ifdef __COMPILE_2174
+      else if (__choose8 == 358)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (256);
       }
       #endif
-      #ifdef __COMPILE_1838
-      else if (__choose5 == 359)
+      #ifdef __COMPILE_2175
+      else if (__choose8 == 359)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (36);
       }
       #endif
-      #ifdef __COMPILE_1839
-      else if (__choose5 == 360)
+      #ifdef __COMPILE_2176
+      else if (__choose8 == 360)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (384);
       }
       #endif
-      #ifdef __COMPILE_1840
-      else if (__choose5 == 361)
+      #ifdef __COMPILE_2177
+      else if (__choose8 == 361)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (64);
       }
       #endif
-      #ifdef __COMPILE_1841
-      else if (__choose5 == 362)
+      #ifdef __COMPILE_2178
+      else if (__choose8 == 362)
       {
       //AddStmtAndReplaceAtomKind
       z_len = (65);
       }
       #endif
-      #ifdef __COMPILE_1842
-      else if (__choose5 == 363)
+      #ifdef __COMPILE_2179
+      else if (__choose8 == 363)
       {
       //AddStmtKind
       (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
       }
       #endif
-      #ifdef __COMPILE_1843
-      else if (__choose5 == 364)
+      #ifdef __COMPILE_2180
+      else if (__choose8 == 364)
       {
       //AddStmtKind
       __printf__("                            ");
       }
       #endif
-      #ifdef __COMPILE_1844
-      else if (__choose5 == 365)
+      #ifdef __COMPILE_2181
+      else if (__choose8 == 365)
       {
       //AddStmtKind
       __printf__(" ");
       }
       #endif
-      #ifdef __COMPILE_1845
-      else if (__choose5 == 366)
+      #ifdef __COMPILE_2182
+      else if (__choose8 == 366)
       {
       //AddStmtKind
       __printf__(" %s\n", ofname);
       }
       #endif
-      #ifdef __COMPILE_1846
-      else if (__choose5 == 367)
+      #ifdef __COMPILE_2183
+      else if (__choose8 == 367)
       {
       //AddStmtKind
       __printf__(" (totals)\n");
       }
       #endif
-      #ifdef __COMPILE_1847
-      else if (__choose5 == 368)
+      #ifdef __COMPILE_2184
+      else if (__choose8 == 368)
       {
       //AddStmtKind
       __printf__("%s %s\n", program_name, "1.0");
       }
       #endif
-      #ifdef __COMPILE_1848
-      else if (__choose5 == 369)
+      #ifdef __COMPILE_2185
+      else if (__choose8 == 369)
       {
       //AddStmtKind
       __printf__("??? ?? ??:?? ");
       }
       #endif
-      #ifdef __COMPILE_1849
-      else if (__choose5 == 370)
+      #ifdef __COMPILE_2186
+      else if (__choose8 == 370)
       {
       //AddStmtKind
       __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
       }
       #endif
-      #ifdef __COMPILE_1850
-      else if (__choose5 == 371)
+      #ifdef __COMPILE_2187
+      else if (__choose8 == 371)
       {
       //AddStmtKind
       __printf__("Written by Jean-loup Gailly.\n");
       }
       #endif
-      #ifdef __COMPILE_1851
-      else if (__choose5 == 372)
+      #ifdef __COMPILE_2188
+      else if (__choose8 == 372)
       {
       //AddStmtKind
       __printf__("\n");
       }
       #endif
-      #ifdef __COMPILE_1852
-      else if (__choose5 == 373)
+      #ifdef __COMPILE_2189
+      else if (__choose8 == 373)
       {
       //AddStmtKind
       __printf__("method  crc     date  time  ");
       }
       #endif
-      #ifdef __COMPILE_1853
-      else if (__choose5 == 374)
+      #ifdef __COMPILE_2190
+      else if (__choose8 == 374)
       {
       //AddStmtKind
       _exit(2);
       }
       #endif
-      #ifdef __COMPILE_1854
-      else if (__choose5 == 375)
+      #ifdef __COMPILE_2191
+      else if (__choose8 == 375)
       {
       //AddStmtKind
       args = ((void *)0);
       }
       #endif
-      #ifdef __COMPILE_1855
-      else if (__choose5 == 376)
+      #ifdef __COMPILE_2192
+      else if (__choose8 == 376)
       {
       //AddStmtKind
       atexit(close_stdin);
       }
       #endif
-      #ifdef __COMPILE_1856
-      else if (__choose5 == 377)
+      #ifdef __COMPILE_2193
+      else if (__choose8 == 377)
       {
       //AddStmtKind
       bytes_in = 0;
       }
       #endif
-      #ifdef __COMPILE_1857
-      else if (__choose5 == 378)
+      #ifdef __COMPILE_2194
+      else if (__choose8 == 378)
       {
       //AddStmtKind
       bytes_in = ifile_size;
       }
       #endif
-      #ifdef __COMPILE_1858
-      else if (__choose5 == 379)
+      #ifdef __COMPILE_2195
+      else if (__choose8 == 379)
       {
       //AddStmtKind
       bytes_out = -1L;
       }
       #endif
-      #ifdef __COMPILE_1859
-      else if (__choose5 == 380)
+      #ifdef __COMPILE_2196
+      else if (__choose8 == 380)
       {
       //AddStmtKind
       bytes_out = 0;
       }
       #endif
-      #ifdef __COMPILE_1860
-      else if (__choose5 == 381)
+      #ifdef __COMPILE_2197
+      else if (__choose8 == 381)
       {
       //AddStmtKind
       bytes_out++;
       }
       #endif
-      #ifdef __COMPILE_1861
-      else if (__choose5 == 382)
+      #ifdef __COMPILE_2198
+      else if (__choose8 == 382)
       {
       //AddStmtKind
       clear_bufs();
       }
       #endif
-      #ifdef __COMPILE_1862
-      else if (__choose5 == 383)
+      #ifdef __COMPILE_2199
+      else if (__choose8 == 383)
       {
       //AddStmtKind
       close(ifd);
       }
       #endif
-      #ifdef __COMPILE_1863
-      else if (__choose5 == 384)
+      #ifdef __COMPILE_2200
+      else if (__choose8 == 384)
       {
       //AddStmtKind
       copy_stat(&istat);
       }
       #endif
-      #ifdef __COMPILE_1864
-      else if (__choose5 == 385)
+      #ifdef __COMPILE_2201
+      else if (__choose8 == 385)
       {
       //AddStmtKind
       do_exit(0);
       }
       #endif
-      #ifdef __COMPILE_1865
-      else if (__choose5 == 386)
+      #ifdef __COMPILE_2202
+      else if (__choose8 == 386)
       {
       //AddStmtKind
       do_exit(1);
       }
       #endif
-      #ifdef __COMPILE_1866
-      else if (__choose5 == 387)
+      #ifdef __COMPILE_2203
+      else if (__choose8 == 387)
       {
       //AddStmtKind
       do_exit(exit_code);
       }
       #endif
-      #ifdef __COMPILE_1867
-      else if (__choose5 == 388)
+      #ifdef __COMPILE_2204
+      else if (__choose8 == 388)
       {
       //AddStmtKind
       do_list(-1, -1);
       }
       #endif
-      #ifdef __COMPILE_1868
-      else if (__choose5 == 389)
+      #ifdef __COMPILE_2205
+      else if (__choose8 == 389)
       {
       //AddStmtKind
       do_list(ifd, method);
       }
       #endif
-      #ifdef __COMPILE_1869
-      else if (__choose5 == 390)
+      #ifdef __COMPILE_2206
+      else if (__choose8 == 390)
       {
       //AddStmtKind
       env = ((void *)0);
       }
       #endif
-      #ifdef __COMPILE_1870
-      else if (__choose5 == 391)
+      #ifdef __COMPILE_2207
+      else if (__choose8 == 391)
       {
       //AddStmtKind
       env = add_envopt(&argc, &argv, "GZIP");
       }
       #endif
-      #ifdef __COMPILE_1871
-      else if (__choose5 == 392)
+      #ifdef __COMPILE_2208
+      else if (__choose8 == 392)
       {
       //AddStmtKind
       exit_code = 1;
       }
       #endif
-      #ifdef __COMPILE_1872
-      else if (__choose5 == 393)
+      #ifdef __COMPILE_2209
+      else if (__choose8 == 393)
       {
       //AddStmtKind
       exit_code = 2;
       }
       #endif
-      #ifdef __COMPILE_1873
-      else if (__choose5 == 394)
+      #ifdef __COMPILE_2210
+      else if (__choose8 == 394)
       {
       //AddStmtKind
       exiting_signal = quiet ? 13 : 0;
       }
       #endif
-      #ifdef __COMPILE_1874
-      else if (__choose5 == 395)
+      #ifdef __COMPILE_2211
+      else if (__choose8 == 395)
       {
       //AddStmtKind
       foreground = 1;
       }
       #endif
-      #ifdef __COMPILE_1875
-      else if (__choose5 == 396)
+      #ifdef __COMPILE_2212
+      else if (__choose8 == 396)
       {
       //AddStmtKind
       free(args);
       }
       #endif
-      #ifdef __COMPILE_1876
-      else if (__choose5 == 397)
+      #ifdef __COMPILE_2213
+      else if (__choose8 == 397)
       {
       //AddStmtKind
       free(env);
       }
       #endif
-      #ifdef __COMPILE_1877
-      else if (__choose5 == 398)
+      #ifdef __COMPILE_2214
+      else if (__choose8 == 398)
       {
       //AddStmtKind
       gzip_error("can't recover suffix\n");
       }
       #endif
-      #ifdef __COMPILE_1878
-      else if (__choose5 == 399)
+      #ifdef __COMPILE_2215
+      else if (__choose8 == 399)
       {
       //AddStmtKind
       gzip_error("corrupted input -- file name too large");
       }
       #endif
-      #ifdef __COMPILE_1879
-      else if (__choose5 == 400)
+      #ifdef __COMPILE_2216
+      else if (__choose8 == 400)
       {
       //AddStmtKind
       gzip_error("internal error in shorten_name");
       }
       #endif
-      #ifdef __COMPILE_1880
-      else if (__choose5 == 401)
+      #ifdef __COMPILE_2217
+      else if (__choose8 == 401)
       {
       //AddStmtKind
       gzip_error("name too short");
       }
       #endif
-      #ifdef __COMPILE_1881
-      else if (__choose5 == 402)
+      #ifdef __COMPILE_2218
+      else if (__choose8 == 402)
       {
       //AddStmtKind
       header_bytes = 0;
       }
       #endif
-      #ifdef __COMPILE_1882
-      else if (__choose5 == 403)
+      #ifdef __COMPILE_2219
+      else if (__choose8 == 403)
       {
       //AddStmtKind
       header_bytes = inptr + 2 * sizeof(long);
       }
       #endif
-      #ifdef __COMPILE_1883
-      else if (__choose5 == 404)
+      #ifdef __COMPILE_2220
+      else if (__choose8 == 404)
       {
       //AddStmtKind
       ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
       }
       #endif
-      #ifdef __COMPILE_1884
-      else if (__choose5 == 405)
+      #ifdef __COMPILE_2221
+      else if (__choose8 == 405)
       {
       //AddStmtKind
       inptr = 0;
       }
       #endif
-      #ifdef __COMPILE_1885
-      else if (__choose5 == 406)
+      #ifdef __COMPILE_2222
+      else if (__choose8 == 406)
       {
       //AddStmtKind
       inptr--;
       }
       #endif
-      #ifdef __COMPILE_1886
-      else if (__choose5 == 407)
+      #ifdef __COMPILE_2223
+      else if (__choose8 == 407)
       {
       //AddStmtKind
       install_signal_handlers();
       }
       #endif
-      #ifdef __COMPILE_1887
-      else if (__choose5 == 408)
+      #ifdef __COMPILE_2224
+      else if (__choose8 == 408)
       {
       //AddStmtKind
       last_member = 0;
       }
       #endif
-      #ifdef __COMPILE_1888
-      else if (__choose5 == 409)
+      #ifdef __COMPILE_2225
+      else if (__choose8 == 409)
       {
       //AddStmtKind
       last_member = 1;
       }
       #endif
-      #ifdef __COMPILE_1889
-      else if (__choose5 == 410)
+      #ifdef __COMPILE_2226
+      else if (__choose8 == 410)
       {
       //AddStmtKind
       license();
       }
       #endif
-      #ifdef __COMPILE_1890
-      else if (__choose5 == 411)
+      #ifdef __COMPILE_2227
+      else if (__choose8 == 411)
       {
       //AddStmtKind
       list = 0;
       }
       #endif
-      #ifdef __COMPILE_1891
-      else if (__choose5 == 412)
+      #ifdef __COMPILE_2228
+      else if (__choose8 == 412)
       {
       //AddStmtKind
       method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
       }
       #endif
-      #ifdef __COMPILE_1892
-      else if (__choose5 == 413)
+      #ifdef __COMPILE_2229
+      else if (__choose8 == 413)
       {
       //AddStmtKind
       method = -1;
       }
       #endif
-      #ifdef __COMPILE_1893
-      else if (__choose5 == 414)
+      #ifdef __COMPILE_2230
+      else if (__choose8 == 414)
       {
       //AddStmtKind
       method = 0;
       }
       #endif
-      #ifdef __COMPILE_1894
-      else if (__choose5 == 415)
+      #ifdef __COMPILE_2231
+      else if (__choose8 == 415)
       {
       //AddStmtKind
       method = 1;
       }
       #endif
-      #ifdef __COMPILE_1895
-      else if (__choose5 == 416)
+      #ifdef __COMPILE_2232
+      else if (__choose8 == 416)
       {
       //AddStmtKind
       method = 2;
       }
       #endif
-      #ifdef __COMPILE_1896
-      else if (__choose5 == 417)
+      #ifdef __COMPILE_2233
+      else if (__choose8 == 417)
       {
       //AddStmtKind
       method = 3;
       }
       #endif
-      #ifdef __COMPILE_1897
-      else if (__choose5 == 418)
+      #ifdef __COMPILE_2234
+      else if (__choose8 == 418)
       {
       //AddStmtKind
       method = get_method(ifd);
       }
       #endif
-      #ifdef __COMPILE_1898
-      else if (__choose5 == 419)
+      #ifdef __COMPILE_2235
+      else if (__choose8 == 419)
       {
       //AddStmtKind
       name_shortened = 1;
       }
       #endif
-      #ifdef __COMPILE_1899
-      else if (__choose5 == 420)
+      #ifdef __COMPILE_2236
+      else if (__choose8 == 420)
       {
       //AddStmtKind
       no_name = decompress;
       }
       #endif
-      #ifdef __COMPILE_1900
-      else if (__choose5 == 421)
+      #ifdef __COMPILE_2237
+      else if (__choose8 == 421)
       {
       //AddStmtKind
       no_time = decompress;
       }
       #endif
-      #ifdef __COMPILE_1901
-      else if (__choose5 == 422)
+      #ifdef __COMPILE_2238
+      else if (__choose8 == 422)
       {
       //AddStmtKind
       ofd = open_safer(ofname, flags, (256 | 128));
       }
       #endif
-      #ifdef __COMPILE_1902
-      else if (__choose5 == 423)
+      #ifdef __COMPILE_2239
+      else if (__choose8 == 423)
       {
       //AddStmtKind
       open_errno = (*__errno_location());
       }
       #endif
-      #ifdef __COMPILE_1903
-      else if (__choose5 == 424)
+      #ifdef __COMPILE_2240
+      else if (__choose8 == 424)
       {
       //AddStmtKind
       part_nb = 0;
       }
       #endif
-      #ifdef __COMPILE_1904
-      else if (__choose5 == 425)
+      #ifdef __COMPILE_2241
+      else if (__choose8 == 425)
       {
       //AddStmtKind
       part_nb++;
       }
       #endif
-      #ifdef __COMPILE_1905
-      else if (__choose5 == 426)
+      #ifdef __COMPILE_2242
+      else if (__choose8 == 426)
       {
       //AddStmtKind
       perror(ifname);
       }
       #endif
-      #ifdef __COMPILE_1906
-      else if (__choose5 == 427)
+      #ifdef __COMPILE_2243
+      else if (__choose8 == 427)
       {
       //AddStmtKind
       perror(ofname);
       }
       #endif
-      #ifdef __COMPILE_1907
-      else if (__choose5 == 428)
+      #ifdef __COMPILE_2244
+      else if (__choose8 == 428)
       {
       //AddStmtKind
       progerror("standard input");
       }
       #endif
-      #ifdef __COMPILE_1908
-      else if (__choose5 == 429)
+      #ifdef __COMPILE_2245
+      else if (__choose8 == 429)
       {
       //AddStmtKind
       progerror(ifname);
       }
       #endif
-      #ifdef __COMPILE_1909
-      else if (__choose5 == 430)
+      #ifdef __COMPILE_2246
+      else if (__choose8 == 430)
       {
       //AddStmtKind
       progerror(ofname);
       }
       #endif
-      #ifdef __COMPILE_1910
-      else if (__choose5 == 431)
+      #ifdef __COMPILE_2247
+      else if (__choose8 == 431)
       {
       //AddStmtKind
       quiet = 0;
       }
       #endif
-      #ifdef __COMPILE_1911
-      else if (__choose5 == 432)
+      #ifdef __COMPILE_2248
+      else if (__choose8 == 432)
       {
       //AddStmtKind
       read_error();
       }
       #endif
-      #ifdef __COMPILE_1912
-      else if (__choose5 == 433)
+      #ifdef __COMPILE_2249
+      else if (__choose8 == 433)
       {
       //AddStmtKind
       remove_ofname_fd = -1;
       }
       #endif
-      #ifdef __COMPILE_1913
-      else if (__choose5 == 434)
+      #ifdef __COMPILE_2250
+      else if (__choose8 == 434)
       {
       //AddStmtKind
       remove_ofname_fd = open_safer(ofname, flags, (256 | 128));
       }
       #endif
-      #ifdef __COMPILE_1914
-      else if (__choose5 == 435)
+      #ifdef __COMPILE_2251
+      else if (__choose8 == 435)
       {
       //AddStmtKind
       remove_output_file();
       }
       #endif
-      #ifdef __COMPILE_1915
-      else if (__choose5 == 436)
+      #ifdef __COMPILE_2252
+      else if (__choose8 == 436)
       {
       //AddStmtKind
       save_orig_name = !no_name;
       }
       #endif
-      #ifdef __COMPILE_1916
-      else if (__choose5 == 437)
+      #ifdef __COMPILE_2253
+      else if (__choose8 == 437)
       {
       //AddStmtKind
       save_orig_name = 0;
       }
       #endif
-      #ifdef __COMPILE_1917
-      else if (__choose5 == 438)
+      #ifdef __COMPILE_2254
+      else if (__choose8 == 438)
       {
       //AddStmtKind
       save_orig_name = 1;
       }
       #endif
-      #ifdef __COMPILE_1918
-      else if (__choose5 == 439)
+      #ifdef __COMPILE_2255
+      else if (__choose8 == 439)
       {
       //AddStmtKind
       sigemptyset(&caught_signals);
       }
       #endif
-      #ifdef __COMPILE_1919
-      else if (__choose5 == 440)
+      #ifdef __COMPILE_2256
+      else if (__choose8 == 440)
       {
       //AddStmtKind
       sigprocmask(0, &caught_signals, &oldset);
       }
       #endif
-      #ifdef __COMPILE_1920
-      else if (__choose5 == 441)
+      #ifdef __COMPILE_2257
+      else if (__choose8 == 441)
       {
       //AddStmtKind
       sigprocmask(2, &oldset, ((void *)0));
       }
       #endif
-      #ifdef __COMPILE_1921
-      else if (__choose5 == 442)
+      #ifdef __COMPILE_2258
+      else if (__choose8 == 442)
       {
       //AddStmtKind
       strcat(ifname, z_suffix);
       }
       #endif
-      #ifdef __COMPILE_1922
-      else if (__choose5 == 443)
+      #ifdef __COMPILE_2259
+      else if (__choose8 == 443)
       {
       //AddStmtKind
       strcat(ofname, z_suffix);
       }
       #endif
-      #ifdef __COMPILE_1923
-      else if (__choose5 == 444)
+      #ifdef __COMPILE_2260
+      else if (__choose8 == 444)
       {
       //AddStmtKind
       strcpy(ifname, "stdin");
       }
       #endif
-      #ifdef __COMPILE_1924
-      else if (__choose5 == 445)
+      #ifdef __COMPILE_2261
+      else if (__choose8 == 445)
       {
       //AddStmtKind
       strcpy(ofname, "stdout");
       }
       #endif
-      #ifdef __COMPILE_1925
-      else if (__choose5 == 446)
+      #ifdef __COMPILE_2262
+      else if (__choose8 == 446)
       {
       //AddStmtKind
       strcpy(ofname, ifname);
       }
       #endif
-      #ifdef __COMPILE_1926
-      else if (__choose5 == 447)
+      #ifdef __COMPILE_2263
+      else if (__choose8 == 447)
       {
       //AddStmtKind
       time_stamp = get_stat_mtime(&istat);
       }
       #endif
-      #ifdef __COMPILE_1927
-      else if (__choose5 == 448)
+      #ifdef __COMPILE_2264
+      else if (__choose8 == 448)
       {
       //AddStmtKind
       time_stamp.tv_nsec = -1;
       }
       #endif
-      #ifdef __COMPILE_1928
-      else if (__choose5 == 449)
+      #ifdef __COMPILE_2265
+      else if (__choose8 == 449)
       {
       //AddStmtKind
       time_stamp.tv_nsec = 0;
       }
       #endif
-      #ifdef __COMPILE_1929
-      else if (__choose5 == 450)
+      #ifdef __COMPILE_2266
+      else if (__choose8 == 450)
       {
       //AddStmtKind
       to_stdout = 1;
       }
       #endif
-      #ifdef __COMPILE_1930
-      else if (__choose5 == 451)
+      #ifdef __COMPILE_2267
+      else if (__choose8 == 451)
       {
       //AddStmtKind
       total_in = -1L;
       }
       #endif
-      #ifdef __COMPILE_1931
-      else if (__choose5 == 452)
+      #ifdef __COMPILE_2268
+      else if (__choose8 == 452)
       {
       //AddStmtKind
       total_out = -1L;
       }
       #endif
-      #ifdef __COMPILE_1932
-      else if (__choose5 == 453)
+      #ifdef __COMPILE_2269
+      else if (__choose8 == 453)
       {
       //AddStmtKind
       treat_stdin();
       }
       #endif
-      #ifdef __COMPILE_1933
-      else if (__choose5 == 454)
+      #ifdef __COMPILE_2270
+      else if (__choose8 == 454)
       {
       //AddStmtKind
       try_help();
       }
       #endif
-      #ifdef __COMPILE_1934
-      else if (__choose5 == 455)
+      #ifdef __COMPILE_2271
+      else if (__choose8 == 455)
       {
       //AddStmtKind
       verbose = 0;
       }
       #endif
-      #ifdef __COMPILE_1935
-      else if (__choose5 == 456)
+      #ifdef __COMPILE_2272
+      else if (__choose8 == 456)
       {
       //AddStmtKind
       work = copy;
       }
       #endif
-      #ifdef __COMPILE_1936
-      else if (__choose5 == 457)
+      #ifdef __COMPILE_2273
+      else if (__choose8 == 457)
       {
       //AddStmtKind
       work = lzw;
       }
       #endif
-      #ifdef __COMPILE_1937
-      else if (__choose5 == 458)
+      #ifdef __COMPILE_2274
+      else if (__choose8 == 458)
       {
       //AddStmtKind
       work = unlzh;
       }
       #endif
-      #ifdef __COMPILE_1938
-      else if (__choose5 == 459)
+      #ifdef __COMPILE_2275
+      else if (__choose8 == 459)
       {
       //AddStmtKind
       work = unlzw;
       }
       #endif
-      #ifdef __COMPILE_1939
-      else if (__choose5 == 460)
+      #ifdef __COMPILE_2276
+      else if (__choose8 == 460)
       {
       //AddStmtKind
       work = unpack;
       }
       #endif
-      #ifdef __COMPILE_1940
-      else if (__choose5 == 461)
+      #ifdef __COMPILE_2277
+      else if (__choose8 == 461)
       {
       //AddStmtKind
       work = unzip;
       }
       #endif
-      #ifdef __COMPILE_1941
-      else if (__choose5 == 462)
+      #ifdef __COMPILE_2278
+      else if (__choose8 == 462)
       {
       //AddStmtKind
       write_error();
       }
       #endif
-      #ifdef __COMPILE_1942
-      else if (__choose5 == 463)
+      #ifdef __COMPILE_2279
+      else if (__choose8 == 463)
       {
       //AddStmtKind
       xunlink(ofname);
       }
       #endif
-      #ifdef __COMPILE_1943
-      else if (__choose5 == 464)
+      #ifdef __COMPILE_2280
+      else if (__choose8 == 464)
       {
       //AddStmtKind
       z_len = strlen(z_suffix);
       }
       #endif
-      #ifdef __COMPILE_1944
-      else if (__choose5 == 465)
+      #ifdef __COMPILE_2281
+      else if (__choose8 == 465)
       {
       //AddStmtKind
       z_suffix = ".gz";
       }
       #endif
-      #ifdef __COMPILE_1945
-      else if (__choose5 == 466)
+      #ifdef __COMPILE_2282
+      else if (__choose8 == 466)
       {
       //IfExitKind
-      if (__is_neg("5-466", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-466", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -18967,11 +21763,11 @@ local int create_outfile()
           break;
       }
       #endif
-      #ifdef __COMPILE_1946
-      else if (__choose5 == 467)
+      #ifdef __COMPILE_2283
+      else if (__choose8 == 467)
       {
       //IfExitKind
-      if (__is_neg("5-467", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-467", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -18980,11 +21776,11 @@ local int create_outfile()
           return 0;
       }
       #endif
-      #ifdef __COMPILE_1947
-      else if (__choose5 == 468)
+      #ifdef __COMPILE_2284
+      else if (__choose8 == 468)
       {
       //IfExitKind
-      if (__is_neg("5-468", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-468", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -18993,11 +21789,11 @@ local int create_outfile()
           return 128;
       }
       #endif
-      #ifdef __COMPILE_1948
-      else if (__choose5 == 469)
+      #ifdef __COMPILE_2285
+      else if (__choose8 == 469)
       {
       //IfExitKind
-      if (__is_neg("5-469", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-469", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -19006,11 +21802,11 @@ local int create_outfile()
           return 17;
       }
       #endif
-      #ifdef __COMPILE_1949
-      else if (__choose5 == 470)
+      #ifdef __COMPILE_2286
+      else if (__choose8 == 470)
       {
       //IfExitKind
-      if (__is_neg("5-470", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-470", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -19019,11 +21815,11 @@ local int create_outfile()
           return 193;
       }
       #endif
-      #ifdef __COMPILE_1950
-      else if (__choose5 == 471)
+      #ifdef __COMPILE_2287
+      else if (__choose8 == 471)
       {
       //IfExitKind
-      if (__is_neg("5-471", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-471", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -19032,11 +21828,11 @@ local int create_outfile()
           return 1;
       }
       #endif
-      #ifdef __COMPILE_1951
-      else if (__choose5 == 472)
+      #ifdef __COMPILE_2288
+      else if (__choose8 == 472)
       {
       //IfExitKind
-      if (__is_neg("5-472", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-472", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -19045,11 +21841,11 @@ local int create_outfile()
           return 256;
       }
       #endif
-      #ifdef __COMPILE_1952
-      else if (__choose5 == 473)
+      #ifdef __COMPILE_2289
+      else if (__choose8 == 473)
       {
       //IfExitKind
-      if (__is_neg("5-473", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-473", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -19058,11 +21854,11 @@ local int create_outfile()
           return 2;
       }
       #endif
-      #ifdef __COMPILE_1953
-      else if (__choose5 == 474)
+      #ifdef __COMPILE_2290
+      else if (__choose8 == 474)
       {
       //IfExitKind
-      if (__is_neg("5-474", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-474", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -19071,11 +21867,11 @@ local int create_outfile()
           return 36;
       }
       #endif
-      #ifdef __COMPILE_1954
-      else if (__choose5 == 475)
+      #ifdef __COMPILE_2291
+      else if (__choose8 == 475)
       {
       //IfExitKind
-      if (__is_neg("5-475", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-475", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -19084,11 +21880,11 @@ local int create_outfile()
           return 384;
       }
       #endif
-      #ifdef __COMPILE_1955
-      else if (__choose5 == 476)
+      #ifdef __COMPILE_2292
+      else if (__choose8 == 476)
       {
       //IfExitKind
-      if (__is_neg("5-476", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-476", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -19097,11 +21893,11 @@ local int create_outfile()
           return 64;
       }
       #endif
-      #ifdef __COMPILE_1956
-      else if (__choose5 == 477)
+      #ifdef __COMPILE_2293
+      else if (__choose8 == 477)
       {
       //IfExitKind
-      if (__is_neg("5-477", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
+      if (__is_neg("8-477", "L944", 16, &(ifd), sizeof (ifd), &(ifd),
       			 sizeof (ifd), &(name_shortened), sizeof (name_shortened), &(decompress), sizeof (decompress), &(program_name),
       			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet),
       			 sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(open_errno),
@@ -19120,11 +21916,11 @@ local int create_outfile()
               }
       
       }
-      #ifdef __COMPILE_1957
-      else if (__choose6 == 1)
+      #ifdef __COMPILE_2294
+      else if (__choose9 == 1)
       {
       //GuardKind
-      if (!__is_neg("6-1", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd), sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags), sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd), sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet), sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code)))
+      if (!__is_neg("9-1", "L929", 16, &(open_errno), sizeof (open_errno), &(ofd), sizeof (ofd), &(ofd), sizeof (ofd), &(name_shortened), sizeof (name_shortened), &(flags), sizeof (flags), &(remove_ofname_fd), sizeof (remove_ofname_fd), &(ifd), sizeof (ifd), &(ifd), sizeof (ifd), &(ascii), sizeof (ascii), &(decompress), sizeof (decompress), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(quiet), sizeof (quiet), &(quiet), sizeof (quiet), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code)))
           switch (open_errno) {
             case 36:
               shorten_name(ofname);
@@ -19831,2720 +22627,2720 @@ local int check_ofname()
     /* Ask permission to overwrite the existing file */
     //prophet generated patch
     {
-    int __choose7 = __choose("__SWITCH7");
-    if (__choose7 == 0)
+    int __choose10 = __choose("__SWITCH10");
+    if (__choose10 == 0)
     {}
-    #ifdef __COMPILE_1958
-    else if (__choose7 == 1)
+    #ifdef __COMPILE_2295
+    else if (__choose10 == 1)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (0);
     }
     #endif
-    #ifdef __COMPILE_1959
-    else if (__choose7 == 2)
+    #ifdef __COMPILE_2296
+    else if (__choose10 == 2)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (1);
     }
     #endif
-    #ifdef __COMPILE_1960
-    else if (__choose7 == 3)
+    #ifdef __COMPILE_2297
+    else if (__choose10 == 3)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (2);
     }
     #endif
-    #ifdef __COMPILE_1961
-    else if (__choose7 == 4)
+    #ifdef __COMPILE_2298
+    else if (__choose10 == 4)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (0);
     }
     #endif
-    #ifdef __COMPILE_1962
-    else if (__choose7 == 5)
+    #ifdef __COMPILE_2299
+    else if (__choose10 == 5)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (1);
     }
     #endif
-    #ifdef __COMPILE_1963
-    else if (__choose7 == 6)
+    #ifdef __COMPILE_2300
+    else if (__choose10 == 6)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (2);
     }
     #endif
-    #ifdef __COMPILE_1964
-    else if (__choose7 == 7)
+    #ifdef __COMPILE_2301
+    else if (__choose10 == 7)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (0);
     }
     #endif
-    #ifdef __COMPILE_1965
-    else if (__choose7 == 8)
+    #ifdef __COMPILE_2302
+    else if (__choose10 == 8)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (1);
     }
     #endif
-    #ifdef __COMPILE_1966
-    else if (__choose7 == 9)
+    #ifdef __COMPILE_2303
+    else if (__choose10 == 9)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (2);
     }
     #endif
-    #ifdef __COMPILE_1967
-    else if (__choose7 == 10)
+    #ifdef __COMPILE_2304
+    else if (__choose10 == 10)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (0);
     }
     #endif
-    #ifdef __COMPILE_1968
-    else if (__choose7 == 11)
+    #ifdef __COMPILE_2305
+    else if (__choose10 == 11)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (1);
     }
     #endif
-    #ifdef __COMPILE_1969
-    else if (__choose7 == 12)
+    #ifdef __COMPILE_2306
+    else if (__choose10 == 12)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (2);
     }
     #endif
-    #ifdef __COMPILE_1970
-    else if (__choose7 == 13)
+    #ifdef __COMPILE_2307
+    else if (__choose10 == 13)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (0);
     }
     #endif
-    #ifdef __COMPILE_1971
-    else if (__choose7 == 14)
+    #ifdef __COMPILE_2308
+    else if (__choose10 == 14)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (1);
     }
     #endif
-    #ifdef __COMPILE_1972
-    else if (__choose7 == 15)
+    #ifdef __COMPILE_2309
+    else if (__choose10 == 15)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (2);
     }
     #endif
-    #ifdef __COMPILE_1973
-    else if (__choose7 == 16)
+    #ifdef __COMPILE_2310
+    else if (__choose10 == 16)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (0);
     }
     #endif
-    #ifdef __COMPILE_1974
-    else if (__choose7 == 17)
+    #ifdef __COMPILE_2311
+    else if (__choose10 == 17)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (1);
     }
     #endif
-    #ifdef __COMPILE_1975
-    else if (__choose7 == 18)
+    #ifdef __COMPILE_2312
+    else if (__choose10 == 18)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (2);
     }
     #endif
-    #ifdef __COMPILE_1976
-    else if (__choose7 == 19)
+    #ifdef __COMPILE_2313
+    else if (__choose10 == 19)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (0);
     }
     #endif
-    #ifdef __COMPILE_1977
-    else if (__choose7 == 20)
+    #ifdef __COMPILE_2314
+    else if (__choose10 == 20)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (1);
     }
     #endif
-    #ifdef __COMPILE_1978
-    else if (__choose7 == 21)
+    #ifdef __COMPILE_2315
+    else if (__choose10 == 21)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (2);
     }
     #endif
-    #ifdef __COMPILE_1979
-    else if (__choose7 == 22)
+    #ifdef __COMPILE_2316
+    else if (__choose10 == 22)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (0);
     }
     #endif
-    #ifdef __COMPILE_1980
-    else if (__choose7 == 23)
+    #ifdef __COMPILE_2317
+    else if (__choose10 == 23)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (1);
     }
     #endif
-    #ifdef __COMPILE_1981
-    else if (__choose7 == 24)
+    #ifdef __COMPILE_2318
+    else if (__choose10 == 24)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (2);
     }
     #endif
-    #ifdef __COMPILE_1982
-    else if (__choose7 == 25)
+    #ifdef __COMPILE_2319
+    else if (__choose10 == 25)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (0);
     }
     #endif
-    #ifdef __COMPILE_1983
-    else if (__choose7 == 26)
+    #ifdef __COMPILE_2320
+    else if (__choose10 == 26)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (1);
     }
     #endif
-    #ifdef __COMPILE_1984
-    else if (__choose7 == 27)
+    #ifdef __COMPILE_2321
+    else if (__choose10 == 27)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (2);
     }
     #endif
-    #ifdef __COMPILE_1985
-    else if (__choose7 == 28)
+    #ifdef __COMPILE_2322
+    else if (__choose10 == 28)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (0);
     }
     #endif
-    #ifdef __COMPILE_1986
-    else if (__choose7 == 29)
+    #ifdef __COMPILE_2323
+    else if (__choose10 == 29)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (1);
     }
     #endif
-    #ifdef __COMPILE_1987
-    else if (__choose7 == 30)
+    #ifdef __COMPILE_2324
+    else if (__choose10 == 30)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (2);
     }
     #endif
-    #ifdef __COMPILE_1988
-    else if (__choose7 == 31)
+    #ifdef __COMPILE_2325
+    else if (__choose10 == 31)
     {
     //AddStmtAndReplaceAtomKind
     list = (0);
     }
     #endif
-    #ifdef __COMPILE_1989
-    else if (__choose7 == 32)
+    #ifdef __COMPILE_2326
+    else if (__choose10 == 32)
     {
     //AddStmtAndReplaceAtomKind
     list = (1);
     }
     #endif
-    #ifdef __COMPILE_1990
-    else if (__choose7 == 33)
+    #ifdef __COMPILE_2327
+    else if (__choose10 == 33)
     {
     //AddStmtAndReplaceAtomKind
     list = (2);
     }
     #endif
-    #ifdef __COMPILE_1991
-    else if (__choose7 == 34)
+    #ifdef __COMPILE_2328
+    else if (__choose10 == 34)
     {
     //AddStmtAndReplaceAtomKind
     method = (0);
     }
     #endif
-    #ifdef __COMPILE_1992
-    else if (__choose7 == 35)
+    #ifdef __COMPILE_2329
+    else if (__choose10 == 35)
     {
     //AddStmtAndReplaceAtomKind
     method = (1);
     }
     #endif
-    #ifdef __COMPILE_1993
-    else if (__choose7 == 36)
+    #ifdef __COMPILE_2330
+    else if (__choose10 == 36)
     {
     //AddStmtAndReplaceAtomKind
     method = (2);
     }
     #endif
-    #ifdef __COMPILE_1994
-    else if (__choose7 == 37)
+    #ifdef __COMPILE_2331
+    else if (__choose10 == 37)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (0);
     }
     #endif
-    #ifdef __COMPILE_1995
-    else if (__choose7 == 38)
+    #ifdef __COMPILE_2332
+    else if (__choose10 == 38)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (1);
     }
     #endif
-    #ifdef __COMPILE_1996
-    else if (__choose7 == 39)
+    #ifdef __COMPILE_2333
+    else if (__choose10 == 39)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (2);
     }
     #endif
-    #ifdef __COMPILE_1997
-    else if (__choose7 == 40)
+    #ifdef __COMPILE_2334
+    else if (__choose10 == 40)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (0);
     }
     #endif
-    #ifdef __COMPILE_1998
-    else if (__choose7 == 41)
+    #ifdef __COMPILE_2335
+    else if (__choose10 == 41)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (1);
     }
     #endif
-    #ifdef __COMPILE_1999
-    else if (__choose7 == 42)
+    #ifdef __COMPILE_2336
+    else if (__choose10 == 42)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (2);
     }
     #endif
-    #ifdef __COMPILE_2000
-    else if (__choose7 == 43)
+    #ifdef __COMPILE_2337
+    else if (__choose10 == 43)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (0);
     }
     #endif
-    #ifdef __COMPILE_2001
-    else if (__choose7 == 44)
+    #ifdef __COMPILE_2338
+    else if (__choose10 == 44)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (1);
     }
     #endif
-    #ifdef __COMPILE_2002
-    else if (__choose7 == 45)
+    #ifdef __COMPILE_2339
+    else if (__choose10 == 45)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (2);
     }
     #endif
-    #ifdef __COMPILE_2003
-    else if (__choose7 == 46)
+    #ifdef __COMPILE_2340
+    else if (__choose10 == 46)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (0);
     }
     #endif
-    #ifdef __COMPILE_2004
-    else if (__choose7 == 47)
+    #ifdef __COMPILE_2341
+    else if (__choose10 == 47)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (1);
     }
     #endif
-    #ifdef __COMPILE_2005
-    else if (__choose7 == 48)
+    #ifdef __COMPILE_2342
+    else if (__choose10 == 48)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (2);
     }
     #endif
-    #ifdef __COMPILE_2006
-    else if (__choose7 == 49)
+    #ifdef __COMPILE_2343
+    else if (__choose10 == 49)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (0);
     }
     #endif
-    #ifdef __COMPILE_2007
-    else if (__choose7 == 50)
+    #ifdef __COMPILE_2344
+    else if (__choose10 == 50)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (1);
     }
     #endif
-    #ifdef __COMPILE_2008
-    else if (__choose7 == 51)
+    #ifdef __COMPILE_2345
+    else if (__choose10 == 51)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (2);
     }
     #endif
-    #ifdef __COMPILE_2009
-    else if (__choose7 == 52)
+    #ifdef __COMPILE_2346
+    else if (__choose10 == 52)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (0);
     }
     #endif
-    #ifdef __COMPILE_2010
-    else if (__choose7 == 53)
+    #ifdef __COMPILE_2347
+    else if (__choose10 == 53)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (1);
     }
     #endif
-    #ifdef __COMPILE_2011
-    else if (__choose7 == 54)
+    #ifdef __COMPILE_2348
+    else if (__choose10 == 54)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (2);
     }
     #endif
-    #ifdef __COMPILE_2012
-    else if (__choose7 == 55)
+    #ifdef __COMPILE_2349
+    else if (__choose10 == 55)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (0);
     }
     #endif
-    #ifdef __COMPILE_2013
-    else if (__choose7 == 56)
+    #ifdef __COMPILE_2350
+    else if (__choose10 == 56)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (1);
     }
     #endif
-    #ifdef __COMPILE_2014
-    else if (__choose7 == 57)
+    #ifdef __COMPILE_2351
+    else if (__choose10 == 57)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (2);
     }
     #endif
-    #ifdef __COMPILE_2015
-    else if (__choose7 == 58)
+    #ifdef __COMPILE_2352
+    else if (__choose10 == 58)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (0);
     }
     #endif
-    #ifdef __COMPILE_2016
-    else if (__choose7 == 59)
+    #ifdef __COMPILE_2353
+    else if (__choose10 == 59)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (1);
     }
     #endif
-    #ifdef __COMPILE_2017
-    else if (__choose7 == 60)
+    #ifdef __COMPILE_2354
+    else if (__choose10 == 60)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (2);
     }
     #endif
-    #ifdef __COMPILE_2018
-    else if (__choose7 == 61)
+    #ifdef __COMPILE_2355
+    else if (__choose10 == 61)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (0);
     }
     #endif
-    #ifdef __COMPILE_2019
-    else if (__choose7 == 62)
+    #ifdef __COMPILE_2356
+    else if (__choose10 == 62)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (1);
     }
     #endif
-    #ifdef __COMPILE_2020
-    else if (__choose7 == 63)
+    #ifdef __COMPILE_2357
+    else if (__choose10 == 63)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (2);
     }
     #endif
-    #ifdef __COMPILE_2021
-    else if (__choose7 == 64)
+    #ifdef __COMPILE_2358
+    else if (__choose10 == 64)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (0);
     }
     #endif
-    #ifdef __COMPILE_2022
-    else if (__choose7 == 65)
+    #ifdef __COMPILE_2359
+    else if (__choose10 == 65)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (1);
     }
     #endif
-    #ifdef __COMPILE_2023
-    else if (__choose7 == 66)
+    #ifdef __COMPILE_2360
+    else if (__choose10 == 66)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (2);
     }
     #endif
-    #ifdef __COMPILE_2024
-    else if (__choose7 == 67)
+    #ifdef __COMPILE_2361
+    else if (__choose10 == 67)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (0);
     }
     #endif
-    #ifdef __COMPILE_2025
-    else if (__choose7 == 68)
+    #ifdef __COMPILE_2362
+    else if (__choose10 == 68)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (1);
     }
     #endif
-    #ifdef __COMPILE_2026
-    else if (__choose7 == 69)
+    #ifdef __COMPILE_2363
+    else if (__choose10 == 69)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (2);
     }
     #endif
-    #ifdef __COMPILE_2027
-    else if (__choose7 == 70)
+    #ifdef __COMPILE_2364
+    else if (__choose10 == 70)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (0);
     }
     #endif
-    #ifdef __COMPILE_2028
-    else if (__choose7 == 71)
+    #ifdef __COMPILE_2365
+    else if (__choose10 == 71)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (1);
     }
     #endif
-    #ifdef __COMPILE_2029
-    else if (__choose7 == 72)
+    #ifdef __COMPILE_2366
+    else if (__choose10 == 72)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (2);
     }
     #endif
-    #ifdef __COMPILE_2030
-    else if (__choose7 == 73)
+    #ifdef __COMPILE_2367
+    else if (__choose10 == 73)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (0);
     }
     #endif
-    #ifdef __COMPILE_2031
-    else if (__choose7 == 74)
+    #ifdef __COMPILE_2368
+    else if (__choose10 == 74)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (1);
     }
     #endif
-    #ifdef __COMPILE_2032
-    else if (__choose7 == 75)
+    #ifdef __COMPILE_2369
+    else if (__choose10 == 75)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (2);
     }
     #endif
-    #ifdef __COMPILE_2033
-    else if (__choose7 == 76)
+    #ifdef __COMPILE_2370
+    else if (__choose10 == 76)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (0);
     }
     #endif
-    #ifdef __COMPILE_2034
-    else if (__choose7 == 77)
+    #ifdef __COMPILE_2371
+    else if (__choose10 == 77)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (1);
     }
     #endif
-    #ifdef __COMPILE_2035
-    else if (__choose7 == 78)
+    #ifdef __COMPILE_2372
+    else if (__choose10 == 78)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (2);
     }
     #endif
-    #ifdef __COMPILE_2036
-    else if (__choose7 == 79)
+    #ifdef __COMPILE_2373
+    else if (__choose10 == 79)
     {
     //AddStmtKind
     (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_2037
-    else if (__choose7 == 80)
+    #ifdef __COMPILE_2374
+    else if (__choose10 == 80)
     {
     //AddStmtKind
     __printf__("                            ");
     }
     #endif
-    #ifdef __COMPILE_2038
-    else if (__choose7 == 81)
+    #ifdef __COMPILE_2375
+    else if (__choose10 == 81)
     {
     //AddStmtKind
     __printf__(" ");
     }
     #endif
-    #ifdef __COMPILE_2039
-    else if (__choose7 == 82)
+    #ifdef __COMPILE_2376
+    else if (__choose10 == 82)
     {
     //AddStmtKind
     __printf__(" %s\n", ofname);
     }
     #endif
-    #ifdef __COMPILE_2040
-    else if (__choose7 == 83)
+    #ifdef __COMPILE_2377
+    else if (__choose10 == 83)
     {
     //AddStmtKind
     __printf__(" (totals)\n");
     }
     #endif
-    #ifdef __COMPILE_2041
-    else if (__choose7 == 84)
+    #ifdef __COMPILE_2378
+    else if (__choose10 == 84)
     {
     //AddStmtKind
     __printf__("%s %s\n", program_name, "1.0");
     }
     #endif
-    #ifdef __COMPILE_2042
-    else if (__choose7 == 85)
+    #ifdef __COMPILE_2379
+    else if (__choose10 == 85)
     {
     //AddStmtKind
     __printf__("??? ?? ??:?? ");
     }
     #endif
-    #ifdef __COMPILE_2043
-    else if (__choose7 == 86)
+    #ifdef __COMPILE_2380
+    else if (__choose10 == 86)
     {
     //AddStmtKind
     __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
     }
     #endif
-    #ifdef __COMPILE_2044
-    else if (__choose7 == 87)
+    #ifdef __COMPILE_2381
+    else if (__choose10 == 87)
     {
     //AddStmtKind
     __printf__("Written by Jean-loup Gailly.\n");
     }
     #endif
-    #ifdef __COMPILE_2045
-    else if (__choose7 == 88)
+    #ifdef __COMPILE_2382
+    else if (__choose10 == 88)
     {
     //AddStmtKind
     __printf__("\n");
     }
     #endif
-    #ifdef __COMPILE_2046
-    else if (__choose7 == 89)
+    #ifdef __COMPILE_2383
+    else if (__choose10 == 89)
     {
     //AddStmtKind
     __printf__("method  crc     date  time  ");
     }
     #endif
-    #ifdef __COMPILE_2047
-    else if (__choose7 == 90)
+    #ifdef __COMPILE_2384
+    else if (__choose10 == 90)
     {
     //AddStmtKind
     _exit(2);
     }
     #endif
-    #ifdef __COMPILE_2048
-    else if (__choose7 == 91)
+    #ifdef __COMPILE_2385
+    else if (__choose10 == 91)
     {
     //AddStmtKind
     args = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_2049
-    else if (__choose7 == 92)
+    #ifdef __COMPILE_2386
+    else if (__choose10 == 92)
     {
     //AddStmtKind
     atexit(close_stdin);
     }
     #endif
-    #ifdef __COMPILE_2050
-    else if (__choose7 == 93)
+    #ifdef __COMPILE_2387
+    else if (__choose10 == 93)
     {
     //AddStmtKind
     bytes_in = 0;
     }
     #endif
-    #ifdef __COMPILE_2051
-    else if (__choose7 == 94)
+    #ifdef __COMPILE_2388
+    else if (__choose10 == 94)
     {
     //AddStmtKind
     bytes_in = ifile_size;
     }
     #endif
-    #ifdef __COMPILE_2052
-    else if (__choose7 == 95)
+    #ifdef __COMPILE_2389
+    else if (__choose10 == 95)
     {
     //AddStmtKind
     bytes_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_2053
-    else if (__choose7 == 96)
+    #ifdef __COMPILE_2390
+    else if (__choose10 == 96)
     {
     //AddStmtKind
     bytes_out = 0;
     }
     #endif
-    #ifdef __COMPILE_2054
-    else if (__choose7 == 97)
+    #ifdef __COMPILE_2391
+    else if (__choose10 == 97)
     {
     //AddStmtKind
     bytes_out++;
     }
     #endif
-    #ifdef __COMPILE_2055
-    else if (__choose7 == 98)
+    #ifdef __COMPILE_2392
+    else if (__choose10 == 98)
     {
     //AddStmtKind
     clear_bufs();
     }
     #endif
-    #ifdef __COMPILE_2056
-    else if (__choose7 == 99)
+    #ifdef __COMPILE_2393
+    else if (__choose10 == 99)
     {
     //AddStmtKind
     close(ifd);
     }
     #endif
-    #ifdef __COMPILE_2057
-    else if (__choose7 == 100)
+    #ifdef __COMPILE_2394
+    else if (__choose10 == 100)
     {
     //AddStmtKind
     copy_stat(&istat);
     }
     #endif
-    #ifdef __COMPILE_2058
-    else if (__choose7 == 101)
+    #ifdef __COMPILE_2395
+    else if (__choose10 == 101)
     {
     //AddStmtKind
     do_exit(0);
     }
     #endif
-    #ifdef __COMPILE_2059
-    else if (__choose7 == 102)
+    #ifdef __COMPILE_2396
+    else if (__choose10 == 102)
     {
     //AddStmtKind
     do_exit(1);
     }
     #endif
-    #ifdef __COMPILE_2060
-    else if (__choose7 == 103)
+    #ifdef __COMPILE_2397
+    else if (__choose10 == 103)
     {
     //AddStmtKind
     do_exit(exit_code);
     }
     #endif
-    #ifdef __COMPILE_2061
-    else if (__choose7 == 104)
+    #ifdef __COMPILE_2398
+    else if (__choose10 == 104)
     {
     //AddStmtKind
     do_list(-1, -1);
     }
     #endif
-    #ifdef __COMPILE_2062
-    else if (__choose7 == 105)
+    #ifdef __COMPILE_2399
+    else if (__choose10 == 105)
     {
     //AddStmtKind
     do_list(ifd, method);
     }
     #endif
-    #ifdef __COMPILE_2063
-    else if (__choose7 == 106)
+    #ifdef __COMPILE_2400
+    else if (__choose10 == 106)
     {
     //AddStmtKind
     env = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_2064
-    else if (__choose7 == 107)
+    #ifdef __COMPILE_2401
+    else if (__choose10 == 107)
     {
     //AddStmtKind
     env = add_envopt(&argc, &argv, "GZIP");
     }
     #endif
-    #ifdef __COMPILE_2065
-    else if (__choose7 == 108)
+    #ifdef __COMPILE_2402
+    else if (__choose10 == 108)
     {
     //AddStmtKind
     exit_code = 1;
     }
     #endif
-    #ifdef __COMPILE_2066
-    else if (__choose7 == 109)
+    #ifdef __COMPILE_2403
+    else if (__choose10 == 109)
     {
     //AddStmtKind
     exit_code = 2;
     }
     #endif
-    #ifdef __COMPILE_2067
-    else if (__choose7 == 110)
+    #ifdef __COMPILE_2404
+    else if (__choose10 == 110)
     {
     //AddStmtKind
     exiting_signal = quiet ? 13 : 0;
     }
     #endif
-    #ifdef __COMPILE_2068
-    else if (__choose7 == 111)
+    #ifdef __COMPILE_2405
+    else if (__choose10 == 111)
     {
     //AddStmtKind
     foreground = 1;
     }
     #endif
-    #ifdef __COMPILE_2069
-    else if (__choose7 == 112)
+    #ifdef __COMPILE_2406
+    else if (__choose10 == 112)
     {
     //AddStmtKind
     free(args);
     }
     #endif
-    #ifdef __COMPILE_2070
-    else if (__choose7 == 113)
+    #ifdef __COMPILE_2407
+    else if (__choose10 == 113)
     {
     //AddStmtKind
     free(env);
     }
     #endif
-    #ifdef __COMPILE_2071
-    else if (__choose7 == 114)
+    #ifdef __COMPILE_2408
+    else if (__choose10 == 114)
     {
     //AddStmtKind
     gzip_error("can't recover suffix\n");
     }
     #endif
-    #ifdef __COMPILE_2072
-    else if (__choose7 == 115)
+    #ifdef __COMPILE_2409
+    else if (__choose10 == 115)
     {
     //AddStmtKind
     gzip_error("corrupted input -- file name too large");
     }
     #endif
-    #ifdef __COMPILE_2073
-    else if (__choose7 == 116)
+    #ifdef __COMPILE_2410
+    else if (__choose10 == 116)
     {
     //AddStmtKind
     gzip_error("internal error in shorten_name");
     }
     #endif
-    #ifdef __COMPILE_2074
-    else if (__choose7 == 117)
+    #ifdef __COMPILE_2411
+    else if (__choose10 == 117)
     {
     //AddStmtKind
     gzip_error("name too short");
     }
     #endif
-    #ifdef __COMPILE_2075
-    else if (__choose7 == 118)
+    #ifdef __COMPILE_2412
+    else if (__choose10 == 118)
     {
     //AddStmtKind
     header_bytes = 0;
     }
     #endif
-    #ifdef __COMPILE_2076
-    else if (__choose7 == 119)
+    #ifdef __COMPILE_2413
+    else if (__choose10 == 119)
     {
     //AddStmtKind
     header_bytes = inptr + 2 * sizeof(long);
     }
     #endif
-    #ifdef __COMPILE_2077
-    else if (__choose7 == 120)
+    #ifdef __COMPILE_2414
+    else if (__choose10 == 120)
     {
     //AddStmtKind
     ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
     }
     #endif
-    #ifdef __COMPILE_2078
-    else if (__choose7 == 121)
+    #ifdef __COMPILE_2415
+    else if (__choose10 == 121)
     {
     //AddStmtKind
     inptr = 0;
     }
     #endif
-    #ifdef __COMPILE_2079
-    else if (__choose7 == 122)
+    #ifdef __COMPILE_2416
+    else if (__choose10 == 122)
     {
     //AddStmtKind
     inptr--;
     }
     #endif
-    #ifdef __COMPILE_2080
-    else if (__choose7 == 123)
+    #ifdef __COMPILE_2417
+    else if (__choose10 == 123)
     {
     //AddStmtKind
     install_signal_handlers();
     }
     #endif
-    #ifdef __COMPILE_2081
-    else if (__choose7 == 124)
+    #ifdef __COMPILE_2418
+    else if (__choose10 == 124)
     {
     //AddStmtKind
     last_member = 0;
     }
     #endif
-    #ifdef __COMPILE_2082
-    else if (__choose7 == 125)
+    #ifdef __COMPILE_2419
+    else if (__choose10 == 125)
     {
     //AddStmtKind
     last_member = 1;
     }
     #endif
-    #ifdef __COMPILE_2083
-    else if (__choose7 == 126)
+    #ifdef __COMPILE_2420
+    else if (__choose10 == 126)
     {
     //AddStmtKind
     license();
     }
     #endif
-    #ifdef __COMPILE_2084
-    else if (__choose7 == 127)
+    #ifdef __COMPILE_2421
+    else if (__choose10 == 127)
     {
     //AddStmtKind
     list = 0;
     }
     #endif
-    #ifdef __COMPILE_2085
-    else if (__choose7 == 128)
+    #ifdef __COMPILE_2422
+    else if (__choose10 == 128)
     {
     //AddStmtKind
     method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_2086
-    else if (__choose7 == 129)
+    #ifdef __COMPILE_2423
+    else if (__choose10 == 129)
     {
     //AddStmtKind
     method = -1;
     }
     #endif
-    #ifdef __COMPILE_2087
-    else if (__choose7 == 130)
+    #ifdef __COMPILE_2424
+    else if (__choose10 == 130)
     {
     //AddStmtKind
     method = 0;
     }
     #endif
-    #ifdef __COMPILE_2088
-    else if (__choose7 == 131)
+    #ifdef __COMPILE_2425
+    else if (__choose10 == 131)
     {
     //AddStmtKind
     method = 1;
     }
     #endif
-    #ifdef __COMPILE_2089
-    else if (__choose7 == 132)
+    #ifdef __COMPILE_2426
+    else if (__choose10 == 132)
     {
     //AddStmtKind
     method = 2;
     }
     #endif
-    #ifdef __COMPILE_2090
-    else if (__choose7 == 133)
+    #ifdef __COMPILE_2427
+    else if (__choose10 == 133)
     {
     //AddStmtKind
     method = 3;
     }
     #endif
-    #ifdef __COMPILE_2091
-    else if (__choose7 == 134)
+    #ifdef __COMPILE_2428
+    else if (__choose10 == 134)
     {
     //AddStmtKind
     method = get_method(ifd);
     }
     #endif
-    #ifdef __COMPILE_2092
-    else if (__choose7 == 135)
+    #ifdef __COMPILE_2429
+    else if (__choose10 == 135)
     {
     //AddStmtKind
     no_name = decompress;
     }
     #endif
-    #ifdef __COMPILE_2093
-    else if (__choose7 == 136)
+    #ifdef __COMPILE_2430
+    else if (__choose10 == 136)
     {
     //AddStmtKind
     no_time = decompress;
     }
     #endif
-    #ifdef __COMPILE_2094
-    else if (__choose7 == 137)
+    #ifdef __COMPILE_2431
+    else if (__choose10 == 137)
     {
     //AddStmtKind
     part_nb = 0;
     }
     #endif
-    #ifdef __COMPILE_2095
-    else if (__choose7 == 138)
+    #ifdef __COMPILE_2432
+    else if (__choose10 == 138)
     {
     //AddStmtKind
     part_nb++;
     }
     #endif
-    #ifdef __COMPILE_2096
-    else if (__choose7 == 139)
+    #ifdef __COMPILE_2433
+    else if (__choose10 == 139)
     {
     //AddStmtKind
     perror(ifname);
     }
     #endif
-    #ifdef __COMPILE_2097
-    else if (__choose7 == 140)
+    #ifdef __COMPILE_2434
+    else if (__choose10 == 140)
     {
     //AddStmtKind
     perror(ofname);
     }
     #endif
-    #ifdef __COMPILE_2098
-    else if (__choose7 == 141)
+    #ifdef __COMPILE_2435
+    else if (__choose10 == 141)
     {
     //AddStmtKind
     progerror("standard input");
     }
     #endif
-    #ifdef __COMPILE_2099
-    else if (__choose7 == 142)
+    #ifdef __COMPILE_2436
+    else if (__choose10 == 142)
     {
     //AddStmtKind
     progerror(ifname);
     }
     #endif
-    #ifdef __COMPILE_2100
-    else if (__choose7 == 143)
+    #ifdef __COMPILE_2437
+    else if (__choose10 == 143)
     {
     //AddStmtKind
     progerror(ofname);
     }
     #endif
-    #ifdef __COMPILE_2101
-    else if (__choose7 == 144)
+    #ifdef __COMPILE_2438
+    else if (__choose10 == 144)
     {
     //AddStmtKind
     quiet = 0;
     }
     #endif
-    #ifdef __COMPILE_2102
-    else if (__choose7 == 145)
+    #ifdef __COMPILE_2439
+    else if (__choose10 == 145)
     {
     //AddStmtKind
     read_error();
     }
     #endif
-    #ifdef __COMPILE_2103
-    else if (__choose7 == 146)
+    #ifdef __COMPILE_2440
+    else if (__choose10 == 146)
     {
     //AddStmtKind
     remove_ofname_fd = -1;
     }
     #endif
-    #ifdef __COMPILE_2104
-    else if (__choose7 == 147)
+    #ifdef __COMPILE_2441
+    else if (__choose10 == 147)
     {
     //AddStmtKind
     remove_output_file();
     }
     #endif
-    #ifdef __COMPILE_2105
-    else if (__choose7 == 148)
+    #ifdef __COMPILE_2442
+    else if (__choose10 == 148)
     {
     //AddStmtKind
     save_orig_name = !no_name;
     }
     #endif
-    #ifdef __COMPILE_2106
-    else if (__choose7 == 149)
+    #ifdef __COMPILE_2443
+    else if (__choose10 == 149)
     {
     //AddStmtKind
     save_orig_name = 0;
     }
     #endif
-    #ifdef __COMPILE_2107
-    else if (__choose7 == 150)
+    #ifdef __COMPILE_2444
+    else if (__choose10 == 150)
     {
     //AddStmtKind
     save_orig_name = 1;
     }
     #endif
-    #ifdef __COMPILE_2108
-    else if (__choose7 == 151)
+    #ifdef __COMPILE_2445
+    else if (__choose10 == 151)
     {
     //AddStmtKind
     sigemptyset(&caught_signals);
     }
     #endif
-    #ifdef __COMPILE_2109
-    else if (__choose7 == 152)
+    #ifdef __COMPILE_2446
+    else if (__choose10 == 152)
     {
     //AddStmtKind
     strcat(ifname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_2110
-    else if (__choose7 == 153)
+    #ifdef __COMPILE_2447
+    else if (__choose10 == 153)
     {
     //AddStmtKind
     strcat(ofname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_2111
-    else if (__choose7 == 154)
+    #ifdef __COMPILE_2448
+    else if (__choose10 == 154)
     {
     //AddStmtKind
     strcpy(ifname, "stdin");
     }
     #endif
-    #ifdef __COMPILE_2112
-    else if (__choose7 == 155)
+    #ifdef __COMPILE_2449
+    else if (__choose10 == 155)
     {
     //AddStmtKind
     strcpy(ofname, "stdout");
     }
     #endif
-    #ifdef __COMPILE_2113
-    else if (__choose7 == 156)
+    #ifdef __COMPILE_2450
+    else if (__choose10 == 156)
     {
     //AddStmtKind
     strcpy(ofname, ifname);
     }
     #endif
-    #ifdef __COMPILE_2114
-    else if (__choose7 == 157)
+    #ifdef __COMPILE_2451
+    else if (__choose10 == 157)
     {
     //AddStmtKind
     time_stamp = get_stat_mtime(&istat);
     }
     #endif
-    #ifdef __COMPILE_2115
-    else if (__choose7 == 158)
+    #ifdef __COMPILE_2452
+    else if (__choose10 == 158)
     {
     //AddStmtKind
     time_stamp.tv_nsec = -1;
     }
     #endif
-    #ifdef __COMPILE_2116
-    else if (__choose7 == 159)
+    #ifdef __COMPILE_2453
+    else if (__choose10 == 159)
     {
     //AddStmtKind
     time_stamp.tv_nsec = 0;
     }
     #endif
-    #ifdef __COMPILE_2117
-    else if (__choose7 == 160)
+    #ifdef __COMPILE_2454
+    else if (__choose10 == 160)
     {
     //AddStmtKind
     to_stdout = 1;
     }
     #endif
-    #ifdef __COMPILE_2118
-    else if (__choose7 == 161)
+    #ifdef __COMPILE_2455
+    else if (__choose10 == 161)
     {
     //AddStmtKind
     total_in = -1L;
     }
     #endif
-    #ifdef __COMPILE_2119
-    else if (__choose7 == 162)
+    #ifdef __COMPILE_2456
+    else if (__choose10 == 162)
     {
     //AddStmtKind
     total_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_2120
-    else if (__choose7 == 163)
+    #ifdef __COMPILE_2457
+    else if (__choose10 == 163)
     {
     //AddStmtKind
     treat_stdin();
     }
     #endif
-    #ifdef __COMPILE_2121
-    else if (__choose7 == 164)
+    #ifdef __COMPILE_2458
+    else if (__choose10 == 164)
     {
     //AddStmtKind
     try_help();
     }
     #endif
-    #ifdef __COMPILE_2122
-    else if (__choose7 == 165)
+    #ifdef __COMPILE_2459
+    else if (__choose10 == 165)
     {
     //AddStmtKind
     verbose = 0;
     }
     #endif
-    #ifdef __COMPILE_2123
-    else if (__choose7 == 166)
+    #ifdef __COMPILE_2460
+    else if (__choose10 == 166)
     {
     //AddStmtKind
     work = copy;
     }
     #endif
-    #ifdef __COMPILE_2124
-    else if (__choose7 == 167)
+    #ifdef __COMPILE_2461
+    else if (__choose10 == 167)
     {
     //AddStmtKind
     work = lzw;
     }
     #endif
-    #ifdef __COMPILE_2125
-    else if (__choose7 == 168)
+    #ifdef __COMPILE_2462
+    else if (__choose10 == 168)
     {
     //AddStmtKind
     work = unlzh;
     }
     #endif
-    #ifdef __COMPILE_2126
-    else if (__choose7 == 169)
+    #ifdef __COMPILE_2463
+    else if (__choose10 == 169)
     {
     //AddStmtKind
     work = unlzw;
     }
     #endif
-    #ifdef __COMPILE_2127
-    else if (__choose7 == 170)
+    #ifdef __COMPILE_2464
+    else if (__choose10 == 170)
     {
     //AddStmtKind
     work = unpack;
     }
     #endif
-    #ifdef __COMPILE_2128
-    else if (__choose7 == 171)
+    #ifdef __COMPILE_2465
+    else if (__choose10 == 171)
     {
     //AddStmtKind
     work = unzip;
     }
     #endif
-    #ifdef __COMPILE_2129
-    else if (__choose7 == 172)
+    #ifdef __COMPILE_2466
+    else if (__choose10 == 172)
     {
     //AddStmtKind
     write_error();
     }
     #endif
-    #ifdef __COMPILE_2130
-    else if (__choose7 == 173)
+    #ifdef __COMPILE_2467
+    else if (__choose10 == 173)
     {
     //AddStmtKind
     xunlink(ofname);
     }
     #endif
-    #ifdef __COMPILE_2131
-    else if (__choose7 == 174)
+    #ifdef __COMPILE_2468
+    else if (__choose10 == 174)
     {
     //AddStmtKind
     z_len = strlen(z_suffix);
     }
     #endif
-    #ifdef __COMPILE_2132
-    else if (__choose7 == 175)
+    #ifdef __COMPILE_2469
+    else if (__choose10 == 175)
     {
     //AddStmtKind
     z_suffix = ".gz";
     }
     #endif
-    #ifdef __COMPILE_2133
-    else if (__choose7 == 176)
+    #ifdef __COMPILE_2470
+    else if (__choose10 == 176)
     {
     //IfExitKind
-    if (__is_neg("7-176", "L1635", 7, &(force), sizeof (force), &(program_name),
+    if (__is_neg("10-176", "L1635", 7, &(force), sizeof (force), &(program_name),
     			 sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
     			 sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)))
         return 0;
     }
     #endif
-    #ifdef __COMPILE_2134
-    else if (__choose7 == 177)
+    #ifdef __COMPILE_2471
+    else if (__choose10 == 177)
     {
     //IfExitKind
-    if (__is_neg("7-177", "L1635", 7, &(force), sizeof (force), &(program_name),
+    if (__is_neg("10-177", "L1635", 7, &(force), sizeof (force), &(program_name),
     			 sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
     			 sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)))
         return 1;
     }
     #endif
-    #ifdef __COMPILE_2135
-    else if (__choose7 == 178)
+    #ifdef __COMPILE_2472
+    else if (__choose10 == 178)
     {
     //IfExitKind
-    if (__is_neg("7-178", "L1635", 7, &(force), sizeof (force), &(program_name),
+    if (__is_neg("10-178", "L1635", 7, &(force), sizeof (force), &(program_name),
     			 sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
     			 sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)))
         return 2;
     }
     #endif
-    int __choose8 = __choose("__SWITCH8");
+    int __choose11 = __choose("__SWITCH11");
     {
-    int __temp8=(!force) ;
-    if (__choose8 == 0)
+    int __temp11=(!force) ;
+    if (__choose11 == 0)
     {}
-    #ifdef __COMPILE_2136
-    else if (__choose8 == 1)
+    #ifdef __COMPILE_2473
+    else if (__choose11 == 1)
     {
-    __temp8= (__is_neg("8-1", "L1635", 7, &(force), sizeof (force), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
+    __temp11= (__is_neg("11-1", "L1635", 7, &(force), sizeof (force), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
     }
     #endif
-    #ifdef __COMPILE_2137
-    else if (__choose8 == 2)
+    #ifdef __COMPILE_2474
+    else if (__choose11 == 2)
     {
-    __temp8= ((!force) || __is_neg("8-2", "L1635", 7, &(force), sizeof (force), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
+    __temp11= ((!force) || __is_neg("11-2", "L1635", 7, &(force), sizeof (force), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
     }
     #endif
-    #ifdef __COMPILE_2138
-    else if (__choose8 == 3)
+    #ifdef __COMPILE_2475
+    else if (__choose11 == 3)
     {
-    __temp8= ((!force) && !__is_neg("8-3", "L1635", 7, &(force), sizeof (force), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
+    __temp11= ((!force) && !__is_neg("11-3", "L1635", 7, &(force), sizeof (force), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
     }
     #endif
-    int __choose23 = __choose("__SWITCH23");
-    if (__choose23 == 0)
+    int __choose26 = __choose("__SWITCH26");
+    if (__choose26 == 0)
     {
-    if (__temp8) {
+    if (__temp11) {
             
     int ok = 0;
     
             {
-    int __choose9 = __choose("__SWITCH9");
-    if (__choose9 == 0)
+    int __choose12 = __choose("__SWITCH12");
+    if (__choose12 == 0)
     {}
-    #ifdef __COMPILE_2139
-    else if (__choose9 == 1)
+    #ifdef __COMPILE_2476
+    else if (__choose12 == 1)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (0);
     }
     #endif
-    #ifdef __COMPILE_2140
-    else if (__choose9 == 2)
+    #ifdef __COMPILE_2477
+    else if (__choose12 == 2)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (1);
     }
     #endif
-    #ifdef __COMPILE_2141
-    else if (__choose9 == 3)
+    #ifdef __COMPILE_2478
+    else if (__choose12 == 3)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (2);
     }
     #endif
-    #ifdef __COMPILE_2142
-    else if (__choose9 == 4)
+    #ifdef __COMPILE_2479
+    else if (__choose12 == 4)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (0);
     }
     #endif
-    #ifdef __COMPILE_2143
-    else if (__choose9 == 5)
+    #ifdef __COMPILE_2480
+    else if (__choose12 == 5)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (1);
     }
     #endif
-    #ifdef __COMPILE_2144
-    else if (__choose9 == 6)
+    #ifdef __COMPILE_2481
+    else if (__choose12 == 6)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (2);
     }
     #endif
-    #ifdef __COMPILE_2145
-    else if (__choose9 == 7)
+    #ifdef __COMPILE_2482
+    else if (__choose12 == 7)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (0);
     }
     #endif
-    #ifdef __COMPILE_2146
-    else if (__choose9 == 8)
+    #ifdef __COMPILE_2483
+    else if (__choose12 == 8)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (1);
     }
     #endif
-    #ifdef __COMPILE_2147
-    else if (__choose9 == 9)
+    #ifdef __COMPILE_2484
+    else if (__choose12 == 9)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (2);
     }
     #endif
-    #ifdef __COMPILE_2148
-    else if (__choose9 == 10)
+    #ifdef __COMPILE_2485
+    else if (__choose12 == 10)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (ok);
     }
     #endif
-    #ifdef __COMPILE_2149
-    else if (__choose9 == 11)
+    #ifdef __COMPILE_2486
+    else if (__choose12 == 11)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (0);
     }
     #endif
-    #ifdef __COMPILE_2150
-    else if (__choose9 == 12)
+    #ifdef __COMPILE_2487
+    else if (__choose12 == 12)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (1);
     }
     #endif
-    #ifdef __COMPILE_2151
-    else if (__choose9 == 13)
+    #ifdef __COMPILE_2488
+    else if (__choose12 == 13)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (2);
     }
     #endif
-    #ifdef __COMPILE_2152
-    else if (__choose9 == 14)
+    #ifdef __COMPILE_2489
+    else if (__choose12 == 14)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (ok);
     }
     #endif
-    #ifdef __COMPILE_2153
-    else if (__choose9 == 15)
+    #ifdef __COMPILE_2490
+    else if (__choose12 == 15)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (0);
     }
     #endif
-    #ifdef __COMPILE_2154
-    else if (__choose9 == 16)
+    #ifdef __COMPILE_2491
+    else if (__choose12 == 16)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (1);
     }
     #endif
-    #ifdef __COMPILE_2155
-    else if (__choose9 == 17)
+    #ifdef __COMPILE_2492
+    else if (__choose12 == 17)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (2);
     }
     #endif
-    #ifdef __COMPILE_2156
-    else if (__choose9 == 18)
+    #ifdef __COMPILE_2493
+    else if (__choose12 == 18)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (ok);
     }
     #endif
-    #ifdef __COMPILE_2157
-    else if (__choose9 == 19)
+    #ifdef __COMPILE_2494
+    else if (__choose12 == 19)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (0);
     }
     #endif
-    #ifdef __COMPILE_2158
-    else if (__choose9 == 20)
+    #ifdef __COMPILE_2495
+    else if (__choose12 == 20)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (1);
     }
     #endif
-    #ifdef __COMPILE_2159
-    else if (__choose9 == 21)
+    #ifdef __COMPILE_2496
+    else if (__choose12 == 21)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (2);
     }
     #endif
-    #ifdef __COMPILE_2160
-    else if (__choose9 == 22)
+    #ifdef __COMPILE_2497
+    else if (__choose12 == 22)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (0);
     }
     #endif
-    #ifdef __COMPILE_2161
-    else if (__choose9 == 23)
+    #ifdef __COMPILE_2498
+    else if (__choose12 == 23)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (1);
     }
     #endif
-    #ifdef __COMPILE_2162
-    else if (__choose9 == 24)
+    #ifdef __COMPILE_2499
+    else if (__choose12 == 24)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (2);
     }
     #endif
-    #ifdef __COMPILE_2163
-    else if (__choose9 == 25)
+    #ifdef __COMPILE_2500
+    else if (__choose12 == 25)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (ok);
     }
     #endif
-    #ifdef __COMPILE_2164
-    else if (__choose9 == 26)
+    #ifdef __COMPILE_2501
+    else if (__choose12 == 26)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (0);
     }
     #endif
-    #ifdef __COMPILE_2165
-    else if (__choose9 == 27)
+    #ifdef __COMPILE_2502
+    else if (__choose12 == 27)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (1);
     }
     #endif
-    #ifdef __COMPILE_2166
-    else if (__choose9 == 28)
+    #ifdef __COMPILE_2503
+    else if (__choose12 == 28)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (2);
     }
     #endif
-    #ifdef __COMPILE_2167
-    else if (__choose9 == 29)
+    #ifdef __COMPILE_2504
+    else if (__choose12 == 29)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (0);
     }
     #endif
-    #ifdef __COMPILE_2168
-    else if (__choose9 == 30)
+    #ifdef __COMPILE_2505
+    else if (__choose12 == 30)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (1);
     }
     #endif
-    #ifdef __COMPILE_2169
-    else if (__choose9 == 31)
+    #ifdef __COMPILE_2506
+    else if (__choose12 == 31)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (2);
     }
     #endif
-    #ifdef __COMPILE_2170
-    else if (__choose9 == 32)
+    #ifdef __COMPILE_2507
+    else if (__choose12 == 32)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (0);
     }
     #endif
-    #ifdef __COMPILE_2171
-    else if (__choose9 == 33)
+    #ifdef __COMPILE_2508
+    else if (__choose12 == 33)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (1);
     }
     #endif
-    #ifdef __COMPILE_2172
-    else if (__choose9 == 34)
+    #ifdef __COMPILE_2509
+    else if (__choose12 == 34)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (2);
     }
     #endif
-    #ifdef __COMPILE_2173
-    else if (__choose9 == 35)
+    #ifdef __COMPILE_2510
+    else if (__choose12 == 35)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (ok);
     }
     #endif
-    #ifdef __COMPILE_2174
-    else if (__choose9 == 36)
+    #ifdef __COMPILE_2511
+    else if (__choose12 == 36)
     {
     //AddStmtAndReplaceAtomKind
     list = (0);
     }
     #endif
-    #ifdef __COMPILE_2175
-    else if (__choose9 == 37)
+    #ifdef __COMPILE_2512
+    else if (__choose12 == 37)
     {
     //AddStmtAndReplaceAtomKind
     list = (1);
     }
     #endif
-    #ifdef __COMPILE_2176
-    else if (__choose9 == 38)
+    #ifdef __COMPILE_2513
+    else if (__choose12 == 38)
     {
     //AddStmtAndReplaceAtomKind
     list = (2);
     }
     #endif
-    #ifdef __COMPILE_2177
-    else if (__choose9 == 39)
+    #ifdef __COMPILE_2514
+    else if (__choose12 == 39)
     {
     //AddStmtAndReplaceAtomKind
     list = (ok);
     }
     #endif
-    #ifdef __COMPILE_2178
-    else if (__choose9 == 40)
+    #ifdef __COMPILE_2515
+    else if (__choose12 == 40)
     {
     //AddStmtAndReplaceAtomKind
     method = (0);
     }
     #endif
-    #ifdef __COMPILE_2179
-    else if (__choose9 == 41)
+    #ifdef __COMPILE_2516
+    else if (__choose12 == 41)
     {
     //AddStmtAndReplaceAtomKind
     method = (1);
     }
     #endif
-    #ifdef __COMPILE_2180
-    else if (__choose9 == 42)
+    #ifdef __COMPILE_2517
+    else if (__choose12 == 42)
     {
     //AddStmtAndReplaceAtomKind
     method = (2);
     }
     #endif
-    #ifdef __COMPILE_2181
-    else if (__choose9 == 43)
+    #ifdef __COMPILE_2518
+    else if (__choose12 == 43)
     {
     //AddStmtAndReplaceAtomKind
     method = (ok);
     }
     #endif
-    #ifdef __COMPILE_2182
-    else if (__choose9 == 44)
+    #ifdef __COMPILE_2519
+    else if (__choose12 == 44)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (0);
     }
     #endif
-    #ifdef __COMPILE_2183
-    else if (__choose9 == 45)
+    #ifdef __COMPILE_2520
+    else if (__choose12 == 45)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (1);
     }
     #endif
-    #ifdef __COMPILE_2184
-    else if (__choose9 == 46)
+    #ifdef __COMPILE_2521
+    else if (__choose12 == 46)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (2);
     }
     #endif
-    #ifdef __COMPILE_2185
-    else if (__choose9 == 47)
+    #ifdef __COMPILE_2522
+    else if (__choose12 == 47)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (ok);
     }
     #endif
-    #ifdef __COMPILE_2186
-    else if (__choose9 == 48)
+    #ifdef __COMPILE_2523
+    else if (__choose12 == 48)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (0);
     }
     #endif
-    #ifdef __COMPILE_2187
-    else if (__choose9 == 49)
+    #ifdef __COMPILE_2524
+    else if (__choose12 == 49)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (1);
     }
     #endif
-    #ifdef __COMPILE_2188
-    else if (__choose9 == 50)
+    #ifdef __COMPILE_2525
+    else if (__choose12 == 50)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (2);
     }
     #endif
-    #ifdef __COMPILE_2189
-    else if (__choose9 == 51)
+    #ifdef __COMPILE_2526
+    else if (__choose12 == 51)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (ok);
     }
     #endif
-    #ifdef __COMPILE_2190
-    else if (__choose9 == 52)
+    #ifdef __COMPILE_2527
+    else if (__choose12 == 52)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (0);
     }
     #endif
-    #ifdef __COMPILE_2191
-    else if (__choose9 == 53)
+    #ifdef __COMPILE_2528
+    else if (__choose12 == 53)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (1);
     }
     #endif
-    #ifdef __COMPILE_2192
-    else if (__choose9 == 54)
+    #ifdef __COMPILE_2529
+    else if (__choose12 == 54)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (2);
     }
     #endif
-    #ifdef __COMPILE_2193
-    else if (__choose9 == 55)
+    #ifdef __COMPILE_2530
+    else if (__choose12 == 55)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (ok);
     }
     #endif
-    #ifdef __COMPILE_2194
-    else if (__choose9 == 56)
+    #ifdef __COMPILE_2531
+    else if (__choose12 == 56)
     {
     //AddStmtAndReplaceAtomKind
     ok = (0);
     }
     #endif
-    #ifdef __COMPILE_2195
-    else if (__choose9 == 57)
+    #ifdef __COMPILE_2532
+    else if (__choose12 == 57)
     {
     //AddStmtAndReplaceAtomKind
     ok = (1);
     }
     #endif
-    #ifdef __COMPILE_2196
-    else if (__choose9 == 58)
+    #ifdef __COMPILE_2533
+    else if (__choose12 == 58)
     {
     //AddStmtAndReplaceAtomKind
     ok = (2);
     }
     #endif
-    #ifdef __COMPILE_2197
-    else if (__choose9 == 59)
+    #ifdef __COMPILE_2534
+    else if (__choose12 == 59)
     {
     //AddStmtAndReplaceAtomKind
     ok = (ok);
     }
     #endif
-    #ifdef __COMPILE_2198
-    else if (__choose9 == 60)
+    #ifdef __COMPILE_2535
+    else if (__choose12 == 60)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (0);
     }
     #endif
-    #ifdef __COMPILE_2199
-    else if (__choose9 == 61)
+    #ifdef __COMPILE_2536
+    else if (__choose12 == 61)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (1);
     }
     #endif
-    #ifdef __COMPILE_2200
-    else if (__choose9 == 62)
+    #ifdef __COMPILE_2537
+    else if (__choose12 == 62)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (2);
     }
     #endif
-    #ifdef __COMPILE_2201
-    else if (__choose9 == 63)
+    #ifdef __COMPILE_2538
+    else if (__choose12 == 63)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (ok);
     }
     #endif
-    #ifdef __COMPILE_2202
-    else if (__choose9 == 64)
+    #ifdef __COMPILE_2539
+    else if (__choose12 == 64)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (0);
     }
     #endif
-    #ifdef __COMPILE_2203
-    else if (__choose9 == 65)
+    #ifdef __COMPILE_2540
+    else if (__choose12 == 65)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (1);
     }
     #endif
-    #ifdef __COMPILE_2204
-    else if (__choose9 == 66)
+    #ifdef __COMPILE_2541
+    else if (__choose12 == 66)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (2);
     }
     #endif
-    #ifdef __COMPILE_2205
-    else if (__choose9 == 67)
+    #ifdef __COMPILE_2542
+    else if (__choose12 == 67)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (ok);
     }
     #endif
-    #ifdef __COMPILE_2206
-    else if (__choose9 == 68)
+    #ifdef __COMPILE_2543
+    else if (__choose12 == 68)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (0);
     }
     #endif
-    #ifdef __COMPILE_2207
-    else if (__choose9 == 69)
+    #ifdef __COMPILE_2544
+    else if (__choose12 == 69)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (1);
     }
     #endif
-    #ifdef __COMPILE_2208
-    else if (__choose9 == 70)
+    #ifdef __COMPILE_2545
+    else if (__choose12 == 70)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (2);
     }
     #endif
-    #ifdef __COMPILE_2209
-    else if (__choose9 == 71)
+    #ifdef __COMPILE_2546
+    else if (__choose12 == 71)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (ok);
     }
     #endif
-    #ifdef __COMPILE_2210
-    else if (__choose9 == 72)
+    #ifdef __COMPILE_2547
+    else if (__choose12 == 72)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (0);
     }
     #endif
-    #ifdef __COMPILE_2211
-    else if (__choose9 == 73)
+    #ifdef __COMPILE_2548
+    else if (__choose12 == 73)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (1);
     }
     #endif
-    #ifdef __COMPILE_2212
-    else if (__choose9 == 74)
+    #ifdef __COMPILE_2549
+    else if (__choose12 == 74)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (2);
     }
     #endif
-    #ifdef __COMPILE_2213
-    else if (__choose9 == 75)
+    #ifdef __COMPILE_2550
+    else if (__choose12 == 75)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (ok);
     }
     #endif
-    #ifdef __COMPILE_2214
-    else if (__choose9 == 76)
+    #ifdef __COMPILE_2551
+    else if (__choose12 == 76)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (0);
     }
     #endif
-    #ifdef __COMPILE_2215
-    else if (__choose9 == 77)
+    #ifdef __COMPILE_2552
+    else if (__choose12 == 77)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (1);
     }
     #endif
-    #ifdef __COMPILE_2216
-    else if (__choose9 == 78)
+    #ifdef __COMPILE_2553
+    else if (__choose12 == 78)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (2);
     }
     #endif
-    #ifdef __COMPILE_2217
-    else if (__choose9 == 79)
+    #ifdef __COMPILE_2554
+    else if (__choose12 == 79)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (0);
     }
     #endif
-    #ifdef __COMPILE_2218
-    else if (__choose9 == 80)
+    #ifdef __COMPILE_2555
+    else if (__choose12 == 80)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (1);
     }
     #endif
-    #ifdef __COMPILE_2219
-    else if (__choose9 == 81)
+    #ifdef __COMPILE_2556
+    else if (__choose12 == 81)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (2);
     }
     #endif
-    #ifdef __COMPILE_2220
-    else if (__choose9 == 82)
+    #ifdef __COMPILE_2557
+    else if (__choose12 == 82)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (0);
     }
     #endif
-    #ifdef __COMPILE_2221
-    else if (__choose9 == 83)
+    #ifdef __COMPILE_2558
+    else if (__choose12 == 83)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (1);
     }
     #endif
-    #ifdef __COMPILE_2222
-    else if (__choose9 == 84)
+    #ifdef __COMPILE_2559
+    else if (__choose12 == 84)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (2);
     }
     #endif
-    #ifdef __COMPILE_2223
-    else if (__choose9 == 85)
+    #ifdef __COMPILE_2560
+    else if (__choose12 == 85)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (ok);
     }
     #endif
-    #ifdef __COMPILE_2224
-    else if (__choose9 == 86)
+    #ifdef __COMPILE_2561
+    else if (__choose12 == 86)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (0);
     }
     #endif
-    #ifdef __COMPILE_2225
-    else if (__choose9 == 87)
+    #ifdef __COMPILE_2562
+    else if (__choose12 == 87)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (1);
     }
     #endif
-    #ifdef __COMPILE_2226
-    else if (__choose9 == 88)
+    #ifdef __COMPILE_2563
+    else if (__choose12 == 88)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (2);
     }
     #endif
-    #ifdef __COMPILE_2227
-    else if (__choose9 == 89)
+    #ifdef __COMPILE_2564
+    else if (__choose12 == 89)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (0);
     }
     #endif
-    #ifdef __COMPILE_2228
-    else if (__choose9 == 90)
+    #ifdef __COMPILE_2565
+    else if (__choose12 == 90)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (1);
     }
     #endif
-    #ifdef __COMPILE_2229
-    else if (__choose9 == 91)
+    #ifdef __COMPILE_2566
+    else if (__choose12 == 91)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (2);
     }
     #endif
-    #ifdef __COMPILE_2230
-    else if (__choose9 == 92)
+    #ifdef __COMPILE_2567
+    else if (__choose12 == 92)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (0);
     }
     #endif
-    #ifdef __COMPILE_2231
-    else if (__choose9 == 93)
+    #ifdef __COMPILE_2568
+    else if (__choose12 == 93)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (1);
     }
     #endif
-    #ifdef __COMPILE_2232
-    else if (__choose9 == 94)
+    #ifdef __COMPILE_2569
+    else if (__choose12 == 94)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (2);
     }
     #endif
-    #ifdef __COMPILE_2233
-    else if (__choose9 == 95)
+    #ifdef __COMPILE_2570
+    else if (__choose12 == 95)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (ok);
     }
     #endif
-    #ifdef __COMPILE_2234
-    else if (__choose9 == 96)
+    #ifdef __COMPILE_2571
+    else if (__choose12 == 96)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (0);
     }
     #endif
-    #ifdef __COMPILE_2235
-    else if (__choose9 == 97)
+    #ifdef __COMPILE_2572
+    else if (__choose12 == 97)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (1);
     }
     #endif
-    #ifdef __COMPILE_2236
-    else if (__choose9 == 98)
+    #ifdef __COMPILE_2573
+    else if (__choose12 == 98)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (2);
     }
     #endif
-    #ifdef __COMPILE_2237
-    else if (__choose9 == 99)
+    #ifdef __COMPILE_2574
+    else if (__choose12 == 99)
     {
     //AddStmtKind
     (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_2238
-    else if (__choose9 == 100)
+    #ifdef __COMPILE_2575
+    else if (__choose12 == 100)
     {
     //AddStmtKind
     __printf__("                            ");
     }
     #endif
-    #ifdef __COMPILE_2239
-    else if (__choose9 == 101)
+    #ifdef __COMPILE_2576
+    else if (__choose12 == 101)
     {
     //AddStmtKind
     __printf__(" ");
     }
     #endif
-    #ifdef __COMPILE_2240
-    else if (__choose9 == 102)
+    #ifdef __COMPILE_2577
+    else if (__choose12 == 102)
     {
     //AddStmtKind
     __printf__(" %s\n", ofname);
     }
     #endif
-    #ifdef __COMPILE_2241
-    else if (__choose9 == 103)
+    #ifdef __COMPILE_2578
+    else if (__choose12 == 103)
     {
     //AddStmtKind
     __printf__(" (totals)\n");
     }
     #endif
-    #ifdef __COMPILE_2242
-    else if (__choose9 == 104)
+    #ifdef __COMPILE_2579
+    else if (__choose12 == 104)
     {
     //AddStmtKind
     __printf__("%s %s\n", program_name, "1.0");
     }
     #endif
-    #ifdef __COMPILE_2243
-    else if (__choose9 == 105)
+    #ifdef __COMPILE_2580
+    else if (__choose12 == 105)
     {
     //AddStmtKind
     __printf__("??? ?? ??:?? ");
     }
     #endif
-    #ifdef __COMPILE_2244
-    else if (__choose9 == 106)
+    #ifdef __COMPILE_2581
+    else if (__choose12 == 106)
     {
     //AddStmtKind
     __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
     }
     #endif
-    #ifdef __COMPILE_2245
-    else if (__choose9 == 107)
+    #ifdef __COMPILE_2582
+    else if (__choose12 == 107)
     {
     //AddStmtKind
     __printf__("Written by Jean-loup Gailly.\n");
     }
     #endif
-    #ifdef __COMPILE_2246
-    else if (__choose9 == 108)
+    #ifdef __COMPILE_2583
+    else if (__choose12 == 108)
     {
     //AddStmtKind
     __printf__("\n");
     }
     #endif
-    #ifdef __COMPILE_2247
-    else if (__choose9 == 109)
+    #ifdef __COMPILE_2584
+    else if (__choose12 == 109)
     {
     //AddStmtKind
     __printf__("method  crc     date  time  ");
     }
     #endif
-    #ifdef __COMPILE_2248
-    else if (__choose9 == 110)
+    #ifdef __COMPILE_2585
+    else if (__choose12 == 110)
     {
     //AddStmtKind
     _exit(2);
     }
     #endif
-    #ifdef __COMPILE_2249
-    else if (__choose9 == 111)
+    #ifdef __COMPILE_2586
+    else if (__choose12 == 111)
     {
     //AddStmtKind
     args = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_2250
-    else if (__choose9 == 112)
+    #ifdef __COMPILE_2587
+    else if (__choose12 == 112)
     {
     //AddStmtKind
     atexit(close_stdin);
     }
     #endif
-    #ifdef __COMPILE_2251
-    else if (__choose9 == 113)
+    #ifdef __COMPILE_2588
+    else if (__choose12 == 113)
     {
     //AddStmtKind
     bytes_in = 0;
     }
     #endif
-    #ifdef __COMPILE_2252
-    else if (__choose9 == 114)
+    #ifdef __COMPILE_2589
+    else if (__choose12 == 114)
     {
     //AddStmtKind
     bytes_in = ifile_size;
     }
     #endif
-    #ifdef __COMPILE_2253
-    else if (__choose9 == 115)
+    #ifdef __COMPILE_2590
+    else if (__choose12 == 115)
     {
     //AddStmtKind
     bytes_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_2254
-    else if (__choose9 == 116)
+    #ifdef __COMPILE_2591
+    else if (__choose12 == 116)
     {
     //AddStmtKind
     bytes_out = 0;
     }
     #endif
-    #ifdef __COMPILE_2255
-    else if (__choose9 == 117)
+    #ifdef __COMPILE_2592
+    else if (__choose12 == 117)
     {
     //AddStmtKind
     bytes_out++;
     }
     #endif
-    #ifdef __COMPILE_2256
-    else if (__choose9 == 118)
+    #ifdef __COMPILE_2593
+    else if (__choose12 == 118)
     {
     //AddStmtKind
     clear_bufs();
     }
     #endif
-    #ifdef __COMPILE_2257
-    else if (__choose9 == 119)
+    #ifdef __COMPILE_2594
+    else if (__choose12 == 119)
     {
     //AddStmtKind
     close(ifd);
     }
     #endif
-    #ifdef __COMPILE_2258
-    else if (__choose9 == 120)
+    #ifdef __COMPILE_2595
+    else if (__choose12 == 120)
     {
     //AddStmtKind
     copy_stat(&istat);
     }
     #endif
-    #ifdef __COMPILE_2259
-    else if (__choose9 == 121)
+    #ifdef __COMPILE_2596
+    else if (__choose12 == 121)
     {
     //AddStmtKind
     do_exit(0);
     }
     #endif
-    #ifdef __COMPILE_2260
-    else if (__choose9 == 122)
+    #ifdef __COMPILE_2597
+    else if (__choose12 == 122)
     {
     //AddStmtKind
     do_exit(1);
     }
     #endif
-    #ifdef __COMPILE_2261
-    else if (__choose9 == 123)
+    #ifdef __COMPILE_2598
+    else if (__choose12 == 123)
     {
     //AddStmtKind
     do_exit(exit_code);
     }
     #endif
-    #ifdef __COMPILE_2262
-    else if (__choose9 == 124)
+    #ifdef __COMPILE_2599
+    else if (__choose12 == 124)
     {
     //AddStmtKind
     do_list(-1, -1);
     }
     #endif
-    #ifdef __COMPILE_2263
-    else if (__choose9 == 125)
+    #ifdef __COMPILE_2600
+    else if (__choose12 == 125)
     {
     //AddStmtKind
     do_list(ifd, method);
     }
     #endif
-    #ifdef __COMPILE_2264
-    else if (__choose9 == 126)
+    #ifdef __COMPILE_2601
+    else if (__choose12 == 126)
     {
     //AddStmtKind
     env = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_2265
-    else if (__choose9 == 127)
+    #ifdef __COMPILE_2602
+    else if (__choose12 == 127)
     {
     //AddStmtKind
     env = add_envopt(&argc, &argv, "GZIP");
     }
     #endif
-    #ifdef __COMPILE_2266
-    else if (__choose9 == 128)
+    #ifdef __COMPILE_2603
+    else if (__choose12 == 128)
     {
     //AddStmtKind
     exit_code = 1;
     }
     #endif
-    #ifdef __COMPILE_2267
-    else if (__choose9 == 129)
+    #ifdef __COMPILE_2604
+    else if (__choose12 == 129)
     {
     //AddStmtKind
     exit_code = 2;
     }
     #endif
-    #ifdef __COMPILE_2268
-    else if (__choose9 == 130)
+    #ifdef __COMPILE_2605
+    else if (__choose12 == 130)
     {
     //AddStmtKind
     exiting_signal = quiet ? 13 : 0;
     }
     #endif
-    #ifdef __COMPILE_2269
-    else if (__choose9 == 131)
+    #ifdef __COMPILE_2606
+    else if (__choose12 == 131)
     {
     //AddStmtKind
     foreground = 1;
     }
     #endif
-    #ifdef __COMPILE_2270
-    else if (__choose9 == 132)
+    #ifdef __COMPILE_2607
+    else if (__choose12 == 132)
     {
     //AddStmtKind
     free(args);
     }
     #endif
-    #ifdef __COMPILE_2271
-    else if (__choose9 == 133)
+    #ifdef __COMPILE_2608
+    else if (__choose12 == 133)
     {
     //AddStmtKind
     free(env);
     }
     #endif
-    #ifdef __COMPILE_2272
-    else if (__choose9 == 134)
+    #ifdef __COMPILE_2609
+    else if (__choose12 == 134)
     {
     //AddStmtKind
     gzip_error("can't recover suffix\n");
     }
     #endif
-    #ifdef __COMPILE_2273
-    else if (__choose9 == 135)
+    #ifdef __COMPILE_2610
+    else if (__choose12 == 135)
     {
     //AddStmtKind
     gzip_error("corrupted input -- file name too large");
     }
     #endif
-    #ifdef __COMPILE_2274
-    else if (__choose9 == 136)
+    #ifdef __COMPILE_2611
+    else if (__choose12 == 136)
     {
     //AddStmtKind
     gzip_error("internal error in shorten_name");
     }
     #endif
-    #ifdef __COMPILE_2275
-    else if (__choose9 == 137)
+    #ifdef __COMPILE_2612
+    else if (__choose12 == 137)
     {
     //AddStmtKind
     gzip_error("name too short");
     }
     #endif
-    #ifdef __COMPILE_2276
-    else if (__choose9 == 138)
+    #ifdef __COMPILE_2613
+    else if (__choose12 == 138)
     {
     //AddStmtKind
     header_bytes = 0;
     }
     #endif
-    #ifdef __COMPILE_2277
-    else if (__choose9 == 139)
+    #ifdef __COMPILE_2614
+    else if (__choose12 == 139)
     {
     //AddStmtKind
     header_bytes = inptr + 2 * sizeof(long);
     }
     #endif
-    #ifdef __COMPILE_2278
-    else if (__choose9 == 140)
+    #ifdef __COMPILE_2615
+    else if (__choose12 == 140)
     {
     //AddStmtKind
     ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
     }
     #endif
-    #ifdef __COMPILE_2279
-    else if (__choose9 == 141)
+    #ifdef __COMPILE_2616
+    else if (__choose12 == 141)
     {
     //AddStmtKind
     inptr = 0;
     }
     #endif
-    #ifdef __COMPILE_2280
-    else if (__choose9 == 142)
+    #ifdef __COMPILE_2617
+    else if (__choose12 == 142)
     {
     //AddStmtKind
     inptr--;
     }
     #endif
-    #ifdef __COMPILE_2281
-    else if (__choose9 == 143)
+    #ifdef __COMPILE_2618
+    else if (__choose12 == 143)
     {
     //AddStmtKind
     install_signal_handlers();
     }
     #endif
-    #ifdef __COMPILE_2282
-    else if (__choose9 == 144)
+    #ifdef __COMPILE_2619
+    else if (__choose12 == 144)
     {
     //AddStmtKind
     last_member = 0;
     }
     #endif
-    #ifdef __COMPILE_2283
-    else if (__choose9 == 145)
+    #ifdef __COMPILE_2620
+    else if (__choose12 == 145)
     {
     //AddStmtKind
     last_member = 1;
     }
     #endif
-    #ifdef __COMPILE_2284
-    else if (__choose9 == 146)
+    #ifdef __COMPILE_2621
+    else if (__choose12 == 146)
     {
     //AddStmtKind
     license();
     }
     #endif
-    #ifdef __COMPILE_2285
-    else if (__choose9 == 147)
+    #ifdef __COMPILE_2622
+    else if (__choose12 == 147)
     {
     //AddStmtKind
     list = 0;
     }
     #endif
-    #ifdef __COMPILE_2286
-    else if (__choose9 == 148)
+    #ifdef __COMPILE_2623
+    else if (__choose12 == 148)
     {
     //AddStmtKind
     method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_2287
-    else if (__choose9 == 149)
+    #ifdef __COMPILE_2624
+    else if (__choose12 == 149)
     {
     //AddStmtKind
     method = -1;
     }
     #endif
-    #ifdef __COMPILE_2288
-    else if (__choose9 == 150)
+    #ifdef __COMPILE_2625
+    else if (__choose12 == 150)
     {
     //AddStmtKind
     method = 0;
     }
     #endif
-    #ifdef __COMPILE_2289
-    else if (__choose9 == 151)
+    #ifdef __COMPILE_2626
+    else if (__choose12 == 151)
     {
     //AddStmtKind
     method = 1;
     }
     #endif
-    #ifdef __COMPILE_2290
-    else if (__choose9 == 152)
+    #ifdef __COMPILE_2627
+    else if (__choose12 == 152)
     {
     //AddStmtKind
     method = 2;
     }
     #endif
-    #ifdef __COMPILE_2291
-    else if (__choose9 == 153)
+    #ifdef __COMPILE_2628
+    else if (__choose12 == 153)
     {
     //AddStmtKind
     method = 3;
     }
     #endif
-    #ifdef __COMPILE_2292
-    else if (__choose9 == 154)
+    #ifdef __COMPILE_2629
+    else if (__choose12 == 154)
     {
     //AddStmtKind
     method = get_method(ifd);
     }
     #endif
-    #ifdef __COMPILE_2293
-    else if (__choose9 == 155)
+    #ifdef __COMPILE_2630
+    else if (__choose12 == 155)
     {
     //AddStmtKind
     no_name = decompress;
     }
     #endif
-    #ifdef __COMPILE_2294
-    else if (__choose9 == 156)
+    #ifdef __COMPILE_2631
+    else if (__choose12 == 156)
     {
     //AddStmtKind
     no_time = decompress;
     }
     #endif
-    #ifdef __COMPILE_2295
-    else if (__choose9 == 157)
+    #ifdef __COMPILE_2632
+    else if (__choose12 == 157)
     {
     //AddStmtKind
     ok = yesno();
     }
     #endif
-    #ifdef __COMPILE_2296
-    else if (__choose9 == 158)
+    #ifdef __COMPILE_2633
+    else if (__choose12 == 158)
     {
     //AddStmtKind
     part_nb = 0;
     }
     #endif
-    #ifdef __COMPILE_2297
-    else if (__choose9 == 159)
+    #ifdef __COMPILE_2634
+    else if (__choose12 == 159)
     {
     //AddStmtKind
     part_nb++;
     }
     #endif
-    #ifdef __COMPILE_2298
-    else if (__choose9 == 160)
+    #ifdef __COMPILE_2635
+    else if (__choose12 == 160)
     {
     //AddStmtKind
     perror(ifname);
     }
     #endif
-    #ifdef __COMPILE_2299
-    else if (__choose9 == 161)
+    #ifdef __COMPILE_2636
+    else if (__choose12 == 161)
     {
     //AddStmtKind
     perror(ofname);
     }
     #endif
-    #ifdef __COMPILE_2300
-    else if (__choose9 == 162)
+    #ifdef __COMPILE_2637
+    else if (__choose12 == 162)
     {
     //AddStmtKind
     progerror("standard input");
     }
     #endif
-    #ifdef __COMPILE_2301
-    else if (__choose9 == 163)
+    #ifdef __COMPILE_2638
+    else if (__choose12 == 163)
     {
     //AddStmtKind
     progerror(ifname);
     }
     #endif
-    #ifdef __COMPILE_2302
-    else if (__choose9 == 164)
+    #ifdef __COMPILE_2639
+    else if (__choose12 == 164)
     {
     //AddStmtKind
     progerror(ofname);
     }
     #endif
-    #ifdef __COMPILE_2303
-    else if (__choose9 == 165)
+    #ifdef __COMPILE_2640
+    else if (__choose12 == 165)
     {
     //AddStmtKind
     quiet = 0;
     }
     #endif
-    #ifdef __COMPILE_2304
-    else if (__choose9 == 166)
+    #ifdef __COMPILE_2641
+    else if (__choose12 == 166)
     {
     //AddStmtKind
     read_error();
     }
     #endif
-    #ifdef __COMPILE_2305
-    else if (__choose9 == 167)
+    #ifdef __COMPILE_2642
+    else if (__choose12 == 167)
     {
     //AddStmtKind
     remove_ofname_fd = -1;
     }
     #endif
-    #ifdef __COMPILE_2306
-    else if (__choose9 == 168)
+    #ifdef __COMPILE_2643
+    else if (__choose12 == 168)
     {
     //AddStmtKind
     remove_output_file();
     }
     #endif
-    #ifdef __COMPILE_2307
-    else if (__choose9 == 169)
+    #ifdef __COMPILE_2644
+    else if (__choose12 == 169)
     {
     //AddStmtKind
     save_orig_name = !no_name;
     }
     #endif
-    #ifdef __COMPILE_2308
-    else if (__choose9 == 170)
+    #ifdef __COMPILE_2645
+    else if (__choose12 == 170)
     {
     //AddStmtKind
     save_orig_name = 0;
     }
     #endif
-    #ifdef __COMPILE_2309
-    else if (__choose9 == 171)
+    #ifdef __COMPILE_2646
+    else if (__choose12 == 171)
     {
     //AddStmtKind
     save_orig_name = 1;
     }
     #endif
-    #ifdef __COMPILE_2310
-    else if (__choose9 == 172)
+    #ifdef __COMPILE_2647
+    else if (__choose12 == 172)
     {
     //AddStmtKind
     sigemptyset(&caught_signals);
     }
     #endif
-    #ifdef __COMPILE_2311
-    else if (__choose9 == 173)
+    #ifdef __COMPILE_2648
+    else if (__choose12 == 173)
     {
     //AddStmtKind
     strcat(ifname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_2312
-    else if (__choose9 == 174)
+    #ifdef __COMPILE_2649
+    else if (__choose12 == 174)
     {
     //AddStmtKind
     strcat(ofname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_2313
-    else if (__choose9 == 175)
+    #ifdef __COMPILE_2650
+    else if (__choose12 == 175)
     {
     //AddStmtKind
     strcpy(ifname, "stdin");
     }
     #endif
-    #ifdef __COMPILE_2314
-    else if (__choose9 == 176)
+    #ifdef __COMPILE_2651
+    else if (__choose12 == 176)
     {
     //AddStmtKind
     strcpy(ofname, "stdout");
     }
     #endif
-    #ifdef __COMPILE_2315
-    else if (__choose9 == 177)
+    #ifdef __COMPILE_2652
+    else if (__choose12 == 177)
     {
     //AddStmtKind
     strcpy(ofname, ifname);
     }
     #endif
-    #ifdef __COMPILE_2316
-    else if (__choose9 == 178)
+    #ifdef __COMPILE_2653
+    else if (__choose12 == 178)
     {
     //AddStmtKind
     time_stamp = get_stat_mtime(&istat);
     }
     #endif
-    #ifdef __COMPILE_2317
-    else if (__choose9 == 179)
+    #ifdef __COMPILE_2654
+    else if (__choose12 == 179)
     {
     //AddStmtKind
     time_stamp.tv_nsec = -1;
     }
     #endif
-    #ifdef __COMPILE_2318
-    else if (__choose9 == 180)
+    #ifdef __COMPILE_2655
+    else if (__choose12 == 180)
     {
     //AddStmtKind
     time_stamp.tv_nsec = 0;
     }
     #endif
-    #ifdef __COMPILE_2319
-    else if (__choose9 == 181)
+    #ifdef __COMPILE_2656
+    else if (__choose12 == 181)
     {
     //AddStmtKind
     to_stdout = 1;
     }
     #endif
-    #ifdef __COMPILE_2320
-    else if (__choose9 == 182)
+    #ifdef __COMPILE_2657
+    else if (__choose12 == 182)
     {
     //AddStmtKind
     total_in = -1L;
     }
     #endif
-    #ifdef __COMPILE_2321
-    else if (__choose9 == 183)
+    #ifdef __COMPILE_2658
+    else if (__choose12 == 183)
     {
     //AddStmtKind
     total_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_2322
-    else if (__choose9 == 184)
+    #ifdef __COMPILE_2659
+    else if (__choose12 == 184)
     {
     //AddStmtKind
     treat_stdin();
     }
     #endif
-    #ifdef __COMPILE_2323
-    else if (__choose9 == 185)
+    #ifdef __COMPILE_2660
+    else if (__choose12 == 185)
     {
     //AddStmtKind
     try_help();
     }
     #endif
-    #ifdef __COMPILE_2324
-    else if (__choose9 == 186)
+    #ifdef __COMPILE_2661
+    else if (__choose12 == 186)
     {
     //AddStmtKind
     verbose = 0;
     }
     #endif
-    #ifdef __COMPILE_2325
-    else if (__choose9 == 187)
+    #ifdef __COMPILE_2662
+    else if (__choose12 == 187)
     {
     //AddStmtKind
     work = copy;
     }
     #endif
-    #ifdef __COMPILE_2326
-    else if (__choose9 == 188)
+    #ifdef __COMPILE_2663
+    else if (__choose12 == 188)
     {
     //AddStmtKind
     work = lzw;
     }
     #endif
-    #ifdef __COMPILE_2327
-    else if (__choose9 == 189)
+    #ifdef __COMPILE_2664
+    else if (__choose12 == 189)
     {
     //AddStmtKind
     work = unlzh;
     }
     #endif
-    #ifdef __COMPILE_2328
-    else if (__choose9 == 190)
+    #ifdef __COMPILE_2665
+    else if (__choose12 == 190)
     {
     //AddStmtKind
     work = unlzw;
     }
     #endif
-    #ifdef __COMPILE_2329
-    else if (__choose9 == 191)
+    #ifdef __COMPILE_2666
+    else if (__choose12 == 191)
     {
     //AddStmtKind
     work = unpack;
     }
     #endif
-    #ifdef __COMPILE_2330
-    else if (__choose9 == 192)
+    #ifdef __COMPILE_2667
+    else if (__choose12 == 192)
     {
     //AddStmtKind
     work = unzip;
     }
     #endif
-    #ifdef __COMPILE_2331
-    else if (__choose9 == 193)
+    #ifdef __COMPILE_2668
+    else if (__choose12 == 193)
     {
     //AddStmtKind
     write_error();
     }
     #endif
-    #ifdef __COMPILE_2332
-    else if (__choose9 == 194)
+    #ifdef __COMPILE_2669
+    else if (__choose12 == 194)
     {
     //AddStmtKind
     xunlink(ofname);
     }
     #endif
-    #ifdef __COMPILE_2333
-    else if (__choose9 == 195)
+    #ifdef __COMPILE_2670
+    else if (__choose12 == 195)
     {
     //AddStmtKind
     z_len = strlen(z_suffix);
     }
     #endif
-    #ifdef __COMPILE_2334
-    else if (__choose9 == 196)
+    #ifdef __COMPILE_2671
+    else if (__choose12 == 196)
     {
     //AddStmtKind
     z_suffix = ".gz";
     }
     #endif
-    #ifdef __COMPILE_2335
-    else if (__choose9 == 197)
+    #ifdef __COMPILE_2672
+    else if (__choose12 == 197)
     {
     //IfExitKind
-    if (__is_neg("9-197", "L1637", 8, &(program_name), sizeof (program_name), &(program_name),
+    if (__is_neg("12-197", "L1637", 8, &(program_name), sizeof (program_name), &(program_name),
     			 sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(force),
     			 sizeof (force), &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code)))
         return 0;
     }
     #endif
-    #ifdef __COMPILE_2336
-    else if (__choose9 == 198)
+    #ifdef __COMPILE_2673
+    else if (__choose12 == 198)
     {
     //IfExitKind
-    if (__is_neg("9-198", "L1637", 8, &(program_name), sizeof (program_name), &(program_name),
+    if (__is_neg("12-198", "L1637", 8, &(program_name), sizeof (program_name), &(program_name),
     			 sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(force),
     			 sizeof (force), &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code)))
         return 1;
     }
     #endif
-    #ifdef __COMPILE_2337
-    else if (__choose9 == 199)
+    #ifdef __COMPILE_2674
+    else if (__choose12 == 199)
     {
     //IfExitKind
-    if (__is_neg("9-199", "L1637", 8, &(program_name), sizeof (program_name), &(program_name),
+    if (__is_neg("12-199", "L1637", 8, &(program_name), sizeof (program_name), &(program_name),
     			 sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(force),
     			 sizeof (force), &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code)))
         return 2;
     }
     #endif
-    int __choose10 = __choose("__SWITCH10");
-    if (__choose10 == 0)
+    int __choose13 = __choose("__SWITCH13");
+    if (__choose13 == 0)
     {
     fprintf (stderr, "%s: %s already exists;", program_name, ofname);
     
     }
-    #ifdef __COMPILE_2338
-    else if (__choose10 == 1)
+    #ifdef __COMPILE_2675
+    else if (__choose13 == 1)
     {
     //GuardKind
-    if (!__is_neg("10-1", "L1637", 8, &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(force), sizeof (force), &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)))
+    if (!__is_neg("13-1", "L1637", 8, &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(force), sizeof (force), &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)))
         rpl_fprintf(stderr, "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2339
-    else if (__choose10 == 2)
+    #ifdef __COMPILE_2676
+    else if (__choose13 == 2)
     {
     //MSVExtRemoveStmtKind
     {
@@ -22552,96 +25348,96 @@ local int check_ofname()
     
     }
     #endif
-    #ifdef __COMPILE_2340
-    else if (__choose10 == 3)
+    #ifdef __COMPILE_2677
+    else if (__choose13 == 3)
     {
     //ReplaceFunctionKind
     __asprintf(stderr, "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2341
-    else if (__choose10 == 4)
+    #ifdef __COMPILE_2678
+    else if (__choose13 == 4)
     {
     //ReplaceFunctionKind
     __printf__(stderr, "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2342
-    else if (__choose10 == 5)
+    #ifdef __COMPILE_2679
+    else if (__choose13 == 5)
     {
     //ReplaceFunctionKind
     asprintf(stderr, "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2343
-    else if (__choose10 == 6)
+    #ifdef __COMPILE_2680
+    else if (__choose13 == 6)
     {
     //ReplaceFunctionKind
     execl(stderr, "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2344
-    else if (__choose10 == 7)
+    #ifdef __COMPILE_2681
+    else if (__choose13 == 7)
     {
     //ReplaceFunctionKind
     execle(stderr, "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2345
-    else if (__choose10 == 8)
+    #ifdef __COMPILE_2682
+    else if (__choose13 == 8)
     {
     //ReplaceFunctionKind
     execlp(stderr, "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2346
-    else if (__choose10 == 9)
+    #ifdef __COMPILE_2683
+    else if (__choose13 == 9)
     {
     //ReplaceFunctionKind
     fprintf(stderr, "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2347
-    else if (__choose10 == 10)
+    #ifdef __COMPILE_2684
+    else if (__choose13 == 10)
     {
     //ReplaceFunctionKind
     obstack_printf(stderr, "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2348
-    else if (__choose10 == 11)
+    #ifdef __COMPILE_2685
+    else if (__choose13 == 11)
     {
     //ReplaceFunctionKind
     printf(stderr, "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2349
-    else if (__choose10 == 12)
+    #ifdef __COMPILE_2686
+    else if (__choose13 == 12)
     {
     //ReplaceFunctionKind
     sprintf(stderr, "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2350
-    else if (__choose10 == 13)
+    #ifdef __COMPILE_2687
+    else if (__choose13 == 13)
     {
     //ReplaceKind
     rpl_fprintf((&ok), "%s: %s already exists;", program_name, ofname);
     
     }
     #endif
-    #ifdef __COMPILE_2351
-    else if (__choose10 == 14)
+    #ifdef __COMPILE_2688
+    else if (__choose13 == 14)
     {
     //ReplaceKind
     rpl_fprintf(stderr, "%s: %s already exists; or the directory does not exist", program_name, ofname);
@@ -22650,4021 +25446,4021 @@ local int check_ofname()
     #endif
     }
             {
-    int __choose11 = __choose("__SWITCH11");
-    if (__choose11 == 0)
+    int __choose14 = __choose("__SWITCH14");
+    if (__choose14 == 0)
     {}
-    #ifdef __COMPILE_2352
-    else if (__choose11 == 1)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_in = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2353
-    else if (__choose11 == 2)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_in = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2354
-    else if (__choose11 == 3)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_in = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2355
-    else if (__choose11 == 4)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_out = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2356
-    else if (__choose11 == 5)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_out = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2357
-    else if (__choose11 == 6)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_out = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2358
-    else if (__choose11 == 7)
-    {
-    //AddStmtAndReplaceAtomKind
-    exit_code = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2359
-    else if (__choose11 == 8)
-    {
-    //AddStmtAndReplaceAtomKind
-    exit_code = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2360
-    else if (__choose11 == 9)
-    {
-    //AddStmtAndReplaceAtomKind
-    exit_code = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2361
-    else if (__choose11 == 10)
-    {
-    //AddStmtAndReplaceAtomKind
-    exit_code = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2362
-    else if (__choose11 == 11)
-    {
-    //AddStmtAndReplaceAtomKind
-    exiting_signal = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2363
-    else if (__choose11 == 12)
-    {
-    //AddStmtAndReplaceAtomKind
-    exiting_signal = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2364
-    else if (__choose11 == 13)
-    {
-    //AddStmtAndReplaceAtomKind
-    exiting_signal = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2365
-    else if (__choose11 == 14)
-    {
-    //AddStmtAndReplaceAtomKind
-    exiting_signal = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2366
-    else if (__choose11 == 15)
-    {
-    //AddStmtAndReplaceAtomKind
-    foreground = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2367
-    else if (__choose11 == 16)
-    {
-    //AddStmtAndReplaceAtomKind
-    foreground = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2368
-    else if (__choose11 == 17)
-    {
-    //AddStmtAndReplaceAtomKind
-    foreground = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2369
-    else if (__choose11 == 18)
-    {
-    //AddStmtAndReplaceAtomKind
-    foreground = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2370
-    else if (__choose11 == 19)
-    {
-    //AddStmtAndReplaceAtomKind
-    header_bytes = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2371
-    else if (__choose11 == 20)
-    {
-    //AddStmtAndReplaceAtomKind
-    header_bytes = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2372
-    else if (__choose11 == 21)
-    {
-    //AddStmtAndReplaceAtomKind
-    header_bytes = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2373
-    else if (__choose11 == 22)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifd = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2374
-    else if (__choose11 == 23)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifd = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2375
-    else if (__choose11 == 24)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifd = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2376
-    else if (__choose11 == 25)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifd = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2377
-    else if (__choose11 == 26)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifile_size = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2378
-    else if (__choose11 == 27)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifile_size = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2379
-    else if (__choose11 == 28)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifile_size = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2380
-    else if (__choose11 == 29)
-    {
-    //AddStmtAndReplaceAtomKind
-    inptr = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2381
-    else if (__choose11 == 30)
-    {
-    //AddStmtAndReplaceAtomKind
-    inptr = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2382
-    else if (__choose11 == 31)
-    {
-    //AddStmtAndReplaceAtomKind
-    inptr = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2383
-    else if (__choose11 == 32)
-    {
-    //AddStmtAndReplaceAtomKind
-    last_member = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2384
-    else if (__choose11 == 33)
-    {
-    //AddStmtAndReplaceAtomKind
-    last_member = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2385
-    else if (__choose11 == 34)
-    {
-    //AddStmtAndReplaceAtomKind
-    last_member = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2386
-    else if (__choose11 == 35)
-    {
-    //AddStmtAndReplaceAtomKind
-    last_member = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2387
-    else if (__choose11 == 36)
-    {
-    //AddStmtAndReplaceAtomKind
-    list = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2388
-    else if (__choose11 == 37)
-    {
-    //AddStmtAndReplaceAtomKind
-    list = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2389
-    else if (__choose11 == 38)
-    {
-    //AddStmtAndReplaceAtomKind
-    list = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2390
-    else if (__choose11 == 39)
-    {
-    //AddStmtAndReplaceAtomKind
-    list = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2391
-    else if (__choose11 == 40)
-    {
-    //AddStmtAndReplaceAtomKind
-    method = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2392
-    else if (__choose11 == 41)
-    {
-    //AddStmtAndReplaceAtomKind
-    method = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2393
-    else if (__choose11 == 42)
-    {
-    //AddStmtAndReplaceAtomKind
-    method = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2394
-    else if (__choose11 == 43)
-    {
-    //AddStmtAndReplaceAtomKind
-    method = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2395
-    else if (__choose11 == 44)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_name = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2396
-    else if (__choose11 == 45)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_name = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2397
-    else if (__choose11 == 46)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_name = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2398
-    else if (__choose11 == 47)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_name = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2399
-    else if (__choose11 == 48)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_time = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2400
-    else if (__choose11 == 49)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_time = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2401
-    else if (__choose11 == 50)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_time = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2402
-    else if (__choose11 == 51)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_time = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2403
-    else if (__choose11 == 52)
-    {
-    //AddStmtAndReplaceAtomKind
-    ofd = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2404
-    else if (__choose11 == 53)
-    {
-    //AddStmtAndReplaceAtomKind
-    ofd = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2405
-    else if (__choose11 == 54)
-    {
-    //AddStmtAndReplaceAtomKind
-    ofd = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2406
-    else if (__choose11 == 55)
-    {
-    //AddStmtAndReplaceAtomKind
-    ofd = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2407
-    else if (__choose11 == 56)
-    {
-    //AddStmtAndReplaceAtomKind
-    ok = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2408
-    else if (__choose11 == 57)
-    {
-    //AddStmtAndReplaceAtomKind
-    ok = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2409
-    else if (__choose11 == 58)
-    {
-    //AddStmtAndReplaceAtomKind
-    ok = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2410
-    else if (__choose11 == 59)
-    {
-    //AddStmtAndReplaceAtomKind
-    ok = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2411
-    else if (__choose11 == 60)
-    {
-    //AddStmtAndReplaceAtomKind
-    part_nb = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2412
-    else if (__choose11 == 61)
-    {
-    //AddStmtAndReplaceAtomKind
-    part_nb = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2413
-    else if (__choose11 == 62)
-    {
-    //AddStmtAndReplaceAtomKind
-    part_nb = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2414
-    else if (__choose11 == 63)
-    {
-    //AddStmtAndReplaceAtomKind
-    part_nb = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2415
-    else if (__choose11 == 64)
-    {
-    //AddStmtAndReplaceAtomKind
-    quiet = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2416
-    else if (__choose11 == 65)
-    {
-    //AddStmtAndReplaceAtomKind
-    quiet = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2417
-    else if (__choose11 == 66)
-    {
-    //AddStmtAndReplaceAtomKind
-    quiet = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2418
-    else if (__choose11 == 67)
-    {
-    //AddStmtAndReplaceAtomKind
-    quiet = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2419
-    else if (__choose11 == 68)
-    {
-    //AddStmtAndReplaceAtomKind
-    remove_ofname_fd = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2420
-    else if (__choose11 == 69)
-    {
-    //AddStmtAndReplaceAtomKind
-    remove_ofname_fd = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2421
-    else if (__choose11 == 70)
-    {
-    //AddStmtAndReplaceAtomKind
-    remove_ofname_fd = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2422
-    else if (__choose11 == 71)
-    {
-    //AddStmtAndReplaceAtomKind
-    remove_ofname_fd = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2423
-    else if (__choose11 == 72)
-    {
-    //AddStmtAndReplaceAtomKind
-    save_orig_name = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2424
-    else if (__choose11 == 73)
-    {
-    //AddStmtAndReplaceAtomKind
-    save_orig_name = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2425
-    else if (__choose11 == 74)
-    {
-    //AddStmtAndReplaceAtomKind
-    save_orig_name = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2426
-    else if (__choose11 == 75)
-    {
-    //AddStmtAndReplaceAtomKind
-    save_orig_name = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2427
-    else if (__choose11 == 76)
-    {
-    //AddStmtAndReplaceAtomKind
-    time_stamp.tv_nsec = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2428
-    else if (__choose11 == 77)
-    {
-    //AddStmtAndReplaceAtomKind
-    time_stamp.tv_nsec = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2429
-    else if (__choose11 == 78)
-    {
-    //AddStmtAndReplaceAtomKind
-    time_stamp.tv_nsec = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2430
-    else if (__choose11 == 79)
-    {
-    //AddStmtAndReplaceAtomKind
-    time_stamp.tv_sec = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2431
-    else if (__choose11 == 80)
-    {
-    //AddStmtAndReplaceAtomKind
-    time_stamp.tv_sec = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2432
-    else if (__choose11 == 81)
-    {
-    //AddStmtAndReplaceAtomKind
-    time_stamp.tv_sec = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2433
-    else if (__choose11 == 82)
-    {
-    //AddStmtAndReplaceAtomKind
-    to_stdout = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2434
-    else if (__choose11 == 83)
-    {
-    //AddStmtAndReplaceAtomKind
-    to_stdout = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2435
-    else if (__choose11 == 84)
-    {
-    //AddStmtAndReplaceAtomKind
-    to_stdout = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2436
-    else if (__choose11 == 85)
-    {
-    //AddStmtAndReplaceAtomKind
-    to_stdout = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2437
-    else if (__choose11 == 86)
-    {
-    //AddStmtAndReplaceAtomKind
-    total_in = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2438
-    else if (__choose11 == 87)
-    {
-    //AddStmtAndReplaceAtomKind
-    total_in = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2439
-    else if (__choose11 == 88)
-    {
-    //AddStmtAndReplaceAtomKind
-    total_in = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2440
-    else if (__choose11 == 89)
-    {
-    //AddStmtAndReplaceAtomKind
-    total_out = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2441
-    else if (__choose11 == 90)
-    {
-    //AddStmtAndReplaceAtomKind
-    total_out = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2442
-    else if (__choose11 == 91)
-    {
-    //AddStmtAndReplaceAtomKind
-    total_out = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2443
-    else if (__choose11 == 92)
-    {
-    //AddStmtAndReplaceAtomKind
-    verbose = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2444
-    else if (__choose11 == 93)
-    {
-    //AddStmtAndReplaceAtomKind
-    verbose = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2445
-    else if (__choose11 == 94)
-    {
-    //AddStmtAndReplaceAtomKind
-    verbose = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2446
-    else if (__choose11 == 95)
-    {
-    //AddStmtAndReplaceAtomKind
-    verbose = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2447
-    else if (__choose11 == 96)
-    {
-    //AddStmtAndReplaceAtomKind
-    z_len = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2448
-    else if (__choose11 == 97)
-    {
-    //AddStmtAndReplaceAtomKind
-    z_len = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2449
-    else if (__choose11 == 98)
-    {
-    //AddStmtAndReplaceAtomKind
-    z_len = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2450
-    else if (__choose11 == 99)
-    {
-    //AddStmtKind
-    (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
-    }
-    #endif
-    #ifdef __COMPILE_2451
-    else if (__choose11 == 100)
-    {
-    //AddStmtKind
-    __printf__("                            ");
-    }
-    #endif
-    #ifdef __COMPILE_2452
-    else if (__choose11 == 101)
-    {
-    //AddStmtKind
-    __printf__(" ");
-    }
-    #endif
-    #ifdef __COMPILE_2453
-    else if (__choose11 == 102)
-    {
-    //AddStmtKind
-    __printf__(" %s\n", ofname);
-    }
-    #endif
-    #ifdef __COMPILE_2454
-    else if (__choose11 == 103)
-    {
-    //AddStmtKind
-    __printf__(" (totals)\n");
-    }
-    #endif
-    #ifdef __COMPILE_2455
-    else if (__choose11 == 104)
-    {
-    //AddStmtKind
-    __printf__("%s %s\n", program_name, "1.0");
-    }
-    #endif
-    #ifdef __COMPILE_2456
-    else if (__choose11 == 105)
-    {
-    //AddStmtKind
-    __printf__("??? ?? ??:?? ");
-    }
-    #endif
-    #ifdef __COMPILE_2457
-    else if (__choose11 == 106)
-    {
-    //AddStmtKind
-    __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
-    }
-    #endif
-    #ifdef __COMPILE_2458
-    else if (__choose11 == 107)
-    {
-    //AddStmtKind
-    __printf__("Written by Jean-loup Gailly.\n");
-    }
-    #endif
-    #ifdef __COMPILE_2459
-    else if (__choose11 == 108)
-    {
-    //AddStmtKind
-    __printf__("\n");
-    }
-    #endif
-    #ifdef __COMPILE_2460
-    else if (__choose11 == 109)
-    {
-    //AddStmtKind
-    __printf__("method  crc     date  time  ");
-    }
-    #endif
-    #ifdef __COMPILE_2461
-    else if (__choose11 == 110)
-    {
-    //AddStmtKind
-    _exit(2);
-    }
-    #endif
-    #ifdef __COMPILE_2462
-    else if (__choose11 == 111)
-    {
-    //AddStmtKind
-    args = ((void *)0);
-    }
-    #endif
-    #ifdef __COMPILE_2463
-    else if (__choose11 == 112)
-    {
-    //AddStmtKind
-    atexit(close_stdin);
-    }
-    #endif
-    #ifdef __COMPILE_2464
-    else if (__choose11 == 113)
-    {
-    //AddStmtKind
-    bytes_in = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2465
-    else if (__choose11 == 114)
-    {
-    //AddStmtKind
-    bytes_in = ifile_size;
-    }
-    #endif
-    #ifdef __COMPILE_2466
-    else if (__choose11 == 115)
-    {
-    //AddStmtKind
-    bytes_out = -1L;
-    }
-    #endif
-    #ifdef __COMPILE_2467
-    else if (__choose11 == 116)
-    {
-    //AddStmtKind
-    bytes_out = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2468
-    else if (__choose11 == 117)
-    {
-    //AddStmtKind
-    bytes_out++;
-    }
-    #endif
-    #ifdef __COMPILE_2469
-    else if (__choose11 == 118)
-    {
-    //AddStmtKind
-    clear_bufs();
-    }
-    #endif
-    #ifdef __COMPILE_2470
-    else if (__choose11 == 119)
-    {
-    //AddStmtKind
-    close(ifd);
-    }
-    #endif
-    #ifdef __COMPILE_2471
-    else if (__choose11 == 120)
-    {
-    //AddStmtKind
-    copy_stat(&istat);
-    }
-    #endif
-    #ifdef __COMPILE_2472
-    else if (__choose11 == 121)
-    {
-    //AddStmtKind
-    do_exit(0);
-    }
-    #endif
-    #ifdef __COMPILE_2473
-    else if (__choose11 == 122)
-    {
-    //AddStmtKind
-    do_exit(1);
-    }
-    #endif
-    #ifdef __COMPILE_2474
-    else if (__choose11 == 123)
-    {
-    //AddStmtKind
-    do_exit(exit_code);
-    }
-    #endif
-    #ifdef __COMPILE_2475
-    else if (__choose11 == 124)
-    {
-    //AddStmtKind
-    do_list(-1, -1);
-    }
-    #endif
-    #ifdef __COMPILE_2476
-    else if (__choose11 == 125)
-    {
-    //AddStmtKind
-    do_list(ifd, method);
-    }
-    #endif
-    #ifdef __COMPILE_2477
-    else if (__choose11 == 126)
-    {
-    //AddStmtKind
-    env = ((void *)0);
-    }
-    #endif
-    #ifdef __COMPILE_2478
-    else if (__choose11 == 127)
-    {
-    //AddStmtKind
-    env = add_envopt(&argc, &argv, "GZIP");
-    }
-    #endif
-    #ifdef __COMPILE_2479
-    else if (__choose11 == 128)
-    {
-    //AddStmtKind
-    exit_code = 1;
-    }
-    #endif
-    #ifdef __COMPILE_2480
-    else if (__choose11 == 129)
-    {
-    //AddStmtKind
-    exit_code = 2;
-    }
-    #endif
-    #ifdef __COMPILE_2481
-    else if (__choose11 == 130)
-    {
-    //AddStmtKind
-    exiting_signal = quiet ? 13 : 0;
-    }
-    #endif
-    #ifdef __COMPILE_2482
-    else if (__choose11 == 131)
-    {
-    //AddStmtKind
-    foreground = 1;
-    }
-    #endif
-    #ifdef __COMPILE_2483
-    else if (__choose11 == 132)
-    {
-    //AddStmtKind
-    free(args);
-    }
-    #endif
-    #ifdef __COMPILE_2484
-    else if (__choose11 == 133)
-    {
-    //AddStmtKind
-    free(env);
-    }
-    #endif
-    #ifdef __COMPILE_2485
-    else if (__choose11 == 134)
-    {
-    //AddStmtKind
-    gzip_error("can't recover suffix\n");
-    }
-    #endif
-    #ifdef __COMPILE_2486
-    else if (__choose11 == 135)
-    {
-    //AddStmtKind
-    gzip_error("corrupted input -- file name too large");
-    }
-    #endif
-    #ifdef __COMPILE_2487
-    else if (__choose11 == 136)
-    {
-    //AddStmtKind
-    gzip_error("internal error in shorten_name");
-    }
-    #endif
-    #ifdef __COMPILE_2488
-    else if (__choose11 == 137)
-    {
-    //AddStmtKind
-    gzip_error("name too short");
-    }
-    #endif
-    #ifdef __COMPILE_2489
-    else if (__choose11 == 138)
-    {
-    //AddStmtKind
-    header_bytes = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2490
-    else if (__choose11 == 139)
-    {
-    //AddStmtKind
-    header_bytes = inptr + 2 * sizeof(long);
-    }
-    #endif
-    #ifdef __COMPILE_2491
-    else if (__choose11 == 140)
-    {
-    //AddStmtKind
-    ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
-    }
-    #endif
-    #ifdef __COMPILE_2492
-    else if (__choose11 == 141)
-    {
-    //AddStmtKind
-    inptr = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2493
-    else if (__choose11 == 142)
-    {
-    //AddStmtKind
-    inptr--;
-    }
-    #endif
-    #ifdef __COMPILE_2494
-    else if (__choose11 == 143)
-    {
-    //AddStmtKind
-    install_signal_handlers();
-    }
-    #endif
-    #ifdef __COMPILE_2495
-    else if (__choose11 == 144)
-    {
-    //AddStmtKind
-    last_member = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2496
-    else if (__choose11 == 145)
-    {
-    //AddStmtKind
-    last_member = 1;
-    }
-    #endif
-    #ifdef __COMPILE_2497
-    else if (__choose11 == 146)
-    {
-    //AddStmtKind
-    license();
-    }
-    #endif
-    #ifdef __COMPILE_2498
-    else if (__choose11 == 147)
-    {
-    //AddStmtKind
-    list = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2499
-    else if (__choose11 == 148)
-    {
-    //AddStmtKind
-    method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
-    }
-    #endif
-    #ifdef __COMPILE_2500
-    else if (__choose11 == 149)
-    {
-    //AddStmtKind
-    method = -1;
-    }
-    #endif
-    #ifdef __COMPILE_2501
-    else if (__choose11 == 150)
-    {
-    //AddStmtKind
-    method = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2502
-    else if (__choose11 == 151)
-    {
-    //AddStmtKind
-    method = 1;
-    }
-    #endif
-    #ifdef __COMPILE_2503
-    else if (__choose11 == 152)
-    {
-    //AddStmtKind
-    method = 2;
-    }
-    #endif
-    #ifdef __COMPILE_2504
-    else if (__choose11 == 153)
-    {
-    //AddStmtKind
-    method = 3;
-    }
-    #endif
-    #ifdef __COMPILE_2505
-    else if (__choose11 == 154)
-    {
-    //AddStmtKind
-    method = get_method(ifd);
-    }
-    #endif
-    #ifdef __COMPILE_2506
-    else if (__choose11 == 155)
-    {
-    //AddStmtKind
-    no_name = decompress;
-    }
-    #endif
-    #ifdef __COMPILE_2507
-    else if (__choose11 == 156)
-    {
-    //AddStmtKind
-    no_time = decompress;
-    }
-    #endif
-    #ifdef __COMPILE_2508
-    else if (__choose11 == 157)
-    {
-    //AddStmtKind
-    ok = yesno();
-    }
-    #endif
-    #ifdef __COMPILE_2509
-    else if (__choose11 == 158)
-    {
-    //AddStmtKind
-    part_nb = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2510
-    else if (__choose11 == 159)
-    {
-    //AddStmtKind
-    part_nb++;
-    }
-    #endif
-    #ifdef __COMPILE_2511
-    else if (__choose11 == 160)
-    {
-    //AddStmtKind
-    perror(ifname);
-    }
-    #endif
-    #ifdef __COMPILE_2512
-    else if (__choose11 == 161)
-    {
-    //AddStmtKind
-    perror(ofname);
-    }
-    #endif
-    #ifdef __COMPILE_2513
-    else if (__choose11 == 162)
-    {
-    //AddStmtKind
-    progerror("standard input");
-    }
-    #endif
-    #ifdef __COMPILE_2514
-    else if (__choose11 == 163)
-    {
-    //AddStmtKind
-    progerror(ifname);
-    }
-    #endif
-    #ifdef __COMPILE_2515
-    else if (__choose11 == 164)
-    {
-    //AddStmtKind
-    progerror(ofname);
-    }
-    #endif
-    #ifdef __COMPILE_2516
-    else if (__choose11 == 165)
-    {
-    //AddStmtKind
-    quiet = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2517
-    else if (__choose11 == 166)
-    {
-    //AddStmtKind
-    read_error();
-    }
-    #endif
-    #ifdef __COMPILE_2518
-    else if (__choose11 == 167)
-    {
-    //AddStmtKind
-    remove_ofname_fd = -1;
-    }
-    #endif
-    #ifdef __COMPILE_2519
-    else if (__choose11 == 168)
-    {
-    //AddStmtKind
-    remove_output_file();
-    }
-    #endif
-    #ifdef __COMPILE_2520
-    else if (__choose11 == 169)
-    {
-    //AddStmtKind
-    save_orig_name = !no_name;
-    }
-    #endif
-    #ifdef __COMPILE_2521
-    else if (__choose11 == 170)
-    {
-    //AddStmtKind
-    save_orig_name = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2522
-    else if (__choose11 == 171)
-    {
-    //AddStmtKind
-    save_orig_name = 1;
-    }
-    #endif
-    #ifdef __COMPILE_2523
-    else if (__choose11 == 172)
-    {
-    //AddStmtKind
-    sigemptyset(&caught_signals);
-    }
-    #endif
-    #ifdef __COMPILE_2524
-    else if (__choose11 == 173)
-    {
-    //AddStmtKind
-    strcat(ifname, z_suffix);
-    }
-    #endif
-    #ifdef __COMPILE_2525
-    else if (__choose11 == 174)
-    {
-    //AddStmtKind
-    strcat(ofname, z_suffix);
-    }
-    #endif
-    #ifdef __COMPILE_2526
-    else if (__choose11 == 175)
-    {
-    //AddStmtKind
-    strcpy(ifname, "stdin");
-    }
-    #endif
-    #ifdef __COMPILE_2527
-    else if (__choose11 == 176)
-    {
-    //AddStmtKind
-    strcpy(ofname, "stdout");
-    }
-    #endif
-    #ifdef __COMPILE_2528
-    else if (__choose11 == 177)
-    {
-    //AddStmtKind
-    strcpy(ofname, ifname);
-    }
-    #endif
-    #ifdef __COMPILE_2529
-    else if (__choose11 == 178)
-    {
-    //AddStmtKind
-    time_stamp = get_stat_mtime(&istat);
-    }
-    #endif
-    #ifdef __COMPILE_2530
-    else if (__choose11 == 179)
-    {
-    //AddStmtKind
-    time_stamp.tv_nsec = -1;
-    }
-    #endif
-    #ifdef __COMPILE_2531
-    else if (__choose11 == 180)
-    {
-    //AddStmtKind
-    time_stamp.tv_nsec = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2532
-    else if (__choose11 == 181)
-    {
-    //AddStmtKind
-    to_stdout = 1;
-    }
-    #endif
-    #ifdef __COMPILE_2533
-    else if (__choose11 == 182)
-    {
-    //AddStmtKind
-    total_in = -1L;
-    }
-    #endif
-    #ifdef __COMPILE_2534
-    else if (__choose11 == 183)
-    {
-    //AddStmtKind
-    total_out = -1L;
-    }
-    #endif
-    #ifdef __COMPILE_2535
-    else if (__choose11 == 184)
-    {
-    //AddStmtKind
-    treat_stdin();
-    }
-    #endif
-    #ifdef __COMPILE_2536
-    else if (__choose11 == 185)
-    {
-    //AddStmtKind
-    try_help();
-    }
-    #endif
-    #ifdef __COMPILE_2537
-    else if (__choose11 == 186)
-    {
-    //AddStmtKind
-    verbose = 0;
-    }
-    #endif
-    #ifdef __COMPILE_2538
-    else if (__choose11 == 187)
-    {
-    //AddStmtKind
-    work = copy;
-    }
-    #endif
-    #ifdef __COMPILE_2539
-    else if (__choose11 == 188)
-    {
-    //AddStmtKind
-    work = lzw;
-    }
-    #endif
-    #ifdef __COMPILE_2540
-    else if (__choose11 == 189)
-    {
-    //AddStmtKind
-    work = unlzh;
-    }
-    #endif
-    #ifdef __COMPILE_2541
-    else if (__choose11 == 190)
-    {
-    //AddStmtKind
-    work = unlzw;
-    }
-    #endif
-    #ifdef __COMPILE_2542
-    else if (__choose11 == 191)
-    {
-    //AddStmtKind
-    work = unpack;
-    }
-    #endif
-    #ifdef __COMPILE_2543
-    else if (__choose11 == 192)
-    {
-    //AddStmtKind
-    work = unzip;
-    }
-    #endif
-    #ifdef __COMPILE_2544
-    else if (__choose11 == 193)
-    {
-    //AddStmtKind
-    write_error();
-    }
-    #endif
-    #ifdef __COMPILE_2545
-    else if (__choose11 == 194)
-    {
-    //AddStmtKind
-    xunlink(ofname);
-    }
-    #endif
-    #ifdef __COMPILE_2546
-    else if (__choose11 == 195)
-    {
-    //AddStmtKind
-    z_len = strlen(z_suffix);
-    }
-    #endif
-    #ifdef __COMPILE_2547
-    else if (__choose11 == 196)
-    {
-    //AddStmtKind
-    z_suffix = ".gz";
-    }
-    #endif
-    #ifdef __COMPILE_2548
-    else if (__choose11 == 197)
-    {
-    //IfExitKind
-    if (__is_neg("11-197", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
-    			 sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok),
-    			 sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code),
-    			 sizeof (exit_code)))
-        return 0;
-    }
-    #endif
-    #ifdef __COMPILE_2549
-    else if (__choose11 == 198)
-    {
-    //IfExitKind
-    if (__is_neg("11-198", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
-    			 sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok),
-    			 sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code),
-    			 sizeof (exit_code)))
-        return 1;
-    }
-    #endif
-    #ifdef __COMPILE_2550
-    else if (__choose11 == 199)
-    {
-    //IfExitKind
-    if (__is_neg("11-199", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
-    			 sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok),
-    			 sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code),
-    			 sizeof (exit_code)))
-        return 2;
-    }
-    #endif
-    int __choose12 = __choose("__SWITCH12");
-    {
-    int __temp12=(foreground && (presume_input_tty || isatty(fileno(stdin)))) ;
-    if (__choose12 == 0)
-    {}
-    #ifdef __COMPILE_2551
-    else if (__choose12 == 1)
-    {
-    __temp12= (__is_neg("12-1", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
-    }
-    #endif
-    #ifdef __COMPILE_2552
-    else if (__choose12 == 2)
-    {
-    __temp12= (((foreground) || __is_neg("12-2", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code))) && (presume_input_tty || isatty(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2553
-    else if (__choose12 == 3)
-    {
-    __temp12= ((foreground && (presume_input_tty || isatty(fileno(stdin)))) || __is_neg("12-3", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
-    }
-    #endif
-    #ifdef __COMPILE_2554
-    else if (__choose12 == 4)
-    {
-    __temp12= ((foreground && presume_input_tty) || isatty(fileno(stdin)));
-    }
-    #endif
-    #ifdef __COMPILE_2555
-    else if (__choose12 == 5)
-    {
-    __temp12= (foreground);
-    }
-    #endif
-    #ifdef __COMPILE_2556
-    else if (__choose12 == 6)
-    {
-    __temp12= (foreground && (presume_input_tty || __getpgid(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2557
-    else if (__choose12 == 7)
-    {
-    __temp12= (foreground && (presume_input_tty || _tolower(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2558
-    else if (__choose12 == 8)
-    {
-    __temp12= (foreground && (presume_input_tty || _toupper(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2559
-    else if (__choose12 == 9)
-    {
-    __temp12= (foreground && (presume_input_tty || abs(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2560
-    else if (__choose12 == 10)
-    {
-    __temp12= (foreground && (presume_input_tty || check_zipfile(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2561
-    else if (__choose12 == 11)
-    {
-    __temp12= (foreground && (presume_input_tty || close(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2562
-    else if (__choose12 == 12)
-    {
-    __temp12= (foreground && (presume_input_tty || dup(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2563
-    else if (__choose12 == 13)
-    {
-    __temp12= (foreground && (presume_input_tty || dysize(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2564
-    else if (__choose12 == 14)
-    {
-    __temp12= (foreground && (presume_input_tty || fchdir(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2565
-    else if (__choose12 == 15)
-    {
-    __temp12= (foreground && (presume_input_tty || fdatasync(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2566
-    else if (__choose12 == 16)
-    {
-    __temp12= (foreground && (presume_input_tty || ffs(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2567
-    else if (__choose12 == 17)
-    {
-    __temp12= (foreground && (presume_input_tty || fill_inbuf(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2568
-    else if (__choose12 == 18)
-    {
-    __temp12= (foreground && (presume_input_tty || fsync(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2569
-    else if (__choose12 == 19)
-    {
-    __temp12= (foreground && (presume_input_tty || get_method(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2570
-    else if (__choose12 == 20)
-    {
-    __temp12= (foreground && (presume_input_tty || getpgid(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2571
-    else if (__choose12 == 21)
-    {
-    __temp12= (foreground && (presume_input_tty || getsid(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2572
-    else if (__choose12 == 22)
-    {
-    __temp12= (foreground && (presume_input_tty || grantpt(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2573
-    else if (__choose12 == 23)
-    {
-    __temp12= (foreground && (presume_input_tty || gsignal(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2574
-    else if (__choose12 == 24)
-    {
-    __temp12= (foreground && (presume_input_tty || isalnum(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2575
-    else if (__choose12 == 25)
-    {
-    __temp12= (foreground && (presume_input_tty || isalpha(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2576
-    else if (__choose12 == 26)
-    {
-    __temp12= (foreground && (presume_input_tty || isascii(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2577
-    else if (__choose12 == 27)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(_IO_feof(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2578
-    else if (__choose12 == 28)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(_IO_ferror(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2579
-    else if (__choose12 == 29)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(_IO_ftrylockfile(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2580
-    else if (__choose12 == 30)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(_IO_getc(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2581
-    else if (__choose12 == 31)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(_IO_peekc_locked(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2582
-    else if (__choose12 == 32)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(__uflow(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2583
-    else if (__choose12 == 33)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(__underflow(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2584
-    else if (__choose12 == 34)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(fclose(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2585
-    else if (__choose12 == 35)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(feof(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2586
-    else if (__choose12 == 36)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(feof_unlocked(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2587
-    else if (__choose12 == 37)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(ferror(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2588
-    else if (__choose12 == 38)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(ferror_unlocked(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2589
-    else if (__choose12 == 39)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(fflush(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2590
-    else if (__choose12 == 40)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(fflush_unlocked(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2591
-    else if (__choose12 == 41)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(fgetc(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2592
-    else if (__choose12 == 42)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(fgetc_unlocked(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2593
-    else if (__choose12 == 43)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(fileno_unlocked(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2594
-    else if (__choose12 == 44)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(fpurge(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2595
-    else if (__choose12 == 45)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(ftrylockfile(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2596
-    else if (__choose12 == 46)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(getc(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2597
-    else if (__choose12 == 47)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(getc_unlocked(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2598
-    else if (__choose12 == 48)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(getw(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2599
-    else if (__choose12 == 49)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(pclose(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2600
-    else if (__choose12 == 50)
-    {
-    __temp12= (foreground && (presume_input_tty || isatty(rpl_fflush(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2601
-    else if (__choose12 == 51)
-    {
-    __temp12= (foreground && (presume_input_tty || isblank(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2602
-    else if (__choose12 == 52)
-    {
-    __temp12= (foreground && (presume_input_tty || iscntrl(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2603
-    else if (__choose12 == 53)
-    {
-    __temp12= (foreground && (presume_input_tty || isdigit(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2604
-    else if (__choose12 == 54)
-    {
-    __temp12= (foreground && (presume_input_tty || isgraph(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2605
-    else if (__choose12 == 55)
-    {
-    __temp12= (foreground && (presume_input_tty || islower(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2606
-    else if (__choose12 == 56)
-    {
-    __temp12= (foreground && (presume_input_tty || isprint(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2607
-    else if (__choose12 == 57)
-    {
-    __temp12= (foreground && (presume_input_tty || ispunct(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2608
-    else if (__choose12 == 58)
-    {
-    __temp12= (foreground && (presume_input_tty || isspace(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2609
-    else if (__choose12 == 59)
-    {
-    __temp12= (foreground && (presume_input_tty || isupper(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2610
-    else if (__choose12 == 60)
-    {
-    __temp12= (foreground && (presume_input_tty || isxdigit(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2611
-    else if (__choose12 == 61)
-    {
-    __temp12= (foreground && (presume_input_tty || nice(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2612
-    else if (__choose12 == 62)
-    {
-    __temp12= (foreground && (presume_input_tty || posix_openpt(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2613
-    else if (__choose12 == 63)
-    {
-    __temp12= (foreground && (presume_input_tty || putchar(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2614
-    else if (__choose12 == 64)
-    {
-    __temp12= (foreground && (presume_input_tty || putchar_unlocked(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2615
-    else if (__choose12 == 65)
-    {
-    __temp12= (foreground && (presume_input_tty || raise(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2616
-    else if (__choose12 == 66)
-    {
-    __temp12= (foreground && (presume_input_tty || sigblock(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2617
-    else if (__choose12 == 67)
-    {
-    __temp12= (foreground && (presume_input_tty || sighold(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2618
-    else if (__choose12 == 68)
-    {
-    __temp12= (foreground && (presume_input_tty || sigignore(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2619
-    else if (__choose12 == 69)
-    {
-    __temp12= (foreground && (presume_input_tty || sigpause(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2620
-    else if (__choose12 == 70)
-    {
-    __temp12= (foreground && (presume_input_tty || sigrelse(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2621
-    else if (__choose12 == 71)
-    {
-    __temp12= (foreground && (presume_input_tty || sigsetmask(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2622
-    else if (__choose12 == 72)
-    {
-    __temp12= (foreground && (presume_input_tty || syncfs(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2623
-    else if (__choose12 == 73)
-    {
-    __temp12= (foreground && (presume_input_tty || tcgetpgrp(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2624
-    else if (__choose12 == 74)
-    {
-    __temp12= (foreground && (presume_input_tty || toascii(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2625
-    else if (__choose12 == 75)
-    {
-    __temp12= (foreground && (presume_input_tty || tolower(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2626
-    else if (__choose12 == 76)
-    {
-    __temp12= (foreground && (presume_input_tty || toupper(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2627
-    else if (__choose12 == 77)
-    {
-    __temp12= (foreground && (presume_input_tty || unlockpt(fileno(stdin))));
-    }
-    #endif
-    #ifdef __COMPILE_2628
-    else if (__choose12 == 78)
-    {
-    __temp12= ((foreground && (presume_input_tty || isatty(fileno(stdin)))) && !__is_neg("12-78", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
-    }
-    #endif
-    int __choose19 = __choose("__SWITCH19");
-    if (__choose19 == 0)
-    {
-    if (__temp12) {
-                {
-    int __choose13 = __choose("__SWITCH13");
-    if (__choose13 == 0)
-    {}
-    #ifdef __COMPILE_2629
-    else if (__choose13 == 1)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_in = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2630
-    else if (__choose13 == 2)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_in = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2631
-    else if (__choose13 == 3)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_in = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2632
-    else if (__choose13 == 4)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_out = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2633
-    else if (__choose13 == 5)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_out = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2634
-    else if (__choose13 == 6)
-    {
-    //AddStmtAndReplaceAtomKind
-    bytes_out = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2635
-    else if (__choose13 == 7)
-    {
-    //AddStmtAndReplaceAtomKind
-    exit_code = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2636
-    else if (__choose13 == 8)
-    {
-    //AddStmtAndReplaceAtomKind
-    exit_code = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2637
-    else if (__choose13 == 9)
-    {
-    //AddStmtAndReplaceAtomKind
-    exit_code = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2638
-    else if (__choose13 == 10)
-    {
-    //AddStmtAndReplaceAtomKind
-    exit_code = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2639
-    else if (__choose13 == 11)
-    {
-    //AddStmtAndReplaceAtomKind
-    exiting_signal = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2640
-    else if (__choose13 == 12)
-    {
-    //AddStmtAndReplaceAtomKind
-    exiting_signal = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2641
-    else if (__choose13 == 13)
-    {
-    //AddStmtAndReplaceAtomKind
-    exiting_signal = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2642
-    else if (__choose13 == 14)
-    {
-    //AddStmtAndReplaceAtomKind
-    exiting_signal = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2643
-    else if (__choose13 == 15)
-    {
-    //AddStmtAndReplaceAtomKind
-    foreground = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2644
-    else if (__choose13 == 16)
-    {
-    //AddStmtAndReplaceAtomKind
-    foreground = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2645
-    else if (__choose13 == 17)
-    {
-    //AddStmtAndReplaceAtomKind
-    foreground = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2646
-    else if (__choose13 == 18)
-    {
-    //AddStmtAndReplaceAtomKind
-    foreground = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2647
-    else if (__choose13 == 19)
-    {
-    //AddStmtAndReplaceAtomKind
-    header_bytes = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2648
-    else if (__choose13 == 20)
-    {
-    //AddStmtAndReplaceAtomKind
-    header_bytes = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2649
-    else if (__choose13 == 21)
-    {
-    //AddStmtAndReplaceAtomKind
-    header_bytes = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2650
-    else if (__choose13 == 22)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifd = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2651
-    else if (__choose13 == 23)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifd = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2652
-    else if (__choose13 == 24)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifd = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2653
-    else if (__choose13 == 25)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifd = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2654
-    else if (__choose13 == 26)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifile_size = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2655
-    else if (__choose13 == 27)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifile_size = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2656
-    else if (__choose13 == 28)
-    {
-    //AddStmtAndReplaceAtomKind
-    ifile_size = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2657
-    else if (__choose13 == 29)
-    {
-    //AddStmtAndReplaceAtomKind
-    inptr = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2658
-    else if (__choose13 == 30)
-    {
-    //AddStmtAndReplaceAtomKind
-    inptr = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2659
-    else if (__choose13 == 31)
-    {
-    //AddStmtAndReplaceAtomKind
-    inptr = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2660
-    else if (__choose13 == 32)
-    {
-    //AddStmtAndReplaceAtomKind
-    last_member = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2661
-    else if (__choose13 == 33)
-    {
-    //AddStmtAndReplaceAtomKind
-    last_member = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2662
-    else if (__choose13 == 34)
-    {
-    //AddStmtAndReplaceAtomKind
-    last_member = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2663
-    else if (__choose13 == 35)
-    {
-    //AddStmtAndReplaceAtomKind
-    last_member = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2664
-    else if (__choose13 == 36)
-    {
-    //AddStmtAndReplaceAtomKind
-    list = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2665
-    else if (__choose13 == 37)
-    {
-    //AddStmtAndReplaceAtomKind
-    list = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2666
-    else if (__choose13 == 38)
-    {
-    //AddStmtAndReplaceAtomKind
-    list = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2667
-    else if (__choose13 == 39)
-    {
-    //AddStmtAndReplaceAtomKind
-    list = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2668
-    else if (__choose13 == 40)
-    {
-    //AddStmtAndReplaceAtomKind
-    method = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2669
-    else if (__choose13 == 41)
-    {
-    //AddStmtAndReplaceAtomKind
-    method = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2670
-    else if (__choose13 == 42)
-    {
-    //AddStmtAndReplaceAtomKind
-    method = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2671
-    else if (__choose13 == 43)
-    {
-    //AddStmtAndReplaceAtomKind
-    method = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2672
-    else if (__choose13 == 44)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_name = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2673
-    else if (__choose13 == 45)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_name = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2674
-    else if (__choose13 == 46)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_name = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2675
-    else if (__choose13 == 47)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_name = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2676
-    else if (__choose13 == 48)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_time = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2677
-    else if (__choose13 == 49)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_time = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2678
-    else if (__choose13 == 50)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_time = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2679
-    else if (__choose13 == 51)
-    {
-    //AddStmtAndReplaceAtomKind
-    no_time = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2680
-    else if (__choose13 == 52)
-    {
-    //AddStmtAndReplaceAtomKind
-    ofd = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2681
-    else if (__choose13 == 53)
-    {
-    //AddStmtAndReplaceAtomKind
-    ofd = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2682
-    else if (__choose13 == 54)
-    {
-    //AddStmtAndReplaceAtomKind
-    ofd = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2683
-    else if (__choose13 == 55)
-    {
-    //AddStmtAndReplaceAtomKind
-    ofd = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2684
-    else if (__choose13 == 56)
-    {
-    //AddStmtAndReplaceAtomKind
-    ok = (0);
-    }
-    #endif
-    #ifdef __COMPILE_2685
-    else if (__choose13 == 57)
-    {
-    //AddStmtAndReplaceAtomKind
-    ok = (1);
-    }
-    #endif
-    #ifdef __COMPILE_2686
-    else if (__choose13 == 58)
-    {
-    //AddStmtAndReplaceAtomKind
-    ok = (2);
-    }
-    #endif
-    #ifdef __COMPILE_2687
-    else if (__choose13 == 59)
-    {
-    //AddStmtAndReplaceAtomKind
-    ok = (ok);
-    }
-    #endif
-    #ifdef __COMPILE_2688
-    else if (__choose13 == 60)
-    {
-    //AddStmtAndReplaceAtomKind
-    part_nb = (0);
-    }
-    #endif
     #ifdef __COMPILE_2689
-    else if (__choose13 == 61)
+    else if (__choose14 == 1)
     {
     //AddStmtAndReplaceAtomKind
-    part_nb = (1);
+    bytes_in = (0);
     }
     #endif
     #ifdef __COMPILE_2690
-    else if (__choose13 == 62)
+    else if (__choose14 == 2)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_in = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2691
+    else if (__choose14 == 3)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_in = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2692
+    else if (__choose14 == 4)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2693
+    else if (__choose14 == 5)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2694
+    else if (__choose14 == 6)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2695
+    else if (__choose14 == 7)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2696
+    else if (__choose14 == 8)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2697
+    else if (__choose14 == 9)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2698
+    else if (__choose14 == 10)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2699
+    else if (__choose14 == 11)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2700
+    else if (__choose14 == 12)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2701
+    else if (__choose14 == 13)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2702
+    else if (__choose14 == 14)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2703
+    else if (__choose14 == 15)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2704
+    else if (__choose14 == 16)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2705
+    else if (__choose14 == 17)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2706
+    else if (__choose14 == 18)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2707
+    else if (__choose14 == 19)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2708
+    else if (__choose14 == 20)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2709
+    else if (__choose14 == 21)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2710
+    else if (__choose14 == 22)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2711
+    else if (__choose14 == 23)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2712
+    else if (__choose14 == 24)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2713
+    else if (__choose14 == 25)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2714
+    else if (__choose14 == 26)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2715
+    else if (__choose14 == 27)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2716
+    else if (__choose14 == 28)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2717
+    else if (__choose14 == 29)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2718
+    else if (__choose14 == 30)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2719
+    else if (__choose14 == 31)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2720
+    else if (__choose14 == 32)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2721
+    else if (__choose14 == 33)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2722
+    else if (__choose14 == 34)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2723
+    else if (__choose14 == 35)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2724
+    else if (__choose14 == 36)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2725
+    else if (__choose14 == 37)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2726
+    else if (__choose14 == 38)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2727
+    else if (__choose14 == 39)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2728
+    else if (__choose14 == 40)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2729
+    else if (__choose14 == 41)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2730
+    else if (__choose14 == 42)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2731
+    else if (__choose14 == 43)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2732
+    else if (__choose14 == 44)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2733
+    else if (__choose14 == 45)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2734
+    else if (__choose14 == 46)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2735
+    else if (__choose14 == 47)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2736
+    else if (__choose14 == 48)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2737
+    else if (__choose14 == 49)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2738
+    else if (__choose14 == 50)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2739
+    else if (__choose14 == 51)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2740
+    else if (__choose14 == 52)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2741
+    else if (__choose14 == 53)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2742
+    else if (__choose14 == 54)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2743
+    else if (__choose14 == 55)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2744
+    else if (__choose14 == 56)
+    {
+    //AddStmtAndReplaceAtomKind
+    ok = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2745
+    else if (__choose14 == 57)
+    {
+    //AddStmtAndReplaceAtomKind
+    ok = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2746
+    else if (__choose14 == 58)
+    {
+    //AddStmtAndReplaceAtomKind
+    ok = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2747
+    else if (__choose14 == 59)
+    {
+    //AddStmtAndReplaceAtomKind
+    ok = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2748
+    else if (__choose14 == 60)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2749
+    else if (__choose14 == 61)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2750
+    else if (__choose14 == 62)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (2);
     }
     #endif
-    #ifdef __COMPILE_2691
-    else if (__choose13 == 63)
+    #ifdef __COMPILE_2751
+    else if (__choose14 == 63)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (ok);
     }
     #endif
-    #ifdef __COMPILE_2692
-    else if (__choose13 == 64)
+    #ifdef __COMPILE_2752
+    else if (__choose14 == 64)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (0);
     }
     #endif
-    #ifdef __COMPILE_2693
-    else if (__choose13 == 65)
+    #ifdef __COMPILE_2753
+    else if (__choose14 == 65)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (1);
     }
     #endif
-    #ifdef __COMPILE_2694
-    else if (__choose13 == 66)
+    #ifdef __COMPILE_2754
+    else if (__choose14 == 66)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (2);
     }
     #endif
-    #ifdef __COMPILE_2695
-    else if (__choose13 == 67)
+    #ifdef __COMPILE_2755
+    else if (__choose14 == 67)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (ok);
     }
     #endif
-    #ifdef __COMPILE_2696
-    else if (__choose13 == 68)
+    #ifdef __COMPILE_2756
+    else if (__choose14 == 68)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (0);
     }
     #endif
-    #ifdef __COMPILE_2697
-    else if (__choose13 == 69)
+    #ifdef __COMPILE_2757
+    else if (__choose14 == 69)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (1);
     }
     #endif
-    #ifdef __COMPILE_2698
-    else if (__choose13 == 70)
+    #ifdef __COMPILE_2758
+    else if (__choose14 == 70)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (2);
     }
     #endif
-    #ifdef __COMPILE_2699
-    else if (__choose13 == 71)
+    #ifdef __COMPILE_2759
+    else if (__choose14 == 71)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (ok);
     }
     #endif
-    #ifdef __COMPILE_2700
-    else if (__choose13 == 72)
+    #ifdef __COMPILE_2760
+    else if (__choose14 == 72)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (0);
     }
     #endif
-    #ifdef __COMPILE_2701
-    else if (__choose13 == 73)
+    #ifdef __COMPILE_2761
+    else if (__choose14 == 73)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (1);
     }
     #endif
-    #ifdef __COMPILE_2702
-    else if (__choose13 == 74)
+    #ifdef __COMPILE_2762
+    else if (__choose14 == 74)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (2);
     }
     #endif
-    #ifdef __COMPILE_2703
-    else if (__choose13 == 75)
+    #ifdef __COMPILE_2763
+    else if (__choose14 == 75)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (ok);
     }
     #endif
-    #ifdef __COMPILE_2704
-    else if (__choose13 == 76)
+    #ifdef __COMPILE_2764
+    else if (__choose14 == 76)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (0);
     }
     #endif
-    #ifdef __COMPILE_2705
-    else if (__choose13 == 77)
+    #ifdef __COMPILE_2765
+    else if (__choose14 == 77)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (1);
     }
     #endif
-    #ifdef __COMPILE_2706
-    else if (__choose13 == 78)
+    #ifdef __COMPILE_2766
+    else if (__choose14 == 78)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (2);
     }
     #endif
-    #ifdef __COMPILE_2707
-    else if (__choose13 == 79)
+    #ifdef __COMPILE_2767
+    else if (__choose14 == 79)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (0);
     }
     #endif
-    #ifdef __COMPILE_2708
-    else if (__choose13 == 80)
+    #ifdef __COMPILE_2768
+    else if (__choose14 == 80)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (1);
     }
     #endif
-    #ifdef __COMPILE_2709
-    else if (__choose13 == 81)
+    #ifdef __COMPILE_2769
+    else if (__choose14 == 81)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (2);
     }
     #endif
-    #ifdef __COMPILE_2710
-    else if (__choose13 == 82)
+    #ifdef __COMPILE_2770
+    else if (__choose14 == 82)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (0);
     }
     #endif
-    #ifdef __COMPILE_2711
-    else if (__choose13 == 83)
+    #ifdef __COMPILE_2771
+    else if (__choose14 == 83)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (1);
     }
     #endif
-    #ifdef __COMPILE_2712
-    else if (__choose13 == 84)
+    #ifdef __COMPILE_2772
+    else if (__choose14 == 84)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (2);
     }
     #endif
-    #ifdef __COMPILE_2713
-    else if (__choose13 == 85)
+    #ifdef __COMPILE_2773
+    else if (__choose14 == 85)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (ok);
     }
     #endif
-    #ifdef __COMPILE_2714
-    else if (__choose13 == 86)
+    #ifdef __COMPILE_2774
+    else if (__choose14 == 86)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (0);
     }
     #endif
-    #ifdef __COMPILE_2715
-    else if (__choose13 == 87)
+    #ifdef __COMPILE_2775
+    else if (__choose14 == 87)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (1);
     }
     #endif
-    #ifdef __COMPILE_2716
-    else if (__choose13 == 88)
+    #ifdef __COMPILE_2776
+    else if (__choose14 == 88)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (2);
     }
     #endif
-    #ifdef __COMPILE_2717
-    else if (__choose13 == 89)
+    #ifdef __COMPILE_2777
+    else if (__choose14 == 89)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (0);
     }
     #endif
-    #ifdef __COMPILE_2718
-    else if (__choose13 == 90)
+    #ifdef __COMPILE_2778
+    else if (__choose14 == 90)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (1);
     }
     #endif
-    #ifdef __COMPILE_2719
-    else if (__choose13 == 91)
+    #ifdef __COMPILE_2779
+    else if (__choose14 == 91)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (2);
     }
     #endif
-    #ifdef __COMPILE_2720
-    else if (__choose13 == 92)
+    #ifdef __COMPILE_2780
+    else if (__choose14 == 92)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (0);
     }
     #endif
-    #ifdef __COMPILE_2721
-    else if (__choose13 == 93)
+    #ifdef __COMPILE_2781
+    else if (__choose14 == 93)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (1);
     }
     #endif
-    #ifdef __COMPILE_2722
-    else if (__choose13 == 94)
+    #ifdef __COMPILE_2782
+    else if (__choose14 == 94)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (2);
     }
     #endif
-    #ifdef __COMPILE_2723
-    else if (__choose13 == 95)
+    #ifdef __COMPILE_2783
+    else if (__choose14 == 95)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (ok);
     }
     #endif
-    #ifdef __COMPILE_2724
-    else if (__choose13 == 96)
+    #ifdef __COMPILE_2784
+    else if (__choose14 == 96)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (0);
     }
     #endif
-    #ifdef __COMPILE_2725
-    else if (__choose13 == 97)
+    #ifdef __COMPILE_2785
+    else if (__choose14 == 97)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (1);
     }
     #endif
-    #ifdef __COMPILE_2726
-    else if (__choose13 == 98)
+    #ifdef __COMPILE_2786
+    else if (__choose14 == 98)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (2);
     }
     #endif
-    #ifdef __COMPILE_2727
-    else if (__choose13 == 99)
+    #ifdef __COMPILE_2787
+    else if (__choose14 == 99)
     {
     //AddStmtKind
     (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_2728
-    else if (__choose13 == 100)
+    #ifdef __COMPILE_2788
+    else if (__choose14 == 100)
     {
     //AddStmtKind
     __printf__("                            ");
     }
     #endif
-    #ifdef __COMPILE_2729
-    else if (__choose13 == 101)
+    #ifdef __COMPILE_2789
+    else if (__choose14 == 101)
     {
     //AddStmtKind
     __printf__(" ");
     }
     #endif
-    #ifdef __COMPILE_2730
-    else if (__choose13 == 102)
+    #ifdef __COMPILE_2790
+    else if (__choose14 == 102)
     {
     //AddStmtKind
     __printf__(" %s\n", ofname);
     }
     #endif
-    #ifdef __COMPILE_2731
-    else if (__choose13 == 103)
+    #ifdef __COMPILE_2791
+    else if (__choose14 == 103)
     {
     //AddStmtKind
     __printf__(" (totals)\n");
     }
     #endif
-    #ifdef __COMPILE_2732
-    else if (__choose13 == 104)
+    #ifdef __COMPILE_2792
+    else if (__choose14 == 104)
     {
     //AddStmtKind
     __printf__("%s %s\n", program_name, "1.0");
     }
     #endif
-    #ifdef __COMPILE_2733
-    else if (__choose13 == 105)
+    #ifdef __COMPILE_2793
+    else if (__choose14 == 105)
     {
     //AddStmtKind
     __printf__("??? ?? ??:?? ");
     }
     #endif
-    #ifdef __COMPILE_2734
-    else if (__choose13 == 106)
+    #ifdef __COMPILE_2794
+    else if (__choose14 == 106)
     {
     //AddStmtKind
     __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
     }
     #endif
-    #ifdef __COMPILE_2735
-    else if (__choose13 == 107)
+    #ifdef __COMPILE_2795
+    else if (__choose14 == 107)
     {
     //AddStmtKind
     __printf__("Written by Jean-loup Gailly.\n");
     }
     #endif
-    #ifdef __COMPILE_2736
-    else if (__choose13 == 108)
+    #ifdef __COMPILE_2796
+    else if (__choose14 == 108)
     {
     //AddStmtKind
     __printf__("\n");
     }
     #endif
-    #ifdef __COMPILE_2737
-    else if (__choose13 == 109)
+    #ifdef __COMPILE_2797
+    else if (__choose14 == 109)
     {
     //AddStmtKind
     __printf__("method  crc     date  time  ");
     }
     #endif
-    #ifdef __COMPILE_2738
-    else if (__choose13 == 110)
+    #ifdef __COMPILE_2798
+    else if (__choose14 == 110)
     {
     //AddStmtKind
     _exit(2);
     }
     #endif
-    #ifdef __COMPILE_2739
-    else if (__choose13 == 111)
+    #ifdef __COMPILE_2799
+    else if (__choose14 == 111)
     {
     //AddStmtKind
     args = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_2740
-    else if (__choose13 == 112)
+    #ifdef __COMPILE_2800
+    else if (__choose14 == 112)
     {
     //AddStmtKind
     atexit(close_stdin);
     }
     #endif
-    #ifdef __COMPILE_2741
-    else if (__choose13 == 113)
+    #ifdef __COMPILE_2801
+    else if (__choose14 == 113)
     {
     //AddStmtKind
     bytes_in = 0;
     }
     #endif
-    #ifdef __COMPILE_2742
-    else if (__choose13 == 114)
+    #ifdef __COMPILE_2802
+    else if (__choose14 == 114)
     {
     //AddStmtKind
     bytes_in = ifile_size;
     }
     #endif
-    #ifdef __COMPILE_2743
-    else if (__choose13 == 115)
+    #ifdef __COMPILE_2803
+    else if (__choose14 == 115)
     {
     //AddStmtKind
     bytes_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_2744
-    else if (__choose13 == 116)
+    #ifdef __COMPILE_2804
+    else if (__choose14 == 116)
     {
     //AddStmtKind
     bytes_out = 0;
     }
     #endif
-    #ifdef __COMPILE_2745
-    else if (__choose13 == 117)
+    #ifdef __COMPILE_2805
+    else if (__choose14 == 117)
     {
     //AddStmtKind
     bytes_out++;
     }
     #endif
-    #ifdef __COMPILE_2746
-    else if (__choose13 == 118)
+    #ifdef __COMPILE_2806
+    else if (__choose14 == 118)
     {
     //AddStmtKind
     clear_bufs();
     }
     #endif
-    #ifdef __COMPILE_2747
-    else if (__choose13 == 119)
+    #ifdef __COMPILE_2807
+    else if (__choose14 == 119)
     {
     //AddStmtKind
     close(ifd);
     }
     #endif
-    #ifdef __COMPILE_2748
-    else if (__choose13 == 120)
+    #ifdef __COMPILE_2808
+    else if (__choose14 == 120)
     {
     //AddStmtKind
     copy_stat(&istat);
     }
     #endif
-    #ifdef __COMPILE_2749
-    else if (__choose13 == 121)
+    #ifdef __COMPILE_2809
+    else if (__choose14 == 121)
     {
     //AddStmtKind
     do_exit(0);
     }
     #endif
-    #ifdef __COMPILE_2750
-    else if (__choose13 == 122)
+    #ifdef __COMPILE_2810
+    else if (__choose14 == 122)
     {
     //AddStmtKind
     do_exit(1);
     }
     #endif
-    #ifdef __COMPILE_2751
-    else if (__choose13 == 123)
+    #ifdef __COMPILE_2811
+    else if (__choose14 == 123)
     {
     //AddStmtKind
     do_exit(exit_code);
     }
     #endif
-    #ifdef __COMPILE_2752
-    else if (__choose13 == 124)
+    #ifdef __COMPILE_2812
+    else if (__choose14 == 124)
     {
     //AddStmtKind
     do_list(-1, -1);
     }
     #endif
-    #ifdef __COMPILE_2753
-    else if (__choose13 == 125)
+    #ifdef __COMPILE_2813
+    else if (__choose14 == 125)
     {
     //AddStmtKind
     do_list(ifd, method);
     }
     #endif
-    #ifdef __COMPILE_2754
-    else if (__choose13 == 126)
+    #ifdef __COMPILE_2814
+    else if (__choose14 == 126)
     {
     //AddStmtKind
     env = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_2755
-    else if (__choose13 == 127)
+    #ifdef __COMPILE_2815
+    else if (__choose14 == 127)
     {
     //AddStmtKind
     env = add_envopt(&argc, &argv, "GZIP");
     }
     #endif
-    #ifdef __COMPILE_2756
-    else if (__choose13 == 128)
+    #ifdef __COMPILE_2816
+    else if (__choose14 == 128)
     {
     //AddStmtKind
     exit_code = 1;
     }
     #endif
-    #ifdef __COMPILE_2757
-    else if (__choose13 == 129)
+    #ifdef __COMPILE_2817
+    else if (__choose14 == 129)
     {
     //AddStmtKind
     exit_code = 2;
     }
     #endif
-    #ifdef __COMPILE_2758
-    else if (__choose13 == 130)
+    #ifdef __COMPILE_2818
+    else if (__choose14 == 130)
     {
     //AddStmtKind
     exiting_signal = quiet ? 13 : 0;
     }
     #endif
-    #ifdef __COMPILE_2759
-    else if (__choose13 == 131)
+    #ifdef __COMPILE_2819
+    else if (__choose14 == 131)
     {
     //AddStmtKind
     foreground = 1;
     }
     #endif
-    #ifdef __COMPILE_2760
-    else if (__choose13 == 132)
+    #ifdef __COMPILE_2820
+    else if (__choose14 == 132)
     {
     //AddStmtKind
     free(args);
     }
     #endif
-    #ifdef __COMPILE_2761
-    else if (__choose13 == 133)
+    #ifdef __COMPILE_2821
+    else if (__choose14 == 133)
     {
     //AddStmtKind
     free(env);
     }
     #endif
-    #ifdef __COMPILE_2762
-    else if (__choose13 == 134)
+    #ifdef __COMPILE_2822
+    else if (__choose14 == 134)
     {
     //AddStmtKind
     gzip_error("can't recover suffix\n");
     }
     #endif
-    #ifdef __COMPILE_2763
-    else if (__choose13 == 135)
+    #ifdef __COMPILE_2823
+    else if (__choose14 == 135)
     {
     //AddStmtKind
     gzip_error("corrupted input -- file name too large");
     }
     #endif
-    #ifdef __COMPILE_2764
-    else if (__choose13 == 136)
+    #ifdef __COMPILE_2824
+    else if (__choose14 == 136)
     {
     //AddStmtKind
     gzip_error("internal error in shorten_name");
     }
     #endif
-    #ifdef __COMPILE_2765
-    else if (__choose13 == 137)
+    #ifdef __COMPILE_2825
+    else if (__choose14 == 137)
     {
     //AddStmtKind
     gzip_error("name too short");
     }
     #endif
-    #ifdef __COMPILE_2766
-    else if (__choose13 == 138)
+    #ifdef __COMPILE_2826
+    else if (__choose14 == 138)
     {
     //AddStmtKind
     header_bytes = 0;
     }
     #endif
-    #ifdef __COMPILE_2767
-    else if (__choose13 == 139)
+    #ifdef __COMPILE_2827
+    else if (__choose14 == 139)
     {
     //AddStmtKind
     header_bytes = inptr + 2 * sizeof(long);
     }
     #endif
-    #ifdef __COMPILE_2768
-    else if (__choose13 == 140)
+    #ifdef __COMPILE_2828
+    else if (__choose14 == 140)
     {
     //AddStmtKind
     ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
     }
     #endif
-    #ifdef __COMPILE_2769
-    else if (__choose13 == 141)
+    #ifdef __COMPILE_2829
+    else if (__choose14 == 141)
     {
     //AddStmtKind
     inptr = 0;
     }
     #endif
-    #ifdef __COMPILE_2770
-    else if (__choose13 == 142)
+    #ifdef __COMPILE_2830
+    else if (__choose14 == 142)
     {
     //AddStmtKind
     inptr--;
     }
     #endif
-    #ifdef __COMPILE_2771
-    else if (__choose13 == 143)
+    #ifdef __COMPILE_2831
+    else if (__choose14 == 143)
     {
     //AddStmtKind
     install_signal_handlers();
     }
     #endif
-    #ifdef __COMPILE_2772
-    else if (__choose13 == 144)
+    #ifdef __COMPILE_2832
+    else if (__choose14 == 144)
     {
     //AddStmtKind
     last_member = 0;
     }
     #endif
-    #ifdef __COMPILE_2773
-    else if (__choose13 == 145)
+    #ifdef __COMPILE_2833
+    else if (__choose14 == 145)
     {
     //AddStmtKind
     last_member = 1;
     }
     #endif
-    #ifdef __COMPILE_2774
-    else if (__choose13 == 146)
+    #ifdef __COMPILE_2834
+    else if (__choose14 == 146)
     {
     //AddStmtKind
     license();
     }
     #endif
-    #ifdef __COMPILE_2775
-    else if (__choose13 == 147)
+    #ifdef __COMPILE_2835
+    else if (__choose14 == 147)
     {
     //AddStmtKind
     list = 0;
     }
     #endif
-    #ifdef __COMPILE_2776
-    else if (__choose13 == 148)
+    #ifdef __COMPILE_2836
+    else if (__choose14 == 148)
     {
     //AddStmtKind
     method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_2777
-    else if (__choose13 == 149)
+    #ifdef __COMPILE_2837
+    else if (__choose14 == 149)
     {
     //AddStmtKind
     method = -1;
     }
     #endif
-    #ifdef __COMPILE_2778
-    else if (__choose13 == 150)
+    #ifdef __COMPILE_2838
+    else if (__choose14 == 150)
     {
     //AddStmtKind
     method = 0;
     }
     #endif
-    #ifdef __COMPILE_2779
-    else if (__choose13 == 151)
+    #ifdef __COMPILE_2839
+    else if (__choose14 == 151)
     {
     //AddStmtKind
     method = 1;
     }
     #endif
-    #ifdef __COMPILE_2780
-    else if (__choose13 == 152)
+    #ifdef __COMPILE_2840
+    else if (__choose14 == 152)
     {
     //AddStmtKind
     method = 2;
     }
     #endif
-    #ifdef __COMPILE_2781
-    else if (__choose13 == 153)
+    #ifdef __COMPILE_2841
+    else if (__choose14 == 153)
     {
     //AddStmtKind
     method = 3;
     }
     #endif
-    #ifdef __COMPILE_2782
-    else if (__choose13 == 154)
+    #ifdef __COMPILE_2842
+    else if (__choose14 == 154)
     {
     //AddStmtKind
     method = get_method(ifd);
     }
     #endif
-    #ifdef __COMPILE_2783
-    else if (__choose13 == 155)
+    #ifdef __COMPILE_2843
+    else if (__choose14 == 155)
     {
     //AddStmtKind
     no_name = decompress;
     }
     #endif
-    #ifdef __COMPILE_2784
-    else if (__choose13 == 156)
+    #ifdef __COMPILE_2844
+    else if (__choose14 == 156)
     {
     //AddStmtKind
     no_time = decompress;
     }
     #endif
-    #ifdef __COMPILE_2785
-    else if (__choose13 == 157)
+    #ifdef __COMPILE_2845
+    else if (__choose14 == 157)
     {
     //AddStmtKind
     ok = yesno();
     }
     #endif
-    #ifdef __COMPILE_2786
-    else if (__choose13 == 158)
+    #ifdef __COMPILE_2846
+    else if (__choose14 == 158)
     {
     //AddStmtKind
     part_nb = 0;
     }
     #endif
-    #ifdef __COMPILE_2787
-    else if (__choose13 == 159)
+    #ifdef __COMPILE_2847
+    else if (__choose14 == 159)
     {
     //AddStmtKind
     part_nb++;
     }
     #endif
-    #ifdef __COMPILE_2788
-    else if (__choose13 == 160)
+    #ifdef __COMPILE_2848
+    else if (__choose14 == 160)
     {
     //AddStmtKind
     perror(ifname);
     }
     #endif
-    #ifdef __COMPILE_2789
-    else if (__choose13 == 161)
+    #ifdef __COMPILE_2849
+    else if (__choose14 == 161)
     {
     //AddStmtKind
     perror(ofname);
     }
     #endif
-    #ifdef __COMPILE_2790
-    else if (__choose13 == 162)
+    #ifdef __COMPILE_2850
+    else if (__choose14 == 162)
     {
     //AddStmtKind
     progerror("standard input");
     }
     #endif
-    #ifdef __COMPILE_2791
-    else if (__choose13 == 163)
+    #ifdef __COMPILE_2851
+    else if (__choose14 == 163)
     {
     //AddStmtKind
     progerror(ifname);
     }
     #endif
-    #ifdef __COMPILE_2792
-    else if (__choose13 == 164)
+    #ifdef __COMPILE_2852
+    else if (__choose14 == 164)
     {
     //AddStmtKind
     progerror(ofname);
     }
     #endif
-    #ifdef __COMPILE_2793
-    else if (__choose13 == 165)
+    #ifdef __COMPILE_2853
+    else if (__choose14 == 165)
     {
     //AddStmtKind
     quiet = 0;
     }
     #endif
-    #ifdef __COMPILE_2794
-    else if (__choose13 == 166)
+    #ifdef __COMPILE_2854
+    else if (__choose14 == 166)
     {
     //AddStmtKind
     read_error();
     }
     #endif
-    #ifdef __COMPILE_2795
-    else if (__choose13 == 167)
+    #ifdef __COMPILE_2855
+    else if (__choose14 == 167)
     {
     //AddStmtKind
     remove_ofname_fd = -1;
     }
     #endif
-    #ifdef __COMPILE_2796
-    else if (__choose13 == 168)
+    #ifdef __COMPILE_2856
+    else if (__choose14 == 168)
     {
     //AddStmtKind
     remove_output_file();
     }
     #endif
-    #ifdef __COMPILE_2797
-    else if (__choose13 == 169)
+    #ifdef __COMPILE_2857
+    else if (__choose14 == 169)
     {
     //AddStmtKind
     save_orig_name = !no_name;
     }
     #endif
-    #ifdef __COMPILE_2798
-    else if (__choose13 == 170)
+    #ifdef __COMPILE_2858
+    else if (__choose14 == 170)
     {
     //AddStmtKind
     save_orig_name = 0;
     }
     #endif
-    #ifdef __COMPILE_2799
-    else if (__choose13 == 171)
+    #ifdef __COMPILE_2859
+    else if (__choose14 == 171)
     {
     //AddStmtKind
     save_orig_name = 1;
     }
     #endif
-    #ifdef __COMPILE_2800
-    else if (__choose13 == 172)
+    #ifdef __COMPILE_2860
+    else if (__choose14 == 172)
     {
     //AddStmtKind
     sigemptyset(&caught_signals);
     }
     #endif
-    #ifdef __COMPILE_2801
-    else if (__choose13 == 173)
+    #ifdef __COMPILE_2861
+    else if (__choose14 == 173)
     {
     //AddStmtKind
     strcat(ifname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_2802
-    else if (__choose13 == 174)
+    #ifdef __COMPILE_2862
+    else if (__choose14 == 174)
     {
     //AddStmtKind
     strcat(ofname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_2803
-    else if (__choose13 == 175)
+    #ifdef __COMPILE_2863
+    else if (__choose14 == 175)
     {
     //AddStmtKind
     strcpy(ifname, "stdin");
     }
     #endif
-    #ifdef __COMPILE_2804
-    else if (__choose13 == 176)
+    #ifdef __COMPILE_2864
+    else if (__choose14 == 176)
     {
     //AddStmtKind
     strcpy(ofname, "stdout");
     }
     #endif
-    #ifdef __COMPILE_2805
-    else if (__choose13 == 177)
+    #ifdef __COMPILE_2865
+    else if (__choose14 == 177)
     {
     //AddStmtKind
     strcpy(ofname, ifname);
     }
     #endif
-    #ifdef __COMPILE_2806
-    else if (__choose13 == 178)
+    #ifdef __COMPILE_2866
+    else if (__choose14 == 178)
     {
     //AddStmtKind
     time_stamp = get_stat_mtime(&istat);
     }
     #endif
-    #ifdef __COMPILE_2807
-    else if (__choose13 == 179)
+    #ifdef __COMPILE_2867
+    else if (__choose14 == 179)
     {
     //AddStmtKind
     time_stamp.tv_nsec = -1;
     }
     #endif
-    #ifdef __COMPILE_2808
-    else if (__choose13 == 180)
+    #ifdef __COMPILE_2868
+    else if (__choose14 == 180)
     {
     //AddStmtKind
     time_stamp.tv_nsec = 0;
     }
     #endif
-    #ifdef __COMPILE_2809
-    else if (__choose13 == 181)
+    #ifdef __COMPILE_2869
+    else if (__choose14 == 181)
     {
     //AddStmtKind
     to_stdout = 1;
     }
     #endif
-    #ifdef __COMPILE_2810
-    else if (__choose13 == 182)
+    #ifdef __COMPILE_2870
+    else if (__choose14 == 182)
     {
     //AddStmtKind
     total_in = -1L;
     }
     #endif
-    #ifdef __COMPILE_2811
-    else if (__choose13 == 183)
+    #ifdef __COMPILE_2871
+    else if (__choose14 == 183)
     {
     //AddStmtKind
     total_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_2812
-    else if (__choose13 == 184)
+    #ifdef __COMPILE_2872
+    else if (__choose14 == 184)
     {
     //AddStmtKind
     treat_stdin();
     }
     #endif
-    #ifdef __COMPILE_2813
-    else if (__choose13 == 185)
+    #ifdef __COMPILE_2873
+    else if (__choose14 == 185)
     {
     //AddStmtKind
     try_help();
     }
     #endif
-    #ifdef __COMPILE_2814
-    else if (__choose13 == 186)
+    #ifdef __COMPILE_2874
+    else if (__choose14 == 186)
     {
     //AddStmtKind
     verbose = 0;
     }
     #endif
-    #ifdef __COMPILE_2815
-    else if (__choose13 == 187)
+    #ifdef __COMPILE_2875
+    else if (__choose14 == 187)
     {
     //AddStmtKind
     work = copy;
     }
     #endif
-    #ifdef __COMPILE_2816
-    else if (__choose13 == 188)
+    #ifdef __COMPILE_2876
+    else if (__choose14 == 188)
     {
     //AddStmtKind
     work = lzw;
     }
     #endif
-    #ifdef __COMPILE_2817
-    else if (__choose13 == 189)
+    #ifdef __COMPILE_2877
+    else if (__choose14 == 189)
     {
     //AddStmtKind
     work = unlzh;
     }
     #endif
-    #ifdef __COMPILE_2818
-    else if (__choose13 == 190)
+    #ifdef __COMPILE_2878
+    else if (__choose14 == 190)
     {
     //AddStmtKind
     work = unlzw;
     }
     #endif
-    #ifdef __COMPILE_2819
-    else if (__choose13 == 191)
+    #ifdef __COMPILE_2879
+    else if (__choose14 == 191)
     {
     //AddStmtKind
     work = unpack;
     }
     #endif
-    #ifdef __COMPILE_2820
-    else if (__choose13 == 192)
+    #ifdef __COMPILE_2880
+    else if (__choose14 == 192)
     {
     //AddStmtKind
     work = unzip;
     }
     #endif
-    #ifdef __COMPILE_2821
-    else if (__choose13 == 193)
+    #ifdef __COMPILE_2881
+    else if (__choose14 == 193)
     {
     //AddStmtKind
     write_error();
     }
     #endif
-    #ifdef __COMPILE_2822
-    else if (__choose13 == 194)
+    #ifdef __COMPILE_2882
+    else if (__choose14 == 194)
     {
     //AddStmtKind
     xunlink(ofname);
     }
     #endif
-    #ifdef __COMPILE_2823
-    else if (__choose13 == 195)
+    #ifdef __COMPILE_2883
+    else if (__choose14 == 195)
     {
     //AddStmtKind
     z_len = strlen(z_suffix);
     }
     #endif
-    #ifdef __COMPILE_2824
-    else if (__choose13 == 196)
+    #ifdef __COMPILE_2884
+    else if (__choose14 == 196)
     {
     //AddStmtKind
     z_suffix = ".gz";
     }
     #endif
-    #ifdef __COMPILE_2825
-    else if (__choose13 == 197)
+    #ifdef __COMPILE_2885
+    else if (__choose14 == 197)
     {
     //IfExitKind
-    if (__is_neg("13-197", "L1639", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
+    if (__is_neg("14-197", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
+    			 sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok),
+    			 sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code),
+    			 sizeof (exit_code)))
+        return 0;
+    }
+    #endif
+    #ifdef __COMPILE_2886
+    else if (__choose14 == 198)
+    {
+    //IfExitKind
+    if (__is_neg("14-198", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
+    			 sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok),
+    			 sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code),
+    			 sizeof (exit_code)))
+        return 1;
+    }
+    #endif
+    #ifdef __COMPILE_2887
+    else if (__choose14 == 199)
+    {
+    //IfExitKind
+    if (__is_neg("14-199", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
+    			 sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok),
+    			 sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code),
+    			 sizeof (exit_code)))
+        return 2;
+    }
+    #endif
+    int __choose15 = __choose("__SWITCH15");
+    {
+    int __temp15=(foreground && (presume_input_tty || isatty(fileno(stdin)))) ;
+    if (__choose15 == 0)
+    {}
+    #ifdef __COMPILE_2888
+    else if (__choose15 == 1)
+    {
+    __temp15= (__is_neg("15-1", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
+    }
+    #endif
+    #ifdef __COMPILE_2889
+    else if (__choose15 == 2)
+    {
+    __temp15= (((foreground) || __is_neg("15-2", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code))) && (presume_input_tty || isatty(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2890
+    else if (__choose15 == 3)
+    {
+    __temp15= ((foreground && (presume_input_tty || isatty(fileno(stdin)))) || __is_neg("15-3", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
+    }
+    #endif
+    #ifdef __COMPILE_2891
+    else if (__choose15 == 4)
+    {
+    __temp15= ((foreground && presume_input_tty) || isatty(fileno(stdin)));
+    }
+    #endif
+    #ifdef __COMPILE_2892
+    else if (__choose15 == 5)
+    {
+    __temp15= (foreground);
+    }
+    #endif
+    #ifdef __COMPILE_2893
+    else if (__choose15 == 6)
+    {
+    __temp15= (foreground && (presume_input_tty || __getpgid(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2894
+    else if (__choose15 == 7)
+    {
+    __temp15= (foreground && (presume_input_tty || _tolower(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2895
+    else if (__choose15 == 8)
+    {
+    __temp15= (foreground && (presume_input_tty || _toupper(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2896
+    else if (__choose15 == 9)
+    {
+    __temp15= (foreground && (presume_input_tty || abs(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2897
+    else if (__choose15 == 10)
+    {
+    __temp15= (foreground && (presume_input_tty || check_zipfile(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2898
+    else if (__choose15 == 11)
+    {
+    __temp15= (foreground && (presume_input_tty || close(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2899
+    else if (__choose15 == 12)
+    {
+    __temp15= (foreground && (presume_input_tty || dup(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2900
+    else if (__choose15 == 13)
+    {
+    __temp15= (foreground && (presume_input_tty || dysize(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2901
+    else if (__choose15 == 14)
+    {
+    __temp15= (foreground && (presume_input_tty || fchdir(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2902
+    else if (__choose15 == 15)
+    {
+    __temp15= (foreground && (presume_input_tty || fdatasync(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2903
+    else if (__choose15 == 16)
+    {
+    __temp15= (foreground && (presume_input_tty || ffs(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2904
+    else if (__choose15 == 17)
+    {
+    __temp15= (foreground && (presume_input_tty || fill_inbuf(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2905
+    else if (__choose15 == 18)
+    {
+    __temp15= (foreground && (presume_input_tty || fsync(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2906
+    else if (__choose15 == 19)
+    {
+    __temp15= (foreground && (presume_input_tty || get_method(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2907
+    else if (__choose15 == 20)
+    {
+    __temp15= (foreground && (presume_input_tty || getpgid(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2908
+    else if (__choose15 == 21)
+    {
+    __temp15= (foreground && (presume_input_tty || getsid(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2909
+    else if (__choose15 == 22)
+    {
+    __temp15= (foreground && (presume_input_tty || grantpt(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2910
+    else if (__choose15 == 23)
+    {
+    __temp15= (foreground && (presume_input_tty || gsignal(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2911
+    else if (__choose15 == 24)
+    {
+    __temp15= (foreground && (presume_input_tty || isalnum(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2912
+    else if (__choose15 == 25)
+    {
+    __temp15= (foreground && (presume_input_tty || isalpha(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2913
+    else if (__choose15 == 26)
+    {
+    __temp15= (foreground && (presume_input_tty || isascii(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2914
+    else if (__choose15 == 27)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(_IO_feof(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2915
+    else if (__choose15 == 28)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(_IO_ferror(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2916
+    else if (__choose15 == 29)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(_IO_ftrylockfile(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2917
+    else if (__choose15 == 30)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(_IO_getc(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2918
+    else if (__choose15 == 31)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(_IO_peekc_locked(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2919
+    else if (__choose15 == 32)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(__uflow(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2920
+    else if (__choose15 == 33)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(__underflow(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2921
+    else if (__choose15 == 34)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(fclose(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2922
+    else if (__choose15 == 35)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(feof(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2923
+    else if (__choose15 == 36)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(feof_unlocked(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2924
+    else if (__choose15 == 37)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(ferror(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2925
+    else if (__choose15 == 38)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(ferror_unlocked(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2926
+    else if (__choose15 == 39)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(fflush(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2927
+    else if (__choose15 == 40)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(fflush_unlocked(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2928
+    else if (__choose15 == 41)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(fgetc(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2929
+    else if (__choose15 == 42)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(fgetc_unlocked(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2930
+    else if (__choose15 == 43)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(fileno_unlocked(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2931
+    else if (__choose15 == 44)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(fpurge(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2932
+    else if (__choose15 == 45)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(ftrylockfile(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2933
+    else if (__choose15 == 46)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(getc(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2934
+    else if (__choose15 == 47)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(getc_unlocked(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2935
+    else if (__choose15 == 48)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(getw(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2936
+    else if (__choose15 == 49)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(pclose(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2937
+    else if (__choose15 == 50)
+    {
+    __temp15= (foreground && (presume_input_tty || isatty(rpl_fflush(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2938
+    else if (__choose15 == 51)
+    {
+    __temp15= (foreground && (presume_input_tty || isblank(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2939
+    else if (__choose15 == 52)
+    {
+    __temp15= (foreground && (presume_input_tty || iscntrl(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2940
+    else if (__choose15 == 53)
+    {
+    __temp15= (foreground && (presume_input_tty || isdigit(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2941
+    else if (__choose15 == 54)
+    {
+    __temp15= (foreground && (presume_input_tty || isgraph(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2942
+    else if (__choose15 == 55)
+    {
+    __temp15= (foreground && (presume_input_tty || islower(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2943
+    else if (__choose15 == 56)
+    {
+    __temp15= (foreground && (presume_input_tty || isprint(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2944
+    else if (__choose15 == 57)
+    {
+    __temp15= (foreground && (presume_input_tty || ispunct(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2945
+    else if (__choose15 == 58)
+    {
+    __temp15= (foreground && (presume_input_tty || isspace(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2946
+    else if (__choose15 == 59)
+    {
+    __temp15= (foreground && (presume_input_tty || isupper(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2947
+    else if (__choose15 == 60)
+    {
+    __temp15= (foreground && (presume_input_tty || isxdigit(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2948
+    else if (__choose15 == 61)
+    {
+    __temp15= (foreground && (presume_input_tty || nice(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2949
+    else if (__choose15 == 62)
+    {
+    __temp15= (foreground && (presume_input_tty || posix_openpt(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2950
+    else if (__choose15 == 63)
+    {
+    __temp15= (foreground && (presume_input_tty || putchar(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2951
+    else if (__choose15 == 64)
+    {
+    __temp15= (foreground && (presume_input_tty || putchar_unlocked(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2952
+    else if (__choose15 == 65)
+    {
+    __temp15= (foreground && (presume_input_tty || raise(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2953
+    else if (__choose15 == 66)
+    {
+    __temp15= (foreground && (presume_input_tty || sigblock(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2954
+    else if (__choose15 == 67)
+    {
+    __temp15= (foreground && (presume_input_tty || sighold(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2955
+    else if (__choose15 == 68)
+    {
+    __temp15= (foreground && (presume_input_tty || sigignore(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2956
+    else if (__choose15 == 69)
+    {
+    __temp15= (foreground && (presume_input_tty || sigpause(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2957
+    else if (__choose15 == 70)
+    {
+    __temp15= (foreground && (presume_input_tty || sigrelse(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2958
+    else if (__choose15 == 71)
+    {
+    __temp15= (foreground && (presume_input_tty || sigsetmask(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2959
+    else if (__choose15 == 72)
+    {
+    __temp15= (foreground && (presume_input_tty || syncfs(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2960
+    else if (__choose15 == 73)
+    {
+    __temp15= (foreground && (presume_input_tty || tcgetpgrp(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2961
+    else if (__choose15 == 74)
+    {
+    __temp15= (foreground && (presume_input_tty || toascii(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2962
+    else if (__choose15 == 75)
+    {
+    __temp15= (foreground && (presume_input_tty || tolower(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2963
+    else if (__choose15 == 76)
+    {
+    __temp15= (foreground && (presume_input_tty || toupper(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2964
+    else if (__choose15 == 77)
+    {
+    __temp15= (foreground && (presume_input_tty || unlockpt(fileno(stdin))));
+    }
+    #endif
+    #ifdef __COMPILE_2965
+    else if (__choose15 == 78)
+    {
+    __temp15= ((foreground && (presume_input_tty || isatty(fileno(stdin)))) && !__is_neg("15-78", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)));
+    }
+    #endif
+    int __choose22 = __choose("__SWITCH22");
+    if (__choose22 == 0)
+    {
+    if (__temp15) {
+                {
+    int __choose16 = __choose("__SWITCH16");
+    if (__choose16 == 0)
+    {}
+    #ifdef __COMPILE_2966
+    else if (__choose16 == 1)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_in = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2967
+    else if (__choose16 == 2)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_in = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2968
+    else if (__choose16 == 3)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_in = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2969
+    else if (__choose16 == 4)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2970
+    else if (__choose16 == 5)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2971
+    else if (__choose16 == 6)
+    {
+    //AddStmtAndReplaceAtomKind
+    bytes_out = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2972
+    else if (__choose16 == 7)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2973
+    else if (__choose16 == 8)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2974
+    else if (__choose16 == 9)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2975
+    else if (__choose16 == 10)
+    {
+    //AddStmtAndReplaceAtomKind
+    exit_code = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2976
+    else if (__choose16 == 11)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2977
+    else if (__choose16 == 12)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2978
+    else if (__choose16 == 13)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2979
+    else if (__choose16 == 14)
+    {
+    //AddStmtAndReplaceAtomKind
+    exiting_signal = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2980
+    else if (__choose16 == 15)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2981
+    else if (__choose16 == 16)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2982
+    else if (__choose16 == 17)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2983
+    else if (__choose16 == 18)
+    {
+    //AddStmtAndReplaceAtomKind
+    foreground = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2984
+    else if (__choose16 == 19)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2985
+    else if (__choose16 == 20)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2986
+    else if (__choose16 == 21)
+    {
+    //AddStmtAndReplaceAtomKind
+    header_bytes = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2987
+    else if (__choose16 == 22)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2988
+    else if (__choose16 == 23)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2989
+    else if (__choose16 == 24)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2990
+    else if (__choose16 == 25)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifd = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_2991
+    else if (__choose16 == 26)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2992
+    else if (__choose16 == 27)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2993
+    else if (__choose16 == 28)
+    {
+    //AddStmtAndReplaceAtomKind
+    ifile_size = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2994
+    else if (__choose16 == 29)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2995
+    else if (__choose16 == 30)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2996
+    else if (__choose16 == 31)
+    {
+    //AddStmtAndReplaceAtomKind
+    inptr = (2);
+    }
+    #endif
+    #ifdef __COMPILE_2997
+    else if (__choose16 == 32)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (0);
+    }
+    #endif
+    #ifdef __COMPILE_2998
+    else if (__choose16 == 33)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (1);
+    }
+    #endif
+    #ifdef __COMPILE_2999
+    else if (__choose16 == 34)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3000
+    else if (__choose16 == 35)
+    {
+    //AddStmtAndReplaceAtomKind
+    last_member = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3001
+    else if (__choose16 == 36)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3002
+    else if (__choose16 == 37)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3003
+    else if (__choose16 == 38)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3004
+    else if (__choose16 == 39)
+    {
+    //AddStmtAndReplaceAtomKind
+    list = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3005
+    else if (__choose16 == 40)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3006
+    else if (__choose16 == 41)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3007
+    else if (__choose16 == 42)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3008
+    else if (__choose16 == 43)
+    {
+    //AddStmtAndReplaceAtomKind
+    method = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3009
+    else if (__choose16 == 44)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3010
+    else if (__choose16 == 45)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3011
+    else if (__choose16 == 46)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3012
+    else if (__choose16 == 47)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_name = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3013
+    else if (__choose16 == 48)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3014
+    else if (__choose16 == 49)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3015
+    else if (__choose16 == 50)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3016
+    else if (__choose16 == 51)
+    {
+    //AddStmtAndReplaceAtomKind
+    no_time = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3017
+    else if (__choose16 == 52)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3018
+    else if (__choose16 == 53)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3019
+    else if (__choose16 == 54)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3020
+    else if (__choose16 == 55)
+    {
+    //AddStmtAndReplaceAtomKind
+    ofd = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3021
+    else if (__choose16 == 56)
+    {
+    //AddStmtAndReplaceAtomKind
+    ok = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3022
+    else if (__choose16 == 57)
+    {
+    //AddStmtAndReplaceAtomKind
+    ok = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3023
+    else if (__choose16 == 58)
+    {
+    //AddStmtAndReplaceAtomKind
+    ok = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3024
+    else if (__choose16 == 59)
+    {
+    //AddStmtAndReplaceAtomKind
+    ok = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3025
+    else if (__choose16 == 60)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3026
+    else if (__choose16 == 61)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3027
+    else if (__choose16 == 62)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3028
+    else if (__choose16 == 63)
+    {
+    //AddStmtAndReplaceAtomKind
+    part_nb = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3029
+    else if (__choose16 == 64)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3030
+    else if (__choose16 == 65)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3031
+    else if (__choose16 == 66)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3032
+    else if (__choose16 == 67)
+    {
+    //AddStmtAndReplaceAtomKind
+    quiet = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3033
+    else if (__choose16 == 68)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3034
+    else if (__choose16 == 69)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3035
+    else if (__choose16 == 70)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3036
+    else if (__choose16 == 71)
+    {
+    //AddStmtAndReplaceAtomKind
+    remove_ofname_fd = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3037
+    else if (__choose16 == 72)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3038
+    else if (__choose16 == 73)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3039
+    else if (__choose16 == 74)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3040
+    else if (__choose16 == 75)
+    {
+    //AddStmtAndReplaceAtomKind
+    save_orig_name = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3041
+    else if (__choose16 == 76)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_nsec = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3042
+    else if (__choose16 == 77)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_nsec = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3043
+    else if (__choose16 == 78)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_nsec = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3044
+    else if (__choose16 == 79)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_sec = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3045
+    else if (__choose16 == 80)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_sec = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3046
+    else if (__choose16 == 81)
+    {
+    //AddStmtAndReplaceAtomKind
+    time_stamp.tv_sec = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3047
+    else if (__choose16 == 82)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3048
+    else if (__choose16 == 83)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3049
+    else if (__choose16 == 84)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3050
+    else if (__choose16 == 85)
+    {
+    //AddStmtAndReplaceAtomKind
+    to_stdout = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3051
+    else if (__choose16 == 86)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_in = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3052
+    else if (__choose16 == 87)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_in = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3053
+    else if (__choose16 == 88)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_in = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3054
+    else if (__choose16 == 89)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_out = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3055
+    else if (__choose16 == 90)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_out = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3056
+    else if (__choose16 == 91)
+    {
+    //AddStmtAndReplaceAtomKind
+    total_out = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3057
+    else if (__choose16 == 92)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3058
+    else if (__choose16 == 93)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3059
+    else if (__choose16 == 94)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3060
+    else if (__choose16 == 95)
+    {
+    //AddStmtAndReplaceAtomKind
+    verbose = (ok);
+    }
+    #endif
+    #ifdef __COMPILE_3061
+    else if (__choose16 == 96)
+    {
+    //AddStmtAndReplaceAtomKind
+    z_len = (0);
+    }
+    #endif
+    #ifdef __COMPILE_3062
+    else if (__choose16 == 97)
+    {
+    //AddStmtAndReplaceAtomKind
+    z_len = (1);
+    }
+    #endif
+    #ifdef __COMPILE_3063
+    else if (__choose16 == 98)
+    {
+    //AddStmtAndReplaceAtomKind
+    z_len = (2);
+    }
+    #endif
+    #ifdef __COMPILE_3064
+    else if (__choose16 == 99)
+    {
+    //AddStmtKind
+    (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
+    }
+    #endif
+    #ifdef __COMPILE_3065
+    else if (__choose16 == 100)
+    {
+    //AddStmtKind
+    __printf__("                            ");
+    }
+    #endif
+    #ifdef __COMPILE_3066
+    else if (__choose16 == 101)
+    {
+    //AddStmtKind
+    __printf__(" ");
+    }
+    #endif
+    #ifdef __COMPILE_3067
+    else if (__choose16 == 102)
+    {
+    //AddStmtKind
+    __printf__(" %s\n", ofname);
+    }
+    #endif
+    #ifdef __COMPILE_3068
+    else if (__choose16 == 103)
+    {
+    //AddStmtKind
+    __printf__(" (totals)\n");
+    }
+    #endif
+    #ifdef __COMPILE_3069
+    else if (__choose16 == 104)
+    {
+    //AddStmtKind
+    __printf__("%s %s\n", program_name, "1.0");
+    }
+    #endif
+    #ifdef __COMPILE_3070
+    else if (__choose16 == 105)
+    {
+    //AddStmtKind
+    __printf__("??? ?? ??:?? ");
+    }
+    #endif
+    #ifdef __COMPILE_3071
+    else if (__choose16 == 106)
+    {
+    //AddStmtKind
+    __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
+    }
+    #endif
+    #ifdef __COMPILE_3072
+    else if (__choose16 == 107)
+    {
+    //AddStmtKind
+    __printf__("Written by Jean-loup Gailly.\n");
+    }
+    #endif
+    #ifdef __COMPILE_3073
+    else if (__choose16 == 108)
+    {
+    //AddStmtKind
+    __printf__("\n");
+    }
+    #endif
+    #ifdef __COMPILE_3074
+    else if (__choose16 == 109)
+    {
+    //AddStmtKind
+    __printf__("method  crc     date  time  ");
+    }
+    #endif
+    #ifdef __COMPILE_3075
+    else if (__choose16 == 110)
+    {
+    //AddStmtKind
+    _exit(2);
+    }
+    #endif
+    #ifdef __COMPILE_3076
+    else if (__choose16 == 111)
+    {
+    //AddStmtKind
+    args = ((void *)0);
+    }
+    #endif
+    #ifdef __COMPILE_3077
+    else if (__choose16 == 112)
+    {
+    //AddStmtKind
+    atexit(close_stdin);
+    }
+    #endif
+    #ifdef __COMPILE_3078
+    else if (__choose16 == 113)
+    {
+    //AddStmtKind
+    bytes_in = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3079
+    else if (__choose16 == 114)
+    {
+    //AddStmtKind
+    bytes_in = ifile_size;
+    }
+    #endif
+    #ifdef __COMPILE_3080
+    else if (__choose16 == 115)
+    {
+    //AddStmtKind
+    bytes_out = -1L;
+    }
+    #endif
+    #ifdef __COMPILE_3081
+    else if (__choose16 == 116)
+    {
+    //AddStmtKind
+    bytes_out = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3082
+    else if (__choose16 == 117)
+    {
+    //AddStmtKind
+    bytes_out++;
+    }
+    #endif
+    #ifdef __COMPILE_3083
+    else if (__choose16 == 118)
+    {
+    //AddStmtKind
+    clear_bufs();
+    }
+    #endif
+    #ifdef __COMPILE_3084
+    else if (__choose16 == 119)
+    {
+    //AddStmtKind
+    close(ifd);
+    }
+    #endif
+    #ifdef __COMPILE_3085
+    else if (__choose16 == 120)
+    {
+    //AddStmtKind
+    copy_stat(&istat);
+    }
+    #endif
+    #ifdef __COMPILE_3086
+    else if (__choose16 == 121)
+    {
+    //AddStmtKind
+    do_exit(0);
+    }
+    #endif
+    #ifdef __COMPILE_3087
+    else if (__choose16 == 122)
+    {
+    //AddStmtKind
+    do_exit(1);
+    }
+    #endif
+    #ifdef __COMPILE_3088
+    else if (__choose16 == 123)
+    {
+    //AddStmtKind
+    do_exit(exit_code);
+    }
+    #endif
+    #ifdef __COMPILE_3089
+    else if (__choose16 == 124)
+    {
+    //AddStmtKind
+    do_list(-1, -1);
+    }
+    #endif
+    #ifdef __COMPILE_3090
+    else if (__choose16 == 125)
+    {
+    //AddStmtKind
+    do_list(ifd, method);
+    }
+    #endif
+    #ifdef __COMPILE_3091
+    else if (__choose16 == 126)
+    {
+    //AddStmtKind
+    env = ((void *)0);
+    }
+    #endif
+    #ifdef __COMPILE_3092
+    else if (__choose16 == 127)
+    {
+    //AddStmtKind
+    env = add_envopt(&argc, &argv, "GZIP");
+    }
+    #endif
+    #ifdef __COMPILE_3093
+    else if (__choose16 == 128)
+    {
+    //AddStmtKind
+    exit_code = 1;
+    }
+    #endif
+    #ifdef __COMPILE_3094
+    else if (__choose16 == 129)
+    {
+    //AddStmtKind
+    exit_code = 2;
+    }
+    #endif
+    #ifdef __COMPILE_3095
+    else if (__choose16 == 130)
+    {
+    //AddStmtKind
+    exiting_signal = quiet ? 13 : 0;
+    }
+    #endif
+    #ifdef __COMPILE_3096
+    else if (__choose16 == 131)
+    {
+    //AddStmtKind
+    foreground = 1;
+    }
+    #endif
+    #ifdef __COMPILE_3097
+    else if (__choose16 == 132)
+    {
+    //AddStmtKind
+    free(args);
+    }
+    #endif
+    #ifdef __COMPILE_3098
+    else if (__choose16 == 133)
+    {
+    //AddStmtKind
+    free(env);
+    }
+    #endif
+    #ifdef __COMPILE_3099
+    else if (__choose16 == 134)
+    {
+    //AddStmtKind
+    gzip_error("can't recover suffix\n");
+    }
+    #endif
+    #ifdef __COMPILE_3100
+    else if (__choose16 == 135)
+    {
+    //AddStmtKind
+    gzip_error("corrupted input -- file name too large");
+    }
+    #endif
+    #ifdef __COMPILE_3101
+    else if (__choose16 == 136)
+    {
+    //AddStmtKind
+    gzip_error("internal error in shorten_name");
+    }
+    #endif
+    #ifdef __COMPILE_3102
+    else if (__choose16 == 137)
+    {
+    //AddStmtKind
+    gzip_error("name too short");
+    }
+    #endif
+    #ifdef __COMPILE_3103
+    else if (__choose16 == 138)
+    {
+    //AddStmtKind
+    header_bytes = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3104
+    else if (__choose16 == 139)
+    {
+    //AddStmtKind
+    header_bytes = inptr + 2 * sizeof(long);
+    }
+    #endif
+    #ifdef __COMPILE_3105
+    else if (__choose16 == 140)
+    {
+    //AddStmtKind
+    ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
+    }
+    #endif
+    #ifdef __COMPILE_3106
+    else if (__choose16 == 141)
+    {
+    //AddStmtKind
+    inptr = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3107
+    else if (__choose16 == 142)
+    {
+    //AddStmtKind
+    inptr--;
+    }
+    #endif
+    #ifdef __COMPILE_3108
+    else if (__choose16 == 143)
+    {
+    //AddStmtKind
+    install_signal_handlers();
+    }
+    #endif
+    #ifdef __COMPILE_3109
+    else if (__choose16 == 144)
+    {
+    //AddStmtKind
+    last_member = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3110
+    else if (__choose16 == 145)
+    {
+    //AddStmtKind
+    last_member = 1;
+    }
+    #endif
+    #ifdef __COMPILE_3111
+    else if (__choose16 == 146)
+    {
+    //AddStmtKind
+    license();
+    }
+    #endif
+    #ifdef __COMPILE_3112
+    else if (__choose16 == 147)
+    {
+    //AddStmtKind
+    list = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3113
+    else if (__choose16 == 148)
+    {
+    //AddStmtKind
+    method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
+    }
+    #endif
+    #ifdef __COMPILE_3114
+    else if (__choose16 == 149)
+    {
+    //AddStmtKind
+    method = -1;
+    }
+    #endif
+    #ifdef __COMPILE_3115
+    else if (__choose16 == 150)
+    {
+    //AddStmtKind
+    method = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3116
+    else if (__choose16 == 151)
+    {
+    //AddStmtKind
+    method = 1;
+    }
+    #endif
+    #ifdef __COMPILE_3117
+    else if (__choose16 == 152)
+    {
+    //AddStmtKind
+    method = 2;
+    }
+    #endif
+    #ifdef __COMPILE_3118
+    else if (__choose16 == 153)
+    {
+    //AddStmtKind
+    method = 3;
+    }
+    #endif
+    #ifdef __COMPILE_3119
+    else if (__choose16 == 154)
+    {
+    //AddStmtKind
+    method = get_method(ifd);
+    }
+    #endif
+    #ifdef __COMPILE_3120
+    else if (__choose16 == 155)
+    {
+    //AddStmtKind
+    no_name = decompress;
+    }
+    #endif
+    #ifdef __COMPILE_3121
+    else if (__choose16 == 156)
+    {
+    //AddStmtKind
+    no_time = decompress;
+    }
+    #endif
+    #ifdef __COMPILE_3122
+    else if (__choose16 == 157)
+    {
+    //AddStmtKind
+    ok = yesno();
+    }
+    #endif
+    #ifdef __COMPILE_3123
+    else if (__choose16 == 158)
+    {
+    //AddStmtKind
+    part_nb = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3124
+    else if (__choose16 == 159)
+    {
+    //AddStmtKind
+    part_nb++;
+    }
+    #endif
+    #ifdef __COMPILE_3125
+    else if (__choose16 == 160)
+    {
+    //AddStmtKind
+    perror(ifname);
+    }
+    #endif
+    #ifdef __COMPILE_3126
+    else if (__choose16 == 161)
+    {
+    //AddStmtKind
+    perror(ofname);
+    }
+    #endif
+    #ifdef __COMPILE_3127
+    else if (__choose16 == 162)
+    {
+    //AddStmtKind
+    progerror("standard input");
+    }
+    #endif
+    #ifdef __COMPILE_3128
+    else if (__choose16 == 163)
+    {
+    //AddStmtKind
+    progerror(ifname);
+    }
+    #endif
+    #ifdef __COMPILE_3129
+    else if (__choose16 == 164)
+    {
+    //AddStmtKind
+    progerror(ofname);
+    }
+    #endif
+    #ifdef __COMPILE_3130
+    else if (__choose16 == 165)
+    {
+    //AddStmtKind
+    quiet = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3131
+    else if (__choose16 == 166)
+    {
+    //AddStmtKind
+    read_error();
+    }
+    #endif
+    #ifdef __COMPILE_3132
+    else if (__choose16 == 167)
+    {
+    //AddStmtKind
+    remove_ofname_fd = -1;
+    }
+    #endif
+    #ifdef __COMPILE_3133
+    else if (__choose16 == 168)
+    {
+    //AddStmtKind
+    remove_output_file();
+    }
+    #endif
+    #ifdef __COMPILE_3134
+    else if (__choose16 == 169)
+    {
+    //AddStmtKind
+    save_orig_name = !no_name;
+    }
+    #endif
+    #ifdef __COMPILE_3135
+    else if (__choose16 == 170)
+    {
+    //AddStmtKind
+    save_orig_name = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3136
+    else if (__choose16 == 171)
+    {
+    //AddStmtKind
+    save_orig_name = 1;
+    }
+    #endif
+    #ifdef __COMPILE_3137
+    else if (__choose16 == 172)
+    {
+    //AddStmtKind
+    sigemptyset(&caught_signals);
+    }
+    #endif
+    #ifdef __COMPILE_3138
+    else if (__choose16 == 173)
+    {
+    //AddStmtKind
+    strcat(ifname, z_suffix);
+    }
+    #endif
+    #ifdef __COMPILE_3139
+    else if (__choose16 == 174)
+    {
+    //AddStmtKind
+    strcat(ofname, z_suffix);
+    }
+    #endif
+    #ifdef __COMPILE_3140
+    else if (__choose16 == 175)
+    {
+    //AddStmtKind
+    strcpy(ifname, "stdin");
+    }
+    #endif
+    #ifdef __COMPILE_3141
+    else if (__choose16 == 176)
+    {
+    //AddStmtKind
+    strcpy(ofname, "stdout");
+    }
+    #endif
+    #ifdef __COMPILE_3142
+    else if (__choose16 == 177)
+    {
+    //AddStmtKind
+    strcpy(ofname, ifname);
+    }
+    #endif
+    #ifdef __COMPILE_3143
+    else if (__choose16 == 178)
+    {
+    //AddStmtKind
+    time_stamp = get_stat_mtime(&istat);
+    }
+    #endif
+    #ifdef __COMPILE_3144
+    else if (__choose16 == 179)
+    {
+    //AddStmtKind
+    time_stamp.tv_nsec = -1;
+    }
+    #endif
+    #ifdef __COMPILE_3145
+    else if (__choose16 == 180)
+    {
+    //AddStmtKind
+    time_stamp.tv_nsec = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3146
+    else if (__choose16 == 181)
+    {
+    //AddStmtKind
+    to_stdout = 1;
+    }
+    #endif
+    #ifdef __COMPILE_3147
+    else if (__choose16 == 182)
+    {
+    //AddStmtKind
+    total_in = -1L;
+    }
+    #endif
+    #ifdef __COMPILE_3148
+    else if (__choose16 == 183)
+    {
+    //AddStmtKind
+    total_out = -1L;
+    }
+    #endif
+    #ifdef __COMPILE_3149
+    else if (__choose16 == 184)
+    {
+    //AddStmtKind
+    treat_stdin();
+    }
+    #endif
+    #ifdef __COMPILE_3150
+    else if (__choose16 == 185)
+    {
+    //AddStmtKind
+    try_help();
+    }
+    #endif
+    #ifdef __COMPILE_3151
+    else if (__choose16 == 186)
+    {
+    //AddStmtKind
+    verbose = 0;
+    }
+    #endif
+    #ifdef __COMPILE_3152
+    else if (__choose16 == 187)
+    {
+    //AddStmtKind
+    work = copy;
+    }
+    #endif
+    #ifdef __COMPILE_3153
+    else if (__choose16 == 188)
+    {
+    //AddStmtKind
+    work = lzw;
+    }
+    #endif
+    #ifdef __COMPILE_3154
+    else if (__choose16 == 189)
+    {
+    //AddStmtKind
+    work = unlzh;
+    }
+    #endif
+    #ifdef __COMPILE_3155
+    else if (__choose16 == 190)
+    {
+    //AddStmtKind
+    work = unlzw;
+    }
+    #endif
+    #ifdef __COMPILE_3156
+    else if (__choose16 == 191)
+    {
+    //AddStmtKind
+    work = unpack;
+    }
+    #endif
+    #ifdef __COMPILE_3157
+    else if (__choose16 == 192)
+    {
+    //AddStmtKind
+    work = unzip;
+    }
+    #endif
+    #ifdef __COMPILE_3158
+    else if (__choose16 == 193)
+    {
+    //AddStmtKind
+    write_error();
+    }
+    #endif
+    #ifdef __COMPILE_3159
+    else if (__choose16 == 194)
+    {
+    //AddStmtKind
+    xunlink(ofname);
+    }
+    #endif
+    #ifdef __COMPILE_3160
+    else if (__choose16 == 195)
+    {
+    //AddStmtKind
+    z_len = strlen(z_suffix);
+    }
+    #endif
+    #ifdef __COMPILE_3161
+    else if (__choose16 == 196)
+    {
+    //AddStmtKind
+    z_suffix = ".gz";
+    }
+    #endif
+    #ifdef __COMPILE_3162
+    else if (__choose16 == 197)
+    {
+    //IfExitKind
+    if (__is_neg("16-197", "L1639", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
     			 sizeof (foreground), &(ok), sizeof (ok), &(program_name), sizeof (program_name), &(program_name),
     			 sizeof (program_name), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code)))
         return 0;
     }
     #endif
-    #ifdef __COMPILE_2826
-    else if (__choose13 == 198)
+    #ifdef __COMPILE_3163
+    else if (__choose16 == 198)
     {
     //IfExitKind
-    if (__is_neg("13-198", "L1639", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
+    if (__is_neg("16-198", "L1639", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
     			 sizeof (foreground), &(ok), sizeof (ok), &(program_name), sizeof (program_name), &(program_name),
     			 sizeof (program_name), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code)))
         return 1;
     }
     #endif
-    #ifdef __COMPILE_2827
-    else if (__choose13 == 199)
+    #ifdef __COMPILE_3164
+    else if (__choose16 == 199)
     {
     //IfExitKind
-    if (__is_neg("13-199", "L1639", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
+    if (__is_neg("16-199", "L1639", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
     			 sizeof (foreground), &(ok), sizeof (ok), &(program_name), sizeof (program_name), &(program_name),
     			 sizeof (program_name), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code)))
         return 2;
     }
     #endif
-    int __choose14 = __choose("__SWITCH14");
-    if (__choose14 == 0)
+    int __choose17 = __choose("__SWITCH17");
+    if (__choose17 == 0)
     {
     fprintf(stderr, " do you wish to overwrite (y or n)? ");
     
     }
-    #ifdef __COMPILE_2828
-    else if (__choose14 == 1)
+    #ifdef __COMPILE_3165
+    else if (__choose17 == 1)
     {
     //GuardKind
-    if (!__is_neg("14-1", "L1639", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(ok), sizeof (ok), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)))
+    if (!__is_neg("17-1", "L1639", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(ok), sizeof (ok), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)))
         rpl_fprintf(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2829
-    else if (__choose14 == 2)
+    #ifdef __COMPILE_3166
+    else if (__choose17 == 2)
     {
     //MSVExtFunctionReplaceKind
     _IO_sgetn(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2830
-    else if (__choose14 == 3)
+    #ifdef __COMPILE_3167
+    else if (__choose17 == 3)
     {
     //MSVExtFunctionReplaceKind
     _IO_sgetn(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2831
-    else if (__choose14 == 4)
+    #ifdef __COMPILE_3168
+    else if (__choose17 == 4)
     {
     //MSVExtFunctionReplaceKind
     _IO_sgetn(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2832
-    else if (__choose14 == 5)
+    #ifdef __COMPILE_3169
+    else if (__choose17 == 5)
     {
     //MSVExtFunctionReplaceKind
     _IO_sgetn(stderr, " do you wish to overwrite (y or n)? ", z_len);
     
     }
     #endif
-    #ifdef __COMPILE_2833
-    else if (__choose14 == 6)
+    #ifdef __COMPILE_3170
+    else if (__choose17 == 6)
     {
     //MSVExtFunctionReplaceKind
     _IO_vfprintf(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2834
-    else if (__choose14 == 7)
+    #ifdef __COMPILE_3171
+    else if (__choose17 == 7)
     {
     //MSVExtFunctionReplaceKind
     __stpncpy(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2835
-    else if (__choose14 == 8)
+    #ifdef __COMPILE_3172
+    else if (__choose17 == 8)
     {
     //MSVExtFunctionReplaceKind
     __stpncpy(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2836
-    else if (__choose14 == 9)
+    #ifdef __COMPILE_3173
+    else if (__choose17 == 9)
     {
     //MSVExtFunctionReplaceKind
     __stpncpy(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2837
-    else if (__choose14 == 10)
+    #ifdef __COMPILE_3174
+    else if (__choose17 == 10)
     {
     //MSVExtFunctionReplaceKind
     __stpncpy(stderr, " do you wish to overwrite (y or n)? ", z_len);
     
     }
     #endif
-    #ifdef __COMPILE_2838
-    else if (__choose14 == 11)
+    #ifdef __COMPILE_3175
+    else if (__choose17 == 11)
     {
     //MSVExtFunctionReplaceKind
     __strtok_r(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2839
-    else if (__choose14 == 12)
+    #ifdef __COMPILE_3176
+    else if (__choose17 == 12)
     {
     //MSVExtFunctionReplaceKind
     freopen(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2840
-    else if (__choose14 == 13)
+    #ifdef __COMPILE_3177
+    else if (__choose17 == 13)
     {
     //MSVExtFunctionReplaceKind
     freopen64(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2841
-    else if (__choose14 == 14)
+    #ifdef __COMPILE_3178
+    else if (__choose17 == 14)
     {
     //MSVExtFunctionReplaceKind
     mbstowcs(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2842
-    else if (__choose14 == 15)
+    #ifdef __COMPILE_3179
+    else if (__choose17 == 15)
     {
     //MSVExtFunctionReplaceKind
     mbstowcs(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2843
-    else if (__choose14 == 16)
+    #ifdef __COMPILE_3180
+    else if (__choose17 == 16)
     {
     //MSVExtFunctionReplaceKind
     mbstowcs(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2844
-    else if (__choose14 == 17)
+    #ifdef __COMPILE_3181
+    else if (__choose17 == 17)
     {
     //MSVExtFunctionReplaceKind
     mbstowcs(stderr, " do you wish to overwrite (y or n)? ", z_len);
     
     }
     #endif
-    #ifdef __COMPILE_2845
-    else if (__choose14 == 18)
+    #ifdef __COMPILE_3182
+    else if (__choose17 == 18)
     {
     //MSVExtFunctionReplaceKind
     mbtowc(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2846
-    else if (__choose14 == 19)
+    #ifdef __COMPILE_3183
+    else if (__choose17 == 19)
     {
     //MSVExtFunctionReplaceKind
     mbtowc(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2847
-    else if (__choose14 == 20)
+    #ifdef __COMPILE_3184
+    else if (__choose17 == 20)
     {
     //MSVExtFunctionReplaceKind
     mbtowc(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2848
-    else if (__choose14 == 21)
+    #ifdef __COMPILE_3185
+    else if (__choose17 == 21)
     {
     //MSVExtFunctionReplaceKind
     mbtowc(stderr, " do you wish to overwrite (y or n)? ", z_len);
     
     }
     #endif
-    #ifdef __COMPILE_2849
-    else if (__choose14 == 22)
+    #ifdef __COMPILE_3186
+    else if (__choose17 == 22)
     {
     //MSVExtFunctionReplaceKind
     obstack_vprintf(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2850
-    else if (__choose14 == 23)
+    #ifdef __COMPILE_3187
+    else if (__choose17 == 23)
     {
     //MSVExtFunctionReplaceKind
     rpl_vfprintf(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2851
-    else if (__choose14 == 24)
+    #ifdef __COMPILE_3188
+    else if (__choose17 == 24)
     {
     //MSVExtFunctionReplaceKind
     setbuffer(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2852
-    else if (__choose14 == 25)
+    #ifdef __COMPILE_3189
+    else if (__choose17 == 25)
     {
     //MSVExtFunctionReplaceKind
     setbuffer(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2853
-    else if (__choose14 == 26)
+    #ifdef __COMPILE_3190
+    else if (__choose17 == 26)
     {
     //MSVExtFunctionReplaceKind
     setbuffer(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2854
-    else if (__choose14 == 27)
+    #ifdef __COMPILE_3191
+    else if (__choose17 == 27)
     {
     //MSVExtFunctionReplaceKind
     setbuffer(stderr, " do you wish to overwrite (y or n)? ", z_len);
     
     }
     #endif
-    #ifdef __COMPILE_2855
-    else if (__choose14 == 28)
+    #ifdef __COMPILE_3192
+    else if (__choose17 == 28)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2856
-    else if (__choose14 == 29)
+    #ifdef __COMPILE_3193
+    else if (__choose17 == 29)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2857
-    else if (__choose14 == 30)
+    #ifdef __COMPILE_3194
+    else if (__choose17 == 30)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2858
-    else if (__choose14 == 31)
+    #ifdef __COMPILE_3195
+    else if (__choose17 == 31)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", _gl_warn_on_use);
     
     }
     #endif
-    #ifdef __COMPILE_2859
-    else if (__choose14 == 32)
+    #ifdef __COMPILE_3196
+    else if (__choose17 == 32)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", ascii);
     
     }
     #endif
-    #ifdef __COMPILE_2860
-    else if (__choose14 == 33)
+    #ifdef __COMPILE_3197
+    else if (__choose17 == 33)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", block_mode);
     
     }
     #endif
-    #ifdef __COMPILE_2861
-    else if (__choose14 == 34)
+    #ifdef __COMPILE_3198
+    else if (__choose17 == 34)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", decompress);
     
     }
     #endif
-    #ifdef __COMPILE_2862
-    else if (__choose14 == 35)
+    #ifdef __COMPILE_3199
+    else if (__choose17 == 35)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", decrypt);
     
     }
     #endif
-    #ifdef __COMPILE_2863
-    else if (__choose14 == 36)
+    #ifdef __COMPILE_3200
+    else if (__choose17 == 36)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", do_lzw);
     
     }
     #endif
-    #ifdef __COMPILE_2864
-    else if (__choose14 == 37)
+    #ifdef __COMPILE_3201
+    else if (__choose17 == 37)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", exit_code);
     
     }
     #endif
-    #ifdef __COMPILE_2865
-    else if (__choose14 == 38)
+    #ifdef __COMPILE_3202
+    else if (__choose17 == 38)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", exiting_signal);
     
     }
     #endif
-    #ifdef __COMPILE_2866
-    else if (__choose14 == 39)
+    #ifdef __COMPILE_3203
+    else if (__choose17 == 39)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", force);
     
     }
     #endif
-    #ifdef __COMPILE_2867
-    else if (__choose14 == 40)
+    #ifdef __COMPILE_3204
+    else if (__choose17 == 40)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", foreground);
     
     }
     #endif
-    #ifdef __COMPILE_2868
-    else if (__choose14 == 41)
+    #ifdef __COMPILE_3205
+    else if (__choose17 == 41)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", ifd);
     
     }
     #endif
-    #ifdef __COMPILE_2869
-    else if (__choose14 == 42)
+    #ifdef __COMPILE_3206
+    else if (__choose17 == 42)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", last_member);
     
     }
     #endif
-    #ifdef __COMPILE_2870
-    else if (__choose14 == 43)
+    #ifdef __COMPILE_3207
+    else if (__choose17 == 43)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", level);
     
     }
     #endif
-    #ifdef __COMPILE_2871
-    else if (__choose14 == 44)
+    #ifdef __COMPILE_3208
+    else if (__choose17 == 44)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", list);
     
     }
     #endif
-    #ifdef __COMPILE_2872
-    else if (__choose14 == 45)
+    #ifdef __COMPILE_3209
+    else if (__choose17 == 45)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", maxbits);
     
     }
     #endif
-    #ifdef __COMPILE_2873
-    else if (__choose14 == 46)
+    #ifdef __COMPILE_3210
+    else if (__choose17 == 46)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", method);
     
     }
     #endif
-    #ifdef __COMPILE_2874
-    else if (__choose14 == 47)
+    #ifdef __COMPILE_3211
+    else if (__choose17 == 47)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", no_name);
     
     }
     #endif
-    #ifdef __COMPILE_2875
-    else if (__choose14 == 48)
+    #ifdef __COMPILE_3212
+    else if (__choose17 == 48)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", no_time);
     
     }
     #endif
-    #ifdef __COMPILE_2876
-    else if (__choose14 == 49)
+    #ifdef __COMPILE_3213
+    else if (__choose17 == 49)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", ofd);
     
     }
     #endif
-    #ifdef __COMPILE_2877
-    else if (__choose14 == 50)
+    #ifdef __COMPILE_3214
+    else if (__choose17 == 50)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", ok);
     
     }
     #endif
-    #ifdef __COMPILE_2878
-    else if (__choose14 == 51)
+    #ifdef __COMPILE_3215
+    else if (__choose17 == 51)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", part_nb);
     
     }
     #endif
-    #ifdef __COMPILE_2879
-    else if (__choose14 == 52)
+    #ifdef __COMPILE_3216
+    else if (__choose17 == 52)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", quiet);
     
     }
     #endif
-    #ifdef __COMPILE_2880
-    else if (__choose14 == 53)
+    #ifdef __COMPILE_3217
+    else if (__choose17 == 53)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", recursive);
     
     }
     #endif
-    #ifdef __COMPILE_2881
-    else if (__choose14 == 54)
+    #ifdef __COMPILE_3218
+    else if (__choose17 == 54)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", remove_ofname_fd);
     
     }
     #endif
-    #ifdef __COMPILE_2882
-    else if (__choose14 == 55)
+    #ifdef __COMPILE_3219
+    else if (__choose17 == 55)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", save_orig_name);
     
     }
     #endif
-    #ifdef __COMPILE_2883
-    else if (__choose14 == 56)
+    #ifdef __COMPILE_3220
+    else if (__choose17 == 56)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", test);
     
     }
     #endif
-    #ifdef __COMPILE_2884
-    else if (__choose14 == 57)
+    #ifdef __COMPILE_3221
+    else if (__choose17 == 57)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", to_stdout);
     
     }
     #endif
-    #ifdef __COMPILE_2885
-    else if (__choose14 == 58)
+    #ifdef __COMPILE_3222
+    else if (__choose17 == 58)
     {
     //MSVExtFunctionReplaceKind
     setenv(stderr, " do you wish to overwrite (y or n)? ", verbose);
     
     }
     #endif
-    #ifdef __COMPILE_2886
-    else if (__choose14 == 59)
+    #ifdef __COMPILE_3223
+    else if (__choose17 == 59)
     {
     //MSVExtFunctionReplaceKind
     stpncpy(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2887
-    else if (__choose14 == 60)
+    #ifdef __COMPILE_3224
+    else if (__choose17 == 60)
     {
     //MSVExtFunctionReplaceKind
     stpncpy(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2888
-    else if (__choose14 == 61)
+    #ifdef __COMPILE_3225
+    else if (__choose17 == 61)
     {
     //MSVExtFunctionReplaceKind
     stpncpy(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2889
-    else if (__choose14 == 62)
+    #ifdef __COMPILE_3226
+    else if (__choose17 == 62)
     {
     //MSVExtFunctionReplaceKind
     stpncpy(stderr, " do you wish to overwrite (y or n)? ", z_len);
     
     }
     #endif
-    #ifdef __COMPILE_2890
-    else if (__choose14 == 63)
+    #ifdef __COMPILE_3227
+    else if (__choose17 == 63)
     {
     //MSVExtFunctionReplaceKind
     strcasecmp_l(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2891
-    else if (__choose14 == 64)
+    #ifdef __COMPILE_3228
+    else if (__choose17 == 64)
     {
     //MSVExtFunctionReplaceKind
     strcoll_l(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2892
-    else if (__choose14 == 65)
+    #ifdef __COMPILE_3229
+    else if (__choose17 == 65)
     {
     //MSVExtFunctionReplaceKind
     strncasecmp(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2893
-    else if (__choose14 == 66)
+    #ifdef __COMPILE_3230
+    else if (__choose17 == 66)
     {
     //MSVExtFunctionReplaceKind
     strncasecmp(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2894
-    else if (__choose14 == 67)
+    #ifdef __COMPILE_3231
+    else if (__choose17 == 67)
     {
     //MSVExtFunctionReplaceKind
     strncasecmp(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2895
-    else if (__choose14 == 68)
+    #ifdef __COMPILE_3232
+    else if (__choose17 == 68)
     {
     //MSVExtFunctionReplaceKind
     strncasecmp(stderr, " do you wish to overwrite (y or n)? ", z_len);
     
     }
     #endif
-    #ifdef __COMPILE_2896
-    else if (__choose14 == 69)
+    #ifdef __COMPILE_3233
+    else if (__choose17 == 69)
     {
     //MSVExtFunctionReplaceKind
     strncat(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2897
-    else if (__choose14 == 70)
+    #ifdef __COMPILE_3234
+    else if (__choose17 == 70)
     {
     //MSVExtFunctionReplaceKind
     strncat(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2898
-    else if (__choose14 == 71)
+    #ifdef __COMPILE_3235
+    else if (__choose17 == 71)
     {
     //MSVExtFunctionReplaceKind
     strncat(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2899
-    else if (__choose14 == 72)
+    #ifdef __COMPILE_3236
+    else if (__choose17 == 72)
     {
     //MSVExtFunctionReplaceKind
     strncat(stderr, " do you wish to overwrite (y or n)? ", z_len);
     
     }
     #endif
-    #ifdef __COMPILE_2900
-    else if (__choose14 == 73)
+    #ifdef __COMPILE_3237
+    else if (__choose17 == 73)
     {
     //MSVExtFunctionReplaceKind
     strncmp(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2901
-    else if (__choose14 == 74)
+    #ifdef __COMPILE_3238
+    else if (__choose17 == 74)
     {
     //MSVExtFunctionReplaceKind
     strncmp(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2902
-    else if (__choose14 == 75)
+    #ifdef __COMPILE_3239
+    else if (__choose17 == 75)
     {
     //MSVExtFunctionReplaceKind
     strncmp(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2903
-    else if (__choose14 == 76)
+    #ifdef __COMPILE_3240
+    else if (__choose17 == 76)
     {
     //MSVExtFunctionReplaceKind
     strncmp(stderr, " do you wish to overwrite (y or n)? ", z_len);
     
     }
     #endif
-    #ifdef __COMPILE_2904
-    else if (__choose14 == 77)
+    #ifdef __COMPILE_3241
+    else if (__choose17 == 77)
     {
     //MSVExtFunctionReplaceKind
     strncpy(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2905
-    else if (__choose14 == 78)
+    #ifdef __COMPILE_3242
+    else if (__choose17 == 78)
     {
     //MSVExtFunctionReplaceKind
     strncpy(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2906
-    else if (__choose14 == 79)
+    #ifdef __COMPILE_3243
+    else if (__choose17 == 79)
     {
     //MSVExtFunctionReplaceKind
     strncpy(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2907
-    else if (__choose14 == 80)
+    #ifdef __COMPILE_3244
+    else if (__choose17 == 80)
     {
     //MSVExtFunctionReplaceKind
     strncpy(stderr, " do you wish to overwrite (y or n)? ", z_len);
     
     }
     #endif
-    #ifdef __COMPILE_2908
-    else if (__choose14 == 81)
+    #ifdef __COMPILE_3245
+    else if (__choose17 == 81)
     {
     //MSVExtFunctionReplaceKind
     strptime(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2909
-    else if (__choose14 == 82)
+    #ifdef __COMPILE_3246
+    else if (__choose17 == 82)
     {
     //MSVExtFunctionReplaceKind
     strtok_r(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2910
-    else if (__choose14 == 83)
+    #ifdef __COMPILE_3247
+    else if (__choose17 == 83)
     {
     //MSVExtFunctionReplaceKind
     strxfrm(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2911
-    else if (__choose14 == 84)
+    #ifdef __COMPILE_3248
+    else if (__choose17 == 84)
     {
     //MSVExtFunctionReplaceKind
     strxfrm(stderr, " do you wish to overwrite (y or n)? ", 1);
     
     }
     #endif
-    #ifdef __COMPILE_2912
-    else if (__choose14 == 85)
+    #ifdef __COMPILE_3249
+    else if (__choose17 == 85)
     {
     //MSVExtFunctionReplaceKind
     strxfrm(stderr, " do you wish to overwrite (y or n)? ", 2);
     
     }
     #endif
-    #ifdef __COMPILE_2913
-    else if (__choose14 == 86)
+    #ifdef __COMPILE_3250
+    else if (__choose17 == 86)
     {
     //MSVExtFunctionReplaceKind
     strxfrm(stderr, " do you wish to overwrite (y or n)? ", z_len);
     
     }
     #endif
-    #ifdef __COMPILE_2914
-    else if (__choose14 == 87)
+    #ifdef __COMPILE_3251
+    else if (__choose17 == 87)
     {
     //MSVExtFunctionReplaceKind
     vasprintf(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2915
-    else if (__choose14 == 88)
+    #ifdef __COMPILE_3252
+    else if (__choose17 == 88)
     {
     //MSVExtFunctionReplaceKind
     vfprintf(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2916
-    else if (__choose14 == 89)
+    #ifdef __COMPILE_3253
+    else if (__choose17 == 89)
     {
     //MSVExtFunctionReplaceKind
     vsprintf(stderr, " do you wish to overwrite (y or n)? ", 0);
     
     }
     #endif
-    #ifdef __COMPILE_2917
-    else if (__choose14 == 90)
+    #ifdef __COMPILE_3254
+    else if (__choose17 == 90)
     {
     //MSVExtRemoveStmtKind
     {
@@ -26672,328 +29468,328 @@ local int check_ofname()
     
     }
     #endif
-    #ifdef __COMPILE_2918
-    else if (__choose14 == 91)
+    #ifdef __COMPILE_3255
+    else if (__choose17 == 91)
     {
     //ReplaceFunctionKind
     __asprintf(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2919
-    else if (__choose14 == 92)
+    #ifdef __COMPILE_3256
+    else if (__choose17 == 92)
     {
     //ReplaceFunctionKind
     __printf__(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2920
-    else if (__choose14 == 93)
+    #ifdef __COMPILE_3257
+    else if (__choose17 == 93)
     {
     //ReplaceFunctionKind
     __stpcpy(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2921
-    else if (__choose14 == 94)
+    #ifdef __COMPILE_3258
+    else if (__choose17 == 94)
     {
     //ReplaceFunctionKind
     asprintf(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2922
-    else if (__choose14 == 95)
+    #ifdef __COMPILE_3259
+    else if (__choose17 == 95)
     {
     //ReplaceFunctionKind
     crypt(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2923
-    else if (__choose14 == 96)
+    #ifdef __COMPILE_3260
+    else if (__choose17 == 96)
     {
     //ReplaceFunctionKind
     execl(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2924
-    else if (__choose14 == 97)
+    #ifdef __COMPILE_3261
+    else if (__choose17 == 97)
     {
     //ReplaceFunctionKind
     execle(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2925
-    else if (__choose14 == 98)
+    #ifdef __COMPILE_3262
+    else if (__choose17 == 98)
     {
     //ReplaceFunctionKind
     execlp(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2926
-    else if (__choose14 == 99)
+    #ifdef __COMPILE_3263
+    else if (__choose17 == 99)
     {
     //ReplaceFunctionKind
     fgetpos(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2927
-    else if (__choose14 == 100)
+    #ifdef __COMPILE_3264
+    else if (__choose17 == 100)
     {
     //ReplaceFunctionKind
     fgetpos64(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2928
-    else if (__choose14 == 101)
+    #ifdef __COMPILE_3265
+    else if (__choose17 == 101)
     {
     //ReplaceFunctionKind
     fopen(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2929
-    else if (__choose14 == 102)
+    #ifdef __COMPILE_3266
+    else if (__choose17 == 102)
     {
     //ReplaceFunctionKind
     fopen64(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2930
-    else if (__choose14 == 103)
+    #ifdef __COMPILE_3267
+    else if (__choose17 == 103)
     {
     //ReplaceFunctionKind
     fprintf(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2931
-    else if (__choose14 == 104)
+    #ifdef __COMPILE_3268
+    else if (__choose17 == 104)
     {
     //ReplaceFunctionKind
     fsetpos(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2932
-    else if (__choose14 == 105)
+    #ifdef __COMPILE_3269
+    else if (__choose17 == 105)
     {
     //ReplaceFunctionKind
     fsetpos64(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2933
-    else if (__choose14 == 106)
+    #ifdef __COMPILE_3270
+    else if (__choose17 == 106)
     {
     //ReplaceFunctionKind
     link(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2934
-    else if (__choose14 == 107)
+    #ifdef __COMPILE_3271
+    else if (__choose17 == 107)
     {
     //ReplaceFunctionKind
     obstack_printf(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2935
-    else if (__choose14 == 108)
+    #ifdef __COMPILE_3272
+    else if (__choose17 == 108)
     {
     //ReplaceFunctionKind
     popen(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2936
-    else if (__choose14 == 109)
+    #ifdef __COMPILE_3273
+    else if (__choose17 == 109)
     {
     //ReplaceFunctionKind
     printf(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2937
-    else if (__choose14 == 110)
+    #ifdef __COMPILE_3274
+    else if (__choose17 == 110)
     {
     //ReplaceFunctionKind
     psiginfo(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2938
-    else if (__choose14 == 111)
+    #ifdef __COMPILE_3275
+    else if (__choose17 == 111)
     {
     //ReplaceFunctionKind
     rename(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2939
-    else if (__choose14 == 112)
+    #ifdef __COMPILE_3276
+    else if (__choose17 == 112)
     {
     //ReplaceFunctionKind
     setbuf(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2940
-    else if (__choose14 == 113)
+    #ifdef __COMPILE_3277
+    else if (__choose17 == 113)
     {
     //ReplaceFunctionKind
     sprintf(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2941
-    else if (__choose14 == 114)
+    #ifdef __COMPILE_3278
+    else if (__choose17 == 114)
     {
     //ReplaceFunctionKind
     stpcpy(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2942
-    else if (__choose14 == 115)
+    #ifdef __COMPILE_3279
+    else if (__choose17 == 115)
     {
     //ReplaceFunctionKind
     strcasecmp(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2943
-    else if (__choose14 == 116)
+    #ifdef __COMPILE_3280
+    else if (__choose17 == 116)
     {
     //ReplaceFunctionKind
     strcasestr(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2944
-    else if (__choose14 == 117)
+    #ifdef __COMPILE_3281
+    else if (__choose17 == 117)
     {
     //ReplaceFunctionKind
     strcat(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2945
-    else if (__choose14 == 118)
+    #ifdef __COMPILE_3282
+    else if (__choose17 == 118)
     {
     //ReplaceFunctionKind
     strcmp(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2946
-    else if (__choose14 == 119)
+    #ifdef __COMPILE_3283
+    else if (__choose17 == 119)
     {
     //ReplaceFunctionKind
     strcoll(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2947
-    else if (__choose14 == 120)
+    #ifdef __COMPILE_3284
+    else if (__choose17 == 120)
     {
     //ReplaceFunctionKind
     strcpy(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2948
-    else if (__choose14 == 121)
+    #ifdef __COMPILE_3285
+    else if (__choose17 == 121)
     {
     //ReplaceFunctionKind
     strcspn(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2949
-    else if (__choose14 == 122)
+    #ifdef __COMPILE_3286
+    else if (__choose17 == 122)
     {
     //ReplaceFunctionKind
     strpbrk(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2950
-    else if (__choose14 == 123)
+    #ifdef __COMPILE_3287
+    else if (__choose17 == 123)
     {
     //ReplaceFunctionKind
     strsep(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2951
-    else if (__choose14 == 124)
+    #ifdef __COMPILE_3288
+    else if (__choose17 == 124)
     {
     //ReplaceFunctionKind
     strspn(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2952
-    else if (__choose14 == 125)
+    #ifdef __COMPILE_3289
+    else if (__choose17 == 125)
     {
     //ReplaceFunctionKind
     strstr(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2953
-    else if (__choose14 == 126)
+    #ifdef __COMPILE_3290
+    else if (__choose17 == 126)
     {
     //ReplaceFunctionKind
     strtok(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2954
-    else if (__choose14 == 127)
+    #ifdef __COMPILE_3291
+    else if (__choose17 == 127)
     {
     //ReplaceFunctionKind
     strverscmp(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2955
-    else if (__choose14 == 128)
+    #ifdef __COMPILE_3292
+    else if (__choose17 == 128)
     {
     //ReplaceFunctionKind
     symlink(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2956
-    else if (__choose14 == 129)
+    #ifdef __COMPILE_3293
+    else if (__choose17 == 129)
     {
     //ReplaceFunctionKind
     tempnam(stderr, " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2957
-    else if (__choose14 == 130)
+    #ifdef __COMPILE_3294
+    else if (__choose17 == 130)
     {
     //ReplaceKind
     rpl_fprintf((&ok), " do you wish to overwrite (y or n)? ");
     
     }
     #endif
-    #ifdef __COMPILE_2958
-    else if (__choose14 == 131)
+    #ifdef __COMPILE_3295
+    else if (__choose17 == 131)
     {
     //ReplaceKind
     rpl_fprintf(stderr, " do you wish to overwrite (y or n)?  or the directory does not exist");
@@ -27002,1719 +29798,1719 @@ local int check_ofname()
     #endif
     }
                 {
-    int __choose15 = __choose("__SWITCH15");
-    if (__choose15 == 0)
+    int __choose18 = __choose("__SWITCH18");
+    if (__choose18 == 0)
     {}
-    #ifdef __COMPILE_2959
-    else if (__choose15 == 1)
+    #ifdef __COMPILE_3296
+    else if (__choose18 == 1)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (0);
     }
     #endif
-    #ifdef __COMPILE_2960
-    else if (__choose15 == 2)
+    #ifdef __COMPILE_3297
+    else if (__choose18 == 2)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (1);
     }
     #endif
-    #ifdef __COMPILE_2961
-    else if (__choose15 == 3)
+    #ifdef __COMPILE_3298
+    else if (__choose18 == 3)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (2);
     }
     #endif
-    #ifdef __COMPILE_2962
-    else if (__choose15 == 4)
+    #ifdef __COMPILE_3299
+    else if (__choose18 == 4)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (0);
     }
     #endif
-    #ifdef __COMPILE_2963
-    else if (__choose15 == 5)
+    #ifdef __COMPILE_3300
+    else if (__choose18 == 5)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (1);
     }
     #endif
-    #ifdef __COMPILE_2964
-    else if (__choose15 == 6)
+    #ifdef __COMPILE_3301
+    else if (__choose18 == 6)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (2);
     }
     #endif
-    #ifdef __COMPILE_2965
-    else if (__choose15 == 7)
+    #ifdef __COMPILE_3302
+    else if (__choose18 == 7)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (0);
     }
     #endif
-    #ifdef __COMPILE_2966
-    else if (__choose15 == 8)
+    #ifdef __COMPILE_3303
+    else if (__choose18 == 8)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (1);
     }
     #endif
-    #ifdef __COMPILE_2967
-    else if (__choose15 == 9)
+    #ifdef __COMPILE_3304
+    else if (__choose18 == 9)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (2);
     }
     #endif
-    #ifdef __COMPILE_2968
-    else if (__choose15 == 10)
+    #ifdef __COMPILE_3305
+    else if (__choose18 == 10)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (ok);
     }
     #endif
-    #ifdef __COMPILE_2969
-    else if (__choose15 == 11)
+    #ifdef __COMPILE_3306
+    else if (__choose18 == 11)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (0);
     }
     #endif
-    #ifdef __COMPILE_2970
-    else if (__choose15 == 12)
+    #ifdef __COMPILE_3307
+    else if (__choose18 == 12)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (1);
     }
     #endif
-    #ifdef __COMPILE_2971
-    else if (__choose15 == 13)
+    #ifdef __COMPILE_3308
+    else if (__choose18 == 13)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (2);
     }
     #endif
-    #ifdef __COMPILE_2972
-    else if (__choose15 == 14)
+    #ifdef __COMPILE_3309
+    else if (__choose18 == 14)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (ok);
     }
     #endif
-    #ifdef __COMPILE_2973
-    else if (__choose15 == 15)
+    #ifdef __COMPILE_3310
+    else if (__choose18 == 15)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (0);
     }
     #endif
-    #ifdef __COMPILE_2974
-    else if (__choose15 == 16)
+    #ifdef __COMPILE_3311
+    else if (__choose18 == 16)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (1);
     }
     #endif
-    #ifdef __COMPILE_2975
-    else if (__choose15 == 17)
+    #ifdef __COMPILE_3312
+    else if (__choose18 == 17)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (2);
     }
     #endif
-    #ifdef __COMPILE_2976
-    else if (__choose15 == 18)
+    #ifdef __COMPILE_3313
+    else if (__choose18 == 18)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (ok);
     }
     #endif
-    #ifdef __COMPILE_2977
-    else if (__choose15 == 19)
+    #ifdef __COMPILE_3314
+    else if (__choose18 == 19)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (0);
     }
     #endif
-    #ifdef __COMPILE_2978
-    else if (__choose15 == 20)
+    #ifdef __COMPILE_3315
+    else if (__choose18 == 20)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (1);
     }
     #endif
-    #ifdef __COMPILE_2979
-    else if (__choose15 == 21)
+    #ifdef __COMPILE_3316
+    else if (__choose18 == 21)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (2);
     }
     #endif
-    #ifdef __COMPILE_2980
-    else if (__choose15 == 22)
+    #ifdef __COMPILE_3317
+    else if (__choose18 == 22)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (0);
     }
     #endif
-    #ifdef __COMPILE_2981
-    else if (__choose15 == 23)
+    #ifdef __COMPILE_3318
+    else if (__choose18 == 23)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (1);
     }
     #endif
-    #ifdef __COMPILE_2982
-    else if (__choose15 == 24)
+    #ifdef __COMPILE_3319
+    else if (__choose18 == 24)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (2);
     }
     #endif
-    #ifdef __COMPILE_2983
-    else if (__choose15 == 25)
+    #ifdef __COMPILE_3320
+    else if (__choose18 == 25)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (ok);
     }
     #endif
-    #ifdef __COMPILE_2984
-    else if (__choose15 == 26)
+    #ifdef __COMPILE_3321
+    else if (__choose18 == 26)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (0);
     }
     #endif
-    #ifdef __COMPILE_2985
-    else if (__choose15 == 27)
+    #ifdef __COMPILE_3322
+    else if (__choose18 == 27)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (1);
     }
     #endif
-    #ifdef __COMPILE_2986
-    else if (__choose15 == 28)
+    #ifdef __COMPILE_3323
+    else if (__choose18 == 28)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (2);
     }
     #endif
-    #ifdef __COMPILE_2987
-    else if (__choose15 == 29)
+    #ifdef __COMPILE_3324
+    else if (__choose18 == 29)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (0);
     }
     #endif
-    #ifdef __COMPILE_2988
-    else if (__choose15 == 30)
+    #ifdef __COMPILE_3325
+    else if (__choose18 == 30)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (1);
     }
     #endif
-    #ifdef __COMPILE_2989
-    else if (__choose15 == 31)
+    #ifdef __COMPILE_3326
+    else if (__choose18 == 31)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (2);
     }
     #endif
-    #ifdef __COMPILE_2990
-    else if (__choose15 == 32)
+    #ifdef __COMPILE_3327
+    else if (__choose18 == 32)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (0);
     }
     #endif
-    #ifdef __COMPILE_2991
-    else if (__choose15 == 33)
+    #ifdef __COMPILE_3328
+    else if (__choose18 == 33)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (1);
     }
     #endif
-    #ifdef __COMPILE_2992
-    else if (__choose15 == 34)
+    #ifdef __COMPILE_3329
+    else if (__choose18 == 34)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (2);
     }
     #endif
-    #ifdef __COMPILE_2993
-    else if (__choose15 == 35)
+    #ifdef __COMPILE_3330
+    else if (__choose18 == 35)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (ok);
     }
     #endif
-    #ifdef __COMPILE_2994
-    else if (__choose15 == 36)
+    #ifdef __COMPILE_3331
+    else if (__choose18 == 36)
     {
     //AddStmtAndReplaceAtomKind
     list = (0);
     }
     #endif
-    #ifdef __COMPILE_2995
-    else if (__choose15 == 37)
+    #ifdef __COMPILE_3332
+    else if (__choose18 == 37)
     {
     //AddStmtAndReplaceAtomKind
     list = (1);
     }
     #endif
-    #ifdef __COMPILE_2996
-    else if (__choose15 == 38)
+    #ifdef __COMPILE_3333
+    else if (__choose18 == 38)
     {
     //AddStmtAndReplaceAtomKind
     list = (2);
     }
     #endif
-    #ifdef __COMPILE_2997
-    else if (__choose15 == 39)
+    #ifdef __COMPILE_3334
+    else if (__choose18 == 39)
     {
     //AddStmtAndReplaceAtomKind
     list = (ok);
     }
     #endif
-    #ifdef __COMPILE_2998
-    else if (__choose15 == 40)
+    #ifdef __COMPILE_3335
+    else if (__choose18 == 40)
     {
     //AddStmtAndReplaceAtomKind
     method = (0);
     }
     #endif
-    #ifdef __COMPILE_2999
-    else if (__choose15 == 41)
+    #ifdef __COMPILE_3336
+    else if (__choose18 == 41)
     {
     //AddStmtAndReplaceAtomKind
     method = (1);
     }
     #endif
-    #ifdef __COMPILE_3000
-    else if (__choose15 == 42)
+    #ifdef __COMPILE_3337
+    else if (__choose18 == 42)
     {
     //AddStmtAndReplaceAtomKind
     method = (2);
     }
     #endif
-    #ifdef __COMPILE_3001
-    else if (__choose15 == 43)
+    #ifdef __COMPILE_3338
+    else if (__choose18 == 43)
     {
     //AddStmtAndReplaceAtomKind
     method = (ok);
     }
     #endif
-    #ifdef __COMPILE_3002
-    else if (__choose15 == 44)
+    #ifdef __COMPILE_3339
+    else if (__choose18 == 44)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (0);
     }
     #endif
-    #ifdef __COMPILE_3003
-    else if (__choose15 == 45)
+    #ifdef __COMPILE_3340
+    else if (__choose18 == 45)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (1);
     }
     #endif
-    #ifdef __COMPILE_3004
-    else if (__choose15 == 46)
+    #ifdef __COMPILE_3341
+    else if (__choose18 == 46)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (2);
     }
     #endif
-    #ifdef __COMPILE_3005
-    else if (__choose15 == 47)
+    #ifdef __COMPILE_3342
+    else if (__choose18 == 47)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (ok);
     }
     #endif
-    #ifdef __COMPILE_3006
-    else if (__choose15 == 48)
+    #ifdef __COMPILE_3343
+    else if (__choose18 == 48)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (0);
     }
     #endif
-    #ifdef __COMPILE_3007
-    else if (__choose15 == 49)
+    #ifdef __COMPILE_3344
+    else if (__choose18 == 49)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (1);
     }
     #endif
-    #ifdef __COMPILE_3008
-    else if (__choose15 == 50)
+    #ifdef __COMPILE_3345
+    else if (__choose18 == 50)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (2);
     }
     #endif
-    #ifdef __COMPILE_3009
-    else if (__choose15 == 51)
+    #ifdef __COMPILE_3346
+    else if (__choose18 == 51)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (ok);
     }
     #endif
-    #ifdef __COMPILE_3010
-    else if (__choose15 == 52)
+    #ifdef __COMPILE_3347
+    else if (__choose18 == 52)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (0);
     }
     #endif
-    #ifdef __COMPILE_3011
-    else if (__choose15 == 53)
+    #ifdef __COMPILE_3348
+    else if (__choose18 == 53)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (1);
     }
     #endif
-    #ifdef __COMPILE_3012
-    else if (__choose15 == 54)
+    #ifdef __COMPILE_3349
+    else if (__choose18 == 54)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (2);
     }
     #endif
-    #ifdef __COMPILE_3013
-    else if (__choose15 == 55)
+    #ifdef __COMPILE_3350
+    else if (__choose18 == 55)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (ok);
     }
     #endif
-    #ifdef __COMPILE_3014
-    else if (__choose15 == 56)
+    #ifdef __COMPILE_3351
+    else if (__choose18 == 56)
     {
     //AddStmtAndReplaceAtomKind
     ok = (0);
     }
     #endif
-    #ifdef __COMPILE_3015
-    else if (__choose15 == 57)
+    #ifdef __COMPILE_3352
+    else if (__choose18 == 57)
     {
     //AddStmtAndReplaceAtomKind
     ok = (1);
     }
     #endif
-    #ifdef __COMPILE_3016
-    else if (__choose15 == 58)
+    #ifdef __COMPILE_3353
+    else if (__choose18 == 58)
     {
     //AddStmtAndReplaceAtomKind
     ok = (2);
     }
     #endif
-    #ifdef __COMPILE_3017
-    else if (__choose15 == 59)
+    #ifdef __COMPILE_3354
+    else if (__choose18 == 59)
     {
     //AddStmtAndReplaceAtomKind
     ok = (ok);
     }
     #endif
-    #ifdef __COMPILE_3018
-    else if (__choose15 == 60)
+    #ifdef __COMPILE_3355
+    else if (__choose18 == 60)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (0);
     }
     #endif
-    #ifdef __COMPILE_3019
-    else if (__choose15 == 61)
+    #ifdef __COMPILE_3356
+    else if (__choose18 == 61)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (1);
     }
     #endif
-    #ifdef __COMPILE_3020
-    else if (__choose15 == 62)
+    #ifdef __COMPILE_3357
+    else if (__choose18 == 62)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (2);
     }
     #endif
-    #ifdef __COMPILE_3021
-    else if (__choose15 == 63)
+    #ifdef __COMPILE_3358
+    else if (__choose18 == 63)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (ok);
     }
     #endif
-    #ifdef __COMPILE_3022
-    else if (__choose15 == 64)
+    #ifdef __COMPILE_3359
+    else if (__choose18 == 64)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (0);
     }
     #endif
-    #ifdef __COMPILE_3023
-    else if (__choose15 == 65)
+    #ifdef __COMPILE_3360
+    else if (__choose18 == 65)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (1);
     }
     #endif
-    #ifdef __COMPILE_3024
-    else if (__choose15 == 66)
+    #ifdef __COMPILE_3361
+    else if (__choose18 == 66)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (2);
     }
     #endif
-    #ifdef __COMPILE_3025
-    else if (__choose15 == 67)
+    #ifdef __COMPILE_3362
+    else if (__choose18 == 67)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (ok);
     }
     #endif
-    #ifdef __COMPILE_3026
-    else if (__choose15 == 68)
+    #ifdef __COMPILE_3363
+    else if (__choose18 == 68)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (0);
     }
     #endif
-    #ifdef __COMPILE_3027
-    else if (__choose15 == 69)
+    #ifdef __COMPILE_3364
+    else if (__choose18 == 69)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (1);
     }
     #endif
-    #ifdef __COMPILE_3028
-    else if (__choose15 == 70)
+    #ifdef __COMPILE_3365
+    else if (__choose18 == 70)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (2);
     }
     #endif
-    #ifdef __COMPILE_3029
-    else if (__choose15 == 71)
+    #ifdef __COMPILE_3366
+    else if (__choose18 == 71)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (ok);
     }
     #endif
-    #ifdef __COMPILE_3030
-    else if (__choose15 == 72)
+    #ifdef __COMPILE_3367
+    else if (__choose18 == 72)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (0);
     }
     #endif
-    #ifdef __COMPILE_3031
-    else if (__choose15 == 73)
+    #ifdef __COMPILE_3368
+    else if (__choose18 == 73)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (1);
     }
     #endif
-    #ifdef __COMPILE_3032
-    else if (__choose15 == 74)
+    #ifdef __COMPILE_3369
+    else if (__choose18 == 74)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (2);
     }
     #endif
-    #ifdef __COMPILE_3033
-    else if (__choose15 == 75)
+    #ifdef __COMPILE_3370
+    else if (__choose18 == 75)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (ok);
     }
     #endif
-    #ifdef __COMPILE_3034
-    else if (__choose15 == 76)
+    #ifdef __COMPILE_3371
+    else if (__choose18 == 76)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (0);
     }
     #endif
-    #ifdef __COMPILE_3035
-    else if (__choose15 == 77)
+    #ifdef __COMPILE_3372
+    else if (__choose18 == 77)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (1);
     }
     #endif
-    #ifdef __COMPILE_3036
-    else if (__choose15 == 78)
+    #ifdef __COMPILE_3373
+    else if (__choose18 == 78)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (2);
     }
     #endif
-    #ifdef __COMPILE_3037
-    else if (__choose15 == 79)
+    #ifdef __COMPILE_3374
+    else if (__choose18 == 79)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (0);
     }
     #endif
-    #ifdef __COMPILE_3038
-    else if (__choose15 == 80)
+    #ifdef __COMPILE_3375
+    else if (__choose18 == 80)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (1);
     }
     #endif
-    #ifdef __COMPILE_3039
-    else if (__choose15 == 81)
+    #ifdef __COMPILE_3376
+    else if (__choose18 == 81)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (2);
     }
     #endif
-    #ifdef __COMPILE_3040
-    else if (__choose15 == 82)
+    #ifdef __COMPILE_3377
+    else if (__choose18 == 82)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (0);
     }
     #endif
-    #ifdef __COMPILE_3041
-    else if (__choose15 == 83)
+    #ifdef __COMPILE_3378
+    else if (__choose18 == 83)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (1);
     }
     #endif
-    #ifdef __COMPILE_3042
-    else if (__choose15 == 84)
+    #ifdef __COMPILE_3379
+    else if (__choose18 == 84)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (2);
     }
     #endif
-    #ifdef __COMPILE_3043
-    else if (__choose15 == 85)
+    #ifdef __COMPILE_3380
+    else if (__choose18 == 85)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (ok);
     }
     #endif
-    #ifdef __COMPILE_3044
-    else if (__choose15 == 86)
+    #ifdef __COMPILE_3381
+    else if (__choose18 == 86)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (0);
     }
     #endif
-    #ifdef __COMPILE_3045
-    else if (__choose15 == 87)
+    #ifdef __COMPILE_3382
+    else if (__choose18 == 87)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (1);
     }
     #endif
-    #ifdef __COMPILE_3046
-    else if (__choose15 == 88)
+    #ifdef __COMPILE_3383
+    else if (__choose18 == 88)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (2);
     }
     #endif
-    #ifdef __COMPILE_3047
-    else if (__choose15 == 89)
+    #ifdef __COMPILE_3384
+    else if (__choose18 == 89)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (0);
     }
     #endif
-    #ifdef __COMPILE_3048
-    else if (__choose15 == 90)
+    #ifdef __COMPILE_3385
+    else if (__choose18 == 90)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (1);
     }
     #endif
-    #ifdef __COMPILE_3049
-    else if (__choose15 == 91)
+    #ifdef __COMPILE_3386
+    else if (__choose18 == 91)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (2);
     }
     #endif
-    #ifdef __COMPILE_3050
-    else if (__choose15 == 92)
+    #ifdef __COMPILE_3387
+    else if (__choose18 == 92)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (0);
     }
     #endif
-    #ifdef __COMPILE_3051
-    else if (__choose15 == 93)
+    #ifdef __COMPILE_3388
+    else if (__choose18 == 93)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (1);
     }
     #endif
-    #ifdef __COMPILE_3052
-    else if (__choose15 == 94)
+    #ifdef __COMPILE_3389
+    else if (__choose18 == 94)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (2);
     }
     #endif
-    #ifdef __COMPILE_3053
-    else if (__choose15 == 95)
+    #ifdef __COMPILE_3390
+    else if (__choose18 == 95)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (ok);
     }
     #endif
-    #ifdef __COMPILE_3054
-    else if (__choose15 == 96)
+    #ifdef __COMPILE_3391
+    else if (__choose18 == 96)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (0);
     }
     #endif
-    #ifdef __COMPILE_3055
-    else if (__choose15 == 97)
+    #ifdef __COMPILE_3392
+    else if (__choose18 == 97)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (1);
     }
     #endif
-    #ifdef __COMPILE_3056
-    else if (__choose15 == 98)
+    #ifdef __COMPILE_3393
+    else if (__choose18 == 98)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (2);
     }
     #endif
-    #ifdef __COMPILE_3057
-    else if (__choose15 == 99)
+    #ifdef __COMPILE_3394
+    else if (__choose18 == 99)
     {
     //AddStmtKind
     (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_3058
-    else if (__choose15 == 100)
+    #ifdef __COMPILE_3395
+    else if (__choose18 == 100)
     {
     //AddStmtKind
     __printf__("                            ");
     }
     #endif
-    #ifdef __COMPILE_3059
-    else if (__choose15 == 101)
+    #ifdef __COMPILE_3396
+    else if (__choose18 == 101)
     {
     //AddStmtKind
     __printf__(" ");
     }
     #endif
-    #ifdef __COMPILE_3060
-    else if (__choose15 == 102)
+    #ifdef __COMPILE_3397
+    else if (__choose18 == 102)
     {
     //AddStmtKind
     __printf__(" %s\n", ofname);
     }
     #endif
-    #ifdef __COMPILE_3061
-    else if (__choose15 == 103)
+    #ifdef __COMPILE_3398
+    else if (__choose18 == 103)
     {
     //AddStmtKind
     __printf__(" (totals)\n");
     }
     #endif
-    #ifdef __COMPILE_3062
-    else if (__choose15 == 104)
+    #ifdef __COMPILE_3399
+    else if (__choose18 == 104)
     {
     //AddStmtKind
     __printf__("%s %s\n", program_name, "1.0");
     }
     #endif
-    #ifdef __COMPILE_3063
-    else if (__choose15 == 105)
+    #ifdef __COMPILE_3400
+    else if (__choose18 == 105)
     {
     //AddStmtKind
     __printf__("??? ?? ??:?? ");
     }
     #endif
-    #ifdef __COMPILE_3064
-    else if (__choose15 == 106)
+    #ifdef __COMPILE_3401
+    else if (__choose18 == 106)
     {
     //AddStmtKind
     __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
     }
     #endif
-    #ifdef __COMPILE_3065
-    else if (__choose15 == 107)
+    #ifdef __COMPILE_3402
+    else if (__choose18 == 107)
     {
     //AddStmtKind
     __printf__("Written by Jean-loup Gailly.\n");
     }
     #endif
-    #ifdef __COMPILE_3066
-    else if (__choose15 == 108)
+    #ifdef __COMPILE_3403
+    else if (__choose18 == 108)
     {
     //AddStmtKind
     __printf__("\n");
     }
     #endif
-    #ifdef __COMPILE_3067
-    else if (__choose15 == 109)
+    #ifdef __COMPILE_3404
+    else if (__choose18 == 109)
     {
     //AddStmtKind
     __printf__("method  crc     date  time  ");
     }
     #endif
-    #ifdef __COMPILE_3068
-    else if (__choose15 == 110)
+    #ifdef __COMPILE_3405
+    else if (__choose18 == 110)
     {
     //AddStmtKind
     _exit(2);
     }
     #endif
-    #ifdef __COMPILE_3069
-    else if (__choose15 == 111)
+    #ifdef __COMPILE_3406
+    else if (__choose18 == 111)
     {
     //AddStmtKind
     args = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_3070
-    else if (__choose15 == 112)
+    #ifdef __COMPILE_3407
+    else if (__choose18 == 112)
     {
     //AddStmtKind
     atexit(close_stdin);
     }
     #endif
-    #ifdef __COMPILE_3071
-    else if (__choose15 == 113)
+    #ifdef __COMPILE_3408
+    else if (__choose18 == 113)
     {
     //AddStmtKind
     bytes_in = 0;
     }
     #endif
-    #ifdef __COMPILE_3072
-    else if (__choose15 == 114)
+    #ifdef __COMPILE_3409
+    else if (__choose18 == 114)
     {
     //AddStmtKind
     bytes_in = ifile_size;
     }
     #endif
-    #ifdef __COMPILE_3073
-    else if (__choose15 == 115)
+    #ifdef __COMPILE_3410
+    else if (__choose18 == 115)
     {
     //AddStmtKind
     bytes_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_3074
-    else if (__choose15 == 116)
+    #ifdef __COMPILE_3411
+    else if (__choose18 == 116)
     {
     //AddStmtKind
     bytes_out = 0;
     }
     #endif
-    #ifdef __COMPILE_3075
-    else if (__choose15 == 117)
+    #ifdef __COMPILE_3412
+    else if (__choose18 == 117)
     {
     //AddStmtKind
     bytes_out++;
     }
     #endif
-    #ifdef __COMPILE_3076
-    else if (__choose15 == 118)
+    #ifdef __COMPILE_3413
+    else if (__choose18 == 118)
     {
     //AddStmtKind
     clear_bufs();
     }
     #endif
-    #ifdef __COMPILE_3077
-    else if (__choose15 == 119)
+    #ifdef __COMPILE_3414
+    else if (__choose18 == 119)
     {
     //AddStmtKind
     close(ifd);
     }
     #endif
-    #ifdef __COMPILE_3078
-    else if (__choose15 == 120)
+    #ifdef __COMPILE_3415
+    else if (__choose18 == 120)
     {
     //AddStmtKind
     copy_stat(&istat);
     }
     #endif
-    #ifdef __COMPILE_3079
-    else if (__choose15 == 121)
+    #ifdef __COMPILE_3416
+    else if (__choose18 == 121)
     {
     //AddStmtKind
     do_exit(0);
     }
     #endif
-    #ifdef __COMPILE_3080
-    else if (__choose15 == 122)
+    #ifdef __COMPILE_3417
+    else if (__choose18 == 122)
     {
     //AddStmtKind
     do_exit(1);
     }
     #endif
-    #ifdef __COMPILE_3081
-    else if (__choose15 == 123)
+    #ifdef __COMPILE_3418
+    else if (__choose18 == 123)
     {
     //AddStmtKind
     do_exit(exit_code);
     }
     #endif
-    #ifdef __COMPILE_3082
-    else if (__choose15 == 124)
+    #ifdef __COMPILE_3419
+    else if (__choose18 == 124)
     {
     //AddStmtKind
     do_list(-1, -1);
     }
     #endif
-    #ifdef __COMPILE_3083
-    else if (__choose15 == 125)
+    #ifdef __COMPILE_3420
+    else if (__choose18 == 125)
     {
     //AddStmtKind
     do_list(ifd, method);
     }
     #endif
-    #ifdef __COMPILE_3084
-    else if (__choose15 == 126)
+    #ifdef __COMPILE_3421
+    else if (__choose18 == 126)
     {
     //AddStmtKind
     env = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_3085
-    else if (__choose15 == 127)
+    #ifdef __COMPILE_3422
+    else if (__choose18 == 127)
     {
     //AddStmtKind
     env = add_envopt(&argc, &argv, "GZIP");
     }
     #endif
-    #ifdef __COMPILE_3086
-    else if (__choose15 == 128)
+    #ifdef __COMPILE_3423
+    else if (__choose18 == 128)
     {
     //AddStmtKind
     exit_code = 1;
     }
     #endif
-    #ifdef __COMPILE_3087
-    else if (__choose15 == 129)
+    #ifdef __COMPILE_3424
+    else if (__choose18 == 129)
     {
     //AddStmtKind
     exit_code = 2;
     }
     #endif
-    #ifdef __COMPILE_3088
-    else if (__choose15 == 130)
+    #ifdef __COMPILE_3425
+    else if (__choose18 == 130)
     {
     //AddStmtKind
     exiting_signal = quiet ? 13 : 0;
     }
     #endif
-    #ifdef __COMPILE_3089
-    else if (__choose15 == 131)
+    #ifdef __COMPILE_3426
+    else if (__choose18 == 131)
     {
     //AddStmtKind
     foreground = 1;
     }
     #endif
-    #ifdef __COMPILE_3090
-    else if (__choose15 == 132)
+    #ifdef __COMPILE_3427
+    else if (__choose18 == 132)
     {
     //AddStmtKind
     free(args);
     }
     #endif
-    #ifdef __COMPILE_3091
-    else if (__choose15 == 133)
+    #ifdef __COMPILE_3428
+    else if (__choose18 == 133)
     {
     //AddStmtKind
     free(env);
     }
     #endif
-    #ifdef __COMPILE_3092
-    else if (__choose15 == 134)
+    #ifdef __COMPILE_3429
+    else if (__choose18 == 134)
     {
     //AddStmtKind
     gzip_error("can't recover suffix\n");
     }
     #endif
-    #ifdef __COMPILE_3093
-    else if (__choose15 == 135)
+    #ifdef __COMPILE_3430
+    else if (__choose18 == 135)
     {
     //AddStmtKind
     gzip_error("corrupted input -- file name too large");
     }
     #endif
-    #ifdef __COMPILE_3094
-    else if (__choose15 == 136)
+    #ifdef __COMPILE_3431
+    else if (__choose18 == 136)
     {
     //AddStmtKind
     gzip_error("internal error in shorten_name");
     }
     #endif
-    #ifdef __COMPILE_3095
-    else if (__choose15 == 137)
+    #ifdef __COMPILE_3432
+    else if (__choose18 == 137)
     {
     //AddStmtKind
     gzip_error("name too short");
     }
     #endif
-    #ifdef __COMPILE_3096
-    else if (__choose15 == 138)
+    #ifdef __COMPILE_3433
+    else if (__choose18 == 138)
     {
     //AddStmtKind
     header_bytes = 0;
     }
     #endif
-    #ifdef __COMPILE_3097
-    else if (__choose15 == 139)
+    #ifdef __COMPILE_3434
+    else if (__choose18 == 139)
     {
     //AddStmtKind
     header_bytes = inptr + 2 * sizeof(long);
     }
     #endif
-    #ifdef __COMPILE_3098
-    else if (__choose15 == 140)
+    #ifdef __COMPILE_3435
+    else if (__choose18 == 140)
     {
     //AddStmtKind
     ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
     }
     #endif
-    #ifdef __COMPILE_3099
-    else if (__choose15 == 141)
+    #ifdef __COMPILE_3436
+    else if (__choose18 == 141)
     {
     //AddStmtKind
     inptr = 0;
     }
     #endif
-    #ifdef __COMPILE_3100
-    else if (__choose15 == 142)
+    #ifdef __COMPILE_3437
+    else if (__choose18 == 142)
     {
     //AddStmtKind
     inptr--;
     }
     #endif
-    #ifdef __COMPILE_3101
-    else if (__choose15 == 143)
+    #ifdef __COMPILE_3438
+    else if (__choose18 == 143)
     {
     //AddStmtKind
     install_signal_handlers();
     }
     #endif
-    #ifdef __COMPILE_3102
-    else if (__choose15 == 144)
+    #ifdef __COMPILE_3439
+    else if (__choose18 == 144)
     {
     //AddStmtKind
     last_member = 0;
     }
     #endif
-    #ifdef __COMPILE_3103
-    else if (__choose15 == 145)
+    #ifdef __COMPILE_3440
+    else if (__choose18 == 145)
     {
     //AddStmtKind
     last_member = 1;
     }
     #endif
-    #ifdef __COMPILE_3104
-    else if (__choose15 == 146)
+    #ifdef __COMPILE_3441
+    else if (__choose18 == 146)
     {
     //AddStmtKind
     license();
     }
     #endif
-    #ifdef __COMPILE_3105
-    else if (__choose15 == 147)
+    #ifdef __COMPILE_3442
+    else if (__choose18 == 147)
     {
     //AddStmtKind
     list = 0;
     }
     #endif
-    #ifdef __COMPILE_3106
-    else if (__choose15 == 148)
+    #ifdef __COMPILE_3443
+    else if (__choose18 == 148)
     {
     //AddStmtKind
     method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_3107
-    else if (__choose15 == 149)
+    #ifdef __COMPILE_3444
+    else if (__choose18 == 149)
     {
     //AddStmtKind
     method = -1;
     }
     #endif
-    #ifdef __COMPILE_3108
-    else if (__choose15 == 150)
+    #ifdef __COMPILE_3445
+    else if (__choose18 == 150)
     {
     //AddStmtKind
     method = 0;
     }
     #endif
-    #ifdef __COMPILE_3109
-    else if (__choose15 == 151)
+    #ifdef __COMPILE_3446
+    else if (__choose18 == 151)
     {
     //AddStmtKind
     method = 1;
     }
     #endif
-    #ifdef __COMPILE_3110
-    else if (__choose15 == 152)
+    #ifdef __COMPILE_3447
+    else if (__choose18 == 152)
     {
     //AddStmtKind
     method = 2;
     }
     #endif
-    #ifdef __COMPILE_3111
-    else if (__choose15 == 153)
+    #ifdef __COMPILE_3448
+    else if (__choose18 == 153)
     {
     //AddStmtKind
     method = 3;
     }
     #endif
-    #ifdef __COMPILE_3112
-    else if (__choose15 == 154)
+    #ifdef __COMPILE_3449
+    else if (__choose18 == 154)
     {
     //AddStmtKind
     method = get_method(ifd);
     }
     #endif
-    #ifdef __COMPILE_3113
-    else if (__choose15 == 155)
+    #ifdef __COMPILE_3450
+    else if (__choose18 == 155)
     {
     //AddStmtKind
     no_name = decompress;
     }
     #endif
-    #ifdef __COMPILE_3114
-    else if (__choose15 == 156)
+    #ifdef __COMPILE_3451
+    else if (__choose18 == 156)
     {
     //AddStmtKind
     no_time = decompress;
     }
     #endif
-    #ifdef __COMPILE_3115
-    else if (__choose15 == 157)
+    #ifdef __COMPILE_3452
+    else if (__choose18 == 157)
     {
     //AddStmtKind
     ok = yesno();
     }
     #endif
-    #ifdef __COMPILE_3116
-    else if (__choose15 == 158)
+    #ifdef __COMPILE_3453
+    else if (__choose18 == 158)
     {
     //AddStmtKind
     part_nb = 0;
     }
     #endif
-    #ifdef __COMPILE_3117
-    else if (__choose15 == 159)
+    #ifdef __COMPILE_3454
+    else if (__choose18 == 159)
     {
     //AddStmtKind
     part_nb++;
     }
     #endif
-    #ifdef __COMPILE_3118
-    else if (__choose15 == 160)
+    #ifdef __COMPILE_3455
+    else if (__choose18 == 160)
     {
     //AddStmtKind
     perror(ifname);
     }
     #endif
-    #ifdef __COMPILE_3119
-    else if (__choose15 == 161)
+    #ifdef __COMPILE_3456
+    else if (__choose18 == 161)
     {
     //AddStmtKind
     perror(ofname);
     }
     #endif
-    #ifdef __COMPILE_3120
-    else if (__choose15 == 162)
+    #ifdef __COMPILE_3457
+    else if (__choose18 == 162)
     {
     //AddStmtKind
     progerror("standard input");
     }
     #endif
-    #ifdef __COMPILE_3121
-    else if (__choose15 == 163)
+    #ifdef __COMPILE_3458
+    else if (__choose18 == 163)
     {
     //AddStmtKind
     progerror(ifname);
     }
     #endif
-    #ifdef __COMPILE_3122
-    else if (__choose15 == 164)
+    #ifdef __COMPILE_3459
+    else if (__choose18 == 164)
     {
     //AddStmtKind
     progerror(ofname);
     }
     #endif
-    #ifdef __COMPILE_3123
-    else if (__choose15 == 165)
+    #ifdef __COMPILE_3460
+    else if (__choose18 == 165)
     {
     //AddStmtKind
     quiet = 0;
     }
     #endif
-    #ifdef __COMPILE_3124
-    else if (__choose15 == 166)
+    #ifdef __COMPILE_3461
+    else if (__choose18 == 166)
     {
     //AddStmtKind
     read_error();
     }
     #endif
-    #ifdef __COMPILE_3125
-    else if (__choose15 == 167)
+    #ifdef __COMPILE_3462
+    else if (__choose18 == 167)
     {
     //AddStmtKind
     remove_ofname_fd = -1;
     }
     #endif
-    #ifdef __COMPILE_3126
-    else if (__choose15 == 168)
+    #ifdef __COMPILE_3463
+    else if (__choose18 == 168)
     {
     //AddStmtKind
     remove_output_file();
     }
     #endif
-    #ifdef __COMPILE_3127
-    else if (__choose15 == 169)
+    #ifdef __COMPILE_3464
+    else if (__choose18 == 169)
     {
     //AddStmtKind
     save_orig_name = !no_name;
     }
     #endif
-    #ifdef __COMPILE_3128
-    else if (__choose15 == 170)
+    #ifdef __COMPILE_3465
+    else if (__choose18 == 170)
     {
     //AddStmtKind
     save_orig_name = 0;
     }
     #endif
-    #ifdef __COMPILE_3129
-    else if (__choose15 == 171)
+    #ifdef __COMPILE_3466
+    else if (__choose18 == 171)
     {
     //AddStmtKind
     save_orig_name = 1;
     }
     #endif
-    #ifdef __COMPILE_3130
-    else if (__choose15 == 172)
+    #ifdef __COMPILE_3467
+    else if (__choose18 == 172)
     {
     //AddStmtKind
     sigemptyset(&caught_signals);
     }
     #endif
-    #ifdef __COMPILE_3131
-    else if (__choose15 == 173)
+    #ifdef __COMPILE_3468
+    else if (__choose18 == 173)
     {
     //AddStmtKind
     strcat(ifname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3132
-    else if (__choose15 == 174)
+    #ifdef __COMPILE_3469
+    else if (__choose18 == 174)
     {
     //AddStmtKind
     strcat(ofname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3133
-    else if (__choose15 == 175)
+    #ifdef __COMPILE_3470
+    else if (__choose18 == 175)
     {
     //AddStmtKind
     strcpy(ifname, "stdin");
     }
     #endif
-    #ifdef __COMPILE_3134
-    else if (__choose15 == 176)
+    #ifdef __COMPILE_3471
+    else if (__choose18 == 176)
     {
     //AddStmtKind
     strcpy(ofname, "stdout");
     }
     #endif
-    #ifdef __COMPILE_3135
-    else if (__choose15 == 177)
+    #ifdef __COMPILE_3472
+    else if (__choose18 == 177)
     {
     //AddStmtKind
     strcpy(ofname, ifname);
     }
     #endif
-    #ifdef __COMPILE_3136
-    else if (__choose15 == 178)
+    #ifdef __COMPILE_3473
+    else if (__choose18 == 178)
     {
     //AddStmtKind
     time_stamp = get_stat_mtime(&istat);
     }
     #endif
-    #ifdef __COMPILE_3137
-    else if (__choose15 == 179)
+    #ifdef __COMPILE_3474
+    else if (__choose18 == 179)
     {
     //AddStmtKind
     time_stamp.tv_nsec = -1;
     }
     #endif
-    #ifdef __COMPILE_3138
-    else if (__choose15 == 180)
+    #ifdef __COMPILE_3475
+    else if (__choose18 == 180)
     {
     //AddStmtKind
     time_stamp.tv_nsec = 0;
     }
     #endif
-    #ifdef __COMPILE_3139
-    else if (__choose15 == 181)
+    #ifdef __COMPILE_3476
+    else if (__choose18 == 181)
     {
     //AddStmtKind
     to_stdout = 1;
     }
     #endif
-    #ifdef __COMPILE_3140
-    else if (__choose15 == 182)
+    #ifdef __COMPILE_3477
+    else if (__choose18 == 182)
     {
     //AddStmtKind
     total_in = -1L;
     }
     #endif
-    #ifdef __COMPILE_3141
-    else if (__choose15 == 183)
+    #ifdef __COMPILE_3478
+    else if (__choose18 == 183)
     {
     //AddStmtKind
     total_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_3142
-    else if (__choose15 == 184)
+    #ifdef __COMPILE_3479
+    else if (__choose18 == 184)
     {
     //AddStmtKind
     treat_stdin();
     }
     #endif
-    #ifdef __COMPILE_3143
-    else if (__choose15 == 185)
+    #ifdef __COMPILE_3480
+    else if (__choose18 == 185)
     {
     //AddStmtKind
     try_help();
     }
     #endif
-    #ifdef __COMPILE_3144
-    else if (__choose15 == 186)
+    #ifdef __COMPILE_3481
+    else if (__choose18 == 186)
     {
     //AddStmtKind
     verbose = 0;
     }
     #endif
-    #ifdef __COMPILE_3145
-    else if (__choose15 == 187)
+    #ifdef __COMPILE_3482
+    else if (__choose18 == 187)
     {
     //AddStmtKind
     work = copy;
     }
     #endif
-    #ifdef __COMPILE_3146
-    else if (__choose15 == 188)
+    #ifdef __COMPILE_3483
+    else if (__choose18 == 188)
     {
     //AddStmtKind
     work = lzw;
     }
     #endif
-    #ifdef __COMPILE_3147
-    else if (__choose15 == 189)
+    #ifdef __COMPILE_3484
+    else if (__choose18 == 189)
     {
     //AddStmtKind
     work = unlzh;
     }
     #endif
-    #ifdef __COMPILE_3148
-    else if (__choose15 == 190)
+    #ifdef __COMPILE_3485
+    else if (__choose18 == 190)
     {
     //AddStmtKind
     work = unlzw;
     }
     #endif
-    #ifdef __COMPILE_3149
-    else if (__choose15 == 191)
+    #ifdef __COMPILE_3486
+    else if (__choose18 == 191)
     {
     //AddStmtKind
     work = unpack;
     }
     #endif
-    #ifdef __COMPILE_3150
-    else if (__choose15 == 192)
+    #ifdef __COMPILE_3487
+    else if (__choose18 == 192)
     {
     //AddStmtKind
     work = unzip;
     }
     #endif
-    #ifdef __COMPILE_3151
-    else if (__choose15 == 193)
+    #ifdef __COMPILE_3488
+    else if (__choose18 == 193)
     {
     //AddStmtKind
     write_error();
     }
     #endif
-    #ifdef __COMPILE_3152
-    else if (__choose15 == 194)
+    #ifdef __COMPILE_3489
+    else if (__choose18 == 194)
     {
     //AddStmtKind
     xunlink(ofname);
     }
     #endif
-    #ifdef __COMPILE_3153
-    else if (__choose15 == 195)
+    #ifdef __COMPILE_3490
+    else if (__choose18 == 195)
     {
     //AddStmtKind
     z_len = strlen(z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3154
-    else if (__choose15 == 196)
+    #ifdef __COMPILE_3491
+    else if (__choose18 == 196)
     {
     //AddStmtKind
     z_suffix = ".gz";
     }
     #endif
-    #ifdef __COMPILE_3155
-    else if (__choose15 == 197)
+    #ifdef __COMPILE_3492
+    else if (__choose18 == 197)
     {
     //IfExitKind
-    if (__is_neg("15-197", "L1640", 8, &(ok), sizeof (ok), &(presume_input_tty),
+    if (__is_neg("18-197", "L1640", 8, &(ok), sizeof (ok), &(presume_input_tty),
     			 sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name),
     			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(force), sizeof (force), &(exit_code),
     			 sizeof (exit_code)))
         return 0;
     }
     #endif
-    #ifdef __COMPILE_3156
-    else if (__choose15 == 198)
+    #ifdef __COMPILE_3493
+    else if (__choose18 == 198)
     {
     //IfExitKind
-    if (__is_neg("15-198", "L1640", 8, &(ok), sizeof (ok), &(presume_input_tty),
+    if (__is_neg("18-198", "L1640", 8, &(ok), sizeof (ok), &(presume_input_tty),
     			 sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name),
     			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(force), sizeof (force), &(exit_code),
     			 sizeof (exit_code)))
         return 1;
     }
     #endif
-    #ifdef __COMPILE_3157
-    else if (__choose15 == 199)
+    #ifdef __COMPILE_3494
+    else if (__choose18 == 199)
     {
     //IfExitKind
-    if (__is_neg("15-199", "L1640", 8, &(ok), sizeof (ok), &(presume_input_tty),
+    if (__is_neg("18-199", "L1640", 8, &(ok), sizeof (ok), &(presume_input_tty),
     			 sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name),
     			 sizeof (program_name), &(exit_code), sizeof (exit_code), &(force), sizeof (force), &(exit_code),
     			 sizeof (exit_code)))
         return 2;
     }
     #endif
-    int __choose16 = __choose("__SWITCH16");
-    if (__choose16 == 0)
+    int __choose19 = __choose("__SWITCH19");
+    if (__choose19 == 0)
     {
     fflush(stderr);
     
     }
-    #ifdef __COMPILE_3158
-    else if (__choose16 == 1)
+    #ifdef __COMPILE_3495
+    else if (__choose19 == 1)
     {
     //GuardKind
-    if (!__is_neg("16-1", "L1640", 8, &(ok), sizeof (ok), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(force), sizeof (force), &(exit_code), sizeof (exit_code)))
+    if (!__is_neg("19-1", "L1640", 8, &(ok), sizeof (ok), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(force), sizeof (force), &(exit_code), sizeof (exit_code)))
         rpl_fflush(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3159
-    else if (__choose16 == 2)
+    #ifdef __COMPILE_3496
+    else if (__choose19 == 2)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, 0);
     
     }
     #endif
-    #ifdef __COMPILE_3160
-    else if (__choose16 == 3)
+    #ifdef __COMPILE_3497
+    else if (__choose19 == 3)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, 1);
     
     }
     #endif
-    #ifdef __COMPILE_3161
-    else if (__choose16 == 4)
+    #ifdef __COMPILE_3498
+    else if (__choose19 == 4)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, 2);
     
     }
     #endif
-    #ifdef __COMPILE_3162
-    else if (__choose16 == 5)
+    #ifdef __COMPILE_3499
+    else if (__choose19 == 5)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, _gl_warn_on_use);
     
     }
     #endif
-    #ifdef __COMPILE_3163
-    else if (__choose16 == 6)
+    #ifdef __COMPILE_3500
+    else if (__choose19 == 6)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, ascii);
     
     }
     #endif
-    #ifdef __COMPILE_3164
-    else if (__choose16 == 7)
+    #ifdef __COMPILE_3501
+    else if (__choose19 == 7)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, block_mode);
     
     }
     #endif
-    #ifdef __COMPILE_3165
-    else if (__choose16 == 8)
+    #ifdef __COMPILE_3502
+    else if (__choose19 == 8)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, decompress);
     
     }
     #endif
-    #ifdef __COMPILE_3166
-    else if (__choose16 == 9)
+    #ifdef __COMPILE_3503
+    else if (__choose19 == 9)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, decrypt);
     
     }
     #endif
-    #ifdef __COMPILE_3167
-    else if (__choose16 == 10)
+    #ifdef __COMPILE_3504
+    else if (__choose19 == 10)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, do_lzw);
     
     }
     #endif
-    #ifdef __COMPILE_3168
-    else if (__choose16 == 11)
+    #ifdef __COMPILE_3505
+    else if (__choose19 == 11)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, exit_code);
     
     }
     #endif
-    #ifdef __COMPILE_3169
-    else if (__choose16 == 12)
+    #ifdef __COMPILE_3506
+    else if (__choose19 == 12)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, exiting_signal);
     
     }
     #endif
-    #ifdef __COMPILE_3170
-    else if (__choose16 == 13)
+    #ifdef __COMPILE_3507
+    else if (__choose19 == 13)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, force);
     
     }
     #endif
-    #ifdef __COMPILE_3171
-    else if (__choose16 == 14)
+    #ifdef __COMPILE_3508
+    else if (__choose19 == 14)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, foreground);
     
     }
     #endif
-    #ifdef __COMPILE_3172
-    else if (__choose16 == 15)
+    #ifdef __COMPILE_3509
+    else if (__choose19 == 15)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, ifd);
     
     }
     #endif
-    #ifdef __COMPILE_3173
-    else if (__choose16 == 16)
+    #ifdef __COMPILE_3510
+    else if (__choose19 == 16)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, last_member);
     
     }
     #endif
-    #ifdef __COMPILE_3174
-    else if (__choose16 == 17)
+    #ifdef __COMPILE_3511
+    else if (__choose19 == 17)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, level);
     
     }
     #endif
-    #ifdef __COMPILE_3175
-    else if (__choose16 == 18)
+    #ifdef __COMPILE_3512
+    else if (__choose19 == 18)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, list);
     
     }
     #endif
-    #ifdef __COMPILE_3176
-    else if (__choose16 == 19)
+    #ifdef __COMPILE_3513
+    else if (__choose19 == 19)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, maxbits);
     
     }
     #endif
-    #ifdef __COMPILE_3177
-    else if (__choose16 == 20)
+    #ifdef __COMPILE_3514
+    else if (__choose19 == 20)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, method);
     
     }
     #endif
-    #ifdef __COMPILE_3178
-    else if (__choose16 == 21)
+    #ifdef __COMPILE_3515
+    else if (__choose19 == 21)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, no_name);
     
     }
     #endif
-    #ifdef __COMPILE_3179
-    else if (__choose16 == 22)
+    #ifdef __COMPILE_3516
+    else if (__choose19 == 22)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, no_time);
     
     }
     #endif
-    #ifdef __COMPILE_3180
-    else if (__choose16 == 23)
+    #ifdef __COMPILE_3517
+    else if (__choose19 == 23)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, ofd);
     
     }
     #endif
-    #ifdef __COMPILE_3181
-    else if (__choose16 == 24)
+    #ifdef __COMPILE_3518
+    else if (__choose19 == 24)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, ok);
     
     }
     #endif
-    #ifdef __COMPILE_3182
-    else if (__choose16 == 25)
+    #ifdef __COMPILE_3519
+    else if (__choose19 == 25)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, part_nb);
     
     }
     #endif
-    #ifdef __COMPILE_3183
-    else if (__choose16 == 26)
+    #ifdef __COMPILE_3520
+    else if (__choose19 == 26)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, quiet);
     
     }
     #endif
-    #ifdef __COMPILE_3184
-    else if (__choose16 == 27)
+    #ifdef __COMPILE_3521
+    else if (__choose19 == 27)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, recursive);
     
     }
     #endif
-    #ifdef __COMPILE_3185
-    else if (__choose16 == 28)
+    #ifdef __COMPILE_3522
+    else if (__choose19 == 28)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, remove_ofname_fd);
     
     }
     #endif
-    #ifdef __COMPILE_3186
-    else if (__choose16 == 29)
+    #ifdef __COMPILE_3523
+    else if (__choose19 == 29)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, save_orig_name);
     
     }
     #endif
-    #ifdef __COMPILE_3187
-    else if (__choose16 == 30)
+    #ifdef __COMPILE_3524
+    else if (__choose19 == 30)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, test);
     
     }
     #endif
-    #ifdef __COMPILE_3188
-    else if (__choose16 == 31)
+    #ifdef __COMPILE_3525
+    else if (__choose19 == 31)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, to_stdout);
     
     }
     #endif
-    #ifdef __COMPILE_3189
-    else if (__choose16 == 32)
+    #ifdef __COMPILE_3526
+    else if (__choose19 == 32)
     {
     //MSVExtFunctionReplaceKind
     __overflow(stderr, verbose);
     
     }
     #endif
-    #ifdef __COMPILE_3190
-    else if (__choose16 == 33)
+    #ifdef __COMPILE_3527
+    else if (__choose19 == 33)
     {
     //MSVExtFunctionReplaceKind
     fgetpos(stderr, 0);
     
     }
     #endif
-    #ifdef __COMPILE_3191
-    else if (__choose16 == 34)
+    #ifdef __COMPILE_3528
+    else if (__choose19 == 34)
     {
     //MSVExtFunctionReplaceKind
     fgetpos64(stderr, 0);
     
     }
     #endif
-    #ifdef __COMPILE_3192
-    else if (__choose16 == 35)
+    #ifdef __COMPILE_3529
+    else if (__choose19 == 35)
     {
     //MSVExtFunctionReplaceKind
     fsetpos(stderr, 0);
     
     }
     #endif
-    #ifdef __COMPILE_3193
-    else if (__choose16 == 36)
+    #ifdef __COMPILE_3530
+    else if (__choose19 == 36)
     {
     //MSVExtFunctionReplaceKind
     fsetpos64(stderr, 0);
     
     }
     #endif
-    #ifdef __COMPILE_3194
-    else if (__choose16 == 37)
+    #ifdef __COMPILE_3531
+    else if (__choose19 == 37)
     {
     //MSVExtFunctionReplaceKind
     setbuf(stderr, 0);
     
     }
     #endif
-    #ifdef __COMPILE_3195
-    else if (__choose16 == 38)
+    #ifdef __COMPILE_3532
+    else if (__choose19 == 38)
     {
     //MSVExtRemoveStmtKind
     {
@@ -28722,296 +31518,296 @@ local int check_ofname()
     
     }
     #endif
-    #ifdef __COMPILE_3196
-    else if (__choose16 == 39)
+    #ifdef __COMPILE_3533
+    else if (__choose19 == 39)
     {
     //ReplaceFunctionKind
     _IO_feof(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3197
-    else if (__choose16 == 40)
+    #ifdef __COMPILE_3534
+    else if (__choose19 == 40)
     {
     //ReplaceFunctionKind
     _IO_ferror(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3198
-    else if (__choose16 == 41)
+    #ifdef __COMPILE_3535
+    else if (__choose19 == 41)
     {
     //ReplaceFunctionKind
     _IO_flockfile(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3199
-    else if (__choose16 == 42)
+    #ifdef __COMPILE_3536
+    else if (__choose19 == 42)
     {
     //ReplaceFunctionKind
     _IO_free_backup_area(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3200
-    else if (__choose16 == 43)
+    #ifdef __COMPILE_3537
+    else if (__choose19 == 43)
     {
     //ReplaceFunctionKind
     _IO_ftrylockfile(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3201
-    else if (__choose16 == 44)
+    #ifdef __COMPILE_3538
+    else if (__choose19 == 44)
     {
     //ReplaceFunctionKind
     _IO_funlockfile(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3202
-    else if (__choose16 == 45)
+    #ifdef __COMPILE_3539
+    else if (__choose19 == 45)
     {
     //ReplaceFunctionKind
     _IO_getc(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3203
-    else if (__choose16 == 46)
+    #ifdef __COMPILE_3540
+    else if (__choose19 == 46)
     {
     //ReplaceFunctionKind
     _IO_peekc_locked(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3204
-    else if (__choose16 == 47)
+    #ifdef __COMPILE_3541
+    else if (__choose19 == 47)
     {
     //ReplaceFunctionKind
     __uflow(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3205
-    else if (__choose16 == 48)
+    #ifdef __COMPILE_3542
+    else if (__choose19 == 48)
     {
     //ReplaceFunctionKind
     __underflow(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3206
-    else if (__choose16 == 49)
+    #ifdef __COMPILE_3543
+    else if (__choose19 == 49)
     {
     //ReplaceFunctionKind
     clearerr(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3207
-    else if (__choose16 == 50)
+    #ifdef __COMPILE_3544
+    else if (__choose19 == 50)
     {
     //ReplaceFunctionKind
     clearerr_unlocked(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3208
-    else if (__choose16 == 51)
+    #ifdef __COMPILE_3545
+    else if (__choose19 == 51)
     {
     //ReplaceFunctionKind
     fclose(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3209
-    else if (__choose16 == 52)
+    #ifdef __COMPILE_3546
+    else if (__choose19 == 52)
     {
     //ReplaceFunctionKind
     feof(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3210
-    else if (__choose16 == 53)
+    #ifdef __COMPILE_3547
+    else if (__choose19 == 53)
     {
     //ReplaceFunctionKind
     feof_unlocked(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3211
-    else if (__choose16 == 54)
+    #ifdef __COMPILE_3548
+    else if (__choose19 == 54)
     {
     //ReplaceFunctionKind
     ferror(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3212
-    else if (__choose16 == 55)
+    #ifdef __COMPILE_3549
+    else if (__choose19 == 55)
     {
     //ReplaceFunctionKind
     ferror_unlocked(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3213
-    else if (__choose16 == 56)
+    #ifdef __COMPILE_3550
+    else if (__choose19 == 56)
     {
     //ReplaceFunctionKind
     fflush(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3214
-    else if (__choose16 == 57)
+    #ifdef __COMPILE_3551
+    else if (__choose19 == 57)
     {
     //ReplaceFunctionKind
     fflush_unlocked(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3215
-    else if (__choose16 == 58)
+    #ifdef __COMPILE_3552
+    else if (__choose19 == 58)
     {
     //ReplaceFunctionKind
     fgetc(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3216
-    else if (__choose16 == 59)
+    #ifdef __COMPILE_3553
+    else if (__choose19 == 59)
     {
     //ReplaceFunctionKind
     fgetc_unlocked(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3217
-    else if (__choose16 == 60)
+    #ifdef __COMPILE_3554
+    else if (__choose19 == 60)
     {
     //ReplaceFunctionKind
     fileno(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3218
-    else if (__choose16 == 61)
+    #ifdef __COMPILE_3555
+    else if (__choose19 == 61)
     {
     //ReplaceFunctionKind
     fileno_unlocked(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3219
-    else if (__choose16 == 62)
+    #ifdef __COMPILE_3556
+    else if (__choose19 == 62)
     {
     //ReplaceFunctionKind
     flockfile(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3220
-    else if (__choose16 == 63)
+    #ifdef __COMPILE_3557
+    else if (__choose19 == 63)
     {
     //ReplaceFunctionKind
     fpurge(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3221
-    else if (__choose16 == 64)
+    #ifdef __COMPILE_3558
+    else if (__choose19 == 64)
     {
     //ReplaceFunctionKind
     ftell(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3222
-    else if (__choose16 == 65)
+    #ifdef __COMPILE_3559
+    else if (__choose19 == 65)
     {
     //ReplaceFunctionKind
     ftello(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3223
-    else if (__choose16 == 66)
+    #ifdef __COMPILE_3560
+    else if (__choose19 == 66)
     {
     //ReplaceFunctionKind
     ftello64(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3224
-    else if (__choose16 == 67)
+    #ifdef __COMPILE_3561
+    else if (__choose19 == 67)
     {
     //ReplaceFunctionKind
     ftrylockfile(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3225
-    else if (__choose16 == 68)
+    #ifdef __COMPILE_3562
+    else if (__choose19 == 68)
     {
     //ReplaceFunctionKind
     funlockfile(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3226
-    else if (__choose16 == 69)
+    #ifdef __COMPILE_3563
+    else if (__choose19 == 69)
     {
     //ReplaceFunctionKind
     getc(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3227
-    else if (__choose16 == 70)
+    #ifdef __COMPILE_3564
+    else if (__choose19 == 70)
     {
     //ReplaceFunctionKind
     getc_unlocked(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3228
-    else if (__choose16 == 71)
+    #ifdef __COMPILE_3565
+    else if (__choose19 == 71)
     {
     //ReplaceFunctionKind
     getw(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3229
-    else if (__choose16 == 72)
+    #ifdef __COMPILE_3566
+    else if (__choose19 == 72)
     {
     //ReplaceFunctionKind
     pclose(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3230
-    else if (__choose16 == 73)
+    #ifdef __COMPILE_3567
+    else if (__choose19 == 73)
     {
     //ReplaceFunctionKind
     rewind(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3231
-    else if (__choose16 == 74)
+    #ifdef __COMPILE_3568
+    else if (__choose19 == 74)
     {
     //ReplaceFunctionKind
     setlinebuf(stderr);
     
     }
     #endif
-    #ifdef __COMPILE_3232
-    else if (__choose16 == 75)
+    #ifdef __COMPILE_3569
+    else if (__choose19 == 75)
     {
     //ReplaceKind
     rpl_fflush((&ok));
@@ -29020,1431 +31816,1431 @@ local int check_ofname()
     #endif
     }
                 {
-    int __choose17 = __choose("__SWITCH17");
-    if (__choose17 == 0)
+    int __choose20 = __choose("__SWITCH20");
+    if (__choose20 == 0)
     {}
-    #ifdef __COMPILE_3233
-    else if (__choose17 == 1)
+    #ifdef __COMPILE_3570
+    else if (__choose20 == 1)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (0);
     }
     #endif
-    #ifdef __COMPILE_3234
-    else if (__choose17 == 2)
+    #ifdef __COMPILE_3571
+    else if (__choose20 == 2)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (1);
     }
     #endif
-    #ifdef __COMPILE_3235
-    else if (__choose17 == 3)
+    #ifdef __COMPILE_3572
+    else if (__choose20 == 3)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (2);
     }
     #endif
-    #ifdef __COMPILE_3236
-    else if (__choose17 == 4)
+    #ifdef __COMPILE_3573
+    else if (__choose20 == 4)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (0);
     }
     #endif
-    #ifdef __COMPILE_3237
-    else if (__choose17 == 5)
+    #ifdef __COMPILE_3574
+    else if (__choose20 == 5)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (1);
     }
     #endif
-    #ifdef __COMPILE_3238
-    else if (__choose17 == 6)
+    #ifdef __COMPILE_3575
+    else if (__choose20 == 6)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (2);
     }
     #endif
-    #ifdef __COMPILE_3239
-    else if (__choose17 == 7)
+    #ifdef __COMPILE_3576
+    else if (__choose20 == 7)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (0);
     }
     #endif
-    #ifdef __COMPILE_3240
-    else if (__choose17 == 8)
+    #ifdef __COMPILE_3577
+    else if (__choose20 == 8)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (1);
     }
     #endif
-    #ifdef __COMPILE_3241
-    else if (__choose17 == 9)
+    #ifdef __COMPILE_3578
+    else if (__choose20 == 9)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (2);
     }
     #endif
-    #ifdef __COMPILE_3242
-    else if (__choose17 == 10)
+    #ifdef __COMPILE_3579
+    else if (__choose20 == 10)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (ok);
     }
     #endif
-    #ifdef __COMPILE_3243
-    else if (__choose17 == 11)
+    #ifdef __COMPILE_3580
+    else if (__choose20 == 11)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (0);
     }
     #endif
-    #ifdef __COMPILE_3244
-    else if (__choose17 == 12)
+    #ifdef __COMPILE_3581
+    else if (__choose20 == 12)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (1);
     }
     #endif
-    #ifdef __COMPILE_3245
-    else if (__choose17 == 13)
+    #ifdef __COMPILE_3582
+    else if (__choose20 == 13)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (2);
     }
     #endif
-    #ifdef __COMPILE_3246
-    else if (__choose17 == 14)
+    #ifdef __COMPILE_3583
+    else if (__choose20 == 14)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (ok);
     }
     #endif
-    #ifdef __COMPILE_3247
-    else if (__choose17 == 15)
+    #ifdef __COMPILE_3584
+    else if (__choose20 == 15)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (0);
     }
     #endif
-    #ifdef __COMPILE_3248
-    else if (__choose17 == 16)
+    #ifdef __COMPILE_3585
+    else if (__choose20 == 16)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (1);
     }
     #endif
-    #ifdef __COMPILE_3249
-    else if (__choose17 == 17)
+    #ifdef __COMPILE_3586
+    else if (__choose20 == 17)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (2);
     }
     #endif
-    #ifdef __COMPILE_3250
-    else if (__choose17 == 18)
+    #ifdef __COMPILE_3587
+    else if (__choose20 == 18)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (ok);
     }
     #endif
-    #ifdef __COMPILE_3251
-    else if (__choose17 == 19)
+    #ifdef __COMPILE_3588
+    else if (__choose20 == 19)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (0);
     }
     #endif
-    #ifdef __COMPILE_3252
-    else if (__choose17 == 20)
+    #ifdef __COMPILE_3589
+    else if (__choose20 == 20)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (1);
     }
     #endif
-    #ifdef __COMPILE_3253
-    else if (__choose17 == 21)
+    #ifdef __COMPILE_3590
+    else if (__choose20 == 21)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (2);
     }
     #endif
-    #ifdef __COMPILE_3254
-    else if (__choose17 == 22)
+    #ifdef __COMPILE_3591
+    else if (__choose20 == 22)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (0);
     }
     #endif
-    #ifdef __COMPILE_3255
-    else if (__choose17 == 23)
+    #ifdef __COMPILE_3592
+    else if (__choose20 == 23)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (1);
     }
     #endif
-    #ifdef __COMPILE_3256
-    else if (__choose17 == 24)
+    #ifdef __COMPILE_3593
+    else if (__choose20 == 24)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (2);
     }
     #endif
-    #ifdef __COMPILE_3257
-    else if (__choose17 == 25)
+    #ifdef __COMPILE_3594
+    else if (__choose20 == 25)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (ok);
     }
     #endif
-    #ifdef __COMPILE_3258
-    else if (__choose17 == 26)
+    #ifdef __COMPILE_3595
+    else if (__choose20 == 26)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (0);
     }
     #endif
-    #ifdef __COMPILE_3259
-    else if (__choose17 == 27)
+    #ifdef __COMPILE_3596
+    else if (__choose20 == 27)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (1);
     }
     #endif
-    #ifdef __COMPILE_3260
-    else if (__choose17 == 28)
+    #ifdef __COMPILE_3597
+    else if (__choose20 == 28)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (2);
     }
     #endif
-    #ifdef __COMPILE_3261
-    else if (__choose17 == 29)
+    #ifdef __COMPILE_3598
+    else if (__choose20 == 29)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (0);
     }
     #endif
-    #ifdef __COMPILE_3262
-    else if (__choose17 == 30)
+    #ifdef __COMPILE_3599
+    else if (__choose20 == 30)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (1);
     }
     #endif
-    #ifdef __COMPILE_3263
-    else if (__choose17 == 31)
+    #ifdef __COMPILE_3600
+    else if (__choose20 == 31)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (2);
     }
     #endif
-    #ifdef __COMPILE_3264
-    else if (__choose17 == 32)
+    #ifdef __COMPILE_3601
+    else if (__choose20 == 32)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (0);
     }
     #endif
-    #ifdef __COMPILE_3265
-    else if (__choose17 == 33)
+    #ifdef __COMPILE_3602
+    else if (__choose20 == 33)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (1);
     }
     #endif
-    #ifdef __COMPILE_3266
-    else if (__choose17 == 34)
+    #ifdef __COMPILE_3603
+    else if (__choose20 == 34)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (2);
     }
     #endif
-    #ifdef __COMPILE_3267
-    else if (__choose17 == 35)
+    #ifdef __COMPILE_3604
+    else if (__choose20 == 35)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (ok);
     }
     #endif
-    #ifdef __COMPILE_3268
-    else if (__choose17 == 36)
+    #ifdef __COMPILE_3605
+    else if (__choose20 == 36)
     {
     //AddStmtAndReplaceAtomKind
     list = (0);
     }
     #endif
-    #ifdef __COMPILE_3269
-    else if (__choose17 == 37)
+    #ifdef __COMPILE_3606
+    else if (__choose20 == 37)
     {
     //AddStmtAndReplaceAtomKind
     list = (1);
     }
     #endif
-    #ifdef __COMPILE_3270
-    else if (__choose17 == 38)
+    #ifdef __COMPILE_3607
+    else if (__choose20 == 38)
     {
     //AddStmtAndReplaceAtomKind
     list = (2);
     }
     #endif
-    #ifdef __COMPILE_3271
-    else if (__choose17 == 39)
+    #ifdef __COMPILE_3608
+    else if (__choose20 == 39)
     {
     //AddStmtAndReplaceAtomKind
     list = (ok);
     }
     #endif
-    #ifdef __COMPILE_3272
-    else if (__choose17 == 40)
+    #ifdef __COMPILE_3609
+    else if (__choose20 == 40)
     {
     //AddStmtAndReplaceAtomKind
     method = (0);
     }
     #endif
-    #ifdef __COMPILE_3273
-    else if (__choose17 == 41)
+    #ifdef __COMPILE_3610
+    else if (__choose20 == 41)
     {
     //AddStmtAndReplaceAtomKind
     method = (1);
     }
     #endif
-    #ifdef __COMPILE_3274
-    else if (__choose17 == 42)
+    #ifdef __COMPILE_3611
+    else if (__choose20 == 42)
     {
     //AddStmtAndReplaceAtomKind
     method = (2);
     }
     #endif
-    #ifdef __COMPILE_3275
-    else if (__choose17 == 43)
+    #ifdef __COMPILE_3612
+    else if (__choose20 == 43)
     {
     //AddStmtAndReplaceAtomKind
     method = (ok);
     }
     #endif
-    #ifdef __COMPILE_3276
-    else if (__choose17 == 44)
+    #ifdef __COMPILE_3613
+    else if (__choose20 == 44)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (0);
     }
     #endif
-    #ifdef __COMPILE_3277
-    else if (__choose17 == 45)
+    #ifdef __COMPILE_3614
+    else if (__choose20 == 45)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (1);
     }
     #endif
-    #ifdef __COMPILE_3278
-    else if (__choose17 == 46)
+    #ifdef __COMPILE_3615
+    else if (__choose20 == 46)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (2);
     }
     #endif
-    #ifdef __COMPILE_3279
-    else if (__choose17 == 47)
+    #ifdef __COMPILE_3616
+    else if (__choose20 == 47)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (ok);
     }
     #endif
-    #ifdef __COMPILE_3280
-    else if (__choose17 == 48)
+    #ifdef __COMPILE_3617
+    else if (__choose20 == 48)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (0);
     }
     #endif
-    #ifdef __COMPILE_3281
-    else if (__choose17 == 49)
+    #ifdef __COMPILE_3618
+    else if (__choose20 == 49)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (1);
     }
     #endif
-    #ifdef __COMPILE_3282
-    else if (__choose17 == 50)
+    #ifdef __COMPILE_3619
+    else if (__choose20 == 50)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (2);
     }
     #endif
-    #ifdef __COMPILE_3283
-    else if (__choose17 == 51)
+    #ifdef __COMPILE_3620
+    else if (__choose20 == 51)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (ok);
     }
     #endif
-    #ifdef __COMPILE_3284
-    else if (__choose17 == 52)
+    #ifdef __COMPILE_3621
+    else if (__choose20 == 52)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (0);
     }
     #endif
-    #ifdef __COMPILE_3285
-    else if (__choose17 == 53)
+    #ifdef __COMPILE_3622
+    else if (__choose20 == 53)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (1);
     }
     #endif
-    #ifdef __COMPILE_3286
-    else if (__choose17 == 54)
+    #ifdef __COMPILE_3623
+    else if (__choose20 == 54)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (2);
     }
     #endif
-    #ifdef __COMPILE_3287
-    else if (__choose17 == 55)
+    #ifdef __COMPILE_3624
+    else if (__choose20 == 55)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (ok);
     }
     #endif
-    #ifdef __COMPILE_3288
-    else if (__choose17 == 56)
+    #ifdef __COMPILE_3625
+    else if (__choose20 == 56)
     {
     //AddStmtAndReplaceAtomKind
     ok = (0);
     }
     #endif
-    #ifdef __COMPILE_3289
-    else if (__choose17 == 57)
+    #ifdef __COMPILE_3626
+    else if (__choose20 == 57)
     {
     //AddStmtAndReplaceAtomKind
     ok = (1);
     }
     #endif
-    #ifdef __COMPILE_3290
-    else if (__choose17 == 58)
+    #ifdef __COMPILE_3627
+    else if (__choose20 == 58)
     {
     //AddStmtAndReplaceAtomKind
     ok = (2);
     }
     #endif
-    #ifdef __COMPILE_3291
-    else if (__choose17 == 59)
+    #ifdef __COMPILE_3628
+    else if (__choose20 == 59)
     {
     //AddStmtAndReplaceAtomKind
     ok = (ok);
     }
     #endif
-    #ifdef __COMPILE_3292
-    else if (__choose17 == 60)
+    #ifdef __COMPILE_3629
+    else if (__choose20 == 60)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (0);
     }
     #endif
-    #ifdef __COMPILE_3293
-    else if (__choose17 == 61)
+    #ifdef __COMPILE_3630
+    else if (__choose20 == 61)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (1);
     }
     #endif
-    #ifdef __COMPILE_3294
-    else if (__choose17 == 62)
+    #ifdef __COMPILE_3631
+    else if (__choose20 == 62)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (2);
     }
     #endif
-    #ifdef __COMPILE_3295
-    else if (__choose17 == 63)
+    #ifdef __COMPILE_3632
+    else if (__choose20 == 63)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (ok);
     }
     #endif
-    #ifdef __COMPILE_3296
-    else if (__choose17 == 64)
+    #ifdef __COMPILE_3633
+    else if (__choose20 == 64)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (0);
     }
     #endif
-    #ifdef __COMPILE_3297
-    else if (__choose17 == 65)
+    #ifdef __COMPILE_3634
+    else if (__choose20 == 65)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (1);
     }
     #endif
-    #ifdef __COMPILE_3298
-    else if (__choose17 == 66)
+    #ifdef __COMPILE_3635
+    else if (__choose20 == 66)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (2);
     }
     #endif
-    #ifdef __COMPILE_3299
-    else if (__choose17 == 67)
+    #ifdef __COMPILE_3636
+    else if (__choose20 == 67)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (ok);
     }
     #endif
-    #ifdef __COMPILE_3300
-    else if (__choose17 == 68)
+    #ifdef __COMPILE_3637
+    else if (__choose20 == 68)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (0);
     }
     #endif
-    #ifdef __COMPILE_3301
-    else if (__choose17 == 69)
+    #ifdef __COMPILE_3638
+    else if (__choose20 == 69)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (1);
     }
     #endif
-    #ifdef __COMPILE_3302
-    else if (__choose17 == 70)
+    #ifdef __COMPILE_3639
+    else if (__choose20 == 70)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (2);
     }
     #endif
-    #ifdef __COMPILE_3303
-    else if (__choose17 == 71)
+    #ifdef __COMPILE_3640
+    else if (__choose20 == 71)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (ok);
     }
     #endif
-    #ifdef __COMPILE_3304
-    else if (__choose17 == 72)
+    #ifdef __COMPILE_3641
+    else if (__choose20 == 72)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (0);
     }
     #endif
-    #ifdef __COMPILE_3305
-    else if (__choose17 == 73)
+    #ifdef __COMPILE_3642
+    else if (__choose20 == 73)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (1);
     }
     #endif
-    #ifdef __COMPILE_3306
-    else if (__choose17 == 74)
+    #ifdef __COMPILE_3643
+    else if (__choose20 == 74)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (2);
     }
     #endif
-    #ifdef __COMPILE_3307
-    else if (__choose17 == 75)
+    #ifdef __COMPILE_3644
+    else if (__choose20 == 75)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (ok);
     }
     #endif
-    #ifdef __COMPILE_3308
-    else if (__choose17 == 76)
+    #ifdef __COMPILE_3645
+    else if (__choose20 == 76)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (0);
     }
     #endif
-    #ifdef __COMPILE_3309
-    else if (__choose17 == 77)
+    #ifdef __COMPILE_3646
+    else if (__choose20 == 77)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (1);
     }
     #endif
-    #ifdef __COMPILE_3310
-    else if (__choose17 == 78)
+    #ifdef __COMPILE_3647
+    else if (__choose20 == 78)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (2);
     }
     #endif
-    #ifdef __COMPILE_3311
-    else if (__choose17 == 79)
+    #ifdef __COMPILE_3648
+    else if (__choose20 == 79)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (0);
     }
     #endif
-    #ifdef __COMPILE_3312
-    else if (__choose17 == 80)
+    #ifdef __COMPILE_3649
+    else if (__choose20 == 80)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (1);
     }
     #endif
-    #ifdef __COMPILE_3313
-    else if (__choose17 == 81)
+    #ifdef __COMPILE_3650
+    else if (__choose20 == 81)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (2);
     }
     #endif
-    #ifdef __COMPILE_3314
-    else if (__choose17 == 82)
+    #ifdef __COMPILE_3651
+    else if (__choose20 == 82)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (0);
     }
     #endif
-    #ifdef __COMPILE_3315
-    else if (__choose17 == 83)
+    #ifdef __COMPILE_3652
+    else if (__choose20 == 83)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (1);
     }
     #endif
-    #ifdef __COMPILE_3316
-    else if (__choose17 == 84)
+    #ifdef __COMPILE_3653
+    else if (__choose20 == 84)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (2);
     }
     #endif
-    #ifdef __COMPILE_3317
-    else if (__choose17 == 85)
+    #ifdef __COMPILE_3654
+    else if (__choose20 == 85)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (ok);
     }
     #endif
-    #ifdef __COMPILE_3318
-    else if (__choose17 == 86)
+    #ifdef __COMPILE_3655
+    else if (__choose20 == 86)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (0);
     }
     #endif
-    #ifdef __COMPILE_3319
-    else if (__choose17 == 87)
+    #ifdef __COMPILE_3656
+    else if (__choose20 == 87)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (1);
     }
     #endif
-    #ifdef __COMPILE_3320
-    else if (__choose17 == 88)
+    #ifdef __COMPILE_3657
+    else if (__choose20 == 88)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (2);
     }
     #endif
-    #ifdef __COMPILE_3321
-    else if (__choose17 == 89)
+    #ifdef __COMPILE_3658
+    else if (__choose20 == 89)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (0);
     }
     #endif
-    #ifdef __COMPILE_3322
-    else if (__choose17 == 90)
+    #ifdef __COMPILE_3659
+    else if (__choose20 == 90)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (1);
     }
     #endif
-    #ifdef __COMPILE_3323
-    else if (__choose17 == 91)
+    #ifdef __COMPILE_3660
+    else if (__choose20 == 91)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (2);
     }
     #endif
-    #ifdef __COMPILE_3324
-    else if (__choose17 == 92)
+    #ifdef __COMPILE_3661
+    else if (__choose20 == 92)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (0);
     }
     #endif
-    #ifdef __COMPILE_3325
-    else if (__choose17 == 93)
+    #ifdef __COMPILE_3662
+    else if (__choose20 == 93)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (1);
     }
     #endif
-    #ifdef __COMPILE_3326
-    else if (__choose17 == 94)
+    #ifdef __COMPILE_3663
+    else if (__choose20 == 94)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (2);
     }
     #endif
-    #ifdef __COMPILE_3327
-    else if (__choose17 == 95)
+    #ifdef __COMPILE_3664
+    else if (__choose20 == 95)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (ok);
     }
     #endif
-    #ifdef __COMPILE_3328
-    else if (__choose17 == 96)
+    #ifdef __COMPILE_3665
+    else if (__choose20 == 96)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (0);
     }
     #endif
-    #ifdef __COMPILE_3329
-    else if (__choose17 == 97)
+    #ifdef __COMPILE_3666
+    else if (__choose20 == 97)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (1);
     }
     #endif
-    #ifdef __COMPILE_3330
-    else if (__choose17 == 98)
+    #ifdef __COMPILE_3667
+    else if (__choose20 == 98)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (2);
     }
     #endif
-    #ifdef __COMPILE_3331
-    else if (__choose17 == 99)
+    #ifdef __COMPILE_3668
+    else if (__choose20 == 99)
     {
     //AddStmtKind
     (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_3332
-    else if (__choose17 == 100)
+    #ifdef __COMPILE_3669
+    else if (__choose20 == 100)
     {
     //AddStmtKind
     __printf__("                            ");
     }
     #endif
-    #ifdef __COMPILE_3333
-    else if (__choose17 == 101)
+    #ifdef __COMPILE_3670
+    else if (__choose20 == 101)
     {
     //AddStmtKind
     __printf__(" ");
     }
     #endif
-    #ifdef __COMPILE_3334
-    else if (__choose17 == 102)
+    #ifdef __COMPILE_3671
+    else if (__choose20 == 102)
     {
     //AddStmtKind
     __printf__(" %s\n", ofname);
     }
     #endif
-    #ifdef __COMPILE_3335
-    else if (__choose17 == 103)
+    #ifdef __COMPILE_3672
+    else if (__choose20 == 103)
     {
     //AddStmtKind
     __printf__(" (totals)\n");
     }
     #endif
-    #ifdef __COMPILE_3336
-    else if (__choose17 == 104)
+    #ifdef __COMPILE_3673
+    else if (__choose20 == 104)
     {
     //AddStmtKind
     __printf__("%s %s\n", program_name, "1.0");
     }
     #endif
-    #ifdef __COMPILE_3337
-    else if (__choose17 == 105)
+    #ifdef __COMPILE_3674
+    else if (__choose20 == 105)
     {
     //AddStmtKind
     __printf__("??? ?? ??:?? ");
     }
     #endif
-    #ifdef __COMPILE_3338
-    else if (__choose17 == 106)
+    #ifdef __COMPILE_3675
+    else if (__choose20 == 106)
     {
     //AddStmtKind
     __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
     }
     #endif
-    #ifdef __COMPILE_3339
-    else if (__choose17 == 107)
+    #ifdef __COMPILE_3676
+    else if (__choose20 == 107)
     {
     //AddStmtKind
     __printf__("Written by Jean-loup Gailly.\n");
     }
     #endif
-    #ifdef __COMPILE_3340
-    else if (__choose17 == 108)
+    #ifdef __COMPILE_3677
+    else if (__choose20 == 108)
     {
     //AddStmtKind
     __printf__("\n");
     }
     #endif
-    #ifdef __COMPILE_3341
-    else if (__choose17 == 109)
+    #ifdef __COMPILE_3678
+    else if (__choose20 == 109)
     {
     //AddStmtKind
     __printf__("method  crc     date  time  ");
     }
     #endif
-    #ifdef __COMPILE_3342
-    else if (__choose17 == 110)
+    #ifdef __COMPILE_3679
+    else if (__choose20 == 110)
     {
     //AddStmtKind
     _exit(2);
     }
     #endif
-    #ifdef __COMPILE_3343
-    else if (__choose17 == 111)
+    #ifdef __COMPILE_3680
+    else if (__choose20 == 111)
     {
     //AddStmtKind
     args = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_3344
-    else if (__choose17 == 112)
+    #ifdef __COMPILE_3681
+    else if (__choose20 == 112)
     {
     //AddStmtKind
     atexit(close_stdin);
     }
     #endif
-    #ifdef __COMPILE_3345
-    else if (__choose17 == 113)
+    #ifdef __COMPILE_3682
+    else if (__choose20 == 113)
     {
     //AddStmtKind
     bytes_in = 0;
     }
     #endif
-    #ifdef __COMPILE_3346
-    else if (__choose17 == 114)
+    #ifdef __COMPILE_3683
+    else if (__choose20 == 114)
     {
     //AddStmtKind
     bytes_in = ifile_size;
     }
     #endif
-    #ifdef __COMPILE_3347
-    else if (__choose17 == 115)
+    #ifdef __COMPILE_3684
+    else if (__choose20 == 115)
     {
     //AddStmtKind
     bytes_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_3348
-    else if (__choose17 == 116)
+    #ifdef __COMPILE_3685
+    else if (__choose20 == 116)
     {
     //AddStmtKind
     bytes_out = 0;
     }
     #endif
-    #ifdef __COMPILE_3349
-    else if (__choose17 == 117)
+    #ifdef __COMPILE_3686
+    else if (__choose20 == 117)
     {
     //AddStmtKind
     bytes_out++;
     }
     #endif
-    #ifdef __COMPILE_3350
-    else if (__choose17 == 118)
+    #ifdef __COMPILE_3687
+    else if (__choose20 == 118)
     {
     //AddStmtKind
     clear_bufs();
     }
     #endif
-    #ifdef __COMPILE_3351
-    else if (__choose17 == 119)
+    #ifdef __COMPILE_3688
+    else if (__choose20 == 119)
     {
     //AddStmtKind
     close(ifd);
     }
     #endif
-    #ifdef __COMPILE_3352
-    else if (__choose17 == 120)
+    #ifdef __COMPILE_3689
+    else if (__choose20 == 120)
     {
     //AddStmtKind
     copy_stat(&istat);
     }
     #endif
-    #ifdef __COMPILE_3353
-    else if (__choose17 == 121)
+    #ifdef __COMPILE_3690
+    else if (__choose20 == 121)
     {
     //AddStmtKind
     do_exit(0);
     }
     #endif
-    #ifdef __COMPILE_3354
-    else if (__choose17 == 122)
+    #ifdef __COMPILE_3691
+    else if (__choose20 == 122)
     {
     //AddStmtKind
     do_exit(1);
     }
     #endif
-    #ifdef __COMPILE_3355
-    else if (__choose17 == 123)
+    #ifdef __COMPILE_3692
+    else if (__choose20 == 123)
     {
     //AddStmtKind
     do_exit(exit_code);
     }
     #endif
-    #ifdef __COMPILE_3356
-    else if (__choose17 == 124)
+    #ifdef __COMPILE_3693
+    else if (__choose20 == 124)
     {
     //AddStmtKind
     do_list(-1, -1);
     }
     #endif
-    #ifdef __COMPILE_3357
-    else if (__choose17 == 125)
+    #ifdef __COMPILE_3694
+    else if (__choose20 == 125)
     {
     //AddStmtKind
     do_list(ifd, method);
     }
     #endif
-    #ifdef __COMPILE_3358
-    else if (__choose17 == 126)
+    #ifdef __COMPILE_3695
+    else if (__choose20 == 126)
     {
     //AddStmtKind
     env = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_3359
-    else if (__choose17 == 127)
+    #ifdef __COMPILE_3696
+    else if (__choose20 == 127)
     {
     //AddStmtKind
     env = add_envopt(&argc, &argv, "GZIP");
     }
     #endif
-    #ifdef __COMPILE_3360
-    else if (__choose17 == 128)
+    #ifdef __COMPILE_3697
+    else if (__choose20 == 128)
     {
     //AddStmtKind
     exit_code = 1;
     }
     #endif
-    #ifdef __COMPILE_3361
-    else if (__choose17 == 129)
+    #ifdef __COMPILE_3698
+    else if (__choose20 == 129)
     {
     //AddStmtKind
     exit_code = 2;
     }
     #endif
-    #ifdef __COMPILE_3362
-    else if (__choose17 == 130)
+    #ifdef __COMPILE_3699
+    else if (__choose20 == 130)
     {
     //AddStmtKind
     exiting_signal = quiet ? 13 : 0;
     }
     #endif
-    #ifdef __COMPILE_3363
-    else if (__choose17 == 131)
+    #ifdef __COMPILE_3700
+    else if (__choose20 == 131)
     {
     //AddStmtKind
     foreground = 1;
     }
     #endif
-    #ifdef __COMPILE_3364
-    else if (__choose17 == 132)
+    #ifdef __COMPILE_3701
+    else if (__choose20 == 132)
     {
     //AddStmtKind
     free(args);
     }
     #endif
-    #ifdef __COMPILE_3365
-    else if (__choose17 == 133)
+    #ifdef __COMPILE_3702
+    else if (__choose20 == 133)
     {
     //AddStmtKind
     free(env);
     }
     #endif
-    #ifdef __COMPILE_3366
-    else if (__choose17 == 134)
+    #ifdef __COMPILE_3703
+    else if (__choose20 == 134)
     {
     //AddStmtKind
     gzip_error("can't recover suffix\n");
     }
     #endif
-    #ifdef __COMPILE_3367
-    else if (__choose17 == 135)
+    #ifdef __COMPILE_3704
+    else if (__choose20 == 135)
     {
     //AddStmtKind
     gzip_error("corrupted input -- file name too large");
     }
     #endif
-    #ifdef __COMPILE_3368
-    else if (__choose17 == 136)
+    #ifdef __COMPILE_3705
+    else if (__choose20 == 136)
     {
     //AddStmtKind
     gzip_error("internal error in shorten_name");
     }
     #endif
-    #ifdef __COMPILE_3369
-    else if (__choose17 == 137)
+    #ifdef __COMPILE_3706
+    else if (__choose20 == 137)
     {
     //AddStmtKind
     gzip_error("name too short");
     }
     #endif
-    #ifdef __COMPILE_3370
-    else if (__choose17 == 138)
+    #ifdef __COMPILE_3707
+    else if (__choose20 == 138)
     {
     //AddStmtKind
     header_bytes = 0;
     }
     #endif
-    #ifdef __COMPILE_3371
-    else if (__choose17 == 139)
+    #ifdef __COMPILE_3708
+    else if (__choose20 == 139)
     {
     //AddStmtKind
     header_bytes = inptr + 2 * sizeof(long);
     }
     #endif
-    #ifdef __COMPILE_3372
-    else if (__choose17 == 140)
+    #ifdef __COMPILE_3709
+    else if (__choose20 == 140)
     {
     //AddStmtKind
     ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
     }
     #endif
-    #ifdef __COMPILE_3373
-    else if (__choose17 == 141)
+    #ifdef __COMPILE_3710
+    else if (__choose20 == 141)
     {
     //AddStmtKind
     inptr = 0;
     }
     #endif
-    #ifdef __COMPILE_3374
-    else if (__choose17 == 142)
+    #ifdef __COMPILE_3711
+    else if (__choose20 == 142)
     {
     //AddStmtKind
     inptr--;
     }
     #endif
-    #ifdef __COMPILE_3375
-    else if (__choose17 == 143)
+    #ifdef __COMPILE_3712
+    else if (__choose20 == 143)
     {
     //AddStmtKind
     install_signal_handlers();
     }
     #endif
-    #ifdef __COMPILE_3376
-    else if (__choose17 == 144)
+    #ifdef __COMPILE_3713
+    else if (__choose20 == 144)
     {
     //AddStmtKind
     last_member = 0;
     }
     #endif
-    #ifdef __COMPILE_3377
-    else if (__choose17 == 145)
+    #ifdef __COMPILE_3714
+    else if (__choose20 == 145)
     {
     //AddStmtKind
     last_member = 1;
     }
     #endif
-    #ifdef __COMPILE_3378
-    else if (__choose17 == 146)
+    #ifdef __COMPILE_3715
+    else if (__choose20 == 146)
     {
     //AddStmtKind
     license();
     }
     #endif
-    #ifdef __COMPILE_3379
-    else if (__choose17 == 147)
+    #ifdef __COMPILE_3716
+    else if (__choose20 == 147)
     {
     //AddStmtKind
     list = 0;
     }
     #endif
-    #ifdef __COMPILE_3380
-    else if (__choose17 == 148)
+    #ifdef __COMPILE_3717
+    else if (__choose20 == 148)
     {
     //AddStmtKind
     method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_3381
-    else if (__choose17 == 149)
+    #ifdef __COMPILE_3718
+    else if (__choose20 == 149)
     {
     //AddStmtKind
     method = -1;
     }
     #endif
-    #ifdef __COMPILE_3382
-    else if (__choose17 == 150)
+    #ifdef __COMPILE_3719
+    else if (__choose20 == 150)
     {
     //AddStmtKind
     method = 0;
     }
     #endif
-    #ifdef __COMPILE_3383
-    else if (__choose17 == 151)
+    #ifdef __COMPILE_3720
+    else if (__choose20 == 151)
     {
     //AddStmtKind
     method = 1;
     }
     #endif
-    #ifdef __COMPILE_3384
-    else if (__choose17 == 152)
+    #ifdef __COMPILE_3721
+    else if (__choose20 == 152)
     {
     //AddStmtKind
     method = 2;
     }
     #endif
-    #ifdef __COMPILE_3385
-    else if (__choose17 == 153)
+    #ifdef __COMPILE_3722
+    else if (__choose20 == 153)
     {
     //AddStmtKind
     method = 3;
     }
     #endif
-    #ifdef __COMPILE_3386
-    else if (__choose17 == 154)
+    #ifdef __COMPILE_3723
+    else if (__choose20 == 154)
     {
     //AddStmtKind
     method = get_method(ifd);
     }
     #endif
-    #ifdef __COMPILE_3387
-    else if (__choose17 == 155)
+    #ifdef __COMPILE_3724
+    else if (__choose20 == 155)
     {
     //AddStmtKind
     no_name = decompress;
     }
     #endif
-    #ifdef __COMPILE_3388
-    else if (__choose17 == 156)
+    #ifdef __COMPILE_3725
+    else if (__choose20 == 156)
     {
     //AddStmtKind
     no_time = decompress;
     }
     #endif
-    #ifdef __COMPILE_3389
-    else if (__choose17 == 157)
+    #ifdef __COMPILE_3726
+    else if (__choose20 == 157)
     {
     //AddStmtKind
     ok = yesno();
     }
     #endif
-    #ifdef __COMPILE_3390
-    else if (__choose17 == 158)
+    #ifdef __COMPILE_3727
+    else if (__choose20 == 158)
     {
     //AddStmtKind
     part_nb = 0;
     }
     #endif
-    #ifdef __COMPILE_3391
-    else if (__choose17 == 159)
+    #ifdef __COMPILE_3728
+    else if (__choose20 == 159)
     {
     //AddStmtKind
     part_nb++;
     }
     #endif
-    #ifdef __COMPILE_3392
-    else if (__choose17 == 160)
+    #ifdef __COMPILE_3729
+    else if (__choose20 == 160)
     {
     //AddStmtKind
     perror(ifname);
     }
     #endif
-    #ifdef __COMPILE_3393
-    else if (__choose17 == 161)
+    #ifdef __COMPILE_3730
+    else if (__choose20 == 161)
     {
     //AddStmtKind
     perror(ofname);
     }
     #endif
-    #ifdef __COMPILE_3394
-    else if (__choose17 == 162)
+    #ifdef __COMPILE_3731
+    else if (__choose20 == 162)
     {
     //AddStmtKind
     progerror("standard input");
     }
     #endif
-    #ifdef __COMPILE_3395
-    else if (__choose17 == 163)
+    #ifdef __COMPILE_3732
+    else if (__choose20 == 163)
     {
     //AddStmtKind
     progerror(ifname);
     }
     #endif
-    #ifdef __COMPILE_3396
-    else if (__choose17 == 164)
+    #ifdef __COMPILE_3733
+    else if (__choose20 == 164)
     {
     //AddStmtKind
     progerror(ofname);
     }
     #endif
-    #ifdef __COMPILE_3397
-    else if (__choose17 == 165)
+    #ifdef __COMPILE_3734
+    else if (__choose20 == 165)
     {
     //AddStmtKind
     quiet = 0;
     }
     #endif
-    #ifdef __COMPILE_3398
-    else if (__choose17 == 166)
+    #ifdef __COMPILE_3735
+    else if (__choose20 == 166)
     {
     //AddStmtKind
     read_error();
     }
     #endif
-    #ifdef __COMPILE_3399
-    else if (__choose17 == 167)
+    #ifdef __COMPILE_3736
+    else if (__choose20 == 167)
     {
     //AddStmtKind
     remove_ofname_fd = -1;
     }
     #endif
-    #ifdef __COMPILE_3400
-    else if (__choose17 == 168)
+    #ifdef __COMPILE_3737
+    else if (__choose20 == 168)
     {
     //AddStmtKind
     remove_output_file();
     }
     #endif
-    #ifdef __COMPILE_3401
-    else if (__choose17 == 169)
+    #ifdef __COMPILE_3738
+    else if (__choose20 == 169)
     {
     //AddStmtKind
     save_orig_name = !no_name;
     }
     #endif
-    #ifdef __COMPILE_3402
-    else if (__choose17 == 170)
+    #ifdef __COMPILE_3739
+    else if (__choose20 == 170)
     {
     //AddStmtKind
     save_orig_name = 0;
     }
     #endif
-    #ifdef __COMPILE_3403
-    else if (__choose17 == 171)
+    #ifdef __COMPILE_3740
+    else if (__choose20 == 171)
     {
     //AddStmtKind
     save_orig_name = 1;
     }
     #endif
-    #ifdef __COMPILE_3404
-    else if (__choose17 == 172)
+    #ifdef __COMPILE_3741
+    else if (__choose20 == 172)
     {
     //AddStmtKind
     sigemptyset(&caught_signals);
     }
     #endif
-    #ifdef __COMPILE_3405
-    else if (__choose17 == 173)
+    #ifdef __COMPILE_3742
+    else if (__choose20 == 173)
     {
     //AddStmtKind
     strcat(ifname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3406
-    else if (__choose17 == 174)
+    #ifdef __COMPILE_3743
+    else if (__choose20 == 174)
     {
     //AddStmtKind
     strcat(ofname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3407
-    else if (__choose17 == 175)
+    #ifdef __COMPILE_3744
+    else if (__choose20 == 175)
     {
     //AddStmtKind
     strcpy(ifname, "stdin");
     }
     #endif
-    #ifdef __COMPILE_3408
-    else if (__choose17 == 176)
+    #ifdef __COMPILE_3745
+    else if (__choose20 == 176)
     {
     //AddStmtKind
     strcpy(ofname, "stdout");
     }
     #endif
-    #ifdef __COMPILE_3409
-    else if (__choose17 == 177)
+    #ifdef __COMPILE_3746
+    else if (__choose20 == 177)
     {
     //AddStmtKind
     strcpy(ofname, ifname);
     }
     #endif
-    #ifdef __COMPILE_3410
-    else if (__choose17 == 178)
+    #ifdef __COMPILE_3747
+    else if (__choose20 == 178)
     {
     //AddStmtKind
     time_stamp = get_stat_mtime(&istat);
     }
     #endif
-    #ifdef __COMPILE_3411
-    else if (__choose17 == 179)
+    #ifdef __COMPILE_3748
+    else if (__choose20 == 179)
     {
     //AddStmtKind
     time_stamp.tv_nsec = -1;
     }
     #endif
-    #ifdef __COMPILE_3412
-    else if (__choose17 == 180)
+    #ifdef __COMPILE_3749
+    else if (__choose20 == 180)
     {
     //AddStmtKind
     time_stamp.tv_nsec = 0;
     }
     #endif
-    #ifdef __COMPILE_3413
-    else if (__choose17 == 181)
+    #ifdef __COMPILE_3750
+    else if (__choose20 == 181)
     {
     //AddStmtKind
     to_stdout = 1;
     }
     #endif
-    #ifdef __COMPILE_3414
-    else if (__choose17 == 182)
+    #ifdef __COMPILE_3751
+    else if (__choose20 == 182)
     {
     //AddStmtKind
     total_in = -1L;
     }
     #endif
-    #ifdef __COMPILE_3415
-    else if (__choose17 == 183)
+    #ifdef __COMPILE_3752
+    else if (__choose20 == 183)
     {
     //AddStmtKind
     total_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_3416
-    else if (__choose17 == 184)
+    #ifdef __COMPILE_3753
+    else if (__choose20 == 184)
     {
     //AddStmtKind
     treat_stdin();
     }
     #endif
-    #ifdef __COMPILE_3417
-    else if (__choose17 == 185)
+    #ifdef __COMPILE_3754
+    else if (__choose20 == 185)
     {
     //AddStmtKind
     try_help();
     }
     #endif
-    #ifdef __COMPILE_3418
-    else if (__choose17 == 186)
+    #ifdef __COMPILE_3755
+    else if (__choose20 == 186)
     {
     //AddStmtKind
     verbose = 0;
     }
     #endif
-    #ifdef __COMPILE_3419
-    else if (__choose17 == 187)
+    #ifdef __COMPILE_3756
+    else if (__choose20 == 187)
     {
     //AddStmtKind
     work = copy;
     }
     #endif
-    #ifdef __COMPILE_3420
-    else if (__choose17 == 188)
+    #ifdef __COMPILE_3757
+    else if (__choose20 == 188)
     {
     //AddStmtKind
     work = lzw;
     }
     #endif
-    #ifdef __COMPILE_3421
-    else if (__choose17 == 189)
+    #ifdef __COMPILE_3758
+    else if (__choose20 == 189)
     {
     //AddStmtKind
     work = unlzh;
     }
     #endif
-    #ifdef __COMPILE_3422
-    else if (__choose17 == 190)
+    #ifdef __COMPILE_3759
+    else if (__choose20 == 190)
     {
     //AddStmtKind
     work = unlzw;
     }
     #endif
-    #ifdef __COMPILE_3423
-    else if (__choose17 == 191)
+    #ifdef __COMPILE_3760
+    else if (__choose20 == 191)
     {
     //AddStmtKind
     work = unpack;
     }
     #endif
-    #ifdef __COMPILE_3424
-    else if (__choose17 == 192)
+    #ifdef __COMPILE_3761
+    else if (__choose20 == 192)
     {
     //AddStmtKind
     work = unzip;
     }
     #endif
-    #ifdef __COMPILE_3425
-    else if (__choose17 == 193)
+    #ifdef __COMPILE_3762
+    else if (__choose20 == 193)
     {
     //AddStmtKind
     write_error();
     }
     #endif
-    #ifdef __COMPILE_3426
-    else if (__choose17 == 194)
+    #ifdef __COMPILE_3763
+    else if (__choose20 == 194)
     {
     //AddStmtKind
     xunlink(ofname);
     }
     #endif
-    #ifdef __COMPILE_3427
-    else if (__choose17 == 195)
+    #ifdef __COMPILE_3764
+    else if (__choose20 == 195)
     {
     //AddStmtKind
     z_len = strlen(z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3428
-    else if (__choose17 == 196)
+    #ifdef __COMPILE_3765
+    else if (__choose20 == 196)
     {
     //AddStmtKind
     z_suffix = ".gz";
     }
     #endif
-    #ifdef __COMPILE_3429
-    else if (__choose17 == 197)
+    #ifdef __COMPILE_3766
+    else if (__choose20 == 197)
     {
     //IfExitKind
-    if (__is_neg("17-197", "L1641", 8, &(ok), sizeof (ok), &(presume_input_tty),
+    if (__is_neg("20-197", "L1641", 8, &(ok), sizeof (ok), &(presume_input_tty),
     			 sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(exit_code),
     			 sizeof (exit_code), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(force),
     			 sizeof (force)))
         return 0;
     }
     #endif
-    #ifdef __COMPILE_3430
-    else if (__choose17 == 198)
+    #ifdef __COMPILE_3767
+    else if (__choose20 == 198)
     {
     //IfExitKind
-    if (__is_neg("17-198", "L1641", 8, &(ok), sizeof (ok), &(presume_input_tty),
+    if (__is_neg("20-198", "L1641", 8, &(ok), sizeof (ok), &(presume_input_tty),
     			 sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(exit_code),
     			 sizeof (exit_code), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(force),
     			 sizeof (force)))
         return 1;
     }
     #endif
-    #ifdef __COMPILE_3431
-    else if (__choose17 == 199)
+    #ifdef __COMPILE_3768
+    else if (__choose20 == 199)
     {
     //IfExitKind
-    if (__is_neg("17-199", "L1641", 8, &(ok), sizeof (ok), &(presume_input_tty),
+    if (__is_neg("20-199", "L1641", 8, &(ok), sizeof (ok), &(presume_input_tty),
     			 sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(exit_code),
     			 sizeof (exit_code), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(force),
     			 sizeof (force)))
         return 2;
     }
     #endif
-    int __choose18 = __choose("__SWITCH18");
-    if (__choose18 == 0)
+    int __choose21 = __choose("__SWITCH21");
+    if (__choose21 == 0)
     {
     ok = yesno();
     
     }
-    #ifdef __COMPILE_3432
-    else if (__choose18 == 1)
+    #ifdef __COMPILE_3769
+    else if (__choose21 == 1)
     {
     //GuardKind
-    if (!__is_neg("18-1", "L1641", 8, &(ok), sizeof (ok), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(force), sizeof (force)))
+    if (!__is_neg("21-1", "L1641", 8, &(ok), sizeof (ok), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(program_name), sizeof (program_name), &(exit_code), sizeof (exit_code), &(force), sizeof (force)))
         ok = yesno();
     
     }
     #endif
-    #ifdef __COMPILE_3433
-    else if (__choose18 == 2)
+    #ifdef __COMPILE_3770
+    else if (__choose21 == 2)
     {
     //MSVExtRemoveStmtKind
     {
@@ -30452,32 +33248,32 @@ local int check_ofname()
     
     }
     #endif
-    #ifdef __COMPILE_3434
-    else if (__choose18 == 3)
+    #ifdef __COMPILE_3771
+    else if (__choose21 == 3)
     {
     //ReplaceKind
     ok = (0);
     
     }
     #endif
-    #ifdef __COMPILE_3435
-    else if (__choose18 == 4)
+    #ifdef __COMPILE_3772
+    else if (__choose21 == 4)
     {
     //ReplaceKind
     ok = (1);
     
     }
     #endif
-    #ifdef __COMPILE_3436
-    else if (__choose18 == 5)
+    #ifdef __COMPILE_3773
+    else if (__choose21 == 5)
     {
     //ReplaceKind
     ok = (2);
     
     }
     #endif
-    #ifdef __COMPILE_3437
-    else if (__choose18 == 6)
+    #ifdef __COMPILE_3774
+    else if (__choose21 == 6)
     {
     //ReplaceKind
     ok = (ok);
@@ -30488,11 +33284,11 @@ local int check_ofname()
             }
     
     }
-    #ifdef __COMPILE_3438
-    else if (__choose19 == 1)
+    #ifdef __COMPILE_3775
+    else if (__choose22 == 1)
     {
     //GuardKind
-    if (!__is_neg("19-1", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)))
+    if (!__is_neg("22-1", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)))
         if (foreground && (presume_input_tty || isatty(fileno(stdin)))) {
             rpl_fprintf(stderr, " do you wish to overwrite (y or n)? ");
             rpl_fflush(stderr);
@@ -30501,11 +33297,11 @@ local int check_ofname()
     
     }
     #endif
-    #ifdef __COMPILE_3439
-    else if (__choose19 == 2)
+    #ifdef __COMPILE_3776
+    else if (__choose22 == 2)
     {
     //SpecialGuardKind
-    if (!__is_neg("19-2", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)) && (foreground && (presume_input_tty || isatty(fileno(stdin))))) {
+    if (!__is_neg("22-2", "L1638", 8, &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(ok), sizeof (ok), &(force), sizeof (force), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)) && (foreground && (presume_input_tty || isatty(fileno(stdin))))) {
         rpl_fprintf(stderr, " do you wish to overwrite (y or n)? ");
         rpl_fflush(stderr);
         ok = yesno();
@@ -30516,1452 +33312,1452 @@ local int check_ofname()
     }
     }
             {
-    int __choose20 = __choose("__SWITCH20");
-    if (__choose20 == 0)
+    int __choose23 = __choose("__SWITCH23");
+    if (__choose23 == 0)
     {}
-    #ifdef __COMPILE_3440
-    else if (__choose20 == 1)
+    #ifdef __COMPILE_3777
+    else if (__choose23 == 1)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (0);
     }
     #endif
-    #ifdef __COMPILE_3441
-    else if (__choose20 == 2)
+    #ifdef __COMPILE_3778
+    else if (__choose23 == 2)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (1);
     }
     #endif
-    #ifdef __COMPILE_3442
-    else if (__choose20 == 3)
+    #ifdef __COMPILE_3779
+    else if (__choose23 == 3)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (2);
     }
     #endif
-    #ifdef __COMPILE_3443
-    else if (__choose20 == 4)
+    #ifdef __COMPILE_3780
+    else if (__choose23 == 4)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (0);
     }
     #endif
-    #ifdef __COMPILE_3444
-    else if (__choose20 == 5)
+    #ifdef __COMPILE_3781
+    else if (__choose23 == 5)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (1);
     }
     #endif
-    #ifdef __COMPILE_3445
-    else if (__choose20 == 6)
+    #ifdef __COMPILE_3782
+    else if (__choose23 == 6)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (2);
     }
     #endif
-    #ifdef __COMPILE_3446
-    else if (__choose20 == 7)
+    #ifdef __COMPILE_3783
+    else if (__choose23 == 7)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (0);
     }
     #endif
-    #ifdef __COMPILE_3447
-    else if (__choose20 == 8)
+    #ifdef __COMPILE_3784
+    else if (__choose23 == 8)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (1);
     }
     #endif
-    #ifdef __COMPILE_3448
-    else if (__choose20 == 9)
+    #ifdef __COMPILE_3785
+    else if (__choose23 == 9)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (2);
     }
     #endif
-    #ifdef __COMPILE_3449
-    else if (__choose20 == 10)
+    #ifdef __COMPILE_3786
+    else if (__choose23 == 10)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (ok);
     }
     #endif
-    #ifdef __COMPILE_3450
-    else if (__choose20 == 11)
+    #ifdef __COMPILE_3787
+    else if (__choose23 == 11)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (0);
     }
     #endif
-    #ifdef __COMPILE_3451
-    else if (__choose20 == 12)
+    #ifdef __COMPILE_3788
+    else if (__choose23 == 12)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (1);
     }
     #endif
-    #ifdef __COMPILE_3452
-    else if (__choose20 == 13)
+    #ifdef __COMPILE_3789
+    else if (__choose23 == 13)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (2);
     }
     #endif
-    #ifdef __COMPILE_3453
-    else if (__choose20 == 14)
+    #ifdef __COMPILE_3790
+    else if (__choose23 == 14)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (ok);
     }
     #endif
-    #ifdef __COMPILE_3454
-    else if (__choose20 == 15)
+    #ifdef __COMPILE_3791
+    else if (__choose23 == 15)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (0);
     }
     #endif
-    #ifdef __COMPILE_3455
-    else if (__choose20 == 16)
+    #ifdef __COMPILE_3792
+    else if (__choose23 == 16)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (1);
     }
     #endif
-    #ifdef __COMPILE_3456
-    else if (__choose20 == 17)
+    #ifdef __COMPILE_3793
+    else if (__choose23 == 17)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (2);
     }
     #endif
-    #ifdef __COMPILE_3457
-    else if (__choose20 == 18)
+    #ifdef __COMPILE_3794
+    else if (__choose23 == 18)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (ok);
     }
     #endif
-    #ifdef __COMPILE_3458
-    else if (__choose20 == 19)
+    #ifdef __COMPILE_3795
+    else if (__choose23 == 19)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (0);
     }
     #endif
-    #ifdef __COMPILE_3459
-    else if (__choose20 == 20)
+    #ifdef __COMPILE_3796
+    else if (__choose23 == 20)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (1);
     }
     #endif
-    #ifdef __COMPILE_3460
-    else if (__choose20 == 21)
+    #ifdef __COMPILE_3797
+    else if (__choose23 == 21)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (2);
     }
     #endif
-    #ifdef __COMPILE_3461
-    else if (__choose20 == 22)
+    #ifdef __COMPILE_3798
+    else if (__choose23 == 22)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (0);
     }
     #endif
-    #ifdef __COMPILE_3462
-    else if (__choose20 == 23)
+    #ifdef __COMPILE_3799
+    else if (__choose23 == 23)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (1);
     }
     #endif
-    #ifdef __COMPILE_3463
-    else if (__choose20 == 24)
+    #ifdef __COMPILE_3800
+    else if (__choose23 == 24)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (2);
     }
     #endif
-    #ifdef __COMPILE_3464
-    else if (__choose20 == 25)
+    #ifdef __COMPILE_3801
+    else if (__choose23 == 25)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (ok);
     }
     #endif
-    #ifdef __COMPILE_3465
-    else if (__choose20 == 26)
+    #ifdef __COMPILE_3802
+    else if (__choose23 == 26)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (0);
     }
     #endif
-    #ifdef __COMPILE_3466
-    else if (__choose20 == 27)
+    #ifdef __COMPILE_3803
+    else if (__choose23 == 27)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (1);
     }
     #endif
-    #ifdef __COMPILE_3467
-    else if (__choose20 == 28)
+    #ifdef __COMPILE_3804
+    else if (__choose23 == 28)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (2);
     }
     #endif
-    #ifdef __COMPILE_3468
-    else if (__choose20 == 29)
+    #ifdef __COMPILE_3805
+    else if (__choose23 == 29)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (0);
     }
     #endif
-    #ifdef __COMPILE_3469
-    else if (__choose20 == 30)
+    #ifdef __COMPILE_3806
+    else if (__choose23 == 30)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (1);
     }
     #endif
-    #ifdef __COMPILE_3470
-    else if (__choose20 == 31)
+    #ifdef __COMPILE_3807
+    else if (__choose23 == 31)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (2);
     }
     #endif
-    #ifdef __COMPILE_3471
-    else if (__choose20 == 32)
+    #ifdef __COMPILE_3808
+    else if (__choose23 == 32)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (0);
     }
     #endif
-    #ifdef __COMPILE_3472
-    else if (__choose20 == 33)
+    #ifdef __COMPILE_3809
+    else if (__choose23 == 33)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (1);
     }
     #endif
-    #ifdef __COMPILE_3473
-    else if (__choose20 == 34)
+    #ifdef __COMPILE_3810
+    else if (__choose23 == 34)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (2);
     }
     #endif
-    #ifdef __COMPILE_3474
-    else if (__choose20 == 35)
+    #ifdef __COMPILE_3811
+    else if (__choose23 == 35)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (ok);
     }
     #endif
-    #ifdef __COMPILE_3475
-    else if (__choose20 == 36)
+    #ifdef __COMPILE_3812
+    else if (__choose23 == 36)
     {
     //AddStmtAndReplaceAtomKind
     list = (0);
     }
     #endif
-    #ifdef __COMPILE_3476
-    else if (__choose20 == 37)
+    #ifdef __COMPILE_3813
+    else if (__choose23 == 37)
     {
     //AddStmtAndReplaceAtomKind
     list = (1);
     }
     #endif
-    #ifdef __COMPILE_3477
-    else if (__choose20 == 38)
+    #ifdef __COMPILE_3814
+    else if (__choose23 == 38)
     {
     //AddStmtAndReplaceAtomKind
     list = (2);
     }
     #endif
-    #ifdef __COMPILE_3478
-    else if (__choose20 == 39)
+    #ifdef __COMPILE_3815
+    else if (__choose23 == 39)
     {
     //AddStmtAndReplaceAtomKind
     list = (ok);
     }
     #endif
-    #ifdef __COMPILE_3479
-    else if (__choose20 == 40)
+    #ifdef __COMPILE_3816
+    else if (__choose23 == 40)
     {
     //AddStmtAndReplaceAtomKind
     method = (0);
     }
     #endif
-    #ifdef __COMPILE_3480
-    else if (__choose20 == 41)
+    #ifdef __COMPILE_3817
+    else if (__choose23 == 41)
     {
     //AddStmtAndReplaceAtomKind
     method = (1);
     }
     #endif
-    #ifdef __COMPILE_3481
-    else if (__choose20 == 42)
+    #ifdef __COMPILE_3818
+    else if (__choose23 == 42)
     {
     //AddStmtAndReplaceAtomKind
     method = (2);
     }
     #endif
-    #ifdef __COMPILE_3482
-    else if (__choose20 == 43)
+    #ifdef __COMPILE_3819
+    else if (__choose23 == 43)
     {
     //AddStmtAndReplaceAtomKind
     method = (ok);
     }
     #endif
-    #ifdef __COMPILE_3483
-    else if (__choose20 == 44)
+    #ifdef __COMPILE_3820
+    else if (__choose23 == 44)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (0);
     }
     #endif
-    #ifdef __COMPILE_3484
-    else if (__choose20 == 45)
+    #ifdef __COMPILE_3821
+    else if (__choose23 == 45)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (1);
     }
     #endif
-    #ifdef __COMPILE_3485
-    else if (__choose20 == 46)
+    #ifdef __COMPILE_3822
+    else if (__choose23 == 46)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (2);
     }
     #endif
-    #ifdef __COMPILE_3486
-    else if (__choose20 == 47)
+    #ifdef __COMPILE_3823
+    else if (__choose23 == 47)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (ok);
     }
     #endif
-    #ifdef __COMPILE_3487
-    else if (__choose20 == 48)
+    #ifdef __COMPILE_3824
+    else if (__choose23 == 48)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (0);
     }
     #endif
-    #ifdef __COMPILE_3488
-    else if (__choose20 == 49)
+    #ifdef __COMPILE_3825
+    else if (__choose23 == 49)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (1);
     }
     #endif
-    #ifdef __COMPILE_3489
-    else if (__choose20 == 50)
+    #ifdef __COMPILE_3826
+    else if (__choose23 == 50)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (2);
     }
     #endif
-    #ifdef __COMPILE_3490
-    else if (__choose20 == 51)
+    #ifdef __COMPILE_3827
+    else if (__choose23 == 51)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (ok);
     }
     #endif
-    #ifdef __COMPILE_3491
-    else if (__choose20 == 52)
+    #ifdef __COMPILE_3828
+    else if (__choose23 == 52)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (0);
     }
     #endif
-    #ifdef __COMPILE_3492
-    else if (__choose20 == 53)
+    #ifdef __COMPILE_3829
+    else if (__choose23 == 53)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (1);
     }
     #endif
-    #ifdef __COMPILE_3493
-    else if (__choose20 == 54)
+    #ifdef __COMPILE_3830
+    else if (__choose23 == 54)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (2);
     }
     #endif
-    #ifdef __COMPILE_3494
-    else if (__choose20 == 55)
+    #ifdef __COMPILE_3831
+    else if (__choose23 == 55)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (ok);
     }
     #endif
-    #ifdef __COMPILE_3495
-    else if (__choose20 == 56)
+    #ifdef __COMPILE_3832
+    else if (__choose23 == 56)
     {
     //AddStmtAndReplaceAtomKind
     ok = (0);
     }
     #endif
-    #ifdef __COMPILE_3496
-    else if (__choose20 == 57)
+    #ifdef __COMPILE_3833
+    else if (__choose23 == 57)
     {
     //AddStmtAndReplaceAtomKind
     ok = (1);
     }
     #endif
-    #ifdef __COMPILE_3497
-    else if (__choose20 == 58)
+    #ifdef __COMPILE_3834
+    else if (__choose23 == 58)
     {
     //AddStmtAndReplaceAtomKind
     ok = (2);
     }
     #endif
-    #ifdef __COMPILE_3498
-    else if (__choose20 == 59)
+    #ifdef __COMPILE_3835
+    else if (__choose23 == 59)
     {
     //AddStmtAndReplaceAtomKind
     ok = (ok);
     }
     #endif
-    #ifdef __COMPILE_3499
-    else if (__choose20 == 60)
+    #ifdef __COMPILE_3836
+    else if (__choose23 == 60)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (0);
     }
     #endif
-    #ifdef __COMPILE_3500
-    else if (__choose20 == 61)
+    #ifdef __COMPILE_3837
+    else if (__choose23 == 61)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (1);
     }
     #endif
-    #ifdef __COMPILE_3501
-    else if (__choose20 == 62)
+    #ifdef __COMPILE_3838
+    else if (__choose23 == 62)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (2);
     }
     #endif
-    #ifdef __COMPILE_3502
-    else if (__choose20 == 63)
+    #ifdef __COMPILE_3839
+    else if (__choose23 == 63)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (ok);
     }
     #endif
-    #ifdef __COMPILE_3503
-    else if (__choose20 == 64)
+    #ifdef __COMPILE_3840
+    else if (__choose23 == 64)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (0);
     }
     #endif
-    #ifdef __COMPILE_3504
-    else if (__choose20 == 65)
+    #ifdef __COMPILE_3841
+    else if (__choose23 == 65)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (1);
     }
     #endif
-    #ifdef __COMPILE_3505
-    else if (__choose20 == 66)
+    #ifdef __COMPILE_3842
+    else if (__choose23 == 66)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (2);
     }
     #endif
-    #ifdef __COMPILE_3506
-    else if (__choose20 == 67)
+    #ifdef __COMPILE_3843
+    else if (__choose23 == 67)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (ok);
     }
     #endif
-    #ifdef __COMPILE_3507
-    else if (__choose20 == 68)
+    #ifdef __COMPILE_3844
+    else if (__choose23 == 68)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (0);
     }
     #endif
-    #ifdef __COMPILE_3508
-    else if (__choose20 == 69)
+    #ifdef __COMPILE_3845
+    else if (__choose23 == 69)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (1);
     }
     #endif
-    #ifdef __COMPILE_3509
-    else if (__choose20 == 70)
+    #ifdef __COMPILE_3846
+    else if (__choose23 == 70)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (2);
     }
     #endif
-    #ifdef __COMPILE_3510
-    else if (__choose20 == 71)
+    #ifdef __COMPILE_3847
+    else if (__choose23 == 71)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (ok);
     }
     #endif
-    #ifdef __COMPILE_3511
-    else if (__choose20 == 72)
+    #ifdef __COMPILE_3848
+    else if (__choose23 == 72)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (0);
     }
     #endif
-    #ifdef __COMPILE_3512
-    else if (__choose20 == 73)
+    #ifdef __COMPILE_3849
+    else if (__choose23 == 73)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (1);
     }
     #endif
-    #ifdef __COMPILE_3513
-    else if (__choose20 == 74)
+    #ifdef __COMPILE_3850
+    else if (__choose23 == 74)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (2);
     }
     #endif
-    #ifdef __COMPILE_3514
-    else if (__choose20 == 75)
+    #ifdef __COMPILE_3851
+    else if (__choose23 == 75)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (ok);
     }
     #endif
-    #ifdef __COMPILE_3515
-    else if (__choose20 == 76)
+    #ifdef __COMPILE_3852
+    else if (__choose23 == 76)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (0);
     }
     #endif
-    #ifdef __COMPILE_3516
-    else if (__choose20 == 77)
+    #ifdef __COMPILE_3853
+    else if (__choose23 == 77)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (1);
     }
     #endif
-    #ifdef __COMPILE_3517
-    else if (__choose20 == 78)
+    #ifdef __COMPILE_3854
+    else if (__choose23 == 78)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (2);
     }
     #endif
-    #ifdef __COMPILE_3518
-    else if (__choose20 == 79)
+    #ifdef __COMPILE_3855
+    else if (__choose23 == 79)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (0);
     }
     #endif
-    #ifdef __COMPILE_3519
-    else if (__choose20 == 80)
+    #ifdef __COMPILE_3856
+    else if (__choose23 == 80)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (1);
     }
     #endif
-    #ifdef __COMPILE_3520
-    else if (__choose20 == 81)
+    #ifdef __COMPILE_3857
+    else if (__choose23 == 81)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (2);
     }
     #endif
-    #ifdef __COMPILE_3521
-    else if (__choose20 == 82)
+    #ifdef __COMPILE_3858
+    else if (__choose23 == 82)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (0);
     }
     #endif
-    #ifdef __COMPILE_3522
-    else if (__choose20 == 83)
+    #ifdef __COMPILE_3859
+    else if (__choose23 == 83)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (1);
     }
     #endif
-    #ifdef __COMPILE_3523
-    else if (__choose20 == 84)
+    #ifdef __COMPILE_3860
+    else if (__choose23 == 84)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (2);
     }
     #endif
-    #ifdef __COMPILE_3524
-    else if (__choose20 == 85)
+    #ifdef __COMPILE_3861
+    else if (__choose23 == 85)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (ok);
     }
     #endif
-    #ifdef __COMPILE_3525
-    else if (__choose20 == 86)
+    #ifdef __COMPILE_3862
+    else if (__choose23 == 86)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (0);
     }
     #endif
-    #ifdef __COMPILE_3526
-    else if (__choose20 == 87)
+    #ifdef __COMPILE_3863
+    else if (__choose23 == 87)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (1);
     }
     #endif
-    #ifdef __COMPILE_3527
-    else if (__choose20 == 88)
+    #ifdef __COMPILE_3864
+    else if (__choose23 == 88)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (2);
     }
     #endif
-    #ifdef __COMPILE_3528
-    else if (__choose20 == 89)
+    #ifdef __COMPILE_3865
+    else if (__choose23 == 89)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (0);
     }
     #endif
-    #ifdef __COMPILE_3529
-    else if (__choose20 == 90)
+    #ifdef __COMPILE_3866
+    else if (__choose23 == 90)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (1);
     }
     #endif
-    #ifdef __COMPILE_3530
-    else if (__choose20 == 91)
+    #ifdef __COMPILE_3867
+    else if (__choose23 == 91)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (2);
     }
     #endif
-    #ifdef __COMPILE_3531
-    else if (__choose20 == 92)
+    #ifdef __COMPILE_3868
+    else if (__choose23 == 92)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (0);
     }
     #endif
-    #ifdef __COMPILE_3532
-    else if (__choose20 == 93)
+    #ifdef __COMPILE_3869
+    else if (__choose23 == 93)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (1);
     }
     #endif
-    #ifdef __COMPILE_3533
-    else if (__choose20 == 94)
+    #ifdef __COMPILE_3870
+    else if (__choose23 == 94)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (2);
     }
     #endif
-    #ifdef __COMPILE_3534
-    else if (__choose20 == 95)
+    #ifdef __COMPILE_3871
+    else if (__choose23 == 95)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (ok);
     }
     #endif
-    #ifdef __COMPILE_3535
-    else if (__choose20 == 96)
+    #ifdef __COMPILE_3872
+    else if (__choose23 == 96)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (0);
     }
     #endif
-    #ifdef __COMPILE_3536
-    else if (__choose20 == 97)
+    #ifdef __COMPILE_3873
+    else if (__choose23 == 97)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (1);
     }
     #endif
-    #ifdef __COMPILE_3537
-    else if (__choose20 == 98)
+    #ifdef __COMPILE_3874
+    else if (__choose23 == 98)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (2);
     }
     #endif
-    #ifdef __COMPILE_3538
-    else if (__choose20 == 99)
+    #ifdef __COMPILE_3875
+    else if (__choose23 == 99)
     {
     //AddStmtKind
     (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_3539
-    else if (__choose20 == 100)
+    #ifdef __COMPILE_3876
+    else if (__choose23 == 100)
     {
     //AddStmtKind
     __printf__("                            ");
     }
     #endif
-    #ifdef __COMPILE_3540
-    else if (__choose20 == 101)
+    #ifdef __COMPILE_3877
+    else if (__choose23 == 101)
     {
     //AddStmtKind
     __printf__(" ");
     }
     #endif
-    #ifdef __COMPILE_3541
-    else if (__choose20 == 102)
+    #ifdef __COMPILE_3878
+    else if (__choose23 == 102)
     {
     //AddStmtKind
     __printf__(" %s\n", ofname);
     }
     #endif
-    #ifdef __COMPILE_3542
-    else if (__choose20 == 103)
+    #ifdef __COMPILE_3879
+    else if (__choose23 == 103)
     {
     //AddStmtKind
     __printf__(" (totals)\n");
     }
     #endif
-    #ifdef __COMPILE_3543
-    else if (__choose20 == 104)
+    #ifdef __COMPILE_3880
+    else if (__choose23 == 104)
     {
     //AddStmtKind
     __printf__("%s %s\n", program_name, "1.0");
     }
     #endif
-    #ifdef __COMPILE_3544
-    else if (__choose20 == 105)
+    #ifdef __COMPILE_3881
+    else if (__choose23 == 105)
     {
     //AddStmtKind
     __printf__("??? ?? ??:?? ");
     }
     #endif
-    #ifdef __COMPILE_3545
-    else if (__choose20 == 106)
+    #ifdef __COMPILE_3882
+    else if (__choose23 == 106)
     {
     //AddStmtKind
     __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
     }
     #endif
-    #ifdef __COMPILE_3546
-    else if (__choose20 == 107)
+    #ifdef __COMPILE_3883
+    else if (__choose23 == 107)
     {
     //AddStmtKind
     __printf__("Written by Jean-loup Gailly.\n");
     }
     #endif
-    #ifdef __COMPILE_3547
-    else if (__choose20 == 108)
+    #ifdef __COMPILE_3884
+    else if (__choose23 == 108)
     {
     //AddStmtKind
     __printf__("\n");
     }
     #endif
-    #ifdef __COMPILE_3548
-    else if (__choose20 == 109)
+    #ifdef __COMPILE_3885
+    else if (__choose23 == 109)
     {
     //AddStmtKind
     __printf__("method  crc     date  time  ");
     }
     #endif
-    #ifdef __COMPILE_3549
-    else if (__choose20 == 110)
+    #ifdef __COMPILE_3886
+    else if (__choose23 == 110)
     {
     //AddStmtKind
     _exit(2);
     }
     #endif
-    #ifdef __COMPILE_3550
-    else if (__choose20 == 111)
+    #ifdef __COMPILE_3887
+    else if (__choose23 == 111)
     {
     //AddStmtKind
     args = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_3551
-    else if (__choose20 == 112)
+    #ifdef __COMPILE_3888
+    else if (__choose23 == 112)
     {
     //AddStmtKind
     atexit(close_stdin);
     }
     #endif
-    #ifdef __COMPILE_3552
-    else if (__choose20 == 113)
+    #ifdef __COMPILE_3889
+    else if (__choose23 == 113)
     {
     //AddStmtKind
     bytes_in = 0;
     }
     #endif
-    #ifdef __COMPILE_3553
-    else if (__choose20 == 114)
+    #ifdef __COMPILE_3890
+    else if (__choose23 == 114)
     {
     //AddStmtKind
     bytes_in = ifile_size;
     }
     #endif
-    #ifdef __COMPILE_3554
-    else if (__choose20 == 115)
+    #ifdef __COMPILE_3891
+    else if (__choose23 == 115)
     {
     //AddStmtKind
     bytes_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_3555
-    else if (__choose20 == 116)
+    #ifdef __COMPILE_3892
+    else if (__choose23 == 116)
     {
     //AddStmtKind
     bytes_out = 0;
     }
     #endif
-    #ifdef __COMPILE_3556
-    else if (__choose20 == 117)
+    #ifdef __COMPILE_3893
+    else if (__choose23 == 117)
     {
     //AddStmtKind
     bytes_out++;
     }
     #endif
-    #ifdef __COMPILE_3557
-    else if (__choose20 == 118)
+    #ifdef __COMPILE_3894
+    else if (__choose23 == 118)
     {
     //AddStmtKind
     clear_bufs();
     }
     #endif
-    #ifdef __COMPILE_3558
-    else if (__choose20 == 119)
+    #ifdef __COMPILE_3895
+    else if (__choose23 == 119)
     {
     //AddStmtKind
     close(ifd);
     }
     #endif
-    #ifdef __COMPILE_3559
-    else if (__choose20 == 120)
+    #ifdef __COMPILE_3896
+    else if (__choose23 == 120)
     {
     //AddStmtKind
     copy_stat(&istat);
     }
     #endif
-    #ifdef __COMPILE_3560
-    else if (__choose20 == 121)
+    #ifdef __COMPILE_3897
+    else if (__choose23 == 121)
     {
     //AddStmtKind
     do_exit(0);
     }
     #endif
-    #ifdef __COMPILE_3561
-    else if (__choose20 == 122)
+    #ifdef __COMPILE_3898
+    else if (__choose23 == 122)
     {
     //AddStmtKind
     do_exit(1);
     }
     #endif
-    #ifdef __COMPILE_3562
-    else if (__choose20 == 123)
+    #ifdef __COMPILE_3899
+    else if (__choose23 == 123)
     {
     //AddStmtKind
     do_exit(exit_code);
     }
     #endif
-    #ifdef __COMPILE_3563
-    else if (__choose20 == 124)
+    #ifdef __COMPILE_3900
+    else if (__choose23 == 124)
     {
     //AddStmtKind
     do_list(-1, -1);
     }
     #endif
-    #ifdef __COMPILE_3564
-    else if (__choose20 == 125)
+    #ifdef __COMPILE_3901
+    else if (__choose23 == 125)
     {
     //AddStmtKind
     do_list(ifd, method);
     }
     #endif
-    #ifdef __COMPILE_3565
-    else if (__choose20 == 126)
+    #ifdef __COMPILE_3902
+    else if (__choose23 == 126)
     {
     //AddStmtKind
     env = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_3566
-    else if (__choose20 == 127)
+    #ifdef __COMPILE_3903
+    else if (__choose23 == 127)
     {
     //AddStmtKind
     env = add_envopt(&argc, &argv, "GZIP");
     }
     #endif
-    #ifdef __COMPILE_3567
-    else if (__choose20 == 128)
+    #ifdef __COMPILE_3904
+    else if (__choose23 == 128)
     {
     //AddStmtKind
     exit_code = 1;
     }
     #endif
-    #ifdef __COMPILE_3568
-    else if (__choose20 == 129)
+    #ifdef __COMPILE_3905
+    else if (__choose23 == 129)
     {
     //AddStmtKind
     exit_code = 2;
     }
     #endif
-    #ifdef __COMPILE_3569
-    else if (__choose20 == 130)
+    #ifdef __COMPILE_3906
+    else if (__choose23 == 130)
     {
     //AddStmtKind
     exiting_signal = quiet ? 13 : 0;
     }
     #endif
-    #ifdef __COMPILE_3570
-    else if (__choose20 == 131)
+    #ifdef __COMPILE_3907
+    else if (__choose23 == 131)
     {
     //AddStmtKind
     foreground = 1;
     }
     #endif
-    #ifdef __COMPILE_3571
-    else if (__choose20 == 132)
+    #ifdef __COMPILE_3908
+    else if (__choose23 == 132)
     {
     //AddStmtKind
     free(args);
     }
     #endif
-    #ifdef __COMPILE_3572
-    else if (__choose20 == 133)
+    #ifdef __COMPILE_3909
+    else if (__choose23 == 133)
     {
     //AddStmtKind
     free(env);
     }
     #endif
-    #ifdef __COMPILE_3573
-    else if (__choose20 == 134)
+    #ifdef __COMPILE_3910
+    else if (__choose23 == 134)
     {
     //AddStmtKind
     gzip_error("can't recover suffix\n");
     }
     #endif
-    #ifdef __COMPILE_3574
-    else if (__choose20 == 135)
+    #ifdef __COMPILE_3911
+    else if (__choose23 == 135)
     {
     //AddStmtKind
     gzip_error("corrupted input -- file name too large");
     }
     #endif
-    #ifdef __COMPILE_3575
-    else if (__choose20 == 136)
+    #ifdef __COMPILE_3912
+    else if (__choose23 == 136)
     {
     //AddStmtKind
     gzip_error("internal error in shorten_name");
     }
     #endif
-    #ifdef __COMPILE_3576
-    else if (__choose20 == 137)
+    #ifdef __COMPILE_3913
+    else if (__choose23 == 137)
     {
     //AddStmtKind
     gzip_error("name too short");
     }
     #endif
-    #ifdef __COMPILE_3577
-    else if (__choose20 == 138)
+    #ifdef __COMPILE_3914
+    else if (__choose23 == 138)
     {
     //AddStmtKind
     header_bytes = 0;
     }
     #endif
-    #ifdef __COMPILE_3578
-    else if (__choose20 == 139)
+    #ifdef __COMPILE_3915
+    else if (__choose23 == 139)
     {
     //AddStmtKind
     header_bytes = inptr + 2 * sizeof(long);
     }
     #endif
-    #ifdef __COMPILE_3579
-    else if (__choose20 == 140)
+    #ifdef __COMPILE_3916
+    else if (__choose23 == 140)
     {
     //AddStmtKind
     ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
     }
     #endif
-    #ifdef __COMPILE_3580
-    else if (__choose20 == 141)
+    #ifdef __COMPILE_3917
+    else if (__choose23 == 141)
     {
     //AddStmtKind
     inptr = 0;
     }
     #endif
-    #ifdef __COMPILE_3581
-    else if (__choose20 == 142)
+    #ifdef __COMPILE_3918
+    else if (__choose23 == 142)
     {
     //AddStmtKind
     inptr--;
     }
     #endif
-    #ifdef __COMPILE_3582
-    else if (__choose20 == 143)
+    #ifdef __COMPILE_3919
+    else if (__choose23 == 143)
     {
     //AddStmtKind
     install_signal_handlers();
     }
     #endif
-    #ifdef __COMPILE_3583
-    else if (__choose20 == 144)
+    #ifdef __COMPILE_3920
+    else if (__choose23 == 144)
     {
     //AddStmtKind
     last_member = 0;
     }
     #endif
-    #ifdef __COMPILE_3584
-    else if (__choose20 == 145)
+    #ifdef __COMPILE_3921
+    else if (__choose23 == 145)
     {
     //AddStmtKind
     last_member = 1;
     }
     #endif
-    #ifdef __COMPILE_3585
-    else if (__choose20 == 146)
+    #ifdef __COMPILE_3922
+    else if (__choose23 == 146)
     {
     //AddStmtKind
     license();
     }
     #endif
-    #ifdef __COMPILE_3586
-    else if (__choose20 == 147)
+    #ifdef __COMPILE_3923
+    else if (__choose23 == 147)
     {
     //AddStmtKind
     list = 0;
     }
     #endif
-    #ifdef __COMPILE_3587
-    else if (__choose20 == 148)
+    #ifdef __COMPILE_3924
+    else if (__choose23 == 148)
     {
     //AddStmtKind
     method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_3588
-    else if (__choose20 == 149)
+    #ifdef __COMPILE_3925
+    else if (__choose23 == 149)
     {
     //AddStmtKind
     method = -1;
     }
     #endif
-    #ifdef __COMPILE_3589
-    else if (__choose20 == 150)
+    #ifdef __COMPILE_3926
+    else if (__choose23 == 150)
     {
     //AddStmtKind
     method = 0;
     }
     #endif
-    #ifdef __COMPILE_3590
-    else if (__choose20 == 151)
+    #ifdef __COMPILE_3927
+    else if (__choose23 == 151)
     {
     //AddStmtKind
     method = 1;
     }
     #endif
-    #ifdef __COMPILE_3591
-    else if (__choose20 == 152)
+    #ifdef __COMPILE_3928
+    else if (__choose23 == 152)
     {
     //AddStmtKind
     method = 2;
     }
     #endif
-    #ifdef __COMPILE_3592
-    else if (__choose20 == 153)
+    #ifdef __COMPILE_3929
+    else if (__choose23 == 153)
     {
     //AddStmtKind
     method = 3;
     }
     #endif
-    #ifdef __COMPILE_3593
-    else if (__choose20 == 154)
+    #ifdef __COMPILE_3930
+    else if (__choose23 == 154)
     {
     //AddStmtKind
     method = get_method(ifd);
     }
     #endif
-    #ifdef __COMPILE_3594
-    else if (__choose20 == 155)
+    #ifdef __COMPILE_3931
+    else if (__choose23 == 155)
     {
     //AddStmtKind
     no_name = decompress;
     }
     #endif
-    #ifdef __COMPILE_3595
-    else if (__choose20 == 156)
+    #ifdef __COMPILE_3932
+    else if (__choose23 == 156)
     {
     //AddStmtKind
     no_time = decompress;
     }
     #endif
-    #ifdef __COMPILE_3596
-    else if (__choose20 == 157)
+    #ifdef __COMPILE_3933
+    else if (__choose23 == 157)
     {
     //AddStmtKind
     ok = yesno();
     }
     #endif
-    #ifdef __COMPILE_3597
-    else if (__choose20 == 158)
+    #ifdef __COMPILE_3934
+    else if (__choose23 == 158)
     {
     //AddStmtKind
     part_nb = 0;
     }
     #endif
-    #ifdef __COMPILE_3598
-    else if (__choose20 == 159)
+    #ifdef __COMPILE_3935
+    else if (__choose23 == 159)
     {
     //AddStmtKind
     part_nb++;
     }
     #endif
-    #ifdef __COMPILE_3599
-    else if (__choose20 == 160)
+    #ifdef __COMPILE_3936
+    else if (__choose23 == 160)
     {
     //AddStmtKind
     perror(ifname);
     }
     #endif
-    #ifdef __COMPILE_3600
-    else if (__choose20 == 161)
+    #ifdef __COMPILE_3937
+    else if (__choose23 == 161)
     {
     //AddStmtKind
     perror(ofname);
     }
     #endif
-    #ifdef __COMPILE_3601
-    else if (__choose20 == 162)
+    #ifdef __COMPILE_3938
+    else if (__choose23 == 162)
     {
     //AddStmtKind
     progerror("standard input");
     }
     #endif
-    #ifdef __COMPILE_3602
-    else if (__choose20 == 163)
+    #ifdef __COMPILE_3939
+    else if (__choose23 == 163)
     {
     //AddStmtKind
     progerror(ifname);
     }
     #endif
-    #ifdef __COMPILE_3603
-    else if (__choose20 == 164)
+    #ifdef __COMPILE_3940
+    else if (__choose23 == 164)
     {
     //AddStmtKind
     progerror(ofname);
     }
     #endif
-    #ifdef __COMPILE_3604
-    else if (__choose20 == 165)
+    #ifdef __COMPILE_3941
+    else if (__choose23 == 165)
     {
     //AddStmtKind
     quiet = 0;
     }
     #endif
-    #ifdef __COMPILE_3605
-    else if (__choose20 == 166)
+    #ifdef __COMPILE_3942
+    else if (__choose23 == 166)
     {
     //AddStmtKind
     read_error();
     }
     #endif
-    #ifdef __COMPILE_3606
-    else if (__choose20 == 167)
+    #ifdef __COMPILE_3943
+    else if (__choose23 == 167)
     {
     //AddStmtKind
     remove_ofname_fd = -1;
     }
     #endif
-    #ifdef __COMPILE_3607
-    else if (__choose20 == 168)
+    #ifdef __COMPILE_3944
+    else if (__choose23 == 168)
     {
     //AddStmtKind
     remove_output_file();
     }
     #endif
-    #ifdef __COMPILE_3608
-    else if (__choose20 == 169)
+    #ifdef __COMPILE_3945
+    else if (__choose23 == 169)
     {
     //AddStmtKind
     save_orig_name = !no_name;
     }
     #endif
-    #ifdef __COMPILE_3609
-    else if (__choose20 == 170)
+    #ifdef __COMPILE_3946
+    else if (__choose23 == 170)
     {
     //AddStmtKind
     save_orig_name = 0;
     }
     #endif
-    #ifdef __COMPILE_3610
-    else if (__choose20 == 171)
+    #ifdef __COMPILE_3947
+    else if (__choose23 == 171)
     {
     //AddStmtKind
     save_orig_name = 1;
     }
     #endif
-    #ifdef __COMPILE_3611
-    else if (__choose20 == 172)
+    #ifdef __COMPILE_3948
+    else if (__choose23 == 172)
     {
     //AddStmtKind
     sigemptyset(&caught_signals);
     }
     #endif
-    #ifdef __COMPILE_3612
-    else if (__choose20 == 173)
+    #ifdef __COMPILE_3949
+    else if (__choose23 == 173)
     {
     //AddStmtKind
     strcat(ifname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3613
-    else if (__choose20 == 174)
+    #ifdef __COMPILE_3950
+    else if (__choose23 == 174)
     {
     //AddStmtKind
     strcat(ofname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3614
-    else if (__choose20 == 175)
+    #ifdef __COMPILE_3951
+    else if (__choose23 == 175)
     {
     //AddStmtKind
     strcpy(ifname, "stdin");
     }
     #endif
-    #ifdef __COMPILE_3615
-    else if (__choose20 == 176)
+    #ifdef __COMPILE_3952
+    else if (__choose23 == 176)
     {
     //AddStmtKind
     strcpy(ofname, "stdout");
     }
     #endif
-    #ifdef __COMPILE_3616
-    else if (__choose20 == 177)
+    #ifdef __COMPILE_3953
+    else if (__choose23 == 177)
     {
     //AddStmtKind
     strcpy(ofname, ifname);
     }
     #endif
-    #ifdef __COMPILE_3617
-    else if (__choose20 == 178)
+    #ifdef __COMPILE_3954
+    else if (__choose23 == 178)
     {
     //AddStmtKind
     time_stamp = get_stat_mtime(&istat);
     }
     #endif
-    #ifdef __COMPILE_3618
-    else if (__choose20 == 179)
+    #ifdef __COMPILE_3955
+    else if (__choose23 == 179)
     {
     //AddStmtKind
     time_stamp.tv_nsec = -1;
     }
     #endif
-    #ifdef __COMPILE_3619
-    else if (__choose20 == 180)
+    #ifdef __COMPILE_3956
+    else if (__choose23 == 180)
     {
     //AddStmtKind
     time_stamp.tv_nsec = 0;
     }
     #endif
-    #ifdef __COMPILE_3620
-    else if (__choose20 == 181)
+    #ifdef __COMPILE_3957
+    else if (__choose23 == 181)
     {
     //AddStmtKind
     to_stdout = 1;
     }
     #endif
-    #ifdef __COMPILE_3621
-    else if (__choose20 == 182)
+    #ifdef __COMPILE_3958
+    else if (__choose23 == 182)
     {
     //AddStmtKind
     total_in = -1L;
     }
     #endif
-    #ifdef __COMPILE_3622
-    else if (__choose20 == 183)
+    #ifdef __COMPILE_3959
+    else if (__choose23 == 183)
     {
     //AddStmtKind
     total_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_3623
-    else if (__choose20 == 184)
+    #ifdef __COMPILE_3960
+    else if (__choose23 == 184)
     {
     //AddStmtKind
     treat_stdin();
     }
     #endif
-    #ifdef __COMPILE_3624
-    else if (__choose20 == 185)
+    #ifdef __COMPILE_3961
+    else if (__choose23 == 185)
     {
     //AddStmtKind
     try_help();
     }
     #endif
-    #ifdef __COMPILE_3625
-    else if (__choose20 == 186)
+    #ifdef __COMPILE_3962
+    else if (__choose23 == 186)
     {
     //AddStmtKind
     verbose = 0;
     }
     #endif
-    #ifdef __COMPILE_3626
-    else if (__choose20 == 187)
+    #ifdef __COMPILE_3963
+    else if (__choose23 == 187)
     {
     //AddStmtKind
     work = copy;
     }
     #endif
-    #ifdef __COMPILE_3627
-    else if (__choose20 == 188)
+    #ifdef __COMPILE_3964
+    else if (__choose23 == 188)
     {
     //AddStmtKind
     work = lzw;
     }
     #endif
-    #ifdef __COMPILE_3628
-    else if (__choose20 == 189)
+    #ifdef __COMPILE_3965
+    else if (__choose23 == 189)
     {
     //AddStmtKind
     work = unlzh;
     }
     #endif
-    #ifdef __COMPILE_3629
-    else if (__choose20 == 190)
+    #ifdef __COMPILE_3966
+    else if (__choose23 == 190)
     {
     //AddStmtKind
     work = unlzw;
     }
     #endif
-    #ifdef __COMPILE_3630
-    else if (__choose20 == 191)
+    #ifdef __COMPILE_3967
+    else if (__choose23 == 191)
     {
     //AddStmtKind
     work = unpack;
     }
     #endif
-    #ifdef __COMPILE_3631
-    else if (__choose20 == 192)
+    #ifdef __COMPILE_3968
+    else if (__choose23 == 192)
     {
     //AddStmtKind
     work = unzip;
     }
     #endif
-    #ifdef __COMPILE_3632
-    else if (__choose20 == 193)
+    #ifdef __COMPILE_3969
+    else if (__choose23 == 193)
     {
     //AddStmtKind
     write_error();
     }
     #endif
-    #ifdef __COMPILE_3633
-    else if (__choose20 == 194)
+    #ifdef __COMPILE_3970
+    else if (__choose23 == 194)
     {
     //AddStmtKind
     xunlink(ofname);
     }
     #endif
-    #ifdef __COMPILE_3634
-    else if (__choose20 == 195)
+    #ifdef __COMPILE_3971
+    else if (__choose23 == 195)
     {
     //AddStmtKind
     z_len = strlen(z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3635
-    else if (__choose20 == 196)
+    #ifdef __COMPILE_3972
+    else if (__choose23 == 196)
     {
     //AddStmtKind
     z_suffix = ".gz";
     }
     #endif
-    #ifdef __COMPILE_3636
-    else if (__choose20 == 197)
+    #ifdef __COMPILE_3973
+    else if (__choose23 == 197)
     {
     //IfExitKind
-    if (__is_neg("20-197", "L1643", 8, &(ok), sizeof (ok), &(exit_code),
+    if (__is_neg("23-197", "L1643", 8, &(ok), sizeof (ok), &(exit_code),
     			 sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
     			 sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force),
     			 sizeof (force)))
         return 0;
     }
     #endif
-    #ifdef __COMPILE_3637
-    else if (__choose20 == 198)
+    #ifdef __COMPILE_3974
+    else if (__choose23 == 198)
     {
     //IfExitKind
-    if (__is_neg("20-198", "L1643", 8, &(ok), sizeof (ok), &(exit_code),
+    if (__is_neg("23-198", "L1643", 8, &(ok), sizeof (ok), &(exit_code),
     			 sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
     			 sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force),
     			 sizeof (force)))
         return 1;
     }
     #endif
-    #ifdef __COMPILE_3638
-    else if (__choose20 == 199)
+    #ifdef __COMPILE_3975
+    else if (__choose23 == 199)
     {
     //IfExitKind
-    if (__is_neg("20-199", "L1643", 8, &(ok), sizeof (ok), &(exit_code),
+    if (__is_neg("23-199", "L1643", 8, &(ok), sizeof (ok), &(exit_code),
     			 sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground),
     			 sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force),
     			 sizeof (force)))
         return 2;
     }
     #endif
-    int __choose21 = __choose("__SWITCH21");
+    int __choose24 = __choose("__SWITCH24");
     {
-    int __temp21=(!ok) ;
-    if (__choose21 == 0)
+    int __temp24=(!ok) ;
+    if (__choose24 == 0)
     {}
-    #ifdef __COMPILE_3639
-    else if (__choose21 == 1)
+    #ifdef __COMPILE_3976
+    else if (__choose24 == 1)
     {
-    __temp21= (__is_neg("21-1", "L1643", 8, &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
+    __temp24= (__is_neg("24-1", "L1643", 8, &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
     }
     #endif
-    #ifdef __COMPILE_3640
-    else if (__choose21 == 2)
+    #ifdef __COMPILE_3977
+    else if (__choose24 == 2)
     {
-    __temp21= ((!ok) || __is_neg("21-2", "L1643", 8, &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
+    __temp24= ((!ok) || __is_neg("24-2", "L1643", 8, &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
     }
     #endif
-    #ifdef __COMPILE_3641
-    else if (__choose21 == 3)
+    #ifdef __COMPILE_3978
+    else if (__choose24 == 3)
     {
-    __temp21= ((!ok) && !__is_neg("21-3", "L1643", 8, &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
+    __temp24= ((!ok) && !__is_neg("24-3", "L1643", 8, &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
     }
     #endif
-    int __choose22 = __choose("__SWITCH22");
-    if (__choose22 == 0)
+    int __choose25 = __choose("__SWITCH25");
+    if (__choose25 == 0)
     {
-    if (__temp21) {
+    if (__temp24) {
                 fprintf(stderr, "\tnot overwritten\n");
                 if (exit_code == OK) exit_code = WARNING;
                 return ERROR;
             }
     
     }
-    #ifdef __COMPILE_3642
-    else if (__choose22 == 1)
+    #ifdef __COMPILE_3979
+    else if (__choose25 == 1)
     {
     //GuardKind
-    if (!__is_neg("22-1", "L1643", 8, &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
+    if (!__is_neg("25-1", "L1643", 8, &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
         if (!ok) {
             rpl_fprintf(stderr, "\tnot overwritten\n");
             if (exit_code == 0)
@@ -31971,11 +34767,11 @@ local int check_ofname()
     
     }
     #endif
-    #ifdef __COMPILE_3643
-    else if (__choose22 == 2)
+    #ifdef __COMPILE_3980
+    else if (__choose25 == 2)
     {
     //SpecialGuardKind
-    if (!__is_neg("22-2", "L1643", 8, &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)) && (!ok)) {
+    if (!__is_neg("25-2", "L1643", 8, &(ok), sizeof (ok), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)) && (!ok)) {
         rpl_fprintf(stderr, "\tnot overwritten\n");
         if (exit_code == 0)
             exit_code = 2;
@@ -31989,11 +34785,11 @@ local int check_ofname()
         }
     
     }
-    #ifdef __COMPILE_3644
-    else if (__choose23 == 1)
+    #ifdef __COMPILE_3981
+    else if (__choose26 == 1)
     {
     //GuardKind
-    if (!__is_neg("23-1", "L1635", 7, &(force), sizeof (force), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)))
+    if (!__is_neg("26-1", "L1635", 7, &(force), sizeof (force), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)))
         if (!force) {
             int ok = 0;
             rpl_fprintf(stderr, "%s: %s already exists;", program_name, ofname);
@@ -32012,11 +34808,11 @@ local int check_ofname()
     
     }
     #endif
-    #ifdef __COMPILE_3645
-    else if (__choose23 == 2)
+    #ifdef __COMPILE_3982
+    else if (__choose26 == 2)
     {
     //SpecialGuardKind
-    if (!__is_neg("23-2", "L1635", 7, &(force), sizeof (force), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)) && (!force)) {
+    if (!__is_neg("26-2", "L1635", 7, &(force), sizeof (force), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code)) && (!force)) {
         int ok = 0;
         rpl_fprintf(stderr, "%s: %s already exists;", program_name, ofname);
         if (foreground && (presume_input_tty || isatty(fileno(stdin)))) {
@@ -32038,1409 +34834,1409 @@ local int check_ofname()
     }
     //prophet generated patch
     {
-    int __choose24 = __choose("__SWITCH24");
-    if (__choose24 == 0)
+    int __choose27 = __choose("__SWITCH27");
+    if (__choose27 == 0)
     {}
-    #ifdef __COMPILE_3646
-    else if (__choose24 == 1)
+    #ifdef __COMPILE_3983
+    else if (__choose27 == 1)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (0);
     }
     #endif
-    #ifdef __COMPILE_3647
-    else if (__choose24 == 2)
+    #ifdef __COMPILE_3984
+    else if (__choose27 == 2)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (1);
     }
     #endif
-    #ifdef __COMPILE_3648
-    else if (__choose24 == 3)
+    #ifdef __COMPILE_3985
+    else if (__choose27 == 3)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (2);
     }
     #endif
-    #ifdef __COMPILE_3649
-    else if (__choose24 == 4)
+    #ifdef __COMPILE_3986
+    else if (__choose27 == 4)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (0);
     }
     #endif
-    #ifdef __COMPILE_3650
-    else if (__choose24 == 5)
+    #ifdef __COMPILE_3987
+    else if (__choose27 == 5)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (1);
     }
     #endif
-    #ifdef __COMPILE_3651
-    else if (__choose24 == 6)
+    #ifdef __COMPILE_3988
+    else if (__choose27 == 6)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (2);
     }
     #endif
-    #ifdef __COMPILE_3652
-    else if (__choose24 == 7)
+    #ifdef __COMPILE_3989
+    else if (__choose27 == 7)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (0);
     }
     #endif
-    #ifdef __COMPILE_3653
-    else if (__choose24 == 8)
+    #ifdef __COMPILE_3990
+    else if (__choose27 == 8)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (1);
     }
     #endif
-    #ifdef __COMPILE_3654
-    else if (__choose24 == 9)
+    #ifdef __COMPILE_3991
+    else if (__choose27 == 9)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (2);
     }
     #endif
-    #ifdef __COMPILE_3655
-    else if (__choose24 == 10)
+    #ifdef __COMPILE_3992
+    else if (__choose27 == 10)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (0);
     }
     #endif
-    #ifdef __COMPILE_3656
-    else if (__choose24 == 11)
+    #ifdef __COMPILE_3993
+    else if (__choose27 == 11)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (1);
     }
     #endif
-    #ifdef __COMPILE_3657
-    else if (__choose24 == 12)
+    #ifdef __COMPILE_3994
+    else if (__choose27 == 12)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (2);
     }
     #endif
-    #ifdef __COMPILE_3658
-    else if (__choose24 == 13)
+    #ifdef __COMPILE_3995
+    else if (__choose27 == 13)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (0);
     }
     #endif
-    #ifdef __COMPILE_3659
-    else if (__choose24 == 14)
+    #ifdef __COMPILE_3996
+    else if (__choose27 == 14)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (1);
     }
     #endif
-    #ifdef __COMPILE_3660
-    else if (__choose24 == 15)
+    #ifdef __COMPILE_3997
+    else if (__choose27 == 15)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (2);
     }
     #endif
-    #ifdef __COMPILE_3661
-    else if (__choose24 == 16)
+    #ifdef __COMPILE_3998
+    else if (__choose27 == 16)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (0);
     }
     #endif
-    #ifdef __COMPILE_3662
-    else if (__choose24 == 17)
+    #ifdef __COMPILE_3999
+    else if (__choose27 == 17)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (1);
     }
     #endif
-    #ifdef __COMPILE_3663
-    else if (__choose24 == 18)
+    #ifdef __COMPILE_4000
+    else if (__choose27 == 18)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (2);
     }
     #endif
-    #ifdef __COMPILE_3664
-    else if (__choose24 == 19)
+    #ifdef __COMPILE_4001
+    else if (__choose27 == 19)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (0);
     }
     #endif
-    #ifdef __COMPILE_3665
-    else if (__choose24 == 20)
+    #ifdef __COMPILE_4002
+    else if (__choose27 == 20)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (1);
     }
     #endif
-    #ifdef __COMPILE_3666
-    else if (__choose24 == 21)
+    #ifdef __COMPILE_4003
+    else if (__choose27 == 21)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (2);
     }
     #endif
-    #ifdef __COMPILE_3667
-    else if (__choose24 == 22)
+    #ifdef __COMPILE_4004
+    else if (__choose27 == 22)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (0);
     }
     #endif
-    #ifdef __COMPILE_3668
-    else if (__choose24 == 23)
+    #ifdef __COMPILE_4005
+    else if (__choose27 == 23)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (1);
     }
     #endif
-    #ifdef __COMPILE_3669
-    else if (__choose24 == 24)
+    #ifdef __COMPILE_4006
+    else if (__choose27 == 24)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (2);
     }
     #endif
-    #ifdef __COMPILE_3670
-    else if (__choose24 == 25)
+    #ifdef __COMPILE_4007
+    else if (__choose27 == 25)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (0);
     }
     #endif
-    #ifdef __COMPILE_3671
-    else if (__choose24 == 26)
+    #ifdef __COMPILE_4008
+    else if (__choose27 == 26)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (1);
     }
     #endif
-    #ifdef __COMPILE_3672
-    else if (__choose24 == 27)
+    #ifdef __COMPILE_4009
+    else if (__choose27 == 27)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (2);
     }
     #endif
-    #ifdef __COMPILE_3673
-    else if (__choose24 == 28)
+    #ifdef __COMPILE_4010
+    else if (__choose27 == 28)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (0);
     }
     #endif
-    #ifdef __COMPILE_3674
-    else if (__choose24 == 29)
+    #ifdef __COMPILE_4011
+    else if (__choose27 == 29)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (1);
     }
     #endif
-    #ifdef __COMPILE_3675
-    else if (__choose24 == 30)
+    #ifdef __COMPILE_4012
+    else if (__choose27 == 30)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (2);
     }
     #endif
-    #ifdef __COMPILE_3676
-    else if (__choose24 == 31)
+    #ifdef __COMPILE_4013
+    else if (__choose27 == 31)
     {
     //AddStmtAndReplaceAtomKind
     list = (0);
     }
     #endif
-    #ifdef __COMPILE_3677
-    else if (__choose24 == 32)
+    #ifdef __COMPILE_4014
+    else if (__choose27 == 32)
     {
     //AddStmtAndReplaceAtomKind
     list = (1);
     }
     #endif
-    #ifdef __COMPILE_3678
-    else if (__choose24 == 33)
+    #ifdef __COMPILE_4015
+    else if (__choose27 == 33)
     {
     //AddStmtAndReplaceAtomKind
     list = (2);
     }
     #endif
-    #ifdef __COMPILE_3679
-    else if (__choose24 == 34)
+    #ifdef __COMPILE_4016
+    else if (__choose27 == 34)
     {
     //AddStmtAndReplaceAtomKind
     method = (0);
     }
     #endif
-    #ifdef __COMPILE_3680
-    else if (__choose24 == 35)
+    #ifdef __COMPILE_4017
+    else if (__choose27 == 35)
     {
     //AddStmtAndReplaceAtomKind
     method = (1);
     }
     #endif
-    #ifdef __COMPILE_3681
-    else if (__choose24 == 36)
+    #ifdef __COMPILE_4018
+    else if (__choose27 == 36)
     {
     //AddStmtAndReplaceAtomKind
     method = (2);
     }
     #endif
-    #ifdef __COMPILE_3682
-    else if (__choose24 == 37)
+    #ifdef __COMPILE_4019
+    else if (__choose27 == 37)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (0);
     }
     #endif
-    #ifdef __COMPILE_3683
-    else if (__choose24 == 38)
+    #ifdef __COMPILE_4020
+    else if (__choose27 == 38)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (1);
     }
     #endif
-    #ifdef __COMPILE_3684
-    else if (__choose24 == 39)
+    #ifdef __COMPILE_4021
+    else if (__choose27 == 39)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (2);
     }
     #endif
-    #ifdef __COMPILE_3685
-    else if (__choose24 == 40)
+    #ifdef __COMPILE_4022
+    else if (__choose27 == 40)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (0);
     }
     #endif
-    #ifdef __COMPILE_3686
-    else if (__choose24 == 41)
+    #ifdef __COMPILE_4023
+    else if (__choose27 == 41)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (1);
     }
     #endif
-    #ifdef __COMPILE_3687
-    else if (__choose24 == 42)
+    #ifdef __COMPILE_4024
+    else if (__choose27 == 42)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (2);
     }
     #endif
-    #ifdef __COMPILE_3688
-    else if (__choose24 == 43)
+    #ifdef __COMPILE_4025
+    else if (__choose27 == 43)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (0);
     }
     #endif
-    #ifdef __COMPILE_3689
-    else if (__choose24 == 44)
+    #ifdef __COMPILE_4026
+    else if (__choose27 == 44)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (1);
     }
     #endif
-    #ifdef __COMPILE_3690
-    else if (__choose24 == 45)
+    #ifdef __COMPILE_4027
+    else if (__choose27 == 45)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (2);
     }
     #endif
-    #ifdef __COMPILE_3691
-    else if (__choose24 == 46)
+    #ifdef __COMPILE_4028
+    else if (__choose27 == 46)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (0);
     }
     #endif
-    #ifdef __COMPILE_3692
-    else if (__choose24 == 47)
+    #ifdef __COMPILE_4029
+    else if (__choose27 == 47)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (1);
     }
     #endif
-    #ifdef __COMPILE_3693
-    else if (__choose24 == 48)
+    #ifdef __COMPILE_4030
+    else if (__choose27 == 48)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (2);
     }
     #endif
-    #ifdef __COMPILE_3694
-    else if (__choose24 == 49)
+    #ifdef __COMPILE_4031
+    else if (__choose27 == 49)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (0);
     }
     #endif
-    #ifdef __COMPILE_3695
-    else if (__choose24 == 50)
+    #ifdef __COMPILE_4032
+    else if (__choose27 == 50)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (1);
     }
     #endif
-    #ifdef __COMPILE_3696
-    else if (__choose24 == 51)
+    #ifdef __COMPILE_4033
+    else if (__choose27 == 51)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (2);
     }
     #endif
-    #ifdef __COMPILE_3697
-    else if (__choose24 == 52)
+    #ifdef __COMPILE_4034
+    else if (__choose27 == 52)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (0);
     }
     #endif
-    #ifdef __COMPILE_3698
-    else if (__choose24 == 53)
+    #ifdef __COMPILE_4035
+    else if (__choose27 == 53)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (1);
     }
     #endif
-    #ifdef __COMPILE_3699
-    else if (__choose24 == 54)
+    #ifdef __COMPILE_4036
+    else if (__choose27 == 54)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (2);
     }
     #endif
-    #ifdef __COMPILE_3700
-    else if (__choose24 == 55)
+    #ifdef __COMPILE_4037
+    else if (__choose27 == 55)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (0);
     }
     #endif
-    #ifdef __COMPILE_3701
-    else if (__choose24 == 56)
+    #ifdef __COMPILE_4038
+    else if (__choose27 == 56)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (1);
     }
     #endif
-    #ifdef __COMPILE_3702
-    else if (__choose24 == 57)
+    #ifdef __COMPILE_4039
+    else if (__choose27 == 57)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (2);
     }
     #endif
-    #ifdef __COMPILE_3703
-    else if (__choose24 == 58)
+    #ifdef __COMPILE_4040
+    else if (__choose27 == 58)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (0);
     }
     #endif
-    #ifdef __COMPILE_3704
-    else if (__choose24 == 59)
+    #ifdef __COMPILE_4041
+    else if (__choose27 == 59)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (1);
     }
     #endif
-    #ifdef __COMPILE_3705
-    else if (__choose24 == 60)
+    #ifdef __COMPILE_4042
+    else if (__choose27 == 60)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (2);
     }
     #endif
-    #ifdef __COMPILE_3706
-    else if (__choose24 == 61)
+    #ifdef __COMPILE_4043
+    else if (__choose27 == 61)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (0);
     }
     #endif
-    #ifdef __COMPILE_3707
-    else if (__choose24 == 62)
+    #ifdef __COMPILE_4044
+    else if (__choose27 == 62)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (1);
     }
     #endif
-    #ifdef __COMPILE_3708
-    else if (__choose24 == 63)
+    #ifdef __COMPILE_4045
+    else if (__choose27 == 63)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (2);
     }
     #endif
-    #ifdef __COMPILE_3709
-    else if (__choose24 == 64)
+    #ifdef __COMPILE_4046
+    else if (__choose27 == 64)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (0);
     }
     #endif
-    #ifdef __COMPILE_3710
-    else if (__choose24 == 65)
+    #ifdef __COMPILE_4047
+    else if (__choose27 == 65)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (1);
     }
     #endif
-    #ifdef __COMPILE_3711
-    else if (__choose24 == 66)
+    #ifdef __COMPILE_4048
+    else if (__choose27 == 66)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (2);
     }
     #endif
-    #ifdef __COMPILE_3712
-    else if (__choose24 == 67)
+    #ifdef __COMPILE_4049
+    else if (__choose27 == 67)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (0);
     }
     #endif
-    #ifdef __COMPILE_3713
-    else if (__choose24 == 68)
+    #ifdef __COMPILE_4050
+    else if (__choose27 == 68)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (1);
     }
     #endif
-    #ifdef __COMPILE_3714
-    else if (__choose24 == 69)
+    #ifdef __COMPILE_4051
+    else if (__choose27 == 69)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (2);
     }
     #endif
-    #ifdef __COMPILE_3715
-    else if (__choose24 == 70)
+    #ifdef __COMPILE_4052
+    else if (__choose27 == 70)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (0);
     }
     #endif
-    #ifdef __COMPILE_3716
-    else if (__choose24 == 71)
+    #ifdef __COMPILE_4053
+    else if (__choose27 == 71)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (1);
     }
     #endif
-    #ifdef __COMPILE_3717
-    else if (__choose24 == 72)
+    #ifdef __COMPILE_4054
+    else if (__choose27 == 72)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (2);
     }
     #endif
-    #ifdef __COMPILE_3718
-    else if (__choose24 == 73)
+    #ifdef __COMPILE_4055
+    else if (__choose27 == 73)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (0);
     }
     #endif
-    #ifdef __COMPILE_3719
-    else if (__choose24 == 74)
+    #ifdef __COMPILE_4056
+    else if (__choose27 == 74)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (1);
     }
     #endif
-    #ifdef __COMPILE_3720
-    else if (__choose24 == 75)
+    #ifdef __COMPILE_4057
+    else if (__choose27 == 75)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (2);
     }
     #endif
-    #ifdef __COMPILE_3721
-    else if (__choose24 == 76)
+    #ifdef __COMPILE_4058
+    else if (__choose27 == 76)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (0);
     }
     #endif
-    #ifdef __COMPILE_3722
-    else if (__choose24 == 77)
+    #ifdef __COMPILE_4059
+    else if (__choose27 == 77)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (1);
     }
     #endif
-    #ifdef __COMPILE_3723
-    else if (__choose24 == 78)
+    #ifdef __COMPILE_4060
+    else if (__choose27 == 78)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (2);
     }
     #endif
-    #ifdef __COMPILE_3724
-    else if (__choose24 == 79)
+    #ifdef __COMPILE_4061
+    else if (__choose27 == 79)
     {
     //AddStmtKind
     (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_3725
-    else if (__choose24 == 80)
+    #ifdef __COMPILE_4062
+    else if (__choose27 == 80)
     {
     //AddStmtKind
     __printf__("                            ");
     }
     #endif
-    #ifdef __COMPILE_3726
-    else if (__choose24 == 81)
+    #ifdef __COMPILE_4063
+    else if (__choose27 == 81)
     {
     //AddStmtKind
     __printf__(" ");
     }
     #endif
-    #ifdef __COMPILE_3727
-    else if (__choose24 == 82)
+    #ifdef __COMPILE_4064
+    else if (__choose27 == 82)
     {
     //AddStmtKind
     __printf__(" %s\n", ofname);
     }
     #endif
-    #ifdef __COMPILE_3728
-    else if (__choose24 == 83)
+    #ifdef __COMPILE_4065
+    else if (__choose27 == 83)
     {
     //AddStmtKind
     __printf__(" (totals)\n");
     }
     #endif
-    #ifdef __COMPILE_3729
-    else if (__choose24 == 84)
+    #ifdef __COMPILE_4066
+    else if (__choose27 == 84)
     {
     //AddStmtKind
     __printf__("%s %s\n", program_name, "1.0");
     }
     #endif
-    #ifdef __COMPILE_3730
-    else if (__choose24 == 85)
+    #ifdef __COMPILE_4067
+    else if (__choose27 == 85)
     {
     //AddStmtKind
     __printf__("??? ?? ??:?? ");
     }
     #endif
-    #ifdef __COMPILE_3731
-    else if (__choose24 == 86)
+    #ifdef __COMPILE_4068
+    else if (__choose27 == 86)
     {
     //AddStmtKind
     __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
     }
     #endif
-    #ifdef __COMPILE_3732
-    else if (__choose24 == 87)
+    #ifdef __COMPILE_4069
+    else if (__choose27 == 87)
     {
     //AddStmtKind
     __printf__("Written by Jean-loup Gailly.\n");
     }
     #endif
-    #ifdef __COMPILE_3733
-    else if (__choose24 == 88)
+    #ifdef __COMPILE_4070
+    else if (__choose27 == 88)
     {
     //AddStmtKind
     __printf__("\n");
     }
     #endif
-    #ifdef __COMPILE_3734
-    else if (__choose24 == 89)
+    #ifdef __COMPILE_4071
+    else if (__choose27 == 89)
     {
     //AddStmtKind
     __printf__("method  crc     date  time  ");
     }
     #endif
-    #ifdef __COMPILE_3735
-    else if (__choose24 == 90)
+    #ifdef __COMPILE_4072
+    else if (__choose27 == 90)
     {
     //AddStmtKind
     _exit(2);
     }
     #endif
-    #ifdef __COMPILE_3736
-    else if (__choose24 == 91)
+    #ifdef __COMPILE_4073
+    else if (__choose27 == 91)
     {
     //AddStmtKind
     args = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_3737
-    else if (__choose24 == 92)
+    #ifdef __COMPILE_4074
+    else if (__choose27 == 92)
     {
     //AddStmtKind
     atexit(close_stdin);
     }
     #endif
-    #ifdef __COMPILE_3738
-    else if (__choose24 == 93)
+    #ifdef __COMPILE_4075
+    else if (__choose27 == 93)
     {
     //AddStmtKind
     bytes_in = 0;
     }
     #endif
-    #ifdef __COMPILE_3739
-    else if (__choose24 == 94)
+    #ifdef __COMPILE_4076
+    else if (__choose27 == 94)
     {
     //AddStmtKind
     bytes_in = ifile_size;
     }
     #endif
-    #ifdef __COMPILE_3740
-    else if (__choose24 == 95)
+    #ifdef __COMPILE_4077
+    else if (__choose27 == 95)
     {
     //AddStmtKind
     bytes_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_3741
-    else if (__choose24 == 96)
+    #ifdef __COMPILE_4078
+    else if (__choose27 == 96)
     {
     //AddStmtKind
     bytes_out = 0;
     }
     #endif
-    #ifdef __COMPILE_3742
-    else if (__choose24 == 97)
+    #ifdef __COMPILE_4079
+    else if (__choose27 == 97)
     {
     //AddStmtKind
     bytes_out++;
     }
     #endif
-    #ifdef __COMPILE_3743
-    else if (__choose24 == 98)
+    #ifdef __COMPILE_4080
+    else if (__choose27 == 98)
     {
     //AddStmtKind
     clear_bufs();
     }
     #endif
-    #ifdef __COMPILE_3744
-    else if (__choose24 == 99)
+    #ifdef __COMPILE_4081
+    else if (__choose27 == 99)
     {
     //AddStmtKind
     close(ifd);
     }
     #endif
-    #ifdef __COMPILE_3745
-    else if (__choose24 == 100)
+    #ifdef __COMPILE_4082
+    else if (__choose27 == 100)
     {
     //AddStmtKind
     copy_stat(&istat);
     }
     #endif
-    #ifdef __COMPILE_3746
-    else if (__choose24 == 101)
+    #ifdef __COMPILE_4083
+    else if (__choose27 == 101)
     {
     //AddStmtKind
     do_exit(0);
     }
     #endif
-    #ifdef __COMPILE_3747
-    else if (__choose24 == 102)
+    #ifdef __COMPILE_4084
+    else if (__choose27 == 102)
     {
     //AddStmtKind
     do_exit(1);
     }
     #endif
-    #ifdef __COMPILE_3748
-    else if (__choose24 == 103)
+    #ifdef __COMPILE_4085
+    else if (__choose27 == 103)
     {
     //AddStmtKind
     do_exit(exit_code);
     }
     #endif
-    #ifdef __COMPILE_3749
-    else if (__choose24 == 104)
+    #ifdef __COMPILE_4086
+    else if (__choose27 == 104)
     {
     //AddStmtKind
     do_list(-1, -1);
     }
     #endif
-    #ifdef __COMPILE_3750
-    else if (__choose24 == 105)
+    #ifdef __COMPILE_4087
+    else if (__choose27 == 105)
     {
     //AddStmtKind
     do_list(ifd, method);
     }
     #endif
-    #ifdef __COMPILE_3751
-    else if (__choose24 == 106)
+    #ifdef __COMPILE_4088
+    else if (__choose27 == 106)
     {
     //AddStmtKind
     env = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_3752
-    else if (__choose24 == 107)
+    #ifdef __COMPILE_4089
+    else if (__choose27 == 107)
     {
     //AddStmtKind
     env = add_envopt(&argc, &argv, "GZIP");
     }
     #endif
-    #ifdef __COMPILE_3753
-    else if (__choose24 == 108)
+    #ifdef __COMPILE_4090
+    else if (__choose27 == 108)
     {
     //AddStmtKind
     exit_code = 1;
     }
     #endif
-    #ifdef __COMPILE_3754
-    else if (__choose24 == 109)
+    #ifdef __COMPILE_4091
+    else if (__choose27 == 109)
     {
     //AddStmtKind
     exit_code = 2;
     }
     #endif
-    #ifdef __COMPILE_3755
-    else if (__choose24 == 110)
+    #ifdef __COMPILE_4092
+    else if (__choose27 == 110)
     {
     //AddStmtKind
     exiting_signal = quiet ? 13 : 0;
     }
     #endif
-    #ifdef __COMPILE_3756
-    else if (__choose24 == 111)
+    #ifdef __COMPILE_4093
+    else if (__choose27 == 111)
     {
     //AddStmtKind
     foreground = 1;
     }
     #endif
-    #ifdef __COMPILE_3757
-    else if (__choose24 == 112)
+    #ifdef __COMPILE_4094
+    else if (__choose27 == 112)
     {
     //AddStmtKind
     free(args);
     }
     #endif
-    #ifdef __COMPILE_3758
-    else if (__choose24 == 113)
+    #ifdef __COMPILE_4095
+    else if (__choose27 == 113)
     {
     //AddStmtKind
     free(env);
     }
     #endif
-    #ifdef __COMPILE_3759
-    else if (__choose24 == 114)
+    #ifdef __COMPILE_4096
+    else if (__choose27 == 114)
     {
     //AddStmtKind
     gzip_error("can't recover suffix\n");
     }
     #endif
-    #ifdef __COMPILE_3760
-    else if (__choose24 == 115)
+    #ifdef __COMPILE_4097
+    else if (__choose27 == 115)
     {
     //AddStmtKind
     gzip_error("corrupted input -- file name too large");
     }
     #endif
-    #ifdef __COMPILE_3761
-    else if (__choose24 == 116)
+    #ifdef __COMPILE_4098
+    else if (__choose27 == 116)
     {
     //AddStmtKind
     gzip_error("internal error in shorten_name");
     }
     #endif
-    #ifdef __COMPILE_3762
-    else if (__choose24 == 117)
+    #ifdef __COMPILE_4099
+    else if (__choose27 == 117)
     {
     //AddStmtKind
     gzip_error("name too short");
     }
     #endif
-    #ifdef __COMPILE_3763
-    else if (__choose24 == 118)
+    #ifdef __COMPILE_4100
+    else if (__choose27 == 118)
     {
     //AddStmtKind
     header_bytes = 0;
     }
     #endif
-    #ifdef __COMPILE_3764
-    else if (__choose24 == 119)
+    #ifdef __COMPILE_4101
+    else if (__choose27 == 119)
     {
     //AddStmtKind
     header_bytes = inptr + 2 * sizeof(long);
     }
     #endif
-    #ifdef __COMPILE_3765
-    else if (__choose24 == 120)
+    #ifdef __COMPILE_4102
+    else if (__choose27 == 120)
     {
     //AddStmtKind
     ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
     }
     #endif
-    #ifdef __COMPILE_3766
-    else if (__choose24 == 121)
+    #ifdef __COMPILE_4103
+    else if (__choose27 == 121)
     {
     //AddStmtKind
     inptr = 0;
     }
     #endif
-    #ifdef __COMPILE_3767
-    else if (__choose24 == 122)
+    #ifdef __COMPILE_4104
+    else if (__choose27 == 122)
     {
     //AddStmtKind
     inptr--;
     }
     #endif
-    #ifdef __COMPILE_3768
-    else if (__choose24 == 123)
+    #ifdef __COMPILE_4105
+    else if (__choose27 == 123)
     {
     //AddStmtKind
     install_signal_handlers();
     }
     #endif
-    #ifdef __COMPILE_3769
-    else if (__choose24 == 124)
+    #ifdef __COMPILE_4106
+    else if (__choose27 == 124)
     {
     //AddStmtKind
     last_member = 0;
     }
     #endif
-    #ifdef __COMPILE_3770
-    else if (__choose24 == 125)
+    #ifdef __COMPILE_4107
+    else if (__choose27 == 125)
     {
     //AddStmtKind
     last_member = 1;
     }
     #endif
-    #ifdef __COMPILE_3771
-    else if (__choose24 == 126)
+    #ifdef __COMPILE_4108
+    else if (__choose27 == 126)
     {
     //AddStmtKind
     license();
     }
     #endif
-    #ifdef __COMPILE_3772
-    else if (__choose24 == 127)
+    #ifdef __COMPILE_4109
+    else if (__choose27 == 127)
     {
     //AddStmtKind
     list = 0;
     }
     #endif
-    #ifdef __COMPILE_3773
-    else if (__choose24 == 128)
+    #ifdef __COMPILE_4110
+    else if (__choose27 == 128)
     {
     //AddStmtKind
     method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_3774
-    else if (__choose24 == 129)
+    #ifdef __COMPILE_4111
+    else if (__choose27 == 129)
     {
     //AddStmtKind
     method = -1;
     }
     #endif
-    #ifdef __COMPILE_3775
-    else if (__choose24 == 130)
+    #ifdef __COMPILE_4112
+    else if (__choose27 == 130)
     {
     //AddStmtKind
     method = 0;
     }
     #endif
-    #ifdef __COMPILE_3776
-    else if (__choose24 == 131)
+    #ifdef __COMPILE_4113
+    else if (__choose27 == 131)
     {
     //AddStmtKind
     method = 1;
     }
     #endif
-    #ifdef __COMPILE_3777
-    else if (__choose24 == 132)
+    #ifdef __COMPILE_4114
+    else if (__choose27 == 132)
     {
     //AddStmtKind
     method = 2;
     }
     #endif
-    #ifdef __COMPILE_3778
-    else if (__choose24 == 133)
+    #ifdef __COMPILE_4115
+    else if (__choose27 == 133)
     {
     //AddStmtKind
     method = 3;
     }
     #endif
-    #ifdef __COMPILE_3779
-    else if (__choose24 == 134)
+    #ifdef __COMPILE_4116
+    else if (__choose27 == 134)
     {
     //AddStmtKind
     method = get_method(ifd);
     }
     #endif
-    #ifdef __COMPILE_3780
-    else if (__choose24 == 135)
+    #ifdef __COMPILE_4117
+    else if (__choose27 == 135)
     {
     //AddStmtKind
     no_name = decompress;
     }
     #endif
-    #ifdef __COMPILE_3781
-    else if (__choose24 == 136)
+    #ifdef __COMPILE_4118
+    else if (__choose27 == 136)
     {
     //AddStmtKind
     no_time = decompress;
     }
     #endif
-    #ifdef __COMPILE_3782
-    else if (__choose24 == 137)
+    #ifdef __COMPILE_4119
+    else if (__choose27 == 137)
     {
     //AddStmtKind
     part_nb = 0;
     }
     #endif
-    #ifdef __COMPILE_3783
-    else if (__choose24 == 138)
+    #ifdef __COMPILE_4120
+    else if (__choose27 == 138)
     {
     //AddStmtKind
     part_nb++;
     }
     #endif
-    #ifdef __COMPILE_3784
-    else if (__choose24 == 139)
+    #ifdef __COMPILE_4121
+    else if (__choose27 == 139)
     {
     //AddStmtKind
     perror(ifname);
     }
     #endif
-    #ifdef __COMPILE_3785
-    else if (__choose24 == 140)
+    #ifdef __COMPILE_4122
+    else if (__choose27 == 140)
     {
     //AddStmtKind
     perror(ofname);
     }
     #endif
-    #ifdef __COMPILE_3786
-    else if (__choose24 == 141)
+    #ifdef __COMPILE_4123
+    else if (__choose27 == 141)
     {
     //AddStmtKind
     progerror("standard input");
     }
     #endif
-    #ifdef __COMPILE_3787
-    else if (__choose24 == 142)
+    #ifdef __COMPILE_4124
+    else if (__choose27 == 142)
     {
     //AddStmtKind
     progerror(ifname);
     }
     #endif
-    #ifdef __COMPILE_3788
-    else if (__choose24 == 143)
+    #ifdef __COMPILE_4125
+    else if (__choose27 == 143)
     {
     //AddStmtKind
     progerror(ofname);
     }
     #endif
-    #ifdef __COMPILE_3789
-    else if (__choose24 == 144)
+    #ifdef __COMPILE_4126
+    else if (__choose27 == 144)
     {
     //AddStmtKind
     quiet = 0;
     }
     #endif
-    #ifdef __COMPILE_3790
-    else if (__choose24 == 145)
+    #ifdef __COMPILE_4127
+    else if (__choose27 == 145)
     {
     //AddStmtKind
     read_error();
     }
     #endif
-    #ifdef __COMPILE_3791
-    else if (__choose24 == 146)
+    #ifdef __COMPILE_4128
+    else if (__choose27 == 146)
     {
     //AddStmtKind
     remove_ofname_fd = -1;
     }
     #endif
-    #ifdef __COMPILE_3792
-    else if (__choose24 == 147)
+    #ifdef __COMPILE_4129
+    else if (__choose27 == 147)
     {
     //AddStmtKind
     remove_output_file();
     }
     #endif
-    #ifdef __COMPILE_3793
-    else if (__choose24 == 148)
+    #ifdef __COMPILE_4130
+    else if (__choose27 == 148)
     {
     //AddStmtKind
     save_orig_name = !no_name;
     }
     #endif
-    #ifdef __COMPILE_3794
-    else if (__choose24 == 149)
+    #ifdef __COMPILE_4131
+    else if (__choose27 == 149)
     {
     //AddStmtKind
     save_orig_name = 0;
     }
     #endif
-    #ifdef __COMPILE_3795
-    else if (__choose24 == 150)
+    #ifdef __COMPILE_4132
+    else if (__choose27 == 150)
     {
     //AddStmtKind
     save_orig_name = 1;
     }
     #endif
-    #ifdef __COMPILE_3796
-    else if (__choose24 == 151)
+    #ifdef __COMPILE_4133
+    else if (__choose27 == 151)
     {
     //AddStmtKind
     sigemptyset(&caught_signals);
     }
     #endif
-    #ifdef __COMPILE_3797
-    else if (__choose24 == 152)
+    #ifdef __COMPILE_4134
+    else if (__choose27 == 152)
     {
     //AddStmtKind
     strcat(ifname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3798
-    else if (__choose24 == 153)
+    #ifdef __COMPILE_4135
+    else if (__choose27 == 153)
     {
     //AddStmtKind
     strcat(ofname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3799
-    else if (__choose24 == 154)
+    #ifdef __COMPILE_4136
+    else if (__choose27 == 154)
     {
     //AddStmtKind
     strcpy(ifname, "stdin");
     }
     #endif
-    #ifdef __COMPILE_3800
-    else if (__choose24 == 155)
+    #ifdef __COMPILE_4137
+    else if (__choose27 == 155)
     {
     //AddStmtKind
     strcpy(ofname, "stdout");
     }
     #endif
-    #ifdef __COMPILE_3801
-    else if (__choose24 == 156)
+    #ifdef __COMPILE_4138
+    else if (__choose27 == 156)
     {
     //AddStmtKind
     strcpy(ofname, ifname);
     }
     #endif
-    #ifdef __COMPILE_3802
-    else if (__choose24 == 157)
+    #ifdef __COMPILE_4139
+    else if (__choose27 == 157)
     {
     //AddStmtKind
     time_stamp = get_stat_mtime(&istat);
     }
     #endif
-    #ifdef __COMPILE_3803
-    else if (__choose24 == 158)
+    #ifdef __COMPILE_4140
+    else if (__choose27 == 158)
     {
     //AddStmtKind
     time_stamp.tv_nsec = -1;
     }
     #endif
-    #ifdef __COMPILE_3804
-    else if (__choose24 == 159)
+    #ifdef __COMPILE_4141
+    else if (__choose27 == 159)
     {
     //AddStmtKind
     time_stamp.tv_nsec = 0;
     }
     #endif
-    #ifdef __COMPILE_3805
-    else if (__choose24 == 160)
+    #ifdef __COMPILE_4142
+    else if (__choose27 == 160)
     {
     //AddStmtKind
     to_stdout = 1;
     }
     #endif
-    #ifdef __COMPILE_3806
-    else if (__choose24 == 161)
+    #ifdef __COMPILE_4143
+    else if (__choose27 == 161)
     {
     //AddStmtKind
     total_in = -1L;
     }
     #endif
-    #ifdef __COMPILE_3807
-    else if (__choose24 == 162)
+    #ifdef __COMPILE_4144
+    else if (__choose27 == 162)
     {
     //AddStmtKind
     total_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_3808
-    else if (__choose24 == 163)
+    #ifdef __COMPILE_4145
+    else if (__choose27 == 163)
     {
     //AddStmtKind
     treat_stdin();
     }
     #endif
-    #ifdef __COMPILE_3809
-    else if (__choose24 == 164)
+    #ifdef __COMPILE_4146
+    else if (__choose27 == 164)
     {
     //AddStmtKind
     try_help();
     }
     #endif
-    #ifdef __COMPILE_3810
-    else if (__choose24 == 165)
+    #ifdef __COMPILE_4147
+    else if (__choose27 == 165)
     {
     //AddStmtKind
     verbose = 0;
     }
     #endif
-    #ifdef __COMPILE_3811
-    else if (__choose24 == 166)
+    #ifdef __COMPILE_4148
+    else if (__choose27 == 166)
     {
     //AddStmtKind
     work = copy;
     }
     #endif
-    #ifdef __COMPILE_3812
-    else if (__choose24 == 167)
+    #ifdef __COMPILE_4149
+    else if (__choose27 == 167)
     {
     //AddStmtKind
     work = lzw;
     }
     #endif
-    #ifdef __COMPILE_3813
-    else if (__choose24 == 168)
+    #ifdef __COMPILE_4150
+    else if (__choose27 == 168)
     {
     //AddStmtKind
     work = unlzh;
     }
     #endif
-    #ifdef __COMPILE_3814
-    else if (__choose24 == 169)
+    #ifdef __COMPILE_4151
+    else if (__choose27 == 169)
     {
     //AddStmtKind
     work = unlzw;
     }
     #endif
-    #ifdef __COMPILE_3815
-    else if (__choose24 == 170)
+    #ifdef __COMPILE_4152
+    else if (__choose27 == 170)
     {
     //AddStmtKind
     work = unpack;
     }
     #endif
-    #ifdef __COMPILE_3816
-    else if (__choose24 == 171)
+    #ifdef __COMPILE_4153
+    else if (__choose27 == 171)
     {
     //AddStmtKind
     work = unzip;
     }
     #endif
-    #ifdef __COMPILE_3817
-    else if (__choose24 == 172)
+    #ifdef __COMPILE_4154
+    else if (__choose27 == 172)
     {
     //AddStmtKind
     write_error();
     }
     #endif
-    #ifdef __COMPILE_3818
-    else if (__choose24 == 173)
+    #ifdef __COMPILE_4155
+    else if (__choose27 == 173)
     {
     //AddStmtKind
     xunlink(ofname);
     }
     #endif
-    #ifdef __COMPILE_3819
-    else if (__choose24 == 174)
+    #ifdef __COMPILE_4156
+    else if (__choose27 == 174)
     {
     //AddStmtKind
     z_len = strlen(z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3820
-    else if (__choose24 == 175)
+    #ifdef __COMPILE_4157
+    else if (__choose27 == 175)
     {
     //AddStmtKind
     z_suffix = ".gz";
     }
     #endif
-    #ifdef __COMPILE_3821
-    else if (__choose24 == 176)
+    #ifdef __COMPILE_4158
+    else if (__choose27 == 176)
     {
     //IfExitKind
-    if (__is_neg("24-176", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code),
+    if (__is_neg("27-176", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name),
     			 sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
         return 0;
     }
     #endif
-    #ifdef __COMPILE_3822
-    else if (__choose24 == 177)
+    #ifdef __COMPILE_4159
+    else if (__choose27 == 177)
     {
     //IfExitKind
-    if (__is_neg("24-177", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code),
+    if (__is_neg("27-177", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name),
     			 sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
         return 1;
     }
     #endif
-    #ifdef __COMPILE_3823
-    else if (__choose24 == 178)
+    #ifdef __COMPILE_4160
+    else if (__choose27 == 178)
     {
     //IfExitKind
-    if (__is_neg("24-178", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code),
+    if (__is_neg("27-178", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name),
     			 sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
         return 2;
     }
     #endif
-    int __choose25 = __choose("__SWITCH25");
+    int __choose28 = __choose("__SWITCH28");
     {
-    int __temp25=(xunlink(ofname)) ;
-    if (__choose25 == 0)
+    int __temp28=(xunlink(ofname)) ;
+    if (__choose28 == 0)
     {}
-    #ifdef __COMPILE_3824
-    else if (__choose25 == 1)
+    #ifdef __COMPILE_4161
+    else if (__choose28 == 1)
     {
-    __temp25= (__is_neg("25-1", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
+    __temp28= (__is_neg("28-1", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
     }
     #endif
-    #ifdef __COMPILE_3825
-    else if (__choose25 == 2)
+    #ifdef __COMPILE_4162
+    else if (__choose28 == 2)
     {
-    __temp25= ((xunlink(ofname)) || __is_neg("25-2", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
+    __temp28= ((xunlink(ofname)) || __is_neg("28-2", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
     }
     #endif
-    #ifdef __COMPILE_3826
-    else if (__choose25 == 3)
+    #ifdef __COMPILE_4163
+    else if (__choose28 == 3)
     {
-    __temp25= (ctermid(ofname));
+    __temp28= (ctermid(ofname));
     }
     #endif
-    #ifdef __COMPILE_3827
-    else if (__choose25 == 4)
+    #ifdef __COMPILE_4164
+    else if (__choose28 == 4)
     {
-    __temp25= (cuserid(ofname));
+    __temp28= (cuserid(ofname));
     }
     #endif
-    #ifdef __COMPILE_3828
-    else if (__choose25 == 5)
+    #ifdef __COMPILE_4165
+    else if (__choose28 == 5)
     {
-    __temp25= (get_suffix(ofname));
+    __temp28= (get_suffix(ofname));
     }
     #endif
-    #ifdef __COMPILE_3829
-    else if (__choose25 == 6)
+    #ifdef __COMPILE_4166
+    else if (__choose28 == 6)
     {
-    __temp25= (getwd(ofname));
+    __temp28= (getwd(ofname));
     }
     #endif
-    #ifdef __COMPILE_3830
-    else if (__choose25 == 7)
+    #ifdef __COMPILE_4167
+    else if (__choose28 == 7)
     {
-    __temp25= (gzip_base_name(ofname));
+    __temp28= (gzip_base_name(ofname));
     }
     #endif
-    #ifdef __COMPILE_3831
-    else if (__choose25 == 8)
+    #ifdef __COMPILE_4168
+    else if (__choose28 == 8)
     {
-    __temp25= (make_simple_name(ofname));
+    __temp28= (make_simple_name(ofname));
     }
     #endif
-    #ifdef __COMPILE_3832
-    else if (__choose25 == 9)
+    #ifdef __COMPILE_4169
+    else if (__choose28 == 9)
     {
-    __temp25= (mkdtemp(ofname));
+    __temp28= (mkdtemp(ofname));
     }
     #endif
-    #ifdef __COMPILE_3833
-    else if (__choose25 == 10)
+    #ifdef __COMPILE_4170
+    else if (__choose28 == 10)
     {
-    __temp25= (mkstemp(ofname));
+    __temp28= (mkstemp(ofname));
     }
     #endif
-    #ifdef __COMPILE_3834
-    else if (__choose25 == 11)
+    #ifdef __COMPILE_4171
+    else if (__choose28 == 11)
     {
-    __temp25= (mkstemp64(ofname));
+    __temp28= (mkstemp64(ofname));
     }
     #endif
-    #ifdef __COMPILE_3835
-    else if (__choose25 == 12)
+    #ifdef __COMPILE_4172
+    else if (__choose28 == 12)
     {
-    __temp25= (mktemp(ofname));
+    __temp28= (mktemp(ofname));
     }
     #endif
-    #ifdef __COMPILE_3836
-    else if (__choose25 == 13)
+    #ifdef __COMPILE_4173
+    else if (__choose28 == 13)
     {
-    __temp25= (putenv(ofname));
+    __temp28= (putenv(ofname));
     }
     #endif
-    #ifdef __COMPILE_3837
-    else if (__choose25 == 14)
+    #ifdef __COMPILE_4174
+    else if (__choose28 == 14)
     {
-    __temp25= (setstate(ofname));
+    __temp28= (setstate(ofname));
     }
     #endif
-    #ifdef __COMPILE_3838
-    else if (__choose25 == 15)
+    #ifdef __COMPILE_4175
+    else if (__choose28 == 15)
     {
-    __temp25= (shorten_name(ofname));
+    __temp28= (shorten_name(ofname));
     }
     #endif
-    #ifdef __COMPILE_3839
-    else if (__choose25 == 16)
+    #ifdef __COMPILE_4176
+    else if (__choose28 == 16)
     {
-    __temp25= (strfry(ofname));
+    __temp28= (strfry(ofname));
     }
     #endif
-    #ifdef __COMPILE_3840
-    else if (__choose25 == 17)
+    #ifdef __COMPILE_4177
+    else if (__choose28 == 17)
     {
-    __temp25= (strlwr(ofname));
+    __temp28= (strlwr(ofname));
     }
     #endif
-    #ifdef __COMPILE_3841
-    else if (__choose25 == 18)
+    #ifdef __COMPILE_4178
+    else if (__choose28 == 18)
     {
-    __temp25= (tmpnam(ofname));
+    __temp28= (tmpnam(ofname));
     }
     #endif
-    #ifdef __COMPILE_3842
-    else if (__choose25 == 19)
+    #ifdef __COMPILE_4179
+    else if (__choose28 == 19)
     {
-    __temp25= (tmpnam_r(ofname));
+    __temp28= (tmpnam_r(ofname));
     }
     #endif
-    #ifdef __COMPILE_3843
-    else if (__choose25 == 20)
+    #ifdef __COMPILE_4180
+    else if (__choose28 == 20)
     {
-    __temp25= (treat_file(ofname));
+    __temp28= (treat_file(ofname));
     }
     #endif
-    #ifdef __COMPILE_3844
-    else if (__choose25 == 21)
+    #ifdef __COMPILE_4181
+    else if (__choose28 == 21)
     {
-    __temp25= ((xunlink(ofname)) && !__is_neg("25-21", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
+    __temp28= ((xunlink(ofname)) && !__is_neg("28-21", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)));
     }
     #endif
-    int __choose26 = __choose("__SWITCH26");
-    if (__choose26 == 0)
+    int __choose29 = __choose("__SWITCH29");
+    if (__choose29 == 0)
     {
-    if (__temp25) {
+    if (__temp28) {
             progerror(ofname);
             return ERROR;
         }
     
     }
-    #ifdef __COMPILE_3845
-    else if (__choose26 == 1)
+    #ifdef __COMPILE_4182
+    else if (__choose29 == 1)
     {
     //GuardKind
-    if (!__is_neg("26-1", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
+    if (!__is_neg("29-1", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
         if (xunlink(ofname)) {
             progerror(ofname);
             return 1;
@@ -33448,11 +36244,11 @@ local int check_ofname()
     
     }
     #endif
-    #ifdef __COMPILE_3846
-    else if (__choose26 == 2)
+    #ifdef __COMPILE_4183
+    else if (__choose29 == 2)
     {
     //SpecialGuardKind
-    if (!__is_neg("26-2", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)) && (xunlink(ofname))) {
+    if (!__is_neg("29-2", "L1649", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)) && (xunlink(ofname))) {
         progerror(ofname);
         return 1;
     }
@@ -33463,1275 +36259,1275 @@ local int check_ofname()
     }
     //prophet generated patch
     {
-    int __choose27 = __choose("__SWITCH27");
-    if (__choose27 == 0)
+    int __choose30 = __choose("__SWITCH30");
+    if (__choose30 == 0)
     {}
-    #ifdef __COMPILE_3847
-    else if (__choose27 == 1)
+    #ifdef __COMPILE_4184
+    else if (__choose30 == 1)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (0);
     }
     #endif
-    #ifdef __COMPILE_3848
-    else if (__choose27 == 2)
+    #ifdef __COMPILE_4185
+    else if (__choose30 == 2)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (1);
     }
     #endif
-    #ifdef __COMPILE_3849
-    else if (__choose27 == 3)
+    #ifdef __COMPILE_4186
+    else if (__choose30 == 3)
     {
     //AddStmtAndReplaceAtomKind
     bytes_in = (2);
     }
     #endif
-    #ifdef __COMPILE_3850
-    else if (__choose27 == 4)
+    #ifdef __COMPILE_4187
+    else if (__choose30 == 4)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (0);
     }
     #endif
-    #ifdef __COMPILE_3851
-    else if (__choose27 == 5)
+    #ifdef __COMPILE_4188
+    else if (__choose30 == 5)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (1);
     }
     #endif
-    #ifdef __COMPILE_3852
-    else if (__choose27 == 6)
+    #ifdef __COMPILE_4189
+    else if (__choose30 == 6)
     {
     //AddStmtAndReplaceAtomKind
     bytes_out = (2);
     }
     #endif
-    #ifdef __COMPILE_3853
-    else if (__choose27 == 7)
+    #ifdef __COMPILE_4190
+    else if (__choose30 == 7)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (0);
     }
     #endif
-    #ifdef __COMPILE_3854
-    else if (__choose27 == 8)
+    #ifdef __COMPILE_4191
+    else if (__choose30 == 8)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (1);
     }
     #endif
-    #ifdef __COMPILE_3855
-    else if (__choose27 == 9)
+    #ifdef __COMPILE_4192
+    else if (__choose30 == 9)
     {
     //AddStmtAndReplaceAtomKind
     exit_code = (2);
     }
     #endif
-    #ifdef __COMPILE_3856
-    else if (__choose27 == 10)
+    #ifdef __COMPILE_4193
+    else if (__choose30 == 10)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (0);
     }
     #endif
-    #ifdef __COMPILE_3857
-    else if (__choose27 == 11)
+    #ifdef __COMPILE_4194
+    else if (__choose30 == 11)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (1);
     }
     #endif
-    #ifdef __COMPILE_3858
-    else if (__choose27 == 12)
+    #ifdef __COMPILE_4195
+    else if (__choose30 == 12)
     {
     //AddStmtAndReplaceAtomKind
     exiting_signal = (2);
     }
     #endif
-    #ifdef __COMPILE_3859
-    else if (__choose27 == 13)
+    #ifdef __COMPILE_4196
+    else if (__choose30 == 13)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (0);
     }
     #endif
-    #ifdef __COMPILE_3860
-    else if (__choose27 == 14)
+    #ifdef __COMPILE_4197
+    else if (__choose30 == 14)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (1);
     }
     #endif
-    #ifdef __COMPILE_3861
-    else if (__choose27 == 15)
+    #ifdef __COMPILE_4198
+    else if (__choose30 == 15)
     {
     //AddStmtAndReplaceAtomKind
     foreground = (2);
     }
     #endif
-    #ifdef __COMPILE_3862
-    else if (__choose27 == 16)
+    #ifdef __COMPILE_4199
+    else if (__choose30 == 16)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (0);
     }
     #endif
-    #ifdef __COMPILE_3863
-    else if (__choose27 == 17)
+    #ifdef __COMPILE_4200
+    else if (__choose30 == 17)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (1);
     }
     #endif
-    #ifdef __COMPILE_3864
-    else if (__choose27 == 18)
+    #ifdef __COMPILE_4201
+    else if (__choose30 == 18)
     {
     //AddStmtAndReplaceAtomKind
     header_bytes = (2);
     }
     #endif
-    #ifdef __COMPILE_3865
-    else if (__choose27 == 19)
+    #ifdef __COMPILE_4202
+    else if (__choose30 == 19)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (0);
     }
     #endif
-    #ifdef __COMPILE_3866
-    else if (__choose27 == 20)
+    #ifdef __COMPILE_4203
+    else if (__choose30 == 20)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (1);
     }
     #endif
-    #ifdef __COMPILE_3867
-    else if (__choose27 == 21)
+    #ifdef __COMPILE_4204
+    else if (__choose30 == 21)
     {
     //AddStmtAndReplaceAtomKind
     ifd = (2);
     }
     #endif
-    #ifdef __COMPILE_3868
-    else if (__choose27 == 22)
+    #ifdef __COMPILE_4205
+    else if (__choose30 == 22)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (0);
     }
     #endif
-    #ifdef __COMPILE_3869
-    else if (__choose27 == 23)
+    #ifdef __COMPILE_4206
+    else if (__choose30 == 23)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (1);
     }
     #endif
-    #ifdef __COMPILE_3870
-    else if (__choose27 == 24)
+    #ifdef __COMPILE_4207
+    else if (__choose30 == 24)
     {
     //AddStmtAndReplaceAtomKind
     ifile_size = (2);
     }
     #endif
-    #ifdef __COMPILE_3871
-    else if (__choose27 == 25)
+    #ifdef __COMPILE_4208
+    else if (__choose30 == 25)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (0);
     }
     #endif
-    #ifdef __COMPILE_3872
-    else if (__choose27 == 26)
+    #ifdef __COMPILE_4209
+    else if (__choose30 == 26)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (1);
     }
     #endif
-    #ifdef __COMPILE_3873
-    else if (__choose27 == 27)
+    #ifdef __COMPILE_4210
+    else if (__choose30 == 27)
     {
     //AddStmtAndReplaceAtomKind
     inptr = (2);
     }
     #endif
-    #ifdef __COMPILE_3874
-    else if (__choose27 == 28)
+    #ifdef __COMPILE_4211
+    else if (__choose30 == 28)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (0);
     }
     #endif
-    #ifdef __COMPILE_3875
-    else if (__choose27 == 29)
+    #ifdef __COMPILE_4212
+    else if (__choose30 == 29)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (1);
     }
     #endif
-    #ifdef __COMPILE_3876
-    else if (__choose27 == 30)
+    #ifdef __COMPILE_4213
+    else if (__choose30 == 30)
     {
     //AddStmtAndReplaceAtomKind
     last_member = (2);
     }
     #endif
-    #ifdef __COMPILE_3877
-    else if (__choose27 == 31)
+    #ifdef __COMPILE_4214
+    else if (__choose30 == 31)
     {
     //AddStmtAndReplaceAtomKind
     list = (0);
     }
     #endif
-    #ifdef __COMPILE_3878
-    else if (__choose27 == 32)
+    #ifdef __COMPILE_4215
+    else if (__choose30 == 32)
     {
     //AddStmtAndReplaceAtomKind
     list = (1);
     }
     #endif
-    #ifdef __COMPILE_3879
-    else if (__choose27 == 33)
+    #ifdef __COMPILE_4216
+    else if (__choose30 == 33)
     {
     //AddStmtAndReplaceAtomKind
     list = (2);
     }
     #endif
-    #ifdef __COMPILE_3880
-    else if (__choose27 == 34)
+    #ifdef __COMPILE_4217
+    else if (__choose30 == 34)
     {
     //AddStmtAndReplaceAtomKind
     method = (0);
     }
     #endif
-    #ifdef __COMPILE_3881
-    else if (__choose27 == 35)
+    #ifdef __COMPILE_4218
+    else if (__choose30 == 35)
     {
     //AddStmtAndReplaceAtomKind
     method = (1);
     }
     #endif
-    #ifdef __COMPILE_3882
-    else if (__choose27 == 36)
+    #ifdef __COMPILE_4219
+    else if (__choose30 == 36)
     {
     //AddStmtAndReplaceAtomKind
     method = (2);
     }
     #endif
-    #ifdef __COMPILE_3883
-    else if (__choose27 == 37)
+    #ifdef __COMPILE_4220
+    else if (__choose30 == 37)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (0);
     }
     #endif
-    #ifdef __COMPILE_3884
-    else if (__choose27 == 38)
+    #ifdef __COMPILE_4221
+    else if (__choose30 == 38)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (1);
     }
     #endif
-    #ifdef __COMPILE_3885
-    else if (__choose27 == 39)
+    #ifdef __COMPILE_4222
+    else if (__choose30 == 39)
     {
     //AddStmtAndReplaceAtomKind
     no_name = (2);
     }
     #endif
-    #ifdef __COMPILE_3886
-    else if (__choose27 == 40)
+    #ifdef __COMPILE_4223
+    else if (__choose30 == 40)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (0);
     }
     #endif
-    #ifdef __COMPILE_3887
-    else if (__choose27 == 41)
+    #ifdef __COMPILE_4224
+    else if (__choose30 == 41)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (1);
     }
     #endif
-    #ifdef __COMPILE_3888
-    else if (__choose27 == 42)
+    #ifdef __COMPILE_4225
+    else if (__choose30 == 42)
     {
     //AddStmtAndReplaceAtomKind
     no_time = (2);
     }
     #endif
-    #ifdef __COMPILE_3889
-    else if (__choose27 == 43)
+    #ifdef __COMPILE_4226
+    else if (__choose30 == 43)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (0);
     }
     #endif
-    #ifdef __COMPILE_3890
-    else if (__choose27 == 44)
+    #ifdef __COMPILE_4227
+    else if (__choose30 == 44)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (1);
     }
     #endif
-    #ifdef __COMPILE_3891
-    else if (__choose27 == 45)
+    #ifdef __COMPILE_4228
+    else if (__choose30 == 45)
     {
     //AddStmtAndReplaceAtomKind
     ofd = (2);
     }
     #endif
-    #ifdef __COMPILE_3892
-    else if (__choose27 == 46)
+    #ifdef __COMPILE_4229
+    else if (__choose30 == 46)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (0);
     }
     #endif
-    #ifdef __COMPILE_3893
-    else if (__choose27 == 47)
+    #ifdef __COMPILE_4230
+    else if (__choose30 == 47)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (1);
     }
     #endif
-    #ifdef __COMPILE_3894
-    else if (__choose27 == 48)
+    #ifdef __COMPILE_4231
+    else if (__choose30 == 48)
     {
     //AddStmtAndReplaceAtomKind
     part_nb = (2);
     }
     #endif
-    #ifdef __COMPILE_3895
-    else if (__choose27 == 49)
+    #ifdef __COMPILE_4232
+    else if (__choose30 == 49)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (0);
     }
     #endif
-    #ifdef __COMPILE_3896
-    else if (__choose27 == 50)
+    #ifdef __COMPILE_4233
+    else if (__choose30 == 50)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (1);
     }
     #endif
-    #ifdef __COMPILE_3897
-    else if (__choose27 == 51)
+    #ifdef __COMPILE_4234
+    else if (__choose30 == 51)
     {
     //AddStmtAndReplaceAtomKind
     quiet = (2);
     }
     #endif
-    #ifdef __COMPILE_3898
-    else if (__choose27 == 52)
+    #ifdef __COMPILE_4235
+    else if (__choose30 == 52)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (0);
     }
     #endif
-    #ifdef __COMPILE_3899
-    else if (__choose27 == 53)
+    #ifdef __COMPILE_4236
+    else if (__choose30 == 53)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (1);
     }
     #endif
-    #ifdef __COMPILE_3900
-    else if (__choose27 == 54)
+    #ifdef __COMPILE_4237
+    else if (__choose30 == 54)
     {
     //AddStmtAndReplaceAtomKind
     remove_ofname_fd = (2);
     }
     #endif
-    #ifdef __COMPILE_3901
-    else if (__choose27 == 55)
+    #ifdef __COMPILE_4238
+    else if (__choose30 == 55)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (0);
     }
     #endif
-    #ifdef __COMPILE_3902
-    else if (__choose27 == 56)
+    #ifdef __COMPILE_4239
+    else if (__choose30 == 56)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (1);
     }
     #endif
-    #ifdef __COMPILE_3903
-    else if (__choose27 == 57)
+    #ifdef __COMPILE_4240
+    else if (__choose30 == 57)
     {
     //AddStmtAndReplaceAtomKind
     save_orig_name = (2);
     }
     #endif
-    #ifdef __COMPILE_3904
-    else if (__choose27 == 58)
+    #ifdef __COMPILE_4241
+    else if (__choose30 == 58)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (0);
     }
     #endif
-    #ifdef __COMPILE_3905
-    else if (__choose27 == 59)
+    #ifdef __COMPILE_4242
+    else if (__choose30 == 59)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (1);
     }
     #endif
-    #ifdef __COMPILE_3906
-    else if (__choose27 == 60)
+    #ifdef __COMPILE_4243
+    else if (__choose30 == 60)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_nsec = (2);
     }
     #endif
-    #ifdef __COMPILE_3907
-    else if (__choose27 == 61)
+    #ifdef __COMPILE_4244
+    else if (__choose30 == 61)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (0);
     }
     #endif
-    #ifdef __COMPILE_3908
-    else if (__choose27 == 62)
+    #ifdef __COMPILE_4245
+    else if (__choose30 == 62)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (1);
     }
     #endif
-    #ifdef __COMPILE_3909
-    else if (__choose27 == 63)
+    #ifdef __COMPILE_4246
+    else if (__choose30 == 63)
     {
     //AddStmtAndReplaceAtomKind
     time_stamp.tv_sec = (2);
     }
     #endif
-    #ifdef __COMPILE_3910
-    else if (__choose27 == 64)
+    #ifdef __COMPILE_4247
+    else if (__choose30 == 64)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (0);
     }
     #endif
-    #ifdef __COMPILE_3911
-    else if (__choose27 == 65)
+    #ifdef __COMPILE_4248
+    else if (__choose30 == 65)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (1);
     }
     #endif
-    #ifdef __COMPILE_3912
-    else if (__choose27 == 66)
+    #ifdef __COMPILE_4249
+    else if (__choose30 == 66)
     {
     //AddStmtAndReplaceAtomKind
     to_stdout = (2);
     }
     #endif
-    #ifdef __COMPILE_3913
-    else if (__choose27 == 67)
+    #ifdef __COMPILE_4250
+    else if (__choose30 == 67)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (0);
     }
     #endif
-    #ifdef __COMPILE_3914
-    else if (__choose27 == 68)
+    #ifdef __COMPILE_4251
+    else if (__choose30 == 68)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (1);
     }
     #endif
-    #ifdef __COMPILE_3915
-    else if (__choose27 == 69)
+    #ifdef __COMPILE_4252
+    else if (__choose30 == 69)
     {
     //AddStmtAndReplaceAtomKind
     total_in = (2);
     }
     #endif
-    #ifdef __COMPILE_3916
-    else if (__choose27 == 70)
+    #ifdef __COMPILE_4253
+    else if (__choose30 == 70)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (0);
     }
     #endif
-    #ifdef __COMPILE_3917
-    else if (__choose27 == 71)
+    #ifdef __COMPILE_4254
+    else if (__choose30 == 71)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (1);
     }
     #endif
-    #ifdef __COMPILE_3918
-    else if (__choose27 == 72)
+    #ifdef __COMPILE_4255
+    else if (__choose30 == 72)
     {
     //AddStmtAndReplaceAtomKind
     total_out = (2);
     }
     #endif
-    #ifdef __COMPILE_3919
-    else if (__choose27 == 73)
+    #ifdef __COMPILE_4256
+    else if (__choose30 == 73)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (0);
     }
     #endif
-    #ifdef __COMPILE_3920
-    else if (__choose27 == 74)
+    #ifdef __COMPILE_4257
+    else if (__choose30 == 74)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (1);
     }
     #endif
-    #ifdef __COMPILE_3921
-    else if (__choose27 == 75)
+    #ifdef __COMPILE_4258
+    else if (__choose30 == 75)
     {
     //AddStmtAndReplaceAtomKind
     verbose = (2);
     }
     #endif
-    #ifdef __COMPILE_3922
-    else if (__choose27 == 76)
+    #ifdef __COMPILE_4259
+    else if (__choose30 == 76)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (0);
     }
     #endif
-    #ifdef __COMPILE_3923
-    else if (__choose27 == 77)
+    #ifdef __COMPILE_4260
+    else if (__choose30 == 77)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (1);
     }
     #endif
-    #ifdef __COMPILE_3924
-    else if (__choose27 == 78)
+    #ifdef __COMPILE_4261
+    else if (__choose30 == 78)
     {
     //AddStmtAndReplaceAtomKind
     z_len = (2);
     }
     #endif
-    #ifdef __COMPILE_3925
-    else if (__choose27 == 79)
+    #ifdef __COMPILE_4262
+    else if (__choose30 == 79)
     {
     //AddStmtKind
     (void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_3926
-    else if (__choose27 == 80)
+    #ifdef __COMPILE_4263
+    else if (__choose30 == 80)
     {
     //AddStmtKind
     __printf__("                            ");
     }
     #endif
-    #ifdef __COMPILE_3927
-    else if (__choose27 == 81)
+    #ifdef __COMPILE_4264
+    else if (__choose30 == 81)
     {
     //AddStmtKind
     __printf__(" ");
     }
     #endif
-    #ifdef __COMPILE_3928
-    else if (__choose27 == 82)
+    #ifdef __COMPILE_4265
+    else if (__choose30 == 82)
     {
     //AddStmtKind
     __printf__(" %s\n", ofname);
     }
     #endif
-    #ifdef __COMPILE_3929
-    else if (__choose27 == 83)
+    #ifdef __COMPILE_4266
+    else if (__choose30 == 83)
     {
     //AddStmtKind
     __printf__(" (totals)\n");
     }
     #endif
-    #ifdef __COMPILE_3930
-    else if (__choose27 == 84)
+    #ifdef __COMPILE_4267
+    else if (__choose30 == 84)
     {
     //AddStmtKind
     __printf__("%s %s\n", program_name, "1.0");
     }
     #endif
-    #ifdef __COMPILE_3931
-    else if (__choose27 == 85)
+    #ifdef __COMPILE_4268
+    else if (__choose30 == 85)
     {
     //AddStmtKind
     __printf__("??? ?? ??:?? ");
     }
     #endif
-    #ifdef __COMPILE_3932
-    else if (__choose27 == 86)
+    #ifdef __COMPILE_4269
+    else if (__choose30 == 86)
     {
     //AddStmtKind
     __printf__("Usage: %s [OPTION]... [FILE]...\n", program_name);
     }
     #endif
-    #ifdef __COMPILE_3933
-    else if (__choose27 == 87)
+    #ifdef __COMPILE_4270
+    else if (__choose30 == 87)
     {
     //AddStmtKind
     __printf__("Written by Jean-loup Gailly.\n");
     }
     #endif
-    #ifdef __COMPILE_3934
-    else if (__choose27 == 88)
+    #ifdef __COMPILE_4271
+    else if (__choose30 == 88)
     {
     //AddStmtKind
     __printf__("\n");
     }
     #endif
-    #ifdef __COMPILE_3935
-    else if (__choose27 == 89)
+    #ifdef __COMPILE_4272
+    else if (__choose30 == 89)
     {
     //AddStmtKind
     __printf__("method  crc     date  time  ");
     }
     #endif
-    #ifdef __COMPILE_3936
-    else if (__choose27 == 90)
+    #ifdef __COMPILE_4273
+    else if (__choose30 == 90)
     {
     //AddStmtKind
     _exit(2);
     }
     #endif
-    #ifdef __COMPILE_3937
-    else if (__choose27 == 91)
+    #ifdef __COMPILE_4274
+    else if (__choose30 == 91)
     {
     //AddStmtKind
     args = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_3938
-    else if (__choose27 == 92)
+    #ifdef __COMPILE_4275
+    else if (__choose30 == 92)
     {
     //AddStmtKind
     atexit(close_stdin);
     }
     #endif
-    #ifdef __COMPILE_3939
-    else if (__choose27 == 93)
+    #ifdef __COMPILE_4276
+    else if (__choose30 == 93)
     {
     //AddStmtKind
     bytes_in = 0;
     }
     #endif
-    #ifdef __COMPILE_3940
-    else if (__choose27 == 94)
+    #ifdef __COMPILE_4277
+    else if (__choose30 == 94)
     {
     //AddStmtKind
     bytes_in = ifile_size;
     }
     #endif
-    #ifdef __COMPILE_3941
-    else if (__choose27 == 95)
+    #ifdef __COMPILE_4278
+    else if (__choose30 == 95)
     {
     //AddStmtKind
     bytes_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_3942
-    else if (__choose27 == 96)
+    #ifdef __COMPILE_4279
+    else if (__choose30 == 96)
     {
     //AddStmtKind
     bytes_out = 0;
     }
     #endif
-    #ifdef __COMPILE_3943
-    else if (__choose27 == 97)
+    #ifdef __COMPILE_4280
+    else if (__choose30 == 97)
     {
     //AddStmtKind
     bytes_out++;
     }
     #endif
-    #ifdef __COMPILE_3944
-    else if (__choose27 == 98)
+    #ifdef __COMPILE_4281
+    else if (__choose30 == 98)
     {
     //AddStmtKind
     clear_bufs();
     }
     #endif
-    #ifdef __COMPILE_3945
-    else if (__choose27 == 99)
+    #ifdef __COMPILE_4282
+    else if (__choose30 == 99)
     {
     //AddStmtKind
     close(ifd);
     }
     #endif
-    #ifdef __COMPILE_3946
-    else if (__choose27 == 100)
+    #ifdef __COMPILE_4283
+    else if (__choose30 == 100)
     {
     //AddStmtKind
     copy_stat(&istat);
     }
     #endif
-    #ifdef __COMPILE_3947
-    else if (__choose27 == 101)
+    #ifdef __COMPILE_4284
+    else if (__choose30 == 101)
     {
     //AddStmtKind
     do_exit(0);
     }
     #endif
-    #ifdef __COMPILE_3948
-    else if (__choose27 == 102)
+    #ifdef __COMPILE_4285
+    else if (__choose30 == 102)
     {
     //AddStmtKind
     do_exit(1);
     }
     #endif
-    #ifdef __COMPILE_3949
-    else if (__choose27 == 103)
+    #ifdef __COMPILE_4286
+    else if (__choose30 == 103)
     {
     //AddStmtKind
     do_exit(exit_code);
     }
     #endif
-    #ifdef __COMPILE_3950
-    else if (__choose27 == 104)
+    #ifdef __COMPILE_4287
+    else if (__choose30 == 104)
     {
     //AddStmtKind
     do_list(-1, -1);
     }
     #endif
-    #ifdef __COMPILE_3951
-    else if (__choose27 == 105)
+    #ifdef __COMPILE_4288
+    else if (__choose30 == 105)
     {
     //AddStmtKind
     do_list(ifd, method);
     }
     #endif
-    #ifdef __COMPILE_3952
-    else if (__choose27 == 106)
+    #ifdef __COMPILE_4289
+    else if (__choose30 == 106)
     {
     //AddStmtKind
     env = ((void *)0);
     }
     #endif
-    #ifdef __COMPILE_3953
-    else if (__choose27 == 107)
+    #ifdef __COMPILE_4290
+    else if (__choose30 == 107)
     {
     //AddStmtKind
     env = add_envopt(&argc, &argv, "GZIP");
     }
     #endif
-    #ifdef __COMPILE_3954
-    else if (__choose27 == 108)
+    #ifdef __COMPILE_4291
+    else if (__choose30 == 108)
     {
     //AddStmtKind
     exit_code = 1;
     }
     #endif
-    #ifdef __COMPILE_3955
-    else if (__choose27 == 109)
+    #ifdef __COMPILE_4292
+    else if (__choose30 == 109)
     {
     //AddStmtKind
     exit_code = 2;
     }
     #endif
-    #ifdef __COMPILE_3956
-    else if (__choose27 == 110)
+    #ifdef __COMPILE_4293
+    else if (__choose30 == 110)
     {
     //AddStmtKind
     exiting_signal = quiet ? 13 : 0;
     }
     #endif
-    #ifdef __COMPILE_3957
-    else if (__choose27 == 111)
+    #ifdef __COMPILE_4294
+    else if (__choose30 == 111)
     {
     //AddStmtKind
     foreground = 1;
     }
     #endif
-    #ifdef __COMPILE_3958
-    else if (__choose27 == 112)
+    #ifdef __COMPILE_4295
+    else if (__choose30 == 112)
     {
     //AddStmtKind
     free(args);
     }
     #endif
-    #ifdef __COMPILE_3959
-    else if (__choose27 == 113)
+    #ifdef __COMPILE_4296
+    else if (__choose30 == 113)
     {
     //AddStmtKind
     free(env);
     }
     #endif
-    #ifdef __COMPILE_3960
-    else if (__choose27 == 114)
+    #ifdef __COMPILE_4297
+    else if (__choose30 == 114)
     {
     //AddStmtKind
     gzip_error("can't recover suffix\n");
     }
     #endif
-    #ifdef __COMPILE_3961
-    else if (__choose27 == 115)
+    #ifdef __COMPILE_4298
+    else if (__choose30 == 115)
     {
     //AddStmtKind
     gzip_error("corrupted input -- file name too large");
     }
     #endif
-    #ifdef __COMPILE_3962
-    else if (__choose27 == 116)
+    #ifdef __COMPILE_4299
+    else if (__choose30 == 116)
     {
     //AddStmtKind
     gzip_error("internal error in shorten_name");
     }
     #endif
-    #ifdef __COMPILE_3963
-    else if (__choose27 == 117)
+    #ifdef __COMPILE_4300
+    else if (__choose30 == 117)
     {
     //AddStmtKind
     gzip_error("name too short");
     }
     #endif
-    #ifdef __COMPILE_3964
-    else if (__choose27 == 118)
+    #ifdef __COMPILE_4301
+    else if (__choose30 == 118)
     {
     //AddStmtKind
     header_bytes = 0;
     }
     #endif
-    #ifdef __COMPILE_3965
-    else if (__choose27 == 119)
+    #ifdef __COMPILE_4302
+    else if (__choose30 == 119)
     {
     //AddStmtKind
     header_bytes = inptr + 2 * sizeof(long);
     }
     #endif
-    #ifdef __COMPILE_3966
-    else if (__choose27 == 120)
+    #ifdef __COMPILE_4303
+    else if (__choose30 == 120)
     {
     //AddStmtKind
     ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1;
     }
     #endif
-    #ifdef __COMPILE_3967
-    else if (__choose27 == 121)
+    #ifdef __COMPILE_4304
+    else if (__choose30 == 121)
     {
     //AddStmtKind
     inptr = 0;
     }
     #endif
-    #ifdef __COMPILE_3968
-    else if (__choose27 == 122)
+    #ifdef __COMPILE_4305
+    else if (__choose30 == 122)
     {
     //AddStmtKind
     inptr--;
     }
     #endif
-    #ifdef __COMPILE_3969
-    else if (__choose27 == 123)
+    #ifdef __COMPILE_4306
+    else if (__choose30 == 123)
     {
     //AddStmtKind
     install_signal_handlers();
     }
     #endif
-    #ifdef __COMPILE_3970
-    else if (__choose27 == 124)
+    #ifdef __COMPILE_4307
+    else if (__choose30 == 124)
     {
     //AddStmtKind
     last_member = 0;
     }
     #endif
-    #ifdef __COMPILE_3971
-    else if (__choose27 == 125)
+    #ifdef __COMPILE_4308
+    else if (__choose30 == 125)
     {
     //AddStmtKind
     last_member = 1;
     }
     #endif
-    #ifdef __COMPILE_3972
-    else if (__choose27 == 126)
+    #ifdef __COMPILE_4309
+    else if (__choose30 == 126)
     {
     //AddStmtKind
     license();
     }
     #endif
-    #ifdef __COMPILE_3973
-    else if (__choose27 == 127)
+    #ifdef __COMPILE_4310
+    else if (__choose30 == 127)
     {
     //AddStmtKind
     list = 0;
     }
     #endif
-    #ifdef __COMPILE_3974
-    else if (__choose27 == 128)
+    #ifdef __COMPILE_4311
+    else if (__choose30 == 128)
     {
     //AddStmtKind
     method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0));
     }
     #endif
-    #ifdef __COMPILE_3975
-    else if (__choose27 == 129)
+    #ifdef __COMPILE_4312
+    else if (__choose30 == 129)
     {
     //AddStmtKind
     method = -1;
     }
     #endif
-    #ifdef __COMPILE_3976
-    else if (__choose27 == 130)
+    #ifdef __COMPILE_4313
+    else if (__choose30 == 130)
     {
     //AddStmtKind
     method = 0;
     }
     #endif
-    #ifdef __COMPILE_3977
-    else if (__choose27 == 131)
+    #ifdef __COMPILE_4314
+    else if (__choose30 == 131)
     {
     //AddStmtKind
     method = 1;
     }
     #endif
-    #ifdef __COMPILE_3978
-    else if (__choose27 == 132)
+    #ifdef __COMPILE_4315
+    else if (__choose30 == 132)
     {
     //AddStmtKind
     method = 2;
     }
     #endif
-    #ifdef __COMPILE_3979
-    else if (__choose27 == 133)
+    #ifdef __COMPILE_4316
+    else if (__choose30 == 133)
     {
     //AddStmtKind
     method = 3;
     }
     #endif
-    #ifdef __COMPILE_3980
-    else if (__choose27 == 134)
+    #ifdef __COMPILE_4317
+    else if (__choose30 == 134)
     {
     //AddStmtKind
     method = get_method(ifd);
     }
     #endif
-    #ifdef __COMPILE_3981
-    else if (__choose27 == 135)
+    #ifdef __COMPILE_4318
+    else if (__choose30 == 135)
     {
     //AddStmtKind
     no_name = decompress;
     }
     #endif
-    #ifdef __COMPILE_3982
-    else if (__choose27 == 136)
+    #ifdef __COMPILE_4319
+    else if (__choose30 == 136)
     {
     //AddStmtKind
     no_time = decompress;
     }
     #endif
-    #ifdef __COMPILE_3983
-    else if (__choose27 == 137)
+    #ifdef __COMPILE_4320
+    else if (__choose30 == 137)
     {
     //AddStmtKind
     part_nb = 0;
     }
     #endif
-    #ifdef __COMPILE_3984
-    else if (__choose27 == 138)
+    #ifdef __COMPILE_4321
+    else if (__choose30 == 138)
     {
     //AddStmtKind
     part_nb++;
     }
     #endif
-    #ifdef __COMPILE_3985
-    else if (__choose27 == 139)
+    #ifdef __COMPILE_4322
+    else if (__choose30 == 139)
     {
     //AddStmtKind
     perror(ifname);
     }
     #endif
-    #ifdef __COMPILE_3986
-    else if (__choose27 == 140)
+    #ifdef __COMPILE_4323
+    else if (__choose30 == 140)
     {
     //AddStmtKind
     perror(ofname);
     }
     #endif
-    #ifdef __COMPILE_3987
-    else if (__choose27 == 141)
+    #ifdef __COMPILE_4324
+    else if (__choose30 == 141)
     {
     //AddStmtKind
     progerror("standard input");
     }
     #endif
-    #ifdef __COMPILE_3988
-    else if (__choose27 == 142)
+    #ifdef __COMPILE_4325
+    else if (__choose30 == 142)
     {
     //AddStmtKind
     progerror(ifname);
     }
     #endif
-    #ifdef __COMPILE_3989
-    else if (__choose27 == 143)
+    #ifdef __COMPILE_4326
+    else if (__choose30 == 143)
     {
     //AddStmtKind
     progerror(ofname);
     }
     #endif
-    #ifdef __COMPILE_3990
-    else if (__choose27 == 144)
+    #ifdef __COMPILE_4327
+    else if (__choose30 == 144)
     {
     //AddStmtKind
     quiet = 0;
     }
     #endif
-    #ifdef __COMPILE_3991
-    else if (__choose27 == 145)
+    #ifdef __COMPILE_4328
+    else if (__choose30 == 145)
     {
     //AddStmtKind
     read_error();
     }
     #endif
-    #ifdef __COMPILE_3992
-    else if (__choose27 == 146)
+    #ifdef __COMPILE_4329
+    else if (__choose30 == 146)
     {
     //AddStmtKind
     remove_ofname_fd = -1;
     }
     #endif
-    #ifdef __COMPILE_3993
-    else if (__choose27 == 147)
+    #ifdef __COMPILE_4330
+    else if (__choose30 == 147)
     {
     //AddStmtKind
     remove_output_file();
     }
     #endif
-    #ifdef __COMPILE_3994
-    else if (__choose27 == 148)
+    #ifdef __COMPILE_4331
+    else if (__choose30 == 148)
     {
     //AddStmtKind
     save_orig_name = !no_name;
     }
     #endif
-    #ifdef __COMPILE_3995
-    else if (__choose27 == 149)
+    #ifdef __COMPILE_4332
+    else if (__choose30 == 149)
     {
     //AddStmtKind
     save_orig_name = 0;
     }
     #endif
-    #ifdef __COMPILE_3996
-    else if (__choose27 == 150)
+    #ifdef __COMPILE_4333
+    else if (__choose30 == 150)
     {
     //AddStmtKind
     save_orig_name = 1;
     }
     #endif
-    #ifdef __COMPILE_3997
-    else if (__choose27 == 151)
+    #ifdef __COMPILE_4334
+    else if (__choose30 == 151)
     {
     //AddStmtKind
     sigemptyset(&caught_signals);
     }
     #endif
-    #ifdef __COMPILE_3998
-    else if (__choose27 == 152)
+    #ifdef __COMPILE_4335
+    else if (__choose30 == 152)
     {
     //AddStmtKind
     strcat(ifname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_3999
-    else if (__choose27 == 153)
+    #ifdef __COMPILE_4336
+    else if (__choose30 == 153)
     {
     //AddStmtKind
     strcat(ofname, z_suffix);
     }
     #endif
-    #ifdef __COMPILE_4000
-    else if (__choose27 == 154)
+    #ifdef __COMPILE_4337
+    else if (__choose30 == 154)
     {
     //AddStmtKind
     strcpy(ifname, "stdin");
     }
     #endif
-    #ifdef __COMPILE_4001
-    else if (__choose27 == 155)
+    #ifdef __COMPILE_4338
+    else if (__choose30 == 155)
     {
     //AddStmtKind
     strcpy(ofname, "stdout");
     }
     #endif
-    #ifdef __COMPILE_4002
-    else if (__choose27 == 156)
+    #ifdef __COMPILE_4339
+    else if (__choose30 == 156)
     {
     //AddStmtKind
     strcpy(ofname, ifname);
     }
     #endif
-    #ifdef __COMPILE_4003
-    else if (__choose27 == 157)
+    #ifdef __COMPILE_4340
+    else if (__choose30 == 157)
     {
     //AddStmtKind
     time_stamp = get_stat_mtime(&istat);
     }
     #endif
-    #ifdef __COMPILE_4004
-    else if (__choose27 == 158)
+    #ifdef __COMPILE_4341
+    else if (__choose30 == 158)
     {
     //AddStmtKind
     time_stamp.tv_nsec = -1;
     }
     #endif
-    #ifdef __COMPILE_4005
-    else if (__choose27 == 159)
+    #ifdef __COMPILE_4342
+    else if (__choose30 == 159)
     {
     //AddStmtKind
     time_stamp.tv_nsec = 0;
     }
     #endif
-    #ifdef __COMPILE_4006
-    else if (__choose27 == 160)
+    #ifdef __COMPILE_4343
+    else if (__choose30 == 160)
     {
     //AddStmtKind
     to_stdout = 1;
     }
     #endif
-    #ifdef __COMPILE_4007
-    else if (__choose27 == 161)
+    #ifdef __COMPILE_4344
+    else if (__choose30 == 161)
     {
     //AddStmtKind
     total_in = -1L;
     }
     #endif
-    #ifdef __COMPILE_4008
-    else if (__choose27 == 162)
+    #ifdef __COMPILE_4345
+    else if (__choose30 == 162)
     {
     //AddStmtKind
     total_out = -1L;
     }
     #endif
-    #ifdef __COMPILE_4009
-    else if (__choose27 == 163)
+    #ifdef __COMPILE_4346
+    else if (__choose30 == 163)
     {
     //AddStmtKind
     treat_stdin();
     }
     #endif
-    #ifdef __COMPILE_4010
-    else if (__choose27 == 164)
+    #ifdef __COMPILE_4347
+    else if (__choose30 == 164)
     {
     //AddStmtKind
     try_help();
     }
     #endif
-    #ifdef __COMPILE_4011
-    else if (__choose27 == 165)
+    #ifdef __COMPILE_4348
+    else if (__choose30 == 165)
     {
     //AddStmtKind
     verbose = 0;
     }
     #endif
-    #ifdef __COMPILE_4012
-    else if (__choose27 == 166)
+    #ifdef __COMPILE_4349
+    else if (__choose30 == 166)
     {
     //AddStmtKind
     work = copy;
     }
     #endif
-    #ifdef __COMPILE_4013
-    else if (__choose27 == 167)
+    #ifdef __COMPILE_4350
+    else if (__choose30 == 167)
     {
     //AddStmtKind
     work = lzw;
     }
     #endif
-    #ifdef __COMPILE_4014
-    else if (__choose27 == 168)
+    #ifdef __COMPILE_4351
+    else if (__choose30 == 168)
     {
     //AddStmtKind
     work = unlzh;
     }
     #endif
-    #ifdef __COMPILE_4015
-    else if (__choose27 == 169)
+    #ifdef __COMPILE_4352
+    else if (__choose30 == 169)
     {
     //AddStmtKind
     work = unlzw;
     }
     #endif
-    #ifdef __COMPILE_4016
-    else if (__choose27 == 170)
+    #ifdef __COMPILE_4353
+    else if (__choose30 == 170)
     {
     //AddStmtKind
     work = unpack;
     }
     #endif
-    #ifdef __COMPILE_4017
-    else if (__choose27 == 171)
+    #ifdef __COMPILE_4354
+    else if (__choose30 == 171)
     {
     //AddStmtKind
     work = unzip;
     }
     #endif
-    #ifdef __COMPILE_4018
-    else if (__choose27 == 172)
+    #ifdef __COMPILE_4355
+    else if (__choose30 == 172)
     {
     //AddStmtKind
     write_error();
     }
     #endif
-    #ifdef __COMPILE_4019
-    else if (__choose27 == 173)
+    #ifdef __COMPILE_4356
+    else if (__choose30 == 173)
     {
     //AddStmtKind
     xunlink(ofname);
     }
     #endif
-    #ifdef __COMPILE_4020
-    else if (__choose27 == 174)
+    #ifdef __COMPILE_4357
+    else if (__choose30 == 174)
     {
     //AddStmtKind
     z_len = strlen(z_suffix);
     }
     #endif
-    #ifdef __COMPILE_4021
-    else if (__choose27 == 175)
+    #ifdef __COMPILE_4358
+    else if (__choose30 == 175)
     {
     //AddStmtKind
     z_suffix = ".gz";
     }
     #endif
-    #ifdef __COMPILE_4022
-    else if (__choose27 == 176)
+    #ifdef __COMPILE_4359
+    else if (__choose30 == 176)
     {
     //IfExitKind
-    if (__is_neg("27-176", "L1653", 7, &(exit_code), sizeof (exit_code), &(exit_code),
+    if (__is_neg("30-176", "L1653", 7, &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name),
     			 sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
         return 0;
     }
     #endif
-    #ifdef __COMPILE_4023
-    else if (__choose27 == 177)
+    #ifdef __COMPILE_4360
+    else if (__choose30 == 177)
     {
     //IfExitKind
-    if (__is_neg("27-177", "L1653", 7, &(exit_code), sizeof (exit_code), &(exit_code),
+    if (__is_neg("30-177", "L1653", 7, &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name),
     			 sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
         return 1;
     }
     #endif
-    #ifdef __COMPILE_4024
-    else if (__choose27 == 178)
+    #ifdef __COMPILE_4361
+    else if (__choose30 == 178)
     {
     //IfExitKind
-    if (__is_neg("27-178", "L1653", 7, &(exit_code), sizeof (exit_code), &(exit_code),
+    if (__is_neg("30-178", "L1653", 7, &(exit_code), sizeof (exit_code), &(exit_code),
     			 sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name),
     			 sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
         return 2;
     }
     #endif
-    int __choose28 = __choose("__SWITCH28");
-    if (__choose28 == 0)
+    int __choose31 = __choose("__SWITCH31");
+    if (__choose31 == 0)
     {
     return OK;
     
     }
-    #ifdef __COMPILE_4025
-    else if (__choose28 == 1)
+    #ifdef __COMPILE_4362
+    else if (__choose31 == 1)
     {
     //GuardKind
-    if (!__is_neg("28-1", "L1653", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
+    if (!__is_neg("31-1", "L1653", 7, &(exit_code), sizeof (exit_code), &(exit_code), sizeof (exit_code), &(presume_input_tty), sizeof (presume_input_tty), &(foreground), sizeof (foreground), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(force), sizeof (force)))
         return 0;
     
     }
