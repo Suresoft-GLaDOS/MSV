@@ -196,38 +196,6 @@ BENCHMARKS_URL=[
 "wireshark-464486e^1",
 ]
 
-CORRECT={
-    'gmp-13421':[],
-    'gmp-14167':[],
-    'gzip-884ef6d16c6':[],
-    'gzip-f17cbd13a1d0a7':[],
-    'libtiff-tests-2e42d63f':[],
-    'libtiff-tests2-0a36d7f':[],
-    'libtiff-tests2-371336d^1-371336d':[],
-    'libtiff-tests2-3edb9cd':[],
-    'libtiff-tests2-e8a47d4^1-e8a47d4':[],
-    'libtiff-tests2-eec4c06^1-eec4c06':[],
-    'lighttpd-1914':[],
-    'lighttpd-2662':[],
-    'php-09273098521913a':[],
-    'php-1056c57f':[],
-    'php-1d984a7':[],
-    'php-1e91069':[],
-    'php-2adf58':[],
-    'php-3acdca':[],
-    'php-453c954^1-453c954':[],
-    'php-5a8c917':[],
-    'php-821d716':[],
-    'php-8ba00176':[],
-    'php-b84967d':[],
-    'php-ee83270':[],
-    'php-efcb9a71':[],
-    'php-f455f8^1-f455f8':[],
-    'python-69224':[],
-    'python-69935':[],
-    'python-70059-70056':[]
-}
-
 def get_subject(benchmark):
     if 'gmp' in benchmark:
         return 'gmp'
