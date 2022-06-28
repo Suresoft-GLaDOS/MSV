@@ -89,8 +89,11 @@ if __name__=='__main__':
     result=[]
     signal.signal(signal.SIGHUP,signal.SIG_IGN)
 
-    for benchmark in benchmarks.BENCHMARKS:
-        result.append(pool.apply_async(run,(f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(benchmark)}/{benchmarks.get_workdir(benchmark)}",)))
+    # for benchmark in benchmarks.BENCHMARKS:
+    benchmark='php-1d984a7'
+    result.append(pool.apply_async(run,(f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(benchmark)}/{benchmarks.get_workdir(benchmark)}",)))
+    benchmark='php-ee83270'
+    result.append(pool.apply_async(run,(f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(benchmark)}/{benchmarks.get_workdir(benchmark)}",)))
 
     pool.close()
     pool.join()

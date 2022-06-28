@@ -54,7 +54,9 @@ def download(i,benchmark):
         exit(1)
     
     for file in os.listdir('/root/project/MSV/scripts/low-fl'):
+        print(file)
         if benchmark in file:
+            print(benchmark)
             result=subprocess.run(['cp','-rf',f'/root/project/MSV/scripts/low-fl/{file}',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/profile_localization.res'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
             if result.returncode!=0:
                 print(result.stdout.decode('utf-8'))
