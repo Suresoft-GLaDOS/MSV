@@ -3,13 +3,15 @@ import benchmarks
 import download
 from getopt import getopt
 import subprocess
+import check_result
 
 COMMANDS=('list','checkout','search')
 MAIN_HELP="""Usage: python3 run.py <command> [args]
 <command>: list, checkout or search
 list: print list of all versions.
 checkout: download and generate meta-program.
-search: search generated meta-program, find patches."""
+search: search generated meta-program, find patches.
+check: Check search result, and print plausible patches and correct patch"""
 
 CHECKOUT_HELP="""Usage: python3 run.py checkout <benchmark|all>
 Download benchmark and generate meta-program.
@@ -30,6 +32,11 @@ Result is saved in <version>-out/msv-result.json.
 pass_result: result of all tests. If value is true, it is plausible patch.
 result: result of failing tests. If value is true, it passed failing tests.
 config: information of patch. Map with correct-patch.csv above."""
+
+CHECK_HELP="""Usage: python3 run.py check <benchmark|all>
+Print summary of search result.
+Print list of plausible patches, and correct patch if exist.
+Run this command after search finish."""
 
 def handle_list(is_help:bool=False):
     if is_help:
@@ -88,6 +95,40 @@ def handle_search(version:str):
         print(result.stdout.decode('utf-8'))
         exit(1)
 
+def handle_check(benchmark:str):
+    if benchmark=='all':
+        for i,v in enumerate(benchmarks.BENCHMARKS):
+            plausibles,correct=check_result.get_results(v)
+            print(f'Total plausible patches: {len(plausibles)}')
+            for plausible in plausibles:
+                print(plausible)
+            
+            if correct is not None:
+                print(f'Correct patch found: {correct}')
+            else:
+                print(f'Correct patch not found')
+        return
+    index=-1
+    for i,v in enumerate(benchmarks.BENCHMARKS):
+        if benchmark==v:
+            index=i
+            break
+    
+    if index==-1:
+        print(f'Unknown benchmark: {benchmark}')
+        print('Run "python3 run.py list" to get list of all benchmarks.')
+        return
+    
+    plausibles,correct=check_result.get_results(benchmark)
+    print(f'Total plausible patches: {len(plausibles)}')
+    for plausible in plausibles:
+        print(plausible)
+    
+    if correct is not None:
+        print(f'Correct patch found: {correct}')
+    else:
+        print(f'Correct patch not found')
+
 if __name__=='__main__':
     opts,args=getopt(argv[1:],'h',['help'])
 
@@ -115,3 +156,8 @@ if __name__=='__main__':
             print(SEARCH_HELP)
         else:
             handle_search(args[1])
+    elif args[0]=='check':
+        if len(args)==1 or is_help:
+            print(CHECK_HELP)
+        else:
+            handle_check(args[1])
