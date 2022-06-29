@@ -5,9 +5,9 @@ from getopt import getopt
 import subprocess
 import check_result
 
-COMMANDS=('list','checkout','search')
+COMMANDS=('list','checkout','search','check')
 MAIN_HELP="""Usage: python3 run.py <command> [args]
-<command>: list, checkout or search
+<command>: list, checkout, search or check
 list: print list of all versions.
 checkout: download and generate meta-program.
 search: search generated meta-program, find patches.
@@ -20,7 +20,7 @@ NOTE: checkout all may need a lot of times to download!"""
 
 SEARCH_HELP="""Usage: python3 run.py search <benchmark|all>
 Search generated meta-program.
-Run searching with timeout 6 hour.
+Run searching with 20,000 iteration limit.
 <benchmark|all>: benchmark to search. If you use 'all', search all benchmarks.
 NOTE: search all may need a lot of times to run!
 
@@ -68,7 +68,7 @@ def handle_checkout(version:str):
 def handle_search(version:str):
     if version=='all':
         for i,v in enumerate(benchmarks.BENCHMARKS):
-            result=subprocess.run(['python3','/root/project/MSV-search/msv-search.py',"-o",f"/root/project/MSV-experiment/{v}-out","-t","180000","-w",f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}","-p","/root/project/MSV","--use-pass-test","--use-exp-alpha", "--use-prophet-score","-T","21600",
+            result=subprocess.run(['python3','/root/project/MSV-search/msv-search.py',"-o",f"/root/project/MSV-experiment/{v}-out","-t","180000","-w",f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}","-p","/root/project/MSV","--use-pass-test","--use-exp-alpha", "--use-prophet-score","-E","20000",
                         "-m","guided","--",f"/root/project/MSV/tools/{benchmarks.get_subject(v)}-test.py",
                         f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}/src", f'{benchmarks.get_test_dir(v)}', f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
             if result.returncode!=0:
@@ -88,7 +88,7 @@ def handle_search(version:str):
         print('Run "python3 run.py list" to get list of all benchmarks.')
         return
     
-    result=subprocess.run(['python3','/root/project/MSV-search/msv-search.py',"-o",f"/root/project/MSV-experiment/{version}-out","-t","180000","-w",f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(version)}/{benchmarks.get_workdir(version)}","-p","/root/project/MSV","--use-pass-test","--use-exp-alpha", "--use-prophet-score","-T","21600",
+    result=subprocess.run(['python3','/root/project/MSV-search/msv-search.py',"-o",f"/root/project/MSV-experiment/{version}-out","-t","180000","-w",f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(version)}/{benchmarks.get_workdir(version)}","-p","/root/project/MSV","--use-pass-test","--use-exp-alpha", "--use-prophet-score","-E","20000",
                 "-m","guided","--",f"/root/project/MSV/tools/{benchmarks.get_subject(version)}-test.py",
                 f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(version)}/{benchmarks.get_workdir(version)}/src", f'{benchmarks.get_test_dir(version)}', f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(version)}/{benchmarks.get_workdir(version)}"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     if result.returncode!=0:
