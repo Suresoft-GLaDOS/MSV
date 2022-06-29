@@ -185,7 +185,7 @@ def run_test(test_file,subdir,ori_dir,id,timeout):
     DIST_MIN = 0
     #print(f"make {test_file}");
     #ret = subprocess.call([f"make {test_file}"], shell=True);
-    proc = subprocess.Popen([f"make {test_file}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True);
+    proc = subprocess.Popen([f"make {test_file}"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True);
     try:
         so, se = proc.communicate(timeout=timeout)
         if (proc.returncode != 0):
