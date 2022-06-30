@@ -66,6 +66,7 @@ def handle_checkout(version:str):
     download.download(index,version)
 
 def handle_search(version:str):
+    print(f'Start searching {version}')
     if version=='all':
         for i,v in enumerate(benchmarks.BENCHMARKS):
             if 'php' in v:
@@ -104,6 +105,7 @@ def handle_search(version:str):
     if result.returncode!=0:
         print(result.stdout.decode('utf-8'))
         exit(1)
+    print('search finished')
 
 def handle_check(benchmark:str):
     if benchmark=='all':
