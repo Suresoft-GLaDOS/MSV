@@ -25,9 +25,10 @@ def run_test(id,test,commands,timeout):
     
     failed=False
     for command in final_commands:
-        proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         try:
             so,se=proc.communicate(timeout=timeout)
+            print(so.decode('utf-8'))
             if proc.returncode!=0:
                 failed=True
                 break

@@ -245,6 +245,27 @@ public:
                     resRExpr[S] = std::make_pair(RHS, newE);
                 }
             }
+            if (MsvExt.getValue() && BinaryOperator::classof(RHS)){
+                // Remove LHS or RHS if original RHS is a BinaryOperator
+                BinaryOperator *BO = llvm::dyn_cast<BinaryOperator>(RHS);
+                
+                // Try remove RHS
+                StmtReplacer R(ctxt, start_stmt);
+                Expr *newE = getParenExpr(ctxt, BO->getLHS());
+                R.addRule(RHS, newE);
+                Stmt *S = R.getResult();
+                res.insert(S);
+                resRExpr[S] = std::make_pair(RHS, newE);
+
+                // Now try remove LHS
+                StmtReplacer R2(ctxt, start_stmt);
+                newE = getParenExpr(ctxt, BO->getRHS());
+                R2.addRule(RHS, newE);
+                S = R2.getResult();
+                res.insert(S);
+                resRExpr[S] = std::make_pair(RHS, newE);
+            }
+
             QualType QT = RHS->getType();
             ExprListTy exprs = L->getCandidateLocalVars(QT);
             if (exprs.size() != 0) {
@@ -1436,7 +1457,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
-        L->msvExt=false;
+        L->msvExt=MsvExt.getValue();
         Expr* placeholder;
         ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
 

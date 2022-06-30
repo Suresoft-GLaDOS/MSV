@@ -21,6 +21,7 @@
 #include "ASTUtils.h"
 #include "clang/AST/OperationKinds.h"
 #include <map>
+#include <iostream>
 
 using namespace clang;
 
@@ -68,12 +69,12 @@ class LocalActiveVarVisitor : public clang::RecursiveASTVisitor<LocalActiveVarVi
     std::set<Stmt*> StmtStackSet;
     FunctionDecl *curFD, *targetFD;
     Stmt* targetStmt;
-    std::set<VarDecl*> invalidDeclSet;
+    std::set<VarDecl*> validDeclSet;
     bool valid, pass;
 public:
     LocalActiveVarVisitor(const StmtStackTy &stack, FunctionDecl *targetFD):
       StmtStackSet(stack.begin(), stack.end()), curFD(NULL),
-      targetFD(targetFD), targetStmt(stack.back()), invalidDeclSet(), valid(true), pass(false) { }
+      targetFD(targetFD), targetStmt(stack.back()), validDeclSet(), valid(true), pass(false) { }
     ~LocalActiveVarVisitor() { }
 
     virtual bool TraverseFunctionDecl(FunctionDecl *FD) {
@@ -82,8 +83,11 @@ public:
     }
     virtual bool TraverseStmt(Stmt *S) {
         if (S == NULL) return true;
-        if (S == targetStmt)
+        if (S == targetStmt){
             pass = true;
+            bool ret = RecursiveASTVisitor<LocalActiveVarVisitor>::TraverseStmt(S);
+            return ret;
+        }
         if (valid)
             if (!llvm::isa<DeclStmt>(S) && (StmtStackSet.count(S) == 0)) {
                 valid = false;
@@ -94,11 +98,14 @@ public:
         return RecursiveASTVisitor<LocalActiveVarVisitor>::TraverseStmt(S);
     }
     virtual bool VisitVarDecl(VarDecl *VD) {
-        if ((!valid) || (curFD != targetFD) || pass) {
-            invalidDeclSet.insert(VD);
+        if (((!valid) || (curFD != targetFD) || pass)) {
+            // validDeclSet.insert(VD);
             // if (VD->getNameAsString().find("timeout")!=std::string::npos){
-            //     printf("%s %s %s\n",VD->getNameAsString().c_str(),curFD->getNameAsString().c_str(),targetFD->getNameAsString().c_str());
+            //     printf("%s\n",VD->getNameAsString().c_str());
             // }
+        }
+        else{
+            validDeclSet.insert(VD);
         }
         return true;
     }
@@ -109,7 +116,7 @@ public:
         for (DeclContext::decl_iterator it = targetFD->decls_begin(); it != targetFD->decls_end(); ++it) {
             VarDecl *VD = llvm::dyn_cast<VarDecl>(*it);
             if (VD)
-                if (invalidDeclSet.count(VD) == 0 && VD->getNameAsString()!="_PySys_ProfileFunc" && VD->getNameAsString()!="_PySys_TraceFunc")
+                if (validDeclSet.count(VD) != 0 && VD->getNameAsString()!="_PySys_ProfileFunc" && VD->getNameAsString()!="_PySys_TraceFunc")
                     ret.insert(VD);
         }
         return ret;
@@ -900,10 +907,9 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL,
     for (size_t i = 0; i < exprs.size(); i++) {
         //exprs[i]->dump();
         QualType QT = exprs[i]->getType();
-        if (isMSVExt) // Use real type also for MSV extension
-            if (!QT->isIntegerType() && !QT->isPointerType() && !QT->isRealType()) continue;
-        else
-            if (!QT->isIntegerType() && !QT->isPointerType()) continue;
+        if (isMSVExt || msvExt) {// Use real type also for MSV extension
+            if (!QT->isIntegerType() && !QT->isPointerType() && (!QT->isFloatingType() && (isMSVExt || msvExt))) continue;
+        }
         //llvm::errs() << "Type correct!\n";
         MemberExpr *ME = llvm::dyn_cast<MemberExpr>(exprs[i]);
         if (ME) {
