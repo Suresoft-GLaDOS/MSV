@@ -467,7 +467,7 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
 
             int var=atoi(getenv(variable_temp));
             int oper=atoi(getenv(operator_temp));
-            int constant=atoi(getenv(constant_temp));
+            long long constant=(long long)atoi(getenv(constant_temp));
             long long value=0;
             long long value2=0;
 
