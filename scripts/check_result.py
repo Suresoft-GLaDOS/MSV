@@ -36,9 +36,9 @@ def get_results(benchmark:str):
                 patch_id+=f'-{config["variable"]}-{config["constant"]}'
         
         if is_plausible:
-            plausibles.append(patch_id)
+            plausibles.append((patch_id,iteration,f'{config["file"]}:{config["line"]}'))
         if correct_id is not None and patch_id==correct_id:
-            correct=patch_id
+            correct=(patch_id,iteration,f'{config["file"]}:{config["line"]}')
 
     return plausibles,correct
 
@@ -49,9 +49,9 @@ if __name__=="__main__":
             plausibles,correct=get_results(cur_benchmark)
             print(f'Total plausible patches: {len(plausibles)}')
             for plausible in plausibles:
-                print(plausible)
+                print(f'{plausible[0]} in iteration {plausible[1]}, location: {plausible[2]}')
             
             if correct is not None:
-                print(f'Correct patch found: {correct}')
+                print(f'Correct patch found: {correct[0]} in iteration {correct[1]}, location: {correct[2]}')
             else:
                 print(f'Correct patch not found')

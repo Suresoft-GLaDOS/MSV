@@ -27,8 +27,6 @@
 #include <queue>
 #include <math.h>
 
-#define DISABLE_IFSTMT_INSERT
-
 using namespace clang;
 
 llvm::cl::opt<bool> ReplaceExt("replace-ext", llvm::cl::init(false),
@@ -1330,36 +1328,36 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             }
         }
 
-#ifndef DISABLE_IFSTMT_INSERT
-        // insert if_stmt without atom replace if possible
-        std::set<Stmt*> stmts = L->getGlobalCandidateIfStmts();
-        for (std::set<Stmt*>::iterator it = stmts.begin(); it != stmts.end(); ++it) {
-            bool valid = L->isValidStmt(*it, NULL);
-            if (valid) {
-                if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
-                    continue;
-                RepairCandidate rc;
-                rc.actions.clear();
-                rc.actions.push_back(RepairAction(loc,
-                            RepairAction::InsertMutationKind, *it));
-                if (learning) {
-                    rc.score = getLocScore(n);
-                }
-                else {
-                    rc.score = getPriority(n);
-                    if (is_first) {
-                        rc.score += PRIORITY_ALPHA;
-                        if (is_func_block)
-                            rc.score += PRIORITY_ALPHA/2;
+        if (MsvExt.getValue()){
+            // insert if_stmt without atom replace if possible
+            std::set<Stmt*> stmts = L->getGlobalCandidateIfStmts();
+            for (std::set<Stmt*>::iterator it = stmts.begin(); it != stmts.end(); ++it) {
+                bool valid = L->isValidStmt(*it, NULL);
+                if (valid) {
+                    if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                        continue;
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc,
+                                RepairAction::InsertMutationKind, *it));
+                    if (learning) {
+                        rc.score = getLocScore(n);
                     }
+                    else {
+                        rc.score = getPriority(n);
+                        if (is_first) {
+                            rc.score += PRIORITY_ALPHA;
+                            if (is_func_block)
+                                rc.score += PRIORITY_ALPHA/2;
+                        }
+                    }
+                    rc.kind = RepairCandidate::AddIfStmtKind;
+                    rc.original=n;
+                    rc.is_first = is_first;
+                    tmp_map[stmtToString(*ctxt, *it)] = rc;
                 }
-                rc.kind = RepairCandidate::AddIfStmtKind;
-                rc.original=n;
-                rc.is_first = is_first;
-                tmp_map[stmtToString(*ctxt, *it)] = rc;
             }
         }
-#endif
         // This tmp_map is used to eliminate identical candidate generated
         for (std::map<std::string, RepairCandidate>::iterator it = tmp_map.begin();
                 it != tmp_map.end(); ++it) {

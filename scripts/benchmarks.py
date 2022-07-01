@@ -215,7 +215,10 @@ def get_subject(benchmark):
 
 def get_workdir(benchmark:str):
     first_dash=benchmark.find('-')
-    return benchmark[:first_dash]+'-case'+benchmark[first_dash:]+'/'+benchmark+'-workdir'
+    if benchmark.startswith('php-bug'):
+        return benchmark+'/'+benchmark+'-workdir'
+    else:
+        return benchmark[:first_dash]+'-case'+benchmark[first_dash:]+'/'+benchmark+'-workdir'
 
 def get_test_dir(benchmark:str):
     workdir=get_workdir(benchmark)

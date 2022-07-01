@@ -49,7 +49,10 @@ List of benchmarks are saved in benchmarks.py.""")
 def handle_checkout(version:str):
     if version=='all':
         for i,v in enumerate(benchmarks.BENCHMARKS):
-            download.download(i,v)
+            if v.startswith('php-bug'):
+                download.download_new_php(i,v)
+            else:
+                download.download(i,v)
         return
 
     index=-1
@@ -63,7 +66,10 @@ def handle_checkout(version:str):
         print('Run "python3 run.py list" to get list of all benchmarks.')
         return
     
-    download.download(index,version)
+    if version.startswith('php-bug'):
+        download.download_new_php(index,version)
+    else:
+        download.download(index,version)
 
 def handle_search(version:str):
     print(f'Start searching {version}')
@@ -113,10 +119,10 @@ def handle_check(benchmark:str):
             plausibles,correct=check_result.get_results(v)
             print(f'Total plausible patches: {len(plausibles)}')
             for plausible in plausibles:
-                print(plausible)
+                print(f'{plausible[0]} in iteration {plausible[1]}, location: {plausible[2]}')
             
             if correct is not None:
-                print(f'Correct patch found: {correct}')
+                print(f'Correct patch found: {correct[0]} in iteration {correct[1]}, location: {correct[2]}')
             else:
                 print(f'Correct patch not found')
         return
@@ -134,10 +140,10 @@ def handle_check(benchmark:str):
     plausibles,correct=check_result.get_results(benchmark)
     print(f'Total plausible patches: {len(plausibles)}')
     for plausible in plausibles:
-        print(plausible)
+        print(f'{plausible[0]} in iteration {plausible[1]}, location: {plausible[2]}')
     
     if correct is not None:
-        print(f'Correct patch found: {correct}')
+        print(f'Correct patch found: {correct[0]} in iteration {correct[1]}, location: {correct[2]}')
     else:
         print(f'Correct patch not found')
 
