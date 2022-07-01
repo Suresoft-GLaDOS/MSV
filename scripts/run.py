@@ -113,10 +113,10 @@ def handle_check(benchmark:str):
             plausibles,correct=check_result.get_results(v)
             print(f'Total plausible patches: {len(plausibles)}')
             for plausible in plausibles:
-                print(plausible)
+                print(f'{plausible[0]} in iteration {plausible[1]}, location: {plausible[2]}')
             
             if correct is not None:
-                print(f'Correct patch found: {correct}')
+                print(f'Correct patch found: {correct[0]} in iteration {correct[1]}, location: {correct[2]}')
             else:
                 print(f'Correct patch not found')
         return
@@ -134,10 +134,10 @@ def handle_check(benchmark:str):
     plausibles,correct=check_result.get_results(benchmark)
     print(f'Total plausible patches: {len(plausibles)}')
     for plausible in plausibles:
-        print(plausible)
+        print(f'{plausible[0]} in iteration {plausible[1]}, location: {plausible[2]}')
     
     if correct is not None:
-        print(f'Correct patch found: {correct}')
+        print(f'Correct patch found: {correct[0]} in iteration {correct[1]}, location: {correct[2]}')
     else:
         print(f'Correct patch not found')
 
