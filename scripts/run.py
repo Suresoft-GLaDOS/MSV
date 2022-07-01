@@ -49,7 +49,10 @@ List of benchmarks are saved in benchmarks.py.""")
 def handle_checkout(version:str):
     if version=='all':
         for i,v in enumerate(benchmarks.BENCHMARKS):
-            download.download(i,v)
+            if v.startswith('php-bug'):
+                download.download_new_php(i,v)
+            else:
+                download.download(i,v)
         return
 
     index=-1
@@ -63,7 +66,10 @@ def handle_checkout(version:str):
         print('Run "python3 run.py list" to get list of all benchmarks.')
         return
     
-    download.download(index,version)
+    if version.startswith('php-bug'):
+        download.download_new_php(index,version)
+    else:
+        download.download(index,version)
 
 def handle_search(version:str):
     print(f'Start searching {version}')

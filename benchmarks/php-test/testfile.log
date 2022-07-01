@@ -23129,3 +23129,5 @@ php/ext/sybase_ct/tests/bug29064.phpt
 php/ext/sybase_ct/tests/bug30312.phpt
 11564
 php/ext/sybase_ct/tests/test_connection_caching.phpt
+11565
+tests/lang/bug55754.phpt
