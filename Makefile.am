@@ -1,1 +1,1 @@
-SUBDIRS = src wrap include benchmarks
+SUBDIRS = src wrap include
