@@ -6,3 +6,4 @@ fi
 benchmark=$1
 /root/project/MSV/scripts/run.sh checkout $1
 /root/project/MSV/scripts/run.sh search $1
+/root/project/MSV/scripts/run.sh check $1
