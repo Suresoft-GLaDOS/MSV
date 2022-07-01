@@ -881,36 +881,40 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                             }
 
                         }
-                        else if (line.find("undefined reference to")!=std::string::npos){
-                            size_t pos=line.find("undefined reference to");
-                            size_t first=line.find("'");
-                            if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
-                                first = line.find("`", pos);
-                            size_t last=line.find("'",first+1);
-                            std::string function=line.substr(first+1,last-first-1);
+                        // else if (line.find("undefined reference to")!=std::string::npos){
+                        //     size_t pos=line.find("undefined reference to");
+                        //     size_t first=line.find("'");
+                        //     if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                        //         first = line.find("`", pos);
+                        //     size_t last=line.find("'",first+1);
+                        //     std::string function=line.substr(first+1,last-first-1);
 
-                            for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                                if (it->second.find(function)!=std::string::npos){
-                                    if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
-                                        added=true;
-                                    compileErrorMacros.insert(it->first);
-                                }
-                            }
-                        }
+                        //     for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                        //         if (it->second.find(function)!=std::string::npos){
+                        //             if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                        //                 added=true;
+                        //             compileErrorMacros.insert(it->first);
+                        //         }
+                        //     }
+                        // }
 
-                        else{
+                        else {
                             if (!isRe){
                                 size_t start=line.find(":");
                                 size_t end=line.find(":",start+1);
                                 std::string lineStr=line.substr(start+1,end-start-1);
-                                if (lineStr[0]>='0' || lineStr[0]<='9'){
+                                if (lineStr[0]>='0' && lineStr[0]<='9'){
                                     unsigned long lineNum=stoi(lineStr);
                                     lineNum=lineNum-succ_id.size()-macros.size()-1;
                                     // printf("%lu ",lineNum);
                                     if (fileCodeMap.count(fileName)==0) {
-                                        size_t dot=fileName.find(".");
+                                        size_t dot=fileName.find(".c");
                                         fileName=fileName.substr(0,dot);
                                         fileName+=".c";
+                                    }
+                                     if (fileName.find("./")!=std::string::npos) {
+                                        size_t dot=fileName.find("./");
+                                        fileName.replace(dot,2,"");
                                     }
 
                                     std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
@@ -928,6 +932,22 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                                         }
                                     }
                                     if(!found) isRe=true;
+                                }
+                                else if (line.find("undefined reference to")!=std::string::npos){
+                                    size_t pos=line.find("undefined reference to");
+                                    size_t first=line.find("'");
+                                    if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                                        first = line.find("`", pos);
+                                    size_t last=line.find("'",first+1);
+                                    std::string function=line.substr(first+1,last-first-1);
+
+                                    for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                        if (it->second.find(function)!=std::string::npos){
+                                            if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                                added=true;
+                                            compileErrorMacros.insert(it->first);
+                                        }
+                                    }
                                 }
                                 else isRe=true;
                             }

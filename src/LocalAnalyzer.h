@@ -38,6 +38,7 @@ class LocalAnalyzer {
     std::set<clang::VarDecl*> LocalVarDecls;
     std::set<long long> IntegerConstants;
     std::set<clang::Expr*> MemberStems;
+    std::set<clang::Expr*> msvMembers;
     std::map<std::string, std::set<size_t> > ExprDis;
     std::vector<clang::LabelDecl*> LocalLabels;
     bool inside_loop;
@@ -68,6 +69,7 @@ class LocalAnalyzer {
     //std::set<SynResTy> disabled_res;
 
 public:
+    bool msvExt;
     LocalAnalyzer(clang::ASTContext *ctxt, GlobalAnalyzer* G, ASTLocTy loc, bool naive);
 
     ~LocalAnalyzer() { }
@@ -152,7 +154,7 @@ public:
 
     //clang::CallExpr* getIsNegCall(clang::Expr* is_neg_fn, size_t line_number);
 
-    ExprListTy getCondCandidateVars(clang::SourceLocation SL);
+    ExprListTy getCondCandidateVars(clang::SourceLocation SL,bool isMSVExt=false);
 
 /*    clang::Expr* synthesizeResult(ExprListTy exps,
             const std::map<unsigned long, std::vector<unsigned long> > &negative_records,

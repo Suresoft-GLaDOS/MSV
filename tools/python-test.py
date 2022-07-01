@@ -359,22 +359,12 @@ cases = [
 
 def run_test(case_str,id,timeout):
     if id == 243:
-        print("243")
         return
     # print(case_str)
-    msv_tmp_out = f"/tmp/{uuid.uuid4()}.out"
-    if "MSV_OUTPUT_DISTANCE_FILE" in environ:
-        environ["MSV_TMP_OUT"] = msv_tmp_out
     proc = subprocess.Popen(["./python Lib/test/regrtest.py -w " + case_str], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     # ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str], shell = True);
     try:
         so,se = proc.communicate(timeout=timeout)
-        if "MSV_OUTPUT_DISTANCE_FILE" in environ:
-            with open(msv_tmp_out, "w") as f:
-                # print("so:" + so.decode("utf-8"))
-                # print("se:" + se.decode("utf-8"))
-                f.write(so.decode("utf-8"))
-                f.write(se.decode("utf-8"))
         if proc.returncode == 0:
             print (id)
     except:
@@ -387,29 +377,6 @@ def run_test(case_str,id,timeout):
             child.kill()
         proc.kill()
     
-    if "MSV_OUTPUT_DISTANCE_FILE" in environ:
-        exp_file = path.join(environ["MSV_PATH"], "benchmarks", "python-exp", str(id) + ".exp")
-        exp = ""
-        out = ""
-        if path.exists(exp_file):
-            with open(exp_file, "r") as f:
-                exp = f.read()
-        if path.exists(msv_tmp_out):
-            with open(msv_tmp_out, "r") as f:
-                out = f.read()
-            # print(f"cp {msv_tmp_out} {exp_file}")
-            # system(f"cp {msv_tmp_out} {exp_file}")
-            remove(msv_tmp_out)
-        dist = 0
-        if len(exp) > 10000:
-            dist = abs(len(exp) - len(out))
-        else:
-            seqMatch = SequenceMatcher(None, exp, out)
-            match = seqMatch.find_longest_match(0, len(exp), 0, len(out)).size
-            dist = max(len(out) - match, len(exp) - match)
-        with open(environ["MSV_OUTPUT_DISTANCE_FILE"], "w") as myfile:
-            myfile.write(str(dist))
-
 if __name__ == "__main__":
     opts, args = getopt.getopt(argv[1 :], "p:t:j:i:");
     profile_dir = "";

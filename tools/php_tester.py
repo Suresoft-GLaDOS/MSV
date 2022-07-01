@@ -15,7 +15,7 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
-from genericpath import isfile
+from genericpath import isdir, isfile
 import sys
 import subprocess
 from os import path, chdir, getcwd, environ, system, mkdir, walk,remove
@@ -269,6 +269,8 @@ def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
     else:
         temp_dir=work_dir+'/__cleantests/'+temp_dir+'_tests'
     cur_temp_dir=temp_dir+'/'+str(i)
+    if isdir(cur_temp_dir):
+        shutil.rmtree(cur_temp_dir)
     mkdir(cur_temp_dir)
     chdir(cur_temp_dir)
     shutil.copyfile("../" + str(i).zfill(5) + ".phpt", "./" + str(i).zfill(5) + ".phpt")
@@ -326,9 +328,6 @@ def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
                 test_section = False;
             elif (test_section == True) and (_is_start(tokens[0])):
                 if (tokens[0] == "PASS") or ((len(tokens) > 3) and tokens[3] == "PASS"):
-                    if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
-                        with open(environ['MSV_OUTPUT_DISTANCE_FILE'],'w') as f:
-                            f.write('0\n')
                     return (i,ret.returncode,so,se)
     except subprocess.TimeoutExpired:
         pid=ret.pid
@@ -341,14 +340,8 @@ def run_test(src_dir,work_dir,profile_dir,i,timeout,temp_dir=''):
             child.kill()
         ret.kill()
 
-        if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
-            with open(environ['MSV_OUTPUT_DISTANCE_FILE'],'w') as f:
-                f.write(str(output_test(i,cur_temp_dir)))
         return (None,1,'','Timeout expired!')
 
-    if 'MSV_OUTPUT_DISTANCE_FILE' in environ:
-        with open(environ['MSV_OUTPUT_DISTANCE_FILE'],'w') as f:
-            f.write(str(output_test(i,cur_temp_dir)))
     return (None,ret.returncode,'success','')
 
 class php_tester:
@@ -396,11 +389,6 @@ class php_tester:
         target=s.copy()        
         processes=[]
 
-        if "MSV_PATH" in environ:
-            helper = path.join(environ["MSV_PATH"], "tools", "run-tests.php")
-            system(f'mv {self.repo_dir}/run-tests.php {self.repo_dir}/run-tests-bak.php')
-            system(f'cp -rf {helper} {self.repo_dir}/')
-
         pool=mp.Pool(self.max_cpu)
 
         for i in target:
@@ -416,9 +404,6 @@ class php_tester:
 
         system(f'killall --wait {self.repo_dir}/sapi/cli/php > /dev/null 2>&1')
         chdir(ori_dir)
-        if "MSV_PATH" in environ:
-            system(f'rm -rf {self.repo_dir}/run-tests.php')
-            system(f'mv {self.repo_dir}/run-tests-bak.php {self.repo_dir}/run-tests.php')
         return ret;
 
     # clean-up required before running test()

@@ -46,6 +46,7 @@ if __name__ == "__main__":
     src_dir = args[0]
     test_dir = args[1]
     work_dir = args[2]
+    temp_dir='temp'
         
     if len(args) > 3:
         ids = args[3:]

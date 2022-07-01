@@ -45,7 +45,7 @@ def preprocessGen(src_file, out_file, args, idx):
         new_args.append(out_file);
 
     cmd = clang_cmd + " " + " ".join(new_args[1:]);
-    print ("Invoking: " + cmd)
+    # print ("Invoking: " + cmd)
     ret = subprocess.run(cmd.split());
     return ret.returncode
 
@@ -61,7 +61,7 @@ def rewriteSourceGen(src_file, out_file, args, idx):
     cmd = clang_cmd + " -Xclang -load -Xclang " + profile_plugin_path + " -Xclang -plugin -Xclang err-profiler-gen " + \
         "-Xclang -plugin-arg-err-profiler-gen -Xclang " + out_file + \
         " -Xclang -plugin-arg-err-profiler-gen -Xclang " + index_file + " " + " ".join(new_args[1:]);
-    print ("Invoking: " + cmd)
+    # print ("Invoking: " + cmd)
     ret = subprocess.run(cmd.split());
     return ret.returncode
 
@@ -71,7 +71,7 @@ def rewriteSource(src_file, out_file, text_file, args, idx):
     cmd = clang_cmd + " -Xclang -load -Xclang " + profile_plugin_path + " -Xclang -plugin -Xclang err-profiler-rewrite " + \
         " -Xclang -plugin-arg-err-profiler-rewrite -Xclang " + text_file + \
         " -Xclang -plugin-arg-err-profiler-rewrite -Xclang " + out_file + " " + " ".join(new_args[1:]);
-    print("Invoking: " + cmd)
+    # print("Invoking: " + cmd)
     ret = subprocess.run(cmd.split());
     return ret.returncode
 
@@ -153,14 +153,14 @@ def fix_argv(s):
 # else:
 #     clang_cmd="clang++"
 
-print(f'argv: {argv}')
+# print(f'argv: {argv}')
 if len(argv)==1 and ('gcc' in argv[0] or 'cc' in argv[0] or 'g++' in argv[0]):
-    print('Run only gcc!')
+    # print('Run only gcc!')
     exit(0)
 
 if '.s' in argv[-1]:
     argv[0]='/usr/bin/gcc'
-    print(f'Invoking {argv}')
+    # print(f'Invoking {argv}')
     ret=system(' '.join(argv))
     exit(ret)
 

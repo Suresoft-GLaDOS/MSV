@@ -2,14 +2,14 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
 /* the clang cmd full path */
-#define CLANG_CMD "/usr/bin/clang"
+#define CLANG_CMD "/usr/local/bin/clang"
 
 /* the location of the wrapper for instrument the file */
-#define CLANG_WRAP_PATH "/root/MSV/wrap"
+#define CLANG_WRAP_PATH "/root/project/MSV/wrap"
 
 /* the extra include path arguments that need to pass to clang when build AST
    tree */
-#define EXTRA_CLANG_INCLUDE_PATH " "
+#define EXTRA_CLANG_INCLUDE_PATH " -I/usr/local/include  -I/usr/local/lib/clang/11.1.0/include  -I/usr/include/x86_64-linux-gnu  -I/usr/include  "
 
 /* the gcc cmd full path */
 #define GCC_CMD "/usr/bin/gcc"
@@ -20,11 +20,11 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
 
-/* Define to 1 if you have the <memory.h> header file. */
-#define HAVE_MEMORY_H 1
-
 /* Define to 1 if you have the <stdint.h> header file. */
 #define HAVE_STDINT_H 1
+
+/* Define to 1 if you have the <stdio.h> header file. */
+#define HAVE_STDIO_H 1
 
 /* Define to 1 if you have the <stdlib.h> header file. */
 #define HAVE_STDLIB_H 1
@@ -77,7 +77,9 @@
 /* The size of `void *', as computed by sizeof. */
 #define SIZEOF_VOID_P 8
 
-/* Define to 1 if you have the ANSI C header files. */
+/* Define to 1 if all of the C90 standard headers exist (not just the ones
+   required in a freestanding environment). This macro is provided for
+   backward compatibility; new code need not use it. */
 #define STDC_HEADERS 1
 
 /* Version number of package */

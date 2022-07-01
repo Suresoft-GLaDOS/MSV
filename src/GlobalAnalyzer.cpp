@@ -207,7 +207,7 @@ GlobalAnalyzer::GlobalAnalyzer(ASTContext &C, const std::string &filename): C(C)
             SourceLocation src_loc = VD->getLocation();
             SourceManager &manager = C.getSourceManager();
             SourceLocation exp_loc = manager.getExpansionLoc(src_loc);
-            if (!isSystemHeader(manager.getFilename(exp_loc).str())) {
+            if (!isSystemHeader(manager.getFilename(exp_loc).str()) && VD->getNameAsString()!="_PySys_ProfileFunc" && VD->getNameAsString()!="_PySys_TraceFunc") {
                //VD->dump();
                GlobalVarDecls.insert(VD);
             }

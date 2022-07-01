@@ -21,6 +21,7 @@
 #include "ASTUtils.h"
 #include "clang/AST/OperationKinds.h"
 #include <map>
+#include <iostream>
 
 using namespace clang;
 
@@ -68,12 +69,12 @@ class LocalActiveVarVisitor : public clang::RecursiveASTVisitor<LocalActiveVarVi
     std::set<Stmt*> StmtStackSet;
     FunctionDecl *curFD, *targetFD;
     Stmt* targetStmt;
-    std::set<VarDecl*> invalidDeclSet;
+    std::set<VarDecl*> validDeclSet;
     bool valid, pass;
 public:
     LocalActiveVarVisitor(const StmtStackTy &stack, FunctionDecl *targetFD):
       StmtStackSet(stack.begin(), stack.end()), curFD(NULL),
-      targetFD(targetFD), targetStmt(stack.back()), invalidDeclSet(), valid(true), pass(false) { }
+      targetFD(targetFD), targetStmt(stack.back()), validDeclSet(), valid(true), pass(false) { }
     ~LocalActiveVarVisitor() { }
 
     virtual bool TraverseFunctionDecl(FunctionDecl *FD) {
@@ -82,8 +83,11 @@ public:
     }
     virtual bool TraverseStmt(Stmt *S) {
         if (S == NULL) return true;
-        if (S == targetStmt)
+        if (S == targetStmt){
             pass = true;
+            bool ret = RecursiveASTVisitor<LocalActiveVarVisitor>::TraverseStmt(S);
+            return ret;
+        }
         if (valid)
             if (!llvm::isa<DeclStmt>(S) && (StmtStackSet.count(S) == 0)) {
                 valid = false;
@@ -94,8 +98,14 @@ public:
         return RecursiveASTVisitor<LocalActiveVarVisitor>::TraverseStmt(S);
     }
     virtual bool VisitVarDecl(VarDecl *VD) {
-        if ((!valid) || (curFD != targetFD) || pass) {
-            invalidDeclSet.insert(VD);
+        if (((!valid) || (curFD != targetFD) || pass)) {
+            // validDeclSet.insert(VD);
+            // if (VD->getNameAsString().find("timeout")!=std::string::npos){
+            //     printf("%s\n",VD->getNameAsString().c_str());
+            // }
+        }
+        else{
+            validDeclSet.insert(VD);
         }
         return true;
     }
@@ -106,7 +116,7 @@ public:
         for (DeclContext::decl_iterator it = targetFD->decls_begin(); it != targetFD->decls_end(); ++it) {
             VarDecl *VD = llvm::dyn_cast<VarDecl>(*it);
             if (VD)
-                if (invalidDeclSet.count(VD) == 0)
+                if (validDeclSet.count(VD) != 0 && VD->getNameAsString()!="_PySys_ProfileFunc" && VD->getNameAsString()!="_PySys_TraceFunc")
                     ret.insert(VD);
         }
         return ret;
@@ -115,11 +125,12 @@ public:
 
 class MemberExprStemVisitor : public RecursiveASTVisitor<MemberExprStemVisitor> {
     std::map<std::string, Expr*> res;
+    std::map<std::string, Expr*> msvRes;
     StmtStackTy &stackStmt;
     ASTContext *ctxt;
     bool valid;
 public:
-    MemberExprStemVisitor(ASTContext *ctxt,StmtStackTy &stackStmt): res(), ctxt(ctxt),stackStmt(stackStmt),valid(true) {}
+    MemberExprStemVisitor(ASTContext *ctxt,StmtStackTy &stackStmt): res(), ctxt(ctxt),stackStmt(stackStmt),valid(true),msvRes() {}
     ~MemberExprStemVisitor() {}
     virtual bool VisitMemberExpr(MemberExpr *ME) {
         if (valid){
@@ -143,7 +154,20 @@ public:
             std::string tmp = stripLine(stmtToString(*ctxt, base));
             if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
                 res[tmp] = base;
+
+            ValueDecl *vDecl=ME->getMemberDecl();
+            DeclContext *DC=vDecl->getDeclContext();
+            if (DC->isRecord()) {
+                RecordDecl *RD=llvm::dyn_cast<RecordDecl>(DC);
+                for (RecordDecl::field_iterator it = RD->field_begin(); it != RD->field_end(); ++it) {
+                    FieldDecl *FD = *it;
+                    MemberExpr *newMember=MemberExpr::CreateImplicit(*ctxt,base,ME->isArrow(),FD,FD->getType(),ExprValueKind::VK_LValue,ExprObjectKind::OK_Ordinary);
+                    tmp = stripLine(stmtToString(*ctxt, newMember));
+                    if ((tmp.size() < 2) || (tmp[0] != '-') || (tmp[1] != '-'))
+                        msvRes[tmp] = newMember;
+                }
             }
+        }
         return true;
     }
 
@@ -166,6 +190,15 @@ public:
             ret.insert(it->second);
         return ret;
     }
+
+    virtual std::set<Expr*> getMsvStemExprSet() {
+        std::set<Expr*> ret;
+        ret.clear();
+        for (std::map<std::string, Expr*>::iterator it = msvRes.begin(); it != msvRes.end(); ++it)
+            ret.insert(it->second);
+        return ret;
+    }
+
 };
 
 class ExprDisVisitor: public RecursiveASTVisitor<ExprDisVisitor> {
@@ -248,7 +281,7 @@ bool isBehind(ASTContext *ctxt,SourceLocation source,SourceLocation target){
 }
 
 LocalAnalyzer::LocalAnalyzer(ASTContext *ctxt, GlobalAnalyzer *G, ASTLocTy loc, bool naive):
-ctxt(ctxt), loc(loc), G(G), curFunc(NULL), LocalVarDecls(), MemberStems(), naive(naive) {
+ctxt(ctxt), loc(loc), G(G), curFunc(NULL), LocalVarDecls(), MemberStems(), naive(naive),msvExt(false),msvMembers() {
     StmtStackVisitor visitor1(loc);
     TranslationUnitDecl *TransUnit = ctxt->getTranslationUnitDecl();
     visitor1.TraverseDecl(TransUnit);
@@ -275,6 +308,7 @@ ctxt(ctxt), loc(loc), G(G), curFunc(NULL), LocalVarDecls(), MemberStems(), naive
     MemberExprStemVisitor visitor3(ctxt,stmtStack);
     visitor3.TraverseFunctionDecl(curFunc);
     MemberStems = visitor3.getStemExprSet();
+    msvMembers=visitor3.getMsvStemExprSet();
 
     ExprDis.clear();
     ExprDisVisitor visitor4(ctxt, ExprDis, loc);
@@ -477,6 +511,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidateCalleeFunction(CallExpr *CE
             if (CE->getNumArgs() < FD->getNumParams())
                 continue;
         }
+        if (FD->getNameAsString().find("__trident")!=std::string::npos) continue;
         QualType FT = FD->getType();
         if (!FT->isFunctionProtoType())
             continue;
@@ -530,6 +565,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidateCalleeExtFunction(clang::Ca
             // We don't consider variadic function
             continue;
         }
+        if (FD->getNameAsString().find("__trident")!=std::string::npos) continue;
 
         QualType FT = FD->getType();
         if (!FT->isFunctionProtoType())
@@ -588,6 +624,21 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidatePointerForMemset(size_t max
             ret.push_back(UO);
         }
     }
+    if (msvExt){
+        for (std::set<Expr*>::iterator it = msvMembers.begin(); it != msvMembers.end(); ++it) {
+            Expr* E = *it;
+            // if (getExprDistance(E, loc.stmt) > max_dis) continue;
+            QualType T = E->getType();
+            if (T->isPointerType())
+                ret.push_back(E);
+            // else {
+                UnaryOperator *UO = UnaryOperator::Create(*ctxt,E, UO_AddrOf,
+                        ctxt->getPointerType(T), VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+                ret.push_back(UO);
+            // }
+        }
+    }
+
     return ret;
 }
 
@@ -843,7 +894,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCandidateEnumConstant(EnumConstantDe
     return G->getCandidateEnumConstant(ECD);
 }
 
-LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL) {
+LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL,bool isMSVExt) {
     SourceManager &SM = ctxt->getSourceManager();
     bool invalid = false;
     size_t line_number = SM.getExpansionLineNumber(SL, &invalid);
@@ -856,7 +907,9 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL)
     for (size_t i = 0; i < exprs.size(); i++) {
         //exprs[i]->dump();
         QualType QT = exprs[i]->getType();
-        if (!QT->isIntegerType() && !QT->isPointerType()) continue;
+        if (isMSVExt || msvExt) {// Use real type also for MSV extension
+            if (!QT->isIntegerType() && !QT->isPointerType() && (!QT->isFloatingType() && (isMSVExt || msvExt))) continue;
+        }
         //llvm::errs() << "Type correct!\n";
         MemberExpr *ME = llvm::dyn_cast<MemberExpr>(exprs[i]);
         if (ME) {
@@ -879,8 +932,9 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL)
     }
     sort(tmp_v.begin(), tmp_v.end());
     for (size_t i = 0; i < tmp_v.size(); i++){
-        if (ctxt->getTypeSize(tmp_v[i].second->getType())<=64)
+        if (ctxt->getTypeSize(tmp_v[i].second->getType())<=64){
             ret.push_back(tmp_v[i].second);
+        }
     }
     return ret;
 }

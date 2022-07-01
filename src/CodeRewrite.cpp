@@ -375,6 +375,8 @@ std::string toString(RepairCandidate::CandidateKind kind){
             return "MSVExtReplaceFunctionInConditionKind";
         case RepairCandidate::MSVExtRemoveStmtKind:
             return "MSVExtRemoveStmtKind";
+        case RepairCandidate::MSVExtRemoveConditionKind:
+            return "MSVExtRemoveConditionKind";
         default:
             return "TerribleKind";
     }
@@ -559,7 +561,8 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
 
             if (rc[j].actions[i].kind == RepairAction::ReplaceMutationKind){
                 std::string newStmt="//"+toString(rc[j].kind)+"\n";
-                if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind || rc[j].kind==RepairCandidate::ConditionKind || rc[j].kind==RepairCandidate::MSVExtReplaceFunctionInConditionKind){
+                if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind || rc[j].kind==RepairCandidate::ConditionKind || rc[j].kind==RepairCandidate::MSVExtReplaceFunctionInConditionKind
+                            || rc[j].kind==RepairCandidate::MSVExtRemoveConditionKind){
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                         newStmt += ";\n";

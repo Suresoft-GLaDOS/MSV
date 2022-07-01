@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -64,17 +64,17 @@ def compileit( out_dir, compile_only = False, config_only = False, paraj = 0):
         system("git clean -f -d");
         ret = subprocess.call(["sh autogen.sh"], shell=True , env = my_env);
         if ret != 0:
-                print "Failed to run autogen.sh!";
+                print("Failed to run autogen.sh!")
                 chdir(ori_dir);
                 exit(1);
         ret = subprocess.call(["autoreconf -fvi"], shell=True, env = my_env);
         if (ret != 0):
-                print "Autoreconf failed!";
+                print("Autoreconf failed!")
                 chdir(ori_dir);
                 exit(1);
         ret = subprocess.call(["./configure","--disable-fast-install","--with-jpeg-include-dir="+deps_dir+"/jpeg-9a-build/include","--with-jpeg-lib-dir="+deps_dir+"/jpeg-9a-build/lib","--disable-dependency-tracking"], env = my_env);
         if ret != 0:
-                print "Configure Error!";
+                print("Configure Error!")
                 chdir(ori_dir);
                 exit(1);
         system("make clean");
@@ -85,7 +85,7 @@ def compileit( out_dir, compile_only = False, config_only = False, paraj = 0):
         else:
             ret = subprocess.call(["make", "-j", str(paraj),"CFLAGS='-fPIC'"], env = my_env);
         if ret != 0:
-            print "Failed to make!";
+            print("Failed to make!")
             exit(1);
 
     #ret = subprocess.call(["make", "install"], env = my_env);
@@ -129,15 +129,15 @@ if __name__=="__main__":
             paraj = int(a);
 
     if (len(args) < 1) or (print_usage):
-        print "Usage: libtiff-build.py <directory> [-d src_file | -l] [-h]";
+        print("Usage: libtiff-build.py <directory> [-d src_file | -l] [-h]")
         exit(0);
 
     out_dir = args[0];
     # fetch from github if the directory does not exist
     if path.exists(out_dir):
-        print "Working with existing directory: " + out_dir;
+        print("Working with existing directory: " + out_dir)
     else:
-        print "Non-exists directory";
+        print("Non-exists directory")
         exit(1);
 
     compileit(out_dir, compile_only, config_only, paraj);
@@ -145,10 +145,10 @@ if __name__=="__main__":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src);
         if len(args) > 1:
             out_file = open(args[1], "w");
-            print >> out_file, builddir;
-            print >> out_file, buildargs;
+            print(builddir,file=out_file)
+            print(buildargs,file=out_file)
             out_file.close();
         else:
-            print builddir;
-            print buildargs;
+            print(builddir)
+            print(buildargs)
 
