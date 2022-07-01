@@ -983,6 +983,34 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
 
                 }
             }
+
+            if (oper->getOpcode()==BO_LAnd || oper->getOpcode()==BO_LOr || oper->getOpcode()==BO_And || oper->getOpcode()==BO_Or){
+                // Remove LHS first
+                ASTLocTy loc = getNowLocation(stmt);
+
+                RepairCandidate rc;
+                rc.actions.clear();
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, oper->getRHS()));
+                if (learning)
+                    rc.score = getLocScore(stmt);
+                else
+                    rc.score = 4*PRIORITY_ALPHA;
+                rc.kind = RepairCandidate::ReplaceKind;
+                rc.original=stmt;
+                q.push_back(rc);
+
+                // Remove RHS next
+                RepairCandidate rc2;
+                rc2.actions.clear();
+                rc2.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, oper->getLHS()));
+                if (learning)
+                    rc2.score = getLocScore(stmt);
+                else
+                    rc2.score = 4*PRIORITY_ALPHA;
+                rc2.kind = RepairCandidate::ReplaceKind;
+                rc2.original=stmt;
+                q.push_back(rc2);
+            }
         }
     }
 
