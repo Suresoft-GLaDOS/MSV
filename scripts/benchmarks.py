@@ -95,6 +95,21 @@ BENCHMARKS=[
 "wireshark-9a2ba01",
 # "wireshark-b51eba6", # Meta-program fail
 "wireshark-464486e^1-464486e",
+"php-bug-2011-10-15-0a1cc5f01c-05c5c8958e",
+"php-bug-2011-10-16-1f78177e2b-d4ae4e79db",
+"php-bug-2011-11-01-ceac9dc490-9b0d73af1d",
+"php-bug-2011-11-02-c1d520d19d-9b86852d6e",
+"php-bug-2011-11-02-de50e98a07-8d520d6296",
+"php-bug-2011-11-11-fcbfbea8d2-c1e510aea8",
+"php-bug-2011-11-15-236120d80e-fb37f3b20d",
+"php-bug-2011-11-19-51a4ae6576-bc810a443d",
+"php-bug-2011-12-10-74343ca506-52c36e60c4",
+"php-bug-2012-01-01-80dd931d40-7c3177e5ab",
+"php-bug-2012-01-27-544e36dfff-acaf9c5227",
+"php-bug-2012-02-08-ff63c09e6f-6672171672",
+"php-bug-2012-03-04-60dfd64bf2-34fe62619d",
+"php-bug-2012-03-08-0169020e49-cdc512afb3",
+"php-bug-2012-03-11-3954743813-d4f05fbffc"
 ]
 
 BENCHMARKS_URL=[
@@ -194,6 +209,21 @@ BENCHMARKS_URL=[
 "wireshark-9a2ba01",
 # "wireshark-b51eba6", # Meta-program fail
 "wireshark-464486e^1",
+"php-bug-2011-10-15-0a1cc5f01c-05c5c8958e",
+"php-bug-2011-10-16-1f78177e2b-d4ae4e79db",
+"php-bug-2011-11-01-ceac9dc490-9b0d73af1d",
+"php-bug-2011-11-02-c1d520d19d-9b86852d6e",
+"php-bug-2011-11-02-de50e98a07-8d520d6296",
+"php-bug-2011-11-11-fcbfbea8d2-c1e510aea8",
+"php-bug-2011-11-15-236120d80e-fb37f3b20d",
+"php-bug-2011-11-19-51a4ae6576-bc810a443d",
+"php-bug-2011-12-10-74343ca506-52c36e60c4",
+"php-bug-2012-01-01-80dd931d40-7c3177e5ab",
+"php-bug-2012-01-27-544e36dfff-acaf9c5227",
+"php-bug-2012-02-08-ff63c09e6f-6672171672",
+"php-bug-2012-03-04-60dfd64bf2-34fe62619d",
+"php-bug-2012-03-08-0169020e49-cdc512afb3",
+"php-bug-2012-03-11-3954743813-d4f05fbffc"
 ]
 
 def get_subject(benchmark):

@@ -480,7 +480,12 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
 
                 if (i==var){
                     if (isGoodAddr(p, sz)) {
-                        memcpy(&value, p, sz);
+                        if (sz==sizeof(int)){
+                            int temp_v=0;
+                            memcpy(&temp_v, p, sz);
+                            value=(long long) temp_v;
+                        }
+                        else memcpy(&value, p, sz);
                     }
                     else {
                         value = MAGIC_NUMBER;
@@ -509,6 +514,7 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                         break;
                     case 2: 
                         result = (value >constant);
+                        printf("result: %lld %lld %d\n",value,constant,result);
                         break;
                     case 3: 
                         result = (value <constant);
