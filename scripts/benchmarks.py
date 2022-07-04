@@ -95,6 +95,7 @@ BENCHMARKS=[
 "wireshark-9a2ba01",
 # "wireshark-b51eba6", # Meta-program fail
 "wireshark-464486e^1-464486e",
+"php-bug-2011-10-15-0a1cc5f01c-05c5c8958e",
 ]
 
 BENCHMARKS_URL=[
@@ -194,6 +195,7 @@ BENCHMARKS_URL=[
 "wireshark-9a2ba01",
 # "wireshark-b51eba6", # Meta-program fail
 "wireshark-464486e^1",
+"php-bug-2011-10-15-0a1cc5f01c-05c5c8958e",
 ]
 
 def get_subject(benchmark):

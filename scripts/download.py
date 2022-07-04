@@ -133,10 +133,10 @@ def download_new_php(i:int,id:str):
                 buggy_file=line.strip()
                 result=subprocess.run(['cp','-rf',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.BENCHMARKS[i]}/diffs/{buggy_file}-{buggy_rev}',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.BENCHMARKS[i]}/php/{buggy_file}'])
 
-        result=subprocess.run(['mkdir',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}'])
-        result=subprocess.run(['cp','-rf',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.BENCHMARKS[i]}/php',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
-        result=subprocess.run(['cp','-rf',f'/root/project/MSV/benchmarks/php-test',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/tests'])
-        result=subprocess.run(['mkdir',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/_cleantests'])
+        result=subprocess.run(['mkdir',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(id)}'])
+        result=subprocess.run(['cp','-rf',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.BENCHMARKS[i]}/php',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(id)}/src'])
+        result=subprocess.run(['cp','-rf',f'/root/project/MSV/benchmarks/php-test',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(id)}/tests'])
+        result=subprocess.run(['mkdir',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(id)}/__cleantests'])
 
         print(f'Clean build {id}!')
         if subject=='php':
@@ -157,15 +157,13 @@ def download_new_php(i:int,id:str):
     if result.returncode!=0:
         print(result.stdout.decode('utf-8'))
         exit(1)
-    result=subprocess.run(['cp','-rf',f'/root/project/MSV-experiment/conf/{subject}/{id}.revlog',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(id)}/{id}.revlog'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    result=subprocess.run(['cp','-rf',f'/root/project/MSV-experiment/conf/{subject}/{id}.revlog',f'/root/project/MSV-experiment/benchmarks/{subject}/{id}/{id}.revlog'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     if result.returncode!=0:
         print(result.stdout.decode('utf-8'))
         exit(1)
     
     for file in os.listdir('/root/project/MSV/scripts/low-fl'):
-        print(file)
         if id in file:
-            print(id)
             result=subprocess.run(['cp','-rf',f'/root/project/MSV/scripts/low-fl/{file}',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(id)}/profile_localization.res'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
             if result.returncode!=0:
                 print(result.stdout.decode('utf-8'))
