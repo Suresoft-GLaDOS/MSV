@@ -28,7 +28,6 @@ def run_test(id,test,commands,timeout):
         proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         try:
             so,se=proc.communicate(timeout=timeout)
-            print(so.decode('utf-8'))
             if proc.returncode!=0:
                 failed=True
                 break
