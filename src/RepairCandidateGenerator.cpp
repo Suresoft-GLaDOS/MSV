@@ -199,6 +199,19 @@ public:
                     }
                 }
             }
+
+            if (MsvExt.getValue()){
+                BinaryOperator *newShift=BinaryOperator::Create(*ctxt,getNewIntegerLiteral(ctxt,1),getNewIntegerLiteral(ctxt,5),BO_Shl,ctxt->IntTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),newShift);
+                UnaryOperator *newNot=UnaryOperator::Create(*ctxt,newParen,UO_LNot,ctxt->IntTy,VK_RValue,OK_Ordinary,SourceLocation(),false,FPOptionsOverride());
+                BinaryOperator *newAnd=BinaryOperator::Create(*ctxt,DRE,newNot,BO_LAnd,ctxt->IntTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+
+                StmtReplacer R(ctxt, start_stmt);
+                R.addRule(DRE, newAnd);
+                Stmt *S = R.getResult();
+                res.insert(S);
+                resRExpr[S] = std::make_pair(DRE, newAnd);
+            }
         }
         return true;
     }
