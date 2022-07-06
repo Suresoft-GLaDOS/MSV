@@ -219,7 +219,7 @@ SourceLocation findTrueEndLoc(ASTContext &C, Stmt* S) {
         }
     }
     const char * bracketBuf = strchr(stmtBuf, '}');
-    if (*(bracketBuf+1)=='\'') {
+    if (*(bracketBuf+1)=='\'' || *(bracketBuf+1)==']') {
         bracketBuf = strchr(bracketBuf+1, '}');
     }
     if (semiBuf == NULL)

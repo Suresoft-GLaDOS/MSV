@@ -179,8 +179,9 @@ def num2testcase( case ):
         return "tiff2rgba-rgb-3c-16b.sh"
     elif case=="78":
         return "tiff2rgba-rgb-3c-8b.sh"
+    elif case=='79':
+        return 'libtiff-extra-test'
     else:
-        print ("Error on case name")
         return 'SOME';
 
 import psutil
@@ -196,9 +197,15 @@ def run_test(testcase,id,env,timeout):
         test_script.writelines(lines)
         test_script.close()
 
-    proc = subprocess.Popen(["make", "check", "TESTS="+testcase],env = env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    if 'libtiff-extra-test-2' == testcase:
+        proc=subprocess.Popen(['bash', '-c', "../tools/tiff2pdf ../.dpp/00112-libtiff-heapoverflow-_TIFFmemcpy 2>&1 | tee /tmp/dpp_test_result && grep -q 0000000872 /tmp/dpp_test_result"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    elif 'libtiff-extra-test-3' == testcase:
+        proc=subprocess.Popen(['bash', '-c', "../tools/tiffcp -i ../.dpp/00119-libtiff-shift-long-tif_jpeg /tmp/foo |& tee /tmp/log && grep 'runtime error' /tmp/log"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    else:
+        proc = subprocess.Popen(["make", "check", "TESTS="+testcase],env = env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     try:
         so,se=proc.communicate(timeout=timeout)
+        print(so)
         if proc.returncode==0:
             print (id)
     except:
@@ -252,7 +259,12 @@ if __name__ == "__main__":
         result=[]
         pool=mp.Pool(max_parallel)
         for i in ids:
-            testcase = num2testcase(i);
+            testcase = num2testcase(i)
+            if testcase=='libtiff-extra-test':
+                if 'libtiff-2-workdir' in work_dir:
+                    testcase='libtiff-extra-test-2'
+                elif 'libtiff-3-workdir' in work_dir:
+                    testcase='libtiff-extra-test-3'
             run_test(testcase,int(i),my_env,timeout)
             # result.append(pool.apply_async(run_test,(testcase,int(i),my_env,timeout,)))
 
