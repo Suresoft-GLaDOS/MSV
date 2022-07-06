@@ -205,7 +205,6 @@ def run_test(testcase,id,env,timeout):
         proc = subprocess.Popen(["make", "check", "TESTS="+testcase],env = env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     try:
         so,se=proc.communicate(timeout=timeout)
-        print(so)
         if proc.returncode==0:
             print (id)
     except:
