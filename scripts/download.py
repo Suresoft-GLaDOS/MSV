@@ -20,33 +20,35 @@ def download(i,benchmark):
         if result.returncode!=0:
             print(result.stdout.decode('utf-8'))
             exit(1)
-        
+
         if benchmark=='libtiff-tests-e0b51f3e':
             result=subprocess.run(['mv',f'/root/project/MSV-experiment/benchmarks/libtiff/libtiff-case-tests-e0b51f3e/libtiff-tests-e0b51f3e-workdir/__backup0','/root/project/MSV-experiment/benchmarks/libtiff/libtiff-case-tests-e0b51f3e/libtiff-tests-e0b51f3e-workdir/src/tools/tools/tiffcp.c'])
             result=subprocess.run(['rm',f'/root/project/MSV-experiment/benchmarks/libtiff/libtiff-case-tests-e0b51f3e/libtiff-tests-e0b51f3e-workdir/__backup.log'])
         elif benchmark=='python-69372-69368':
             result=subprocess.run(['mv',f'/root/project/MSV-experiment/benchmarks/python/python-case-69372-69368/python-69372-69368-workdir/__backup0','/root/project/MSV-experiment/benchmarks/python/python-case-69372-69368/python-69372-69368-workdir/src/Python/peephole.c'])
             result=subprocess.run(['rm',f'/root/project/MSV-experiment/benchmarks/python/python-case-69372-69368/python-69372-69368-workdir/__backup.log'])
-        elif '__backup.log' in os.listdir(f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}'):
-            with open(f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/__backup.log','r') as f:
-                lines=f.readlines()
-                for i,line in enumerate(lines):
-                    result=subprocess.run(['mv',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/__backup{i}',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src/{line.strip()}'])
 
-        print(f'Clean build {benchmark}!')
-        if subject=='php':
-            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/php-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
-        elif subject=='libtiff':
-            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/libtiff-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
-        elif subject=='lighttpd':
-            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/lighttpd-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
-        else:
-            result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
-        if result.returncode!=0:
-            exit(1)
-        print('Clean build success')
     else:
         print(f'{benchmark} is already downloaded, skip!')
+        
+    if '__backup.log' in os.listdir(f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}'):
+        with open(f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/__backup.log','r') as f:
+            lines=f.readlines()
+            for i,line in enumerate(lines):
+                result=subprocess.run(['mv',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/__backup{i}',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src/{line.strip()}'])
+
+    print(f'Clean build {benchmark}!')
+    if subject=='php':
+        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/php-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
+    elif subject=='libtiff':
+        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/libtiff-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
+    elif subject=='lighttpd':
+        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/lighttpd-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
+    else:
+        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
+    if result.returncode!=0:
+        exit(1)
+    print('Clean build success')
 
     result=subprocess.run(['cp','-rf',f'/root/project/MSV-experiment/conf/{subject}/{benchmark}-repair.conf',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/repair.conf'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     if result.returncode!=0:

@@ -119,7 +119,7 @@ import os
 import random
 import logging
 
-CONTAINER_NAME=f'msv-{random.randint()}'
+CONTAINER_NAME=f'msv-{random.randint(1,100000000)}'
 TOTAL_BENCHMARKS=111
 LOGGER=logging.Logger(__name__)
 
