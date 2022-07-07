@@ -115,7 +115,9 @@ def genTmpFilename():
         ret = "/tmp/pclang_";
         for i in range(0, 8):
             ret = ret + str(random.randint(0, 9));
-        if src_type != "cpp":
+        if src_type=='cxx':
+            ret=ret+'.cxx'
+        elif src_type != "cpp":
             ret = ret + ".c";
         else:
             ret = ret + ".cpp";
@@ -197,10 +199,12 @@ for i in range(1, len(argv)):
         idx = arg.rfind('.');
         if idx != -1:
             ext = arg[idx+1:];
-            if (ext == "c" or ext == "cpp"):
+            if (ext == "c" or ext == "cpp" or ext=='cxx'):
                 src_file = argv[i];
                 if (ext == "cpp"):
                     src_type = "cpp";
+                elif ext=='cxx':
+                    src_type = "cxx";
                 src_idx = i;
 
 # This is a link command, I am going to link the library
