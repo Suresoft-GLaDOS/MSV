@@ -7,8 +7,12 @@
 		"switch_number":	6,
 		"new_names":	[]
 	}, {
+		"original_name":	"",
+		"switch_number":	9,
+		"new_names":	[]
+	}, {
 		"original_name":	"rpl_fprintf",
-		"switch_number":	10,
+		"switch_number":	13,
 		"new_names":	[{
 				"new_name":	"__asprintf",
 				"case_number":	3
@@ -42,7 +46,7 @@
 			}]
 	}, {
 		"original_name":	"rpl_fprintf",
-		"switch_number":	14,
+		"switch_number":	17,
 		"new_names":	[{
 				"new_name":	"_IO_sgetn",
 				"case_number":	2
@@ -427,7 +431,7 @@
 			}]
 	}, {
 		"original_name":	"rpl_fflush",
-		"switch_number":	16,
+		"switch_number":	19,
 		"new_names":	[{
 				"new_name":	"__overflow",
 				"case_number":	2
@@ -647,11 +651,7 @@
 			}]
 	}, {
 		"original_name":	"",
-		"switch_number":	18,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	19,
+		"switch_number":	21,
 		"new_names":	[]
 	}, {
 		"original_name":	"",
@@ -659,7 +659,7 @@
 		"new_names":	[]
 	}, {
 		"original_name":	"",
-		"switch_number":	23,
+		"switch_number":	25,
 		"new_names":	[]
 	}, {
 		"original_name":	"",
@@ -667,6 +667,10 @@
 		"new_names":	[]
 	}, {
 		"original_name":	"",
-		"switch_number":	28,
+		"switch_number":	29,
+		"new_names":	[]
+	}, {
+		"original_name":	"",
+		"switch_number":	31,
 		"new_names":	[]
 	}]

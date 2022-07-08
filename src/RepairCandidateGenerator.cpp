@@ -907,6 +907,30 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 q.push_back(rc);
 
             }
+
+            if (ParenExpr::classof(root->getLHS())){
+                ParenExpr *lhsParen=llvm::dyn_cast<ParenExpr>(root->getLHS());
+                if (BinaryOperator::classof(lhsParen->getSubExpr())){
+                    BinaryOperator *lhsBin=llvm::dyn_cast<BinaryOperator>(lhsParen->getSubExpr());
+                    if (lhsBin->isLogicalOp()){
+                        BinaryOperator *newOper=BinaryOperator::Create(*ctxt,lhsBin->getLHS(),
+                                root->getRHS(),root->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                                SourceLocation(),FPOptionsOverride());
+
+                        IfStmt *newIf=duplicateIfStmt(ctxt,stmt,newOper);
+                        RepairCandidate rc;
+                        rc.actions.clear();
+                        rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newIf));
+                        if (learning)
+                            rc.score = getLocScore(stmt);
+                        else
+                            rc.score = 4*PRIORITY_ALPHA;
+                        rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
+                        rc.original=stmt;
+                        q.push_back(rc);
+                    }
+                }
+            }
         }
     }
 
