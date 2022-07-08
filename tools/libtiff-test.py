@@ -187,16 +187,6 @@ def num2testcase( case ):
 import psutil
 
 def run_test(testcase,id,env,timeout):
-    if '.sh' in testcase:
-        test_script=open(testcase,'r')
-        lines=test_script.readlines()
-        test_script.close()
-        if lines[0]=='#!/bin/sh\n':
-            lines[0]='#!/bin/bash\n'
-        test_script=open(testcase,'w')
-        test_script.writelines(lines)
-        test_script.close()
-
     if 'libtiff-extra-test-2' == testcase:
         proc=subprocess.Popen(['bash', '-c', "../tools/tiff2pdf ../.dpp/00112-libtiff-heapoverflow-_TIFFmemcpy 2>&1 | tee /tmp/dpp_test_result && grep -q 0000000872 /tmp/dpp_test_result"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     elif 'libtiff-extra-test-3' == testcase:
@@ -255,6 +245,7 @@ if __name__ == "__main__":
         my_env = environ;
         my_env["GENEXPOUT"] = "0";
         my_env["CMPEXPOUT"] = "1";
+        my_env['PATH']='/root/project/MSV/wrap:'+my_env['PATH']
         result=[]
         pool=mp.Pool(max_parallel)
         for i in ids:

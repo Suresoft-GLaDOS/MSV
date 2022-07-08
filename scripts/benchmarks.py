@@ -80,6 +80,24 @@ BENCHMARKS=[
 'wireshark-03d7987b',
 ]
 
+FAILED_BENCHMARKS=[
+"gmp-14167", # Build fail
+"libtiff-tests-bdba15c", # Meta-program fail
+"lighttpd-2786", # Meta-program fail
+"php-4756d7", # No patch in search space
+"php-5bb0a44", # No patch in search space
+"php-c2fe893", # No patch in search space
+"php-cebe2a213^1-cebe2a213", # No patch in search space
+"python-69710", # No patch in search space
+"python-70101-70098", # No patch in search space
+"wireshark-b51eba6", # Meta-program fail
+"libtiff-tests-8a184dc",
+'libtiff-tests-740a6187',
+'libtiff-tests-e779b6cd',
+'wireshark-6d801a205',
+'wireshark-03d7987b',
+]
+
 BENCHMARKS_URL=[
 "gmp-13421",
 "gmp-14167", # Build fail
@@ -155,7 +173,7 @@ BENCHMARKS_URL=[
 "wireshark-b51eba6", # Meta-program fail
 "wireshark-464486e^1",
 
-"libtiff-bug-2008-12-30-362dee5-565eaa2",
+"libtiff-bug-2008-12-30-362dee5-565eaa2", # Meta-program fail
 'libtiff-bug-2007-07-08-bd2f947-ccc10c7',
 'libtiff-bug-2007-11-23-82e378c-cf05a83',
 'wireshark-bug-35419-35414',

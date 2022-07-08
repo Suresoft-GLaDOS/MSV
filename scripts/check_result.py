@@ -30,14 +30,14 @@ def get_results(benchmark:str):
         config=result['config'][0]
         patch_id=f'{config["switch"]}-{config["case"]}'
 
-        if 'operator' in config:
-            patch_id+=f':{config["operator"]}'
-            if 'variable' in config:
-                patch_id+=f'-{config["variable"]}-{config["constant"]}'
+        # if 'operator' in config:
+        #     patch_id+=f':{config["operator"]}'
+        #     if 'variable' in config:
+        #         patch_id+=f'-{config["variable"]}-{config["constant"]}'
         
         if is_plausible:
             plausibles.append((patch_id,iteration,f'{config["file"]}:{config["line"]}'))
-        if correct_id is not None and patch_id==correct_id:
+        if correct_id is not None and patch_id in correct_id:
             correct=(patch_id,iteration,f'{config["file"]}:{config["line"]}')
 
     return plausibles,correct

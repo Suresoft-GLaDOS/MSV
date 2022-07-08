@@ -61,7 +61,7 @@ def compileit( out_dir, compile_only = False, config_only = False, paraj = 0):
             fix_makefile_am("Makefile.am");
         if path.exists('libtiff/tif_jbig.c'):
             fix_tif_jbig('libtiff/tif_jbig.c')
-        system("git clean -f -d");
+        system("git clean -f -d -e test");
         ret = subprocess.call(["sh autogen.sh"], shell=True , env = my_env);
         if ret != 0:
                 print("Failed to run autogen.sh!")

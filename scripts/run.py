@@ -49,10 +49,14 @@ List of benchmarks are saved in benchmarks.py.""")
 def handle_checkout(version:str):
     if version=='all':
         for i,v in enumerate(benchmarks.BENCHMARKS):
+            if v in benchmarks.FAILED_BENCHMARKS:
+                continue
             if v.startswith('php-bug'):
                 download.download_new_php(i,v)
             else:
                 download.download(i,v)
+        return
+    elif version in benchmarks.FAILED_BENCHMARKS:
         return
 
     index=-1
@@ -73,8 +77,12 @@ def handle_checkout(version:str):
 
 def handle_search(version:str):
     print(f'Start searching {version}')
+    if version in benchmarks.FAILED_BENCHMARKS:
+        return
     if version=='all':
         for i,v in enumerate(benchmarks.BENCHMARKS):
+            if v in benchmarks.FAILED_BENCHMARKS:
+                continue
             if 'php' in v:
                 result=subprocess.run(['python3','/root/project/MSV-search/msv-search.py',"-o",f"/root/project/MSV-experiment/{v}-out","-t","180000","-w",f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}","-p","/root/project/MSV","--use-pass-test","--use-exp-alpha", "--use-prophet-score","-E","20000","--regression-mode","/root/project/MSV/tools/php-regression-test",
                         "-m","guided","--",f"/root/project/MSV/tools/{benchmarks.get_subject(v)}-test.py",
@@ -114,12 +122,21 @@ def handle_search(version:str):
     print('search finished')
 
 def handle_check(benchmark:str):
+    if benchmark in benchmarks.FAILED_BENCHMARKS:
+        print(f'-- Benchmark: {benchmark}')
+        print(f'Total plausible patches: 0')
+        print(f'Correct patch not found')
+
     if benchmark=='all':
         for i,v in enumerate(benchmarks.BENCHMARKS):
+            if v in benchmarks.FAILED_BENCHMARKS:
+                print(f'-- Benchmark: {v}')
+                print(f'Total plausible patches: 0')
+                print(f'Correct patch not found')
+                continue
             plausibles,correct=check_result.get_results(v)
+            print(f'-- Benchmark: {v}')
             print(f'Total plausible patches: {len(plausibles)}')
-            for plausible in plausibles:
-                print(f'{plausible[0]} in iteration {plausible[1]}, location: {plausible[2]}')
             
             if correct is not None:
                 print(f'Correct patch found: {correct[0]} in iteration {correct[1]}, location: {correct[2]}')
@@ -138,9 +155,8 @@ def handle_check(benchmark:str):
         return
     
     plausibles,correct=check_result.get_results(benchmark)
+    print(f'-- Benchmark: {v}')
     print(f'Total plausible patches: {len(plausibles)}')
-    for plausible in plausibles:
-        print(f'{plausible[0]} in iteration {plausible[1]}, location: {plausible[2]}')
     
     if correct is not None:
         print(f'Correct patch found: {correct[0]} in iteration {correct[1]}, location: {correct[2]}')
