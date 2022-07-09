@@ -38,7 +38,7 @@ Print summary of search result.
 Print list of plausible patches, and correct patch if exist.
 Run this command after search finish."""
 
-def handle_list(is_help:bool=False):
+def handle_list(is_help=False):
     if is_help:
         print("""Print list of benchmarks with their indices.
 List of benchmarks are saved in benchmarks.py.""")
