@@ -49,13 +49,13 @@ def download(i,benchmark):
 
     print(f'Clean build {benchmark}!')
     if subject=='php':
-        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/php-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
+        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/php-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     elif subject=='libtiff':
-        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/libtiff-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
+        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/libtiff-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     elif subject=='lighttpd':
-        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/lighttpd-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
+        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py','-p','/root/project/MSV/benchmarks/lighttpd-deps',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     else:
-        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'])
+        result=subprocess.run([f'/root/project/MSV/tools/{subject}-build.py',f'/root/project/MSV-experiment/benchmarks/{subject}/{benchmarks.get_workdir(benchmark)}/src'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     if result.returncode!=0:
         exit(1)
     print('Clean build success')
