@@ -11,10 +11,18 @@ def download(i,benchmark):
 
     if f'{benchmark}.tar.gz' not in os.listdir(f'/root/project/MSV-experiment/benchmarks/{subject}'):
         print(f'{benchmark} not downloaded, download it!')
-        result=subprocess.run(['wget',f'https://www.cs.toronto.edu/~fanl/program_repair/scenarios/{benchmarks.BENCHMARKS_URL[i]}.tar.gz'])
+        # result=subprocess.run(['wget',f'https://www.cs.toronto.edu/~fanl/program_repair/scenarios/{benchmarks.BENCHMARKS_URL[i]}.tar.gz'])
+        if 'benchmark' not in os.listdir('/root/project'):
+            result=subprocess.run(['tar','-xf','benchmark.tar.gz'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+            if result.returncode!=0:
+                print(result.stdout.decode('utf-8'))
+                exit(1)
+
+        result=subprocess.run(['cp','-rf',f'/root/project/benchmark/{benchmarks.BENCHMARKS_URL[i]}.tar.gz','.'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         if result.returncode!=0:
             print(result.stdout.decode('utf-8'))
             exit(1)
+
     
         result=subprocess.run(['tar','-xf',f'{benchmarks.BENCHMARKS_URL[i]}.tar.gz'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         if result.returncode!=0:
