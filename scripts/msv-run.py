@@ -103,7 +103,7 @@ def preprocess():
         exit(1)
 
     LOGGER.info('run docker run...')
-    result=subprocess.run(['docker','run','-d','--rm','--name',CONTAINER_NAME,'kyj1411/msv:test'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    result=subprocess.run(['docker','run','-itd','--name',CONTAINER_NAME,'--restart','always','kyj1411/msv:test'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     if result.returncode!=0:
         LOGGER.error(result.stdout.decode('utf-8'))
         LOGGER.error('Fail to run docker image!')
@@ -158,8 +158,8 @@ def postprocess(total,correct,plausible):
         exit(1)
     
     LOGGER.info('======== Result Summary ========')
-    LOGGER.info(f'Found correct patches: {correct}/{total} ({correct/total})')
-    LOGGER.info(f'Found plausible patches: {plausible}/{total} ({plausible/total})')
+    LOGGER.info(f'Found correct patches: {correct}/{total} ({str(correct/total)[:5]}%)')
+    LOGGER.info(f'Found plausible patches: {plausible}/{total} ({str(plausible/total)[:5]}%)')
 
 
 if __name__=='__main__':
