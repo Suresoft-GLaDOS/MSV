@@ -47,9 +47,9 @@ if __name__=="__main__":
         if benchmark.endswith('-out'):
             cur_benchmark=benchmark[:-4]
             plausibles,correct=get_results(cur_benchmark)
-            print(f'Total plausible patches: {len(plausibles)}')
-            for plausible in plausibles:
-                print(f'{plausible[0]} in iteration {plausible[1]}, location: {plausible[2]}')
+            # print(f'Total plausible patches: {len(plausibles)}')
+            # for plausible in plausibles:
+            #     print(f'{plausible[0]} in iteration {plausible[1]}, location: {plausible[2]}')
             
             if correct is not None:
                 print(f'Correct patch found: {correct[0]} in iteration {correct[1]}, location: {correct[2]}')

@@ -133,9 +133,9 @@ def run():
             outputs=result.stdout.decode('utf-8').splitlines()
             if 'Correct patch found' in outputs[-1]:
                 total_correct_patches+=1
-            total=outputs[-2].split(' ')[-1]
-            if total!='0':
-                total_plausible_patches+=1
+            # total=outputs[-2].split(' ')[-1]
+            # if total!='0':
+            #     total_plausible_patches+=1
 
     LOGGER.info('All benchmarks executed!')
     return TOTAL_BENCHMARKS,total_correct_patches,total_plausible_patches
@@ -159,7 +159,7 @@ def postprocess(total,correct,plausible):
     
     LOGGER.info('======== Result Summary ========')
     LOGGER.info(f'Found correct patches: {correct}/{total} ({str(correct/total)[:5]}%)')
-    LOGGER.info(f'Found plausible patches: {plausible}/{total} ({str(plausible/total)[:5]}%)')
+    # LOGGER.info(f'Found plausible patches: {plausible}/{total} ({str(plausible/total)[:5]}%)')
 
 
 if __name__=='__main__':

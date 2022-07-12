@@ -124,19 +124,19 @@ def handle_search(version:str):
 def handle_check(benchmark:str):
     if benchmark in benchmarks.FAILED_BENCHMARKS:
         print(f'-- Benchmark: {benchmark}')
-        print(f'Total plausible patches: 0')
+        # print(f'Total plausible patches: 0')
         print(f'Correct patch not found')
 
     if benchmark=='all':
         for i,v in enumerate(benchmarks.BENCHMARKS):
             if v in benchmarks.FAILED_BENCHMARKS:
                 print(f'-- Benchmark: {v}')
-                print(f'Total plausible patches: 0')
+                # print(f'Total plausible patches: 0')
                 print(f'Correct patch not found')
                 continue
             plausibles,correct=check_result.get_results(v)
             print(f'-- Benchmark: {v}')
-            print(f'Total plausible patches: {len(plausibles)}')
+            # print(f'Total plausible patches: {len(plausibles)}')
             
             if correct is not None:
                 print(f'Correct patch found: {correct[0]} in iteration {correct[1]}, location: {correct[2]}')
@@ -156,7 +156,7 @@ def handle_check(benchmark:str):
     
     plausibles,correct=check_result.get_results(benchmark)
     print(f'-- Benchmark: {v}')
-    print(f'Total plausible patches: {len(plausibles)}')
+    # print(f'Total plausible patches: {len(plausibles)}')
     
     if correct is not None:
         print(f'Correct patch found: {correct[0]} in iteration {correct[1]}, location: {correct[2]}')
