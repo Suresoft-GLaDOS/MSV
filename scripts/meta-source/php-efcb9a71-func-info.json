@@ -1,26 +1,6 @@
 [{
-		"original_name":	"",
-		"switch_number":	3,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	7,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	8,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	16,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	18,
-		"new_names":	[]
-	}, {
 		"original_name":	"zval_set_refcount_p",
-		"switch_number":	20,
+		"switch_number":	1,
 		"new_names":	[{
 				"new_name":	"_IO_padn",
 				"case_number":	2
@@ -178,4284 +158,3241 @@
 				"new_name":	"__strtok_r",
 				"case_number":	53
 			}, {
-				"new_name":	"__trident_output",
+				"new_name":	"_erealloc",
 				"case_number":	54
 			}, {
-				"new_name":	"__trident_output",
+				"new_name":	"_erealloc",
 				"case_number":	55
 			}, {
-				"new_name":	"__trident_output",
+				"new_name":	"_erealloc",
 				"case_number":	56
 			}, {
-				"new_name":	"__trident_output",
+				"new_name":	"_erealloc",
 				"case_number":	57
 			}, {
-				"new_name":	"__trident_output",
+				"new_name":	"_erealloc",
 				"case_number":	58
 			}, {
-				"new_name":	"__trident_output",
+				"new_name":	"_erealloc",
 				"case_number":	59
 			}, {
-				"new_name":	"__trident_output",
+				"new_name":	"_erealloc",
 				"case_number":	60
 			}, {
-				"new_name":	"__trident_output",
+				"new_name":	"_erealloc",
 				"case_number":	61
 			}, {
-				"new_name":	"__trident_output",
+				"new_name":	"_erealloc",
 				"case_number":	62
 			}, {
-				"new_name":	"__trident_output",
+				"new_name":	"_erealloc",
 				"case_number":	63
 			}, {
-				"new_name":	"__trident_output",
+				"new_name":	"_erealloc",
 				"case_number":	64
 			}, {
-				"new_name":	"_erealloc",
+				"new_name":	"_object_and_properties_init",
 				"case_number":	65
 			}, {
-				"new_name":	"_erealloc",
+				"new_name":	"_object_and_properties_init",
 				"case_number":	66
 			}, {
-				"new_name":	"_erealloc",
+				"new_name":	"_zend_mm_realloc",
 				"case_number":	67
 			}, {
-				"new_name":	"_erealloc",
+				"new_name":	"_zend_mm_realloc",
 				"case_number":	68
 			}, {
-				"new_name":	"_erealloc",
+				"new_name":	"_zend_mm_realloc",
 				"case_number":	69
 			}, {
-				"new_name":	"_erealloc",
+				"new_name":	"_zend_mm_realloc",
 				"case_number":	70
 			}, {
-				"new_name":	"_erealloc",
+				"new_name":	"_zend_mm_realloc",
 				"case_number":	71
 			}, {
-				"new_name":	"_erealloc",
+				"new_name":	"_zend_mm_realloc",
 				"case_number":	72
 			}, {
-				"new_name":	"_erealloc",
+				"new_name":	"_zend_mm_realloc",
 				"case_number":	73
 			}, {
-				"new_name":	"_erealloc",
+				"new_name":	"_zend_mm_realloc",
 				"case_number":	74
 			}, {
-				"new_name":	"_erealloc",
+				"new_name":	"_zend_mm_realloc",
 				"case_number":	75
 			}, {
-				"new_name":	"_object_and_properties_init",
+				"new_name":	"add_assoc_function",
 				"case_number":	76
 			}, {
-				"new_name":	"_object_and_properties_init",
+				"new_name":	"add_assoc_function",
 				"case_number":	77
 			}, {
-				"new_name":	"_zend_mm_realloc",
+				"new_name":	"add_assoc_function",
 				"case_number":	78
 			}, {
-				"new_name":	"_zend_mm_realloc",
+				"new_name":	"add_assoc_function",
 				"case_number":	79
 			}, {
-				"new_name":	"_zend_mm_realloc",
+				"new_name":	"add_assoc_null_ex",
 				"case_number":	80
 			}, {
-				"new_name":	"_zend_mm_realloc",
+				"new_name":	"add_assoc_null_ex",
 				"case_number":	81
 			}, {
-				"new_name":	"_zend_mm_realloc",
+				"new_name":	"add_assoc_null_ex",
 				"case_number":	82
 			}, {
-				"new_name":	"_zend_mm_realloc",
+				"new_name":	"add_assoc_null_ex",
 				"case_number":	83
 			}, {
-				"new_name":	"_zend_mm_realloc",
+				"new_name":	"add_assoc_null_ex",
 				"case_number":	84
 			}, {
-				"new_name":	"_zend_mm_realloc",
+				"new_name":	"add_assoc_null_ex",
 				"case_number":	85
 			}, {
-				"new_name":	"_zend_mm_realloc",
+				"new_name":	"add_assoc_null_ex",
 				"case_number":	86
 			}, {
-				"new_name":	"add_assoc_function",
+				"new_name":	"add_assoc_null_ex",
 				"case_number":	87
 			}, {
-				"new_name":	"add_assoc_function",
+				"new_name":	"add_assoc_null_ex",
 				"case_number":	88
-			}, {
-				"new_name":	"add_assoc_function",
-				"case_number":	89
-			}, {
-				"new_name":	"add_assoc_function",
-				"case_number":	90
-			}, {
-				"new_name":	"add_assoc_null_ex",
-				"case_number":	91
-			}, {
-				"new_name":	"add_assoc_null_ex",
-				"case_number":	92
-			}, {
-				"new_name":	"add_assoc_null_ex",
-				"case_number":	93
-			}, {
-				"new_name":	"add_assoc_null_ex",
-				"case_number":	94
-			}, {
-				"new_name":	"add_assoc_null_ex",
-				"case_number":	95
-			}, {
-				"new_name":	"add_assoc_null_ex",
-				"case_number":	96
-			}, {
-				"new_name":	"add_assoc_null_ex",
-				"case_number":	97
-			}, {
-				"new_name":	"add_assoc_null_ex",
-				"case_number":	98
-			}, {
-				"new_name":	"add_assoc_null_ex",
-				"case_number":	99
 			}, {
 				"new_name":	"add_char_to_string",
+				"case_number":	89
+			}, {
+				"new_name":	"add_function",
+				"case_number":	90
+			}, {
+				"new_name":	"add_function",
+				"case_number":	91
+			}, {
+				"new_name":	"add_index_bool",
+				"case_number":	92
+			}, {
+				"new_name":	"add_index_bool",
+				"case_number":	93
+			}, {
+				"new_name":	"add_index_bool",
+				"case_number":	94
+			}, {
+				"new_name":	"add_index_bool",
+				"case_number":	95
+			}, {
+				"new_name":	"add_index_bool",
+				"case_number":	96
+			}, {
+				"new_name":	"add_index_bool",
+				"case_number":	97
+			}, {
+				"new_name":	"add_index_bool",
+				"case_number":	98
+			}, {
+				"new_name":	"add_index_bool",
+				"case_number":	99
+			}, {
+				"new_name":	"add_index_bool",
 				"case_number":	100
 			}, {
-				"new_name":	"add_function",
+				"new_name":	"add_index_bool",
 				"case_number":	101
 			}, {
-				"new_name":	"add_function",
+				"new_name":	"add_index_bool",
 				"case_number":	102
 			}, {
-				"new_name":	"add_index_bool",
+				"new_name":	"add_index_long",
 				"case_number":	103
 			}, {
-				"new_name":	"add_index_bool",
+				"new_name":	"add_index_long",
 				"case_number":	104
 			}, {
-				"new_name":	"add_index_bool",
+				"new_name":	"add_index_long",
 				"case_number":	105
 			}, {
-				"new_name":	"add_index_bool",
+				"new_name":	"add_index_long",
 				"case_number":	106
 			}, {
-				"new_name":	"add_index_bool",
+				"new_name":	"add_index_long",
 				"case_number":	107
 			}, {
-				"new_name":	"add_index_bool",
+				"new_name":	"add_index_long",
 				"case_number":	108
 			}, {
-				"new_name":	"add_index_bool",
+				"new_name":	"add_index_long",
 				"case_number":	109
 			}, {
-				"new_name":	"add_index_bool",
+				"new_name":	"add_index_long",
 				"case_number":	110
 			}, {
-				"new_name":	"add_index_bool",
+				"new_name":	"add_index_long",
 				"case_number":	111
 			}, {
-				"new_name":	"add_index_bool",
+				"new_name":	"add_index_resource",
 				"case_number":	112
 			}, {
-				"new_name":	"add_index_bool",
+				"new_name":	"add_index_resource",
 				"case_number":	113
 			}, {
-				"new_name":	"add_index_long",
+				"new_name":	"add_index_resource",
 				"case_number":	114
 			}, {
-				"new_name":	"add_index_long",
+				"new_name":	"add_index_resource",
 				"case_number":	115
 			}, {
-				"new_name":	"add_index_long",
+				"new_name":	"add_index_resource",
 				"case_number":	116
 			}, {
-				"new_name":	"add_index_long",
+				"new_name":	"add_index_resource",
 				"case_number":	117
 			}, {
-				"new_name":	"add_index_long",
+				"new_name":	"add_index_resource",
 				"case_number":	118
 			}, {
-				"new_name":	"add_index_long",
+				"new_name":	"add_index_resource",
 				"case_number":	119
 			}, {
-				"new_name":	"add_index_long",
+				"new_name":	"add_index_resource",
 				"case_number":	120
 			}, {
-				"new_name":	"add_index_long",
+				"new_name":	"add_index_resource",
 				"case_number":	121
 			}, {
-				"new_name":	"add_index_long",
+				"new_name":	"add_index_resource",
 				"case_number":	122
 			}, {
-				"new_name":	"add_index_resource",
+				"new_name":	"add_index_zval",
 				"case_number":	123
 			}, {
-				"new_name":	"add_index_resource",
+				"new_name":	"add_index_zval",
 				"case_number":	124
 			}, {
-				"new_name":	"add_index_resource",
+				"new_name":	"add_next_index_string",
 				"case_number":	125
 			}, {
-				"new_name":	"add_index_resource",
+				"new_name":	"add_next_index_string",
 				"case_number":	126
 			}, {
-				"new_name":	"add_index_resource",
+				"new_name":	"add_next_index_string",
 				"case_number":	127
 			}, {
-				"new_name":	"add_index_resource",
+				"new_name":	"add_next_index_string",
 				"case_number":	128
 			}, {
-				"new_name":	"add_index_resource",
+				"new_name":	"add_next_index_string",
 				"case_number":	129
 			}, {
-				"new_name":	"add_index_resource",
+				"new_name":	"add_next_index_string",
 				"case_number":	130
 			}, {
-				"new_name":	"add_index_resource",
+				"new_name":	"add_next_index_string",
 				"case_number":	131
 			}, {
-				"new_name":	"add_index_resource",
+				"new_name":	"add_next_index_string",
 				"case_number":	132
 			}, {
-				"new_name":	"add_index_resource",
+				"new_name":	"add_next_index_string",
 				"case_number":	133
 			}, {
-				"new_name":	"add_index_zval",
+				"new_name":	"add_next_index_string",
 				"case_number":	134
 			}, {
-				"new_name":	"add_index_zval",
+				"new_name":	"add_next_index_string",
 				"case_number":	135
 			}, {
-				"new_name":	"add_next_index_string",
+				"new_name":	"add_property_null_ex",
 				"case_number":	136
 			}, {
-				"new_name":	"add_next_index_string",
+				"new_name":	"add_property_null_ex",
 				"case_number":	137
 			}, {
-				"new_name":	"add_next_index_string",
+				"new_name":	"add_property_null_ex",
 				"case_number":	138
 			}, {
-				"new_name":	"add_next_index_string",
+				"new_name":	"add_property_null_ex",
 				"case_number":	139
 			}, {
-				"new_name":	"add_next_index_string",
+				"new_name":	"add_property_null_ex",
 				"case_number":	140
 			}, {
-				"new_name":	"add_next_index_string",
+				"new_name":	"add_property_null_ex",
 				"case_number":	141
 			}, {
-				"new_name":	"add_next_index_string",
+				"new_name":	"add_property_null_ex",
 				"case_number":	142
 			}, {
-				"new_name":	"add_next_index_string",
+				"new_name":	"add_property_null_ex",
 				"case_number":	143
 			}, {
-				"new_name":	"add_next_index_string",
+				"new_name":	"add_property_null_ex",
 				"case_number":	144
-			}, {
-				"new_name":	"add_next_index_string",
-				"case_number":	145
-			}, {
-				"new_name":	"add_next_index_string",
-				"case_number":	146
-			}, {
-				"new_name":	"add_property_null_ex",
-				"case_number":	147
-			}, {
-				"new_name":	"add_property_null_ex",
-				"case_number":	148
-			}, {
-				"new_name":	"add_property_null_ex",
-				"case_number":	149
-			}, {
-				"new_name":	"add_property_null_ex",
-				"case_number":	150
-			}, {
-				"new_name":	"add_property_null_ex",
-				"case_number":	151
-			}, {
-				"new_name":	"add_property_null_ex",
-				"case_number":	152
-			}, {
-				"new_name":	"add_property_null_ex",
-				"case_number":	153
-			}, {
-				"new_name":	"add_property_null_ex",
-				"case_number":	154
-			}, {
-				"new_name":	"add_property_null_ex",
-				"case_number":	155
 			}, {
 				"new_name":	"add_string_to_string",
-				"case_number":	156
+				"case_number":	145
 			}, {
 				"new_name":	"bcmp",
-				"case_number":	157
+				"case_number":	146
 			}, {
 				"new_name":	"bcmp",
-				"case_number":	158
+				"case_number":	147
 			}, {
 				"new_name":	"bcmp",
-				"case_number":	159
+				"case_number":	148
 			}, {
 				"new_name":	"bcmp",
-				"case_number":	160
+				"case_number":	149
 			}, {
 				"new_name":	"bcmp",
-				"case_number":	161
+				"case_number":	150
 			}, {
 				"new_name":	"bcmp",
-				"case_number":	162
+				"case_number":	151
 			}, {
 				"new_name":	"bcmp",
-				"case_number":	163
+				"case_number":	152
 			}, {
 				"new_name":	"bcmp",
-				"case_number":	164
+				"case_number":	153
 			}, {
 				"new_name":	"bcmp",
-				"case_number":	165
+				"case_number":	154
 			}, {
 				"new_name":	"bcopy",
+				"case_number":	155
+			}, {
+				"new_name":	"bcopy",
+				"case_number":	156
+			}, {
+				"new_name":	"bcopy",
+				"case_number":	157
+			}, {
+				"new_name":	"bcopy",
+				"case_number":	158
+			}, {
+				"new_name":	"bcopy",
+				"case_number":	159
+			}, {
+				"new_name":	"bcopy",
+				"case_number":	160
+			}, {
+				"new_name":	"bcopy",
+				"case_number":	161
+			}, {
+				"new_name":	"bcopy",
+				"case_number":	162
+			}, {
+				"new_name":	"bcopy",
+				"case_number":	163
+			}, {
+				"new_name":	"bitwise_and_function",
+				"case_number":	164
+			}, {
+				"new_name":	"bitwise_and_function",
+				"case_number":	165
+			}, {
+				"new_name":	"bitwise_or_function",
 				"case_number":	166
 			}, {
-				"new_name":	"bcopy",
+				"new_name":	"bitwise_or_function",
 				"case_number":	167
 			}, {
-				"new_name":	"bcopy",
+				"new_name":	"bitwise_xor_function",
 				"case_number":	168
 			}, {
-				"new_name":	"bcopy",
+				"new_name":	"bitwise_xor_function",
 				"case_number":	169
 			}, {
-				"new_name":	"bcopy",
+				"new_name":	"boolean_xor_function",
 				"case_number":	170
 			}, {
-				"new_name":	"bcopy",
+				"new_name":	"boolean_xor_function",
 				"case_number":	171
 			}, {
-				"new_name":	"bcopy",
+				"new_name":	"compare_function",
 				"case_number":	172
 			}, {
-				"new_name":	"bcopy",
+				"new_name":	"compare_function",
 				"case_number":	173
 			}, {
-				"new_name":	"bcopy",
+				"new_name":	"concat_function",
 				"case_number":	174
 			}, {
-				"new_name":	"bitwise_and_function",
+				"new_name":	"concat_function",
 				"case_number":	175
 			}, {
-				"new_name":	"bitwise_and_function",
+				"new_name":	"div_function",
 				"case_number":	176
 			}, {
-				"new_name":	"bitwise_or_function",
+				"new_name":	"div_function",
 				"case_number":	177
 			}, {
-				"new_name":	"bitwise_or_function",
+				"new_name":	"erand48_r",
 				"case_number":	178
 			}, {
-				"new_name":	"bitwise_xor_function",
+				"new_name":	"fetch_array_begin",
 				"case_number":	179
 			}, {
-				"new_name":	"bitwise_xor_function",
+				"new_name":	"fetch_array_dim",
 				"case_number":	180
 			}, {
-				"new_name":	"boolean_xor_function",
+				"new_name":	"fetch_simple_variable",
 				"case_number":	181
 			}, {
-				"new_name":	"boolean_xor_function",
+				"new_name":	"fetch_simple_variable",
 				"case_number":	182
 			}, {
-				"new_name":	"compare_function",
+				"new_name":	"fetch_simple_variable",
 				"case_number":	183
 			}, {
-				"new_name":	"compare_function",
+				"new_name":	"fetch_simple_variable",
 				"case_number":	184
 			}, {
-				"new_name":	"concat_function",
+				"new_name":	"fetch_simple_variable",
 				"case_number":	185
 			}, {
-				"new_name":	"concat_function",
+				"new_name":	"fetch_simple_variable",
 				"case_number":	186
 			}, {
-				"new_name":	"div_function",
+				"new_name":	"fetch_simple_variable",
 				"case_number":	187
 			}, {
-				"new_name":	"div_function",
+				"new_name":	"fetch_simple_variable",
 				"case_number":	188
 			}, {
-				"new_name":	"erand48_r",
+				"new_name":	"fetch_simple_variable",
 				"case_number":	189
 			}, {
-				"new_name":	"fetch_array_begin",
+				"new_name":	"fetch_simple_variable",
 				"case_number":	190
 			}, {
-				"new_name":	"fetch_array_dim",
+				"new_name":	"fetch_simple_variable",
 				"case_number":	191
 			}, {
-				"new_name":	"fetch_simple_variable",
+				"new_name":	"fetch_string_offset",
 				"case_number":	192
 			}, {
-				"new_name":	"fetch_simple_variable",
+				"new_name":	"fgets",
 				"case_number":	193
 			}, {
-				"new_name":	"fetch_simple_variable",
+				"new_name":	"fmemopen",
 				"case_number":	194
 			}, {
-				"new_name":	"fetch_simple_variable",
+				"new_name":	"freopen",
 				"case_number":	195
 			}, {
-				"new_name":	"fetch_simple_variable",
+				"new_name":	"fseek",
 				"case_number":	196
 			}, {
-				"new_name":	"fetch_simple_variable",
+				"new_name":	"fseek",
 				"case_number":	197
 			}, {
-				"new_name":	"fetch_simple_variable",
+				"new_name":	"fseek",
 				"case_number":	198
 			}, {
-				"new_name":	"fetch_simple_variable",
+				"new_name":	"fseek",
 				"case_number":	199
 			}, {
-				"new_name":	"fetch_simple_variable",
+				"new_name":	"fseek",
 				"case_number":	200
 			}, {
-				"new_name":	"fetch_simple_variable",
+				"new_name":	"fseek",
 				"case_number":	201
 			}, {
-				"new_name":	"fetch_simple_variable",
+				"new_name":	"fseek",
 				"case_number":	202
 			}, {
-				"new_name":	"fetch_string_offset",
+				"new_name":	"fseek",
 				"case_number":	203
 			}, {
-				"new_name":	"fgets",
+				"new_name":	"fseek",
 				"case_number":	204
 			}, {
-				"new_name":	"fmemopen",
+				"new_name":	"fseek",
 				"case_number":	205
 			}, {
-				"new_name":	"freopen",
+				"new_name":	"fseek",
 				"case_number":	206
 			}, {
-				"new_name":	"fseek",
+				"new_name":	"fseeko",
 				"case_number":	207
 			}, {
-				"new_name":	"fseek",
+				"new_name":	"fseeko",
 				"case_number":	208
 			}, {
-				"new_name":	"fseek",
+				"new_name":	"fseeko",
 				"case_number":	209
 			}, {
-				"new_name":	"fseek",
+				"new_name":	"fseeko",
 				"case_number":	210
 			}, {
-				"new_name":	"fseek",
+				"new_name":	"fseeko",
 				"case_number":	211
 			}, {
-				"new_name":	"fseek",
+				"new_name":	"fseeko",
 				"case_number":	212
 			}, {
-				"new_name":	"fseek",
+				"new_name":	"fseeko",
 				"case_number":	213
 			}, {
-				"new_name":	"fseek",
+				"new_name":	"fseeko",
 				"case_number":	214
 			}, {
-				"new_name":	"fseek",
+				"new_name":	"fseeko",
 				"case_number":	215
 			}, {
-				"new_name":	"fseek",
+				"new_name":	"fseeko",
 				"case_number":	216
 			}, {
-				"new_name":	"fseek",
+				"new_name":	"fseeko",
 				"case_number":	217
 			}, {
-				"new_name":	"fseeko",
+				"new_name":	"getline",
 				"case_number":	218
 			}, {
-				"new_name":	"fseeko",
+				"new_name":	"getsubopt",
 				"case_number":	219
 			}, {
-				"new_name":	"fseeko",
+				"new_name":	"init_op_array",
 				"case_number":	220
 			}, {
-				"new_name":	"fseeko",
+				"new_name":	"init_op_array",
 				"case_number":	221
 			}, {
-				"new_name":	"fseeko",
+				"new_name":	"init_op_array",
 				"case_number":	222
 			}, {
-				"new_name":	"fseeko",
+				"new_name":	"init_op_array",
 				"case_number":	223
 			}, {
-				"new_name":	"fseeko",
+				"new_name":	"init_op_array",
 				"case_number":	224
 			}, {
-				"new_name":	"fseeko",
+				"new_name":	"init_op_array",
 				"case_number":	225
 			}, {
-				"new_name":	"fseeko",
+				"new_name":	"init_op_array",
 				"case_number":	226
 			}, {
-				"new_name":	"fseeko",
+				"new_name":	"init_op_array",
 				"case_number":	227
 			}, {
-				"new_name":	"fseeko",
+				"new_name":	"init_op_array",
 				"case_number":	228
 			}, {
-				"new_name":	"getline",
+				"new_name":	"init_op_array",
 				"case_number":	229
 			}, {
-				"new_name":	"getsubopt",
+				"new_name":	"init_op_array",
 				"case_number":	230
 			}, {
-				"new_name":	"init_op_array",
+				"new_name":	"instanceof_function_ex",
 				"case_number":	231
 			}, {
-				"new_name":	"init_op_array",
+				"new_name":	"instanceof_function_ex",
 				"case_number":	232
 			}, {
-				"new_name":	"init_op_array",
+				"new_name":	"instanceof_function_ex",
 				"case_number":	233
 			}, {
-				"new_name":	"init_op_array",
+				"new_name":	"instanceof_function_ex",
 				"case_number":	234
 			}, {
-				"new_name":	"init_op_array",
+				"new_name":	"instanceof_function_ex",
 				"case_number":	235
 			}, {
-				"new_name":	"init_op_array",
+				"new_name":	"instanceof_function_ex",
 				"case_number":	236
 			}, {
-				"new_name":	"init_op_array",
+				"new_name":	"instanceof_function_ex",
 				"case_number":	237
 			}, {
-				"new_name":	"init_op_array",
+				"new_name":	"instanceof_function_ex",
 				"case_number":	238
 			}, {
-				"new_name":	"init_op_array",
+				"new_name":	"instanceof_function_ex",
 				"case_number":	239
 			}, {
-				"new_name":	"init_op_array",
+				"new_name":	"instanceof_function_ex",
 				"case_number":	240
 			}, {
-				"new_name":	"init_op_array",
+				"new_name":	"is_equal_function",
 				"case_number":	241
 			}, {
-				"new_name":	"instanceof_function_ex",
+				"new_name":	"is_equal_function",
 				"case_number":	242
 			}, {
-				"new_name":	"instanceof_function_ex",
+				"new_name":	"is_identical_function",
 				"case_number":	243
 			}, {
-				"new_name":	"instanceof_function_ex",
+				"new_name":	"is_identical_function",
 				"case_number":	244
 			}, {
-				"new_name":	"instanceof_function_ex",
+				"new_name":	"is_not_equal_function",
 				"case_number":	245
 			}, {
-				"new_name":	"instanceof_function_ex",
+				"new_name":	"is_not_equal_function",
 				"case_number":	246
 			}, {
-				"new_name":	"instanceof_function_ex",
+				"new_name":	"is_not_identical_function",
 				"case_number":	247
 			}, {
-				"new_name":	"instanceof_function_ex",
+				"new_name":	"is_not_identical_function",
 				"case_number":	248
 			}, {
-				"new_name":	"instanceof_function_ex",
+				"new_name":	"is_smaller_function",
 				"case_number":	249
 			}, {
-				"new_name":	"instanceof_function_ex",
+				"new_name":	"is_smaller_function",
 				"case_number":	250
 			}, {
-				"new_name":	"instanceof_function_ex",
+				"new_name":	"is_smaller_or_equal_function",
 				"case_number":	251
 			}, {
-				"new_name":	"is_equal_function",
+				"new_name":	"is_smaller_or_equal_function",
 				"case_number":	252
 			}, {
-				"new_name":	"is_equal_function",
+				"new_name":	"jrand48_r",
 				"case_number":	253
 			}, {
-				"new_name":	"is_identical_function",
+				"new_name":	"mbstowcs",
 				"case_number":	254
 			}, {
-				"new_name":	"is_identical_function",
+				"new_name":	"mbstowcs",
 				"case_number":	255
 			}, {
-				"new_name":	"is_not_equal_function",
+				"new_name":	"mbstowcs",
 				"case_number":	256
 			}, {
-				"new_name":	"is_not_equal_function",
+				"new_name":	"mbstowcs",
 				"case_number":	257
 			}, {
-				"new_name":	"is_not_identical_function",
+				"new_name":	"mbstowcs",
 				"case_number":	258
 			}, {
-				"new_name":	"is_not_identical_function",
+				"new_name":	"mbstowcs",
 				"case_number":	259
 			}, {
-				"new_name":	"is_smaller_function",
+				"new_name":	"mbstowcs",
 				"case_number":	260
 			}, {
-				"new_name":	"is_smaller_function",
+				"new_name":	"mbstowcs",
 				"case_number":	261
 			}, {
-				"new_name":	"is_smaller_or_equal_function",
+				"new_name":	"mbstowcs",
 				"case_number":	262
 			}, {
-				"new_name":	"is_smaller_or_equal_function",
+				"new_name":	"mbtowc",
 				"case_number":	263
 			}, {
-				"new_name":	"jrand48_r",
+				"new_name":	"mbtowc",
 				"case_number":	264
 			}, {
-				"new_name":	"mbstowcs",
+				"new_name":	"mbtowc",
 				"case_number":	265
 			}, {
-				"new_name":	"mbstowcs",
+				"new_name":	"mbtowc",
 				"case_number":	266
 			}, {
-				"new_name":	"mbstowcs",
+				"new_name":	"mbtowc",
 				"case_number":	267
 			}, {
-				"new_name":	"mbstowcs",
+				"new_name":	"mbtowc",
 				"case_number":	268
 			}, {
-				"new_name":	"mbstowcs",
+				"new_name":	"mbtowc",
 				"case_number":	269
 			}, {
-				"new_name":	"mbstowcs",
+				"new_name":	"mbtowc",
 				"case_number":	270
 			}, {
-				"new_name":	"mbstowcs",
+				"new_name":	"mbtowc",
 				"case_number":	271
 			}, {
-				"new_name":	"mbstowcs",
+				"new_name":	"memchr",
 				"case_number":	272
 			}, {
-				"new_name":	"mbstowcs",
+				"new_name":	"memchr",
 				"case_number":	273
 			}, {
-				"new_name":	"mbtowc",
+				"new_name":	"memchr",
 				"case_number":	274
 			}, {
-				"new_name":	"mbtowc",
+				"new_name":	"memchr",
 				"case_number":	275
 			}, {
-				"new_name":	"mbtowc",
+				"new_name":	"memchr",
 				"case_number":	276
 			}, {
-				"new_name":	"mbtowc",
+				"new_name":	"memchr",
 				"case_number":	277
 			}, {
-				"new_name":	"mbtowc",
+				"new_name":	"memchr",
 				"case_number":	278
 			}, {
-				"new_name":	"mbtowc",
+				"new_name":	"memchr",
 				"case_number":	279
 			}, {
-				"new_name":	"mbtowc",
+				"new_name":	"memchr",
 				"case_number":	280
 			}, {
-				"new_name":	"mbtowc",
+				"new_name":	"memcmp",
 				"case_number":	281
 			}, {
-				"new_name":	"mbtowc",
+				"new_name":	"memcmp",
 				"case_number":	282
 			}, {
-				"new_name":	"memchr",
+				"new_name":	"memcmp",
 				"case_number":	283
 			}, {
-				"new_name":	"memchr",
+				"new_name":	"memcmp",
 				"case_number":	284
 			}, {
-				"new_name":	"memchr",
+				"new_name":	"memcmp",
 				"case_number":	285
 			}, {
-				"new_name":	"memchr",
+				"new_name":	"memcmp",
 				"case_number":	286
 			}, {
-				"new_name":	"memchr",
+				"new_name":	"memcmp",
 				"case_number":	287
 			}, {
-				"new_name":	"memchr",
+				"new_name":	"memcmp",
 				"case_number":	288
 			}, {
-				"new_name":	"memchr",
+				"new_name":	"memcmp",
 				"case_number":	289
 			}, {
-				"new_name":	"memchr",
+				"new_name":	"memcpy",
 				"case_number":	290
 			}, {
-				"new_name":	"memchr",
+				"new_name":	"memcpy",
 				"case_number":	291
 			}, {
-				"new_name":	"memcmp",
+				"new_name":	"memcpy",
 				"case_number":	292
 			}, {
-				"new_name":	"memcmp",
+				"new_name":	"memcpy",
 				"case_number":	293
 			}, {
-				"new_name":	"memcmp",
+				"new_name":	"memcpy",
 				"case_number":	294
 			}, {
-				"new_name":	"memcmp",
+				"new_name":	"memcpy",
 				"case_number":	295
 			}, {
-				"new_name":	"memcmp",
+				"new_name":	"memcpy",
 				"case_number":	296
 			}, {
-				"new_name":	"memcmp",
+				"new_name":	"memcpy",
 				"case_number":	297
 			}, {
-				"new_name":	"memcmp",
+				"new_name":	"memcpy",
 				"case_number":	298
 			}, {
-				"new_name":	"memcmp",
+				"new_name":	"memmove",
 				"case_number":	299
 			}, {
-				"new_name":	"memcmp",
+				"new_name":	"memmove",
 				"case_number":	300
 			}, {
-				"new_name":	"memcpy",
+				"new_name":	"memmove",
 				"case_number":	301
 			}, {
-				"new_name":	"memcpy",
+				"new_name":	"memmove",
 				"case_number":	302
 			}, {
-				"new_name":	"memcpy",
+				"new_name":	"memmove",
 				"case_number":	303
 			}, {
-				"new_name":	"memcpy",
+				"new_name":	"memmove",
 				"case_number":	304
 			}, {
-				"new_name":	"memcpy",
+				"new_name":	"memmove",
 				"case_number":	305
 			}, {
-				"new_name":	"memcpy",
+				"new_name":	"memmove",
 				"case_number":	306
 			}, {
-				"new_name":	"memcpy",
+				"new_name":	"memmove",
 				"case_number":	307
 			}, {
-				"new_name":	"memcpy",
+				"new_name":	"memset",
 				"case_number":	308
 			}, {
-				"new_name":	"memcpy",
+				"new_name":	"memset",
 				"case_number":	309
 			}, {
-				"new_name":	"memmove",
+				"new_name":	"memset",
 				"case_number":	310
 			}, {
-				"new_name":	"memmove",
+				"new_name":	"memset",
 				"case_number":	311
 			}, {
-				"new_name":	"memmove",
+				"new_name":	"memset",
 				"case_number":	312
 			}, {
-				"new_name":	"memmove",
+				"new_name":	"memset",
 				"case_number":	313
 			}, {
-				"new_name":	"memmove",
+				"new_name":	"memset",
 				"case_number":	314
 			}, {
-				"new_name":	"memmove",
+				"new_name":	"memset",
 				"case_number":	315
 			}, {
-				"new_name":	"memmove",
+				"new_name":	"memset",
 				"case_number":	316
 			}, {
-				"new_name":	"memmove",
+				"new_name":	"mod_function",
 				"case_number":	317
 			}, {
-				"new_name":	"memmove",
+				"new_name":	"mod_function",
 				"case_number":	318
 			}, {
-				"new_name":	"memset",
+				"new_name":	"mul_function",
 				"case_number":	319
 			}, {
-				"new_name":	"memset",
+				"new_name":	"mul_function",
 				"case_number":	320
 			}, {
-				"new_name":	"memset",
+				"new_name":	"nrand48_r",
 				"case_number":	321
 			}, {
-				"new_name":	"memset",
+				"new_name":	"numeric_compare_function",
 				"case_number":	322
 			}, {
-				"new_name":	"memset",
+				"new_name":	"numeric_compare_function",
 				"case_number":	323
 			}, {
-				"new_name":	"memset",
+				"new_name":	"posix_memalign",
 				"case_number":	324
 			}, {
-				"new_name":	"memset",
+				"new_name":	"posix_memalign",
 				"case_number":	325
 			}, {
-				"new_name":	"memset",
+				"new_name":	"posix_memalign",
 				"case_number":	326
 			}, {
-				"new_name":	"memset",
+				"new_name":	"posix_memalign",
 				"case_number":	327
 			}, {
-				"new_name":	"mod_function",
+				"new_name":	"posix_memalign",
 				"case_number":	328
 			}, {
-				"new_name":	"mod_function",
+				"new_name":	"posix_memalign",
 				"case_number":	329
 			}, {
-				"new_name":	"mul_function",
+				"new_name":	"posix_memalign",
 				"case_number":	330
 			}, {
-				"new_name":	"mul_function",
+				"new_name":	"posix_memalign",
 				"case_number":	331
 			}, {
-				"new_name":	"nrand48_r",
+				"new_name":	"posix_memalign",
 				"case_number":	332
 			}, {
-				"new_name":	"numeric_compare_function",
+				"new_name":	"setbuffer",
 				"case_number":	333
 			}, {
-				"new_name":	"numeric_compare_function",
+				"new_name":	"setbuffer",
 				"case_number":	334
 			}, {
-				"new_name":	"posix_memalign",
+				"new_name":	"setbuffer",
 				"case_number":	335
 			}, {
-				"new_name":	"posix_memalign",
+				"new_name":	"setbuffer",
 				"case_number":	336
 			}, {
-				"new_name":	"posix_memalign",
+				"new_name":	"setbuffer",
 				"case_number":	337
 			}, {
-				"new_name":	"posix_memalign",
+				"new_name":	"setbuffer",
 				"case_number":	338
 			}, {
-				"new_name":	"posix_memalign",
+				"new_name":	"setbuffer",
 				"case_number":	339
 			}, {
-				"new_name":	"posix_memalign",
+				"new_name":	"setbuffer",
 				"case_number":	340
 			}, {
-				"new_name":	"posix_memalign",
+				"new_name":	"setbuffer",
 				"case_number":	341
 			}, {
-				"new_name":	"posix_memalign",
+				"new_name":	"setenv",
 				"case_number":	342
 			}, {
-				"new_name":	"posix_memalign",
+				"new_name":	"setenv",
 				"case_number":	343
 			}, {
-				"new_name":	"setbuffer",
+				"new_name":	"setenv",
 				"case_number":	344
 			}, {
-				"new_name":	"setbuffer",
+				"new_name":	"setenv",
 				"case_number":	345
 			}, {
-				"new_name":	"setbuffer",
+				"new_name":	"setenv",
 				"case_number":	346
 			}, {
-				"new_name":	"setbuffer",
+				"new_name":	"setenv",
 				"case_number":	347
 			}, {
-				"new_name":	"setbuffer",
+				"new_name":	"setenv",
 				"case_number":	348
 			}, {
-				"new_name":	"setbuffer",
+				"new_name":	"setenv",
 				"case_number":	349
 			}, {
-				"new_name":	"setbuffer",
+				"new_name":	"setenv",
 				"case_number":	350
 			}, {
-				"new_name":	"setbuffer",
+				"new_name":	"setenv",
 				"case_number":	351
 			}, {
-				"new_name":	"setbuffer",
+				"new_name":	"setenv",
 				"case_number":	352
 			}, {
-				"new_name":	"setenv",
+				"new_name":	"shift_left_function",
 				"case_number":	353
 			}, {
-				"new_name":	"setenv",
+				"new_name":	"shift_left_function",
 				"case_number":	354
 			}, {
-				"new_name":	"setenv",
+				"new_name":	"shift_right_function",
 				"case_number":	355
 			}, {
-				"new_name":	"setenv",
+				"new_name":	"shift_right_function",
 				"case_number":	356
 			}, {
-				"new_name":	"setenv",
+				"new_name":	"stpncpy",
 				"case_number":	357
 			}, {
-				"new_name":	"setenv",
+				"new_name":	"stpncpy",
 				"case_number":	358
 			}, {
-				"new_name":	"setenv",
+				"new_name":	"stpncpy",
 				"case_number":	359
 			}, {
-				"new_name":	"setenv",
+				"new_name":	"stpncpy",
 				"case_number":	360
 			}, {
-				"new_name":	"setenv",
+				"new_name":	"stpncpy",
 				"case_number":	361
 			}, {
-				"new_name":	"setenv",
+				"new_name":	"stpncpy",
 				"case_number":	362
 			}, {
-				"new_name":	"setenv",
+				"new_name":	"stpncpy",
 				"case_number":	363
 			}, {
-				"new_name":	"shift_left_function",
+				"new_name":	"stpncpy",
 				"case_number":	364
 			}, {
-				"new_name":	"shift_left_function",
+				"new_name":	"stpncpy",
 				"case_number":	365
 			}, {
-				"new_name":	"shift_right_function",
+				"new_name":	"strcasecmp_l",
 				"case_number":	366
 			}, {
-				"new_name":	"shift_right_function",
+				"new_name":	"strcoll_l",
 				"case_number":	367
 			}, {
-				"new_name":	"stpncpy",
+				"new_name":	"string_compare_function",
 				"case_number":	368
 			}, {
-				"new_name":	"stpncpy",
+				"new_name":	"string_compare_function",
 				"case_number":	369
 			}, {
-				"new_name":	"stpncpy",
+				"new_name":	"string_locale_compare_function",
 				"case_number":	370
 			}, {
-				"new_name":	"stpncpy",
+				"new_name":	"string_locale_compare_function",
 				"case_number":	371
 			}, {
-				"new_name":	"stpncpy",
+				"new_name":	"strncasecmp",
 				"case_number":	372
 			}, {
-				"new_name":	"stpncpy",
+				"new_name":	"strncasecmp",
 				"case_number":	373
 			}, {
-				"new_name":	"stpncpy",
+				"new_name":	"strncasecmp",
 				"case_number":	374
 			}, {
-				"new_name":	"stpncpy",
+				"new_name":	"strncasecmp",
 				"case_number":	375
 			}, {
-				"new_name":	"stpncpy",
+				"new_name":	"strncasecmp",
 				"case_number":	376
 			}, {
-				"new_name":	"strcasecmp_l",
+				"new_name":	"strncasecmp",
 				"case_number":	377
 			}, {
-				"new_name":	"strcoll_l",
+				"new_name":	"strncasecmp",
 				"case_number":	378
 			}, {
-				"new_name":	"string_compare_function",
+				"new_name":	"strncasecmp",
 				"case_number":	379
 			}, {
-				"new_name":	"string_compare_function",
+				"new_name":	"strncasecmp",
 				"case_number":	380
 			}, {
-				"new_name":	"string_locale_compare_function",
+				"new_name":	"strncat",
 				"case_number":	381
 			}, {
-				"new_name":	"string_locale_compare_function",
+				"new_name":	"strncat",
 				"case_number":	382
 			}, {
-				"new_name":	"strncasecmp",
+				"new_name":	"strncat",
 				"case_number":	383
 			}, {
-				"new_name":	"strncasecmp",
+				"new_name":	"strncat",
 				"case_number":	384
 			}, {
-				"new_name":	"strncasecmp",
+				"new_name":	"strncat",
 				"case_number":	385
 			}, {
-				"new_name":	"strncasecmp",
+				"new_name":	"strncat",
 				"case_number":	386
 			}, {
-				"new_name":	"strncasecmp",
+				"new_name":	"strncat",
 				"case_number":	387
 			}, {
-				"new_name":	"strncasecmp",
+				"new_name":	"strncat",
 				"case_number":	388
 			}, {
-				"new_name":	"strncasecmp",
+				"new_name":	"strncat",
 				"case_number":	389
 			}, {
-				"new_name":	"strncasecmp",
+				"new_name":	"strncmp",
 				"case_number":	390
 			}, {
-				"new_name":	"strncasecmp",
+				"new_name":	"strncmp",
 				"case_number":	391
 			}, {
-				"new_name":	"strncat",
+				"new_name":	"strncmp",
 				"case_number":	392
 			}, {
-				"new_name":	"strncat",
+				"new_name":	"strncmp",
 				"case_number":	393
 			}, {
-				"new_name":	"strncat",
+				"new_name":	"strncmp",
 				"case_number":	394
 			}, {
-				"new_name":	"strncat",
+				"new_name":	"strncmp",
 				"case_number":	395
 			}, {
-				"new_name":	"strncat",
+				"new_name":	"strncmp",
 				"case_number":	396
 			}, {
-				"new_name":	"strncat",
+				"new_name":	"strncmp",
 				"case_number":	397
 			}, {
-				"new_name":	"strncat",
+				"new_name":	"strncmp",
 				"case_number":	398
 			}, {
-				"new_name":	"strncat",
+				"new_name":	"strncpy",
 				"case_number":	399
 			}, {
-				"new_name":	"strncat",
+				"new_name":	"strncpy",
 				"case_number":	400
 			}, {
-				"new_name":	"strncmp",
+				"new_name":	"strncpy",
 				"case_number":	401
 			}, {
-				"new_name":	"strncmp",
+				"new_name":	"strncpy",
 				"case_number":	402
 			}, {
-				"new_name":	"strncmp",
+				"new_name":	"strncpy",
 				"case_number":	403
 			}, {
-				"new_name":	"strncmp",
+				"new_name":	"strncpy",
 				"case_number":	404
 			}, {
-				"new_name":	"strncmp",
+				"new_name":	"strncpy",
 				"case_number":	405
 			}, {
-				"new_name":	"strncmp",
+				"new_name":	"strncpy",
 				"case_number":	406
 			}, {
-				"new_name":	"strncmp",
+				"new_name":	"strncpy",
 				"case_number":	407
 			}, {
-				"new_name":	"strncmp",
+				"new_name":	"strtok_r",
 				"case_number":	408
 			}, {
-				"new_name":	"strncmp",
+				"new_name":	"strtol",
 				"case_number":	409
 			}, {
-				"new_name":	"strncpy",
+				"new_name":	"strtol",
 				"case_number":	410
 			}, {
-				"new_name":	"strncpy",
+				"new_name":	"strtol",
 				"case_number":	411
 			}, {
-				"new_name":	"strncpy",
+				"new_name":	"strtol",
 				"case_number":	412
 			}, {
-				"new_name":	"strncpy",
+				"new_name":	"strtol",
 				"case_number":	413
 			}, {
-				"new_name":	"strncpy",
+				"new_name":	"strtol",
 				"case_number":	414
 			}, {
-				"new_name":	"strncpy",
+				"new_name":	"strtol",
 				"case_number":	415
 			}, {
-				"new_name":	"strncpy",
+				"new_name":	"strtol",
 				"case_number":	416
 			}, {
-				"new_name":	"strncpy",
+				"new_name":	"strtol",
 				"case_number":	417
 			}, {
-				"new_name":	"strncpy",
+				"new_name":	"strtol",
 				"case_number":	418
 			}, {
-				"new_name":	"strtok_r",
+				"new_name":	"strtol",
 				"case_number":	419
 			}, {
-				"new_name":	"strtol",
+				"new_name":	"strtoll",
 				"case_number":	420
 			}, {
-				"new_name":	"strtol",
+				"new_name":	"strtoll",
 				"case_number":	421
 			}, {
-				"new_name":	"strtol",
+				"new_name":	"strtoll",
 				"case_number":	422
 			}, {
-				"new_name":	"strtol",
+				"new_name":	"strtoll",
 				"case_number":	423
 			}, {
-				"new_name":	"strtol",
+				"new_name":	"strtoll",
 				"case_number":	424
 			}, {
-				"new_name":	"strtol",
+				"new_name":	"strtoll",
 				"case_number":	425
 			}, {
-				"new_name":	"strtol",
+				"new_name":	"strtoll",
 				"case_number":	426
 			}, {
-				"new_name":	"strtol",
+				"new_name":	"strtoll",
 				"case_number":	427
 			}, {
-				"new_name":	"strtol",
+				"new_name":	"strtoll",
 				"case_number":	428
 			}, {
-				"new_name":	"strtol",
+				"new_name":	"strtoll",
 				"case_number":	429
 			}, {
-				"new_name":	"strtol",
+				"new_name":	"strtoll",
 				"case_number":	430
 			}, {
-				"new_name":	"strtoll",
+				"new_name":	"strtoq",
 				"case_number":	431
 			}, {
-				"new_name":	"strtoll",
+				"new_name":	"strtoq",
 				"case_number":	432
 			}, {
-				"new_name":	"strtoll",
+				"new_name":	"strtoq",
 				"case_number":	433
 			}, {
-				"new_name":	"strtoll",
+				"new_name":	"strtoq",
 				"case_number":	434
 			}, {
-				"new_name":	"strtoll",
+				"new_name":	"strtoq",
 				"case_number":	435
 			}, {
-				"new_name":	"strtoll",
+				"new_name":	"strtoq",
 				"case_number":	436
 			}, {
-				"new_name":	"strtoll",
+				"new_name":	"strtoq",
 				"case_number":	437
 			}, {
-				"new_name":	"strtoll",
+				"new_name":	"strtoq",
 				"case_number":	438
 			}, {
-				"new_name":	"strtoll",
+				"new_name":	"strtoq",
 				"case_number":	439
 			}, {
-				"new_name":	"strtoll",
+				"new_name":	"strtoq",
 				"case_number":	440
 			}, {
-				"new_name":	"strtoll",
+				"new_name":	"strtoq",
 				"case_number":	441
 			}, {
-				"new_name":	"strtoq",
+				"new_name":	"strtoul",
 				"case_number":	442
 			}, {
-				"new_name":	"strtoq",
+				"new_name":	"strtoul",
 				"case_number":	443
 			}, {
-				"new_name":	"strtoq",
+				"new_name":	"strtoul",
 				"case_number":	444
 			}, {
-				"new_name":	"strtoq",
+				"new_name":	"strtoul",
 				"case_number":	445
 			}, {
-				"new_name":	"strtoq",
+				"new_name":	"strtoul",
 				"case_number":	446
 			}, {
-				"new_name":	"strtoq",
+				"new_name":	"strtoul",
 				"case_number":	447
 			}, {
-				"new_name":	"strtoq",
+				"new_name":	"strtoul",
 				"case_number":	448
 			}, {
-				"new_name":	"strtoq",
+				"new_name":	"strtoul",
 				"case_number":	449
 			}, {
-				"new_name":	"strtoq",
+				"new_name":	"strtoul",
 				"case_number":	450
 			}, {
-				"new_name":	"strtoq",
+				"new_name":	"strtoul",
 				"case_number":	451
 			}, {
-				"new_name":	"strtoq",
+				"new_name":	"strtoul",
 				"case_number":	452
 			}, {
-				"new_name":	"strtoul",
+				"new_name":	"strtoull",
 				"case_number":	453
 			}, {
-				"new_name":	"strtoul",
+				"new_name":	"strtoull",
 				"case_number":	454
 			}, {
-				"new_name":	"strtoul",
+				"new_name":	"strtoull",
 				"case_number":	455
 			}, {
-				"new_name":	"strtoul",
+				"new_name":	"strtoull",
 				"case_number":	456
 			}, {
-				"new_name":	"strtoul",
+				"new_name":	"strtoull",
 				"case_number":	457
 			}, {
-				"new_name":	"strtoul",
+				"new_name":	"strtoull",
 				"case_number":	458
 			}, {
-				"new_name":	"strtoul",
+				"new_name":	"strtoull",
 				"case_number":	459
 			}, {
-				"new_name":	"strtoul",
+				"new_name":	"strtoull",
 				"case_number":	460
 			}, {
-				"new_name":	"strtoul",
+				"new_name":	"strtoull",
 				"case_number":	461
 			}, {
-				"new_name":	"strtoul",
+				"new_name":	"strtoull",
 				"case_number":	462
 			}, {
-				"new_name":	"strtoul",
+				"new_name":	"strtoull",
 				"case_number":	463
 			}, {
-				"new_name":	"strtoull",
+				"new_name":	"strtouq",
 				"case_number":	464
 			}, {
-				"new_name":	"strtoull",
+				"new_name":	"strtouq",
 				"case_number":	465
 			}, {
-				"new_name":	"strtoull",
+				"new_name":	"strtouq",
 				"case_number":	466
 			}, {
-				"new_name":	"strtoull",
+				"new_name":	"strtouq",
 				"case_number":	467
 			}, {
-				"new_name":	"strtoull",
+				"new_name":	"strtouq",
 				"case_number":	468
 			}, {
-				"new_name":	"strtoull",
+				"new_name":	"strtouq",
 				"case_number":	469
 			}, {
-				"new_name":	"strtoull",
+				"new_name":	"strtouq",
 				"case_number":	470
 			}, {
-				"new_name":	"strtoull",
+				"new_name":	"strtouq",
 				"case_number":	471
 			}, {
-				"new_name":	"strtoull",
+				"new_name":	"strtouq",
 				"case_number":	472
 			}, {
-				"new_name":	"strtoull",
+				"new_name":	"strtouq",
 				"case_number":	473
 			}, {
-				"new_name":	"strtoull",
+				"new_name":	"strtouq",
 				"case_number":	474
 			}, {
-				"new_name":	"strtouq",
+				"new_name":	"strxfrm",
 				"case_number":	475
 			}, {
-				"new_name":	"strtouq",
+				"new_name":	"strxfrm",
 				"case_number":	476
 			}, {
-				"new_name":	"strtouq",
+				"new_name":	"strxfrm",
 				"case_number":	477
 			}, {
-				"new_name":	"strtouq",
+				"new_name":	"strxfrm",
 				"case_number":	478
 			}, {
-				"new_name":	"strtouq",
+				"new_name":	"strxfrm",
 				"case_number":	479
 			}, {
-				"new_name":	"strtouq",
+				"new_name":	"strxfrm",
 				"case_number":	480
 			}, {
-				"new_name":	"strtouq",
+				"new_name":	"strxfrm",
 				"case_number":	481
 			}, {
-				"new_name":	"strtouq",
+				"new_name":	"strxfrm",
 				"case_number":	482
 			}, {
-				"new_name":	"strtouq",
+				"new_name":	"strxfrm",
 				"case_number":	483
 			}, {
-				"new_name":	"strtouq",
+				"new_name":	"sub_function",
 				"case_number":	484
 			}, {
-				"new_name":	"strtouq",
+				"new_name":	"sub_function",
 				"case_number":	485
 			}, {
-				"new_name":	"strxfrm",
+				"new_name":	"vfprintf",
 				"case_number":	486
 			}, {
-				"new_name":	"strxfrm",
+				"new_name":	"vfprintf",
 				"case_number":	487
 			}, {
-				"new_name":	"strxfrm",
+				"new_name":	"vsprintf",
 				"case_number":	488
 			}, {
-				"new_name":	"strxfrm",
+				"new_name":	"vsprintf",
 				"case_number":	489
 			}, {
-				"new_name":	"strxfrm",
+				"new_name":	"wcstombs",
 				"case_number":	490
 			}, {
-				"new_name":	"strxfrm",
+				"new_name":	"wcstombs",
 				"case_number":	491
 			}, {
-				"new_name":	"strxfrm",
+				"new_name":	"wcstombs",
 				"case_number":	492
 			}, {
-				"new_name":	"strxfrm",
+				"new_name":	"wcstombs",
 				"case_number":	493
 			}, {
-				"new_name":	"strxfrm",
+				"new_name":	"wcstombs",
 				"case_number":	494
 			}, {
-				"new_name":	"sub_function",
+				"new_name":	"wcstombs",
 				"case_number":	495
 			}, {
-				"new_name":	"sub_function",
+				"new_name":	"wcstombs",
 				"case_number":	496
 			}, {
-				"new_name":	"vfprintf",
+				"new_name":	"wcstombs",
 				"case_number":	497
 			}, {
-				"new_name":	"vfprintf",
+				"new_name":	"wcstombs",
 				"case_number":	498
 			}, {
-				"new_name":	"vsprintf",
+				"new_name":	"zend_arg_types_stack_2_pop",
 				"case_number":	499
 			}, {
-				"new_name":	"vsprintf",
+				"new_name":	"zend_binary_zval_strncasecmp",
 				"case_number":	500
 			}, {
-				"new_name":	"wcstombs",
+				"new_name":	"zend_binary_zval_strncasecmp",
 				"case_number":	501
 			}, {
-				"new_name":	"wcstombs",
+				"new_name":	"zend_binary_zval_strncmp",
 				"case_number":	502
 			}, {
-				"new_name":	"wcstombs",
+				"new_name":	"zend_binary_zval_strncmp",
 				"case_number":	503
 			}, {
-				"new_name":	"wcstombs",
+				"new_name":	"zend_check_magic_method_implementation",
 				"case_number":	504
 			}, {
-				"new_name":	"wcstombs",
+				"new_name":	"zend_check_magic_method_implementation",
 				"case_number":	505
 			}, {
-				"new_name":	"wcstombs",
+				"new_name":	"zend_check_magic_method_implementation",
 				"case_number":	506
 			}, {
-				"new_name":	"wcstombs",
+				"new_name":	"zend_check_magic_method_implementation",
 				"case_number":	507
 			}, {
-				"new_name":	"wcstombs",
+				"new_name":	"zend_check_magic_method_implementation",
 				"case_number":	508
 			}, {
-				"new_name":	"wcstombs",
+				"new_name":	"zend_check_magic_method_implementation",
 				"case_number":	509
 			}, {
-				"new_name":	"zend_arg_types_stack_2_pop",
+				"new_name":	"zend_check_magic_method_implementation",
 				"case_number":	510
 			}, {
-				"new_name":	"zend_binary_zval_strncasecmp",
+				"new_name":	"zend_check_magic_method_implementation",
 				"case_number":	511
 			}, {
-				"new_name":	"zend_binary_zval_strncasecmp",
+				"new_name":	"zend_check_magic_method_implementation",
 				"case_number":	512
 			}, {
-				"new_name":	"zend_binary_zval_strncmp",
+				"new_name":	"zend_check_magic_method_implementation",
 				"case_number":	513
 			}, {
-				"new_name":	"zend_binary_zval_strncmp",
+				"new_name":	"zend_check_magic_method_implementation",
 				"case_number":	514
 			}, {
-				"new_name":	"zend_check_magic_method_implementation",
+				"new_name":	"zend_check_property_access",
 				"case_number":	515
 			}, {
-				"new_name":	"zend_check_magic_method_implementation",
+				"new_name":	"zend_check_property_access",
 				"case_number":	516
 			}, {
-				"new_name":	"zend_check_magic_method_implementation",
+				"new_name":	"zend_check_property_access",
 				"case_number":	517
 			}, {
-				"new_name":	"zend_check_magic_method_implementation",
+				"new_name":	"zend_check_property_access",
 				"case_number":	518
 			}, {
-				"new_name":	"zend_check_magic_method_implementation",
+				"new_name":	"zend_check_property_access",
 				"case_number":	519
 			}, {
-				"new_name":	"zend_check_magic_method_implementation",
+				"new_name":	"zend_check_property_access",
 				"case_number":	520
 			}, {
-				"new_name":	"zend_check_magic_method_implementation",
+				"new_name":	"zend_check_property_access",
 				"case_number":	521
 			}, {
-				"new_name":	"zend_check_magic_method_implementation",
+				"new_name":	"zend_check_property_access",
 				"case_number":	522
 			}, {
-				"new_name":	"zend_check_magic_method_implementation",
+				"new_name":	"zend_check_property_access",
 				"case_number":	523
 			}, {
-				"new_name":	"zend_check_magic_method_implementation",
+				"new_name":	"zend_check_property_access",
 				"case_number":	524
 			}, {
-				"new_name":	"zend_check_magic_method_implementation",
+				"new_name":	"zend_check_property_access",
 				"case_number":	525
 			}, {
-				"new_name":	"zend_check_property_access",
+				"new_name":	"zend_compare_arrays",
 				"case_number":	526
 			}, {
-				"new_name":	"zend_check_property_access",
+				"new_name":	"zend_compare_arrays",
 				"case_number":	527
 			}, {
-				"new_name":	"zend_check_property_access",
+				"new_name":	"zend_compare_objects",
 				"case_number":	528
 			}, {
-				"new_name":	"zend_check_property_access",
+				"new_name":	"zend_compare_objects",
 				"case_number":	529
 			}, {
-				"new_name":	"zend_check_property_access",
+				"new_name":	"zend_compare_symbol_tables",
 				"case_number":	530
 			}, {
-				"new_name":	"zend_check_property_access",
+				"new_name":	"zend_compare_symbol_tables",
 				"case_number":	531
 			}, {
-				"new_name":	"zend_check_property_access",
+				"new_name":	"zend_declare_class_constant_null",
 				"case_number":	532
 			}, {
-				"new_name":	"zend_check_property_access",
+				"new_name":	"zend_declare_class_constant_null",
 				"case_number":	533
 			}, {
-				"new_name":	"zend_check_property_access",
+				"new_name":	"zend_declare_class_constant_null",
 				"case_number":	534
 			}, {
-				"new_name":	"zend_check_property_access",
+				"new_name":	"zend_declare_class_constant_null",
 				"case_number":	535
 			}, {
-				"new_name":	"zend_check_property_access",
+				"new_name":	"zend_declare_class_constant_null",
 				"case_number":	536
 			}, {
-				"new_name":	"zend_compare_arrays",
+				"new_name":	"zend_declare_class_constant_null",
 				"case_number":	537
 			}, {
-				"new_name":	"zend_compare_arrays",
+				"new_name":	"zend_declare_class_constant_null",
 				"case_number":	538
 			}, {
-				"new_name":	"zend_compare_objects",
+				"new_name":	"zend_declare_class_constant_null",
 				"case_number":	539
 			}, {
-				"new_name":	"zend_compare_objects",
+				"new_name":	"zend_declare_class_constant_null",
 				"case_number":	540
 			}, {
-				"new_name":	"zend_compare_symbol_tables",
+				"new_name":	"zend_delete_global_variable_ex",
 				"case_number":	541
 			}, {
-				"new_name":	"zend_compare_symbol_tables",
+				"new_name":	"zend_delete_global_variable_ex",
 				"case_number":	542
 			}, {
-				"new_name":	"zend_declare_class_constant_null",
+				"new_name":	"zend_delete_global_variable_ex",
 				"case_number":	543
 			}, {
-				"new_name":	"zend_declare_class_constant_null",
+				"new_name":	"zend_delete_global_variable_ex",
 				"case_number":	544
 			}, {
-				"new_name":	"zend_declare_class_constant_null",
+				"new_name":	"zend_delete_global_variable_ex",
 				"case_number":	545
 			}, {
-				"new_name":	"zend_declare_class_constant_null",
+				"new_name":	"zend_delete_global_variable_ex",
 				"case_number":	546
 			}, {
-				"new_name":	"zend_declare_class_constant_null",
+				"new_name":	"zend_delete_global_variable_ex",
 				"case_number":	547
 			}, {
-				"new_name":	"zend_declare_class_constant_null",
+				"new_name":	"zend_delete_global_variable_ex",
 				"case_number":	548
 			}, {
-				"new_name":	"zend_declare_class_constant_null",
+				"new_name":	"zend_delete_global_variable_ex",
 				"case_number":	549
 			}, {
-				"new_name":	"zend_declare_class_constant_null",
+				"new_name":	"zend_do_abstract_method",
 				"case_number":	550
 			}, {
-				"new_name":	"zend_declare_class_constant_null",
+				"new_name":	"zend_do_add_static_array_element",
 				"case_number":	551
 			}, {
-				"new_name":	"zend_delete_global_variable_ex",
+				"new_name":	"zend_do_add_string",
 				"case_number":	552
 			}, {
-				"new_name":	"zend_delete_global_variable_ex",
+				"new_name":	"zend_do_add_variable",
 				"case_number":	553
 			}, {
-				"new_name":	"zend_delete_global_variable_ex",
+				"new_name":	"zend_do_assign",
 				"case_number":	554
 			}, {
-				"new_name":	"zend_delete_global_variable_ex",
+				"new_name":	"zend_do_assign_ref",
 				"case_number":	555
 			}, {
-				"new_name":	"zend_delete_global_variable_ex",
+				"new_name":	"zend_do_begin_class_declaration",
 				"case_number":	556
 			}, {
-				"new_name":	"zend_delete_global_variable_ex",
+				"new_name":	"zend_do_build_namespace_name",
 				"case_number":	557
 			}, {
-				"new_name":	"zend_delete_global_variable_ex",
+				"new_name":	"zend_do_case_before_statement",
 				"case_number":	558
 			}, {
-				"new_name":	"zend_delete_global_variable_ex",
+				"new_name":	"zend_do_cast",
 				"case_number":	559
 			}, {
-				"new_name":	"zend_delete_global_variable_ex",
+				"new_name":	"zend_do_cast",
 				"case_number":	560
 			}, {
-				"new_name":	"zend_do_abstract_method",
+				"new_name":	"zend_do_cast",
 				"case_number":	561
 			}, {
-				"new_name":	"zend_do_add_static_array_element",
+				"new_name":	"zend_do_cast",
 				"case_number":	562
 			}, {
-				"new_name":	"zend_do_add_string",
+				"new_name":	"zend_do_cast",
 				"case_number":	563
 			}, {
-				"new_name":	"zend_do_add_variable",
+				"new_name":	"zend_do_cast",
 				"case_number":	564
 			}, {
-				"new_name":	"zend_do_assign",
+				"new_name":	"zend_do_cast",
 				"case_number":	565
 			}, {
-				"new_name":	"zend_do_assign_ref",
+				"new_name":	"zend_do_cast",
 				"case_number":	566
 			}, {
-				"new_name":	"zend_do_begin_class_declaration",
+				"new_name":	"zend_do_cast",
 				"case_number":	567
 			}, {
-				"new_name":	"zend_do_build_namespace_name",
+				"new_name":	"zend_do_cast",
 				"case_number":	568
 			}, {
-				"new_name":	"zend_do_case_before_statement",
+				"new_name":	"zend_do_cast",
 				"case_number":	569
 			}, {
-				"new_name":	"zend_do_cast",
+				"new_name":	"zend_do_declare_property",
 				"case_number":	570
 			}, {
-				"new_name":	"zend_do_cast",
+				"new_name":	"zend_do_declare_property",
 				"case_number":	571
 			}, {
-				"new_name":	"zend_do_cast",
+				"new_name":	"zend_do_declare_property",
 				"case_number":	572
 			}, {
-				"new_name":	"zend_do_cast",
+				"new_name":	"zend_do_declare_property",
 				"case_number":	573
 			}, {
-				"new_name":	"zend_do_cast",
+				"new_name":	"zend_do_declare_property",
 				"case_number":	574
 			}, {
-				"new_name":	"zend_do_cast",
+				"new_name":	"zend_do_declare_property",
 				"case_number":	575
 			}, {
-				"new_name":	"zend_do_cast",
+				"new_name":	"zend_do_declare_property",
 				"case_number":	576
 			}, {
-				"new_name":	"zend_do_cast",
+				"new_name":	"zend_do_declare_property",
 				"case_number":	577
 			}, {
-				"new_name":	"zend_do_cast",
+				"new_name":	"zend_do_declare_property",
 				"case_number":	578
 			}, {
-				"new_name":	"zend_do_cast",
+				"new_name":	"zend_do_do_while_end",
 				"case_number":	579
 			}, {
-				"new_name":	"zend_do_cast",
+				"new_name":	"zend_do_end_new_object",
 				"case_number":	580
 			}, {
-				"new_name":	"zend_do_declare_property",
+				"new_name":	"zend_do_end_variable_parse",
 				"case_number":	581
 			}, {
-				"new_name":	"zend_do_declare_property",
+				"new_name":	"zend_do_end_variable_parse",
 				"case_number":	582
 			}, {
-				"new_name":	"zend_do_declare_property",
+				"new_name":	"zend_do_end_variable_parse",
 				"case_number":	583
 			}, {
-				"new_name":	"zend_do_declare_property",
+				"new_name":	"zend_do_end_variable_parse",
 				"case_number":	584
 			}, {
-				"new_name":	"zend_do_declare_property",
+				"new_name":	"zend_do_end_variable_parse",
 				"case_number":	585
 			}, {
-				"new_name":	"zend_do_declare_property",
+				"new_name":	"zend_do_end_variable_parse",
 				"case_number":	586
 			}, {
-				"new_name":	"zend_do_declare_property",
+				"new_name":	"zend_do_end_variable_parse",
 				"case_number":	587
 			}, {
-				"new_name":	"zend_do_declare_property",
+				"new_name":	"zend_do_end_variable_parse",
 				"case_number":	588
 			}, {
-				"new_name":	"zend_do_declare_property",
+				"new_name":	"zend_do_end_variable_parse",
 				"case_number":	589
 			}, {
-				"new_name":	"zend_do_do_while_end",
+				"new_name":	"zend_do_end_variable_parse",
 				"case_number":	590
 			}, {
-				"new_name":	"zend_do_end_new_object",
+				"new_name":	"zend_do_end_variable_parse",
 				"case_number":	591
 			}, {
-				"new_name":	"zend_do_end_variable_parse",
+				"new_name":	"zend_do_fetch_global_variable",
 				"case_number":	592
 			}, {
-				"new_name":	"zend_do_end_variable_parse",
+				"new_name":	"zend_do_fetch_global_variable",
 				"case_number":	593
 			}, {
-				"new_name":	"zend_do_end_variable_parse",
+				"new_name":	"zend_do_fetch_global_variable",
 				"case_number":	594
 			}, {
-				"new_name":	"zend_do_end_variable_parse",
+				"new_name":	"zend_do_fetch_global_variable",
 				"case_number":	595
 			}, {
-				"new_name":	"zend_do_end_variable_parse",
+				"new_name":	"zend_do_fetch_global_variable",
 				"case_number":	596
 			}, {
-				"new_name":	"zend_do_end_variable_parse",
+				"new_name":	"zend_do_fetch_global_variable",
 				"case_number":	597
 			}, {
-				"new_name":	"zend_do_end_variable_parse",
+				"new_name":	"zend_do_fetch_global_variable",
 				"case_number":	598
 			}, {
-				"new_name":	"zend_do_end_variable_parse",
+				"new_name":	"zend_do_fetch_global_variable",
 				"case_number":	599
 			}, {
-				"new_name":	"zend_do_end_variable_parse",
+				"new_name":	"zend_do_fetch_global_variable",
 				"case_number":	600
 			}, {
-				"new_name":	"zend_do_end_variable_parse",
+				"new_name":	"zend_do_fetch_global_variable",
 				"case_number":	601
 			}, {
-				"new_name":	"zend_do_end_variable_parse",
+				"new_name":	"zend_do_fetch_global_variable",
 				"case_number":	602
 			}, {
-				"new_name":	"zend_do_fetch_global_variable",
+				"new_name":	"zend_do_fetch_property",
 				"case_number":	603
 			}, {
-				"new_name":	"zend_do_fetch_global_variable",
+				"new_name":	"zend_do_fetch_static_variable",
 				"case_number":	604
 			}, {
-				"new_name":	"zend_do_fetch_global_variable",
+				"new_name":	"zend_do_fetch_static_variable",
 				"case_number":	605
 			}, {
-				"new_name":	"zend_do_fetch_global_variable",
+				"new_name":	"zend_do_fetch_static_variable",
 				"case_number":	606
 			}, {
-				"new_name":	"zend_do_fetch_global_variable",
+				"new_name":	"zend_do_fetch_static_variable",
 				"case_number":	607
 			}, {
-				"new_name":	"zend_do_fetch_global_variable",
+				"new_name":	"zend_do_fetch_static_variable",
 				"case_number":	608
 			}, {
-				"new_name":	"zend_do_fetch_global_variable",
+				"new_name":	"zend_do_fetch_static_variable",
 				"case_number":	609
 			}, {
-				"new_name":	"zend_do_fetch_global_variable",
+				"new_name":	"zend_do_fetch_static_variable",
 				"case_number":	610
 			}, {
-				"new_name":	"zend_do_fetch_global_variable",
+				"new_name":	"zend_do_fetch_static_variable",
 				"case_number":	611
 			}, {
-				"new_name":	"zend_do_fetch_global_variable",
+				"new_name":	"zend_do_fetch_static_variable",
 				"case_number":	612
 			}, {
-				"new_name":	"zend_do_fetch_global_variable",
+				"new_name":	"zend_do_fetch_static_variable",
 				"case_number":	613
 			}, {
-				"new_name":	"zend_do_fetch_property",
+				"new_name":	"zend_do_fetch_static_variable",
 				"case_number":	614
 			}, {
-				"new_name":	"zend_do_fetch_static_variable",
+				"new_name":	"zend_do_indirect_references",
 				"case_number":	615
 			}, {
-				"new_name":	"zend_do_fetch_static_variable",
+				"new_name":	"zend_do_jmp_set",
 				"case_number":	616
 			}, {
-				"new_name":	"zend_do_fetch_static_variable",
+				"new_name":	"zend_do_pass_param",
 				"case_number":	617
 			}, {
-				"new_name":	"zend_do_fetch_static_variable",
+				"new_name":	"zend_do_pass_param",
 				"case_number":	618
 			}, {
-				"new_name":	"zend_do_fetch_static_variable",
+				"new_name":	"zend_do_pass_param",
 				"case_number":	619
 			}, {
-				"new_name":	"zend_do_fetch_static_variable",
+				"new_name":	"zend_do_pass_param",
 				"case_number":	620
 			}, {
-				"new_name":	"zend_do_fetch_static_variable",
+				"new_name":	"zend_do_pass_param",
 				"case_number":	621
 			}, {
-				"new_name":	"zend_do_fetch_static_variable",
+				"new_name":	"zend_do_pass_param",
 				"case_number":	622
 			}, {
-				"new_name":	"zend_do_fetch_static_variable",
+				"new_name":	"zend_do_pass_param",
 				"case_number":	623
 			}, {
-				"new_name":	"zend_do_fetch_static_variable",
+				"new_name":	"zend_do_pass_param",
 				"case_number":	624
 			}, {
-				"new_name":	"zend_do_fetch_static_variable",
+				"new_name":	"zend_do_pass_param",
 				"case_number":	625
 			}, {
-				"new_name":	"zend_do_indirect_references",
+				"new_name":	"zend_do_pass_param",
 				"case_number":	626
 			}, {
-				"new_name":	"zend_do_jmp_set",
+				"new_name":	"zend_do_pass_param",
 				"case_number":	627
 			}, {
-				"new_name":	"zend_do_pass_param",
+				"new_name":	"zend_do_post_incdec",
 				"case_number":	628
 			}, {
-				"new_name":	"zend_do_pass_param",
+				"new_name":	"zend_do_post_incdec",
 				"case_number":	629
 			}, {
-				"new_name":	"zend_do_pass_param",
+				"new_name":	"zend_do_post_incdec",
 				"case_number":	630
 			}, {
-				"new_name":	"zend_do_pass_param",
+				"new_name":	"zend_do_post_incdec",
 				"case_number":	631
 			}, {
-				"new_name":	"zend_do_pass_param",
+				"new_name":	"zend_do_post_incdec",
 				"case_number":	632
 			}, {
-				"new_name":	"zend_do_pass_param",
+				"new_name":	"zend_do_post_incdec",
 				"case_number":	633
 			}, {
-				"new_name":	"zend_do_pass_param",
+				"new_name":	"zend_do_post_incdec",
 				"case_number":	634
 			}, {
-				"new_name":	"zend_do_pass_param",
+				"new_name":	"zend_do_post_incdec",
 				"case_number":	635
 			}, {
-				"new_name":	"zend_do_pass_param",
+				"new_name":	"zend_do_post_incdec",
 				"case_number":	636
 			}, {
-				"new_name":	"zend_do_pass_param",
+				"new_name":	"zend_do_post_incdec",
 				"case_number":	637
 			}, {
-				"new_name":	"zend_do_pass_param",
+				"new_name":	"zend_do_pre_incdec",
 				"case_number":	638
 			}, {
-				"new_name":	"zend_do_post_incdec",
+				"new_name":	"zend_do_pre_incdec",
 				"case_number":	639
 			}, {
-				"new_name":	"zend_do_post_incdec",
+				"new_name":	"zend_do_pre_incdec",
 				"case_number":	640
 			}, {
-				"new_name":	"zend_do_post_incdec",
+				"new_name":	"zend_do_pre_incdec",
 				"case_number":	641
 			}, {
-				"new_name":	"zend_do_post_incdec",
+				"new_name":	"zend_do_pre_incdec",
 				"case_number":	642
 			}, {
-				"new_name":	"zend_do_post_incdec",
+				"new_name":	"zend_do_pre_incdec",
 				"case_number":	643
 			}, {
-				"new_name":	"zend_do_post_incdec",
+				"new_name":	"zend_do_pre_incdec",
 				"case_number":	644
 			}, {
-				"new_name":	"zend_do_post_incdec",
+				"new_name":	"zend_do_pre_incdec",
 				"case_number":	645
 			}, {
-				"new_name":	"zend_do_post_incdec",
+				"new_name":	"zend_do_pre_incdec",
 				"case_number":	646
 			}, {
-				"new_name":	"zend_do_post_incdec",
+				"new_name":	"zend_do_pre_incdec",
 				"case_number":	647
 			}, {
-				"new_name":	"zend_do_post_incdec",
+				"new_name":	"zend_do_qm_true",
 				"case_number":	648
 			}, {
-				"new_name":	"zend_do_pre_incdec",
+				"new_name":	"zend_do_use",
 				"case_number":	649
 			}, {
-				"new_name":	"zend_do_pre_incdec",
+				"new_name":	"zend_do_use",
 				"case_number":	650
 			}, {
-				"new_name":	"zend_do_pre_incdec",
+				"new_name":	"zend_do_use",
 				"case_number":	651
 			}, {
-				"new_name":	"zend_do_pre_incdec",
+				"new_name":	"zend_do_use",
 				"case_number":	652
 			}, {
-				"new_name":	"zend_do_pre_incdec",
+				"new_name":	"zend_do_use",
 				"case_number":	653
 			}, {
-				"new_name":	"zend_do_pre_incdec",
+				"new_name":	"zend_do_use",
 				"case_number":	654
 			}, {
-				"new_name":	"zend_do_pre_incdec",
+				"new_name":	"zend_do_use",
 				"case_number":	655
 			}, {
-				"new_name":	"zend_do_pre_incdec",
+				"new_name":	"zend_do_use",
 				"case_number":	656
 			}, {
-				"new_name":	"zend_do_pre_incdec",
+				"new_name":	"zend_do_use",
 				"case_number":	657
 			}, {
-				"new_name":	"zend_do_pre_incdec",
+				"new_name":	"zend_do_use",
 				"case_number":	658
 			}, {
-				"new_name":	"zend_do_qm_true",
+				"new_name":	"zend_do_use",
 				"case_number":	659
 			}, {
-				"new_name":	"zend_do_use",
+				"new_name":	"zend_eval_string",
 				"case_number":	660
 			}, {
-				"new_name":	"zend_do_use",
+				"new_name":	"zend_fcall_info_argp",
 				"case_number":	661
 			}, {
-				"new_name":	"zend_do_use",
+				"new_name":	"zend_fcall_info_args_restore",
 				"case_number":	662
 			}, {
-				"new_name":	"zend_do_use",
+				"new_name":	"zend_fcall_info_args_save",
 				"case_number":	663
 			}, {
-				"new_name":	"zend_do_use",
+				"new_name":	"zend_fcall_info_argv",
 				"case_number":	664
 			}, {
-				"new_name":	"zend_do_use",
+				"new_name":	"zend_fetch_class",
 				"case_number":	665
 			}, {
-				"new_name":	"zend_do_use",
+				"new_name":	"zend_fetch_class",
 				"case_number":	666
 			}, {
-				"new_name":	"zend_do_use",
+				"new_name":	"zend_fetch_class",
 				"case_number":	667
 			}, {
-				"new_name":	"zend_do_use",
+				"new_name":	"zend_fetch_class",
 				"case_number":	668
 			}, {
-				"new_name":	"zend_do_use",
+				"new_name":	"zend_fetch_class",
 				"case_number":	669
 			}, {
-				"new_name":	"zend_do_use",
+				"new_name":	"zend_fetch_class",
 				"case_number":	670
 			}, {
-				"new_name":	"zend_eval_string",
+				"new_name":	"zend_fetch_class",
 				"case_number":	671
 			}, {
-				"new_name":	"zend_fcall_info_argp",
+				"new_name":	"zend_fetch_class",
 				"case_number":	672
 			}, {
-				"new_name":	"zend_fcall_info_args_restore",
+				"new_name":	"zend_fetch_class",
 				"case_number":	673
 			}, {
-				"new_name":	"zend_fcall_info_args_save",
+				"new_name":	"zend_fetch_class",
 				"case_number":	674
 			}, {
-				"new_name":	"zend_fcall_info_argv",
+				"new_name":	"zend_fetch_class",
 				"case_number":	675
 			}, {
-				"new_name":	"zend_fetch_class",
+				"new_name":	"zend_get_compiled_variable_name",
 				"case_number":	676
 			}, {
-				"new_name":	"zend_fetch_class",
+				"new_name":	"zend_get_configuration_directive",
 				"case_number":	677
 			}, {
-				"new_name":	"zend_fetch_class",
+				"new_name":	"zend_get_configuration_directive",
 				"case_number":	678
 			}, {
-				"new_name":	"zend_fetch_class",
+				"new_name":	"zend_get_constant",
 				"case_number":	679
 			}, {
-				"new_name":	"zend_fetch_class",
+				"new_name":	"zend_get_constant",
 				"case_number":	680
 			}, {
-				"new_name":	"zend_fetch_class",
+				"new_name":	"zend_get_object_classname",
 				"case_number":	681
 			}, {
-				"new_name":	"zend_fetch_class",
+				"new_name":	"zend_get_property_info",
 				"case_number":	682
 			}, {
-				"new_name":	"zend_fetch_class",
+				"new_name":	"zend_get_property_info",
 				"case_number":	683
 			}, {
-				"new_name":	"zend_fetch_class",
+				"new_name":	"zend_get_property_info",
 				"case_number":	684
 			}, {
-				"new_name":	"zend_fetch_class",
+				"new_name":	"zend_get_property_info",
 				"case_number":	685
 			}, {
-				"new_name":	"zend_fetch_class",
+				"new_name":	"zend_get_property_info",
 				"case_number":	686
 			}, {
-				"new_name":	"zend_get_compiled_variable_name",
+				"new_name":	"zend_get_property_info",
 				"case_number":	687
 			}, {
-				"new_name":	"zend_get_configuration_directive",
+				"new_name":	"zend_get_property_info",
 				"case_number":	688
 			}, {
-				"new_name":	"zend_get_configuration_directive",
+				"new_name":	"zend_get_property_info",
 				"case_number":	689
 			}, {
-				"new_name":	"zend_get_constant",
+				"new_name":	"zend_get_property_info",
 				"case_number":	690
 			}, {
-				"new_name":	"zend_get_constant",
+				"new_name":	"zend_get_property_info",
 				"case_number":	691
 			}, {
-				"new_name":	"zend_get_object_classname",
+				"new_name":	"zend_get_property_info",
 				"case_number":	692
 			}, {
-				"new_name":	"zend_get_property_info",
+				"new_name":	"zend_hash_add_empty_element",
 				"case_number":	693
 			}, {
-				"new_name":	"zend_get_property_info",
+				"new_name":	"zend_hash_add_empty_element",
 				"case_number":	694
 			}, {
-				"new_name":	"zend_get_property_info",
+				"new_name":	"zend_hash_add_empty_element",
 				"case_number":	695
 			}, {
-				"new_name":	"zend_get_property_info",
+				"new_name":	"zend_hash_add_empty_element",
 				"case_number":	696
 			}, {
-				"new_name":	"zend_get_property_info",
+				"new_name":	"zend_hash_add_empty_element",
 				"case_number":	697
 			}, {
-				"new_name":	"zend_get_property_info",
+				"new_name":	"zend_hash_add_empty_element",
 				"case_number":	698
 			}, {
-				"new_name":	"zend_get_property_info",
+				"new_name":	"zend_hash_add_empty_element",
 				"case_number":	699
 			}, {
-				"new_name":	"zend_get_property_info",
+				"new_name":	"zend_hash_add_empty_element",
 				"case_number":	700
 			}, {
-				"new_name":	"zend_get_property_info",
+				"new_name":	"zend_hash_add_empty_element",
 				"case_number":	701
 			}, {
-				"new_name":	"zend_get_property_info",
+				"new_name":	"zend_hash_apply_with_argument",
 				"case_number":	702
 			}, {
-				"new_name":	"zend_get_property_info",
+				"new_name":	"zend_hash_exists",
 				"case_number":	703
 			}, {
-				"new_name":	"zend_hash_add_empty_element",
+				"new_name":	"zend_hash_exists",
 				"case_number":	704
 			}, {
-				"new_name":	"zend_hash_add_empty_element",
+				"new_name":	"zend_hash_exists",
 				"case_number":	705
 			}, {
-				"new_name":	"zend_hash_add_empty_element",
+				"new_name":	"zend_hash_exists",
 				"case_number":	706
 			}, {
-				"new_name":	"zend_hash_add_empty_element",
+				"new_name":	"zend_hash_exists",
 				"case_number":	707
 			}, {
-				"new_name":	"zend_hash_add_empty_element",
+				"new_name":	"zend_hash_exists",
 				"case_number":	708
 			}, {
-				"new_name":	"zend_hash_add_empty_element",
+				"new_name":	"zend_hash_exists",
 				"case_number":	709
 			}, {
-				"new_name":	"zend_hash_add_empty_element",
+				"new_name":	"zend_hash_exists",
 				"case_number":	710
 			}, {
-				"new_name":	"zend_hash_add_empty_element",
+				"new_name":	"zend_hash_exists",
 				"case_number":	711
 			}, {
-				"new_name":	"zend_hash_add_empty_element",
+				"new_name":	"zend_hash_get_current_data_ex",
 				"case_number":	712
 			}, {
-				"new_name":	"zend_hash_apply_with_argument",
+				"new_name":	"zend_hash_index_find",
 				"case_number":	713
 			}, {
-				"new_name":	"zend_hash_exists",
+				"new_name":	"zend_is_callable",
 				"case_number":	714
 			}, {
-				"new_name":	"zend_hash_exists",
+				"new_name":	"zend_llist_apply_with_argument",
 				"case_number":	715
 			}, {
-				"new_name":	"zend_hash_exists",
+				"new_name":	"zend_llist_del_element",
 				"case_number":	716
 			}, {
-				"new_name":	"zend_hash_exists",
+				"new_name":	"zend_lookup_class",
 				"case_number":	717
 			}, {
-				"new_name":	"zend_hash_exists",
+				"new_name":	"zend_make_printable_zval",
 				"case_number":	718
 			}, {
-				"new_name":	"zend_hash_exists",
+				"new_name":	"zend_memrchr",
 				"case_number":	719
 			}, {
-				"new_name":	"zend_hash_exists",
+				"new_name":	"zend_memrchr",
 				"case_number":	720
 			}, {
-				"new_name":	"zend_hash_exists",
+				"new_name":	"zend_memrchr",
 				"case_number":	721
 			}, {
-				"new_name":	"zend_hash_exists",
+				"new_name":	"zend_memrchr",
 				"case_number":	722
 			}, {
-				"new_name":	"zend_hash_get_current_data_ex",
+				"new_name":	"zend_memrchr",
 				"case_number":	723
 			}, {
-				"new_name":	"zend_hash_index_find",
+				"new_name":	"zend_memrchr",
 				"case_number":	724
 			}, {
-				"new_name":	"zend_is_callable",
+				"new_name":	"zend_memrchr",
 				"case_number":	725
 			}, {
-				"new_name":	"zend_llist_apply_with_argument",
+				"new_name":	"zend_memrchr",
 				"case_number":	726
 			}, {
-				"new_name":	"zend_llist_del_element",
+				"new_name":	"zend_memrchr",
 				"case_number":	727
 			}, {
-				"new_name":	"zend_lookup_class",
+				"new_name":	"zend_merge_properties",
 				"case_number":	728
 			}, {
-				"new_name":	"zend_make_printable_zval",
+				"new_name":	"zend_merge_properties",
 				"case_number":	729
 			}, {
-				"new_name":	"zend_memrchr",
+				"new_name":	"zend_merge_properties",
 				"case_number":	730
 			}, {
-				"new_name":	"zend_memrchr",
+				"new_name":	"zend_merge_properties",
 				"case_number":	731
 			}, {
-				"new_name":	"zend_memrchr",
+				"new_name":	"zend_merge_properties",
 				"case_number":	732
 			}, {
-				"new_name":	"zend_memrchr",
+				"new_name":	"zend_merge_properties",
 				"case_number":	733
 			}, {
-				"new_name":	"zend_memrchr",
+				"new_name":	"zend_merge_properties",
 				"case_number":	734
 			}, {
-				"new_name":	"zend_memrchr",
+				"new_name":	"zend_merge_properties",
 				"case_number":	735
 			}, {
-				"new_name":	"zend_memrchr",
+				"new_name":	"zend_merge_properties",
 				"case_number":	736
 			}, {
-				"new_name":	"zend_memrchr",
+				"new_name":	"zend_merge_properties",
 				"case_number":	737
 			}, {
-				"new_name":	"zend_memrchr",
+				"new_name":	"zend_merge_properties",
 				"case_number":	738
 			}, {
-				"new_name":	"zend_merge_properties",
+				"new_name":	"zend_mm_shutdown",
 				"case_number":	739
 			}, {
-				"new_name":	"zend_merge_properties",
+				"new_name":	"zend_mm_shutdown",
 				"case_number":	740
 			}, {
-				"new_name":	"zend_merge_properties",
+				"new_name":	"zend_mm_shutdown",
 				"case_number":	741
 			}, {
-				"new_name":	"zend_merge_properties",
+				"new_name":	"zend_mm_shutdown",
 				"case_number":	742
 			}, {
-				"new_name":	"zend_merge_properties",
+				"new_name":	"zend_mm_shutdown",
 				"case_number":	743
 			}, {
-				"new_name":	"zend_merge_properties",
+				"new_name":	"zend_mm_shutdown",
 				"case_number":	744
 			}, {
-				"new_name":	"zend_merge_properties",
+				"new_name":	"zend_mm_shutdown",
 				"case_number":	745
 			}, {
-				"new_name":	"zend_merge_properties",
+				"new_name":	"zend_mm_shutdown",
 				"case_number":	746
 			}, {
-				"new_name":	"zend_merge_properties",
+				"new_name":	"zend_mm_shutdown",
 				"case_number":	747
 			}, {
-				"new_name":	"zend_merge_properties",
+				"new_name":	"zend_mm_shutdown",
 				"case_number":	748
 			}, {
-				"new_name":	"zend_merge_properties",
+				"new_name":	"zend_mm_shutdown",
 				"case_number":	749
 			}, {
-				"new_name":	"zend_mm_shutdown",
+				"new_name":	"zend_prepare_reference",
 				"case_number":	750
 			}, {
-				"new_name":	"zend_mm_shutdown",
+				"new_name":	"zend_prepare_trait_precedence",
 				"case_number":	751
 			}, {
-				"new_name":	"zend_mm_shutdown",
+				"new_name":	"zend_print_zval_ex",
 				"case_number":	752
 			}, {
-				"new_name":	"zend_mm_shutdown",
+				"new_name":	"zend_print_zval_ex",
 				"case_number":	753
 			}, {
-				"new_name":	"zend_mm_shutdown",
+				"new_name":	"zend_print_zval_ex",
 				"case_number":	754
 			}, {
-				"new_name":	"zend_mm_shutdown",
+				"new_name":	"zend_print_zval_ex",
 				"case_number":	755
 			}, {
-				"new_name":	"zend_mm_shutdown",
+				"new_name":	"zend_print_zval_ex",
 				"case_number":	756
 			}, {
-				"new_name":	"zend_mm_shutdown",
+				"new_name":	"zend_print_zval_ex",
 				"case_number":	757
 			}, {
-				"new_name":	"zend_mm_shutdown",
+				"new_name":	"zend_print_zval_ex",
 				"case_number":	758
 			}, {
-				"new_name":	"zend_mm_shutdown",
+				"new_name":	"zend_print_zval_ex",
 				"case_number":	759
 			}, {
-				"new_name":	"zend_mm_shutdown",
+				"new_name":	"zend_print_zval_ex",
 				"case_number":	760
 			}, {
-				"new_name":	"zend_prepare_reference",
+				"new_name":	"zend_print_zval_ex",
 				"case_number":	761
 			}, {
-				"new_name":	"zend_prepare_trait_precedence",
+				"new_name":	"zend_print_zval_ex",
 				"case_number":	762
 			}, {
-				"new_name":	"zend_print_zval_ex",
+				"new_name":	"zend_print_zval_r_ex",
 				"case_number":	763
 			}, {
-				"new_name":	"zend_print_zval_ex",
+				"new_name":	"zend_print_zval_r_ex",
 				"case_number":	764
 			}, {
-				"new_name":	"zend_print_zval_ex",
+				"new_name":	"zend_print_zval_r_ex",
 				"case_number":	765
 			}, {
-				"new_name":	"zend_print_zval_ex",
+				"new_name":	"zend_print_zval_r_ex",
 				"case_number":	766
 			}, {
-				"new_name":	"zend_print_zval_ex",
+				"new_name":	"zend_print_zval_r_ex",
 				"case_number":	767
 			}, {
-				"new_name":	"zend_print_zval_ex",
+				"new_name":	"zend_print_zval_r_ex",
 				"case_number":	768
 			}, {
-				"new_name":	"zend_print_zval_ex",
+				"new_name":	"zend_print_zval_r_ex",
 				"case_number":	769
 			}, {
-				"new_name":	"zend_print_zval_ex",
+				"new_name":	"zend_print_zval_r_ex",
 				"case_number":	770
 			}, {
-				"new_name":	"zend_print_zval_ex",
+				"new_name":	"zend_print_zval_r_ex",
 				"case_number":	771
 			}, {
-				"new_name":	"zend_print_zval_ex",
+				"new_name":	"zend_print_zval_r_ex",
 				"case_number":	772
 			}, {
-				"new_name":	"zend_print_zval_ex",
+				"new_name":	"zend_print_zval_r_ex",
 				"case_number":	773
 			}, {
-				"new_name":	"zend_print_zval_r_ex",
+				"new_name":	"zend_ptr_stack_2_pop",
 				"case_number":	774
 			}, {
-				"new_name":	"zend_print_zval_r_ex",
+				"new_name":	"zend_ptr_stack_2_push",
 				"case_number":	775
 			}, {
-				"new_name":	"zend_print_zval_r_ex",
+				"new_name":	"zend_ptr_stack_clean",
 				"case_number":	776
 			}, {
-				"new_name":	"zend_print_zval_r_ex",
+				"new_name":	"zend_ptr_stack_clean",
 				"case_number":	777
 			}, {
-				"new_name":	"zend_print_zval_r_ex",
+				"new_name":	"zend_ptr_stack_clean",
 				"case_number":	778
 			}, {
-				"new_name":	"zend_print_zval_r_ex",
+				"new_name":	"zend_ptr_stack_clean",
 				"case_number":	779
 			}, {
-				"new_name":	"zend_print_zval_r_ex",
+				"new_name":	"zend_ptr_stack_clean",
 				"case_number":	780
 			}, {
-				"new_name":	"zend_print_zval_r_ex",
+				"new_name":	"zend_ptr_stack_clean",
 				"case_number":	781
 			}, {
-				"new_name":	"zend_print_zval_r_ex",
+				"new_name":	"zend_ptr_stack_clean",
 				"case_number":	782
 			}, {
-				"new_name":	"zend_print_zval_r_ex",
+				"new_name":	"zend_ptr_stack_clean",
 				"case_number":	783
 			}, {
-				"new_name":	"zend_print_zval_r_ex",
+				"new_name":	"zend_ptr_stack_clean",
 				"case_number":	784
 			}, {
-				"new_name":	"zend_ptr_stack_2_pop",
+				"new_name":	"zend_ptr_stack_clean",
 				"case_number":	785
 			}, {
-				"new_name":	"zend_ptr_stack_2_push",
+				"new_name":	"zend_register_class_alias_ex",
 				"case_number":	786
 			}, {
-				"new_name":	"zend_ptr_stack_clean",
+				"new_name":	"zend_register_internal_class_ex",
 				"case_number":	787
 			}, {
-				"new_name":	"zend_ptr_stack_clean",
+				"new_name":	"zend_register_list_destructors",
 				"case_number":	788
 			}, {
-				"new_name":	"zend_ptr_stack_clean",
+				"new_name":	"zend_register_list_destructors",
 				"case_number":	789
 			}, {
-				"new_name":	"zend_ptr_stack_clean",
+				"new_name":	"zend_register_list_destructors",
 				"case_number":	790
 			}, {
-				"new_name":	"zend_ptr_stack_clean",
+				"new_name":	"zend_register_list_destructors",
 				"case_number":	791
 			}, {
-				"new_name":	"zend_ptr_stack_clean",
+				"new_name":	"zend_register_list_destructors",
 				"case_number":	792
 			}, {
-				"new_name":	"zend_ptr_stack_clean",
+				"new_name":	"zend_register_list_destructors",
 				"case_number":	793
 			}, {
-				"new_name":	"zend_ptr_stack_clean",
+				"new_name":	"zend_register_list_destructors",
 				"case_number":	794
 			}, {
-				"new_name":	"zend_ptr_stack_clean",
+				"new_name":	"zend_register_list_destructors",
 				"case_number":	795
 			}, {
-				"new_name":	"zend_ptr_stack_clean",
+				"new_name":	"zend_register_list_destructors",
 				"case_number":	796
 			}, {
-				"new_name":	"zend_register_class_alias_ex",
+				"new_name":	"zend_register_list_destructors",
 				"case_number":	797
 			}, {
-				"new_name":	"zend_register_internal_class_ex",
+				"new_name":	"zend_register_list_destructors",
 				"case_number":	798
 			}, {
-				"new_name":	"zend_register_list_destructors",
+				"new_name":	"zend_register_resource",
 				"case_number":	799
 			}, {
-				"new_name":	"zend_register_list_destructors",
+				"new_name":	"zend_register_resource",
 				"case_number":	800
 			}, {
-				"new_name":	"zend_register_list_destructors",
+				"new_name":	"zend_register_resource",
 				"case_number":	801
 			}, {
-				"new_name":	"zend_register_list_destructors",
+				"new_name":	"zend_register_resource",
 				"case_number":	802
 			}, {
-				"new_name":	"zend_register_list_destructors",
+				"new_name":	"zend_register_resource",
 				"case_number":	803
 			}, {
-				"new_name":	"zend_register_list_destructors",
+				"new_name":	"zend_register_resource",
 				"case_number":	804
 			}, {
-				"new_name":	"zend_register_list_destructors",
+				"new_name":	"zend_register_resource",
 				"case_number":	805
 			}, {
-				"new_name":	"zend_register_list_destructors",
+				"new_name":	"zend_register_resource",
 				"case_number":	806
 			}, {
-				"new_name":	"zend_register_list_destructors",
+				"new_name":	"zend_register_resource",
 				"case_number":	807
 			}, {
-				"new_name":	"zend_register_list_destructors",
+				"new_name":	"zend_register_resource",
 				"case_number":	808
 			}, {
-				"new_name":	"zend_register_list_destructors",
+				"new_name":	"zend_register_resource",
 				"case_number":	809
 			}, {
-				"new_name":	"zend_register_resource",
+				"new_name":	"zend_resolve_class_name",
 				"case_number":	810
 			}, {
-				"new_name":	"zend_register_resource",
+				"new_name":	"zend_resolve_class_name",
 				"case_number":	811
 			}, {
-				"new_name":	"zend_register_resource",
+				"new_name":	"zend_resolve_class_name",
 				"case_number":	812
 			}, {
-				"new_name":	"zend_register_resource",
+				"new_name":	"zend_resolve_class_name",
 				"case_number":	813
 			}, {
-				"new_name":	"zend_register_resource",
+				"new_name":	"zend_resolve_class_name",
 				"case_number":	814
 			}, {
-				"new_name":	"zend_register_resource",
+				"new_name":	"zend_resolve_class_name",
 				"case_number":	815
 			}, {
-				"new_name":	"zend_register_resource",
+				"new_name":	"zend_resolve_class_name",
 				"case_number":	816
 			}, {
-				"new_name":	"zend_register_resource",
+				"new_name":	"zend_resolve_class_name",
 				"case_number":	817
 			}, {
-				"new_name":	"zend_register_resource",
+				"new_name":	"zend_resolve_class_name",
 				"case_number":	818
 			}, {
-				"new_name":	"zend_register_resource",
+				"new_name":	"zend_resolve_class_name",
 				"case_number":	819
 			}, {
-				"new_name":	"zend_register_resource",
+				"new_name":	"zend_resolve_class_name",
 				"case_number":	820
 			}, {
-				"new_name":	"zend_resolve_class_name",
+				"new_name":	"zend_resolve_goto_label",
 				"case_number":	821
 			}, {
-				"new_name":	"zend_resolve_class_name",
+				"new_name":	"zend_resolve_goto_label",
 				"case_number":	822
 			}, {
-				"new_name":	"zend_resolve_class_name",
+				"new_name":	"zend_resolve_goto_label",
 				"case_number":	823
 			}, {
-				"new_name":	"zend_resolve_class_name",
+				"new_name":	"zend_resolve_goto_label",
 				"case_number":	824
 			}, {
-				"new_name":	"zend_resolve_class_name",
+				"new_name":	"zend_resolve_goto_label",
 				"case_number":	825
 			}, {
-				"new_name":	"zend_resolve_class_name",
+				"new_name":	"zend_resolve_goto_label",
 				"case_number":	826
 			}, {
-				"new_name":	"zend_resolve_class_name",
+				"new_name":	"zend_resolve_goto_label",
 				"case_number":	827
 			}, {
-				"new_name":	"zend_resolve_class_name",
+				"new_name":	"zend_resolve_goto_label",
 				"case_number":	828
 			}, {
-				"new_name":	"zend_resolve_class_name",
+				"new_name":	"zend_resolve_goto_label",
 				"case_number":	829
 			}, {
-				"new_name":	"zend_resolve_class_name",
+				"new_name":	"zend_resolve_goto_label",
 				"case_number":	830
 			}, {
-				"new_name":	"zend_resolve_class_name",
+				"new_name":	"zend_resolve_goto_label",
 				"case_number":	831
 			}, {
-				"new_name":	"zend_resolve_goto_label",
+				"new_name":	"zend_stack_apply",
 				"case_number":	832
 			}, {
-				"new_name":	"zend_resolve_goto_label",
+				"new_name":	"zend_stack_apply",
 				"case_number":	833
 			}, {
-				"new_name":	"zend_resolve_goto_label",
+				"new_name":	"zend_stack_push",
 				"case_number":	834
 			}, {
-				"new_name":	"zend_resolve_goto_label",
+				"new_name":	"zend_stack_push",
 				"case_number":	835
 			}, {
-				"new_name":	"zend_resolve_goto_label",
+				"new_name":	"zend_stack_push",
 				"case_number":	836
 			}, {
-				"new_name":	"zend_resolve_goto_label",
+				"new_name":	"zend_stack_push",
 				"case_number":	837
 			}, {
-				"new_name":	"zend_resolve_goto_label",
+				"new_name":	"zend_stack_push",
 				"case_number":	838
 			}, {
-				"new_name":	"zend_resolve_goto_label",
+				"new_name":	"zend_stack_push",
 				"case_number":	839
 			}, {
-				"new_name":	"zend_resolve_goto_label",
+				"new_name":	"zend_stack_push",
 				"case_number":	840
 			}, {
-				"new_name":	"zend_resolve_goto_label",
+				"new_name":	"zend_stack_push",
 				"case_number":	841
 			}, {
-				"new_name":	"zend_resolve_goto_label",
+				"new_name":	"zend_stack_push",
 				"case_number":	842
 			}, {
-				"new_name":	"zend_stack_apply",
+				"new_name":	"zend_stack_push",
 				"case_number":	843
 			}, {
-				"new_name":	"zend_stack_apply",
+				"new_name":	"zend_stack_push",
 				"case_number":	844
 			}, {
-				"new_name":	"zend_stack_push",
+				"new_name":	"zend_std_cast_object_tostring",
 				"case_number":	845
 			}, {
-				"new_name":	"zend_stack_push",
+				"new_name":	"zend_std_cast_object_tostring",
 				"case_number":	846
 			}, {
-				"new_name":	"zend_stack_push",
+				"new_name":	"zend_std_cast_object_tostring",
 				"case_number":	847
 			}, {
-				"new_name":	"zend_stack_push",
+				"new_name":	"zend_std_cast_object_tostring",
 				"case_number":	848
 			}, {
-				"new_name":	"zend_stack_push",
+				"new_name":	"zend_std_cast_object_tostring",
 				"case_number":	849
 			}, {
-				"new_name":	"zend_stack_push",
+				"new_name":	"zend_std_cast_object_tostring",
 				"case_number":	850
 			}, {
-				"new_name":	"zend_stack_push",
+				"new_name":	"zend_std_cast_object_tostring",
 				"case_number":	851
 			}, {
-				"new_name":	"zend_stack_push",
+				"new_name":	"zend_std_cast_object_tostring",
 				"case_number":	852
 			}, {
-				"new_name":	"zend_stack_push",
+				"new_name":	"zend_std_cast_object_tostring",
 				"case_number":	853
 			}, {
-				"new_name":	"zend_stack_push",
+				"new_name":	"zend_std_cast_object_tostring",
 				"case_number":	854
 			}, {
-				"new_name":	"zend_stack_push",
+				"new_name":	"zend_std_cast_object_tostring",
 				"case_number":	855
 			}, {
-				"new_name":	"zend_std_cast_object_tostring",
+				"new_name":	"zend_str_tolower_copy",
 				"case_number":	856
 			}, {
-				"new_name":	"zend_std_cast_object_tostring",
+				"new_name":	"zend_str_tolower_copy",
 				"case_number":	857
 			}, {
-				"new_name":	"zend_std_cast_object_tostring",
+				"new_name":	"zend_str_tolower_copy",
 				"case_number":	858
 			}, {
-				"new_name":	"zend_std_cast_object_tostring",
+				"new_name":	"zend_str_tolower_copy",
 				"case_number":	859
 			}, {
-				"new_name":	"zend_std_cast_object_tostring",
+				"new_name":	"zend_str_tolower_copy",
 				"case_number":	860
 			}, {
-				"new_name":	"zend_std_cast_object_tostring",
+				"new_name":	"zend_str_tolower_copy",
 				"case_number":	861
 			}, {
-				"new_name":	"zend_std_cast_object_tostring",
+				"new_name":	"zend_str_tolower_copy",
 				"case_number":	862
 			}, {
-				"new_name":	"zend_std_cast_object_tostring",
+				"new_name":	"zend_str_tolower_copy",
 				"case_number":	863
 			}, {
-				"new_name":	"zend_std_cast_object_tostring",
+				"new_name":	"zend_str_tolower_copy",
 				"case_number":	864
 			}, {
-				"new_name":	"zend_std_cast_object_tostring",
+				"new_name":	"zend_stream_fixup",
 				"case_number":	865
 			}, {
-				"new_name":	"zend_std_cast_object_tostring",
+				"new_name":	"zend_symtable_del",
 				"case_number":	866
 			}, {
-				"new_name":	"zend_str_tolower_copy",
+				"new_name":	"zend_symtable_del",
 				"case_number":	867
 			}, {
-				"new_name":	"zend_str_tolower_copy",
+				"new_name":	"zend_symtable_del",
 				"case_number":	868
 			}, {
-				"new_name":	"zend_str_tolower_copy",
+				"new_name":	"zend_symtable_del",
 				"case_number":	869
 			}, {
-				"new_name":	"zend_str_tolower_copy",
+				"new_name":	"zend_symtable_del",
 				"case_number":	870
 			}, {
-				"new_name":	"zend_str_tolower_copy",
+				"new_name":	"zend_symtable_del",
 				"case_number":	871
 			}, {
-				"new_name":	"zend_str_tolower_copy",
+				"new_name":	"zend_symtable_del",
 				"case_number":	872
 			}, {
-				"new_name":	"zend_str_tolower_copy",
+				"new_name":	"zend_symtable_del",
 				"case_number":	873
 			}, {
-				"new_name":	"zend_str_tolower_copy",
+				"new_name":	"zend_symtable_del",
 				"case_number":	874
 			}, {
-				"new_name":	"zend_str_tolower_copy",
+				"new_name":	"zend_symtable_exists",
 				"case_number":	875
 			}, {
-				"new_name":	"zend_stream_fixup",
+				"new_name":	"zend_symtable_exists",
 				"case_number":	876
 			}, {
-				"new_name":	"zend_symtable_del",
+				"new_name":	"zend_symtable_exists",
 				"case_number":	877
 			}, {
-				"new_name":	"zend_symtable_del",
+				"new_name":	"zend_symtable_exists",
 				"case_number":	878
 			}, {
-				"new_name":	"zend_symtable_del",
+				"new_name":	"zend_symtable_exists",
 				"case_number":	879
 			}, {
-				"new_name":	"zend_symtable_del",
+				"new_name":	"zend_symtable_exists",
 				"case_number":	880
 			}, {
-				"new_name":	"zend_symtable_del",
+				"new_name":	"zend_symtable_exists",
 				"case_number":	881
 			}, {
-				"new_name":	"zend_symtable_del",
+				"new_name":	"zend_symtable_exists",
 				"case_number":	882
 			}, {
-				"new_name":	"zend_symtable_del",
+				"new_name":	"zend_symtable_exists",
 				"case_number":	883
 			}, {
-				"new_name":	"zend_symtable_del",
+				"new_name":	"zend_ts_get_hash_value",
 				"case_number":	884
 			}, {
-				"new_name":	"zend_symtable_del",
+				"new_name":	"zend_ts_get_hash_value",
 				"case_number":	885
 			}, {
-				"new_name":	"zend_symtable_exists",
+				"new_name":	"zend_ts_get_hash_value",
 				"case_number":	886
 			}, {
-				"new_name":	"zend_symtable_exists",
+				"new_name":	"zend_ts_get_hash_value",
 				"case_number":	887
 			}, {
-				"new_name":	"zend_symtable_exists",
+				"new_name":	"zend_ts_get_hash_value",
 				"case_number":	888
 			}, {
-				"new_name":	"zend_symtable_exists",
+				"new_name":	"zend_ts_get_hash_value",
 				"case_number":	889
 			}, {
-				"new_name":	"zend_symtable_exists",
+				"new_name":	"zend_ts_get_hash_value",
 				"case_number":	890
 			}, {
-				"new_name":	"zend_symtable_exists",
+				"new_name":	"zend_ts_get_hash_value",
 				"case_number":	891
 			}, {
-				"new_name":	"zend_symtable_exists",
+				"new_name":	"zend_ts_get_hash_value",
 				"case_number":	892
 			}, {
-				"new_name":	"zend_symtable_exists",
+				"new_name":	"zend_ts_hash_add_empty_element",
 				"case_number":	893
 			}, {
-				"new_name":	"zend_symtable_exists",
+				"new_name":	"zend_ts_hash_add_empty_element",
 				"case_number":	894
 			}, {
-				"new_name":	"zend_ts_get_hash_value",
+				"new_name":	"zend_ts_hash_add_empty_element",
 				"case_number":	895
 			}, {
-				"new_name":	"zend_ts_get_hash_value",
+				"new_name":	"zend_ts_hash_add_empty_element",
 				"case_number":	896
 			}, {
-				"new_name":	"zend_ts_get_hash_value",
+				"new_name":	"zend_ts_hash_add_empty_element",
 				"case_number":	897
 			}, {
-				"new_name":	"zend_ts_get_hash_value",
+				"new_name":	"zend_ts_hash_add_empty_element",
 				"case_number":	898
 			}, {
-				"new_name":	"zend_ts_get_hash_value",
+				"new_name":	"zend_ts_hash_add_empty_element",
 				"case_number":	899
 			}, {
-				"new_name":	"zend_ts_get_hash_value",
+				"new_name":	"zend_ts_hash_add_empty_element",
 				"case_number":	900
 			}, {
-				"new_name":	"zend_ts_get_hash_value",
+				"new_name":	"zend_ts_hash_add_empty_element",
 				"case_number":	901
 			}, {
-				"new_name":	"zend_ts_get_hash_value",
+				"new_name":	"zend_ts_hash_apply_with_argument",
 				"case_number":	902
 			}, {
-				"new_name":	"zend_ts_get_hash_value",
+				"new_name":	"zend_ts_hash_exists",
 				"case_number":	903
 			}, {
-				"new_name":	"zend_ts_hash_add_empty_element",
+				"new_name":	"zend_ts_hash_exists",
 				"case_number":	904
 			}, {
-				"new_name":	"zend_ts_hash_add_empty_element",
+				"new_name":	"zend_ts_hash_exists",
 				"case_number":	905
 			}, {
-				"new_name":	"zend_ts_hash_add_empty_element",
+				"new_name":	"zend_ts_hash_exists",
 				"case_number":	906
 			}, {
-				"new_name":	"zend_ts_hash_add_empty_element",
+				"new_name":	"zend_ts_hash_exists",
 				"case_number":	907
 			}, {
-				"new_name":	"zend_ts_hash_add_empty_element",
+				"new_name":	"zend_ts_hash_exists",
 				"case_number":	908
 			}, {
-				"new_name":	"zend_ts_hash_add_empty_element",
+				"new_name":	"zend_ts_hash_exists",
 				"case_number":	909
 			}, {
-				"new_name":	"zend_ts_hash_add_empty_element",
+				"new_name":	"zend_ts_hash_exists",
 				"case_number":	910
 			}, {
-				"new_name":	"zend_ts_hash_add_empty_element",
+				"new_name":	"zend_ts_hash_exists",
 				"case_number":	911
 			}, {
-				"new_name":	"zend_ts_hash_add_empty_element",
+				"new_name":	"zend_ts_hash_index_find",
 				"case_number":	912
 			}, {
-				"new_name":	"zend_ts_hash_apply_with_argument",
+				"new_name":	"zend_unregister_functions",
 				"case_number":	913
 			}, {
-				"new_name":	"zend_ts_hash_exists",
+				"new_name":	"zend_unregister_functions",
 				"case_number":	914
 			}, {
-				"new_name":	"zend_ts_hash_exists",
+				"new_name":	"zend_update_static_property_null",
 				"case_number":	915
 			}, {
-				"new_name":	"zend_ts_hash_exists",
+				"new_name":	"zend_update_static_property_null",
 				"case_number":	916
 			}, {
-				"new_name":	"zend_ts_hash_exists",
+				"new_name":	"zend_update_static_property_null",
 				"case_number":	917
 			}, {
-				"new_name":	"zend_ts_hash_exists",
+				"new_name":	"zend_update_static_property_null",
 				"case_number":	918
 			}, {
-				"new_name":	"zend_ts_hash_exists",
+				"new_name":	"zend_update_static_property_null",
 				"case_number":	919
 			}, {
-				"new_name":	"zend_ts_hash_exists",
+				"new_name":	"zend_update_static_property_null",
 				"case_number":	920
 			}, {
-				"new_name":	"zend_ts_hash_exists",
+				"new_name":	"zend_update_static_property_null",
 				"case_number":	921
 			}, {
-				"new_name":	"zend_ts_hash_exists",
+				"new_name":	"zend_update_static_property_null",
 				"case_number":	922
 			}, {
-				"new_name":	"zend_ts_hash_index_find",
+				"new_name":	"zend_update_static_property_null",
 				"case_number":	923
 			}, {
-				"new_name":	"zend_unregister_functions",
+				"new_name":	"zend_update_static_property_null",
 				"case_number":	924
 			}, {
-				"new_name":	"zend_unregister_functions",
+				"new_name":	"zend_update_static_property_null",
 				"case_number":	925
 			}, {
-				"new_name":	"zend_update_static_property_null",
+				"new_name":	"zendi_smart_strcmp",
 				"case_number":	926
 			}, {
-				"new_name":	"zend_update_static_property_null",
+				"new_name":	"zendi_smart_strcmp",
 				"case_number":	927
 			}, {
-				"new_name":	"zend_update_static_property_null",
+				"new_name":	"zval_update_constant_ex",
 				"case_number":	928
 			}, {
-				"new_name":	"zend_update_static_property_null",
-				"case_number":	929
-			}, {
-				"new_name":	"zend_update_static_property_null",
+				"new_name":	"__overflow",
 				"case_number":	930
 			}, {
-				"new_name":	"zend_update_static_property_null",
+				"new_name":	"__sigsetjmp",
 				"case_number":	931
 			}, {
-				"new_name":	"zend_update_static_property_null",
+				"new_name":	"__stat_file_close",
 				"case_number":	932
 			}, {
-				"new_name":	"zend_update_static_property_null",
+				"new_name":	"__stpcpy",
 				"case_number":	933
 			}, {
-				"new_name":	"zend_update_static_property_null",
+				"new_name":	"__zend_realloc",
 				"case_number":	934
 			}, {
-				"new_name":	"zend_update_static_property_null",
+				"new_name":	"_array_init",
 				"case_number":	935
 			}, {
-				"new_name":	"zend_update_static_property_null",
+				"new_name":	"_estrndup",
 				"case_number":	936
 			}, {
-				"new_name":	"zendi_smart_strcmp",
+				"new_name":	"_longjmp",
 				"case_number":	937
 			}, {
-				"new_name":	"zendi_smart_strcmp",
+				"new_name":	"_object_init_ex",
 				"case_number":	938
 			}, {
-				"new_name":	"zval_update_constant_ex",
+				"new_name":	"_zend_bailout",
 				"case_number":	939
 			}, {
-				"new_name":	"__overflow",
-				"case_number":	941
-			}, {
-				"new_name":	"__sigsetjmp",
-				"case_number":	942
-			}, {
-				"new_name":	"__stat_file_close",
-				"case_number":	943
-			}, {
-				"new_name":	"__stpcpy",
-				"case_number":	944
-			}, {
-				"new_name":	"__zend_realloc",
-				"case_number":	945
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	946
-			}, {
-				"new_name":	"_estrndup",
-				"case_number":	947
-			}, {
-				"new_name":	"_longjmp",
-				"case_number":	948
-			}, {
-				"new_name":	"_object_init_ex",
-				"case_number":	949
-			}, {
-				"new_name":	"_zend_bailout",
-				"case_number":	950
-			}, {
 				"new_name":	"_zend_mm_alloc",
-				"case_number":	951
+				"case_number":	940
 			}, {
 				"new_name":	"_zend_mm_block_size",
-				"case_number":	952
+				"case_number":	941
 			}, {
 				"new_name":	"_zend_mm_free",
-				"case_number":	953
+				"case_number":	942
 			}, {
 				"new_name":	"add_index_null",
-				"case_number":	954
+				"case_number":	943
 			}, {
 				"new_name":	"add_next_index_bool",
-				"case_number":	955
+				"case_number":	944
 			}, {
 				"new_name":	"add_next_index_long",
-				"case_number":	956
+				"case_number":	945
 			}, {
 				"new_name":	"add_next_index_resource",
-				"case_number":	957
+				"case_number":	946
 			}, {
 				"new_name":	"add_next_index_zval",
-				"case_number":	958
+				"case_number":	947
 			}, {
 				"new_name":	"add_trait_alias",
-				"case_number":	959
+				"case_number":	948
 			}, {
 				"new_name":	"bitwise_not_function",
-				"case_number":	960
+				"case_number":	949
 			}, {
 				"new_name":	"boolean_not_function",
-				"case_number":	961
+				"case_number":	950
 			}, {
 				"new_name":	"bzero",
-				"case_number":	962
+				"case_number":	951
 			}, {
 				"new_name":	"compile_file",
-				"case_number":	963
+				"case_number":	952
 			}, {
 				"new_name":	"compile_string",
-				"case_number":	964
+				"case_number":	953
 			}, {
 				"new_name":	"convert_to_long_base",
-				"case_number":	965
+				"case_number":	954
 			}, {
 				"new_name":	"dlopen",
-				"case_number":	966
+				"case_number":	955
 			}, {
 				"new_name":	"dlsym",
-				"case_number":	967
+				"case_number":	956
 			}, {
 				"new_name":	"drand48_r",
-				"case_number":	968
+				"case_number":	957
 			}, {
 				"new_name":	"execute_internal",
-				"case_number":	969
+				"case_number":	958
 			}, {
 				"new_name":	"explicit_bzero",
-				"case_number":	970
+				"case_number":	959
 			}, {
 				"new_name":	"fgetpos",
-				"case_number":	971
+				"case_number":	960
 			}, {
 				"new_name":	"fopen",
-				"case_number":	972
+				"case_number":	961
 			}, {
 				"new_name":	"fprintf",
-				"case_number":	973
+				"case_number":	962
 			}, {
 				"new_name":	"fputs",
-				"case_number":	974
+				"case_number":	963
 			}, {
 				"new_name":	"fsetpos",
-				"case_number":	975
+				"case_number":	964
 			}, {
 				"new_name":	"getloadavg",
-				"case_number":	976
+				"case_number":	965
 			}, {
 				"new_name":	"index",
-				"case_number":	977
+				"case_number":	966
 			}, {
 				"new_name":	"init_trait_alias_list",
-				"case_number":	978
+				"case_number":	967
 			}, {
 				"new_name":	"instanceof_function",
-				"case_number":	979
+				"case_number":	968
 			}, {
 				"new_name":	"lcong48_r",
-				"case_number":	980
+				"case_number":	969
 			}, {
 				"new_name":	"longjmp",
-				"case_number":	981
+				"case_number":	970
 			}, {
 				"new_name":	"lrand48_r",
-				"case_number":	982
+				"case_number":	971
 			}, {
 				"new_name":	"mblen",
-				"case_number":	983
+				"case_number":	972
 			}, {
 				"new_name":	"mkstemps",
-				"case_number":	984
+				"case_number":	973
 			}, {
 				"new_name":	"mrand48_r",
-				"case_number":	985
+				"case_number":	974
 			}, {
 				"new_name":	"object_properties_init",
-				"case_number":	986
+				"case_number":	975
 			}, {
 				"new_name":	"on_exit",
-				"case_number":	987
+				"case_number":	976
 			}, {
 				"new_name":	"open_memstream",
-				"case_number":	988
+				"case_number":	977
 			}, {
 				"new_name":	"popen",
-				"case_number":	989
+				"case_number":	978
 			}, {
 				"new_name":	"print_op_array",
-				"case_number":	990
+				"case_number":	979
 			}, {
 				"new_name":	"printf",
-				"case_number":	991
+				"case_number":	980
 			}, {
 				"new_name":	"random_r",
-				"case_number":	992
+				"case_number":	981
 			}, {
 				"new_name":	"realloc",
-				"case_number":	993
+				"case_number":	982
 			}, {
 				"new_name":	"realpath",
-				"case_number":	994
+				"case_number":	983
 			}, {
 				"new_name":	"rename",
-				"case_number":	995
+				"case_number":	984
 			}, {
 				"new_name":	"rindex",
-				"case_number":	996
+				"case_number":	985
 			}, {
 				"new_name":	"seed48_r",
-				"case_number":	997
+				"case_number":	986
 			}, {
 				"new_name":	"setbuf",
-				"case_number":	998
+				"case_number":	987
 			}, {
 				"new_name":	"setstate_r",
-				"case_number":	999
+				"case_number":	988
 			}, {
 				"new_name":	"siglongjmp",
-				"case_number":	1000
+				"case_number":	989
 			}, {
 				"new_name":	"sprintf",
-				"case_number":	1001
+				"case_number":	990
 			}, {
 				"new_name":	"stpcpy",
-				"case_number":	1002
+				"case_number":	991
 			}, {
 				"new_name":	"strcasecmp",
-				"case_number":	1003
+				"case_number":	992
 			}, {
 				"new_name":	"strcat",
-				"case_number":	1004
+				"case_number":	993
 			}, {
 				"new_name":	"strchr",
-				"case_number":	1005
+				"case_number":	994
 			}, {
 				"new_name":	"strcmp",
-				"case_number":	1006
+				"case_number":	995
 			}, {
 				"new_name":	"strcoll",
-				"case_number":	1007
+				"case_number":	996
 			}, {
 				"new_name":	"strcpy",
-				"case_number":	1008
+				"case_number":	997
 			}, {
 				"new_name":	"strcspn",
-				"case_number":	1009
+				"case_number":	998
 			}, {
 				"new_name":	"strndup",
-				"case_number":	1010
+				"case_number":	999
 			}, {
 				"new_name":	"strnlen",
-				"case_number":	1011
+				"case_number":	1000
 			}, {
 				"new_name":	"strpbrk",
-				"case_number":	1012
+				"case_number":	1001
 			}, {
 				"new_name":	"strrchr",
-				"case_number":	1013
+				"case_number":	1002
 			}, {
 				"new_name":	"strsep",
-				"case_number":	1014
+				"case_number":	1003
 			}, {
 				"new_name":	"strspn",
-				"case_number":	1015
+				"case_number":	1004
 			}, {
 				"new_name":	"strstr",
-				"case_number":	1016
+				"case_number":	1005
 			}, {
 				"new_name":	"strtod",
-				"case_number":	1017
+				"case_number":	1006
 			}, {
 				"new_name":	"strtof",
-				"case_number":	1018
+				"case_number":	1007
 			}, {
 				"new_name":	"strtok",
-				"case_number":	1019
+				"case_number":	1008
 			}, {
 				"new_name":	"strtold",
-				"case_number":	1020
+				"case_number":	1009
 			}, {
 				"new_name":	"tempnam",
-				"case_number":	1021
+				"case_number":	1010
 			}, {
 				"new_name":	"vprintf",
-				"case_number":	1022
+				"case_number":	1011
 			}, {
 				"new_name":	"wctomb",
-				"case_number":	1023
+				"case_number":	1012
 			}, {
 				"new_name":	"zend_add_literal",
-				"case_number":	1024
+				"case_number":	1013
 			}, {
 				"new_name":	"zend_add_to_list",
-				"case_number":	1025
+				"case_number":	1014
 			}, {
 				"new_name":	"zend_atoi",
-				"case_number":	1026
+				"case_number":	1015
 			}, {
 				"new_name":	"zend_atol",
-				"case_number":	1027
+				"case_number":	1016
 			}, {
 				"new_name":	"zend_binary_zval_strcasecmp",
-				"case_number":	1028
+				"case_number":	1017
 			}, {
 				"new_name":	"zend_binary_zval_strcmp",
-				"case_number":	1029
+				"case_number":	1018
 			}, {
 				"new_name":	"zend_call_function",
-				"case_number":	1030
+				"case_number":	1019
 			}, {
 				"new_name":	"zend_check_protected",
-				"case_number":	1031
+				"case_number":	1020
 			}, {
 				"new_name":	"zend_class_implements",
-				"case_number":	1032
+				"case_number":	1021
 			}, {
 				"new_name":	"zend_compare_file_handles",
-				"case_number":	1033
+				"case_number":	1022
 			}, {
 				"new_name":	"zend_copy_constants",
-				"case_number":	1034
+				"case_number":	1023
 			}, {
 				"new_name":	"zend_delete_global_variable",
-				"case_number":	1035
+				"case_number":	1024
 			}, {
 				"new_name":	"zend_dirname",
-				"case_number":	1036
+				"case_number":	1025
 			}, {
 				"new_name":	"zend_disable_class",
-				"case_number":	1037
+				"case_number":	1026
 			}, {
 				"new_name":	"zend_disable_function",
-				"case_number":	1038
+				"case_number":	1027
 			}, {
 				"new_name":	"zend_do_begin_class_member_function_call",
-				"case_number":	1039
+				"case_number":	1028
 			}, {
 				"new_name":	"zend_do_begin_dynamic_function_call",
-				"case_number":	1040
+				"case_number":	1029
 			}, {
 				"new_name":	"zend_do_begin_function_call",
-				"case_number":	1041
+				"case_number":	1030
 			}, {
 				"new_name":	"zend_do_begin_namespace",
-				"case_number":	1042
+				"case_number":	1031
 			}, {
 				"new_name":	"zend_do_begin_new_object",
-				"case_number":	1043
+				"case_number":	1032
 			}, {
 				"new_name":	"zend_do_begin_qm_op",
-				"case_number":	1044
+				"case_number":	1033
 			}, {
 				"new_name":	"zend_do_boolean_and_begin",
-				"case_number":	1045
+				"case_number":	1034
 			}, {
 				"new_name":	"zend_do_boolean_or_begin",
-				"case_number":	1046
+				"case_number":	1035
 			}, {
 				"new_name":	"zend_do_case_after_statement",
-				"case_number":	1047
+				"case_number":	1036
 			}, {
 				"new_name":	"zend_do_clone",
-				"case_number":	1048
+				"case_number":	1037
 			}, {
 				"new_name":	"zend_do_declare_class_constant",
-				"case_number":	1049
+				"case_number":	1038
 			}, {
 				"new_name":	"zend_do_declare_constant",
-				"case_number":	1050
+				"case_number":	1039
 			}, {
 				"new_name":	"zend_do_declare_stmt",
-				"case_number":	1051
+				"case_number":	1040
 			}, {
 				"new_name":	"zend_do_default_before_statement",
-				"case_number":	1052
+				"case_number":	1041
 			}, {
 				"new_name":	"zend_do_end_class_declaration",
-				"case_number":	1053
+				"case_number":	1042
 			}, {
 				"new_name":	"zend_do_exit",
-				"case_number":	1054
+				"case_number":	1043
 			}, {
 				"new_name":	"zend_do_fetch_class",
-				"case_number":	1055
+				"case_number":	1044
 			}, {
 				"new_name":	"zend_do_fetch_lexical_variable",
-				"case_number":	1056
+				"case_number":	1045
 			}, {
 				"new_name":	"zend_do_fetch_static_member",
-				"case_number":	1057
+				"case_number":	1046
 			}, {
 				"new_name":	"zend_do_for_before_statement",
-				"case_number":	1058
+				"case_number":	1047
 			}, {
 				"new_name":	"zend_do_for_cond",
-				"case_number":	1059
+				"case_number":	1048
 			}, {
 				"new_name":	"zend_do_foreach_end",
-				"case_number":	1060
+				"case_number":	1049
 			}, {
 				"new_name":	"zend_do_if_after_statement",
-				"case_number":	1061
+				"case_number":	1050
 			}, {
 				"new_name":	"zend_do_if_cond",
-				"case_number":	1062
+				"case_number":	1051
 			}, {
 				"new_name":	"zend_do_implement_interface",
-				"case_number":	1063
+				"case_number":	1052
 			}, {
 				"new_name":	"zend_do_implement_trait",
-				"case_number":	1064
+				"case_number":	1053
 			}, {
 				"new_name":	"zend_do_inherit_interfaces",
-				"case_number":	1065
+				"case_number":	1054
 			}, {
 				"new_name":	"zend_do_inheritance",
-				"case_number":	1066
+				"case_number":	1055
 			}, {
 				"new_name":	"zend_do_list_end",
-				"case_number":	1067
+				"case_number":	1056
 			}, {
 				"new_name":	"zend_do_mark_last_catch",
-				"case_number":	1068
+				"case_number":	1057
 			}, {
 				"new_name":	"zend_do_print",
-				"case_number":	1069
+				"case_number":	1058
 			}, {
 				"new_name":	"zend_do_return",
-				"case_number":	1070
+				"case_number":	1059
 			}, {
 				"new_name":	"zend_do_shell_exec",
-				"case_number":	1071
+				"case_number":	1060
 			}, {
 				"new_name":	"zend_do_verify_access_types",
-				"case_number":	1072
+				"case_number":	1061
 			}, {
 				"new_name":	"zend_do_while_cond",
-				"case_number":	1073
+				"case_number":	1062
 			}, {
 				"new_name":	"zend_do_while_end",
-				"case_number":	1074
+				"case_number":	1063
 			}, {
 				"new_name":	"zend_fcall_info_argn",
-				"case_number":	1075
+				"case_number":	1064
 			}, {
 				"new_name":	"zend_fcall_info_args",
-				"case_number":	1076
+				"case_number":	1065
 			}, {
 				"new_name":	"zend_fcall_info_args_clear",
-				"case_number":	1077
+				"case_number":	1066
 			}, {
 				"new_name":	"zend_get_class_fetch_type",
-				"case_number":	1078
+				"case_number":	1067
 			}, {
 				"new_name":	"zend_get_compiled_variable_value",
-				"case_number":	1079
+				"case_number":	1068
 			}, {
 				"new_name":	"zend_get_hash_value",
-				"case_number":	1080
+				"case_number":	1069
 			}, {
 				"new_name":	"zend_hash_apply",
-				"case_number":	1081
+				"case_number":	1070
 			}, {
 				"new_name":	"zend_hash_func",
-				"case_number":	1082
+				"case_number":	1071
 			}, {
 				"new_name":	"zend_hash_get_current_key_type_ex",
-				"case_number":	1083
+				"case_number":	1072
 			}, {
 				"new_name":	"zend_hash_get_pointer",
-				"case_number":	1084
+				"case_number":	1073
 			}, {
 				"new_name":	"zend_hash_index_exists",
-				"case_number":	1085
+				"case_number":	1074
 			}, {
 				"new_name":	"zend_hash_internal_pointer_end_ex",
-				"case_number":	1086
+				"case_number":	1075
 			}, {
 				"new_name":	"zend_hash_internal_pointer_reset_ex",
-				"case_number":	1087
+				"case_number":	1076
 			}, {
 				"new_name":	"zend_hash_move_backwards_ex",
-				"case_number":	1088
+				"case_number":	1077
 			}, {
 				"new_name":	"zend_hash_move_forward_ex",
-				"case_number":	1089
+				"case_number":	1078
 			}, {
 				"new_name":	"zend_hash_reverse_apply",
-				"case_number":	1090
+				"case_number":	1079
 			}, {
 				"new_name":	"zend_hash_set_pointer",
-				"case_number":	1091
+				"case_number":	1080
 			}, {
 				"new_name":	"zend_hex_strtod",
-				"case_number":	1092
+				"case_number":	1081
 			}, {
 				"new_name":	"zend_init_list",
-				"case_number":	1093
+				"case_number":	1082
 			}, {
 				"new_name":	"zend_initialize_class_data",
-				"case_number":	1094
+				"case_number":	1083
 			}, {
 				"new_name":	"zend_inline_hash_func",
-				"case_number":	1095
+				"case_number":	1084
 			}, {
 				"new_name":	"zend_is_auto_global",
-				"case_number":	1096
+				"case_number":	1085
 			}, {
 				"new_name":	"zend_iterator_unwrap",
-				"case_number":	1097
+				"case_number":	1086
 			}, {
 				"new_name":	"zend_list_insert",
-				"case_number":	1098
+				"case_number":	1087
 			}, {
 				"new_name":	"zend_llist_add_element",
-				"case_number":	1099
+				"case_number":	1088
 			}, {
 				"new_name":	"zend_llist_apply",
-				"case_number":	1100
+				"case_number":	1089
 			}, {
 				"new_name":	"zend_llist_apply_with_del",
-				"case_number":	1101
+				"case_number":	1090
 			}, {
 				"new_name":	"zend_llist_copy",
-				"case_number":	1102
+				"case_number":	1091
 			}, {
 				"new_name":	"zend_llist_get_first_ex",
-				"case_number":	1103
+				"case_number":	1092
 			}, {
 				"new_name":	"zend_llist_get_last_ex",
-				"case_number":	1104
+				"case_number":	1093
 			}, {
 				"new_name":	"zend_llist_get_next_ex",
-				"case_number":	1105
+				"case_number":	1094
 			}, {
 				"new_name":	"zend_llist_get_prev_ex",
-				"case_number":	1106
+				"case_number":	1095
 			}, {
 				"new_name":	"zend_llist_prepend_element",
-				"case_number":	1107
+				"case_number":	1096
 			}, {
 				"new_name":	"zend_llist_sort",
-				"case_number":	1108
+				"case_number":	1097
 			}, {
 				"new_name":	"zend_make_callable",
-				"case_number":	1109
+				"case_number":	1098
 			}, {
 				"new_name":	"zend_multibyte_set_script_encoding",
-				"case_number":	1110
+				"case_number":	1099
 			}, {
 				"new_name":	"zend_multibyte_set_script_encoding_by_string",
-				"case_number":	1111
+				"case_number":	1100
 			}, {
 				"new_name":	"zend_object_create_proxy",
-				"case_number":	1112
+				"case_number":	1101
 			}, {
 				"new_name":	"zend_object_std_init",
-				"case_number":	1113
+				"case_number":	1102
 			}, {
 				"new_name":	"zend_object_store_set_object",
-				"case_number":	1114
+				"case_number":	1103
 			}, {
 				"new_name":	"zend_objects_destroy_object",
-				"case_number":	1115
+				"case_number":	1104
 			}, {
 				"new_name":	"zend_objects_new",
-				"case_number":	1116
+				"case_number":	1105
 			}, {
 				"new_name":	"zend_objects_store_init",
-				"case_number":	1117
+				"case_number":	1106
 			}, {
 				"new_name":	"zend_oct_strtod",
-				"case_number":	1118
+				"case_number":	1107
 			}, {
 				"new_name":	"zend_print_zval",
-				"case_number":	1119
+				"case_number":	1108
 			}, {
 				"new_name":	"zend_print_zval_r",
-				"case_number":	1120
+				"case_number":	1109
 			}, {
 				"new_name":	"zend_ptr_stack_apply",
-				"case_number":	1121
+				"case_number":	1110
 			}, {
 				"new_name":	"zend_ptr_stack_init_ex",
-				"case_number":	1122
+				"case_number":	1111
 			}, {
 				"new_name":	"zend_ptr_stack_n_pop",
-				"case_number":	1123
+				"case_number":	1112
 			}, {
 				"new_name":	"zend_ptr_stack_n_push",
-				"case_number":	1124
+				"case_number":	1113
 			}, {
 				"new_name":	"zend_ptr_stack_push",
-				"case_number":	1125
+				"case_number":	1114
 			}, {
 				"new_name":	"zend_quick_get_constant",
-				"case_number":	1126
+				"case_number":	1115
 			}, {
 				"new_name":	"zend_resolve_non_class_name",
-				"case_number":	1127
+				"case_number":	1116
 			}, {
 				"new_name":	"zend_stack_top",
-				"case_number":	1128
+				"case_number":	1117
 			}, {
 				"new_name":	"zend_startup",
-				"case_number":	1129
+				"case_number":	1118
 			}, {
 				"new_name":	"zend_std_get_debug_info",
-				"case_number":	1130
+				"case_number":	1119
 			}, {
 				"new_name":	"zend_str_tolower",
-				"case_number":	1131
+				"case_number":	1120
 			}, {
 				"new_name":	"zend_str_tolower_dup",
-				"case_number":	1132
+				"case_number":	1121
 			}, {
 				"new_name":	"zend_stream_open",
-				"case_number":	1133
+				"case_number":	1122
 			}, {
 				"new_name":	"zend_string_to_double",
-				"case_number":	1134
+				"case_number":	1123
 			}, {
 				"new_name":	"zend_strndup",
-				"case_number":	1135
+				"case_number":	1124
 			}, {
 				"new_name":	"zend_strtod",
-				"case_number":	1136
+				"case_number":	1125
 			}, {
 				"new_name":	"zend_ts_hash_apply",
-				"case_number":	1137
+				"case_number":	1126
 			}, {
 				"new_name":	"zend_ts_hash_func",
-				"case_number":	1138
+				"case_number":	1127
 			}, {
 				"new_name":	"zend_ts_hash_index_exists",
-				"case_number":	1139
+				"case_number":	1128
 			}, {
 				"new_name":	"zend_ts_hash_reverse_apply",
-				"case_number":	1140
+				"case_number":	1129
 			}, {
 				"new_name":	"zval_set_isref_to_p",
-				"case_number":	1141
+				"case_number":	1130
 			}, {
 				"new_name":	"zval_update_constant",
-				"case_number":	1142
+				"case_number":	1131
 			}, {
 				"new_name":	"zval_update_constant_inline_change",
-				"case_number":	1143
+				"case_number":	1132
 			}, {
 				"new_name":	"zval_update_constant_no_inline_change",
-				"case_number":	1144
+				"case_number":	1133
 			}]
-	}, {
-		"original_name":	"zval_unset_isref_p",
-		"switch_number":	22,
-		"new_names":	[{
-				"new_name":	"_array_init",
-				"case_number":	2
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	3
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	4
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	5
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	6
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	7
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	8
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	9
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	10
-			}, {
-				"new_name":	"_object_init_ex",
-				"case_number":	11
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	12
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	13
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	14
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	15
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	16
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	17
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	18
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	19
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	20
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	21
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	22
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	23
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	24
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	25
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	26
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	27
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	28
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	29
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	30
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	31
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	32
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	33
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	34
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	35
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	36
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	37
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	38
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	39
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	40
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	41
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	42
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	43
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	44
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	45
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	46
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	47
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	48
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	49
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	50
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	51
-			}, {
-				"new_name":	"add_next_index_zval",
-				"case_number":	52
-			}, {
-				"new_name":	"add_next_index_zval",
-				"case_number":	53
-			}, {
-				"new_name":	"bitwise_not_function",
-				"case_number":	54
-			}, {
-				"new_name":	"bitwise_not_function",
-				"case_number":	55
-			}, {
-				"new_name":	"boolean_not_function",
-				"case_number":	56
-			}, {
-				"new_name":	"boolean_not_function",
-				"case_number":	57
-			}, {
-				"new_name":	"compile_string",
-				"case_number":	58
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	59
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	60
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	61
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	62
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	63
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	64
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	65
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	66
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	67
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	68
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	69
-			}, {
-				"new_name":	"zend_binary_zval_strcasecmp",
-				"case_number":	70
-			}, {
-				"new_name":	"zend_binary_zval_strcasecmp",
-				"case_number":	71
-			}, {
-				"new_name":	"zend_binary_zval_strcmp",
-				"case_number":	72
-			}, {
-				"new_name":	"zend_binary_zval_strcmp",
-				"case_number":	73
-			}, {
-				"new_name":	"zend_iterator_unwrap",
-				"case_number":	74
-			}, {
-				"new_name":	"zend_make_callable",
-				"case_number":	75
-			}, {
-				"new_name":	"zend_object_create_proxy",
-				"case_number":	76
-			}, {
-				"new_name":	"zend_object_create_proxy",
-				"case_number":	77
-			}, {
-				"new_name":	"zend_object_store_set_object",
-				"case_number":	78
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	79
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	80
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	81
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	82
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	83
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	84
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	85
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	86
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	87
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	88
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	89
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	90
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	91
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	92
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	93
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	94
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	95
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	96
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	97
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	98
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	99
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	100
-			}, {
-				"new_name":	"zend_std_get_debug_info",
-				"case_number":	101
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	102
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	103
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	104
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	105
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	106
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	107
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	108
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	109
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	110
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	111
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	112
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	113
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	114
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	115
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	116
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	117
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	118
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	119
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	120
-			}, {
-				"new_name":	"_convert_to_string",
-				"case_number":	122
-			}, {
-				"new_name":	"_object_init",
-				"case_number":	123
-			}, {
-				"new_name":	"_zval_copy_ctor",
-				"case_number":	124
-			}, {
-				"new_name":	"_zval_copy_ctor_func",
-				"case_number":	125
-			}, {
-				"new_name":	"_zval_dtor",
-				"case_number":	126
-			}, {
-				"new_name":	"_zval_dtor_func",
-				"case_number":	127
-			}, {
-				"new_name":	"_zval_dtor_wrapper",
-				"case_number":	128
-			}, {
-				"new_name":	"_zval_internal_dtor",
-				"case_number":	129
-			}, {
-				"new_name":	"add_next_index_null",
-				"case_number":	130
-			}, {
-				"new_name":	"convert_scalar_to_number",
-				"case_number":	131
-			}, {
-				"new_name":	"convert_to_array",
-				"case_number":	132
-			}, {
-				"new_name":	"convert_to_boolean",
-				"case_number":	133
-			}, {
-				"new_name":	"convert_to_double",
-				"case_number":	134
-			}, {
-				"new_name":	"convert_to_long",
-				"case_number":	135
-			}, {
-				"new_name":	"convert_to_null",
-				"case_number":	136
-			}, {
-				"new_name":	"convert_to_object",
-				"case_number":	137
-			}, {
-				"new_name":	"decrement_function",
-				"case_number":	138
-			}, {
-				"new_name":	"gc_remove_zval_from_buffer",
-				"case_number":	139
-			}, {
-				"new_name":	"gc_zobj_possible_root",
-				"case_number":	140
-			}, {
-				"new_name":	"gc_zval_check_possible_root",
-				"case_number":	141
-			}, {
-				"new_name":	"gc_zval_possible_root",
-				"case_number":	142
-			}, {
-				"new_name":	"i_zend_is_true",
-				"case_number":	143
-			}, {
-				"new_name":	"i_zval_ptr_dtor",
-				"case_number":	144
-			}, {
-				"new_name":	"increment_function",
-				"case_number":	145
-			}, {
-				"new_name":	"lex_scan",
-				"case_number":	146
-			}, {
-				"new_name":	"safe_free_zval_ptr_rel",
-				"case_number":	147
-			}, {
-				"new_name":	"zend_is_true",
-				"case_number":	148
-			}, {
-				"new_name":	"zend_locale_sprintf_double",
-				"case_number":	149
-			}, {
-				"new_name":	"zend_object_store_ctor_failed",
-				"case_number":	150
-			}, {
-				"new_name":	"zend_objects_clone_obj",
-				"case_number":	151
-			}, {
-				"new_name":	"zend_objects_store_add_ref",
-				"case_number":	152
-			}, {
-				"new_name":	"zend_objects_store_clone_obj",
-				"case_number":	153
-			}, {
-				"new_name":	"zend_objects_store_del_ref",
-				"case_number":	154
-			}, {
-				"new_name":	"zend_objects_store_get_refcount",
-				"case_number":	155
-			}, {
-				"new_name":	"zend_print_flat_zval_r",
-				"case_number":	156
-			}, {
-				"new_name":	"zend_print_variable",
-				"case_number":	157
-			}, {
-				"new_name":	"zend_std_get_constructor",
-				"case_number":	158
-			}, {
-				"new_name":	"zend_std_get_properties",
-				"case_number":	159
-			}, {
-				"new_name":	"zval_addref_p",
-				"case_number":	160
-			}, {
-				"new_name":	"zval_delref_p",
-				"case_number":	161
-			}, {
-				"new_name":	"zval_is_true",
-				"case_number":	162
-			}, {
-				"new_name":	"zval_isref_p",
-				"case_number":	163
-			}, {
-				"new_name":	"zval_refcount_p",
-				"case_number":	164
-			}, {
-				"new_name":	"zval_set_isref_p",
-				"case_number":	165
-			}]
-	}, {
-		"original_name":	"",
-		"switch_number":	23,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	24,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	25,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	26,
-		"new_names":	[]
-	}, {
-		"original_name":	"zval_addref_p",
-		"switch_number":	30,
-		"new_names":	[{
-				"new_name":	"_array_init",
-				"case_number":	2
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	3
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	4
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	5
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	6
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	7
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	8
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	9
-			}, {
-				"new_name":	"_array_init",
-				"case_number":	10
-			}, {
-				"new_name":	"_object_init_ex",
-				"case_number":	11
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	12
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	13
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	14
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	15
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	16
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	17
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	18
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	19
-			}, {
-				"new_name":	"add_index_null",
-				"case_number":	20
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	21
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	22
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	23
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	24
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	25
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	26
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	27
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	28
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	29
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	30
-			}, {
-				"new_name":	"add_next_index_bool",
-				"case_number":	31
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	32
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	33
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	34
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	35
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	36
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	37
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	38
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	39
-			}, {
-				"new_name":	"add_next_index_long",
-				"case_number":	40
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	41
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	42
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	43
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	44
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	45
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	46
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	47
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	48
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	49
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	50
-			}, {
-				"new_name":	"add_next_index_resource",
-				"case_number":	51
-			}, {
-				"new_name":	"add_next_index_zval",
-				"case_number":	52
-			}, {
-				"new_name":	"add_next_index_zval",
-				"case_number":	53
-			}, {
-				"new_name":	"bitwise_not_function",
-				"case_number":	54
-			}, {
-				"new_name":	"bitwise_not_function",
-				"case_number":	55
-			}, {
-				"new_name":	"boolean_not_function",
-				"case_number":	56
-			}, {
-				"new_name":	"boolean_not_function",
-				"case_number":	57
-			}, {
-				"new_name":	"compile_string",
-				"case_number":	58
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	59
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	60
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	61
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	62
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	63
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	64
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	65
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	66
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	67
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	68
-			}, {
-				"new_name":	"convert_to_long_base",
-				"case_number":	69
-			}, {
-				"new_name":	"zend_binary_zval_strcasecmp",
-				"case_number":	70
-			}, {
-				"new_name":	"zend_binary_zval_strcasecmp",
-				"case_number":	71
-			}, {
-				"new_name":	"zend_binary_zval_strcmp",
-				"case_number":	72
-			}, {
-				"new_name":	"zend_binary_zval_strcmp",
-				"case_number":	73
-			}, {
-				"new_name":	"zend_iterator_unwrap",
-				"case_number":	74
-			}, {
-				"new_name":	"zend_make_callable",
-				"case_number":	75
-			}, {
-				"new_name":	"zend_object_create_proxy",
-				"case_number":	76
-			}, {
-				"new_name":	"zend_object_create_proxy",
-				"case_number":	77
-			}, {
-				"new_name":	"zend_object_store_set_object",
-				"case_number":	78
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	79
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	80
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	81
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	82
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	83
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	84
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	85
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	86
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	87
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	88
-			}, {
-				"new_name":	"zend_print_zval",
-				"case_number":	89
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	90
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	91
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	92
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	93
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	94
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	95
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	96
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	97
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	98
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	99
-			}, {
-				"new_name":	"zend_print_zval_r",
-				"case_number":	100
-			}, {
-				"new_name":	"zend_std_get_debug_info",
-				"case_number":	101
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	102
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	103
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	104
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	105
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	106
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	107
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	108
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	109
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	110
-			}, {
-				"new_name":	"zval_set_isref_to_p",
-				"case_number":	111
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	112
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	113
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	114
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	115
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	116
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	117
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	118
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	119
-			}, {
-				"new_name":	"zval_set_refcount_p",
-				"case_number":	120
-			}, {
-				"new_name":	"_convert_to_string",
-				"case_number":	122
-			}, {
-				"new_name":	"_object_init",
-				"case_number":	123
-			}, {
-				"new_name":	"_zval_copy_ctor",
-				"case_number":	124
-			}, {
-				"new_name":	"_zval_copy_ctor_func",
-				"case_number":	125
-			}, {
-				"new_name":	"_zval_dtor",
-				"case_number":	126
-			}, {
-				"new_name":	"_zval_dtor_func",
-				"case_number":	127
-			}, {
-				"new_name":	"_zval_dtor_wrapper",
-				"case_number":	128
-			}, {
-				"new_name":	"_zval_internal_dtor",
-				"case_number":	129
-			}, {
-				"new_name":	"add_next_index_null",
-				"case_number":	130
-			}, {
-				"new_name":	"convert_scalar_to_number",
-				"case_number":	131
-			}, {
-				"new_name":	"convert_to_array",
-				"case_number":	132
-			}, {
-				"new_name":	"convert_to_boolean",
-				"case_number":	133
-			}, {
-				"new_name":	"convert_to_double",
-				"case_number":	134
-			}, {
-				"new_name":	"convert_to_long",
-				"case_number":	135
-			}, {
-				"new_name":	"convert_to_null",
-				"case_number":	136
-			}, {
-				"new_name":	"convert_to_object",
-				"case_number":	137
-			}, {
-				"new_name":	"decrement_function",
-				"case_number":	138
-			}, {
-				"new_name":	"gc_remove_zval_from_buffer",
-				"case_number":	139
-			}, {
-				"new_name":	"gc_zobj_possible_root",
-				"case_number":	140
-			}, {
-				"new_name":	"gc_zval_check_possible_root",
-				"case_number":	141
-			}, {
-				"new_name":	"gc_zval_possible_root",
-				"case_number":	142
-			}, {
-				"new_name":	"i_zend_is_true",
-				"case_number":	143
-			}, {
-				"new_name":	"i_zval_ptr_dtor",
-				"case_number":	144
-			}, {
-				"new_name":	"increment_function",
-				"case_number":	145
-			}, {
-				"new_name":	"lex_scan",
-				"case_number":	146
-			}, {
-				"new_name":	"safe_free_zval_ptr_rel",
-				"case_number":	147
-			}, {
-				"new_name":	"zend_is_true",
-				"case_number":	148
-			}, {
-				"new_name":	"zend_locale_sprintf_double",
-				"case_number":	149
-			}, {
-				"new_name":	"zend_object_store_ctor_failed",
-				"case_number":	150
-			}, {
-				"new_name":	"zend_objects_clone_obj",
-				"case_number":	151
-			}, {
-				"new_name":	"zend_objects_store_add_ref",
-				"case_number":	152
-			}, {
-				"new_name":	"zend_objects_store_clone_obj",
-				"case_number":	153
-			}, {
-				"new_name":	"zend_objects_store_del_ref",
-				"case_number":	154
-			}, {
-				"new_name":	"zend_objects_store_get_refcount",
-				"case_number":	155
-			}, {
-				"new_name":	"zend_print_flat_zval_r",
-				"case_number":	156
-			}, {
-				"new_name":	"zend_print_variable",
-				"case_number":	157
-			}, {
-				"new_name":	"zend_std_get_constructor",
-				"case_number":	158
-			}, {
-				"new_name":	"zend_std_get_properties",
-				"case_number":	159
-			}, {
-				"new_name":	"zval_delref_p",
-				"case_number":	160
-			}, {
-				"new_name":	"zval_is_true",
-				"case_number":	161
-			}, {
-				"new_name":	"zval_isref_p",
-				"case_number":	162
-			}, {
-				"new_name":	"zval_refcount_p",
-				"case_number":	163
-			}, {
-				"new_name":	"zval_set_isref_p",
-				"case_number":	164
-			}, {
-				"new_name":	"zval_unset_isref_p",
-				"case_number":	165
-			}]
-	}, {
-		"original_name":	"",
-		"switch_number":	31,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	33,
-		"new_names":	[]
 	}]

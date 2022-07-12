@@ -87,7 +87,7 @@ def run(workdir):
     return (subp.returncode,out,err)
 
 if __name__=='__main__':
-    pool=Pool(processes=50)
+    pool=Pool(processes=5)
     result=[]
     signal.signal(signal.SIGHUP,signal.SIG_IGN)
 
