@@ -25,28 +25,28 @@ def run(workdir):
     subp=None
     para_file='/root/project/MSV/crawler/para-rext-'
     if "new-php" in workdir:
-        subp=subprocess.run(["/root/project/MSV/tools/new-php-build.py", "-p", "/root/project/MSV/benchmarks/php-deps", f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        subp=subprocess.run(["/root/project/MSV/tools/new-php-build.py", "-p", "/root/project/MSV/benchmarks/php-deps", f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         para_file+='php.out'
     elif "php" in workdir:
-        subp=subprocess.run(["/root/project/MSV/tools/php-build.py", "-p", "/root/project/MSV/benchmarks/php-deps", f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        subp=subprocess.run(["/root/project/MSV/tools/php-build.py", "-p", "/root/project/MSV/benchmarks/php-deps", f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         para_file+='php.out'
     elif 'gzip' in workdir:
-        subp=subprocess.run(["/root/project/MSV/tools/gzip-build.py", f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        subp=subprocess.run(["/root/project/MSV/tools/gzip-build.py", f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         para_file+='all.out'
     elif 'gmp' in workdir:
-        subp=subprocess.run(["/root/project/MSV/tools/gmp-build.py",f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        subp=subprocess.run(["/root/project/MSV/tools/gmp-build.py",f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         para_file+='all.out'
     elif 'libtiff' in workdir:
-        subp=subprocess.run(["/root/project/MSV/tools/libtiff-build.py", "-p","/root/project/MSV/benchmarks/libtiff-deps",f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        subp=subprocess.run(["/root/project/MSV/tools/libtiff-build.py", "-p","/root/project/MSV/benchmarks/libtiff-deps",f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         para_file+='libtiff.out'
     elif 'lighttpd' in workdir:
-        subp=subprocess.run(["/root/project/MSV/tools/lighttpd-build.py", "-p","/root/project/MSV/benchmarks/lighttpd-deps",f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        subp=subprocess.run(["/root/project/MSV/tools/lighttpd-build.py", "-p","/root/project/MSV/benchmarks/lighttpd-deps",f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         para_file+='all.out'
     elif 'python' in workdir:
-        subp=subprocess.run(["/root/project/MSV/tools/python-build.py", f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        subp=subprocess.run(["/root/project/MSV/tools/python-build.py", f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         para_file+='python.out'
     elif 'wireshark' in workdir:
-        subp=subprocess.run(["/root/project/MSV/tools/wireshark-build.py", f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        subp=subprocess.run(["/root/project/MSV/tools/wireshark-build.py", f"{workdir}/src"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         para_file+='wireshark.out'
 
 
@@ -56,9 +56,11 @@ def run(workdir):
         err=''
         try:
             out=subp.stdout.decode('utf-8')
-            err=subp.stderr.decode('utf-8')
+            with open(f'{id}.log','w') as f:
+                f.write('stdout: '+out)
         except:
-            pass
+            with open(f'{id}.log','w') as f:
+                f.write('stdout: '+subp.stdout)
         return (subp.returncode,out,'Fail at init building: '+err)
     
     print(f'Generate meta-program {workdir}')
