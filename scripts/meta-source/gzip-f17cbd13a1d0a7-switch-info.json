@@ -1,7 +1,7 @@
 {
-	"switch_num":	2,
-	"case_num":	[37, 2],
-	"switch_cluster":	[[1], [], [0], []],
+	"switch_num":	3,
+	"case_num":	[311, 3, 2],
+	"switch_cluster":	[[2], [1], [0], []],
 	"priority":	[{
 			"file":	"bits.c",
 			"line":	110,
@@ -730,8 +730,8 @@
 		}, {
 			"file":	"gzip.c",
 			"line":	654,
-			"primary_score":	999999,
-			"second_score":	11487
+			"primary_score":	1000000,
+			"second_score":	46
 		}, {
 			"file":	"gzip.c",
 			"line":	655,
@@ -3929,21 +3929,21 @@
 			"second_score":	3207
 		}],
 	"mutation_info":	[{
-			"file":	"util.c",
+			"file":	"gzip.c",
 			"functions":	[]
 		}],
 	"rules":	[{
-			"file_name":	"util.c",
+			"file_name":	"gzip.c",
 			"lines":	[{
-					"line":	447,
+					"line":	654,
 					"switches":	[{
 							"switch":	0,
-							"types":	[[], [], [], [], [37], [], [], [], [], [19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36], [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], [1, 2, 3, 4], [], [], [], [], []],
-							"begin_line":	448,
+							"types":	[[], [], [], [], [311], [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], [], [], [], [216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310], [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32], [], [], [], [], []],
+							"begin_line":	655,
 							"begin_column":	3,
-							"end_line":	448,
+							"end_line":	655,
 							"end_column":	3,
-							"patch_codes":	["if (!test) {\n    write_buf(ofd, (char *)window, outcnt);\n}\n", "if ((int)insize == -1) {\n    read_error();\n}\n", "if (exit_code == 0)\n    exit_code = 2;\n", "if (outcnt == 0)\n    return;\n", "bytes_in = (0)", "bytes_in = bytes_out && !(1 << 5)", "bytes_out = (0)", "inptr = (0)", "insize = (0)", "outcnt = (0)", "perror(ifname && !(1 << 5))", "perror(ofname && !(1 << 5))", "updcrc(window && !(1 << 5), outcnt)", "updcrc(window, outcnt && !(1 << 5))", "write_buf(ofd && !(1 << 5), (char *)outbuf, outcnt)", "write_buf(ofd && !(1 << 5), (char *)window, outcnt)", "write_buf(ofd, (char *)outbuf, outcnt && !(1 << 5))", "write_buf(ofd, (char *)window, outcnt && !(1 << 5))", "abort_gzip()", "bytes_in = 0L", "bytes_in = bytes_out", "bytes_out = 0L", "flush_window()", "gzip_error(\"argc<=0\")", "inptr = 0", "inptr = 1", "insize = 0", "outcnt = 0", "perror(ifname)", "perror(ofname)", "read_error()", "updcrc(window, outcnt)", "write_buf(ofd, (char *)outbuf, outcnt)", "write_buf(ofd, (char *)window, outcnt)", "write_error()", "xalloc_die()", "if (__is_neg(\"\", \"L448\", 2, &(e), sizeof (e), &(program_name), sizeof (program_name)))\n    return;\n"],
+							"patch_codes":	["if (!decompress || (*__errno_location()) != 2) {\n    progerror(ifname);\n    return -1;\n}\n", "if (!decompress || last_member)\n    return 1;\n", "if (!no_time || list)\n    time_stamp = get_stat_mtime(&istat);\n", "if (!recursive && (list || test))\n    return 0;\n", "if (!save_orig_name)\n    save_orig_name = !no_name;\n", "if (!to_stdout)\n    remove_output_file();\n", "if ((*__errno_location()) != 2) {\n    progerror(ifname);\n    return -1;\n}\n", "if (check_ofname() != 0) {\n    close(ifd);\n    return 1;\n}\n", "if (close(ifd) != 0)\n    read_error();\n", "if (close(ofd) != 0)\n    write_error();\n", "if (create_outfile() != 0)\n    return;\n", "if (do_lzw && !decompress)\n    work = lzw;\n", "if (exit_code == 0)\n    exit_code = 2;\n", "if (force && to_stdout && !list) {\n    method = 0;\n    work = copy;\n    inptr = 0;\n    last_member = 1;\n}\n", "if (force <= 1)\n    return -1;\n", "if (ifd < 0)\n    return;\n", "if (insize != 32768 || fill_inbuf(1) == (-1))\n    return 1;\n", "if (list) {\n    do_list(ifd, method);\n    return;\n}\n", "if (make_ofname() != 0) {\n    close(ifd);\n    return;\n}\n", "if (method < 0)\n    return;\n", "if (method < 0) {\n    close(ifd);\n    return;\n}\n", "if (method < 0) {\n    do_exit(exit_code);\n}\n", "if (method >= 0)\n    return method;\n", "if (no_name < 0)\n    no_name = decompress;\n", "if (no_time < 0)\n    no_time = decompress;\n", "if (part_nb == 1) {\n    header_bytes = inptr + 2 * sizeof(long);\n}\n", "if (total_in <= 0 || total_out <= 0)\n    return;\n", "if (total_in >= 0) {\n    total_in += bytes_in;\n}\n", "if (total_out >= 0) {\n    total_out += bytes_out;\n}\n", "if (verbose) {\n    printf(\"                            \");\n}\n", "if (verbose) {\n    printf(\"method  crc     date  time  \");\n}\n", "if (xunlink(ofname)) {\n    progerror(ofname);\n    return 1;\n}\n", "memset(&istat.__glibc_reserved, 0, sizeof (*(&istat.__glibc_reserved)))", "memset(&istat.__pad0, 0, sizeof (*(&istat.__pad0)))", "memset(&istat.st_atim, 0, sizeof (*(&istat.st_atim)))", "memset(&istat.st_blksize, 0, sizeof (*(&istat.st_blksize)))", "memset(&istat.st_blocks, 0, sizeof (*(&istat.st_blocks)))", "memset(&istat.st_ctim, 0, sizeof (*(&istat.st_ctim)))", "memset(&istat.st_dev, 0, sizeof (*(&istat.st_dev)))", "memset(&istat.st_gid, 0, sizeof (*(&istat.st_gid)))", "memset(&istat.st_ino, 0, sizeof (*(&istat.st_ino)))", "memset(&istat.st_mode, 0, sizeof (*(&istat.st_mode)))", "memset(&istat.st_mtim, 0, sizeof (*(&istat.st_mtim)))", "memset(&istat.st_nlink, 0, sizeof (*(&istat.st_nlink)))", "memset(&istat.st_rdev, 0, sizeof (*(&istat.st_rdev)))", "memset(&istat.st_size, 0, sizeof (*(&istat.st_size)))", "memset(&istat.st_uid, 0, sizeof (*(&istat.st_uid)))", "memset(&time_stamp.tv_nsec, 0, sizeof (*(&time_stamp.tv_nsec)))", "memset(&time_stamp.tv_sec, 0, sizeof (*(&time_stamp.tv_sec)))", "bytes_in = (-1)", "bytes_in = (0)", "bytes_in = (1)", "bytes_in = (32768)", "bytes_in = (61440)", "bytes_in = ifile_size && !(1 << 5)", "bytes_out = (-1)", "bytes_out = (0)", "bytes_out = (1)", "bytes_out = (32768)", "bytes_out = (61440)", "close(ifd && !(1 << 5))", "copy_stat(&istat && !(1 << 5))", "do_exit(exit_code && !(1 << 5))", "do_list(ifd && !(1 << 5), method)", "do_list(ifd, method && !(1 << 5))", "exit_code = (-1)", "exit_code = (0)", "exit_code = (1)", "exit_code = (32768)", "exit_code = (61440)", "exiting_signal = (-1)", "exiting_signal = (0)", "exiting_signal = (1)", "exiting_signal = (32768)", "exiting_signal = (61440)", "exiting_signal = quiet && !(1 << 5) ? 13 : 0", "foreground = (-1)", "foreground = (0)", "foreground = (1)", "foreground = (32768)", "foreground = (61440)", "free(args && !(1 << 5))", "free(env && !(1 << 5))", "header_bytes = (-1)", "header_bytes = (0)", "header_bytes = (1)", "header_bytes = (32768)", "header_bytes = (61440)", "header_bytes = inptr && !(1 << 5) + 2 * sizeof(long)", "ifd = (-1)", "ifd = (0)", "ifd = (1)", "ifd = (32768)", "ifd = (61440)", "ifile_size = ((((istat && !(1 << 5).st_mode)) & 61440) == (32768)) ? istat.st_size : -1", "ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat && !(1 << 5).st_size : -1", "ifile_size = (-1)", "ifile_size = (0)", "ifile_size = (1)", "ifile_size = (32768)", "ifile_size = (61440)", "inptr = (-1)", "inptr = (0)", "inptr = (1)", "inptr = (32768)", "inptr = (61440)", "last_member = (-1)", "last_member = (0)", "last_member = (1)", "last_member = (32768)", "last_member = (61440)", "list = (-1)", "list = (0)", "list = (1)", "list = (32768)", "list = (61440)", "method = (-1)", "method = (0)", "method = (1)", "method = (32768)", "method = (61440)", "method = get_method(ifd && !(1 << 5))", "no_name = (-1)", "no_name = (0)", "no_name = (1)", "no_name = (32768)", "no_name = (61440)", "no_name = decompress && !(1 << 5)", "no_time = (-1)", "no_time = (0)", "no_time = (1)", "no_time = (32768)", "no_time = (61440)", "no_time = decompress && !(1 << 5)", "ofd = (-1)", "ofd = (0)", "ofd = (1)", "ofd = (32768)", "ofd = (61440)", "part_nb && !(1 << 5)++", "part_nb = (-1)", "part_nb = (0)", "part_nb = (1)", "part_nb = (32768)", "part_nb = (61440)", "perror(ifname && !(1 << 5))", "perror(ofname && !(1 << 5))", "printf(\" %s\\n\", ofname && !(1 << 5))", "printf(\"%s %s\\n\", program_name && !(1 << 5), \"1.0\")", "printf(\"Usage: %s [OPTION]... [FILE]...\\n\", program_name && !(1 << 5))", "progerror(ifname && !(1 << 5))", "progerror(ofname && !(1 << 5))", "quiet = (-1)", "quiet = (0)", "quiet = (1)", "quiet = (32768)", "quiet = (61440)", "remove_ofname_fd = (-1)", "remove_ofname_fd = (0)", "remove_ofname_fd = (1)", "remove_ofname_fd = (32768)", "remove_ofname_fd = (61440)", "save_orig_name = !no_name && !(1 << 5)", "save_orig_name = (-1)", "save_orig_name = (0)", "save_orig_name = (1)", "save_orig_name = (32768)", "save_orig_name = (61440)", "sigemptyset(&caught_signals && !(1 << 5))", "strcat(ifname && !(1 << 5), z_suffix)", "strcat(ifname, z_suffix && !(1 << 5))", "strcat(ofname && !(1 << 5), z_suffix)", "strcat(ofname, z_suffix && !(1 << 5))", "strcpy(ifname && !(1 << 5), \"stdin\")", "strcpy(ofname && !(1 << 5), \"stdout\")", "strcpy(ofname && !(1 << 5), ifname)", "strcpy(ofname, ifname && !(1 << 5))", "time_stamp = get_stat_mtime(&istat && !(1 << 5))", "time_stamp.tv_nsec = (-1)", "time_stamp.tv_nsec = (0)", "time_stamp.tv_nsec = (1)", "time_stamp.tv_nsec = (32768)", "time_stamp.tv_nsec = (61440)", "time_stamp.tv_sec = (-1)", "time_stamp.tv_sec = (0)", "time_stamp.tv_sec = (1)", "time_stamp.tv_sec = (32768)", "time_stamp.tv_sec = (61440)", "to_stdout = (-1)", "to_stdout = (0)", "to_stdout = (1)", "to_stdout = (32768)", "to_stdout = (61440)", "total_in = (-1)", "total_in = (0)", "total_in = (1)", "total_in = (32768)", "total_in = (61440)", "total_out = (-1)", "total_out = (0)", "total_out = (1)", "total_out = (32768)", "total_out = (61440)", "verbose = (-1)", "verbose = (0)", "verbose = (1)", "verbose = (32768)", "verbose = (61440)", "xunlink(ofname && !(1 << 5))", "z_len = (-1)", "z_len = (0)", "z_len = (1)", "z_len = (32768)", "z_len = (61440)", "z_len = strlen(z_suffix && !(1 << 5))", "(void)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0))", "_exit(2)", "args = ((void *)0)", "atexit(close_stdin)", "bytes_in = 0", "bytes_in = ifile_size", "bytes_out = -1L", "bytes_out = 0", "clear_bufs()", "close(ifd)", "copy_stat(&istat)", "do_exit(0)", "do_exit(1)", "do_exit(exit_code)", "do_list(-1, -1)", "do_list(ifd, method)", "env = ((void *)0)", "env = add_envopt(&argc, &argv, \"GZIP\")", "exit_code = 1", "exit_code = 2", "exiting_signal = quiet ? 13 : 0", "foreground = 1", "free(args)", "free(env)", "gzip_error(\"can't recover suffix\\n\")", "gzip_error(\"corrupted input -- file name too large\")", "gzip_error(\"internal error in shorten_name\")", "gzip_error(\"name too short\")", "header_bytes = 0", "header_bytes = inptr + 2 * sizeof(long)", "ifile_size = ((((istat.st_mode)) & 61440) == (32768)) ? istat.st_size : -1", "inptr = 0", "install_signal_handlers()", "last_member = 0", "last_member = 1", "license()", "list = 0", "method = (int)(inptr < insize ? inbuf[inptr++] : fill_inbuf(0))", "method = -1", "method = 0", "method = 1", "method = 2", "method = 3", "method = get_method(ifd)", "no_name = decompress", "no_time = decompress", "part_nb = 0", "part_nb++", "perror(ifname)", "perror(ofname)", "printf(\"                            \")", "printf(\" \")", "printf(\" %s\\n\", ofname)", "printf(\" (totals)\\n\")", "printf(\"%s %s\\n\", program_name, \"1.0\")", "printf(\"??? ?? ??:?? \")", "printf(\"Usage: %s [OPTION]... [FILE]...\\n\", program_name)", "printf(\"Written by Jean-loup Gailly.\\n\")", "printf(\"\\n\")", "printf(\"method  crc     date  time  \")", "progerror(\"standard input\")", "progerror(ifname)", "progerror(ofname)", "quiet = 0", "read_error()", "remove_ofname_fd = -1", "remove_output_file()", "save_orig_name = !no_name", "save_orig_name = 0", "save_orig_name = 1", "sigemptyset(&caught_signals)", "strcat(ifname, z_suffix)", "strcat(ofname, z_suffix)", "strcpy(ifname, \"stdin\")", "strcpy(ofname, \"stdout\")", "strcpy(ofname, ifname)", "time_stamp = get_stat_mtime(&istat)", "time_stamp.tv_nsec = -1", "time_stamp.tv_nsec = 0", "to_stdout = 1", "total_in = -1L", "total_out = -1L", "treat_stdin()", "try_help()", "verbose = 0", "work = copy", "work = lzw", "work = unlzh", "work = unlzw", "work = unpack", "work = unzip", "write_error()", "xunlink(ofname)", "z_len = strlen(z_suffix)", "z_suffix = \".gz\"", "if (__is_neg(\"\", \"L655\", 28, &(decompress), sizeof (decompress), &(method), sizeof (method), &(ifd), sizeof (ifd), &(method), sizeof (method), &(ifd), sizeof (ifd), &(part_nb), sizeof (part_nb), &(exit_code), sizeof (exit_code), &(to_stdout), sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(exit_code), sizeof (exit_code), &(list), sizeof (list), &(no_time), sizeof (no_time), &(ifile_size), sizeof (ifile_size), &(ifile_size), sizeof (ifile_size), &(work), sizeof (work), &(bytes_out), sizeof (bytes_out), &(test), sizeof (test), &(ascii), sizeof (ascii), &(test), sizeof (test), &(bytes_out), sizeof (bytes_out), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(bytes_in), sizeof (bytes_in), &(header_bytes), sizeof (header_bytes), &(bytes_in), sizeof (bytes_in), &(force), sizeof (force)))\n    return;\n"],
 							"prophet_scores":	[{
 									"case":	1,
 									"scores":	[-3.912023005428146]
@@ -4054,37 +4054,893 @@
 									"scores":	[-3.912023005428146]
 								}, {
 									"case":	37,
-									"scores":	[-5.5430664036281456, -6.6983103982281467]
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	38,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	39,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	40,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	41,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	42,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	43,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	44,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	45,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	46,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	47,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	48,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	49,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	50,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	51,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	52,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	53,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	54,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	55,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	56,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	57,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	58,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	59,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	60,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	61,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	62,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	63,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	64,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	65,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	66,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	67,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	68,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	69,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	70,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	71,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	72,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	73,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	74,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	75,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	76,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	77,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	78,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	79,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	80,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	81,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	82,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	83,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	84,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	85,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	86,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	87,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	88,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	89,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	90,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	91,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	92,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	93,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	94,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	95,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	96,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	97,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	98,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	99,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	100,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	101,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	102,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	103,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	104,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	105,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	106,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	107,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	108,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	109,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	110,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	111,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	112,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	113,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	114,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	115,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	116,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	117,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	118,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	119,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	120,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	121,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	122,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	123,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	124,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	125,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	126,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	127,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	128,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	129,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	130,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	131,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	132,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	133,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	134,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	135,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	136,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	137,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	138,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	139,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	140,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	141,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	142,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	143,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	144,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	145,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	146,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	147,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	148,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	149,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	150,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	151,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	152,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	153,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	154,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	155,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	156,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	157,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	158,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	159,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	160,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	161,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	162,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	163,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	164,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	165,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	166,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	167,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	168,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	169,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	170,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	171,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	172,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	173,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	174,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	175,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	176,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	177,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	178,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	179,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	180,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	181,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	182,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	183,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	184,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	185,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	186,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	187,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	188,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	189,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	190,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	191,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	192,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	193,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	194,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	195,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	196,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	197,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	198,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	199,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	200,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	201,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	202,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	203,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	204,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	205,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	206,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	207,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	208,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	209,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	210,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	211,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	212,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	213,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	214,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	215,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	216,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	217,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	218,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	219,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	220,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	221,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	222,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	223,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	224,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	225,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	226,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	227,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	228,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	229,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	230,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	231,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	232,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	233,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	234,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	235,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	236,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	237,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	238,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	239,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	240,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	241,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	242,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	243,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	244,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	245,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	246,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	247,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	248,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	249,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	250,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	251,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	252,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	253,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	254,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	255,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	256,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	257,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	258,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	259,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	260,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	261,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	262,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	263,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	264,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	265,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	266,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	267,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	268,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	269,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	270,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	271,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	272,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	273,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	274,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	275,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	276,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	277,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	278,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	279,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	280,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	281,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	282,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	283,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	284,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	285,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	286,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	287,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	288,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	289,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	290,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	291,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	292,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	293,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	294,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	295,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	296,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	297,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	298,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	299,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	300,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	301,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	302,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	303,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	304,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	305,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	306,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	307,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	308,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	309,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	310,
+									"scores":	[-3.912023005428146]
+								}, {
+									"case":	311,
+									"scores":	[-7.3979500865281462, -6.4193679237281458, -5.533542696528146, -6.4193679237281458, -5.533542696528146, -5.9985665745281462, -6.3988732865281461, -5.8591718865281459, -5.8591718865281459, -6.3988732865281461, -7.3979500865281462, -7.3979500865281462, -7.3979500865281462, -7.3979500865281462, -8.0667636815281458, -8.0417294513281448, -7.3979500865281462, -7.3979500865281462, -7.3979500865281462, -8.0417294513281448, -7.3979500865281462, -7.3979500865281462, -7.4873727865281463, -7.4873727865281463, -7.2397072865281462, -7.6422142865281462, -7.2397072865281462, -7.3979500865281462]
 								}]
 						}, {
 							"switch":	1,
-							"types":	[[], [], [1], [], [], [], [], [], [], [], [], [], [], [], [], [], [2]],
-							"begin_line":	448,
+							"types":	[[3], [2], [], [], [], [], [], [], [], [], [], [], [1], [], [], [], []],
+							"begin_line":	655,
 							"begin_column":	5,
-							"end_line":	448,
-							"end_column":	16,
-							"patch_codes":	["if (!__is_neg(\"\", \"L448\", 2, &(e), sizeof (e), &(program_name), sizeof (program_name)))\n    abort_gzip();\n", "{\n}\n"],
+							"end_line":	660,
+							"end_column":	5,
+							"patch_codes":	["if (__is_neg(\"\", \"L655\", 28, &(decompress), sizeof (decompress), &(method), sizeof (method), &(ifd), sizeof (ifd), &(method), sizeof (method), &(ifd), sizeof (ifd), &(part_nb), sizeof (part_nb), &(exit_code), sizeof (exit_code), &(to_stdout), sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(exit_code), sizeof (exit_code), &(list), sizeof (list), &(no_time), sizeof (no_time), &(ifile_size), sizeof (ifile_size), &(ifile_size), sizeof (ifile_size), &(work), sizeof (work), &(bytes_out), sizeof (bytes_out), &(test), sizeof (test), &(ascii), sizeof (ascii), &(test), sizeof (test), &(bytes_out), sizeof (bytes_out), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(bytes_in), sizeof (bytes_in), &(header_bytes), sizeof (header_bytes), &(bytes_in), sizeof (bytes_in), &(force), sizeof (force))) {\n    method = get_method(ifd);\n    if (method < 0) {\n        do_exit(exit_code);\n    }\n}\n", "if ((decompress) || __is_neg(\"\", \"L655\", 28, &(decompress), sizeof (decompress), &(method), sizeof (method), &(ifd), sizeof (ifd), &(method), sizeof (method), &(ifd), sizeof (ifd), &(part_nb), sizeof (part_nb), &(exit_code), sizeof (exit_code), &(to_stdout), sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(exit_code), sizeof (exit_code), &(list), sizeof (list), &(no_time), sizeof (no_time), &(ifile_size), sizeof (ifile_size), &(ifile_size), sizeof (ifile_size), &(work), sizeof (work), &(bytes_out), sizeof (bytes_out), &(test), sizeof (test), &(ascii), sizeof (ascii), &(test), sizeof (test), &(bytes_out), sizeof (bytes_out), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(bytes_in), sizeof (bytes_in), &(header_bytes), sizeof (header_bytes), &(bytes_in), sizeof (bytes_in), &(force), sizeof (force))) {\n    method = get_method(ifd);\n    if (method < 0) {\n        do_exit(exit_code);\n    }\n}\n", "if ((decompress) && !__is_neg(\"\", \"L655\", 28, &(decompress), sizeof (decompress), &(method), sizeof (method), &(ifd), sizeof (ifd), &(method), sizeof (method), &(ifd), sizeof (ifd), &(part_nb), sizeof (part_nb), &(exit_code), sizeof (exit_code), &(to_stdout), sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(exit_code), sizeof (exit_code), &(list), sizeof (list), &(no_time), sizeof (no_time), &(ifile_size), sizeof (ifile_size), &(ifile_size), sizeof (ifile_size), &(work), sizeof (work), &(bytes_out), sizeof (bytes_out), &(test), sizeof (test), &(ascii), sizeof (ascii), &(test), sizeof (test), &(bytes_out), sizeof (bytes_out), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(bytes_in), sizeof (bytes_in), &(header_bytes), sizeof (header_bytes), &(bytes_in), sizeof (bytes_in), &(force), sizeof (force))) {\n    method = get_method(ifd);\n    if (method < 0) {\n        do_exit(exit_code);\n    }\n}\n"],
 							"prophet_scores":	[{
 									"case":	1,
-									"scores":	[-4.0645412814281459, -5.185091125128146]
+									"scores":	[-6.654599444628146, -4.9798673946281458, -5.4736912176281454, -4.9798673946281458, -5.4736912176281454, -7.273473391628146, -5.9898558446281456, -7.0752475916281465, -7.0752475916281465, -5.9898558446281456, -6.654599444628146, -6.654599444628146, -6.654599444628146, -6.654599444628146, -7.457405944628146, -7.1610155786281462, -6.654599444628146, -6.654599444628146, -6.654599444628146, -7.1610155786281462, -6.654599444628146, -6.654599444628146, -7.0915644446281458, -7.0915644446281458, -6.7343210446281461, -7.0877793446281459, -6.7343210446281461, -6.654599444628146]
 								}, {
 									"case":	2,
-									"scores":	[-3.912023005428146]
+									"scores":	[-5.062590305428146, -3.3878582554281458, -3.8816820784281458, -3.3878582554281458, -3.8816820784281458, -5.681464252428146, -4.3978467054281456, -5.4832384524281457, -5.4832384524281457, -4.3978467054281456, -5.062590305428146, -5.062590305428146, -5.062590305428146, -5.062590305428146, -5.865396805428146, -5.5690064394281462, -5.062590305428146, -5.062590305428146, -5.062590305428146, -5.5690064394281462, -5.062590305428146, -5.062590305428146, -5.4995553054281459, -5.4995553054281459, -5.1423119054281461, -5.4957702054281459, -5.1423119054281461, -5.062590305428146]
+								}, {
+									"case":	3,
+									"scores":	[-5.062590305428146, -3.3878582554281458, -3.8816820784281458, -3.3878582554281458, -3.8816820784281458, -5.681464252428146, -4.3978467054281456, -5.4832384524281457, -5.4832384524281457, -4.3978467054281456, -5.062590305428146, -5.062590305428146, -5.062590305428146, -5.062590305428146, -5.865396805428146, -5.5690064394281462, -5.062590305428146, -5.062590305428146, -5.062590305428146, -5.5690064394281462, -5.062590305428146, -5.062590305428146, -5.4995553054281459, -5.4995553054281459, -5.1423119054281461, -5.4957702054281459, -5.1423119054281461, -5.062590305428146]
+								}]
+						}, {
+							"switch":	2,
+							"types":	[[], [], [1], [2], [], [], [], [], [], [], [], [], [], [], [], [], []],
+							"begin_line":	655,
+							"begin_column":	5,
+							"end_line":	660,
+							"end_column":	5,
+							"patch_codes":	["if (!__is_neg(\"\", \"L655\", 28, &(decompress), sizeof (decompress), &(method), sizeof (method), &(ifd), sizeof (ifd), &(method), sizeof (method), &(ifd), sizeof (ifd), &(part_nb), sizeof (part_nb), &(exit_code), sizeof (exit_code), &(to_stdout), sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(exit_code), sizeof (exit_code), &(list), sizeof (list), &(no_time), sizeof (no_time), &(ifile_size), sizeof (ifile_size), &(ifile_size), sizeof (ifile_size), &(work), sizeof (work), &(bytes_out), sizeof (bytes_out), &(test), sizeof (test), &(ascii), sizeof (ascii), &(test), sizeof (test), &(bytes_out), sizeof (bytes_out), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(bytes_in), sizeof (bytes_in), &(header_bytes), sizeof (header_bytes), &(bytes_in), sizeof (bytes_in), &(force), sizeof (force)))\n    if (decompress) {\n        method = get_method(ifd);\n        if (method < 0) {\n            do_exit(exit_code);\n        }\n    }\n", "if (!__is_neg(\"\", \"L655\", 28, &(decompress), sizeof (decompress), &(method), sizeof (method), &(ifd), sizeof (ifd), &(method), sizeof (method), &(ifd), sizeof (ifd), &(part_nb), sizeof (part_nb), &(exit_code), sizeof (exit_code), &(to_stdout), sizeof (to_stdout), &(to_stdout), sizeof (to_stdout), &(exit_code), sizeof (exit_code), &(list), sizeof (list), &(no_time), sizeof (no_time), &(ifile_size), sizeof (ifile_size), &(ifile_size), sizeof (ifile_size), &(work), sizeof (work), &(bytes_out), sizeof (bytes_out), &(test), sizeof (test), &(ascii), sizeof (ascii), &(test), sizeof (test), &(bytes_out), sizeof (bytes_out), &(verbose), sizeof (verbose), &(verbose), sizeof (verbose), &(program_name), sizeof (program_name), &(program_name), sizeof (program_name), &(bytes_in), sizeof (bytes_in), &(header_bytes), sizeof (header_bytes), &(bytes_in), sizeof (bytes_in), &(force), sizeof (force)) && (decompress)) {\n    method = get_method(ifd);\n    if (method < 0) {\n        do_exit(exit_code);\n    }\n}\n"],
+							"prophet_scores":	[{
+									"case":	1,
+									"scores":	[-5.0335297854281453, -3.358797735428146, -3.852621558428146, -3.358797735428146, -3.852621558428146, -5.6524037324281462, -4.3687861854281458, -5.4541779324281459, -5.4541779324281459, -4.3687861854281458, -5.0335297854281453, -5.0335297854281453, -5.0335297854281453, -5.0335297854281453, -5.8363362854281462, -5.5399459194281455, -5.0335297854281453, -5.0335297854281453, -5.0335297854281453, -5.5399459194281455, -5.0335297854281453, -5.0335297854281453, -5.470494785428146, -5.470494785428146, -5.1132513854281463, -5.4667096854281461, -5.1132513854281463, -5.0335297854281453]
+								}, {
+									"case":	2,
+									"scores":	[-4.9229907854281461, -3.2482587354281458, -3.7420825584281459, -3.2482587354281458, -3.7420825584281459, -5.541864732428146, -4.2582471854281456, -5.3436389324281457, -5.3436389324281457, -4.2582471854281456, -4.9229907854281461, -4.9229907854281461, -4.9229907854281461, -4.9229907854281461, -5.725797285428146, -5.4294069194281454, -4.9229907854281461, -4.9229907854281461, -4.9229907854281461, -5.4294069194281454, -4.9229907854281461, -4.9229907854281461, -5.3599557854281459, -5.3599557854281459, -5.0027123854281452, -5.3561706854281459, -5.0027123854281452, -4.9229907854281461]
 								}]
 						}]
 				}]
 		}],
 	"sizes":	[{
 			"switch":	0,
-			"case":	37,
-			"size":	2
+			"case":	311,
+			"size":	28
 		}, {
 			"switch":	1,
 			"case":	1,
-			"size":	2
+			"size":	28
+		}, {
+			"switch":	1,
+			"case":	2,
+			"size":	28
+		}, {
+			"switch":	1,
+			"case":	3,
+			"size":	28
+		}, {
+			"switch":	2,
+			"case":	1,
+			"size":	28
+		}, {
+			"switch":	2,
+			"case":	2,
+			"size":	28
 		}],
 	"func_locations":	[{
-			"file":	"util.c",
+			"file":	"gzip.c",
 			"functions":	[{
 					"function":	"__uint16_identity",
 					"begin":	32,
@@ -4098,9 +4954,13 @@
 					"begin":	44,
 					"end":	48
 				}, {
-					"function":	"add_envopt",
-					"begin":	361,
-					"end":	412
+					"function":	"abort_gzip",
+					"begin":	1870,
+					"end":	1875
+				}, {
+					"function":	"abort_gzip_signal",
+					"begin":	1880,
+					"end":	1891
 				}, {
 					"function":	"atof",
 					"begin":	24,
@@ -4122,17 +4982,25 @@
 					"begin":	19,
 					"end":	43
 				}, {
-					"function":	"clear_bufs",
-					"begin":	104,
-					"end":	109
+					"function":	"check_ofname",
+					"begin":	1615,
+					"end":	1637
 				}, {
-					"function":	"copy",
-					"begin":	60,
-					"end":	74
+					"function":	"copy_stat",
+					"begin":	1644,
+					"end":	1699
 				}, {
-					"function":	"display_ratio",
-					"begin":	463,
-					"end":	469
+					"function":	"create_outfile",
+					"begin":	906,
+					"end":	957
+				}, {
+					"function":	"do_exit",
+					"begin":	1823,
+					"end":	1845
+				}, {
+					"function":	"do_list",
+					"begin":	1443,
+					"end":	1545
 				}, {
 					"function":	"feof_unlocked",
 					"begin":	124,
@@ -4145,22 +5013,6 @@
 					"function":	"fgetc_unlocked",
 					"begin":	52,
 					"end":	56
-				}, {
-					"function":	"fill_inbuf",
-					"begin":	114,
-					"end":	140
-				}, {
-					"function":	"flush_outbuf",
-					"begin":	175,
-					"end":	182
-				}, {
-					"function":	"flush_window",
-					"begin":	188,
-					"end":	198
-				}, {
-					"function":	"fprint_off",
-					"begin":	475,
-					"end":	502
 				}, {
 					"function":	"fputc_unlocked",
 					"begin":	87,
@@ -4181,6 +5033,46 @@
 					"function":	"fstatat64",
 					"begin":	518,
 					"end":	523
+				}, {
+					"function":	"get_method",
+					"begin":	1251,
+					"end":	1436
+				}, {
+					"function":	"get_stat_atime",
+					"begin":	103,
+					"end":	114
+				}, {
+					"function":	"get_stat_atime_ns",
+					"begin":	49,
+					"end":	59
+				}, {
+					"function":	"get_stat_birthtime",
+					"begin":	146,
+					"end":	185
+				}, {
+					"function":	"get_stat_birthtime_ns",
+					"begin":	88,
+					"end":	100
+				}, {
+					"function":	"get_stat_ctime",
+					"begin":	117,
+					"end":	128
+				}, {
+					"function":	"get_stat_ctime_ns",
+					"begin":	62,
+					"end":	72
+				}, {
+					"function":	"get_stat_mtime",
+					"begin":	131,
+					"end":	142
+				}, {
+					"function":	"get_stat_mtime_ns",
+					"begin":	75,
+					"end":	85
+				}, {
+					"function":	"get_suffix",
+					"begin":	971,
+					"end":	1011
 				}, {
 					"function":	"getc_unlocked",
 					"begin":	62,
@@ -4210,13 +5102,21 @@
 					"begin":	80,
 					"end":	80
 				}, {
-					"function":	"gzip_base_name",
-					"begin":	237,
-					"end":	255
+					"function":	"help",
+					"begin":	329,
+					"end":	376
 				}, {
-					"function":	"gzip_error",
-					"begin":	417,
-					"end":	423
+					"function":	"input_eof",
+					"begin":	586,
+					"end":	602
+				}, {
+					"function":	"install_signal_handlers",
+					"begin":	1780,
+					"end":	1818
+				}, {
+					"function":	"license",
+					"begin":	379,
+					"end":	385
 				}, {
 					"function":	"lstat",
 					"begin":	455,
@@ -4226,9 +5126,13 @@
 					"begin":	504,
 					"end":	508
 				}, {
-					"function":	"make_simple_name",
-					"begin":	290,
-					"end":	299
+					"function":	"main",
+					"begin":	406,
+					"end":	583
+				}, {
+					"function":	"make_ofname",
+					"begin":	1162,
+					"end":	1237
 				}, {
 					"function":	"mknod",
 					"begin":	478,
@@ -4237,6 +5141,18 @@
 					"function":	"mknodat",
 					"begin":	486,
 					"end":	491
+				}, {
+					"function":	"open_and_stat",
+					"begin":	1017,
+					"end":	1050
+				}, {
+					"function":	"open_input_file",
+					"begin":	1060,
+					"end":	1156
+				}, {
+					"function":	"progerror",
+					"begin":	395,
+					"end":	403
 				}, {
 					"function":	"putc_unlocked",
 					"begin":	97,
@@ -4250,13 +5166,13 @@
 					"begin":	104,
 					"end":	108
 				}, {
-					"function":	"read_buffer",
-					"begin":	144,
-					"end":	155
+					"function":	"remove_output_file",
+					"begin":	1850,
+					"end":	1865
 				}, {
-					"function":	"read_error",
-					"begin":	438,
-					"end":	449
+					"function":	"shorten_name",
+					"begin":	1556,
+					"end":	1609
 				}, {
 					"function":	"stat",
 					"begin":	448,
@@ -4266,10 +5182,6 @@
 					"begin":	497,
 					"end":	501
 				}, {
-					"function":	"strlwr",
-					"begin":	223,
-					"end":	230
-				}, {
 					"function":	"tolower",
 					"begin":	206,
 					"end":	210
@@ -4278,53 +5190,29 @@
 					"begin":	212,
 					"end":	216
 				}, {
-					"function":	"updcrc",
-					"begin":	81,
-					"end":	99
+					"function":	"treat_dir",
+					"begin":	1706,
+					"end":	1775
+				}, {
+					"function":	"treat_file",
+					"begin":	698,
+					"end":	895
+				}, {
+					"function":	"treat_stdin",
+					"begin":	607,
+					"end":	693
+				}, {
+					"function":	"try_help",
+					"begin":	320,
+					"end":	326
+				}, {
+					"function":	"version",
+					"begin":	388,
+					"end":	393
 				}, {
 					"function":	"vprintf",
 					"begin":	35,
 					"end":	39
-				}, {
-					"function":	"warning",
-					"begin":	432,
-					"end":	436
-				}, {
-					"function":	"write_buf",
-					"begin":	204,
-					"end":	218
-				}, {
-					"function":	"write_buffer",
-					"begin":	158,
-					"end":	169
-				}, {
-					"function":	"write_error",
-					"begin":	451,
-					"end":	458
-				}, {
-					"function":	"x2nrealloc",
-					"begin":	194,
-					"end":	226
-				}, {
-					"function":	"xalloc_die",
-					"begin":	425,
-					"end":	430
-				}, {
-					"function":	"xcharalloc",
-					"begin":	232,
-					"end":	236
-				}, {
-					"function":	"xnmalloc",
-					"begin":	120,
-					"end":	126
-				}, {
-					"function":	"xnrealloc",
-					"begin":	131,
-					"end":	137
-				}, {
-					"function":	"xunlink",
-					"begin":	260,
-					"end":	280
 				}]
 		}]
 }

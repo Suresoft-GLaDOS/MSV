@@ -1,3 +1,766 @@
+#define __COMPILE_0
+#define __COMPILE_1
+#define __COMPILE_2
+#define __COMPILE_3
+#define __COMPILE_4
+#define __COMPILE_5
+#define __COMPILE_7
+#define __COMPILE_9
+#define __COMPILE_10
+#define __COMPILE_11
+#define __COMPILE_12
+#define __COMPILE_13
+#define __COMPILE_14
+#define __COMPILE_15
+#define __COMPILE_16
+#define __COMPILE_17
+#define __COMPILE_18
+#define __COMPILE_19
+#define __COMPILE_20
+#define __COMPILE_21
+#define __COMPILE_22
+#define __COMPILE_23
+#define __COMPILE_24
+#define __COMPILE_25
+#define __COMPILE_26
+#define __COMPILE_27
+#define __COMPILE_28
+#define __COMPILE_29
+#define __COMPILE_30
+#define __COMPILE_31
+#define __COMPILE_33
+#define __COMPILE_34
+#define __COMPILE_35
+#define __COMPILE_36
+#define __COMPILE_37
+#define __COMPILE_38
+#define __COMPILE_39
+#define __COMPILE_40
+#define __COMPILE_41
+#define __COMPILE_42
+#define __COMPILE_43
+#define __COMPILE_44
+#define __COMPILE_45
+#define __COMPILE_46
+#define __COMPILE_47
+#define __COMPILE_48
+#define __COMPILE_49
+#define __COMPILE_50
+#define __COMPILE_51
+#define __COMPILE_52
+#define __COMPILE_53
+#define __COMPILE_54
+#define __COMPILE_55
+#define __COMPILE_56
+#define __COMPILE_57
+#define __COMPILE_58
+#define __COMPILE_59
+#define __COMPILE_60
+#define __COMPILE_61
+#define __COMPILE_62
+#define __COMPILE_63
+#define __COMPILE_64
+#define __COMPILE_65
+#define __COMPILE_66
+#define __COMPILE_67
+#define __COMPILE_68
+#define __COMPILE_69
+#define __COMPILE_70
+#define __COMPILE_71
+#define __COMPILE_72
+#define __COMPILE_73
+#define __COMPILE_74
+#define __COMPILE_75
+#define __COMPILE_76
+#define __COMPILE_77
+#define __COMPILE_78
+#define __COMPILE_79
+#define __COMPILE_80
+#define __COMPILE_81
+#define __COMPILE_82
+#define __COMPILE_83
+#define __COMPILE_84
+#define __COMPILE_85
+#define __COMPILE_86
+#define __COMPILE_87
+#define __COMPILE_88
+#define __COMPILE_89
+#define __COMPILE_90
+#define __COMPILE_91
+#define __COMPILE_92
+#define __COMPILE_93
+#define __COMPILE_94
+#define __COMPILE_95
+#define __COMPILE_96
+#define __COMPILE_97
+#define __COMPILE_98
+#define __COMPILE_99
+#define __COMPILE_100
+#define __COMPILE_101
+#define __COMPILE_102
+#define __COMPILE_103
+#define __COMPILE_104
+#define __COMPILE_105
+#define __COMPILE_106
+#define __COMPILE_107
+#define __COMPILE_108
+#define __COMPILE_109
+#define __COMPILE_110
+#define __COMPILE_111
+#define __COMPILE_112
+#define __COMPILE_113
+#define __COMPILE_114
+#define __COMPILE_115
+#define __COMPILE_116
+#define __COMPILE_117
+#define __COMPILE_118
+#define __COMPILE_119
+#define __COMPILE_120
+#define __COMPILE_121
+#define __COMPILE_122
+#define __COMPILE_123
+#define __COMPILE_124
+#define __COMPILE_125
+#define __COMPILE_126
+#define __COMPILE_127
+#define __COMPILE_128
+#define __COMPILE_129
+#define __COMPILE_130
+#define __COMPILE_131
+#define __COMPILE_132
+#define __COMPILE_133
+#define __COMPILE_134
+#define __COMPILE_135
+#define __COMPILE_136
+#define __COMPILE_137
+#define __COMPILE_138
+#define __COMPILE_139
+#define __COMPILE_140
+#define __COMPILE_141
+#define __COMPILE_142
+#define __COMPILE_143
+#define __COMPILE_144
+#define __COMPILE_145
+#define __COMPILE_146
+#define __COMPILE_147
+#define __COMPILE_148
+#define __COMPILE_149
+#define __COMPILE_150
+#define __COMPILE_151
+#define __COMPILE_152
+#define __COMPILE_153
+#define __COMPILE_154
+#define __COMPILE_155
+#define __COMPILE_156
+#define __COMPILE_157
+#define __COMPILE_158
+#define __COMPILE_159
+#define __COMPILE_160
+#define __COMPILE_161
+#define __COMPILE_162
+#define __COMPILE_163
+#define __COMPILE_164
+#define __COMPILE_165
+#define __COMPILE_166
+#define __COMPILE_167
+#define __COMPILE_168
+#define __COMPILE_169
+#define __COMPILE_170
+#define __COMPILE_171
+#define __COMPILE_172
+#define __COMPILE_173
+#define __COMPILE_174
+#define __COMPILE_175
+#define __COMPILE_176
+#define __COMPILE_177
+#define __COMPILE_178
+#define __COMPILE_179
+#define __COMPILE_180
+#define __COMPILE_181
+#define __COMPILE_182
+#define __COMPILE_183
+#define __COMPILE_184
+#define __COMPILE_185
+#define __COMPILE_186
+#define __COMPILE_187
+#define __COMPILE_188
+#define __COMPILE_189
+#define __COMPILE_190
+#define __COMPILE_191
+#define __COMPILE_192
+#define __COMPILE_193
+#define __COMPILE_194
+#define __COMPILE_195
+#define __COMPILE_196
+#define __COMPILE_197
+#define __COMPILE_198
+#define __COMPILE_199
+#define __COMPILE_200
+#define __COMPILE_201
+#define __COMPILE_202
+#define __COMPILE_203
+#define __COMPILE_204
+#define __COMPILE_205
+#define __COMPILE_206
+#define __COMPILE_207
+#define __COMPILE_208
+#define __COMPILE_209
+#define __COMPILE_210
+#define __COMPILE_211
+#define __COMPILE_212
+#define __COMPILE_213
+#define __COMPILE_214
+#define __COMPILE_215
+#define __COMPILE_216
+#define __COMPILE_217
+#define __COMPILE_218
+#define __COMPILE_219
+#define __COMPILE_220
+#define __COMPILE_221
+#define __COMPILE_222
+#define __COMPILE_223
+#define __COMPILE_224
+#define __COMPILE_225
+#define __COMPILE_226
+#define __COMPILE_227
+#define __COMPILE_228
+#define __COMPILE_229
+#define __COMPILE_230
+#define __COMPILE_231
+#define __COMPILE_232
+#define __COMPILE_233
+#define __COMPILE_234
+#define __COMPILE_235
+#define __COMPILE_236
+#define __COMPILE_237
+#define __COMPILE_238
+#define __COMPILE_239
+#define __COMPILE_240
+#define __COMPILE_241
+#define __COMPILE_242
+#define __COMPILE_243
+#define __COMPILE_244
+#define __COMPILE_245
+#define __COMPILE_246
+#define __COMPILE_247
+#define __COMPILE_248
+#define __COMPILE_249
+#define __COMPILE_250
+#define __COMPILE_251
+#define __COMPILE_252
+#define __COMPILE_253
+#define __COMPILE_254
+#define __COMPILE_255
+#define __COMPILE_256
+#define __COMPILE_257
+#define __COMPILE_258
+#define __COMPILE_259
+#define __COMPILE_260
+#define __COMPILE_261
+#define __COMPILE_262
+#define __COMPILE_263
+#define __COMPILE_264
+#define __COMPILE_265
+#define __COMPILE_266
+#define __COMPILE_267
+#define __COMPILE_268
+#define __COMPILE_269
+#define __COMPILE_270
+#define __COMPILE_271
+#define __COMPILE_272
+#define __COMPILE_273
+#define __COMPILE_274
+#define __COMPILE_275
+#define __COMPILE_276
+#define __COMPILE_277
+#define __COMPILE_278
+#define __COMPILE_279
+#define __COMPILE_280
+#define __COMPILE_281
+#define __COMPILE_282
+#define __COMPILE_283
+#define __COMPILE_284
+#define __COMPILE_285
+#define __COMPILE_286
+#define __COMPILE_287
+#define __COMPILE_288
+#define __COMPILE_289
+#define __COMPILE_290
+#define __COMPILE_291
+#define __COMPILE_292
+#define __COMPILE_293
+#define __COMPILE_294
+#define __COMPILE_295
+#define __COMPILE_296
+#define __COMPILE_299
+#define __COMPILE_300
+#define __COMPILE_301
+#define __COMPILE_303
+#define __COMPILE_304
+#define __COMPILE_305
+#define __COMPILE_306
+#define __COMPILE_307
+#define __COMPILE_308
+#define __COMPILE_309
+#define __COMPILE_310
+#define __COMPILE_311
+#define __COMPILE_312
+#define __COMPILE_313
+#define __COMPILE_314
+#define __COMPILE_315
+#define __COMPILE_316
+#define __COMPILE_318
+#define __COMPILE_319
+#define __COMPILE_320
+#define __COMPILE_321
+#define __COMPILE_322
+#define __COMPILE_323
+#define __COMPILE_324
+#define __COMPILE_325
+#define __COMPILE_326
+#define __COMPILE_327
+#define __COMPILE_328
+#define __COMPILE_329
+#define __COMPILE_330
+#define __COMPILE_331
+#define __COMPILE_332
+#define __COMPILE_333
+#define __COMPILE_334
+#define __COMPILE_335
+#define __COMPILE_336
+#define __COMPILE_337
+#define __COMPILE_338
+#define __COMPILE_339
+#define __COMPILE_340
+#define __COMPILE_341
+#define __COMPILE_342
+#define __COMPILE_343
+#define __COMPILE_344
+#define __COMPILE_345
+#define __COMPILE_346
+#define __COMPILE_347
+#define __COMPILE_348
+#define __COMPILE_349
+#define __COMPILE_350
+#define __COMPILE_351
+#define __COMPILE_352
+#define __COMPILE_353
+#define __COMPILE_354
+#define __COMPILE_355
+#define __COMPILE_356
+#define __COMPILE_357
+#define __COMPILE_358
+#define __COMPILE_359
+#define __COMPILE_360
+#define __COMPILE_361
+#define __COMPILE_362
+#define __COMPILE_363
+#define __COMPILE_364
+#define __COMPILE_365
+#define __COMPILE_366
+#define __COMPILE_367
+#define __COMPILE_368
+#define __COMPILE_369
+#define __COMPILE_370
+#define __COMPILE_371
+#define __COMPILE_372
+#define __COMPILE_373
+#define __COMPILE_374
+#define __COMPILE_375
+#define __COMPILE_376
+#define __COMPILE_377
+#define __COMPILE_378
+#define __COMPILE_379
+#define __COMPILE_380
+#define __COMPILE_381
+#define __COMPILE_382
+#define __COMPILE_383
+#define __COMPILE_384
+#define __COMPILE_385
+#define __COMPILE_386
+#define __COMPILE_387
+#define __COMPILE_388
+#define __COMPILE_389
+#define __COMPILE_390
+#define __COMPILE_391
+#define __COMPILE_392
+#define __COMPILE_393
+#define __COMPILE_394
+#define __COMPILE_395
+#define __COMPILE_396
+#define __COMPILE_397
+#define __COMPILE_398
+#define __COMPILE_399
+#define __COMPILE_400
+#define __COMPILE_401
+#define __COMPILE_402
+#define __COMPILE_403
+#define __COMPILE_404
+#define __COMPILE_405
+#define __COMPILE_406
+#define __COMPILE_407
+#define __COMPILE_408
+#define __COMPILE_409
+#define __COMPILE_410
+#define __COMPILE_411
+#define __COMPILE_412
+#define __COMPILE_413
+#define __COMPILE_414
+#define __COMPILE_415
+#define __COMPILE_416
+#define __COMPILE_417
+#define __COMPILE_418
+#define __COMPILE_419
+#define __COMPILE_420
+#define __COMPILE_421
+#define __COMPILE_422
+#define __COMPILE_423
+#define __COMPILE_424
+#define __COMPILE_425
+#define __COMPILE_426
+#define __COMPILE_427
+#define __COMPILE_428
+#define __COMPILE_429
+#define __COMPILE_430
+#define __COMPILE_431
+#define __COMPILE_432
+#define __COMPILE_433
+#define __COMPILE_434
+#define __COMPILE_435
+#define __COMPILE_436
+#define __COMPILE_437
+#define __COMPILE_438
+#define __COMPILE_439
+#define __COMPILE_440
+#define __COMPILE_441
+#define __COMPILE_442
+#define __COMPILE_443
+#define __COMPILE_444
+#define __COMPILE_445
+#define __COMPILE_446
+#define __COMPILE_447
+#define __COMPILE_448
+#define __COMPILE_449
+#define __COMPILE_450
+#define __COMPILE_451
+#define __COMPILE_452
+#define __COMPILE_453
+#define __COMPILE_454
+#define __COMPILE_455
+#define __COMPILE_456
+#define __COMPILE_457
+#define __COMPILE_458
+#define __COMPILE_459
+#define __COMPILE_460
+#define __COMPILE_461
+#define __COMPILE_462
+#define __COMPILE_463
+#define __COMPILE_464
+#define __COMPILE_465
+#define __COMPILE_466
+#define __COMPILE_467
+#define __COMPILE_468
+#define __COMPILE_469
+#define __COMPILE_470
+#define __COMPILE_471
+#define __COMPILE_472
+#define __COMPILE_473
+#define __COMPILE_474
+#define __COMPILE_475
+#define __COMPILE_476
+#define __COMPILE_477
+#define __COMPILE_478
+#define __COMPILE_479
+#define __COMPILE_480
+#define __COMPILE_481
+#define __COMPILE_482
+#define __COMPILE_483
+#define __COMPILE_484
+#define __COMPILE_485
+#define __COMPILE_486
+#define __COMPILE_487
+#define __COMPILE_488
+#define __COMPILE_489
+#define __COMPILE_490
+#define __COMPILE_491
+#define __COMPILE_492
+#define __COMPILE_493
+#define __COMPILE_494
+#define __COMPILE_495
+#define __COMPILE_496
+#define __COMPILE_497
+#define __COMPILE_498
+#define __COMPILE_499
+#define __COMPILE_500
+#define __COMPILE_501
+#define __COMPILE_502
+#define __COMPILE_503
+#define __COMPILE_504
+#define __COMPILE_505
+#define __COMPILE_506
+#define __COMPILE_507
+#define __COMPILE_508
+#define __COMPILE_509
+#define __COMPILE_510
+#define __COMPILE_511
+#define __COMPILE_512
+#define __COMPILE_513
+#define __COMPILE_514
+#define __COMPILE_515
+#define __COMPILE_516
+#define __COMPILE_517
+#define __COMPILE_518
+#define __COMPILE_519
+#define __COMPILE_520
+#define __COMPILE_521
+#define __COMPILE_522
+#define __COMPILE_523
+#define __COMPILE_524
+#define __COMPILE_525
+#define __COMPILE_526
+#define __COMPILE_527
+#define __COMPILE_528
+#define __COMPILE_529
+#define __COMPILE_530
+#define __COMPILE_531
+#define __COMPILE_532
+#define __COMPILE_533
+#define __COMPILE_534
+#define __COMPILE_535
+#define __COMPILE_536
+#define __COMPILE_537
+#define __COMPILE_538
+#define __COMPILE_539
+#define __COMPILE_540
+#define __COMPILE_541
+#define __COMPILE_542
+#define __COMPILE_543
+#define __COMPILE_544
+#define __COMPILE_545
+#define __COMPILE_546
+#define __COMPILE_547
+#define __COMPILE_548
+#define __COMPILE_549
+#define __COMPILE_550
+#define __COMPILE_551
+#define __COMPILE_552
+#define __COMPILE_553
+#define __COMPILE_554
+#define __COMPILE_555
+#define __COMPILE_556
+#define __COMPILE_557
+#define __COMPILE_558
+#define __COMPILE_559
+#define __COMPILE_560
+#define __COMPILE_561
+#define __COMPILE_562
+#define __COMPILE_563
+#define __COMPILE_564
+#define __COMPILE_565
+#define __COMPILE_566
+#define __COMPILE_567
+#define __COMPILE_568
+#define __COMPILE_569
+#define __COMPILE_570
+#define __COMPILE_571
+#define __COMPILE_572
+#define __COMPILE_573
+#define __COMPILE_574
+#define __COMPILE_575
+#define __COMPILE_576
+#define __COMPILE_577
+#define __COMPILE_578
+#define __COMPILE_579
+#define __COMPILE_580
+#define __COMPILE_581
+#define __COMPILE_582
+#define __COMPILE_583
+#define __COMPILE_584
+#define __COMPILE_585
+#define __COMPILE_586
+#define __COMPILE_587
+#define __COMPILE_588
+#define __COMPILE_589
+#define __COMPILE_590
+#define __COMPILE_591
+#define __COMPILE_592
+#define __COMPILE_593
+#define __COMPILE_594
+#define __COMPILE_595
+#define __COMPILE_596
+#define __COMPILE_597
+#define __COMPILE_598
+#define __COMPILE_599
+#define __COMPILE_600
+#define __COMPILE_601
+#define __COMPILE_602
+#define __COMPILE_603
+#define __COMPILE_604
+#define __COMPILE_605
+#define __COMPILE_606
+#define __COMPILE_607
+#define __COMPILE_608
+#define __COMPILE_609
+#define __COMPILE_610
+#define __COMPILE_611
+#define __COMPILE_612
+#define __COMPILE_613
+#define __COMPILE_614
+#define __COMPILE_615
+#define __COMPILE_616
+#define __COMPILE_617
+#define __COMPILE_618
+#define __COMPILE_619
+#define __COMPILE_620
+#define __COMPILE_621
+#define __COMPILE_622
+#define __COMPILE_623
+#define __COMPILE_624
+#define __COMPILE_625
+#define __COMPILE_626
+#define __COMPILE_627
+#define __COMPILE_628
+#define __COMPILE_629
+#define __COMPILE_630
+#define __COMPILE_631
+#define __COMPILE_632
+#define __COMPILE_633
+#define __COMPILE_634
+#define __COMPILE_635
+#define __COMPILE_636
+#define __COMPILE_639
+#define __COMPILE_640
+#define __COMPILE_641
+#define __COMPILE_642
+#define __COMPILE_643
+#define __COMPILE_644
+#define __COMPILE_645
+#define __COMPILE_646
+#define __COMPILE_647
+#define __COMPILE_648
+#define __COMPILE_649
+#define __COMPILE_650
+#define __COMPILE_651
+#define __COMPILE_652
+#define __COMPILE_653
+#define __COMPILE_654
+#define __COMPILE_655
+#define __COMPILE_656
+#define __COMPILE_657
+#define __COMPILE_658
+#define __COMPILE_659
+#define __COMPILE_660
+#define __COMPILE_661
+#define __COMPILE_662
+#define __COMPILE_663
+#define __COMPILE_664
+#define __COMPILE_665
+#define __COMPILE_666
+#define __COMPILE_667
+#define __COMPILE_668
+#define __COMPILE_669
+#define __COMPILE_670
+#define __COMPILE_671
+#define __COMPILE_672
+#define __COMPILE_673
+#define __COMPILE_674
+#define __COMPILE_675
+#define __COMPILE_676
+#define __COMPILE_677
+#define __COMPILE_678
+#define __COMPILE_679
+#define __COMPILE_680
+#define __COMPILE_681
+#define __COMPILE_682
+#define __COMPILE_683
+#define __COMPILE_684
+#define __COMPILE_685
+#define __COMPILE_686
+#define __COMPILE_687
+#define __COMPILE_688
+#define __COMPILE_689
+#define __COMPILE_690
+#define __COMPILE_691
+#define __COMPILE_692
+#define __COMPILE_693
+#define __COMPILE_694
+#define __COMPILE_695
+#define __COMPILE_696
+#define __COMPILE_697
+#define __COMPILE_698
+#define __COMPILE_699
+#define __COMPILE_700
+#define __COMPILE_701
+#define __COMPILE_702
+#define __COMPILE_703
+#define __COMPILE_704
+#define __COMPILE_705
+#define __COMPILE_706
+#define __COMPILE_707
+#define __COMPILE_708
+#define __COMPILE_709
+#define __COMPILE_710
+#define __COMPILE_711
+#define __COMPILE_712
+#define __COMPILE_713
+#define __COMPILE_714
+#define __COMPILE_715
+#define __COMPILE_716
+#define __COMPILE_717
+#define __COMPILE_718
+#define __COMPILE_719
+#define __COMPILE_720
+#define __COMPILE_721
+#define __COMPILE_722
+#define __COMPILE_723
+#define __COMPILE_724
+#define __COMPILE_725
+#define __COMPILE_726
+#define __COMPILE_727
+#define __COMPILE_728
+#define __COMPILE_729
+#define __COMPILE_730
+#define __COMPILE_731
+#define __COMPILE_732
+#define __COMPILE_733
+#define __COMPILE_734
+#define __COMPILE_735
+#define __COMPILE_736
+#define __COMPILE_737
+#define __COMPILE_738
+#define __COMPILE_739
+#define __COMPILE_740
+#define __COMPILE_741
+#define __COMPILE_742
+#define __COMPILE_743
+#define __COMPILE_744
+#define __COMPILE_745
+#define __COMPILE_746
+#define __COMPILE_747
+#define __COMPILE_748
+#define __COMPILE_749
+#define __COMPILE_750
+#define __COMPILE_751
+#define __COMPILE_752
+#define __COMPILE_753
+#define __COMPILE_754
+#define __COMPILE_755
+#define __COMPILE_757
+#define __COMPILE_758
+#define __COMPILE_759
+#define __COMPILE_760
+#define __COMPILE_761
+#define __COMPILE_762
+#define __COMPILE_763
+#define __COMPILE_764
+#define __COMPILE_765
+#define __COMPILE_766
+#define __COMPILE_767
+#define __COMPILE_768
+#define __COMPILE_769
+#define __COMPILE_770
+// compile_fin
+int __get_mutant(); int __is_neg(const char *location,char *lid,int count, ...); int __abst_hole(); char *__stat_write_init(const char *func_name);void __write_stat(char *str,const char *var_name,void *var_addr,int size); void __stat_file_close(const char *func_name,char *str);long long __mutate(const long long,const char *,const char *); int __trident_choice(char* lid, char* typestr,int* rvals, char** rvals_ids, int rvals_size,int** lvals, char** lvals_ids, int lvals_size);int __trident_output(char* id, char* typestr, int value);float fabs_trident(float a);int __choose(const char *);void *__var_select(unsigned int var_count,void *vars[]);void *__var_select_2(unsigned int var_count,void *vars[]);long long __const_select(unsigned int const_count, ...);void* memset(void*, int, unsigned long); 
 /*
   +----------------------------------------------------------------------+
   | phar php single-file executable PHP extension                        |
@@ -257,7 +1020,8 @@ static void phar_mung_server_vars(char *fname, char *entry, int entry_len, char 
 
 static int phar_file_action(phar_archive_data *phar, phar_entry_info *info, char *mime_type, int code, char *entry, int entry_len, char *arch, char *basename, char *ru, int ru_len TSRMLS_DC) /* {{{ */
 {
-	char *name = NULL, buf[8192], *cwd;
+	char *name = NULL, buf[8192];
+	const char *cwd;
 	zend_syntax_highlighter_ini syntax_highlighter_ini;
 	sapi_header_line ctr = {0};
 	size_t got;
@@ -307,7 +1071,7 @@ static int phar_file_action(phar_archive_data *phar, phar_entry_info *info, char
 				char *error;
 				if (!phar_open_jit(phar, info, &error TSRMLS_CC)) {
 					if (error) {
-						zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+						zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 						efree(error);
 					}
 					return -1;
@@ -581,65 +1345,5708 @@ PHP_METHOD(Phar, mount)
 	phar_unixify_path_separators(fname, fname_len);
 #endif
 
-	if (fname_len > 7 && !memcmp(fname, "phar://", 7) && SUCCESS == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0 TSRMLS_CC)) {
-		efree(entry);
-		entry = NULL;
-
-		if (path_len > 7 && !memcmp(path, "phar://", 7)) {
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "Can only mount internal paths within a phar archive, use a relative path instead of \"%s\"", path);
-			efree(arch);
-			return;
-		}
-carry_on2:
-		if (SUCCESS != zend_hash_find(&(PHAR_GLOBALS->phar_fname_map), arch, arch_len, (void **)&pphar)) {
-			if (PHAR_G(manifest_cached) && SUCCESS == zend_hash_find(&cached_phars, arch, arch_len, (void **)&pphar)) {
-				if (SUCCESS == phar_copy_on_write(pphar TSRMLS_CC)) {
-					goto carry_on;
-				}
-			}
-
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s is not a phar archive, cannot mount", arch);
-
-			if (arch) {
+	//prophet generated patch
+	{
+	int __choose0 = __choose("__SWITCH0");
+	{
+	int __temp0=(fname_len > 7 && !memcmp(fname, "phar://", 7) && 0 == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0)) ;
+	if (__choose0 == 0)
+	{}
+	#ifdef __COMPILE_0
+	else if (__choose0 == 1)
+	{
+	__temp0= (__is_neg("0-1", "L586", 13, &(fname), sizeof (fname), &(arch), sizeof (arch), &(entry), sizeof (entry), &(fname_len), sizeof (fname_len), &(arch_len), sizeof (arch_len), &(entry_len), sizeof (entry_len), &(path), sizeof (path), &(path_len), sizeof (path_len), &(phar_ce_PharException), sizeof (phar_ce_PharException), &(pphar), sizeof (pphar), &(ht), sizeof (ht), &(actual), sizeof (actual), &(actual_len), sizeof (actual_len)));
+	}
+	#endif
+	#ifdef __COMPILE_1
+	else if (__choose0 == 2)
+	{
+	__temp0= (((fname_len > 7 && !memcmp(fname, "phar://", 7)) || __is_neg("0-2", "L586", 13, &(fname), sizeof (fname), &(arch), sizeof (arch), &(entry), sizeof (entry), &(fname_len), sizeof (fname_len), &(arch_len), sizeof (arch_len), &(entry_len), sizeof (entry_len), &(path), sizeof (path), &(path_len), sizeof (path_len), &(phar_ce_PharException), sizeof (phar_ce_PharException), &(pphar), sizeof (pphar), &(ht), sizeof (ht), &(actual), sizeof (actual), &(actual_len), sizeof (actual_len))) && 0 == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_2
+	else if (__choose0 == 3)
+	{
+	__temp0= ((fname_len > 7 && !memcmp(fname, "phar://", 7) && 0 == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0)) || __is_neg("0-3", "L586", 13, &(fname), sizeof (fname), &(arch), sizeof (arch), &(entry), sizeof (entry), &(fname_len), sizeof (fname_len), &(arch_len), sizeof (arch_len), &(entry_len), sizeof (entry_len), &(path), sizeof (path), &(path_len), sizeof (path_len), &(phar_ce_PharException), sizeof (phar_ce_PharException), &(pphar), sizeof (pphar), &(ht), sizeof (ht), &(actual), sizeof (actual), &(actual_len), sizeof (actual_len)));
+	}
+	#endif
+	#ifdef __COMPILE_3
+	else if (__choose0 == 4)
+	{
+	__temp0= (!memcmp(fname, "phar://", 7) && 0 == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_4
+	else if (__choose0 == 5)
+	{
+	__temp0= (fname_len > 7 && !memcmp(fname, "phar://", 7));
+	}
+	#endif
+	#ifdef __COMPILE_5
+	else if (__choose0 == 6)
+	{
+	__temp0= (fname_len > 7 && 0 == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_6
+	else if (__choose0 == 7)
+	{
+	__temp0= (fname_len > 7 && !Debug(fname, "phar://", 7) && 0 == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_7
+	else if (__choose0 == 8)
+	{
+	__temp0= (fname_len > 7 && !bcmp(fname, "phar://", 7) && 0 == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_8
+	else if (__choose0 == 9)
+	{
+	__temp0= (fname_len > 7 && !memcmp(fname, "phar://", 7) && 0 == Debug(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_9
+	else if (__choose0 == 10)
+	{
+	__temp0= (fname_len > 7 && !memcmp(fname, "phar://", 7) && 0 == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_10
+	else if (__choose0 == 11)
+	{
+	__temp0= (fname_len > 7 && !memcmp(fname, "phar://", 7) && 0 == php_printf(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_11
+	else if (__choose0 == 12)
+	{
+	__temp0= (fname_len > 7 && !memcmp(fname, "phar://", 7) && 0 == printf(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_12
+	else if (__choose0 == 13)
+	{
+	__temp0= (fname_len > 7 && !memcmp(fname, "phar://", 7) && 0 == virtual_open(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_13
+	else if (__choose0 == 14)
+	{
+	__temp0= (fname_len > 7 && !memcmp(fname, "phar://", 7) && 0 == wprintf(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_14
+	else if (__choose0 == 15)
+	{
+	__temp0= (fname_len > 7 && !memcmp(fname, "phar://", 7) && 0 == zend_fcall_info_argn(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_15
+	else if (__choose0 == 16)
+	{
+	__temp0= (fname_len > 7 && !php_printf(fname, "phar://", 7) && 0 == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_16
+	else if (__choose0 == 17)
+	{
+	__temp0= (fname_len > 7 && !printf(fname, "phar://", 7) && 0 == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	#ifdef __COMPILE_17
+	else if (__choose0 == 18)
+	{
+	__temp0= (fname_len > 7 && !wprintf(fname, "phar://", 7) && 0 == phar_split_fname(fname, fname_len, &arch, &arch_len, &entry, &entry_len, 2, 0));
+	}
+	#endif
+	if (__temp0) {
+			efree(entry);
+			entry = NULL;
+	
+			if (path_len > 7 && !memcmp(path, "phar://", 7)) {
+				zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "Can only mount internal paths within a phar archive, use a relative path instead of \"%s\"", path);
 				efree(arch);
+				return;
 			}
-			return;
-		}
-carry_on:
-		if (SUCCESS != phar_mount_entry(*pphar, actual, actual_len, path, path_len TSRMLS_CC)) {
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "Mounting of %s to %s within phar %s failed", path, actual, arch);
-			if (path && path == entry) {
+	carry_on2:
+			if (SUCCESS != zend_hash_find(&(PHAR_GLOBALS->phar_fname_map), arch, arch_len, (void **)&pphar)) {
+				if (PHAR_G(manifest_cached) && SUCCESS == zend_hash_find(&cached_phars, arch, arch_len, (void **)&pphar)) {
+					if (SUCCESS == phar_copy_on_write(pphar TSRMLS_CC)) {
+						goto carry_on;
+					}
+				}
+	
+				zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s is not a phar archive, cannot mount", arch);
+	
+				if (arch) {
+					efree(arch);
+				}
+				return;
+			}
+	carry_on:
+			if (SUCCESS != phar_mount_entry(*pphar, actual, actual_len, path, path_len TSRMLS_CC)) {
+				zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "Mounting of %s to %s within phar %s failed", path, actual, arch);
+				if (path && path == entry) {
+					efree(entry);
+				}
+	
+				if (arch) {
+					efree(arch);
+				}
+	
+				return;
+			}
+	
+			if (entry && path && path == entry) {
 				efree(entry);
 			}
-
+	
 			if (arch) {
 				efree(arch);
 			}
-
+	
 			return;
-		}
-
-		if (entry && path && path == entry) {
-			efree(entry);
-		}
-
-		if (arch) {
-			efree(arch);
-		}
-
-		return;
-	} else if (SUCCESS == zend_hash_find(&(PHAR_GLOBALS->phar_fname_map), fname, fname_len, (void **)&pphar)) {
-		goto carry_on;
-	} else if (PHAR_G(manifest_cached) && SUCCESS == zend_hash_find(&cached_phars, fname, fname_len, (void **)&pphar)) {
-		if (SUCCESS == phar_copy_on_write(pphar TSRMLS_CC)) {
+		} else {
+	int __choose1 = __choose("__SWITCH1");
+	if (__choose1 == 0)
+	{}
+	#ifdef __COMPILE_18
+	else if (__choose1 == 1)
+	{
+	//AddIfStmtKind
+	if (!(&phar_globals)->phar_SERVER_mung_list) {
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_19
+	else if (__choose1 == 2)
+	{
+	//AddIfStmtKind
+	if (!((sapi_globals.request_info).request_method && (sapi_globals.request_info).request_uri && (!strcmp((sapi_globals.request_info).request_method, "GET") || !strcmp((sapi_globals.request_info).request_method, "POST")))) {
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_20
+	else if (__choose1 == 3)
+	{
+	//AddIfStmtKind
+	if (!(core_globals.http_globals)[3]) {
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_21
+	else if (__choose1 == 4)
+	{
+	//AddIfStmtKind
+	if (!(executor_globals.exception)) {
+	    zend_throw_exception_ex(phar_ce_PharException, 0, "phar error: failed to call rewrite callback");
+	}
+	}
+	#endif
+	#ifdef __COMPILE_22
+	else if (__choose1 == 5)
+	{
+	//AddIfStmtKind
+	if (!(phar_globals.has_bz2)) {
+	    zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress entire archive with bz2, enable ext/bz2 in php.ini");
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_23
+	else if (__choose1 == 6)
+	{
+	//AddIfStmtKind
+	if (!(phar_globals.has_bz2)) {
+	    zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress files within archive with bz2, enable ext/bz2 in php.ini");
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_24
+	else if (__choose1 == 7)
+	{
+	//AddIfStmtKind
+	if (!(phar_globals.has_bz2)) {
+	    zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress with bzip2 compression, bz2 extension is not enabled");
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_25
+	else if (__choose1 == 8)
+	{
+	//AddIfStmtKind
+	if (!(phar_globals.has_bz2)) {
+	    zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress with gzip compression, file is already compressed with bzip2 compression and bz2 extension is not enabled, cannot decompress");
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_26
+	else if (__choose1 == 9)
+	{
+	//AddIfStmtKind
+	if (!(phar_globals.has_zlib)) {
+	    zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress entire archive with gzip, enable ext/zlib in php.ini");
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_27
+	else if (__choose1 == 10)
+	{
+	//AddIfStmtKind
+	if (!(phar_globals.has_zlib)) {
+	    zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress files within archive with gzip, enable ext/zlib in php.ini");
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_28
+	else if (__choose1 == 11)
+	{
+	//AddIfStmtKind
+	if (!(phar_globals.has_zlib)) {
+	    zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress with bzip2 compression, file is already compressed with gzip compression and zlib extension is not enabled, cannot decompress");
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_29
+	else if (__choose1 == 12)
+	{
+	//AddIfStmtKind
+	if (!(phar_globals.has_zlib)) {
+	    zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress with gzip compression, zlib extension is not enabled");
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_30
+	else if (__choose1 == 13)
+	{
+	//AddIfStmtKind
+	if ((basic_globals.CurrentLStatFile)) {
+	    _efree(((basic_globals.CurrentLStatFile)));
+	}
+	}
+	#endif
+	#ifdef __COMPILE_31
+	else if (__choose1 == 14)
+	{
+	//AddIfStmtKind
+	if ((basic_globals.CurrentStatFile)) {
+	    _efree(((basic_globals.CurrentStatFile)));
+	}
+	}
+	#endif
+	#ifdef __COMPILE_32
+	else if (__choose1 == 15)
+	{
+	//AddIfStmtKind
+	if ((executor_globals.exception)) {
+	    return 1 << 1;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_33
+	else if (__choose1 == 16)
+	{
+	//AddIfStmtKind
+	if ((executor_globals.return_value_ptr_ptr) && *(executor_globals.return_value_ptr_ptr)) {
+	    _zval_ptr_dtor(((executor_globals.return_value_ptr_ptr)));
+	}
+	}
+	#endif
+	#ifdef __COMPILE_34
+	else if (__choose1 == 17)
+	{
+	//AddIfStmtKind
+	if ((phar_globals.cwd)) {
+	    _efree(((phar_globals.cwd)));
+	    (phar_globals.cwd) = ((void *)0);
+	    (phar_globals.cwd_len) = 0;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_35
+	else if (__choose1 == 18)
+	{
+	//AddIfStmtKind
+	if ((phar_globals.readonly)) {
+	    zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot write out executable phar archive, phar is read-only");
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_36
+	else if (__choose1 == 19)
+	{
+	//AddIfStmtKind
+	if (-1 == sapi_send_headers()) {
+	    _zend_bailout("ext/phar/phar_object.c", 302);
+	}
+	}
+	#endif
+	#ifdef __COMPILE_37
+	else if (__choose1 == 20)
+	{
+	//AddIfStmtKind
+	if (arch) {
+	    _efree((arch));
+	}
+	}
+	#endif
+	#ifdef __COMPILE_38
+	else if (__choose1 == 21)
+	{
+	//AddIfStmtKind
+	if (entry && path && path == entry) {
+	    _efree((entry));
+	}
+	}
+	#endif
+	#ifdef __COMPILE_39
+	else if (__choose1 == 22)
+	{
+	//AddIfStmtKind
+	if (path && path == entry) {
+	    _efree((entry));
+	}
+	}
+	#endif
+	#ifdef __COMPILE_40
+	else if (__choose1 == 23)
+	{
+	//AddIfStmtKind
+	if (path_len > 7 && !memcmp(path, "phar://", 7)) {
+	    zend_throw_exception_ex(phar_ce_PharException, 0, "Can only mount internal paths within a phar archive, use a relative path instead of \"%s\"", path);
+	    _efree((arch));
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_41
+	else if (__choose1 == 24)
+	{
+	//AddIfStmtKind
+	if (zend_parse_parameters((ht), "ss", &path, &path_len, &actual, &actual_len) == -1) {
+	    return;
+	}
+	}
+	#endif
+	#ifdef __COMPILE_42
+	else if (__choose1 == 25)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->cache_list, 0, sizeof (*(&(&phar_globals)->cache_list)));
+	}
+	#endif
+	#ifdef __COMPILE_43
+	else if (__choose1 == 26)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->cached_fp, 0, sizeof (*(&(&phar_globals)->cached_fp)));
+	}
+	#endif
+	#ifdef __COMPILE_44
+	else if (__choose1 == 27)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->cwd, 0, sizeof (*(&(&phar_globals)->cwd)));
+	}
+	#endif
+	#ifdef __COMPILE_45
+	else if (__choose1 == 28)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->cwd_init, 0, sizeof (*(&(&phar_globals)->cwd_init)));
+	}
+	#endif
+	#ifdef __COMPILE_46
+	else if (__choose1 == 29)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->cwd_len, 0, sizeof (*(&(&phar_globals)->cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_47
+	else if (__choose1 == 30)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->has_bz2, 0, sizeof (*(&(&phar_globals)->has_bz2)));
+	}
+	#endif
+	#ifdef __COMPILE_48
+	else if (__choose1 == 31)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->has_zlib, 0, sizeof (*(&(&phar_globals)->has_zlib)));
+	}
+	#endif
+	#ifdef __COMPILE_49
+	else if (__choose1 == 32)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->intercepted, 0, sizeof (*(&(&phar_globals)->intercepted)));
+	}
+	#endif
+	#ifdef __COMPILE_50
+	else if (__choose1 == 33)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->last_alias, 0, sizeof (*(&(&phar_globals)->last_alias)));
+	}
+	#endif
+	#ifdef __COMPILE_51
+	else if (__choose1 == 34)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->last_alias_len, 0, sizeof (*(&(&phar_globals)->last_alias_len)));
+	}
+	#endif
+	#ifdef __COMPILE_52
+	else if (__choose1 == 35)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->last_phar, 0, sizeof (*(&(&phar_globals)->last_phar)));
+	}
+	#endif
+	#ifdef __COMPILE_53
+	else if (__choose1 == 36)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->last_phar_name, 0, sizeof (*(&(&phar_globals)->last_phar_name)));
+	}
+	#endif
+	#ifdef __COMPILE_54
+	else if (__choose1 == 37)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->last_phar_name_len, 0, sizeof (*(&(&phar_globals)->last_phar_name_len)));
+	}
+	#endif
+	#ifdef __COMPILE_55
+	else if (__choose1 == 38)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->manifest_cached, 0, sizeof (*(&(&phar_globals)->manifest_cached)));
+	}
+	#endif
+	#ifdef __COMPILE_56
+	else if (__choose1 == 39)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->mime_types, 0, sizeof (*(&(&phar_globals)->mime_types)));
+	}
+	#endif
+	#ifdef __COMPILE_57
+	else if (__choose1 == 40)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->openssl_privatekey, 0, sizeof (*(&(&phar_globals)->openssl_privatekey)));
+	}
+	#endif
+	#ifdef __COMPILE_58
+	else if (__choose1 == 41)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->openssl_privatekey_len, 0, sizeof (*(&(&phar_globals)->openssl_privatekey_len)));
+	}
+	#endif
+	#ifdef __COMPILE_59
+	else if (__choose1 == 42)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_file_exists, 0, sizeof (*(&(&phar_globals)->orig_file_exists)));
+	}
+	#endif
+	#ifdef __COMPILE_60
+	else if (__choose1 == 43)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_file_get_contents, 0, sizeof (*(&(&phar_globals)->orig_file_get_contents)));
+	}
+	#endif
+	#ifdef __COMPILE_61
+	else if (__choose1 == 44)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_fileatime, 0, sizeof (*(&(&phar_globals)->orig_fileatime)));
+	}
+	#endif
+	#ifdef __COMPILE_62
+	else if (__choose1 == 45)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_filectime, 0, sizeof (*(&(&phar_globals)->orig_filectime)));
+	}
+	#endif
+	#ifdef __COMPILE_63
+	else if (__choose1 == 46)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_filegroup, 0, sizeof (*(&(&phar_globals)->orig_filegroup)));
+	}
+	#endif
+	#ifdef __COMPILE_64
+	else if (__choose1 == 47)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_fileinode, 0, sizeof (*(&(&phar_globals)->orig_fileinode)));
+	}
+	#endif
+	#ifdef __COMPILE_65
+	else if (__choose1 == 48)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_filemtime, 0, sizeof (*(&(&phar_globals)->orig_filemtime)));
+	}
+	#endif
+	#ifdef __COMPILE_66
+	else if (__choose1 == 49)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_fileowner, 0, sizeof (*(&(&phar_globals)->orig_fileowner)));
+	}
+	#endif
+	#ifdef __COMPILE_67
+	else if (__choose1 == 50)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_fileperms, 0, sizeof (*(&(&phar_globals)->orig_fileperms)));
+	}
+	#endif
+	#ifdef __COMPILE_68
+	else if (__choose1 == 51)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_filesize, 0, sizeof (*(&(&phar_globals)->orig_filesize)));
+	}
+	#endif
+	#ifdef __COMPILE_69
+	else if (__choose1 == 52)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_filetype, 0, sizeof (*(&(&phar_globals)->orig_filetype)));
+	}
+	#endif
+	#ifdef __COMPILE_70
+	else if (__choose1 == 53)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_fopen, 0, sizeof (*(&(&phar_globals)->orig_fopen)));
+	}
+	#endif
+	#ifdef __COMPILE_71
+	else if (__choose1 == 54)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_is_dir, 0, sizeof (*(&(&phar_globals)->orig_is_dir)));
+	}
+	#endif
+	#ifdef __COMPILE_72
+	else if (__choose1 == 55)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_is_executable, 0, sizeof (*(&(&phar_globals)->orig_is_executable)));
+	}
+	#endif
+	#ifdef __COMPILE_73
+	else if (__choose1 == 56)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_is_file, 0, sizeof (*(&(&phar_globals)->orig_is_file)));
+	}
+	#endif
+	#ifdef __COMPILE_74
+	else if (__choose1 == 57)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_is_link, 0, sizeof (*(&(&phar_globals)->orig_is_link)));
+	}
+	#endif
+	#ifdef __COMPILE_75
+	else if (__choose1 == 58)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_is_readable, 0, sizeof (*(&(&phar_globals)->orig_is_readable)));
+	}
+	#endif
+	#ifdef __COMPILE_76
+	else if (__choose1 == 59)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_is_writable, 0, sizeof (*(&(&phar_globals)->orig_is_writable)));
+	}
+	#endif
+	#ifdef __COMPILE_77
+	else if (__choose1 == 60)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_lstat, 0, sizeof (*(&(&phar_globals)->orig_lstat)));
+	}
+	#endif
+	#ifdef __COMPILE_78
+	else if (__choose1 == 61)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_opendir, 0, sizeof (*(&(&phar_globals)->orig_opendir)));
+	}
+	#endif
+	#ifdef __COMPILE_79
+	else if (__choose1 == 62)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_readfile, 0, sizeof (*(&(&phar_globals)->orig_readfile)));
+	}
+	#endif
+	#ifdef __COMPILE_80
+	else if (__choose1 == 63)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->orig_stat, 0, sizeof (*(&(&phar_globals)->orig_stat)));
+	}
+	#endif
+	#ifdef __COMPILE_81
+	else if (__choose1 == 64)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->persist, 0, sizeof (*(&(&phar_globals)->persist)));
+	}
+	#endif
+	#ifdef __COMPILE_82
+	else if (__choose1 == 65)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->phar_SERVER_mung_list, 0, sizeof (*(&(&phar_globals)->phar_SERVER_mung_list)));
+	}
+	#endif
+	#ifdef __COMPILE_83
+	else if (__choose1 == 66)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->phar_alias_map, 0, sizeof (*(&(&phar_globals)->phar_alias_map)));
+	}
+	#endif
+	#ifdef __COMPILE_84
+	else if (__choose1 == 67)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->phar_fname_map, 0, sizeof (*(&(&phar_globals)->phar_fname_map)));
+	}
+	#endif
+	#ifdef __COMPILE_85
+	else if (__choose1 == 68)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->phar_persist_map, 0, sizeof (*(&(&phar_globals)->phar_persist_map)));
+	}
+	#endif
+	#ifdef __COMPILE_86
+	else if (__choose1 == 69)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->readonly, 0, sizeof (*(&(&phar_globals)->readonly)));
+	}
+	#endif
+	#ifdef __COMPILE_87
+	else if (__choose1 == 70)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->readonly_orig, 0, sizeof (*(&(&phar_globals)->readonly_orig)));
+	}
+	#endif
+	#ifdef __COMPILE_88
+	else if (__choose1 == 71)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->request_done, 0, sizeof (*(&(&phar_globals)->request_done)));
+	}
+	#endif
+	#ifdef __COMPILE_89
+	else if (__choose1 == 72)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->request_ends, 0, sizeof (*(&(&phar_globals)->request_ends)));
+	}
+	#endif
+	#ifdef __COMPILE_90
+	else if (__choose1 == 73)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->request_init, 0, sizeof (*(&(&phar_globals)->request_init)));
+	}
+	#endif
+	#ifdef __COMPILE_91
+	else if (__choose1 == 74)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->require_hash, 0, sizeof (*(&(&phar_globals)->require_hash)));
+	}
+	#endif
+	#ifdef __COMPILE_92
+	else if (__choose1 == 75)
+	{
+	//AddInitKind
+	memset(&(&phar_globals)->require_hash_orig, 0, sizeof (*(&(&phar_globals)->require_hash_orig)));
+	}
+	#endif
+	#ifdef __COMPILE_93
+	else if (__choose1 == 76)
+	{
+	//AddInitKind
+	memset(&phar_globals, 0, sizeof (*(&phar_globals)));
+	}
+	#endif
+	#ifdef __COMPILE_94
+	else if (__choose1 == 77)
+	{
+	//AddInitKind
+	memset(&phar_globals.cache_list, 0, sizeof (*(&phar_globals.cache_list)));
+	}
+	#endif
+	#ifdef __COMPILE_95
+	else if (__choose1 == 78)
+	{
+	//AddInitKind
+	memset(&phar_globals.cached_fp, 0, sizeof (*(&phar_globals.cached_fp)));
+	}
+	#endif
+	#ifdef __COMPILE_96
+	else if (__choose1 == 79)
+	{
+	//AddInitKind
+	memset(&phar_globals.cwd, 0, sizeof (*(&phar_globals.cwd)));
+	}
+	#endif
+	#ifdef __COMPILE_97
+	else if (__choose1 == 80)
+	{
+	//AddInitKind
+	memset(&phar_globals.cwd_init, 0, sizeof (*(&phar_globals.cwd_init)));
+	}
+	#endif
+	#ifdef __COMPILE_98
+	else if (__choose1 == 81)
+	{
+	//AddInitKind
+	memset(&phar_globals.cwd_len, 0, sizeof (*(&phar_globals.cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_99
+	else if (__choose1 == 82)
+	{
+	//AddInitKind
+	memset(&phar_globals.has_bz2, 0, sizeof (*(&phar_globals.has_bz2)));
+	}
+	#endif
+	#ifdef __COMPILE_100
+	else if (__choose1 == 83)
+	{
+	//AddInitKind
+	memset(&phar_globals.has_zlib, 0, sizeof (*(&phar_globals.has_zlib)));
+	}
+	#endif
+	#ifdef __COMPILE_101
+	else if (__choose1 == 84)
+	{
+	//AddInitKind
+	memset(&phar_globals.intercepted, 0, sizeof (*(&phar_globals.intercepted)));
+	}
+	#endif
+	#ifdef __COMPILE_102
+	else if (__choose1 == 85)
+	{
+	//AddInitKind
+	memset(&phar_globals.last_alias, 0, sizeof (*(&phar_globals.last_alias)));
+	}
+	#endif
+	#ifdef __COMPILE_103
+	else if (__choose1 == 86)
+	{
+	//AddInitKind
+	memset(&phar_globals.last_alias_len, 0, sizeof (*(&phar_globals.last_alias_len)));
+	}
+	#endif
+	#ifdef __COMPILE_104
+	else if (__choose1 == 87)
+	{
+	//AddInitKind
+	memset(&phar_globals.last_phar, 0, sizeof (*(&phar_globals.last_phar)));
+	}
+	#endif
+	#ifdef __COMPILE_105
+	else if (__choose1 == 88)
+	{
+	//AddInitKind
+	memset(&phar_globals.last_phar_name, 0, sizeof (*(&phar_globals.last_phar_name)));
+	}
+	#endif
+	#ifdef __COMPILE_106
+	else if (__choose1 == 89)
+	{
+	//AddInitKind
+	memset(&phar_globals.last_phar_name_len, 0, sizeof (*(&phar_globals.last_phar_name_len)));
+	}
+	#endif
+	#ifdef __COMPILE_107
+	else if (__choose1 == 90)
+	{
+	//AddInitKind
+	memset(&phar_globals.manifest_cached, 0, sizeof (*(&phar_globals.manifest_cached)));
+	}
+	#endif
+	#ifdef __COMPILE_108
+	else if (__choose1 == 91)
+	{
+	//AddInitKind
+	memset(&phar_globals.mime_types, 0, sizeof (*(&phar_globals.mime_types)));
+	}
+	#endif
+	#ifdef __COMPILE_109
+	else if (__choose1 == 92)
+	{
+	//AddInitKind
+	memset(&phar_globals.openssl_privatekey, 0, sizeof (*(&phar_globals.openssl_privatekey)));
+	}
+	#endif
+	#ifdef __COMPILE_110
+	else if (__choose1 == 93)
+	{
+	//AddInitKind
+	memset(&phar_globals.openssl_privatekey_len, 0, sizeof (*(&phar_globals.openssl_privatekey_len)));
+	}
+	#endif
+	#ifdef __COMPILE_111
+	else if (__choose1 == 94)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_file_exists, 0, sizeof (*(&phar_globals.orig_file_exists)));
+	}
+	#endif
+	#ifdef __COMPILE_112
+	else if (__choose1 == 95)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_file_get_contents, 0, sizeof (*(&phar_globals.orig_file_get_contents)));
+	}
+	#endif
+	#ifdef __COMPILE_113
+	else if (__choose1 == 96)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_fileatime, 0, sizeof (*(&phar_globals.orig_fileatime)));
+	}
+	#endif
+	#ifdef __COMPILE_114
+	else if (__choose1 == 97)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_filectime, 0, sizeof (*(&phar_globals.orig_filectime)));
+	}
+	#endif
+	#ifdef __COMPILE_115
+	else if (__choose1 == 98)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_filegroup, 0, sizeof (*(&phar_globals.orig_filegroup)));
+	}
+	#endif
+	#ifdef __COMPILE_116
+	else if (__choose1 == 99)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_fileinode, 0, sizeof (*(&phar_globals.orig_fileinode)));
+	}
+	#endif
+	#ifdef __COMPILE_117
+	else if (__choose1 == 100)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_filemtime, 0, sizeof (*(&phar_globals.orig_filemtime)));
+	}
+	#endif
+	#ifdef __COMPILE_118
+	else if (__choose1 == 101)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_fileowner, 0, sizeof (*(&phar_globals.orig_fileowner)));
+	}
+	#endif
+	#ifdef __COMPILE_119
+	else if (__choose1 == 102)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_fileperms, 0, sizeof (*(&phar_globals.orig_fileperms)));
+	}
+	#endif
+	#ifdef __COMPILE_120
+	else if (__choose1 == 103)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_filesize, 0, sizeof (*(&phar_globals.orig_filesize)));
+	}
+	#endif
+	#ifdef __COMPILE_121
+	else if (__choose1 == 104)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_filetype, 0, sizeof (*(&phar_globals.orig_filetype)));
+	}
+	#endif
+	#ifdef __COMPILE_122
+	else if (__choose1 == 105)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_fopen, 0, sizeof (*(&phar_globals.orig_fopen)));
+	}
+	#endif
+	#ifdef __COMPILE_123
+	else if (__choose1 == 106)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_is_dir, 0, sizeof (*(&phar_globals.orig_is_dir)));
+	}
+	#endif
+	#ifdef __COMPILE_124
+	else if (__choose1 == 107)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_is_executable, 0, sizeof (*(&phar_globals.orig_is_executable)));
+	}
+	#endif
+	#ifdef __COMPILE_125
+	else if (__choose1 == 108)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_is_file, 0, sizeof (*(&phar_globals.orig_is_file)));
+	}
+	#endif
+	#ifdef __COMPILE_126
+	else if (__choose1 == 109)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_is_link, 0, sizeof (*(&phar_globals.orig_is_link)));
+	}
+	#endif
+	#ifdef __COMPILE_127
+	else if (__choose1 == 110)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_is_readable, 0, sizeof (*(&phar_globals.orig_is_readable)));
+	}
+	#endif
+	#ifdef __COMPILE_128
+	else if (__choose1 == 111)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_is_writable, 0, sizeof (*(&phar_globals.orig_is_writable)));
+	}
+	#endif
+	#ifdef __COMPILE_129
+	else if (__choose1 == 112)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_lstat, 0, sizeof (*(&phar_globals.orig_lstat)));
+	}
+	#endif
+	#ifdef __COMPILE_130
+	else if (__choose1 == 113)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_opendir, 0, sizeof (*(&phar_globals.orig_opendir)));
+	}
+	#endif
+	#ifdef __COMPILE_131
+	else if (__choose1 == 114)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_readfile, 0, sizeof (*(&phar_globals.orig_readfile)));
+	}
+	#endif
+	#ifdef __COMPILE_132
+	else if (__choose1 == 115)
+	{
+	//AddInitKind
+	memset(&phar_globals.orig_stat, 0, sizeof (*(&phar_globals.orig_stat)));
+	}
+	#endif
+	#ifdef __COMPILE_133
+	else if (__choose1 == 116)
+	{
+	//AddInitKind
+	memset(&phar_globals.persist, 0, sizeof (*(&phar_globals.persist)));
+	}
+	#endif
+	#ifdef __COMPILE_134
+	else if (__choose1 == 117)
+	{
+	//AddInitKind
+	memset(&phar_globals.phar_SERVER_mung_list, 0, sizeof (*(&phar_globals.phar_SERVER_mung_list)));
+	}
+	#endif
+	#ifdef __COMPILE_135
+	else if (__choose1 == 118)
+	{
+	//AddInitKind
+	memset(&phar_globals.phar_alias_map, 0, sizeof (*(&phar_globals.phar_alias_map)));
+	}
+	#endif
+	#ifdef __COMPILE_136
+	else if (__choose1 == 119)
+	{
+	//AddInitKind
+	memset(&phar_globals.phar_fname_map, 0, sizeof (*(&phar_globals.phar_fname_map)));
+	}
+	#endif
+	#ifdef __COMPILE_137
+	else if (__choose1 == 120)
+	{
+	//AddInitKind
+	memset(&phar_globals.phar_persist_map, 0, sizeof (*(&phar_globals.phar_persist_map)));
+	}
+	#endif
+	#ifdef __COMPILE_138
+	else if (__choose1 == 121)
+	{
+	//AddInitKind
+	memset(&phar_globals.readonly, 0, sizeof (*(&phar_globals.readonly)));
+	}
+	#endif
+	#ifdef __COMPILE_139
+	else if (__choose1 == 122)
+	{
+	//AddInitKind
+	memset(&phar_globals.readonly_orig, 0, sizeof (*(&phar_globals.readonly_orig)));
+	}
+	#endif
+	#ifdef __COMPILE_140
+	else if (__choose1 == 123)
+	{
+	//AddInitKind
+	memset(&phar_globals.request_done, 0, sizeof (*(&phar_globals.request_done)));
+	}
+	#endif
+	#ifdef __COMPILE_141
+	else if (__choose1 == 124)
+	{
+	//AddInitKind
+	memset(&phar_globals.request_ends, 0, sizeof (*(&phar_globals.request_ends)));
+	}
+	#endif
+	#ifdef __COMPILE_142
+	else if (__choose1 == 125)
+	{
+	//AddInitKind
+	memset(&phar_globals.request_init, 0, sizeof (*(&phar_globals.request_init)));
+	}
+	#endif
+	#ifdef __COMPILE_143
+	else if (__choose1 == 126)
+	{
+	//AddInitKind
+	memset(&phar_globals.require_hash, 0, sizeof (*(&phar_globals.require_hash)));
+	}
+	#endif
+	#ifdef __COMPILE_144
+	else if (__choose1 == 127)
+	{
+	//AddInitKind
+	memset(&phar_globals.require_hash_orig, 0, sizeof (*(&phar_globals.require_hash_orig)));
+	}
+	#endif
+	#ifdef __COMPILE_145
+	else if (__choose1 == 128)
+	{
+	//AddInitKind
+	memset((&phar_globals), 0, sizeof (*((&phar_globals))));
+	}
+	#endif
+	#ifdef __COMPILE_146
+	else if (__choose1 == 129)
+	{
+	//AddInitKind
+	memset((&phar_globals)->cache_list, 0, sizeof (*((&phar_globals)->cache_list)));
+	}
+	#endif
+	#ifdef __COMPILE_147
+	else if (__choose1 == 130)
+	{
+	//AddInitKind
+	memset((&phar_globals)->cached_fp, 0, sizeof (*((&phar_globals)->cached_fp)));
+	}
+	#endif
+	#ifdef __COMPILE_148
+	else if (__choose1 == 131)
+	{
+	//AddInitKind
+	memset((&phar_globals)->cwd, 0, sizeof (*((&phar_globals)->cwd)));
+	}
+	#endif
+	#ifdef __COMPILE_149
+	else if (__choose1 == 132)
+	{
+	//AddInitKind
+	memset((&phar_globals)->last_alias, 0, sizeof (*((&phar_globals)->last_alias)));
+	}
+	#endif
+	#ifdef __COMPILE_150
+	else if (__choose1 == 133)
+	{
+	//AddInitKind
+	memset((&phar_globals)->last_phar, 0, sizeof (*((&phar_globals)->last_phar)));
+	}
+	#endif
+	#ifdef __COMPILE_151
+	else if (__choose1 == 134)
+	{
+	//AddInitKind
+	memset((&phar_globals)->last_phar_name, 0, sizeof (*((&phar_globals)->last_phar_name)));
+	}
+	#endif
+	#ifdef __COMPILE_152
+	else if (__choose1 == 135)
+	{
+	//AddInitKind
+	memset((&phar_globals)->openssl_privatekey, 0, sizeof (*((&phar_globals)->openssl_privatekey)));
+	}
+	#endif
+	#ifdef __COMPILE_153
+	else if (__choose1 == 136)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_file_exists, 0, sizeof (*((&phar_globals)->orig_file_exists)));
+	}
+	#endif
+	#ifdef __COMPILE_154
+	else if (__choose1 == 137)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_file_get_contents, 0, sizeof (*((&phar_globals)->orig_file_get_contents)));
+	}
+	#endif
+	#ifdef __COMPILE_155
+	else if (__choose1 == 138)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_fileatime, 0, sizeof (*((&phar_globals)->orig_fileatime)));
+	}
+	#endif
+	#ifdef __COMPILE_156
+	else if (__choose1 == 139)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_filectime, 0, sizeof (*((&phar_globals)->orig_filectime)));
+	}
+	#endif
+	#ifdef __COMPILE_157
+	else if (__choose1 == 140)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_filegroup, 0, sizeof (*((&phar_globals)->orig_filegroup)));
+	}
+	#endif
+	#ifdef __COMPILE_158
+	else if (__choose1 == 141)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_fileinode, 0, sizeof (*((&phar_globals)->orig_fileinode)));
+	}
+	#endif
+	#ifdef __COMPILE_159
+	else if (__choose1 == 142)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_filemtime, 0, sizeof (*((&phar_globals)->orig_filemtime)));
+	}
+	#endif
+	#ifdef __COMPILE_160
+	else if (__choose1 == 143)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_fileowner, 0, sizeof (*((&phar_globals)->orig_fileowner)));
+	}
+	#endif
+	#ifdef __COMPILE_161
+	else if (__choose1 == 144)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_fileperms, 0, sizeof (*((&phar_globals)->orig_fileperms)));
+	}
+	#endif
+	#ifdef __COMPILE_162
+	else if (__choose1 == 145)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_filesize, 0, sizeof (*((&phar_globals)->orig_filesize)));
+	}
+	#endif
+	#ifdef __COMPILE_163
+	else if (__choose1 == 146)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_filetype, 0, sizeof (*((&phar_globals)->orig_filetype)));
+	}
+	#endif
+	#ifdef __COMPILE_164
+	else if (__choose1 == 147)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_fopen, 0, sizeof (*((&phar_globals)->orig_fopen)));
+	}
+	#endif
+	#ifdef __COMPILE_165
+	else if (__choose1 == 148)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_is_dir, 0, sizeof (*((&phar_globals)->orig_is_dir)));
+	}
+	#endif
+	#ifdef __COMPILE_166
+	else if (__choose1 == 149)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_is_executable, 0, sizeof (*((&phar_globals)->orig_is_executable)));
+	}
+	#endif
+	#ifdef __COMPILE_167
+	else if (__choose1 == 150)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_is_file, 0, sizeof (*((&phar_globals)->orig_is_file)));
+	}
+	#endif
+	#ifdef __COMPILE_168
+	else if (__choose1 == 151)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_is_link, 0, sizeof (*((&phar_globals)->orig_is_link)));
+	}
+	#endif
+	#ifdef __COMPILE_169
+	else if (__choose1 == 152)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_is_readable, 0, sizeof (*((&phar_globals)->orig_is_readable)));
+	}
+	#endif
+	#ifdef __COMPILE_170
+	else if (__choose1 == 153)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_is_writable, 0, sizeof (*((&phar_globals)->orig_is_writable)));
+	}
+	#endif
+	#ifdef __COMPILE_171
+	else if (__choose1 == 154)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_lstat, 0, sizeof (*((&phar_globals)->orig_lstat)));
+	}
+	#endif
+	#ifdef __COMPILE_172
+	else if (__choose1 == 155)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_opendir, 0, sizeof (*((&phar_globals)->orig_opendir)));
+	}
+	#endif
+	#ifdef __COMPILE_173
+	else if (__choose1 == 156)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_readfile, 0, sizeof (*((&phar_globals)->orig_readfile)));
+	}
+	#endif
+	#ifdef __COMPILE_174
+	else if (__choose1 == 157)
+	{
+	//AddInitKind
+	memset((&phar_globals)->orig_stat, 0, sizeof (*((&phar_globals)->orig_stat)));
+	}
+	#endif
+	#ifdef __COMPILE_175
+	else if (__choose1 == 158)
+	{
+	//AddInitKind
+	memset(phar_globals.cache_list, 0, sizeof (*(phar_globals.cache_list)));
+	}
+	#endif
+	#ifdef __COMPILE_176
+	else if (__choose1 == 159)
+	{
+	//AddInitKind
+	memset(phar_globals.cached_fp, 0, sizeof (*(phar_globals.cached_fp)));
+	}
+	#endif
+	#ifdef __COMPILE_177
+	else if (__choose1 == 160)
+	{
+	//AddInitKind
+	memset(phar_globals.cwd, 0, sizeof (*(phar_globals.cwd)));
+	}
+	#endif
+	#ifdef __COMPILE_178
+	else if (__choose1 == 161)
+	{
+	//AddInitKind
+	memset(phar_globals.last_alias, 0, sizeof (*(phar_globals.last_alias)));
+	}
+	#endif
+	#ifdef __COMPILE_179
+	else if (__choose1 == 162)
+	{
+	//AddInitKind
+	memset(phar_globals.last_phar, 0, sizeof (*(phar_globals.last_phar)));
+	}
+	#endif
+	#ifdef __COMPILE_180
+	else if (__choose1 == 163)
+	{
+	//AddInitKind
+	memset(phar_globals.last_phar_name, 0, sizeof (*(phar_globals.last_phar_name)));
+	}
+	#endif
+	#ifdef __COMPILE_181
+	else if (__choose1 == 164)
+	{
+	//AddInitKind
+	memset(phar_globals.openssl_privatekey, 0, sizeof (*(phar_globals.openssl_privatekey)));
+	}
+	#endif
+	#ifdef __COMPILE_182
+	else if (__choose1 == 165)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_file_exists, 0, sizeof (*(phar_globals.orig_file_exists)));
+	}
+	#endif
+	#ifdef __COMPILE_183
+	else if (__choose1 == 166)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_file_get_contents, 0, sizeof (*(phar_globals.orig_file_get_contents)));
+	}
+	#endif
+	#ifdef __COMPILE_184
+	else if (__choose1 == 167)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_fileatime, 0, sizeof (*(phar_globals.orig_fileatime)));
+	}
+	#endif
+	#ifdef __COMPILE_185
+	else if (__choose1 == 168)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_filectime, 0, sizeof (*(phar_globals.orig_filectime)));
+	}
+	#endif
+	#ifdef __COMPILE_186
+	else if (__choose1 == 169)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_filegroup, 0, sizeof (*(phar_globals.orig_filegroup)));
+	}
+	#endif
+	#ifdef __COMPILE_187
+	else if (__choose1 == 170)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_fileinode, 0, sizeof (*(phar_globals.orig_fileinode)));
+	}
+	#endif
+	#ifdef __COMPILE_188
+	else if (__choose1 == 171)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_filemtime, 0, sizeof (*(phar_globals.orig_filemtime)));
+	}
+	#endif
+	#ifdef __COMPILE_189
+	else if (__choose1 == 172)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_fileowner, 0, sizeof (*(phar_globals.orig_fileowner)));
+	}
+	#endif
+	#ifdef __COMPILE_190
+	else if (__choose1 == 173)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_fileperms, 0, sizeof (*(phar_globals.orig_fileperms)));
+	}
+	#endif
+	#ifdef __COMPILE_191
+	else if (__choose1 == 174)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_filesize, 0, sizeof (*(phar_globals.orig_filesize)));
+	}
+	#endif
+	#ifdef __COMPILE_192
+	else if (__choose1 == 175)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_filetype, 0, sizeof (*(phar_globals.orig_filetype)));
+	}
+	#endif
+	#ifdef __COMPILE_193
+	else if (__choose1 == 176)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_fopen, 0, sizeof (*(phar_globals.orig_fopen)));
+	}
+	#endif
+	#ifdef __COMPILE_194
+	else if (__choose1 == 177)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_is_dir, 0, sizeof (*(phar_globals.orig_is_dir)));
+	}
+	#endif
+	#ifdef __COMPILE_195
+	else if (__choose1 == 178)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_is_executable, 0, sizeof (*(phar_globals.orig_is_executable)));
+	}
+	#endif
+	#ifdef __COMPILE_196
+	else if (__choose1 == 179)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_is_file, 0, sizeof (*(phar_globals.orig_is_file)));
+	}
+	#endif
+	#ifdef __COMPILE_197
+	else if (__choose1 == 180)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_is_link, 0, sizeof (*(phar_globals.orig_is_link)));
+	}
+	#endif
+	#ifdef __COMPILE_198
+	else if (__choose1 == 181)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_is_readable, 0, sizeof (*(phar_globals.orig_is_readable)));
+	}
+	#endif
+	#ifdef __COMPILE_199
+	else if (__choose1 == 182)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_is_writable, 0, sizeof (*(phar_globals.orig_is_writable)));
+	}
+	#endif
+	#ifdef __COMPILE_200
+	else if (__choose1 == 183)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_lstat, 0, sizeof (*(phar_globals.orig_lstat)));
+	}
+	#endif
+	#ifdef __COMPILE_201
+	else if (__choose1 == 184)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_opendir, 0, sizeof (*(phar_globals.orig_opendir)));
+	}
+	#endif
+	#ifdef __COMPILE_202
+	else if (__choose1 == 185)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_readfile, 0, sizeof (*(phar_globals.orig_readfile)));
+	}
+	#endif
+	#ifdef __COMPILE_203
+	else if (__choose1 == 186)
+	{
+	//AddInitKind
+	memset(phar_globals.orig_stat, 0, sizeof (*(phar_globals.orig_stat)));
+	}
+	#endif
+	#ifdef __COMPILE_204
+	else if (__choose1 == 187)
+	{
+	//AddStmtAndReplaceAtomKind
+	(actual)++;
+	}
+	#endif
+	#ifdef __COMPILE_205
+	else if (__choose1 == 188)
+	{
+	//AddStmtAndReplaceAtomKind
+	(arch)++;
+	}
+	#endif
+	#ifdef __COMPILE_206
+	else if (__choose1 == 189)
+	{
+	//AddStmtAndReplaceAtomKind
+	(basic_globals.CurrentLStatFile) = (actual);
+	}
+	#endif
+	#ifdef __COMPILE_207
+	else if (__choose1 == 190)
+	{
+	//AddStmtAndReplaceAtomKind
+	(basic_globals.CurrentLStatFile) = (arch);
+	}
+	#endif
+	#ifdef __COMPILE_208
+	else if (__choose1 == 191)
+	{
+	//AddStmtAndReplaceAtomKind
+	(basic_globals.CurrentLStatFile) = (entry);
+	}
+	#endif
+	#ifdef __COMPILE_209
+	else if (__choose1 == 192)
+	{
+	//AddStmtAndReplaceAtomKind
+	(basic_globals.CurrentLStatFile) = (fname);
+	}
+	#endif
+	#ifdef __COMPILE_210
+	else if (__choose1 == 193)
+	{
+	//AddStmtAndReplaceAtomKind
+	(basic_globals.CurrentLStatFile) = (path);
+	}
+	#endif
+	#ifdef __COMPILE_211
+	else if (__choose1 == 194)
+	{
+	//AddStmtAndReplaceAtomKind
+	(basic_globals.CurrentStatFile) = (actual);
+	}
+	#endif
+	#ifdef __COMPILE_212
+	else if (__choose1 == 195)
+	{
+	//AddStmtAndReplaceAtomKind
+	(basic_globals.CurrentStatFile) = (arch);
+	}
+	#endif
+	#ifdef __COMPILE_213
+	else if (__choose1 == 196)
+	{
+	//AddStmtAndReplaceAtomKind
+	(basic_globals.CurrentStatFile) = (entry);
+	}
+	#endif
+	#ifdef __COMPILE_214
+	else if (__choose1 == 197)
+	{
+	//AddStmtAndReplaceAtomKind
+	(basic_globals.CurrentStatFile) = (fname);
+	}
+	#endif
+	#ifdef __COMPILE_215
+	else if (__choose1 == 198)
+	{
+	//AddStmtAndReplaceAtomKind
+	(basic_globals.CurrentStatFile) = (path);
+	}
+	#endif
+	#ifdef __COMPILE_216
+	else if (__choose1 == 199)
+	{
+	//AddStmtAndReplaceAtomKind
+	(entry)++;
+	}
+	#endif
+	#ifdef __COMPILE_217
+	else if (__choose1 == 200)
+	{
+	//AddStmtAndReplaceAtomKind
+	(executor_globals.return_value_ptr_ptr) = &(return_value);
+	}
+	#endif
+	#ifdef __COMPILE_218
+	else if (__choose1 == 201)
+	{
+	//AddStmtAndReplaceAtomKind
+	(executor_globals.return_value_ptr_ptr) = &(this_ptr);
+	}
+	#endif
+	#ifdef __COMPILE_219
+	else if (__choose1 == 202)
+	{
+	//AddStmtAndReplaceAtomKind
+	(executor_globals.return_value_ptr_ptr) = (return_value_ptr);
+	}
+	#endif
+	#ifdef __COMPILE_220
+	else if (__choose1 == 203)
+	{
+	//AddStmtAndReplaceAtomKind
+	(fname)++;
+	}
+	#endif
+	#ifdef __COMPILE_221
+	else if (__choose1 == 204)
+	{
+	//AddStmtAndReplaceAtomKind
+	(path)++;
+	}
+	#endif
+	#ifdef __COMPILE_222
+	else if (__choose1 == 205)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = (actual);
+	}
+	#endif
+	#ifdef __COMPILE_223
+	else if (__choose1 == 206)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = (arch);
+	}
+	#endif
+	#ifdef __COMPILE_224
+	else if (__choose1 == 207)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = (entry);
+	}
+	#endif
+	#ifdef __COMPILE_225
+	else if (__choose1 == 208)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = (fname);
+	}
+	#endif
+	#ifdef __COMPILE_226
+	else if (__choose1 == 209)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = (path);
+	}
+	#endif
+	#ifdef __COMPILE_227
+	else if (__choose1 == 210)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = _estrndup(((actual) + 1), ((phar_globals.cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_228
+	else if (__choose1 == 211)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = _estrndup(((actual)), ((phar_globals.cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_229
+	else if (__choose1 == 212)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = _estrndup(((arch) + 1), ((phar_globals.cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_230
+	else if (__choose1 == 213)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = _estrndup(((arch)), ((phar_globals.cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_231
+	else if (__choose1 == 214)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = _estrndup(((entry) + 1), ((phar_globals.cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_232
+	else if (__choose1 == 215)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = _estrndup(((entry)), ((phar_globals.cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_233
+	else if (__choose1 == 216)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = _estrndup(((fname) + 1), ((phar_globals.cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_234
+	else if (__choose1 == 217)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = _estrndup(((fname)), ((phar_globals.cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_235
+	else if (__choose1 == 218)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = _estrndup(((path) + 1), ((phar_globals.cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_236
+	else if (__choose1 == 219)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd) = _estrndup(((path)), ((phar_globals.cwd_len)));
+	}
+	#endif
+	#ifdef __COMPILE_237
+	else if (__choose1 == 220)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (-1);
+	}
+	#endif
+	#ifdef __COMPILE_238
+	else if (__choose1 == 221)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (0);
+	}
+	#endif
+	#ifdef __COMPILE_239
+	else if (__choose1 == 222)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (1);
+	}
+	#endif
+	#ifdef __COMPILE_240
+	else if (__choose1 == 223)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (2);
+	}
+	#endif
+	#ifdef __COMPILE_241
+	else if (__choose1 == 224)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (7);
+	}
+	#endif
+	#ifdef __COMPILE_242
+	else if (__choose1 == 225)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (actual_len);
+	}
+	#endif
+	#ifdef __COMPILE_243
+	else if (__choose1 == 226)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (arch_len);
+	}
+	#endif
+	#ifdef __COMPILE_244
+	else if (__choose1 == 227)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (entry_len);
+	}
+	#endif
+	#ifdef __COMPILE_245
+	else if (__choose1 == 228)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (fname_len);
+	}
+	#endif
+	#ifdef __COMPILE_246
+	else if (__choose1 == 229)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (ht);
+	}
+	#endif
+	#ifdef __COMPILE_247
+	else if (__choose1 == 230)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (path_len);
+	}
+	#endif
+	#ifdef __COMPILE_248
+	else if (__choose1 == 231)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_init) = (return_value_used);
+	}
+	#endif
+	#ifdef __COMPILE_249
+	else if (__choose1 == 232)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (-1);
+	}
+	#endif
+	#ifdef __COMPILE_250
+	else if (__choose1 == 233)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (0);
+	}
+	#endif
+	#ifdef __COMPILE_251
+	else if (__choose1 == 234)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (1);
+	}
+	#endif
+	#ifdef __COMPILE_252
+	else if (__choose1 == 235)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (2);
+	}
+	#endif
+	#ifdef __COMPILE_253
+	else if (__choose1 == 236)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (7);
+	}
+	#endif
+	#ifdef __COMPILE_254
+	else if (__choose1 == 237)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (actual_len);
+	}
+	#endif
+	#ifdef __COMPILE_255
+	else if (__choose1 == 238)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (arch_len);
+	}
+	#endif
+	#ifdef __COMPILE_256
+	else if (__choose1 == 239)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (entry_len);
+	}
+	#endif
+	#ifdef __COMPILE_257
+	else if (__choose1 == 240)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (fname_len);
+	}
+	#endif
+	#ifdef __COMPILE_258
+	else if (__choose1 == 241)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (ht);
+	}
+	#endif
+	#ifdef __COMPILE_259
+	else if (__choose1 == 242)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (path_len);
+	}
+	#endif
+	#ifdef __COMPILE_260
+	else if (__choose1 == 243)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.cwd_len) = (return_value_used);
+	}
+	#endif
+	#ifdef __COMPILE_261
+	else if (__choose1 == 244)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.last_alias) = (actual);
+	}
+	#endif
+	#ifdef __COMPILE_262
+	else if (__choose1 == 245)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.last_alias) = (arch);
+	}
+	#endif
+	#ifdef __COMPILE_263
+	else if (__choose1 == 246)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.last_alias) = (entry);
+	}
+	#endif
+	#ifdef __COMPILE_264
+	else if (__choose1 == 247)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.last_alias) = (fname);
+	}
+	#endif
+	#ifdef __COMPILE_265
+	else if (__choose1 == 248)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.last_alias) = (path);
+	}
+	#endif
+	#ifdef __COMPILE_266
+	else if (__choose1 == 249)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.last_phar_name) = (actual);
+	}
+	#endif
+	#ifdef __COMPILE_267
+	else if (__choose1 == 250)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.last_phar_name) = (arch);
+	}
+	#endif
+	#ifdef __COMPILE_268
+	else if (__choose1 == 251)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.last_phar_name) = (entry);
+	}
+	#endif
+	#ifdef __COMPILE_269
+	else if (__choose1 == 252)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.last_phar_name) = (fname);
+	}
+	#endif
+	#ifdef __COMPILE_270
+	else if (__choose1 == 253)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.last_phar_name) = (path);
+	}
+	#endif
+	#ifdef __COMPILE_271
+	else if (__choose1 == 254)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey) = (actual);
+	}
+	#endif
+	#ifdef __COMPILE_272
+	else if (__choose1 == 255)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey) = (arch);
+	}
+	#endif
+	#ifdef __COMPILE_273
+	else if (__choose1 == 256)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey) = (entry);
+	}
+	#endif
+	#ifdef __COMPILE_274
+	else if (__choose1 == 257)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey) = (fname);
+	}
+	#endif
+	#ifdef __COMPILE_275
+	else if (__choose1 == 258)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey) = (path);
+	}
+	#endif
+	#ifdef __COMPILE_276
+	else if (__choose1 == 259)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (-1);
+	}
+	#endif
+	#ifdef __COMPILE_277
+	else if (__choose1 == 260)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (0);
+	}
+	#endif
+	#ifdef __COMPILE_278
+	else if (__choose1 == 261)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (1);
+	}
+	#endif
+	#ifdef __COMPILE_279
+	else if (__choose1 == 262)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (2);
+	}
+	#endif
+	#ifdef __COMPILE_280
+	else if (__choose1 == 263)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (7);
+	}
+	#endif
+	#ifdef __COMPILE_281
+	else if (__choose1 == 264)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (actual_len);
+	}
+	#endif
+	#ifdef __COMPILE_282
+	else if (__choose1 == 265)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (arch_len);
+	}
+	#endif
+	#ifdef __COMPILE_283
+	else if (__choose1 == 266)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (entry_len);
+	}
+	#endif
+	#ifdef __COMPILE_284
+	else if (__choose1 == 267)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (fname_len);
+	}
+	#endif
+	#ifdef __COMPILE_285
+	else if (__choose1 == 268)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (ht);
+	}
+	#endif
+	#ifdef __COMPILE_286
+	else if (__choose1 == 269)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (path_len);
+	}
+	#endif
+	#ifdef __COMPILE_287
+	else if (__choose1 == 270)
+	{
+	//AddStmtAndReplaceAtomKind
+	(phar_globals.openssl_privatekey_len) = (return_value_used);
+	}
+	#endif
+	#ifdef __COMPILE_288
+	else if (__choose1 == 271)
+	{
+	//AddStmtAndReplaceAtomKind
+	++(actual);
+	}
+	#endif
+	#ifdef __COMPILE_289
+	else if (__choose1 == 272)
+	{
+	//AddStmtAndReplaceAtomKind
+	++(arch);
+	}
+	#endif
+	#ifdef __COMPILE_290
+	else if (__choose1 == 273)
+	{
+	//AddStmtAndReplaceAtomKind
+	++(entry);
+	}
+	#endif
+	#ifdef __COMPILE_291
+	else if (__choose1 == 274)
+	{
+	//AddStmtAndReplaceAtomKind
+	++(fname);
+	}
+	#endif
+	#ifdef __COMPILE_292
+	else if (__choose1 == 275)
+	{
+	//AddStmtAndReplaceAtomKind
+	++(path);
+	}
+	#endif
+	#ifdef __COMPILE_293
+	else if (__choose1 == 276)
+	{
+	//AddStmtAndReplaceAtomKind
+	_array_init(((return_value)), 0);
+	}
+	#endif
+	#ifdef __COMPILE_294
+	else if (__choose1 == 277)
+	{
+	//AddStmtAndReplaceAtomKind
+	_array_init(((this_ptr)), 0);
+	}
+	#endif
+	#ifdef __COMPILE_295
+	else if (__choose1 == 278)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree(((actual)));
+	}
+	#endif
+	#ifdef __COMPILE_296
+	else if (__choose1 == 279)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree(((arch)));
+	}
+	#endif
+	#ifdef __COMPILE_297
+	else if (__choose1 == 280)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree(((basic_globals && !(1 << 5).CurrentLStatFile)));
+	}
+	#endif
+	#ifdef __COMPILE_298
+	else if (__choose1 == 281)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree(((basic_globals && !(1 << 5).CurrentStatFile)));
+	}
+	#endif
+	#ifdef __COMPILE_299
+	else if (__choose1 == 282)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree(((entry)));
+	}
+	#endif
+	#ifdef __COMPILE_300
+	else if (__choose1 == 283)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree(((fname)));
+	}
+	#endif
+	#ifdef __COMPILE_301
+	else if (__choose1 == 284)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree(((path)));
+	}
+	#endif
+	#ifdef __COMPILE_302
+	else if (__choose1 == 285)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree(((phar_globals && !(1 << 5).cwd)));
+	}
+	#endif
+	#ifdef __COMPILE_303
+	else if (__choose1 == 286)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree(((return_value)));
+	}
+	#endif
+	#ifdef __COMPILE_304
+	else if (__choose1 == 287)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree(((this_ptr)));
+	}
+	#endif
+	#ifdef __COMPILE_305
+	else if (__choose1 == 288)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree((arch && !(1 << 5)));
+	}
+	#endif
+	#ifdef __COMPILE_306
+	else if (__choose1 == 289)
+	{
+	//AddStmtAndReplaceAtomKind
+	_efree((entry && !(1 << 5)));
+	}
+	#endif
+	#ifdef __COMPILE_307
+	else if (__choose1 == 290)
+	{
+	//AddStmtAndReplaceAtomKind
+	_zval_copy_ctor(((return_value)));
+	}
+	#endif
+	#ifdef __COMPILE_308
+	else if (__choose1 == 291)
+	{
+	//AddStmtAndReplaceAtomKind
+	_zval_copy_ctor(((this_ptr)));
+	}
+	#endif
+	#ifdef __COMPILE_309
+	else if (__choose1 == 292)
+	{
+	//AddStmtAndReplaceAtomKind
+	_zval_copy_ctor_func((return_value));
+	}
+	#endif
+	#ifdef __COMPILE_310
+	else if (__choose1 == 293)
+	{
+	//AddStmtAndReplaceAtomKind
+	_zval_copy_ctor_func((this_ptr));
+	}
+	#endif
+	#ifdef __COMPILE_311
+	else if (__choose1 == 294)
+	{
+	//AddStmtAndReplaceAtomKind
+	_zval_dtor(((return_value)));
+	}
+	#endif
+	#ifdef __COMPILE_312
+	else if (__choose1 == 295)
+	{
+	//AddStmtAndReplaceAtomKind
+	_zval_dtor(((this_ptr)));
+	}
+	#endif
+	#ifdef __COMPILE_313
+	else if (__choose1 == 296)
+	{
+	//AddStmtAndReplaceAtomKind
+	_zval_dtor_func((return_value));
+	}
+	#endif
+	#ifdef __COMPILE_314
+	else if (__choose1 == 297)
+	{
+	//AddStmtAndReplaceAtomKind
+	_zval_dtor_func((this_ptr));
+	}
+	#endif
+	#ifdef __COMPILE_315
+	else if (__choose1 == 298)
+	{
+	//AddStmtAndReplaceAtomKind
+	_zval_ptr_dtor((&(return_value)));
+	}
+	#endif
+	#ifdef __COMPILE_316
+	else if (__choose1 == 299)
+	{
+	//AddStmtAndReplaceAtomKind
+	_zval_ptr_dtor((&(this_ptr)));
+	}
+	#endif
+	#ifdef __COMPILE_317
+	else if (__choose1 == 300)
+	{
+	//AddStmtAndReplaceAtomKind
+	_zval_ptr_dtor(((executor_globals && !(1 << 5).return_value_ptr_ptr)));
+	}
+	#endif
+	#ifdef __COMPILE_318
+	else if (__choose1 == 301)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((return_value), "BZIP2", 5, 1);
+	}
+	#endif
+	#ifdef __COMPILE_319
+	else if (__choose1 == 302)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((return_value), "GZ", 2, 1);
+	}
+	#endif
+	#ifdef __COMPILE_320
+	else if (__choose1 == 303)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((return_value), "MD5", 3, 1);
+	}
+	#endif
+	#ifdef __COMPILE_321
+	else if (__choose1 == 304)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((return_value), "OpenSSL", 7, 1);
+	}
+	#endif
+	#ifdef __COMPILE_322
+	else if (__choose1 == 305)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((return_value), "SHA-1", 5, 1);
+	}
+	#endif
+	#ifdef __COMPILE_323
+	else if (__choose1 == 306)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((return_value), "SHA-256", 7, 1);
+	}
+	#endif
+	#ifdef __COMPILE_324
+	else if (__choose1 == 307)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((return_value), "SHA-512", 7, 1);
+	}
+	#endif
+	#ifdef __COMPILE_325
+	else if (__choose1 == 308)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((this_ptr), "BZIP2", 5, 1);
+	}
+	#endif
+	#ifdef __COMPILE_326
+	else if (__choose1 == 309)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((this_ptr), "GZ", 2, 1);
+	}
+	#endif
+	#ifdef __COMPILE_327
+	else if (__choose1 == 310)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((this_ptr), "MD5", 3, 1);
+	}
+	#endif
+	#ifdef __COMPILE_328
+	else if (__choose1 == 311)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((this_ptr), "OpenSSL", 7, 1);
+	}
+	#endif
+	#ifdef __COMPILE_329
+	else if (__choose1 == 312)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((this_ptr), "SHA-1", 5, 1);
+	}
+	#endif
+	#ifdef __COMPILE_330
+	else if (__choose1 == 313)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((this_ptr), "SHA-256", 7, 1);
+	}
+	#endif
+	#ifdef __COMPILE_331
+	else if (__choose1 == 314)
+	{
+	//AddStmtAndReplaceAtomKind
+	add_next_index_stringl((this_ptr), "SHA-512", 7, 1);
+	}
+	#endif
+	#ifdef __COMPILE_332
+	else if (__choose1 == 315)
+	{
+	//AddStmtAndReplaceAtomKind
+	convert_to_boolean((return_value));
+	}
+	#endif
+	#ifdef __COMPILE_333
+	else if (__choose1 == 316)
+	{
+	//AddStmtAndReplaceAtomKind
+	convert_to_boolean((this_ptr));
+	}
+	#endif
+	#ifdef __COMPILE_334
+	else if (__choose1 == 317)
+	{
+	//AddStmtAndReplaceAtomKind
+	entry = (actual);
+	}
+	#endif
+	#ifdef __COMPILE_335
+	else if (__choose1 == 318)
+	{
+	//AddStmtAndReplaceAtomKind
+	entry = (arch);
+	}
+	#endif
+	#ifdef __COMPILE_336
+	else if (__choose1 == 319)
+	{
+	//AddStmtAndReplaceAtomKind
+	entry = (entry);
+	}
+	#endif
+	#ifdef __COMPILE_337
+	else if (__choose1 == 320)
+	{
+	//AddStmtAndReplaceAtomKind
+	entry = (fname);
+	}
+	#endif
+	#ifdef __COMPILE_338
+	else if (__choose1 == 321)
+	{
+	//AddStmtAndReplaceAtomKind
+	entry = (path);
+	}
+	#endif
+	#ifdef __COMPILE_339
+	else if (__choose1 == 322)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname = (actual);
+	}
+	#endif
+	#ifdef __COMPILE_340
+	else if (__choose1 == 323)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname = (arch);
+	}
+	#endif
+	#ifdef __COMPILE_341
+	else if (__choose1 == 324)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname = (entry);
+	}
+	#endif
+	#ifdef __COMPILE_342
+	else if (__choose1 == 325)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname = (fname);
+	}
+	#endif
+	#ifdef __COMPILE_343
+	else if (__choose1 == 326)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname = (path);
+	}
+	#endif
+	#ifdef __COMPILE_344
+	else if (__choose1 == 327)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (-1);
+	}
+	#endif
+	#ifdef __COMPILE_345
+	else if (__choose1 == 328)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (0);
+	}
+	#endif
+	#ifdef __COMPILE_346
+	else if (__choose1 == 329)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (1);
+	}
+	#endif
+	#ifdef __COMPILE_347
+	else if (__choose1 == 330)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (2);
+	}
+	#endif
+	#ifdef __COMPILE_348
+	else if (__choose1 == 331)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (7);
+	}
+	#endif
+	#ifdef __COMPILE_349
+	else if (__choose1 == 332)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (actual_len);
+	}
+	#endif
+	#ifdef __COMPILE_350
+	else if (__choose1 == 333)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (arch_len);
+	}
+	#endif
+	#ifdef __COMPILE_351
+	else if (__choose1 == 334)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (entry_len);
+	}
+	#endif
+	#ifdef __COMPILE_352
+	else if (__choose1 == 335)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (fname_len);
+	}
+	#endif
+	#ifdef __COMPILE_353
+	else if (__choose1 == 336)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (ht);
+	}
+	#endif
+	#ifdef __COMPILE_354
+	else if (__choose1 == 337)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (path_len);
+	}
+	#endif
+	#ifdef __COMPILE_355
+	else if (__choose1 == 338)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = (return_value_used);
+	}
+	#endif
+	#ifdef __COMPILE_356
+	else if (__choose1 == 339)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = strlen((actual));
+	}
+	#endif
+	#ifdef __COMPILE_357
+	else if (__choose1 == 340)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = strlen((arch));
+	}
+	#endif
+	#ifdef __COMPILE_358
+	else if (__choose1 == 341)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = strlen((entry));
+	}
+	#endif
+	#ifdef __COMPILE_359
+	else if (__choose1 == 342)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = strlen((fname));
+	}
+	#endif
+	#ifdef __COMPILE_360
+	else if (__choose1 == 343)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = strlen((path));
+	}
+	#endif
+	#ifdef __COMPILE_361
+	else if (__choose1 == 344)
+	{
+	//AddStmtAndReplaceAtomKind
+	fname_len = strlen(fname && !(1 << 5));
+	}
+	#endif
+	#ifdef __COMPILE_362
+	else if (__choose1 == 345)
+	{
+	//AddStmtAndReplaceAtomKind
+	gc_remove_zval_from_buffer((return_value));
+	}
+	#endif
+	#ifdef __COMPILE_363
+	else if (__choose1 == 346)
+	{
+	//AddStmtAndReplaceAtomKind
+	gc_remove_zval_from_buffer((this_ptr));
+	}
+	#endif
+	#ifdef __COMPILE_364
+	else if (__choose1 == 347)
+	{
+	//AddStmtAndReplaceAtomKind
+	gc_zval_check_possible_root(((return_value)));
+	}
+	#endif
+	#ifdef __COMPILE_365
+	else if (__choose1 == 348)
+	{
+	//AddStmtAndReplaceAtomKind
+	gc_zval_check_possible_root(((this_ptr)));
+	}
+	#endif
+	#ifdef __COMPILE_366
+	else if (__choose1 == 349)
+	{
+	//AddStmtAndReplaceAtomKind
+	gc_zval_possible_root((return_value));
+	}
+	#endif
+	#ifdef __COMPILE_367
+	else if (__choose1 == 350)
+	{
+	//AddStmtAndReplaceAtomKind
+	gc_zval_possible_root((this_ptr));
+	}
+	#endif
+	#ifdef __COMPILE_368
+	else if (__choose1 == 351)
+	{
+	//AddStmtAndReplaceAtomKind
+	i_zval_ptr_dtor((return_value));
+	}
+	#endif
+	#ifdef __COMPILE_369
+	else if (__choose1 == 352)
+	{
+	//AddStmtAndReplaceAtomKind
+	i_zval_ptr_dtor((this_ptr));
+	}
+	#endif
+	#ifdef __COMPILE_370
+	else if (__choose1 == 353)
+	{
+	//AddStmtAndReplaceAtomKind
+	path = (actual);
+	}
+	#endif
+	#ifdef __COMPILE_371
+	else if (__choose1 == 354)
+	{
+	//AddStmtAndReplaceAtomKind
+	path = (arch);
+	}
+	#endif
+	#ifdef __COMPILE_372
+	else if (__choose1 == 355)
+	{
+	//AddStmtAndReplaceAtomKind
+	path = (entry);
+	}
+	#endif
+	#ifdef __COMPILE_373
+	else if (__choose1 == 356)
+	{
+	//AddStmtAndReplaceAtomKind
+	path = (fname);
+	}
+	#endif
+	#ifdef __COMPILE_374
+	else if (__choose1 == 357)
+	{
+	//AddStmtAndReplaceAtomKind
+	path = (path);
+	}
+	#endif
+	#ifdef __COMPILE_375
+	else if (__choose1 == 358)
+	{
+	//AddStmtAndReplaceAtomKind
+	path = entry && !(1 << 5);
+	}
+	#endif
+	#ifdef __COMPILE_376
+	else if (__choose1 == 359)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (-1);
+	}
+	#endif
+	#ifdef __COMPILE_377
+	else if (__choose1 == 360)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (0);
+	}
+	#endif
+	#ifdef __COMPILE_378
+	else if (__choose1 == 361)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (1);
+	}
+	#endif
+	#ifdef __COMPILE_379
+	else if (__choose1 == 362)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (2);
+	}
+	#endif
+	#ifdef __COMPILE_380
+	else if (__choose1 == 363)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (7);
+	}
+	#endif
+	#ifdef __COMPILE_381
+	else if (__choose1 == 364)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (actual_len);
+	}
+	#endif
+	#ifdef __COMPILE_382
+	else if (__choose1 == 365)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (arch_len);
+	}
+	#endif
+	#ifdef __COMPILE_383
+	else if (__choose1 == 366)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (entry_len);
+	}
+	#endif
+	#ifdef __COMPILE_384
+	else if (__choose1 == 367)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (fname_len);
+	}
+	#endif
+	#ifdef __COMPILE_385
+	else if (__choose1 == 368)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (ht);
+	}
+	#endif
+	#ifdef __COMPILE_386
+	else if (__choose1 == 369)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (path_len);
+	}
+	#endif
+	#ifdef __COMPILE_387
+	else if (__choose1 == 370)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = (return_value_used);
+	}
+	#endif
+	#ifdef __COMPILE_388
+	else if (__choose1 == 371)
+	{
+	//AddStmtAndReplaceAtomKind
+	path_len = entry_len && !(1 << 5);
+	}
+	#endif
+	#ifdef __COMPILE_389
+	else if (__choose1 == 372)
+	{
+	//AddStmtAndReplaceAtomKind
+	php_error_docref0(((void *)0), (1 << 1L), "Attempted long input array (%s) overwrite", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_390
+	else if (__choose1 == 373)
+	{
+	//AddStmtAndReplaceAtomKind
+	php_error_docref0(((void *)0), (1 << 1L), "Attempted long input array (%s) overwrite", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_391
+	else if (__choose1 == 374)
+	{
+	//AddStmtAndReplaceAtomKind
+	php_error_docref0(((void *)0), (1 << 1L), "Attempted long input array (%s) overwrite", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_392
+	else if (__choose1 == 375)
+	{
+	//AddStmtAndReplaceAtomKind
+	php_error_docref0(((void *)0), (1 << 1L), "Attempted long input array (%s) overwrite", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_393
+	else if (__choose1 == 376)
+	{
+	//AddStmtAndReplaceAtomKind
+	php_error_docref0(((void *)0), (1 << 1L), "Attempted long input array (%s) overwrite", (path));
+	}
+	#endif
+	#ifdef __COMPILE_394
+	else if (__choose1 == 377)
+	{
+	//AddStmtAndReplaceAtomKind
+	php_error_docref0(((void *)0), (1 << 1L), "Attempted super-global (%s) variable overwrite", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_395
+	else if (__choose1 == 378)
+	{
+	//AddStmtAndReplaceAtomKind
+	php_error_docref0(((void *)0), (1 << 1L), "Attempted super-global (%s) variable overwrite", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_396
+	else if (__choose1 == 379)
+	{
+	//AddStmtAndReplaceAtomKind
+	php_error_docref0(((void *)0), (1 << 1L), "Attempted super-global (%s) variable overwrite", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_397
+	else if (__choose1 == 380)
+	{
+	//AddStmtAndReplaceAtomKind
+	php_error_docref0(((void *)0), (1 << 1L), "Attempted super-global (%s) variable overwrite", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_398
+	else if (__choose1 == 381)
+	{
+	//AddStmtAndReplaceAtomKind
+	php_error_docref0(((void *)0), (1 << 1L), "Attempted super-global (%s) variable overwrite", (path));
+	}
+	#endif
+	#ifdef __COMPILE_399
+	else if (__choose1 == 382)
+	{
+	//AddStmtAndReplaceAtomKind
+	unlink((actual));
+	}
+	#endif
+	#ifdef __COMPILE_400
+	else if (__choose1 == 383)
+	{
+	//AddStmtAndReplaceAtomKind
+	unlink((arch));
+	}
+	#endif
+	#ifdef __COMPILE_401
+	else if (__choose1 == 384)
+	{
+	//AddStmtAndReplaceAtomKind
+	unlink((entry));
+	}
+	#endif
+	#ifdef __COMPILE_402
+	else if (__choose1 == 385)
+	{
+	//AddStmtAndReplaceAtomKind
+	unlink((fname));
+	}
+	#endif
+	#ifdef __COMPILE_403
+	else if (__choose1 == 386)
+	{
+	//AddStmtAndReplaceAtomKind
+	unlink((path));
+	}
+	#endif
+	#ifdef __COMPILE_404
+	else if (__choose1 == 387)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_class_implements(phar_ce_archive && !(1 << 5), 2, spl_ce_Countable, zend_ce_arrayaccess);
+	}
+	#endif
+	#ifdef __COMPILE_405
+	else if (__choose1 == 388)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_class_implements(phar_ce_archive, 2, spl_ce_Countable && !(1 << 5), zend_ce_arrayaccess);
+	}
+	#endif
+	#ifdef __COMPILE_406
+	else if (__choose1 == 389)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_class_implements(phar_ce_archive, 2, spl_ce_Countable, zend_ce_arrayaccess && !(1 << 5));
+	}
+	#endif
+	#ifdef __COMPILE_407
+	else if (__choose1 == 390)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_class_implements(phar_ce_data && !(1 << 5), 2, spl_ce_Countable, zend_ce_arrayaccess);
+	}
+	#endif
+	#ifdef __COMPILE_408
+	else if (__choose1 == 391)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_class_implements(phar_ce_data, 2, spl_ce_Countable && !(1 << 5), zend_ce_arrayaccess);
+	}
+	#endif
+	#ifdef __COMPILE_409
+	else if (__choose1 == 392)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_class_implements(phar_ce_data, 2, spl_ce_Countable, zend_ce_arrayaccess && !(1 << 5));
+	}
+	#endif
+	#ifdef __COMPILE_410
+	else if (__choose1 == 393)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "BZ2", sizeof ("BZ2") - 1, (long)8192);
+	}
+	#endif
+	#ifdef __COMPILE_411
+	else if (__choose1 == 394)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "COMPRESSED", sizeof ("COMPRESSED") - 1, (long)61440);
+	}
+	#endif
+	#ifdef __COMPILE_412
+	else if (__choose1 == 395)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "GZ", sizeof ("GZ") - 1, (long)4096);
+	}
+	#endif
+	#ifdef __COMPILE_413
+	else if (__choose1 == 396)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "MD5", sizeof ("MD5") - 1, (long)1);
+	}
+	#endif
+	#ifdef __COMPILE_414
+	else if (__choose1 == 397)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "NONE", sizeof ("NONE") - 1, (long)0);
+	}
+	#endif
+	#ifdef __COMPILE_415
+	else if (__choose1 == 398)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "OPENSSL", sizeof ("OPENSSL") - 1, (long)16);
+	}
+	#endif
+	#ifdef __COMPILE_416
+	else if (__choose1 == 399)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "PHAR", sizeof ("PHAR") - 1, (long)1);
+	}
+	#endif
+	#ifdef __COMPILE_417
+	else if (__choose1 == 400)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "PHP", sizeof ("PHP") - 1, (long)'\x00');
+	}
+	#endif
+	#ifdef __COMPILE_418
+	else if (__choose1 == 401)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "PHPS", sizeof ("PHPS") - 1, (long)'\x01');
+	}
+	#endif
+	#ifdef __COMPILE_419
+	else if (__choose1 == 402)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "SHA1", sizeof ("SHA1") - 1, (long)2);
+	}
+	#endif
+	#ifdef __COMPILE_420
+	else if (__choose1 == 403)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "SHA256", sizeof ("SHA256") - 1, (long)3);
+	}
+	#endif
+	#ifdef __COMPILE_421
+	else if (__choose1 == 404)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "SHA512", sizeof ("SHA512") - 1, (long)4);
+	}
+	#endif
+	#ifdef __COMPILE_422
+	else if (__choose1 == 405)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "TAR", sizeof ("TAR") - 1, (long)2);
+	}
+	#endif
+	#ifdef __COMPILE_423
+	else if (__choose1 == 406)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_declare_class_constant_long(phar_ce_archive && !(1 << 5), "ZIP", sizeof ("ZIP") - 1, (long)3);
+	}
+	#endif
+	#ifdef __COMPILE_424
+	else if (__choose1 == 407)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "%s is not a phar archive, cannot mount", arch);
+	}
+	#endif
+	#ifdef __COMPILE_425
+	else if (__choose1 == 408)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "Can only mount internal paths within a phar archive, use a relative path instead of \"%s\"", path);
+	}
+	#endif
+	#ifdef __COMPILE_426
+	else if (__choose1 == 409)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "Mounting of %s to %s failed", path, actual);
+	}
+	#endif
+	#ifdef __COMPILE_427
+	else if (__choose1 == 410)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "Mounting of %s to %s within phar %s failed", path, actual, arch);
+	}
+	#endif
+	#ifdef __COMPILE_428
+	else if (__choose1 == 411)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "No values passed to Phar::mungServer(), expecting an array of any of these strings: PHP_SELF, REQUEST_URI, SCRIPT_FILENAME, SCRIPT_NAME");
+	}
+	#endif
+	#ifdef __COMPILE_429
+	else if (__choose1 == 412)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "Non-string value passed to Phar::mungServer(), expecting an array of any of these strings: PHP_SELF, REQUEST_URI, SCRIPT_FILENAME, SCRIPT_NAME");
+	}
+	#endif
+	#ifdef __COMPILE_430
+	else if (__choose1 == 413)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "Too many values passed to Phar::mungServer(), expecting an array of any of these strings: PHP_SELF, REQUEST_URI, SCRIPT_FILENAME, SCRIPT_NAME");
+	}
+	#endif
+	#ifdef __COMPILE_431
+	else if (__choose1 == 414)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "Unknown mime type specifier used, only Phar::PHP, Phar::PHPS and a mime type string are allowed");
+	}
+	#endif
+	#ifdef __COMPILE_432
+	else if (__choose1 == 415)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "Unknown phar archive \"\"");
+	}
+	#endif
+	#ifdef __COMPILE_433
+	else if (__choose1 == 416)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "phar error: failed to call rewrite callback");
+	}
+	#endif
+	#ifdef __COMPILE_434
+	else if (__choose1 == 417)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "phar error: invalid rewrite callback");
+	}
+	#endif
+	#ifdef __COMPILE_435
+	else if (__choose1 == 418)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "phar error: rewrite callback must return a string or false");
+	}
+	#endif
+	#ifdef __COMPILE_436
+	else if (__choose1 == 419)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException && !(1 << 5), 0, "unable to retrieve array value in Phar::mungServer()");
+	}
+	#endif
+	#ifdef __COMPILE_437
+	else if (__choose1 == 420)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s is not a phar archive, cannot mount", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_438
+	else if (__choose1 == 421)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s is not a phar archive, cannot mount", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_439
+	else if (__choose1 == 422)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s is not a phar archive, cannot mount", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_440
+	else if (__choose1 == 423)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s is not a phar archive, cannot mount", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_441
+	else if (__choose1 == 424)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s is not a phar archive, cannot mount", (path));
+	}
+	#endif
+	#ifdef __COMPILE_442
+	else if (__choose1 == 425)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s is not a phar archive, cannot mount", arch && !(1 << 5));
+	}
+	#endif
+	#ifdef __COMPILE_443
+	else if (__choose1 == 426)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_444
+	else if (__choose1 == 427)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_445
+	else if (__choose1 == 428)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_446
+	else if (__choose1 == 429)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_447
+	else if (__choose1 == 430)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s", (path));
+	}
+	#endif
+	#ifdef __COMPILE_448
+	else if (__choose1 == 431)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Can only mount internal paths within a phar archive, use a relative path instead of \"%s\"", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_449
+	else if (__choose1 == 432)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Can only mount internal paths within a phar archive, use a relative path instead of \"%s\"", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_450
+	else if (__choose1 == 433)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Can only mount internal paths within a phar archive, use a relative path instead of \"%s\"", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_451
+	else if (__choose1 == 434)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Can only mount internal paths within a phar archive, use a relative path instead of \"%s\"", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_452
+	else if (__choose1 == 435)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Can only mount internal paths within a phar archive, use a relative path instead of \"%s\"", (path));
+	}
+	#endif
+	#ifdef __COMPILE_453
+	else if (__choose1 == 436)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Can only mount internal paths within a phar archive, use a relative path instead of \"%s\"", path && !(1 << 5));
+	}
+	#endif
+	#ifdef __COMPILE_454
+	else if (__choose1 == 437)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", (actual), actual);
+	}
+	#endif
+	#ifdef __COMPILE_455
+	else if (__choose1 == 438)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", (arch), actual);
+	}
+	#endif
+	#ifdef __COMPILE_456
+	else if (__choose1 == 439)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", (entry), actual);
+	}
+	#endif
+	#ifdef __COMPILE_457
+	else if (__choose1 == 440)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", (fname), actual);
+	}
+	#endif
+	#ifdef __COMPILE_458
+	else if (__choose1 == 441)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", (path), actual);
+	}
+	#endif
+	#ifdef __COMPILE_459
+	else if (__choose1 == 442)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", path && !(1 << 5), actual);
+	}
+	#endif
+	#ifdef __COMPILE_460
+	else if (__choose1 == 443)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", path, (actual));
+	}
+	#endif
+	#ifdef __COMPILE_461
+	else if (__choose1 == 444)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", path, (arch));
+	}
+	#endif
+	#ifdef __COMPILE_462
+	else if (__choose1 == 445)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", path, (entry));
+	}
+	#endif
+	#ifdef __COMPILE_463
+	else if (__choose1 == 446)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", path, (fname));
+	}
+	#endif
+	#ifdef __COMPILE_464
+	else if (__choose1 == 447)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", path, (path));
+	}
+	#endif
+	#ifdef __COMPILE_465
+	else if (__choose1 == 448)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", path, actual && !(1 << 5));
+	}
+	#endif
+	#ifdef __COMPILE_466
+	else if (__choose1 == 449)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", (actual), actual, arch);
+	}
+	#endif
+	#ifdef __COMPILE_467
+	else if (__choose1 == 450)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", (arch), actual, arch);
+	}
+	#endif
+	#ifdef __COMPILE_468
+	else if (__choose1 == 451)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", (entry), actual, arch);
+	}
+	#endif
+	#ifdef __COMPILE_469
+	else if (__choose1 == 452)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", (fname), actual, arch);
+	}
+	#endif
+	#ifdef __COMPILE_470
+	else if (__choose1 == 453)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", (path), actual, arch);
+	}
+	#endif
+	#ifdef __COMPILE_471
+	else if (__choose1 == 454)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path && !(1 << 5), actual, arch);
+	}
+	#endif
+	#ifdef __COMPILE_472
+	else if (__choose1 == 455)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, (actual), arch);
+	}
+	#endif
+	#ifdef __COMPILE_473
+	else if (__choose1 == 456)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, (arch), arch);
+	}
+	#endif
+	#ifdef __COMPILE_474
+	else if (__choose1 == 457)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, (entry), arch);
+	}
+	#endif
+	#ifdef __COMPILE_475
+	else if (__choose1 == 458)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, (fname), arch);
+	}
+	#endif
+	#ifdef __COMPILE_476
+	else if (__choose1 == 459)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, (path), arch);
+	}
+	#endif
+	#ifdef __COMPILE_477
+	else if (__choose1 == 460)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, actual && !(1 << 5), arch);
+	}
+	#endif
+	#ifdef __COMPILE_478
+	else if (__choose1 == 461)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, actual, (actual));
+	}
+	#endif
+	#ifdef __COMPILE_479
+	else if (__choose1 == 462)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, actual, (arch));
+	}
+	#endif
+	#ifdef __COMPILE_480
+	else if (__choose1 == 463)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, actual, (entry));
+	}
+	#endif
+	#ifdef __COMPILE_481
+	else if (__choose1 == 464)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, actual, (fname));
+	}
+	#endif
+	#ifdef __COMPILE_482
+	else if (__choose1 == 465)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, actual, (path));
+	}
+	#endif
+	#ifdef __COMPILE_483
+	else if (__choose1 == 466)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, actual, arch && !(1 << 5));
+	}
+	#endif
+	#ifdef __COMPILE_484
+	else if (__choose1 == 467)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Unknown phar archive \"%s\"", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_485
+	else if (__choose1 == 468)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Unknown phar archive \"%s\"", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_486
+	else if (__choose1 == 469)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Unknown phar archive \"%s\"", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_487
+	else if (__choose1 == 470)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Unknown phar archive \"%s\"", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_488
+	else if (__choose1 == 471)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Unknown phar archive \"%s\"", (path));
+	}
+	#endif
+	#ifdef __COMPILE_489
+	else if (__choose1 == 472)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" cannot be unlinked from within itself", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_490
+	else if (__choose1 == 473)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" cannot be unlinked from within itself", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_491
+	else if (__choose1 == 474)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" cannot be unlinked from within itself", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_492
+	else if (__choose1 == 475)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" cannot be unlinked from within itself", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_493
+	else if (__choose1 == 476)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" cannot be unlinked from within itself", (path));
+	}
+	#endif
+	#ifdef __COMPILE_494
+	else if (__choose1 == 477)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" has open file handles or objects.  fclose() all file handles, and unset() all objects prior to calling unlinkArchive()", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_495
+	else if (__choose1 == 478)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" has open file handles or objects.  fclose() all file handles, and unset() all objects prior to calling unlinkArchive()", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_496
+	else if (__choose1 == 479)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" has open file handles or objects.  fclose() all file handles, and unset() all objects prior to calling unlinkArchive()", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_497
+	else if (__choose1 == 480)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" has open file handles or objects.  fclose() all file handles, and unset() all objects prior to calling unlinkArchive()", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_498
+	else if (__choose1 == 481)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" has open file handles or objects.  fclose() all file handles, and unset() all objects prior to calling unlinkArchive()", (path));
+	}
+	#endif
+	#ifdef __COMPILE_499
+	else if (__choose1 == 482)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" is in phar.cache_list, cannot unlinkArchive()", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_500
+	else if (__choose1 == 483)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" is in phar.cache_list, cannot unlinkArchive()", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_501
+	else if (__choose1 == 484)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" is in phar.cache_list, cannot unlinkArchive()", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_502
+	else if (__choose1 == 485)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" is in phar.cache_list, cannot unlinkArchive()", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_503
+	else if (__choose1 == 486)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar archive \"%s\" is in phar.cache_list, cannot unlinkArchive()", (path));
+	}
+	#endif
+	#ifdef __COMPILE_504
+	else if (__choose1 == 487)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot call constructor twice");
+	}
+	#endif
+	#ifdef __COMPILE_505
+	else if (__choose1 == 488)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot call method on an uninitialized Phar object");
+	}
+	#endif
+	#ifdef __COMPILE_506
+	else if (__choose1 == 489)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot call method on an uninitialized PharFileInfo object");
+	}
+	#endif
+	#ifdef __COMPILE_507
+	else if (__choose1 == 490)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress all files as Bzip2, some are compressed as gzip and cannot be decompressed");
+	}
+	#endif
+	#ifdef __COMPILE_508
+	else if (__choose1 == 491)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress all files as Gzip, some are compressed as bzip2 and cannot be decompressed");
+	}
+	#endif
+	#ifdef __COMPILE_509
+	else if (__choose1 == 492)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress deleted file");
+	}
+	#endif
+	#ifdef __COMPILE_510
+	else if (__choose1 == 493)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress entire archive with bz2, enable ext/bz2 in php.ini");
+	}
+	#endif
+	#ifdef __COMPILE_511
+	else if (__choose1 == 494)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress entire archive with bz2, zip archives do not support whole-archive compression");
+	}
+	#endif
+	#ifdef __COMPILE_512
+	else if (__choose1 == 495)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress entire archive with gzip, enable ext/zlib in php.ini");
+	}
+	#endif
+	#ifdef __COMPILE_513
+	else if (__choose1 == 496)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress entire archive with gzip, zip archives do not support whole-archive compression");
+	}
+	#endif
+	#ifdef __COMPILE_514
+	else if (__choose1 == 497)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress files within archive with bz2, enable ext/bz2 in php.ini");
+	}
+	#endif
+	#ifdef __COMPILE_515
+	else if (__choose1 == 498)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress files within archive with gzip, enable ext/zlib in php.ini");
+	}
+	#endif
+	#ifdef __COMPILE_516
+	else if (__choose1 == 499)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress with Gzip compression, not possible with tar-based phar archives");
+	}
+	#endif
+	#ifdef __COMPILE_517
+	else if (__choose1 == 500)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress with Gzip compression, tar archives cannot compress individual files, use compress() to compress the whole archive");
+	}
+	#endif
+	#ifdef __COMPILE_518
+	else if (__choose1 == 501)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress with bzip2 compression, bz2 extension is not enabled");
+	}
+	#endif
+	#ifdef __COMPILE_519
+	else if (__choose1 == 502)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress with bzip2 compression, file is already compressed with gzip compression and zlib extension is not enabled, cannot decompress");
+	}
+	#endif
+	#ifdef __COMPILE_520
+	else if (__choose1 == 503)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress with gzip compression, file is already compressed with bzip2 compression and bz2 extension is not enabled, cannot decompress");
+	}
+	#endif
+	#ifdef __COMPILE_521
+	else if (__choose1 == 504)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot compress with gzip compression, zlib extension is not enabled");
+	}
+	#endif
+	#ifdef __COMPILE_522
+	else if (__choose1 == 505)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot create a directory in magic \".phar\" directory");
+	}
+	#endif
+	#ifdef __COMPILE_523
+	else if (__choose1 == 506)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot decompress Bzip2-compressed file, bz2 extension is not enabled");
+	}
+	#endif
+	#ifdef __COMPILE_524
+	else if (__choose1 == 507)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot decompress Gzip-compressed file, zlib extension is not enabled");
+	}
+	#endif
+	#ifdef __COMPILE_525
+	else if (__choose1 == 508)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Cannot decompress all files, some are compressed as bzip2 or gzip and cannot be decompressed");
+	}
+	#endif
+	#ifdef __COMPILE_526
+	else if (__choose1 == 509)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Phar entry is a directory, cannot set compression");
+	}
+	#endif
+	#ifdef __COMPILE_527
+	else if (__choose1 == 510)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Phar entry is a directory, does not have a CRC");
+	}
+	#endif
+	#ifdef __COMPILE_528
+	else if (__choose1 == 511)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Phar entry is a temporary directory (not an actual entry in the archive), cannot delete metadata");
+	}
+	#endif
+	#ifdef __COMPILE_529
+	else if (__choose1 == 512)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Phar entry is a temporary directory (not an actual entry in the archive), cannot set metadata");
+	}
+	#endif
+	#ifdef __COMPILE_530
+	else if (__choose1 == 513)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Phar entry was not CRC checked");
+	}
+	#endif
+	#ifdef __COMPILE_531
+	else if (__choose1 == 514)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Phar is readonly, cannot change compression");
+	}
+	#endif
+	#ifdef __COMPILE_532
+	else if (__choose1 == 515)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Phar is readonly, cannot decompress");
+	}
+	#endif
+	#ifdef __COMPILE_533
+	else if (__choose1 == 516)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException && !(1 << 5), 0, "Write operations disabled by the php.ini setting phar.readonly");
+	}
+	#endif
+	#ifdef __COMPILE_534
+	else if (__choose1 == 517)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "%s", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_535
+	else if (__choose1 == 518)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "%s", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_536
+	else if (__choose1 == 519)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "%s", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_537
+	else if (__choose1 == 520)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "%s", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_538
+	else if (__choose1 == 521)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "%s", (path));
+	}
+	#endif
+	#ifdef __COMPILE_539
+	else if (__choose1 == 522)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot create any files in magic \".phar\" directory", (*(pphar))->fname);
+	}
+	#endif
+	#ifdef __COMPILE_540
+	else if (__choose1 == 523)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Directory %s does not exist and cannot be created", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_541
+	else if (__choose1 == 524)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Directory %s does not exist and cannot be created", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_542
+	else if (__choose1 == 525)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Directory %s does not exist and cannot be created", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_543
+	else if (__choose1 == 526)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Directory %s does not exist and cannot be created", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_544
+	else if (__choose1 == 527)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Directory %s does not exist and cannot be created", (path));
+	}
+	#endif
+	#ifdef __COMPILE_545
+	else if (__choose1 == 528)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s could not be written to", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_546
+	else if (__choose1 == 529)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s could not be written to", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_547
+	else if (__choose1 == 530)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s could not be written to", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_548
+	else if (__choose1 == 531)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s could not be written to", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_549
+	else if (__choose1 == 532)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s could not be written to", (path));
+	}
+	#endif
+	#ifdef __COMPILE_550
+	else if (__choose1 == 533)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s does not exist and cannot be created", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_551
+	else if (__choose1 == 534)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s does not exist and cannot be created", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_552
+	else if (__choose1 == 535)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s does not exist and cannot be created", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_553
+	else if (__choose1 == 536)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s does not exist and cannot be created", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_554
+	else if (__choose1 == 537)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s does not exist and cannot be created", (path));
+	}
+	#endif
+	#ifdef __COMPILE_555
+	else if (__choose1 == 538)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s does not exist and cannot be deleted", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_556
+	else if (__choose1 == 539)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s does not exist and cannot be deleted", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_557
+	else if (__choose1 == 540)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s does not exist and cannot be deleted", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_558
+	else if (__choose1 == 541)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s does not exist and cannot be deleted", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_559
+	else if (__choose1 == 542)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Entry %s does not exist and cannot be deleted", (path));
+	}
+	#endif
+	#ifdef __COMPILE_560
+	else if (__choose1 == 543)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "phar \"%s\" exists and must be unlinked prior to conversion", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_561
+	else if (__choose1 == 544)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "phar \"%s\" exists and must be unlinked prior to conversion", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_562
+	else if (__choose1 == 545)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "phar \"%s\" exists and must be unlinked prior to conversion", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_563
+	else if (__choose1 == 546)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "phar \"%s\" exists and must be unlinked prior to conversion", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_564
+	else if (__choose1 == 547)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "phar \"%s\" exists and must be unlinked prior to conversion", (path));
+	}
+	#endif
+	#ifdef __COMPILE_565
+	else if (__choose1 == 548)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_InvalidArgumentException && !(1 << 5), 0, "Invalid argument, extraction path must be non-zero length");
+	}
+	#endif
+	#ifdef __COMPILE_566
+	else if (__choose1 == 549)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_InvalidArgumentException, 0, "Cannot extract to \"%s...\", destination directory is too long for filesystem", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_567
+	else if (__choose1 == 550)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_InvalidArgumentException, 0, "Cannot extract to \"%s...\", destination directory is too long for filesystem", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_568
+	else if (__choose1 == 551)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_InvalidArgumentException, 0, "Cannot extract to \"%s...\", destination directory is too long for filesystem", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_569
+	else if (__choose1 == 552)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_InvalidArgumentException, 0, "Cannot extract to \"%s...\", destination directory is too long for filesystem", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_570
+	else if (__choose1 == 553)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_InvalidArgumentException, 0, "Cannot extract to \"%s...\", destination directory is too long for filesystem", (path));
+	}
+	#endif
+	#ifdef __COMPILE_571
+	else if (__choose1 == 554)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException && !(1 << 5), 0, "Unable to read stub");
+	}
+	#endif
+	#ifdef __COMPILE_572
+	else if (__choose1 == 555)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "'%s' is not a valid phar archive URL (must have at least phar://filename.phar)", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_573
+	else if (__choose1 == 556)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "'%s' is not a valid phar archive URL (must have at least phar://filename.phar)", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_574
+	else if (__choose1 == 557)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "'%s' is not a valid phar archive URL (must have at least phar://filename.phar)", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_575
+	else if (__choose1 == 558)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "'%s' is not a valid phar archive URL (must have at least phar://filename.phar)", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_576
+	else if (__choose1 == 559)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "'%s' is not a valid phar archive URL (must have at least phar://filename.phar)", (path));
+	}
+	#endif
+	#ifdef __COMPILE_577
+	else if (__choose1 == 560)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Cannot open phar file '%s'", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_578
+	else if (__choose1 == 561)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Cannot open phar file '%s'", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_579
+	else if (__choose1 == 562)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Cannot open phar file '%s'", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_580
+	else if (__choose1 == 563)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Cannot open phar file '%s'", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_581
+	else if (__choose1 == 564)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Cannot open phar file '%s'", (path));
+	}
+	#endif
+	#ifdef __COMPILE_582
+	else if (__choose1 == 565)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Unable to create path \"%s\" for extraction", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_583
+	else if (__choose1 == 566)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Unable to create path \"%s\" for extraction", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_584
+	else if (__choose1 == 567)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Unable to create path \"%s\" for extraction", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_585
+	else if (__choose1 == 568)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Unable to create path \"%s\" for extraction", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_586
+	else if (__choose1 == 569)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Unable to create path \"%s\" for extraction", (path));
+	}
+	#endif
+	#ifdef __COMPILE_587
+	else if (__choose1 == 570)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Unable to use path \"%s\" for extraction, it is a file, must be a directory", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_588
+	else if (__choose1 == 571)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Unable to use path \"%s\" for extraction, it is a file, must be a directory", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_589
+	else if (__choose1 == 572)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Unable to use path \"%s\" for extraction, it is a file, must be a directory", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_590
+	else if (__choose1 == 573)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Unable to use path \"%s\" for extraction, it is a file, must be a directory", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_591
+	else if (__choose1 == 574)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Unable to use path \"%s\" for extraction, it is a file, must be a directory", (path));
+	}
+	#endif
+	#ifdef __COMPILE_592
+	else if (__choose1 == 575)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "phar error: unable to open file \"%s\" to add to phar archive", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_593
+	else if (__choose1 == 576)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "phar error: unable to open file \"%s\" to add to phar archive", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_594
+	else if (__choose1 == 577)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "phar error: unable to open file \"%s\" to add to phar archive", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_595
+	else if (__choose1 == 578)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "phar error: unable to open file \"%s\" to add to phar archive", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_596
+	else if (__choose1 == 579)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "phar error: unable to open file \"%s\" to add to phar archive", (path));
+	}
+	#endif
+	#ifdef __COMPILE_597
+	else if (__choose1 == 580)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "phar error: unable to open file \"%s\" to add to phar archive, open_basedir restrictions prevent this", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_598
+	else if (__choose1 == 581)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "phar error: unable to open file \"%s\" to add to phar archive, open_basedir restrictions prevent this", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_599
+	else if (__choose1 == 582)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "phar error: unable to open file \"%s\" to add to phar archive, open_basedir restrictions prevent this", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_600
+	else if (__choose1 == 583)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "phar error: unable to open file \"%s\" to add to phar archive, open_basedir restrictions prevent this", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_601
+	else if (__choose1 == 584)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "phar error: unable to open file \"%s\" to add to phar archive, open_basedir restrictions prevent this", (path));
+	}
+	#endif
+	#ifdef __COMPILE_602
+	else if (__choose1 == 585)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "A Phar alias cannot be set in a plain tar archive");
+	}
+	#endif
+	#ifdef __COMPILE_603
+	else if (__choose1 == 586)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "A Phar alias cannot be set in a plain zip archive");
+	}
+	#endif
+	#ifdef __COMPILE_604
+	else if (__choose1 == 587)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "A Phar stub cannot be set in a plain tar archive");
+	}
+	#endif
+	#ifdef __COMPILE_605
+	else if (__choose1 == 588)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "A Phar stub cannot be set in a plain zip archive");
+	}
+	#endif
+	#ifdef __COMPILE_606
+	else if (__choose1 == 589)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot change stub, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_607
+	else if (__choose1 == 590)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot change stub, unable to read from input stream");
+	}
+	#endif
+	#ifdef __COMPILE_608
+	else if (__choose1 == 591)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot change stub: phar.readonly=1");
+	}
+	#endif
+	#ifdef __COMPILE_609
+	else if (__choose1 == 592)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot compress phar archive, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_610
+	else if (__choose1 == 593)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot compress zip-based archives with whole-archive compression");
+	}
+	#endif
+	#ifdef __COMPILE_611
+	else if (__choose1 == 594)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot decompress phar archive, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_612
+	else if (__choose1 == 595)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot decompress zip-based archives with whole-archive compression");
+	}
+	#endif
+	#ifdef __COMPILE_613
+	else if (__choose1 == 596)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot set signature algorithm, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_614
+	else if (__choose1 == 597)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot write out data phar archive, use Phar::TAR or Phar::ZIP");
+	}
+	#endif
+	#ifdef __COMPILE_615
+	else if (__choose1 == 598)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot write out executable phar archive, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_616
+	else if (__choose1 == 599)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot write out phar archive, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_617
+	else if (__choose1 == 600)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Cannot write to archive - write operations restricted by INI setting");
+	}
+	#endif
+	#ifdef __COMPILE_618
+	else if (__choose1 == 601)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Phar class can only be used for executable tar and zip archives");
+	}
+	#endif
+	#ifdef __COMPILE_619
+	else if (__choose1 == 602)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "Phar creation or opening failed");
+	}
+	#endif
+	#ifdef __COMPILE_620
+	else if (__choose1 == 603)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException && !(1 << 5), 0, "PharData class can only be used for non-executable tar and zip archives");
+	}
+	#endif
+	#ifdef __COMPILE_621
+	else if (__choose1 == 604)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "%s", (actual));
+	}
+	#endif
+	#ifdef __COMPILE_622
+	else if (__choose1 == 605)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "%s", (arch));
+	}
+	#endif
+	#ifdef __COMPILE_623
+	else if (__choose1 == 606)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "%s", (entry));
+	}
+	#endif
+	#ifdef __COMPILE_624
+	else if (__choose1 == 607)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "%s", (fname));
+	}
+	#endif
+	#ifdef __COMPILE_625
+	else if (__choose1 == 608)
+	{
+	//AddStmtAndReplaceAtomKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "%s", (path));
+	}
+	#endif
+	#ifdef __COMPILE_626
+	else if (__choose1 == 609)
+	{
+	//AddStmtAndReplaceAtomKind
+	zval_addref_p((return_value));
+	}
+	#endif
+	#ifdef __COMPILE_627
+	else if (__choose1 == 610)
+	{
+	//AddStmtAndReplaceAtomKind
+	zval_addref_p((this_ptr));
+	}
+	#endif
+	#ifdef __COMPILE_628
+	else if (__choose1 == 611)
+	{
+	//AddStmtAndReplaceAtomKind
+	zval_unset_isref_p((return_value));
+	}
+	#endif
+	#ifdef __COMPILE_629
+	else if (__choose1 == 612)
+	{
+	//AddStmtAndReplaceAtomKind
+	zval_unset_isref_p((this_ptr));
+	}
+	#endif
+	#ifdef __COMPILE_630
+	else if (__choose1 == 613)
+	{
+	//AddStmtKind
+	(basic_globals.CurrentLStatFile) = ((void *)0);
+	}
+	#endif
+	#ifdef __COMPILE_631
+	else if (__choose1 == 614)
+	{
+	//AddStmtKind
+	(basic_globals.CurrentStatFile) = ((void *)0);
+	}
+	#endif
+	#ifdef __COMPILE_632
+	else if (__choose1 == 615)
+	{
+	//AddStmtKind
+	(executor_globals.argument_stack) = zend_vm_stack_new_page(((16 * 1024) - 16));
+	}
+	#endif
+	#ifdef __COMPILE_633
+	else if (__choose1 == 616)
+	{
+	//AddStmtKind
+	(phar_globals.cwd) = ((void *)0);
+	}
+	#endif
+	#ifdef __COMPILE_634
+	else if (__choose1 == 617)
+	{
+	//AddStmtKind
+	(phar_globals.cwd_init) = 0;
+	}
+	#endif
+	#ifdef __COMPILE_635
+	else if (__choose1 == 618)
+	{
+	//AddStmtKind
+	(phar_globals.cwd_init) = 1;
+	}
+	#endif
+	#ifdef __COMPILE_636
+	else if (__choose1 == 619)
+	{
+	//AddStmtKind
+	(phar_globals.cwd_len) = 0;
+	}
+	#endif
+	#ifdef __COMPILE_637
+	else if (__choose1 == 620)
+	{
+	//AddStmtKind
+	(phar_globals.cwd_len) = cwd - (entry + 1);
+	}
+	#endif
+	#ifdef __COMPILE_638
+	else if (__choose1 == 621)
+	{
+	//AddStmtKind
+	(phar_globals.cwd_len) = cwd - entry;
+	}
+	#endif
+	#ifdef __COMPILE_639
+	else if (__choose1 == 622)
+	{
+	//AddStmtKind
+	(phar_globals.last_alias) = ((void *)0);
+	}
+	#endif
+	#ifdef __COMPILE_640
+	else if (__choose1 == 623)
+	{
+	//AddStmtKind
+	(phar_globals.last_phar) = ((void *)0);
+	}
+	#endif
+	#ifdef __COMPILE_641
+	else if (__choose1 == 624)
+	{
+	//AddStmtKind
+	(phar_globals.last_phar_name) = ((void *)0);
+	}
+	#endif
+	#ifdef __COMPILE_642
+	else if (__choose1 == 625)
+	{
+	//AddStmtKind
+	_efree(((basic_globals.CurrentLStatFile)));
+	}
+	#endif
+	#ifdef __COMPILE_643
+	else if (__choose1 == 626)
+	{
+	//AddStmtKind
+	_efree(((basic_globals.CurrentStatFile)));
+	}
+	#endif
+	#ifdef __COMPILE_644
+	else if (__choose1 == 627)
+	{
+	//AddStmtKind
+	_efree(((phar_globals.cwd)));
+	}
+	#endif
+	#ifdef __COMPILE_645
+	else if (__choose1 == 628)
+	{
+	//AddStmtKind
+	_efree((arch));
+	}
+	#endif
+	#ifdef __COMPILE_646
+	else if (__choose1 == 629)
+	{
+	//AddStmtKind
+	_efree((entry));
+	}
+	#endif
+	#ifdef __COMPILE_647
+	else if (__choose1 == 630)
+	{
+	//AddStmtKind
+	_zend_bailout("ext/phar/phar_object.c", 290);
+	}
+	#endif
+	#ifdef __COMPILE_648
+	else if (__choose1 == 631)
+	{
+	//AddStmtKind
+	_zend_bailout("ext/phar/phar_object.c", 302);
+	}
+	#endif
+	#ifdef __COMPILE_649
+	else if (__choose1 == 632)
+	{
+	//AddStmtKind
+	_zend_bailout("ext/phar/phar_object.c", 333);
+	}
+	#endif
+	#ifdef __COMPILE_650
+	else if (__choose1 == 633)
+	{
+	//AddStmtKind
+	_zend_bailout("ext/phar/phar_object.c", 418);
+	}
+	#endif
+	#ifdef __COMPILE_651
+	else if (__choose1 == 634)
+	{
+	//AddStmtKind
+	_zend_bailout("ext/phar/phar_object.c", 850);
+	}
+	#endif
+	#ifdef __COMPILE_652
+	else if (__choose1 == 635)
+	{
+	//AddStmtKind
+	_zend_bailout("ext/phar/phar_object.c", 892);
+	}
+	#endif
+	#ifdef __COMPILE_653
+	else if (__choose1 == 636)
+	{
+	//AddStmtKind
+	_zend_bailout("ext/phar/phar_object.c", 926);
+	}
+	#endif
+	#ifdef __COMPILE_654
+	else if (__choose1 == 637)
+	{
+	//AddStmtKind
+	_zend_bailout("ext/phar/phar_object.c", 936);
+	}
+	#endif
+	#ifdef __COMPILE_655
+	else if (__choose1 == 638)
+	{
+	//AddStmtKind
+	_zval_ptr_dtor(((executor_globals.return_value_ptr_ptr)));
+	}
+	#endif
+	#ifdef __COMPILE_656
+	else if (__choose1 == 639)
+	{
+	//AddStmtKind
+	entry = ((void *)0);
+	}
+	#endif
+	#ifdef __COMPILE_657
+	else if (__choose1 == 640)
+	{
+	//AddStmtKind
+	exit(1);
+	}
+	#endif
+	#ifdef __COMPILE_658
+	else if (__choose1 == 641)
+	{
+	//AddStmtKind
+	fname = zend_get_executed_filename();
+	}
+	#endif
+	#ifdef __COMPILE_659
+	else if (__choose1 == 642)
+	{
+	//AddStmtKind
+	fname_len = strlen(fname);
+	}
+	#endif
+	#ifdef __COMPILE_660
+	else if (__choose1 == 643)
+	{
+	//AddStmtKind
+	path = entry;
+	}
+	#endif
+	#ifdef __COMPILE_661
+	else if (__choose1 == 644)
+	{
+	//AddStmtKind
+	path_len = entry_len;
+	}
+	#endif
+	#ifdef __COMPILE_662
+	else if (__choose1 == 645)
+	{
+	//AddStmtKind
+	phar_intercept_functions();
+	}
+	#endif
+	#ifdef __COMPILE_663
+	else if (__choose1 == 646)
+	{
+	//AddStmtKind
+	phar_request_initialize();
+	}
+	#endif
+	#ifdef __COMPILE_664
+	else if (__choose1 == 647)
+	{
+	//AddStmtKind
+	php_error_docref0(((void *)0), (1 << 1L), "Attempted GLOBALS variable overwrite");
+	}
+	#endif
+	#ifdef __COMPILE_665
+	else if (__choose1 == 648)
+	{
+	//AddStmtKind
+	php_output_write((" Access Denied</h1>\n </body>\n</html>"), (sizeof (" Access Denied</h1>\n </body>\n</html>") - 1));
+	}
+	#endif
+	#ifdef __COMPILE_666
+	else if (__choose1 == 649)
+	{
+	//AddStmtKind
+	php_output_write((" Not Found</h1>\n </body>\n</html>"), (sizeof (" Not Found</h1>\n </body>\n</html>") - 1));
+	}
+	#endif
+	#ifdef __COMPILE_667
+	else if (__choose1 == 650)
+	{
+	//AddStmtKind
+	php_output_write(("<html>\n <head>\n  <title>Access Denied</title>\n </head>\n <body>\n  <h1>403 - File "), (sizeof ("<html>\n <head>\n  <title>Access Denied</title>\n </head>\n <body>\n  <h1>403 - File ") - 1));
+	}
+	#endif
+	#ifdef __COMPILE_668
+	else if (__choose1 == 651)
+	{
+	//AddStmtKind
+	php_output_write(("<html>\n <head>\n  <title>File Not Found</title>\n </head>\n <body>\n  <h1>404 - File "), (sizeof ("<html>\n <head>\n  <title>File Not Found</title>\n </head>\n <body>\n  <h1>404 - File ") - 1));
+	}
+	#endif
+	#ifdef __COMPILE_669
+	else if (__choose1 == 652)
+	{
+	//AddStmtKind
+	sapi_send_headers();
+	}
+	#endif
+	#ifdef __COMPILE_670
+	else if (__choose1 == 653)
+	{
+	//AddStmtKind
+	zend_class_implements(phar_ce_archive, 2, spl_ce_Countable, zend_ce_arrayaccess);
+	}
+	#endif
+	#ifdef __COMPILE_671
+	else if (__choose1 == 654)
+	{
+	//AddStmtKind
+	zend_class_implements(phar_ce_data, 2, spl_ce_Countable, zend_ce_arrayaccess);
+	}
+	#endif
+	#ifdef __COMPILE_672
+	else if (__choose1 == 655)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "BZ2", sizeof ("BZ2") - 1, (long)8192);
+	}
+	#endif
+	#ifdef __COMPILE_673
+	else if (__choose1 == 656)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "COMPRESSED", sizeof ("COMPRESSED") - 1, (long)61440);
+	}
+	#endif
+	#ifdef __COMPILE_674
+	else if (__choose1 == 657)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "GZ", sizeof ("GZ") - 1, (long)4096);
+	}
+	#endif
+	#ifdef __COMPILE_675
+	else if (__choose1 == 658)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "MD5", sizeof ("MD5") - 1, (long)1);
+	}
+	#endif
+	#ifdef __COMPILE_676
+	else if (__choose1 == 659)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "NONE", sizeof ("NONE") - 1, (long)0);
+	}
+	#endif
+	#ifdef __COMPILE_677
+	else if (__choose1 == 660)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "OPENSSL", sizeof ("OPENSSL") - 1, (long)16);
+	}
+	#endif
+	#ifdef __COMPILE_678
+	else if (__choose1 == 661)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "PHAR", sizeof ("PHAR") - 1, (long)1);
+	}
+	#endif
+	#ifdef __COMPILE_679
+	else if (__choose1 == 662)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "PHP", sizeof ("PHP") - 1, (long)'\x00');
+	}
+	#endif
+	#ifdef __COMPILE_680
+	else if (__choose1 == 663)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "PHPS", sizeof ("PHPS") - 1, (long)'\x01');
+	}
+	#endif
+	#ifdef __COMPILE_681
+	else if (__choose1 == 664)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "SHA1", sizeof ("SHA1") - 1, (long)2);
+	}
+	#endif
+	#ifdef __COMPILE_682
+	else if (__choose1 == 665)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "SHA256", sizeof ("SHA256") - 1, (long)3);
+	}
+	#endif
+	#ifdef __COMPILE_683
+	else if (__choose1 == 666)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "SHA512", sizeof ("SHA512") - 1, (long)4);
+	}
+	#endif
+	#ifdef __COMPILE_684
+	else if (__choose1 == 667)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "TAR", sizeof ("TAR") - 1, (long)2);
+	}
+	#endif
+	#ifdef __COMPILE_685
+	else if (__choose1 == 668)
+	{
+	//AddStmtKind
+	zend_declare_class_constant_long(phar_ce_archive, "ZIP", sizeof ("ZIP") - 1, (long)3);
+	}
+	#endif
+	#ifdef __COMPILE_686
+	else if (__choose1 == 669)
+	{
+	//AddStmtKind
+	zend_error((1 << 3L), "A non well formed numeric value encountered");
+	}
+	#endif
+	#ifdef __COMPILE_687
+	else if (__choose1 == 670)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "%s is not a phar archive, cannot mount", arch);
+	}
+	#endif
+	#ifdef __COMPILE_688
+	else if (__choose1 == 671)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Can only mount internal paths within a phar archive, use a relative path instead of \"%s\"", path);
+	}
+	#endif
+	#ifdef __COMPILE_689
+	else if (__choose1 == 672)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s failed", path, actual);
+	}
+	#endif
+	#ifdef __COMPILE_690
+	else if (__choose1 == 673)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Mounting of %s to %s within phar %s failed", path, actual, arch);
+	}
+	#endif
+	#ifdef __COMPILE_691
+	else if (__choose1 == 674)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "No values passed to Phar::mungServer(), expecting an array of any of these strings: PHP_SELF, REQUEST_URI, SCRIPT_FILENAME, SCRIPT_NAME");
+	}
+	#endif
+	#ifdef __COMPILE_692
+	else if (__choose1 == 675)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Non-string value passed to Phar::mungServer(), expecting an array of any of these strings: PHP_SELF, REQUEST_URI, SCRIPT_FILENAME, SCRIPT_NAME");
+	}
+	#endif
+	#ifdef __COMPILE_693
+	else if (__choose1 == 676)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Too many values passed to Phar::mungServer(), expecting an array of any of these strings: PHP_SELF, REQUEST_URI, SCRIPT_FILENAME, SCRIPT_NAME");
+	}
+	#endif
+	#ifdef __COMPILE_694
+	else if (__choose1 == 677)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Unknown mime type specifier used, only Phar::PHP, Phar::PHPS and a mime type string are allowed");
+	}
+	#endif
+	#ifdef __COMPILE_695
+	else if (__choose1 == 678)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "Unknown phar archive \"\"");
+	}
+	#endif
+	#ifdef __COMPILE_696
+	else if (__choose1 == 679)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar error: failed to call rewrite callback");
+	}
+	#endif
+	#ifdef __COMPILE_697
+	else if (__choose1 == 680)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar error: invalid rewrite callback");
+	}
+	#endif
+	#ifdef __COMPILE_698
+	else if (__choose1 == 681)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "phar error: rewrite callback must return a string or false");
+	}
+	#endif
+	#ifdef __COMPILE_699
+	else if (__choose1 == 682)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(phar_ce_PharException, 0, "unable to retrieve array value in Phar::mungServer()");
+	}
+	#endif
+	#ifdef __COMPILE_700
+	else if (__choose1 == 683)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot call constructor twice");
+	}
+	#endif
+	#ifdef __COMPILE_701
+	else if (__choose1 == 684)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot call method on an uninitialized Phar object");
+	}
+	#endif
+	#ifdef __COMPILE_702
+	else if (__choose1 == 685)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot call method on an uninitialized PharFileInfo object");
+	}
+	#endif
+	#ifdef __COMPILE_703
+	else if (__choose1 == 686)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress all files as Bzip2, some are compressed as gzip and cannot be decompressed");
+	}
+	#endif
+	#ifdef __COMPILE_704
+	else if (__choose1 == 687)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress all files as Gzip, some are compressed as bzip2 and cannot be decompressed");
+	}
+	#endif
+	#ifdef __COMPILE_705
+	else if (__choose1 == 688)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress deleted file");
+	}
+	#endif
+	#ifdef __COMPILE_706
+	else if (__choose1 == 689)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress entire archive with bz2, enable ext/bz2 in php.ini");
+	}
+	#endif
+	#ifdef __COMPILE_707
+	else if (__choose1 == 690)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress entire archive with bz2, zip archives do not support whole-archive compression");
+	}
+	#endif
+	#ifdef __COMPILE_708
+	else if (__choose1 == 691)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress entire archive with gzip, enable ext/zlib in php.ini");
+	}
+	#endif
+	#ifdef __COMPILE_709
+	else if (__choose1 == 692)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress entire archive with gzip, zip archives do not support whole-archive compression");
+	}
+	#endif
+	#ifdef __COMPILE_710
+	else if (__choose1 == 693)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress files within archive with bz2, enable ext/bz2 in php.ini");
+	}
+	#endif
+	#ifdef __COMPILE_711
+	else if (__choose1 == 694)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress files within archive with gzip, enable ext/zlib in php.ini");
+	}
+	#endif
+	#ifdef __COMPILE_712
+	else if (__choose1 == 695)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress with Gzip compression, not possible with tar-based phar archives");
+	}
+	#endif
+	#ifdef __COMPILE_713
+	else if (__choose1 == 696)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress with Gzip compression, tar archives cannot compress individual files, use compress() to compress the whole archive");
+	}
+	#endif
+	#ifdef __COMPILE_714
+	else if (__choose1 == 697)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress with bzip2 compression, bz2 extension is not enabled");
+	}
+	#endif
+	#ifdef __COMPILE_715
+	else if (__choose1 == 698)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress with bzip2 compression, file is already compressed with gzip compression and zlib extension is not enabled, cannot decompress");
+	}
+	#endif
+	#ifdef __COMPILE_716
+	else if (__choose1 == 699)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress with gzip compression, file is already compressed with bzip2 compression and bz2 extension is not enabled, cannot decompress");
+	}
+	#endif
+	#ifdef __COMPILE_717
+	else if (__choose1 == 700)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot compress with gzip compression, zlib extension is not enabled");
+	}
+	#endif
+	#ifdef __COMPILE_718
+	else if (__choose1 == 701)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot create a directory in magic \".phar\" directory");
+	}
+	#endif
+	#ifdef __COMPILE_719
+	else if (__choose1 == 702)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot decompress Bzip2-compressed file, bz2 extension is not enabled");
+	}
+	#endif
+	#ifdef __COMPILE_720
+	else if (__choose1 == 703)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot decompress Gzip-compressed file, zlib extension is not enabled");
+	}
+	#endif
+	#ifdef __COMPILE_721
+	else if (__choose1 == 704)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Cannot decompress all files, some are compressed as bzip2 or gzip and cannot be decompressed");
+	}
+	#endif
+	#ifdef __COMPILE_722
+	else if (__choose1 == 705)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Phar entry is a directory, cannot set compression");
+	}
+	#endif
+	#ifdef __COMPILE_723
+	else if (__choose1 == 706)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Phar entry is a directory, does not have a CRC");
+	}
+	#endif
+	#ifdef __COMPILE_724
+	else if (__choose1 == 707)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Phar entry is a temporary directory (not an actual entry in the archive), cannot delete metadata");
+	}
+	#endif
+	#ifdef __COMPILE_725
+	else if (__choose1 == 708)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Phar entry is a temporary directory (not an actual entry in the archive), cannot set metadata");
+	}
+	#endif
+	#ifdef __COMPILE_726
+	else if (__choose1 == 709)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Phar entry was not CRC checked");
+	}
+	#endif
+	#ifdef __COMPILE_727
+	else if (__choose1 == 710)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Phar is readonly, cannot change compression");
+	}
+	#endif
+	#ifdef __COMPILE_728
+	else if (__choose1 == 711)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Phar is readonly, cannot decompress");
+	}
+	#endif
+	#ifdef __COMPILE_729
+	else if (__choose1 == 712)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_BadMethodCallException, 0, "Write operations disabled by the php.ini setting phar.readonly");
+	}
+	#endif
+	#ifdef __COMPILE_730
+	else if (__choose1 == 713)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_InvalidArgumentException, 0, "Invalid argument, extraction path must be non-zero length");
+	}
+	#endif
+	#ifdef __COMPILE_731
+	else if (__choose1 == 714)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_RuntimeException, 0, "Unable to read stub");
+	}
+	#endif
+	#ifdef __COMPILE_732
+	else if (__choose1 == 715)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "A Phar alias cannot be set in a plain tar archive");
+	}
+	#endif
+	#ifdef __COMPILE_733
+	else if (__choose1 == 716)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "A Phar alias cannot be set in a plain zip archive");
+	}
+	#endif
+	#ifdef __COMPILE_734
+	else if (__choose1 == 717)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "A Phar stub cannot be set in a plain tar archive");
+	}
+	#endif
+	#ifdef __COMPILE_735
+	else if (__choose1 == 718)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "A Phar stub cannot be set in a plain zip archive");
+	}
+	#endif
+	#ifdef __COMPILE_736
+	else if (__choose1 == 719)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot change stub, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_737
+	else if (__choose1 == 720)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot change stub, unable to read from input stream");
+	}
+	#endif
+	#ifdef __COMPILE_738
+	else if (__choose1 == 721)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot change stub: phar.readonly=1");
+	}
+	#endif
+	#ifdef __COMPILE_739
+	else if (__choose1 == 722)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot compress phar archive, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_740
+	else if (__choose1 == 723)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot compress zip-based archives with whole-archive compression");
+	}
+	#endif
+	#ifdef __COMPILE_741
+	else if (__choose1 == 724)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot decompress phar archive, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_742
+	else if (__choose1 == 725)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot decompress zip-based archives with whole-archive compression");
+	}
+	#endif
+	#ifdef __COMPILE_743
+	else if (__choose1 == 726)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot set signature algorithm, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_744
+	else if (__choose1 == 727)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot write out data phar archive, use Phar::TAR or Phar::ZIP");
+	}
+	#endif
+	#ifdef __COMPILE_745
+	else if (__choose1 == 728)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot write out executable phar archive, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_746
+	else if (__choose1 == 729)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot write out phar archive, phar is read-only");
+	}
+	#endif
+	#ifdef __COMPILE_747
+	else if (__choose1 == 730)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Cannot write to archive - write operations restricted by INI setting");
+	}
+	#endif
+	#ifdef __COMPILE_748
+	else if (__choose1 == 731)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Phar class can only be used for executable tar and zip archives");
+	}
+	#endif
+	#ifdef __COMPILE_749
+	else if (__choose1 == 732)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "Phar creation or opening failed");
+	}
+	#endif
+	#ifdef __COMPILE_750
+	else if (__choose1 == 733)
+	{
+	//AddStmtKind
+	zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0, "PharData class can only be used for non-executable tar and zip archives");
+	}
+	#endif
+	#ifdef __COMPILE_751
+	else if (__choose1 == 734)
+	{
+	//IfExitKind
+	if (__is_neg("1-734", "L633", 166, &(fname), sizeof (fname), &(fname_len),
+				 sizeof (fname_len), &(pphar), sizeof (pphar), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(phar_globals.manifest_cached),
+				 sizeof (phar_globals.manifest_cached), &(arch), sizeof (arch), &(entry), sizeof (entry), &(path),
+				 sizeof (path), &(arch_len), sizeof (arch_len), &(entry_len), sizeof (entry_len), &(path_len),
+				 sizeof (path_len), &(actual), sizeof (actual), &(phar_ce_PharException), sizeof (phar_ce_PharException), &(actual_len),
+				 sizeof (actual_len), &(ht), sizeof (ht), &((&phar_globals)->cwd_init), sizeof ((&phar_globals)->cwd_init), &((&phar_globals)->openssl_privatekey),
+				 sizeof ((&phar_globals)->openssl_privatekey), &((&phar_globals)->openssl_privatekey_len), sizeof ((&phar_globals)->openssl_privatekey_len), &((&phar_globals)->last_phar_name), sizeof ((&phar_globals)->last_phar_name), &((&phar_globals)->last_phar_name_len),
+				 sizeof ((&phar_globals)->last_phar_name_len), &((&phar_globals)->last_alias), sizeof ((&phar_globals)->last_alias), &((&phar_globals)->last_alias_len), sizeof ((&phar_globals)->last_alias_len), &((&phar_globals)->last_phar),
+				 sizeof ((&phar_globals)->last_phar), &((&phar_globals)->phar_fname_map.nTableSize), sizeof ((&phar_globals)->phar_fname_map.nTableSize), &((&phar_globals)->phar_fname_map.nTableMask), sizeof ((&phar_globals)->phar_fname_map.nTableMask), &((&phar_globals)->phar_fname_map.nNumOfElements),
+				 sizeof ((&phar_globals)->phar_fname_map.nNumOfElements), &((&phar_globals)->phar_fname_map.nNextFreeElement), sizeof ((&phar_globals)->phar_fname_map.nNextFreeElement), &((&phar_globals)->phar_fname_map.pInternalPointer), sizeof ((&phar_globals)->phar_fname_map.pInternalPointer), &((&phar_globals)->phar_fname_map.pListHead),
+				 sizeof ((&phar_globals)->phar_fname_map.pListHead), &((&phar_globals)->phar_fname_map.pListTail), sizeof ((&phar_globals)->phar_fname_map.pListTail), &((&phar_globals)->phar_fname_map.arBuckets), sizeof ((&phar_globals)->phar_fname_map.arBuckets), &((&phar_globals)->phar_fname_map.pDestructor),
+				 sizeof ((&phar_globals)->phar_fname_map.pDestructor), &((&phar_globals)->phar_fname_map.persistent), sizeof ((&phar_globals)->phar_fname_map.persistent), &((&phar_globals)->phar_fname_map.nApplyCount), sizeof ((&phar_globals)->phar_fname_map.nApplyCount), &((&phar_globals)->phar_fname_map.bApplyProtection),
+				 sizeof ((&phar_globals)->phar_fname_map.bApplyProtection), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly),
+				 sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib),
+				 sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig),
+				 sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash),
+				 sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen),
+				 sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link),
+				 sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists),
+				 sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize),
+				 sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime),
+				 sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype),
+				 sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable),
+				 sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat),
+				 sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init),
+				 sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name),
+				 sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len),
+				 sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar), &((&phar_globals)->cached_fp), sizeof ((&phar_globals)->cached_fp), &((&phar_globals)->phar_SERVER_mung_list),
+				 sizeof ((&phar_globals)->phar_SERVER_mung_list), &((&phar_globals)->readonly), sizeof ((&phar_globals)->readonly), &((&phar_globals)->cache_list), sizeof ((&phar_globals)->cache_list), &((&phar_globals)->manifest_cached),
+				 sizeof ((&phar_globals)->manifest_cached), &((&phar_globals)->persist), sizeof ((&phar_globals)->persist), &((&phar_globals)->has_zlib), sizeof ((&phar_globals)->has_zlib), &((&phar_globals)->has_bz2),
+				 sizeof ((&phar_globals)->has_bz2), &((&phar_globals)->readonly_orig), sizeof ((&phar_globals)->readonly_orig), &((&phar_globals)->require_hash_orig), sizeof ((&phar_globals)->require_hash_orig), &((&phar_globals)->intercepted),
+				 sizeof ((&phar_globals)->intercepted), &((&phar_globals)->request_init), sizeof ((&phar_globals)->request_init), &((&phar_globals)->require_hash), sizeof ((&phar_globals)->require_hash), &((&phar_globals)->request_done),
+				 sizeof ((&phar_globals)->request_done), &((&phar_globals)->request_ends), sizeof ((&phar_globals)->request_ends), &((&phar_globals)->orig_fopen), sizeof ((&phar_globals)->orig_fopen), &((&phar_globals)->orig_file_get_contents),
+				 sizeof ((&phar_globals)->orig_file_get_contents), &((&phar_globals)->orig_is_file), sizeof ((&phar_globals)->orig_is_file), &((&phar_globals)->orig_is_link), sizeof ((&phar_globals)->orig_is_link), &((&phar_globals)->orig_is_dir),
+				 sizeof ((&phar_globals)->orig_is_dir), &((&phar_globals)->orig_opendir), sizeof ((&phar_globals)->orig_opendir), &((&phar_globals)->orig_file_exists), sizeof ((&phar_globals)->orig_file_exists), &((&phar_globals)->orig_fileperms),
+				 sizeof ((&phar_globals)->orig_fileperms), &((&phar_globals)->orig_fileinode), sizeof ((&phar_globals)->orig_fileinode), &((&phar_globals)->orig_filesize), sizeof ((&phar_globals)->orig_filesize), &((&phar_globals)->orig_fileowner),
+				 sizeof ((&phar_globals)->orig_fileowner), &((&phar_globals)->orig_filegroup), sizeof ((&phar_globals)->orig_filegroup), &((&phar_globals)->orig_fileatime), sizeof ((&phar_globals)->orig_fileatime), &((&phar_globals)->orig_filemtime),
+				 sizeof ((&phar_globals)->orig_filemtime), &((&phar_globals)->orig_filectime), sizeof ((&phar_globals)->orig_filectime), &((&phar_globals)->orig_filetype), sizeof ((&phar_globals)->orig_filetype), &((&phar_globals)->orig_is_writable),
+				 sizeof ((&phar_globals)->orig_is_writable), &((&phar_globals)->orig_is_readable), sizeof ((&phar_globals)->orig_is_readable), &((&phar_globals)->orig_is_executable), sizeof ((&phar_globals)->orig_is_executable), &((&phar_globals)->orig_lstat),
+				 sizeof ((&phar_globals)->orig_lstat), &((&phar_globals)->orig_readfile), sizeof ((&phar_globals)->orig_readfile), &((&phar_globals)->orig_stat), sizeof ((&phar_globals)->orig_stat), &((&phar_globals)->cwd),
+				 sizeof ((&phar_globals)->cwd), &((&phar_globals)->cwd_len), sizeof ((&phar_globals)->cwd_len), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list),
+				 sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist),
+				 sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig),
+				 sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init),
+				 sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends),
+				 sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file),
+				 sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir),
+				 sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode),
+				 sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup),
+				 sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime),
+				 sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable),
+				 sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile),
+				 sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len),
+				 sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len),
+				 sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias),
+				 sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar)))
+	    goto carry_on2;
+	}
+	#endif
+	#ifdef __COMPILE_752
+	else if (__choose1 == 735)
+	{
+	//IfExitKind
+	if (__is_neg("1-735", "L633", 166, &(fname), sizeof (fname), &(fname_len),
+				 sizeof (fname_len), &(pphar), sizeof (pphar), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(phar_globals.manifest_cached),
+				 sizeof (phar_globals.manifest_cached), &(arch), sizeof (arch), &(entry), sizeof (entry), &(path),
+				 sizeof (path), &(arch_len), sizeof (arch_len), &(entry_len), sizeof (entry_len), &(path_len),
+				 sizeof (path_len), &(actual), sizeof (actual), &(phar_ce_PharException), sizeof (phar_ce_PharException), &(actual_len),
+				 sizeof (actual_len), &(ht), sizeof (ht), &((&phar_globals)->cwd_init), sizeof ((&phar_globals)->cwd_init), &((&phar_globals)->openssl_privatekey),
+				 sizeof ((&phar_globals)->openssl_privatekey), &((&phar_globals)->openssl_privatekey_len), sizeof ((&phar_globals)->openssl_privatekey_len), &((&phar_globals)->last_phar_name), sizeof ((&phar_globals)->last_phar_name), &((&phar_globals)->last_phar_name_len),
+				 sizeof ((&phar_globals)->last_phar_name_len), &((&phar_globals)->last_alias), sizeof ((&phar_globals)->last_alias), &((&phar_globals)->last_alias_len), sizeof ((&phar_globals)->last_alias_len), &((&phar_globals)->last_phar),
+				 sizeof ((&phar_globals)->last_phar), &((&phar_globals)->phar_fname_map.nTableSize), sizeof ((&phar_globals)->phar_fname_map.nTableSize), &((&phar_globals)->phar_fname_map.nTableMask), sizeof ((&phar_globals)->phar_fname_map.nTableMask), &((&phar_globals)->phar_fname_map.nNumOfElements),
+				 sizeof ((&phar_globals)->phar_fname_map.nNumOfElements), &((&phar_globals)->phar_fname_map.nNextFreeElement), sizeof ((&phar_globals)->phar_fname_map.nNextFreeElement), &((&phar_globals)->phar_fname_map.pInternalPointer), sizeof ((&phar_globals)->phar_fname_map.pInternalPointer), &((&phar_globals)->phar_fname_map.pListHead),
+				 sizeof ((&phar_globals)->phar_fname_map.pListHead), &((&phar_globals)->phar_fname_map.pListTail), sizeof ((&phar_globals)->phar_fname_map.pListTail), &((&phar_globals)->phar_fname_map.arBuckets), sizeof ((&phar_globals)->phar_fname_map.arBuckets), &((&phar_globals)->phar_fname_map.pDestructor),
+				 sizeof ((&phar_globals)->phar_fname_map.pDestructor), &((&phar_globals)->phar_fname_map.persistent), sizeof ((&phar_globals)->phar_fname_map.persistent), &((&phar_globals)->phar_fname_map.nApplyCount), sizeof ((&phar_globals)->phar_fname_map.nApplyCount), &((&phar_globals)->phar_fname_map.bApplyProtection),
+				 sizeof ((&phar_globals)->phar_fname_map.bApplyProtection), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly),
+				 sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib),
+				 sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig),
+				 sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash),
+				 sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen),
+				 sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link),
+				 sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists),
+				 sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize),
+				 sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime),
+				 sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype),
+				 sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable),
+				 sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat),
+				 sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init),
+				 sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name),
+				 sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len),
+				 sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar), &((&phar_globals)->cached_fp), sizeof ((&phar_globals)->cached_fp), &((&phar_globals)->phar_SERVER_mung_list),
+				 sizeof ((&phar_globals)->phar_SERVER_mung_list), &((&phar_globals)->readonly), sizeof ((&phar_globals)->readonly), &((&phar_globals)->cache_list), sizeof ((&phar_globals)->cache_list), &((&phar_globals)->manifest_cached),
+				 sizeof ((&phar_globals)->manifest_cached), &((&phar_globals)->persist), sizeof ((&phar_globals)->persist), &((&phar_globals)->has_zlib), sizeof ((&phar_globals)->has_zlib), &((&phar_globals)->has_bz2),
+				 sizeof ((&phar_globals)->has_bz2), &((&phar_globals)->readonly_orig), sizeof ((&phar_globals)->readonly_orig), &((&phar_globals)->require_hash_orig), sizeof ((&phar_globals)->require_hash_orig), &((&phar_globals)->intercepted),
+				 sizeof ((&phar_globals)->intercepted), &((&phar_globals)->request_init), sizeof ((&phar_globals)->request_init), &((&phar_globals)->require_hash), sizeof ((&phar_globals)->require_hash), &((&phar_globals)->request_done),
+				 sizeof ((&phar_globals)->request_done), &((&phar_globals)->request_ends), sizeof ((&phar_globals)->request_ends), &((&phar_globals)->orig_fopen), sizeof ((&phar_globals)->orig_fopen), &((&phar_globals)->orig_file_get_contents),
+				 sizeof ((&phar_globals)->orig_file_get_contents), &((&phar_globals)->orig_is_file), sizeof ((&phar_globals)->orig_is_file), &((&phar_globals)->orig_is_link), sizeof ((&phar_globals)->orig_is_link), &((&phar_globals)->orig_is_dir),
+				 sizeof ((&phar_globals)->orig_is_dir), &((&phar_globals)->orig_opendir), sizeof ((&phar_globals)->orig_opendir), &((&phar_globals)->orig_file_exists), sizeof ((&phar_globals)->orig_file_exists), &((&phar_globals)->orig_fileperms),
+				 sizeof ((&phar_globals)->orig_fileperms), &((&phar_globals)->orig_fileinode), sizeof ((&phar_globals)->orig_fileinode), &((&phar_globals)->orig_filesize), sizeof ((&phar_globals)->orig_filesize), &((&phar_globals)->orig_fileowner),
+				 sizeof ((&phar_globals)->orig_fileowner), &((&phar_globals)->orig_filegroup), sizeof ((&phar_globals)->orig_filegroup), &((&phar_globals)->orig_fileatime), sizeof ((&phar_globals)->orig_fileatime), &((&phar_globals)->orig_filemtime),
+				 sizeof ((&phar_globals)->orig_filemtime), &((&phar_globals)->orig_filectime), sizeof ((&phar_globals)->orig_filectime), &((&phar_globals)->orig_filetype), sizeof ((&phar_globals)->orig_filetype), &((&phar_globals)->orig_is_writable),
+				 sizeof ((&phar_globals)->orig_is_writable), &((&phar_globals)->orig_is_readable), sizeof ((&phar_globals)->orig_is_readable), &((&phar_globals)->orig_is_executable), sizeof ((&phar_globals)->orig_is_executable), &((&phar_globals)->orig_lstat),
+				 sizeof ((&phar_globals)->orig_lstat), &((&phar_globals)->orig_readfile), sizeof ((&phar_globals)->orig_readfile), &((&phar_globals)->orig_stat), sizeof ((&phar_globals)->orig_stat), &((&phar_globals)->cwd),
+				 sizeof ((&phar_globals)->cwd), &((&phar_globals)->cwd_len), sizeof ((&phar_globals)->cwd_len), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list),
+				 sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist),
+				 sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig),
+				 sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init),
+				 sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends),
+				 sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file),
+				 sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir),
+				 sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode),
+				 sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup),
+				 sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime),
+				 sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable),
+				 sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile),
+				 sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len),
+				 sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len),
+				 sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias),
+				 sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar)))
+	    goto carry_on;
+	}
+	#endif
+	#ifdef __COMPILE_753
+	else if (__choose1 == 736)
+	{
+	//IfExitKind
+	if (__is_neg("1-736", "L633", 166, &(fname), sizeof (fname), &(fname_len),
+				 sizeof (fname_len), &(pphar), sizeof (pphar), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(phar_globals.manifest_cached),
+				 sizeof (phar_globals.manifest_cached), &(arch), sizeof (arch), &(entry), sizeof (entry), &(path),
+				 sizeof (path), &(arch_len), sizeof (arch_len), &(entry_len), sizeof (entry_len), &(path_len),
+				 sizeof (path_len), &(actual), sizeof (actual), &(phar_ce_PharException), sizeof (phar_ce_PharException), &(actual_len),
+				 sizeof (actual_len), &(ht), sizeof (ht), &((&phar_globals)->cwd_init), sizeof ((&phar_globals)->cwd_init), &((&phar_globals)->openssl_privatekey),
+				 sizeof ((&phar_globals)->openssl_privatekey), &((&phar_globals)->openssl_privatekey_len), sizeof ((&phar_globals)->openssl_privatekey_len), &((&phar_globals)->last_phar_name), sizeof ((&phar_globals)->last_phar_name), &((&phar_globals)->last_phar_name_len),
+				 sizeof ((&phar_globals)->last_phar_name_len), &((&phar_globals)->last_alias), sizeof ((&phar_globals)->last_alias), &((&phar_globals)->last_alias_len), sizeof ((&phar_globals)->last_alias_len), &((&phar_globals)->last_phar),
+				 sizeof ((&phar_globals)->last_phar), &((&phar_globals)->phar_fname_map.nTableSize), sizeof ((&phar_globals)->phar_fname_map.nTableSize), &((&phar_globals)->phar_fname_map.nTableMask), sizeof ((&phar_globals)->phar_fname_map.nTableMask), &((&phar_globals)->phar_fname_map.nNumOfElements),
+				 sizeof ((&phar_globals)->phar_fname_map.nNumOfElements), &((&phar_globals)->phar_fname_map.nNextFreeElement), sizeof ((&phar_globals)->phar_fname_map.nNextFreeElement), &((&phar_globals)->phar_fname_map.pInternalPointer), sizeof ((&phar_globals)->phar_fname_map.pInternalPointer), &((&phar_globals)->phar_fname_map.pListHead),
+				 sizeof ((&phar_globals)->phar_fname_map.pListHead), &((&phar_globals)->phar_fname_map.pListTail), sizeof ((&phar_globals)->phar_fname_map.pListTail), &((&phar_globals)->phar_fname_map.arBuckets), sizeof ((&phar_globals)->phar_fname_map.arBuckets), &((&phar_globals)->phar_fname_map.pDestructor),
+				 sizeof ((&phar_globals)->phar_fname_map.pDestructor), &((&phar_globals)->phar_fname_map.persistent), sizeof ((&phar_globals)->phar_fname_map.persistent), &((&phar_globals)->phar_fname_map.nApplyCount), sizeof ((&phar_globals)->phar_fname_map.nApplyCount), &((&phar_globals)->phar_fname_map.bApplyProtection),
+				 sizeof ((&phar_globals)->phar_fname_map.bApplyProtection), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly),
+				 sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib),
+				 sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig),
+				 sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash),
+				 sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen),
+				 sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link),
+				 sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists),
+				 sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize),
+				 sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime),
+				 sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype),
+				 sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable),
+				 sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat),
+				 sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init),
+				 sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name),
+				 sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len),
+				 sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar), &((&phar_globals)->cached_fp), sizeof ((&phar_globals)->cached_fp), &((&phar_globals)->phar_SERVER_mung_list),
+				 sizeof ((&phar_globals)->phar_SERVER_mung_list), &((&phar_globals)->readonly), sizeof ((&phar_globals)->readonly), &((&phar_globals)->cache_list), sizeof ((&phar_globals)->cache_list), &((&phar_globals)->manifest_cached),
+				 sizeof ((&phar_globals)->manifest_cached), &((&phar_globals)->persist), sizeof ((&phar_globals)->persist), &((&phar_globals)->has_zlib), sizeof ((&phar_globals)->has_zlib), &((&phar_globals)->has_bz2),
+				 sizeof ((&phar_globals)->has_bz2), &((&phar_globals)->readonly_orig), sizeof ((&phar_globals)->readonly_orig), &((&phar_globals)->require_hash_orig), sizeof ((&phar_globals)->require_hash_orig), &((&phar_globals)->intercepted),
+				 sizeof ((&phar_globals)->intercepted), &((&phar_globals)->request_init), sizeof ((&phar_globals)->request_init), &((&phar_globals)->require_hash), sizeof ((&phar_globals)->require_hash), &((&phar_globals)->request_done),
+				 sizeof ((&phar_globals)->request_done), &((&phar_globals)->request_ends), sizeof ((&phar_globals)->request_ends), &((&phar_globals)->orig_fopen), sizeof ((&phar_globals)->orig_fopen), &((&phar_globals)->orig_file_get_contents),
+				 sizeof ((&phar_globals)->orig_file_get_contents), &((&phar_globals)->orig_is_file), sizeof ((&phar_globals)->orig_is_file), &((&phar_globals)->orig_is_link), sizeof ((&phar_globals)->orig_is_link), &((&phar_globals)->orig_is_dir),
+				 sizeof ((&phar_globals)->orig_is_dir), &((&phar_globals)->orig_opendir), sizeof ((&phar_globals)->orig_opendir), &((&phar_globals)->orig_file_exists), sizeof ((&phar_globals)->orig_file_exists), &((&phar_globals)->orig_fileperms),
+				 sizeof ((&phar_globals)->orig_fileperms), &((&phar_globals)->orig_fileinode), sizeof ((&phar_globals)->orig_fileinode), &((&phar_globals)->orig_filesize), sizeof ((&phar_globals)->orig_filesize), &((&phar_globals)->orig_fileowner),
+				 sizeof ((&phar_globals)->orig_fileowner), &((&phar_globals)->orig_filegroup), sizeof ((&phar_globals)->orig_filegroup), &((&phar_globals)->orig_fileatime), sizeof ((&phar_globals)->orig_fileatime), &((&phar_globals)->orig_filemtime),
+				 sizeof ((&phar_globals)->orig_filemtime), &((&phar_globals)->orig_filectime), sizeof ((&phar_globals)->orig_filectime), &((&phar_globals)->orig_filetype), sizeof ((&phar_globals)->orig_filetype), &((&phar_globals)->orig_is_writable),
+				 sizeof ((&phar_globals)->orig_is_writable), &((&phar_globals)->orig_is_readable), sizeof ((&phar_globals)->orig_is_readable), &((&phar_globals)->orig_is_executable), sizeof ((&phar_globals)->orig_is_executable), &((&phar_globals)->orig_lstat),
+				 sizeof ((&phar_globals)->orig_lstat), &((&phar_globals)->orig_readfile), sizeof ((&phar_globals)->orig_readfile), &((&phar_globals)->orig_stat), sizeof ((&phar_globals)->orig_stat), &((&phar_globals)->cwd),
+				 sizeof ((&phar_globals)->cwd), &((&phar_globals)->cwd_len), sizeof ((&phar_globals)->cwd_len), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list),
+				 sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist),
+				 sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig),
+				 sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init),
+				 sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends),
+				 sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file),
+				 sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir),
+				 sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode),
+				 sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup),
+				 sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime),
+				 sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable),
+				 sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile),
+				 sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len),
+				 sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len),
+				 sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias),
+				 sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar)))
+	    return;
+	}
+	#endif
+	int __choose2 = __choose("__SWITCH2");
+	{
+	int __temp2=(0 == zend_hash_find(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar)) ;
+	if (__choose2 == 0)
+	{}
+	#ifdef __COMPILE_754
+	else if (__choose2 == 1)
+	{
+	__temp2= (__is_neg("2-1", "L633", 166, &(fname), sizeof (fname), &(fname_len), sizeof (fname_len), &(pphar), sizeof (pphar), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(arch), sizeof (arch), &(entry), sizeof (entry), &(path), sizeof (path), &(arch_len), sizeof (arch_len), &(entry_len), sizeof (entry_len), &(path_len), sizeof (path_len), &(actual), sizeof (actual), &(phar_ce_PharException), sizeof (phar_ce_PharException), &(actual_len), sizeof (actual_len), &(ht), sizeof (ht), &((&phar_globals)->cached_fp), sizeof ((&phar_globals)->cached_fp), &((&phar_globals)->phar_SERVER_mung_list), sizeof ((&phar_globals)->phar_SERVER_mung_list), &((&phar_globals)->readonly), sizeof ((&phar_globals)->readonly), &((&phar_globals)->cache_list), sizeof ((&phar_globals)->cache_list), &((&phar_globals)->manifest_cached), sizeof ((&phar_globals)->manifest_cached), &((&phar_globals)->persist), sizeof ((&phar_globals)->persist), &((&phar_globals)->has_zlib), sizeof ((&phar_globals)->has_zlib), &((&phar_globals)->has_bz2), sizeof ((&phar_globals)->has_bz2), &((&phar_globals)->readonly_orig), sizeof ((&phar_globals)->readonly_orig), &((&phar_globals)->require_hash_orig), sizeof ((&phar_globals)->require_hash_orig), &((&phar_globals)->intercepted), sizeof ((&phar_globals)->intercepted), &((&phar_globals)->request_init), sizeof ((&phar_globals)->request_init), &((&phar_globals)->require_hash), sizeof ((&phar_globals)->require_hash), &((&phar_globals)->request_done), sizeof ((&phar_globals)->request_done), &((&phar_globals)->request_ends), sizeof ((&phar_globals)->request_ends), &((&phar_globals)->orig_fopen), sizeof ((&phar_globals)->orig_fopen), &((&phar_globals)->orig_file_get_contents), sizeof ((&phar_globals)->orig_file_get_contents), &((&phar_globals)->orig_is_file), sizeof ((&phar_globals)->orig_is_file), &((&phar_globals)->orig_is_link), sizeof ((&phar_globals)->orig_is_link), &((&phar_globals)->orig_is_dir), sizeof ((&phar_globals)->orig_is_dir), &((&phar_globals)->orig_opendir), sizeof ((&phar_globals)->orig_opendir), &((&phar_globals)->orig_file_exists), sizeof ((&phar_globals)->orig_file_exists), &((&phar_globals)->orig_fileperms), sizeof ((&phar_globals)->orig_fileperms), &((&phar_globals)->orig_fileinode), sizeof ((&phar_globals)->orig_fileinode), &((&phar_globals)->orig_filesize), sizeof ((&phar_globals)->orig_filesize), &((&phar_globals)->orig_fileowner), sizeof ((&phar_globals)->orig_fileowner), &((&phar_globals)->orig_filegroup), sizeof ((&phar_globals)->orig_filegroup), &((&phar_globals)->orig_fileatime), sizeof ((&phar_globals)->orig_fileatime), &((&phar_globals)->orig_filemtime), sizeof ((&phar_globals)->orig_filemtime), &((&phar_globals)->orig_filectime), sizeof ((&phar_globals)->orig_filectime), &((&phar_globals)->orig_filetype), sizeof ((&phar_globals)->orig_filetype), &((&phar_globals)->orig_is_writable), sizeof ((&phar_globals)->orig_is_writable), &((&phar_globals)->orig_is_readable), sizeof ((&phar_globals)->orig_is_readable), &((&phar_globals)->orig_is_executable), sizeof ((&phar_globals)->orig_is_executable), &((&phar_globals)->orig_lstat), sizeof ((&phar_globals)->orig_lstat), &((&phar_globals)->orig_readfile), sizeof ((&phar_globals)->orig_readfile), &((&phar_globals)->orig_stat), sizeof ((&phar_globals)->orig_stat), &((&phar_globals)->cwd), sizeof ((&phar_globals)->cwd), &((&phar_globals)->cwd_len), sizeof ((&phar_globals)->cwd_len), &((&phar_globals)->cwd_init), sizeof ((&phar_globals)->cwd_init), &((&phar_globals)->openssl_privatekey), sizeof ((&phar_globals)->openssl_privatekey), &((&phar_globals)->openssl_privatekey_len), sizeof ((&phar_globals)->openssl_privatekey_len), &((&phar_globals)->last_phar_name), sizeof ((&phar_globals)->last_phar_name), &((&phar_globals)->last_phar_name_len), sizeof ((&phar_globals)->last_phar_name_len), &((&phar_globals)->last_alias), sizeof ((&phar_globals)->last_alias), &((&phar_globals)->last_alias_len), sizeof ((&phar_globals)->last_alias_len), &((&phar_globals)->last_phar), sizeof ((&phar_globals)->last_phar), &((&phar_globals)->phar_fname_map.nTableSize), sizeof ((&phar_globals)->phar_fname_map.nTableSize), &((&phar_globals)->phar_fname_map.nTableMask), sizeof ((&phar_globals)->phar_fname_map.nTableMask), &((&phar_globals)->phar_fname_map.nNumOfElements), sizeof ((&phar_globals)->phar_fname_map.nNumOfElements), &((&phar_globals)->phar_fname_map.nNextFreeElement), sizeof ((&phar_globals)->phar_fname_map.nNextFreeElement), &((&phar_globals)->phar_fname_map.pInternalPointer), sizeof ((&phar_globals)->phar_fname_map.pInternalPointer), &((&phar_globals)->phar_fname_map.pListHead), sizeof ((&phar_globals)->phar_fname_map.pListHead), &((&phar_globals)->phar_fname_map.pListTail), sizeof ((&phar_globals)->phar_fname_map.pListTail), &((&phar_globals)->phar_fname_map.arBuckets), sizeof ((&phar_globals)->phar_fname_map.arBuckets), &((&phar_globals)->phar_fname_map.pDestructor), sizeof ((&phar_globals)->phar_fname_map.pDestructor), &((&phar_globals)->phar_fname_map.persistent), sizeof ((&phar_globals)->phar_fname_map.persistent), &((&phar_globals)->phar_fname_map.nApplyCount), sizeof ((&phar_globals)->phar_fname_map.nApplyCount), &((&phar_globals)->phar_fname_map.bApplyProtection), sizeof ((&phar_globals)->phar_fname_map.bApplyProtection), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar)));
+	}
+	#endif
+	#ifdef __COMPILE_755
+	else if (__choose2 == 2)
+	{
+	__temp2= ((0 == zend_hash_find(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar)) || __is_neg("2-2", "L633", 166, &(fname), sizeof (fname), &(fname_len), sizeof (fname_len), &(pphar), sizeof (pphar), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(arch), sizeof (arch), &(entry), sizeof (entry), &(path), sizeof (path), &(arch_len), sizeof (arch_len), &(entry_len), sizeof (entry_len), &(path_len), sizeof (path_len), &(actual), sizeof (actual), &(phar_ce_PharException), sizeof (phar_ce_PharException), &(actual_len), sizeof (actual_len), &(ht), sizeof (ht), &((&phar_globals)->cached_fp), sizeof ((&phar_globals)->cached_fp), &((&phar_globals)->phar_SERVER_mung_list), sizeof ((&phar_globals)->phar_SERVER_mung_list), &((&phar_globals)->readonly), sizeof ((&phar_globals)->readonly), &((&phar_globals)->cache_list), sizeof ((&phar_globals)->cache_list), &((&phar_globals)->manifest_cached), sizeof ((&phar_globals)->manifest_cached), &((&phar_globals)->persist), sizeof ((&phar_globals)->persist), &((&phar_globals)->has_zlib), sizeof ((&phar_globals)->has_zlib), &((&phar_globals)->has_bz2), sizeof ((&phar_globals)->has_bz2), &((&phar_globals)->readonly_orig), sizeof ((&phar_globals)->readonly_orig), &((&phar_globals)->require_hash_orig), sizeof ((&phar_globals)->require_hash_orig), &((&phar_globals)->intercepted), sizeof ((&phar_globals)->intercepted), &((&phar_globals)->request_init), sizeof ((&phar_globals)->request_init), &((&phar_globals)->require_hash), sizeof ((&phar_globals)->require_hash), &((&phar_globals)->request_done), sizeof ((&phar_globals)->request_done), &((&phar_globals)->request_ends), sizeof ((&phar_globals)->request_ends), &((&phar_globals)->orig_fopen), sizeof ((&phar_globals)->orig_fopen), &((&phar_globals)->orig_file_get_contents), sizeof ((&phar_globals)->orig_file_get_contents), &((&phar_globals)->orig_is_file), sizeof ((&phar_globals)->orig_is_file), &((&phar_globals)->orig_is_link), sizeof ((&phar_globals)->orig_is_link), &((&phar_globals)->orig_is_dir), sizeof ((&phar_globals)->orig_is_dir), &((&phar_globals)->orig_opendir), sizeof ((&phar_globals)->orig_opendir), &((&phar_globals)->orig_file_exists), sizeof ((&phar_globals)->orig_file_exists), &((&phar_globals)->orig_fileperms), sizeof ((&phar_globals)->orig_fileperms), &((&phar_globals)->orig_fileinode), sizeof ((&phar_globals)->orig_fileinode), &((&phar_globals)->orig_filesize), sizeof ((&phar_globals)->orig_filesize), &((&phar_globals)->orig_fileowner), sizeof ((&phar_globals)->orig_fileowner), &((&phar_globals)->orig_filegroup), sizeof ((&phar_globals)->orig_filegroup), &((&phar_globals)->orig_fileatime), sizeof ((&phar_globals)->orig_fileatime), &((&phar_globals)->orig_filemtime), sizeof ((&phar_globals)->orig_filemtime), &((&phar_globals)->orig_filectime), sizeof ((&phar_globals)->orig_filectime), &((&phar_globals)->orig_filetype), sizeof ((&phar_globals)->orig_filetype), &((&phar_globals)->orig_is_writable), sizeof ((&phar_globals)->orig_is_writable), &((&phar_globals)->orig_is_readable), sizeof ((&phar_globals)->orig_is_readable), &((&phar_globals)->orig_is_executable), sizeof ((&phar_globals)->orig_is_executable), &((&phar_globals)->orig_lstat), sizeof ((&phar_globals)->orig_lstat), &((&phar_globals)->orig_readfile), sizeof ((&phar_globals)->orig_readfile), &((&phar_globals)->orig_stat), sizeof ((&phar_globals)->orig_stat), &((&phar_globals)->cwd), sizeof ((&phar_globals)->cwd), &((&phar_globals)->cwd_len), sizeof ((&phar_globals)->cwd_len), &((&phar_globals)->cwd_init), sizeof ((&phar_globals)->cwd_init), &((&phar_globals)->openssl_privatekey), sizeof ((&phar_globals)->openssl_privatekey), &((&phar_globals)->openssl_privatekey_len), sizeof ((&phar_globals)->openssl_privatekey_len), &((&phar_globals)->last_phar_name), sizeof ((&phar_globals)->last_phar_name), &((&phar_globals)->last_phar_name_len), sizeof ((&phar_globals)->last_phar_name_len), &((&phar_globals)->last_alias), sizeof ((&phar_globals)->last_alias), &((&phar_globals)->last_alias_len), sizeof ((&phar_globals)->last_alias_len), &((&phar_globals)->last_phar), sizeof ((&phar_globals)->last_phar), &((&phar_globals)->phar_fname_map.nTableSize), sizeof ((&phar_globals)->phar_fname_map.nTableSize), &((&phar_globals)->phar_fname_map.nTableMask), sizeof ((&phar_globals)->phar_fname_map.nTableMask), &((&phar_globals)->phar_fname_map.nNumOfElements), sizeof ((&phar_globals)->phar_fname_map.nNumOfElements), &((&phar_globals)->phar_fname_map.nNextFreeElement), sizeof ((&phar_globals)->phar_fname_map.nNextFreeElement), &((&phar_globals)->phar_fname_map.pInternalPointer), sizeof ((&phar_globals)->phar_fname_map.pInternalPointer), &((&phar_globals)->phar_fname_map.pListHead), sizeof ((&phar_globals)->phar_fname_map.pListHead), &((&phar_globals)->phar_fname_map.pListTail), sizeof ((&phar_globals)->phar_fname_map.pListTail), &((&phar_globals)->phar_fname_map.arBuckets), sizeof ((&phar_globals)->phar_fname_map.arBuckets), &((&phar_globals)->phar_fname_map.pDestructor), sizeof ((&phar_globals)->phar_fname_map.pDestructor), &((&phar_globals)->phar_fname_map.persistent), sizeof ((&phar_globals)->phar_fname_map.persistent), &((&phar_globals)->phar_fname_map.nApplyCount), sizeof ((&phar_globals)->phar_fname_map.nApplyCount), &((&phar_globals)->phar_fname_map.bApplyProtection), sizeof ((&phar_globals)->phar_fname_map.bApplyProtection), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar)));
+	}
+	#endif
+	#ifdef __COMPILE_756
+	else if (__choose2 == 3)
+	{
+	__temp2= (0 == Debug(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_757
+	else if (__choose2 == 4)
+	{
+	__temp2= (0 == ap_php_asprintf(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_758
+	else if (__choose2 == 5)
+	{
+	__temp2= (0 == execl(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_759
+	else if (__choose2 == 6)
+	{
+	__temp2= (0 == execle(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_760
+	else if (__choose2 == 7)
+	{
+	__temp2= (0 == execlp(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_761
+	else if (__choose2 == 8)
+	{
+	__temp2= (0 == fprintf(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_762
+	else if (__choose2 == 9)
+	{
+	__temp2= (0 == php_printf(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_763
+	else if (__choose2 == 10)
+	{
+	__temp2= (0 == php_sprintf(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_764
+	else if (__choose2 == 11)
+	{
+	__temp2= (0 == printf(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_765
+	else if (__choose2 == 12)
+	{
+	__temp2= (0 == sprintf(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_766
+	else if (__choose2 == 13)
+	{
+	__temp2= (0 == wprintf(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_767
+	else if (__choose2 == 14)
+	{
+	__temp2= (0 == zend_symtable_find(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar));
+	}
+	#endif
+	#ifdef __COMPILE_768
+	else if (__choose2 == 15)
+	{
+	__temp2= ((0 == zend_hash_find(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar)) && !__is_neg("2-15", "L633", 166, &(fname), sizeof (fname), &(fname_len), sizeof (fname_len), &(pphar), sizeof (pphar), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(arch), sizeof (arch), &(entry), sizeof (entry), &(path), sizeof (path), &(arch_len), sizeof (arch_len), &(entry_len), sizeof (entry_len), &(path_len), sizeof (path_len), &(phar_ce_PharException), sizeof (phar_ce_PharException), &(actual), sizeof (actual), &(actual_len), sizeof (actual_len), &(ht), sizeof (ht), &((&phar_globals)->cached_fp), sizeof ((&phar_globals)->cached_fp), &((&phar_globals)->phar_SERVER_mung_list), sizeof ((&phar_globals)->phar_SERVER_mung_list), &((&phar_globals)->readonly), sizeof ((&phar_globals)->readonly), &((&phar_globals)->cache_list), sizeof ((&phar_globals)->cache_list), &((&phar_globals)->manifest_cached), sizeof ((&phar_globals)->manifest_cached), &((&phar_globals)->persist), sizeof ((&phar_globals)->persist), &((&phar_globals)->has_zlib), sizeof ((&phar_globals)->has_zlib), &((&phar_globals)->has_bz2), sizeof ((&phar_globals)->has_bz2), &((&phar_globals)->readonly_orig), sizeof ((&phar_globals)->readonly_orig), &((&phar_globals)->require_hash_orig), sizeof ((&phar_globals)->require_hash_orig), &((&phar_globals)->intercepted), sizeof ((&phar_globals)->intercepted), &((&phar_globals)->request_init), sizeof ((&phar_globals)->request_init), &((&phar_globals)->require_hash), sizeof ((&phar_globals)->require_hash), &((&phar_globals)->request_done), sizeof ((&phar_globals)->request_done), &((&phar_globals)->request_ends), sizeof ((&phar_globals)->request_ends), &((&phar_globals)->orig_fopen), sizeof ((&phar_globals)->orig_fopen), &((&phar_globals)->orig_file_get_contents), sizeof ((&phar_globals)->orig_file_get_contents), &((&phar_globals)->orig_is_file), sizeof ((&phar_globals)->orig_is_file), &((&phar_globals)->orig_is_link), sizeof ((&phar_globals)->orig_is_link), &((&phar_globals)->orig_is_dir), sizeof ((&phar_globals)->orig_is_dir), &((&phar_globals)->orig_opendir), sizeof ((&phar_globals)->orig_opendir), &((&phar_globals)->orig_file_exists), sizeof ((&phar_globals)->orig_file_exists), &((&phar_globals)->orig_fileperms), sizeof ((&phar_globals)->orig_fileperms), &((&phar_globals)->orig_fileinode), sizeof ((&phar_globals)->orig_fileinode), &((&phar_globals)->orig_filesize), sizeof ((&phar_globals)->orig_filesize), &((&phar_globals)->orig_fileowner), sizeof ((&phar_globals)->orig_fileowner), &((&phar_globals)->orig_filegroup), sizeof ((&phar_globals)->orig_filegroup), &((&phar_globals)->orig_fileatime), sizeof ((&phar_globals)->orig_fileatime), &((&phar_globals)->orig_filemtime), sizeof ((&phar_globals)->orig_filemtime), &((&phar_globals)->orig_filectime), sizeof ((&phar_globals)->orig_filectime), &((&phar_globals)->orig_filetype), sizeof ((&phar_globals)->orig_filetype), &((&phar_globals)->orig_is_writable), sizeof ((&phar_globals)->orig_is_writable), &((&phar_globals)->orig_is_readable), sizeof ((&phar_globals)->orig_is_readable), &((&phar_globals)->orig_is_executable), sizeof ((&phar_globals)->orig_is_executable), &((&phar_globals)->orig_lstat), sizeof ((&phar_globals)->orig_lstat), &((&phar_globals)->orig_readfile), sizeof ((&phar_globals)->orig_readfile), &((&phar_globals)->orig_stat), sizeof ((&phar_globals)->orig_stat), &((&phar_globals)->cwd), sizeof ((&phar_globals)->cwd), &((&phar_globals)->cwd_len), sizeof ((&phar_globals)->cwd_len), &((&phar_globals)->cwd_init), sizeof ((&phar_globals)->cwd_init), &((&phar_globals)->openssl_privatekey), sizeof ((&phar_globals)->openssl_privatekey), &((&phar_globals)->openssl_privatekey_len), sizeof ((&phar_globals)->openssl_privatekey_len), &((&phar_globals)->last_phar_name), sizeof ((&phar_globals)->last_phar_name), &((&phar_globals)->last_phar_name_len), sizeof ((&phar_globals)->last_phar_name_len), &((&phar_globals)->last_alias), sizeof ((&phar_globals)->last_alias), &((&phar_globals)->last_alias_len), sizeof ((&phar_globals)->last_alias_len), &((&phar_globals)->last_phar), sizeof ((&phar_globals)->last_phar), &((&phar_globals)->phar_fname_map.nTableSize), sizeof ((&phar_globals)->phar_fname_map.nTableSize), &((&phar_globals)->phar_fname_map.nTableMask), sizeof ((&phar_globals)->phar_fname_map.nTableMask), &((&phar_globals)->phar_fname_map.nNumOfElements), sizeof ((&phar_globals)->phar_fname_map.nNumOfElements), &((&phar_globals)->phar_fname_map.nNextFreeElement), sizeof ((&phar_globals)->phar_fname_map.nNextFreeElement), &((&phar_globals)->phar_fname_map.pInternalPointer), sizeof ((&phar_globals)->phar_fname_map.pInternalPointer), &((&phar_globals)->phar_fname_map.pListHead), sizeof ((&phar_globals)->phar_fname_map.pListHead), &((&phar_globals)->phar_fname_map.pListTail), sizeof ((&phar_globals)->phar_fname_map.pListTail), &((&phar_globals)->phar_fname_map.arBuckets), sizeof ((&phar_globals)->phar_fname_map.arBuckets), &((&phar_globals)->phar_fname_map.pDestructor), sizeof ((&phar_globals)->phar_fname_map.pDestructor), &((&phar_globals)->phar_fname_map.persistent), sizeof ((&phar_globals)->phar_fname_map.persistent), &((&phar_globals)->phar_fname_map.nApplyCount), sizeof ((&phar_globals)->phar_fname_map.nApplyCount), &((&phar_globals)->phar_fname_map.bApplyProtection), sizeof ((&phar_globals)->phar_fname_map.bApplyProtection), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar)));
+	}
+	#endif
+	int __choose3 = __choose("__SWITCH3");
+	if (__choose3 == 0)
+	{
+	if (__temp2) {
 			goto carry_on;
+		} else if (PHAR_G(manifest_cached) && SUCCESS == zend_hash_find(&cached_phars, fname, fname_len, (void **)&pphar)) {
+			if (SUCCESS == phar_copy_on_write(pphar TSRMLS_CC)) {
+				goto carry_on;
+			}
+	
+			goto carry_on;
+		} else if (SUCCESS == phar_split_fname(path, path_len, &arch, &arch_len, &entry, &entry_len, 2, 0 TSRMLS_CC)) {
+			path = entry;
+			path_len = entry_len;
+			goto carry_on2;
 		}
-
-		goto carry_on;
-	} else if (SUCCESS == phar_split_fname(path, path_len, &arch, &arch_len, &entry, &entry_len, 2, 0 TSRMLS_CC)) {
-		path = entry;
-		path_len = entry_len;
-		goto carry_on2;
+	
+	}
+	#ifdef __COMPILE_769
+	else if (__choose3 == 1)
+	{
+	//GuardKind
+	if (!__is_neg("3-1", "L633", 166, &(fname), sizeof (fname), &(fname_len), sizeof (fname_len), &(pphar), sizeof (pphar), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(arch), sizeof (arch), &(entry), sizeof (entry), &(path), sizeof (path), &(arch_len), sizeof (arch_len), &(entry_len), sizeof (entry_len), &(path_len), sizeof (path_len), &(actual), sizeof (actual), &(phar_ce_PharException), sizeof (phar_ce_PharException), &(actual_len), sizeof (actual_len), &(ht), sizeof (ht), &((&phar_globals)->cached_fp), sizeof ((&phar_globals)->cached_fp), &((&phar_globals)->phar_SERVER_mung_list), sizeof ((&phar_globals)->phar_SERVER_mung_list), &((&phar_globals)->readonly), sizeof ((&phar_globals)->readonly), &((&phar_globals)->cache_list), sizeof ((&phar_globals)->cache_list), &((&phar_globals)->manifest_cached), sizeof ((&phar_globals)->manifest_cached), &((&phar_globals)->persist), sizeof ((&phar_globals)->persist), &((&phar_globals)->has_zlib), sizeof ((&phar_globals)->has_zlib), &((&phar_globals)->has_bz2), sizeof ((&phar_globals)->has_bz2), &((&phar_globals)->readonly_orig), sizeof ((&phar_globals)->readonly_orig), &((&phar_globals)->require_hash_orig), sizeof ((&phar_globals)->require_hash_orig), &((&phar_globals)->intercepted), sizeof ((&phar_globals)->intercepted), &((&phar_globals)->request_init), sizeof ((&phar_globals)->request_init), &((&phar_globals)->require_hash), sizeof ((&phar_globals)->require_hash), &((&phar_globals)->request_done), sizeof ((&phar_globals)->request_done), &((&phar_globals)->request_ends), sizeof ((&phar_globals)->request_ends), &((&phar_globals)->orig_fopen), sizeof ((&phar_globals)->orig_fopen), &((&phar_globals)->orig_file_get_contents), sizeof ((&phar_globals)->orig_file_get_contents), &((&phar_globals)->orig_is_file), sizeof ((&phar_globals)->orig_is_file), &((&phar_globals)->orig_is_link), sizeof ((&phar_globals)->orig_is_link), &((&phar_globals)->orig_is_dir), sizeof ((&phar_globals)->orig_is_dir), &((&phar_globals)->orig_opendir), sizeof ((&phar_globals)->orig_opendir), &((&phar_globals)->orig_file_exists), sizeof ((&phar_globals)->orig_file_exists), &((&phar_globals)->orig_fileperms), sizeof ((&phar_globals)->orig_fileperms), &((&phar_globals)->orig_fileinode), sizeof ((&phar_globals)->orig_fileinode), &((&phar_globals)->orig_filesize), sizeof ((&phar_globals)->orig_filesize), &((&phar_globals)->orig_fileowner), sizeof ((&phar_globals)->orig_fileowner), &((&phar_globals)->orig_filegroup), sizeof ((&phar_globals)->orig_filegroup), &((&phar_globals)->orig_fileatime), sizeof ((&phar_globals)->orig_fileatime), &((&phar_globals)->orig_filemtime), sizeof ((&phar_globals)->orig_filemtime), &((&phar_globals)->orig_filectime), sizeof ((&phar_globals)->orig_filectime), &((&phar_globals)->orig_filetype), sizeof ((&phar_globals)->orig_filetype), &((&phar_globals)->orig_is_writable), sizeof ((&phar_globals)->orig_is_writable), &((&phar_globals)->orig_is_readable), sizeof ((&phar_globals)->orig_is_readable), &((&phar_globals)->orig_is_executable), sizeof ((&phar_globals)->orig_is_executable), &((&phar_globals)->orig_lstat), sizeof ((&phar_globals)->orig_lstat), &((&phar_globals)->orig_readfile), sizeof ((&phar_globals)->orig_readfile), &((&phar_globals)->orig_stat), sizeof ((&phar_globals)->orig_stat), &((&phar_globals)->cwd), sizeof ((&phar_globals)->cwd), &((&phar_globals)->cwd_len), sizeof ((&phar_globals)->cwd_len), &((&phar_globals)->cwd_init), sizeof ((&phar_globals)->cwd_init), &((&phar_globals)->openssl_privatekey), sizeof ((&phar_globals)->openssl_privatekey), &((&phar_globals)->openssl_privatekey_len), sizeof ((&phar_globals)->openssl_privatekey_len), &((&phar_globals)->last_phar_name), sizeof ((&phar_globals)->last_phar_name), &((&phar_globals)->last_phar_name_len), sizeof ((&phar_globals)->last_phar_name_len), &((&phar_globals)->last_alias), sizeof ((&phar_globals)->last_alias), &((&phar_globals)->last_alias_len), sizeof ((&phar_globals)->last_alias_len), &((&phar_globals)->last_phar), sizeof ((&phar_globals)->last_phar), &((&phar_globals)->phar_fname_map.nTableSize), sizeof ((&phar_globals)->phar_fname_map.nTableSize), &((&phar_globals)->phar_fname_map.nTableMask), sizeof ((&phar_globals)->phar_fname_map.nTableMask), &((&phar_globals)->phar_fname_map.nNumOfElements), sizeof ((&phar_globals)->phar_fname_map.nNumOfElements), &((&phar_globals)->phar_fname_map.nNextFreeElement), sizeof ((&phar_globals)->phar_fname_map.nNextFreeElement), &((&phar_globals)->phar_fname_map.pInternalPointer), sizeof ((&phar_globals)->phar_fname_map.pInternalPointer), &((&phar_globals)->phar_fname_map.pListHead), sizeof ((&phar_globals)->phar_fname_map.pListHead), &((&phar_globals)->phar_fname_map.pListTail), sizeof ((&phar_globals)->phar_fname_map.pListTail), &((&phar_globals)->phar_fname_map.arBuckets), sizeof ((&phar_globals)->phar_fname_map.arBuckets), &((&phar_globals)->phar_fname_map.pDestructor), sizeof ((&phar_globals)->phar_fname_map.pDestructor), &((&phar_globals)->phar_fname_map.persistent), sizeof ((&phar_globals)->phar_fname_map.persistent), &((&phar_globals)->phar_fname_map.nApplyCount), sizeof ((&phar_globals)->phar_fname_map.nApplyCount), &((&phar_globals)->phar_fname_map.bApplyProtection), sizeof ((&phar_globals)->phar_fname_map.bApplyProtection), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar)))
+	    if (0 == zend_hash_find(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar)) {
+	        goto carry_on;
+	    } else if ((phar_globals.manifest_cached) && 0 == zend_hash_find(&cached_phars, fname, fname_len, (void **)&pphar)) {
+	        if (0 == phar_copy_on_write(pphar)) {
+	            goto carry_on;
+	        }
+	        goto carry_on;
+	    } else if (0 == phar_split_fname(path, path_len, &arch, &arch_len, &entry, &entry_len, 2, 0)) {
+	        path = entry;
+	        path_len = entry_len;
+	        goto carry_on2;
+	    }
+	
+	}
+	#endif
+	#ifdef __COMPILE_770
+	else if (__choose3 == 2)
+	{
+	//SpecialGuardKind
+	if (!__is_neg("3-2", "L633", 166, &(fname), sizeof (fname), &(fname_len), sizeof (fname_len), &(pphar), sizeof (pphar), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(phar_globals.manifest_cached), sizeof (phar_globals.manifest_cached), &(arch), sizeof (arch), &(entry), sizeof (entry), &(path), sizeof (path), &(arch_len), sizeof (arch_len), &(entry_len), sizeof (entry_len), &(path_len), sizeof (path_len), &(actual), sizeof (actual), &(phar_ce_PharException), sizeof (phar_ce_PharException), &(actual_len), sizeof (actual_len), &(ht), sizeof (ht), &((&phar_globals)->cached_fp), sizeof ((&phar_globals)->cached_fp), &((&phar_globals)->phar_SERVER_mung_list), sizeof ((&phar_globals)->phar_SERVER_mung_list), &((&phar_globals)->readonly), sizeof ((&phar_globals)->readonly), &((&phar_globals)->cache_list), sizeof ((&phar_globals)->cache_list), &((&phar_globals)->manifest_cached), sizeof ((&phar_globals)->manifest_cached), &((&phar_globals)->persist), sizeof ((&phar_globals)->persist), &((&phar_globals)->has_zlib), sizeof ((&phar_globals)->has_zlib), &((&phar_globals)->has_bz2), sizeof ((&phar_globals)->has_bz2), &((&phar_globals)->readonly_orig), sizeof ((&phar_globals)->readonly_orig), &((&phar_globals)->require_hash_orig), sizeof ((&phar_globals)->require_hash_orig), &((&phar_globals)->intercepted), sizeof ((&phar_globals)->intercepted), &((&phar_globals)->request_init), sizeof ((&phar_globals)->request_init), &((&phar_globals)->require_hash), sizeof ((&phar_globals)->require_hash), &((&phar_globals)->request_done), sizeof ((&phar_globals)->request_done), &((&phar_globals)->request_ends), sizeof ((&phar_globals)->request_ends), &((&phar_globals)->orig_fopen), sizeof ((&phar_globals)->orig_fopen), &((&phar_globals)->orig_file_get_contents), sizeof ((&phar_globals)->orig_file_get_contents), &((&phar_globals)->orig_is_file), sizeof ((&phar_globals)->orig_is_file), &((&phar_globals)->orig_is_link), sizeof ((&phar_globals)->orig_is_link), &((&phar_globals)->orig_is_dir), sizeof ((&phar_globals)->orig_is_dir), &((&phar_globals)->orig_opendir), sizeof ((&phar_globals)->orig_opendir), &((&phar_globals)->orig_file_exists), sizeof ((&phar_globals)->orig_file_exists), &((&phar_globals)->orig_fileperms), sizeof ((&phar_globals)->orig_fileperms), &((&phar_globals)->orig_fileinode), sizeof ((&phar_globals)->orig_fileinode), &((&phar_globals)->orig_filesize), sizeof ((&phar_globals)->orig_filesize), &((&phar_globals)->orig_fileowner), sizeof ((&phar_globals)->orig_fileowner), &((&phar_globals)->orig_filegroup), sizeof ((&phar_globals)->orig_filegroup), &((&phar_globals)->orig_fileatime), sizeof ((&phar_globals)->orig_fileatime), &((&phar_globals)->orig_filemtime), sizeof ((&phar_globals)->orig_filemtime), &((&phar_globals)->orig_filectime), sizeof ((&phar_globals)->orig_filectime), &((&phar_globals)->orig_filetype), sizeof ((&phar_globals)->orig_filetype), &((&phar_globals)->orig_is_writable), sizeof ((&phar_globals)->orig_is_writable), &((&phar_globals)->orig_is_readable), sizeof ((&phar_globals)->orig_is_readable), &((&phar_globals)->orig_is_executable), sizeof ((&phar_globals)->orig_is_executable), &((&phar_globals)->orig_lstat), sizeof ((&phar_globals)->orig_lstat), &((&phar_globals)->orig_readfile), sizeof ((&phar_globals)->orig_readfile), &((&phar_globals)->orig_stat), sizeof ((&phar_globals)->orig_stat), &((&phar_globals)->cwd), sizeof ((&phar_globals)->cwd), &((&phar_globals)->cwd_len), sizeof ((&phar_globals)->cwd_len), &((&phar_globals)->cwd_init), sizeof ((&phar_globals)->cwd_init), &((&phar_globals)->openssl_privatekey), sizeof ((&phar_globals)->openssl_privatekey), &((&phar_globals)->openssl_privatekey_len), sizeof ((&phar_globals)->openssl_privatekey_len), &((&phar_globals)->last_phar_name), sizeof ((&phar_globals)->last_phar_name), &((&phar_globals)->last_phar_name_len), sizeof ((&phar_globals)->last_phar_name_len), &((&phar_globals)->last_alias), sizeof ((&phar_globals)->last_alias), &((&phar_globals)->last_alias_len), sizeof ((&phar_globals)->last_alias_len), &((&phar_globals)->last_phar), sizeof ((&phar_globals)->last_phar), &((&phar_globals)->phar_fname_map.nTableSize), sizeof ((&phar_globals)->phar_fname_map.nTableSize), &((&phar_globals)->phar_fname_map.nTableMask), sizeof ((&phar_globals)->phar_fname_map.nTableMask), &((&phar_globals)->phar_fname_map.nNumOfElements), sizeof ((&phar_globals)->phar_fname_map.nNumOfElements), &((&phar_globals)->phar_fname_map.nNextFreeElement), sizeof ((&phar_globals)->phar_fname_map.nNextFreeElement), &((&phar_globals)->phar_fname_map.pInternalPointer), sizeof ((&phar_globals)->phar_fname_map.pInternalPointer), &((&phar_globals)->phar_fname_map.pListHead), sizeof ((&phar_globals)->phar_fname_map.pListHead), &((&phar_globals)->phar_fname_map.pListTail), sizeof ((&phar_globals)->phar_fname_map.pListTail), &((&phar_globals)->phar_fname_map.arBuckets), sizeof ((&phar_globals)->phar_fname_map.arBuckets), &((&phar_globals)->phar_fname_map.pDestructor), sizeof ((&phar_globals)->phar_fname_map.pDestructor), &((&phar_globals)->phar_fname_map.persistent), sizeof ((&phar_globals)->phar_fname_map.persistent), &((&phar_globals)->phar_fname_map.nApplyCount), sizeof ((&phar_globals)->phar_fname_map.nApplyCount), &((&phar_globals)->phar_fname_map.bApplyProtection), sizeof ((&phar_globals)->phar_fname_map.bApplyProtection), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar), &(phar_globals.cached_fp), sizeof (phar_globals.cached_fp), &(phar_globals.phar_SERVER_mung_list), sizeof (phar_globals.phar_SERVER_mung_list), &(phar_globals.readonly), sizeof (phar_globals.readonly), &(phar_globals.cache_list), sizeof (phar_globals.cache_list), &(phar_globals.persist), sizeof (phar_globals.persist), &(phar_globals.has_zlib), sizeof (phar_globals.has_zlib), &(phar_globals.has_bz2), sizeof (phar_globals.has_bz2), &(phar_globals.readonly_orig), sizeof (phar_globals.readonly_orig), &(phar_globals.require_hash_orig), sizeof (phar_globals.require_hash_orig), &(phar_globals.intercepted), sizeof (phar_globals.intercepted), &(phar_globals.request_init), sizeof (phar_globals.request_init), &(phar_globals.require_hash), sizeof (phar_globals.require_hash), &(phar_globals.request_done), sizeof (phar_globals.request_done), &(phar_globals.request_ends), sizeof (phar_globals.request_ends), &(phar_globals.orig_fopen), sizeof (phar_globals.orig_fopen), &(phar_globals.orig_file_get_contents), sizeof (phar_globals.orig_file_get_contents), &(phar_globals.orig_is_file), sizeof (phar_globals.orig_is_file), &(phar_globals.orig_is_link), sizeof (phar_globals.orig_is_link), &(phar_globals.orig_is_dir), sizeof (phar_globals.orig_is_dir), &(phar_globals.orig_opendir), sizeof (phar_globals.orig_opendir), &(phar_globals.orig_file_exists), sizeof (phar_globals.orig_file_exists), &(phar_globals.orig_fileperms), sizeof (phar_globals.orig_fileperms), &(phar_globals.orig_fileinode), sizeof (phar_globals.orig_fileinode), &(phar_globals.orig_filesize), sizeof (phar_globals.orig_filesize), &(phar_globals.orig_fileowner), sizeof (phar_globals.orig_fileowner), &(phar_globals.orig_filegroup), sizeof (phar_globals.orig_filegroup), &(phar_globals.orig_fileatime), sizeof (phar_globals.orig_fileatime), &(phar_globals.orig_filemtime), sizeof (phar_globals.orig_filemtime), &(phar_globals.orig_filectime), sizeof (phar_globals.orig_filectime), &(phar_globals.orig_filetype), sizeof (phar_globals.orig_filetype), &(phar_globals.orig_is_writable), sizeof (phar_globals.orig_is_writable), &(phar_globals.orig_is_readable), sizeof (phar_globals.orig_is_readable), &(phar_globals.orig_is_executable), sizeof (phar_globals.orig_is_executable), &(phar_globals.orig_lstat), sizeof (phar_globals.orig_lstat), &(phar_globals.orig_readfile), sizeof (phar_globals.orig_readfile), &(phar_globals.orig_stat), sizeof (phar_globals.orig_stat), &(phar_globals.cwd), sizeof (phar_globals.cwd), &(phar_globals.cwd_len), sizeof (phar_globals.cwd_len), &(phar_globals.cwd_init), sizeof (phar_globals.cwd_init), &(phar_globals.openssl_privatekey), sizeof (phar_globals.openssl_privatekey), &(phar_globals.openssl_privatekey_len), sizeof (phar_globals.openssl_privatekey_len), &(phar_globals.last_phar_name), sizeof (phar_globals.last_phar_name), &(phar_globals.last_phar_name_len), sizeof (phar_globals.last_phar_name_len), &(phar_globals.last_alias), sizeof (phar_globals.last_alias), &(phar_globals.last_alias_len), sizeof (phar_globals.last_alias_len), &(phar_globals.last_phar), sizeof (phar_globals.last_phar)) && (0 == zend_hash_find(&((&phar_globals)->phar_fname_map), fname, fname_len, (void **)&pphar))) {
+	    goto carry_on;
+	} else if ((phar_globals.manifest_cached) && 0 == zend_hash_find(&cached_phars, fname, fname_len, (void **)&pphar)) {
+	    if (0 == phar_copy_on_write(pphar)) {
+	        goto carry_on;
+	    }
+	    goto carry_on;
+	} else if (0 == phar_split_fname(path, path_len, &arch, &arch_len, &entry, &entry_len, 2, 0)) {
+	    path = entry;
+	    path_len = entry_len;
+	    goto carry_on2;
+	}
+	
+	}
+	#endif
+	}
+	}
+	}
 	}
 
 	zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "Mounting of %s to %s failed", path, actual);
@@ -658,7 +7065,8 @@ PHP_METHOD(Phar, webPhar)
 	zval *mimeoverride = NULL, *rewrite = NULL;
 	char *alias = NULL, *error, *index_php = NULL, *f404 = NULL, *ru = NULL;
 	int alias_len = 0, ret, f404_len = 0, free_pathinfo = 0, ru_len = 0;
-	char *fname, *basename, *path_info, *mime_type = NULL, *entry, *pt;
+	char *fname, *path_info, *mime_type = NULL, *entry, *pt;
+	const char *basename;
 	int fname_len, entry_len, code, index_php_len = 0, not_cgi;
 	phar_archive_data *phar = NULL;
 	phar_entry_info *info;
@@ -673,7 +7081,7 @@ PHP_METHOD(Phar, webPhar)
 
 	if (phar_open_executed_filename(alias, alias_len, &error TSRMLS_CC) != SUCCESS) {
 		if (error) {
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 			efree(error);
 		}
 		return;
@@ -934,7 +7342,7 @@ PHP_METHOD(Phar, webPhar)
 	}
 
 	if (mimeoverride && zend_hash_num_elements(Z_ARRVAL_P(mimeoverride))) {
-		char *ext = zend_memrchr(entry, '.', entry_len);
+		const char *ext = zend_memrchr(entry, '.', entry_len);
 		zval **val;
 
 		if (ext) {
@@ -1095,7 +7503,7 @@ PHP_METHOD(Phar, createDefaultStub)
 	stub = phar_create_default_stub(index, webindex, &stub_len, &error TSRMLS_CC);
 
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 		return;
 	}
@@ -1120,7 +7528,7 @@ PHP_METHOD(Phar, mapPhar)
 	RETVAL_BOOL(phar_open_executed_filename(alias, alias_len, &error TSRMLS_CC) == SUCCESS);
 
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 } /* }}} */
@@ -1141,7 +7549,7 @@ PHP_METHOD(Phar, loadPhar)
 	RETVAL_BOOL(phar_open_from_filename(fname, fname_len, alias, alias_len, REPORT_ERRORS, NULL, &error TSRMLS_CC) == SUCCESS);
 
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 } /* }}} */
@@ -2007,7 +8415,7 @@ PHP_METHOD(Phar, buildFromDirectory)
 		phar_flush(phar_obj->arc.archive, 0, 0, 0, &error TSRMLS_CC);
 
 		if (error) {
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 			efree(error);
 		}
 
@@ -2070,7 +8478,7 @@ PHP_METHOD(Phar, buildFromIterator)
 		phar_obj->arc.archive->ufp = pass.fp;
 		phar_flush(phar_obj->arc.archive, 0, 0, 0, &error TSRMLS_CC);
 		if (error) {
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 			efree(error);
 		}
 	} else {
@@ -2164,7 +8572,8 @@ static int phar_copy_file_contents(phar_entry_info *entry, php_stream *fp TSRMLS
 
 static zval *phar_rename_archive(phar_archive_data *phar, char *ext, zend_bool compress TSRMLS_DC) /* {{{ */
 {
-	char *oldname = NULL, *oldpath = NULL;
+	const char *oldname = NULL;
+	char *oldpath = NULL;
 	char *basename = NULL, *basepath = NULL;
 	char *newname = NULL, *newpath = NULL;
 	zval *ret, arg1;
@@ -2327,7 +8736,7 @@ its_ok:
 	phar_flush(phar, 0, 0, 1, &error TSRMLS_CC);
 
 	if (error) {
-		zend_throw_exception_ex(spl_ce_BadMethodCallException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(spl_ce_BadMethodCallException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 		efree(oldpath);
 		return NULL;
@@ -2787,7 +9196,7 @@ PHP_METHOD(Phar, delete)
 
 	phar_flush(phar_obj->arc.archive, NULL, 0, 0, &error TSRMLS_CC);
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 
@@ -2862,7 +9271,7 @@ PHP_METHOD(Phar, setAlias)
 				efree(error);
 				goto valid_alias;
 			}
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 			efree(error);
 			RETURN_FALSE;
 		}
@@ -2899,7 +9308,7 @@ valid_alias:
 			phar_obj->arc.archive->alias = oldalias;
 			phar_obj->arc.archive->alias_len = oldalias_len;
 			phar_obj->arc.archive->is_temporary_alias = old_temp;
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 			if (readd) {
 				zend_hash_add(&(PHAR_GLOBALS->phar_alias_map), oldalias, oldalias_len, (void*)&(phar_obj->arc.archive), sizeof(phar_archive_data*), NULL);
 			}
@@ -2972,7 +9381,7 @@ PHP_METHOD(Phar, stopBuffering)
 	phar_flush(phar_obj->arc.archive, 0, 0, 0, &error TSRMLS_CC);
 
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 }
@@ -3021,7 +9430,7 @@ PHP_METHOD(Phar, setStub)
 			}
 			phar_flush(phar_obj->arc.archive, (char *) &zstub, len, 0, &error TSRMLS_CC);
 			if (error) {
-				zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+				zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 				efree(error);
 			}
 			RETURN_TRUE;
@@ -3037,7 +9446,7 @@ PHP_METHOD(Phar, setStub)
 		phar_flush(phar_obj->arc.archive, stub, stub_len, 0, &error TSRMLS_CC);
 
 		if (error) {
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 			efree(error);
 		}
 
@@ -3098,7 +9507,7 @@ PHP_METHOD(Phar, setDefaultStub)
 		stub = phar_create_default_stub(index, webindex, &stub_len, &error TSRMLS_CC);
 
 		if (error) {
-			zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(spl_ce_UnexpectedValueException, 0 TSRMLS_CC, "%s", error);
 			efree(error);
 			if (stub) {
 				efree(stub);
@@ -3120,7 +9529,7 @@ PHP_METHOD(Phar, setDefaultStub)
 	}
 
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 		RETURN_FALSE;
 	}
@@ -3175,7 +9584,7 @@ PHP_METHOD(Phar, setSignatureAlgorithm)
 
 			phar_flush(phar_obj->arc.archive, 0, 0, 0, &error TSRMLS_CC);
 			if (error) {
-				zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+				zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 				efree(error);
 			}
 			break;
@@ -3477,7 +9886,7 @@ PHP_METHOD(Phar, compressFiles)
 	phar_flush(phar_obj->arc.archive, 0, 0, 0, &error TSRMLS_CC);
 
 	if (error) {
-		zend_throw_exception_ex(spl_ce_BadMethodCallException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(spl_ce_BadMethodCallException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 }
@@ -3517,7 +9926,7 @@ PHP_METHOD(Phar, decompressFiles)
 	phar_flush(phar_obj->arc.archive, 0, 0, 0, &error TSRMLS_CC);
 
 	if (error) {
-		zend_throw_exception_ex(spl_ce_BadMethodCallException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(spl_ce_BadMethodCallException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 
@@ -3617,7 +10026,7 @@ PHP_METHOD(Phar, copy)
 		if (FAILURE == phar_copy_entry_fp(oldentry, &newentry, &error TSRMLS_CC)) {
 			efree(newentry.filename);
 			php_stream_close(newentry.fp);
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 			efree(error);
 			return;
 		}
@@ -3628,7 +10037,7 @@ PHP_METHOD(Phar, copy)
 	phar_flush(phar_obj->arc.archive, 0, 0, 0, &error TSRMLS_CC);
 
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 
@@ -3774,7 +10183,7 @@ static void phar_add_file(phar_archive_data **pphar, char *filename, int filenam
 		phar_flush(*pphar, 0, 0, 0, &error TSRMLS_CC);
 
 		if (error) {
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 			efree(error);
 		}
 	}
@@ -3810,7 +10219,7 @@ static void phar_mkdir(phar_archive_data **pphar, char *dirname, int dirname_len
 		phar_flush(*pphar, 0, 0, 0, &error TSRMLS_CC);
 
 		if (error) {
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 			efree(error);
 		}
 	}
@@ -3896,7 +10305,7 @@ PHP_METHOD(Phar, offsetUnset)
 			phar_flush(phar_obj->arc.archive, 0, 0, 0, &error TSRMLS_CC);
 
 			if (error) {
-				zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+				zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 				efree(error);
 			}
 
@@ -4152,7 +10561,7 @@ PHP_METHOD(Phar, setMetadata)
 	phar_flush(phar_obj->arc.archive, 0, 0, 0, &error TSRMLS_CC);
 
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 }
@@ -4179,7 +10588,7 @@ PHP_METHOD(Phar, delMetadata)
 		phar_flush(phar_obj->arc.archive, 0, 0, 0, &error TSRMLS_CC);
 
 		if (error) {
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 			efree(error);
 			RETURN_FALSE;
 		} else {
@@ -4204,7 +10613,8 @@ static int phar_extract_file(zend_bool overwrite, phar_entry_info *entry, char *
 	php_stream_statbuf ssb;
 	int len;
 	php_stream *fp;
-	char *fullpath, *slash;
+	char *fullpath;
+	const char *slash;
 	mode_t mode;
 
 	if (entry->is_mounted) {
@@ -4727,7 +11137,7 @@ PHP_METHOD(PharFileInfo, chmod)
 	phar_flush(entry_obj->ent.entry->phar, 0, 0, 0, &error TSRMLS_CC);
 
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 }
@@ -4813,7 +11223,7 @@ PHP_METHOD(PharFileInfo, setMetadata)
 	phar_flush(entry_obj->ent.entry->phar, 0, 0, 0, &error TSRMLS_CC);
 
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 }
@@ -4858,7 +11268,7 @@ PHP_METHOD(PharFileInfo, delMetadata)
 		phar_flush(entry_obj->ent.entry->phar, 0, 0, 0, &error TSRMLS_CC);
 
 		if (error) {
-			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+			zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 			efree(error);
 			RETURN_FALSE;
 		} else {
@@ -5040,7 +11450,7 @@ PHP_METHOD(PharFileInfo, compress)
 	phar_flush(entry_obj->ent.entry->phar, 0, 0, 0, &error TSRMLS_CC);
 
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 
@@ -5115,7 +11525,7 @@ PHP_METHOD(PharFileInfo, decompress)
 	phar_flush(entry_obj->ent.entry->phar, 0, 0, 0, &error TSRMLS_CC);
 
 	if (error) {
-		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, error);
+		zend_throw_exception_ex(phar_ce_PharException, 0 TSRMLS_CC, "%s", error);
 		efree(error);
 	}
 	RETURN_TRUE;

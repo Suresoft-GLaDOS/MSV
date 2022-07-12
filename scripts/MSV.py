@@ -93,8 +93,6 @@ if __name__=='__main__':
 
     #for benchmark in benchmarks.BENCHMARKS:
     benchmark='gzip-f17cbd13a1d0a7'
-    benchmark='php-ee83270'
-    benchmark='php-3acdca'
     result.append(pool.apply_async(run,(f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(benchmark)}/{benchmarks.get_workdir(benchmark)}",)))
 
     pool.close()
