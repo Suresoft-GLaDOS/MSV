@@ -76,8 +76,6 @@ BENCHMARKS=[
 "libtiff-tests-8a184dc",
 'libtiff-tests-740a6187',
 'libtiff-tests-e779b6cd',
-'wireshark-6d801a205',
-'wireshark-03d7987b',
 ]
 
 FAILED_BENCHMARKS=[
@@ -94,8 +92,6 @@ FAILED_BENCHMARKS=[
 "libtiff-tests-8a184dc",
 'libtiff-tests-740a6187',
 'libtiff-tests-e779b6cd',
-'wireshark-6d801a205',
-'wireshark-03d7987b',
 ]
 
 BENCHMARKS_URL=[
@@ -176,8 +172,6 @@ BENCHMARKS_URL=[
 "libtiff-bug-2008-12-30-362dee5-565eaa2", # Meta-program fail
 'libtiff-bug-2007-07-08-bd2f947-ccc10c7',
 'libtiff-bug-2007-11-23-82e378c-cf05a83',
-'wireshark-bug-35419-35414',
-'wireshark-bug-37171-37170',
 ]
 
 def get_subject(benchmark):
