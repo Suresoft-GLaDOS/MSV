@@ -71,7 +71,7 @@ def run(workdir):
     # elif '1f49' in workdir or '453c' in workdir or '0927' in workdir or '3edb' in workdir or '187e' in workdir:
     #     subp=subprocess.run(["prophet", "-r", f"{workdir}", "-replace-ext", "-skip-verify" , "-first-n-loc", "100",'-skip-profile','-feature-para',f'{para_file}','-msv-ext','-skip-add-stmt'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     # else:
-    subp=subprocess.run(["prophet", "-r", f"{workdir}", "-replace-ext", "-skip-verify" , "-first-n-loc", "200",'-skip-profile','-feature-para',f'{para_file}','-msv-ext'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    subp=subprocess.run(["prophet", "-r", f"{workdir}", "-replace-ext", "-skip-verify" , "-first-n-loc", "1",'-skip-profile','-feature-para',f'{para_file}','-msv-ext','-consider-all'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     print(f'[{current_time()}] Finish run {workdir} with {subp.returncode}')
     id=workdir.split('/')[-1]
     out=''
