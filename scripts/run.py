@@ -84,7 +84,7 @@ def handle_search(version:str):
             if v in benchmarks.FAILED_BENCHMARKS:
                 continue
             if 'php' in v:
-                result=subprocess.run(['python3','/root/project/MSV-search/msv-search.py',"-o",f"/root/project/MSV-experiment/{v}-out","-t","180000","-w",f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}","-p","/root/project/MSV","--use-pass-test","--use-exp-alpha", "--use-prophet-score","-E","20000","--regression-mode","/root/project/MSV/tools/php-regression-test",
+                result=subprocess.run(['python3','/root/project/MSV-search/msv-search.py',"-o",f"/root/project/MSV-experiment/{v}-out","-t","180000","-w",f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}","-p","/root/project/MSV","--use-pass-test","--use-exp-alpha", "--use-prophet-score","-E","20000","--regression-mode","php",
                         "-m","guided","--",f"/root/project/MSV/tools/{benchmarks.get_subject(v)}-test.py",
                         f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}/src", f'{benchmarks.get_test_dir(v)}', f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(v)}/{benchmarks.get_workdir(v)}"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
             else:
@@ -109,7 +109,7 @@ def handle_search(version:str):
         return
     
     if 'php' in version:
-        result=subprocess.run(['python3','/root/project/MSV-search/msv-search.py',"-o",f"/root/project/MSV-experiment/{version}-out","-t","180000","-w",f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(version)}/{benchmarks.get_workdir(version)}","-p","/root/project/MSV","--use-pass-test","--use-exp-alpha", "--use-prophet-score","-E","20000","--regression-mode","/root/project/MSV/tools/php-regression-test",
+        result=subprocess.run(['python3','/root/project/MSV-search/msv-search.py',"-o",f"/root/project/MSV-experiment/{version}-out","-t","180000","-w",f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(version)}/{benchmarks.get_workdir(version)}","-p","/root/project/MSV","--use-pass-test","--use-exp-alpha", "--use-prophet-score","-E","20000","--regression-mode","php",
                     "-m","guided","--",f"/root/project/MSV/tools/{benchmarks.get_subject(version)}-test.py",
                     f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(version)}/{benchmarks.get_workdir(version)}/src", f'{benchmarks.get_test_dir(version)}', f"/root/project/MSV-experiment/benchmarks/{benchmarks.get_subject(version)}/{benchmarks.get_workdir(version)}"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     else:
