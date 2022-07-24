@@ -126,6 +126,7 @@ def handle_check(benchmark:str):
         print(f'-- Benchmark: {benchmark}')
         # print(f'Total plausible patches: 0')
         print(f'Correct patch not found')
+        return
 
     if benchmark=='all':
         for i,v in enumerate(benchmarks.BENCHMARKS):
