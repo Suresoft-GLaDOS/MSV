@@ -363,20 +363,38 @@ std::string toString(RepairCandidate::CandidateKind kind){
             return "AddStmtKind";
         case RepairCandidate::AddStmtAndReplaceAtomKind:
             return "AddStmtAndReplaceAtomKind";
-        case RepairCandidate::AddIfStmtKind:
-            return "AddIfStmtKind";
-        case RepairCandidate::ConditionKind:
-            return "ConditionKind";
+        case RepairCandidate::MSVExtAddIfStmtKind:
+            return "MSVExtAddIfStmtKind";
+        case RepairCandidate::MSVExtConditionKind:
+            return "MSVExtConditionKind";
         case RepairCandidate::MSVExtFunctionReplaceKind:
             return "MSVExtFunctionReplaceKind";
-        case RepairCandidate::MSVExtAddConditionKind:
-            return "MSVExtAddConditionKind";
+        case RepairCandidate::MSVExtReturnConditionKind:
+            return "MSVExtReturnConditionKind";
+        case RepairCandidate::MSVExtAssignConditionKind:
+            return "MSVExtAssignConditionKind";
         case RepairCandidate::MSVExtReplaceFunctionInConditionKind:
             return "MSVExtReplaceFunctionInConditionKind";
         case RepairCandidate::MSVExtRemoveStmtKind:
             return "MSVExtRemoveStmtKind";
         case RepairCandidate::MSVExtRemoveConditionKind:
             return "MSVExtRemoveConditionKind";
+        case RepairCandidate::MSVExtRemoveAssignConditionKind:
+            return "MSVExtRemoveAssignConditionKind";
+        case RepairCandidate::MSVExtReplaceAssignOperatorKind:
+            return "MSVExtReplaceAssignOperatorKind";
+        case RepairCandidate::MSVExtReplaceArrayIndexKind:
+            return "MSVExtReplaceArrayIndexKind";
+        case RepairCandidate::MSVExtReplaceParenInConditionKind:
+            return "MSVExtReplaceParenInConditionKind";
+        case RepairCandidate::MSVExtAddInitBackKind:
+            return "MSVExtAddInitBackKind";
+        case RepairCandidate::MSVExtIfExitBackKind:
+            return "MSVExtIfExitBackKind";
+        case RepairCandidate::MSVExtReplaceTrenaryOperatorKind:
+            return "MSVExtReplaceTrenaryOperatorKind";
+        case RepairCandidate::MSVExtMoveConditionKind:
+            return "MSVExtMoveConditionKind";
         default:
             return "TerribleKind";
     }
@@ -561,7 +579,7 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
 
             if (rc[j].actions[i].kind == RepairAction::ReplaceMutationKind){
                 std::string newStmt="//"+toString(rc[j].kind)+"\n";
-                if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind || rc[j].kind==RepairCandidate::ConditionKind || rc[j].kind==RepairCandidate::MSVExtReplaceFunctionInConditionKind
+                if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind || rc[j].kind==RepairCandidate::MSVExtConditionKind || rc[j].kind==RepairCandidate::MSVExtReplaceFunctionInConditionKind
                             || rc[j].kind==RepairCandidate::MSVExtRemoveConditionKind){
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
@@ -1290,7 +1308,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     }
 
     for (size_t i=0;i<rc.size();i++){
-        if (rc[i].kind==RepairCandidate::TightenConditionKind || rc[i].kind==RepairCandidate::LoosenConditionKind || rc[i].kind==RepairCandidate::IfExitKind || rc[i].kind==RepairCandidate::GuardKind || rc[i].kind==RepairCandidate::SpecialGuardKind || rc[i].kind==RepairCandidate::ConditionKind){
+        if (rc[i].kind==RepairCandidate::TightenConditionKind || rc[i].kind==RepairCandidate::LoosenConditionKind || rc[i].kind==RepairCandidate::IfExitKind || rc[i].kind==RepairCandidate::GuardKind || rc[i].kind==RepairCandidate::SpecialGuardKind || rc[i].kind==RepairCandidate::MSVExtConditionKind){
             std::vector<size_t> switches=switchLoc[rc[i].actions[0].loc];
             std::vector<Expr *> atoms=rc[i].actions[1].candidate_atoms;
             for (size_t j=0;j<switches.size();j++)

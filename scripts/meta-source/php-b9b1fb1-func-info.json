@@ -1,64 +1,6 @@
 [{
-		"original_name":	"",
-		"switch_number":	2,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	4,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	6,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	11,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	13,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	16,
-		"new_names":	[]
-	}, {
-		"original_name":	"htmlNodeDumpFormatOutput",
-		"switch_number":	18,
-		"new_names":	[{
-				"new_name":	"xmlNodeDumpOutput",
-				"case_number":	2
-			}, {
-				"new_name":	"Debug",
-				"case_number":	4
-			}, {
-				"new_name":	"htmlNodeDumpFileFormat",
-				"case_number":	5
-			}, {
-				"new_name":	"php_printf",
-				"case_number":	6
-			}, {
-				"new_name":	"printf",
-				"case_number":	7
-			}, {
-				"new_name":	"xmlNodeDump",
-				"case_number":	8
-			}]
-	}, {
-		"original_name":	"",
-		"switch_number":	20,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	24,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	25,
-		"new_names":	[]
-	}, {
 		"original_name":	"xmlBufferFree",
-		"switch_number":	27,
+		"switch_number":	1,
 		"new_names":	[{
 				"new_name":	"xmlBufferCCat",
 				"case_number":	2
@@ -207,8 +149,4 @@
 				"new_name":	"xmlBufferLength",
 				"case_number":	51
 			}]
-	}, {
-		"original_name":	"",
-		"switch_number":	28,
-		"new_names":	[]
 	}]

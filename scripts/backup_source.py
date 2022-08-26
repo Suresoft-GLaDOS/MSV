@@ -29,9 +29,8 @@ def copy_generated_file(benchmark):
         print(result.stdout.decode('utf-8'))
         exit(1)
 
-#if __name__=='__main__':
-#    for benchmark in benchmarks.BENCHMARKS:
-benchmark='php-1d984a7'
-copy_generated_file(benchmark)
-benchmark='php-ee83270'
-copy_generated_file(benchmark)
+if __name__=='__main__':
+   for benchmark in benchmarks.BENCHMARKS:
+        if benchmark in benchmarks.FAILED_BENCHMARKS:
+            continue
+        copy_generated_file(benchmark)

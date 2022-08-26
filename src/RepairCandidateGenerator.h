@@ -97,13 +97,91 @@ struct RepairCandidate {
         ReplaceFunctionKind,
         AddStmtKind,
         AddStmtAndReplaceAtomKind, // 10
-        AddIfStmtKind,
-        ConditionKind,
+
+        /*
+            +   if (cond) {
+            +       stmt;
+            +   }
+        */
+        MSVExtAddIfStmtKind,
+        /*
+            -   if (cond) {
+            +   if (__is_neg(...)) {
+        */
+        MSVExtConditionKind,
+        /*
+            -   func(...);
+            +   func2(..., var);
+        */
         MSVExtFunctionReplaceKind,
-        MSVExtAddConditionKind,
+        /*
+            -   return ...;
+            +   return ... relation_oper __is_neg(...);
+        */
+        MSVExtReturnConditionKind,
+        /*
+            -   var = ...;
+            +   var = ... relation_oper __is_neg(...);
+        */
+        MSVExtAssignConditionKind,
+        /*
+            -   if (func(...)) {
+            +   if (func2(...)) {
+        */
         MSVExtReplaceFunctionInConditionKind,
+        /*
+            -   stmt;
+        */
         MSVExtRemoveStmtKind,
+        /*
+            -   if (... relation_oper cond) {
+            +   if (...) {
+        */
         MSVExtRemoveConditionKind,
+        /*
+            -   var = ... relation_oper cond;
+            +   var = ...;
+        */
+        MSVExtRemoveAssignConditionKind,
+        /*
+            -   var assign_oper expr;
+            +   var assign_oper2 expr;
+        */
+        MSVExtReplaceAssignOperatorKind,
+        /*
+            -   arr[index]
+            +   arr[index2]
+        */
+        MSVExtReplaceArrayIndexKind,
+        /*
+            -   if ((cond oper cond2) oper2 cond3) {
+            +   if (cond oper (cond2 oper cond3)) {
+        */
+        MSVExtReplaceParenInConditionKind,
+        /*
+                stmt;
+            +   memset(&var, 0, sizeof(var));
+            }
+        */
+        MSVExtAddInitBackKind,
+        /*
+                stmt;
+            +   if (__is_neg(...)) {
+            +       return/break/continue/goto;
+            +   }
+            }
+        */
+        MSVExtIfExitBackKind,
+        /*
+            -   cond ? expr1 : expr2;
+            +   cond ? var != 0 : expr2;
+        */
+        MSVExtReplaceTrenaryOperatorKind,
+        /*
+            -   if (cond oper cond2 oper2 cond3) {
+            +   if (cond2 oepr cond oper2 cond3) {
+        */
+        MSVExtMoveConditionKind,
         AddVarMutation
     } CandidateKind;
     CandidateKind kind;

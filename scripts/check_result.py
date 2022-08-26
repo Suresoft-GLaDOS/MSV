@@ -30,15 +30,17 @@ def get_results(benchmark:str):
         config=result['config'][0]
         patch_id=f'{config["switch"]}-{config["case"]}'
 
-        if 'operator' in config:
-            patch_id+=f':{config["operator"]}'
-            if 'variable' in config:
-                patch_id+=f'-{config["variable"]}-{config["constant"]}'
+        # if 'operator' in config:
+        #     patch_id+=f':{config["operator"]}'
+        #     if 'variable' in config:
+        #         patch_id+=f'-{config["variable"]}-{config["constant"]}'
         
         if is_plausible:
             plausibles.append((patch_id,iteration,f'{config["file"]}:{config["line"]}'))
-        if correct_id is not None and patch_id==correct_id:
+        if correct_id is not None and patch_id in correct_id:
             correct=(patch_id,iteration,f'{config["file"]}:{config["line"]}')
+        elif correct_id is not None:
+            correct=(patch_id,0,f'{config["file"]}:{config["line"]}')
 
     return plausibles,correct
 
@@ -47,9 +49,9 @@ if __name__=="__main__":
         if benchmark.endswith('-out'):
             cur_benchmark=benchmark[:-4]
             plausibles,correct=get_results(cur_benchmark)
-            print(f'Total plausible patches: {len(plausibles)}')
-            for plausible in plausibles:
-                print(f'{plausible[0]} in iteration {plausible[1]}, location: {plausible[2]}')
+            # print(f'Total plausible patches: {len(plausibles)}')
+            # for plausible in plausibles:
+            #     print(f'{plausible[0]} in iteration {plausible[1]}, location: {plausible[2]}')
             
             if correct is not None:
                 print(f'Correct patch found: {correct[0]} in iteration {correct[1]}, location: {correct[2]}')

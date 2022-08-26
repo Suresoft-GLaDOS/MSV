@@ -1,3 +1,4 @@
+Zend/zend_execute.c 1261 6 Zend/zend_execute.c 1261 6		999999		124111		21919
 Zend/zend_vm_execute.h 13552 5 Zend/zend_vm_execute.h 13552 5		1000000		122383		21919
 Zend/zend_vm_execute.h 13551 4 Zend/zend_vm_execute.h 13551 4		1000000		122384		21919
 Zend/zend_vm_execute.h 13550 3 Zend/zend_vm_execute.h 13550 3		1000000		122385		21919
@@ -6,7 +7,6 @@ Zend/zend_vm_execute.h 13542 3 Zend/zend_vm_execute.h 13542 3		1000000		122387		
 Zend/zend_vm_execute.h 13573 21 Zend/zend_execute.c 97 28		999999		122378		21919
 Zend/zend_execute.c 1263 6 Zend/zend_operators.h 393 26		999999		122423		21919
 Zend/zend_execute.c 1262 6 Zend/zend_operators.h 392 26		999999		122451		21919
-Zend/zend_execute.c 1261 6 Zend/zend_execute.c 1261 6		999999		124111		21919
 Zend/zend_vm_execute.h 13541 9 Zend/zend_vm_execute.h 13541 9		999998		122388		21919
 Zend/zend_vm_execute.h 13517 9 Zend/zend_vm_execute.h 13517 9		999998		122389		21919
 Zend/zend_vm_execute.h 27808 2 Zend/zend_vm_execute.h 322 36		999998		122415		21919

@@ -1,4 +1,3 @@
-#define __COMPILE_0
 #define __COMPILE_1
 #define __COMPILE_2
 #define __COMPILE_3
@@ -6,12 +5,6 @@
 #define __COMPILE_5
 #define __COMPILE_6
 #define __COMPILE_7
-#define __COMPILE_8
-#define __COMPILE_9
-#define __COMPILE_10
-#define __COMPILE_11
-#define __COMPILE_12
-#define __COMPILE_13
 #define __COMPILE_14
 #define __COMPILE_15
 #define __COMPILE_16
@@ -43,7 +36,6 @@
 #define __COMPILE_42
 #define __COMPILE_43
 #define __COMPILE_44
-#define __COMPILE_45
 #define __COMPILE_46
 #define __COMPILE_47
 #define __COMPILE_48
@@ -52,6 +44,9 @@
 #define __COMPILE_51
 #define __COMPILE_52
 #define __COMPILE_53
+#define __COMPILE_54
+#define __COMPILE_55
+#define __COMPILE_56
 #define __COMPILE_57
 #define __COMPILE_58
 #define __COMPILE_59
@@ -60,7 +55,6 @@
 #define __COMPILE_62
 #define __COMPILE_63
 #define __COMPILE_64
-#define __COMPILE_65
 #define __COMPILE_66
 #define __COMPILE_67
 #define __COMPILE_68
@@ -95,84 +89,6 @@
 #define __COMPILE_97
 #define __COMPILE_98
 #define __COMPILE_99
-#define __COMPILE_100
-#define __COMPILE_101
-#define __COMPILE_102
-#define __COMPILE_109
-#define __COMPILE_110
-#define __COMPILE_111
-#define __COMPILE_112
-#define __COMPILE_113
-#define __COMPILE_114
-#define __COMPILE_115
-#define __COMPILE_116
-#define __COMPILE_117
-#define __COMPILE_118
-#define __COMPILE_119
-#define __COMPILE_120
-#define __COMPILE_121
-#define __COMPILE_122
-#define __COMPILE_123
-#define __COMPILE_124
-#define __COMPILE_125
-#define __COMPILE_126
-#define __COMPILE_127
-#define __COMPILE_128
-#define __COMPILE_129
-#define __COMPILE_130
-#define __COMPILE_131
-#define __COMPILE_132
-#define __COMPILE_133
-#define __COMPILE_134
-#define __COMPILE_135
-#define __COMPILE_136
-#define __COMPILE_137
-#define __COMPILE_138
-#define __COMPILE_139
-#define __COMPILE_140
-#define __COMPILE_141
-#define __COMPILE_142
-#define __COMPILE_143
-#define __COMPILE_144
-#define __COMPILE_145
-#define __COMPILE_146
-#define __COMPILE_147
-#define __COMPILE_148
-#define __COMPILE_149
-#define __COMPILE_150
-#define __COMPILE_151
-#define __COMPILE_152
-#define __COMPILE_153
-#define __COMPILE_154
-#define __COMPILE_155
-#define __COMPILE_156
-#define __COMPILE_157
-#define __COMPILE_158
-#define __COMPILE_159
-#define __COMPILE_160
-#define __COMPILE_161
-#define __COMPILE_162
-#define __COMPILE_163
-#define __COMPILE_164
-#define __COMPILE_165
-#define __COMPILE_166
-#define __COMPILE_167
-#define __COMPILE_168
-#define __COMPILE_169
-#define __COMPILE_170
-#define __COMPILE_171
-#define __COMPILE_172
-#define __COMPILE_173
-#define __COMPILE_174
-#define __COMPILE_175
-#define __COMPILE_176
-#define __COMPILE_177
-#define __COMPILE_178
-#define __COMPILE_179
-#define __COMPILE_180
-#define __COMPILE_181
-#define __COMPILE_182
-#define __COMPILE_183
 // compile_fin
 int __get_mutant(); int __is_neg(const char *location,char *lid,int count, ...); int __abst_hole(); char *__stat_write_init(const char *func_name);void __write_stat(char *str,const char *var_name,void *var_addr,int size); void __stat_file_close(const char *func_name,char *str);long long __mutate(const long long,const char *,const char *); int __trident_choice(char* lid, char* typestr,int* rvals, char** rvals_ids, int rvals_size,int** lvals, char** lvals_ids, int lvals_size);int __trident_output(char* id, char* typestr, int value);float fabs_trident(float a);int __choose(const char *);void *__var_select(unsigned int var_count,void *vars[]);void *__var_select_2(unsigned int var_count,void *vars[]);long long __const_select(unsigned int const_count, ...);void* memset(void*, int, unsigned long); 
 /* $Id$ */
@@ -235,823 +151,9 @@ static	void tiffinfo(TIFF*, uint16, long);
 static void
 PrivateErrorHandler(const char* module, const char* fmt, va_list ap)
 {
-        //prophet generated patch
-        {
-        int __choose0 = __choose("__SWITCH0");
-        if (__choose0 == 0)
-        {}
-        #ifdef __COMPILE_0
-        else if (__choose0 == 1)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)((fmt), fmt, ap);
-        }
-        #endif
-        #ifdef __COMPILE_1
-        else if (__choose0 == 2)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)((module), fmt, ap);
-        }
-        #endif
-        #ifdef __COMPILE_2
-        else if (__choose0 == 3)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)(module, (fmt), ap);
-        }
-        #endif
-        #ifdef __COMPILE_3
-        else if (__choose0 == 4)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)(module, (module), ap);
-        }
-        #endif
-        #ifdef __COMPILE_4
-        else if (__choose0 == 5)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)(module, fmt, (ap));
-        }
-        #endif
-        #ifdef __COMPILE_5
-        else if (__choose0 == 6)
-        {
-        //AddStmtAndReplaceAtomKind
-        status = (0);
-        }
-        #endif
-        #ifdef __COMPILE_6
-        else if (__choose0 == 7)
-        {
-        //AddStmtAndReplaceAtomKind
-        status = (1);
-        }
-        #endif
-        #ifdef __COMPILE_7
-        else if (__choose0 == 8)
-        {
-        //AddStmtKind
-        (*old_error_handler)(module, fmt, ap);
-        }
-        #endif
-        #ifdef __COMPILE_8
-        else if (__choose0 == 9)
-        {
-        //AddStmtKind
-        (void)TIFFSetErrorHandler(PrivateErrorHandler);
-        }
-        #endif
-        #ifdef __COMPILE_9
-        else if (__choose0 == 10)
-        {
-        //AddStmtKind
-        exit(-1);
-        }
-        #endif
-        #ifdef __COMPILE_10
-        else if (__choose0 == 11)
-        {
-        //AddStmtKind
-        old_error_handler = _TIFFerrorHandler;
-        }
-        #endif
-        #ifdef __COMPILE_11
-        else if (__choose0 == 12)
-        {
-        //AddStmtKind
-        printf("):\n");
-        }
-        #endif
-        #ifdef __COMPILE_12
-        else if (__choose0 == 13)
-        {
-        //AddStmtKind
-        printf("\n ");
-        }
-        #endif
-        #ifdef __COMPILE_13
-        else if (__choose0 == 14)
-        {
-        //AddStmtKind
-        putchar('\n');
-        }
-        #endif
-        #ifdef __COMPILE_14
-        else if (__choose0 == 15)
-        {
-        //AddStmtKind
-        status = 1;
-        }
-        #endif
-        #ifdef __COMPILE_15
-        else if (__choose0 == 16)
-        {
-        //AddStmtKind
-        usage();
-        }
-        #endif
-        #ifdef __COMPILE_16
-        else if (__choose0 == 17)
-        {
-        //IfExitKind
-        if (__is_neg("0-17", "L62", 5, &(old_error_handler), sizeof (old_error_handler), &(module),
-        			 sizeof (module), &(fmt), sizeof (fmt), &(ap), sizeof (ap), &(status),
-        			 sizeof (status)))
-            return;
-        }
-        #endif
-        int __choose1 = __choose("__SWITCH1");
-        {
-        int __temp1=(old_error_handler)
-        ;
-        if (__choose1 == 0)
-        {}
-        #ifdef __COMPILE_17
-        else if (__choose1 == 1)
-        {
-        __temp1= (__is_neg("1-1", "L62", 5, &(old_error_handler), sizeof (old_error_handler), &(module), sizeof (module), &(fmt), sizeof (fmt), &(ap), sizeof (ap), &(status), sizeof (status)));
-        }
-        #endif
-        #ifdef __COMPILE_18
-        else if (__choose1 == 2)
-        {
-        __temp1= ((old_error_handler) || __is_neg("1-2", "L62", 5, &(old_error_handler), sizeof (old_error_handler), &(module), sizeof (module), &(fmt), sizeof (fmt), &(ap), sizeof (ap), &(status), sizeof (status)));
-        }
-        #endif
-        #ifdef __COMPILE_19
-        else if (__choose1 == 3)
-        {
-        __temp1= ((old_error_handler) && !__is_neg("1-3", "L62", 5, &(old_error_handler), sizeof (old_error_handler), &(module), sizeof (module), &(fmt), sizeof (fmt), &(ap), sizeof (ap), &(status), sizeof (status)));
-        }
-        #endif
-        int __choose4 = __choose("__SWITCH4");
-        if (__choose4 == 0)
-        {
-        if (__temp1)
-                        {
-        int __choose2 = __choose("__SWITCH2");
-        if (__choose2 == 0)
-        {}
-        #ifdef __COMPILE_20
-        else if (__choose2 == 1)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)((fmt), fmt, ap);
-        }
-        #endif
-        #ifdef __COMPILE_21
-        else if (__choose2 == 2)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)((module), fmt, ap);
-        }
-        #endif
-        #ifdef __COMPILE_22
-        else if (__choose2 == 3)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)(module, (fmt), ap);
-        }
-        #endif
-        #ifdef __COMPILE_23
-        else if (__choose2 == 4)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)(module, (module), ap);
-        }
-        #endif
-        #ifdef __COMPILE_24
-        else if (__choose2 == 5)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)(module, fmt, (ap));
-        }
-        #endif
-        #ifdef __COMPILE_25
-        else if (__choose2 == 6)
-        {
-        //AddStmtAndReplaceAtomKind
-        status = (0);
-        }
-        #endif
-        #ifdef __COMPILE_26
-        else if (__choose2 == 7)
-        {
-        //AddStmtAndReplaceAtomKind
-        status = (1);
-        }
-        #endif
-        #ifdef __COMPILE_27
-        else if (__choose2 == 8)
-        {
-        //AddStmtKind
-        (*old_error_handler)(module, fmt, ap);
-        }
-        #endif
-        #ifdef __COMPILE_28
-        else if (__choose2 == 9)
-        {
-        //AddStmtKind
-        (void)TIFFSetErrorHandler(PrivateErrorHandler);
-        }
-        #endif
-        #ifdef __COMPILE_29
-        else if (__choose2 == 10)
-        {
-        //AddStmtKind
-        exit(-1);
-        }
-        #endif
-        #ifdef __COMPILE_30
-        else if (__choose2 == 11)
-        {
-        //AddStmtKind
-        old_error_handler = _TIFFerrorHandler;
-        }
-        #endif
-        #ifdef __COMPILE_31
-        else if (__choose2 == 12)
-        {
-        //AddStmtKind
-        printf("):\n");
-        }
-        #endif
-        #ifdef __COMPILE_32
-        else if (__choose2 == 13)
-        {
-        //AddStmtKind
-        printf("\n ");
-        }
-        #endif
-        #ifdef __COMPILE_33
-        else if (__choose2 == 14)
-        {
-        //AddStmtKind
-        putchar('\n');
-        }
-        #endif
-        #ifdef __COMPILE_34
-        else if (__choose2 == 15)
-        {
-        //AddStmtKind
-        status = 1;
-        }
-        #endif
-        #ifdef __COMPILE_35
-        else if (__choose2 == 16)
-        {
-        //AddStmtKind
-        usage();
-        }
-        #endif
-        #ifdef __COMPILE_36
-        else if (__choose2 == 17)
-        {
-        //IfExitKind
-        if (__is_neg("2-17", "L63", 5, &(module), sizeof (module), &(fmt),
-        			 sizeof (fmt), &(ap), sizeof (ap), &(old_error_handler), sizeof (old_error_handler), &(status),
-        			 sizeof (status)))
-            return;
-        }
-        #endif
-        int __choose3 = __choose("__SWITCH3");
-        if (__choose3 == 0)
-        {
-        (*old_error_handler)(module,fmt,ap);
-        
-        }
-        #ifdef __COMPILE_37
-        else if (__choose3 == 1)
-        {
-        //GuardKind
-        if (!__is_neg("3-1", "L63", 5, &(module), sizeof (module), &(fmt), sizeof (fmt), &(ap), sizeof (ap), &(old_error_handler), sizeof (old_error_handler), &(status), sizeof (status)))
-            (*old_error_handler)(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_38
-        else if (__choose3 == 2)
-        {
-        //MSVExtRemoveStmtKind
-        {
-        }
-        
-        }
-        #endif
-        #ifdef __COMPILE_39
-        else if (__choose3 == 3)
-        {
-        //ReplaceFunctionKind
-        PrivateErrorHandler(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_40
-        else if (__choose3 == 4)
-        {
-        //ReplaceFunctionKind
-        TIFFError(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_41
-        else if (__choose3 == 5)
-        {
-        //ReplaceFunctionKind
-        TIFFWarning(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_42
-        else if (__choose3 == 6)
-        {
-        //ReplaceFunctionKind
-        _IO_vfprintf(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_43
-        else if (__choose3 == 7)
-        {
-        //ReplaceFunctionKind
-        execl(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_44
-        else if (__choose3 == 8)
-        {
-        //ReplaceFunctionKind
-        execle(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_45
-        else if (__choose3 == 9)
-        {
-        //ReplaceFunctionKind
-        execlp(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_46
-        else if (__choose3 == 10)
-        {
-        //ReplaceFunctionKind
-        fprintf(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_47
-        else if (__choose3 == 11)
-        {
-        //ReplaceFunctionKind
-        freopen(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_48
-        else if (__choose3 == 12)
-        {
-        //ReplaceFunctionKind
-        printf(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_49
-        else if (__choose3 == 13)
-        {
-        //ReplaceFunctionKind
-        sprintf(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_50
-        else if (__choose3 == 14)
-        {
-        //ReplaceFunctionKind
-        strcasecmp_l(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_51
-        else if (__choose3 == 15)
-        {
-        //ReplaceFunctionKind
-        strcoll_l(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_52
-        else if (__choose3 == 16)
-        {
-        //ReplaceFunctionKind
-        vfprintf(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_53
-        else if (__choose3 == 17)
-        {
-        //ReplaceFunctionKind
-        vsprintf(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_54
-        else if (__choose3 == 18)
-        {
-        //ReplaceKind
-        (*(&ap))(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_55
-        else if (__choose3 == 19)
-        {
-        //ReplaceKind
-        (*(&fmt))(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_56
-        else if (__choose3 == 20)
-        {
-        //ReplaceKind
-        (*(&module))(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_57
-        else if (__choose3 == 21)
-        {
-        //ReplaceKind
-        (*old_error_handler)((&ap), fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_58
-        else if (__choose3 == 22)
-        {
-        //ReplaceKind
-        (*old_error_handler)((&fmt), fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_59
-        else if (__choose3 == 23)
-        {
-        //ReplaceKind
-        (*old_error_handler)((&module), fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_60
-        else if (__choose3 == 24)
-        {
-        //ReplaceKind
-        (*old_error_handler)((fmt), fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_61
-        else if (__choose3 == 25)
-        {
-        //ReplaceKind
-        (*old_error_handler)((module), fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_62
-        else if (__choose3 == 26)
-        {
-        //ReplaceKind
-        (*old_error_handler)(module, (&ap), ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_63
-        else if (__choose3 == 27)
-        {
-        //ReplaceKind
-        (*old_error_handler)(module, (&fmt), ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_64
-        else if (__choose3 == 28)
-        {
-        //ReplaceKind
-        (*old_error_handler)(module, (&module), ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_65
-        else if (__choose3 == 29)
-        {
-        //ReplaceKind
-        (*old_error_handler)(module, (fmt), ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_66
-        else if (__choose3 == 30)
-        {
-        //ReplaceKind
-        (*old_error_handler)(module, (module), ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_67
-        else if (__choose3 == 31)
-        {
-        //ReplaceKind
-        (*old_error_handler)(module, fmt, (&ap));
-        
-        }
-        #endif
-        #ifdef __COMPILE_68
-        else if (__choose3 == 32)
-        {
-        //ReplaceKind
-        (*old_error_handler)(module, fmt, (&fmt));
-        
-        }
-        #endif
-        #ifdef __COMPILE_69
-        else if (__choose3 == 33)
-        {
-        //ReplaceKind
-        (*old_error_handler)(module, fmt, (&module));
-        
-        }
-        #endif
-        #ifdef __COMPILE_70
-        else if (__choose3 == 34)
-        {
-        //ReplaceKind
-        (*old_error_handler)(module, fmt, (ap));
-        
-        }
-        #endif
-        }
-        
-        }
-        #ifdef __COMPILE_71
-        else if (__choose4 == 1)
-        {
-        //GuardKind
-        if (!__is_neg("4-1", "L62", 5, &(old_error_handler), sizeof (old_error_handler), &(module), sizeof (module), &(fmt), sizeof (fmt), &(ap), sizeof (ap), &(status), sizeof (status)))
-            if (old_error_handler)
-                (*old_error_handler)(module, fmt, ap);
-        
-        }
-        #endif
-        #ifdef __COMPILE_72
-        else if (__choose4 == 2)
-        {
-        //SpecialGuardKind
-        if (!__is_neg("4-2", "L62", 5, &(old_error_handler), sizeof (old_error_handler), &(module), sizeof (module), &(fmt), sizeof (fmt), &(ap), sizeof (ap), &(status), sizeof (status)) && (old_error_handler))
-            (*old_error_handler)(module, fmt, ap);
-        
-        }
-        #endif
-        }
-        }
-	//prophet generated patch
-        {
-        int __choose5 = __choose("__SWITCH5");
-        if (__choose5 == 0)
-        {}
-        #ifdef __COMPILE_73
-        else if (__choose5 == 1)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)((fmt), fmt, ap);
-        }
-        #endif
-        #ifdef __COMPILE_74
-        else if (__choose5 == 2)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)((module), fmt, ap);
-        }
-        #endif
-        #ifdef __COMPILE_75
-        else if (__choose5 == 3)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)(module, (fmt), ap);
-        }
-        #endif
-        #ifdef __COMPILE_76
-        else if (__choose5 == 4)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)(module, (module), ap);
-        }
-        #endif
-        #ifdef __COMPILE_77
-        else if (__choose5 == 5)
-        {
-        //AddStmtAndReplaceAtomKind
-        (*old_error_handler)(module, fmt, (ap));
-        }
-        #endif
-        #ifdef __COMPILE_78
-        else if (__choose5 == 6)
-        {
-        //AddStmtAndReplaceAtomKind
-        status = (0);
-        }
-        #endif
-        #ifdef __COMPILE_79
-        else if (__choose5 == 7)
-        {
-        //AddStmtAndReplaceAtomKind
-        status = (1);
-        }
-        #endif
-        #ifdef __COMPILE_80
-        else if (__choose5 == 8)
-        {
-        //AddStmtKind
-        (*old_error_handler)(module, fmt, ap);
-        }
-        #endif
-        #ifdef __COMPILE_81
-        else if (__choose5 == 9)
-        {
-        //AddStmtKind
-        (void)TIFFSetErrorHandler(PrivateErrorHandler);
-        }
-        #endif
-        #ifdef __COMPILE_82
-        else if (__choose5 == 10)
-        {
-        //AddStmtKind
-        exit(-1);
-        }
-        #endif
-        #ifdef __COMPILE_83
-        else if (__choose5 == 11)
-        {
-        //AddStmtKind
-        old_error_handler = _TIFFerrorHandler;
-        }
-        #endif
-        #ifdef __COMPILE_84
-        else if (__choose5 == 12)
-        {
-        //AddStmtKind
-        printf("):\n");
-        }
-        #endif
-        #ifdef __COMPILE_85
-        else if (__choose5 == 13)
-        {
-        //AddStmtKind
-        printf("\n ");
-        }
-        #endif
-        #ifdef __COMPILE_86
-        else if (__choose5 == 14)
-        {
-        //AddStmtKind
-        putchar('\n');
-        }
-        #endif
-        #ifdef __COMPILE_87
-        else if (__choose5 == 15)
-        {
-        //AddStmtKind
-        status = 1;
-        }
-        #endif
-        #ifdef __COMPILE_88
-        else if (__choose5 == 16)
-        {
-        //AddStmtKind
-        usage();
-        }
-        #endif
-        #ifdef __COMPILE_89
-        else if (__choose5 == 17)
-        {
-        //IfExitKind
-        if (__is_neg("5-17", "L64", 5, &(status), sizeof (status), &(module),
-        			 sizeof (module), &(fmt), sizeof (fmt), &(ap), sizeof (ap), &(old_error_handler),
-        			 sizeof (old_error_handler)))
-            return;
-        }
-        #endif
-        int __choose6 = __choose("__SWITCH6");
-        if (__choose6 == 0)
-        {
-        status = 1;
-        
-        }
-        #ifdef __COMPILE_90
-        else if (__choose6 == 1)
-        {
-        //GuardKind
-        if (!__is_neg("6-1", "L64", 5, &(status), sizeof (status), &(module), sizeof (module), &(fmt), sizeof (fmt), &(ap), sizeof (ap), &(old_error_handler), sizeof (old_error_handler)))
-            status = 1;
-        
-        }
-        #endif
-        #ifdef __COMPILE_91
-        else if (__choose6 == 2)
-        {
-        //MSVExtRemoveStmtKind
-        {
-        }
-        
-        }
-        #endif
-        #ifdef __COMPILE_92
-        else if (__choose6 == 3)
-        {
-        //ReplaceKind
-        status = (0);
-        
-        }
-        #endif
-        #ifdef __COMPILE_93
-        else if (__choose6 == 4)
-        {
-        //ReplaceKind
-        status = (1);
-        
-        }
-        #endif
-        #ifdef __COMPILE_94
-        else if (__choose6 == 5)
-        {
-        //ReplaceKind
-        status = (ap != 0);
-        
-        }
-        #endif
-        #ifdef __COMPILE_95
-        else if (__choose6 == 6)
-        {
-        //ReplaceKind
-        status = (ap == 0);
-        
-        }
-        #endif
-        #ifdef __COMPILE_96
-        else if (__choose6 == 7)
-        {
-        //ReplaceKind
-        status = (fmt != 0);
-        
-        }
-        #endif
-        #ifdef __COMPILE_97
-        else if (__choose6 == 8)
-        {
-        //ReplaceKind
-        status = (fmt == 0);
-        
-        }
-        #endif
-        #ifdef __COMPILE_98
-        else if (__choose6 == 9)
-        {
-        //ReplaceKind
-        status = (module != 0);
-        
-        }
-        #endif
-        #ifdef __COMPILE_99
-        else if (__choose6 == 10)
-        {
-        //ReplaceKind
-        status = (module != fmt);
-        
-        }
-        #endif
-        #ifdef __COMPILE_100
-        else if (__choose6 == 11)
-        {
-        //ReplaceKind
-        status = (module == 0);
-        
-        }
-        #endif
-        #ifdef __COMPILE_101
-        else if (__choose6 == 12)
-        {
-        //ReplaceKind
-        status = (module == fmt);
-        
-        }
-        #endif
-        }
+        if (old_error_handler)
+                (*old_error_handler)(module,fmt,ap);
+	status = 1;
 }
 
 int
@@ -1123,497 +225,631 @@ main(int argc, char* argv[])
 	old_error_handler = _TIFFerrorHandler;
 	//prophet generated patch
 	{
-	int __choose7 = __choose("__SWITCH7");
-	if (__choose7 == 0)
+	int __choose0 = __choose("__SWITCH0");
+	if (__choose0 == 0)
 	{}
-	#ifdef __COMPILE_102
-	else if (__choose7 == 1)
+	#ifdef __COMPILE_0
+	else if (__choose0 == 1)
+	{
+	//AddIfStmtKind
+	if (!readdata)
+	    return;
+	}
+	#endif
+	#ifdef __COMPILE_1
+	else if (__choose0 == 2)
+	{
+	//AddIfStmtKind
+	if ((strcmp(optarg, "msb2lsb") == 0))
+	    order = 1;
+	else
+	    usage();
+	}
+	#endif
+	#ifdef __COMPILE_2
+	else if (__choose0 == 3)
+	{
+	//AddIfStmtKind
+	if (TIFFSetDirectory(tif, (tdir_t)dirnum))
+	    tiffinfo(tif, order, flags);
+	}
+	#endif
+	#ifdef __COMPILE_3
+	else if (__choose0 == 4)
+	{
+	//AddIfStmtKind
+	if (TIFFSetSubDirectory(tif, diroff))
+	    tiffinfo(tif, order, flags);
+	}
+	#endif
+	#ifdef __COMPILE_4
+	else if (__choose0 == 5)
+	{
+	//AddIfStmtKind
+	if (multiplefiles)
+	    printf("%s:\n", argv[optind]);
+	}
+	#endif
+	#ifdef __COMPILE_5
+	else if (__choose0 == 6)
+	{
+	//AddIfStmtKind
+	if (optind >= argc)
+	    usage();
+	}
+	#endif
+	#ifdef __COMPILE_6
+	else if (__choose0 == 7)
 	{
 	//AddStmtAndReplaceAtomKind
 	TIFFClose((tif));
 	}
 	#endif
-	#ifdef __COMPILE_103
-	else if (__choose7 == 2)
+	#ifdef __COMPILE_7
+	else if (__choose0 == 8)
+	{
+	//AddStmtAndReplaceAtomKind
+	TIFFClose(tif && !(1 << 5));
+	}
+	#endif
+	#ifdef __COMPILE_8
+	else if (__choose0 == 9)
 	{
 	//AddStmtAndReplaceAtomKind
 	TIFFReadContigStripData((tif));
 	}
 	#endif
-	#ifdef __COMPILE_104
-	else if (__choose7 == 3)
+	#ifdef __COMPILE_9
+	else if (__choose0 == 10)
 	{
 	//AddStmtAndReplaceAtomKind
 	TIFFReadContigTileData((tif));
 	}
 	#endif
-	#ifdef __COMPILE_105
-	else if (__choose7 == 4)
+	#ifdef __COMPILE_10
+	else if (__choose0 == 11)
 	{
 	//AddStmtAndReplaceAtomKind
 	TIFFReadData((tif));
 	}
 	#endif
-	#ifdef __COMPILE_106
-	else if (__choose7 == 5)
+	#ifdef __COMPILE_11
+	else if (__choose0 == 12)
 	{
 	//AddStmtAndReplaceAtomKind
 	TIFFReadRawData((tif), 0);
 	}
 	#endif
-	#ifdef __COMPILE_107
-	else if (__choose7 == 6)
+	#ifdef __COMPILE_12
+	else if (__choose0 == 13)
 	{
 	//AddStmtAndReplaceAtomKind
 	TIFFReadSeparateStripData((tif));
 	}
 	#endif
-	#ifdef __COMPILE_108
-	else if (__choose7 == 7)
+	#ifdef __COMPILE_13
+	else if (__choose0 == 14)
 	{
 	//AddStmtAndReplaceAtomKind
 	TIFFReadSeparateTileData((tif));
 	}
 	#endif
-	#ifdef __COMPILE_109
-	else if (__choose7 == 8)
+	#ifdef __COMPILE_14
+	else if (__choose0 == 15)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (-1);
 	}
 	#endif
-	#ifdef __COMPILE_110
-	else if (__choose7 == 9)
+	#ifdef __COMPILE_15
+	else if (__choose0 == 16)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (0);
 	}
 	#endif
-	#ifdef __COMPILE_111
-	else if (__choose7 == 10)
+	#ifdef __COMPILE_16
+	else if (__choose0 == 17)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (1);
 	}
 	#endif
-	#ifdef __COMPILE_112
-	else if (__choose7 == 11)
+	#ifdef __COMPILE_17
+	else if (__choose0 == 18)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (2);
 	}
 	#endif
-	#ifdef __COMPILE_113
-	else if (__choose7 == 12)
+	#ifdef __COMPILE_18
+	else if (__choose0 == 19)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (256);
 	}
 	#endif
-	#ifdef __COMPILE_114
-	else if (__choose7 == 13)
+	#ifdef __COMPILE_19
+	else if (__choose0 == 20)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (34665);
 	}
 	#endif
-	#ifdef __COMPILE_115
-	else if (__choose7 == 14)
+	#ifdef __COMPILE_20
+	else if (__choose0 == 21)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (4);
 	}
 	#endif
-	#ifdef __COMPILE_116
-	else if (__choose7 == 15)
+	#ifdef __COMPILE_21
+	else if (__choose0 == 22)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (512);
 	}
 	#endif
-	#ifdef __COMPILE_117
-	else if (__choose7 == 16)
+	#ifdef __COMPILE_22
+	else if (__choose0 == 23)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (6);
 	}
 	#endif
-	#ifdef __COMPILE_118
-	else if (__choose7 == 17)
+	#ifdef __COMPILE_23
+	else if (__choose0 == 24)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (768);
 	}
 	#endif
-	#ifdef __COMPILE_119
-	else if (__choose7 == 18)
+	#ifdef __COMPILE_24
+	else if (__choose0 == 25)
+	{
+	//AddStmtAndReplaceAtomKind
+	multiplefiles = (argc && !(1 << 5) - optind > 1);
+	}
+	#endif
+	#ifdef __COMPILE_25
+	else if (__choose0 == 26)
+	{
+	//AddStmtAndReplaceAtomKind
+	multiplefiles = (argc - optind && !(1 << 5) > 1);
+	}
+	#endif
+	#ifdef __COMPILE_26
+	else if (__choose0 == 27)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (argc);
 	}
 	#endif
-	#ifdef __COMPILE_120
-	else if (__choose7 == 19)
+	#ifdef __COMPILE_27
+	else if (__choose0 == 28)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (c);
 	}
 	#endif
-	#ifdef __COMPILE_121
-	else if (__choose7 == 20)
+	#ifdef __COMPILE_28
+	else if (__choose0 == 29)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (chopstrips);
 	}
 	#endif
-	#ifdef __COMPILE_122
-	else if (__choose7 == 21)
+	#ifdef __COMPILE_29
+	else if (__choose0 == 30)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (dirnum);
 	}
 	#endif
-	#ifdef __COMPILE_123
-	else if (__choose7 == 22)
+	#ifdef __COMPILE_30
+	else if (__choose0 == 31)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (multiplefiles);
 	}
 	#endif
-	#ifdef __COMPILE_124
-	else if (__choose7 == 23)
+	#ifdef __COMPILE_31
+	else if (__choose0 == 32)
 	{
 	//AddStmtAndReplaceAtomKind
 	multiplefiles = (optind);
 	}
 	#endif
-	#ifdef __COMPILE_125
-	else if (__choose7 == 24)
+	#ifdef __COMPILE_32
+	else if (__choose0 == 33)
+	{
+	//AddStmtAndReplaceAtomKind
+	old_error_handler = _TIFFerrorHandler && !(1 << 5);
+	}
+	#endif
+	#ifdef __COMPILE_33
+	else if (__choose0 == 34)
 	{
 	//AddStmtAndReplaceAtomKind
 	order = (-1);
 	}
 	#endif
-	#ifdef __COMPILE_126
-	else if (__choose7 == 25)
+	#ifdef __COMPILE_34
+	else if (__choose0 == 35)
 	{
 	//AddStmtAndReplaceAtomKind
 	order = (0);
 	}
 	#endif
-	#ifdef __COMPILE_127
-	else if (__choose7 == 26)
+	#ifdef __COMPILE_35
+	else if (__choose0 == 36)
 	{
 	//AddStmtAndReplaceAtomKind
 	order = (1);
 	}
 	#endif
-	#ifdef __COMPILE_128
-	else if (__choose7 == 27)
+	#ifdef __COMPILE_36
+	else if (__choose0 == 37)
 	{
 	//AddStmtAndReplaceAtomKind
 	order = (2);
 	}
 	#endif
-	#ifdef __COMPILE_129
-	else if (__choose7 == 28)
+	#ifdef __COMPILE_37
+	else if (__choose0 == 38)
 	{
 	//AddStmtAndReplaceAtomKind
 	order = (256);
 	}
 	#endif
-	#ifdef __COMPILE_130
-	else if (__choose7 == 29)
+	#ifdef __COMPILE_38
+	else if (__choose0 == 39)
 	{
 	//AddStmtAndReplaceAtomKind
 	order = (34665);
 	}
 	#endif
-	#ifdef __COMPILE_131
-	else if (__choose7 == 30)
+	#ifdef __COMPILE_39
+	else if (__choose0 == 40)
 	{
 	//AddStmtAndReplaceAtomKind
 	order = (4);
 	}
 	#endif
-	#ifdef __COMPILE_132
-	else if (__choose7 == 31)
+	#ifdef __COMPILE_40
+	else if (__choose0 == 41)
 	{
 	//AddStmtAndReplaceAtomKind
 	order = (512);
 	}
 	#endif
-	#ifdef __COMPILE_133
-	else if (__choose7 == 32)
+	#ifdef __COMPILE_41
+	else if (__choose0 == 42)
 	{
 	//AddStmtAndReplaceAtomKind
 	order = (6);
 	}
 	#endif
-	#ifdef __COMPILE_134
-	else if (__choose7 == 33)
+	#ifdef __COMPILE_42
+	else if (__choose0 == 43)
 	{
 	//AddStmtAndReplaceAtomKind
 	order = (768);
 	}
 	#endif
-	#ifdef __COMPILE_135
-	else if (__choose7 == 34)
+	#ifdef __COMPILE_43
+	else if (__choose0 == 44)
 	{
 	//AddStmtAndReplaceAtomKind
 	order = (order);
 	}
 	#endif
-	#ifdef __COMPILE_136
-	else if (__choose7 == 35)
+	#ifdef __COMPILE_44
+	else if (__choose0 == 45)
 	{
 	//AddStmtAndReplaceAtomKind
 	printf("%s:\n", (argv)[optind]);
 	}
 	#endif
-	#ifdef __COMPILE_137
-	else if (__choose7 == 36)
+	#ifdef __COMPILE_45
+	else if (__choose0 == 46)
+	{
+	//AddStmtAndReplaceAtomKind
+	printf("%s:\n", argv && !(1 << 5)[optind]);
+	}
+	#endif
+	#ifdef __COMPILE_46
+	else if (__choose0 == 47)
+	{
+	//AddStmtAndReplaceAtomKind
+	printf("%s:\n", argv[optind && !(1 << 5)]);
+	}
+	#endif
+	#ifdef __COMPILE_47
+	else if (__choose0 == 48)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (-1);
 	}
 	#endif
-	#ifdef __COMPILE_138
-	else if (__choose7 == 37)
+	#ifdef __COMPILE_48
+	else if (__choose0 == 49)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (0);
 	}
 	#endif
-	#ifdef __COMPILE_139
-	else if (__choose7 == 38)
+	#ifdef __COMPILE_49
+	else if (__choose0 == 50)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (1);
 	}
 	#endif
-	#ifdef __COMPILE_140
-	else if (__choose7 == 39)
+	#ifdef __COMPILE_50
+	else if (__choose0 == 51)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (2);
 	}
 	#endif
-	#ifdef __COMPILE_141
-	else if (__choose7 == 40)
+	#ifdef __COMPILE_51
+	else if (__choose0 == 52)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (256);
 	}
 	#endif
-	#ifdef __COMPILE_142
-	else if (__choose7 == 41)
+	#ifdef __COMPILE_52
+	else if (__choose0 == 53)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (34665);
 	}
 	#endif
-	#ifdef __COMPILE_143
-	else if (__choose7 == 42)
+	#ifdef __COMPILE_53
+	else if (__choose0 == 54)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (4);
 	}
 	#endif
-	#ifdef __COMPILE_144
-	else if (__choose7 == 43)
+	#ifdef __COMPILE_54
+	else if (__choose0 == 55)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (512);
 	}
 	#endif
-	#ifdef __COMPILE_145
-	else if (__choose7 == 44)
+	#ifdef __COMPILE_55
+	else if (__choose0 == 56)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (6);
 	}
 	#endif
-	#ifdef __COMPILE_146
-	else if (__choose7 == 45)
+	#ifdef __COMPILE_56
+	else if (__choose0 == 57)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (768);
 	}
 	#endif
-	#ifdef __COMPILE_147
-	else if (__choose7 == 46)
+	#ifdef __COMPILE_57
+	else if (__choose0 == 58)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (argc);
 	}
 	#endif
-	#ifdef __COMPILE_148
-	else if (__choose7 == 47)
+	#ifdef __COMPILE_58
+	else if (__choose0 == 59)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (c);
 	}
 	#endif
-	#ifdef __COMPILE_149
-	else if (__choose7 == 48)
+	#ifdef __COMPILE_59
+	else if (__choose0 == 60)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (chopstrips);
 	}
 	#endif
-	#ifdef __COMPILE_150
-	else if (__choose7 == 49)
+	#ifdef __COMPILE_60
+	else if (__choose0 == 61)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (dirnum);
 	}
 	#endif
-	#ifdef __COMPILE_151
-	else if (__choose7 == 50)
+	#ifdef __COMPILE_61
+	else if (__choose0 == 62)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (multiplefiles);
 	}
 	#endif
-	#ifdef __COMPILE_152
-	else if (__choose7 == 51)
+	#ifdef __COMPILE_62
+	else if (__choose0 == 63)
 	{
 	//AddStmtAndReplaceAtomKind
 	status = (optind);
 	}
 	#endif
-	#ifdef __COMPILE_153
-	else if (__choose7 == 52)
+	#ifdef __COMPILE_63
+	else if (__choose0 == 64)
 	{
 	//AddStmtAndReplaceAtomKind
 	tif = (tif);
 	}
 	#endif
-	#ifdef __COMPILE_154
-	else if (__choose7 == 53)
+	#ifdef __COMPILE_64
+	else if (__choose0 == 65)
 	{
 	//AddStmtAndReplaceAtomKind
 	tif = TIFFOpen((argv)[optind], chopstrips ? "rC" : "rc");
 	}
 	#endif
-	#ifdef __COMPILE_155
-	else if (__choose7 == 54)
+	#ifdef __COMPILE_65
+	else if (__choose0 == 66)
+	{
+	//AddStmtAndReplaceAtomKind
+	tif = TIFFOpen(argv && !(1 << 5)[optind], chopstrips ? "rC" : "rc");
+	}
+	#endif
+	#ifdef __COMPILE_66
+	else if (__choose0 == 67)
+	{
+	//AddStmtAndReplaceAtomKind
+	tif = TIFFOpen(argv[optind && !(1 << 5)], chopstrips ? "rC" : "rc");
+	}
+	#endif
+	#ifdef __COMPILE_67
+	else if (__choose0 == 68)
+	{
+	//AddStmtAndReplaceAtomKind
+	tif = TIFFOpen(argv[optind], chopstrips && !(1 << 5) ? "rC" : "rc");
+	}
+	#endif
+	#ifdef __COMPILE_68
+	else if (__choose0 == 69)
 	{
 	//AddStmtAndReplaceAtomKind
 	tiffinfo((tif), order, flags);
 	}
 	#endif
-	#ifdef __COMPILE_156
-	else if (__choose7 == 55)
+	#ifdef __COMPILE_69
+	else if (__choose0 == 70)
+	{
+	//AddStmtAndReplaceAtomKind
+	tiffinfo(tif && !(1 << 5), order, flags);
+	}
+	#endif
+	#ifdef __COMPILE_70
+	else if (__choose0 == 71)
+	{
+	//AddStmtAndReplaceAtomKind
+	tiffinfo(tif, order && !(1 << 5), flags);
+	}
+	#endif
+	#ifdef __COMPILE_71
+	else if (__choose0 == 72)
+	{
+	//AddStmtAndReplaceAtomKind
+	tiffinfo(tif, order, flags && !(1 << 5));
+	}
+	#endif
+	#ifdef __COMPILE_72
+	else if (__choose0 == 73)
 	{
 	//AddStmtKind
 	(void)TIFFSetErrorHandler(PrivateErrorHandler);
 	}
 	#endif
-	#ifdef __COMPILE_157
-	else if (__choose7 == 56)
+	#ifdef __COMPILE_73
+	else if (__choose0 == 74)
 	{
 	//AddStmtKind
 	TIFFClose(tif);
 	}
 	#endif
-	#ifdef __COMPILE_158
-	else if (__choose7 == 57)
+	#ifdef __COMPILE_74
+	else if (__choose0 == 75)
 	{
 	//AddStmtKind
 	exit(-1);
 	}
 	#endif
-	#ifdef __COMPILE_159
-	else if (__choose7 == 58)
+	#ifdef __COMPILE_75
+	else if (__choose0 == 76)
 	{
 	//AddStmtKind
 	multiplefiles = (argc - optind > 1);
 	}
 	#endif
-	#ifdef __COMPILE_160
-	else if (__choose7 == 59)
+	#ifdef __COMPILE_76
+	else if (__choose0 == 77)
 	{
 	//AddStmtKind
 	old_error_handler = _TIFFerrorHandler;
 	}
 	#endif
-	#ifdef __COMPILE_161
-	else if (__choose7 == 60)
+	#ifdef __COMPILE_77
+	else if (__choose0 == 78)
 	{
 	//AddStmtKind
 	order = 1;
 	}
 	#endif
-	#ifdef __COMPILE_162
-	else if (__choose7 == 61)
+	#ifdef __COMPILE_78
+	else if (__choose0 == 79)
 	{
 	//AddStmtKind
 	order = 2;
 	}
 	#endif
-	#ifdef __COMPILE_163
-	else if (__choose7 == 62)
+	#ifdef __COMPILE_79
+	else if (__choose0 == 80)
 	{
 	//AddStmtKind
 	printf("%s:\n", argv[optind]);
 	}
 	#endif
-	#ifdef __COMPILE_164
-	else if (__choose7 == 63)
+	#ifdef __COMPILE_80
+	else if (__choose0 == 81)
 	{
 	//AddStmtKind
 	printf("):\n");
 	}
 	#endif
-	#ifdef __COMPILE_165
-	else if (__choose7 == 64)
+	#ifdef __COMPILE_81
+	else if (__choose0 == 82)
 	{
 	//AddStmtKind
 	printf("\n ");
 	}
 	#endif
-	#ifdef __COMPILE_166
-	else if (__choose7 == 65)
+	#ifdef __COMPILE_82
+	else if (__choose0 == 83)
 	{
 	//AddStmtKind
 	putchar('\n');
 	}
 	#endif
-	#ifdef __COMPILE_167
-	else if (__choose7 == 66)
+	#ifdef __COMPILE_83
+	else if (__choose0 == 84)
 	{
 	//AddStmtKind
 	status = 1;
 	}
 	#endif
-	#ifdef __COMPILE_168
-	else if (__choose7 == 67)
+	#ifdef __COMPILE_84
+	else if (__choose0 == 85)
 	{
 	//AddStmtKind
 	tif = TIFFOpen(argv[optind], chopstrips ? "rC" : "rc");
 	}
 	#endif
-	#ifdef __COMPILE_169
-	else if (__choose7 == 68)
+	#ifdef __COMPILE_85
+	else if (__choose0 == 86)
 	{
 	//AddStmtKind
 	tiffinfo(tif, order, flags);
 	}
 	#endif
-	#ifdef __COMPILE_170
-	else if (__choose7 == 69)
+	#ifdef __COMPILE_86
+	else if (__choose0 == 87)
 	{
 	//AddStmtKind
 	usage();
 	}
 	#endif
-	#ifdef __COMPILE_171
-	else if (__choose7 == 70)
+	#ifdef __COMPILE_87
+	else if (__choose0 == 88)
 	{
 	//IfExitKind
-	if (__is_neg("7-70", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
+	if (__is_neg("0-88", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
 				 sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv),
 				 sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum),
 				 sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff),
@@ -1623,11 +859,11 @@ main(int argc, char* argv[])
 	    return -1;
 	}
 	#endif
-	#ifdef __COMPILE_172
-	else if (__choose7 == 71)
+	#ifdef __COMPILE_88
+	else if (__choose0 == 89)
 	{
 	//IfExitKind
-	if (__is_neg("7-71", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
+	if (__is_neg("0-89", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
 				 sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv),
 				 sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum),
 				 sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff),
@@ -1637,11 +873,11 @@ main(int argc, char* argv[])
 	    return 0;
 	}
 	#endif
-	#ifdef __COMPILE_173
-	else if (__choose7 == 72)
+	#ifdef __COMPILE_89
+	else if (__choose0 == 90)
 	{
 	//IfExitKind
-	if (__is_neg("7-72", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
+	if (__is_neg("0-90", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
 				 sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv),
 				 sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum),
 				 sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff),
@@ -1651,11 +887,11 @@ main(int argc, char* argv[])
 	    return 1;
 	}
 	#endif
-	#ifdef __COMPILE_174
-	else if (__choose7 == 73)
+	#ifdef __COMPILE_90
+	else if (__choose0 == 91)
 	{
 	//IfExitKind
-	if (__is_neg("7-73", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
+	if (__is_neg("0-91", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
 				 sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv),
 				 sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum),
 				 sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff),
@@ -1665,11 +901,11 @@ main(int argc, char* argv[])
 	    return 256;
 	}
 	#endif
-	#ifdef __COMPILE_175
-	else if (__choose7 == 74)
+	#ifdef __COMPILE_91
+	else if (__choose0 == 92)
 	{
 	//IfExitKind
-	if (__is_neg("7-74", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
+	if (__is_neg("0-92", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
 				 sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv),
 				 sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum),
 				 sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff),
@@ -1679,11 +915,11 @@ main(int argc, char* argv[])
 	    return 2;
 	}
 	#endif
-	#ifdef __COMPILE_176
-	else if (__choose7 == 75)
+	#ifdef __COMPILE_92
+	else if (__choose0 == 93)
 	{
 	//IfExitKind
-	if (__is_neg("7-75", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
+	if (__is_neg("0-93", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
 				 sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv),
 				 sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum),
 				 sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff),
@@ -1693,11 +929,11 @@ main(int argc, char* argv[])
 	    return 34665;
 	}
 	#endif
-	#ifdef __COMPILE_177
-	else if (__choose7 == 76)
+	#ifdef __COMPILE_93
+	else if (__choose0 == 94)
 	{
 	//IfExitKind
-	if (__is_neg("7-76", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
+	if (__is_neg("0-94", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
 				 sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv),
 				 sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum),
 				 sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff),
@@ -1707,11 +943,11 @@ main(int argc, char* argv[])
 	    return 4;
 	}
 	#endif
-	#ifdef __COMPILE_178
-	else if (__choose7 == 77)
+	#ifdef __COMPILE_94
+	else if (__choose0 == 95)
 	{
 	//IfExitKind
-	if (__is_neg("7-77", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
+	if (__is_neg("0-95", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
 				 sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv),
 				 sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum),
 				 sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff),
@@ -1721,11 +957,11 @@ main(int argc, char* argv[])
 	    return 512;
 	}
 	#endif
-	#ifdef __COMPILE_179
-	else if (__choose7 == 78)
+	#ifdef __COMPILE_95
+	else if (__choose0 == 96)
 	{
 	//IfExitKind
-	if (__is_neg("7-78", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
+	if (__is_neg("0-96", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
 				 sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv),
 				 sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum),
 				 sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff),
@@ -1735,11 +971,11 @@ main(int argc, char* argv[])
 	    return 6;
 	}
 	#endif
-	#ifdef __COMPILE_180
-	else if (__choose7 == 79)
+	#ifdef __COMPILE_96
+	else if (__choose0 == 97)
 	{
 	//IfExitKind
-	if (__is_neg("7-79", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
+	if (__is_neg("0-97", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc),
 				 sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv),
 				 sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum),
 				 sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff),
@@ -1749,23 +985,23 @@ main(int argc, char* argv[])
 	    return 768;
 	}
 	#endif
-	int __choose8 = __choose("__SWITCH8");
-	if (__choose8 == 0)
+	int __choose1 = __choose("__SWITCH1");
+	if (__choose1 == 0)
 	{
 	(void) TIFFSetErrorHandler(PrivateErrorHandler);
 	
 	}
-	#ifdef __COMPILE_181
-	else if (__choose8 == 1)
+	#ifdef __COMPILE_97
+	else if (__choose1 == 1)
 	{
 	//GuardKind
-	if (!__is_neg("8-1", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc), sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv), sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum), sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff), sizeof (diroff), &(showwords), sizeof (showwords), &(rawdata), sizeof (rawdata), &(optarg), sizeof (optarg), &(status), sizeof (status), &(stoponerr), sizeof (stoponerr), &(readdata), sizeof (readdata), &(showdata), sizeof (showdata), &(c), sizeof (c)))
+	if (!__is_neg("1-1", "L134", 19, &(old_error_handler), sizeof (old_error_handler), &(argc), sizeof (argc), &(multiplefiles), sizeof (multiplefiles), &(optind), sizeof (optind), &(argv), sizeof (argv), &(tif), sizeof (tif), &(chopstrips), sizeof (chopstrips), &(dirnum), sizeof (dirnum), &(order), sizeof (order), &(flags), sizeof (flags), &(diroff), sizeof (diroff), &(showwords), sizeof (showwords), &(rawdata), sizeof (rawdata), &(optarg), sizeof (optarg), &(status), sizeof (status), &(stoponerr), sizeof (stoponerr), &(readdata), sizeof (readdata), &(showdata), sizeof (showdata), &(c), sizeof (c)))
 	    (void)TIFFSetErrorHandler(PrivateErrorHandler);
 	
 	}
 	#endif
-	#ifdef __COMPILE_182
-	else if (__choose8 == 2)
+	#ifdef __COMPILE_98
+	else if (__choose1 == 2)
 	{
 	//MSVExtRemoveStmtKind
 	{
@@ -1773,8 +1009,8 @@ main(int argc, char* argv[])
 	
 	}
 	#endif
-	#ifdef __COMPILE_183
-	else if (__choose8 == 3)
+	#ifdef __COMPILE_99
+	else if (__choose1 == 3)
 	{
 	//ReplaceFunctionKind
 	(void)TIFFSetErrorHandler(PrivateErrorHandler);

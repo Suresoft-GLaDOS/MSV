@@ -1,6 +1,6 @@
 [{
 		"original_name":	"spprintf",
-		"switch_number":	7,
+		"switch_number":	2,
 		"new_names":	[{
 				"new_name":	"Debug",
 				"case_number":	3
@@ -77,40 +77,4 @@
 				"new_name":	"zend_spprintf",
 				"case_number":	27
 			}]
-	}, {
-		"original_name":	"",
-		"switch_number":	8,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	9,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	11,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	15,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	22,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	23,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	26,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	28,
-		"new_names":	[]
-	}, {
-		"original_name":	"",
-		"switch_number":	29,
-		"new_names":	[]
 	}]

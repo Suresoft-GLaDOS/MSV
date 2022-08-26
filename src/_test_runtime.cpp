@@ -514,7 +514,6 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                         break;
                     case 2: 
                         result = (value >constant);
-                        printf("result: %lld %lld %d\n",value,constant,result);
                         break;
                     case 3: 
                         result = (value <constant);
