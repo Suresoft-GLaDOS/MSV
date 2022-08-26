@@ -39,6 +39,8 @@ def get_results(benchmark:str):
             plausibles.append((patch_id,iteration,f'{config["file"]}:{config["line"]}'))
         if correct_id is not None and patch_id in correct_id:
             correct=(patch_id,iteration,f'{config["file"]}:{config["line"]}')
+        elif correct_id is not None:
+            correct=(patch_id,0,f'{config["file"]}:{config["line"]}')
 
     return plausibles,correct
 
