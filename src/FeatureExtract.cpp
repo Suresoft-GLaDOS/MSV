@@ -593,13 +593,22 @@ const int kind_m[] = {
                         AddStmtRepair, // ReplaceFunctionKind
                         AddStmtRepair, // AddStmtKind
                         AddStmtRepair, // AddStmtAndReplaceAtomKind
-                        AddStmtRepair, // AddIfStmtKind
-                        CondRepair, // ConditionKind
+                        AddStmtRepair, // MSVExtAddIfStmtKind
+                        CondRepair, // MSVExtConditionKind
                         ReplaceStmtRepair, // MSVExtFunctionReplaceKind
-                        CondRepair, // MSVExtAddConditionKind
+                        CondRepair, // MSVExtReturnConditionKind
+                        CondRepair, // MSVExtAssignConditionKind
                         ReplaceStmtRepair, // MSVExtReplaceFunctionInConditionKind
                         ReplaceStmtRepair, // MSVExtRemoveStmtKind
-                        CondRepair // MSVExtRemoveConditionKind
+                        CondRepair, // MSVExtRemoveConditionKind
+                        ReplaceStmtRepair, // MSVExtRemoveAssignConditionKind
+                        ReplaceStmtRepair, // MSVExtReplaceAssignOperatorKind
+                        ReplaceStmtRepair, // MSVExtReplaceArrayIndexKind
+                        ReplaceStmtRepair, // MSVExtReplaceParenInConditionKind
+                        AddStmtRepair, // MSVExtAddInitBackKind
+                        AddControlRepair, // MSVExtIfExitBackKind
+                        ReplaceStmtRepair, // MSVExtReplaceTrenaryOperatorKind
+                        ReplaceStmtRepair, // MSVExtMoveConditionKind
 };
 
 FeatureSetTy extractRepairFeatures(const RepairCandidate &rc) {
