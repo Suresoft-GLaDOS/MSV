@@ -182,6 +182,14 @@ struct RepairCandidate {
             +   if (cond2 oepr cond oper2 cond3) {
         */
         MSVExtMoveConditionKind,
+        /*
+            -   while (cond) {
+            +   while (cond && __is_neg) {
+
+            -   for (init; cond; inc) {
+            +   for (init; cond && __is_neg; inc) {
+        */
+        MSVExtLoopConditionKind,
         AddVarMutation
     } CandidateKind;
     CandidateKind kind;

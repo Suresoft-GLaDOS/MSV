@@ -828,6 +828,202 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    void genLoopCondition(Stmt *stmt) {
+        if (!MsvExt.getValue()) return; // Only for MSV extentsion
+
+        if (WhileStmt::classof(stmt)) {
+            WhileStmt *whileStmt=llvm::dyn_cast<WhileStmt>(stmt);
+
+            Expr *ori_cond = whileStmt->getCond();
+            ASTLocTy loc = getNowLocation(whileStmt);
+            LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+            L->msvExt=false;
+            Expr *placeholder;
+            ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
+
+            if (naive)
+                placeholder = getNewIntegerLiteral(ctxt, 1);
+            else
+                placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(whileStmt->getBeginLoc()));
+
+            UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
+                    UO_LNot, ori_cond->getType(), VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+            ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
+
+            // Create && condition
+            BinaryOperator *BO = BinaryOperator::Create(*ctxt,ParenE, UO, BO_LAnd, ctxt->IntTy,
+                    VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+            WhileStmt *newWhile=WhileStmt::Create(*ctxt,nullptr,BO,whileStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+
+            RepairCandidate rc;
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newWhile));
+            if (!naive) {
+                rc.actions.push_back(RepairAction(newStatementLoc(loc, newWhile), placeholder,
+                            candidateVars));
+            }
+            // FIXME: priority!
+            if (learning)
+                rc.score = getLocScore(stmt);
+            else
+                rc.score = 4*PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtLoopConditionKind;
+            rc.original=stmt;
+            q.push_back(rc);
+
+            // Create || condition
+            BO = BinaryOperator::Create(*ctxt,ParenE, placeholder, BO_LOr, ctxt->IntTy,
+                    VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+            newWhile=WhileStmt::Create(*ctxt,nullptr,BO,whileStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+
+            RepairCandidate rc2;
+            rc2.actions.clear();
+            rc2.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newWhile));
+            if (!naive) {
+                rc2.actions.push_back(RepairAction(newStatementLoc(loc, newWhile), placeholder,
+                            candidateVars));
+            }
+            // FIXME: priority!
+            if (learning)
+                rc2.score = getLocScore(stmt);
+            else
+                rc2.score = 4*PRIORITY_ALPHA;
+            rc2.kind = RepairCandidate::MSVExtLoopConditionKind;
+            rc2.original=stmt;
+            q.push_back(rc2);
+
+            // Update paren for same as LoosenCondition
+            BinaryOperator *ori_BO = llvm::dyn_cast<BinaryOperator>(ori_cond);
+            if (ori_BO)
+                if (ori_BO->getOpcode() == BO_LAnd) {
+                    Expr* LHS = ori_BO->getLHS();
+                    Expr* RHS = ori_BO->getRHS();
+                    ParenExpr* ParenLHS = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), LHS);
+                    BinaryOperator *BO_LHS = BinaryOperator::Create(*ctxt,ParenLHS,
+                        placeholder, BO_LOr, ctxt->IntTy, VK_RValue,
+                        OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                    ParenE = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), BO_LHS);
+                    BO = BinaryOperator::Create(*ctxt,ParenE,
+                        RHS, BO_LAnd, ctxt->IntTy, VK_RValue,
+                        OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                    newWhile=WhileStmt::Create(*ctxt,nullptr,BO,whileStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+                    RepairCandidate rc3;
+                    rc3.actions.clear();
+                    rc3.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newWhile));
+                    if (!naive) {
+                        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
+                        rc3.actions.push_back(RepairAction(newStatementLoc(loc, newWhile), placeholder,
+                                candidateVars));
+                    }
+                    // FIXME: priority!
+                    if (learning)
+                        rc3.score = getLocScore(stmt);
+                    else
+                        rc3.score = 4*PRIORITY_ALPHA;
+                    rc3.kind = RepairCandidate::MSVExtLoopConditionKind;
+                    rc3.original=stmt;
+                    q.push_back(rc3);
+                }
+        }
+
+        // Replace condition in For loop
+        if (ForStmt::classof(stmt)) {
+            ForStmt *forStmt=llvm::dyn_cast<ForStmt>(stmt);
+
+            Expr *ori_cond = forStmt->getCond();
+            ASTLocTy loc = getNowLocation(forStmt);
+            LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+            L->msvExt=false;
+            Expr *placeholder;
+            ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
+
+            if (naive)
+                placeholder = getNewIntegerLiteral(ctxt, 1);
+            else
+                placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(forStmt->getBeginLoc()));
+
+            UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
+                    UO_LNot, ori_cond->getType(), VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+            ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
+
+            // Create && condition
+            BinaryOperator *BO = BinaryOperator::Create(*ctxt,ParenE, UO, BO_LAnd, ctxt->IntTy,
+                    VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+            ForStmt *newFor=new(*ctxt) ForStmt(*ctxt,forStmt->getInit(),BO,forStmt->getConditionVariable(),forStmt->getInc(),forStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+
+            RepairCandidate rc;
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newFor));
+            if (!naive) {
+                rc.actions.push_back(RepairAction(newStatementLoc(loc, newFor), placeholder,
+                            candidateVars));
+            }
+            // FIXME: priority!
+            if (learning)
+                rc.score = getLocScore(stmt);
+            else
+                rc.score = 4*PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtLoopConditionKind;
+            rc.original=stmt;
+            q.push_back(rc);
+
+            // Create || condition
+            BO = BinaryOperator::Create(*ctxt,ParenE, placeholder, BO_LOr, ctxt->IntTy,
+                    VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+            newFor=new(*ctxt) ForStmt(*ctxt,forStmt->getInit(),BO,forStmt->getConditionVariable(),forStmt->getInc(),forStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+
+            RepairCandidate rc2;
+            rc2.actions.clear();
+            rc2.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newFor));
+            if (!naive) {
+                rc2.actions.push_back(RepairAction(newStatementLoc(loc, newFor), placeholder,
+                            candidateVars));
+            }
+            // FIXME: priority!
+            if (learning)
+                rc2.score = getLocScore(stmt);
+            else
+                rc2.score = 4*PRIORITY_ALPHA;
+            rc2.kind = RepairCandidate::MSVExtLoopConditionKind;
+            rc2.original=stmt;
+            q.push_back(rc2);
+
+            // Update paren for same as LoosenCondition
+            BinaryOperator *ori_BO = llvm::dyn_cast<BinaryOperator>(ori_cond);
+            if (ori_BO)
+                if (ori_BO->getOpcode() == BO_LAnd) {
+                    Expr* LHS = ori_BO->getLHS();
+                    Expr* RHS = ori_BO->getRHS();
+                    ParenExpr* ParenLHS = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), LHS);
+                    BinaryOperator *BO_LHS = BinaryOperator::Create(*ctxt,ParenLHS,
+                        placeholder, BO_LOr, ctxt->IntTy, VK_RValue,
+                        OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                    ParenE = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), BO_LHS);
+                    BO = BinaryOperator::Create(*ctxt,ParenE,
+                        RHS, BO_LAnd, ctxt->IntTy, VK_RValue,
+                        OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                    newFor=new(*ctxt) ForStmt(*ctxt,forStmt->getInit(),BO,forStmt->getConditionVariable(),forStmt->getInc(),forStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+                    RepairCandidate rc3;
+                    rc3.actions.clear();
+                    rc3.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newFor));
+                    if (!naive) {
+                        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
+                        rc3.actions.push_back(RepairAction(newStatementLoc(loc, newFor), placeholder,
+                                candidateVars));
+                    }
+                    // FIXME: priority!
+                    if (learning)
+                        rc3.score = getLocScore(stmt);
+                    else
+                        rc3.score = 4*PRIORITY_ALPHA;
+                    rc3.kind = RepairCandidate::MSVExtLoopConditionKind;
+                    rc3.original=stmt;
+                    q.push_back(rc3);
+                }
+        }
+
+    }
+
     void genRemoveCondition(IfStmt *stmt){
         Expr *rootCond=stmt->getCond();
         if (BinaryOperator::classof(rootCond)){
@@ -2232,6 +2428,23 @@ public:
             genLooseCondition(n);
         return ret;
     }
+
+    bool VisitWhileStmt(WhileStmt *stmt) {
+        if (isTainted(stmt) && MsvExt.getValue()) {
+            genLoopCondition(stmt);
+        }
+
+        return true;
+    }
+
+    bool VisitForStmt(ForStmt *stmt) {
+        if (isTainted(stmt) && MsvExt.getValue()) {
+            genLoopCondition(stmt);
+        }
+
+        return true;
+    }
+
     bool VisitStmt(Stmt *n) {
         if (llvm::isa<CompoundStmt>(n))
             return true;

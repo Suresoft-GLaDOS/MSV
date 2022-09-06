@@ -609,6 +609,7 @@ const int kind_m[] = {
                         AddControlRepair, // MSVExtIfExitBackKind
                         ReplaceStmtRepair, // MSVExtReplaceTrenaryOperatorKind
                         ReplaceStmtRepair, // MSVExtMoveConditionKind
+                        CondRepair,  // MSVExtLoopConditionKind
 };
 
 FeatureSetTy extractRepairFeatures(const RepairCandidate &rc) {
