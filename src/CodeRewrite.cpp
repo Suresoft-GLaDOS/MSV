@@ -395,6 +395,8 @@ std::string toString(RepairCandidate::CandidateKind kind){
             return "MSVExtReplaceTrenaryOperatorKind";
         case RepairCandidate::MSVExtMoveConditionKind:
             return "MSVExtMoveConditionKind";
+        case RepairCandidate::MSVExtLoopConditionKind:
+            return "MSVExtLoopConditionKind";
         default:
             return "TerribleKind";
     }
@@ -478,15 +480,22 @@ std::pair<size_t,size_t> getConditionLocation(std::string ifCode){
     }
 
     size_t start=ifCode.find("(");
+    if (ifCode.substr(0,3)=="for")
+        start=ifCode.find(";")+1;
     size_t count=0;
     size_t end=start;
-    for (size_t i=start+1;i<ifCode.size();i++){
-        if (ifCode[i]=='(' && ifCode[i-1]!='\'') count++;
-        else if (ifCode[i]==')' && ifCode[i+1]!='\''){
-            if (count>0) count--;
-            else {
-                end=i;
-                break;
+    if (ifCode.substr(0,3)=="for") {
+        end=ifCode.find(";",start+1)-1;
+    }
+    else{
+        for (size_t i=start+1;i<ifCode.size();i++){
+            if (ifCode[i]=='(' && ifCode[i-1]!='\'') count++;
+            else if (ifCode[i]==')' && ifCode[i+1]!='\''){
+                if (count>0) count--;
+                else {
+                    end=i;
+                    break;
+                }
             }
         }
     }
@@ -580,7 +589,7 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
             if (rc[j].actions[i].kind == RepairAction::ReplaceMutationKind){
                 std::string newStmt="//"+toString(rc[j].kind)+"\n";
                 if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind || rc[j].kind==RepairCandidate::MSVExtConditionKind || rc[j].kind==RepairCandidate::MSVExtReplaceFunctionInConditionKind
-                            || rc[j].kind==RepairCandidate::MSVExtRemoveConditionKind){
+                            || rc[j].kind==RepairCandidate::MSVExtRemoveConditionKind || rc[j].kind==RepairCandidate::MSVExtLoopConditionKind){
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                         newStmt += ";\n";
@@ -638,7 +647,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     size_t end = currentLocation[currentIndex].second;
 
     std::string body="";
-    if(res1[currentCandidate[currentIndex]][VarMutation].size()>0){
+    if(res1[currentCandidate[currentIndex]][VarMutation].size()>0 && false){
         for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[currentIndex]][VarMutation].begin();
                 patch_it!=res1[currentCandidate[currentIndex]][VarMutation].end();patch_it++){
             body+=patch_it->first;
@@ -813,7 +822,10 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="else if (__choose"+std::to_string(counter)+" == "+std::to_string(case_count)+")\n{\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
             std::pair<size_t,size_t> conditionLoc=getConditionLocation(currentBody);
-            body+="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
+            if (subPatch.substr(0,3)=="for")
+                body+="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first+1,conditionLoc.second-conditionLoc.first+1)+";\n";
+            else
+                body+="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
             // outlog_printf(2,"%s\n\n",currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1).c_str());
             casePatch[case_count]=currentBody;
             body+="}\n#endif\n";
@@ -888,7 +900,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     size_t indexBackup=currentIndex;
     std::vector<std::string> bodyCodes;
     bodyCodes.clear();
-    if (res1[currentCandidate[indexBackup]][ConditionSynthesize].size()>0 && code.substr(start,2)!="if")
+    if (res1[currentCandidate[indexBackup]][ConditionSynthesize].size()>0 && code.substr(start,2)!="if" && code.substr(start,5)!="while" && code.substr(start,3)!="for")
         bodyCodes.push_back(stmtToString(*ctxt,loc.stmt));
     else{
         bodyCodes.push_back(code.substr(start,end-start));
@@ -914,7 +926,10 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     }
     if(res1[currentCandidate[indexBackup]][ConditionSynthesize].size()>0){
         std::pair<size_t,size_t> conditionLoc=getConditionLocation(origBody);
-        origBody=origBody.replace(conditionLoc.first+1,conditionLoc.second-conditionLoc.first-2,"__temp"+std::to_string(conditionCounter));
+        if (origBody.substr(0,3)=="for")
+            origBody=origBody.replace(conditionLoc.first+1,conditionLoc.second-conditionLoc.first-1,"__temp"+std::to_string(conditionCounter));
+        else
+            origBody=origBody.replace(conditionLoc.first+1,conditionLoc.second-conditionLoc.first-2,"__temp"+std::to_string(conditionCounter));
     }
 
     // Normal replace
@@ -1308,7 +1323,8 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
     }
 
     for (size_t i=0;i<rc.size();i++){
-        if (rc[i].kind==RepairCandidate::TightenConditionKind || rc[i].kind==RepairCandidate::LoosenConditionKind || rc[i].kind==RepairCandidate::IfExitKind || rc[i].kind==RepairCandidate::GuardKind || rc[i].kind==RepairCandidate::SpecialGuardKind || rc[i].kind==RepairCandidate::MSVExtConditionKind){
+        if (rc[i].kind==RepairCandidate::TightenConditionKind || rc[i].kind==RepairCandidate::LoosenConditionKind || rc[i].kind==RepairCandidate::IfExitKind || rc[i].kind==RepairCandidate::GuardKind || rc[i].kind==RepairCandidate::SpecialGuardKind || rc[i].kind==RepairCandidate::MSVExtConditionKind ||
+                    rc[i].kind==RepairCandidate::MSVExtLoopConditionKind){
             std::vector<size_t> switches=switchLoc[rc[i].actions[0].loc];
             std::vector<Expr *> atoms=rc[i].actions[1].candidate_atoms;
             for (size_t j=0;j<switches.size();j++)
