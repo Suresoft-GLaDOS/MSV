@@ -328,7 +328,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-SUBDIRS = src wrap include benchmarks
+SUBDIRS = src wrap include
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
