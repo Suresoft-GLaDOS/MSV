@@ -397,6 +397,10 @@ std::string toString(RepairCandidate::CandidateKind kind){
             return "MSVExtMoveConditionKind";
         case RepairCandidate::MSVExtLoopConditionKind:
             return "MSVExtLoopConditionKind";
+        case RepairCandidate::MSVExtParenTightenConditionKind:
+            return "MSVExtParenTightenConditionKind";
+        case RepairCandidate::MSVExtParenLoosenConditionKind:
+            return "MSVExtParenLoosenConditionKind";
         default:
             return "TerribleKind";
     }
@@ -589,7 +593,7 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
             if (rc[j].actions[i].kind == RepairAction::ReplaceMutationKind){
                 std::string newStmt="//"+toString(rc[j].kind)+"\n";
                 if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind || rc[j].kind==RepairCandidate::MSVExtConditionKind || rc[j].kind==RepairCandidate::MSVExtReplaceFunctionInConditionKind
-                            || rc[j].kind==RepairCandidate::MSVExtRemoveConditionKind || rc[j].kind==RepairCandidate::MSVExtLoopConditionKind){
+                            || rc[j].kind==RepairCandidate::MSVExtRemoveConditionKind || rc[j].kind==RepairCandidate::MSVExtLoopConditionKind || rc[j].kind==RepairCandidate::MSVExtParenTightenConditionKind || rc[j].kind==RepairCandidate::MSVExtParenLoosenConditionKind){
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                         newStmt += ";\n";
@@ -1324,7 +1328,7 @@ CodeRewriter::CodeRewriter(SourceContextManager &M, const std::vector<RepairCand
 
     for (size_t i=0;i<rc.size();i++){
         if (rc[i].kind==RepairCandidate::TightenConditionKind || rc[i].kind==RepairCandidate::LoosenConditionKind || rc[i].kind==RepairCandidate::IfExitKind || rc[i].kind==RepairCandidate::GuardKind || rc[i].kind==RepairCandidate::SpecialGuardKind || rc[i].kind==RepairCandidate::MSVExtConditionKind ||
-                    rc[i].kind==RepairCandidate::MSVExtLoopConditionKind){
+                    rc[i].kind==RepairCandidate::MSVExtLoopConditionKind || rc[i].kind==RepairCandidate::MSVExtParenTightenConditionKind || rc[i].kind==RepairCandidate::MSVExtParenLoosenConditionKind){
             std::vector<size_t> switches=switchLoc[rc[i].actions[0].loc];
             std::vector<Expr *> atoms=rc[i].actions[1].candidate_atoms;
             for (size_t j=0;j<switches.size();j++)

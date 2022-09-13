@@ -500,7 +500,9 @@ public:
         if ((rc.kind == RepairCandidate::TightenConditionKind) ||
             (rc.kind == RepairCandidate::LoosenConditionKind) ||
             (rc.kind == RepairCandidate::GuardKind) ||
-            (rc.kind == RepairCandidate::SpecialGuardKind)) {
+            (rc.kind == RepairCandidate::SpecialGuardKind) ||
+            (rc.kind == RepairCandidate::MSVExtParenTightenConditionKind) ||
+            (rc.kind == RepairCandidate::MSVExtParenLoosenConditionKind)) {
             IfStmt *IFS = llvm::dyn_cast<IfStmt>((Stmt*)rc.actions[0].ast_node);
             putValueFeature(NULL, RStmtCondAF);
             Expr* cond = IFS->getCond();
@@ -610,6 +612,8 @@ const int kind_m[] = {
                         ReplaceStmtRepair, // MSVExtReplaceTrenaryOperatorKind
                         ReplaceStmtRepair, // MSVExtMoveConditionKind
                         CondRepair,  // MSVExtLoopConditionKind
+                        CondRepair,  // MSVExtParenTightenConditionKind
+                        CondRepair,  // MSVExtParenLoosenConditionKind
 };
 
 FeatureSetTy extractRepairFeatures(const RepairCandidate &rc) {

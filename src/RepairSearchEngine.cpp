@@ -208,7 +208,9 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                     blowup_cnt +=  atoms.size() * 2 - 1;
                 }
                 if (candidate.kind == RepairCandidate::TightenConditionKind ||
-                        candidate.kind == RepairCandidate::LoosenConditionKind) {
+                        candidate.kind == RepairCandidate::LoosenConditionKind ||
+                        candidate.kind == RepairCandidate::MSVExtParenTightenConditionKind ||
+                        candidate.kind == RepairCandidate::MSVExtParenLoosenConditionKind) {
                     IfStmt *stmt = llvm::dyn_cast<IfStmt>(candidate.actions[0].loc.stmt);
                     Expr* ori_cond = stmt->getCond();
                     clang::ASTContext *ctxt = M.getSourceContext(candidate.actions[0].loc.filename);

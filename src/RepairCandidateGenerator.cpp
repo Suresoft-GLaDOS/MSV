@@ -711,6 +711,37 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         rc.original=n;
         q.push_back(rc);
 
+        // Generate without paren if original condition is BinaryOperator and operator is OR
+        if (BinaryOperator::classof(ori_cond)){
+            BinaryOperator *BO = llvm::cast<BinaryOperator>(ori_cond);
+            if (BO->getOpcode() == BO_LOr){
+                Expr *LHS = BO->getLHS();
+                Expr *RHS = BO->getRHS();
+                BinaryOperator *newFirst=BinaryOperator::Create(*ctxt,RHS, UO, BO_LAnd, ctxt->IntTy,
+                        VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), newFirst);
+                BinaryOperator *BO = BinaryOperator::Create(*ctxt,LHS, ParenE, BO->getOpcode(), ctxt->IntTy,
+                        VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                IfStmt *S = duplicateIfStmt(ctxt, n, BO);
+                RepairCandidate rc2;
+                rc2.actions.clear();
+                rc2.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, S));
+                if (!naive) {
+                    rc2.actions.push_back(RepairAction(newStatementLoc(loc, S), placeholder,
+                                candidateVars));
+                }
+
+                // FIXME: priority!
+                if (learning)
+                    rc2.score = getLocScore(n);
+                else
+                    rc2.score = 4*PRIORITY_ALPHA;
+                rc2.kind = RepairCandidate::MSVExtParenTightenConditionKind;
+                rc2.original=n;
+                q.push_back(rc2);
+
+            }
+        }
         if (processed.count(L->getCurrentFunction())==0) {
             genVarMutation(L->getCurrentFunction());
             processed.insert(L->getCurrentFunction());
@@ -724,6 +755,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
         L->msvExt=false;
         //assert(ori_cond->getType()->isIntegerType());
+        // if ((conds ...) || __is_neg)
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
         Expr* placeholder;
         ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
@@ -763,6 +795,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             if (ori_BO->getOpcode() == BO_LAnd) {
                 Expr* LHS = ori_BO->getLHS();
                 Expr* RHS = ori_BO->getRHS();
+                // if ((cond || __is_neg) && cond2)
                 ParenExpr* ParenLHS = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), LHS);
                 BinaryOperator *BO_LHS = BinaryOperator::Create(*ctxt,ParenLHS,
                     placeholder, BO_LOr, ctxt->IntTy, VK_RValue,
@@ -788,6 +821,31 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 rc.kind = RepairCandidate::LoosenConditionKind;
                 rc.original=n;
                 q.push_back(rc);
+
+                // if (cond && (cond2 || __is_neg))
+                BinaryOperator *firstOper=BinaryOperator::Create(*ctxt,RHS, placeholder, BO_LOr, ctxt->IntTy,
+                        VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                ParenExpr *ParenE2 = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), firstOper);
+                BinaryOperator *BO2 = BinaryOperator::Create(*ctxt,LHS, ParenE2, BO_LAnd, ctxt->IntTy,
+                        VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                IfStmt *S2 = duplicateIfStmt(ctxt, n, BO2);
+
+                RepairCandidate rc2;
+                rc2.actions.clear();
+                rc2.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, S2));
+                if (!naive) {
+                    ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
+                    rc2.actions.push_back(RepairAction(newStatementLoc(loc, S2), placeholder,
+                            candidateVars));
+                }
+                // FIXME: priority!
+                if (learning)
+                    rc2.score = getLocScore(n);
+                else
+                    rc2.score = 4*PRIORITY_ALPHA;
+                rc2.kind = RepairCandidate::MSVExtParenLoosenConditionKind;
+                rc2.original=n;
+                q.push_back(rc2);
             }
     }
 

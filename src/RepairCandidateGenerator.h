@@ -190,6 +190,16 @@ struct RepairCandidate {
             +   for (init; cond && __is_neg; inc) {
         */
         MSVExtLoopConditionKind,
+        /*
+            -   if (cond || cond2) {
+            +   if (cond || cond2 && __is_neg) {
+        */
+        MSVExtParenTightenConditionKind,
+        /*
+            -   if (cond && cond2) {
+            +   if (cond && (cond2 || __is_neg)) {
+        */
+        MSVExtParenLoosenConditionKind,
         AddVarMutation
     } CandidateKind;
     CandidateKind kind;
