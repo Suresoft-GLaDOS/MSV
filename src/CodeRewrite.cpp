@@ -826,6 +826,7 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             body+="else if (__choose"+std::to_string(counter)+" == "+std::to_string(case_count)+")\n{\n";
             std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
             std::pair<size_t,size_t> conditionLoc=getConditionLocation(currentBody);
+            body+="// "+toString(patch_it->second.kind)+"\n";
             if (subPatch.substr(0,3)=="for")
                 body+="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first+1,conditionLoc.second-conditionLoc.first+1)+";\n";
             else
