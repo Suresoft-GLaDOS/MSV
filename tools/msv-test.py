@@ -25,12 +25,18 @@ def run_test(id,test,commands,timeout):
     
     failed=False
     for command in final_commands:
+        # print(command)
         proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         try:
             so,se=proc.communicate(timeout=timeout)
+            # print(so)
+            if "The following tests FAILED" in so.decode('utf-8'):
+                failed=True
+                break
             if proc.returncode!=0:
                 failed=True
                 break
+
         except:
             pid=proc.pid
             children=[]

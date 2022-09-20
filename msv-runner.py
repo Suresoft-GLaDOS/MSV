@@ -33,6 +33,7 @@ def create_revlog(src_name:str,msv_path:str):
     pass_test=[]
     # Run test
     for i in range(total_test):
+        print(f'{msv_path}/tools/msv-test.py','.','../tests','..',f'{i}')
         proc=subprocess.run([f'{msv_path}/tools/msv-test.py','.','../tests','..',f'{i}'],stdout=subprocess.PIPE)
         try:
             output=proc.stdout.decode('utf-8')
@@ -130,7 +131,7 @@ def generate_meta_program(work_dir:str,src_dir:str,feature_para:str='',sbfl_path
         work_dir=os.path.abspath(work_dir)
     src_name=src_dir.split('/')[-1]
 
-    cmd=['prophet', '-r', f'{work_dir}/{src_name}-workdir', '-skip-verify', '-skip-profile', '-replace-ext', '-first-n-loc', '100', '-consider-all','-msv-ext']
+    cmd=['prophet', '-r', f'{work_dir}/{src_name}-workdir', '-skip-verify', '-skip-profile', '-replace-ext', '-first-n-loc', '14', '-consider-all','-msv-ext']
     if sbfl_path!='':
         cmd.append('-use-sbfl')
         cmd.append(sbfl_path)

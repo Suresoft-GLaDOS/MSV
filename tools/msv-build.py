@@ -72,7 +72,7 @@ if __name__=="__main__":
 
     # Run make and post-make
     for command in compile_commands:
-        if command=='make' and paraj>1:
+        if command=='make install' and paraj>1:
             command+=f' -j {paraj}'
         returncode=system(command)
         if returncode!=0:
@@ -80,10 +80,15 @@ if __name__=="__main__":
 
     chdir(org_dir)
     if dryrun_src != "":
+        print("DryRun!")
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
         if len(args) > 1:
-            out_file = open(args[1], "w")
-            out_file.write(builddir+'\n'+buildargs+'\n')
+            out_file = open(args[1], "a")
+            print(args[1])
+            print(builddir)
+            print(buildargs)
+            if buildargs is not None and buildargs != '':
+                out_file.write(builddir+'\n'+buildargs+'\n')
             out_file.close()
         else:
             print(builddir)
