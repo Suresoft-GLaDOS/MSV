@@ -64,8 +64,9 @@ if __name__ == "__main__":
                 ret = system(cmd);
                 if (ret == 0):
                     print (i)
-            system("rm -rf __out");
-        print;
+            # system("rm -rf __out");
+        print()
         
     chdir(orig_dir)
-    shutil.rmtree(temp_dir)
+    # shutil.rmtree(temp_dir)
+    system('rm -rf '+temp_dir)

@@ -281,7 +281,7 @@ finish_eval=""
 hardcode_into_libs=yes
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/usr/lib/x86_64-linux-gnu /usr/lib /usr/local/lib /lib/x86_64-linux-gnu /lib /usr/lib/gcc/x86_64-linux-gnu/7 "
+sys_lib_search_path_spec="/usr/lib/x86_64-linux-gnu /usr/lib /usr/local/lib /lib/x86_64-linux-gnu /lib /usr/lib/gcc/x86_64-linux-gnu/7 /usr/lib/jvm/java-11-openjdk-amd64/lib/server "
 
 # Detected run-time system search path for libraries.
 sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /usr/local/lib /usr/local/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /lib32 /usr/lib32 /libx32 /usr/libx32 "
@@ -11800,7 +11800,7 @@ file_list_spec=""
 hardcode_action=immediate
 
 # The directories searched by this compiler when creating a shared library.
-compiler_lib_search_dirs="/usr/lib/x86_64-linux-gnu /usr/lib/../lib /usr/local/lib/../lib /lib/x86_64-linux-gnu /lib/../lib /usr/lib/gcc/x86_64-linux-gnu/7 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu /usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib /lib/x86_64-linux-gnu /lib/../lib /usr/lib/x86_64-linux-gnu /usr/lib/../lib /usr/lib/x86_64-linux-gnu /usr/local/lib /usr/lib/gcc/x86_64-linux-gnu/7/../../.."
+compiler_lib_search_dirs="/usr/lib/x86_64-linux-gnu /usr/lib/../lib /usr/local/lib/../lib /lib/x86_64-linux-gnu /lib/../lib /usr/lib/gcc/x86_64-linux-gnu/7 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu /usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib /lib/x86_64-linux-gnu /lib/../lib /usr/lib/x86_64-linux-gnu /usr/lib/../lib /usr/lib/x86_64-linux-gnu /usr/local/lib /usr/lib/jvm/java-11-openjdk-amd64/lib/server /usr/lib/gcc/x86_64-linux-gnu/7/../../.."
 
 # Dependencies to place before and after the objects being linked to
 # create a shared library.
@@ -11811,6 +11811,6 @@ postdeps="-lstdc++ -lm -lgcc_s -lc -lgcc_s"
 
 # The library search path used internally by the compiler when linking
 # a shared library.
-compiler_lib_search_path="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/local/lib/../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.."
+compiler_lib_search_path="-L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/local/lib/../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/usr/lib/jvm/java-11-openjdk-amd64/lib/server -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.."
 
 # ### END LIBTOOL TAG CONFIG: CXX

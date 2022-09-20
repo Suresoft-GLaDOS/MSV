@@ -27,7 +27,8 @@ def tobuild(src_dir):
     print ("Path env: ", environ["PATH"])
     chdir(src_dir);
 
-    ret = subprocess.call("make clean",shell=True)
+    # ret = subprocess.call("make clean",shell=True)
+    subprocess.run(['rm','-rf','prog'])
     ret = subprocess.call(["make"],shell=True);
     chdir(ori_dir);
 

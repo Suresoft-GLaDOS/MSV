@@ -1,0 +1,449 @@
+../../../../wrap/gcc -c prog.c  -o prog.o
+wrap/tclang
+prog.c:388:50: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (__is_neg("0-6", "L8", 3, &(argv), sizeof (argv), &(fin),
+                                                 ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:397:50: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (__is_neg("0-7", "L8", 3, &(argv), sizeof (argv), &(fin),
+                                                 ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:406:50: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (__is_neg("0-8", "L8", 3, &(argv), sizeof (argv), &(fin),
+                                                 ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:415:50: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (__is_neg("0-9", "L8", 3, &(argv), sizeof (argv), &(fin),
+                                                 ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:430:51: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (!__is_neg("1-1", "L8", 3, &(argv), sizeof (argv), &(fin), sizeof (fin), &(argc), sizeof (argc)))
+                                                  ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:463:17: warning: incompatible integer to pointer conversion passing 'int' to parameter of type 'const char *' [-Wint-conversion]
+    fin = fopen((&argc)[1], "r");
+                ^~~~~~~~~~
+/usr/include/stdio.h:232:44: note: passing argument to parameter '__filename' here
+extern FILE *fopen (const char *__restrict __filename,
+                                           ^
+prog.c:471:17: warning: incompatible pointer types passing 'char **' to parameter of type 'const char *'; dereference with * [-Wincompatible-pointer-types]
+    fin = fopen((&argv)[1], "r");
+                ^~~~~~~~~~
+                *
+/usr/include/stdio.h:232:44: note: passing argument to parameter '__filename' here
+extern FILE *fopen (const char *__restrict __filename,
+                                           ^
+prog.c:487:17: warning: incompatible pointer types passing 'FILE *' (aka 'struct _IO_FILE *') to parameter of type 'const char *' [-Wincompatible-pointer-types]
+    fin = fopen((&fin)[1], "r");
+                ^~~~~~~~~
+/usr/include/stdio.h:232:44: note: passing argument to parameter '__filename' here
+extern FILE *fopen (const char *__restrict __filename,
+                                           ^
+prog.c:567:23: warning: comparison of array 'filename' not equal to a null pointer is always true [-Wtautological-pointer-compare]
+    fin = fopen(argv[(filename != 0)], "r");
+                      ^~~~~~~~    ~
+prog.c:575:23: warning: comparison of array 'filename' equal to a null pointer is always false [-Wtautological-pointer-compare]
+    fin = fopen(argv[(filename == 0)], "r");
+                      ^~~~~~~~    ~
+prog.c:599:26: warning: incompatible pointer types passing 'int *' to parameter of type 'const char *' [-Wincompatible-pointer-types]
+    fin = fopen(argv[1], (&argc));
+                         ^~~~~~~
+/usr/include/stdio.h:233:30: note: passing argument to parameter '__modes' here
+                    const char *__restrict __modes) __wur;
+                                           ^
+prog.c:607:26: warning: incompatible pointer types passing 'char ***' to parameter of type 'const char *' [-Wincompatible-pointer-types]
+    fin = fopen(argv[1], (&argv));
+                         ^~~~~~~
+/usr/include/stdio.h:233:30: note: passing argument to parameter '__modes' here
+                    const char *__restrict __modes) __wur;
+                                           ^
+prog.c:615:26: warning: incompatible pointer types passing 'char (*)[60]' to parameter of type 'const char *' [-Wincompatible-pointer-types]
+    fin = fopen(argv[1], (&filename));
+                         ^~~~~~~~~~~
+/usr/include/stdio.h:233:30: note: passing argument to parameter '__modes' here
+                    const char *__restrict __modes) __wur;
+                                           ^
+prog.c:623:26: warning: incompatible pointer types passing 'FILE **' (aka 'struct _IO_FILE **') to parameter of type 'const char *' [-Wincompatible-pointer-types]
+    fin = fopen(argv[1], (&fin));
+                         ^~~~~~
+/usr/include/stdio.h:233:30: note: passing argument to parameter '__modes' here
+                    const char *__restrict __modes) __wur;
+                                           ^
+prog.c:728:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:737:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:746:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:755:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:915:55: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (c), &(i), sizeof (i), &(argv), sizeof (argv), &(argc),
+                                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:925:55: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (c), &(i), sizeof (i), &(argv), sizeof (argv), &(argc),
+                                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:935:55: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (c), &(i), sizeof (i), &(argv), sizeof (argv), &(argc),
+                                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:945:55: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (c), &(i), sizeof (i), &(argv), sizeof (argv), &(argc),
+                                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:955:55: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (c), &(i), sizeof (i), &(argv), sizeof (argv), &(argc),
+                                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:970:110: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (!__is_neg("4-1", "L13", 5, &(fin), sizeof (fin), &(c), sizeof (c), &(i), sizeof (i), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                                                                             ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:995:30: error: expected expression
+    c = _IO_ftrylockfile(fin);
+                             ^
+prog.c:1195:18: warning: incompatible pointer types passing 'int *' to parameter of type '_IO_FILE *' (aka 'struct _IO_FILE *') [-Wincompatible-pointer-types]
+    c = _IO_getc((&argc));
+                 ^~~~~~~
+/usr/include/x86_64-linux-gnu/bits/libio.h:433:32: note: passing argument to parameter '__fp' here
+extern int _IO_getc (_IO_FILE *__fp);
+                               ^
+prog.c:1203:18: warning: incompatible pointer types passing 'char ***' to parameter of type '_IO_FILE *' (aka 'struct _IO_FILE *') [-Wincompatible-pointer-types]
+    c = _IO_getc((&argv));
+                 ^~~~~~~
+/usr/include/x86_64-linux-gnu/bits/libio.h:433:32: note: passing argument to parameter '__fp' here
+extern int _IO_getc (_IO_FILE *__fp);
+                               ^
+prog.c:1211:18: warning: incompatible pointer types passing 'char *' to parameter of type '_IO_FILE *' (aka 'struct _IO_FILE *') [-Wincompatible-pointer-types]
+    c = _IO_getc((&c));
+                 ^~~~
+/usr/include/x86_64-linux-gnu/bits/libio.h:433:32: note: passing argument to parameter '__fp' here
+extern int _IO_getc (_IO_FILE *__fp);
+                               ^
+prog.c:1219:18: warning: incompatible pointer types passing 'char (*)[60]' to parameter of type '_IO_FILE *' (aka 'struct _IO_FILE *') [-Wincompatible-pointer-types]
+    c = _IO_getc((&filename));
+                 ^~~~~~~~~~~
+/usr/include/x86_64-linux-gnu/bits/libio.h:433:32: note: passing argument to parameter '__fp' here
+extern int _IO_getc (_IO_FILE *__fp);
+                               ^
+prog.c:1227:18: warning: incompatible pointer types passing 'FILE **' (aka 'struct _IO_FILE **') to parameter of type '_IO_FILE *' (aka 'struct _IO_FILE *'); dereference with * [-Wincompatible-pointer-types]
+    c = _IO_getc((&fin));
+                 ^~~~~~
+                 *
+/usr/include/x86_64-linux-gnu/bits/libio.h:433:32: note: passing argument to parameter '__fp' here
+extern int _IO_getc (_IO_FILE *__fp);
+                               ^
+prog.c:1235:18: warning: incompatible pointer types passing 'int *' to parameter of type '_IO_FILE *' (aka 'struct _IO_FILE *') [-Wincompatible-pointer-types]
+    c = _IO_getc((&i));
+                 ^~~~
+/usr/include/x86_64-linux-gnu/bits/libio.h:433:32: note: passing argument to parameter '__fp' here
+extern int _IO_getc (_IO_FILE *__fp);
+                               ^
+prog.c:1397:57: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(i), sizeof (i), &(argv), sizeof (argv), &(argc),
+                                                                         ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1407:57: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(i), sizeof (i), &(argv), sizeof (argv), &(argc),
+                                                                         ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1417:57: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(i), sizeof (i), &(argv), sizeof (argv), &(argc),
+                                                                         ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1427:57: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(i), sizeof (i), &(argv), sizeof (argv), &(argc),
+                                                                         ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1437:57: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(i), sizeof (i), &(argv), sizeof (argv), &(argc),
+                                                                         ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1451:130: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    __temp6= ((c == (-1)) || __is_neg("6-1", "L14", 5, &(c), sizeof (c), &(fin), sizeof (fin), &(i), sizeof (i), &(argv), sizeof (argv), &(argc), sizeof (argc)));
+                                                                                                                                 ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1458:115: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    __temp6= (__is_neg("6-2", "L14", 5, &(c), sizeof (c), &(fin), sizeof (fin), &(i), sizeof (i), &(argv), sizeof (argv), &(argc), sizeof (argc)));
+                                                                                                                  ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1465:131: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    __temp6= ((c == (-1)) && !__is_neg("6-3", "L14", 5, &(c), sizeof (c), &(fin), sizeof (fin), &(i), sizeof (i), &(argv), sizeof (argv), &(argc), sizeof (argc)));
+                                                                                                                                  ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1481:110: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (!__is_neg("7-1", "L14", 5, &(c), sizeof (c), &(fin), sizeof (fin), &(i), sizeof (i), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                                                                             ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1640:59: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (c), &(fin), sizeof (fin), &(argv), sizeof (argv), &(argc),
+                                                                           ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1650:59: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (c), &(fin), sizeof (fin), &(argv), sizeof (argv), &(argc),
+                                                                           ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1660:59: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (c), &(fin), sizeof (fin), &(argv), sizeof (argv), &(argc),
+                                                                           ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1670:59: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (c), &(fin), sizeof (fin), &(argv), sizeof (argv), &(argc),
+                                                                           ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1680:59: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (c), &(fin), sizeof (fin), &(argv), sizeof (argv), &(argc),
+                                                                           ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1695:110: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (!__is_neg("9-1", "L18", 5, &(i), sizeof (i), &(c), sizeof (c), &(fin), sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                                                                             ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:1944:20: warning: comparison of array 'filename' not equal to a null pointer is always true [-Wtautological-pointer-compare]
+    filename[i] = (filename != 0);
+                   ^~~~~~~~    ~
+prog.c:1952:20: warning: comparison of array 'filename' equal to a null pointer is always false [-Wtautological-pointer-compare]
+    filename[i] = (filename == 0);
+                   ^~~~~~~~    ~
+prog.c:2060:93: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (!__is_neg("10-1", "L11", 4, &(i), sizeof (i), &(fin), sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                                                            ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:2161:37: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (i), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                     ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:2170:37: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (i), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                     ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:2179:37: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (i), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                     ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:2188:37: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (i), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                     ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:2202:93: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (!__is_neg("12-1", "L20", 4, &(fin), sizeof (fin), &(i), sizeof (i), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                                                            ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:2475:12: warning: incompatible pointer types passing 'int *' to parameter of type 'FILE *' (aka 'struct _IO_FILE *') [-Wincompatible-pointer-types]
+    fclose((&argc));
+           ^~~~~~~
+/usr/include/stdio.h:199:26: note: passing argument to parameter '__stream' here
+extern int fclose (FILE *__stream);
+                         ^
+prog.c:2483:12: warning: incompatible pointer types passing 'char ***' to parameter of type 'FILE *' (aka 'struct _IO_FILE *') [-Wincompatible-pointer-types]
+    fclose((&argv));
+           ^~~~~~~
+/usr/include/stdio.h:199:26: note: passing argument to parameter '__stream' here
+extern int fclose (FILE *__stream);
+                         ^
+prog.c:2491:12: warning: incompatible pointer types passing 'char (*)[60]' to parameter of type 'FILE *' (aka 'struct _IO_FILE *') [-Wincompatible-pointer-types]
+    fclose((&filename));
+           ^~~~~~~~~~~
+/usr/include/stdio.h:199:26: note: passing argument to parameter '__stream' here
+extern int fclose (FILE *__stream);
+                         ^
+prog.c:2499:12: warning: incompatible pointer types passing 'FILE **' (aka 'struct _IO_FILE **') to parameter of type 'FILE *' (aka 'struct _IO_FILE *'); dereference with * [-Wincompatible-pointer-types]
+    fclose((&fin));
+           ^~~~~~
+           *
+/usr/include/stdio.h:199:26: note: passing argument to parameter '__stream' here
+extern int fclose (FILE *__stream);
+                         ^
+prog.c:2507:12: warning: incompatible pointer types passing 'int *' to parameter of type 'FILE *' (aka 'struct _IO_FILE *') [-Wincompatible-pointer-types]
+    fclose((&i));
+           ^~~~
+/usr/include/stdio.h:199:26: note: passing argument to parameter '__stream' here
+extern int fclose (FILE *__stream);
+                         ^
+prog.c:2607:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:2616:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:2625:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:2634:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:2648:93: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (!__is_neg("14-1", "L21", 4, &(i), sizeof (i), &(fin), sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                                                            ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:2657:16: warning: incompatible pointer types passing 'char [4]' to parameter of type '_IO_FILE *' (aka 'struct _IO_FILE *') [-Wincompatible-pointer-types]
+    __overflow("%d\n", i);
+               ^~~~~~
+/usr/include/x86_64-linux-gnu/bits/libio.h:391:34: note: passing argument to parameter here
+extern int __overflow (_IO_FILE *, int);
+                                 ^
+prog.c:2785:21: warning: comparison of array 'filename' not equal to a null pointer is always true [-Wtautological-pointer-compare]
+    printf("%d\n", (filename != 0));
+                    ^~~~~~~~    ~
+prog.c:2793:21: warning: comparison of array 'filename' equal to a null pointer is always false [-Wtautological-pointer-compare]
+    printf("%d\n", (filename == 0));
+                    ^~~~~~~~    ~
+prog.c:2865:12: warning: incompatible pointer types passing 'int *' to parameter of type 'const char *' [-Wincompatible-pointer-types]
+    printf((&argc), i);
+           ^~~~~~~
+/usr/include/stdio.h:318:43: note: passing argument to parameter '__format' here
+extern int printf (const char *__restrict __format, ...);
+                                          ^
+prog.c:2873:12: warning: incompatible pointer types passing 'char ***' to parameter of type 'const char *' [-Wincompatible-pointer-types]
+    printf((&argv), i);
+           ^~~~~~~
+/usr/include/stdio.h:318:43: note: passing argument to parameter '__format' here
+extern int printf (const char *__restrict __format, ...);
+                                          ^
+prog.c:2881:12: warning: incompatible pointer types passing 'char (*)[60]' to parameter of type 'const char *' [-Wincompatible-pointer-types]
+    printf((&filename), i);
+           ^~~~~~~~~~~
+/usr/include/stdio.h:318:43: note: passing argument to parameter '__format' here
+extern int printf (const char *__restrict __format, ...);
+                                          ^
+prog.c:2889:12: warning: incompatible pointer types passing 'FILE **' (aka 'struct _IO_FILE **') to parameter of type 'const char *' [-Wincompatible-pointer-types]
+    printf((&fin), i);
+           ^~~~~~
+/usr/include/stdio.h:318:43: note: passing argument to parameter '__format' here
+extern int printf (const char *__restrict __format, ...);
+                                          ^
+prog.c:2897:12: warning: incompatible pointer types passing 'int *' to parameter of type 'const char *' [-Wincompatible-pointer-types]
+    printf((&i), i);
+           ^~~~
+/usr/include/stdio.h:318:43: note: passing argument to parameter '__format' here
+extern int printf (const char *__restrict __format, ...);
+                                          ^
+prog.c:2997:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:3006:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:3015:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:3024:39: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+                         sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                       ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+prog.c:3038:93: warning: sizeof on array function parameter will return size of 'char **' instead of 'char *[]' [-Wsizeof-array-argument]
+    if (!__is_neg("16-1", "L22", 4, &(i), sizeof (i), &(fin), sizeof (fin), &(argv), sizeof (argv), &(argc), sizeof (argc)))
+                                                                                            ^
+prog.c:335:26: note: declared here
+int main(int argc, char* argv[]) {
+                         ^
+76 warnings and 1 error generated.
+Makefile:4: recipe for target 'all' failed
+make: *** [all] Error 1
