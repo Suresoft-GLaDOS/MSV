@@ -2472,8 +2472,8 @@ public:
             if (loc_map1[n] > loc_map1[ElseCS])
                 loc_map1[n] = loc_map1[ElseCS];
             
-            genCondition(n);
             if (MsvExt.getValue()){
+                genCondition(n);
                 genReplceFunctionInCondition(n);
                 genRemoveCondition(n);
                 genMoveOperator(n);
@@ -2530,7 +2530,8 @@ public:
                     genDeclStmtChange(llvm::dyn_cast<DeclStmt>(n));
                 // This is to compute whether Stmt n is the first
                 // non-decl statement in a CompoundStmt
-                genRemoveStatement(n);
+                if (MsvExt.getValue())
+                    genRemoveStatement(n);
                 genReplaceStmt(n, is_first);
                 if (!llvm::isa<DeclStmt>(n) && !llvm::isa<LabelStmt>(n))
                     genAddIfGuard(n, is_first);
