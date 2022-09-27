@@ -713,16 +713,16 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
 
         // Generate without paren if original condition is BinaryOperator and operator is OR
         if (BinaryOperator::classof(ori_cond)){
-            BinaryOperator *BO = llvm::cast<BinaryOperator>(ori_cond);
-            if (BO->getOpcode() == BO_LOr){
-                Expr *LHS = BO->getLHS();
-                Expr *RHS = BO->getRHS();
+            BinaryOperator *BO1 = llvm::cast<BinaryOperator>(ori_cond);
+            if (BO1->getOpcode() == BO_LOr){
+                Expr *LHS = BO1->getLHS();
+                Expr *RHS = BO1->getRHS();
                 BinaryOperator *newFirst=BinaryOperator::Create(*ctxt,RHS, UO, BO_LAnd, ctxt->IntTy,
                         VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
                 ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), newFirst);
-                BinaryOperator *BO = BinaryOperator::Create(*ctxt,LHS, ParenE, BO->getOpcode(), ctxt->IntTy,
+                BinaryOperator *BO2 = BinaryOperator::Create(*ctxt,LHS, ParenE, BO1->getOpcode(), ctxt->IntTy,
                         VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
-                IfStmt *S = duplicateIfStmt(ctxt, n, BO);
+                IfStmt *S = duplicateIfStmt(ctxt, n, BO2);
                 RepairCandidate rc2;
                 rc2.actions.clear();
                 rc2.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, S));
@@ -2472,8 +2472,8 @@ public:
             if (loc_map1[n] > loc_map1[ElseCS])
                 loc_map1[n] = loc_map1[ElseCS];
             
-            genCondition(n);
             if (MsvExt.getValue()){
+                genCondition(n);
                 genReplceFunctionInCondition(n);
                 genRemoveCondition(n);
                 genMoveOperator(n);
@@ -2530,7 +2530,8 @@ public:
                     genDeclStmtChange(llvm::dyn_cast<DeclStmt>(n));
                 // This is to compute whether Stmt n is the first
                 // non-decl statement in a CompoundStmt
-                genRemoveStatement(n);
+                if (MsvExt.getValue())
+                    genRemoveStatement(n);
                 genReplaceStmt(n, is_first);
                 if (!llvm::isa<DeclStmt>(n) && !llvm::isa<LabelStmt>(n))
                     genAddIfGuard(n, is_first);
