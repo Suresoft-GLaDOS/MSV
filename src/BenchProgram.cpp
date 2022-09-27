@@ -433,12 +433,17 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     ret = system("rm -rf ext/phar/phar.php");
     // assert(ret == 0);
 
-    if (timeout_limit == 0)
-        ret = system((std::string("make >") + build_log + std::to_string(count)+" 2>&1").c_str());
+    if (timeout_limit == 0){
+        ret = system((std::string("make > ") + build_log + std::to_string(count)+" 2>&1").c_str());
+        outlog_printf(2,"Build Command: %s\n", (std::string("make > ") + build_log + std::to_string(count)+" 2>&1").c_str());
         // ret = execute_with_timeout((std::string("make")), 60);
-    else
-        ret = execute_with_timeout((std::string("make >") + build_log +std::to_string(count)+ " 2>&1"), timeout_limit);
+    }
+
+    else{
+        ret = execute_with_timeout((std::string("make > ") + build_log +std::to_string(count)+ " 2>&1"), timeout_limit);
+        outlog_printf(2,"Build Command: %s\n", (std::string("make > ") + build_log +std::to_string(count)+ " 2>&1").c_str());
         // ret = execute_with_timeout((std::string("make")), timeout_limit);
+    }
     bool succ = (ret == 0);
     ret = chdir(ori_dir);
     assert(ret == 0);
