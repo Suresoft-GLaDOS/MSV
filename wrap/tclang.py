@@ -31,7 +31,7 @@ def fix_argv(s):
     else:
         return s
 
-print("wrap/tclang",file=stderr)
+# print("wrap/tclang",file=stderr)
 for i in range(1, len(argv)):
     argv[i] = fix_argv(argv[i])
 

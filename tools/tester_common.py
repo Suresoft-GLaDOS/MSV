@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from os import getcwd, chdir
+import os
 import subprocess
 
 def get_fix_revisions(out_dir):
@@ -134,6 +135,7 @@ def extract_arguments(out_dir, src_file):
                 chdir(ori_dir);
                 print(f'args: {ret}')
                 return directory, ret;
+
     # we try another way to get around it
     subprocess.call(["touch", src_file]);
     p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE);
@@ -172,5 +174,46 @@ def extract_arguments(out_dir, src_file):
                 chdir(ori_dir);
                 print(f'args: {ret}')
                 return directory, ret;
+    chdir(ori_dir);
+    return "","";
+
+def extract_arguments_cmake(out_dir:str, src_file:str):
+    temp_env=os.environ.copy()
+    temp_env['CC']='gcc'
+    temp_env['CXX']='g++'
+
+    print(f'cmake src file: {src_file}')
+    ori_dir = getcwd()
+    chdir(out_dir)
+
+    subprocess.run(["touch", src_file])
+    p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE,env=temp_env)
+    (out, err) = p.communicate();
+    print(out.decode('utf-8'))
+    lines = out.decode('utf-8').strip().split("\n");
+    directory = ".";
+    for line in lines:
+        if line.strip().endswith('.c'):
+            splitted=line.strip().split('&&')
+            directory=splitted[0].replace('cd','').strip()
+            cc_cmd=splitted[1].strip().split(' ')[0]
+            ret=splitted[1].replace(cc_cmd,'').strip()
+            ret_splitted=ret.split(' ')
+
+            is_target=False
+            for i,arg in enumerate(ret_splitted.copy()):
+                if arg=='-o':
+                    is_target=True
+                elif is_target:
+                    ret_splitted[i]=directory+'/'+arg
+                    is_target=False
+
+                if arg.endswith('.c'):
+                    ret_splitted.remove(arg)
+
+            ret=' '.join(ret_splitted)
+            print(f'args: {ret}')
+            chdir(ori_dir)
+            return directory, ret
     chdir(ori_dir);
     return "","";
