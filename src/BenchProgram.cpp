@@ -670,7 +670,7 @@ void BenchProgram::applyRepairedCode(std::map<std::string, std::string> &fileCod
 
     pushEnvMap(envMap);
 
-    pushWrapPath(CLANG_WRAP_PATH, wrapScript);
+    // pushWrapPath(CLANG_WRAP_PATH, wrapScript);
 
     outlog_printf(2,"Preprocessing test...\n");
     for (std::map<std::string, std::string>::iterator it = fileCodeMap.begin();
@@ -878,11 +878,13 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
 
                         if (line.find("static declaration of")!=std::string::npos){
                             size_t pos=line.find("static declaration of");
-                            size_t first=line.find("'");
-                            if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
-                                first = line.find("`", pos);
-                            size_t last=line.find("'",first+1);
-                            std::string function=line.substr(first+1,last-first-1);
+                            size_t first=pos+(std::string("static declaration of")).size()+3;
+                            // if (first == line.length() || first == line.length() - 1 || first == line.length() - 2 || first==std::string::npos)
+                            //     first = line.find("`", pos);
+                            // size_t last=line.find("'",first+1);
+                            size_t last=line.find(" ",first+1);
+                            std::string function=line.substr(first+1,last-first-4);
+                            // function=function.substr(0,function.size()-1);
 
                             for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
@@ -895,11 +897,11 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                         }
                         else if (line.find("conflicting types for")!=std::string::npos){
                             size_t pos=line.find("conflicting types for");
-                            size_t first=line.find("'");
-                            if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
-                                first = line.find("`", pos);
-                            size_t last=line.find("'",first+1);
-                            std::string function=line.substr(first+1,last-first-1);
+                            size_t first=pos+(std::string("conflicting types for")).size()+3;
+                            // if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                            //     first = line.find("`", pos);
+                            size_t last=line.size();
+                            std::string function=line.substr(first+1,last-first-4);
 
                             for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
