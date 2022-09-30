@@ -118,6 +118,32 @@ static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroS
     return startEnd;
 }
 
+
+void changeCmakeCompilerPath(std::string path,std::string cCompiler,std::string cxxCompiler){
+    std::ifstream in(path+"/CMakeCache.txt");
+    if (in.good()){
+        std::string line;
+        std::vector<std::string> lines;
+        while (std::getline(in, line)) {
+            if (line.find("CMAKE_C_COMPILER:")!=std::string::npos){
+                size_t pos=line.find("=");
+                line=line.substr(0,pos+1)+cCompiler;
+            }
+            else if (line.find("CMAKE_CXX_COMPILER:")!=std::string::npos){
+                size_t pos=line.find("=");
+                line=line.substr(0,pos+1)+cxxCompiler;
+            }
+            lines.push_back(line);
+        }
+
+        in.close();
+        std::ofstream out(path+"/CMakeCache.txt");
+        for (std::vector<std::string>::iterator it=lines.begin();it!=lines.end();it++)
+            out<<*it<<std::endl;
+        out.close();
+    }
+}
+
 BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
         bool no_clean_up,bool init_only,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),failMacros(),
         caseNum(caseNum),switchInfo(workDirPath) {
@@ -409,6 +435,7 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
         int sys_ret = explain_system_on_error(cmd.c_str());
 
         assert( sys_ret == 0 );
+        fprintf(stderr,"args file name: %s, cmd: %s\n", (unique_id+"__args").c_str(), cmd.c_str());
         parseArgFile(unique_id+"__args", build_dir, build_args);
         sys_ret = explain_system_on_error(std::string("rm -rf "+unique_id+"__args").c_str());
         if (sys_ret != 0)
@@ -742,6 +769,8 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
     }
 
     outlog_printf(2,"Trying to build with all macros...\n");
+
+    changeCmakeCompilerPath(src_dir,CLANG_WRAP_PATH"/gcc",CLANG_WRAP_PATH"/g++");
     size_t buildCount=0;
     std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> macroLines;
     if (macros.size()==0)
@@ -1486,8 +1515,8 @@ std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::strin
     std::string full_key_path = getFullPath(src_dir + "/" + file);
     size_t idx = full_key_path.rfind("/");
     assert( idx != std::string::npos);
-    tmpArgs.push_back("-I");
-    tmpArgs.push_back(full_key_path.substr(0, idx));
+    tmpArgs.push_back("-I"+full_key_path.substr(0, idx));
+    // tmpArgs.push_back(full_key_path.substr(0, idx));
     for (size_t i=0;i<macros.size();i++){
         tmpArgs.push_back("-D");
         tmpArgs.push_back("__COMPILE_"+std::to_string(macros[i]));

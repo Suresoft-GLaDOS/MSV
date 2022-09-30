@@ -54,10 +54,8 @@ if not just_compile:
         cmd = compile_cmd + " -ferror-limit=0 " + " ".join(argv[1:])
     # print "Linkcmd: " + cmd;
     ret = subprocess.call(cmd, shell=True)
-    print(f"ret={ret}",file=stderr)
     exit(ret)
 
 cmd = compile_cmd + " -ferror-limit=0 " + " ".join(argv[1:])
 ret = subprocess.call(cmd, shell=True)
-print(f"ret={ret}",file=stderr)
 exit(ret)
