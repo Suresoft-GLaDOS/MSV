@@ -978,7 +978,7 @@ import getopt
 from sys import argv
 
 if __name__ == '__main__':
-    opts, args = getopt.getopt(argv[1:], "l:s:p:w:j:n")
+    opts, args = getopt.getopt(argv[1:], "l:s:p:w:j:nd:")
     dep_dir = ""
     build_log_file = ""
     src_dir=""
@@ -987,6 +987,7 @@ if __name__ == '__main__':
     files=[]
     parallel=0
     is_profile=False
+    subdir="."
 
     for o, a in opts:
         if o == "-p":
@@ -1001,6 +1002,8 @@ if __name__ == '__main__':
             parallel=int(a)
         elif o=='-n':
             is_profile=True
+        elif o=='-d':
+            subdir=a
     
     macros_file="/tmp/macros.tmp"
     tmp_file=open(macros_file,"r")
@@ -1068,8 +1071,11 @@ if __name__ == '__main__':
             # args.append(build_log_file)
             # args.append("2>&1")
             # print args
+            cur_dir=os.getcwd()
+            os.chdir(subdir)
             process=subprocess.Popen(args,env=my_env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
             (out,err)=process.communicate()
+            os.chdir(cur_dir)
             # print out
             # print err
             result=process.returncode

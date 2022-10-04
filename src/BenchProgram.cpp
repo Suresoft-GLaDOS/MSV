@@ -41,6 +41,9 @@
 #define SOURCECODE_BACKUP_LOG "__backup.log"
 #define LDBACKUP "ld-backup"
 
+llvm::cl::opt<std::string> BuildSubDir("build-in-subdir",llvm::cl::value_desc("sub-directory"),llvm::cl::init("."),
+        llvm::cl::desc("Sub-directory to run make. Default: root directory(.)"));
+
 static std::string getRndName() {
     std::string ret = "__tmp";
     for (size_t i = 0; i < 5; i++)
@@ -427,10 +430,16 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
         std::string unique_id=std::to_string(getpid());
         std::string cmd;
         if (dep_dir != "")
-            cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
+            if (BuildSubDir!=".")
+                cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " -s "+BuildSubDir.getValue()+" " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
+            else
+                cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args "+ " 2>&1";
         else
-            cmd = build_cmd + " -c -d " + src_file + " " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
+            if (BuildSubDir!=".")
+                cmd = build_cmd + " -c -d " + src_file + " -s "+BuildSubDir.getValue()+" " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
+            else
+                cmd = build_cmd + " -c -d " + src_file + " " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args " +  " 2>&1";
         int sys_ret = explain_system_on_error(cmd.c_str());
 
@@ -461,10 +470,10 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     // assert(ret == 0);
 
     if (timeout_limit == 0)
-        ret = system((std::string("make >") + build_log + std::to_string(count)+" 2>&1").c_str());
+        ret = system(("cd "+BuildSubDir.getValue()+" && "+std::string("make >") + build_log + std::to_string(count)+" 2>&1").c_str());
         // ret = execute_with_timeout((std::string("make")), 60);
     else
-        ret = execute_with_timeout((std::string("make >") + build_log +std::to_string(count)+ " 2>&1"), timeout_limit);
+        ret = execute_with_timeout(("cd "+BuildSubDir.getValue()+" && "+std::string("make >") + build_log +std::to_string(count)+ " 2>&1"), timeout_limit);
         // ret = execute_with_timeout((std::string("make")), timeout_limit);
     bool succ = (ret == 0);
     ret = chdir(ori_dir);
@@ -511,17 +520,17 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
     if (force_reconf || !src_dirs[subDir]) {
         std::string cmd;
         if (dep_dir != ""){
-            if (subDir!="src")
-                cmd = build_cmd + " -p " + dep_dir + " "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
+            if (BuildSubDir.getValue()!=".")
+                cmd = build_cmd + " -p " + dep_dir +" -s "+BuildSubDir.getValue()+ " "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
             else
-                cmd = build_cmd + " -p " + dep_dir + " -j 3 "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
+                cmd = build_cmd + " -p " + dep_dir + " "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
             // cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " 2>&1";
         }
         else
-            if (subDir!="src")
-                cmd = build_cmd + " " + src_dir + " > " + build_log_file + " 2>&1";
+            if (BuildSubDir.getValue()!=".")
+                cmd = build_cmd + " -s "+BuildSubDir.getValue()+ " "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
             else
-                cmd = build_cmd + " -j 3 " + src_dir + " > " + build_log_file + " 2>&1";
+                cmd = build_cmd + " "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
             // cmd = build_cmd + " -j 10 " +src_dir + " 2>&1";
         // outlog_printf(2,"Command: %s\n",cmd.c_str());
         int ret;
@@ -770,7 +779,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
 
     outlog_printf(2,"Trying to build with all macros...\n");
 
-    changeCmakeCompilerPath(src_dir,CLANG_WRAP_PATH"/gcc",CLANG_WRAP_PATH"/g++");
+    changeCmakeCompilerPath(src_dir+"/"+BuildSubDir.getValue(),CLANG_WRAP_PATH"/gcc",CLANG_WRAP_PATH"/g++");
     size_t buildCount=0;
     std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> macroLines;
     if (macros.size()==0)
@@ -1158,7 +1167,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                 std::string src_dir = getFullPath(work_dir + "/src");
                 removeMacros(fileCodeMap,src_dir);
                 std::string cmd;
-                cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir;
+                cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -d "+BuildSubDir.getValue();
                 std::ofstream macroFile("/tmp/macros.tmp");
                 macroFile << candidateMacro;
                 macroFile.close();
