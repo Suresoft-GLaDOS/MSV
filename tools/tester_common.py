@@ -79,7 +79,7 @@ def get_fix_revisions(out_dir):
             last_is_author = False;
     return ret;
 
-def extract_arguments(out_dir, src_file):
+def extract_arguments(out_dir, src_file,sub_dir='.'):
     print(f'src file: {src_file}')
     ori_dir = getcwd();
     chdir(out_dir);
@@ -91,8 +91,11 @@ def extract_arguments(out_dir, src_file):
         file_name = src_file[idx+1:];
     else:
         file_name = src_file;
+    cur_dir=getcwd()
+    chdir(sub_dir)
     p = subprocess.Popen(["make", "--debug=j"], stdout = subprocess.PIPE);
     (out, err) = p.communicate();
+    chdir(cur_dir)
     lines = out.decode('utf-8').strip().split("\n");
     directory = ".";
     last_line = "";
@@ -138,8 +141,11 @@ def extract_arguments(out_dir, src_file):
 
     # we try another way to get around it
     subprocess.call(["touch", src_file]);
+    cur_dir=getcwd()
+    chdir(sub_dir)
     p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE);
     (out, err) = p.communicate();
+    chdir(cur_dir)
     lines = out.decode('utf-8').strip().split("\n");
     directory = ".";
     for line in lines:
@@ -177,7 +183,7 @@ def extract_arguments(out_dir, src_file):
     chdir(ori_dir);
     return "","";
 
-def extract_arguments_cmake(out_dir:str, src_file:str):
+def extract_arguments_cmake(out_dir:str, src_file:str,sub_dir:str='.'):
     temp_env=os.environ.copy()
     temp_env['CC']='gcc'
     temp_env['CXX']='g++'
@@ -187,8 +193,11 @@ def extract_arguments_cmake(out_dir:str, src_file:str):
     chdir(out_dir)
 
     subprocess.run(["touch", src_file])
+    cur_dir=getcwd()
+    chdir(sub_dir)
     p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE,env=temp_env)
-    (out, err) = p.communicate();
+    (out, err) = p.communicate()
+    chdir(cur_dir)
     print(out.decode('utf-8'))
     lines = out.decode('utf-8').strip().split("\n");
     directory = ".";

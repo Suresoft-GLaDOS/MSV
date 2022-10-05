@@ -14,12 +14,13 @@ if __name__=="__main__":
     compile_only = False
     config_only = False
 
-    opts, args = getopt.getopt(argv[1:],'cd:hj:lp:r:x')
+    opts, args = getopt.getopt(argv[1:],'cd:hj:lp:r:xs:')
     dryrun_src = ""
     paraj = 0
     print_fix_log = False
     print_usage = False
     switch_id=0
+    subdir='.'
     for o, a in opts:
         if o == "-d":
             dryrun_src = a
@@ -33,6 +34,8 @@ if __name__=="__main__":
             print_usage = True
         elif o == "-j":
             paraj = int(a)
+        elif o=='-s':
+            subdir=a
 
     if (len(args) < 1) or (print_usage):
         print("Usage: msv-build.py <directory> [-r revision | -d src_file | -l] [-h]")
@@ -57,7 +60,7 @@ if __name__=="__main__":
         if command.startswith('cmake'):
             is_cmake=True
             subprocess.run(['rm','-rf','CMakeCache.txt','**/CMakeFiles'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-        if 'make' in command:
+        if command.startswith('make') or ' make' in command:
             is_compile=True
 
         if not is_compile:
@@ -82,8 +85,6 @@ if __name__=="__main__":
 
     # Run make and post-make
     for command in compile_commands:
-        if command=='make' and paraj>1:
-            command+=f' -j {paraj}'
         ret=subprocess.run(command,shell=True,env=temp_env)
         if ret.returncode!=0:
             exit(ret.returncode)
@@ -91,9 +92,9 @@ if __name__=="__main__":
     chdir(org_dir)
     if dryrun_src != "":
         if is_cmake:
-            (builddir,buildargs)=extract_arguments_cmake(out_dir, dryrun_src)
+            (builddir,buildargs)=extract_arguments_cmake(out_dir, dryrun_src,subdir)
         else:
-            (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
+            (builddir, buildargs) = extract_arguments(out_dir, dryrun_src,subdir)
         if len(args) > 1:
             out_file = open(args[1], "w")
             out_file.write(builddir+'\n'+buildargs+'\n')
