@@ -26,8 +26,10 @@ def run_test(id,test,commands,timeout):
     failed=False
     for command in final_commands:
         proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+        # proc=subprocess.Popen(command)
         try:
             so,se=proc.communicate(timeout=timeout)
+            # print(so.decode('utf-8'))
             if proc.returncode!=0:
                 failed=True
                 break
@@ -46,7 +48,7 @@ def run_test(id,test,commands,timeout):
     
     if not failed:
         print(id)
-
+    
 
 if __name__ == "__main__":
     opts, args = getopt.getopt(argv[1:], "p:i:j:t:");

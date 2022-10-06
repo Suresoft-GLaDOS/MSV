@@ -592,6 +592,7 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
 
             if (rc[j].actions[i].kind == RepairAction::ReplaceMutationKind){
                 std::string newStmt="//"+toString(rc[j].kind)+"\n";
+                // TODO: Find a better way to handle loop condition mutations
                 if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind || rc[j].kind==RepairCandidate::MSVExtConditionKind || rc[j].kind==RepairCandidate::MSVExtReplaceFunctionInConditionKind
                             || rc[j].kind==RepairCandidate::MSVExtRemoveConditionKind || rc[j].kind==RepairCandidate::MSVExtLoopConditionKind || rc[j].kind==RepairCandidate::MSVExtParenTightenConditionKind || rc[j].kind==RepairCandidate::MSVExtParenLoosenConditionKind){
                     newStmt+=stmtToString(*ctxt,S);
@@ -791,113 +792,119 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
 
     size_t conditionCounter=counter;
     // Condition Synthesize
+    bool isIf=false;
+    std::vector<std::string> loopConditions;
     if(res1[currentCandidate[currentIndex]][ConditionSynthesize].size()>0){
-        case_count=0;
-        casePatch.clear();
-        currentSwitches.push_back(counter);
-        switchCluster[1].push_back(counter);
-        Switch switchObject;
-        switchObject.switchNum=counter;
+        if (IfStmt::classof(loc.stmt)){
+            // If Statement
+            isIf=true;
+            case_count=0;
+            casePatch.clear();
+            currentSwitches.push_back(counter);
+            switchCluster[1].push_back(counter);
+            Switch switchObject;
+            switchObject.switchNum=counter;
 
-        std::string subPatch=stmtToString(*ctxt,loc.stmt);
-        std::pair<size_t,size_t> conditionLoc=getConditionLocation(subPatch);
-        // body+="{\n"+conditionTypes[currentCandidate[currentIndex]].getAsString()+" __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
-        body+="int __choose"+std::to_string(counter)+" = __choose(\"__SWITCH"+std::to_string(counter)+"\");\n";
-        std::string newStmt=subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1);
-        size_t pos=newStmt.find("__is_neg");
-        while (true){
-            for (size_t j=0;j<6 && pos!=std::string::npos;j++){
-                pos=newStmt.find(",",pos+1);
-            }
-            if (pos==std::string::npos) break;
-            newStmt.insert(pos+1,"\n\t\t\t");
-        }
-        std::vector<std::string> patches;
-
-        body+="{\nint __temp"+std::to_string(counter)+"="+newStmt+";\n";
-        body+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
-        case_count++;
-
-        for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[currentIndex]][ConditionSynthesize].begin();
-                patch_it!=res1[currentCandidate[currentIndex]][ConditionSynthesize].end();patch_it++){
-            addIsNeg(counter,case_count,patch_it->first);
-
-            body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
-            body+="else if (__choose"+std::to_string(counter)+" == "+std::to_string(case_count)+")\n{\n";
-            std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
-            std::pair<size_t,size_t> conditionLoc=getConditionLocation(currentBody);
-            body+="// "+toString(patch_it->second.kind)+"\n";
-            if (subPatch.substr(0,3)=="for")
-                body+="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first+1,conditionLoc.second-conditionLoc.first+1)+";\n";
-            else
-                body+="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
-            // outlog_printf(2,"%s\n\n",currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1).c_str());
-            casePatch[case_count]=currentBody;
-            body+="}\n#endif\n";
-
-            std::pair<size_t,size_t> currentPatch(counter,case_count);
-            macroFile[loc.filename].push_back(index);
-            macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
-            patchTypes[currentPatch]=toString(patch_it->second.kind);
-            macroCode[index]="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
-            switchObject.types[patch_it->second.kind].cases.push_back(case_count);
-            if (currentBody.find("__is_neg")!=std::string::npos){
-                size_t location=currentBody.find("__is_neg");
-                size_t endLoc=currentBody.find(", ",location);
-                endLoc=currentBody.find(", ",endLoc+1);
-                size_t comma=currentBody.find(",",endLoc+2);
-                size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
-
-                varSizes[std::make_pair(counter,case_count)]=varCount;
-            }
-
-            if (originalLoc.count(counter)==0){
-                size_t begin_line=manager.getExpansionLineNumber(patch_it->second.original->getBeginLoc());
-                size_t begin_col=manager.getExpansionColumnNumber(patch_it->second.original->getBeginLoc());
-                size_t end_line=manager.getExpansionLineNumber(patch_it->second.original->getEndLoc());
-                size_t end_col=manager.getExpansionColumnNumber(patch_it->second.original->getEndLoc());
-                if (patch_it->second.original->getBeginLoc().isMacroID()){
-                    CharSourceRange range=manager.getExpansionRange(patch_it->second.original->getBeginLoc());
-                    begin_line=manager.getExpansionLineNumber(range.getBegin());
-                    begin_col=manager.getExpansionColumnNumber(range.getBegin());
-                    end_line=manager.getExpansionLineNumber(range.getEnd());
-                    end_col=manager.getExpansionColumnNumber(range.getEnd());
+            std::string subPatch=stmtToString(*ctxt,loc.stmt);
+            std::pair<size_t,size_t> conditionLoc=getConditionLocation(subPatch);
+            // body+="{\n"+conditionTypes[currentCandidate[currentIndex]].getAsString()+" __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
+            body+="int __choose"+std::to_string(counter)+" = __choose(\"__SWITCH"+std::to_string(counter)+"\");\n";
+            std::string newStmt=subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1);
+            size_t pos=newStmt.find("__is_neg");
+            while (true){
+                for (size_t j=0;j<6 && pos!=std::string::npos;j++){
+                    pos=newStmt.find(",",pos+1);
                 }
-                originalLoc[counter]=std::make_pair(std::make_pair(begin_line,begin_col),std::make_pair(end_line,end_col));
+                if (pos==std::string::npos) break;
+                newStmt.insert(pos+1,"\n\t\t\t");
             }
-            patches.push_back(stmtToString(*ctxt,(Stmt *)patch_it->second.actions[0].ast_node));
+            std::vector<std::string> patches;
 
-            if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
-            std::vector<double> finalScore;
-            finalScore.clear();
-            if (patch_it->second.actions.size()>=2 && patch_it->second.actions[1].kind==RepairAction::ExprMutationKind){
-                for (size_t i=0;i<patch_it->second.actions[1].candidate_atoms.size();i++){
-                    finalScore.push_back(patch_it->second.scoreMap[patch_it->second.actions[1].candidate_atoms[i]]);
-                }
-            }
-            else{
-                finalScore.push_back(patch_it->second.score);
-            }
-            patchScores[counter][case_count]=finalScore;
-
-            index++;
-            // caseKind[patch_it->second].push_back(case_count);
-
+            body+="{\nint __temp"+std::to_string(counter)+"="+newStmt+";\n";
+            body+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
             case_count++;
+
+            for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[currentIndex]][ConditionSynthesize].begin();
+                    patch_it!=res1[currentCandidate[currentIndex]][ConditionSynthesize].end();patch_it++){
+                addIsNeg(counter,case_count,patch_it->first);
+
+                body+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
+                body+="else if (__choose"+std::to_string(counter)+" == "+std::to_string(case_count)+")\n{\n";
+                std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
+                std::pair<size_t,size_t> conditionLoc=getConditionLocation(currentBody);
+                body+="// "+toString(patch_it->second.kind)+"\n";
+                if (subPatch.substr(0,3)=="for")
+                    body+="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first+1,conditionLoc.second-conditionLoc.first+1)+";\n";
+                else
+                    body+="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
+                // outlog_printf(2,"%s\n\n",currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1).c_str());
+                casePatch[case_count]=currentBody;
+                body+="}\n#endif\n";
+
+                std::pair<size_t,size_t> currentPatch(counter,case_count);
+                macroFile[loc.filename].push_back(index);
+                macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
+                patchTypes[currentPatch]=toString(patch_it->second.kind);
+                macroCode[index]="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
+                switchObject.types[patch_it->second.kind].cases.push_back(case_count);
+                if (currentBody.find("__is_neg")!=std::string::npos){
+                    size_t location=currentBody.find("__is_neg");
+                    size_t endLoc=currentBody.find(", ",location);
+                    endLoc=currentBody.find(", ",endLoc+1);
+                    size_t comma=currentBody.find(",",endLoc+2);
+                    size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
+
+                    varSizes[std::make_pair(counter,case_count)]=varCount;
+                }
+
+                if (originalLoc.count(counter)==0){
+                    size_t begin_line=manager.getExpansionLineNumber(patch_it->second.original->getBeginLoc());
+                    size_t begin_col=manager.getExpansionColumnNumber(patch_it->second.original->getBeginLoc());
+                    size_t end_line=manager.getExpansionLineNumber(patch_it->second.original->getEndLoc());
+                    size_t end_col=manager.getExpansionColumnNumber(patch_it->second.original->getEndLoc());
+                    if (patch_it->second.original->getBeginLoc().isMacroID()){
+                        CharSourceRange range=manager.getExpansionRange(patch_it->second.original->getBeginLoc());
+                        begin_line=manager.getExpansionLineNumber(range.getBegin());
+                        begin_col=manager.getExpansionColumnNumber(range.getBegin());
+                        end_line=manager.getExpansionLineNumber(range.getEnd());
+                        end_col=manager.getExpansionColumnNumber(range.getEnd());
+                    }
+                    originalLoc[counter]=std::make_pair(std::make_pair(begin_line,begin_col),std::make_pair(end_line,end_col));
+                }
+                patches.push_back(stmtToString(*ctxt,(Stmt *)patch_it->second.actions[0].ast_node));
+
+                if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
+                std::vector<double> finalScore;
+                finalScore.clear();
+                if (patch_it->second.actions.size()>=2 && patch_it->second.actions[1].kind==RepairAction::ExprMutationKind){
+                    for (size_t i=0;i<patch_it->second.actions[1].candidate_atoms.size();i++){
+                        finalScore.push_back(patch_it->second.scoreMap[patch_it->second.actions[1].candidate_atoms[i]]);
+                    }
+                }
+                else{
+                    finalScore.push_back(patch_it->second.score);
+                }
+                patchScores[counter][case_count]=finalScore;
+
+                index++;
+                // caseKind[patch_it->second].push_back(case_count);
+
+                case_count++;
+            }
+
+            idAndCase[counter]=casePatch;
+            // for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
+            //         kindIt!=caseKind.end();kindIt++){
+            //     caseCluster[counter].push_back(kindIt->second);
+            // }
+
+            switchGroup.push_back(counter);
+            switchLoc[loc].push_back(counter);
+            switchLine[counter]=currentLine;
+            lineObject.switches.push_back(switchObject);
+            patchCodes[counter]=patches;
+            counter++;
         }
-
-        idAndCase[counter]=casePatch;
-        // for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
-        //         kindIt!=caseKind.end();kindIt++){
-        //     caseCluster[counter].push_back(kindIt->second);
-        // }
-
-        switchGroup.push_back(counter);
-        switchLoc[loc].push_back(counter);
-        switchLine[counter]=currentLine;
-        lineObject.switches.push_back(switchObject);
-        patchCodes[counter]=patches;
-        counter++;
     }
 
     // Apply sub-patches to original body
@@ -931,10 +938,151 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
     }
     if(res1[currentCandidate[indexBackup]][ConditionSynthesize].size()>0){
         std::pair<size_t,size_t> conditionLoc=getConditionLocation(origBody);
-        if (origBody.substr(0,3)=="for")
-            origBody=origBody.replace(conditionLoc.first+1,conditionLoc.second-conditionLoc.first-1,"__temp"+std::to_string(conditionCounter));
-        else
+        if (isIf)
             origBody=origBody.replace(conditionLoc.first+1,conditionLoc.second-conditionLoc.first-2,"__temp"+std::to_string(conditionCounter));
+        else{
+            std::string newBody="";
+
+            size_t start=origBody.find("(");
+            size_t count=0;
+            size_t end=start;
+            for (size_t i=start+1;i<origBody.size();i++){
+                if (origBody[i]=='(' && origBody[i-1]!='\'') count++;
+                else if (origBody[i]==')' && origBody[i+1]!='\''){
+                    if (count>0) count--;
+                    else {
+                        end=i;
+                        break;
+                    }
+                }
+            }
+
+            std::string origCondition=origBody.substr(start+1,end-start-1);
+            if (WhileStmt::classof(loc.stmt)){
+                newBody+="while (1) {\n";
+            }
+            else{
+                newBody+="for (";
+                newBody+=stmtToString(*ctxt,((ForStmt *)loc.stmt)->getInit());
+                newBody+=";1;";
+                newBody+=stmtToString(*ctxt,((ForStmt *)loc.stmt)->getInc());
+                newBody+=") {\n";
+            }
+
+            case_count=0;
+            casePatch.clear();
+            currentSwitches.push_back(counter);
+            switchCluster[1].push_back(counter);
+            Switch switchObject;
+            switchObject.switchNum=counter;
+
+            std::string subPatch=stmtToString(*ctxt,loc.stmt);
+            std::pair<size_t,size_t> conditionLoc=getConditionLocation(subPatch);
+            // body+="{\n"+conditionTypes[currentCandidate[currentIndex]].getAsString()+" __temp"+std::to_string(counter)+"="+subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
+            newBody+="int __choose"+std::to_string(counter)+" = __choose(\"__SWITCH"+std::to_string(counter)+"\");\n";
+            std::string newStmt=subPatch.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1);
+            size_t pos=newStmt.find("__is_neg");
+            while (true){
+                for (size_t j=0;j<6 && pos!=std::string::npos;j++){
+                    pos=newStmt.find(",",pos+1);
+                }
+                if (pos==std::string::npos) break;
+                newStmt.insert(pos+1,"\n\t\t\t");
+            }
+            std::vector<std::string> patches;
+
+            newBody+="{\nint __temp"+std::to_string(counter)+"="+newStmt+";\n";
+            loopConditions.push_back(newStmt);
+            newBody+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
+            case_count++;
+
+            for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[currentIndex]][ConditionSynthesize].begin();
+                    patch_it!=res1[currentCandidate[currentIndex]][ConditionSynthesize].end();patch_it++){
+                addIsNeg(counter,case_count,patch_it->first);
+
+                newBody+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
+                newBody+="else if (__choose"+std::to_string(counter)+" == "+std::to_string(case_count)+")\n{\n";
+                std::string currentBody=addLocationInIsNeg(patch_it->first,counter,case_count);
+                std::pair<size_t,size_t> conditionLoc=getConditionLocation(currentBody);
+                newBody+="// "+toString(patch_it->second.kind)+"\n";
+                if (subPatch.substr(0,3)=="for")
+                    newBody+="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first+1,conditionLoc.second-conditionLoc.first+1)+";\n";
+                else
+                    newBody+="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
+                // outlog_printf(2,"%s\n\n",currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1).c_str());
+                casePatch[case_count]=currentBody;
+                newBody+="}\n#endif\n";
+
+                std::pair<size_t,size_t> currentPatch(counter,case_count);
+                macroFile[loc.filename].push_back(index);
+                macroMap.insert(std::pair<long long,std::pair<int,int>>(index,std::pair<int,int>(counter,case_count)));
+                patchTypes[currentPatch]=toString(patch_it->second.kind);
+                macroCode[index]="__temp"+std::to_string(counter)+"="+currentBody.substr(conditionLoc.first,conditionLoc.second-conditionLoc.first+1)+";\n";
+                switchObject.types[patch_it->second.kind].cases.push_back(case_count);
+                if (currentBody.find("__is_neg")!=std::string::npos){
+                    size_t location=currentBody.find("__is_neg");
+                    size_t endLoc=currentBody.find(", ",location);
+                    endLoc=currentBody.find(", ",endLoc+1);
+                    size_t comma=currentBody.find(",",endLoc+2);
+                    size_t varCount=stoi(currentBody.substr(endLoc+2,comma-endLoc+1));
+
+                    varSizes[std::make_pair(counter,case_count)]=varCount;
+                }
+
+                if (originalLoc.count(counter)==0){
+                    size_t begin_line=manager.getExpansionLineNumber(patch_it->second.original->getBeginLoc());
+                    size_t begin_col=manager.getExpansionColumnNumber(patch_it->second.original->getBeginLoc());
+                    size_t end_line=manager.getExpansionLineNumber(patch_it->second.original->getEndLoc());
+                    size_t end_col=manager.getExpansionColumnNumber(patch_it->second.original->getEndLoc());
+                    if (patch_it->second.original->getBeginLoc().isMacroID()){
+                        CharSourceRange range=manager.getExpansionRange(patch_it->second.original->getBeginLoc());
+                        begin_line=manager.getExpansionLineNumber(range.getBegin());
+                        begin_col=manager.getExpansionColumnNumber(range.getBegin());
+                        end_line=manager.getExpansionLineNumber(range.getEnd());
+                        end_col=manager.getExpansionColumnNumber(range.getEnd());
+                    }
+                    originalLoc[counter]=std::make_pair(std::make_pair(begin_line,begin_col),std::make_pair(end_line,end_col));
+                }
+                patches.push_back(stmtToString(*ctxt,(Stmt *)patch_it->second.actions[0].ast_node));
+
+                if (patchScores.count(counter)==0) patchScores[counter]=std::map<size_t,std::vector<double>>();
+                std::vector<double> finalScore;
+                finalScore.clear();
+                if (patch_it->second.actions.size()>=2 && patch_it->second.actions[1].kind==RepairAction::ExprMutationKind){
+                    for (size_t i=0;i<patch_it->second.actions[1].candidate_atoms.size();i++){
+                        finalScore.push_back(patch_it->second.scoreMap[patch_it->second.actions[1].candidate_atoms[i]]);
+                    }
+                }
+                else{
+                    finalScore.push_back(patch_it->second.score);
+                }
+                patchScores[counter][case_count]=finalScore;
+
+                index++;
+                // caseKind[patch_it->second].push_back(case_count);
+
+                case_count++;
+            }
+
+            // Add temp if to handle loop condition
+            newBody+="\nif (__temp"+std::to_string(counter)+") {\n";
+            newBody+=origBody.substr(end+1);
+            newBody+="\n}\nelse break;\n}\n}\n";
+            origBody=newBody;
+
+            idAndCase[counter]=casePatch;
+            // for(std::map<RepairCandidate::CandidateKind,std::list<int>>::iterator kindIt=caseKind.begin();
+            //         kindIt!=caseKind.end();kindIt++){
+            //     caseCluster[counter].push_back(kindIt->second);
+            // }
+
+            switchGroup.push_back(counter);
+            switchLoc[loc].push_back(counter);
+            switchLine[counter]=currentLine;
+            lineObject.switches.push_back(switchObject);
+            patchCodes[counter]=patches;
+            counter++;
+        }
     }
 
     // Normal replace
@@ -1057,7 +1205,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
         body+=origBody;
     }
     if(res1[currentCandidate[indexBackup]][ConditionSynthesize].size()>0){
-        body+="}\n";
+        if (isIf)
+            body+="}\n";
     }
 
     // Insert after
