@@ -2489,7 +2489,7 @@ public:
 
     bool VisitWhileStmt(WhileStmt *stmt) {
         if (isTainted(stmt) && MsvExt.getValue()) {
-            genLoopCondition(stmt);
+            // genLoopCondition(stmt);
         }
 
         return true;
@@ -2497,7 +2497,7 @@ public:
 
     bool VisitForStmt(ForStmt *stmt) {
         if (isTainted(stmt) && MsvExt.getValue()) {
-            genLoopCondition(stmt);
+            // genLoopCondition(stmt);
         }
 
         return true;
