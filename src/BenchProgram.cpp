@@ -679,7 +679,7 @@ void BenchProgram::applyRepairedCode(std::map<std::string, std::string> &fileCod
 
     pushEnvMap(envMap);
 
-    // pushWrapPath(CLANG_WRAP_PATH, wrapScript);
+    pushWrapPath(CLANG_WRAP_PATH, wrapScript);
 
     outlog_printf(2,"Preprocessing test...\n");
     for (std::map<std::string, std::string>::iterator it = fileCodeMap.begin();
