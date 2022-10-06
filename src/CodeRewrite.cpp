@@ -592,8 +592,9 @@ std::map<ASTLocTy, std::map<CodeRewriter::ActionType,std::map<std::string, Repai
 
             if (rc[j].actions[i].kind == RepairAction::ReplaceMutationKind){
                 std::string newStmt="//"+toString(rc[j].kind)+"\n";
+                // TODO: Find a better way to handle loop condition mutations
                 if (rc[j].kind==RepairCandidate::TightenConditionKind || rc[j].kind==RepairCandidate::LoosenConditionKind || rc[j].kind==RepairCandidate::MSVExtConditionKind || rc[j].kind==RepairCandidate::MSVExtReplaceFunctionInConditionKind
-                            || rc[j].kind==RepairCandidate::MSVExtRemoveConditionKind || rc[j].kind==RepairCandidate::MSVExtLoopConditionKind || rc[j].kind==RepairCandidate::MSVExtParenTightenConditionKind || rc[j].kind==RepairCandidate::MSVExtParenLoosenConditionKind){
+                            || rc[j].kind==RepairCandidate::MSVExtRemoveConditionKind || /*rc[j].kind==RepairCandidate::MSVExtLoopConditionKind ||*/ rc[j].kind==RepairCandidate::MSVExtParenTightenConditionKind || rc[j].kind==RepairCandidate::MSVExtParenLoosenConditionKind){
                     newStmt+=stmtToString(*ctxt,S);
                     if (newStmt[newStmt.size() - 1]  != '\n' && newStmt[newStmt.size() - 1] != ';')
                         newStmt += ";\n";
