@@ -397,15 +397,49 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
             void* p = va_arg(ap, void*);
             unsigned long sz = va_arg(ap, unsigned long);
             assert( sz <= 8 );
-            long long v = 0;
-            if (isGoodAddr(p, sz)) {
-                memcpy(&v, p, sz);
+
+            // We assume that all variables are signed
+            // TODO: handle unsigned variables
+            if (sz==8){
+                int64_t v = 0;
+                if (isGoodAddr(p, sz)) {
+                    memcpy(&v, p, sz);
+                }
+                else {
+                    v = MAGIC_NUMBER;
+                }
+                fprintf(f, " %lld", v);
             }
-            else {
-                v = MAGIC_NUMBER;
+            else if (sz==4){
+                int32_t v = 0;
+                if (isGoodAddr(p, sz)) {
+                    memcpy(&v, p, sz);
+                }
+                else {
+                    v = MAGIC_NUMBER;
+                }
+                fprintf(f, " %d", v);
             }
-            fprintf(f, " %lld", v);
-            // fprintf(stderr, "i %lu %lld\n", i, v);
+            else if (sz==2){
+                int16_t v = 0;
+                if (isGoodAddr(p, sz)) {
+                    memcpy(&v, p, sz);
+                }
+                else {
+                    v = MAGIC_NUMBER;
+                }
+                fprintf(f, " %d", v);
+            }
+            else if (sz==1){
+                int8_t v = 0;
+                if (isGoodAddr(p, sz)) {
+                    memcpy(&v, p, sz);
+                }
+                else {
+                    v = MAGIC_NUMBER;
+                }
+                fprintf(f, " %d", v);
+            }
         }
         fprintf(f, "\n");
         fclose(f);
