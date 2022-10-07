@@ -996,8 +996,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             newBody+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
             case_count++;
 
-            for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[currentIndex]][ConditionSynthesize].begin();
-                    patch_it!=res1[currentCandidate[currentIndex]][ConditionSynthesize].end();patch_it++){
+            for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[indexBackup]][ConditionSynthesize].begin();
+                    patch_it!=res1[currentCandidate[indexBackup]][ConditionSynthesize].end();patch_it++){
                 addIsNeg(counter,case_count,patch_it->first);
 
                 newBody+="#ifdef __COMPILE_"+std::to_string(index)+"\n";
