@@ -206,6 +206,65 @@ struct Switch{
         kind105.cases=std::vector<size_t>();
         types[kind105.kind]=kind105;
 
+        Kind kind106;
+        kind106.kind=RepairCandidate::CandidateKind::MSVExtRemoveConditionKind;
+        kind106.cases=std::vector<size_t>();
+        types[kind106.kind]=kind106;
+
+        Kind kind107;
+        kind107.kind=RepairCandidate::CandidateKind::MSVExtRemoveAssignConditionKind;
+        kind107.cases=std::vector<size_t>();
+        types[kind107.kind]=kind107;
+
+        Kind kind108;
+        kind108.kind=RepairCandidate::CandidateKind::MSVExtReplaceAssignOperatorKind;
+        kind108.cases=std::vector<size_t>();
+        types[kind108.kind]=kind108;
+
+        Kind kind109;
+        kind109.kind=RepairCandidate::CandidateKind::MSVExtReplaceArrayIndexKind;
+        kind109.cases=std::vector<size_t>();
+        types[kind109.kind]=kind109;
+
+        Kind kind110;
+        kind110.kind=RepairCandidate::CandidateKind::MSVExtReplaceParenInConditionKind;
+        kind110.cases=std::vector<size_t>();
+        types[kind110.kind]=kind110;
+
+        Kind kind111;
+        kind111.kind=RepairCandidate::CandidateKind::MSVExtAddInitBackKind;
+        kind111.cases=std::vector<size_t>();
+        types[kind111.kind]=kind111;
+
+        Kind kind112;
+        kind112.kind=RepairCandidate::CandidateKind::MSVExtIfExitBackKind;
+        kind112.cases=std::vector<size_t>();
+        types[kind112.kind]=kind112;
+
+        Kind kind113;
+        kind113.kind=RepairCandidate::CandidateKind::MSVExtReplaceTrenaryOperatorKind;
+        kind113.cases=std::vector<size_t>();
+        types[kind113.kind]=kind113;
+
+        Kind kind114;
+        kind114.kind=RepairCandidate::CandidateKind::MSVExtMoveConditionKind;
+        kind114.cases=std::vector<size_t>();
+        types[kind114.kind]=kind114;
+
+        Kind kind115;
+        kind115.kind=RepairCandidate::CandidateKind::MSVExtLoopConditionKind;
+        kind115.cases=std::vector<size_t>();
+        types[kind115.kind]=kind115;
+
+        Kind kind116;
+        kind116.kind=RepairCandidate::CandidateKind::MSVExtParenTightenConditionKind;
+        kind116.cases=std::vector<size_t>();
+        types[kind116.kind]=kind116;
+
+        Kind kind117;
+        kind117.kind=RepairCandidate::CandidateKind::MSVExtParenLoosenConditionKind;
+        kind117.cases=std::vector<size_t>();
+        types[kind117.kind]=kind117;
     }
 };
 struct Line{
