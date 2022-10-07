@@ -90,7 +90,7 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 bin_PROGRAMS = pdiffer$(EXEEXT) prophet$(EXEEXT) learner$(EXEEXT) \
-	playground$(EXEEXT)
+	playground$(EXEEXT) msv$(EXEEXT)
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -162,6 +162,21 @@ learner_DEPENDENCIES = $(am__DEPENDENCIES_1)
 learner_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(learner_LDFLAGS) $(LDFLAGS) -o $@
+am_msv_OBJECTS = Main.$(OBJEXT) Utils.$(OBJEXT) \
+	RepairSearchEngine.$(OBJEXT) ProfileWriter.$(OBJEXT) \
+	BenchProgram.$(OBJEXT) ASTUtils.$(OBJEXT) \
+	ErrorLocalizer.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
+	ProfileErrorLocalizer.$(OBJEXT) SourceContextManager.$(OBJEXT) \
+	GlobalAnalyzer.$(OBJEXT) DuplicateDetector.$(OBJEXT) \
+	ExprSynthesizer.$(OBJEXT) RepairCandidateGenerator.$(OBJEXT) \
+	SBFLLocalizer.$(OBJEXT) CodeRewrite.$(OBJEXT) \
+	FeatureExtract.$(OBJEXT) cJSON/cJSON_Utils.$(OBJEXT) \
+	cJSON/cJSON.$(OBJEXT)
+msv_OBJECTS = $(am_msv_OBJECTS)
+msv_DEPENDENCIES = $(am__DEPENDENCIES_1)
+msv_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(msv_LDFLAGS) $(LDFLAGS) -o $@
 am_pdiffer_OBJECTS = pdiffer.$(OBJEXT) Utils.$(OBJEXT) \
 	ASTDiffer.$(OBJEXT) ProfileWriter.$(OBJEXT) \
 	SourceContextManager.$(OBJEXT) LocalAnalyzer.$(OBJEXT) \
@@ -251,11 +266,12 @@ am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(libprofile_runtime_la_SOURCES) $(libprofiler_la_SOURCES) \
 	$(libtest_runtime_la_SOURCES) $(learner_SOURCES) \
-	$(pdiffer_SOURCES) $(playground_SOURCES) $(prophet_SOURCES)
+	$(msv_SOURCES) $(pdiffer_SOURCES) $(playground_SOURCES) \
+	$(prophet_SOURCES)
 DIST_SOURCES = $(libprofile_runtime_la_SOURCES) \
 	$(libprofiler_la_SOURCES) $(libtest_runtime_la_SOURCES) \
-	$(learner_SOURCES) $(pdiffer_SOURCES) $(playground_SOURCES) \
-	$(prophet_SOURCES)
+	$(learner_SOURCES) $(msv_SOURCES) $(pdiffer_SOURCES) \
+	$(playground_SOURCES) $(prophet_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -481,6 +497,13 @@ prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp ProfileWriter.cpp Be
 
 prophet_LDFLAGS = `llvm-config --ldflags`
 prophet_LDADD = $(ClangLDADD) -lexplain
+msv_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp ProfileWriter.cpp BenchProgram.cpp ASTUtils.cpp \
+				  ErrorLocalizer.cpp LocalAnalyzer.cpp ProfileErrorLocalizer.cpp SourceContextManager.cpp \
+				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp SBFLLocalizer.cpp \
+				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
+
+msv_LDFLAGS = `llvm-config --ldflags`
+msv_LDADD = $(ClangLDADD) -lexplain
 playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 playground_LDFLAGS = `llvm-config --ldflags`
 playground_LDADD = $(ClangLDADD) -lexplain
@@ -630,6 +653,10 @@ cJSON/cJSON.$(OBJEXT): cJSON/$(am__dirstamp) \
 learner$(EXEEXT): $(learner_OBJECTS) $(learner_DEPENDENCIES) $(EXTRA_learner_DEPENDENCIES) 
 	@rm -f learner$(EXEEXT)
 	$(AM_V_CXXLD)$(learner_LINK) $(learner_OBJECTS) $(learner_LDADD) $(LIBS)
+
+msv$(EXEEXT): $(msv_OBJECTS) $(msv_DEPENDENCIES) $(EXTRA_msv_DEPENDENCIES) 
+	@rm -f msv$(EXEEXT)
+	$(AM_V_CXXLD)$(msv_LINK) $(msv_OBJECTS) $(msv_LDADD) $(LIBS)
 
 pdiffer$(EXEEXT): $(pdiffer_OBJECTS) $(pdiffer_DEPENDENCIES) $(EXTRA_pdiffer_DEPENDENCIES) 
 	@rm -f pdiffer$(EXEEXT)
