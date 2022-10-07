@@ -907,9 +907,7 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL,
     for (size_t i = 0; i < exprs.size(); i++) {
         //exprs[i]->dump();
         QualType QT = exprs[i]->getType();
-        if (isMSVExt || msvExt) {// Use real type also for MSV extension
-            if (!QT->isIntegerType() && !QT->isPointerType() && (!QT->isFloatingType() && (isMSVExt || msvExt))) continue;
-        }
+        if (!QT->isIntegerType() && !QT->isPointerType()) continue;
         //llvm::errs() << "Type correct!\n";
         MemberExpr *ME = llvm::dyn_cast<MemberExpr>(exprs[i]);
         if (ME) {
