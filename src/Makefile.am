@@ -1,6 +1,6 @@
 AM_CXXFLAGS = -fopenmp `llvm-config --cxxflags` -Wall -Wno-unknown-pragmas -fno-strict-aliasing
 
-bin_PROGRAMS = pdiffer prophet learner playground
+bin_PROGRAMS = pdiffer prophet learner playground msv
 
 lib_LTLIBRARIES = libprofiler.la libprofile_runtime.la libtest_runtime.la
 
@@ -62,6 +62,13 @@ prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp ProfileWriter.cpp Be
 				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 prophet_LDFLAGS = `llvm-config --ldflags`
 prophet_LDADD = $(ClangLDADD) -lexplain
+
+msv_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp ProfileWriter.cpp BenchProgram.cpp ASTUtils.cpp \
+				  ErrorLocalizer.cpp LocalAnalyzer.cpp ProfileErrorLocalizer.cpp SourceContextManager.cpp \
+				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp SBFLLocalizer.cpp \
+				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
+msv_LDFLAGS = `llvm-config --ldflags`
+msv_LDADD = $(ClangLDADD) -lexplain
 
 playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
 playground_LDFLAGS = `llvm-config --ldflags`
