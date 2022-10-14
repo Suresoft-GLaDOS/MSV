@@ -1,6 +1,6 @@
-SUBDIRS = php-deps libtiff-deps lighttpd-deps apache-deps
+SUBDIRS = php-deps libtiff-deps lighttpd-deps
 
-all-local: php-src lighttpd-src libtiff-src libtiff-tests libtiff-tests2 gmp-src gmp-tests gzip-src gzip-tests python-src python-tests wireshark-src wireshark-tests apr-src httpd-src subversion-src curl-src
+all-local: php-src lighttpd-src libtiff-src libtiff-tests libtiff-tests2 gmp-src gmp-tests python-src python-tests wireshark-src wireshark-tests
 
 php-src :
 	git clone https://github.com/php/php-src.git php-src
