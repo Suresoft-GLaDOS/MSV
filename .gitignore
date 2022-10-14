@@ -17,6 +17,7 @@ autom4te.cache
 *.tar.gz
 !benchmarks/lighttpd-deps/pcre-8.36.tar.gz
 !benchmarks/php-deps/flex*.tar.gz
+benchmarks/php-deps/*
 **/CMakeFiles/
 **/CMakeCache.txt
 /dg/
