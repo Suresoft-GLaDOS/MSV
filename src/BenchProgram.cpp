@@ -560,6 +560,8 @@ void BenchProgram::pushWrapPath(const std::string &wrap_path, const std::string 
     std::string new_path = CLANG_WRAP_PATH;
     new_path += ":" + ori_path_for_wrap_path;
     int ret = setenv("PATH", new_path.c_str(), 1);
+    setenv("CC",(wrap_path+" "+cc_path).c_str(),1);
+    setenv("CXX",(wrap_path+" "+cc_path).c_str(),1);
     // assert( ret == 0 );
 
     // Copy it to the wrap path
@@ -589,6 +591,8 @@ void BenchProgram::pushWrapPath(const std::string &wrap_path, const std::string 
 void BenchProgram::popWrapPath() {
     int ret = setenv("PATH", ori_path_for_wrap_path.c_str(), 1);
     assert( ret == 0);
+    setenv("CC","gcc",1);
+    setenv("CXX","g++",1);
 }
 
 void BenchProgram::pushEnvMap(const EnvMapTy &envMap) {

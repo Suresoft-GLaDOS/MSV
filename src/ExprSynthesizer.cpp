@@ -1916,8 +1916,6 @@ class TestBatcher {
         
         buildEnv["LD_LIBRARY_PATH"]=P.getProphetSrc()+"/.libs:"+std::string(getenv("LD_LIBRARY_PATH"));
         buildEnv["LIBRARY_PATH"]=P.getProphetSrc()+"/.libs:"+std::string(getenv("LIBRARY_PATH"));
-        buildEnv["CC"]=CLANG_WRAP_PATH"/gcc";
-        buildEnv["CXX"]=CLANG_WRAP_PATH"/g++";
         std::map<std::string, std::string> combined=combineCode(codeSegs, patches);
 
         // Create source file with fix
