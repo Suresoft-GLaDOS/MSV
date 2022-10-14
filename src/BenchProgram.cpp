@@ -606,10 +606,10 @@ bool BenchProgram::verifyTestCases() {
             if (tmp.count(*it) == 0)
                 outlog_printf(0, "%lu\n", *it);
         outlog_printf(0, "Only passed tot: %lu\n", tmp.size());
-        return false;
-        //fprintf(stderr, "Eliminate not passed cases!\n");
-        //positive_cases = tmp;
-        //return true;
+        // return false;
+        fprintf(stderr, "Eliminate not passed cases!\n");
+        positive_cases = tmp;
+        return true;
     }
     outlog_printf(0, "All passed!\n");
     return true;
