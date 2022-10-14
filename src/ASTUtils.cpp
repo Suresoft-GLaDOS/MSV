@@ -305,6 +305,10 @@ public:
     MY_BINOP_LIST()
 #undef OPERATOR
 
+    virtual bool TraverseBinaryOperator(BinaryOperator *BO) {
+        return TraverseBinaryOperatorImpl(BO); 
+    }
+
     bool TraverseUnaryOperatorImpl(UnaryOperator *UO) {
         bool ret = RecursiveASTVisitor::TraverseUnaryOperator(UO);
         Expr *Sub = UO->getSubExpr();
@@ -333,6 +337,10 @@ public:
 
     MY_UNARYOP_LIST()
 #undef OPERATOR
+
+    virtual bool TraverseUnaryOperator(UnaryOperator *UO) {
+        return TraverseUnaryOperatorImpl(UO);
+    }
 
     bool TraverseParenExpr(ParenExpr *PE) {
         bool ret = RecursiveASTVisitor::TraverseParenExpr(PE);
@@ -607,6 +615,10 @@ MY_UNARYOP_LIST()
 
     MY_CAO_LIST()
 #undef OPERATOR
+
+    virtual bool TraverseCompoundAssignOperator(CompoundAssignOperator *CAO) {
+        return TraverseCAOImpl(CAO);
+    }
 
     virtual bool TraverseReturnStmt(ReturnStmt *RS) {
         bool _force_rebuilt = force_rebuilt;

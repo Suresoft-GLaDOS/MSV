@@ -375,6 +375,10 @@ public:
     MY_BINOP_LIST()
 #undef OPERATOR
 
+    virtual bool VisitBinaryOperator(BinaryOperator *BO) {
+        return VisitBinaryOperatorImpl(BO); 
+    }
+
     virtual bool VisitUnaryOperatorImpl(UnaryOperator *UO) {
         std::pair<HelperMapTy::const_iterator, HelperMapTy::const_iterator> range =
             uOpHelper.equal_range(UO->getOpcode());
@@ -391,6 +395,10 @@ public:
 
     MY_UNARYOP_LIST()
 #undef OPERATOR
+
+    virtual bool VisitUnaryOperator(UnaryOperator *UO) {
+        return VisitUnaryOperatorImpl(UO);
+    }
 
     virtual bool VisitCompoundAssignOperatorImpl(CompoundAssignOperator *CAO) {
         std::pair<HelperMapTy::const_iterator, HelperMapTy::const_iterator> range =
@@ -412,6 +420,10 @@ public:
 
     MY_CAO_LIST()
 #undef OPERATOR
+
+    virtual bool VisitCompoundAssignOperator(CompoundAssignOperator *CAO) {
+        return VisitCompoundAssignOperatorImpl(CAO);
+    }
 
     virtual bool VisitMemberExpr(MemberExpr *ME) {
         Expr *base = ME->getBase();
