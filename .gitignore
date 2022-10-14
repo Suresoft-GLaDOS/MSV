@@ -11,6 +11,9 @@ src/profile-matcher
 .vscode
 **/*.la
 benchmarks/*-src
+benchmarks/libtiff-deps/jpeg*
+benchmarks/lighttpd-deps/libxml2*
+benchmarks/lighttpd-deps/sqlite*
 benchmarks/*-tests*
 !benchmarks/gzip-tests
 autom4te.cache

@@ -179,14 +179,14 @@ am__relativize = \
     dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
   done; \
   reldir="$$dir2"
-ACLOCAL = ${SHELL} /root/test/prophet/build-aux/missing aclocal-1.15
+ACLOCAL = ${SHELL} /root/project/prophet/build-aux/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
-AUTOCONF = ${SHELL} /root/test/prophet/build-aux/missing autoconf
-AUTOHEADER = ${SHELL} /root/test/prophet/build-aux/missing autoheader
-AUTOMAKE = ${SHELL} /root/test/prophet/build-aux/missing automake-1.15
-AWK = mawk
+AUTOCONF = ${SHELL} /root/project/prophet/build-aux/missing autoconf
+AUTOHEADER = ${SHELL} /root/project/prophet/build-aux/missing autoheader
+AUTOMAKE = ${SHELL} /root/project/prophet/build-aux/missing automake-1.15
+AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
@@ -222,7 +222,7 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-MAKEINFO = ${SHELL} /root/test/prophet/build-aux/missing makeinfo
+MAKEINFO = ${SHELL} /root/project/prophet/build-aux/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -245,10 +245,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.1
-abs_builddir = /root/test/prophet/benchmarks
-abs_srcdir = /root/test/prophet/benchmarks
-abs_top_builddir = /root/test/prophet
-abs_top_srcdir = /root/test/prophet
+abs_builddir = /root/project/prophet/benchmarks
+abs_srcdir = /root/project/prophet/benchmarks
+abs_top_builddir = /root/project/prophet
+abs_top_srcdir = /root/project/prophet
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_CXX = g++
@@ -278,7 +278,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /root/test/prophet/build-aux/install-sh
+install_sh = ${SHELL} /root/project/prophet/build-aux/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -638,20 +638,14 @@ libtiff-tests2: libtiff-tests
 	cp -f $(srcdir)/libtiff-myscript/rewrite_tag.c libtiff-tests2/
 
 gmp-src:
-	#hg clone https://gmplib.org/repo/gmp gmp-src
-	wget -nc https://ftp.gnu.org/gnu/gmp/gmp-5.0.2.tar.gz
-	tar xvzf gmp-5.0.2.tar.gz
-	rm -rf gmp-src
-	mv ./gmp-5.0.2 ./gmp-src
+	hg clone https://gmplib.org/repo/gmp gmp-src
 
 gmp-tests: gmp-src
-	cp -rf ./gmp-src ./gmp-src-tmp
-	cd gmp-src-tmp && ./configure && make
-	#cp -rf gmp-src gmp-src-tmp
-	#cd gmp-src-tmp && hg update -r 14177 -C
-	#$(abs_top_srcdir)/tools/gmp-build.py gmp-src-tmp
+	cp -rf gmp-src gmp-src-tmp
+	cd gmp-src-tmp && hg update -r 14177 -C
+	$(abs_top_srcdir)/tools/gmp-build.py gmp-src-tmp
 	cp -rf gmp-src-tmp/tests gmp-tests
-	#rm -rf gmp-src-tmp
+	rm -rf gmp-src-tmp
 
 gzip-src:
 	git clone https://git.savannah.gnu.org/git/gzip.git gzip-src
