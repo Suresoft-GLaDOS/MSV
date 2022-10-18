@@ -1421,7 +1421,6 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                         ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),newOper1);
                         BinaryOperator *newOper2=BinaryOperator::Create(*ctxt,newParen,rhs2,oper2,rhsOper->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
                         IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,newOper2);
-                        printf("%s\n",stmtToString(*ctxt,newOper2).c_str());
 
                         ASTLocTy loc = getNowLocation(stmt);
                         RepairCandidate rc;
