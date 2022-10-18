@@ -615,7 +615,7 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                     result = (value >constant);
                     break;
                 case 3: 
-                    result = (value <constant);
+                    result = (value <=constant);
                     break;
                 case 5:
                     result = (value ==value2);
@@ -627,7 +627,7 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                     result=(value>value2);
                     break;
                 case 8:
-                    result=(value<value2);
+                    result=(value<=value2);
                     break;
                 default: 
                     result = (value ==constant);
