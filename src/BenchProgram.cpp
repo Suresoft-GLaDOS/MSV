@@ -551,14 +551,16 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     // return value is zero, or just count as a total failure
     if (res == 0) {
         FILE *in = fopen("__res", "r");
-        assert(in != NULL);
-        unsigned long id;
-        while (!feof(in)) {
-            res = fscanf(in, "%ld", &id);
-            if (res > 0) ret.insert(id);
-            if (res == 0) break;
+        // assert(in != NULL);
+        if (in != NULL){
+            unsigned long id;
+            while (!feof(in)) {
+                res = fscanf(in, "%ld", &id);
+                if (res > 0) ret.insert(id);
+                if (res == 0) break;
+            }
+            fclose(in);
         }
-        fclose(in);
     }
     else {
         //FIXME:What the hell is this ?
