@@ -964,7 +964,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             else{
                 newBody+="for (";
                 newBody+=stmtToString(*ctxt,((ForStmt *)loc.stmt)->getInit());
-                newBody+=";1;";
+                if (newBody[newBody.size()-1]!=';') newBody+=";";
+                newBody+="1;";
                 newBody+=stmtToString(*ctxt,((ForStmt *)loc.stmt)->getInc());
                 newBody+=") {\n";
             }

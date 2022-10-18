@@ -493,140 +493,13 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
         strcpy(constant_temp,temp_location);
         strcat(constant_temp,"__CONSTANT");
 
-        char* tmp_file = getenv("TMP_FILE");
-        if (tmp_file==NULL || strcmp(tmp_file,"")==0){
-            if (strcmp(getenv(operator_temp),"4")==0) {
-                return 1;
-            }
-
-            int var=atoi(getenv(variable_temp));
-            int oper=atoi(getenv(operator_temp));
-            long long constant=(long long)atoi(getenv(constant_temp));
-            long long value=0;
-            long long value2=0;
-
-            va_list ap;
-            va_start(ap, count);
-            for (unsigned long i = 0; i < (unsigned long)count; i++) {
-                void* p = va_arg(ap, void*);
-                unsigned long sz = va_arg(ap, unsigned long);
-                assert( sz <= 8 );
-
-                if (i==var){
-                    if (isGoodAddr(p, sz)) {
-                        if (sz==sizeof(int)){
-                            int temp_v=0;
-                            memcpy(&temp_v, p, sz);
-                            value=(long long) temp_v;
-                        }
-                        else memcpy(&value, p, sz);
-                    }
-                    else {
-                        value = MAGIC_NUMBER;
-                    }
-
-                    if (oper<=4)
-                        break;
-                }
-
-                else if (oper>=5 && i==constant){
-                    if (isGoodAddr(p, sz)) {
-                        memcpy(&value2, p, sz);
-                    }
-                    else {
-                        value2 = MAGIC_NUMBER;
-                    }
-                }
-            }
-
-            int result;
-            if (value==MAGIC_NUMBER) return 0;
-            else{
-                switch(oper){
-                    case 1: 
-                        result = (value !=constant);
-                        break;
-                    case 2: 
-                        result = (value >constant);
-                        break;
-                    case 3: 
-                        result = (value <constant);
-                        break;
-                    case 5:
-                        result = (value ==value2);
-                        break;
-                    case 6:
-                        result=(value!=value2);
-                        break;
-                    case 7:
-                        result=(value>value2);
-                        break;
-                    case 8:
-                        result=(value<value2);
-                        break;
-                    default: 
-                        result = (value ==constant);
-                        break;
-                }
-
-                return result;
-            }
-        }
-        
-        if (!init) {
-            // fprintf(stderr,"Initing 1!\n");
-            init = true;
-            FILE *f = fopen(tmp_file, "r");
-            if (f == NULL) {
-                records_sz = 0;
-                current_cnt = 0;
-            }
-            else {
-                unsigned long n;
-                int ret = fscanf(f, "%lu", &n);
-                assert( ret == 1);
-                records_sz = 0;
-                for (unsigned long i = 0; i < n; i++) {
-                    unsigned long v;
-                    ret = fscanf(f, "%lu", &v);
-                    assert( ret == 1);
-                    records[records_sz ++ ] = v;
-                }
-                fclose(f);
-                current_cnt = records_sz;
-            }
-        }
-        
-
         if (strcmp(getenv(operator_temp),"4")==0) {
-            if (records_sz < MAXSZ){
-                records[records_sz++] = 1;
-            }
-            current_cnt ++;
-
-            // fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
-            // We write back immediate
-            FILE *f = fopen(tmp_file, "w");
-            assert( f != NULL );
-            fprintf(f, "%lu ", records_sz);
-            // fprintf(stderr, "Size: %lu\n",records_sz);
-            // fprintf(stderr, "Record: ");
-            for (unsigned long i = 0; i < records_sz; i++) {
-                fprintf(f, "%lu", records[i]);
-                // fprintf(stderr, "%lu ",records[i]);
-                if (i != records_sz - 1)
-                    fprintf(f, " ");
-            }
-            // fprintf(stderr, "\n");
-            fclose(f);
-
-
             return 1;
         }
 
         int var=atoi(getenv(variable_temp));
         int oper=atoi(getenv(operator_temp));
-        int constant=atoi(getenv(constant_temp));
+        long long constant=(long long)atoi(getenv(constant_temp));
         long long value=0;
         long long value2=0;
 
@@ -638,11 +511,47 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
             assert( sz <= 8 );
 
             if (i==var){
-                if (isGoodAddr(p, sz)) {
-                    memcpy(&value, p, sz);
+                // We assume that all variables are signed
+                // TODO: handle unsigned variables
+                if (sz==8){
+                    int64_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value=(long long) v;
                 }
-                else {
-                    value = MAGIC_NUMBER;
+                else if (sz==4){
+                    int32_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value=(long long) v;
+                }
+                else if (sz==2){
+                    int16_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value=(long long) v;
+                }
+                else if (sz==1){
+                    int8_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value=(long long) v;
                 }
 
                 if (oper<=4)
@@ -650,80 +559,83 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
             }
 
             else if (oper>=5 && i==constant){
-                if (isGoodAddr(p, sz)) {
-                    memcpy(&value2, p, sz);
+                // We assume that all variables are signed
+                // TODO: handle unsigned variables
+                if (sz==8){
+                    int64_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value2=(long long) v;
                 }
-                else {
-                    value2 = MAGIC_NUMBER;
+                else if (sz==4){
+                    int32_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value2=(long long) v;
+                }
+                else if (sz==2){
+                    int16_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value2=(long long) v;
+                }
+                else if (sz==1){
+                    int8_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value2=(long long) v;
                 }
             }
         }
 
+        int result;
         if (value==MAGIC_NUMBER) return 0;
         else{
             switch(oper){
                 case 1: 
-                    if (records_sz < MAXSZ){
-                        records[records_sz++] = (value !=constant);
-                    }
+                    result = (value !=constant);
                     break;
                 case 2: 
-                    if (records_sz < MAXSZ){
-                        records[records_sz++] = (value >constant);
-                    }
+                    result = (value >constant);
                     break;
                 case 3: 
-                    if (records_sz < MAXSZ){
-                        records[records_sz++] = (value <constant);
-                    }
+                    result = (value <constant);
                     break;
                 case 5:
-                    if (records_sz < MAXSZ){
-                        records[records_sz++] = (value ==value2);
-                    }
+                    result = (value ==value2);
                     break;
                 case 6:
-                    if (records_sz < MAXSZ){
-                        records[records_sz++] = (value !=value2);
-                    }
+                    result=(value!=value2);
                     break;
                 case 7:
-                    if (records_sz < MAXSZ){
-                        records[records_sz++] = (value >value2);
-                    }
+                    result=(value>value2);
                     break;
                 case 8:
-                    if (records_sz < MAXSZ){
-                        records[records_sz++] = (value <value2);
-                    }
+                    result=(value<value2);
                     break;
                 default: 
-                    if (records_sz < MAXSZ){
-                        records[records_sz++] = (value ==constant);
-                    }
+                    result = (value ==constant);
                     break;
             }
 
-            current_cnt ++;
-
-            // fprintf(stderr,"Current cnt, Record size: %d %d\n",current_cnt,records_sz);
-            // We write back immediate
-            FILE *f = fopen(tmp_file, "w");
-            assert( f != NULL );
-            fprintf(f, "%lu ", records_sz);
-            // fprintf(stderr, "Size: %lu\n",records_sz);
-            // fprintf(stderr, "Record: ");
-            for (unsigned long i = 0; i < records_sz; i++) {
-                fprintf(f, "%lu", records[i]);
-                // fprintf(stderr, "%lu ",records[i]);
-                if (i != records_sz - 1)
-                    fprintf(f, " ");
-            }
-            fclose(f);
-
-            return records[records_sz-1];
+            return result;
         }
-
     }
     return 0;
 }
