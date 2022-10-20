@@ -25,19 +25,6 @@ import uuid
 from difflib import SequenceMatcher
 import psutil
 
-cases = [
-    "helin-segv",
-    "hufts",
-    "memcpy-abuse",
-    "mixed",
-    "null-suffix-clobber",
-    "stdin",
-    "trailing-nul",
-    "zdiff",
-    "zgrep-f",
-    "zgrep-signal",
-    "znew-k"];
-
 if __name__ == "__main__":
     opts, args = getopt.getopt(argv[1 :], "p:j:t:i:");
     profile_dir = "";
@@ -64,19 +51,10 @@ if __name__ == "__main__":
             cur_dir = profile_dir;
 
         ori_dir = getcwd();
-        chdir(cur_dir + "/"+temp_dir);
+        chdir(cur_dir)
         my_env = environ;
         for i in ids:
-            case_str = cases[int(i) - 1];
-            tmp_id = uuid.uuid4();
-            tmp_exp_file = f"/tmp/{tmp_id}.exp";
-            tmp_out_file = f"/tmp/{tmp_id}.out"
-            # print("exp: " + tmp_exp_file)
-            # print("out: " + tmp_out_file)
-            environ["MSV_TMP_EXP"] = tmp_exp_file;
-            environ["MSV_TMP_OUT"] = tmp_out_file;
-            #ret = subprocess.call(["make", log_file], timeout=timeout, shell = True);
-            proc = subprocess.Popen(["./" + case_str + " 1>/dev/null 2>/dev/null"],
+            proc = subprocess.Popen([f'make check-TESTS --no-print-directory TESTS=$(make print-TESTS | cut -d " " -f {i})'],
                                     shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             try:
                 so,se = proc.communicate(timeout=timeout)

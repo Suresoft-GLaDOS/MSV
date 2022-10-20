@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -17,59 +17,111 @@
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
-from os import environ, system, path, getcwd, chdir
+from os import environ, system, path, getcwd, chdir, remove
 import subprocess
 import getopt
+import multiprocessing as mp
+import uuid
+from difflib import SequenceMatcher
+import psutil
+
+def run_test(testcase, timeout):
+    tmp_id = uuid.uuid4()
+    my_env = environ.copy()
+    my_env["RUNTESTS"] = testcase;
+    #print("Running test case: " + testcase, flush=True)
+    out_file = f"__out_{testcase}_{tmp_id}"
+    if "__PID" in my_env:
+        out_file = f"__out_{my_env['__PID']}"
+    if path.exists(out_file):
+        remove(out_file)
+    tmp_out_file = f"/tmp/{tmp_id}.out"
+    my_env["MSV_TMP_OUT"] = tmp_out_file
+    # print("exp: " + tmp_exp_file, flush=True)
+    # print("out: " + tmp_out_file, flush=True)
+    # print(f"perl -I {path.join(my_env['MSV_PATH'], 'benchmarks', 'lighttpd-script')} run-tests.pl 1>{out_file}")
+    script = path.join(my_env['MSV_PATH'], 'benchmarks', 'lighttpd-script')
+    proc = subprocess.Popen([f"perl run-tests.pl 1>{out_file} 2>/dev/null"],
+                            shell=True, env=my_env, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    #ret = subprocess.call([f"perl run-tests.pl 1>{out_file}  2>/dev/null"], shell=True, env = my_env);
+    try:
+        so,se = proc.communicate(timeout=timeout)
+    except:
+        pid = proc.pid
+        children = list()
+        for child in psutil.Process(pid).children(recursive=True):
+            if psutil.pid_exists(child.pid):
+                children.append(child)
+        for child in children:
+            child.kill()
+        proc.kill()
+    if ret != 0:
+        system(f"rm -rf {out_file}");
+        return
+
+    with open(out_file, "r") as fin:
+        outs = fin.readlines();
+
+    if ("Result: PASS\n" in outs):
+        # print(f"cp {tmp_out_file} {exp_file}")
+        # system(f"cp {tmp_out_file} {exp_file}")
+        print (testcase, flush=True)
+    system(f"rm -rf {out_file}");
 
 if __name__ == "__main__":
     if len(argv) < 4:
-        print "Usage: lighttpd-py <src_dir> <test_dir> <work_dir> [cases]"
+        print ("Usage: lighttpd-py <src_dir> <test_dir> <work_dir> [cases]")
         exit(1);
 
-    opts, args = getopt.getopt(argv[1:], "p:");
+    opts, args = getopt.getopt(argv[1:], "p:j:t:i:");
     profile_dir = "";
+    max_parallel=1
+    tempdir='my-tests'
+    timeout=None
+    tmp_prefix = ""
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
+        elif o=='-j':
+            max_parallel=int(a)
+        elif o=='-t':
+            timeout=int(a)
+        elif o=='-i':
+            pass
+            #tempdir=a
 
     src_dir = args[0];
     test_dir = args[1];
     work_dir = args[2];
     if len(args) > 3:
         ids = args[3:];
+        #ids = list(map(str, range(1, 215)))
         cur_dir = src_dir;
         if (profile_dir != ""):
             cur_dir = profile_dir;
 
-        if (not path.exists(cur_dir+"/my-tests")):
-            system("cp -rf " + test_dir + " " + cur_dir + "/my-tests");
-
-        system("killall -9 lighttpd > /dev/null 2> /dev/null");
+        if (not path.exists(cur_dir+"/"+tempdir)):
+            system("cp -rf " + test_dir + " " + cur_dir + "/"+tempdir);
+            system("rm -f " + path.join(cur_dir, tempdir, "LightyTest.pm"))
 
         ori_dir = getcwd();
-        chdir(cur_dir + "/my-tests");
+        chdir(cur_dir + "/"+tempdir);
 
         ret = subprocess.call(["sh prepare.sh >/dev/null"], shell=True);
         if ret != 0:
-            print "Error on preparing";
+            print ("Error on preparing")
             assert(0);
 
-        my_env = environ;
+        result=[]
+        pool=mp.Pool(max_parallel)
         for i in ids:
             testcase = str(i);
-            my_env["RUNTESTS"] = testcase;
-            ret = subprocess.call(["perl run-tests.pl 1> __out 2>/dev/null"], shell=True, env = my_env);
-            if ret != 0:
-                system("rm -rf __out");
-                continue;
-
-            with open("__out", "r") as fin:
-                outs = fin.readlines();
-
-            if ("Result: PASS\n" in outs):
-                print i,
-            system("rm -rf __out");
-        print;
+            result.append(pool.apply_async(run_test, (testcase, timeout)))
+        #print();
+        pool.close()
+        for r in result:
+            r.wait(timeout)
+        pool.join()
 
         subprocess.call(["sh cleanup.sh > /dev/null"], shell=True);
 

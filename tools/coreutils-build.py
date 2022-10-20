@@ -18,74 +18,47 @@
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
 from os import system, path, chdir, getcwd, environ
-from tester_common import extract_arguments
+from tester_common import extract_arguments, get_fix_revisions
 import subprocess
 import getopt
 
-def fix_configure_in(s):
-    f = open(s, "r");
-    lines = f.readlines();
-    f.close();
-    f = open(s, "w");
-    for line in lines:
-        if (line.find("AM_INIT_AUTOMAKE") == 0):
-            f.write("AM_INIT_AUTOMAKE([1.8 gnu no-dependencies])\n");
-        elif (line.find("AM_C_PROTOTYPES") == 0):
-            continue;
-        else:
-            f.write(line);
-    f.close();
 
-def fix_makefile_am(s):
-    f = open(s, "r");
-    lines = f.readlines();
-    f.close();
-    f = open(s, "w");
-    for line in lines:
-        if (line.find("AUTOMAKE_OPTIONS") == 0):
-            f.write("AUTOMAKE_OPTIONS = 1.8 gnu no-dependencies\n");
-        else:
-            f.write(line);
-    f.close();
-
-def compileit(out_dir, compile_only = False, config_only = False,max_parallel=1):
+# Assume using automake1.11 & installed libpcre3-dev libpcre++-dev libbz2-dev libglib2.0-dev
+#
+def compile( out_dir, deps_dir, compile_only = False, config_only = False,max_parallel=1):
     ori_dir = getcwd();
     chdir(out_dir);
 
     my_env = environ;
-
     if not compile_only:
-        if path.exists("configure.in"):
-            fix_configure_in("configure.in");
-        if (path.exists("Makefile.am")):
-            fix_makefile_am("Makefile.am");
-        ret = subprocess.call(["sh .bootstrap"], shell = True, env = my_env);
-        if (ret != 0):
-            print("Failed to run .bootstrap!")
-            chdir(ori_dir);
-            exit(1);
-        ret = subprocess.call(["autoreconf -fvi"], shell = True, env = my_env);
-        if (ret != 0):
-            print("Failed to run autoreconf!")
-            exit(1);
-        ret = subprocess.call(["./configure"], shell = True, env = my_env);
-        if (ret != 0):
-            print("Failed to configure!")
-            chdir(ori_dir);
-            exit(1);
-        system("make clean");
+        ret = subprocess.run(["rm -rf gnulib"], shell=True, env = my_env)
+        ret = subprocess.run(["./bootstrap"], shell=True, env = my_env)
+        if ret.returncode != 0:
+                print("Failed to run bootstrap, Check automake version!")
+                chdir(ori_dir);
+                exit(1);
+        # ret = subprocess.call(["./configure","--disable-fast-install", "--with-ldap", "--with-bzip2", "--with-openssl", "--with-gdbm", "--with-memcache", "--with-webdav-props", "--with-webdav-locks", "--prefix=/home/fanl/Workspace/prophet/build/benchmarks/tmptest/lighttpd-build"], env = my_env);
+        ret = subprocess.run(["./configure",'FORCE_UNSAFE_CONFIGURE=1'], env = my_env)
+        if ret.returncode != 0:
+                print("Configure Error!")
+                chdir(ori_dir);
+                exit(1);
 
     if not config_only:
-        ret = subprocess.call(["make",'-j'+str(max_parallel)], env = my_env);
-        if ret != 0:
-            print("Failed to make")
+        ret = subprocess.run(["make",'clean'], env = my_env);
+        ret = subprocess.run(["make",'-j'+str(max_parallel)], env = my_env);
+        if ret.returncode != 0:
+            print("Failed to compile!")
             exit(1);
-
     chdir(ori_dir);
 
-if __name__ == "__main__":
-    deps_dir = getcwd() + "/gmp-deps"
+    #ret = subprocess.call(["make", "install"], env = my_env);
+    #if ret != 0:
+#       print "Failed to install! Remember using sudo";
+#       exit(1);
+#   chdir(ori_dir);
 
+if __name__=="__main__":
     compile_only = False;
 
     opts, args = getopt.getopt(argv[1:],'cd:hlp:r:xj:');
@@ -94,15 +67,17 @@ if __name__ == "__main__":
     print_fix_log = False;
     print_usage = False;
     config_only = False;
+    lighttpd_deps_dir = getcwd() + "/lighttpd-deps";
     max_parallel=1
+
     for o, a in opts:
         if o == "-d":
             dryrun_src = a;
         elif o == "-p":
             if a[0] == "/":
-                deps_dir = a;
+                lighttpd_deps_dir = a;
             else:
-                deps_dir = getcwd() + "/" + a;
+                lighttpd_deps_dir = getcwd() + "/" + a;
         elif o == "-x":
             config_only = True;
         elif o == "-c":
@@ -115,17 +90,18 @@ if __name__ == "__main__":
             max_parallel=int(a)
 
     if (len(args) < 1) or (print_usage):
-        print("Usage: gmp-build.py <directory> [-d src_file | -l] [-h]")
+        print("Usage: coreutils-build.py <directory> [-d src_file | -l] [-h]")
         exit(0);
 
     out_dir = args[0];
-    if (path.exists(out_dir)):
+    # fetch from github if the directory does not exist
+    if path.exists(out_dir):
         print("Working with existing directory: " + out_dir)
     else:
-        print("Non-exist directory")
+        print("Non-exists directory")
         exit(1);
 
-    compileit(out_dir, compile_only, config_only,max_parallel);
+    compile(out_dir, lighttpd_deps_dir, compile_only, config_only,max_parallel);
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src);
         if len(args) > 1:
@@ -136,3 +112,4 @@ if __name__ == "__main__":
         else:
             print(builddir)
             print(buildargs)
+

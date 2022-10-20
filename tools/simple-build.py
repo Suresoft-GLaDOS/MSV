@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -24,15 +24,18 @@ from tester_common import extract_arguments
 
 def tobuild(src_dir):
     ori_dir = getcwd();
-    print "Path env: ", environ["PATH"];
+    print ("Path env: ", environ["PATH"])
     chdir(src_dir);
-    ret = subprocess.call("make");
+
+    # ret = subprocess.call("make clean",shell=True)
+    subprocess.run(['rm','-rf','prog'])
+    ret = subprocess.call(["make"],shell=True);
     chdir(ori_dir);
 
     return ret == 0;
 
 if __name__ == "__main__":
-    opts, args = getopt.getopt(argv[1:], "cd:hx");
+    opts, args = getopt.getopt(argv[1:], "cd:hxj:");
     dryrun_src = "";
     compile_only = False;
     print_usage = False;
@@ -46,31 +49,34 @@ if __name__ == "__main__":
             compile_only = True;
         elif o == "-h":
             print_usage = True;
+        elif o=="-j":
+            continue
 
+    print ("simple-build")
     if config_only:
         exit(0);
 
     if ((len(args) < 1) or (print_usage)):
-        print "Usage: simple-build.py <dirctory> [-d src_file | -c] [-h]";
+        print ("Usage: simple-build.py <dirctory> [-d src_file | -c] [-h]")
         exit(0);
 
     out_dir = args[0];
     # fetch from github if the directory does not exist
     if (not path.exists(out_dir)):
-        print "Directory does not exist!";
+        print ("Directory does not exist!")
         exit(1);
 
     if (not tobuild(out_dir)):
-        print "Build failed!";
+        print ("Build failed!")
         exit(1);
 
     if dryrun_src != "":
         build_dir, build_args = extract_arguments(out_dir, dryrun_src);
         if (len(args) > 1):
             out_file = open(args[1], "w");
-            print >>out_file, build_dir
-            print >>out_file, build_args
+            print (build_dir,file=out_file)
+            print (build_args,file=out_file)
             out_file.close();
         else:
-            print build_dir;
-            print build_args;
+            print (build_dir)
+            print (build_args)

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -56,25 +56,25 @@ def compileit(out_dir, compile_only = False, config_only = False, paraj = 0):
     my_env = environ;
 
     if not compile_only:
+        subprocess.run(["make", "clean"], env = my_env);
         system("rm -rf Modules/Setup Modules/config.c Makefile");
         if (path.exists("setup.py")):
             fix_setup_script("setup.py");
         if (path.exists("Parser/asdl_c.py")):
             fix_asdl_py("Parser/asdl_c.py");
-        ret = subprocess.call(["./configure"], shell = True, env = my_env);
-        if (ret != 0):
-            print "Failed to run configure!";
+        ret = subprocess.run(["./configure --with-pydebug"], shell = True, env = my_env);
+        if (ret.returncode != 0):
+            print("Failed to run configure!")
             chdir(ori_dir);
             exit(1);
-        subprocess.call(["make", "clean"], env = my_env);
 
     if not config_only:
         if paraj == 0:
-            ret = subprocess.call(["make"], env = my_env);
+            ret = subprocess.run(["make"], env = my_env);
         else:
-            ret = subprocess.call(["make", "-j", str(paraj)], env = my_env);
-        if ret != 0:
-            print "Failed to make!";
+            ret = subprocess.run(["make", "-j", str(paraj)], env = my_env);
+        if ret.returncode != 0:
+            print("Failed to make!")
             chdir(ori_dir);
             exit(1);
 
@@ -112,14 +112,14 @@ if __name__ == "__main__":
             print_usage = True;
 
     if (len(args) < 1) or (print_usage):
-        print "Usage: python-build.py <directory> [-d src_file | -l] [-h]";
+        print("Usage: python-build.py <directory> [-d src_file | -l] [-h]")
         exit(0);
 
     out_dir = args[0];
     if (path.exists(out_dir)):
-        print "Working with existing directory: " + out_dir;
+        print("Working with existing directory: " + out_dir)
     else:
-        print "Non-exist directory";
+        print("Non-exist directory")
         exit(1);
 
     compileit(out_dir, compile_only, config_only, paraj);
@@ -127,9 +127,9 @@ if __name__ == "__main__":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src);
         if len(args) > 1:
             out_file = open(args[1], "w");
-            print >> out_file, builddir;
-            print >> out_file, buildargs;
+            print(builddir,file=out_file)
+            print(buildargs,file=out_file)
             out_file.close();
         else:
-            print builddir;
-            print buildargs;
+            print(builddir)
+            print(buildargs)

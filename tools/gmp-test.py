@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -18,8 +18,10 @@
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
 import getopt
-from os import chdir, getcwd, system, path, environ
+from os import chdir, getcwd, system, path, environ,remove
 import subprocess
+import multiprocessing as mp
+import psutil
 
 cases = [
     "tests/t-bswap",
@@ -169,46 +171,113 @@ cases = [
     "tests/mpn/t-div",
     "tests/mpn/t-bdiv"];
 
+def write_out_dist(dist: float) -> None:
+    if "MSV_OUTPUT_DISTANCE_FILE" in environ:
+        with open(environ["MSV_OUTPUT_DISTANCE_FILE"], "w") as f:
+            f.write(str(dist))
+
+def run_test(test_file,subdir,ori_dir,id,timeout):
+    chdir(subdir);
+    system("rm -f " + test_file + ".log");
+    system(f'touch {test_file}.c')
+    DIST_MAX = 2000
+    DIST_DEFAULT = 1000
+    DIST_MIN = 0
+    #print(f"make {test_file}");
+    #ret = subprocess.call([f"make {test_file}"], shell=True);
+    proc = subprocess.Popen([f"make {test_file}"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True);
+    try:
+        so, se = proc.communicate(timeout=timeout)
+        if (proc.returncode != 0):
+            chdir(ori_dir)
+            return
+    except:
+        pid = proc.pid
+        children = []
+        for child in psutil.Process(pid).children(True):
+            if psutil.pid_exists(child.pid):
+                children.append(child)
+
+        for child in children:
+            child.kill()
+        proc.kill()
+        chdir(ori_dir)
+        return
+    #ret = subprocess.call(["make " + test_file + " >/dev/null 2>/dev/null"], shell = True);
+
+    #print(f"./{test_file}");
+    #ret = subprocess.call([f"./{test_file}"], shell = True);
+    proc = subprocess.Popen([f"./{test_file}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True);
+    try:
+        so, se = proc.communicate(timeout=timeout)
+        if proc.returncode == 0:
+            print(id)
+    except:
+        pid = proc.pid
+        children = []
+        for child in psutil.Process(pid).children(True):
+            if psutil.pid_exists(child.pid):
+                children.append(child)
+
+        for child in children:
+            child.kill()
+        proc.kill()
+    #ret = subprocess.call(["./" + test_file + " >/dev/null 2>/dev/null"], shell = True);
+    # if (ret == 0):
+    #     print(id)
+    chdir(ori_dir);
+
 if __name__ == "__main__":
-    opts, args = getopt.getopt(argv[1 :], "p:");
+    opts, args = getopt.getopt(argv[1 :], "p:j:t:i:");
     profile_dir = "";
+    max_parallel=1
+    timeout=None
+    temp_dir='mytests'
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
+        elif o=='-j':
+            max_parallel=int(a)
+        elif o=='-t':
+            timeout=int(a)
+        elif o=='-i':
+            temp_dir=a
 
     src_dir = args[0];
     test_dir = args[1];
     work_dir = args[2];
 
+    pool=mp.Pool(max_parallel)
     if (len(args) > 3):
         ids = args[3 :];
         cur_dir = src_dir;
         if (profile_dir != ""):
             cur_dir = profile_dir;
 
-        if (not path.exists(cur_dir + "/mytests")):
-            system("cp -rf " + test_dir + " " + cur_dir + "/mytests");
+        if (not path.exists(cur_dir + "/"+temp_dir)):
+            system("cp -rf " + test_dir + " " + cur_dir + "/"+temp_dir)
+            if path.exists(path.join(test_dir, ".libs")):
+                system("cp -rf " + test_dir + "/.libs " + cur_dir + "/"+temp_dir);
 
         ori_dir = getcwd();
         my_env = environ;
+        result=[]
+        pool=mp.Pool(max_parallel)
         for i in ids:
             case_str = cases[int(i) - 1];
             tokens = case_str.split("/");
             assert( tokens[0] == "tests");
             if (len(tokens) == 3):
-                subdir = cur_dir + "/mytests/" + tokens[1];
+                subdir = cur_dir + "/"+temp_dir+"/" + tokens[1];
                 testfile = tokens[2];
             else:
                 assert(len(tokens) == 2);
-                subdir = cur_dir + "/mytests";
+                subdir = cur_dir + "/"+temp_dir;
                 testfile = tokens[1];
-            chdir(subdir);
-            system("rm -f " + testfile + ".log");
-            ret = subprocess.call(["make " + testfile + " >/dev/null 2>/dev/null"], shell = True);
-            if (ret != 0):
-                chdir(ori_dir);
-                continue;
-            ret = subprocess.call(["./" + testfile + " >/dev/null 2>/dev/null"], shell = True);
-            if (ret == 0):
-                print i,
-            chdir(ori_dir);
+            result.append(pool.apply_async(run_test,(testfile,subdir,ori_dir,i,timeout)))
+
+        pool.close()
+        for r in result:
+            r.wait(timeout)
+        pool.join()
+        #system('rm -rf '+temp_dir)

@@ -24,7 +24,6 @@ import subprocess
 import getopt
 
 if __name__=="__main__":
-    github_addr = "https://git.php.net/repository/php-src.git"
     php_deps_dir = getcwd() + "/php-deps"
 
     compile_only = False
@@ -56,17 +55,10 @@ if __name__=="__main__":
             paraj = int(a)
 
     if (len(args) < 1) or (print_usage):
-        print("Usage: php-build.py <directory> [-r revision | -d src_file | -l] [-h]")
+        print("Usage: new-php-build.py <directory> [-r revision | -d src_file | -l] [-h]")
         exit(1)
     out_dir = args[0]
     # fetch from github if the directory does not exist
-    if path.exists(out_dir):
-        print("Working with existing directory: " + out_dir)
-    else:
-        ret = system("git clone "+github_addr+" "+out_dir)
-        if ret != 0:
-            print("Failed to grab from github, check your network connection and make sure you have git!")
-            exit(1)
 
     if print_fix_log:
         ret = get_fix_revisions(out_dir)
@@ -76,12 +68,33 @@ if __name__=="__main__":
             print("Comment:")
             print(comment)
     else:
-        if revision != "":
-            succ = switch_to(out_dir, revision, php_deps_dir, paraj)
-        else:
-            succ = switch_to(out_dir, "", php_deps_dir, compile_only, config_only, paraj)
-        if (not succ):
-            exit(1)
+        orig_dir=getcwd()
+        chdir(out_dir)
+        my_env = environ
+        my_env["PATH"] = php_deps_dir + "/bison-2.2-build/bin:" + my_env["PATH"]
+        # my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"]
+        my_env["PATH"] = php_deps_dir + "/flex-2.5.4-build/bin:" + my_env["PATH"]
+
+        if not compile_only:
+            subprocess.run(['make','clean'])
+            subprocess.run(['git','clean','-f','-d','-e','*.phpt'])
+            result=subprocess.run(['./buildconf','--force'])
+            if result.returncode != 0:
+                my_env["PATH"] = php_deps_dir + "/autoconf-2.13:" + my_env["PATH"]
+                result=subprocess.run(['./buildconf','--force'])
+            p = subprocess.Popen(["./configure", "-with-libxml-dir=" + php_deps_dir + "/libxml2-2.7.2-build","-enable-zip"], env = my_env)
+            (out, err) = p.communicate()
+            subprocess.run(['make','clean'])
+
+        if not config_only:
+            ret = subprocess.call(["rm", "-rf", "ext/phar/phar.php"], env = my_env)
+            assert( ret == 0)
+            if paraj == 0:
+                ret = subprocess.call(["make"], env = my_env)
+            else:
+                ret = subprocess.call(["make", "-j", str(paraj)], env = my_env)
+        chdir(orig_dir)
+
         if dryrun_src != "":
             (builddir, buildargs) = extract_arguments(out_dir, dryrun_src)
             if len(args) > 1:
