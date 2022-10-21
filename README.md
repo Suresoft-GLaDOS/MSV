@@ -35,7 +35,7 @@ to run prophet.
 ### Important Options
 * `-r <path-to-workdir>`: Path to work directory that contains repair.conf. For replicated benchmarks, `<subject>-case-<version>/<subject>-<version>-workdir`.
 * `-first-n-loc <top-n-fl-location>`: Use top n location from fault localization. Optional, default 5000. Prophet paper used 200.
-* `-feature-para <path-to-feature-file>`: Path to feature file. Usually `MSV/crawler/para-<subject>.out`. For gmp, gzip and lighttpd, `MSV/crawler/para-all.out` If you use `-replace-ext` option, `MSV/crawler/para-rext-<subject>.out` or `MSV/crawler/para-rext-all.out`
+* `-feature-para <path-to-feature-file>`: Path to feature file. Usually `MSV/crawler/para-<subject>.out`. For gmp, gzip and lighttpd, `MSV/crawler/para-all.out`. If you use `-replace-ext` option, `MSV/crawler/para-rext-<subject>.out` or `MSV/crawler/para-rext-all.out`.
 * `-timeout <hour>`: Set timeout in hour. Default, infinite (until all `-first-n-loc` tried`).
 
 ### Optional Options
