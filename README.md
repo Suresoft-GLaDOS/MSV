@@ -25,7 +25,7 @@ make
 make install
 ```
 2. Use benchmarks from original replication: https://www.cs.toronto.edu/~fanl/program_repair/
-3. Modify `single_case_timeout` in repair.conf
+3. Modify `single_case_timeout` in repair.conf (original replicated benchmarks may have too low timeout to condition synthesis)
 4. Run
 ```
 prophet -r <path-to-workdir> -first-n-loc <top-n-fl-location> -feature-para <path-to-feature-file> -timeout <hour> [optional option...]
