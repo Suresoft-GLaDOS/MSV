@@ -4,6 +4,7 @@ Original Prophet compatible with LLVM/Clang 11.
 ### Difference with original replication
 1. Update LLVM/Clang version to 11.
 2. Fix benchmarks dependencies and scripts.
+3. Update Python scripts to use Python 3.
 
 ## Dependencies
 * LLVM/Clang 11
