@@ -81,7 +81,7 @@ public:
 };
 
 bool skipFile(std::string &fileName){
-    return fileName=="crypto/des/ncbc_enc.c" || fileName.find(".inc")!=std::string::npos;
+    return fileName=="crypto/des/ncbc_enc.c" || fileName.find(".inc")!=std::string::npos || fileName.find(".y") != std::string::npos;
 }
 
 SBFLLocalizer::SBFLLocalizer(std::string fileName,BenchProgram *program): SBFLFile(fileName),program(program),result() {
