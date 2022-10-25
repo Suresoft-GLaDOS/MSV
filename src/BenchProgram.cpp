@@ -870,6 +870,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                             if (line.find(src_dir)!=std::string::npos)
                                 fileName=line.substr(src_dir.size()+1,location-src_dir.size())+".c";
                             else fileName=line.substr(0,location)+".c";
+                            isRe=false;
                         }
                         else if (isC) {
                             if (line.find(src_dir)!=std::string::npos)
