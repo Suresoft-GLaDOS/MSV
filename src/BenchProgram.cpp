@@ -852,7 +852,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                 //     }
                 // }
                 if (line.find("error: ")!=std::string::npos || line.find("undefined reference to")!=std::string::npos){
-                    if ((line.find(".c:")!=std::string::npos || line.find(".cpp:")!=std::string::npos || line.find(".h:")!=std::string::npos)){
+                    if ((line.find(".c:")!=std::string::npos || line.find(".re:")!=std::string::npos || line.find(".cpp:")!=std::string::npos || line.find(".h:")!=std::string::npos)){
                         std::string fileName;
                         size_t location=line.find(".c:");
                         bool isC=true;
@@ -979,11 +979,11 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                                 }
                                 else if (line.find("undefined reference to")!=std::string::npos){
                                     size_t pos=line.find("undefined reference to");
-                                    size_t first=line.find("'");
-                                    if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
-                                        first = line.find("`", pos);
-                                    size_t last=line.find("'",first+1);
-                                    std::string function=line.substr(first+1,last-first-1);
+                                    size_t first=pos+(std::string("undefined reference to")).size()+3;
+                                    // if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                                    //     first = line.find("`", pos);
+                                    size_t last=line.find(" ",first+1);
+                                    std::string function=line.substr(first+1,last-first-4);
 
                                     for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                         if (it->second.find(function)!=std::string::npos){
