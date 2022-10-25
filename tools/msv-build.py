@@ -60,7 +60,7 @@ if __name__=="__main__":
         if command.startswith('cmake'):
             is_cmake=True
             subprocess.run(['rm','-rf','CMakeCache.txt','**/CMakeFiles'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-        if command.startswith('make') or ' make' in command:
+        if command.startswith('make') or ' make' in command or '--target all' in command:
             is_compile=True
 
         if not is_compile:
