@@ -135,7 +135,7 @@ def generate_meta_program(work_dir:str,src_dir:str,feature_para:str='',sbfl_path
     # print(cmd)
     # ,'-msv-ext'
 
-    cmd=['prophet', '-r', f'{work_dir}/{src_name}-workdir', '-skip-verify', '-skip-profile', '-replace-ext', '-first-n-loc', '100', '-consider-all']
+    cmd=['prophet', '-r', f'{work_dir}/{src_name}-workdir', '-skip-verify', '-skip-profile', '-replace-ext', '-first-n-loc', '52' ,'-msv-ext', '-consider-all']
     print(cmd)
     if sbfl_path!='':
         cmd.append('-use-sbfl')

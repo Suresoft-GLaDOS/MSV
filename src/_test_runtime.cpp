@@ -440,50 +440,50 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                     break;
             }
 
-            // else if (oper>=5 && i==constant){
-            //     // We assume that all variables are signed
-            //     // TODO: handle unsigned variables
-            //     if (sz==8){
-            //         int64_t v = 0;
-            //         if (isGoodAddr(p, sz)) {
-            //             memcpy(&v, p, sz);
-            //         }
-            //         else {
-            //             v = MAGIC_NUMBER;
-            //         }
-            //         value2=(long long) v;
-            //     }
-            //     else if (sz==4){
-            //         int32_t v = 0;
-            //         if (isGoodAddr(p, sz)) {
-            //             memcpy(&v, p, sz);
-            //         }
-            //         else {
-            //             v = MAGIC_NUMBER;
-            //         }
-            //         value2=(long long) v;
-            //     }
-            //     else if (sz==2){
-            //         int16_t v = 0;
-            //         if (isGoodAddr(p, sz)) {
-            //             memcpy(&v, p, sz);
-            //         }
-            //         else {
-            //             v = MAGIC_NUMBER;
-            //         }
-            //         value2=(long long) v;
-            //     }
-            //     else if (sz==1){
-            //         int8_t v = 0;
-            //         if (isGoodAddr(p, sz)) {
-            //             memcpy(&v, p, sz);
-            //         }
-            //         else {
-            //             v = MAGIC_NUMBER;
-            //         }
-            //         value2=(long long) v;
-            //     }
-            // }
+            else if (oper>=5 && i==constant){
+                // We assume that all variables are signed
+                // TODO: handle unsigned variables
+                if (sz==8){
+                    int64_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value2=(long long) v;
+                }
+                else if (sz==4){
+                    int32_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value2=(long long) v;
+                }
+                else if (sz==2){
+                    int16_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value2=(long long) v;
+                }
+                else if (sz==1){
+                    int8_t v = 0;
+                    if (isGoodAddr(p, sz)) {
+                        memcpy(&v, p, sz);
+                    }
+                    else {
+                        v = MAGIC_NUMBER;
+                    }
+                    value2=(long long) v;
+                }
+            }
         }
 
         int result;
@@ -499,18 +499,18 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                 case 3: 
                     result = (value <constant);
                     break;
-                // case 5:
-                //     result = (value ==value2);
-                //     break;
-                // case 6:
-                //     result=(value!=value2);
-                //     break;
-                // case 7:
-                //     result=(value>value2);
-                //     break;
-                // case 8:
-                //     result=(value<value2);
-                //     break;
+                case 5:
+                    result = (value ==value2);
+                    break;
+                case 6:
+                    result=(value!=value2);
+                    break;
+                case 7:
+                    result=(value>value2);
+                    break;
+                case 8:
+                    result=(value<value2);
+                    break;
                 default: 
                     result = (value ==constant);
                     break;
