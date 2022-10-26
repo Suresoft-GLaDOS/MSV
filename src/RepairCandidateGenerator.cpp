@@ -2532,7 +2532,7 @@ public:
                 Stmt *last=CS->body_back();
                 if (!DeclStmt::classof(last) && isTainted(last) && MsvExt.getValue()){
                     genAddMemsetBack(last,false);
-                    genAddIfExitBack(last,false,stmt_stack.size() == 2);
+                    // genAddIfExitBack(last,false,stmt_stack.size() == 2);
                 }
             }
             is_first = is_first && !llvm::isa<DeclStmt>(n);
@@ -2545,11 +2545,11 @@ public:
                 if (MsvExt.getValue())
                     genRemoveStatement(n);
                 genReplaceStmt(n, is_first);
-                if (!llvm::isa<DeclStmt>(n) && !llvm::isa<LabelStmt>(n))
-                    genAddIfGuard(n, is_first);
+                // if (!llvm::isa<DeclStmt>(n) && !llvm::isa<LabelStmt>(n))
+                //     genAddIfGuard(n, is_first);
                 genAddMemset(n, is_first);
                 if (!NoAdd.getValue()) genAddStatement(n, is_first, stmt_stack.size() == 2);
-                genAddIfExit(n, is_first, stmt_stack.size() == 2);
+                // genAddIfExit(n, is_first, stmt_stack.size() == 2);
 
                 if (CallExpr::classof(n) && MsvExt.getValue()){
                     genStringReplace(llvm::dyn_cast<CallExpr>(n));

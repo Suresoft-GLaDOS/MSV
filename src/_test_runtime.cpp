@@ -354,124 +354,6 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
             return 1;
         }
     }
-    else if (strcmp(is_neg, "0") == 0)
-        return 0;
-    else if ((strcmp(is_neg, "RECORD1") == 0) || (strcmp(is_neg, "RECORD0") == 0)) {
-        // We print out everything into the TMP_FILE
-        char* tmp_file = getenv("TMP_FILE");
-        assert(tmp_file);
-        if (init == false) {
-            init = true;
-            FILE *f;
-            records_sz = 0;
-            //fprintf(stderr, "here0\n");
-            if (strcmp(is_neg, "RECORD1") == 0) {
-                char* neg_arg = getenv("NEG_ARG");
-                f = fopen(neg_arg, "r");
-                assert(f != NULL);
-                unsigned long n;
-
-                int ret = fscanf(f, "%lu", &n);
-                assert( ret == 1);
-                for (unsigned long i = 0; i < n; i++) {
-                    unsigned long tmp;
-                    ret = fscanf(f, "%lu", &tmp);
-                    assert( ret == 1);
-                    records[records_sz ++] = tmp;
-                }
-                ret = fscanf(f, "%lu", &current_cnt);
-                fclose(f);
-                if (ret == 0) {
-                    current_cnt = 0;
-                }
-            }
-        }
-        
-        // fprintf(stderr, "here1\n");
-        va_list ap;
-        va_start(ap, count);
-        FILE *f = fopen(tmp_file, "a");
-        fprintf(f, "%lu", (unsigned long)count);
-        // fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
-        for (unsigned long i = 0; i < (unsigned long)count; i++) {
-            void* p = va_arg(ap, void*);
-            unsigned long sz = va_arg(ap, unsigned long);
-            assert( sz <= 8 );
-
-            // We assume that all variables are signed
-            // TODO: handle unsigned variables
-            if (sz==8){
-                int64_t v = 0;
-                if (isGoodAddr(p, sz)) {
-                    memcpy(&v, p, sz);
-                }
-                else {
-                    v = MAGIC_NUMBER;
-                }
-                fprintf(f, " %lld", v);
-            }
-            else if (sz==4){
-                int32_t v = 0;
-                if (isGoodAddr(p, sz)) {
-                    memcpy(&v, p, sz);
-                }
-                else {
-                    v = MAGIC_NUMBER;
-                }
-                fprintf(f, " %d", v);
-            }
-            else if (sz==2){
-                int16_t v = 0;
-                if (isGoodAddr(p, sz)) {
-                    memcpy(&v, p, sz);
-                }
-                else {
-                    v = MAGIC_NUMBER;
-                }
-                fprintf(f, " %d", v);
-            }
-            else if (sz==1){
-                int8_t v = 0;
-                if (isGoodAddr(p, sz)) {
-                    memcpy(&v, p, sz);
-                }
-                else {
-                    v = MAGIC_NUMBER;
-                }
-                fprintf(f, " %d", v);
-            }
-        }
-        fprintf(f, "\n");
-        fclose(f);
-
-        if (strcmp(is_neg, "RECORD1") == 0) {
-            if (current_cnt>=records_sz){
-                records[current_cnt]=0;
-                records_sz++;
-            }
-            // We write back with additional int to note the end
-            char* neg_arg = getenv("NEG_ARG");
-            f = fopen(neg_arg, "w");
-            assert( f != NULL );
-            fprintf(f, "%lu ", records_sz);
-            // fprintf(stderr, "size: %d\n",records_sz);
-            for (unsigned long i = 0; i < records_sz; i++) {
-                fprintf(f, "%lu", records[i]);
-                // fprintf(stderr, "record: %d\n",records[i]);
-                if (i != records_sz - 1)
-                    fprintf(f, " ");
-            }
-            // fprintf(f, "%lu", current_cnt + 1);
-            // fprintf(stderr, "count: %d\n",current_cnt+1);
-            fclose(f);
-
-            // assert( current_cnt < records_sz);
-            //fprintf(stderr, "fuck you %lu\n", records[current_cnt]);
-            return records[current_cnt++];
-        }
-        else
-            return 0;
-    }
     else if (strcmp(is_neg, "RUN") == 0){
         char temp[20];
         strcpy(temp,location);
@@ -558,50 +440,50 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                     break;
             }
 
-            else if (oper>=5 && i==constant){
-                // We assume that all variables are signed
-                // TODO: handle unsigned variables
-                if (sz==8){
-                    int64_t v = 0;
-                    if (isGoodAddr(p, sz)) {
-                        memcpy(&v, p, sz);
-                    }
-                    else {
-                        v = MAGIC_NUMBER;
-                    }
-                    value2=(long long) v;
-                }
-                else if (sz==4){
-                    int32_t v = 0;
-                    if (isGoodAddr(p, sz)) {
-                        memcpy(&v, p, sz);
-                    }
-                    else {
-                        v = MAGIC_NUMBER;
-                    }
-                    value2=(long long) v;
-                }
-                else if (sz==2){
-                    int16_t v = 0;
-                    if (isGoodAddr(p, sz)) {
-                        memcpy(&v, p, sz);
-                    }
-                    else {
-                        v = MAGIC_NUMBER;
-                    }
-                    value2=(long long) v;
-                }
-                else if (sz==1){
-                    int8_t v = 0;
-                    if (isGoodAddr(p, sz)) {
-                        memcpy(&v, p, sz);
-                    }
-                    else {
-                        v = MAGIC_NUMBER;
-                    }
-                    value2=(long long) v;
-                }
-            }
+            // else if (oper>=5 && i==constant){
+            //     // We assume that all variables are signed
+            //     // TODO: handle unsigned variables
+            //     if (sz==8){
+            //         int64_t v = 0;
+            //         if (isGoodAddr(p, sz)) {
+            //             memcpy(&v, p, sz);
+            //         }
+            //         else {
+            //             v = MAGIC_NUMBER;
+            //         }
+            //         value2=(long long) v;
+            //     }
+            //     else if (sz==4){
+            //         int32_t v = 0;
+            //         if (isGoodAddr(p, sz)) {
+            //             memcpy(&v, p, sz);
+            //         }
+            //         else {
+            //             v = MAGIC_NUMBER;
+            //         }
+            //         value2=(long long) v;
+            //     }
+            //     else if (sz==2){
+            //         int16_t v = 0;
+            //         if (isGoodAddr(p, sz)) {
+            //             memcpy(&v, p, sz);
+            //         }
+            //         else {
+            //             v = MAGIC_NUMBER;
+            //         }
+            //         value2=(long long) v;
+            //     }
+            //     else if (sz==1){
+            //         int8_t v = 0;
+            //         if (isGoodAddr(p, sz)) {
+            //             memcpy(&v, p, sz);
+            //         }
+            //         else {
+            //             v = MAGIC_NUMBER;
+            //         }
+            //         value2=(long long) v;
+            //     }
+            // }
         }
 
         int result;
@@ -617,18 +499,18 @@ extern "C" int __is_neg(const char *location,char *lid,int count, ...) {
                 case 3: 
                     result = (value <constant);
                     break;
-                case 5:
-                    result = (value ==value2);
-                    break;
-                case 6:
-                    result=(value!=value2);
-                    break;
-                case 7:
-                    result=(value>value2);
-                    break;
-                case 8:
-                    result=(value<value2);
-                    break;
+                // case 5:
+                //     result = (value ==value2);
+                //     break;
+                // case 6:
+                //     result=(value!=value2);
+                //     break;
+                // case 7:
+                //     result=(value>value2);
+                //     break;
+                // case 8:
+                //     result=(value<value2);
+                //     break;
                 default: 
                     result = (value ==constant);
                     break;

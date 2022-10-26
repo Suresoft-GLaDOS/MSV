@@ -130,10 +130,21 @@ def generate_meta_program(work_dir:str,src_dir:str,feature_para:str='',sbfl_path
         work_dir=os.path.abspath(work_dir)
     src_name=src_dir.split('/')[-1]
 
-    cmd=['prophet', '-r', f'{work_dir}/{src_name}-workdir', '-skip-verify', '-skip-profile', '-replace-ext', '-first-n-loc', '100', '-consider-all','-msv-ext']
+
+    # cmd=['prophet', '-r', f'{work_dir}/{src_name}-workdir', '-skip-verify', '-skip-profile', '-replace-ext', '-first-n-loc', '18', '-build-in-subdir', 'build', '-msv-ext', '-consider-all']
+    # print(cmd)
+    # ,'-msv-ext'
+
+    cmd=['prophet', '-r', f'{work_dir}/{src_name}-workdir', '-skip-verify', '-skip-profile', '-replace-ext', '-first-n-loc', '100', '-consider-all']
+    print(cmd)
     if sbfl_path!='':
         cmd.append('-use-sbfl')
         cmd.append(sbfl_path)
+
+    if subdir!='':
+        cmd.append('-build-in-subdir')
+        cmd.append(subdir)
+
     proc=subprocess.run(cmd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
 
     output_file=open(f'{work_dir}/output.log','w')
@@ -156,6 +167,7 @@ if __name__=='__main__':
     opts, args = getopt.getopt(argv[1:], "hrs:")
     run_prophet=False
     sbfl_path=''
+    subdir=''
     for o, a in opts:
         if o == "-h":
             print('usage: msv-runner.py <src_dir> <work_dir> <msv_path>')
@@ -164,9 +176,12 @@ if __name__=='__main__':
             run_prophet=True
         elif o=='-s':
             sbfl_path=a
+        elif o=='-u':
+            subdir=a
 
     src_dir = args[0]
     work_dir = args[1]
+    print("WorkDir: " + work_dir)
     msv_path = args[2]
 
     create_dir_structure(src_dir,work_dir,msv_path)
