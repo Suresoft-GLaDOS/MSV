@@ -27,7 +27,7 @@ def run_test(id,test,commands,timeout):
     my_env=environ.copy()
     my_env['PATH']='/root/project/MSV/wrap:'+my_env['PATH']
     for command in final_commands:
-        proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,env=my_env)
+        proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,env=my_env,shell=True)
         # proc=subprocess.Popen(command)
         try:
             so,se=proc.communicate(timeout=timeout)
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     for i,command in enumerate(commands):
         test_command=command.split()
         for j,arg in enumerate(test_command):
-            if arg=='"@testcase@"':
+            if '@testcase@' in arg:
                 testcase_index.append((i,j))
         test_commands.append(test_command)
     
