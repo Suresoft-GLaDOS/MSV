@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from os import chdir, getcwd,system
+from os import chdir, getcwd,system,environ
 import subprocess
 from yaml import safe_load, dump
 try:
@@ -17,19 +17,21 @@ def run_test(id,test,commands,timeout):
     for command in commands:
         cur_cmd=[]
         for arg in command:
-            if arg=='"@testcase@"':
+            if '@testcase@' in arg:
                 cur_cmd.append(test)
             else:
                 cur_cmd.append(arg)
         final_commands.append(cur_cmd)
     
     failed=False
+    my_env=environ.copy()
+    my_env['PATH']='/root/project/MSV/wrap:'+my_env['PATH']
     for command in final_commands:
-        proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+        proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,env=my_env)
         # proc=subprocess.Popen(command)
         try:
             so,se=proc.communicate(timeout=timeout)
-            # print(so.decode('utf-8'))
+            #print(so.decode('utf-8'))
             if proc.returncode!=0:
                 failed=True
                 break

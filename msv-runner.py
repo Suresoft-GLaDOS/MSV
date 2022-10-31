@@ -27,7 +27,8 @@ def create_revlog(src_name:str,msv_path:str):
     total_test=len(tests)
 
     # Build project, for decide fail and pass test
-    os.system(f'{msv_path}/tools/msv-build.py .')
+    exitcode=os.system(f'{msv_path}/tools/msv-build.py .')
+    assert exitcode==0,'Clean build failed!'
 
     fail_test=[]
     pass_test=[]

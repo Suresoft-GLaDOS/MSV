@@ -996,16 +996,34 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                                 else isRe=true;
                             }
                             if (isRe){
-                                std::getline(buildLog,line);
-                                line=stripLine(line);
-                                for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                                    line.erase(remove(line.begin(), line.end(), ' '), line.end());
-                                    std::string codeLine=it->second;
-                                    codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
-                                    if (codeLine.find(line)!=std::string::npos){
-                                        if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
-                                            added=true;
-                                        compileErrorMacros.insert(it->first);
+                                if (line.find("undefined reference to")!=std::string::npos){
+                                    size_t pos=line.find("undefined reference to");
+                                    size_t first=line.find("'");
+                                    if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                                        first = line.find("`", pos);
+                                    size_t last=line.find("'",first+1);
+                                    std::string function=line.substr(first+1,last-first-1);
+
+                                    for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                        if (it->second.find(function)!=std::string::npos){
+                                            if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                                added=true;
+                                            compileErrorMacros.insert(it->first);
+                                        }
+                                    }
+                                }
+                                else{
+                                    std::getline(buildLog,line);
+                                    line=stripLine(line);
+                                    for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                        line.erase(remove(line.begin(), line.end(), ' '), line.end());
+                                        std::string codeLine=it->second;
+                                        codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
+                                        if (codeLine.find(line)!=std::string::npos){
+                                            if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                                added=true;
+                                            compileErrorMacros.insert(it->first);
+                                        }
                                     }
                                 }
                             }
