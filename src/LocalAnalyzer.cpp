@@ -915,6 +915,10 @@ LocalAnalyzer::ExprListTy LocalAnalyzer::getCondCandidateVars(SourceLocation SL,
             //llvm::errs() << "Dis1: " << dis1 << "\n";
             if (dis1 > 1)
                 continue;
+            if (FieldDecl::classof(ME->getMemberDecl())){
+                FieldDecl *fieldDecl=llvm::dyn_cast<FieldDecl>(ME->getMemberDecl());
+                if (fieldDecl->isBitField()) continue;  // Skip bit-field member
+            }
         }
         //llvm::errs() << "Member expr checking correct!\n";
         DeclRefExpr *DRE = llvm::dyn_cast<DeclRefExpr>(exprs[i]);
