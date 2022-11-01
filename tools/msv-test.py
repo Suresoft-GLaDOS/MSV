@@ -7,7 +7,7 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 import getopt
-from sys import argv
+from sys import argv, stderr
 import psutil
 import multiprocessing as mp
 
@@ -27,7 +27,10 @@ def run_test(id,test,commands,timeout):
     my_env=environ.copy()
     my_env['PATH']='/root/project/MSV/wrap:'+my_env['PATH']
     for command in final_commands:
-        proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,env=my_env,shell=True)
+        try:
+            proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,env=my_env)
+        except FileNotFoundError as _:
+            proc=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,env=my_env,shell=True)
         # proc=subprocess.Popen(command)
         try:
             so,se=proc.communicate(timeout=timeout)
