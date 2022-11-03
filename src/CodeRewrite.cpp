@@ -820,8 +820,8 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             }
             std::vector<std::string> patches;
 
-            body+="{\nint __temp"+std::to_string(counter)+"="+newStmt+";\n";
-            body+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
+            body+="{\nint __temp"+std::to_string(counter)+"=0;\n";
+            body+="if (__choose"+std::to_string(counter)+" == 0)\n{\n__temp"+std::to_string(counter)+"="+newStmt+";\n}\n";
             case_count++;
 
             for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[currentIndex]][ConditionSynthesize].begin();
@@ -992,9 +992,9 @@ std::string CodeRewriter::applyPatch(size_t &currentIndex,std::vector<std::pair<
             }
             std::vector<std::string> patches;
 
-            newBody+="{\nint __temp"+std::to_string(counter)+"="+newStmt+";\n";
+            newBody+="{\nint __temp"+std::to_string(counter)+"=0;\n";
             loopConditions.push_back(newStmt);
-            newBody+="if (__choose"+std::to_string(counter)+" == 0)\n{}\n";
+            newBody+="if (__choose"+std::to_string(counter)+" == 0)\n{\n__temp"+std::to_string(counter)+"="+newStmt+";\n}\n";
             case_count++;
 
             for (std::map<std::string,RepairCandidate>::iterator patch_it=res1[currentCandidate[indexBackup]][ConditionSynthesize].begin();
