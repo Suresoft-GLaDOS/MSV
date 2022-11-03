@@ -359,9 +359,9 @@ extern "C" int __is_neg(int count, ...) {
         va_list ap;
         va_start(ap, count);
         FILE *f = fopen(tmp_file, "a");
-        fprintf(f, "%lu", (unsigned long)count);
+        fprintf(f, "%d", count);
         // fprintf(stderr, "count %d cnt %lu\n", count, current_cnt);
-        for (unsigned long i = 0; i < (unsigned long)count; i++) {
+        for (int i = 0; i < count; i++) {
             void* p = va_arg(ap, void*);
             unsigned long sz = va_arg(ap, unsigned long);
             assert( sz <= 8 );
