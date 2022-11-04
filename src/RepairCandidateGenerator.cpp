@@ -1594,7 +1594,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     it != res2.end(); ++ it) {
                 if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
                     continue;
-                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos) // Exclude terrible function call for libxml2
+                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
                     continue;
                 RepairCandidate rc;
                 rc.actions.clear();
@@ -1620,7 +1620,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     it != res2.end(); ++ it) {
                 if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
                     continue;
-                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos) // Exclude terrible function call for libxml2
+                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
                     continue;
                 RepairCandidate rc;
                 rc.actions.clear();
@@ -1660,7 +1660,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     it != res2.end(); ++ it) {
                 if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
                     continue;
-                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos) // Exclude terrible function call for libxml2
+                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
                     continue;
                 RepairCandidate rc;
                 rc.actions.clear();
@@ -1726,7 +1726,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 if (!valid_after_replace) continue;
                 if (stmtToString(*ctxt,*it2).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
                     continue;
-                if (stmtToString(*ctxt,*it2).find("xmlXPathInit")!=std::string::npos) // Exclude terrible function call for libxml2
+                if (stmtToString(*ctxt,*it2).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
                     continue;
                 RepairCandidate rc;
                 rc.actions.clear();
@@ -1751,7 +1751,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             if (valid) {
                 if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
                     continue;
-                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos) // Exclude terrible function call for libxml2
+                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
                     continue;
                 RepairCandidate rc;
                 rc.actions.clear();
@@ -1783,7 +1783,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 if (valid) {
                     if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
                         continue;
-                    if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos) // Exclude terrible function call for libxml2
+                    if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
                         continue;
                     RepairCandidate rc;
                     rc.actions.clear();
