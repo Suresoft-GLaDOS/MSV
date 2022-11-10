@@ -56,11 +56,12 @@ if __name__=="__main__":
     config_commands=[]
     compile_commands=[]
     is_compile=False
+    last_cmd=''
     for command in build_commands:
         if command.startswith('cmake'):
             is_cmake=True
             subprocess.run(['rm','-rf','CMakeCache.txt','**/CMakeFiles'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-        if command.startswith('make') or ' make' in command or '--target all' in command:
+        if command.startswith('make') or ' make' in command:
             is_compile=True
 
         if not is_compile:
@@ -68,6 +69,11 @@ if __name__=="__main__":
         else:
             compile_commands.append(command)
     
+    if not is_compile:
+        compile_commands.append(build_commands[-1])
+        last_cmd=build_commands[-1]
+        config_commands.pop()
+
     # Set environment variable, for cmake
     temp_env=environ.copy()
     temp_env['CC']='gcc'
@@ -92,7 +98,7 @@ if __name__=="__main__":
     chdir(org_dir)
     if dryrun_src != "":
         if is_cmake:
-            (builddir,buildargs)=extract_arguments_cmake(out_dir, dryrun_src,subdir)
+            (builddir,buildargs)=extract_arguments_cmake(out_dir, dryrun_src,subdir,last_cmd)
         else:
             (builddir, buildargs) = extract_arguments(out_dir, dryrun_src,subdir)
         if len(args) > 1:

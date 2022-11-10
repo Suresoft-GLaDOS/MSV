@@ -532,7 +532,7 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
             else
                 cmd = build_cmd + " "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
             // cmd = build_cmd + " -j 10 " +src_dir + " 2>&1";
-        // outlog_printf(2,"Command: %s\n",cmd.c_str());
+        // printf("Command: %s\n",cmd.c_str());
         int ret;
         if (timeout_limit == 0)
             ret = system(cmd.c_str());
@@ -820,9 +820,9 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
 
         outlog_printf(2,"%uth build...\n",++buildCount);
         if (macros.size()==0)
-            succ=buildFull("src", 0,false,succ_id,files);
+            succ=buildFull("src", 0,BuildSubDir.getValue()!="."?true:false,succ_id,files);
         else
-            succ=buildFull("src", 0,false,macros,files,succ_id);
+            succ=buildFull("src", 0,BuildSubDir.getValue()!="."?true:false,macros,files,succ_id);
         if (succ){
             outlog_printf(2,"Build Success!\n");
         }
@@ -1107,6 +1107,8 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
             if (dep_dir!="") cmd+=" -p "+dep_dir;
             cmd+=" -w "+src_dir+"/"+it->first;
             cmd+=" -j 10 ";
+            cmd+=" -m "+prophet_src+"/.. ";
+            if (BuildSubDir.getValue()!=".") cmd+=" -f ";
             // cmd+=" > DD.log 2&>1";
             ret = explain_system_on_error(cmd.c_str());
 
@@ -1204,6 +1206,8 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                 if (dep_dir!="") cmd+=" -p "+dep_dir;
                 cmd+=" -w "+src_dir+"/"+it->first;
                 cmd+=" -j 10 ";
+                cmd+=" -m "+prophet_src+"/.. ";
+                if (BuildSubDir.getValue()!=".") cmd+=" -f ";
                 // cmd+=" > DD.log 2&>1";
                 ret = explain_system_on_error(cmd.c_str());
 

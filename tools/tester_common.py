@@ -183,7 +183,7 @@ def extract_arguments(out_dir, src_file,sub_dir='.'):
     chdir(ori_dir);
     return "","";
 
-def extract_arguments_cmake(out_dir:str, src_file:str,sub_dir:str='.'):
+def extract_arguments_cmake(out_dir:str, src_file:str,sub_dir:str='.',last_cmd:str=''):
     temp_env=os.environ.copy()
     temp_env['CC']='gcc'
     temp_env['CXX']='g++'
@@ -193,36 +193,59 @@ def extract_arguments_cmake(out_dir:str, src_file:str,sub_dir:str='.'):
     chdir(out_dir)
 
     subprocess.run(["touch", src_file])
-    cur_dir=getcwd()
-    chdir(sub_dir)
-    p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE,env=temp_env)
-    (out, err) = p.communicate()
-    chdir(cur_dir)
-    print(out.decode('utf-8'))
-    lines = out.decode('utf-8').strip().split("\n");
-    directory = ".";
-    for line in lines:
-        if line.strip().endswith('.c'):
-            splitted=line.strip().split('&&')
-            directory=splitted[0].replace('cd','').strip()
-            cc_cmd=splitted[1].strip().split(' ')[0]
-            ret=splitted[1].replace(cc_cmd,'').strip()
-            ret_splitted=ret.split(' ')
+    
+    if last_cmd=='':
+        # Run default Unix Makefile in debug mode
+        cur_dir=getcwd()
+        chdir(sub_dir)
+        p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE,env=temp_env)
+        (out, err) = p.communicate()
+        chdir(cur_dir)
+        print(out.decode('utf-8'))
+        lines = out.decode('utf-8').strip().split("\n");
+        directory = ".";
+        for line in lines:
+            if line.strip().endswith('.c'):
+                splitted=line.strip().split('&&')
+                directory=splitted[0].replace('cd','').strip()
+                cc_cmd=splitted[1].strip().split(' ')[0]
+                ret=splitted[1].replace(cc_cmd,'').strip()
+                ret_splitted=ret.split(' ')
 
-            is_target=False
-            for i,arg in enumerate(ret_splitted.copy()):
-                if arg=='-o':
-                    is_target=True
-                elif is_target:
-                    ret_splitted[i]=directory+'/'+arg
-                    is_target=False
+                is_target=False
+                for i,arg in enumerate(ret_splitted.copy()):
+                    if arg=='-o':
+                        is_target=True
+                    elif is_target:
+                        ret_splitted[i]=directory+'/'+arg
+                        is_target=False
 
-                if arg.endswith('.c'):
-                    ret_splitted.remove(arg)
+                    if arg.endswith('.c'):
+                        ret_splitted.remove(arg)
 
-            ret=' '.join(ret_splitted)
-            print(f'args: {ret}')
-            chdir(ori_dir)
-            return directory, ret
+                ret=' '.join(ret_splitted)
+                print(f'args: {ret}')
+                chdir(ori_dir)
+                return directory, ret
+
+    else:
+        # Run last make command if exist
+        p = subprocess.Popen([last_cmd+' -v'], stdout = subprocess.PIPE,env=temp_env,shell=True,stderr=subprocess.STDOUT)
+        (out, err) = p.communicate()
+        print(out.decode('utf-8'))
+        lines = out.decode('utf-8').strip().split("\n")
+        directory = "."
+        for line in lines:
+            if line.strip().endswith('.c'):
+                # directory=src_file.rsplit('/',2)[0]
+                directory='.'
+                temp=line.find(' ')
+                start_index=line.find(' ',temp+1)+1
+                end_index=line.rfind(' ')
+                ret=line[start_index:end_index]
+                print(f'args: {ret}')
+                chdir(ori_dir)
+                return directory, ret
+
     chdir(ori_dir);
     return "","";

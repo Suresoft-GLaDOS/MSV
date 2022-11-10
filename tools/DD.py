@@ -978,7 +978,7 @@ import getopt
 from sys import argv
 
 if __name__ == '__main__':
-    opts, args = getopt.getopt(argv[1:], "l:s:p:w:j:nd:")
+    opts, args = getopt.getopt(argv[1:], "l:s:p:w:j:nd:fm:")
     dep_dir = ""
     build_log_file = ""
     src_dir=""
@@ -987,6 +987,7 @@ if __name__ == '__main__':
     files=[]
     parallel=0
     is_profile=False
+    build_full=False
     subdir="."
 
     for o, a in opts:
@@ -1004,6 +1005,10 @@ if __name__ == '__main__':
             is_profile=True
         elif o=='-d':
             subdir=a
+        elif o=='-f':
+            build_full=True
+        elif o=='-m':
+            msv_path=a
     
     macros_file="/tmp/macros.tmp"
     tmp_file=open(macros_file,"r")
@@ -1063,21 +1068,29 @@ if __name__ == '__main__':
             my_env=os.environ
             os.chdir(src_dir)
             # subprocess.call(['rm','prog'],stderr=subprocess.PIPE)
-            subprocess.call(['rm',"-rf","ext/phar/phar.php"],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
-            args.append('make')
-            if self.parallel!=0:
-                args.append('-j'+str(parallel))
+            subprocess.run(['rm',"-rf","ext/phar/phar.php"],stderr=subprocess.PIPE,stdout=subprocess.PIPE)
+            if build_full:
+                args.append(msv_path+'/tools/msv-build.py')
+                if subdir!='.':
+                    args.append('-s')
+                    args.append(subdir)
+                args.append(src_dir)
+            else:
+                args.append('make')
+                if self.parallel!=0:
+                    args.append('-j'+str(parallel))
             # args.append(">>")
             # args.append(build_log_file)
             # args.append("2>&1")
             # print args
             cur_dir=os.getcwd()
-            os.chdir(subdir)
-            process=subprocess.Popen(args,env=my_env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-            (out,err)=process.communicate()
-            os.chdir(cur_dir)
-            # print out
-            # print err
+            if not build_full:
+                os.chdir(subdir)
+            process=subprocess.Popen(args,env=my_env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+            (out,_)=process.communicate()
+            if not build_full:
+                os.chdir(cur_dir)
+            # print(out)
             result=process.returncode
             if result==0:
                 return self.PASS
