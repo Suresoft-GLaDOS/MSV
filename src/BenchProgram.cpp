@@ -1277,9 +1277,9 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
 
         // Build final build
         if (macros.size()==0)
-            succ=buildFull("src", 0,false,succ_id,files);
+            succ=buildFull("src", 0,BuildSubDir.getValue()!="."?true:false,succ_id,files);
         else
-            succ=buildFull("src", 0,false,macros,files,succ_id);
+            succ=buildFull("src", 0,BuildSubDir.getValue()!="."?true:false,macros,files,succ_id);
         if (succ) outlog_printf(2,"Success to build final program!\n");
     }
 
