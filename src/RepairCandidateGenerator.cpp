@@ -2514,6 +2514,14 @@ public:
         return true;
     }
 
+    bool VisitArraySubscriptExpr(ArraySubscriptExpr *expr) {
+        if (isTainted(expr) && MsvExt.getValue()) {
+            genArrayAccess(expr);
+        }
+
+        return true;
+    }
+
     bool VisitStmt(Stmt *n) {
         if (llvm::isa<CompoundStmt>(n))
             return true;
