@@ -340,7 +340,7 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
                 if (cnt == 0)
                     outlog_printf(1, "Repair process ends without working fix!!\n");
                 else
-                    outlog_printf(1, "Repair process ends!");
+                    outlog_printf(1, "Repair process ends!\n");
                 outlog_printf(1, "Total %lu different repair schemas!!!!\n", schema_cnt);
                 outlog_printf(1, "Total %lu different repair candidate templates for scoring!!!\n", candidate_cnt);
                 return 1;

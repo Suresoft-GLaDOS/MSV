@@ -1567,18 +1567,18 @@ public:
             buildEnv["COMPILE_CMD"] = GCC_CMD;
         std::vector<long long> build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,macroCode,macroFile);
         if (build_succ.size()==0) {
-            outlog_printf(2, "Build failed!");
+            outlog_printf(2, "Build failed!\n");
             return std::map<NewCodeMapTy, double>();
         }
 
         bool passed = testNegativeCases(BenchProgram::EnvMapTy());
         if (!passed) {
-            outlog_printf(2, "Failed negative cases!");
+            outlog_printf(2, "Failed negative cases!\n");
             return std::map<NewCodeMapTy, double>();
         }
         passed = testPositiveCases(BenchProgram::EnvMapTy());
         if (!passed) {
-            outlog_printf(2, "Failed positive cases!");
+            outlog_printf(2, "Failed positive cases!\n");
             return std::map<NewCodeMapTy, double>();
         }
 
