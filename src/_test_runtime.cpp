@@ -208,7 +208,7 @@ extern "C" void __stat_file_close(const char *func_name,char *str){
 
     FILE *f;
     f = fopen(tmp_file, "w");
-    fprintf(f,str);
+    fputs(str, f);
     fclose(f);
     free(str);
 }
