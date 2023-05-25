@@ -20,8 +20,8 @@
 #include "ProfileErrorLocalizer.h"
 #include "RepairCandidateGenerator.h"
 #include "ConfigFile.h"
-#include "cJSON/cJSON.h"
 
+#include <cjson/cJSON.h>
 #include <clang/Frontend/ASTUnit.h>
 #include <clang/AST/Expr.h>
 #include <string>
