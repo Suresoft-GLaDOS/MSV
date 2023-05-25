@@ -9,6 +9,7 @@ Repair with meta-program, search with Casino.
 * libexplain
 * libncurses
 * pthread
+* cJSON
 
 ## Docker Image
 Run `docker pull kyj1411/msv` to get docker image.

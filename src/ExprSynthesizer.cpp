@@ -25,7 +25,6 @@
 #include "CodeRewrite.h"
 #include "DuplicateDetector.h"
 #include "FeatureParameter.h"
-#include "cJSON/cJSON.h"
 #include "ProfileWriter.h"
 
 #include "llvm/Support/CommandLine.h"

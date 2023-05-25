@@ -21,7 +21,7 @@
 #include "BenchProgram.h"
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/Support/CommandLine.h"
-#include "cJSON/cJSON.h"
+#include <cjson/cJSON.h>
 #include <map>
 #include <queue>
 #include <fstream>
