@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -18,8 +18,12 @@
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
 import getopt
-from os import chdir, getcwd, system, path, environ
+from os import chdir, getcwd, system, path, environ, remove
 import subprocess
+import uuid
+#import Levenshtein
+from difflib import SequenceMatcher
+import psutil
 
 cases = [
     "helin-segv",
@@ -35,11 +39,19 @@ cases = [
     "znew-k"];
 
 if __name__ == "__main__":
-    opts, args = getopt.getopt(argv[1 :], "p:");
+    opts, args = getopt.getopt(argv[1 :], "p:j:t:i:");
     profile_dir = "";
+    timeout=None
+    temp_dir='mytests'
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
+        elif o=='-j':
+            pass
+        elif o=='-t':
+            timeout=float(a)
+        elif o=='-i':
+            temp_dir=a
 
     src_dir = args[0];
     test_dir = args[1];
@@ -51,19 +63,32 @@ if __name__ == "__main__":
         if (profile_dir != ""):
             cur_dir = profile_dir;
 
-        if (not path.exists(cur_dir + "/mytests")):
-            system("cp -rf " + test_dir + " " + cur_dir + "/mytests");
-
-        if (not path.exists(cur_dir + "/build-aux/test-driver")):
-			if (path.exists(test_dir + "/test-driver")):
-				system("cp -rf " + test_dir + "/test-driver " + cur_dir + "/build-aux/test-driver");
-
         ori_dir = getcwd();
-        chdir(cur_dir + "/mytests");
+        chdir(cur_dir + "/"+temp_dir);
         my_env = environ;
         for i in ids:
             case_str = cases[int(i) - 1];
-            ret = subprocess.call(["./" + case_str + " 1>/dev/null 2>/dev/null"], shell = True);
-            if (ret == 0):
-                print i,
+            tmp_id = uuid.uuid4();
+            tmp_exp_file = f"/tmp/{tmp_id}.exp";
+            tmp_out_file = f"/tmp/{tmp_id}.out"
+            # print("exp: " + tmp_exp_file)
+            # print("out: " + tmp_out_file)
+            environ["MSV_TMP_EXP"] = tmp_exp_file;
+            environ["MSV_TMP_OUT"] = tmp_out_file;
+            #ret = subprocess.call(["make", log_file], timeout=timeout, shell = True);
+            proc = subprocess.Popen(["./" + case_str + " 1>/dev/null 2>/dev/null"],
+                                    shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            try:
+                so,se = proc.communicate(timeout=timeout)
+                if (proc.returncode == 0):
+                    print (i)
+            except:
+                pid = proc.pid
+                children = []
+                for child in psutil.Process(pid).children(True):
+                    if psutil.pid_exists(child.pid):
+                        children.append(child)
+                for child in children:
+                    child.kill()
+                proc.kill()
         chdir(ori_dir);

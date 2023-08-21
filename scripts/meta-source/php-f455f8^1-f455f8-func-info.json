@@ -1,0 +1,23 @@
+[{
+		"original_name":	"htmlNodeDumpFormatOutput",
+		"switch_number":	1,
+		"new_names":	[{
+				"new_name":	"xmlNodeDumpOutput",
+				"case_number":	2
+			}, {
+				"new_name":	"Debug",
+				"case_number":	4
+			}, {
+				"new_name":	"htmlNodeDumpFileFormat",
+				"case_number":	5
+			}, {
+				"new_name":	"php_printf",
+				"case_number":	6
+			}, {
+				"new_name":	"printf",
+				"case_number":	7
+			}, {
+				"new_name":	"xmlNodeDump",
+				"case_number":	8
+			}]
+	}]

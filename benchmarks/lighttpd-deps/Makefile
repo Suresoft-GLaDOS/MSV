@@ -436,8 +436,7 @@ uninstall-am:
 all-local: pcre-8.36-build libxml2-2.7.2-build sqlite3-build
 
 pcre-8.36-build:
-	wget https://ftp.pcre.org/pub/pcre/pcre-8.36.tar.gz
-	tar xvzf pcre-8.36.tar.gz
+	tar -xvzf pcre-8.36.tar.gz
 	cd pcre-8.36 &&\
 	./configure --prefix=$(abs_builddir)/pcre-8.36-build &&\
 	make -j 4 &&\
@@ -445,7 +444,7 @@ pcre-8.36-build:
 
 libxml2-2.7.2-build:
 	wget ftp://xmlsoft.org/libxml2/libxml2-2.7.2.tar.gz
-	tar xvzf libxml2-2.7.2.tar.gz
+	tar -xvzf libxml2-2.7.2.tar.gz
 	cd libxml2-2.7.2 &&\
 	./configure --prefix=$(abs_builddir)/libxml2-2.7.2-build &&\
 	make -j 4 &&\
@@ -453,14 +452,16 @@ libxml2-2.7.2-build:
 
 sqlite3-build:
 	wget http://www.sqlite.org/2014/sqlite-autoconf-3080600.tar.gz
-	tar xvzf sqlite-autoconf-3080600.tar.gz
+	tar -xvzf sqlite-autoconf-3080600.tar.gz
 	cd sqlite-autoconf-3080600 &&\
 	./configure --prefix=$(abs_builddir)/sqlite3-build &&\
+	make clean &&\
 	make -j 4 &&\
 	make install
 
 clean-local:
-	rm *.gz
+	rm libxml2-2.7.2.tar.gz
+	rm sqlite-autoconf-3080600.tar.gz
 	rm -rf *-build
 	rm -rf pcre-8.36
 

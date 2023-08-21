@@ -24,7 +24,7 @@
 #include <assert.h>
 #include <pthread.h>
 
-#define MAX_IDX 2048000
+#define MAX_IDX 200000000
 
 static unsigned long *M = 0;
 static unsigned long long *C = 0;
@@ -37,7 +37,8 @@ static void prof_writeback() {
     sigfillset(&full);
     sigprocmask(SIG_BLOCK, &full, &oldset);
     pthread_mutex_lock(&global_mutex);
-    sprintf(buffer, "/tmp/__run%u.log", getpid());
+    char* msv_pid=getenv("MSV_PID");
+    sprintf(buffer, "/tmp/__run%s%u.log",msv_pid, getpid());
     FILE *f = fopen(buffer, "w");
     assert( f != NULL);
     /*size_t cnt = 0;

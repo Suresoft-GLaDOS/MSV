@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -17,9 +17,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
-from os import rmdir, system, path, chdir, getcwd, environ
+from os import rmdir, system, path, chdir, getcwd, environ,mkdir
 import subprocess
 import getopt
+import multiprocessing as mp
 
 def num2testcase( case ):
     if case=="1":
@@ -178,19 +179,50 @@ def num2testcase( case ):
         return "tiff2rgba-rgb-3c-16b.sh"
     elif case=="78":
         return "tiff2rgba-rgb-3c-8b.sh"
+    elif case=='79':
+        return 'libtiff-extra-test'
     else:
-        print "Error on case name"
         return 'SOME';
 
+import psutil
+
+def run_test(testcase,id,env,timeout):
+    if 'libtiff-extra-test-2' == testcase:
+        proc=subprocess.Popen(['bash', '-c', "../tools/tiff2pdf ../.dpp/00112-libtiff-heapoverflow-_TIFFmemcpy 2>&1 | tee /tmp/dpp_test_result && grep -q 0000000872 /tmp/dpp_test_result"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    elif 'libtiff-extra-test-3' == testcase:
+        proc=subprocess.Popen(['bash', '-c', "../tools/tiffcp -i ../.dpp/00119-libtiff-shift-long-tif_jpeg /tmp/foo |& tee /tmp/log && grep 'runtime error' /tmp/log"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    else:
+        proc = subprocess.Popen(["make", "check", "TESTS="+testcase],env = env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    try:
+        so,se=proc.communicate(timeout=timeout)
+        if proc.returncode==0:
+            print (id)
+    except:
+        pid=proc.pid
+        children=[]
+        for child in psutil.Process(pid).children(True):
+            if psutil.pid_exists(child.pid):
+                children.append(child)
+
+        for child in children:
+            child.kill()
+        proc.kill()
+
 if __name__ == "__main__":
-    opts, args = getopt.getopt(argv[1:], "p:i:");
+    opts, args = getopt.getopt(argv[1:], "p:i:j:t:");
     profile_dir = "";
     temp_dir="my-test"
+    max_parallel=1
+    timeout=None
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
         elif o=="-i":
             temp_dir=a
+        elif o=='-j':
+            max_parallel=int(a)
+        elif o=='-t':
+            timeout=int(a)
 
     src_dir = args[0];
     test_dir = args[1];
@@ -202,25 +234,35 @@ if __name__ == "__main__":
         if (profile_dir != ""):
             cur_dir = profile_dir;
 
-        if (not path.exists(cur_dir + "/"+temp_dir)):
-            system("cp -rf " + test_dir + " " + cur_dir + "/"+temp_dir);
-
         ori_dir = getcwd();
+        if path.exists(cur_dir + "/"+temp_dir):
+            system("rm -rf " + cur_dir + "/"+temp_dir);
+        system("cp -rf " + test_dir + " " + cur_dir + "/"+temp_dir);
+
         chdir(cur_dir + "/"+temp_dir);
         system("rm -rf o-*.tiff o-*.ps o-*.pdf")
 
         my_env = environ;
         my_env["GENEXPOUT"] = "0";
         my_env["CMPEXPOUT"] = "1";
+        my_env['PATH']='/root/project/MSV/wrap:'+my_env['PATH']
+        result=[]
+        pool=mp.Pool(max_parallel)
         for i in ids:
-            testcase = num2testcase(i);
-            # print "Testing "+testcase;
+            testcase = num2testcase(i)
+            if testcase=='libtiff-extra-test':
+                if 'libtiff-2-workdir' in work_dir:
+                    testcase='libtiff-extra-test-2'
+                elif 'libtiff-3-workdir' in work_dir:
+                    testcase='libtiff-extra-test-3'
+            run_test(testcase,int(i),my_env,timeout)
+            # result.append(pool.apply_async(run_test,(testcase,int(i),my_env,timeout,)))
 
-            ret = subprocess.call(["make check TESTS="+testcase+" >/dev/null  2>/dev/null"], shell=True, env = my_env);
-            if ret==0:
-                print i,
+        print();
+        pool.close()
+        pool.join()
 
-        print;
+        system(f'killall --wait {cur_dir}/* > /dev/null 2>&1')
         chdir(ori_dir);
         subprocess.call('rm -rf '+cur_dir+'/'+temp_dir,shell=True)
 

@@ -7,12 +7,15 @@ src/learner
 src/pdiffer
 src/prophet
 src/playground
+src/profile-matcher
 .vscode
 **/*.la
 benchmarks/*-src
 benchmarks/*-tests*
+!benchmarks/gzip-tests
 autom4te.cache
 *.tar.gz
+!benchmarks/lighttpd-deps/pcre-8.36.tar.gz
 **/CMakeFiles/
 **/CMakeCache.txt
 /dg/
@@ -22,6 +25,8 @@ autom4te.cache
 *.bc
 __*
 **/__*
+!**/*.py
 **/.libs
 **/.deps
 build
+msv

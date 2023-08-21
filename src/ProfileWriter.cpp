@@ -13,13 +13,17 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
     SourceContextManager &manager;
     ASTContext *ctxt;
     std::string file;
+    ImplicitCastExpr *initer;
     ImplicitCastExpr *writer;
+    ImplicitCastExpr *closer;
     std::string code;
 
     std::vector<Stmt*> stmt_stack;
     std::map<std::pair<size_t,size_t>,std::string> profile_writer;
     std::map<long long,std::string> macroCode;
     std::vector<long long> macroFile;
+
+    size_t initCounter=0;
 
     ASTLocTy getNowLocation(Stmt *n) {
         assert( stmt_stack.size() > 1 );
@@ -28,6 +32,71 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
         SourceLocation exp_loc = M.getExpansionLoc(n->getBeginLoc());
         std::string src_file = M.getFilename(exp_loc).str();
         return ASTLocTy(file, src_file, parent_stmt, n);
+    }
+
+    std::string addFilePointer(std::string funcCall,size_t counter){
+        size_t position=funcCall.find("__write_stat");
+
+        if (position!=std::string::npos){
+            position=funcCall.find("\"\"",position);
+            funcCall=funcCall.erase(position,2);
+
+            std::string location;
+            location="__file"+std::to_string(counter);
+            funcCall=funcCall.insert(position,location);
+        }
+        return funcCall;
+    }
+    std::string addStrPointer(std::string funcCall,size_t counter){
+        size_t position=funcCall.find("__write_stat");
+
+        if (position!=std::string::npos){
+            position=funcCall.find("\"\"",position);
+            funcCall=funcCall.erase(position,2);
+
+            std::string location;
+            location="__temp_profile_str"+std::to_string(counter);
+            funcCall=funcCall.insert(position,location);
+        }
+        return funcCall;
+    }
+
+    std::string addFilePointer2(std::string funcCall,size_t counter){
+        size_t position=funcCall.find("__stat_file_close");
+
+        if (position!=std::string::npos){
+            position=funcCall.find("\"\"",position);
+            funcCall=funcCall.erase(position,2);
+
+            std::string location;
+            location="__file"+std::to_string(counter);
+            funcCall=funcCall.insert(position,location);
+        }
+        return funcCall;
+    }
+    std::string addStrPointer2(std::string funcCall,size_t counter){
+        size_t position=funcCall.find("__stat_file_close");
+
+        if (position!=std::string::npos){
+            position=funcCall.find("\"\"",position);
+            funcCall=funcCall.erase(position,2);
+
+            std::string location;
+            location="__temp_profile_str"+std::to_string(counter);
+            funcCall=funcCall.insert(position,location);
+        }
+        return funcCall;
+    }
+
+
+    bool hasPatch(FunctionDecl *decl){
+        Stmt *body=decl->getBody();
+        if (body==nullptr) return false;
+        size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(body->getBeginLoc()));
+        size_t end=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(body->getEndLoc()));
+        std::string bodyStr=code.substr(start,end-start+1);
+        if (bodyStr.find("#ifdef __COMPILE")!=std::string::npos) return true;
+        else return false;
     }
 
     std::string createProfileWriter(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs,const std::string funcName) {
@@ -40,6 +109,8 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
         std::map<Expr *,std::vector<UnaryOperator *>> arrowPointers;
         arrowPointers.clear();
         for (size_t i = 0; i < exprs.size(); ++i) {
+            if (stmtToString(*ctxt,exprs[i]).find("__choose")!=std::string::npos) continue;
+            
             ImplicitCastExpr *tempExpr=llvm::dyn_cast<ImplicitCastExpr>(exprs[i]);
 
             // First, we use integral types(e.g. int, long, unsigned) only, without pointers
@@ -126,16 +197,22 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
         finalStmts.clear();
         std::string result="";
         StringLiteral *str=StringLiteral::Create(*ctxt,llvm::StringRef(funcName),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
+        StringLiteral *emptyStr=StringLiteral::Create(*ctxt,"",StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
+
+        std::vector<Expr *> initArg;
+        initArg.clear();
+        initArg.push_back(str);
+        CallExpr *initCall=CallExpr::Create(*ctxt, initer, initArg,
+                ctxt->getFILEType(), VK_RValue, SourceLocation());
+        result+="\n\tchar *__temp_profile_str"+std::to_string(initCounter)+"="+stmtToString(*ctxt,initCall)+";\n";
+        StringLiteral *strLiteral=StringLiteral::Create(*ctxt,"",StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
+
         // Add basic types, without pointer and arrow member
         for (size_t i = 0; i < temp.size(); ++i) {
             std::vector<Expr*> tmp_argv;
             tmp_argv.clear();
-            tmp_argv.push_back(str);
-            IntegerLiteral *modeArg;
-            if (i==0)
-                modeArg=getNewIntegerLiteral(ctxt,0);
-            else modeArg=getNewIntegerLiteral(ctxt,1);
-            tmp_argv.push_back(modeArg);
+            
+            tmp_argv.push_back(strLiteral);
 
             StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,temp[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
             tmp_argv.push_back(exprStr);
@@ -154,11 +231,12 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
             CallExpr *CE = CallExpr::Create(*ctxt, writer, tmp_argv,
                 ctxt->IntTy, VK_RValue, SourceLocation());
 
+            std::string finalCode=addStrPointer(stmtToString(*ctxt,CE),initCounter);
             result+="\n#ifdef __PROFILE_"+std::to_string(count)+"\n";
-            result+=stmtToString(*ctxt,CE)+";\n";
+            result+=finalCode+";\n";
             result+="\n#endif\n";
             macroFile.push_back(count);
-            macroCode[count++]=stmtToString(*ctxt,CE);
+            macroCode[count++]=finalCode;
         }
 
         // Add pointers of integral types
@@ -170,8 +248,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
 
             std::vector<Expr *> pointerArgs;
             pointerArgs.clear();
-            pointerArgs.push_back(str);
-            pointerArgs.push_back(modeOne);
+            pointerArgs.push_back(strLiteral);
 
             StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,pointers[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
             pointerArgs.push_back(exprStr);
@@ -190,11 +267,12 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
             CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
             IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
             
+            std::string finalCode=addStrPointer(stmtToString(*ctxt,checker),initCounter);
             result+="\n#ifdef __PROFILE_"+std::to_string(count)+"\n";
-            result+=stmtToString(*ctxt,checker)+";\n";
+            result+=finalCode+";\n";
             result+="\n#endif\n";
             macroFile.push_back(count);
-            macroCode[count++]=stmtToString(*ctxt,checker);
+            macroCode[count++]=finalCode;
         }
 
         // Add arrow member
@@ -204,8 +282,7 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
             for (size_t i=0;i<it->second.size();i++){
                 std::vector<Expr *> pointerArgs;
                 pointerArgs.clear();
-                pointerArgs.push_back(str);
-                pointerArgs.push_back(modeOne);
+                pointerArgs.push_back(strLiteral);
 
                 StringLiteral *exprStr=StringLiteral::Create(*ctxt,llvm::StringRef(stmtToString(*ctxt,it->second[i])),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
                 pointerArgs.push_back(exprStr);
@@ -224,14 +301,23 @@ class AddProfileWriter: public RecursiveASTVisitor<AddProfileWriter>{
                 CallExpr *write = CallExpr::Create(*ctxt, writer, pointerArgs, ctxt->IntTy, VK_RValue, SourceLocation());
                 IfStmt *checker=IfStmt::Create(*ctxt,SourceLocation(),false,nullptr,nullptr,check,write);
 
+            std::string finalCode=addStrPointer(stmtToString(*ctxt,checker),initCounter);
                 result+="\n#ifdef __PROFILE_"+std::to_string(count)+"\n";
-                result+=stmtToString(*ctxt,checker)+";\n";
+                result+=finalCode+";\n";
                 result+="\n#endif\n";
                 macroFile.push_back(count);
-                macroCode[count++]=stmtToString(*ctxt,checker);
+                macroCode[count++]=finalCode;
             }
         }
 
+        std::vector<Expr *> closeArg;
+        closeArg.clear();
+        closeArg.push_back(str);
+        closeArg.push_back(strLiteral);
+        CallExpr *close = CallExpr::Create(*ctxt, closer, closeArg, ctxt->IntTy, VK_RValue, SourceLocation());
+        result+=addStrPointer2(stmtToString(*ctxt,close),initCounter)+";\n";
+
+        initCounter++;
         return result;
     }
 
@@ -248,15 +334,29 @@ public:
     }
     bool TraverseFunctionDecl(FunctionDecl *decl){
         bool res=RecursiveASTVisitor<AddProfileWriter>::TraverseFunctionDecl(decl);
-        if (decl->getNameAsString()=="__write_profile"){
+        if (decl->getNameAsString()=="__write_stat"){
             DeclRefExpr *FRef = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(), SourceLocation(),
                     decl, false, SourceLocation(), decl->getType(), VK_RValue);
             writer= ImplicitCastExpr::Create(*ctxt, ctxt->getDecayedType(decl->getType()), CK_FunctionToPointerDecay,
                     FRef, 0, VK_RValue);
             return res;
         }
+        else if (decl->getNameAsString()=="__stat_write_init"){
+            DeclRefExpr *FRef = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(), SourceLocation(),
+                    decl, false, SourceLocation(), decl->getType(), VK_RValue);
+            initer= ImplicitCastExpr::Create(*ctxt, ctxt->getDecayedType(decl->getType()), CK_FunctionToPointerDecay,
+                    FRef, 0, VK_RValue);
+            return res;
+        }
+        else if (decl->getNameAsString()=="__stat_file_close"){
+            DeclRefExpr *FRef = DeclRefExpr::Create(*ctxt, NestedNameSpecifierLoc(), SourceLocation(),
+                    decl, false, SourceLocation(), decl->getType(), VK_RValue);
+            closer= ImplicitCastExpr::Create(*ctxt, ctxt->getDecayedType(decl->getType()), CK_FunctionToPointerDecay,
+                    FRef, 0, VK_RValue);
+            return res;
+        }
 
-        if (!decl->doesThisDeclarationHaveABody() || ctxt->getSourceManager().getFilename(decl->getLocation())!=file) return res;
+        if (!decl->doesThisDeclarationHaveABody() || ctxt->getSourceManager().getFilename(decl->getLocation())!=file || !hasPatch(decl)) return res;
         Stmt *tempBody=decl->getBody();
         CompoundStmt *body=llvm::dyn_cast<CompoundStmt>(tempBody);
 
@@ -271,6 +371,19 @@ public:
                     ExprListTy exprs=L->getProfileWriterExpr();
                     profile_writer[std::make_pair(start,start)]=createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString());
                     stmt_stack.pop_back();
+                }
+                else{
+                    if (CallExpr::classof(*it)){
+                        CallExpr *ce=llvm::dyn_cast<CallExpr>(*it);
+                        if (ce && ce->getDirectCallee()!=nullptr && ce->getDirectCallee()->getNameAsString()=="exit"){
+                            stmt_stack.push_back(*it);
+                            ASTLocTy loc=getNowLocation(*it);
+                            LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                            ExprListTy exprs=L->getProfileWriterExpr();
+                            profile_writer[std::make_pair(start,start)]=createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString());
+                            stmt_stack.pop_back();
+                        }
+                    }
                 }
             }
             if (decl->getReturnType()==ctxt->VoidTy){
@@ -316,18 +429,18 @@ public:
 
         ASTLocTy temp_loc=getNowLocation(stmt);
         LocalAnalyzer *temp_L = manager.getLocalAnalyzer(temp_loc);
-        if (ctxt->getSourceManager().getFilename(temp_L->getCurrentFunction()->getLocation())!=file) return res;
+        if (ctxt->getSourceManager().getFilename(temp_L->getCurrentFunction()->getLocation())!=file || !hasPatch(temp_L->getCurrentFunction())) return res;
 
         Stmt *tempBody=stmt->getThen();
         if (tempBody){
-            if (ReturnStmt::classof(tempBody)){
+            if (ReturnStmt::classof(tempBody) && false){
                 stmt_stack.push_back(tempBody);
                 ASTLocTy loc=getNowLocation(tempBody);
                 LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
                 ExprListTy exprs=L->getProfileWriterExpr();
                 size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(tempBody->getBeginLoc()));
                 size_t end=code.find(";",start)+1;
-                profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+stmtToString(*ctxt,tempBody)+"}\n";
+                profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
                 stmt_stack.pop_back();
             }
             else if (CompoundStmt::classof(tempBody)){
@@ -342,8 +455,21 @@ public:
                             ExprListTy exprs=L->getProfileWriterExpr();
                             size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
                             size_t end=code.find(";",start)+1;
-                            profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+stmtToString(*ctxt,*it)+"}\n";
+                            profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
                             stmt_stack.pop_back();
+                        }
+                        else if (CallExpr::classof(*it)){
+                            CallExpr *ce=llvm::dyn_cast<CallExpr>(*it);
+                            if (ce && ce->getDirectCallee()!=nullptr && ce->getDirectCallee()->getNameAsString()=="exit"){
+                                stmt_stack.push_back(*it);
+                                ASTLocTy loc=getNowLocation(*it);
+                                LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                                ExprListTy exprs=L->getProfileWriterExpr();
+                                size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
+                                size_t end=code.find(";",start)+1;
+                                profile_writer[std::make_pair(start,start)]=createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString());
+                                stmt_stack.pop_back();
+                            }
                         }
                     }
                     stmt_stack.pop_back();
@@ -353,14 +479,14 @@ public:
 
         Stmt *tempElse=stmt->getElse();
         if (tempElse){
-            if (ReturnStmt::classof(tempElse)){
+            if (ReturnStmt::classof(tempElse) && false){
                 stmt_stack.push_back(tempElse);
                 ASTLocTy loc=getNowLocation(tempElse);
                 LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
                 ExprListTy exprs=L->getProfileWriterExpr();
                 size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(tempElse->getBeginLoc()));
                 size_t end=code.find(";",start)+1;
-                profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+stmtToString(*ctxt,tempBody)+"}\n";
+                profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
                 stmt_stack.pop_back();
             }
             else if (CompoundStmt::classof(tempElse)){
@@ -375,8 +501,21 @@ public:
                             ExprListTy exprs=L->getProfileWriterExpr();
                             size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
                             size_t end=code.find(";",start)+1;
-                            profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+stmtToString(*ctxt,*it)+"}\n";
+                            profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
                             stmt_stack.pop_back();
+                        }
+                        else if (CallExpr::classof(*it)){
+                            CallExpr *ce=llvm::dyn_cast<CallExpr>(*it);
+                            if (ce && ce->getDirectCallee()!=nullptr && ce->getDirectCallee()->getNameAsString()=="exit"){
+                                stmt_stack.push_back(*it);
+                                ASTLocTy loc=getNowLocation(*it);
+                                LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                                ExprListTy exprs=L->getProfileWriterExpr();
+                                size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
+                                size_t end=code.find(";",start)+1;
+                                profile_writer[std::make_pair(start,start)]=createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString());
+                                stmt_stack.pop_back();
+                            }
                         }
                     }
                     stmt_stack.pop_back();
@@ -397,14 +536,32 @@ public:
                 stmt_stack.push_back(stmt->getSubStmt());
                 ASTLocTy loc=getNowLocation(stmt->getSubStmt());
                 LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                if (!hasPatch(L->getCurrentFunction())) return res;
                 ExprListTy exprs=L->getProfileWriterExpr();
 
                 size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getBeginLoc()));
                 size_t end=code.find(";",start)+1;
-                profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+stmtToString(*ctxt,stmt->getSubStmt())+"}\n";
+                profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
 
                 stmt_stack.pop_back();
             }
+            else if (CallExpr::classof(stmt->getSubStmt())){
+                CallExpr *ce=llvm::dyn_cast<CallExpr>(stmt->getSubStmt());
+                if (ce && ce->getDirectCallee()!=nullptr && ce->getDirectCallee()->getNameAsString()=="exit"){
+                    stmt_stack.push_back(stmt->getSubStmt());
+                    ASTLocTy loc=getNowLocation(stmt->getSubStmt());
+                    LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                    if (!hasPatch(L->getCurrentFunction())) return res;
+                    ExprListTy exprs=L->getProfileWriterExpr();
+
+                    size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getBeginLoc()));
+                    size_t end=code.find(";",start)+1;
+                    profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
+
+                    stmt_stack.pop_back();
+                }
+            }
+
             else if (CompoundStmt::classof(stmt->getSubStmt())){
                 CompoundStmt *body=llvm::dyn_cast<CompoundStmt>(stmt->getSubStmt());
                 if (body){
@@ -414,11 +571,26 @@ public:
                             stmt_stack.push_back(*it);
                             ASTLocTy loc=getNowLocation(*it);
                             LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                            if (!hasPatch(L->getCurrentFunction())) return res;
                             ExprListTy exprs=L->getProfileWriterExpr();
                             size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
                             size_t end=code.find(";",start)+1;
-                            profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+stmtToString(*ctxt,*it)+"}\n";
+                            profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
                             stmt_stack.pop_back();
+                        }
+                        else if (CallExpr::classof(*it)){
+                            CallExpr *ce=llvm::dyn_cast<CallExpr>(*it);
+                            if (ce && ce->getDirectCallee()!=nullptr && ce->getDirectCallee()->getNameAsString()=="exit"){
+                                stmt_stack.push_back(*it);
+                                ASTLocTy loc=getNowLocation(*it);
+                                LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                                if (!hasPatch(L->getCurrentFunction())) return res;
+                                ExprListTy exprs=L->getProfileWriterExpr();
+                                size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
+                                size_t end=code.find(";",start)+1;
+                                profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
+                                stmt_stack.pop_back();
+                            }
                         }
                     }
                     stmt_stack.pop_back();
@@ -440,13 +612,30 @@ public:
                 stmt_stack.push_back(stmt->getSubStmt());
                 ASTLocTy loc=getNowLocation(stmt->getSubStmt());
                 LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                if (!hasPatch(L->getCurrentFunction())) return res;
                 ExprListTy exprs=L->getProfileWriterExpr();
 
                 size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getBeginLoc()));
                 size_t end=code.find(";",start)+1;
-                profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+stmtToString(*ctxt,stmt->getSubStmt())+"}\n";
+                profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
 
                 stmt_stack.pop_back();
+            }
+            else if (CallExpr::classof(stmt->getSubStmt())){
+                CallExpr *ce=llvm::dyn_cast<CallExpr>(stmt->getSubStmt());
+                if (ce && ce->getDirectCallee()!=nullptr && ce->getDirectCallee()->getNameAsString()=="exit"){
+                    stmt_stack.push_back(stmt->getSubStmt());
+                    ASTLocTy loc=getNowLocation(stmt->getSubStmt());
+                    LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                    if (!hasPatch(L->getCurrentFunction())) return res;
+                    ExprListTy exprs=L->getProfileWriterExpr();
+
+                    size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc(stmt->getSubStmt()->getBeginLoc()));
+                    size_t end=code.find(";",start)+1;
+                    profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
+
+                    stmt_stack.pop_back();
+                }
             }
             else if (CompoundStmt::classof(stmt->getSubStmt())){
                 CompoundStmt *body=llvm::dyn_cast<CompoundStmt>(stmt->getSubStmt());
@@ -457,11 +646,26 @@ public:
                             stmt_stack.push_back(*it);
                             ASTLocTy loc=getNowLocation(*it);
                             LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                            if (!hasPatch(L->getCurrentFunction())) return res;
                             ExprListTy exprs=L->getProfileWriterExpr();
                             size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
                             size_t end=code.find(";",start)+1;
-                            profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+stmtToString(*ctxt,*it)+"}\n";
+                            profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
                             stmt_stack.pop_back();
+                        }
+                        else if (CallExpr::classof(*it)){
+                            CallExpr *ce=llvm::dyn_cast<CallExpr>(*it);
+                            if (ce && ce->getDirectCallee()!=nullptr && ce->getDirectCallee()->getNameAsString()=="exit"){
+                                stmt_stack.push_back(*it);
+                                ASTLocTy loc=getNowLocation(*it);
+                                LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                                if (!hasPatch(L->getCurrentFunction())) return res;
+                                ExprListTy exprs=L->getProfileWriterExpr();
+                                size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
+                                size_t end=code.find(";",start)+1;
+                                profile_writer[std::make_pair(start,end)]="{\n"+createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1)+"}\n";
+                                stmt_stack.pop_back();
+                            }
                         }
                     }
                     stmt_stack.pop_back();
@@ -479,7 +683,7 @@ public:
 
         ASTLocTy temp_loc=getNowLocation(stmt);
         LocalAnalyzer *temp_L = manager.getLocalAnalyzer(temp_loc);
-        if (ctxt->getSourceManager().getFilename(temp_L->getCurrentFunction()->getLocation())!=file) return res;
+        if (ctxt->getSourceManager().getFilename(temp_L->getCurrentFunction()->getLocation())!=file || !hasPatch(temp_L->getCurrentFunction())) return res;
 
         Stmt *tempBody=stmt->getBody();
         if (tempBody){
@@ -494,8 +698,22 @@ public:
 
                     size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
                     size_t end=code.find(";",start)+1;
-                    profile_writer[std::make_pair(start,end)]=createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+stmtToString(*ctxt,*it);
+                    profile_writer[std::make_pair(start,end)]=createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1);
                     stmt_stack.pop_back();
+                }
+                else if (CallExpr::classof(*it)){
+                    CallExpr *ce=llvm::dyn_cast<CallExpr>(*it);
+                    if (ce && ce->getDirectCallee()!=nullptr && ce->getDirectCallee()->getNameAsString()=="exit"){
+                        stmt_stack.push_back(*it);
+                        ASTLocTy loc=getNowLocation(*it);
+                        LocalAnalyzer *L = manager.getLocalAnalyzer(loc);
+                        ExprListTy exprs=L->getProfileWriterExpr();
+
+                        size_t start=ctxt->getSourceManager().getFileOffset(ctxt->getSourceManager().getExpansionLoc((*it)->getBeginLoc()));
+                        size_t end=code.find(";",start)+1;
+                        profile_writer[std::make_pair(start,end)]=createProfileWriter(manager,ctxt,exprs,L->getCurrentFunction()->getNameAsString())+code.substr(start,end-start+1);
+                        stmt_stack.pop_back();
+                    }
                 }
             }
             stmt_stack.pop_back();

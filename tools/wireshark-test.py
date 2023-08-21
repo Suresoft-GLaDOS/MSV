@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -20,13 +20,40 @@ from sys import argv
 import getopt
 from os import chdir, getcwd, system, path, environ
 import subprocess
+import multiprocessing as mp
+import psutil
+
+def run_test(case_str,id):
+    proc = subprocess.Popen(["./mytest.sh " + case_str + " 1>/dev/null 2>/dev/null"],
+                           shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    try:
+        so, se = proc.communicate(timeout=timeout)
+        if proc.returncode == 0:
+            print(id)
+    except:
+        pid = proc.pid
+        children = []
+        for child in psutil.Process(pid).children(True):
+            if psutil.pid_exists(child.pid):
+                children.append(child)
+        for child in children:
+            child.kill()
+        proc.kill()
 
 if __name__ == "__main__":
-    opts, args = getopt.getopt(argv[1 :], "p:");
+    opts, args = getopt.getopt(argv[1 :], "p:t:i:j:");
     profile_dir = "";
+    max_parallel=1
+    timeout=None
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
+        elif o=='-t':
+            timeout=int(a)
+        elif o=='-j':
+            max_parallel=int(a)
+        elif o=='i':
+            pass
 
     src_dir = args[0];
     test_dir = args[1];
@@ -40,15 +67,19 @@ if __name__ == "__main__":
         if (not path.exists(cur_dir + "/oldtest")):
             system("mv " + cur_dir + "/test " + cur_dir + "/oldtest");
             system("cp -rf " + test_dir + " " + cur_dir + "/test");
-            system("cp -rf " + test_dir + "/mytest.sh " + cur_dir + "/mytest.sh");
             system("cp -rf " + test_dir + "/services " + cur_dir + "/services");
 
         ori_dir = getcwd();
         chdir(cur_dir);
         my_env = environ;
+        result=[]
+        pool=mp.Pool(max_parallel)
         for i in ids:
-            case_str = i;
-            ret = subprocess.call(["./mytest.sh " + case_str + " 1>/dev/null 2>/dev/null"], shell = True);
-            if (ret == 0):
-                print i,
+            case_str = str(i)
+            result.append(pool.apply_async(run_test,(case_str,int(i),)))
         chdir(ori_dir);
+        pool.close()
+        for r in result:
+            r.wait(timeout)
+        pool.join()
+

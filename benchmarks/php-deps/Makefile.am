@@ -26,14 +26,6 @@ flex-2.5.4-build:
 	make -j 4 && \
 	make install
 
-flex-2.5.39-build:
-	cp $(srcdir)/flex-2.5.39.tar.gz flex-2.5.39.tar.gz
-	tar xvzf flex-2.5.39.tar.gz
-	cd flex-2.5.39 && \
-	./configure --prefix=$(abs_builddir)/flex-2.5.39-build && \
-	make -j 4 && \
-	make install
-
 bison-2.2-build:
 	wget ftp://ftp.gnu.org/gnu/bison/bison-2.2.tar.gz
 	tar xvzf bison-2.2.tar.gz

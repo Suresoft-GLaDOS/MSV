@@ -1,0 +1,120 @@
+HTTP/1.0 301 Moved Permanently
+Location: /redirect
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_array_append
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_include
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_env
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_concat
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: test.example.org/good_
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_number1
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_test.example.org/
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_var_myvargood
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_test.example.org
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_string_append
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: 1/good_number
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_2
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_include_shell_456
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+
+HTTP/1.0 301 Moved Permanently
+Location: /good_myvargood
+Content-Length: 0
+Connection: close
+Date: Mon, 14 Feb 2022 07:11:53 GMT
+Server: Apache 1.3.29
+
+

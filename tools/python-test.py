@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -18,8 +18,12 @@
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from sys import argv
 import getopt
-from os import chdir, getcwd, system, path, environ
+from os import chdir, getcwd, system, path, environ, remove
 import subprocess
+import multiprocessing as mp
+import uuid
+from difflib import SequenceMatcher
+import psutil
 
 cases = [
     "test_grammar",
@@ -353,17 +357,54 @@ cases = [
     "test_zipimport_support",
     "test_zlib"];
 
+def run_test(case_str,id,timeout):
+    if id == 243:
+        return
+    # print(case_str)
+    proc = subprocess.Popen(["./python Lib/test/regrtest.py -w " + case_str], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    # ret = subprocess.call(["./python Lib/test/regrtest.py " + case_str], shell = True);
+    try:
+        so,se = proc.communicate(timeout=timeout)
+        if proc.returncode == 0:
+            print (id)
+    except:
+        pid = proc.pid
+        children = list()
+        for child in psutil.Process(pid).children(recursive=True):
+            if psutil.pid_exists(child.pid):
+                children.append(child.pid)
+        for child in children:
+            child.kill()
+        proc.kill()
+    
 if __name__ == "__main__":
-    opts, args = getopt.getopt(argv[1 :], "p:");
+    opts, args = getopt.getopt(argv[1 :], "p:t:j:i:");
     profile_dir = "";
+    timeout=None
+    max_parallel=1
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
+        elif o=='-t':
+            timeout=int(a)
+        elif o=='-j':
+            max_parallel=int(a)
+        elif o=='-i':
+            pass
 
     src_dir = args[0];
     test_dir = args[1];
     work_dir = args[2];
-
+    tdir = path.join(src_dir, "Lib", "test")
+    # if (not path.exists(path.join(tdir, "msv-test.set"))):
+    #     system(f"rm -rf {tdir}")
+    #     system(f"cp -rf {test_dir} {tdir}")
+    #     system(f"rm -rf {path.join(src_dir, 'Lib', 'unittest')}")
+    #     system(f"cp -rf {path.join(environ['MSV_PATH'], 'benchmarks', 'python-unittest')} {path.join(src_dir, 'Lib', 'unittest')}")
+    #     with open(path.join(tdir, "msv-test.set"), "w") as f:
+    #         f.write("Initialized!")
+    # system(f"rm -rf {path.join(src_dir, 'Lib', 'unittest')}")
+    # system(f"cp -rf /root/project/MSV-experiment/benchmarks/python/python-case-69946/python-src/Lib/unittest {path.join(src_dir, 'Lib', 'unittest')}")
     if (len(args) > 3):
         ids = args[3 :];
         cur_dir = src_dir;
@@ -378,9 +419,14 @@ if __name__ == "__main__":
         ori_dir = getcwd();
         chdir(cur_dir);
         my_env = environ;
+        result=[]
+        pool=mp.Pool(max_parallel)
         for i in ids:
-            case_str = cases[int(i) - 1];
-            ret = subprocess.call(["timeout 40s ./python Lib/test/regrtest.py " + case_str + " 1>/dev/null 2>/dev/null"], shell = True);
-            if (ret == 0):
-                print i,
+            case_str = cases[int(i) - 1]
+            result.append(pool.apply_async(run_test,(case_str,int(i),timeout)))
         chdir(ori_dir);
+
+        pool.close()
+        for r in result:
+            r.wait(timeout)
+        pool.join()

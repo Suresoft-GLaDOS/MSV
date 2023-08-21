@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
 from os import getcwd, chdir
+import os
 import subprocess
 
 def get_fix_revisions(out_dir):
@@ -25,7 +26,7 @@ def get_fix_revisions(out_dir):
     p = subprocess.Popen(["git", "log"], stdout=subprocess.PIPE);
     chdir(ori_dir);
     (out, err) = p.communicate();
-    lines = out.split("\n");
+    lines = out.decode('utf-8').split("\n");
     # parse git log to get bug-fix revision and previous revision
     cur_revision = "";
     last_fix_revision = "";
@@ -78,7 +79,8 @@ def get_fix_revisions(out_dir):
             last_is_author = False;
     return ret;
 
-def extract_arguments(out_dir, src_file):
+def extract_arguments(out_dir, src_file,sub_dir='.'):
+    print(f'src file: {src_file}')
     ori_dir = getcwd();
     chdir(out_dir);
     # trigger the make again
@@ -89,9 +91,12 @@ def extract_arguments(out_dir, src_file):
         file_name = src_file[idx+1:];
     else:
         file_name = src_file;
+    cur_dir=getcwd()
+    chdir(sub_dir)
     p = subprocess.Popen(["make", "--debug=j"], stdout = subprocess.PIPE);
     (out, err) = p.communicate();
-    lines = out.strip().split("\n");
+    chdir(cur_dir)
+    lines = out.decode('utf-8').strip().split("\n");
     directory = ".";
     last_line = "";
     for line in lines:
@@ -114,7 +119,7 @@ def extract_arguments(out_dir, src_file):
                 tokens = line.strip().split();
                 idx = 0;
                 for i in range(0, len(tokens)):
-                    if tokens[i] == "cc" or tokens[i] == "gcc":
+                    if tokens[i] == "cc" or tokens[i] == "gcc" or tokens[i]=='g++':
                         idx = i + 1;
                         break;
                 ret = "";
@@ -126,15 +131,22 @@ def extract_arguments(out_dir, src_file):
                     if token.find("excess-precision") != -1:
                         continue;
                     if token.find(file_name) == -1:
+                        token=token.replace("\\'","'")
+                        token=token.replace("\\\"","\"")
+                        token=token.replace("\"\"",'"')
                         ret = ret + token + " ";
                 chdir(ori_dir);
+                print(f'args: {ret}')
                 return directory, ret;
+
     # we try another way to get around it
     subprocess.call(["touch", src_file]);
+    cur_dir=getcwd()
+    chdir(sub_dir)
     p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE);
     (out, err) = p.communicate();
-    print out;
-    lines = out.strip().split("\n");
+    chdir(cur_dir)
+    lines = out.decode('utf-8').strip().split("\n");
     directory = ".";
     for line in lines:
         if line.find("Entering directory") != -1:
@@ -161,9 +173,79 @@ def extract_arguments(out_dir, src_file):
                     if token.find("excess-precision") != -1:
                         continue;
                     if token.find(file_name) == -1:
+                        token=token.replace("\\'","'")
+                        token=token.replace("\\\"","\"")
+                        token=token.replace('""','"')
                         ret = ret + token + " ";
                 chdir(ori_dir);
+                print(f'args: {ret}')
                 return directory, ret;
     chdir(ori_dir);
     return "","";
 
+def extract_arguments_cmake(out_dir:str, src_file:str,sub_dir:str='.',last_cmd:str=''):
+    temp_env=os.environ.copy()
+    temp_env['CC']='gcc'
+    temp_env['CXX']='g++'
+
+    print(f'cmake src file: {src_file}')
+    ori_dir = getcwd()
+    chdir(out_dir)
+
+    subprocess.run(["touch", src_file])
+    
+    if last_cmd=='':
+        # Run default Unix Makefile in debug mode
+        cur_dir=getcwd()
+        chdir(sub_dir)
+        p = subprocess.Popen(["make", "-n"], stdout = subprocess.PIPE,env=temp_env)
+        (out, err) = p.communicate()
+        chdir(cur_dir)
+        print(out.decode('utf-8'))
+        lines = out.decode('utf-8').strip().split("\n");
+        directory = ".";
+        for line in lines:
+            if line.strip().endswith('.c'):
+                splitted=line.strip().split('&&')
+                directory=splitted[0].replace('cd','').strip()
+                cc_cmd=splitted[1].strip().split(' ')[0]
+                ret=splitted[1].replace(cc_cmd,'').strip()
+                ret_splitted=ret.split(' ')
+
+                is_target=False
+                for i,arg in enumerate(ret_splitted.copy()):
+                    if arg=='-o':
+                        is_target=True
+                    elif is_target:
+                        ret_splitted[i]=directory+'/'+arg
+                        is_target=False
+
+                    if arg.endswith('.c'):
+                        ret_splitted.remove(arg)
+
+                ret=' '.join(ret_splitted)
+                print(f'args: {ret}')
+                chdir(ori_dir)
+                return directory, ret
+
+    else:
+        # Run last make command if exist
+        p = subprocess.Popen([last_cmd+' -v'], stdout = subprocess.PIPE,env=temp_env,shell=True,stderr=subprocess.STDOUT)
+        (out, err) = p.communicate()
+        print(out.decode('utf-8'))
+        lines = out.decode('utf-8').strip().split("\n")
+        directory = "."
+        for line in lines:
+            if line.strip().endswith('.c'):
+                # directory=src_file.rsplit('/',2)[0]
+                directory='.'
+                temp=line.find(' ')
+                start_index=line.find(' ',temp+1)+1
+                end_index=line.rfind(' ')
+                ret=line[start_index:end_index]
+                print(f'args: {ret}')
+                chdir(ori_dir)
+                return directory, ret
+
+    chdir(ori_dir);
+    return "","";

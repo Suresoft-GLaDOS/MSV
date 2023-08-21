@@ -408,7 +408,7 @@ static bool matchCandidateWithHumanFix(const RepairCandidate &rc, ASTDiffer &dif
                 return sameStmtByString(ast1, S1, ast2, S2);
             }
     }
-    if (rc.kind == RepairCandidate::AddInitKind || rc.kind == RepairCandidate::AddAndReplaceKind) {
+    if (rc.kind == RepairCandidate::AddInitKind || rc.kind == RepairCandidate::ReplaceFunctionKind || rc.kind == RepairCandidate::AddStmtKind || rc.kind == RepairCandidate::AddStmtAndReplaceAtomKind || rc.kind == RepairCandidate::MSVExtAddIfStmtKind) {
         if (res0.DiffActionKind == ASTDiffer::InsertAction) {
             if (res0.NodeKind2 == ASTDiffer::StmtKind) {
                 assert(rc.actions.size() == 1);

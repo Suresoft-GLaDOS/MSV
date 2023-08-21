@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -48,7 +48,7 @@ def fix_makefile_am(s):
             f.write(line);
     f.close();
 
-def compileit(out_dir, compile_only = False, config_only = False):
+def compileit(out_dir, compile_only = False, config_only = False,max_parallel=1):
     ori_dir = getcwd();
     chdir(out_dir);
 
@@ -61,24 +61,24 @@ def compileit(out_dir, compile_only = False, config_only = False):
             fix_makefile_am("Makefile.am");
         ret = subprocess.call(["sh .bootstrap"], shell = True, env = my_env);
         if (ret != 0):
-            print "Failed to run .bootstrap!";
+            print("Failed to run .bootstrap!")
             chdir(ori_dir);
             exit(1);
         ret = subprocess.call(["autoreconf -fvi"], shell = True, env = my_env);
         if (ret != 0):
-            print "Failed to run autoreconf!";
+            print("Failed to run autoreconf!")
             exit(1);
         ret = subprocess.call(["./configure"], shell = True, env = my_env);
         if (ret != 0):
-            print "Failed to configure!";
+            print("Failed to configure!")
             chdir(ori_dir);
             exit(1);
         system("make clean");
 
     if not config_only:
-        ret = subprocess.call(["make"], env = my_env);
+        ret = subprocess.call(["make",'-j'+str(max_parallel)], env = my_env);
         if ret != 0:
-            print "Failed to make";
+            print("Failed to make")
             exit(1);
 
     chdir(ori_dir);
@@ -88,12 +88,13 @@ if __name__ == "__main__":
 
     compile_only = False;
 
-    opts, args = getopt.getopt(argv[1:],'cd:hlp:r:x');
+    opts, args = getopt.getopt(argv[1:],'cd:hlp:r:xj:');
     dryrun_src = "";
 
     print_fix_log = False;
     print_usage = False;
     config_only = False;
+    max_parallel=1
     for o, a in opts:
         if o == "-d":
             dryrun_src = a;
@@ -110,26 +111,28 @@ if __name__ == "__main__":
             print_fix_log = True;
         elif o == "-h":
             print_usage = True;
+        elif o=='-j':
+            max_parallel=int(a)
 
     if (len(args) < 1) or (print_usage):
-        print "Usage: gmp-build.py <directory> [-d src_file | -l] [-h]";
+        print("Usage: gmp-build.py <directory> [-d src_file | -l] [-h]")
         exit(0);
 
     out_dir = args[0];
     if (path.exists(out_dir)):
-        print "Working with existing directory: " + out_dir;
+        print("Working with existing directory: " + out_dir)
     else:
-        print "Non-exist directory";
+        print("Non-exist directory")
         exit(1);
 
-    compileit(out_dir, compile_only, config_only);
+    compileit(out_dir, compile_only, config_only,max_parallel);
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src);
         if len(args) > 1:
             out_file = open(args[1], "w");
-            print >> out_file, builddir;
-            print >> out_file, buildargs;
+            print(builddir,file=out_file)
+            print(buildargs,file=out_file)
             out_file.close();
         else:
-            print builddir;
-            print buildargs;
+            print(builddir)
+            print(buildargs)

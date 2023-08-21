@@ -94,8 +94,113 @@ struct RepairCandidate {
         AddInitKind,
         ReplaceKind,
         ReplaceStringKind,
-        AddAndReplaceKind,
-        AddVarMutation // 9
+        ReplaceFunctionKind,
+        AddStmtKind,
+        AddStmtAndReplaceAtomKind, // 10
+
+        /*
+            +   if (cond) {
+            +       stmt;
+            +   }
+        */
+        MSVExtAddIfStmtKind,
+        /*
+            -   if (cond) {
+            +   if (__is_neg(...)) {
+        */
+        MSVExtConditionKind,
+        /*
+            -   func(...);
+            +   func2(..., var);
+        */
+        MSVExtFunctionReplaceKind,
+        /*
+            -   return ...;
+            +   return ... relation_oper __is_neg(...);
+        */
+        MSVExtReturnConditionKind,
+        /*
+            -   var = ...;
+            +   var = ... relation_oper __is_neg(...);
+        */
+        MSVExtAssignConditionKind,
+        /*
+            -   if (func(...)) {
+            +   if (func2(...)) {
+        */
+        MSVExtReplaceFunctionInConditionKind,
+        /*
+            -   stmt;
+        */
+        MSVExtRemoveStmtKind,
+        /*
+            -   if (... relation_oper cond) {
+            +   if (...) {
+        */
+        MSVExtRemoveConditionKind,
+        /*
+            -   var = ... relation_oper cond;
+            +   var = ...;
+        */
+        MSVExtRemoveAssignConditionKind,
+        /*
+            -   var assign_oper expr;
+            +   var assign_oper2 expr;
+        */
+        MSVExtReplaceAssignOperatorKind,
+        /*
+            -   arr[index]
+            +   arr[index2]
+        */
+        MSVExtReplaceArrayIndexKind,
+        /*
+            -   if ((cond oper cond2) oper2 cond3) {
+            +   if (cond oper (cond2 oper cond3)) {
+        */
+        MSVExtReplaceParenInConditionKind,
+        /*
+                stmt;
+            +   memset(&var, 0, sizeof(var));
+            }
+        */
+        MSVExtAddInitBackKind,
+        /*
+                stmt;
+            +   if (__is_neg(...)) {
+            +       return/break/continue/goto;
+            +   }
+            }
+        */
+        MSVExtIfExitBackKind,
+        /*
+            -   cond ? expr1 : expr2;
+            +   cond ? var != 0 : expr2;
+        */
+        MSVExtReplaceTrenaryOperatorKind,
+        /*
+            -   if (cond oper cond2 oper2 cond3) {
+            +   if (cond2 oepr cond oper2 cond3) {
+        */
+        MSVExtMoveConditionKind,
+        /*
+            -   while (cond) {
+            +   while (cond && __is_neg) {
+
+            -   for (init; cond; inc) {
+            +   for (init; cond && __is_neg; inc) {
+        */
+        MSVExtLoopConditionKind,
+        /*
+            -   if (cond || cond2) {
+            +   if (cond || cond2 && __is_neg) {
+        */
+        MSVExtParenTightenConditionKind,
+        /*
+            -   if (cond && cond2) {
+            +   if (cond && (cond2 || __is_neg)) {
+        */
+        MSVExtParenLoosenConditionKind,
+        AddVarMutation
     } CandidateKind;
     CandidateKind kind;
     bool is_first; // start of a block? not including condition changes
@@ -136,6 +241,10 @@ struct RepairCandidate {
                 return ret;
             }
         return ret;
+    }
+
+    bool operator<(const RepairCandidate a) const{
+        return true;
     }
 
     std::string toString(SourceContextManager &M) const;

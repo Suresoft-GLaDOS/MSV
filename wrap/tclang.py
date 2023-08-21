@@ -16,7 +16,7 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
-from sys import argv
+from sys import argv, stderr
 from os import environ, path
 import subprocess
 
@@ -31,7 +31,7 @@ def fix_argv(s):
     else:
         return s
 
-print("wrap/tclang")
+# print("wrap/tclang",file=stderr)
 for i in range(1, len(argv)):
     argv[i] = fix_argv(argv[i])
 
@@ -49,13 +49,14 @@ for i in range(1, len(argv)):
 if not just_compile:
     if (len(argv) > 1 and argv[1].find("-print-prog-name") != 0):
         # cmd = compile_cmd + " -Wl,-rpath=" + runtime_library_path + " -L" + runtime_library_path + " -l:"+runtime_library_path+"/libtest_runtime.so"+" -ferror-limit=0 " + " ".join(argv[1:]);
-        cmd = compile_cmd + " -Wl,-rpath=" + runtime_library_path + " -L" + runtime_library_path + " -l"+"test_runtime"+" -ferror-limit=0 " + " ".join(argv[1:])
+        cmd = compile_cmd + " -Wl,-rpath=" + runtime_library_path + " -L" + runtime_library_path + " -ltest_runtime -ferror-limit=0 " + " ".join(argv[1:])
     else:
         cmd = compile_cmd + " -ferror-limit=0 " + " ".join(argv[1:])
-    # print "Linkcmd: " + cmd;
+    # print("Linkcmd: " + cmd)
     ret = subprocess.call(cmd, shell=True)
     exit(ret)
 
 cmd = compile_cmd + " -ferror-limit=0 " + " ".join(argv[1:])
+# print("Compilecmd: " + cmd)
 ret = subprocess.call(cmd, shell=True)
 exit(ret)

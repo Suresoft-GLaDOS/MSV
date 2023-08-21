@@ -1,9 +1,0 @@
-This file contains any messages produced by compilers while
-running configure, to aid debugging if configure makes a mistake.
-
-configure:551: checking for gm4
-configure:551: checking for gnum4
-configure:551: checking for m4
-configure:592: checking for mawk
-configure:625: checking for perl
-configure:695: checking for a BSD compatible install

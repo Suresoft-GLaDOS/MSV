@@ -1,2 +1,0 @@
-#! /bin/sh
-exec '/root/project/MSV/benchmarks/php-deps/bison-2.5.1-build/bin/bison' -y "$@"

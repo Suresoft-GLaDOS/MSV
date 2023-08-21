@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -16,26 +16,36 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
-from sys import argv
-from os import rmdir, system,mkdir,chdir,getcwd
+from sys import argv, stderr
+from os import rmdir, system,mkdir,chdir,getcwd,environ
 import getopt
 import shutil
+import subprocess
 
 if __name__ == "__main__":
     if len(argv) < 4:
-        print "Usage: calc_test.py <src_dir> <test_dir> <work_dir> [cases]";
+        print ("Usage: calc_test.py <src_dir> <test_dir> <work_dir> [cases]")
         exit(1);
 
-    opts, args = getopt.getopt(argv[1:], "p:i:");
+    opts, args = getopt.getopt(argv[1:], "p:i:t:j:");
     profile_dir = "";
     temp_dir="__temp_test"
+    timeout=None
+    max_cpu=1
     for o, a in opts:
         if o == "-p":
             profile_dir = a;
         elif o=='-i':
             temp_dir=a
+        elif o=='-t':
+            timeout=int(a)
+        elif o=='-j':
+            max_cpu=int(a)
     
-    mkdir(temp_dir);
+    try:
+        mkdir(temp_dir);
+    except:
+        pass
     orig_dir=getcwd()
     chdir(temp_dir)
 
@@ -46,7 +56,6 @@ if __name__ == "__main__":
         cur_dir = src_dir;
     else:
         cur_dir = profile_dir;
-
     if len(args) > 3:
         ids = args[3:];
         for i in ids:
@@ -57,19 +66,27 @@ if __name__ == "__main__":
             in_arg=in_file.readline()
             in_file.close()
 
-            if (i != "0"):
-                cmd = cur_dir +"/Calc "+in_arg+ " 1> __out";
-            else:
-                cmd = cur_dir + "/Calc 1> __out";
-            ret = system(cmd);
-            if (ret == 0):
-                cmd = "diff __out " + str(i) + ".exp 1> /dev/null";
-                ret = system(cmd);
-                if (ret == 0):
-                    print i,
-            system("rm -rf __out");
+            temp_env=environ.copy()
+            system('rm -rf /tmp/'+str(i)+'_profile.log')
 
-        print;
+            if (i != "0"):
+                cmd = cur_dir +"/prog "+in_arg
+            else:
+                cmd = cur_dir + "/prog"
+            subp=subprocess.Popen(cmd,shell=True,env=temp_env,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            (out,err)=subp.communicate()
+            if (subp.returncode == 0):
+                expected_output=open("./"+str(i)+".exp",'r')
+                exp=expected_output.read()
+                expected_output.close()
+                out=out.decode('utf-8')
+
+                if (exp == out):
+                    print (i)
+                else:
+                    print("failed at {0}".format(i),file=stderr)
+
+                system("rm -rf __out"+str(i))
         
     chdir(orig_dir)
     shutil.rmtree(temp_dir)

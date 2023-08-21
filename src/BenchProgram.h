@@ -33,6 +33,12 @@ class ConfigFile;
 
 class LocationIndex;
 
+struct FunctionReplaceInfo{
+    std::string originalName;
+    std::map<size_t,std::string> newName;
+    size_t switchNum;
+};
+
 class TestCache {
     std::string cache_file;
     std::map<std::string, bool> cache;
@@ -151,9 +157,114 @@ struct Switch{
         types[kind8.kind]=kind8;
 
         Kind kind9;
-        kind9.kind=RepairCandidate::CandidateKind::AddAndReplaceKind;
+        kind9.kind=RepairCandidate::CandidateKind::ReplaceFunctionKind;
         kind9.cases=std::vector<size_t>();
         types[kind9.kind]=kind9;
+
+        Kind kind91;
+        kind91.kind=RepairCandidate::CandidateKind::AddStmtKind;
+        kind91.cases=std::vector<size_t>();
+        types[kind91.kind]=kind91;
+
+        Kind kind92;
+        kind92.kind=RepairCandidate::CandidateKind::AddStmtAndReplaceAtomKind;
+        kind92.cases=std::vector<size_t>();
+        types[kind92.kind]=kind92;
+
+        Kind kind93;
+        kind93.kind=RepairCandidate::CandidateKind::MSVExtAddIfStmtKind;
+        kind93.cases=std::vector<size_t>();
+        types[kind93.kind]=kind93;
+
+        Kind kind10;
+        kind10.kind=RepairCandidate::CandidateKind::MSVExtConditionKind;
+        kind10.cases=std::vector<size_t>();
+        types[kind10.kind]=kind10;
+
+        Kind kind101;
+        kind101.kind=RepairCandidate::CandidateKind::MSVExtFunctionReplaceKind;
+        kind101.cases=std::vector<size_t>();
+        types[kind101.kind]=kind101;
+
+        Kind kind102;
+        kind102.kind=RepairCandidate::CandidateKind::MSVExtReturnConditionKind;
+        kind102.cases=std::vector<size_t>();
+        types[kind102.kind]=kind102;
+
+        Kind kind103;
+        kind103.kind=RepairCandidate::CandidateKind::MSVExtAssignConditionKind;
+        kind103.cases=std::vector<size_t>();
+        types[kind103.kind]=kind103;
+
+        Kind kind104;
+        kind104.kind=RepairCandidate::CandidateKind::MSVExtReplaceFunctionInConditionKind;
+        kind104.cases=std::vector<size_t>();
+        types[kind104.kind]=kind104;
+
+        Kind kind105;
+        kind105.kind=RepairCandidate::CandidateKind::MSVExtRemoveStmtKind;
+        kind105.cases=std::vector<size_t>();
+        types[kind105.kind]=kind105;
+
+        Kind kind106;
+        kind106.kind=RepairCandidate::CandidateKind::MSVExtRemoveConditionKind;
+        kind106.cases=std::vector<size_t>();
+        types[kind106.kind]=kind106;
+
+        Kind kind107;
+        kind107.kind=RepairCandidate::CandidateKind::MSVExtRemoveAssignConditionKind;
+        kind107.cases=std::vector<size_t>();
+        types[kind107.kind]=kind107;
+
+        Kind kind108;
+        kind108.kind=RepairCandidate::CandidateKind::MSVExtReplaceAssignOperatorKind;
+        kind108.cases=std::vector<size_t>();
+        types[kind108.kind]=kind108;
+
+        Kind kind109;
+        kind109.kind=RepairCandidate::CandidateKind::MSVExtReplaceArrayIndexKind;
+        kind109.cases=std::vector<size_t>();
+        types[kind109.kind]=kind109;
+
+        Kind kind110;
+        kind110.kind=RepairCandidate::CandidateKind::MSVExtReplaceParenInConditionKind;
+        kind110.cases=std::vector<size_t>();
+        types[kind110.kind]=kind110;
+
+        Kind kind111;
+        kind111.kind=RepairCandidate::CandidateKind::MSVExtAddInitBackKind;
+        kind111.cases=std::vector<size_t>();
+        types[kind111.kind]=kind111;
+
+        Kind kind112;
+        kind112.kind=RepairCandidate::CandidateKind::MSVExtIfExitBackKind;
+        kind112.cases=std::vector<size_t>();
+        types[kind112.kind]=kind112;
+
+        Kind kind113;
+        kind113.kind=RepairCandidate::CandidateKind::MSVExtReplaceTrenaryOperatorKind;
+        kind113.cases=std::vector<size_t>();
+        types[kind113.kind]=kind113;
+
+        Kind kind114;
+        kind114.kind=RepairCandidate::CandidateKind::MSVExtMoveConditionKind;
+        kind114.cases=std::vector<size_t>();
+        types[kind114.kind]=kind114;
+
+        Kind kind115;
+        kind115.kind=RepairCandidate::CandidateKind::MSVExtLoopConditionKind;
+        kind115.cases=std::vector<size_t>();
+        types[kind115.kind]=kind115;
+
+        Kind kind116;
+        kind116.kind=RepairCandidate::CandidateKind::MSVExtParenTightenConditionKind;
+        kind116.cases=std::vector<size_t>();
+        types[kind116.kind]=kind116;
+
+        Kind kind117;
+        kind117.kind=RepairCandidate::CandidateKind::MSVExtParenLoosenConditionKind;
+        kind117.cases=std::vector<size_t>();
+        types[kind117.kind]=kind117;
     }
 };
 struct Line{
@@ -165,6 +276,12 @@ struct File{
     std::vector<Line> lines;
 };
 
+static double round_score(double var)
+{
+    double value = (int)(var * 10000 + .5);
+    return (double)value / 10000;
+}
+
 class BenchProgram {
 public:
     typedef std::set<unsigned long> TestCaseSetTy;
@@ -172,19 +289,25 @@ public:
 private:
     class SwitchInfo{
         std::string fileName;
+        std::string funcFileName;
 
     public:
         std::map<size_t,size_t> caseNum;
         std::vector<std::list<size_t>> switchCluster;
         // std::map<int,std::list<std::list<int>>> caseCluster;
-        std::vector<std::pair<std::string,size_t>> scoreInfo;
+        std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>> scoreInfo;
         // std::map<std::pair<size_t,size_t>,size_t> conditionCases;
         std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
         std::vector<File> infos;
+        std::map<size_t,std::map<size_t,std::vector<double>>> patchScores;
 
         std::map<std::pair<size_t,size_t>,size_t> varSizes;
+        std::map<std::string,std::map<std::string,std::pair<size_t,size_t>>> funcLocations;
+        std::vector<FunctionReplaceInfo> funcReplaceInfos;
+        std::map<size_t,std::pair<std::pair<size_t,size_t>,std::pair<size_t,size_t>>> originalLoc;
+        std::map<size_t,std::vector<std::string>> patchCodes;
     public:
-        SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json") {}
+        SwitchInfo(std::string workdir):fileName(workdir+"/switch-info.json"),funcFileName(workdir+"/func-info.json") {}
         void save(){
             cJSON *json=cJSON_CreateObject();
 
@@ -211,15 +334,40 @@ private:
             }
             cJSON_AddItemToObject(json,std::string("switch_cluster").c_str(),switchClusterArray);
 
-            // Save scores
+            // Save FL scores
             cJSON *scoreArray=cJSON_CreateArray();
-            for (std::vector<std::pair<std::string,size_t>>::iterator it=scoreInfo.begin();it!=scoreInfo.end();it++){
+            for (std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>>::iterator it=scoreInfo.begin();it!=scoreInfo.end();it++){
                 cJSON *localize=cJSON_CreateObject();
-                cJSON_AddStringToObject(localize,"file",it->first.c_str());
-                cJSON_AddNumberToObject(localize,"line",it->second);
+                cJSON_AddStringToObject(localize,"file",it->first.first.c_str());
+                cJSON_AddNumberToObject(localize,"line",it->first.second);
+                cJSON_AddNumberToObject(localize,"primary_score",it->second.first);
+                cJSON_AddNumberToObject(localize,"second_score",it->second.second);
                 cJSON_AddItemToArray(scoreArray,localize);
             }
             cJSON_AddItemToObject(json,std::string("priority").c_str(),scoreArray);
+
+            // Save function infos
+            cJSON *funcArray=cJSON_CreateArray();
+            for (size_t i=0;i<funcReplaceInfos.size();i++){
+                cJSON *funcInfo=cJSON_CreateObject();
+                cJSON_AddStringToObject(funcInfo,"original_name",funcReplaceInfos[i].originalName.c_str());
+                cJSON_AddNumberToObject(funcInfo,"switch_number",funcReplaceInfos[i].switchNum);
+
+                cJSON *newFuncArray=cJSON_CreateArray();
+                for (std::map<size_t,std::string>::iterator it=funcReplaceInfos[i].newName.begin();it!=funcReplaceInfos[i].newName.end();it++){
+                    cJSON *newFunc=cJSON_CreateObject();
+                    cJSON_AddStringToObject(newFunc,"new_name",it->second.c_str());
+                    cJSON_AddNumberToObject(newFunc,"case_number",it->first);
+                    cJSON_AddItemToArray(newFuncArray,newFunc);
+                }
+                cJSON_AddItemToObject(funcInfo,"new_names",newFuncArray);
+                cJSON_AddItemToArray(funcArray,funcInfo);
+            }
+            char *fileString=cJSON_Print(funcArray);
+            std::ofstream ffout(funcFileName,std::ofstream::out);
+            ffout << fileString << "\n";
+            ffout.close();
+            cJSON_Delete(funcArray);
 
             // Save mutation infos
             cJSON *mutationArray=cJSON_CreateArray();
@@ -278,6 +426,31 @@ private:
                             cJSON_AddItemToArray(typeArray,caseArray);
                         }
                         cJSON_AddItemToObject(switchObject,"types",typeArray);
+                        cJSON_AddNumberToObject(switchObject,"begin_line",originalLoc[currentSwitch.switchNum].first.first);
+                        cJSON_AddNumberToObject(switchObject,"begin_column",originalLoc[currentSwitch.switchNum].first.second);
+                        cJSON_AddNumberToObject(switchObject,"end_line",originalLoc[currentSwitch.switchNum].second.first);
+                        cJSON_AddNumberToObject(switchObject,"end_column",originalLoc[currentSwitch.switchNum].second.second);
+
+                        cJSON *patchArray=cJSON_CreateArray();
+                        for (size_t j=0;j<patchCodes[currentSwitch.switchNum].size();j++){
+                            cJSON_AddItemToArray(patchArray,cJSON_CreateString(patchCodes[currentSwitch.switchNum][j].c_str()));
+                        }
+                        cJSON_AddItemToObject(switchObject,"patch_codes",patchArray);
+
+                        // Add Prophet score
+                        cJSON *prophetScoreArray=cJSON_CreateArray();
+                        for (std::map<size_t,std::vector<double>>::iterator it3=patchScores[currentSwitch.switchNum].begin();it3!=patchScores[currentSwitch.switchNum].end();it3++){
+                            cJSON *caseScoreObject=cJSON_CreateObject();
+                            cJSON_AddNumberToObject(caseScoreObject,"case",it3->first);
+
+                            cJSON *caseScoreArray=cJSON_CreateArray();
+                            for (size_t k=0;k<it3->second.size();k++)
+                                cJSON_AddItemToArray(caseScoreArray,cJSON_CreateNumber(it3->second[k]));
+                            cJSON_AddItemToObject(caseScoreObject,"scores",caseScoreArray);
+                            cJSON_AddItemToArray(prophetScoreArray,caseScoreObject);
+                        }
+                        cJSON_AddItemToObject(switchObject,"prophet_scores",prophetScoreArray);
+
                         cJSON_AddItemToArray(switchArray,switchObject);
                     }
                     cJSON_AddItemToObject(infoObject,"switches",switchArray);
@@ -300,6 +473,24 @@ private:
                 cJSON_AddItemToArray(sizesArray,sizeObject);
             }
             cJSON_AddItemToObject(json,"sizes",sizesArray);
+
+            cJSON *fileArray=cJSON_CreateArray();
+            for (std::map<std::string,std::map<std::string,std::pair<size_t,size_t>>>::iterator it=funcLocations.begin();it!=funcLocations.end();it++){
+                cJSON *fileObject=cJSON_CreateObject();
+                cJSON_AddStringToObject(fileObject,"file",it->first.c_str());
+
+                cJSON *funcArray=cJSON_CreateArray();
+                for (std::map<std::string,std::pair<size_t,size_t>>::iterator it2=it->second.begin();it2!=it->second.end();it2++){
+                    cJSON *funcObject=cJSON_CreateObject();
+                    cJSON_AddStringToObject(funcObject,"function",it2->first.c_str());
+                    cJSON_AddNumberToObject(funcObject,"begin",it2->second.first);
+                    cJSON_AddNumberToObject(funcObject,"end",it2->second.second);
+                    cJSON_AddItemToArray(funcArray,funcObject);
+                }
+                cJSON_AddItemToObject(fileObject,"functions",funcArray);
+                cJSON_AddItemToArray(fileArray,fileObject);
+            }
+            cJSON_AddItemToObject(json,"func_locations",fileArray);
 
             // Save JSON to file
             char *jsonString=cJSON_Print(json);
@@ -367,7 +558,7 @@ private:
     std::map<std::string,std::string> build_dir_save;
     std::map<std::string,std::vector<std::string>> build_args_save;
 
-    void Init(const std::string &workDirPath, bool no_clean_up);
+    void Init(const std::string &workDirPath, bool no_clean_up,bool init_only=false);
 
     bool buildFull(const std::string &subDir, time_t timeout_limit = 0, bool force_reconf = false,std::vector<long long> compile_macro=std::vector<long long>(),std::vector<std::string> files=std::vector<std::string>(),
                 std::vector<long long> writer_macro=std::vector<long long>());
@@ -384,13 +575,14 @@ private:
 public:
     bool isCondition;
     bool skip_profile;
+    bool skip_build;
     // We create the work dir from a configuration file, and we will put workdir
     // in the workDirPath path. If it is empty string, we will create a work dir
     // with an empty directory
     BenchProgram(const std::string &configFileName, const std::string &workDirPath,
-            bool no_clean_up = false,int switchId=-1,int caseNum=-1);
+            bool no_clean_up = false,bool init_only=false,int switchId=-1,int caseNum=-1);
 
-    BenchProgram(const std::string &workDirPath,int switchId=-1,int caseNum=-1);
+    BenchProgram(const std::string &workDirPath,bool init_only=false,int switchId=-1,int caseNum=-1);
 
     TestCaseSetTy getPositiveCaseSet() {
         return positive_cases;
@@ -452,6 +644,7 @@ public:
     std::string getLocalizationResultFilename() {
         return localization_filename;
     }
+    std::string getLocalizationResultBackupFilename();
 
     std::string getWorkdir() { return work_dir; }
 

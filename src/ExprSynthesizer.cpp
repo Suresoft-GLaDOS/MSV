@@ -982,8 +982,11 @@ protected:
     std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> &functionLoc;
     std::map<std::string,std::map<std::string,std::map<size_t,std::string>>> mutationInfo;
     std::map<long long,std::string> macroCode;
+    std::map<size_t,std::map<size_t,std::vector<double>>> patchScores;
+    std::vector<FunctionReplaceInfo> functionReplaceInfo;
 
-    std::vector<std::pair<std::string,size_t>> &scores;
+    std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>> &scores;
+    std::map<size_t,std::pair<std::pair<size_t,size_t>,std::pair<size_t,size_t>>> originalLoc;
 
     bool testOneCase(const BenchProgram::EnvMapTy &env, unsigned long t_id) {
         return P.test(std::string("src"), t_id, env, idAndCase.size(),P.getSwitch().first,P.getSwitch().second);
@@ -1043,6 +1046,23 @@ protected:
         }
         return false;
     }
+    std::map<void*,std::vector<double>> getCandidateScores(){
+        std::map<void*,std::vector<double>> result;
+        for (size_t i=0;i<candidates.size();i++){
+            std::vector<double> scores;
+            scores.clear();
+            if (candidates[i].actions.size()>1 && candidates[i].actions[1].kind==RepairAction::ExprMutationKind){
+                ExprListTy atoms=candidates[i].actions[1].candidate_atoms;
+                for (size_t j=0;j<atoms.size();j++){
+                    scores.push_back(computeFinalScore(learning,M,candidates[i],i,atoms[j]));
+                }
+            }
+            else
+                scores.push_back(computeFinalScore(learning,M,candidates[i],i,NULL));
+            result[candidates[i].actions[0].ast_node]=scores;
+        }
+        return result;
+    }
     void savePatchInfo(std::vector<File> &infos){
         // Add case number of each switch
         std::map<size_t,size_t> switchCase;
@@ -1054,20 +1074,14 @@ protected:
 
         P.getSwitchInfo().switchCluster=switchCluster;
         // P.getSwitchInfo().caseCluster=caseCluster;
-        std::set<std::pair<std::string,size_t>> found;
-        found.clear();
-        std::vector<std::pair<std::string,size_t>> removedDuplicate;
-        removedDuplicate.clear();
-        for (size_t i=0;i<scores.size();i++){
-            if (found.find(scores[i])==found.end()){
-                removedDuplicate.push_back(scores[i]);
-                found.insert(scores[i]);
-            }
-        }
-        P.getSwitchInfo().scoreInfo=removedDuplicate;
+
+        P.getSwitchInfo().scoreInfo=scores;
+        P.getSwitchInfo().funcReplaceInfos=functionReplaceInfo;
         P.getSwitchInfo().mutationInfo=mutationInfo;
+        P.getSwitchInfo().originalLoc=originalLoc;
 
         P.getSwitchInfo().infos=infos;
+        P.getSwitchInfo().patchScores=patchScores;
         P.getSwitchInfo().save();
     }
 
@@ -1085,7 +1099,7 @@ public:
     ASTContext *tempCtxt;
     std::map<std::string,std::vector<long long>> macroFile;
     BasicTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> &functionLoc,
-            std::vector<std::pair<std::string,size_t>> &scores):
+            std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>> &scores):
     P(P), learning(learning), M(M), scores(scores),
     negative_cases(P.getNegativeCaseSet()),
     positive_cases(P.getPositiveCaseSet()),
@@ -1139,9 +1153,11 @@ public:
             infos.push_back(enumerateExprBindings(M, candidate[i], -1));
         }
 
+        std::map<void*,std::vector<double>> candidateScores=getCandidateScores();
+
         std::vector<unsigned long> res;
         res.clear();
-        CodeRewriter R(M, candidate, &infos,functionLoc,P.getWorkdir());
+        CodeRewriter R(M, candidate, &infos,functionLoc,P.getWorkdir(),candidateScores);
         CodeSegTy a_code = R.getCodeSegments();
         CodeSegTy a_patch = R.getPatches();
         idAndCase=R.getIdAndCase();
@@ -1150,7 +1166,12 @@ public:
         switchCluster=R.getSwitchCluster();
         macroCode=R.getMacroCode();
         macroFile=R.getMacroFile();
+        patchScores=R.patchScores;
+        functionReplaceInfo=R.funcReplace;
+        originalLoc=R.originalLoc;
         P.getSwitchInfo().varSizes=R.getVarSizes();
+        P.getSwitchInfo().funcLocations=R.funcLocation;
+        P.getSwitchInfo().patchCodes=R.patchCodes;
         // caseCluster=R.getCaseCluster();
 
         // Create rules
@@ -1355,7 +1376,7 @@ class StringConstTester : public BasicTester {
 
 public:
     StringConstTester(BenchProgram &P, bool learning, SourceContextManager &M, bool naive,std::map<std::string,std::map<FunctionDecl*,std::pair<unsigned,unsigned>>> functionLoc,
-            std::vector<std::pair<std::string,size_t>> &scores):
+            std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>> &scores):
         BasicTester(P, learning, M, naive,functionLoc,scores), candidate_strs(), infos(),infos_set() { }
 
     virtual ~StringConstTester() { }
@@ -1913,8 +1934,13 @@ class TestBatcher {
                 outlog_printf(2,"Saved fixed file at: %s\n",bak_file.c_str());
             }
         }
-        std::vector<long long> succ_macros=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
-        outlog_printf(0,"Meta-program generated in %llus!\n",get_timer());
+
+        std::vector<long long> succ_macros;
+        succ_macros.clear();
+        if (!P.skip_build){
+            succ_macros=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
+            outlog_printf(0,"Meta-program generated in %llus!\n",get_timer());
+        }
 
         if (!P.skip_profile){
             outlog_printf(2,"Adding profile writers...\n");
@@ -1925,6 +1951,7 @@ class TestBatcher {
             outlog_printf(0,"Profile writer added in %llus!\n",get_timer());
             outlog_printf(2,"Trying build...\n");
             reset_timer();
+            buildEnv["TMP_FILE"]="tmp.log";
             std::vector<long long> succ_macros2=P.buildWithRepairedCode(CLANG_TEST_WRAP,buildEnv,combined,macroCode,macroFile,fixedFile,succ_macros);
             if (succ_macros.size()>0) printf("Pass to build final program\n");
             else{

@@ -49,6 +49,9 @@ struct InternalHandlerInfo {
     clang::Expr* write_profile;
     clang::Expr* mutator;
     clang::Expr* sys_memset;
+    clang::Expr* var_selecter_1;
+    clang::Expr* var_selecter_2;
+    clang::Expr* const_selecter;
 };
 
 typedef std::vector<clang::Expr*> ExprListTy;
@@ -130,6 +133,10 @@ public:
     clang::Expr* getExprPlaceholder(clang::ASTContext *ctxt, clang::QualType QT,int id,std::map<clang::Expr *,unsigned long> atoms);
 
     clang::Expr* getWriteProfile(clang::ASTContext *ctxt);
+
+    clang::Expr *getVariableSelector(clang::ASTContext *ctxt,ExprListTy exprs);
+    clang::Expr *getVariableSelector2(clang::ASTContext *ctxt,ExprListTy exprs);
+    clang::Expr *getConstantSelector(clang::ASTContext *ctxt,ExprListTy exprs);
 
     clang::Expr* getMutator(clang::ASTContext *ctxt){
         return getInternalHandlerInfo(ctxt).mutator;

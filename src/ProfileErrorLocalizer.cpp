@@ -21,10 +21,12 @@
 #include "BenchProgram.h"
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/Support/CommandLine.h"
+#include "cJSON/cJSON.h"
 #include <map>
 #include <queue>
 #include <fstream>
 #include <assert.h>
+#include <unistd.h>
 
 #include <dirent.h>
 
@@ -38,23 +40,29 @@ using namespace clang;
 #define LOC2_LIMIT 20
 
 extern llvm::cl::opt<bool> ForCPP;
+llvm::cl::opt<bool> NoWriteFLResult("no-save-fl-result", llvm::cl::init(false),
+        llvm::cl::desc("Do not save FL result to file"));
+llvm::cl::opt<bool> RunAllTest("run-all-test", llvm::cl::init(false),
+        llvm::cl::desc("Run all tests for FL, instead of +-200 tests from fail test"));
 
 void ProfileErrorLocalizer::clearProfileResult() {
-    std::string cmd = "rm -rf /tmp/__run*.log";
+    std::string cmd = "rm -rf /tmp/__run"+std::to_string(getpid())+"*.log";
     int res = system(cmd.c_str());
     assert(res == 0);
 }
 
 std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileResult() {
     if (LI == NULL)
-        LI = new LocationIndex(INDEX_FILE);
+        LI = new LocationIndex(index_file);
     std::map<SourcePositionTy, ProfileInfoTy> M;
     M.clear();
     DIR* dp = opendir("/tmp");
     struct dirent *dirp;
+    std::string pidStr=std::to_string(getpid());
+    size_t pidLength=pidStr.size();
     while ((dirp = readdir(dp))) {
         std::string nstr = dirp->d_name;
-        if ((nstr.substr(0,5) != "__run") || (nstr.substr(nstr.size() - 4, 4) != ".log"))
+        if ((nstr.substr(0,pidLength+5) != ("__run"+pidStr)) || (nstr.substr(nstr.size() - 4, 4) != ".log"))
             continue;
         std::ifstream fin(("/tmp/" + nstr).c_str(), std::ifstream::in);
         std::string line1, line2;
@@ -110,6 +118,41 @@ std::map<SourcePositionTy, ProfileInfoTy> ProfileErrorLocalizer::parseProfileRes
     return M;
 }
 
+void initSaveLocation(BenchProgram &P){
+    std::ofstream fout(P.getWorkdir()+"/test-info.json",std::ofstream::out);
+    fout << "[" << std::endl;
+    fout.close();
+}
+
+void saveExecutedLocations(BenchProgram &prog,size_t testNum,std::vector<SourcePositionTy> locations,bool isStart=false){
+    std::string workdir=prog.getWorkdir();
+    cJSON *locationObject=cJSON_CreateObject();
+    cJSON_AddNumberToObject(locationObject,"test",testNum);
+
+    cJSON *locationArray=cJSON_CreateArray();
+    for (size_t i=0;i<locations.size();i++){
+        cJSON *location=cJSON_CreateObject();
+        cJSON_AddStringToObject(location,"file",locations[i].expFilename.c_str());
+        cJSON_AddNumberToObject(location,"line",locations[i].expLine);
+        cJSON_AddItemToArray(locationArray,location);
+    }
+    cJSON_AddItemToObject(locationObject,"locations",locationArray);
+
+    char *str=cJSON_Print(locationObject);
+    std::ofstream fout(workdir+"/test-info.json",std::ofstream::app);
+    if (!isStart)
+        fout << ",";
+    fout << str << std::endl;
+    fout.close();
+    cJSON_Delete(locationObject);
+}
+
+void postSaveLocation(BenchProgram &P){
+    std::ofstream fout(P.getWorkdir()+"/test-info.json",std::ofstream::app);
+    fout << "]" << std::endl;
+    fout.close();
+}
+
 void clearTmpDirectory() {
     int ret = system("rm -rf /tmp/__* /tmp/pclang*");
     assert(ret == 0);
@@ -117,9 +160,11 @@ void clearTmpDirectory() {
 
 ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         const std::set<std::string> &bugged_files, bool skip_build):
-    P(P), negative_cases(P.getNegativeCaseSet()), positive_cases(P.getPositiveCaseSet()) {
+    P(P), negative_cases(P.getNegativeCaseSet()), positive_cases(P.getPositiveCaseSet()),index_file("") {
     LI = NULL;
     reset_timer();
+    size_t dirName=P.getWorkdir().rfind("/");
+    index_file="/tmp/__index_"+P.getWorkdir().substr(dirName+1)+".log";
     if (skip_build) {
         P.addExistingSrcClone("profile", true);
     }
@@ -133,8 +178,8 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
             envMap["COMPILE_CMD"] = "clang++";
         else
             envMap["COMPILE_CMD"] = CLANG_CMD;
-        envMap["INDEX_FILE"] = INDEX_FILE;
-        clearTmpDirectory();
+        envMap["INDEX_FILE"] = index_file;
+        // clearTmpDirectory();
         bool result=P.buildSubDir("profile", CLANG_PROFILE_WRAP, envMap);
         if (!result){
             outlog_printf(0,"Profile build failed!\n");
@@ -156,15 +201,22 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
     // We test with an unmodified environment
     BenchProgram::EnvMapTy testEnv;
     testEnv.clear();
+    testEnv["MSV_PID"]=std::to_string(getpid());
 
     unsigned long min_id = 1000000;
     unsigned long max_id = 0;
+    if (RunAllTest.getValue()){
+        min_id=0;
+        max_id=1000000;
+    }
+    std::map<unsigned long, std::vector<SourcePositionTy>> executed_locs;
     for (TestCaseSetTy::const_iterator it = negative_cases.begin(); it != negative_cases.end(); ++it) {
         llvm::errs() << "Neg Processing: "<< *it << "\n";
         ProfileLocationMapTy res;
         clearProfileResult();
-        bool tmp = P.test("profile", *it, testEnv, 0,0,0,0,true);
+        bool tmp = P.test("profile", *it, testEnv, 0,0,0,getpid(),true);
         res = parseProfileResult();
+        printf("Executed locations: %lu\n",res.size());
         // llvm::errs() << "Finish!" << "\n";
 
         if (*it < min_id) min_id = *it;
@@ -194,22 +246,28 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
     TestCaseSetTy::const_iterator end_pos = positive_cases.upper_bound(max_id);
 
     size_t cnt = 0;
+    initSaveLocation(P);
     for (TestCaseSetTy::const_iterator it = begin_pos; it != end_pos; ++it) {
         llvm::errs() << "Processing: " << cnt << " : " << *it << "\n";
         ProfileLocationMapTy res;
         clearProfileResult();
         bool tmp = P.test("profile", *it, testEnv, 0,0,0,0,true);
         res = parseProfileResult();
-        // outlog_printf(2,"Result: %d\n",res.size());
+        printf("Executed locations: %lu\n",res.size());
         cnt ++;
         if (!tmp) {
             fprintf(stderr, "Profile version failed on this, maybe because of timeout due to overhead!\n");
+            saveExecutedLocations(P,*it,std::vector<SourcePositionTy>(),it==begin_pos);
             continue;
         }
+        std::vector<SourcePositionTy> executed_location;
         for (ProfileLocationMapTy::iterator iit = res.begin(); iit != res.end(); ++iit) {
             positive_mark[iit->first]++;//+= iit->second.first;
+            executed_location.push_back(iit->first);
         }
+        saveExecutedLocations(P,*it,executed_location,it==begin_pos);
     }
+    postSaveLocation(P);
 
     typedef std::priority_queue<std::pair<std::pair<long long, long long>, std::pair<SourcePositionTy, std::string> > >
         PriorQueueTy;
@@ -274,7 +332,7 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
     for (long i = (long)tmpv2.size() - 1; i >= 0; --i)
         candidateResults.push_back(tmpv2[i]);
 
-    printResult(P.getLocalizationResultFilename());
+    if(!NoWriteFLResult.getValue()) printResult(P.getLocalizationResultFilename());
     outlog_printf(0,"Localizing Finished in %llus!\n",get_timer());
 }
 

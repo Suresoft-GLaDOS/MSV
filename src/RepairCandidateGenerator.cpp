@@ -27,12 +27,18 @@
 #include <queue>
 #include <math.h>
 
-//#define DISABLE_IFSTMT_INSERT
-
 using namespace clang;
 
 llvm::cl::opt<bool> ReplaceExt("replace-ext", llvm::cl::init(false),
         llvm::cl::desc("Replace extension"));
+llvm::cl::opt<bool> MsvExt("msv-ext", llvm::cl::init(false),
+        llvm::cl::desc("Extended templates for MSV"));
+llvm::cl::opt<bool> NoVar("skip-replace-var", llvm::cl::init(false),
+        llvm::cl::desc("Do not replace variable in statement"));
+llvm::cl::opt<bool> NoFunc("skip-replace-func", llvm::cl::init(false),
+        llvm::cl::desc("Do not replace functionn call"));
+llvm::cl::opt<bool> NoAdd("skip-add-stmt", llvm::cl::init(false),
+        llvm::cl::desc("Do not copy and insert statement"));
 
 #define PRIORITY_ALPHA 5000
 
@@ -45,6 +51,7 @@ class AtomReplaceVisitor : public RecursiveASTVisitor<AtomReplaceVisitor> {
     std::set<clang::Stmt*> res;
     std::map<clang::Stmt*, std::pair<Expr*, Expr*> > resRExpr;
     bool replace_ext;
+    SourceContextManager &manager;
 
     ExprListTy secondOrderExprs(LocalAnalyzer *L, QualType QT) {
         ExprListTy ret;
@@ -109,8 +116,8 @@ class AtomReplaceVisitor : public RecursiveASTVisitor<AtomReplaceVisitor> {
     }
 
 public:
-    AtomReplaceVisitor(ASTContext *ctxt, LocalAnalyzer *L, clang::Stmt *start_stmt, bool replace_ext):
-    L(L), ctxt(ctxt), start_stmt(start_stmt), res(), resRExpr(), replace_ext(replace_ext) {
+    AtomReplaceVisitor(ASTContext *ctxt, LocalAnalyzer *L, SourceContextManager &manager,clang::Stmt *start_stmt, bool replace_ext):
+    L(L), ctxt(ctxt), start_stmt(start_stmt), res(), resRExpr(), replace_ext(replace_ext),manager(manager) {
         res.clear(); resRExpr.clear();
     }
 
@@ -192,6 +199,19 @@ public:
                     }
                 }
             }
+
+            if (MsvExt.getValue()){
+                BinaryOperator *newShift=BinaryOperator::Create(*ctxt,getNewIntegerLiteral(ctxt,1),getNewIntegerLiteral(ctxt,5),BO_Shl,ctxt->IntTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),newShift);
+                UnaryOperator *newNot=UnaryOperator::Create(*ctxt,newParen,UO_LNot,ctxt->IntTy,VK_RValue,OK_Ordinary,SourceLocation(),false,FPOptionsOverride());
+                BinaryOperator *newAnd=BinaryOperator::Create(*ctxt,DRE,newNot,BO_LAnd,ctxt->IntTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+
+                StmtReplacer R(ctxt, start_stmt);
+                R.addRule(DRE, newAnd);
+                Stmt *S = R.getResult();
+                res.insert(S);
+                resRExpr[S] = std::make_pair(DRE, newAnd);
+            }
         }
         return true;
     }
@@ -222,43 +242,67 @@ public:
         }
     }
 
-    virtual bool TraverseBinAssign(BinaryOperator *n) {
-        Expr* RHS = n->getRHS();
-        if (isIntegerConstant(RHS)) {
-            ExprListTy exprs = L->getCandidateConstantInType(RHS->getType());
-            for (size_t i = 0; i < exprs.size(); i++) {
+    virtual bool TraverseBinaryOperator(BinaryOperator *n) {
+        if (n->getOpcode()==BinaryOperator::Opcode::BO_Assign){
+            Expr* RHS = n->getRHS();
+            if (isIntegerConstant(RHS)) {
+                ExprListTy exprs = L->getCandidateConstantInType(RHS->getType());
+                for (size_t i = 0; i < exprs.size(); i++) {
+                    StmtReplacer R(ctxt, start_stmt);
+                    Expr *newE = getParenExpr(ctxt, exprs[i]);
+                    R.addRule(RHS, newE);
+                    Stmt *S = R.getResult();
+                    res.insert(S);
+                    resRExpr[S] = std::make_pair(RHS, newE);
+                }
+            }
+            if (MsvExt.getValue() && BinaryOperator::classof(RHS)){
+                // Remove LHS or RHS if original RHS is a BinaryOperator
+                BinaryOperator *BO = llvm::dyn_cast<BinaryOperator>(RHS);
+                
+                // Try remove RHS
                 StmtReplacer R(ctxt, start_stmt);
-                Expr *newE = getParenExpr(ctxt, exprs[i]);
+                Expr *newE = getParenExpr(ctxt, BO->getLHS());
                 R.addRule(RHS, newE);
                 Stmt *S = R.getResult();
                 res.insert(S);
                 resRExpr[S] = std::make_pair(RHS, newE);
-            }
-        }
-        QualType QT = RHS->getType();
-        ExprListTy exprs = L->getCandidateLocalVars(QT);
-        if (exprs.size() != 0) {
-            for (size_t i = 0; i < exprs.size(); i++) {
-                StmtReplacer R(ctxt, start_stmt);
-                Expr *newE = getParenExpr(ctxt, exprs[i]);
-                R.addRule(RHS, newE);
-                Stmt *S = R.getResult();
+
+                // Now try remove LHS
+                StmtReplacer R2(ctxt, start_stmt);
+                newE = getParenExpr(ctxt, BO->getRHS());
+                R2.addRule(RHS, newE);
+                S = R2.getResult();
                 res.insert(S);
                 resRExpr[S] = std::make_pair(RHS, newE);
             }
-        }
-        if (QT->isIntegerType()) {
-            exprs = L->getCandidateConstantInType(QT);
-            for (size_t i = 0; i < exprs.size(); i++) {
-                StmtReplacer R(ctxt, start_stmt);
-                Expr *newE = getParenExpr(ctxt, exprs[i]);
-                R.addRule(RHS, newE);
-                Stmt *S = R.getResult();
-                res.insert(S);
-                resRExpr[S] = std::make_pair(RHS, newE);
+
+            QualType QT = RHS->getType();
+            ExprListTy exprs = L->getCandidateLocalVars(QT);
+            if (exprs.size() != 0) {
+                for (size_t i = 0; i < exprs.size(); i++) {
+                    StmtReplacer R(ctxt, start_stmt);
+                    Expr *newE = getParenExpr(ctxt, exprs[i]);
+                    R.addRule(RHS, newE);
+                    Stmt *S = R.getResult();
+                    res.insert(S);
+                    resRExpr[S] = std::make_pair(RHS, newE);
+                }
             }
+            if (QT->isIntegerType()) {
+                exprs = L->getCandidateConstantInType(QT);
+                for (size_t i = 0; i < exprs.size(); i++) {
+                    StmtReplacer R(ctxt, start_stmt);
+                    Expr *newE = getParenExpr(ctxt, exprs[i]);
+                    R.addRule(RHS, newE);
+                    Stmt *S = R.getResult();
+                    res.insert(S);
+                    resRExpr[S] = std::make_pair(RHS, newE);
+                }
+            }
+            return TraverseStmt(RHS);
         }
-        return TraverseStmt(RHS);
+        else return RecursiveASTVisitor::TraverseBinaryOperator(n);
     }
 
     virtual std::set<Stmt*> getResult() {
@@ -334,12 +378,20 @@ public:
         Expr *callee = n->getCallee();
         ExprListTy tmp = L->getCandidateCalleeFunction(n, n == start_stmt);
         for (size_t i = 0; i < tmp.size(); i++) {
+            // Remove buggy code for gmp
+            std::string tmp_str=stmtToString(*ctxt,tmp[i]);
+            if (tmp_str.find("__gmpn_addmul_")!=std::string::npos || tmp_str.find("__gmpn_mul_")!=std::string::npos){
+                if (tmp_str.find("2")!=std::string::npos || tmp_str.find("3")!=std::string::npos||tmp_str.find("4")!=std::string::npos||tmp_str.find("5")!=std::string::npos||tmp_str.find("6")!=std::string::npos||tmp_str.find("7")!=std::string::npos||
+                                    tmp_str.find("8")!=std::string::npos||tmp_str.find("9")!=std::string::npos)
+                    continue;
+            }
             StmtReplacer R(ctxt, start_stmt);
             R.addRule(callee, tmp[i]);
             Stmt *S = R.getResult();
             res.push_back(S);
             resRExpr[S] = std::make_pair(callee, tmp[i]);
         }
+
         return true;
     }
 
@@ -356,6 +408,72 @@ public:
     }
 };
 
+class ExtFunctionCallVisitor : public RecursiveASTVisitor<ExtFunctionCallVisitor> {
+    LocalAnalyzer *L;
+    ASTContext *ctxt;
+    Stmt* start_stmt;
+    std::vector<Stmt*> res;
+    std::map<clang::Stmt*, std::pair<Expr*, Expr*> > resRExpr;
+public:
+    ExtFunctionCallVisitor(ASTContext *ctxt, LocalAnalyzer *L, Stmt* start_stmt):
+        L(L), ctxt(ctxt), start_stmt(start_stmt), res(), resRExpr() {
+            res.clear();
+            resRExpr.clear();
+        }
+
+    virtual bool VisitCallExpr(CallExpr *n) {
+        if (MsvExt.getValue()){
+            Expr *callee = n->getCallee();
+            ExprListTy tmp2=L->getCandidateCalleeExtFunction(n,n==start_stmt);
+            for (size_t i = 0; i < tmp2.size(); i++) {
+                std::string tmp_str=stmtToString(*ctxt,tmp2[i]);
+                if (tmp_str.find("__gmpn_addmul_")!=std::string::npos || tmp_str.find("__gmpn_mul_")!=std::string::npos){
+                    if (tmp_str.find("2")!=std::string::npos || tmp_str.find("3")!=std::string::npos||tmp_str.find("4")!=std::string::npos||tmp_str.find("5")!=std::string::npos||tmp_str.find("6")!=std::string::npos||tmp_str.find("7")!=std::string::npos||
+                                        tmp_str.find("8")!=std::string::npos||tmp_str.find("9")!=std::string::npos)
+                        continue;
+                }
+
+                if (ImplicitCastExpr::classof(tmp2[i])){
+                    ImplicitCastExpr *ice=llvm::dyn_cast<ImplicitCastExpr>(tmp2[i]);
+                    if (DeclRefExpr::classof(ice->getSubExpr())){
+                        DeclRefExpr *dre=llvm::dyn_cast<DeclRefExpr>(ice->getSubExpr());
+                        if (FunctionDecl::classof(dre->getDecl())){
+                            FunctionDecl *fd=llvm::dyn_cast<FunctionDecl>(dre->getDecl());
+                            QualType lastType=fd->getParamDecl(fd->getNumParams()-1)->getType();
+                            ExprListTy candParam=L->getCandidateParamExprs(lastType);
+
+                            Expr **tempParam=n->getArgs();
+                            std::vector<Expr *> curParam;
+                            for (size_t j=0;j<n->getNumArgs();j++)
+                                curParam.push_back(tempParam[j]);
+                            
+                            for (size_t j=0;j<candParam.size();j++){
+                                std::vector<Expr *> newParam(curParam);
+                                newParam.push_back(candParam[j]);
+                                CallExpr *newExpr=CallExpr::Create(*ctxt,tmp2[i],newParam,n->getType(),VK_RValue,SourceLocation());
+                                res.push_back(newExpr);
+                                resRExpr[newExpr]=std::make_pair(callee,tmp2[i]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    virtual std::vector<Stmt*> getResult() {
+        return res;
+    }
+
+    Expr* getOldRExpr(Stmt *S) {
+        return resRExpr[S].first;
+    }
+
+    Expr* getNewRExpr(Stmt *S) {
+        return resRExpr[S].second;
+    }
+};
 
 ASTLocTy newStatementLoc(const ASTLocTy &loc, Stmt *n) {
     ASTLocTy ret = loc;
@@ -417,10 +535,13 @@ Expr* createConditionVarNameList(ASTContext *ctxt,std::vector<std::string> names
 }
 
 
-Expr* createAbstractConditionExpr(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs) {
+Expr* createAbstractConditionExpr(SourceContextManager &M, ASTContext *ctxt,const ExprListTy &exprs,size_t lineNum) {
     std::vector<Expr*> tmp_argv;
     tmp_argv.clear();
     StringLiteral *str=StringLiteral::Create(*ctxt,"",StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
+    tmp_argv.push_back(str);
+
+    str=StringLiteral::Create(*ctxt,"L"+std::to_string(lineNum),StringLiteral::StringKind::Ascii,false,ctxt->getConstantArrayType(ctxt->CharTy, llvm::APInt(32, 0),nullptr,ArrayType::Normal,0),SourceLocation());
     tmp_argv.push_back(str);
     tmp_argv.push_back(getNewIntegerLiteral(ctxt, exprs.size()));
     for (size_t i = 0; i < exprs.size(); ++i) {
@@ -439,6 +560,37 @@ Expr* createAbstractConditionExpr(SourceContextManager &M, ASTContext *ctxt,cons
             ctxt->IntTy, VK_RValue, SourceLocation());
     return CE;
 }
+
+class StmtConditionAdder: public RecursiveASTVisitor<StmtConditionAdder>{
+    LocalAnalyzer *L;
+    ASTContext *ctxt;
+    Stmt* start_stmt;
+    Expr *condExpr;
+    bool is_finish=false;
+    std::vector<Expr *> finalStmt;
+public:
+    StmtConditionAdder(ASTContext *ctxt, LocalAnalyzer *L, Stmt* start_stmt,Expr *condExpr):
+        L(L), ctxt(ctxt), start_stmt(start_stmt), condExpr(condExpr),finalStmt(NULL) {}
+    bool VisitBinaryOperator(BinaryOperator *oper){
+        if (!is_finish && (oper->getOpcode()==BO_NE || oper->getOpcode()==BO_EQ || oper->getOpcode()==BO_GT || oper->getOpcode()==BO_LT ||oper->getOpcode()==BO_GE || oper->getOpcode()==BO_LE ||
+                    oper->getOpcode()==BO_And ||oper->getOpcode()==BO_Or)){
+            is_finish=true;
+            
+            // Generate && !
+            UnaryOperator *notOper=UnaryOperator::Create(*ctxt,condExpr,UnaryOperatorKind::UO_LNot,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),false,FPOptionsOverride());
+            BinaryOperator *and_oper=BinaryOperator::Create(*ctxt,oper,notOper,BO_And,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+            finalStmt.push_back(and_oper);
+            // Generate ||
+            BinaryOperator *or_oper=BinaryOperator::Create(*ctxt,oper,condExpr,BO_Or,ctxt->BoolTy,VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+            finalStmt.push_back(or_oper);
+        }
+        return true;
+    }
+
+    std::vector<Expr *> getResult(){
+        return finalStmt;
+    }
+};
 
 class CallVisitor : public RecursiveASTVisitor<CallVisitor> {
     bool found;
@@ -528,14 +680,15 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         Expr *ori_cond = n->getCond();
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
         //assert(ori_cond->getType()->isIntegerType());
         Expr *placeholder;
-        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
+        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
 
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars);
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(n->getBeginLoc()));
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ori_cond->getType(), VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
@@ -558,6 +711,37 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         rc.original=n;
         q.push_back(rc);
 
+        // Generate without paren if original condition is BinaryOperator and operator is OR
+        if (BinaryOperator::classof(ori_cond)){
+            BinaryOperator *BO1 = llvm::cast<BinaryOperator>(ori_cond);
+            if (BO1->getOpcode() == BO_LOr){
+                Expr *LHS = BO1->getLHS();
+                Expr *RHS = BO1->getRHS();
+                BinaryOperator *newFirst=BinaryOperator::Create(*ctxt,RHS, UO, BO_LAnd, ctxt->IntTy,
+                        VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), newFirst);
+                BinaryOperator *BO2 = BinaryOperator::Create(*ctxt,LHS, ParenE, BO1->getOpcode(), ctxt->IntTy,
+                        VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                IfStmt *S = duplicateIfStmt(ctxt, n, BO2);
+                RepairCandidate rc2;
+                rc2.actions.clear();
+                rc2.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, S));
+                if (!naive) {
+                    rc2.actions.push_back(RepairAction(newStatementLoc(loc, S), placeholder,
+                                candidateVars));
+                }
+
+                // FIXME: priority!
+                if (learning)
+                    rc2.score = getLocScore(n);
+                else
+                    rc2.score = 4*PRIORITY_ALPHA;
+                rc2.kind = RepairCandidate::MSVExtParenTightenConditionKind;
+                rc2.original=n;
+                q.push_back(rc2);
+
+            }
+        }
         if (processed.count(L->getCurrentFunction())==0) {
             genVarMutation(L->getCurrentFunction());
             processed.insert(L->getCurrentFunction());
@@ -569,15 +753,17 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         Expr *ori_cond = n->getCond();
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
         //assert(ori_cond->getType()->isIntegerType());
+        // if ((conds ...) || __is_neg)
         ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
         Expr* placeholder;
-        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
+        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
 
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars);
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(n->getBeginLoc()));
         BinaryOperator *BO = BinaryOperator::Create(*ctxt,ParenE,
                 placeholder, BO_LOr, ctxt->IntTy, VK_RValue,
                 OK_Ordinary, SourceLocation(), FPOptionsOverride());
@@ -609,6 +795,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             if (ori_BO->getOpcode() == BO_LAnd) {
                 Expr* LHS = ori_BO->getLHS();
                 Expr* RHS = ori_BO->getRHS();
+                // if ((cond || __is_neg) && cond2)
                 ParenExpr* ParenLHS = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), LHS);
                 BinaryOperator *BO_LHS = BinaryOperator::Create(*ctxt,ParenLHS,
                     placeholder, BO_LOr, ctxt->IntTy, VK_RValue,
@@ -622,7 +809,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, S));
                 if (!naive) {
-                    ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc());
+                    ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
                     rc.actions.push_back(RepairAction(newStatementLoc(loc, S), placeholder,
                             candidateVars));
                 }
@@ -634,7 +821,622 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 rc.kind = RepairCandidate::LoosenConditionKind;
                 rc.original=n;
                 q.push_back(rc);
+
+                // if (cond && (cond2 || __is_neg))
+                BinaryOperator *firstOper=BinaryOperator::Create(*ctxt,RHS, placeholder, BO_LOr, ctxt->IntTy,
+                        VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                ParenExpr *ParenE2 = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), firstOper);
+                BinaryOperator *BO2 = BinaryOperator::Create(*ctxt,LHS, ParenE2, BO_LAnd, ctxt->IntTy,
+                        VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                IfStmt *S2 = duplicateIfStmt(ctxt, n, BO2);
+
+                RepairCandidate rc2;
+                rc2.actions.clear();
+                rc2.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, S2));
+                if (!naive) {
+                    ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
+                    rc2.actions.push_back(RepairAction(newStatementLoc(loc, S2), placeholder,
+                            candidateVars));
+                }
+                // FIXME: priority!
+                if (learning)
+                    rc2.score = getLocScore(n);
+                else
+                    rc2.score = 4*PRIORITY_ALPHA;
+                rc2.kind = RepairCandidate::MSVExtParenLoosenConditionKind;
+                rc2.original=n;
+                q.push_back(rc2);
             }
+    }
+
+    void genCondition(IfStmt *n) {
+        if (in_yacc_func) return;
+        Expr *ori_cond = n->getCond();
+        ASTLocTy loc = getNowLocation(n);
+        LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
+        //assert(ori_cond->getType()->isIntegerType());
+        Expr *placeholder;
+        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
+
+        if (naive)
+            placeholder = getNewIntegerLiteral(ctxt, 1);
+        else
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(n->getBeginLoc()));
+        IfStmt *S = duplicateIfStmt(ctxt, n, placeholder);
+        RepairCandidate rc;
+        rc.actions.clear();
+        rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, S));
+        if (!naive) {
+            rc.actions.push_back(RepairAction(newStatementLoc(loc, S), placeholder,
+                        candidateVars));
+        }
+        // FIXME: priority!
+        if (learning)
+            rc.score = getLocScore(n);
+        else
+            rc.score = 4*PRIORITY_ALPHA;
+        rc.kind = RepairCandidate::MSVExtConditionKind;
+        rc.original=n;
+        q.push_back(rc);
+
+        if (processed.count(L->getCurrentFunction())==0) {
+            genVarMutation(L->getCurrentFunction());
+            processed.insert(L->getCurrentFunction());
+        }
+    }
+
+    void genLoopCondition(Stmt *stmt) {
+        if (!MsvExt.getValue()) return; // Only for MSV extentsion
+
+        if (WhileStmt::classof(stmt)) {
+            WhileStmt *whileStmt=llvm::dyn_cast<WhileStmt>(stmt);
+
+            Expr *ori_cond = whileStmt->getCond();
+            ASTLocTy loc = getNowLocation(whileStmt);
+            LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+            L->msvExt=false;
+            Expr *placeholder;
+            ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
+
+            if (naive)
+                placeholder = getNewIntegerLiteral(ctxt, 1);
+            else
+                placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(whileStmt->getBeginLoc()));
+
+            UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
+                    UO_LNot, ori_cond->getType(), VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+            ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
+
+            // Create && condition
+            BinaryOperator *BO = BinaryOperator::Create(*ctxt,ParenE, UO, BO_LAnd, ctxt->IntTy,
+                    VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+            WhileStmt *newWhile=WhileStmt::Create(*ctxt,nullptr,BO,whileStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+
+            RepairCandidate rc;
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newWhile));
+            if (!naive) {
+                rc.actions.push_back(RepairAction(newStatementLoc(loc, newWhile), placeholder,
+                            candidateVars));
+            }
+            // FIXME: priority!
+            if (learning)
+                rc.score = getLocScore(stmt);
+            else
+                rc.score = 4*PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtLoopConditionKind;
+            rc.original=stmt;
+            q.push_back(rc);
+
+            // Create || condition
+            BO = BinaryOperator::Create(*ctxt,ParenE, placeholder, BO_LOr, ctxt->IntTy,
+                    VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+            newWhile=WhileStmt::Create(*ctxt,nullptr,BO,whileStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+
+            RepairCandidate rc2;
+            rc2.actions.clear();
+            rc2.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newWhile));
+            if (!naive) {
+                rc2.actions.push_back(RepairAction(newStatementLoc(loc, newWhile), placeholder,
+                            candidateVars));
+            }
+            // FIXME: priority!
+            if (learning)
+                rc2.score = getLocScore(stmt);
+            else
+                rc2.score = 4*PRIORITY_ALPHA;
+            rc2.kind = RepairCandidate::MSVExtLoopConditionKind;
+            rc2.original=stmt;
+            q.push_back(rc2);
+
+            // Update paren for same as LoosenCondition
+            BinaryOperator *ori_BO = llvm::dyn_cast<BinaryOperator>(ori_cond);
+            if (ori_BO)
+                if (ori_BO->getOpcode() == BO_LAnd) {
+                    Expr* LHS = ori_BO->getLHS();
+                    Expr* RHS = ori_BO->getRHS();
+                    ParenExpr* ParenLHS = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), LHS);
+                    BinaryOperator *BO_LHS = BinaryOperator::Create(*ctxt,ParenLHS,
+                        placeholder, BO_LOr, ctxt->IntTy, VK_RValue,
+                        OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                    ParenE = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), BO_LHS);
+                    BO = BinaryOperator::Create(*ctxt,ParenE,
+                        RHS, BO_LAnd, ctxt->IntTy, VK_RValue,
+                        OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                    newWhile=WhileStmt::Create(*ctxt,nullptr,BO,whileStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+                    RepairCandidate rc3;
+                    rc3.actions.clear();
+                    rc3.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newWhile));
+                    if (!naive) {
+                        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
+                        rc3.actions.push_back(RepairAction(newStatementLoc(loc, newWhile), placeholder,
+                                candidateVars));
+                    }
+                    // FIXME: priority!
+                    if (learning)
+                        rc3.score = getLocScore(stmt);
+                    else
+                        rc3.score = 4*PRIORITY_ALPHA;
+                    rc3.kind = RepairCandidate::MSVExtLoopConditionKind;
+                    rc3.original=stmt;
+                    q.push_back(rc3);
+                }
+        }
+
+        // Replace condition in For loop
+        if (ForStmt::classof(stmt)) {
+            ForStmt *forStmt=llvm::dyn_cast<ForStmt>(stmt);
+
+            Expr *ori_cond = forStmt->getCond();
+            ASTLocTy loc = getNowLocation(forStmt);
+            LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+            L->msvExt=false;
+            Expr *placeholder;
+            ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
+
+            if (naive)
+                placeholder = getNewIntegerLiteral(ctxt, 1);
+            else
+                placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(forStmt->getBeginLoc()));
+
+            UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
+                    UO_LNot, ori_cond->getType(), VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+            ParenExpr *ParenE = new(*ctxt) ParenExpr(SourceLocation(), SourceLocation(), ori_cond);
+
+            // Create && condition
+            BinaryOperator *BO = BinaryOperator::Create(*ctxt,ParenE, UO, BO_LAnd, ctxt->IntTy,
+                    VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+            ForStmt *newFor=new(*ctxt) ForStmt(*ctxt,forStmt->getInit(),BO,forStmt->getConditionVariable(),forStmt->getInc(),forStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+
+            RepairCandidate rc;
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newFor));
+            if (!naive) {
+                rc.actions.push_back(RepairAction(newStatementLoc(loc, newFor), placeholder,
+                            candidateVars));
+            }
+            // FIXME: priority!
+            if (learning)
+                rc.score = getLocScore(stmt);
+            else
+                rc.score = 4*PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtLoopConditionKind;
+            rc.original=stmt;
+            q.push_back(rc);
+
+            // Create || condition
+            BO = BinaryOperator::Create(*ctxt,ParenE, placeholder, BO_LOr, ctxt->IntTy,
+                    VK_RValue, OK_Ordinary, SourceLocation(), FPOptionsOverride());
+            newFor=new(*ctxt) ForStmt(*ctxt,forStmt->getInit(),BO,forStmt->getConditionVariable(),forStmt->getInc(),forStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+
+            RepairCandidate rc2;
+            rc2.actions.clear();
+            rc2.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newFor));
+            if (!naive) {
+                rc2.actions.push_back(RepairAction(newStatementLoc(loc, newFor), placeholder,
+                            candidateVars));
+            }
+            // FIXME: priority!
+            if (learning)
+                rc2.score = getLocScore(stmt);
+            else
+                rc2.score = 4*PRIORITY_ALPHA;
+            rc2.kind = RepairCandidate::MSVExtLoopConditionKind;
+            rc2.original=stmt;
+            q.push_back(rc2);
+
+            // Update paren for same as LoosenCondition
+            BinaryOperator *ori_BO = llvm::dyn_cast<BinaryOperator>(ori_cond);
+            if (ori_BO)
+                if (ori_BO->getOpcode() == BO_LAnd) {
+                    Expr* LHS = ori_BO->getLHS();
+                    Expr* RHS = ori_BO->getRHS();
+                    ParenExpr* ParenLHS = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), LHS);
+                    BinaryOperator *BO_LHS = BinaryOperator::Create(*ctxt,ParenLHS,
+                        placeholder, BO_LOr, ctxt->IntTy, VK_RValue,
+                        OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                    ParenE = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), BO_LHS);
+                    BO = BinaryOperator::Create(*ctxt,ParenE,
+                        RHS, BO_LAnd, ctxt->IntTy, VK_RValue,
+                        OK_Ordinary, SourceLocation(), FPOptionsOverride());
+                    newFor=new(*ctxt) ForStmt(*ctxt,forStmt->getInit(),BO,forStmt->getConditionVariable(),forStmt->getInc(),forStmt->getBody(),SourceLocation(),SourceLocation(),SourceLocation());
+                    RepairCandidate rc3;
+                    rc3.actions.clear();
+                    rc3.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newFor));
+                    if (!naive) {
+                        ExprListTy candidateVars = L->getCondCandidateVars(ori_cond->getEndLoc(),MsvExt.getValue());
+                        rc3.actions.push_back(RepairAction(newStatementLoc(loc, newFor), placeholder,
+                                candidateVars));
+                    }
+                    // FIXME: priority!
+                    if (learning)
+                        rc3.score = getLocScore(stmt);
+                    else
+                        rc3.score = 4*PRIORITY_ALPHA;
+                    rc3.kind = RepairCandidate::MSVExtLoopConditionKind;
+                    rc3.original=stmt;
+                    q.push_back(rc3);
+                }
+        }
+
+    }
+
+    void genRemoveCondition(IfStmt *stmt){
+        Expr *rootCond=stmt->getCond();
+        if (BinaryOperator::classof(rootCond)){
+            ASTLocTy loc = getNowLocation(stmt);
+            BinaryOperator *root=llvm::dyn_cast<BinaryOperator>(rootCond);
+            std::vector<BinaryOperator *> condStack;
+            condStack.clear();
+            BinaryOperator *current=root;
+            std::vector<IfStmt *> result;
+
+            // Get all logical operations
+            while (current->isLogicalOp()){
+                condStack.push_back(current);
+                Expr *LHS=current->getLHS();
+                if (BinaryOperator::classof(LHS)){
+                    current=llvm::dyn_cast<BinaryOperator>(LHS);
+                }
+                else break;
+            }
+
+            // Give up if there's no && or || operation
+            if (condStack.size()==0) return;
+
+            // Now remove each conditions
+            for (size_t i=1;i<condStack.size();i++){
+                BinaryOperator *cond=condStack[i];
+
+                // Remove RHS first
+                Expr *LHS=cond->getLHS();
+                BinaryOperator* parent=condStack[i-1];
+                BinaryOperator *newOper=BinaryOperator::Create(*ctxt,LHS,parent->getRHS(),
+                        parent->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                        SourceLocation(),FPOptionsOverride());
+                for (long j=i-2;j>=0;j--){
+                    newOper=BinaryOperator::Create(*ctxt,newOper,condStack[j]->getRHS(),
+                            condStack[j]->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                            SourceLocation(),FPOptionsOverride());
+                }
+                // printf("%s\n",stmtToString(*ctxt,newOper).c_str());
+                IfStmt *newIf=duplicateIfStmt(ctxt,stmt,newOper);
+                result.push_back(newIf);
+            }
+
+            // Remove rhs of root
+            // printf("%s\n",stmtToString(*ctxt,condStack[0]->getLHS()).c_str());
+            IfStmt *newIf=duplicateIfStmt(ctxt,stmt,condStack[0]->getLHS());
+            result.push_back(newIf);
+
+            // Remove LHS of last condition
+            if (condStack.size()>=2){
+                BinaryOperator *cond=condStack[condStack.size()-1];
+
+                Expr *RHS=cond->getRHS();
+                BinaryOperator* parent=condStack[condStack.size()-2];
+                BinaryOperator *newOper=BinaryOperator::Create(*ctxt,RHS,parent->getRHS(),
+                        parent->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                        SourceLocation(),FPOptionsOverride());
+                for (long j=condStack.size()-3;j>=0;j--){
+                    newOper=BinaryOperator::Create(*ctxt,newOper,condStack[j]->getRHS(),
+                            condStack[j]->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                            SourceLocation(),FPOptionsOverride());
+                }
+                newIf=duplicateIfStmt(ctxt,stmt,newOper);
+                result.push_back(newIf);
+            }
+
+            for (size_t i=0;i<result.size();i++){
+                RepairCandidate rc;
+                rc.actions.clear();
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, result[i]));
+                if (learning)
+                    rc.score = getLocScore(stmt);
+                else
+                    rc.score = 4*PRIORITY_ALPHA;
+                rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
+                rc.original=stmt;
+                q.push_back(rc);
+
+            }
+
+            if (ParenExpr::classof(root->getLHS())){
+                ParenExpr *lhsParen=llvm::dyn_cast<ParenExpr>(root->getLHS());
+                if (BinaryOperator::classof(lhsParen->getSubExpr())){
+                    BinaryOperator *lhsBin=llvm::dyn_cast<BinaryOperator>(lhsParen->getSubExpr());
+                    if (lhsBin->isLogicalOp()){
+                        BinaryOperator *newOper=BinaryOperator::Create(*ctxt,lhsBin->getLHS(),
+                                root->getRHS(),root->getOpcode(),ctxt->IntTy,VK_RValue,OK_Ordinary,
+                                SourceLocation(),FPOptionsOverride());
+
+                        IfStmt *newIf=duplicateIfStmt(ctxt,stmt,newOper);
+                        RepairCandidate rc;
+                        rc.actions.clear();
+                        rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newIf));
+                        if (learning)
+                            rc.score = getLocScore(stmt);
+                        else
+                            rc.score = 4*PRIORITY_ALPHA;
+                        rc.kind = RepairCandidate::MSVExtRemoveConditionKind;
+                        rc.original=stmt;
+                        q.push_back(rc);
+                    }
+                }
+            }
+        }
+    }
+
+    void genReturnCondition(ReturnStmt *stmt){
+        Expr *body=stmt->getRetValue();
+        if (body != NULL && BinaryOperator::classof(body)){
+            BinaryOperator *oper=llvm::dyn_cast<BinaryOperator>(body);
+            if (oper->getOpcode()==BO_NE || oper->getOpcode()==BO_EQ || oper->getOpcode()==BO_GT || oper->getOpcode()==BO_LT ||oper->getOpcode()==BO_GE || oper->getOpcode()==BO_LE ||
+                            oper->getOpcode()==BO_And ||oper->getOpcode()==BO_Or){
+                ASTLocTy loc = getNowLocation(stmt);
+                LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+                L->msvExt=false;
+                Expr *placeholder;
+                ExprListTy candidateVars = L->getCondCandidateVars(stmt->getEndLoc(),MsvExt.getValue());
+
+                if (naive)
+                    placeholder = getNewIntegerLiteral(ctxt, 1);
+                else
+                    placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(stmt->getBeginLoc()));
+                
+                StmtConditionAdder adder(ctxt,L,oper,placeholder);
+                adder.TraverseBinaryOperator(oper);
+                std::vector<Expr *> result=adder.getResult();
+
+                for (size_t i=0;i<result.size();i++){
+                    ReturnStmt *newReturn=ReturnStmt::Create(*ctxt,SourceLocation(),result[i],NULL);
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newReturn));
+                    if (!naive) {
+                        rc.actions.push_back(RepairAction(newStatementLoc(loc, newReturn), placeholder,
+                                candidateVars));
+                    }
+                    if (learning)
+                        rc.score = getLocScore(stmt);
+                    else
+                        rc.score = 4*PRIORITY_ALPHA;
+                    rc.kind = RepairCandidate::MSVExtReturnConditionKind;
+                    rc.original=stmt;
+                    q.push_back(rc);
+
+                }
+            }
+        }
+    }
+
+    void genAssignCondition(BinaryOperator *stmt){
+        if (stmt->getOpcode()!=BO_Assign) return;
+        Expr *body=stmt->getRHS();
+        if (body != NULL && BinaryOperator::classof(body)){
+            BinaryOperator *oper=llvm::dyn_cast<BinaryOperator>(body);
+            if (oper->getOpcode()==BO_NE || oper->getOpcode()==BO_EQ || oper->getOpcode()==BO_GT || oper->getOpcode()==BO_LT ||oper->getOpcode()==BO_GE || oper->getOpcode()==BO_LE ||
+                            oper->getOpcode()==BO_And ||oper->getOpcode()==BO_Or){
+                ASTLocTy loc = getNowLocation(stmt);
+                LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+                L->msvExt=false;
+                Expr *placeholder;
+                ExprListTy candidateVars = L->getCondCandidateVars(stmt->getEndLoc(),MsvExt.getValue());
+
+                if (naive)
+                    placeholder = getNewIntegerLiteral(ctxt, 1);
+                else
+                    placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(stmt->getBeginLoc()));
+                
+                StmtConditionAdder adder(ctxt,L,oper,placeholder);
+                adder.TraverseBinaryOperator(oper);
+                std::vector<Expr *> result=adder.getResult();
+
+                for (size_t i=0;i<result.size();i++){
+                    BinaryOperator *newAssign=BinaryOperator::Create(*ctxt,stmt->getLHS(),result[i],BO_Assign,body->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newAssign));
+                    if (!naive) {
+                        rc.actions.push_back(RepairAction(newStatementLoc(loc, newAssign), placeholder,
+                                candidateVars));
+                    }
+                    if (learning)
+                        rc.score = getLocScore(stmt);
+                    else
+                        rc.score = 4*PRIORITY_ALPHA;
+                    rc.kind = RepairCandidate::MSVExtAssignConditionKind;
+                    rc.original=stmt;
+                    q.push_back(rc);
+
+                }
+            }
+
+            if (oper->getOpcode()==BO_LAnd || oper->getOpcode()==BO_LOr || oper->getOpcode()==BO_And || oper->getOpcode()==BO_Or){
+                // Remove LHS first
+                ASTLocTy loc = getNowLocation(stmt);
+
+                RepairCandidate rc;
+                rc.actions.clear();
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, oper->getRHS()));
+                if (learning)
+                    rc.score = getLocScore(stmt);
+                else
+                    rc.score = 4*PRIORITY_ALPHA;
+                rc.kind = RepairCandidate::MSVExtRemoveAssignConditionKind;
+                rc.original=stmt;
+                q.push_back(rc);
+
+                // Remove RHS next
+                RepairCandidate rc2;
+                rc2.actions.clear();
+                rc2.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, oper->getLHS()));
+                if (learning)
+                    rc2.score = getLocScore(stmt);
+                else
+                    rc2.score = 4*PRIORITY_ALPHA;
+                rc2.kind = RepairCandidate::MSVExtRemoveAssignConditionKind;
+                rc2.original=stmt;
+                q.push_back(rc2);
+            }
+        }
+    }
+
+    /*
+        Mutate assignment operator to another.
+        (=, +=, -=, *=, /=)
+    */
+    void genAssignOperator(BinaryOperator *oper){
+        BinaryOperator *newOper;
+        ASTLocTy loc = getNowLocation(oper);
+        if (oper->getOpcode()!=BO_Assign){
+            newOper=BinaryOperator::Create(*ctxt,oper->getLHS(),oper->getRHS(),BO_Assign,oper->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+            RepairCandidate rc;
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newOper));
+            if (learning)
+                rc.score = getLocScore(oper);
+            else
+                rc.score = 4*PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtReplaceAssignOperatorKind;
+            rc.original=oper;
+            q.push_back(rc);
+        }
+
+        if (oper->getOpcode()!=BO_AddAssign){
+            newOper=CompoundAssignOperator::Create(*ctxt,oper->getLHS(),oper->getRHS(),BO_AddAssign,oper->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+            RepairCandidate rc;
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newOper));
+            if (learning)
+                rc.score = getLocScore(oper);
+            else
+                rc.score = 4*PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtReplaceAssignOperatorKind;
+            rc.original=oper;
+            q.push_back(rc);
+        }
+
+        if (oper->getOpcode()!=BO_SubAssign){
+            newOper=CompoundAssignOperator::Create(*ctxt,oper->getLHS(),oper->getRHS(),BO_SubAssign,oper->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+            RepairCandidate rc;
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newOper));
+            if (learning)
+                rc.score = getLocScore(oper);
+            else
+                rc.score = 4*PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtReplaceAssignOperatorKind;
+            rc.original=oper;
+            q.push_back(rc);
+        }
+
+        if (oper->getOpcode()!=BO_MulAssign){
+            newOper=CompoundAssignOperator::Create(*ctxt,oper->getLHS(),oper->getRHS(),BO_MulAssign,oper->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+            RepairCandidate rc;
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newOper));
+            if (learning)
+                rc.score = getLocScore(oper);
+            else
+                rc.score = 4*PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtReplaceAssignOperatorKind;
+            rc.original=oper;
+            q.push_back(rc);
+        }
+
+        if (oper->getOpcode()!=BO_DivAssign){
+            newOper=CompoundAssignOperator::Create(*ctxt,oper->getLHS(),oper->getRHS(),BO_DivAssign,oper->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+            RepairCandidate rc;
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newOper));
+            if (learning)
+                rc.score = getLocScore(oper);
+            else
+                rc.score = 4*PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtReplaceAssignOperatorKind;
+            rc.original=oper;
+            q.push_back(rc);
+        }
+    }
+
+    // TODO: Add this template call to AST
+    void genArrayAccess(ArraySubscriptExpr *expr){
+        ASTLocTy loc = getNowLocation(expr);
+        LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        ExprListTy candidates=L->getCandidateExprsInType(expr->getRHS()->getType());
+
+        for (ExprListTy::iterator it=candidates.begin(); it!=candidates.end(); it++){
+            ArraySubscriptExpr *newExpr = new(*ctxt) ArraySubscriptExpr(expr->getLHS(), *it, expr->getType(),expr->getValueKind(),expr->getObjectKind(), expr->getExprLoc());
+            RepairCandidate rc;
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newExpr));
+            if (learning)
+                rc.score = getLocScore(expr);
+            else
+                rc.score = 4*PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtReplaceArrayIndexKind;
+            rc.original=expr;
+            q.push_back(rc);
+        }
+    }
+
+    void genNewParen(IfStmt *stmt){
+        Expr *cond=stmt->getCond();
+        if (BinaryOperator::classof(cond)){
+            BinaryOperator *oper=llvm::dyn_cast<BinaryOperator>(cond);
+            BinaryOperator::Opcode oper1=oper->getOpcode();
+            if (ParenExpr::classof(oper->getRHS())){
+                ParenExpr *rhs=llvm::dyn_cast<ParenExpr>(oper->getRHS());
+                Expr *rhsExpr=rhs->getSubExpr();
+                if (BinaryOperator::classof(rhsExpr)){
+                    BinaryOperator *rhsOper=llvm::dyn_cast<BinaryOperator>(rhsExpr);
+                    if (rhsOper->isLogicalOp()){
+                        Expr *lhs2=rhsOper->getLHS();
+                        Expr *rhs2=rhsOper->getRHS();
+                        BinaryOperator::Opcode oper2=rhsOper->getOpcode();
+
+                        BinaryOperator *newOper1=BinaryOperator::Create(*ctxt,oper->getLHS(),lhs2,oper1,oper->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                        ParenExpr *newParen=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),newOper1);
+                        BinaryOperator *newOper2=BinaryOperator::Create(*ctxt,newParen,rhs2,oper2,rhsOper->getType(),VK_RValue,OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                        IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,newOper2);
+
+                        ASTLocTy loc = getNowLocation(stmt);
+                        RepairCandidate rc;
+                        rc.actions.clear();
+                        rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
+                        if (learning)
+                            rc.score = getLocScore(stmt);
+                        else
+                            rc.score = getPriority(stmt) + PRIORITY_ALPHA;
+                        rc.kind = RepairCandidate::MSVExtReplaceParenInConditionKind;
+                        rc.original=stmt;
+                        q.push_back(rc);
+                    }
+                }
+            }
+        }
     }
 
     void genAddMemset(Stmt* n, bool is_first) {
@@ -643,6 +1445,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (!hinfo.sys_memset) return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=MsvExt.getValue();
         ExprListTy exprs = L->getCandidatePointerForMemset(0);
         for (size_t i = 0; i < exprs.size(); i++) {
             // create sizeof() part
@@ -677,15 +1480,64 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    void genAddMemsetBack(Stmt* n, bool is_first) {
+        if (in_yacc_func) return;
+        if (naive) return;
+        if (!hinfo.sys_memset) return;
+        ASTLocTy loc = getNowLocation(n);
+        LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=MsvExt.getValue();
+        ExprListTy exprs = L->getCandidatePointerForMemset(0);
+        for (size_t i = 0; i < exprs.size(); i++) {
+            // create sizeof() part
+            ParenExpr *ParenE1 = new (*ctxt) ParenExpr(SourceLocation(),
+                    SourceLocation(), exprs[i]);
+            UnaryOperator *DerefUO = 
+                UnaryOperator::Create(*ctxt,ParenE1, UO_Deref, exprs[i]->getType()->getPointeeType(),
+                        VK_LValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
+            ParenExpr *ParenE2 = new (*ctxt) ParenExpr(SourceLocation(), SourceLocation(), DerefUO);
+            UnaryExprOrTypeTraitExpr *SizeofE = new (*ctxt) UnaryExprOrTypeTraitExpr(
+                UETT_SizeOf, ParenE2, ctxt->UnsignedLongTy, SourceLocation(), SourceLocation());
+            std::vector<Expr*> tmp_argv;
+            tmp_argv.clear();
+            tmp_argv.push_back(exprs[i]);
+            tmp_argv.push_back(getNewIntegerLiteral(ctxt, 0));
+            tmp_argv.push_back(SizeofE);
+            CallExpr *CE = CallExpr::Create(*ctxt, hinfo.sys_memset,
+                    tmp_argv, ctxt->VoidPtrTy, VK_RValue, SourceLocation());
+            
+            std::vector<Stmt *> stmts;
+            stmts.clear();
+            stmts.push_back(n);
+            stmts.push_back(CE);
+            CompoundStmt *newComp=CompoundStmt::Create(*ctxt, stmts,SourceLocation(), SourceLocation());
+            if (L->isValidStmt(CE, NULL)) {
+                RepairCandidate rc;
+                rc.actions.clear();
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newComp));
+                if (learning)
+                    rc.score = getLocScore(n);
+                else
+                    rc.score = getPriority(n) + PRIORITY_ALPHA;
+                rc.kind = RepairCandidate::MSVExtAddInitBackKind;
+                rc.original=n;
+                rc.is_first = is_first;
+                q.push_back(rc);
+            }
+        }
+    }
+
+
     void genReplaceStmt(Stmt* n, bool is_first) {
         if (in_yacc_func) return;
         if (naive) return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
         // OK, we limit replacement to expr only statement to avoid stupid redundent
         // changes to an compound statement/if statement
-        if (llvm::isa<Expr>(n)) {
-            AtomReplaceVisitor V(ctxt, L, n, ReplaceExt.getValue());
+        if (llvm::isa<Expr>(n) && !NoVar.getValue()) {
+            AtomReplaceVisitor V(ctxt, L, M,n, ReplaceExt.getValue());
             V.TraverseStmt(n);
             std::set<Stmt*> res = V.getResult();
             for (std::set<Stmt*>::iterator it = res.begin(); it != res.end(); ++it) {
@@ -734,12 +1586,16 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             }
         }
 
-        if (llvm::isa<Expr>(n)) {
+        if (llvm::isa<Expr>(n) && !NoFunc.getValue()) {
             CallExprReplaceVisitor V2(ctxt, L, n);
             V2.TraverseStmt(n);
             std::vector<Stmt*> res2 = V2.getResult();
             for (std::vector<Stmt*>::iterator it = res2.begin();
                     it != res2.end(); ++ it) {
+                if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                    continue;
+                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
+                    continue;
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, *it));
@@ -747,7 +1603,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                     rc.score = getLocScore(n);
                 else
                     rc.score = getPriority(n) + PRIORITY_ALPHA;
-                rc.kind = RepairCandidate::AddAndReplaceKind;
+                rc.kind = RepairCandidate::ReplaceFunctionKind;
                 rc.original=n;
                 rc.is_first = is_first;
                 rc.oldRExpr = V2.getOldRExpr(*it);
@@ -756,9 +1612,91 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             }
         }
 
+        if (llvm::isa<Expr>(n) && !NoFunc.getValue() && MsvExt.getValue()) {
+            ExtFunctionCallVisitor V2(ctxt, L, n);
+            V2.TraverseStmt(n);
+            std::vector<Stmt*> res2 = V2.getResult();
+            for (std::vector<Stmt*>::iterator it = res2.begin();
+                    it != res2.end(); ++ it) {
+                if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                    continue;
+                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
+                    continue;
+                RepairCandidate rc;
+                rc.actions.clear();
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, *it));
+                if (learning)
+                    rc.score = getLocScore(n);
+                else
+                    rc.score = getPriority(n) + PRIORITY_ALPHA;
+                rc.kind = RepairCandidate::MSVExtFunctionReplaceKind;
+                rc.original=n;
+                rc.is_first = is_first;
+                rc.oldRExpr = V2.getOldRExpr(*it);
+                rc.newRExpr = V2.getNewRExpr(*it);
+                q.push_back(rc);
+            }
+        }
+
+
         if (processed.count(L->getCurrentFunction())==0) {
             genVarMutation(L->getCurrentFunction());
             processed.insert(L->getCurrentFunction());
+        }
+    }
+
+    void genReplceFunctionInCondition(IfStmt *stmt){
+        if (in_yacc_func) return;
+        if (MsvExt.getValue() && !NoFunc.getValue()) {
+            ASTLocTy loc = getNowLocation(stmt);
+            LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+            L->msvExt=false;
+            Expr *cond = stmt->getCond();
+
+            CallExprReplaceVisitor visitor(ctxt, L, cond);
+            visitor.TraverseStmt(cond);
+            std::vector<Stmt*> res2 = visitor.getResult();
+            for (std::vector<Stmt*>::iterator it = res2.begin();
+                    it != res2.end(); ++ it) {
+                if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                    continue;
+                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
+                    continue;
+                RepairCandidate rc;
+                rc.actions.clear();
+
+                IfStmt *newIf=IfStmt::Create(*ctxt,SourceLocation(),stmt->isConstexpr(),stmt->getInit(),stmt->getConditionVariable(),(Expr *)*it,stmt->getThen(),SourceLocation(),stmt->getElse());
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newIf));
+                if (learning)
+                    rc.score = getLocScore(stmt);
+                else
+                    rc.score = getPriority(stmt) + PRIORITY_ALPHA;
+                rc.kind = RepairCandidate::MSVExtReplaceFunctionInConditionKind;
+                rc.original=stmt;
+                rc.oldRExpr = visitor.getOldRExpr(*it);
+                rc.newRExpr = visitor.getNewRExpr(*it);
+                q.push_back(rc);
+            }
+        }
+    }
+
+    void genRemoveStatement(Stmt *n){
+        if (in_yacc_func) return;
+        if (naive) return;
+        if (MsvExt.getValue() && llvm::isa<Expr>(n)){
+            ASTLocTy loc = getNowLocation(n);
+            CompoundStmt *newStmt=CompoundStmt::Create(*ctxt,std::vector<Stmt*>(),SourceLocation(),SourceLocation());
+            RepairCandidate rc;
+            rc.actions.clear();
+
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt));
+            if (learning)
+                rc.score = getLocScore(n);
+            else
+                rc.score = getPriority(n) + PRIORITY_ALPHA;
+            rc.kind = RepairCandidate::MSVExtRemoveStmtKind;
+            rc.original=n;
+            q.push_back(rc);
         }
     }
 
@@ -768,11 +1706,12 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (naive) return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=MsvExt.getValue();
         std::set<Expr*> exprs = L->getGlobalCandidateExprs();
         std::map<std::string, RepairCandidate> tmp_map;
         tmp_map.clear();
         for (std::set<Expr*>::iterator it = exprs.begin(); it != exprs.end(); ++it) {
-            AtomReplaceVisitor V(ctxt, L, *it, false);
+            AtomReplaceVisitor V(ctxt, L, M,*it, false);
             V.TraverseStmt(*it);
             std::set<Stmt*> stmts = V.getResult();
             Expr *subExpr = NULL;
@@ -785,6 +1724,10 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             for (std::set<Stmt*>::iterator it2 = stmts.begin(); it2 != stmts.end(); ++it2) {
                 bool valid_after_replace = L->isValidStmt(*it2, NULL);
                 if (!valid_after_replace) continue;
+                if (stmtToString(*ctxt,*it2).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                    continue;
+                if (stmtToString(*ctxt,*it2).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
+                    continue;
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc,
@@ -800,12 +1743,16 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                             rc.score += PRIORITY_ALPHA/2;
                     }
                 }
-                rc.kind = RepairCandidate::AddAndReplaceKind;
+                rc.kind = RepairCandidate::AddStmtAndReplaceAtomKind;
                 rc.original=n;
                 rc.is_first = is_first;
                 tmp_map[stmtToString(*ctxt, *it2)] = rc;
             }
             if (valid) {
+                if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                    continue;
+                if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
+                    continue;
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc,
@@ -821,41 +1768,45 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                             rc.score += PRIORITY_ALPHA/2;
                     }
                 }
-                rc.kind = RepairCandidate::AddAndReplaceKind;
+                rc.kind = RepairCandidate::AddStmtKind;
                 rc.original=n;
                 rc.is_first = is_first;
                 tmp_map[stmtToString(*ctxt, *it)] = rc;
             }
         }
 
-#ifndef DISABLE_IFSTMT_INSERT
-        // insert if_stmt without atom replace if possible
-        std::set<Stmt*> stmts = L->getGlobalCandidateIfStmts();
-        for (std::set<Stmt*>::iterator it = stmts.begin(); it != stmts.end(); ++it) {
-            bool valid = L->isValidStmt(*it, NULL);
-            if (valid) {
-                RepairCandidate rc;
-                rc.actions.clear();
-                rc.actions.push_back(RepairAction(loc,
-                            RepairAction::InsertMutationKind, *it));
-                if (learning) {
-                    rc.score = getLocScore(n);
-                }
-                else {
-                    rc.score = getPriority(n);
-                    if (is_first) {
-                        rc.score += PRIORITY_ALPHA;
-                        if (is_func_block)
-                            rc.score += PRIORITY_ALPHA/2;
+        if (MsvExt.getValue()){
+            // insert if_stmt without atom replace if possible
+            std::set<Stmt*> stmts = L->getGlobalCandidateIfStmts();
+            for (std::set<Stmt*>::iterator it = stmts.begin(); it != stmts.end(); ++it) {
+                bool valid = L->isValidStmt(*it, NULL);
+                if (valid) {
+                    if (stmtToString(*ctxt,*it).find("scanf")!=std::string::npos) // Exclude standard input functions (scanf, ...)
+                        continue;
+                    if (stmtToString(*ctxt,*it).find("xmlXPathInit")!=std::string::npos ||stmtToString(*ctxt,*it).find("xmlNsErr")!=std::string::npos) // Exclude terrible function call for libxml2
+                        continue;
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc,
+                                RepairAction::InsertMutationKind, *it));
+                    if (learning) {
+                        rc.score = getLocScore(n);
                     }
+                    else {
+                        rc.score = getPriority(n);
+                        if (is_first) {
+                            rc.score += PRIORITY_ALPHA;
+                            if (is_func_block)
+                                rc.score += PRIORITY_ALPHA/2;
+                        }
+                    }
+                    rc.kind = RepairCandidate::MSVExtAddIfStmtKind;
+                    rc.original=n;
+                    rc.is_first = is_first;
+                    tmp_map[stmtToString(*ctxt, *it)] = rc;
                 }
-                rc.kind = RepairCandidate::AddAndReplaceKind;
-                rc.original=n;
-                rc.is_first = is_first;
-                tmp_map[stmtToString(*ctxt, *it)] = rc;
             }
         }
-#endif
         // This tmp_map is used to eliminate identical candidate generated
         for (std::map<std::string, RepairCandidate>::iterator it = tmp_map.begin();
                 it != tmp_map.end(); ++it) {
@@ -876,8 +1827,9 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
         Expr* placeholder;
-        ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+        ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
         std::map<Expr *,unsigned long> args;
         for (size_t i=0;i<candidateVars.size();i++){
             // args is sizeof candidateVars, used for memcpy
@@ -886,7 +1838,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars);
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(n->getBeginLoc()));
         //clang::CallExpr *is_neg_call = L->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
         UnaryOperator *UO = UnaryOperator::Create(*ctxt,placeholder,
                 UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation(),false,FPOptionsOverride());
@@ -927,7 +1879,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 RepairCandidate rc;
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, new_IF));
-                ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+                ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
                 rc.actions.push_back(RepairAction(newStatementLoc(loc, new_IF), placeholder,
                             candidateVars));
                 // FIXME: priority!
@@ -980,13 +1932,14 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             return;
         ASTLocTy loc = getNowLocation(n);
         LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=MsvExt.getValue();
         Expr* placeholder;
-        ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+        ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
 
         if (naive)
             placeholder = getNewIntegerLiteral(ctxt, 1);
         else
-            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars);
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(n->getBeginLoc()));
         
         //clang::CallExpr *is_neg_call = G->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
         //UnaryOperator *UO = new(*ctxt) UnaryOperator(hinfo.is_neg, UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation());
@@ -1029,7 +1982,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 rc.actions.clear();
                 rc.actions.push_back(RepairAction(loc, RepairAction::InsertMutationKind, IFS));
                 if (!naive) {
-                    ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+                    ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
                     rc.actions.push_back(RepairAction(newStatementLoc(loc, IFS), placeholder,
                             candidateVars));
                 }
@@ -1060,7 +2013,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             IfStmt *IFS = IfStmt::Create(*ctxt, SourceLocation(), false,nullptr,0, placeholder, BS);
             rc.actions.clear();
             rc.actions.push_back(RepairAction(loc, RepairAction::InsertMutationKind, IFS));
-            ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+            ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
             rc.actions.push_back(RepairAction(newStatementLoc(loc, IFS), placeholder,
                         candidateVars));
             //FIXME: score
@@ -1092,7 +2045,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
             IfStmt *IFS =IfStmt::Create(*ctxt, SourceLocation(), false,nullptr,0, placeholder, GS);
             rc.actions.clear();
             rc.actions.push_back(RepairAction(loc, RepairAction::InsertMutationKind, IFS));
-            ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc());
+            ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
             rc.actions.push_back(RepairAction(newStatementLoc(loc, IFS), placeholder,
                         candidateVars));
             if (learning) {
@@ -1119,7 +2072,318 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
         }
     }
 
+    void genAddIfExitBack(Stmt* n, bool is_first, bool is_func_block) {
+        if (in_yacc_func)
+            return;
+        ASTLocTy loc = getNowLocation(n);
+        LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=MsvExt.getValue();
+        Expr* placeholder;
+        ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
+
+        if (naive)
+            placeholder = getNewIntegerLiteral(ctxt, 1);
+        else
+            placeholder = createAbstractConditionExpr(M,ctxt,candidateVars,ctxt->getSourceManager().getExpansionLineNumber(n->getBeginLoc()));
+        
+        //clang::CallExpr *is_neg_call = G->getIsNegCall(hinfo.is_neg, getExpLineNumber(*ctxt, n));
+        //UnaryOperator *UO = new(*ctxt) UnaryOperator(hinfo.is_neg, UO_LNot, ctxt->IntTy, VK_RValue, OK_Ordinary, SourceLocation());
+        FunctionDecl* curFD = L->getCurrentFunction();
+        RepairCandidate rc;
+        if (curFD->getCallResultType() == ctxt->VoidTy ) {
+            ReturnStmt *RS = ReturnStmt::Create(*ctxt,SourceLocation(), NULL, 0);
+            IfStmt *IFS = IfStmt::Create(*ctxt, SourceLocation(), false,nullptr,0, placeholder, RS);
+            std::vector<Stmt *> stmts;
+            stmts.push_back(n);
+            stmts.push_back(IFS);
+            CompoundStmt *CS = CompoundStmt::Create(*ctxt, stmts,SourceLocation(),SourceLocation());
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, CS));
+            if (!naive) {
+                rc.actions.push_back(RepairAction(newStatementLoc(loc, IFS), placeholder,
+                        candidateVars));
+            }
+            if (learning)
+                rc.score = getLocScore(n);
+            else {
+                rc.score = getPriority(n) + PRIORITY_ALPHA;
+                if (llvm::isa<LabelStmt>(n))
+                    rc.score += PRIORITY_ALPHA/2;
+               /* if (llvm::isa<IfStmt>(n))
+                    rc.score -= PRIORITY_ALPHA/4;*/
+                if (is_first) {
+                    rc.score += PRIORITY_ALPHA;
+                    if (is_func_block)
+                        rc.score += PRIORITY_ALPHA/2;
+                }
+            }
+            rc.kind = RepairCandidate::MSVExtIfExitBackKind;
+            rc.original=n;
+            rc.is_first = is_first;
+            q.push_back(rc);
+        }
+        else {
+            ExprListTy exprs = L->getCandidateReturnExpr();
+            for (size_t i = 0; i < exprs.size(); i++) {
+                Expr* placeholder2 = exprs[i];
+                ReturnStmt *RS = ReturnStmt::Create(*ctxt,SourceLocation(), placeholder2, 0);
+                IfStmt *IFS = IfStmt::Create(*ctxt, SourceLocation(),false,nullptr, 0, placeholder, RS);
+                std::vector<Stmt *> stmts;
+                stmts.push_back(n);
+                stmts.push_back(IFS);
+                CompoundStmt *CS = CompoundStmt::Create(*ctxt, stmts,SourceLocation(),SourceLocation());
+                rc.actions.clear();
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, CS));
+                if (!naive) {
+                    ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
+                    rc.actions.push_back(RepairAction(newStatementLoc(loc, IFS), placeholder,
+                            candidateVars));
+                }
+                //FIXME: candidate
+                if (learning)
+                    rc.score = getLocScore(n);
+                else {
+                    rc.score = getPriority(n) + PRIORITY_ALPHA;
+                    if (llvm::isa<LabelStmt>(n))
+                        rc.score += PRIORITY_ALPHA/2;
+                    /*if (llvm::isa<IfStmt>(n))
+                        rc.score -= PRIORITY_ALPHA/4;*/
+                    if (is_first) {
+                        rc.score += PRIORITY_ALPHA;
+                        if (is_func_block)
+                            rc.score += PRIORITY_ALPHA/2;
+                    }
+                }
+                rc.kind = RepairCandidate::MSVExtIfExitBackKind;
+                rc.original=n;
+                rc.is_first = is_first;
+                q.push_back(rc);
+            }
+        }
+        if (naive) return;
+        if (L->isInsideLoop()) {
+            BreakStmt *BS = new(*ctxt) BreakStmt(SourceLocation());
+            IfStmt *IFS = IfStmt::Create(*ctxt, SourceLocation(), false,nullptr,0, placeholder, BS);
+            std::vector<Stmt *> stmts;
+            stmts.push_back(n);
+            stmts.push_back(IFS);
+            CompoundStmt *CS = CompoundStmt::Create(*ctxt, stmts,SourceLocation(),SourceLocation());
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, CS));
+            ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
+            rc.actions.push_back(RepairAction(newStatementLoc(loc, IFS), placeholder,
+                        candidateVars));
+            //FIXME: score
+            if (learning)
+                rc.score = getLocScore(n);
+            else {
+                rc.score = getPriority(n) + PRIORITY_ALPHA;
+                if (llvm::isa<LabelStmt>(n))
+                    rc.score += PRIORITY_ALPHA/2;
+                /*if (llvm::isa<IfStmt>(n))
+                    rc.score -= PRIORITY_ALPHA/4;*/
+                if (is_first)
+                    rc.score += PRIORITY_ALPHA;
+            }
+            rc.kind = RepairCandidate::MSVExtIfExitBackKind;
+            rc.original=n;
+            rc.is_first = is_first;
+            q.push_back(rc);
+        }
+        // insert if goto, this is beyond the reach of expr synthesizer,
+        // so we need a loop
+        std::vector<LabelDecl*> labels = L->getCandidateGotoLabels();
+        for (size_t i = 0; i < labels.size(); i++) {
+            // We are going to ignore yy generated labels, this is hacky
+            std::string label_name = labels[i]->getName().str();
+            if (label_name.substr(0,2) == "yy")
+                continue;
+            GotoStmt *GS = new(*ctxt) GotoStmt(labels[i], SourceLocation(), SourceLocation());
+            IfStmt *IFS =IfStmt::Create(*ctxt, SourceLocation(), false,nullptr,0, placeholder, GS);
+            std::vector<Stmt *> stmts;
+            stmts.push_back(n);
+            stmts.push_back(IFS);
+            CompoundStmt *CS = CompoundStmt::Create(*ctxt, stmts,SourceLocation(),SourceLocation());
+            rc.actions.clear();
+            rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, CS));
+            ExprListTy candidateVars = L->getCondCandidateVars(n->getBeginLoc(),MsvExt.getValue());
+            rc.actions.push_back(RepairAction(newStatementLoc(loc, IFS), placeholder,
+                        candidateVars));
+            if (learning) {
+                rc.score = getLocScore(n) + 1e-3;
+            }
+            else {
+                rc.score = getPriority(n) + PRIORITY_ALPHA + 200;
+                if (llvm::isa<LabelStmt>(n))
+                    rc.score += PRIORITY_ALPHA/2;
+                /*if (llvm::isa<IfStmt>(n))
+                    rc.score -= PRIORITY_ALPHA/4;*/
+                if (is_first)
+                    rc.score += PRIORITY_ALPHA;
+            }
+            rc.kind = RepairCandidate::MSVExtIfExitBackKind;
+            rc.original=n;
+            rc.is_first = is_first;
+            q.push_back(rc);
+        }
+
+        if (processed.count(curFD)==0) {
+            genVarMutation(curFD);
+            processed.insert(curFD);
+        }
+    }
+
+    // var = cond ? (<var> != 0) : body
+    void genTernaryOperator(BinaryOperator *oper){
+        if (oper->getOpcode() != BO_Assign)
+            return;
+        
+        ASTLocTy loc = getNowLocation(oper);
+        LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
+        Expr* placeholder;
+        ExprListTy candidateVars = L->getCondCandidateVars(oper->getBeginLoc(),MsvExt.getValue());
+
+        Expr *rhs=oper->getRHS();
+        if (ConditionalOperator::classof(rhs)){
+            ConditionalOperator *CO = llvm::dyn_cast<ConditionalOperator>(rhs);
+
+            for (size_t i = 0; i < candidateVars.size(); i++) {
+                BinaryOperator *newTrueExpr=BinaryOperator::Create(*ctxt,candidateVars[i],getNewIntegerLiteral(ctxt,0),
+                            BinaryOperator::Opcode::BO_NE,ctxt->BoolTy,ExprValueKind::VK_RValue,ExprObjectKind::OK_Ordinary,SourceLocation(),FPOptionsOverride());
+                ParenExpr *paren=new(*ctxt) ParenExpr(SourceLocation(),SourceLocation(),newTrueExpr);
+
+                ConditionalOperator *newCO = new(*ctxt) ConditionalOperator(CO->getCond(),SourceLocation(),paren,
+                            CO->getQuestionLoc(),CO->getRHS(),CO->getType(),CO->getValueKind(),CO->getObjectKind());
+                BinaryOperator *newExpr=BinaryOperator::Create(*ctxt,oper->getLHS(),newCO,
+                            BinaryOperator::Opcode::BO_Assign,ctxt->BoolTy,ExprValueKind::VK_RValue,ExprObjectKind::OK_Ordinary,SourceLocation(),FPOptionsOverride());
+
+                RepairCandidate rc;
+                rc.actions.clear();
+                rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newExpr)); 
+                if (learning)
+                    rc.score = getLocScore(oper);
+                else
+                    rc.score = getPriority(oper) + PRIORITY_ALPHA;
+                rc.kind = RepairCandidate::MSVExtReplaceTrenaryOperatorKind;
+                rc.original=oper;
+                rc.is_first = false;
+                rc.oldRExpr = NULL;
+                rc.newRExpr = NULL;
+                q.push_back(rc);
+
+            }
+        }
+    }
+
+    void genMoveOperator(IfStmt *stmt){
+        Expr *cond=stmt->getCond();
+
+        Expr *currentExpr=cond;
+        if (!BinaryOperator::classof(currentExpr))
+            return;
+        BinaryOperator *currentOper=llvm::dyn_cast<BinaryOperator>(currentExpr);
+        ASTLocTy loc = getNowLocation(stmt);
+        LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+        L->msvExt=false;
+
+        Expr *rhsExpr=currentOper->getRHS();
+        if (!BinaryOperator::classof(rhsExpr))
+            return;
+        BinaryOperator *rhsOper=llvm::dyn_cast<BinaryOperator>(rhsExpr);
+
+        if (rhsOper->isComparisonOp()){
+            Expr *lhs=rhsOper->getLHS();
+            Expr *rhs=rhsOper->getRHS();
+            if (BinaryOperator::classof(lhs)){
+                BinaryOperator *lhsOper=llvm::dyn_cast<BinaryOperator>(lhs);
+                if (lhsOper->isMultiplicativeOp()){
+                    BinaryOperator::Opcode opcode=lhsOper->getOpcode();
+                    Expr *var2=lhsOper->getRHS();
+
+                    Expr *newLhs=lhsOper->getLHS();
+                    Expr *newRhs=BinaryOperator::Create(*ctxt,rhs,var2,opcode,lhsOper->getType(),lhsOper->getValueKind(),lhsOper->getObjectKind(),SourceLocation(),FPOptionsOverride());
+
+                    BinaryOperator *newOper=BinaryOperator::Create(*ctxt,newLhs,newRhs,rhsOper->getOpcode(),rhsOper->getType(),rhsOper->getValueKind(),rhsOper->getObjectKind(),SourceLocation(),FPOptionsOverride());
+                    BinaryOperator *finalCondition=BinaryOperator::Create(*ctxt,currentOper->getLHS(),newOper,currentOper->getOpcode(),currentOper->getType(),currentOper->getValueKind(),currentOper->getObjectKind(),SourceLocation(),FPOptionsOverride());
+
+                    IfStmt *newStmt=duplicateIfStmt(ctxt,stmt,finalCondition);
+
+                    RepairCandidate rc;
+                    rc.actions.clear();
+                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newStmt)); 
+                    if (learning)
+                        rc.score = getLocScore(stmt);
+                    else
+                        rc.score = getPriority(stmt) + PRIORITY_ALPHA;
+                    rc.kind = RepairCandidate::MSVExtMoveConditionKind;
+                    rc.original=stmt;
+                    rc.is_first = false;
+                    rc.oldRExpr = NULL;
+                    rc.newRExpr = NULL;
+                    q.push_back(rc);
+                }
+            }
+        }
+    }
+
+    void genStringReplace(CallExpr *expr){
+        Expr *callee=expr->getCallee();
+        if (ImplicitCastExpr::classof(callee)){
+            ImplicitCastExpr *ice=llvm::dyn_cast<ImplicitCastExpr>(callee);
+            Expr *sub=ice->getSubExpr();
+
+            if (DeclRefExpr::classof(sub)){
+                DeclRefExpr *dre=llvm::dyn_cast<DeclRefExpr>(sub);
+                if (FunctionDecl::classof(dre->getDecl())){
+                    Expr **argsTemp=expr->getArgs();
+                    std::vector<Expr *> args(expr->arg_begin(),expr->arg_end());
+
+                    for (size_t i = 0; i < args.size(); i++) {
+                        Expr *arg=args[i];
+                        if (ImplicitCastExpr::classof(arg)){
+                            ImplicitCastExpr *temp=llvm::dyn_cast<ImplicitCastExpr>(arg);
+                            if (ImplicitCastExpr::classof(temp->getSubExpr())){
+                                ImplicitCastExpr *subTemp=llvm::dyn_cast<ImplicitCastExpr>(temp->getSubExpr());
+                                if (StringLiteral::classof(subTemp->getSubExpr())){
+                                    StringLiteral *str=llvm::dyn_cast<StringLiteral>(subTemp->getSubExpr());
+
+                                    std::string value=str->getString().str();
+
+                                    value+=" or the directory does not exist";
+                                    StringLiteral *newStr=StringLiteral::Create(*ctxt,value,str->getKind(),str->isPascal(),str->getType(),SourceLocation());
+                                    ImplicitCastExpr *newTemp=ImplicitCastExpr::Create(*ctxt,subTemp->getType(),subTemp->getCastKind(),newStr,nullptr,subTemp->getValueKind());
+                                    ImplicitCastExpr *newTemp2=ImplicitCastExpr::Create(*ctxt,temp->getType(),temp->getCastKind(),newTemp,nullptr,temp->getValueKind());
+
+                                    std::vector<Expr *> newArgs(args);
+                                    newArgs[i]=newTemp2;
+                                    CallExpr *newCall=CallExpr::Create(*ctxt,expr->getCallee(),newArgs,expr->getType(),expr->getValueKind(),SourceLocation());
+                                    ASTLocTy loc = getNowLocation(expr);
+
+                                    RepairCandidate rc;
+                                    rc.actions.clear();
+                                    rc.actions.push_back(RepairAction(loc, RepairAction::ReplaceMutationKind, newCall)); 
+                                    if (learning)
+                                        rc.score = getLocScore(expr);
+                                    else
+                                        rc.score = getPriority(expr) + PRIORITY_ALPHA;
+                                    rc.kind = RepairCandidate::ReplaceKind; // TODO: Add new kind 
+                                    rc.original=expr;
+                                    rc.is_first = false;
+                                    rc.oldRExpr = NULL;
+                                    rc.newRExpr = NULL;
+                                    q.push_back(rc);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     bool genVarMutation(FunctionDecl *decl){
+        return true;
         Stmt *body=decl->getBody();
         if (body){
             CompoundStmt *comp=llvm::dyn_cast<CompoundStmt>(body);
@@ -1127,6 +2391,7 @@ class RepairCandidateGeneratorImpl : public RecursiveASTVisitor<RepairCandidateG
                 Stmt *first=comp->body_front();
                 ASTLocTy loc = getNowLocation(first);
                 LocalAnalyzer *L = M.getLocalAnalyzer(loc);
+                L->msvExt=false;
                 ExprListTy exprs=L->genExprAtoms(QualType(),true,true,true,false,true);
                 ExprListTy temp;
                 temp.clear();
@@ -1217,6 +2482,14 @@ public:
                 loc_map1[n] = loc_map1[ThenCS];
             if (loc_map1[n] > loc_map1[ElseCS])
                 loc_map1[n] = loc_map1[ElseCS];
+            
+            if (MsvExt.getValue()){
+                genCondition(n);
+                genReplceFunctionInCondition(n);
+                genRemoveCondition(n);
+                genMoveOperator(n);
+                genNewParen(n);
+            }
         }
         if (isTainted(n) || isTainted(ThenCS))
             genTightCondition(n);
@@ -1224,6 +2497,31 @@ public:
             genLooseCondition(n);
         return ret;
     }
+
+    bool VisitWhileStmt(WhileStmt *stmt) {
+        if (isTainted(stmt) && MsvExt.getValue()) {
+            genLoopCondition(stmt);
+        }
+
+        return true;
+    }
+
+    bool VisitForStmt(ForStmt *stmt) {
+        if (isTainted(stmt) && MsvExt.getValue()) {
+            genLoopCondition(stmt);
+        }
+
+        return true;
+    }
+
+    bool VisitArraySubscriptExpr(ArraySubscriptExpr *expr) {
+        if (isTainted(expr) && MsvExt.getValue()) {
+            genArrayAccess(expr);
+        }
+
+        return true;
+    }
+
     bool VisitStmt(Stmt *n) {
         if (llvm::isa<CompoundStmt>(n))
             return true;
@@ -1237,6 +2535,12 @@ public:
                     if (!llvm::isa<DeclStmt>(*it))
                         is_first = false;
                 }
+
+                Stmt *last=CS->body_back();
+                if (!DeclStmt::classof(last) && isTainted(last) && MsvExt.getValue()){
+                    genAddMemsetBack(last,false);
+                    genAddIfExitBack(last,false,stmt_stack.size() == 2);
+                }
             }
             is_first = is_first && !llvm::isa<DeclStmt>(n);
 
@@ -1245,12 +2549,18 @@ public:
                     genDeclStmtChange(llvm::dyn_cast<DeclStmt>(n));
                 // This is to compute whether Stmt n is the first
                 // non-decl statement in a CompoundStmt
+                if (MsvExt.getValue())
+                    genRemoveStatement(n);
                 genReplaceStmt(n, is_first);
                 if (!llvm::isa<DeclStmt>(n) && !llvm::isa<LabelStmt>(n))
                     genAddIfGuard(n, is_first);
                 genAddMemset(n, is_first);
-                genAddStatement(n, is_first, stmt_stack.size() == 2);
+                if (!NoAdd.getValue()) genAddStatement(n, is_first, stmt_stack.size() == 2);
                 genAddIfExit(n, is_first, stmt_stack.size() == 2);
+
+                if (CallExpr::classof(n) && MsvExt.getValue()){
+                    genStringReplace(llvm::dyn_cast<CallExpr>(n));
+                }
             }
             else if (llvm::isa<IfStmt>(n)) {
                 IfStmt *IFS = llvm::dyn_cast<IfStmt>(n);
@@ -1265,9 +2575,25 @@ public:
                         loc_map1[n] = loc_map1[thenBlock];
                     else
                         loc_map1[n] = loc_map1[firstS];
-                    genAddStatement(n, is_first, stmt_stack.size() == 2);
+                    if (!NoAdd.getValue()) genAddStatement(n, is_first, stmt_stack.size() == 2);
                 }
             }
+        }
+        return true;
+    }
+
+    bool VisitReturnStmt(ReturnStmt *stmt){
+        if (isTainted(stmt) && MsvExt.getValue()) {
+            genReturnCondition(stmt);
+        }
+        return true;
+    }
+
+    bool VisitBinaryOperator(BinaryOperator *oper){
+        if (isTainted(oper) && MsvExt.getValue()) {
+            genAssignCondition(oper);
+            genTernaryOperator(oper);
+            genAssignOperator(oper);
         }
         return true;
     }

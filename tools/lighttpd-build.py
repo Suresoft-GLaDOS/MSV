@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -35,7 +35,7 @@ def fix_configure_file(conf_file):
 
 # Assume using automake1.11 & installed libpcre3-dev libpcre++-dev libbz2-dev libglib2.0-dev
 #
-def compile( out_dir, deps_dir, compile_only = False, config_only = False):
+def compile( out_dir, deps_dir, compile_only = False, config_only = False,max_parallel=1):
     ori_dir = getcwd();
     chdir(out_dir);
 
@@ -54,21 +54,24 @@ def compile( out_dir, deps_dir, compile_only = False, config_only = False):
             fix_configure_file("configure.ac");
         if (path.exists("configure.in")):
             fix_configure_file("configure.in");
-        ret = subprocess.call(["sh autogen.sh"], shell=True, env = my_env);
-        if ret != 0:
-                print "Failed to run autogen.sh, Check automake version!";
+        ret = subprocess.run(["sh autogen.sh"], shell=True, env = my_env);
+        if ret.returncode != 0:
+                print("Failed to run autogen.sh, Check automake version!")
                 chdir(ori_dir);
                 exit(1);
-        ret = subprocess.call(["./configure","--disable-fast-install", "--with-ldap", "--with-bzip2", "--with-openssl", "--with-gdbm", "--with-memcache", "--with-webdav-props", "--with-webdav-locks", "--prefix=/home/fanl/Workspace/prophet/build/benchmarks/tmptest/lighttpd-build"], env = my_env);
-        if ret != 0:
-                print "Configure Error!";
+        # ret = subprocess.call(["./configure","--disable-fast-install", "--with-ldap", "--with-bzip2", "--with-openssl", "--with-gdbm", "--with-memcache", "--with-webdav-props", "--with-webdav-locks", "--prefix=/home/fanl/Workspace/prophet/build/benchmarks/tmptest/lighttpd-build"], env = my_env);
+        ret = subprocess.run(["./configure","--disable-fast-install", "--with-ldap", "--with-bzip2", "--with-openssl", "--with-gdbm", "--with-memcache", "--with-webdav-props", "--with-webdav-locks",
+                        f"LDFLAGS=-L{deps_dir}/libxml2-2.7.2-build/lib -L{deps_dir}/sqlite3-build/lib -L{deps_dir}/pcre-8.36-build/lib"], env = my_env)
+        if ret.returncode != 0:
+                print("Configure Error!")
                 chdir(ori_dir);
                 exit(1);
 
     if not config_only:
-        ret = subprocess.call(["make"], env = my_env);
-        if ret != 0:
-            print "Failed to compile!";
+        ret = subprocess.run(["make",'clean'], env = my_env);
+        ret = subprocess.run(["make",'-j'+str(max_parallel)], env = my_env);
+        if ret.returncode != 0:
+            print("Failed to compile!")
             exit(1);
     chdir(ori_dir);
 
@@ -81,13 +84,14 @@ def compile( out_dir, deps_dir, compile_only = False, config_only = False):
 if __name__=="__main__":
     compile_only = False;
 
-    opts, args = getopt.getopt(argv[1:],'cd:hlp:r:x');
+    opts, args = getopt.getopt(argv[1:],'cd:hlp:r:xj:');
     dryrun_src = "";
 
     print_fix_log = False;
     print_usage = False;
     config_only = False;
     lighttpd_deps_dir = getcwd() + "/lighttpd-deps";
+    max_parallel=1
 
     for o, a in opts:
         if o == "-d":
@@ -105,28 +109,30 @@ if __name__=="__main__":
             print_fix_log = True;
         elif o == "-h":
             print_usage = True;
+        elif o=='-j':
+            max_parallel=int(a)
 
     if (len(args) < 1) or (print_usage):
-        print "Usage: lighttpd-build.py <directory> [-d src_file | -l] [-h]";
+        print("Usage: lighttpd-build.py <directory> [-d src_file | -l] [-h]")
         exit(0);
 
     out_dir = args[0];
     # fetch from github if the directory does not exist
     if path.exists(out_dir):
-        print "Working with existing directory: " + out_dir;
+        print("Working with existing directory: " + out_dir)
     else:
-        print "Non-exists directory";
+        print("Non-exists directory")
         exit(1);
 
-    compile(out_dir, lighttpd_deps_dir, compile_only, config_only);
+    compile(out_dir, lighttpd_deps_dir, compile_only, config_only,max_parallel);
     if dryrun_src != "":
         (builddir, buildargs) = extract_arguments(out_dir, dryrun_src);
         if len(args) > 1:
             out_file = open(args[1], "w");
-            print >> out_file, builddir;
-            print >> out_file, buildargs;
+            print(builddir,file=out_file)
+            print(buildargs,file=out_file)
             out_file.close();
         else:
-            print builddir;
-            print buildargs;
+            print(builddir)
+            print(buildargs)
 

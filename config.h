@@ -2,14 +2,14 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
 /* the clang cmd full path */
-#define CLANG_CMD "/usr/local/bin/clang"
+#define CLANG_CMD ""
 
 /* the location of the wrapper for instrument the file */
 #define CLANG_WRAP_PATH "/root/project/MSV/wrap"
 
 /* the extra include path arguments that need to pass to clang when build AST
    tree */
-#define EXTRA_CLANG_INCLUDE_PATH " -I/usr/local/include  -I/usr/local/lib/clang/11.1.0/include  -I/usr/include/x86_64-linux-gnu  -I/usr/include  "
+#define EXTRA_CLANG_INCLUDE_PATH 
 
 /* the gcc cmd full path */
 #define GCC_CMD "/usr/bin/gcc"

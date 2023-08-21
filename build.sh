@@ -1,10 +1,9 @@
 libtoolize --force
 aclocal
 autoheader
-autoconf
+autoreconf
 automake --add-missing
 ./configure
+make clean
+make -j 10
 make -j 10 install
-cd AFLplusplus
-make -j 10 install
-for i in `ipcs | grep $LOGNAME | awk '{print $2}'`; do ipcrm -m $i; done;

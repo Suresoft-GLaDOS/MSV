@@ -1,0 +1,26 @@
+[{
+		"original_name":	"zend_error",
+		"switch_number":	2,
+		"new_names":	[{
+				"new_name":	"dprintf",
+				"case_number":	3
+			}, {
+				"new_name":	"multi_convert_to_double_ex",
+				"case_number":	4
+			}, {
+				"new_name":	"multi_convert_to_long_ex",
+				"case_number":	5
+			}, {
+				"new_name":	"multi_convert_to_string_ex",
+				"case_number":	6
+			}, {
+				"new_name":	"zend_error_noreturn",
+				"case_number":	7
+			}, {
+				"new_name":	"zend_get_parameters_ex",
+				"case_number":	8
+			}, {
+				"new_name":	"zend_parse_parameters",
+				"case_number":	9
+			}]
+	}]

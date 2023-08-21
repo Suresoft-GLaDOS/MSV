@@ -35,10 +35,14 @@
 #include <time.h>
 
 #define LOCALIZATION_RESULT "profile_localization.res"
+#define LOCALIZATION_RESULT_BACKUP "profile_localization_bak.res"
 #define CONFIG_FILE_PATH "repair.conf"
 #define SOURCECODE_BACKUP "__backup"
 #define SOURCECODE_BACKUP_LOG "__backup.log"
 #define LDBACKUP "ld-backup"
+
+llvm::cl::opt<std::string> BuildSubDir("build-in-subdir",llvm::cl::value_desc("sub-directory"),llvm::cl::init("."),
+        llvm::cl::desc("Sub-directory to run make. Default: root directory(.)"));
 
 static std::string getRndName() {
     std::string ret = "__tmp";
@@ -117,15 +121,41 @@ static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroS
     return startEnd;
 }
 
-BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
-        bool no_clean_up,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),failMacros(),
-        caseNum(caseNum),switchInfo(workDirPath) {
-    Init(workDirPath, no_clean_up);
+
+void changeCmakeCompilerPath(std::string path,std::string cCompiler,std::string cxxCompiler){
+    std::ifstream in(path+"/CMakeCache.txt");
+    if (in.good()){
+        std::string line;
+        std::vector<std::string> lines;
+        while (std::getline(in, line)) {
+            if (line.find("CMAKE_C_COMPILER:")!=std::string::npos){
+                size_t pos=line.find("=");
+                line=line.substr(0,pos+1)+cCompiler;
+            }
+            else if (line.find("CMAKE_CXX_COMPILER:")!=std::string::npos){
+                size_t pos=line.find("=");
+                line=line.substr(0,pos+1)+cxxCompiler;
+            }
+            lines.push_back(line);
+        }
+
+        in.close();
+        std::ofstream out(path+"/CMakeCache.txt");
+        for (std::vector<std::string>::iterator it=lines.begin();it!=lines.end();it++)
+            out<<*it<<std::endl;
+        out.close();
+    }
 }
 
-BenchProgram::BenchProgram(const std::string &workDirPath,int switchId,int caseNum)
+BenchProgram::BenchProgram(const std::string &configFileName, const std::string &workDirPath,
+        bool no_clean_up,bool init_only,int switchId,int caseNum): config(configFileName),count(0),switchId(switchId),failMacros(),
+        caseNum(caseNum),switchInfo(workDirPath) {
+    Init(workDirPath, no_clean_up,init_only);
+}
+
+BenchProgram::BenchProgram(const std::string &workDirPath,bool init_only,int switchId,int caseNum)
     : config(workDirPath + "/" + CONFIG_FILE_PATH),count(0),switchId(switchId),caseNum(caseNum),switchInfo(workDirPath),failMacros() {
-    Init(workDirPath, true);
+    Init(workDirPath, true,init_only);
 }
 
 ConfigFile* BenchProgram::getCurrentConfig() {
@@ -207,7 +237,7 @@ static void parseRevisionLog(const std::string& revision_file,
                            const std::string &build_cmd, const std::string &test_cmd,
                            const std::string &run_work_dir, bool using_ramfs,
                            bool no_clean_up, size_t case_timeout)*/
-void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
+void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool init_only)
 {
     compile_cnt = 0;
     test_cnt = 0;
@@ -266,38 +296,49 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up)
         this->work_dir = getFullPath(workDirPath);
         this->src_dir = getFullPath(work_dir + "/src");
         src_dirs.clear();
-        src_dirs.insert(std::make_pair("src", true));
+        // src_dirs.insert(std::make_pair("src", true));
 
         // If we just in middle of repair, we need to restore before we go on
-        std::ifstream fin((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ifstream::in);
-        if (fin.is_open()) {
-            std::string target_file;
-            char tmp[1000];
-            size_t cnt = 0;
-            int ret;
-            std::string cmd;
-            while (fin.getline(tmp, 1000)) {
-                target_file = tmp;
-                {
-                    std::ostringstream sout;
-                    sout << "cp -rf "  << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << src_dir << "/" << target_file;
-                    cmd = sout.str();
+        if (!init_only){
+            std::ifstream fin((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ifstream::in);
+            if (fin.is_open()) {
+                std::string target_file;
+                char tmp[1000];
+                size_t cnt = 0;
+                int ret;
+                std::string cmd;
+                while (fin.getline(tmp, 1000)) {
+                    target_file = tmp;
+                    {
+                        std::ostringstream sout;
+                        sout << "cp -rf "  << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << src_dir << "/" << target_file;
+                        cmd = sout.str();
+                    }
+                    ret = system(cmd.c_str());
+                    assert( ret == 0);
+                    {
+                        std::ostringstream sout;
+                        sout << "rm -rf " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
+                        cmd = sout.str();
+                    }
+                    ret = system(cmd.c_str());
+                    assert( ret == 0);
+                    cnt++;
                 }
+                fin.close();
+                cmd = "rm -rf " + work_dir + "/" + SOURCECODE_BACKUP_LOG;
                 ret = system(cmd.c_str());
                 assert( ret == 0);
-                {
-                    std::ostringstream sout;
-                    sout << "rm -rf " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
-                    cmd = sout.str();
-                }
-                ret = system(cmd.c_str());
-                assert( ret == 0);
-                cnt++;
             }
-            fin.close();
-            cmd = "rm -rf " + work_dir + "/" + SOURCECODE_BACKUP_LOG;
-            ret = system(cmd.c_str());
-            assert( ret == 0);
+
+            std::ifstream flBackup((work_dir+"/"+LOCALIZATION_RESULT_BACKUP).c_str(),std::ifstream::in);
+            if (flBackup.good()){
+                std::string cmd;
+                cmd="rm -rf "+work_dir+"/"+LOCALIZATION_RESULT;
+                system(cmd.c_str());
+                cmd="cp -rf "+work_dir+"/"+LOCALIZATION_RESULT_BACKUP+" "+work_dir+"/"+LOCALIZATION_RESULT;
+                system(cmd.c_str());
+            }
         }
     }
 
@@ -370,6 +411,10 @@ BenchProgram::~BenchProgram() {
         delete cache;
 }
 
+std::string BenchProgram::getLocalizationResultBackupFilename(){
+    return work_dir+"/"+LOCALIZATION_RESULT_BACKUP;
+}
+
 void BenchProgram::getCompileMisc(const std::string &src_file, std::string &build_dir,
                                   std::vector<std::string> &build_args) {
     if (!src_dirs["src"]) {
@@ -382,18 +427,26 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
         build_args=build_args_save[src_file];
     }
     else{
+        std::string unique_id=std::to_string(getpid());
         std::string cmd;
         if (dep_dir != "")
-            cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
+            if (BuildSubDir!=".")
+                cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " -s "+BuildSubDir.getValue()+" " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
+            else
+                cmd = build_cmd + " -p " + dep_dir + " -c -d " + src_file + " " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -p " + dep_dir + " -j 10 -d " + src_file + " " + src_dir + " __args "+ " 2>&1";
         else
-            cmd = build_cmd + " -c -d " + src_file + " " + src_dir + " __args >> " + build_log_file + " 2>&1";
+            if (BuildSubDir!=".")
+                cmd = build_cmd + " -c -d " + src_file + " -s "+BuildSubDir.getValue()+" " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
+            else
+                cmd = build_cmd + " -c -d " + src_file + " " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args " +  " 2>&1";
         int sys_ret = explain_system_on_error(cmd.c_str());
 
         assert( sys_ret == 0 );
-        parseArgFile("__args", build_dir, build_args);
-        sys_ret = explain_system_on_error("rm -rf __args");
+        fprintf(stderr,"args file name: %s, cmd: %s\n", (unique_id+"__args").c_str(), cmd.c_str());
+        parseArgFile(unique_id+"__args", build_dir, build_args);
+        sys_ret = explain_system_on_error(std::string("rm -rf "+unique_id+"__args").c_str());
         if (sys_ret != 0)
             fprintf(stderr, "Remove __args failed!\n");
         src_dirs["src"] = true;
@@ -406,7 +459,7 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
     }
 }
 
-bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log) {
+bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const std::string &build_log,int count=0) {
     char ori_dir[1000];
     char* retc = getcwd(ori_dir, 1000);
     assert(retc != NULL);
@@ -417,10 +470,10 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     // assert(ret == 0);
 
     if (timeout_limit == 0)
-        ret = system((std::string("make >") + build_log + " 2>"+build_log).c_str());
+        ret = system(("cd "+BuildSubDir.getValue()+" && "+std::string("make >") + build_log + std::to_string(count)+" 2>&1").c_str());
         // ret = execute_with_timeout((std::string("make")), 60);
     else
-        ret = execute_with_timeout((std::string("make >") + build_log + " 2>" + build_log), timeout_limit);
+        ret = execute_with_timeout(("cd "+BuildSubDir.getValue()+" && "+std::string("make >") + build_log +std::to_string(count)+ " 2>&1"), timeout_limit);
         // ret = execute_with_timeout((std::string("make")), timeout_limit);
     bool succ = (ret == 0);
     ret = chdir(ori_dir);
@@ -467,29 +520,30 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
     if (force_reconf || !src_dirs[subDir]) {
         std::string cmd;
         if (dep_dir != ""){
-            if (subDir!="src")
-                cmd = build_cmd + " -p " + dep_dir + " "+src_dir + " > " + build_log_file + " 2>&1";
+            if (BuildSubDir.getValue()!=".")
+                cmd = build_cmd + " -p " + dep_dir +" -s "+BuildSubDir.getValue()+ " "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
             else
-                cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " > " + build_log_file + " 2>&1";
+                cmd = build_cmd + " -p " + dep_dir + " "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
             // cmd = build_cmd + " -p " + dep_dir + " -j 10 "+src_dir + " 2>&1";
         }
         else
-            if (subDir!="src")
-                cmd = build_cmd + " " + src_dir + " > " + build_log_file + " 2>&1";
+            if (BuildSubDir.getValue()!=".")
+                cmd = build_cmd + " -s "+BuildSubDir.getValue()+ " "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
             else
-                cmd = build_cmd + " -j 10 " + src_dir + " > " + build_log_file + " 2>&1";
+                cmd = build_cmd + " "+src_dir + " > " + build_log_file +std::to_string(count)+ " 2>&1";
             // cmd = build_cmd + " -j 10 " +src_dir + " 2>&1";
-        // outlog_printf(2,"Command: %s\n",cmd.c_str());
+        // printf("Command: %s\n",cmd.c_str());
         int ret;
         if (timeout_limit == 0)
             ret = system(cmd.c_str());
         else
             ret = execute_with_timeout(cmd.c_str(), timeout_limit);
         src_dirs[subDir] = true;
+        count++;
         return ret == 0;
     }
     else {
-        return incrementalBuild(timeout_limit, src_dir, build_log_file);
+        return incrementalBuild(timeout_limit, src_dir, build_log_file,count++);
     }
 }
 
@@ -506,6 +560,8 @@ void BenchProgram::pushWrapPath(const std::string &wrap_path, const std::string 
     std::string new_path = CLANG_WRAP_PATH;
     new_path += ":" + ori_path_for_wrap_path;
     int ret = setenv("PATH", new_path.c_str(), 1);
+    setenv("CC",(wrap_path+" "+cc_path).c_str(),1);
+    setenv("CXX",(wrap_path+" "+cc_path).c_str(),1);
     // assert( ret == 0 );
 
     // Copy it to the wrap path
@@ -535,6 +591,8 @@ void BenchProgram::pushWrapPath(const std::string &wrap_path, const std::string 
 void BenchProgram::popWrapPath() {
     int ret = setenv("PATH", ori_path_for_wrap_path.c_str(), 1);
     assert( ret == 0);
+    setenv("CC","gcc",1);
+    setenv("CXX","g++",1);
 }
 
 void BenchProgram::pushEnvMap(const EnvMapTy &envMap) {
@@ -587,12 +645,13 @@ bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wra
     return succ;
 }
 void BenchProgram::saveFixedFiles(std::map<std::string, std::string> &fileCodeMap,std::string output_name){
+    size_t file_count=0;
     for (std::map<std::string, std::string>::iterator it = fileCodeMap.begin();
             it != fileCodeMap.end(); ++it) {
         std::string backupName=output_name;
-        if (count!=0)
-            backupName=output_name+std::to_string(count)+"_";
-        count++;
+        if (file_count!=0)
+            backupName=output_name+std::to_string(file_count)+"_";
+        file_count++;
         std::vector<std::string> split=splitPath(it->first);
         backupName+=split[split.size()-1];
         std::ofstream fout_bak(std::string(work_dir+"/"+backupName).c_str(),std::ofstream::out);
@@ -723,6 +782,8 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
     }
 
     outlog_printf(2,"Trying to build with all macros...\n");
+
+    changeCmakeCompilerPath(src_dir+"/"+BuildSubDir.getValue(),CLANG_WRAP_PATH"/gcc",CLANG_WRAP_PATH"/g++");
     size_t buildCount=0;
     std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> macroLines;
     if (macros.size()==0)
@@ -759,39 +820,39 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
 
         outlog_printf(2,"%uth build...\n",++buildCount);
         if (macros.size()==0)
-            succ=buildFull("src", 0,false,succ_id,files);
+            succ=buildFull("src", 0,BuildSubDir.getValue()!="."?true:false,succ_id,files);
         else
-            succ=buildFull("src", 0,false,macros,files,succ_id);
+            succ=buildFull("src", 0,BuildSubDir.getValue()!="."?true:false,macros,files,succ_id);
         if (succ){
             outlog_printf(2,"Build Success!\n");
         }
         else{
             // Analyze result message to reduce search space
-            std::ifstream buildLog(build_log_file);
+            std::ifstream buildLog(build_log_file+std::to_string(count-1));
             std::string line;
             bool added=false;
             
             while(std::getline(buildLog,line)){
-                if (line.find("undefined reference to") != std::string::npos) {
-                    size_t pos = line.find("undefined reference to");
-                    size_t start = line.find("'", pos);
-                    if (start == line.length() || start == line.length() - 1 || start == line.length() - 2)
-                        start = line.find("`", pos);
-                    size_t end = line.find("'", start + 1);
-                    std::string errorFunc = line.substr(start + 1, end - start - 1);
+                // if (line.find("undefined reference to") != std::string::npos) {
+                //     size_t pos = line.find("undefined reference to");
+                //     size_t start = line.find("'", pos);
+                //     if (start == line.length() || start == line.length() - 1 || start == line.length() - 2)
+                //         start = line.find("`", pos);
+                //     size_t end = line.find("'", start + 1);
+                //     std::string errorFunc = line.substr(start + 1, end - start - 1);
 
-                    for (std::map<long long, std::string>::const_iterator it = macroWithCode.begin(); it != macroWithCode.end(); it++)
-                    {
-                        if (it->second.find(errorFunc) != std::string::npos)
-                        {
-                            if(linkErrorMacros.find(it->first)==linkErrorMacros.end())
-                                added=true;
-                            linkErrorMacros.insert(it->first);
-                        }
-                    }
-                }
-                else if (line.find("error: ")!=std::string::npos){
-                    if (line.find("linker command")==std::string::npos){
+                //     for (std::map<long long, std::string>::const_iterator it = macroWithCode.begin(); it != macroWithCode.end(); it++)
+                //     {
+                //         if (it->second.find(errorFunc) != std::string::npos)
+                //         {
+                //             if(linkErrorMacros.find(it->first)==linkErrorMacros.end())
+                //                 added=true;
+                //             linkErrorMacros.insert(it->first);
+                //         }
+                //     }
+                // }
+                if (line.find("error: ")!=std::string::npos || line.find("undefined reference to")!=std::string::npos){
+                    if ((line.find(".c:")!=std::string::npos || line.find(".re:")!=std::string::npos || line.find(".cpp:")!=std::string::npos || line.find(".h:")!=std::string::npos)){
                         std::string fileName;
                         size_t location=line.find(".c:");
                         bool isC=true;
@@ -830,11 +891,13 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
 
                         if (line.find("static declaration of")!=std::string::npos){
                             size_t pos=line.find("static declaration of");
-                            size_t first=line.find("'");
-                            if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
-                                first = line.find("`", pos);
-                            size_t last=line.find("'",first+1);
-                            std::string function=line.substr(first+1,last-first-1);
+                            size_t first=pos+(std::string("static declaration of")).size()+3;
+                            // if (first == line.length() || first == line.length() - 1 || first == line.length() - 2 || first==std::string::npos)
+                            //     first = line.find("`", pos);
+                            // size_t last=line.find("'",first+1);
+                            size_t last=line.find(" ",first+1);
+                            std::string function=line.substr(first+1,last-first-4);
+                            // function=function.substr(0,function.size()-1);
 
                             for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
@@ -847,11 +910,11 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                         }
                         else if (line.find("conflicting types for")!=std::string::npos){
                             size_t pos=line.find("conflicting types for");
-                            size_t first=line.find("'");
-                            if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
-                                first = line.find("`", pos);
-                            size_t last=line.find("'",first+1);
-                            std::string function=line.substr(first+1,last-first-1);
+                            size_t first=pos+(std::string("conflicting types for")).size()+3;
+                            // if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                            //     first = line.find("`", pos);
+                            size_t last=line.size();
+                            std::string function=line.substr(first+1,last-first-4);
 
                             for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
                                 if (it->second.find(function)!=std::string::npos){
@@ -862,49 +925,124 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                             }
 
                         }
+                        // else if (line.find("undefined reference to")!=std::string::npos){
+                        //     size_t pos=line.find("undefined reference to");
+                        //     size_t first=line.find("'");
+                        //     if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                        //         first = line.find("`", pos);
+                        //     size_t last=line.find("'",first+1);
+                        //     std::string function=line.substr(first+1,last-first-1);
 
-                        else{
+                        //     for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                        //         if (it->second.find(function)!=std::string::npos){
+                        //             if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                        //                 added=true;
+                        //             compileErrorMacros.insert(it->first);
+                        //         }
+                        //     }
+                        // }
+
+                        else {
                             if (!isRe){
                                 size_t start=line.find(":");
                                 size_t end=line.find(":",start+1);
-                                unsigned long lineNum=stoi(line.substr(start+1,end-start-1));
-                                lineNum=lineNum-succ_id.size()-1;
-                                // printf("%lu ",lineNum);
-                                if (fileCodeMap.count(fileName)==0) {
-                                    size_t dot=fileName.find(".");
-                                    fileName=fileName.substr(0,dot);
-                                    fileName+=".c";
-                                }
+                                std::string lineStr=line.substr(start+1,end-start-1);
+                                if (lineStr[0]>='0' && lineStr[0]<='9'){
+                                    unsigned long lineNum=stoi(lineStr);
+                                    lineNum=lineNum-succ_id.size()-macros.size()-1;
+                                    // printf("%lu ",lineNum);
+                                    if (fileCodeMap.count(fileName)==0) {
+                                        size_t dot=fileName.find(".c");
+                                        fileName=fileName.substr(0,dot);
+                                        fileName+=".c";
+                                    }
+                                     if (fileName.find("./")!=std::string::npos) {
+                                        size_t dot=fileName.find("./");
+                                        fileName.replace(dot,2,"");
+                                    }
 
-                                std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
-                                unsigned long failMacro=0;
-                                bool found=false;
-                                for (std::map<size_t,std::pair<size_t,size_t>>::iterator macro_it=macroLine.begin();macro_it!=macroLine.end();macro_it++){
-                                    if(macro_it->second.first<=lineNum && macro_it->second.second>=lineNum){
-                                        failMacro=macro_it->first;
-                                        // printf("%lu\n",failMacro);
-                                        if(compileErrorMacros.find(failMacro)==compileErrorMacros.end())
-                                            found=true;
-                                        compileErrorMacros.insert(failMacro);
-                                        added=true;
-                                        break;
+                                    std::map<size_t,std::pair<size_t,size_t>> macroLine=macroLines[fileName];
+                                    unsigned long failMacro=0;
+                                    bool found=false;
+                                    for (std::map<size_t,std::pair<size_t,size_t>>::iterator macro_it=macroLine.begin();macro_it!=macroLine.end();macro_it++){
+                                        if(macro_it->second.first<=lineNum && macro_it->second.second>=lineNum){
+                                            failMacro=macro_it->first;
+                                            // printf("%lu\n",failMacro);
+                                            if(compileErrorMacros.find(failMacro)==compileErrorMacros.end())
+                                                found=true;
+                                            compileErrorMacros.insert(failMacro);
+                                            added=true;
+                                            break;
+                                        }
+                                    }
+                                    if(!found) isRe=true;
+                                }
+                                else if (line.find("undefined reference to")!=std::string::npos){
+                                    size_t pos=line.find("undefined reference to");
+                                    size_t first=pos+(std::string("undefined reference to")).size()+3;
+                                    // if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                                    //     first = line.find("`", pos);
+                                    size_t last=line.find(" ",first+1);
+                                    std::string function=line.substr(first+1,last-first-4);
+
+                                    for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                        if (it->second.find(function)!=std::string::npos){
+                                            if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                                added=true;
+                                            compileErrorMacros.insert(it->first);
+                                        }
                                     }
                                 }
-                                if(!found) isRe=true;
+                                else isRe=true;
                             }
                             if (isRe){
-                                std::getline(buildLog,line);
-                                line=stripLine(line);
-                                for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
-                                    line.erase(remove(line.begin(), line.end(), ' '), line.end());
-                                    std::string codeLine=it->second;
-                                    codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
-                                    if (codeLine.find(line)!=std::string::npos){
-                                        if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
-                                            added=true;
-                                        compileErrorMacros.insert(it->first);
+                                if (line.find("undefined reference to")!=std::string::npos){
+                                    size_t pos=line.find("undefined reference to");
+                                    size_t first=line.find("'");
+                                    if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                                        first = line.find("`", pos);
+                                    size_t last=line.find("'",first+1);
+                                    std::string function=line.substr(first+1,last-first-1);
+
+                                    for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                        if (it->second.find(function)!=std::string::npos){
+                                            if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                                added=true;
+                                            compileErrorMacros.insert(it->first);
+                                        }
                                     }
                                 }
+                                else{
+                                    std::getline(buildLog,line);
+                                    line=stripLine(line);
+                                    for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                                        line.erase(remove(line.begin(), line.end(), ' '), line.end());
+                                        std::string codeLine=it->second;
+                                        codeLine.erase(remove(codeLine.begin(), codeLine.end(), ' '), codeLine.end());
+                                        if (codeLine.find(line)!=std::string::npos){
+                                            if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                                added=true;
+                                            compileErrorMacros.insert(it->first);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // link error in library files(*.so, ...)
+                    else if (line.find("undefined reference to")!=std::string::npos){
+                        size_t pos=line.find("undefined reference to");
+                        size_t first=line.find("'");
+                        if (first == line.length() || first == line.length() - 1 || first == line.length() - 2)
+                            first = line.find("`", pos);
+                        size_t last=line.find("'",first+1);
+                        std::string function=line.substr(first+1,last-first-1);
+
+                        for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+                            if (it->second.find(function)!=std::string::npos){
+                                if(compileErrorMacros.find(it->first)==compileErrorMacros.end())
+                                    added=true;
+                                compileErrorMacros.insert(it->first);
                             }
                         }
                     }
@@ -922,78 +1060,93 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
     int ret=1;
 
     if (!succ){
+        assert(0 && "Fail to find with log, check build.log!");
         outlog_printf(2,"Fail to find with log, search all macros!\n");
-        std::string candidateMacro="'";
-        for (std::vector<long long>::iterator it=succ_id.begin();it!=succ_id.end();it++){
-            candidateMacro+=std::to_string(*it)+",";
-        }
-
-        if (candidateMacro!="'"){
-            candidateMacro.pop_back();
-        }
-        candidateMacro+="'";
-
-        std::string compile_macros="'";
-        if (macros.size()!=0){
-            for (std::vector<long long>::iterator it2=macros.begin();it2!=macros.end();it2++){
-                compile_macros+=std::to_string(*it2)+",";
-            }
-
-            if (compile_macros!="'"){
-                compile_macros.pop_back();
-            }
-            compile_macros+="'";
-        }
-
-        ExecutionTimer timer;
-        std::string src_dir = getFullPath(work_dir + "/src");
-        std::string cmd;
-        cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -m "+candidateMacro;
-        if (macros.size()!=0)
-            cmd+=" -n "+compile_macros;
-        // cmd+=" -t "+build_cmd;
-        if (dep_dir!="") cmd+=" -p "+dep_dir;
-        cmd+=" -w ";
-        for (int i=0;i<files.size();i++){
-            if (i!=0) cmd+=":";
-            cmd+=files[i];
-        }
-        cmd+=" -j 10 ";
-        // cmd+=" > DD.log";
-        ret = explain_system_on_error(cmd.c_str());
-
-        if (ret==0) {
-            total_repair_build_time += timer.getSeconds();
-            repair_build_cnt ++;
-        }
-        // deleteLibraryFile(fileCodeMap);
-
-        char *home;
-        home=getenv("HOME");
-        // We have to cover Windows!
-        if (home==NULL)
-            home=getenv("HOMEPATH");
-
-        std::string resultPath=std::string(home)+"/__dd_test.log";
-        char eachResult[100];
-        std::ifstream result(resultPath.c_str(),std::ifstream::in);
-        // assert(result.is_open());
         fail.clear();
-        while(result.getline(eachResult,100)){
-            fail.insert(stoll(std::string(eachResult)));
+        for (std::map<std::string,std::vector<long long>>::const_iterator it=macroFile.begin();it!=macroFile.end();it++){
+            std::string candidateMacro="";
+            for (std::vector<long long>::const_iterator it2=it->second.begin();it2!=it->second.end();it2++){
+                candidateMacro+=std::to_string(*it2)+",";
+            }
+
+            if (candidateMacro!=""){
+                candidateMacro.pop_back();
+            }
+            else continue; // No fail macro in this file, skip it!
+
+            std::string compile_macros="";
+            if (macros.size()!=0){
+                for (std::vector<long long>::iterator it2=macros.begin();it2!=macros.end();it2++){
+                    compile_macros+=std::to_string(*it2)+",";
+                }
+
+                if (compile_macros!=""){
+                    compile_macros.pop_back();
+                }
+                compile_macros+="";
+            }
+
+            outlog_printf(2,"Search %s!\n",it->first.c_str());
+
+            ExecutionTimer timer;
+            std::string src_dir = getFullPath(work_dir + "/src");
+            removeMacros(fileCodeMap,src_dir);
+            std::string cmd;
+            cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir;
+            std::ofstream macroFile("/tmp/macros.tmp");
+            macroFile << candidateMacro;
+            macroFile.close();
+            if (macros.size()!=0){
+                cmd+=" -n ";
+                std::ofstream macroFile2("/tmp/compile_macros.tmp");
+                macroFile2 << compile_macros;
+                macroFile2.close();
+            }
+                // cmd+=" -n "+compile_macros;
+            // cmd+=" -t "+build_cmd;
+            if (dep_dir!="") cmd+=" -p "+dep_dir;
+            cmd+=" -w "+src_dir+"/"+it->first;
+            cmd+=" -j 10 ";
+            cmd+=" -m "+prophet_src+"/.. ";
+            if (BuildSubDir.getValue()!=".") cmd+=" -f ";
+            // cmd+=" > DD.log 2&>1";
+            ret = explain_system_on_error(cmd.c_str());
+
+            if (ret==0) {
+                total_repair_build_time += timer.getSeconds();
+                repair_build_cnt ++;
+            }
+            // deleteLibraryFile(fileCodeMap);
+
+            char *home;
+            home=getenv("HOME");
+            // We have to cover Windows!
+            if (home==NULL)
+                home=getenv("HOMEPATH");
+
+            std::string resultPath=std::string(home)+"/__dd_test.log";
+            char eachResult[100];
+            std::ifstream result(resultPath.c_str(),std::ifstream::in);
+            // assert(result.is_open());
+            while(result.getline(eachResult,100)){
+                fail.insert(stoll(std::string(eachResult)));
+            }
         }
 
-        for (std::vector<long long>::iterator it=succ_id.begin();it!=succ_id.end();it){
-            if (fail.find(*it)!=fail.end()) {
-                std::vector<long long>::iterator temp=it;
-                it++;
-                succ_id.erase(temp);
+        succ_id.clear();
+        for (std::map<long long,std::string>::const_iterator it=macroWithCode.begin();it!=macroWithCode.end();it++){
+            bool include=false;
+            for (std::set<long long>::iterator it2=fail.begin();it2!=fail.end();it2++){
+                if (*it2==it->first) {
+                    include=true;
+                    break;
+                }
             }
-            else it++;
+            if (!include) succ_id.push_back(it->first);
         }
     }
 
-    if (true)
+    else
     {
         outlog_printf(2,"Build failed, Trying to find fail macros...\n");
         //llvm::errs() << "Build repaired code with timeout limit " << timeout_limit << "\n";
@@ -1011,7 +1164,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
             for (std::map<std::string,std::vector<long long>>::const_iterator it=macroFile.begin();it!=macroFile.end();it++){
                 std::string candidateMacro="";
                 for (std::set<long long>::iterator it2=fail_temp.begin();it2!=fail_temp.end();it2++){
-                    if (std::find(it->second.begin(),it->second.end(),*it2)!=it->second.end());
+                    if (std::find(it->second.begin(),it->second.end(),*it2)!=it->second.end())
                         candidateMacro+=std::to_string(*it2)+",";
                 }
 
@@ -1038,7 +1191,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                 std::string src_dir = getFullPath(work_dir + "/src");
                 removeMacros(fileCodeMap,src_dir);
                 std::string cmd;
-                cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir;
+                cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -d "+BuildSubDir.getValue();
                 std::ofstream macroFile("/tmp/macros.tmp");
                 macroFile << candidateMacro;
                 macroFile.close();
@@ -1053,6 +1206,8 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                 if (dep_dir!="") cmd+=" -p "+dep_dir;
                 cmd+=" -w "+src_dir+"/"+it->first;
                 cmd+=" -j 10 ";
+                cmd+=" -m "+prophet_src+"/.. ";
+                if (BuildSubDir.getValue()!=".") cmd+=" -f ";
                 // cmd+=" > DD.log 2&>1";
                 ret = explain_system_on_error(cmd.c_str());
 
@@ -1122,9 +1277,9 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
 
         // Build final build
         if (macros.size()==0)
-            succ=buildFull("src", 0,false,succ_id,files);
+            succ=buildFull("src", 0,BuildSubDir.getValue()!="."?true:false,succ_id,files);
         else
-            succ=buildFull("src", 0,false,macros,files,succ_id);
+            succ=buildFull("src", 0,BuildSubDir.getValue()!="."?true:false,macros,files,succ_id);
         if (succ) outlog_printf(2,"Success to build final program!\n");
     }
 
@@ -1146,8 +1301,6 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
 
     // Prepare test script to generate test result
     EnvMapTy testEnv=env_pairs;
-    for (size_t i=0;i<totalSwitch;i++)
-        testEnv["__SWITCH"+std::to_string(i)]="0";
     if (chooseCase!=0)
         testEnv["__SWITCH"+std::to_string(chooseSwitch)]=std::to_string(chooseCase);
     std::string cmd=test_cmd;
@@ -1155,6 +1308,8 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         cmd+=" -i ";
         cmd+=std::to_string(pid);
     }
+    testEnv["MSV_PATH"]=prophet_src+"/../";
+    std::string outFile="__res_"+std::to_string(getpid());
     // if (switchId>=0 && caseNum>=0)
     //     cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
 
@@ -1166,7 +1321,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     sout << cmd;
     for (TestCaseSetTy::const_iterator it = case_set.begin(); it != case_set.end(); it ++)
         sout << *it << " ";
-    sout <<  " > __res_"+std::to_string(pid);
+    sout <<  " > " << outFile;
     cmd = sout.str();
     // printf("Command: %s\n",cmd.c_str());
     int res;
@@ -1188,7 +1343,7 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     ret.clear();
     // return value is zero, or just count as a total failure
     if (res == 0) {
-        FILE *in = fopen(std::string("__res_"+std::to_string(pid)).c_str(), "r");
+        FILE *in = fopen(outFile.c_str(), "r");
         assert(in != NULL);
         unsigned long id;
         while (!feof(in)) {
@@ -1198,13 +1353,13 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
         }
         fclose(in);
     }
-    else {
-        //FIXME:What the hell is this ?
-        res = system("rm -rf __clean*");
-        if (res != 0)
-            fprintf(stderr, "strange I/O problem!\n");
-    }
-    res = system(std::string("rm -rf __res_"+std::to_string(pid)).c_str());
+    // else {
+    //     //FIXME:What the hell is this ?
+    //     res = system("rm -rf __clean*");
+    //     if (res != 0)
+    //         fprintf(stderr, "strange I/O problem!\n");
+    // }
+    res = system(std::string("rm -rf "+outFile).c_str());
     if (res != 0)
         fprintf(stderr, "rm __res failed\n");
 
@@ -1397,8 +1552,8 @@ std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::strin
     std::string full_key_path = getFullPath(src_dir + "/" + file);
     size_t idx = full_key_path.rfind("/");
     assert( idx != std::string::npos);
-    tmpArgs.push_back("-I");
-    tmpArgs.push_back(full_key_path.substr(0, idx));
+    tmpArgs.push_back("-I"+full_key_path.substr(0, idx));
+    // tmpArgs.push_back(full_key_path.substr(0, idx));
     for (size_t i=0;i<macros.size();i++){
         tmpArgs.push_back("-D");
         tmpArgs.push_back("__COMPILE_"+std::to_string(macros[i]));

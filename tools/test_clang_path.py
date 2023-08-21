@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
 # Prophet
 # 
@@ -21,14 +21,14 @@ from os import system
 
 if __name__ == "__main__":
     f = open("__tmp.c", "w");
-    print >> f, "#include <stddef.h>"
-    print >> f, "int main() { return 0; }"
+    print("#include <stddef.h>", file=f)
+    print("int main() { return 0; }", file=f)
     f.close();
     p = subprocess.Popen(["clang", "-v", "__tmp.c", "-o", "__tmp"], stderr = subprocess.PIPE);
     (out, err) = p.communicate();
-    lines = err.strip().split("\n");
+    lines = err.decode('utf-8').strip().split("\n");
     enabled = False;
-    print "\"",
+    print ("\"",end=' ')
     for line in lines:
         line = line.strip();
         tokens = line.split();
@@ -39,6 +39,6 @@ if __name__ == "__main__":
         elif tokens[0] == "End":
             enabled = False;
         elif (line[0] == '/') and enabled:
-            print "-I"+line+" ",
-    print "\""
-    system("rm -rf __tmp*");
+            print ("-I"+line+" ",end=' ')
+    print ("\"")
+    system("rm -rf __tmp*")

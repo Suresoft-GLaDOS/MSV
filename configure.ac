@@ -44,13 +44,6 @@ AC_CHECK_SIZEOF([long])
 AC_CONFIG_FILES([
 	Makefile
 	src/Makefile
-    benchmarks/Makefile
-    benchmarks/php-deps/Makefile
-    benchmarks/lighttpd-deps/Makefile
-    benchmarks/libtiff-deps/Makefile
-    benchmarks/apache-deps/Makefile
-    tests/Makefile
-    tests/atlocal
     wrap/Makefile
     include/Makefile
 ])

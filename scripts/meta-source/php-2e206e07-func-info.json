@@ -1,0 +1,26 @@
+[{
+		"original_name":	"memcpy",
+		"switch_number":	1,
+		"new_names":	[{
+				"new_name":	"Debug",
+				"case_number":	3
+			}, {
+				"new_name":	"bcmp",
+				"case_number":	4
+			}, {
+				"new_name":	"memcmp",
+				"case_number":	5
+			}, {
+				"new_name":	"memmove",
+				"case_number":	7
+			}, {
+				"new_name":	"php_printf",
+				"case_number":	8
+			}, {
+				"new_name":	"printf",
+				"case_number":	9
+			}, {
+				"new_name":	"wprintf",
+				"case_number":	10
+			}]
+	}]

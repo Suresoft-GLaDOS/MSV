@@ -313,7 +313,7 @@ class FeatureExtractVisitor : public RecursiveASTVisitor<FeatureExtractVisitor> 
     }
 
     void putStmtType(Expr* v, Stmt *S) {
-        if (llvm::isa<IfStmt>(S)) {
+        if (IfStmt::classof(S)) {
             //if (isReplace)
             //    S->dump();
             //assert(!isReplace);
@@ -331,13 +331,13 @@ class FeatureExtractVisitor : public RecursiveASTVisitor<FeatureExtractVisitor> 
             putValueFeature(v, isReplace ? RStmtCallAF : StmtCallAF);
         }
         if (llvm::isa<WhileStmt>(S) || llvm::isa<ForStmt>(S)) {
-            assert(!isReplace);
+            //assert(!isReplace);
             putValueFeature(v, StmtLoopAF);
         }
         if (llvm::isa<BreakStmt>(S) || llvm::isa<ReturnStmt>(S) || llvm::isa<GotoStmt>(S))
             putValueFeature(v, isReplace ? RStmtControlAF : StmtControlAF);
         if (llvm::isa<LabelStmt>(S)) {
-            assert(!isReplace);
+            //assert(!isReplace);
             putValueFeature(v, StmtLabelAF);
         }
     }
@@ -346,7 +346,7 @@ public:
     FeatureExtractVisitor(ASTContext *ast, std::map<std::string, Expr*> &valueExprInfo): ast(ast), res(),
         stmtStack(), isReplace(false), abst_v(NULL), is_replace_strconst(false), valueExprInfo(valueExprInfo) { }
 
-    virtual bool VisitBinaryOperatorImpl(BinaryOperator *BO) {
+    virtual bool VisitBinaryOperator(BinaryOperator *BO) {
         std::pair<HelperMapTy::const_iterator, HelperMapTy::const_iterator> range =
             binOpHelper.equal_range(BO->getOpcode());
         Expr* LHS = BO->getLHS();
@@ -367,15 +367,15 @@ public:
         return true;
     }
 
-#define OPERATOR(NAME) \
-    virtual bool VisitBin##NAME(BinaryOperator *BO) { \
-        return VisitBinaryOperatorImpl(BO); \
-    }
+// #define OPERATOR(NAME) \
+//     virtual bool VisitBin##NAME(BinaryOperator *BO) { \
+//         return VisitBinaryOperatorImpl(BO); \
+//     }
 
-    MY_BINOP_LIST()
-#undef OPERATOR
+//     MY_BINOP_LIST()
+// #undef OPERATOR
 
-    virtual bool VisitUnaryOperatorImpl(UnaryOperator *UO) {
+    virtual bool VisitUnaryOperator(UnaryOperator *UO) {
         std::pair<HelperMapTy::const_iterator, HelperMapTy::const_iterator> range =
             uOpHelper.equal_range(UO->getOpcode());
         Expr *subE = UO->getSubExpr();
@@ -384,15 +384,15 @@ public:
         return true;
     }
 
-#define OPERATOR(NAME) \
-    virtual bool VisitUnary##NAME(UnaryOperator *UO) { \
-        return VisitUnaryOperatorImpl(UO); \
-    }
+// #define OPERATOR(NAME) \
+//     virtual bool VisitUnary##NAME(UnaryOperator *UO) { \
+//         return VisitUnaryOperatorImpl(UO); \
+//     }
 
-    MY_UNARYOP_LIST()
-#undef OPERATOR
+//     MY_UNARYOP_LIST()
+// #undef OPERATOR
 
-    virtual bool VisitCompoundAssignOperatorImpl(CompoundAssignOperator *CAO) {
+    virtual bool VisitCompoundAssignOperator(CompoundAssignOperator *CAO) {
         std::pair<HelperMapTy::const_iterator, HelperMapTy::const_iterator> range =
             caOpHelper.equal_range(CAO->getOpcode());
         Expr *LHS = CAO->getLHS();
@@ -405,13 +405,13 @@ public:
         return true;
     }
 
-#define OPERATOR(NAME) \
-    virtual bool VisitBin##NAME##Assign(CompoundAssignOperator *CAO) { \
-        return VisitCompoundAssignOperatorImpl(CAO); \
-    }
+// #define OPERATOR(NAME) \
+//     virtual bool VisitBin##NAME##Assign(CompoundAssignOperator *CAO) { \
+//         return VisitCompoundAssignOperatorImpl(CAO); \
+//     }
 
-    MY_CAO_LIST()
-#undef OPERATOR
+//     MY_CAO_LIST()
+// #undef OPERATOR
 
     virtual bool VisitMemberExpr(MemberExpr *ME) {
         Expr *base = ME->getBase();
@@ -500,7 +500,9 @@ public:
         if ((rc.kind == RepairCandidate::TightenConditionKind) ||
             (rc.kind == RepairCandidate::LoosenConditionKind) ||
             (rc.kind == RepairCandidate::GuardKind) ||
-            (rc.kind == RepairCandidate::SpecialGuardKind)) {
+            (rc.kind == RepairCandidate::SpecialGuardKind) ||
+            (rc.kind == RepairCandidate::MSVExtParenTightenConditionKind) ||
+            (rc.kind == RepairCandidate::MSVExtParenLoosenConditionKind)) {
             IfStmt *IFS = llvm::dyn_cast<IfStmt>((Stmt*)rc.actions[0].ast_node);
             putValueFeature(NULL, RStmtCondAF);
             Expr* cond = IFS->getCond();
@@ -581,8 +583,38 @@ FeatureProductSetTy crossMappingProduct(const ValueToFeatureMapTy &m1, const Val
     return ret;
 }
 
-const int kind_m[9] = {CondRepair, CondRepair, GuardRepair, GuardRepair,
-                    AddControlRepair, AddStmtRepair, ReplaceStmtRepair, ReplaceStmtRepair, AddStmtRepair};
+const int kind_m[] = {
+                        CondRepair, // TightenConditionKind
+                        CondRepair, // LoosenConditionKind
+                        GuardRepair, // GuardKind
+                        GuardRepair, // SpecialGuardKind
+                        AddControlRepair, // IfExitKind
+                        AddStmtRepair, // AddInitKind
+                        ReplaceStmtRepair, // ReplaceKind
+                        ReplaceStmtRepair,  // ReplaceStringKind
+                        AddStmtRepair, // ReplaceFunctionKind
+                        AddStmtRepair, // AddStmtKind
+                        AddStmtRepair, // AddStmtAndReplaceAtomKind
+                        AddStmtRepair, // MSVExtAddIfStmtKind
+                        CondRepair, // MSVExtConditionKind
+                        ReplaceStmtRepair, // MSVExtFunctionReplaceKind
+                        CondRepair, // MSVExtReturnConditionKind
+                        CondRepair, // MSVExtAssignConditionKind
+                        ReplaceStmtRepair, // MSVExtReplaceFunctionInConditionKind
+                        ReplaceStmtRepair, // MSVExtRemoveStmtKind
+                        CondRepair, // MSVExtRemoveConditionKind
+                        ReplaceStmtRepair, // MSVExtRemoveAssignConditionKind
+                        ReplaceStmtRepair, // MSVExtReplaceAssignOperatorKind
+                        ReplaceStmtRepair, // MSVExtReplaceArrayIndexKind
+                        ReplaceStmtRepair, // MSVExtReplaceParenInConditionKind
+                        AddStmtRepair, // MSVExtAddInitBackKind
+                        AddControlRepair, // MSVExtIfExitBackKind
+                        ReplaceStmtRepair, // MSVExtReplaceTrenaryOperatorKind
+                        ReplaceStmtRepair, // MSVExtMoveConditionKind
+                        CondRepair,  // MSVExtLoopConditionKind
+                        CondRepair,  // MSVExtParenTightenConditionKind
+                        CondRepair,  // MSVExtParenLoosenConditionKind
+};
 
 FeatureSetTy extractRepairFeatures(const RepairCandidate &rc) {
     FeatureSetTy ret;
@@ -662,7 +694,7 @@ FeatureSetTy extractValueFeature(const std::string &v_str, const RepairCandidate
         ret.insert(StringLiteralVF);
     // A special case, this should only happen when doing
     // string const replacement
-    if (isAbstractStub(E)) {
+    if (isAbstractStub(E) && rc.kind == RepairCandidate::ReplaceStringKind) {
         assert(rc.kind == RepairCandidate::ReplaceStringKind);
         ret.insert(ModifiedVF);
         ret.insert(StringLiteralVF);

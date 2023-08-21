@@ -23,6 +23,7 @@
 #include "FeatureVector.h"
 #include "FeatureParameter.h"
 #include "ConfigFile.h"
+#include "SBFLLocalizer.h"
 #include "clang/Tooling/Tooling.h"
 #include "clang/Frontend/ASTUnit.h"
 #include "clang/AST/ASTContext.h"
@@ -92,6 +93,12 @@ llvm::cl::opt<std::string> SwitchCaseDebug("switch-id",llvm::cl::value_desc("<sw
         llvm::cl::init(""),llvm::cl::desc("Test with specific switch id and case instead of AFL"));
 llvm::cl::opt<bool> SkipProfile("skip-profile",
         llvm::cl::desc("Skip adding profile writer"),llvm::cl::init(false));
+llvm::cl::opt<bool> SkipBuild("skip-meta-program-build",
+        llvm::cl::desc("Skip building meta program"),llvm::cl::init(false));
+llvm::cl::opt<bool> ForceFL("force-fl",
+        llvm::cl::desc("Force to run FL, ignore cache FL scores"),llvm::cl::init(false));
+llvm::cl::opt<std::string> SBFLLocalize("use-sbfl",llvm::cl::init(""),
+        llvm::cl::desc("Use SBFL localizer result if sbfl result is specified"));
 
 int main(int argc, char* argv[]) {
     llvm::cl::ParseCommandLineOptions(argc, argv);
@@ -115,14 +122,14 @@ int main(int argc, char* argv[]) {
     BenchProgram *P;
     if (config_file_name != "") {
         P = new BenchProgram(config_file_name, run_work_dir,
-                InitOnly || NoCleanUp || (run_work_dir != ""));
+                InitOnly || NoCleanUp || (run_work_dir != ""),InitOnly.getValue());
         if (run_work_dir != "") {
             int ret = system((std::string("cp -f ") + config_file_name + " " + run_work_dir + "/repair.conf").c_str());
             assert( ret == 0);
         }
     }
     else{
-        P = new BenchProgram(run_work_dir);
+        P = new BenchProgram(run_work_dir,InitOnly.getValue());
     }
     if (SwitchCaseDebug.getValue()!=""){
         std::string switchCase=SwitchCaseDebug.getValue();
@@ -141,6 +148,7 @@ int main(int argc, char* argv[]) {
         }
     }
     P->skip_profile=SkipProfile.getValue();
+    P->skip_build=SkipBuild.getValue();
 
     if (!SkipVerify) {
         outlog_printf(1, "Verify Test Cases\n");
@@ -163,8 +171,10 @@ int main(int argc, char* argv[]) {
     ErrorLocalizer *L = NULL;
     if (localizer == "")
         L = new NaiveErrorLocalizer(*P);
+    else if (SBFLLocalize.getValue()!="")
+        L=new SBFLLocalizer(SBFLLocalize.getValue(),P);
     else if (localizer == "profile") {
-        if (existFile(P->getLocalizationResultFilename()))
+        if (existFile(P->getLocalizationResultFilename()) && !ForceFL.getValue())
             L = new ProfileErrorLocalizer(*P, P->getLocalizationResultFilename());
         else if (SkipProfileBuild)
             L = new ProfileErrorLocalizer(*P, bugged_file, true);
@@ -205,6 +215,7 @@ int main(int argc, char* argv[]) {
     }
 
     RepairSearchEngine E(*P, L, NaiveRepair.getValue(), learning, FP);
+    E.is_sbfl=(SBFLLocalize.getValue()!="");
     if (!ConsiderAll.getValue())
         if (bugged_file.size())
             E.setBuggedFile(bugged_file);

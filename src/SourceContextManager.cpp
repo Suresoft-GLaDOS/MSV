@@ -29,11 +29,19 @@
 
 const char* HANDLER_PREFIX =
     "int __get_mutant(); "
-    "int __is_neg(const char *location,int count, ...); "
+    "int __is_neg(const char *location,char *lid,int count, ...); "
     "int __abst_hole(); "
-    "void __write_profile(const char*,int,const char*,void*,int); "
+    "char *__stat_write_init(const char *func_name);"
+    "void __write_stat(char *str,const char *var_name,void *var_addr,int size); "
+    "void __stat_file_close(const char *func_name,char *str);"
     "long long __mutate(const long long,const char *,const char *); "
-    "int __choose(const char *);";
+    "int __trident_choice(char* lid, char* typestr,int* rvals, char** rvals_ids, int rvals_size,int** lvals, char** lvals_ids, int lvals_size);"
+    "int __trident_output(char* id, char* typestr, int value);"
+    "float fabs_trident(float a);"
+    "int __choose(const char *);"
+    "void *__var_select(unsigned int var_count,void *vars[]);"
+    "void *__var_select_2(unsigned int var_count,void *vars[]);"
+    "long long __const_select(unsigned int const_count, ...);";
 const char* MEMSET_PREFIX =
     "void* memset(void*, int, unsigned long); ";
 
@@ -143,6 +151,12 @@ void SourceContextManager::fetch(const std::string &file) {
                     internalHandlerMap[&ctxt].abstract_hole = createFExpr(ctxt, FD);
                 if (FD->getName()==MUTATE)
                     internalHandlerMap[&ctxt].mutator=createFExpr(ctxt,FD);
+                if (FD->getName()=="__var_select")
+                    internalHandlerMap[&ctxt].var_selecter_1=createFExpr(ctxt,FD);
+                if (FD->getName()=="__var_select_2")
+                    internalHandlerMap[&ctxt].var_selecter_2=createFExpr(ctxt,FD);
+                if (FD->getName()=="__const_select")
+                    internalHandlerMap[&ctxt].const_selecter=createFExpr(ctxt,FD);
             }
         }
     }
@@ -214,6 +228,12 @@ std::string SourceContextManager::newSourceFile(const std::string &projDir, cons
                 internalHandlerMap[&ctxt].sys_memset = createFExpr(ctxt, FD);
             if (FD->getName() == UNKNOWN_HOOK)
                 internalHandlerMap[&ctxt].abstract_hole = createFExpr(ctxt, FD);
+            if (FD->getName()=="__var_select")
+                internalHandlerMap[&ctxt].var_selecter_1=createFExpr(ctxt,FD);
+            if (FD->getName()=="__var_select_2")
+                internalHandlerMap[&ctxt].var_selecter_2=createFExpr(ctxt,FD);
+            if (FD->getName()=="__const_select")
+                internalHandlerMap[&ctxt].const_selecter=createFExpr(ctxt,FD);
         }
     }
 
@@ -265,6 +285,19 @@ Expr* SourceContextManager::getExprPlaceholder(ASTContext *ctxt, clang::QualType
 
 clang::Expr* SourceContextManager::getWriteProfile(clang::ASTContext *ctxt){
     return getInternalHandlerInfo(ctxt).write_profile;
+}
+
+clang::Expr *SourceContextManager::getConstantSelector(clang::ASTContext *ctxt,ExprListTy exprs){
+    // Create array initializer
+    std::vector<Expr *> args;
+    args.clear();
+    args.push_back(getNewIntegerLiteral(ctxt,exprs.size()));
+    for (size_t i=0;i<exprs.size();i++){
+        CStyleCastExpr *casted=CStyleCastExpr::Create(*ctxt,ctxt->LongLongTy,VK_LValue,CastKind::CK_IntegralCast,exprs[i],nullptr,nullptr,SourceLocation(),SourceLocation());
+        args.push_back(casted);
+    }
+
+    return CallExpr::Create(*ctxt,getInternalHandlerInfo(ctxt).const_selecter,args,ctxt->LongLongTy,VK_LValue,SourceLocation());
 }
 
 Expr* SourceContextManager::getUnknownExpr(ASTContext *ctxt, ExprListTy candidate_atoms) {

@@ -28,6 +28,7 @@
 #include "clang/AST/ASTContext.h"
 #include "FeatureVector.h"
 #include "FeatureParameter.h"
+#include "SBFLLocalizer.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <fstream>
@@ -58,7 +59,8 @@ double computeScores(SourceContextManager &M, FeatureParameter *FP,
         double best = -1e+20;
         for (std::set<clang::Expr*>::iterator it = atoms.begin(); it != atoms.end(); ++it) {
             FeatureVector vec = EX.extractFeature(M, rc, *it);
-            double res = FP->dotProduct(vec) + rc.score;
+            double scoreB=FP->dotProduct(vec);
+            double res = scoreB + rc.score;
             // we are going to nuke the score if random is set
             if (random)
                 res = rand();
@@ -197,13 +199,18 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
             fprintf(fout, "Rank %lu", cnt);
             if (PrintBlowupInfo.getValue()) {
                 if (candidate.kind != RepairCandidate::AddInitKind &&
-                        candidate.kind != RepairCandidate::AddAndReplaceKind &&
+                        candidate.kind != RepairCandidate::ReplaceFunctionKind &&
+                        candidate.kind != RepairCandidate::AddStmtKind &&
+                        candidate.kind != RepairCandidate::AddStmtAndReplaceAtomKind &&
+                        candidate.kind != RepairCandidate::MSVExtAddIfStmtKind &&
                         candidate.kind != RepairCandidate::ReplaceKind) {
                     std::set<Expr*> atoms = candidate.getCandidateAtoms();
                     blowup_cnt +=  atoms.size() * 2 - 1;
                 }
                 if (candidate.kind == RepairCandidate::TightenConditionKind ||
-                        candidate.kind == RepairCandidate::LoosenConditionKind) {
+                        candidate.kind == RepairCandidate::LoosenConditionKind ||
+                        candidate.kind == RepairCandidate::MSVExtParenTightenConditionKind ||
+                        candidate.kind == RepairCandidate::MSVExtParenLoosenConditionKind) {
                     IfStmt *stmt = llvm::dyn_cast<IfStmt>(candidate.actions[0].loc.stmt);
                     Expr* ori_cond = stmt->getCond();
                     clang::ASTContext *ctxt = M.getSourceContext(candidate.actions[0].loc.filename);
@@ -292,14 +299,30 @@ int RepairSearchEngine::run(const std::string &out_file, size_t try_at_least,
         // }
 
         // Create localize score data
-        std::vector<std::pair<std::string,size_t>> scores;
+        std::map<std::pair<std::string,size_t>,std::pair<size_t,size_t>> scores;
         scores.clear();
         if (!naive){
-            ProfileErrorLocalizer *profileError=(ProfileErrorLocalizer *)L;
-            std::vector<ProfileErrorLocalizer::ResRecordTy> errors=profileError->getCandidates();
+            if (is_sbfl){
+                SBFLLocalizer *profileError=(SBFLLocalizer *)L;
+                std::vector<ProfileErrorLocalizer::ResRecordTy> errors=profileError->getCandidates();
 
-            for (std::vector<ProfileErrorLocalizer::ResRecordTy>::iterator it=errors.begin();it!=errors.end();it++){
-                scores.push_back(std::make_pair(it->loc.expFilename,it->loc.expLine));
+                for (std::vector<ProfileErrorLocalizer::ResRecordTy>::iterator it=errors.begin();it!=errors.end();it++){
+                    std::pair<std::string,size_t> location=std::make_pair(it->loc.expFilename,it->loc.expLine);
+                    if (scores.count(location)==0 || scores[location].first<it->primeScore || (scores[location].first==it->primeScore && scores[location].second<it->secondScore)){
+                        scores[location]=std::make_pair(it->primeScore,it->secondScore);
+                    }
+                }
+            }
+            else{
+                ProfileErrorLocalizer *profileError=(ProfileErrorLocalizer *)L;
+                std::vector<ProfileErrorLocalizer::ResRecordTy> errors=profileError->getCandidates();
+
+                for (std::vector<ProfileErrorLocalizer::ResRecordTy>::iterator it=errors.begin();it!=errors.end();it++){
+                    std::pair<std::string,size_t> location=std::make_pair(it->loc.expFilename,it->loc.expLine);
+                    if (scores.count(location)==0 || scores[location].first<it->primeScore || (scores[location].first==it->primeScore && scores[location].second<it->secondScore)){
+                        scores[location]=std::make_pair(it->primeScore,it->secondScore);
+                    }
+                }
             }
         }
 

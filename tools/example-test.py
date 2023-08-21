@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+# Copyright (C) 2016 Fan Long, Martin Rianrd and MIT CSAIL 
+# Prophet
+# 
+# This file is part of Prophet.
+# 
+# Prophet is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# Prophet is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with Prophet.  If not, see <http://www.gnu.org/licenses/>.
+from sys import argv
+from os import system,mkdir,chdir,getcwd
+import getopt
+import shutil
+import subprocess
+
+if __name__ == "__main__":
+    if len(argv) < 4:
+        print ("Usage: php-tester.py <src_dir> <test_dir> <work_dir> [cases]")
+        exit(1);
+
+    opts, args = getopt.getopt(argv[1:], "p:i:");
+    profile_dir = "";
+    temp_dir="__temp_test"
+    for o, a in opts:
+        if o == "-p":
+            profile_dir = a;
+        elif o=='-i':
+            temp_dir=a
+
+    mkdir(temp_dir);
+    orig_dir=getcwd()
+    chdir(temp_dir)
+
+
+    src_dir = args[0];
+    test_dir = args[1];
+    work_dir = args[2];
+    if profile_dir == "":
+        cur_dir = src_dir;
+    else:
+        cur_dir = profile_dir;
+
+    if len(args) > 3:
+        ids = args[3:];
+        for i in ids:
+            shutil.copyfile(test_dir + "/" + str(i) + ".in", "./" + str(i) + ".in")
+            shutil.copyfile(test_dir + "/" + str(i) + ".exp", "./" + str(i) + ".exp")
+
+            proc=subprocess.Popen([cur_dir +"/prog"], stdout=subprocess.PIPE,stdin=subprocess.PIPE)
+            if (i != "0"):
+                with open(str(i) + ".in", "r") as f:
+                    stdin = f.read()
+                    output,_=proc.communicate(input=stdin.encode('utf-8'))
+            else:
+                output,_=proc.communicate()
+            with open("__out", "w") as f:
+                f.write(output.decode("utf-8"))
+
+            ret = proc.returncode
+            if (ret == 0):
+                cmd = "diff __out " + test_dir + "/" + i + ".exp 1> /dev/null"
+                ret = system(cmd)
+                if (ret == 0):
+                    print(i)
+            # system("rm -rf __out");
+        print()
+        
+    chdir(orig_dir)
+    # shutil.rmtree(temp_dir)
+    system('rm -rf '+temp_dir)
