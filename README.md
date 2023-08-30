@@ -6,7 +6,8 @@ Repair with meta-program, search with Casino.
 * LLVM/Clang 11
 * Python 3.6+
 * zlib
-* libcurses
+* libexplain
+* libncurses
 * pthread
 
 ## Docker Image
