@@ -177,7 +177,7 @@ std::string getFullPath(const std::string &path) {
     if (path[0]=='/') return path;
     char tmp[PATH_MAX];
     char * ret = realpath(path.c_str(), tmp);
-    if( tmp != 0 ) printf(std::string("fail to get full path of "+path+"\n").c_str());
+    if (tmp != 0) printf("fail to get full path of %s\n", path.c_str());
     return std::string(tmp);
 }
 
