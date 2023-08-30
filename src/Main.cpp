@@ -114,7 +114,7 @@ int main(int argc, char* argv[]) {
     std::string run_work_dir = RunWorkDir.getValue();
 
     if ((config_file_name == "") && (run_work_dir == "")) {
-        outlog_printf(0, "Must specify configuration file or existing working directory!");
+        outlog_printf(0, "Must specify configuration file or existing working directory!\n");
         exit(1);
     }
 
