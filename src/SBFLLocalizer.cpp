@@ -2,7 +2,7 @@
 #include <clang/AST/RecursiveASTVisitor.h>
 #include <clang/AST/Stmt.h>
 #include <iostream>
-#include "cJSON/cJSON.h"
+#include <cjson/cJSON.h>
 #include "SBFLLocalizer.h"
 #include "Utils.h"
 

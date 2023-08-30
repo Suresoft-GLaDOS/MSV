@@ -46,33 +46,33 @@ ClangLDADD += -lLLVMXRay -lLLVMWindowsManifest -lLLVMTableGen -lLLVMSymbolize -l
 
 pdiffer_SOURCES = pdiffer.cpp Utils.cpp ASTDiffer.cpp ProfileWriter.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
+				  CodeRewrite.cpp FeatureExtract.cpp
 pdiffer_LDFLAGS = `llvm-config --ldflags`
-pdiffer_LDADD = $(ClangLDADD) -lexplain
+pdiffer_LDADD = $(ClangLDADD) -lexplain -lcjson
 
 learner_SOURCES = learner.cpp FeatureExtract.cpp ProfileWriter.cpp SourceContextManager.cpp LocalAnalyzer.cpp \
 				  GlobalAnalyzer.cpp ASTUtils.cpp BenchProgram.cpp RepairCandidateGenerator.cpp \
-				  Utils.cpp CodeRewrite.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
+				  Utils.cpp CodeRewrite.cpp
 learner_LDFLAGS = `llvm-config --ldflags`
-learner_LDADD = $(ClangLDADD) -lexplain
+learner_LDADD = $(ClangLDADD) -lexplain -lcjson
 
 prophet_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp ProfileWriter.cpp BenchProgram.cpp ASTUtils.cpp \
 				  ErrorLocalizer.cpp LocalAnalyzer.cpp ProfileErrorLocalizer.cpp SourceContextManager.cpp \
 				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp SBFLLocalizer.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
+				  CodeRewrite.cpp FeatureExtract.cpp
 prophet_LDFLAGS = `llvm-config --ldflags`
-prophet_LDADD = $(ClangLDADD) -lexplain
+prophet_LDADD = $(ClangLDADD) -lexplain -lcjson
 
 msv_SOURCES = Main.cpp Utils.cpp RepairSearchEngine.cpp ProfileWriter.cpp BenchProgram.cpp ASTUtils.cpp \
 				  ErrorLocalizer.cpp LocalAnalyzer.cpp ProfileErrorLocalizer.cpp SourceContextManager.cpp \
 				  GlobalAnalyzer.cpp DuplicateDetector.cpp ExprSynthesizer.cpp RepairCandidateGenerator.cpp SBFLLocalizer.cpp \
-				  CodeRewrite.cpp FeatureExtract.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
+				  CodeRewrite.cpp FeatureExtract.cpp
 msv_LDFLAGS = `llvm-config --ldflags`
-msv_LDADD = $(ClangLDADD) -lexplain
+msv_LDADD = $(ClangLDADD) -lexplain -lcjson
 
-playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp cJSON/cJSON_Utils.c cJSON/cJSON.c
+playground_SOURCES = PlayGround.cpp Utils.cpp BenchProgram.cpp
 playground_LDFLAGS = `llvm-config --ldflags`
-playground_LDADD = $(ClangLDADD) -lexplain
+playground_LDADD = $(ClangLDADD) -lexplain -lcjson
 
 libprofiler_la_SOURCES = ProfilerAction.cpp
 libprofiler_la_LDFLAGS = `llvm-config --ldflags`
