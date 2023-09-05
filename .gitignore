@@ -41,7 +41,6 @@ benchmarks/*-tests*
 !benchmarks/lighttpd-deps/pcre-8.36.tar.gz
 **/CMakeFiles/
 **/CMakeCache.txt
-/dg/
 __*
 **/__*
 !**/*.py
