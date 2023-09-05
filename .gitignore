@@ -18,7 +18,6 @@ autom4te.cache
 !benchmarks/lighttpd-deps/pcre-8.36.tar.gz
 **/CMakeFiles/
 **/CMakeCache.txt
-/dg/
 **/*.log
 *~
 *.ll
