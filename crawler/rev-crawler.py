@@ -68,7 +68,7 @@ def diff(src_dir1, src_file1, arg_file1, src_dir2, src_file2, arg_file2):
 
 if __name__ == "__main__":
     fulldir = path.abspath(path.dirname(argv[0]));
-    differ_cmd = fulldir + "/../build/src/pdiffer";
+    differ_cmd = "msv-diff"
 
     opts, args = getopt.getopt(argv[1:], "ay:j:", ["depdir=", "o-revs=", "i-revs=",
         "sid=", "eid=", "print-match", "dump-source="]);

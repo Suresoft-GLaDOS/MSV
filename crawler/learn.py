@@ -47,7 +47,7 @@ if (ssvm):
     out_prefix += "-ssvm";
 
 for app in app_tokens:
-    learner_cmd = "../build/src/learner";
+    learner_cmd = "msv-learn";
     if (ssvm):
         learner_cmd += " --algo ssvm";
     system(learner_cmd + " " + tmp_list_prefix + "-" + app + ".txt" + " -o " + out_prefix + "-" + app + ".out");

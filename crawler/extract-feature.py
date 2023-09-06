@@ -6,7 +6,7 @@ from os import system
 (opts, args) = getopt.getopt(argv[1:], "i:o:r:", ["disable-sema-cross", "disable-sema-value", "disable-mod", "replace-ext"]);
 in_dir = "train";
 out_dir = "__tmp";
-differ_cmd = "../build/src/pdiffer"
+differ_cmd = "msv-diff"
 disable_sema_cross = False;
 disable_sema_value = False;
 disable_mod = False;

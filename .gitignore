@@ -16,14 +16,13 @@
 /include/Makefile
 /include/Makefile.in
 /libtool
+/msv
+/msv-diff
+/msv-learn
+/msv-playground
 /src/.dirstamp
 /src/Makefile
 /src/Makefile.in
-/src/learner
-/src/pdiffer
-/src/playground
-/src/profile-matcher
-/src/prophet
 /stamp-h1
 /tests/
 /wrap/Makefile
@@ -56,4 +55,3 @@ __*
 # Development
 .vscode
 build
-msv

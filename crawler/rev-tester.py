@@ -15,7 +15,7 @@ def invoke_differ(rev, rev_dir):
 
 if __name__ == "__main__":
     fulldir = path.abspath(path.dirname(argv[0]));
-    differ_cmd = fulldir + "/../build/src/pdiffer";
+    differ_cmd = "msv-diff"
 
     (opt, args) = getopt(argv[1:], "", ["sid=", "eid="]);
     rev_file = args[0];
