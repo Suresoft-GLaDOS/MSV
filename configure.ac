@@ -21,12 +21,6 @@ LT_INIT
 
 AC_DEFINE_UNQUOTED([EXTRA_CLANG_INCLUDE_PATH], [`$srcdir/tools/test_clang_path.py`], 
                    [the extra include path arguments that need to pass to clang when build AST tree])
-AC_DEFINE_UNQUOTED([CLANG_WRAP_PATH], ["`readlink -f ./$builddir`/wrap"], 
-          [the location of the wrapper for instrument the file])
-AC_DEFINE_UNQUOTED([CLANG_CMD], ["`which clang`"],
-                   [the clang cmd full path])
-AC_DEFINE_UNQUOTED([GCC_CMD], ["`which gcc`"],
-                   [the gcc cmd full path])
 
 # Checks for OS.
 

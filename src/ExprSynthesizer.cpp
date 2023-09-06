@@ -35,7 +35,7 @@
 
 using namespace clang;
 
-#define CLANG_TEST_WRAP "tclang.py"
+#define TEST_CC "msv-testcc"
 #define ISNEG_TMPFILE "/tmp/neg.tmp"
 #define ISNEG_RECORDFILE "/tmp/neg.log"
 
@@ -1087,7 +1087,7 @@ protected:
     bool fuzzTest(size_t timeout){
         outlog_printf(2,"Running AFL!\n");
 
-        std::string cmd=P.getAFLScript();
+        std::string cmd = "msv-afl";
         if (timeout>0) cmd+=" -t "+std::to_string(timeout);
         cmd+=" -w "+P.getWorkdir();
         bool result=system(cmd.c_str());
@@ -1563,8 +1563,8 @@ public:
         if (ForCPP.getValue())
             buildEnv["COMPILE_CMD"] = "clang++";
         else
-            buildEnv["COMPILE_CMD"] = GCC_CMD;
-        std::vector<long long> build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,macroCode,macroFile);
+            buildEnv["COMPILE_CMD"] = "clang";
+        std::vector<long long> build_succ = P.buildWithRepairedCode(TEST_CC, buildEnv, code,macroCode,macroFile);
         if (build_succ.size()==0) {
             outlog_printf(2, "Build failed!\n");
             return std::map<NewCodeMapTy, double>();
@@ -1753,9 +1753,9 @@ size_t getElementCount(std::vector<T> vector,T target){
     //         if (ForCPP.getValue())
     //             buildEnv["COMPILE_CMD"] = "clang++";
     //         else
-    //             buildEnv["COMPILE_CMD"] = GCC_CMD;
+    //             buildEnv["COMPILE_CMD"] = "clang";
     //         outlog_printf(2, "Trying a synthesis expr %s\n", stmtToString(*ast, new_expr).c_str());
-    //         bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, code,0);
+    //         bool build_succ = P.buildWithRepairedCode(TEST_CC, buildEnv, code,0);
     //         if (!build_succ) {
     //             outlog_printf(3, "Build failed when synthesizing!\n");
     //             continue;
@@ -1842,8 +1842,8 @@ size_t getElementCount(std::vector<T> vector,T target){
     //             if (ForCPP.getValue())
     //                 buildEnv["COMPILE_CMD"] = "clang++";
     //             else
-    //                 buildEnv["COMPILE_CMD"] = GCC_CMD;
-    //             bool build_succ = P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv, new_code,0);
+    //                 buildEnv["COMPILE_CMD"] = "clang";
+    //             bool build_succ = P.buildWithRepairedCode(TEST_CC, buildEnv, new_code,0);
     //             if (!build_succ) {
     //                 outlog_printf(3, "Build failed\n");
     //                 continue;
@@ -1905,10 +1905,13 @@ class TestBatcher {
 
         BenchProgram::EnvMapTy buildEnv;
         buildEnv.clear();
-        if (ForCPP.getValue())
+        if (ForCPP.getValue()) {
+            buildEnv["CXX"] = TEST_CC;
             buildEnv["COMPILE_CMD"] = "clang++";
-        else
-            buildEnv["COMPILE_CMD"] = CLANG_CMD;
+        } else {
+            buildEnv["CC"] = TEST_CC;
+            buildEnv["COMPILE_CMD"] = "clang";
+        }
         buildEnv=T->initEnv(buildEnv);
         // for (size_t i=0;i<T->getSwitchCount();i++)
         //     buildEnv["__SWITCH"+std::to_string(i)]="0";
@@ -1922,7 +1925,7 @@ class TestBatcher {
         // P.saveFixedFiles(combined,fixedFile);
         
         BenchProgram::EnvMapTy testEnv;
-        P.applyRepairedCode(combined,buildEnv,CLANG_TEST_WRAP);
+        P.applyRepairedCode(combined, buildEnv);
         if (P.skip_profile){
             for (std::map<std::string, std::string>::iterator it=combined.begin();it!=combined.end();it++){
                 size_t filePos=it->first.rfind("/");
@@ -1937,7 +1940,7 @@ class TestBatcher {
         std::vector<long long> succ_macros;
         succ_macros.clear();
         if (!P.skip_build){
-            succ_macros=P.buildWithRepairedCode(CLANG_TEST_WRAP, buildEnv,combined,T->getMacroCode(),T->macroFile,fixedFile);
+            succ_macros=P.buildWithRepairedCode(TEST_CC, buildEnv, combined, T->getMacroCode(), T->macroFile, fixedFile);
             outlog_printf(0,"Meta-program generated in %llus!\n",get_timer());
         }
 
@@ -1951,7 +1954,7 @@ class TestBatcher {
             outlog_printf(2,"Trying build...\n");
             reset_timer();
             buildEnv["TMP_FILE"]="tmp.log";
-            std::vector<long long> succ_macros2=P.buildWithRepairedCode(CLANG_TEST_WRAP,buildEnv,combined,macroCode,macroFile,fixedFile,succ_macros);
+            std::vector<long long> succ_macros2=P.buildWithRepairedCode(TEST_CC, buildEnv, combined, macroCode, macroFile, fixedFile, succ_macros);
             if (succ_macros.size()>0) printf("Pass to build final program\n");
             else{
                 printf("\033[0;31m");
@@ -1960,7 +1963,7 @@ class TestBatcher {
             }
             outlog_printf(0,"Final build finished in %llus!\n",get_timer());
         }
-        // P.rollbackOriginalCode(combined,buildEnv);
+        P.rollbackOriginalCode(combined, buildEnv);
 
         // if (P.getSwitch().first==0 && P.getSwitch().second==0)
         //     result_init=T->test(testEnv,0,true);

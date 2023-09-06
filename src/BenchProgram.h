@@ -29,6 +29,8 @@
 #include <set>
 #include <map>
 
+#define PROFILE_CC "msv-profilecc"
+
 class ConfigFile;
 
 class LocationIndex;
@@ -521,7 +523,6 @@ private:
     // The test command script path, this is an absolute path!
     std::string test_cmd;
     std::string prophet_src;
-    std::string ddtest_cmd;
     std::string afl_cmd;
 
     std::string profile_dir;
@@ -565,9 +566,6 @@ private:
     EnvMapTy ori_env_map;
 
 
-    std::string ori_path_for_wrap_path;
-
-
     void deleteLibraryFile(const std::map<std::string, std::string> &fileCodeMap);
 public:
     bool isCondition;
@@ -603,22 +601,19 @@ public:
 
     void popEnvMap(const EnvMapTy &envMap);
 
-    void pushWrapPath(const std::string &wrapPath, const std::string &cc_path);
-
-    void popWrapPath();
-
     std::unique_ptr<clang::ASTUnit> buildClangASTUnit(const std::string &src_file,
             const std::string &code,std::vector<long long> macros=std::vector<long long>());
 
     // bool runDG(std::vector<ASTLocTy> criteriaLocation);
     bool runDG(std::vector<std::string> files,std::map<std::string,std::set<unsigned>> lines);
 
-    bool buildSubDir(const std::string &subDir, const std::string &wrapScript,
+    bool buildSubDir(const std::string &subDir,
             const EnvMapTy &envMap,std::vector<long long> compile_macro=std::vector<long long>());
     
     void saveFixedFiles(std::map<std::string, std::string> &fileCodeMap,std::string output_name);
 
-    void applyRepairedCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap,std::string wrapScript);
+    void applyRepairedCode(std::map<std::string, std::string>& fileCodeMap,
+                           EnvMapTy& envMap);
     void rollbackOriginalCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap);
 
     std::vector<long long> buildWithRepairedCode(const std::string &wrapScript, const EnvMapTy &envMap,
@@ -647,7 +642,6 @@ public:
 
     std::string getSrcdir() { return src_dir; }
     std::string getTestScript(){return test_cmd;}
-    std::string getAFLScript(){return afl_cmd;}
 
     std::string normalizePath(const std::string &);
 

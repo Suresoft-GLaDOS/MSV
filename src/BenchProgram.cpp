@@ -124,7 +124,7 @@ static std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> getMacroS
 }
 
 
-void changeCmakeCompilerPath(std::string path,std::string cCompiler,std::string cxxCompiler){
+void changeCmakeCompilerPath(std::string path){
     std::ifstream in(path+"/CMakeCache.txt");
     if (in.good()){
         std::string line;
@@ -132,11 +132,11 @@ void changeCmakeCompilerPath(std::string path,std::string cCompiler,std::string 
         while (std::getline(in, line)) {
             if (line.find("CMAKE_C_COMPILER:")!=std::string::npos){
                 size_t pos=line.find("=");
-                line=line.substr(0,pos+1)+cCompiler;
+                line=line.substr(0, pos + 1) + PROFILE_CC;
             }
             else if (line.find("CMAKE_CXX_COMPILER:")!=std::string::npos){
                 size_t pos=line.find("=");
-                line=line.substr(0,pos+1)+cxxCompiler;
+                line=line.substr(0, pos + 1) + PROFILE_CC;
             }
             lines.push_back(line);
         }
@@ -353,8 +353,6 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
     explain_system_or_die(cmd.c_str());
     this->build_cmd = getFullPath(config.getStr("build_cmd"), this->work_dir);
     this->test_cmd = getFullPath(config.getStr("test_cmd"), this->work_dir);
-    this->ddtest_cmd = getFullPath(config.getStr("tools_dir")+"/DD.py",
-                                   this->work_dir);
     this->prophet_src = getFullPath(config.getStr("tools_dir")+"/../src",
                                     this->work_dir);
     this->localization_filename = work_dir + "/" + LOCALIZATION_RESULT;
@@ -547,48 +545,6 @@ bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bo
     assert(ret == 0);
 }*/
 
-void BenchProgram::pushWrapPath(const std::string &wrap_path, const std::string &cc_path) {
-    // We are going to set wrap path before everything, so that it will replace offcial
-    // gcc/cc compiler
-    ori_path_for_wrap_path = getenv("PATH");
-    std::string new_path = CLANG_WRAP_PATH;
-    new_path += ":" + ori_path_for_wrap_path;
-    int ret = setenv("PATH", new_path.c_str(), 1);
-    setenv("CC",(wrap_path+" "+cc_path).c_str(),1);
-    setenv("CXX",(wrap_path+" "+cc_path).c_str(),1);
-    // assert( ret == 0 );
-
-    // Copy it to the wrap path
-    std::string cmd = "cp -rf " + wrap_path + "/" + cc_path + " " + wrap_path + "/cc";
-    ret = system(cmd.c_str());
-    // assert( ret == 0);
-    cmd = "cp -rf " + wrap_path + "/" + cc_path + " " + wrap_path + "/gcc";
-    ret = system(cmd.c_str());
-    // assert( ret == 0);
-    // This is to copy g++
-    cmd = "cp -rf " + wrap_path + "/" + cc_path + " " + wrap_path + "/g++";
-    ret = system(cmd.c_str());
-    // assert( ret == 0);
-    cmd = "rm -rf " + wrap_path + "/ld";
-    ret = system(cmd.c_str());
-    // assert( ret == 0);
-    if (wrap_ld) {
-        cmd = "cp -rf " + wrap_path + "/" + std::string(LDBACKUP) + " " + wrap_path + "/ld";
-        ret = system(cmd.c_str());
-        // assert( ret == 0);
-    }
-    /*cmd = "cp -rf " + wrap_path + "/" + cc_path + " " + wrap_path + "/ld";
-    ret = system(cmd.c_str());
-    assert( ret == 0);*/
-}
-
-void BenchProgram::popWrapPath() {
-    int ret = setenv("PATH", ori_path_for_wrap_path.c_str(), 1);
-    assert( ret == 0);
-    setenv("CC","gcc",1);
-    setenv("CXX","g++",1);
-}
-
 void BenchProgram::pushEnvMap(const EnvMapTy &envMap) {
     ori_env_map.clear();
     for (EnvMapTy::const_iterator it = envMap.begin();
@@ -614,11 +570,9 @@ void BenchProgram::popEnvMap(const EnvMapTy &envMap) {
     ori_env_map.clear();
 }
 
-bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wrapScript,
+bool BenchProgram::buildSubDir(const std::string &subDir,
         const EnvMapTy &envMap,std::vector<long long> compile_macro) {
     pushEnvMap(envMap);
-
-    pushWrapPath(CLANG_WRAP_PATH, wrapScript);
     time_t timeout_limit = 0;
     if (repair_build_cnt > 10)
         timeout_limit = ((total_repair_build_time / repair_build_cnt) + 1) * 2 + 10;
@@ -633,8 +587,6 @@ bool BenchProgram::buildSubDir(const std::string &subDir, const std::string &wra
             repair_build_cnt ++;
         }
     }
-    popWrapPath();
-
     popEnvMap(envMap);
     return succ;
 }
@@ -671,13 +623,12 @@ void removeMacros(std::map<std::string, std::string> fileMap,std::string srcDir)
     }
 }
 
-void BenchProgram::applyRepairedCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap,std::string wrapScript){
+void BenchProgram::applyRepairedCode(std::map<std::string, std::string>& fileCodeMap,
+                                     EnvMapTy& envMap){
     std::ofstream fout2((work_dir + "/" + SOURCECODE_BACKUP_LOG).c_str(), std::ofstream::out);
     size_t cnt = 0;
 
     pushEnvMap(envMap);
-
-    pushWrapPath(CLANG_WRAP_PATH, wrapScript);
 
     outlog_printf(2,"Preprocessing test...\n");
     for (std::map<std::string, std::string>::iterator it = fileCodeMap.begin();
@@ -719,8 +670,6 @@ void BenchProgram::applyRepairedCode(std::map<std::string, std::string> &fileCod
 }
 
 void BenchProgram::rollbackOriginalCode(std::map<std::string, std::string> &fileCodeMap,EnvMapTy &envMap){
-    popWrapPath();
-
     popEnvMap(envMap);
     // Remove temporary backup file, because we have done it
     size_t cnt = 0;
@@ -777,7 +726,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
 
     outlog_printf(2,"Trying to build with all macros...\n");
 
-    changeCmakeCompilerPath(src_dir+"/"+BuildSubDir.getValue(),CLANG_WRAP_PATH"/gcc",CLANG_WRAP_PATH"/g++");
+    changeCmakeCompilerPath(src_dir+"/"+BuildSubDir.getValue());
     size_t buildCount=0;
     std::map<std::string,std::map<size_t,std::pair<size_t,size_t>>> macroLines;
     if (macros.size()==0)
@@ -1183,8 +1132,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                 ExecutionTimer timer;
                 std::string src_dir = getFullPath("src", this->work_dir);
                 removeMacros(fileCodeMap,src_dir);
-                std::string cmd;
-                cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -d "+BuildSubDir.getValue();
+                std::string cmd = "msv-dd -l "+build_log_file+" -s "+src_dir+" -d "+BuildSubDir.getValue();
                 std::ofstream macroFile("/tmp/macros.tmp");
                 macroFile << candidateMacro;
                 macroFile.close();

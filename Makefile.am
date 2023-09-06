@@ -2,6 +2,8 @@ AM_CPPFLAGS = -fopenmp `llvm-config --cxxflags`\
 	-Wall -Wno-unknown-pragmas -fno-strict-aliasing
 
 bin_PROGRAMS = msv msv-diff msv-learn msv-playground
+dist_bin_SCRIPTS = tools/msv-afl tools/msv-dd\
+	tools/msv-profilecc tools/msv-testcc
 
 msv_SOURCES = src/Main.cpp src/ASTUtils.cpp src/BenchProgram.cpp\
 	src/CodeRewrite.cpp src/DuplicateDetector.cpp src/ErrorLocalizer.cpp\

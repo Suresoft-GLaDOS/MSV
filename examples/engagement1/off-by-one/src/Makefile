@@ -1,4 +1,4 @@
-CC=../../../../wrap/gcc
+CC := msv-profilecc
 
 all:
 	$(CC) -c prog.c $(CFLAGS) -o prog.o

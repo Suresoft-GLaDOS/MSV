@@ -174,13 +174,16 @@ ProfileErrorLocalizer::ProfileErrorLocalizer(BenchProgram &P,
         P.createSrcClone("profile");
         BenchProgram::EnvMapTy envMap;
         envMap.clear();
-        if (ForCPP.getValue())
+        if (ForCPP.getValue()) {
+            envMap["CXX"] = PROFILE_CC;
             envMap["COMPILE_CMD"] = "clang++";
-        else
-            envMap["COMPILE_CMD"] = CLANG_CMD;
+        } else {
+            envMap["CC"] = PROFILE_CC;
+            envMap["COMPILE_CMD"] = "clang";
+        }
         envMap["INDEX_FILE"] = index_file;
         // clearTmpDirectory();
-        bool result=P.buildSubDir("profile", CLANG_PROFILE_WRAP, envMap);
+        bool result=P.buildSubDir("profile", envMap);
         if (!result){
             outlog_printf(0,"Profile build failed!\n");
             exit(1);
