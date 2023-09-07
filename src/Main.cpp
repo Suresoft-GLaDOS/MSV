@@ -205,11 +205,14 @@ int main(int argc, char* argv[]) {
             FP->resetZero(FeatureVector::MAX_FEATURE);
         }
         else {
-            std::ifstream fin(ParameterFile.getValue(), std::ifstream::in);
-            if (fin.is_open()) {
-                fin >> *FP;
-                fin.close();
+            const auto& path = ParameterFile.getValue();
+            std::ifstream fin {path, std::ifstream::in};
+            if (!fin.good()) {
+                outlog_printf(0, "%s: %s\n", strerror(errno), path.c_str());
+                exit(1);
             }
+            fin >> *FP;
+            fin.close();
         }
         learning = true;
     }

@@ -27,6 +27,7 @@
 #include <sys/stat.h>
 #include <clang/AST/RecursiveASTVisitor.h>
 #include <clang/AST/ASTContext.h>
+#include <libexplain/realpath.h>
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -172,13 +173,13 @@ bool is_header(const std::string &str) {
 //    return !((str[str.size() - 2] == '.') && (str[str.size() - 1] == 'c'));
 }
 
-std::string getFullPath(const std::string &path) {
-    // printf("Path: %s\n",path.c_str());
+std::string getFullPath(const std::string &path, const std::string &pwd) {
     if (path[0]=='/') return path;
     char tmp[PATH_MAX];
-    char * ret = realpath(path.c_str(), tmp);
-    if (tmp != 0) printf("fail to get full path of %s\n", path.c_str());
-    return std::string(tmp);
+    std::string relpath = path;
+    if (!pwd.empty())
+        relpath = pwd + "/" + path;
+    return std::string(explain_realpath_or_die(relpath.c_str(), tmp));
 }
 
 int execute_with_timeout(const std::string &cmd, unsigned long timeout) {

@@ -27,6 +27,7 @@
 #include <clang/Frontend/FrontendPluginRegistry.h>
 #include <clang/Lex/Lexer.h>
 #include <llvm/Support/raw_ostream.h>
+#include <libexplain/realpath.h>
 #include <sstream>
 #include <fstream>
 #include <assert.h>
@@ -40,11 +41,7 @@ namespace {
 
 std::string getFullPath(const std::string &path) {
     char tmp[PATH_MAX];
-    char * ret = realpath(path.c_str(), tmp);
-    if (ret != 0)
-        return std::string(tmp);
-    else
-        return std::string("unkown_src_file");
+    return std::string(explain_realpath_or_die(path.c_str(), tmp));
 }
 
 typedef std::map<std::string, std::vector<std::string> > RewriteTextMapTy;

@@ -506,9 +506,6 @@ private:
     ConfigFile config;
     // The name of the work directory, all paths in this class are absolute paths
     std::string work_dir;
-    // The path name of the original src_directory from the config file
-    // This must be present in the file system ortherwise, we will hit errors!
-    std::string ori_src_dir;
     // The basic src directory path
     std::string src_dir;
     // The set of created src_directories, including the basic source directory,
