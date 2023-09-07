@@ -51,7 +51,7 @@ bool exist_directory(const std::string &dir);
 
 bool is_header(const std::string &str);
 
-std::string getFullPath(const std::string &path);
+std::string getFullPath(const std::string &path, const std::string &pwd = "");
 
 std::set<std::string> splitStringWithWhite(const std::string &str);
 
