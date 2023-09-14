@@ -31,6 +31,7 @@
 
 # Experiments' artifacts
 **/out/
+**/profile/
 **/prog
 *.ll
 *.bc
