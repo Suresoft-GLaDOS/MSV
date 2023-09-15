@@ -30,11 +30,17 @@
 /wrap/Makefile.in
 
 # Experiments' artifacts
-**/out/
-**/profile/
-**/prog
+out/
+profile/
+build.log*
+fixed_*
+profile_localization.res
+prog
+repair.log
+*-info.json
 *.ll
 *.bc
+*.cache
 benchmarks/*-src
 benchmarks/*-tests*
 !benchmarks/gzip-tests
