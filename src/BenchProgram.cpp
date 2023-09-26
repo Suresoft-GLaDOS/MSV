@@ -30,7 +30,9 @@
 #include <llvm/Support/raw_ostream.h>
 
 #include <dirent.h>
+#include <libexplain/chdir.h>
 #include <libexplain/system.h>
+#include <libexplain/unlink.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -264,8 +266,7 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
         else {
             this->work_dir = workDirPath;
             std::string cmd = "mkdir ";
-            ret = system((cmd + work_dir).c_str());
-            assert( ret == 0 );
+            explain_system_or_die((cmd + work_dir).c_str());
         }
         this->work_dir = getFullPath(this->work_dir);
         // This part is obsolete, it seems it will not add much performance
@@ -291,8 +292,7 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
         if (ori_test_dir != "") {
             cmd = "cp -rf ";
             cmd += ori_test_dir + " " + work_dir + "/tests";
-            ret = system(cmd.c_str());
-            assert(ret == 0);
+            explain_system_or_die(cmd.c_str());
         }
     }
     else {
@@ -309,7 +309,6 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
                 std::string target_file;
                 char tmp[1000];
                 size_t cnt = 0;
-                int ret;
                 std::string cmd;
                 while (fin.getline(tmp, 1000)) {
                     target_file = tmp;
@@ -318,21 +317,18 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
                         sout << "cp -rf "  << work_dir << "/" << SOURCECODE_BACKUP << cnt << " " << src_dir << "/" << target_file;
                         cmd = sout.str();
                     }
-                    ret = system(cmd.c_str());
-                    assert( ret == 0);
+                    explain_system_or_die(cmd.c_str());
                     {
                         std::ostringstream sout;
                         sout << "rm -rf " << work_dir << "/" << SOURCECODE_BACKUP << cnt;
                         cmd = sout.str();
                     }
-                    ret = system(cmd.c_str());
-                    assert( ret == 0);
+                    explain_system_or_die(cmd.c_str());
                     cnt++;
                 }
                 fin.close();
                 cmd = "rm -rf " + work_dir + "/" + SOURCECODE_BACKUP_LOG;
-                ret = system(cmd.c_str());
-                assert( ret == 0);
+                explain_system_or_die(cmd.c_str());
             }
 
             std::ifstream flBackup((work_dir+"/"+LOCALIZATION_RESULT_BACKUP).c_str(),std::ifstream::in);
@@ -354,8 +350,7 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
     this->build_log_file = work_dir + "/build.log";
     // Clean up builg log for every execution
     std::string cmd = std::string("rm -rf ") + build_log_file;
-    int ret = system(cmd.c_str());
-    assert( ret == 0);
+    explain_system_or_die(cmd.c_str());
     this->build_cmd = getFullPath(config.getStr("build_cmd"), this->work_dir);
     this->test_cmd = getFullPath(config.getStr("test_cmd"), this->work_dir);
     this->ddtest_cmd = getFullPath(config.getStr("tools_dir")+"/DD.py",
@@ -447,14 +442,9 @@ void BenchProgram::getCompileMisc(const std::string &src_file, std::string &buil
             else
                 cmd = build_cmd + " -c -d " + src_file + " " + src_dir + " "+unique_id+"__args >> " + build_log_file + " 2>&1";
             // cmd = build_cmd + " -j 10 -d " + src_file + " " + src_dir + " __args " +  " 2>&1";
-        int sys_ret = explain_system_on_error(cmd.c_str());
-
-        assert( sys_ret == 0 );
-        fprintf(stderr,"args file name: %s, cmd: %s\n", (unique_id+"__args").c_str(), cmd.c_str());
+        explain_system_or_die(cmd.c_str());
         parseArgFile(unique_id+"__args", build_dir, build_args);
-        sys_ret = explain_system_on_error(std::string("rm -rf "+unique_id+"__args").c_str());
-        if (sys_ret != 0)
-            fprintf(stderr, "Remove __args failed!\n");
+        explain_unlink_or_die((unique_id+"__args").c_str());
         src_dirs["src"] = true;
 
         build_dir_save[src_file]=build_dir;
@@ -469,10 +459,9 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
     char ori_dir[1000];
     char* retc = getcwd(ori_dir, 1000);
     assert(retc != NULL);
-    int ret = chdir(src_dir.c_str());
-    assert(ret == 0);
+    explain_chdir_or_die(src_dir.c_str());
     //FIXME: ugly for php
-    ret = system("rm -rf ext/phar/phar.php");
+    int ret = system("rm -rf ext/phar/phar.php");
     // assert(ret == 0);
 
     if (timeout_limit == 0)
@@ -482,8 +471,7 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
         ret = execute_with_timeout(("cd "+BuildSubDir.getValue()+" && "+std::string("make >") + build_log +std::to_string(count)+ " 2>&1"), timeout_limit);
         // ret = execute_with_timeout((std::string("make")), timeout_limit);
     bool succ = (ret == 0);
-    ret = chdir(ori_dir);
-    assert(ret == 0);
+    explain_chdir_or_die(ori_dir);
     return succ;
 }
 
@@ -1565,12 +1553,9 @@ std::unique_ptr<clang::ASTUnit> BenchProgram::buildClangASTUnit(const std::strin
     }
     tmpArgs.insert(tmpArgs.end(), args.begin(), args.end());
 
-    int ret = chdir(target.c_str());
-    assert( ret == 0 );
-    fprintf(stderr, "going to directory %s\n", target.c_str());
+    explain_chdir_or_die(target.c_str());
     std::unique_ptr<clang::ASTUnit> unit = clang::tooling::buildASTFromCodeWithArgs(code, tmpArgs, file);
-    ret = chdir(ori_dir);
-    assert( ret == 0 );
+    explain_chdir_or_die(ori_dir);
     return unit;
 }
 
