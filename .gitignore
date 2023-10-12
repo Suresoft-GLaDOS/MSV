@@ -2,6 +2,7 @@
 **/*.o
 *.bak
 **/out/
+**/profile/
 **/*.lo
 src/learner
 src/pdiffer

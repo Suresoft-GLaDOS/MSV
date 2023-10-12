@@ -164,7 +164,7 @@ ConfigFile* BenchProgram::getCurrentConfig() {
 
 void BenchProgram::createSrcClone(const std::string &subDir) {
     assert( src_dirs.count(subDir) == 0);
-    std::string copy = "cp -rf ";
+    std::string copy = "cp -RT ";
     std::string cmd=copy;
     cmd += ori_src_dir + " " + work_dir + "/" + subDir;
     execute_cmd_until_succ(cmd);
@@ -281,8 +281,8 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
 
         // We create an initial clone of the basic src direcotry
         src_dirs.clear();
-        createSrcClone("src");
-        this->src_dir = getFullPath(this->work_dir + "/src");
+        createSrcClone("out");
+        this->src_dir = getFullPath(this->work_dir + "/out");
 
         std::string ori_test_dir = config.getStr("test_dir");
         if (ori_test_dir != "") {
@@ -294,7 +294,8 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
     }
     else {
         this->work_dir = getFullPath(workDirPath);
-        this->src_dir = getFullPath(work_dir + "/src");
+        createSrcClone("out");
+        this->src_dir = getFullPath(work_dir + "/out");
         src_dirs.clear();
         // src_dirs.insert(std::make_pair("src", true));
 
@@ -1091,8 +1092,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
             ExecutionTimer timer;
             std::string src_dir = getFullPath(work_dir + "/src");
             removeMacros(fileCodeMap,src_dir);
-            std::string cmd;
-            cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir;
+            std::string cmd = "msv-dd -l "+build_log_file+" -s "+src_dir;
             std::ofstream macroFile("/tmp/macros.tmp");
             macroFile << candidateMacro;
             macroFile.close();
