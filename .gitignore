@@ -1,7 +1,13 @@
-**/prog
+out/
+profile/
+build.log*
+fixed_*
+profile_localization.res
+prog
+repair.log
+*-info.json
 **/*.o
 *.bak
-**/out/
 **/*.lo
 src/learner
 src/pdiffer
@@ -23,6 +29,7 @@ autom4te.cache
 *~
 *.ll
 *.bc
+*.cache
 __*
 **/__*
 !**/*.py

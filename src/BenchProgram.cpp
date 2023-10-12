@@ -164,12 +164,16 @@ ConfigFile* BenchProgram::getCurrentConfig() {
 
 void BenchProgram::createSrcClone(const std::string &subDir) {
     assert( src_dirs.count(subDir) == 0);
-    std::string copy = "cp -rf ";
+    // The path name of the original src_directory from the config file
+    // This must be present in the file system ortherwise, we will hit errors!
+    const std::string ori_src_dir = getFullPath(config.getStr("src_dir"),
+                                                this->work_dir);
+    const std::string copy = "cp -Tfr ";
     std::string cmd=copy;
-    cmd += ori_src_dir + " " + work_dir + "/" + subDir;
+    cmd += ori_src_dir + " " + this->work_dir + "/" + subDir;
     execute_cmd_until_succ(cmd);
 
-    cmd=copy;
+    cmd = "cp -fr ";
     cmd+= ori_src_dir+"/.git "+work_dir+"/"+subDir;
     int res=system(cmd.c_str());
     src_dirs.insert(std::make_pair(subDir, false));
@@ -243,7 +247,6 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
     test_cnt = 0;
     this->cache = NULL;
     this->no_clean_up = no_clean_up;
-    this->ori_src_dir = config.getStr("src_dir");
     this->wrap_ld = false;
     if (config.hasValue("wrap_ld"))
         this->wrap_ld = (config.getStr("wrap_ld") == "yes");
@@ -282,7 +285,7 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
         // We create an initial clone of the basic src direcotry
         src_dirs.clear();
         createSrcClone("src");
-        this->src_dir = getFullPath(this->work_dir + "/src");
+        this->src_dir = getFullPath("src", this->work_dir);
 
         std::string ori_test_dir = config.getStr("test_dir");
         if (ori_test_dir != "") {
@@ -294,7 +297,7 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
     }
     else {
         this->work_dir = getFullPath(workDirPath);
-        this->src_dir = getFullPath(work_dir + "/src");
+        this->src_dir = getFullPath("src", this->work_dir);
         src_dirs.clear();
         // src_dirs.insert(std::make_pair("src", true));
 
@@ -346,17 +349,18 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
     if (dep_dir != ""){
         dep_dir = getFullPath(dep_dir);
     }
-    this->test_dir = getFullPath(work_dir+"/tests");
+    this->test_dir = getFullPath("tests", this->work_dir);
     this->build_log_file = work_dir + "/build.log";
     // Clean up builg log for every execution
     std::string cmd = std::string("rm -rf ") + build_log_file;
     int ret = system(cmd.c_str());
     assert( ret == 0);
-    this->build_cmd = getFullPath(config.getStr("build_cmd"));
-    this->test_cmd = getFullPath(config.getStr("test_cmd"));
-    this->ddtest_cmd=getFullPath(config.getStr("tools_dir"))+"/DD.py";
-    this->prophet_src=getFullPath(config.getStr("tools_dir"))+"/../src";
-    this->afl_cmd=getFullPath(config.getStr("tools_dir"))+"/run-afl.py";
+    this->build_cmd = getFullPath(config.getStr("build_cmd"), this->work_dir);
+    this->test_cmd = getFullPath(config.getStr("test_cmd"), this->work_dir);
+    this->ddtest_cmd = getFullPath(config.getStr("tools_dir")+"/DD.py",
+                                   this->work_dir);
+    this->prophet_src = getFullPath(config.getStr("tools_dir")+"/../src",
+                                    this->work_dir);
     this->localization_filename = work_dir + "/" + LOCALIZATION_RESULT;
     this->conditionNum=false;
 
@@ -382,7 +386,8 @@ void BenchProgram::Init(const std::string &workDirPath, bool no_clean_up,bool in
         sin >> case_timeout;
     }
 
-    std::string revision_file = config.getStr("revision_file");
+    std::string revision_file = getFullPath(config.getStr("revision_file"),
+                                            this->work_dir);
     parseRevisionLog(revision_file, negative_cases, positive_cases);
 }
 
@@ -483,7 +488,7 @@ bool incrementalBuild(time_t timeout_limit, const std::string &src_dir, const st
 
 bool BenchProgram::buildFull(const std::string &subDir, time_t timeout_limit, bool force_reconf,std::vector<long long> compile_macro,std::vector<std::string> files,std::vector<long long> writer_macro) {
     assert(src_dirs.count(subDir) != 0);
-    std::string src_dir = getFullPath(work_dir + "/" + subDir);
+    std::string src_dir = getFullPath(subDir, this->work_dir);
 
     for (int i=0;i<files.size();i++){
         std::string code;
@@ -1089,7 +1094,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
             outlog_printf(2,"Search %s!\n",it->first.c_str());
 
             ExecutionTimer timer;
-            std::string src_dir = getFullPath(work_dir + "/src");
+            std::string src_dir = getFullPath("src", this->work_dir);
             removeMacros(fileCodeMap,src_dir);
             std::string cmd;
             cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir;
@@ -1188,7 +1193,7 @@ std::vector<long long> BenchProgram::buildWithRepairedCode(const std::string &wr
                 outlog_printf(2,"Search %s!\n",it->first.c_str());
 
                 ExecutionTimer timer;
-                std::string src_dir = getFullPath(work_dir + "/src");
+                std::string src_dir = getFullPath("src", this->work_dir);
                 removeMacros(fileCodeMap,src_dir);
                 std::string cmd;
                 cmd=ddtest_cmd+" -l "+build_log_file+" -s "+src_dir+" -d "+BuildSubDir.getValue();
@@ -1314,9 +1319,9 @@ BenchProgram::TestCaseSetTy BenchProgram::testSet(const std::string &subDir,
     //     cmd+=" -s "+std::to_string(switchId)+"-"+std::to_string(caseNum);
 
     if (!pass_basic_src_dir)
-        cmd = cmd + " " + getFullPath(work_dir + "/" + subDir) + " " + test_dir + " " + work_dir + " ";
+        cmd = cmd + " " + getFullPath(subDir, this->work_dir) + " " + test_dir + " " + work_dir + " ";
     else
-        cmd = cmd + " -p " + getFullPath(work_dir + "/" + subDir) + " " + src_dir + " " + test_dir + " " + work_dir + " ";
+        cmd = cmd + " -p " + getFullPath(subDir, this->work_dir) + " " + src_dir + " " + test_dir + " " + work_dir + " ";
     std::ostringstream sout;
     sout << cmd;
     for (TestCaseSetTy::const_iterator it = case_set.begin(); it != case_set.end(); it ++)
